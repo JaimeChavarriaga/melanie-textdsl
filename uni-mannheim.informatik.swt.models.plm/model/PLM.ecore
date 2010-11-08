@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="PanLevelModelPackage"
+    nsURI="uni-mannheim.informatik.swt.models/plm" nsPrefix="uni-mannheim.informatik.swt.models">
+  <eClassifiers xsi:type="ecore:EClass" name="PElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PLevelSpecificElement" eSuperTypes="#//PElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="level" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" lowerBound="1" eType="#//PElement"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PModule" eSuperTypes="#//PElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PInstantiableElement" eSuperTypes="#//PLevelSpecificElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="potency" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PPackage" eSuperTypes="#//PLevelSpecificElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PConnector" eSuperTypes="#//PLevelSpecificElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="participants" lowerBound="2"
+        upperBound="-1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="roleNames" lowerBound="2"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PField" eSuperTypes="#//PInstantiableElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dual" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unique" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dataType" lowerBound="1">
+      <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
+        <eTypeArguments/>
+      </eGenericType>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="multiplicityLower" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="multiplicityUpper" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PClabject" eSuperTypes="#//PInstantiableElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//PClabject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="superType" upperBound="-1"
+        eType="#//PClabject"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PMethod" eSuperTypes="#//PInstantiableElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="body" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="input" upperBound="-1"
+        eType="#//PElement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outPut" upperBound="-1"
+        eType="#//PElement"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PNode" eSuperTypes="#//PClabject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PRelationship" eSuperTypes="#//PClabject #//PConnector">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="multiplicityLower" lowerBound="2"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="multiplicityUpper" lowerBound="2"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isNavigable" lowerBound="2"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isOrdered" lowerBound="2"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PGeneralization" eSuperTypes="#//PConnector"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PInstantiation" eSuperTypes="#//PConnector">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetLevel" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+</ecore:EPackage>
