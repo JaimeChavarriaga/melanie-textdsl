@@ -18,7 +18,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="PPackage" eSuperTypes="#//PLevelSpecificElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="PConnector" eSuperTypes="#//PLevelSpecificElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="participants" lowerBound="2"
-        upperBound="-1"/>
+        upperBound="-1" eType="#//PClabject"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="roleNames" lowerBound="2"
         upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
