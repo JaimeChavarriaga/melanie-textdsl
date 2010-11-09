@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/uni-mannheim.informatik.swt.models.plm/src"
+    modelPluginID="uni-mannheim.informatik.swt.models.plm" modelName="PLM" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="6.0" copyrightFields="false">
+  <foreignModel>PLM.ecore</foreignModel>
+  <modelPluginVariables>CDO=org.eclipse.emf.cdo</modelPluginVariables>
+  <genPackages prefix="PanLevelModelPackage" disposableProviderFactory="true" ecorePackage="PLM.ecore#/">
+    <genClasses ecoreClass="PLM.ecore#//PElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PLM.ecore#//PElement/name"/>
+    </genClasses>
+    <genClasses ecoreClass="PLM.ecore#//PLevelSpecificElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PLM.ecore#//PLevelSpecificElement/level"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference PLM.ecore#//PLevelSpecificElement/owner"/>
+    </genClasses>
+    <genClasses ecoreClass="PLM.ecore#//PModule"/>
+    <genClasses ecoreClass="PLM.ecore#//PInstantiableElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PLM.ecore#//PInstantiableElement/potency"/>
+    </genClasses>
+    <genClasses ecoreClass="PLM.ecore#//PPackage"/>
+    <genClasses ecoreClass="PLM.ecore#//PConnector">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference PLM.ecore#//PConnector/participants"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PLM.ecore#//PConnector/roleNames"/>
+    </genClasses>
+    <genClasses ecoreClass="PLM.ecore#//PField">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PLM.ecore#//PField/dual"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PLM.ecore#//PField/unique"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PLM.ecore#//PField/dataType"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference PLM.ecore#//PField/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PLM.ecore#//PField/multiplicityLower"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PLM.ecore#//PField/multiplicityUpper"/>
+    </genClasses>
+    <genClasses ecoreClass="PLM.ecore#//PClabject">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference PLM.ecore#//PClabject/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference PLM.ecore#//PClabject/superType"/>
+    </genClasses>
+    <genClasses ecoreClass="PLM.ecore#//PMethod">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PLM.ecore#//PMethod/body"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference PLM.ecore#//PMethod/input"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference PLM.ecore#//PMethod/outPut"/>
+    </genClasses>
+    <genClasses ecoreClass="PLM.ecore#//PNode"/>
+    <genClasses ecoreClass="PLM.ecore#//PRelationship">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PLM.ecore#//PRelationship/multiplicityLower"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PLM.ecore#//PRelationship/multiplicityUpper"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PLM.ecore#//PRelationship/isNavigable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PLM.ecore#//PRelationship/isOrdered"/>
+    </genClasses>
+    <genClasses ecoreClass="PLM.ecore#//PGeneralization"/>
+    <genClasses ecoreClass="PLM.ecore#//PInstantiation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PLM.ecore#//PInstantiation/targetLevel"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
