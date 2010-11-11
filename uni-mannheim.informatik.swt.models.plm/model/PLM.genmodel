@@ -5,8 +5,8 @@
     modelPluginID="uni-mannheim.informatik.swt.models.plm" modelName="PLM" importerID="org.eclipse.emf.importer.ecore"
     complianceLevel="6.0" copyrightFields="false">
   <foreignModel>PLM.ecore</foreignModel>
-  <modelPluginVariables>CDO=org.eclipse.emf.cdo</modelPluginVariables>
-  <genPackages prefix="PanLevelModelPackage" disposableProviderFactory="true" ecorePackage="PLM.ecore#/">
+  <genPackages prefix="PanLevelModel" basePackage="uni_mannheim.informatik.swt.models.plm"
+      disposableProviderFactory="true" ecorePackage="PLM.ecore#/">
     <genClasses ecoreClass="PLM.ecore#//PElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PLM.ecore#//PElement/name"/>
     </genClasses>
@@ -50,6 +50,9 @@
     <genClasses ecoreClass="PLM.ecore#//PGeneralization"/>
     <genClasses ecoreClass="PLM.ecore#//PInstantiation">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PLM.ecore#//PInstantiation/targetLevel"/>
+    </genClasses>
+    <genClasses ecoreClass="PLM.ecore#//PanLevelModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PLM.ecore#//PanLevelModel/modelElements"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
