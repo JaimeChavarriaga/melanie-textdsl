@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="tut.models.mindmap.mindmap.presentation.MindmapModelWizardID"
+            name="%_UI_MindmapModelWizard_label"
+            class="tut.models.mindmap.mindmap.presentation.MindmapModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/MindmapModelFile.gif">
+         <description>%_UI_MindmapModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="tut.models.mindmap.mindmap.presentation.MindmapEditorID"
+            name="%_UI_MindmapEditor_label"
+            icon="icons/full/obj16/MindmapModelFile.gif"
+            extensions="mindmap"
+            class="tut.models.mindmap.mindmap.presentation.MindmapEditor"
+            contributorClass="tut.models.mindmap.mindmap.presentation.MindmapActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
