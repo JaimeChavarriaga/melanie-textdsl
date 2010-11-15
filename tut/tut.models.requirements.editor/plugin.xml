@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="tut.models.requirements.requirements.presentation.RequirementsModelWizardID"
+            name="%_UI_RequirementsModelWizard_label"
+            class="tut.models.requirements.requirements.presentation.RequirementsModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/RequirementsModelFile.gif">
+         <description>%_UI_RequirementsModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="tut.models.requirements.requirements.presentation.RequirementsEditorID"
+            name="%_UI_RequirementsEditor_label"
+            icon="icons/full/obj16/RequirementsModelFile.gif"
+            extensions="requirements"
+            class="tut.models.requirements.requirements.presentation.RequirementsEditor"
+            contributorClass="tut.models.requirements.requirements.presentation.RequirementsActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
