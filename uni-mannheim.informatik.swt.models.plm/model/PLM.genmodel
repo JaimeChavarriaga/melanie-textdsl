@@ -5,7 +5,7 @@
     modelPluginID="uni-mannheim.informatik.swt.models.plm" modelName="PLM" importerID="org.eclipse.emf.importer.ecore"
     complianceLevel="6.0" copyrightFields="false">
   <foreignModel>PLM.ecore</foreignModel>
-  <genPackages prefix="PLM" basePackage="uni-mannheim.informatik.swt.nodels.plm" disposableProviderFactory="true"
+  <genPackages prefix="PLM" basePackage="uni_mannheim.informatik.swt.nodels.plm" disposableProviderFactory="true"
       fileExtensions="plmEcore" ecorePackage="PLM.ecore#/">
     <genClasses ecoreClass="PLM.ecore#//PElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PLM.ecore#//PElement/name"/>
