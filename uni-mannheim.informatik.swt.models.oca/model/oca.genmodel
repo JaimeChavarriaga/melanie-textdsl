@@ -5,7 +5,7 @@
     modelPluginID="uni-mannheim.informatik.swt.models.oca" modelName="Oca" importerID="org.eclipse.emf.importer.ecore"
     complianceLevel="6.0" copyrightFields="false" usedGenPackages="../../uni-mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM">
   <foreignModel>oca.ecore</foreignModel>
-  <genPackages prefix="OCA" basePackage="uni-mannheim.informatik.swt.nodels.oca" disposableProviderFactory="true"
+  <genPackages prefix="OCA" basePackage="uni_mannheim.informatik.swt.models.oca" disposableProviderFactory="true"
       fileExtensions="ocaEcore" ecorePackage="oca.ecore#/">
     <genClasses ecoreClass="oca.ecore#//Model">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference oca.ecore#//Model/modelElements"/>
