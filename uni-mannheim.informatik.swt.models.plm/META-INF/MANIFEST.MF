@@ -11,3 +11,6 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.emf.cdo;visibility:=reexport
 Bundle-ActivationPolicy: lazy
+Export-Package: uni_mannheim.informatik.swt.models.plm.PLM,
+ uni_mannheim.informatik.swt.models.plm.PLM.impl,
+ uni_mannheim.informatik.swt.models.plm.PLM.util
