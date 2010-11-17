@@ -60,6 +60,34 @@ public interface PLMPackage extends EPackage {
 	PLMPackage eINSTANCE = uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMPackageImpl.init();
 
 	/**
+	 * The meta object id for the '{@link uni_mannheim.informatik.swt.models.plm.PLM.impl.ModelImpl <em>Model</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see uni_mannheim.informatik.swt.models.plm.PLM.impl.ModelImpl
+	 * @see uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMPackageImpl#getModel()
+	 * @generated
+	 */
+	int MODEL = 0;
+
+	/**
+	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL__ELEMENTS = 0;
+
+	/**
+	 * The number of structural features of the '<em>Model</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_FEATURE_COUNT = 1;
+
+	/**
 	 * The meta object id for the '{@link uni_mannheim.informatik.swt.models.plm.PLM.impl.PElementImpl <em>PElement</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -67,7 +95,7 @@ public interface PLMPackage extends EPackage {
 	 * @see uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMPackageImpl#getPElement()
 	 * @generated
 	 */
-	int PELEMENT = 0;
+	int PELEMENT = 1;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -95,7 +123,7 @@ public interface PLMPackage extends EPackage {
 	 * @see uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMPackageImpl#getPLevelSpecificElement()
 	 * @generated
 	 */
-	int PLEVEL_SPECIFIC_ELEMENT = 1;
+	int PLEVEL_SPECIFIC_ELEMENT = 2;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -141,7 +169,7 @@ public interface PLMPackage extends EPackage {
 	 * @see uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMPackageImpl#getPModule()
 	 * @generated
 	 */
-	int PMODULE = 2;
+	int PMODULE = 3;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -169,7 +197,7 @@ public interface PLMPackage extends EPackage {
 	 * @see uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMPackageImpl#getPInstantiableElement()
 	 * @generated
 	 */
-	int PINSTANTIABLE_ELEMENT = 3;
+	int PINSTANTIABLE_ELEMENT = 4;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -224,7 +252,7 @@ public interface PLMPackage extends EPackage {
 	 * @see uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMPackageImpl#getPPackage()
 	 * @generated
 	 */
-	int PPACKAGE = 4;
+	int PPACKAGE = 5;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -270,7 +298,7 @@ public interface PLMPackage extends EPackage {
 	 * @see uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMPackageImpl#getPConnector()
 	 * @generated
 	 */
-	int PCONNECTOR = 5;
+	int PCONNECTOR = 6;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -334,7 +362,7 @@ public interface PLMPackage extends EPackage {
 	 * @see uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMPackageImpl#getPField()
 	 * @generated
 	 */
-	int PFIELD = 6;
+	int PFIELD = 7;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -443,7 +471,7 @@ public interface PLMPackage extends EPackage {
 	 * @see uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMPackageImpl#getPClabject()
 	 * @generated
 	 */
-	int PCLABJECT = 7;
+	int PCLABJECT = 8;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -516,7 +544,7 @@ public interface PLMPackage extends EPackage {
 	 * @see uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMPackageImpl#getPMethod()
 	 * @generated
 	 */
-	int PMETHOD = 8;
+	int PMETHOD = 9;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -598,7 +626,7 @@ public interface PLMPackage extends EPackage {
 	 * @see uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMPackageImpl#getPNode()
 	 * @generated
 	 */
-	int PNODE = 9;
+	int PNODE = 10;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -671,7 +699,7 @@ public interface PLMPackage extends EPackage {
 	 * @see uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMPackageImpl#getPRelationship()
 	 * @generated
 	 */
-	int PRELATIONSHIP = 10;
+	int PRELATIONSHIP = 11;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -798,7 +826,7 @@ public interface PLMPackage extends EPackage {
 	 * @see uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMPackageImpl#getPGeneralization()
 	 * @generated
 	 */
-	int PGENERALIZATION = 11;
+	int PGENERALIZATION = 12;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -862,7 +890,7 @@ public interface PLMPackage extends EPackage {
 	 * @see uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMPackageImpl#getPInstantiation()
 	 * @generated
 	 */
-	int PINSTANTIATION = 12;
+	int PINSTANTIATION = 13;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -935,7 +963,7 @@ public interface PLMPackage extends EPackage {
 	 * @see uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMPackageImpl#getPanLevelModel()
 	 * @generated
 	 */
-	int PAN_LEVEL_MODEL = 13;
+	int PAN_LEVEL_MODEL = 14;
 
 	/**
 	 * The feature id for the '<em><b>Model Elements</b></em>' containment reference list.
@@ -955,6 +983,27 @@ public interface PLMPackage extends EPackage {
 	 */
 	int PAN_LEVEL_MODEL_FEATURE_COUNT = 1;
 
+
+	/**
+	 * Returns the meta object for class '{@link uni_mannheim.informatik.swt.models.plm.PLM.Model <em>Model</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Model</em>'.
+	 * @see uni_mannheim.informatik.swt.models.plm.PLM.Model
+	 * @generated
+	 */
+	EClass getModel();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link uni_mannheim.informatik.swt.models.plm.PLM.Model#getElements <em>Elements</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Elements</em>'.
+	 * @see uni_mannheim.informatik.swt.models.plm.PLM.Model#getElements()
+	 * @see #getModel()
+	 * @generated
+	 */
+	EReference getModel_Elements();
 
 	/**
 	 * Returns the meta object for class '{@link uni_mannheim.informatik.swt.models.plm.PLM.PElement <em>PElement</em>}'.
@@ -1371,6 +1420,24 @@ public interface PLMPackage extends EPackage {
 	 * @generated
 	 */
 	interface Literals {
+		/**
+		 * The meta object literal for the '{@link uni_mannheim.informatik.swt.models.plm.PLM.impl.ModelImpl <em>Model</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see uni_mannheim.informatik.swt.models.plm.PLM.impl.ModelImpl
+		 * @see uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMPackageImpl#getModel()
+		 * @generated
+		 */
+		EClass MODEL = eINSTANCE.getModel();
+
+		/**
+		 * The meta object literal for the '<em><b>Elements</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MODEL__ELEMENTS = eINSTANCE.getModel_Elements();
+
 		/**
 		 * The meta object literal for the '{@link uni_mannheim.informatik.swt.models.plm.PLM.impl.PElementImpl <em>PElement</em>}' class.
 		 * <!-- begin-user-doc -->

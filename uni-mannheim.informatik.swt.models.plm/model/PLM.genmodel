@@ -7,6 +7,9 @@
   <foreignModel>PLM.ecore</foreignModel>
   <genPackages prefix="PLM" basePackage="uni_mannheim.informatik.swt.models.plm" disposableProviderFactory="true"
       fileExtensions="plmEcore" ecorePackage="PLM.ecore#/">
+    <genClasses ecoreClass="PLM.ecore#//Model">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PLM.ecore#//Model/elements"/>
+    </genClasses>
     <genClasses ecoreClass="PLM.ecore#//PElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PLM.ecore#//PElement/name"/>
     </genClasses>

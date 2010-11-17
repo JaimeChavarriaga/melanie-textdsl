@@ -72,6 +72,10 @@ public class PLMAdapterFactory extends AdapterFactoryImpl {
 	protected PLMSwitch<Adapter> modelSwitch =
 		new PLMSwitch<Adapter>() {
 			@Override
+			public Adapter caseModel(Model object) {
+				return createModelAdapter();
+			}
+			@Override
 			public Adapter casePElement(PElement object) {
 				return createPElementAdapter();
 			}
@@ -146,6 +150,20 @@ public class PLMAdapterFactory extends AdapterFactoryImpl {
 		return modelSwitch.doSwitch((EObject)target);
 	}
 
+
+	/**
+	 * Creates a new adapter for an object of class '{@link uni_mannheim.informatik.swt.models.plm.PLM.Model <em>Model</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see uni_mannheim.informatik.swt.models.plm.PLM.Model
+	 * @generated
+	 */
+	public Adapter createModelAdapter() {
+		return null;
+	}
 
 	/**
 	 * Creates a new adapter for an object of class '{@link uni_mannheim.informatik.swt.models.plm.PLM.PElement <em>PElement</em>}'.

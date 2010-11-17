@@ -60,6 +60,7 @@ public class PLMFactoryImpl extends EFactoryImpl implements PLMFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+			case PLMPackage.MODEL: return createModel();
 			case PLMPackage.PELEMENT: return createPElement();
 			case PLMPackage.PLEVEL_SPECIFIC_ELEMENT: return createPLevelSpecificElement();
 			case PLMPackage.PMODULE: return createPModule();
@@ -77,6 +78,16 @@ public class PLMFactoryImpl extends EFactoryImpl implements PLMFactory {
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Model createModel() {
+		ModelImpl model = new ModelImpl();
+		return model;
 	}
 
 	/**

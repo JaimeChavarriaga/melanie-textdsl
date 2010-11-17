@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import uni_mannheim.informatik.swt.models.plm.PLM.Model;
 import uni_mannheim.informatik.swt.models.plm.PLM.PClabject;
 import uni_mannheim.informatik.swt.models.plm.PLM.PConnector;
 import uni_mannheim.informatik.swt.models.plm.PLM.PElement;
@@ -38,6 +39,13 @@ import uni_mannheim.informatik.swt.models.plm.PLM.PanLevelModel;
  * @generated
  */
 public class PLMPackageImpl extends EPackageImpl implements PLMPackage {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass modelEClass = null;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -195,6 +203,24 @@ public class PLMPackageImpl extends EPackageImpl implements PLMPackage {
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(PLMPackage.eNS_URI, thePLMPackage);
 		return thePLMPackage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getModel() {
+		return modelEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getModel_Elements() {
+		return (EReference)modelEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -558,6 +584,9 @@ public class PLMPackageImpl extends EPackageImpl implements PLMPackage {
 		isCreated = true;
 
 		// Create classes and their features
+		modelEClass = createEClass(MODEL);
+		createEReference(modelEClass, MODEL__ELEMENTS);
+
 		pElementEClass = createEClass(PELEMENT);
 		createEAttribute(pElementEClass, PELEMENT__NAME);
 
@@ -653,6 +682,9 @@ public class PLMPackageImpl extends EPackageImpl implements PLMPackage {
 		pInstantiationEClass.getESuperTypes().add(this.getPConnector());
 
 		// Initialize classes and features; add operations and parameters
+		initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getModel_Elements(), this.getPElement(), null, "elements", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(pElementEClass, PElement.class, "PElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPElement_Name(), ecorePackage.getEString(), "name", null, 1, 1, PElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

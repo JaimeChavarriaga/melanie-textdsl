@@ -26,6 +26,15 @@ public interface PLMFactory extends EFactory {
 	PLMFactory eINSTANCE = uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMFactoryImpl.init();
 
 	/**
+	 * Returns a new object of class '<em>Model</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Model</em>'.
+	 * @generated
+	 */
+	Model createModel();
+
+	/**
 	 * Returns a new object of class '<em>PElement</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
