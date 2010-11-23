@@ -3,74 +3,98 @@
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="PLM"
     nsURI="http://swt.informatik.uni-mannheim.de/PLM" nsPrefix="PLM">
-  <eClassifiers xsi:type="ecore:EClass" name="Model">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
-        eType="#//PElement" containment="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Element">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="expressed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Ontology">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ontologicLevels" upperBound="-1"
+        containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PLevelSpecificElement" eSuperTypes="#//PElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="level" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" lowerBound="1" eType="#//PElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OwnedElement" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" eType="#//Element"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PModule" eSuperTypes="#//PElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="PInstantiableElement" eSuperTypes="#//PLevelSpecificElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="potency" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LogicalElement" eSuperTypes="#//OwnedElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Model" eSuperTypes="#//OwnedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ontology" eType="#//Ontology"
+        containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PPackage" eSuperTypes="#//PLevelSpecificElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="PConnector" eSuperTypes="#//PLevelSpecificElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="participants" lowerBound="2"
-        upperBound="-1" eType="#//PClabject"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="roleNames" lowerBound="2"
+  <eClassifiers xsi:type="ecore:EClass" name="PotentElement" eSuperTypes="#//OwnedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="potency" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SetRelationship" eSuperTypes="#//LogicalElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Generalization" eSuperTypes="#//LogicalElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mediate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Instantiation" eSuperTypes="#//LogicalElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="indirect" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetLevel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="instance" eType="#//Clabject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//Clabject"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Complement" eSuperTypes="#//SetRelationship"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Equals" eSuperTypes="#//SetRelationship"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Inversion" eSuperTypes="#//SetRelationship"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BinaryGeneralization" eSuperTypes="#//Generalization">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subtype" eType="#//Clabject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="supertype" eType="#//Clabject"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MultipleGeneralization" eSuperTypes="#//Generalization">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subtype" eType="#//Clabject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="supertype" lowerBound="1"
+        upperBound="-1" eType="#//Clabject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="intersection" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="union" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MultipleSpecialization" eSuperTypes="#//Generalization">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subtype" lowerBound="1"
+        upperBound="-1" eType="#//Clabject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="supertype" eType="#//Clabject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="complete" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="disjoint" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Clabject" eSuperTypes="#//PotentElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" upperBound="-1"
+        eType="#//Clabject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="supertype" lowerBound="1"
+        upperBound="-1" eType="#//Clabject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="abstract" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="level" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Feature" eSuperTypes="#//PotentElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DomainEntity" eSuperTypes="#//Clabject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DomainConnection" eSuperTypes="#//Clabject">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="participant" lowerBound="2"
+        upperBound="-1" eType="#//Clabject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="roleName" lowerBound="2"
         upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PField" eSuperTypes="#//PInstantiableElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dual" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unique" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dataType" lowerBound="1">
-      <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
-        <eTypeArguments/>
-      </eGenericType>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="multiplicityLower" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lower" lowerBound="2" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="multiplicityUpper" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="upper" lowerBound="2" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PClabject" eSuperTypes="#//PInstantiableElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//PClabject"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="superType" upperBound="-1"
-        eType="#//PClabject"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PMethod" eSuperTypes="#//PInstantiableElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="body" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="input" upperBound="-1"
-        eType="#//PElement"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="outPut" upperBound="-1"
-        eType="#//PElement"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PNode" eSuperTypes="#//PClabject"/>
-  <eClassifiers xsi:type="ecore:EClass" name="PRelationship" eSuperTypes="#//PClabject #//PConnector">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="multiplicityLower" lowerBound="2"
-        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="multiplicityUpper" lowerBound="2"
-        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isNavigable" lowerBound="2"
         upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isOrdered" lowerBound="2"
-        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transitive" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PGeneralization" eSuperTypes="#//PConnector"/>
-  <eClassifiers xsi:type="ecore:EClass" name="PInstantiation" eSuperTypes="#//PConnector">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetLevel" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Field" eSuperTypes="#//Feature">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="datatype" eType="#//Clabject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//Clabject"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PanLevelModel">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="modelElements" upperBound="-1"
-        eType="#//PElement" containment="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Method" eSuperTypes="#//Feature">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="body" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="input" lowerBound="1" upperBound="-1"
+        eType="#//PotentElement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="output" lowerBound="1"
+        upperBound="-1" eType="#//PotentElement"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OntologicLevel" eSuperTypes="#//OwnedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elements" eType="#//OwnedElement"
+        containment="true"/>
   </eClassifiers>
 </ecore:EPackage>
