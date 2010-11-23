@@ -217,29 +217,22 @@
       </labels>
     </topLevelNodes>
     <links
-        visualID="4001"
-        editPartClassName="DomainConnection2EditPart"
-        itemSemanticEditPolicyClassName="DomainConnection2ItemSemanticEditPolicy"
-        notationViewFactoryClassName="DomainConnectionViewFactory"
-        createCommandClassName="DomainConnection2CreateCommand"
-        reorientCommandClassName="DomainConnectionReorientCommand">
+        visualID="4003"
+        editPartClassName="DomainConnectionParticipantEditPart"
+        itemSemanticEditPolicyClassName="DomainConnectionParticipantItemSemanticEditPolicy"
+        notationViewFactoryClassName="DomainConnectionParticipantViewFactory"
+        createCommandClassName="DomainConnectionParticipantCreateCommand"
+        reorientCommandClassName="DomainConnectionParticipantReorientCommand">
       <diagramRunTimeClass
           href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Edge"/>
       <elementType
-          xsi:type="gmfgen:SpecializationType"
-          metamodelType="//@diagram/@childNodes.2/@elementType"/>
+          xsi:type="gmfgen:SpecializationType"/>
       <viewmap
           xsi:type="gmfgen:FigureViewmap"
           figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx"/>
       <modelFacet
-          xsi:type="gmfgen:TypeLinkModelFacet">
-        <metaClass
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainConnection"/>
-        <containmentMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/elements"/>
-        <childMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/elements"/>
-        <targetMetaFeature
+          xsi:type="gmfgen:FeatureLinkModelFacet">
+        <metaFeature
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainConnection/participant"/>
       </modelFacet>
     </links>
@@ -247,6 +240,7 @@
         visualID="4002"
         editPartClassName="InstantiationEditPart"
         itemSemanticEditPolicyClassName="InstantiationItemSemanticEditPolicy"
+        notationViewFactoryClassName="InstantiationViewFactory"
         createCommandClassName="InstantiationCreateCommand"
         reorientCommandClassName="InstantiationReorientCommand">
       <diagramRunTimeClass
@@ -417,16 +411,16 @@
         groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
     <childReferences
         parent="//@diagram/@links.0"
+        child="//@diagram/@childNodes.2"
+        referenceType="in_source"
+        groupName="source"
+        groupIcon="icons/linkSourceNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@childNodes.2"
         child="//@diagram/@links.0"
         referenceType="out_target"
-        groupName="target"
-        groupIcon="icons/linkTargetNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@links.0"
-        child="//@diagram/@links.0"
-        referenceType="in_source"
-        groupName="incoming links"
-        groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
+        groupName="outgoing links"
+        groupIcon="icons/outgoingLinksNavigatorGroup.gif"/>
     <childReferences
         parent="//@diagram"
         child="//@diagram/@links.1"
@@ -458,18 +452,6 @@
         groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
     <childReferences
         parent="//@diagram/@links.1"
-        child="//@diagram/@links.0"
-        referenceType="out_target"
-        groupName="target"
-        groupIcon="icons/linkTargetNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@links.0"
-        child="//@diagram/@links.1"
-        referenceType="in_source"
-        groupName="incoming links"
-        groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@links.1"
         child="//@diagram/@childNodes.1"
         referenceType="in_source"
         groupName="source"
@@ -488,18 +470,6 @@
         groupIcon="icons/linkSourceNavigatorGroup.gif"/>
     <childReferences
         parent="//@diagram/@childNodes.2"
-        child="//@diagram/@links.1"
-        referenceType="out_target"
-        groupName="outgoing links"
-        groupIcon="icons/outgoingLinksNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@links.1"
-        child="//@diagram/@links.0"
-        referenceType="in_source"
-        groupName="source"
-        groupIcon="icons/linkSourceNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@links.0"
         child="//@diagram/@links.1"
         referenceType="out_target"
         groupName="outgoing links"
