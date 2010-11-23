@@ -16,8 +16,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LogicalElement" eSuperTypes="#//OwnedElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="Model" eSuperTypes="#//OwnedElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ontology" eType="#//Ontology"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ontology" lowerBound="1"
+        eType="#//Ontology" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PotentElement" eSuperTypes="#//OwnedElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="potency" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -94,7 +94,7 @@
         upperBound="-1" eType="#//PotentElement"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OntologicLevel" eSuperTypes="#//OwnedElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="elements" eType="#//OwnedElement"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
+        eType="#//OwnedElement" containment="true"/>
   </eClassifiers>
 </ecore:EPackage>
