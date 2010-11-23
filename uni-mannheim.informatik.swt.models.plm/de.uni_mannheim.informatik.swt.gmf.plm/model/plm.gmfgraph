@@ -75,6 +75,17 @@
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"/>
     </descriptors>
+    <descriptors
+        name="InstantiationFigure">
+      <actualFigure
+          xsi:type="gmfgraph:PolylineConnection"
+          lineKind="LINE_DASH"
+          targetDecoration="//@figures.0/@descriptors.7/@actualFigure/@children.0">
+        <children
+            xsi:type="gmfgraph:PolylineDecoration"
+            name="InstantiationTarget"/>
+      </actualFigure>
+    </descriptors>
   </figures>
   <nodes
       name="Ontology"
@@ -91,6 +102,9 @@
   <connections
       name="DomainConnectionParticipants"
       figure="DomainConnectionParticipantsFigure"/>
+  <connections
+      name="Instantiation"
+      figure="InstantiationFigure"/>
   <compartments
       name="OntologyLevelCompartment"
       figure="OntologyLevelCompartmentFigure"

@@ -77,24 +77,27 @@ public class PLMNavigatorLabelProvider extends LabelProvider implements
 	public Image getImage(View view) {
 		switch (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMVisualIDRegistry
 				.getVisualID(view)) {
-		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntityEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http://swt.informatik.uni-mannheim.de/PLM?DomainEntity", de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.DomainEntity_3002); //$NON-NLS-1$
-		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.OntologyEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?TopLevelNode?http://swt.informatik.uni-mannheim.de/PLM?Ontology", de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.Ontology_2001); //$NON-NLS-1$
 		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ModelEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Diagram?http://swt.informatik.uni-mannheim.de/PLM?Model", de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.Model_1000); //$NON-NLS-1$
-		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.OntologyLevelEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http://swt.informatik.uni-mannheim.de/PLM?OntologyLevel", de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.OntologyLevel_3001); //$NON-NLS-1$
-		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnection2EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Link?http://swt.informatik.uni-mannheim.de/PLM?DomainConnection", de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.DomainConnection_4001); //$NON-NLS-1$
 		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Node?http://swt.informatik.uni-mannheim.de/PLM?DomainConnection", de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.DomainConnection_3003); //$NON-NLS-1$
+		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.OntologyLevelEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http://swt.informatik.uni-mannheim.de/PLM?OntologyLevel", de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.OntologyLevel_3001); //$NON-NLS-1$
+		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.OntologyEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?TopLevelNode?http://swt.informatik.uni-mannheim.de/PLM?Ontology", de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.Ontology_2001); //$NON-NLS-1$
+		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnection2EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Link?http://swt.informatik.uni-mannheim.de/PLM?DomainConnection", de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.DomainConnection_4001); //$NON-NLS-1$
+		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.InstantiationEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Link?http://swt.informatik.uni-mannheim.de/PLM?Instantiation", de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.Instantiation_4002); //$NON-NLS-1$
+		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntityEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http://swt.informatik.uni-mannheim.de/PLM?DomainEntity", de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.DomainEntity_3002); //$NON-NLS-1$
 		}
 		return getImage("Navigator?UnknownElement", null); //$NON-NLS-1$
 	}
@@ -151,18 +154,20 @@ public class PLMNavigatorLabelProvider extends LabelProvider implements
 		}
 		switch (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMVisualIDRegistry
 				.getVisualID(view)) {
-		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntityEditPart.VISUAL_ID:
-			return getDomainEntity_3002Text(view);
-		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.OntologyEditPart.VISUAL_ID:
-			return getOntology_2001Text(view);
 		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ModelEditPart.VISUAL_ID:
 			return getModel_1000Text(view);
-		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.OntologyLevelEditPart.VISUAL_ID:
-			return getOntologyLevel_3001Text(view);
-		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnection2EditPart.VISUAL_ID:
-			return getDomainConnection_4001Text(view);
 		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionEditPart.VISUAL_ID:
 			return getDomainConnection_3003Text(view);
+		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.OntologyLevelEditPart.VISUAL_ID:
+			return getOntologyLevel_3001Text(view);
+		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.OntologyEditPart.VISUAL_ID:
+			return getOntology_2001Text(view);
+		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnection2EditPart.VISUAL_ID:
+			return getDomainConnection_4001Text(view);
+		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.InstantiationEditPart.VISUAL_ID:
+			return getInstantiation_4002Text(view);
+		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntityEditPart.VISUAL_ID:
+			return getDomainEntity_3002Text(view);
 		}
 		return getUnknownElementText(view);
 	}
@@ -187,6 +192,23 @@ public class PLMNavigatorLabelProvider extends LabelProvider implements
 					.getInstance()
 					.logError(
 							"No domain element for view with visualID = " + 4001); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
+	}
+
+	/**
+	 * @generated
+	 */
+	private String getInstantiation_4002Text(View view) {
+		de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation domainModelElement = (de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation) view
+				.getElement();
+		if (domainModelElement != null) {
+			return domainModelElement.getName();
+		} else {
+			de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditorPlugin
+					.getInstance()
+					.logError(
+							"No domain element for view with visualID = " + 4002); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}

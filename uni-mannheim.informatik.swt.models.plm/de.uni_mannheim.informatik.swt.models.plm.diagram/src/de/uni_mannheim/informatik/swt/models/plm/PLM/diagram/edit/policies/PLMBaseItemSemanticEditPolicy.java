@@ -339,9 +339,35 @@ public class PLMBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 		/**
 		 * @generated
 		 */
+		public boolean canCreateInstantiation_4002(
+				de.uni_mannheim.informatik.swt.models.plm.PLM.Model container,
+				de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject source,
+				de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject target) {
+			if (container != null) {
+				if (container.getElements() != null) {
+					return false;
+				}
+			}
+			return canExistInstantiation_4002(container, null, source, target);
+		}
+
+		/**
+		 * @generated
+		 */
 		public boolean canExistDomainConnection_4001(
 				de.uni_mannheim.informatik.swt.models.plm.PLM.DomainConnection linkInstance,
 				de.uni_mannheim.informatik.swt.models.plm.PLM.Model source,
+				de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject target) {
+			return true;
+		}
+
+		/**
+		 * @generated
+		 */
+		public boolean canExistInstantiation_4002(
+				de.uni_mannheim.informatik.swt.models.plm.PLM.Model container,
+				de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation linkInstance,
+				de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject source,
 				de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject target) {
 			return true;
 		}

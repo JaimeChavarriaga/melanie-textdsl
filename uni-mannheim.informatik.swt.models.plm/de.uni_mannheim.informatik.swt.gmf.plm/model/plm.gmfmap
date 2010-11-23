@@ -113,6 +113,23 @@
         xsi:type="ecore:EReference"
         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//DomainConnection/participant"/>
   </links>
+  <links>
+    <domainMetaElement
+        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Instantiation"/>
+    <containmentFeature
+        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/elements"/>
+    <tool
+        xsi:type="gmftool:CreationTool"
+        href="plm.gmftool#//@palette/@tools.0/@tools.5"/>
+    <diagramLink
+        href="plm.gmfgraph#Instantiation"/>
+    <sourceMetaFeature
+        xsi:type="ecore:EReference"
+        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Instantiation/instance"/>
+    <linkMetaFeature
+        xsi:type="ecore:EReference"
+        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Instantiation/type"/>
+  </links>
   <diagram>
     <diagramCanvas
         href="plm.gmfgraph#PLM"/>

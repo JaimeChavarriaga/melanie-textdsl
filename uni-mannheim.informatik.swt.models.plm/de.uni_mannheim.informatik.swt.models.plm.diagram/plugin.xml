@@ -214,7 +214,7 @@
          <Priority name="Lowest"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="PLM"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2001,3001,3002,3003"/>
-         <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4001"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4001,4002"/>
       </viewProvider>
    </extension>
 
@@ -229,7 +229,7 @@
             <method name="getType()" value="2001,3001,3002,3003"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Edge" id="generated-links">
-            <method name="getType()" value="4001"/>
+            <method name="getType()" value="4001,4002"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-labels">
             <method name="getType()" value="5001,5002,5003,5004"/>
@@ -326,6 +326,16 @@
             <param name="semanticHint" value="4001"/>
          </specializationType>
       </metamodel>
+      <metamodel nsURI="http://swt.informatik.uni-mannheim.de/PLM">
+         <metamodelType
+               id="de.uni_mannheim.informatik.swt.models.plm.diagram.Instantiation_4002"
+               name="%metatype.name.Instantiation_4002"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Instantiation"
+               edithelper="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.helpers.InstantiationEditHelper">
+            <param name="semanticHint" value="4002"/>
+         </metamodelType>
+      </metamodel>
    </extension>
 
    <extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypeBindings" id="element-types-bindings">
@@ -344,6 +354,7 @@
          <elementType ref="de.uni_mannheim.informatik.swt.models.plm.diagram.DomainEntity_3002"/>
          <elementType ref="de.uni_mannheim.informatik.swt.models.plm.diagram.DomainConnection_3003"/>
          <elementType ref="de.uni_mannheim.informatik.swt.models.plm.diagram.DomainConnection_4001"/>
+         <elementType ref="de.uni_mannheim.informatik.swt.models.plm.diagram.Instantiation_4002"/>
          <advice ref="org.eclipse.gmf.runtime.diagram.core.advice.notationDepdendents"/>
       </binding>
    </extension>

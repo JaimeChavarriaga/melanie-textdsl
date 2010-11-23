@@ -288,6 +288,16 @@ public class Messages extends NLS {
 	/**
 	 * @generated
 	 */
+	public static String Instantiation6CreationTool_title;
+
+	/**
+	 * @generated
+	 */
+	public static String Instantiation6CreationTool_desc;
+
+	/**
+	 * @generated
+	 */
 	public static String OntologyOntologyLevelCompartmentEditPart_title;
 
 	/**
@@ -318,12 +328,37 @@ public class Messages extends NLS {
 	/**
 	 * @generated
 	 */
+	public static String NavigatorGroupName_DomainConnection_4001_outgoinglinks;
+
+	/**
+	 * @generated
+	 */
+	public static String NavigatorGroupName_Instantiation_4002_target;
+
+	/**
+	 * @generated
+	 */
+	public static String NavigatorGroupName_Instantiation_4002_source;
+
+	/**
+	 * @generated
+	 */
 	public static String NavigatorGroupName_DomainEntity_3002_incominglinks;
 
 	/**
 	 * @generated
 	 */
+	public static String NavigatorGroupName_DomainEntity_3002_outgoinglinks;
+
+	/**
+	 * @generated
+	 */
 	public static String NavigatorGroupName_DomainConnection_3003_incominglinks;
+
+	/**
+	 * @generated
+	 */
+	public static String NavigatorGroupName_DomainConnection_3003_outgoinglinks;
 
 	/**
 	 * @generated

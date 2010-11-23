@@ -37,6 +37,7 @@ public class PLMPaletteFactory {
 		paletteContainer.add(createDomainEntity3CreationTool());
 		paletteContainer.add(createDomainConnection4CreationTool());
 		paletteContainer.add(createDomainConnectionParticipants5CreationTool());
+		paletteContainer.add(createInstantiation6CreationTool());
 		return paletteContainer;
 	}
 
@@ -116,6 +117,22 @@ public class PLMPaletteFactory {
 		entry.setId("createDomainConnectionParticipants5CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes
 				.getImageDescriptor(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.DomainConnection_4001));
+		entry.setLargeIcon(entry.getSmallIcon());
+		return entry;
+	}
+
+	/**
+	 * @generated
+	 */
+	private ToolEntry createInstantiation6CreationTool() {
+		LinkToolEntry entry = new LinkToolEntry(
+				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.Messages.Instantiation6CreationTool_title,
+				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.Messages.Instantiation6CreationTool_desc,
+				Collections
+						.singletonList(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.Instantiation_4002));
+		entry.setId("createInstantiation6CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes
+				.getImageDescriptor(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.Instantiation_4002));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}

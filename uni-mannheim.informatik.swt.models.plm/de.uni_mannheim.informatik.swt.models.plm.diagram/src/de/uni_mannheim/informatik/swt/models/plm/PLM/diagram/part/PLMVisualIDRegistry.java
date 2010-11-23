@@ -222,6 +222,10 @@ public class PLMVisualIDRegistry {
 				.getDomainConnection().isSuperTypeOf(domainElement.eClass())) {
 			return de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnection2EditPart.VISUAL_ID;
 		}
+		if (de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.eINSTANCE
+				.getInstantiation().isSuperTypeOf(domainElement.eClass())) {
+			return de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.InstantiationEditPart.VISUAL_ID;
+		}
 		return -1;
 	}
 

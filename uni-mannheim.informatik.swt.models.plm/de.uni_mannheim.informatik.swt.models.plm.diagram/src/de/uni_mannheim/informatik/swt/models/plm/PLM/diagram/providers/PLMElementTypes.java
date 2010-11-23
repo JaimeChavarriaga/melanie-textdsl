@@ -70,6 +70,11 @@ public class PLMElementTypes {
 	/**
 	 * @generated
 	 */
+	public static final IElementType Instantiation_4002 = getElementType("de.uni_mannheim.informatik.swt.models.plm.diagram.Instantiation_4002"); //$NON-NLS-1$
+
+	/**
+	 * @generated
+	 */
 	private static ImageRegistry getImageRegistry() {
 		if (imageRegistry == null) {
 			imageRegistry = new ImageRegistry();
@@ -207,6 +212,11 @@ public class PLMElementTypes {
 					DomainConnection_4001,
 					de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.eINSTANCE
 							.getDomainConnection());
+
+			elements.put(
+					Instantiation_4002,
+					de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.eINSTANCE
+							.getInstantiation());
 		}
 		return (ENamedElement) elements.get(type);
 	}
@@ -230,6 +240,7 @@ public class PLMElementTypes {
 			KNOWN_ELEMENT_TYPES.add(DomainEntity_3002);
 			KNOWN_ELEMENT_TYPES.add(DomainConnection_3003);
 			KNOWN_ELEMENT_TYPES.add(DomainConnection_4001);
+			KNOWN_ELEMENT_TYPES.add(Instantiation_4002);
 		}
 		return KNOWN_ELEMENT_TYPES.contains(elementType);
 	}
@@ -251,6 +262,8 @@ public class PLMElementTypes {
 			return DomainConnection_3003;
 		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnection2EditPart.VISUAL_ID:
 			return DomainConnection_4001;
+		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.InstantiationEditPart.VISUAL_ID:
+			return Instantiation_4002;
 		}
 		return null;
 	}

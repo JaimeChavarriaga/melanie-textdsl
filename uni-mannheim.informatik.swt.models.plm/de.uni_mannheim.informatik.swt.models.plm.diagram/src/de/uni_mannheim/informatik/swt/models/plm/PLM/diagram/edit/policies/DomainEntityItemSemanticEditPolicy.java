@@ -46,6 +46,25 @@ public class DomainEntityItemSemanticEditPolicy
 				cmd.add(new DeleteCommand(getEditingDomain(), incomingLink));
 				continue;
 			}
+			if (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMVisualIDRegistry
+					.getVisualID(incomingLink) == de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.InstantiationEditPart.VISUAL_ID) {
+				DestroyElementRequest r = new DestroyElementRequest(
+						incomingLink.getElement(), false);
+				cmd.add(new DestroyElementCommand(r));
+				cmd.add(new DeleteCommand(getEditingDomain(), incomingLink));
+				continue;
+			}
+		}
+		for (Iterator<?> it = view.getSourceEdges().iterator(); it.hasNext();) {
+			Edge outgoingLink = (Edge) it.next();
+			if (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMVisualIDRegistry
+					.getVisualID(outgoingLink) == de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.InstantiationEditPart.VISUAL_ID) {
+				DestroyElementRequest r = new DestroyElementRequest(
+						outgoingLink.getElement(), false);
+				cmd.add(new DestroyElementCommand(r));
+				cmd.add(new DeleteCommand(getEditingDomain(), outgoingLink));
+				continue;
+			}
 		}
 		EAnnotation annotation = view.getEAnnotation("Shortcut"); //$NON-NLS-1$
 		if (annotation == null) {
@@ -78,6 +97,11 @@ public class DomainEntityItemSemanticEditPolicy
 				.getElementType()) {
 			return null;
 		}
+		if (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.Instantiation_4002 == req
+				.getElementType()) {
+			return getGEFWrapper(new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.commands.InstantiationCreateCommand(
+					req, req.getSource(), req.getTarget()));
+		}
 		return null;
 	}
 
@@ -89,6 +113,11 @@ public class DomainEntityItemSemanticEditPolicy
 		if (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.DomainConnection_4001 == req
 				.getElementType()) {
 			return getGEFWrapper(new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.commands.DomainConnection2CreateCommand(
+					req, req.getSource(), req.getTarget()));
+		}
+		if (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.Instantiation_4002 == req
+				.getElementType()) {
+			return getGEFWrapper(new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.commands.InstantiationCreateCommand(
 					req, req.getSource(), req.getTarget()));
 		}
 		return null;
@@ -105,6 +134,9 @@ public class DomainEntityItemSemanticEditPolicy
 		switch (getVisualID(req)) {
 		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnection2EditPart.VISUAL_ID:
 			return getGEFWrapper(new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.commands.DomainConnectionReorientCommand(
+					req));
+		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.InstantiationEditPart.VISUAL_ID:
+			return getGEFWrapper(new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.commands.InstantiationReorientCommand(
 					req));
 		}
 		return super.getReorientRelationshipCommand(req);

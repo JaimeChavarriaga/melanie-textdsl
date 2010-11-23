@@ -47,6 +47,11 @@ public class DomainConnection2ItemSemanticEditPolicy
 				.getElementType()) {
 			return null;
 		}
+		if (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.Instantiation_4002 == req
+				.getElementType()) {
+			return getGEFWrapper(new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.commands.InstantiationCreateCommand(
+					req, req.getSource(), req.getTarget()));
+		}
 		return null;
 	}
 
@@ -58,6 +63,11 @@ public class DomainConnection2ItemSemanticEditPolicy
 		if (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.DomainConnection_4001 == req
 				.getElementType()) {
 			return getGEFWrapper(new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.commands.DomainConnection2CreateCommand(
+					req, req.getSource(), req.getTarget()));
+		}
+		if (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.Instantiation_4002 == req
+				.getElementType()) {
+			return getGEFWrapper(new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.commands.InstantiationCreateCommand(
 					req, req.getSource(), req.getTarget()));
 		}
 		return null;
@@ -74,6 +84,9 @@ public class DomainConnection2ItemSemanticEditPolicy
 		switch (getVisualID(req)) {
 		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnection2EditPart.VISUAL_ID:
 			return getGEFWrapper(new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.commands.DomainConnectionReorientCommand(
+					req));
+		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.InstantiationEditPart.VISUAL_ID:
+			return getGEFWrapper(new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.commands.InstantiationReorientCommand(
 					req));
 		}
 		return super.getReorientRelationshipCommand(req);

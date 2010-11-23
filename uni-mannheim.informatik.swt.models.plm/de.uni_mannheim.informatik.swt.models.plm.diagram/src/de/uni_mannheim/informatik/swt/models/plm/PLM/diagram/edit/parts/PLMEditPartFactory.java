@@ -76,6 +76,10 @@ public class PLMEditPartFactory implements EditPartFactory {
 				return new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnection2EditPart(
 						view);
 
+			case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.InstantiationEditPart.VISUAL_ID:
+				return new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.InstantiationEditPart(
+						view);
+
 			}
 		}
 		return createUnrecognizedEditPart(context, model);
