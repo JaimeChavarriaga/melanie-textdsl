@@ -92,6 +92,16 @@
             name="InstantiationTarget"/>
       </actualFigure>
     </descriptors>
+    <descriptors
+        name="BinaryGeneralizationFigure">
+      <actualFigure
+          xsi:type="gmfgraph:PolylineConnection"
+          targetDecoration="//@figures.0/@descriptors.8/@actualFigure/@children.0">
+        <children
+            xsi:type="gmfgraph:PolygonDecoration"
+            name="BinaryGenralizationTarget"/>
+      </actualFigure>
+    </descriptors>
   </figures>
   <nodes
       name="Ontology"
@@ -111,6 +121,9 @@
   <connections
       name="Instantiation"
       figure="InstantiationFigure"/>
+  <connections
+      name="BinaryGeneralization"
+      figure="BinaryGeneralizationFigure"/>
   <compartments
       name="OntologyLevelCompartment"
       figure="OntologyLevelCompartmentFigure"/>

@@ -55,7 +55,7 @@
                 <features
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/name"/>
                 <features
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject/level"/>
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//PotentElement/potency"/>
               </labelMappings>
               <tool
                   xsi:type="gmftool:CreationTool"
@@ -78,7 +78,7 @@
                 <features
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/name"/>
                 <features
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject/level"/>
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//PotentElement/potency"/>
               </labelMappings>
               <tool
                   xsi:type="gmftool:CreationTool"
@@ -125,6 +125,23 @@
     <linkMetaFeature
         xsi:type="ecore:EReference"
         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Instantiation/type"/>
+  </links>
+  <links>
+    <domainMetaElement
+        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//BinaryGeneralization"/>
+    <containmentFeature
+        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//OntologyLevel/elements"/>
+    <tool
+        xsi:type="gmftool:CreationTool"
+        href="plm.gmftool#//@palette/@tools.0/@tools.6"/>
+    <diagramLink
+        href="plm.gmfgraph#BinaryGeneralization"/>
+    <sourceMetaFeature
+        xsi:type="ecore:EReference"
+        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//BinaryGeneralization/subtype"/>
+    <linkMetaFeature
+        xsi:type="ecore:EReference"
+        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//BinaryGeneralization/supertype"/>
   </links>
   <diagram>
     <diagramCanvas
