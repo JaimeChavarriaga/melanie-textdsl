@@ -12,7 +12,13 @@
           cornerWidth="20"
           cornerHeight="20">
         <layout
-            xsi:type="gmfgraph:XYLayout"/>
+            xsi:type="gmfgraph:FlowLayout"
+            vertical="true"
+            matchMinorSize="true"
+            forceSingleLine="true"
+            minorAlignment="CENTER"
+            majorSpacing="-1"
+            minorSpacing="0"/>
         <children
             xsi:type="gmfgraph:Label"
             name="OntologyNameFigure"
@@ -24,17 +30,17 @@
     <descriptors
         name="OntologyLevelCompartmentFigure">
       <actualFigure
-          xsi:type="gmfgraph:Rectangle">
-        <layout
-            xsi:type="gmfgraph:XYLayout"/>
-      </actualFigure>
+          xsi:type="gmfgraph:Rectangle"/>
     </descriptors>
     <descriptors
         name="OntologyLevelFigure">
       <actualFigure
-          xsi:type="gmfgraph:Rectangle">
+          xsi:type="gmfgraph:Rectangle"
+          name="">
         <layout
             xsi:type="gmfgraph:XYLayout"/>
+        <preferredSize
+            dy="500"/>
         <children
             xsi:type="gmfgraph:Label"
             name="OntologyLevelNameFigure"/>
@@ -107,8 +113,7 @@
       figure="InstantiationFigure"/>
   <compartments
       name="OntologyLevelCompartment"
-      figure="OntologyLevelCompartmentFigure"
-      collapsible="true"/>
+      figure="OntologyLevelCompartmentFigure"/>
   <compartments
       name="DomainElementsComartment"
       figure="DomainElementsCompartmentFigure"/>
