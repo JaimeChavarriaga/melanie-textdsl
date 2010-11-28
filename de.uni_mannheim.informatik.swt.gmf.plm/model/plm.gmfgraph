@@ -28,7 +28,7 @@
           figure="//@figures.0/@descriptors.0/@actualFigure/@children.0"/>
     </descriptors>
     <descriptors
-        name="OntologyLevelCompartmentFigure">
+        name="ModellCompartmentFigure">
       <actualFigure
           xsi:type="gmfgraph:Rectangle"/>
     </descriptors>
@@ -132,7 +132,7 @@
       figure="BinaryGeneralizationFigure"/>
   <compartments
       name="ModelCompartment"
-      figure="OntologyLevelCompartmentFigure"/>
+      figure="ModellCompartmentFigure"/>
   <compartments
       name="DomainElementsComartment"
       figure="DomainElementsCompartmentFigure"/>
