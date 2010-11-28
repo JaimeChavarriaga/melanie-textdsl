@@ -7,7 +7,7 @@
       title="PLMPalette">
     <tools
         xsi:type="gmftool:ToolGroup"
-        title="PLM">
+        title="Levels">
       <tools
           xsi:type="gmftool:CreationTool"
           title="Ontology"
@@ -19,13 +19,17 @@
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
-          title="Ontology Level"
-          description="Create new Ontology Level">
+          title="Model"
+          description="Create new Model">
         <smallIcon
             xsi:type="gmftool:DefaultImage"/>
         <largeIcon
             xsi:type="gmftool:DefaultImage"/>
       </tools>
+    </tools>
+    <tools
+        xsi:type="gmftool:ToolGroup"
+        title="Domain Elements">
       <tools
           xsi:type="gmftool:CreationTool"
           title="Domain Entity"
@@ -53,6 +57,10 @@
         <largeIcon
             xsi:type="gmftool:DefaultImage"/>
       </tools>
+    </tools>
+    <tools
+        xsi:type="gmftool:ToolGroup"
+        title="Connections">
       <tools
           xsi:type="gmftool:CreationTool"
           title="Instantiation"

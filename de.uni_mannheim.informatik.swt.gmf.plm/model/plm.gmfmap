@@ -7,7 +7,7 @@
     xmlns:gmftool="http://www.eclipse.org/gmf/2005/ToolDefinition">
   <nodes>
     <containmentFeature
-        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/elements"/>
+        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//LMLModel/elements"/>
     <ownedChild>
       <domainMetaElement
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Ontology"/>
@@ -25,14 +25,14 @@
           href="plm.gmfgraph#Ontology"/>
       <children>
         <containmentFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Ontology/ontologyLevels"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Ontology/models"/>
         <ownedChild>
           <domainMetaElement
-              href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//OntologyLevel"/>
+              href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model"/>
           <labelMappings
               xsi:type="gmfmap:FeatureLabelMapping">
             <diagramLabel
-                href="plm.gmfgraph#OntologyLevelFigureNameLabel"/>
+                href="plm.gmfgraph#ModelFigureNameLabel"/>
             <features
                 href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/name"/>
           </labelMappings>
@@ -40,10 +40,10 @@
               xsi:type="gmftool:CreationTool"
               href="plm.gmftool#//@palette/@tools.0/@tools.1"/>
           <diagramNode
-              href="plm.gmfgraph#OntologyLevel"/>
+              href="plm.gmfgraph#Model"/>
           <children>
             <containmentFeature
-                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//OntologyLevel/elements"/>
+                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/elements"/>
             <ownedChild>
               <domainMetaElement
                   href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//DomainEntity"/>
@@ -59,14 +59,14 @@
               </labelMappings>
               <tool
                   xsi:type="gmftool:CreationTool"
-                  href="plm.gmftool#//@palette/@tools.0/@tools.2"/>
+                  href="plm.gmftool#//@palette/@tools.1/@tools.0"/>
               <diagramNode
                   href="plm.gmfgraph#DomainEntity"/>
             </ownedChild>
           </children>
           <children>
             <containmentFeature
-                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//OntologyLevel/elements"/>
+                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/elements"/>
             <ownedChild>
               <domainMetaElement
                   href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//DomainConnection"/>
@@ -82,7 +82,7 @@
               </labelMappings>
               <tool
                   xsi:type="gmftool:CreationTool"
-                  href="plm.gmftool#//@palette/@tools.0/@tools.3"/>
+                  href="plm.gmftool#//@palette/@tools.1/@tools.1"/>
               <diagramNode
                   href="plm.gmfgraph#DomainConnection"/>
             </ownedChild>
@@ -95,14 +95,14 @@
       </children>
       <compartments>
         <compartment
-            href="plm.gmfgraph#OntologyLevelCompartment"/>
+            href="plm.gmfgraph#ModelCompartment"/>
       </compartments>
     </ownedChild>
   </nodes>
   <links>
     <tool
         xsi:type="gmftool:CreationTool"
-        href="plm.gmftool#//@palette/@tools.0/@tools.4"/>
+        href="plm.gmftool#//@palette/@tools.1/@tools.2"/>
     <diagramLink
         href="plm.gmfgraph#DomainConnectionParticipants"/>
     <linkMetaFeature
@@ -113,10 +113,10 @@
     <domainMetaElement
         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Instantiation"/>
     <containmentFeature
-        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//OntologyLevel/elements"/>
+        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/elements"/>
     <tool
         xsi:type="gmftool:CreationTool"
-        href="plm.gmftool#//@palette/@tools.0/@tools.5"/>
+        href="plm.gmftool#//@palette/@tools.2/@tools.0"/>
     <diagramLink
         href="plm.gmfgraph#Instantiation"/>
     <sourceMetaFeature
@@ -130,10 +130,10 @@
     <domainMetaElement
         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//BinaryGeneralization"/>
     <containmentFeature
-        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//OntologyLevel/elements"/>
+        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/elements"/>
     <tool
         xsi:type="gmftool:CreationTool"
-        href="plm.gmftool#//@palette/@tools.0/@tools.6"/>
+        href="plm.gmftool#//@palette/@tools.2/@tools.1"/>
     <diagramLink
         href="plm.gmfgraph#BinaryGeneralization"/>
     <sourceMetaFeature
@@ -149,7 +149,7 @@
     <domainModel
         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#/"/>
     <domainMetaElement
-        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model"/>
+        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//LMLModel"/>
     <palette
         href="plm.gmftool#//@palette"/>
   </diagram>

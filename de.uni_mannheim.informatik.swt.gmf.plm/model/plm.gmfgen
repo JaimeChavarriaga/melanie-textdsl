@@ -20,28 +20,28 @@
         xsi:type="gmfgen:FigureViewmap"
         figureQualifiedClassName="org.eclipse.draw2d.FreeformLayer"/>
     <domainDiagramElement
-        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model"/>
+        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLModel"/>
     <childNodes
-        visualID="3001"
-        editPartClassName="OntologyLevelEditPart"
-        itemSemanticEditPolicyClassName="OntologyLevelItemSemanticEditPolicy"
-        notationViewFactoryClassName="OntologyLevelViewFactory"
-        canonicalEditPolicyClassName="OntologyLevelCanonicalEditPolicy"
+        visualID="3004"
+        editPartClassName="Model2EditPart"
+        itemSemanticEditPolicyClassName="Model2ItemSemanticEditPolicy"
+        notationViewFactoryClassName="ModelViewFactory"
+        canonicalEditPolicyClassName="Model2CanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.1 //@diagram/@childNodes.2"
         compartments="//@diagram/@compartments.1"
-        graphicalNodeEditPolicyClassName="OntologyLevelGraphicalNodeEditPolicy"
-        createCommandClassName="OntologyLevelCreateCommand"
+        graphicalNodeEditPolicyClassName="ModelGraphicalNodeEditPolicy"
+        createCommandClassName="ModelCreateCommand"
         containers="//@diagram/@topLevelNodes.0">
       <diagramRunTimeClass
           href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
       <elementType
           xsi:type="gmfgen:MetamodelType"
-          editHelperClassName="OntologyLevelEditHelper"/>
+          editHelperClassName="Model2EditHelper"/>
       <viewmap
           xsi:type="gmfgen:InnerClassViewmap"
           layoutType="XY_LAYOUT"
-          className="OntologyLevelFigure"
-          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class OntologyLevelFigure extends org.eclipse.draw2d.RectangleFigure {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureOntologyLevelNameFigure; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public OntologyLevelFigure() {&#xA;&#x9;&#x9;this.setLayoutManager(new org.eclipse.draw2d.XYLayout());&#xA;&#x9;&#x9;this.setPreferredSize(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(500)&#xA;));&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureOntologyLevelNameFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureOntologyLevelNameFigure.setText(&quot;&quot;);&#xA;&#xA;this.add(fFigureOntologyLevelNameFigure);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureOntologyLevelNameFigure() {&#xA;&#x9;&#x9;return fFigureOntologyLevelNameFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;">
+          className="ModelFigure"
+          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class ModelFigure extends org.eclipse.draw2d.RectangleFigure {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureOntologyLevelNameFigure; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public ModelFigure() {&#xA;&#x9;&#x9;this.setLayoutManager(new org.eclipse.draw2d.XYLayout());&#xA;&#x9;&#x9;this.setPreferredSize(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(500)&#xA;));&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureOntologyLevelNameFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureOntologyLevelNameFigure.setText(&quot;&quot;);&#xA;&#xA;this.add(fFigureOntologyLevelNameFigure);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureOntologyLevelNameFigure() {&#xA;&#x9;&#x9;return fFigureOntologyLevelNameFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;">
         <attributes
             xsi:type="gmfgen:DefaultSizeAttributes"
             width="0"
@@ -49,17 +49,17 @@
       </viewmap>
       <modelFacet>
         <metaClass
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/OntologyLevel"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model"/>
         <containmentMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Ontology/ontologyLevels"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Ontology/models"/>
         <childMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Ontology/ontologyLevels"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Ontology/models"/>
       </modelFacet>
       <labels
-          visualID="5002"
-          editPartClassName="OntologyLevelNameEditPart"
-          itemSemanticEditPolicyClassName="OntologyLevelNameItemSemanticEditPolicy"
-          notationViewFactoryClassName="OntologyLevelNameViewFactory"
+          visualID="5007"
+          editPartClassName="ModelNameEditPart"
+          itemSemanticEditPolicyClassName="ModelNameItemSemanticEditPolicy"
+          notationViewFactoryClassName="ModelNameViewFactory"
           elementIcon="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -76,7 +76,7 @@
       </labels>
     </childNodes>
     <childNodes
-        visualID="3002"
+        visualID="3005"
         editPartClassName="DomainEntityEditPart"
         itemSemanticEditPolicyClassName="DomainEntityItemSemanticEditPolicy"
         notationViewFactoryClassName="DomainEntityViewFactory"
@@ -97,15 +97,15 @@
         <metaClass
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainEntity"/>
         <containmentMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/OntologyLevel/elements"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/elements"/>
         <childMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/OntologyLevel/elements"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/elements"/>
       </modelFacet>
       <labels
-          visualID="5003"
-          editPartClassName="DomainEntityNameLevelEditPart"
-          itemSemanticEditPolicyClassName="DomainEntityNameLevelItemSemanticEditPolicy"
-          notationViewFactoryClassName="DomainEntityNameLevelViewFactory"
+          visualID="5005"
+          editPartClassName="DomainEntityNamePotencyEditPart"
+          itemSemanticEditPolicyClassName="DomainEntityNamePotencyItemSemanticEditPolicy"
+          notationViewFactoryClassName="DomainEntityNamePotencyViewFactory"
           elementIcon="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -125,7 +125,7 @@
       </labels>
     </childNodes>
     <childNodes
-        visualID="3003"
+        visualID="3006"
         editPartClassName="DomainConnectionEditPart"
         itemSemanticEditPolicyClassName="DomainConnectionItemSemanticEditPolicy"
         notationViewFactoryClassName="DomainConnectionViewFactory"
@@ -146,15 +146,15 @@
         <metaClass
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainConnection"/>
         <containmentMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/OntologyLevel/elements"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/elements"/>
         <childMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/OntologyLevel/elements"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/elements"/>
       </modelFacet>
       <labels
-          visualID="5004"
-          editPartClassName="DomainConnectionNameLevelEditPart"
-          itemSemanticEditPolicyClassName="DomainConnectionNameLevelItemSemanticEditPolicy"
-          notationViewFactoryClassName="DomainConnectionNameLevelViewFactory"
+          visualID="5006"
+          editPartClassName="DomainConnectionNamePotencyEditPart"
+          itemSemanticEditPolicyClassName="DomainConnectionNamePotencyItemSemanticEditPolicy"
+          notationViewFactoryClassName="DomainConnectionNamePotencyViewFactory"
           elementIcon="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -174,7 +174,7 @@
       </labels>
     </childNodes>
     <topLevelNodes
-        visualID="2001"
+        visualID="2002"
         editPartClassName="OntologyEditPart"
         itemSemanticEditPolicyClassName="OntologyItemSemanticEditPolicy"
         notationViewFactoryClassName="OntologyViewFactory"
@@ -197,12 +197,12 @@
         <metaClass
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Ontology"/>
         <containmentMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/elements"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLModel/elements"/>
         <childMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/elements"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLModel/elements"/>
       </modelFacet>
       <labels
-          visualID="5001"
+          visualID="5008"
           editPartClassName="OntologyNameEditPart"
           itemSemanticEditPolicyClassName="OntologyNameItemSemanticEditPolicy"
           notationViewFactoryClassName="OntologyNameViewFactory"
@@ -262,9 +262,9 @@
         <metaClass
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Instantiation"/>
         <containmentMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/OntologyLevel/elements"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/elements"/>
         <childMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/OntologyLevel/elements"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/elements"/>
         <sourceMetaFeature
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Instantiation/instance"/>
         <targetMetaFeature
@@ -292,9 +292,9 @@
         <metaClass
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/BinaryGeneralization"/>
         <containmentMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/OntologyLevel/elements"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/elements"/>
         <childMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/OntologyLevel/elements"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/elements"/>
         <sourceMetaFeature
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/BinaryGeneralization/subtype"/>
         <targetMetaFeature
@@ -302,12 +302,12 @@
       </modelFacet>
     </links>
     <compartments
-        visualID="7001"
+        visualID="7003"
         editPartClassName="OntologyOntologyLevelCompartmentEditPart"
         itemSemanticEditPolicyClassName="OntologyOntologyLevelCompartmentItemSemanticEditPolicy"
         notationViewFactoryClassName="OntologyOntologyLevelCompartmentViewFactory"
         canonicalEditPolicyClassName="OntologyOntologyLevelCompartmentCanonicalEditPolicy"
-        title="OntologyLevelCompartment"
+        title="ModelCompartment"
         canCollapse="false"
         needsTitle="false"
         node="//@diagram/@topLevelNodes.0">
@@ -318,11 +318,11 @@
           figureQualifiedClassName="org.eclipse.draw2d.RectangleFigure"/>
     </compartments>
     <compartments
-        visualID="7002"
-        editPartClassName="OntologyLevelDomainElementsComartmentEditPart"
-        itemSemanticEditPolicyClassName="OntologyLevelDomainElementsComartmentItemSemanticEditPolicy"
-        notationViewFactoryClassName="OntologyLevelDomainElementsComartmentViewFactory"
-        canonicalEditPolicyClassName="OntologyLevelDomainElementsComartmentCanonicalEditPolicy"
+        visualID="7004"
+        editPartClassName="ModelDomainElementsComartmentEditPart"
+        itemSemanticEditPolicyClassName="ModelDomainElementsComartmentItemSemanticEditPolicy"
+        notationViewFactoryClassName="ModelDomainElementsComartmentViewFactory"
+        canonicalEditPolicyClassName="ModelDomainElementsComartmentCanonicalEditPolicy"
         title="DomainElementsComartment"
         canCollapse="false"
         needsTitle="false"
@@ -335,7 +335,7 @@
     </compartments>
     <palette>
       <groups
-          title="PLM">
+          title="Levels">
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Ontology"
@@ -343,9 +343,12 @@
             genNodes="//@diagram/@topLevelNodes.0"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
-            title="Ontology Level"
-            description="Create new Ontology Level"
+            title="Model"
+            description="Create new Model"
             genNodes="//@diagram/@childNodes.0"/>
+      </groups>
+      <groups
+          title="Domain Elements">
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Domain Entity"
@@ -361,6 +364,9 @@
             title="Domain Connection Participants"
             description="Create new Domain Connection Participants"
             genLinks="//@diagram/@links.0"/>
+      </groups>
+      <groups
+          title="Connections">
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Instantiation"

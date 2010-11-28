@@ -33,7 +33,7 @@
           xsi:type="gmfgraph:Rectangle"/>
     </descriptors>
     <descriptors
-        name="OntologyLevelFigure">
+        name="ModelFigure">
       <actualFigure
           xsi:type="gmfgraph:Rectangle"
           name="">
@@ -107,8 +107,8 @@
       name="Ontology"
       figure="OntologyFigure"/>
   <nodes
-      name="OntologyLevel"
-      figure="OntologyLevelFigure"/>
+      name="Model"
+      figure="ModelFigure"/>
   <nodes
       name="DomainEntity"
       figure="DomainEntityFigure"/>
@@ -125,7 +125,7 @@
       name="BinaryGeneralization"
       figure="BinaryGeneralizationFigure"/>
   <compartments
-      name="OntologyLevelCompartment"
+      name="ModelCompartment"
       figure="OntologyLevelCompartmentFigure"/>
   <compartments
       name="DomainElementsComartment"
@@ -135,8 +135,8 @@
       figure="OntologyFigure"
       accessor="//@figures.0/@descriptors.0/@accessors.0"/>
   <labels
-      name="OntologyLevelFigureNameLabel"
-      figure="OntologyLevelFigure"
+      name="ModelFigureNameLabel"
+      figure="ModelFigure"
       accessor="//@figures.0/@descriptors.2/@accessors.0"/>
   <labels
       name="DomainEntityFigureNameLabel"
