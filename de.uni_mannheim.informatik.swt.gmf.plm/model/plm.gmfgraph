@@ -99,7 +99,13 @@
           targetDecoration="//@figures.0/@descriptors.8/@actualFigure/@children.0">
         <children
             xsi:type="gmfgraph:PolygonDecoration"
-            name="BinaryGenralizationTarget"/>
+            name="BinaryGenralizationTarget">
+          <backgroundColor
+              xsi:type="gmfgraph:RGBColor"
+              red="255"
+              green="255"
+              blue="255"/>
+        </children>
       </actualFigure>
     </descriptors>
   </figures>
