@@ -57,6 +57,20 @@
                 <features
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//PotentElement/potency"/>
               </labelMappings>
+              <labelMappings
+                  xsi:type="gmfmap:FeatureLabelMapping"
+                  viewPattern="name = {0}, expressed = {1}, potency = {2} , level = {3}">
+                <diagramLabel
+                    href="plm.gmfgraph#DomainEntityFigureAVSLabel"/>
+                <features
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/name"/>
+                <features
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/expressed"/>
+                <features
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//PotentElement/potency"/>
+                <features
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject/level"/>
+              </labelMappings>
               <tool
                   xsi:type="gmftool:CreationTool"
                   href="plm.gmftool#//@palette/@tools.1/@tools.0"/>

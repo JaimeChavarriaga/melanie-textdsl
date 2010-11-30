@@ -58,12 +58,34 @@
       <actualFigure
           xsi:type="gmfgraph:Rectangle"
           name="">
+        <layout
+            xsi:type="gmfgraph:GridLayout"
+            numColumns="3"
+            equalWidth="false"/>
         <children
             xsi:type="gmfgraph:Label"
-            name="DomainEntityNameFigure"/>
+            name="DomainEntityNameFigure">
+          <layoutData
+              xsi:type="gmfgraph:GridLayoutData"
+              horizontalSpan="3"/>
+        </children>
+        <children
+            xsi:type="gmfgraph:Label"
+            name="firstCurlyBracket"
+            text="{"/>
+        <children
+            xsi:type="gmfgraph:Label"
+            name="DomainEntityAVSFigure"
+            text=""/>
+        <children
+            xsi:type="gmfgraph:Label"
+            name="secondCurlyBracket"
+            text="}"/>
       </actualFigure>
       <accessors
           figure="//@figures.0/@descriptors.4/@actualFigure/@children.0"/>
+      <accessors
+          figure="//@figures.0/@descriptors.4/@actualFigure/@children.2"/>
     </descriptors>
     <descriptors
         name="DomainConnectionFigure">
@@ -148,6 +170,10 @@
       name="DomainEntityFigureNameLabel"
       figure="DomainEntityFigure"
       accessor="//@figures.0/@descriptors.4/@accessors.0"/>
+  <labels
+      name="DomainEntityFigureAVSLabel"
+      figure="DomainEntityFigure"
+      accessor="//@figures.0/@descriptors.4/@accessors.1"/>
   <labels
       name="DomainConnectionFigureName"
       figure="DomainConnectionFigure"
