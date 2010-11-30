@@ -76,6 +76,33 @@
                   href="plm.gmftool#//@palette/@tools.1/@tools.0"/>
               <diagramNode
                   href="plm.gmfgraph#DomainEntity"/>
+              <children
+                  compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.0/@ownedChild/@compartments.0">
+                <containmentFeature
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//DomainEntity/fields"/>
+                <ownedChild>
+                  <domainMetaElement
+                      href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Field"/>
+                  <labelMappings
+                      xsi:type="gmfmap:ExpressionLabelMapping"
+                      readOnly="true">
+                    <diagramLabel
+                        href="plm.gmfgraph#DomainEntityFieldFigureNameLabel"/>
+                    <viewExpression
+                        body="self.name.concat(':').concat(self.datatype.name)"/>
+                  </labelMappings>
+                  <tool
+                      xsi:type="gmftool:CreationTool"
+                      href="plm.gmftool#//@palette/@tools.1/@tools.1"/>
+                  <diagramNode
+                      href="plm.gmfgraph#DomnainEntityFieldNode"/>
+                </ownedChild>
+              </children>
+              <compartments
+                  children="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.0/@ownedChild/@children.0">
+                <compartment
+                    href="plm.gmfgraph#DomainEntityFieldsCompartment"/>
+              </compartments>
             </ownedChild>
           </children>
           <children>
@@ -96,7 +123,7 @@
               </labelMappings>
               <tool
                   xsi:type="gmftool:CreationTool"
-                  href="plm.gmftool#//@palette/@tools.1/@tools.1"/>
+                  href="plm.gmftool#//@palette/@tools.1/@tools.2"/>
               <diagramNode
                   href="plm.gmfgraph#DomainConnection"/>
             </ownedChild>
@@ -116,7 +143,7 @@
   <links>
     <tool
         xsi:type="gmftool:CreationTool"
-        href="plm.gmftool#//@palette/@tools.1/@tools.2"/>
+        href="plm.gmftool#//@palette/@tools.1/@tools.3"/>
     <diagramLink
         href="plm.gmfgraph#DomainConnectionParticipants"/>
     <linkMetaFeature
