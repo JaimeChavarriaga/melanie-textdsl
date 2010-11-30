@@ -161,21 +161,26 @@
   <labels
       name="OntologyFigureNameLabel"
       figure="OntologyFigure"
+      elementIcon="false"
       accessor="//@figures.0/@descriptors.0/@accessors.0"/>
   <labels
       name="ModelFigureNameLabel"
       figure="ModelFigure"
+      elementIcon="false"
       accessor="//@figures.0/@descriptors.2/@accessors.0"/>
   <labels
       name="DomainEntityFigureNameLabel"
       figure="DomainEntityFigure"
+      elementIcon="false"
       accessor="//@figures.0/@descriptors.4/@accessors.0"/>
   <labels
       name="DomainEntityFigureAVSLabel"
       figure="DomainEntityFigure"
+      elementIcon="false"
       accessor="//@figures.0/@descriptors.4/@accessors.1"/>
   <labels
       name="DomainConnectionFigureName"
       figure="DomainConnectionFigure"
+      elementIcon="false"
       accessor="//@figures.0/@descriptors.5/@accessors.0"/>
 </gmfgraph:Canvas>
