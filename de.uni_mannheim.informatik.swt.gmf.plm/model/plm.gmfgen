@@ -690,7 +690,7 @@
     <providers
         xsi:type="gmfgen:GenExpressionInterpreter">
       <expressions
-          body="self.name.concat(':').concat(self.datatype.name)"/>
+          body="let name:String = self.name in&#xD;&#xA;let dataType:String = self.datatype.name&#xD;&#xA;in&#xD;&#xA;name.concat(':').concat(dataType)"/>
     </providers>
   </expressionProviders>
   <labelParsers
