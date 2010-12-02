@@ -4,5 +4,5 @@ library Guard;
 
 helper requiresSpecificGraphicalNodeEditPolicy(diagram : genModel::GenDiagram) : Boolean {
 	return 
-		'com.borlander.gmftools.samples.inthemiddle.diagram' = diagram.editorGen.plugin.iD
+		'de.uni_mannheim.informatik.swt.models.plm.diagram' = diagram.editorGen.plugin.iD
 }
