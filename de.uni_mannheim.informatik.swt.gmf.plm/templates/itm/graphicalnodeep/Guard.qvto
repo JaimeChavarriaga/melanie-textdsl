@@ -1,0 +1,8 @@
+modeltype genModel uses "http://www.eclipse.org/gmf/2009/GenModel";
+
+library Guard;
+
+helper requiresSpecificGraphicalNodeEditPolicy(diagram : genModel::GenDiagram) : Boolean {
+	return 
+		'com.borlander.gmftools.samples.inthemiddle.diagram' = diagram.editorGen.plugin.iD
+}

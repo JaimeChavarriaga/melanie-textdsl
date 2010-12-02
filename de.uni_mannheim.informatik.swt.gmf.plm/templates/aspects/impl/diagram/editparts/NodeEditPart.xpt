@@ -1,0 +1,24 @@
+«IMPORT 'http://www.eclipse.org/gmf/2009/GenModel'»
+
+«EXTENSION xpt::diagram::ViewmapAttributesUtils»
+«EXTENSION xpt::diagram::editparts::Utils»
+«EXTENSION xpt::diagram::Utils»
+
+«AROUND createDefaultEditPoliciesBody FOR gmfgen::GenNode-»
+	«EXPAND impl::diagram::editparts::NodeEditPart::installCreationRolePolicy-»
+	super.createDefaultEditPolicies();
+	«EXPAND impl::diagram::editparts::NodeEditPart::installPrimaryDragEditPolicy-»
+	«EXPAND xpt::diagram::editparts::Common::installSemanticEditPolicy-»
+	«IF needsGraphicalNodeEditPolicy(self)-»
+		«REM»The correct subclass will be selected by the GraphicalNodeEditPolicy template's around«ENDREM»
+		installEditPolicy(org.eclipse.gef.EditPolicy.GRAPHICAL_NODE_ROLE, new «getGraphicalNodeEditPolicyQualifiedClassName()»());
+	«ELSE-»
+		«EXPAND itm::graphicalnodeep::graphicalNodeEditPolicy::install-»	
+	«ENDIF-»
+	«IF not childNodes->isEmpty()-»
+		installEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.DRAG_DROP_ROLE, new org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy());
+	«ENDIF-»
+	«EXPAND xpt::diagram::editparts::Common::installCanonicalEditPolicy-»
+	installEditPolicy(org.eclipse.gef.EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
+	«EXPAND xpt::diagram::editparts::Common::behaviour FOR self-»
+«ENDAROUND»
