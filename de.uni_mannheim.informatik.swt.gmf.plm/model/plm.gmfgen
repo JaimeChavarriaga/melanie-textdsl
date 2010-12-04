@@ -4,7 +4,8 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:gmfgen="http://www.eclipse.org/gmf/2009/GenModel" sameFileForDiagramAndModel="true"
     diagramFileExtension="oca"
-    templateDirectory="">
+    dynamicTemplates="true"
+    templateDirectory="/de.uni_mannheim.informatik.swt.gmf.plm/templates">
   <diagram
       visualID="1000"
       editPartClassName="ModelEditPart"
@@ -292,6 +293,7 @@
         editPartClassName="DomainConnectionParticipantEditPart"
         itemSemanticEditPolicyClassName="DomainConnectionParticipantItemSemanticEditPolicy"
         notationViewFactoryClassName="DomainConnectionParticipantViewFactory"
+        incomingCreationAllowed="true"
         createCommandClassName="DomainConnectionParticipantCreateCommand"
         reorientCommandClassName="DomainConnectionParticipantReorientCommand">
       <diagramRunTimeClass
