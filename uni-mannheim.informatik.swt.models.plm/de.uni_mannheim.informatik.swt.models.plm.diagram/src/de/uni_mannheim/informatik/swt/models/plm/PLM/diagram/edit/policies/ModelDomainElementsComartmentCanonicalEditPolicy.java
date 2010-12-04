@@ -23,14 +23,15 @@ import org.eclipse.gmf.runtime.notation.View;
 /**
  * @generated
  */
-public class OntologyCanonicalEditPolicy extends CanonicalEditPolicy {
+public class ModelDomainElementsComartmentCanonicalEditPolicy extends
+		CanonicalEditPolicy {
 
 	/**
 	 * @generated
 	 */
 	protected EStructuralFeature getFeatureToSynchronize() {
 		return de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.eINSTANCE
-				.getOntology_Models();
+				.getModel_Elements();
 	}
 
 	/**
@@ -41,7 +42,7 @@ public class OntologyCanonicalEditPolicy extends CanonicalEditPolicy {
 		View viewObject = (View) getHost().getModel();
 		LinkedList<EObject> result = new LinkedList<EObject>();
 		List<de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMNodeDescriptor> childDescriptors = de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramUpdater
-				.getOntology_2002SemanticChildren(viewObject);
+				.getModelDomainElementsComartment_7004SemanticChildren(viewObject);
 		for (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMNodeDescriptor d : childDescriptors) {
 			result.add(d.getModelElement());
 		}
@@ -61,8 +62,10 @@ public class OntologyCanonicalEditPolicy extends CanonicalEditPolicy {
 	 * @generated
 	 */
 	private boolean isMyDiagramElement(View view) {
-		return de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.Model2EditPart.VISUAL_ID == de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMVisualIDRegistry
+		int visualID = de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMVisualIDRegistry
 				.getVisualID(view);
+		return visualID == de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntityEditPart.VISUAL_ID
+				|| visualID == de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionEditPart.VISUAL_ID;
 	}
 
 	/**
@@ -74,7 +77,8 @@ public class OntologyCanonicalEditPolicy extends CanonicalEditPolicy {
 		}
 		LinkedList<IAdaptable> createdViews = new LinkedList<IAdaptable>();
 		List<de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMNodeDescriptor> childDescriptors = de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramUpdater
-				.getOntology_2002SemanticChildren((View) getHost().getModel());
+				.getModelDomainElementsComartment_7004SemanticChildren((View) getHost()
+						.getModel());
 		LinkedList<View> orphaned = new LinkedList<View>();
 		// we care to check only views we recognize as ours
 		LinkedList<View> knownViewChildren = new LinkedList<View>();

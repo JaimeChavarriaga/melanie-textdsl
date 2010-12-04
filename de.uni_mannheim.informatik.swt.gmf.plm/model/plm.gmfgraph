@@ -12,7 +12,6 @@
           name="OntologyFigure"
           cornerWidth="20"
           cornerHeight="20">
-        <insets/>
         <children
             xsi:type="gmfgraph:Rectangle"
             name="InnerRectangel"
@@ -39,11 +38,7 @@
                 name="OntologyNameFigure"
                 text="Ontology Name">
               <layoutData
-                  xsi:type="gmfgraph:GridLayoutData"
-                  grabExcessHorizontalSpace="true"
-                  grabExcessVerticalSpace="true"/>
-              <maximumSize
-                  dy="20"/>
+                  xsi:type="gmfgraph:GridLayoutData"/>
               <font
                   xsi:type="gmfgraph:BasicFont"
                   height="11"/>
@@ -64,7 +59,9 @@
       <actualFigure
           xsi:type="gmfgraph:Rectangle"
           name="ModelFigure">
-        <insets/>
+        <minimumSize
+            dx="300"
+            dy="300"/>
         <children
             xsi:type="gmfgraph:Rectangle"
             name="InnerRectangle"
@@ -75,7 +72,7 @@
               vertical="true"
               matchMinorSize="true"
               forceSingleLine="true"
-              majorAlignment="CENTER"
+              majorAlignment="END"
               minorAlignment="CENTER"
               majorSpacing="0"
               minorSpacing="0"/>

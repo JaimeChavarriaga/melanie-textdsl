@@ -7,9 +7,11 @@ import java.util.List;
 import org.eclipse.draw2d.GridData;
 import org.eclipse.draw2d.GridLayout;
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.MarginBorder;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
+import org.eclipse.draw2d.ToolbarLayout;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
@@ -17,9 +19,12 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.LayoutEditPolicy;
 import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
 import org.eclipse.gef.requests.CreateRequest;
+import org.eclipse.gmf.runtime.diagram.core.edithelpers.CreateElementRequestAdapter;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editpolicies.CreationEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
+import org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewAndElementRequest;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
@@ -61,6 +66,8 @@ public class DomainEntityEditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	protected void createDefaultEditPolicies() {
+		installEditPolicy(EditPolicyRoles.CREATION_ROLE,
+				new CreationEditPolicy());
 		super.createDefaultEditPolicies();
 		installEditPolicy(
 				EditPolicyRoles.SEMANTIC_ROLE,
@@ -340,6 +347,24 @@ public class DomainEntityEditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated
 	 */
+	public EditPart getTargetEditPart(Request request) {
+		if (request instanceof CreateViewAndElementRequest) {
+			CreateElementRequestAdapter adapter = ((CreateViewAndElementRequest) request)
+					.getViewAndElementDescriptor()
+					.getCreateElementRequestAdapter();
+			IElementType type = (IElementType) adapter
+					.getAdapter(IElementType.class);
+			if (type == de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.Field_3007) {
+				return getChildBySemanticHint(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMVisualIDRegistry
+						.getType(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntityDomainEntityFieldsCompartmentEditPart.VISUAL_ID));
+			}
+		}
+		return super.getTargetEditPart(request);
+	}
+
+	/**
+	 * @generated
+	 */
 	public class DomainEntityFigure extends RectangleFigure {
 
 		/**
@@ -355,6 +380,10 @@ public class DomainEntityEditPart extends ShapeNodeEditPart {
 		 * @generated
 		 */
 		public DomainEntityFigure() {
+
+			this.setBorder(new MarginBorder(getMapMode().DPtoLP(0),
+					getMapMode().DPtoLP(0), getMapMode().DPtoLP(0),
+					getMapMode().DPtoLP(0)));
 			createContents();
 		}
 
@@ -363,14 +392,29 @@ public class DomainEntityEditPart extends ShapeNodeEditPart {
 		 */
 		private void createContents() {
 
-			RectangleFigure rect0 = new RectangleFigure();
+			RectangleFigure innerRectangle0 = new RectangleFigure();
+			innerRectangle0.setFill(false);
+			innerRectangle0.setOutline(false);
 
-			this.add(rect0);
+			this.add(innerRectangle0);
 
-			GridLayout layoutRect0 = new GridLayout();
-			layoutRect0.numColumns = 3;
-			layoutRect0.makeColumnsEqualWidth = false;
-			rect0.setLayoutManager(layoutRect0);
+			ToolbarLayout layoutInnerRectangle0 = new ToolbarLayout();
+			layoutInnerRectangle0.setStretchMinorAxis(true);
+			layoutInnerRectangle0.setMinorAlignment(ToolbarLayout.ALIGN_CENTER);
+
+			layoutInnerRectangle0.setSpacing(0);
+			layoutInnerRectangle0.setVertical(true);
+
+			innerRectangle0.setLayoutManager(layoutInnerRectangle0);
+
+			RectangleFigure nameRectangle1 = new RectangleFigure();
+
+			innerRectangle0.add(nameRectangle1);
+
+			GridLayout layoutNameRectangle1 = new GridLayout();
+			layoutNameRectangle1.numColumns = 1;
+			layoutNameRectangle1.makeColumnsEqualWidth = true;
+			nameRectangle1.setLayoutManager(layoutNameRectangle1);
 
 			fFigureDomainEntityNameFigure = new WrappingLabel();
 			fFigureDomainEntityNameFigure.setText("");
@@ -379,27 +423,36 @@ public class DomainEntityEditPart extends ShapeNodeEditPart {
 			constraintFFigureDomainEntityNameFigure.verticalAlignment = GridData.CENTER;
 			constraintFFigureDomainEntityNameFigure.horizontalAlignment = GridData.CENTER;
 			constraintFFigureDomainEntityNameFigure.horizontalIndent = 0;
-			constraintFFigureDomainEntityNameFigure.horizontalSpan = 3;
+			constraintFFigureDomainEntityNameFigure.horizontalSpan = 1;
 			constraintFFigureDomainEntityNameFigure.verticalSpan = 1;
-			constraintFFigureDomainEntityNameFigure.grabExcessHorizontalSpace = false;
-			constraintFFigureDomainEntityNameFigure.grabExcessVerticalSpace = false;
-			rect0.add(fFigureDomainEntityNameFigure,
+			constraintFFigureDomainEntityNameFigure.grabExcessHorizontalSpace = true;
+			constraintFFigureDomainEntityNameFigure.grabExcessVerticalSpace = true;
+			nameRectangle1.add(fFigureDomainEntityNameFigure,
 					constraintFFigureDomainEntityNameFigure);
 
-			WrappingLabel firstCurlyBracket1 = new WrappingLabel();
-			firstCurlyBracket1.setText("{");
+			RectangleFigure aVSRectangle1 = new RectangleFigure();
 
-			rect0.add(firstCurlyBracket1);
+			innerRectangle0.add(aVSRectangle1);
+
+			GridLayout layoutAVSRectangle1 = new GridLayout();
+			layoutAVSRectangle1.numColumns = 3;
+			layoutAVSRectangle1.makeColumnsEqualWidth = false;
+			aVSRectangle1.setLayoutManager(layoutAVSRectangle1);
+
+			WrappingLabel firstCurlyBracket2 = new WrappingLabel();
+			firstCurlyBracket2.setText("{");
+
+			aVSRectangle1.add(firstCurlyBracket2);
 
 			fFigureDomainEntityAVSFigure = new WrappingLabel();
 			fFigureDomainEntityAVSFigure.setText("");
 
-			rect0.add(fFigureDomainEntityAVSFigure);
+			aVSRectangle1.add(fFigureDomainEntityAVSFigure);
 
-			WrappingLabel secondCurlyBracket1 = new WrappingLabel();
-			secondCurlyBracket1.setText("}");
+			WrappingLabel secondCurlyBracket2 = new WrappingLabel();
+			secondCurlyBracket2.setText("}");
 
-			rect0.add(secondCurlyBracket1);
+			aVSRectangle1.add(secondCurlyBracket2);
 
 		}
 

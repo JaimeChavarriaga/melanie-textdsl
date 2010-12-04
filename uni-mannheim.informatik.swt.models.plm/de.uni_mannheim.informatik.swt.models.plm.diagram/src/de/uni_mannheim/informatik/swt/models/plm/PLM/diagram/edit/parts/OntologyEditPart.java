@@ -1,6 +1,10 @@
 package de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts;
 
+import org.eclipse.draw2d.GridData;
+import org.eclipse.draw2d.GridLayout;
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.MarginBorder;
+import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
@@ -8,7 +12,12 @@ import org.eclipse.draw2d.ToolbarLayout;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
+import org.eclipse.gef.Request;
+import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.LayoutEditPolicy;
+import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
+import org.eclipse.gef.requests.CreateRequest;
+import org.eclipse.gmf.runtime.diagram.core.edithelpers.CreateElementRequestAdapter;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ITextAwareEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
@@ -16,13 +25,18 @@ import org.eclipse.gmf.runtime.diagram.ui.editpolicies.ConstrainedToolbarLayoutE
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.CreationEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
+import org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewAndElementRequest;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
+import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 
+import org.eclipse.swt.graphics.Font;
+import org.eclipse.swt.widgets.Display;
 import com.borlander.gmftools.samples.inthemiddle.gmf.gnep.ITMGraphicalNodeEditPolicy;
 
 /**
@@ -64,11 +78,6 @@ public class OntologyEditPart extends ShapeNodeEditPart {
 				new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.policies.OntologyItemSemanticEditPolicy());
 		installEditPolicy(EditPolicy.GRAPHICAL_NODE_ROLE,
 				new ITMGraphicalNodeEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
-				new DragDropEditPolicy());
-		installEditPolicy(
-				EditPolicyRoles.CANONICAL_ROLE,
-				new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.policies.OntologyCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 	}
 
@@ -76,16 +85,23 @@ public class OntologyEditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	protected LayoutEditPolicy createLayoutEditPolicy() {
-
-		ConstrainedToolbarLayoutEditPolicy lep = new ConstrainedToolbarLayoutEditPolicy() {
+		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				if (child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE) == null) {
-					if (child instanceof ITextAwareEditPart) {
-						return new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.policies.PLMTextSelectionEditPolicy();
-					}
+				EditPolicy result = child
+						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				if (result == null) {
+					result = new NonResizableEditPolicy();
 				}
-				return super.createChildEditPolicy(child);
+				return result;
+			}
+
+			protected Command getMoveChildrenCommand(Request request) {
+				return null;
+			}
+
+			protected Command getCreateCommand(CreateRequest request) {
+				return null;
 			}
 		};
 		return lep;
@@ -251,6 +267,24 @@ public class OntologyEditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated
 	 */
+	public EditPart getTargetEditPart(Request request) {
+		if (request instanceof CreateViewAndElementRequest) {
+			CreateElementRequestAdapter adapter = ((CreateViewAndElementRequest) request)
+					.getViewAndElementDescriptor()
+					.getCreateElementRequestAdapter();
+			IElementType type = (IElementType) adapter
+					.getAdapter(IElementType.class);
+			if (type == de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.Model_3004) {
+				return getChildBySemanticHint(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMVisualIDRegistry
+						.getType(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.OntologyOntologyLevelCompartmentEditPart.VISUAL_ID));
+			}
+		}
+		return super.getTargetEditPart(request);
+	}
+
+	/**
+	 * @generated
+	 */
 	public class OntologyFigure extends RoundedRectangle {
 
 		/**
@@ -262,16 +296,6 @@ public class OntologyEditPart extends ShapeNodeEditPart {
 		 * @generated
 		 */
 		public OntologyFigure() {
-
-			ToolbarLayout layoutThis = new ToolbarLayout();
-			layoutThis.setStretchMinorAxis(true);
-			layoutThis.setMinorAlignment(ToolbarLayout.ALIGN_CENTER);
-
-			layoutThis.setSpacing(-1);
-			layoutThis.setVertical(true);
-
-			this.setLayoutManager(layoutThis);
-
 			this.setCornerDimensions(new Dimension(getMapMode().DPtoLP(20),
 					getMapMode().DPtoLP(20)));
 			createContents();
@@ -282,10 +306,47 @@ public class OntologyEditPart extends ShapeNodeEditPart {
 		 */
 		private void createContents() {
 
+			RectangleFigure innerRectangel0 = new RectangleFigure();
+			innerRectangel0.setFill(false);
+			innerRectangel0.setOutline(false);
+
+			this.add(innerRectangel0);
+
+			ToolbarLayout layoutInnerRectangel0 = new ToolbarLayout();
+			layoutInnerRectangel0.setStretchMinorAxis(true);
+			layoutInnerRectangel0.setMinorAlignment(ToolbarLayout.ALIGN_CENTER);
+
+			layoutInnerRectangel0.setSpacing(0);
+			layoutInnerRectangel0.setVertical(true);
+
+			innerRectangel0.setLayoutManager(layoutInnerRectangel0);
+
+			RectangleFigure nameArea1 = new RectangleFigure();
+			nameArea1.setFill(false);
+			nameArea1.setOutline(false);
+
+			innerRectangel0.add(nameArea1);
+
+			GridLayout layoutNameArea1 = new GridLayout();
+			layoutNameArea1.numColumns = 1;
+			layoutNameArea1.makeColumnsEqualWidth = true;
+			nameArea1.setLayoutManager(layoutNameArea1);
+
 			fFigureOntologyNameFigure = new WrappingLabel();
 			fFigureOntologyNameFigure.setText("Ontology Name");
 
-			this.add(fFigureOntologyNameFigure);
+			fFigureOntologyNameFigure.setFont(FFIGUREONTOLOGYNAMEFIGURE_FONT);
+
+			GridData constraintFFigureOntologyNameFigure = new GridData();
+			constraintFFigureOntologyNameFigure.verticalAlignment = GridData.CENTER;
+			constraintFFigureOntologyNameFigure.horizontalAlignment = GridData.CENTER;
+			constraintFFigureOntologyNameFigure.horizontalIndent = 0;
+			constraintFFigureOntologyNameFigure.horizontalSpan = 1;
+			constraintFFigureOntologyNameFigure.verticalSpan = 1;
+			constraintFFigureOntologyNameFigure.grabExcessHorizontalSpace = false;
+			constraintFFigureOntologyNameFigure.grabExcessVerticalSpace = false;
+			nameArea1.add(fFigureOntologyNameFigure,
+					constraintFFigureOntologyNameFigure);
 
 		}
 
@@ -297,5 +358,12 @@ public class OntologyEditPart extends ShapeNodeEditPart {
 		}
 
 	}
+
+	/**
+	 * @generated
+	 */
+	static final Font FFIGUREONTOLOGYNAMEFIGURE_FONT = new Font(
+			Display.getCurrent(), Display.getDefault().getSystemFont()
+					.getFontData()[0].getName(), 11, SWT.NORMAL);
 
 }

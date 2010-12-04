@@ -1,7 +1,9 @@
 package de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts;
 
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.gef.EditPolicy;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.ListCompartmentEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeCompartmentEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.CreationEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
@@ -15,7 +17,7 @@ import org.eclipse.gmf.runtime.notation.View;
  * @generated
  */
 public class DomainEntityDomainEntityFieldsCompartmentEditPart extends
-		ShapeCompartmentEditPart {
+		ListCompartmentEditPart {
 
 	/**
 	 * @generated
@@ -27,6 +29,13 @@ public class DomainEntityDomainEntityFieldsCompartmentEditPart extends
 	 */
 	public DomainEntityDomainEntityFieldsCompartmentEditPart(View view) {
 		super(view);
+	}
+
+	/**
+	 * @generated
+	 */
+	protected boolean hasModelChildrenChanged(Notification evt) {
+		return false;
 	}
 
 	/**

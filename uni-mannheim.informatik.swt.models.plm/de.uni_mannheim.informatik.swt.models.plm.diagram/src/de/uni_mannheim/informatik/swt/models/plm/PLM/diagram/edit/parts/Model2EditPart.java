@@ -1,29 +1,46 @@
 package de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts;
 
 import org.eclipse.draw2d.FreeformLayout;
+import org.eclipse.draw2d.GridData;
+import org.eclipse.draw2d.GridLayout;
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.MarginBorder;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
+import org.eclipse.draw2d.ToolbarLayout;
 import org.eclipse.draw2d.XYLayout;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
+import org.eclipse.gef.Request;
+import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.LayoutEditPolicy;
+import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
+import org.eclipse.gef.requests.CreateRequest;
+import org.eclipse.gmf.runtime.diagram.core.edithelpers.CreateElementRequestAdapter;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.ITextAwareEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editpolicies.ConstrainedToolbarLayoutEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.CreationEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.ResizableShapeEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.XYLayoutEditPolicy;
+import org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewAndElementRequest;
+import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
+import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 
+import org.eclipse.swt.graphics.Font;
+import org.eclipse.swt.widgets.Display;
 import com.borlander.gmftools.samples.inthemiddle.gmf.gnep.ITMGraphicalNodeEditPolicy;
 
 /**
@@ -57,19 +74,12 @@ public class Model2EditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	protected void createDefaultEditPolicies() {
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE,
-				new CreationEditPolicy());
 		super.createDefaultEditPolicies();
 		installEditPolicy(
 				EditPolicyRoles.SEMANTIC_ROLE,
 				new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.policies.Model2ItemSemanticEditPolicy());
 		installEditPolicy(EditPolicy.GRAPHICAL_NODE_ROLE,
 				new ITMGraphicalNodeEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
-				new DragDropEditPolicy());
-		installEditPolicy(
-				EditPolicyRoles.CANONICAL_ROLE,
-				new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.policies.Model2CanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 	}
 
@@ -77,14 +87,23 @@ public class Model2EditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	protected LayoutEditPolicy createLayoutEditPolicy() {
-		XYLayoutEditPolicy lep = new XYLayoutEditPolicy() {
+		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = super.createChildEditPolicy(child);
+				EditPolicy result = child
+						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
-					return new ResizableShapeEditPolicy();
+					result = new NonResizableEditPolicy();
 				}
 				return result;
+			}
+
+			protected Command getMoveChildrenCommand(Request request) {
+				return null;
+			}
+
+			protected Command getCreateCommand(CreateRequest request) {
+				return null;
 			}
 		};
 		return lep;
@@ -94,11 +113,7 @@ public class Model2EditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new ModelFigure() {
-			protected boolean useLocalCoordinates() {
-				return true;
-			}
-		};
+		return primaryShape = new ModelFigure();
 	}
 
 	/**
@@ -162,7 +177,7 @@ public class Model2EditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	protected NodeFigure createNodePlate() {
-		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(0, 500);
+		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(150, 150);
 		return result;
 	}
 
@@ -191,16 +206,9 @@ public class Model2EditPart extends ShapeNodeEditPart {
 	 */
 	protected IFigure setupContentPane(IFigure nodeShape) {
 		if (nodeShape.getLayoutManager() == null) {
-			nodeShape.setLayoutManager(new FreeformLayout() {
-
-				public Object getConstraint(IFigure figure) {
-					Object result = constraints.get(figure);
-					if (result == null) {
-						result = new Rectangle(0, 0, -1, -1);
-					}
-					return result;
-				}
-			});
+			ConstrainedToolbarLayout layout = new ConstrainedToolbarLayout();
+			layout.setSpacing(5);
+			nodeShape.setLayoutManager(layout);
 		}
 		return nodeShape; // use nodeShape itself as contentPane
 	}
@@ -273,9 +281,8 @@ public class Model2EditPart extends ShapeNodeEditPart {
 		 * @generated
 		 */
 		public ModelFigure() {
-			this.setLayoutManager(new XYLayout());
-			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(0),
-					getMapMode().DPtoLP(500)));
+			this.setMinimumSize(new Dimension(getMapMode().DPtoLP(300),
+					getMapMode().DPtoLP(300)));
 			createContents();
 		}
 
@@ -284,10 +291,51 @@ public class Model2EditPart extends ShapeNodeEditPart {
 		 */
 		private void createContents() {
 
+			RectangleFigure innerRectangle0 = new RectangleFigure();
+			innerRectangle0.setFill(false);
+			innerRectangle0.setOutline(false);
+
+			this.add(innerRectangle0);
+
+			ToolbarLayout layoutInnerRectangle0 = new ToolbarLayout();
+			layoutInnerRectangle0.setStretchMinorAxis(true);
+			layoutInnerRectangle0.setMinorAlignment(ToolbarLayout.ALIGN_CENTER);
+
+			layoutInnerRectangle0.setSpacing(0);
+			layoutInnerRectangle0.setVertical(true);
+
+			innerRectangle0.setLayoutManager(layoutInnerRectangle0);
+
+			RectangleFigure nameRectangle1 = new RectangleFigure();
+			nameRectangle1.setFill(false);
+			nameRectangle1.setOutline(false);
+
+			innerRectangle0.add(nameRectangle1);
+
+			GridLayout layoutNameRectangle1 = new GridLayout();
+			layoutNameRectangle1.numColumns = 1;
+			layoutNameRectangle1.makeColumnsEqualWidth = true;
+			nameRectangle1.setLayoutManager(layoutNameRectangle1);
+
 			fFigureOntologyLevelNameFigure = new WrappingLabel();
 			fFigureOntologyLevelNameFigure.setText("");
 
-			this.add(fFigureOntologyLevelNameFigure);
+			fFigureOntologyLevelNameFigure
+					.setFont(FFIGUREONTOLOGYLEVELNAMEFIGURE_FONT);
+
+			fFigureOntologyLevelNameFigure.setMaximumSize(new Dimension(
+					getMapMode().DPtoLP(0), getMapMode().DPtoLP(20)));
+
+			GridData constraintFFigureOntologyLevelNameFigure = new GridData();
+			constraintFFigureOntologyLevelNameFigure.verticalAlignment = GridData.CENTER;
+			constraintFFigureOntologyLevelNameFigure.horizontalAlignment = GridData.CENTER;
+			constraintFFigureOntologyLevelNameFigure.horizontalIndent = 0;
+			constraintFFigureOntologyLevelNameFigure.horizontalSpan = 1;
+			constraintFFigureOntologyLevelNameFigure.verticalSpan = 1;
+			constraintFFigureOntologyLevelNameFigure.grabExcessHorizontalSpace = true;
+			constraintFFigureOntologyLevelNameFigure.grabExcessVerticalSpace = true;
+			nameRectangle1.add(fFigureOntologyLevelNameFigure,
+					constraintFFigureOntologyLevelNameFigure);
 
 		}
 
@@ -299,5 +347,12 @@ public class Model2EditPart extends ShapeNodeEditPart {
 		}
 
 	}
+
+	/**
+	 * @generated
+	 */
+	static final Font FFIGUREONTOLOGYLEVELNAMEFIGURE_FONT = new Font(
+			Display.getCurrent(), Display.getDefault().getSystemFont()
+					.getFontData()[0].getName(), 11, SWT.NORMAL);
 
 }

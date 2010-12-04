@@ -26,10 +26,10 @@ public class PLMDiagramUpdater {
 				.getVisualID(view)) {
 		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ModelEditPart.VISUAL_ID:
 			return getLMLModel_1000SemanticChildren(view);
-		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.OntologyEditPart.VISUAL_ID:
-			return getOntology_2002SemanticChildren(view);
-		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.Model2EditPart.VISUAL_ID:
-			return getModel_3004SemanticChildren(view);
+		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.OntologyOntologyLevelCompartmentEditPart.VISUAL_ID:
+			return getOntologyModelCompartment_7003SemanticChildren(view);
+		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ModelDomainElementsComartmentEditPart.VISUAL_ID:
+			return getModelDomainElementsComartment_7004SemanticChildren(view);
 		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntityDomainEntityFieldsCompartmentEditPart.VISUAL_ID:
 			return getDomainEntityDomainEntityFieldsCompartment_7005SemanticChildren(view);
 		}
@@ -63,12 +63,16 @@ public class PLMDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMNodeDescriptor> getOntology_2002SemanticChildren(
+	public static List<de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMNodeDescriptor> getOntologyModelCompartment_7003SemanticChildren(
 			View view) {
-		if (!view.isSetElement()) {
+		if (false == view.eContainer() instanceof View) {
 			return Collections.emptyList();
 		}
-		de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology modelElement = (de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology) view
+		View containerView = (View) view.eContainer();
+		if (!containerView.isSetElement()) {
+			return Collections.emptyList();
+		}
+		de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology modelElement = (de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology) containerView
 				.getElement();
 		LinkedList<de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMNodeDescriptor> result = new LinkedList<de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMNodeDescriptor>();
 		for (Iterator<?> it = modelElement.getModels().iterator(); it.hasNext();) {
@@ -88,12 +92,16 @@ public class PLMDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMNodeDescriptor> getModel_3004SemanticChildren(
+	public static List<de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMNodeDescriptor> getModelDomainElementsComartment_7004SemanticChildren(
 			View view) {
-		if (!view.isSetElement()) {
+		if (false == view.eContainer() instanceof View) {
 			return Collections.emptyList();
 		}
-		de.uni_mannheim.informatik.swt.models.plm.PLM.Model modelElement = (de.uni_mannheim.informatik.swt.models.plm.PLM.Model) view
+		View containerView = (View) view.eContainer();
+		if (!containerView.isSetElement()) {
+			return Collections.emptyList();
+		}
+		de.uni_mannheim.informatik.swt.models.plm.PLM.Model modelElement = (de.uni_mannheim.informatik.swt.models.plm.PLM.Model) containerView
 				.getElement();
 		LinkedList<de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMNodeDescriptor> result = new LinkedList<de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMNodeDescriptor>();
 		for (Iterator<?> it = modelElement.getElements().iterator(); it
