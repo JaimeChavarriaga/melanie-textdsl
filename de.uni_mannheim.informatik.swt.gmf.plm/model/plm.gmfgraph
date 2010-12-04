@@ -4,28 +4,55 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:gmfgraph="http://www.eclipse.org/gmf/2006/GraphicalDefinition" name="PLM">
   <figures
-      name="Default">
+      name="LML Figures">
     <descriptors
         name="OntologyFigure">
       <actualFigure
           xsi:type="gmfgraph:RoundedRectangle"
+          name="OntologyFigure"
           cornerWidth="20"
           cornerHeight="20">
-        <layout
-            xsi:type="gmfgraph:FlowLayout"
-            vertical="true"
-            matchMinorSize="true"
-            forceSingleLine="true"
-            minorAlignment="CENTER"
-            majorSpacing="-1"
-            minorSpacing="0"/>
+        <insets/>
         <children
-            xsi:type="gmfgraph:Label"
-            name="OntologyNameFigure"
-            text="Ontology Name"/>
+            xsi:type="gmfgraph:Rectangle"
+            name="InnerRectangel"
+            outline="false"
+            fill="false">
+          <layout
+              xsi:type="gmfgraph:FlowLayout"
+              vertical="true"
+              matchMinorSize="true"
+              forceSingleLine="true"
+              majorAlignment="CENTER"
+              minorAlignment="CENTER"
+              majorSpacing="0"
+              minorSpacing="0"/>
+          <children
+              xsi:type="gmfgraph:Rectangle"
+              name="NameArea"
+              outline="false"
+              fill="false">
+            <layout
+                xsi:type="gmfgraph:GridLayout"/>
+            <children
+                xsi:type="gmfgraph:Label"
+                name="OntologyNameFigure"
+                text="Ontology Name">
+              <layoutData
+                  xsi:type="gmfgraph:GridLayoutData"
+                  grabExcessHorizontalSpace="true"
+                  grabExcessVerticalSpace="true"/>
+              <maximumSize
+                  dy="20"/>
+              <font
+                  xsi:type="gmfgraph:BasicFont"
+                  height="11"/>
+            </children>
+          </children>
+        </children>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.0/@actualFigure/@children.0"/>
+          figure="//@figures.0/@descriptors.0/@actualFigure/@children.0/@children.0/@children.0"/>
     </descriptors>
     <descriptors
         name="ModellCompartmentFigure">
@@ -36,17 +63,47 @@
         name="ModelFigure">
       <actualFigure
           xsi:type="gmfgraph:Rectangle"
-          name="">
-        <layout
-            xsi:type="gmfgraph:XYLayout"/>
-        <preferredSize
-            dy="500"/>
+          name="ModelFigure">
+        <insets/>
         <children
-            xsi:type="gmfgraph:Label"
-            name="OntologyLevelNameFigure"/>
+            xsi:type="gmfgraph:Rectangle"
+            name="InnerRectangle"
+            outline="false"
+            fill="false">
+          <layout
+              xsi:type="gmfgraph:FlowLayout"
+              vertical="true"
+              matchMinorSize="true"
+              forceSingleLine="true"
+              majorAlignment="CENTER"
+              minorAlignment="CENTER"
+              majorSpacing="0"
+              minorSpacing="0"/>
+          <children
+              xsi:type="gmfgraph:Rectangle"
+              name="NameRectangle"
+              outline="false"
+              fill="false">
+            <layout
+                xsi:type="gmfgraph:GridLayout"/>
+            <children
+                xsi:type="gmfgraph:Label"
+                name="OntologyLevelNameFigure">
+              <layoutData
+                  xsi:type="gmfgraph:GridLayoutData"
+                  grabExcessHorizontalSpace="true"
+                  grabExcessVerticalSpace="true"/>
+              <maximumSize
+                  dy="20"/>
+              <font
+                  xsi:type="gmfgraph:BasicFont"
+                  height="11"/>
+            </children>
+          </children>
+        </children>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.2/@actualFigure/@children.0"/>
+          figure="//@figures.0/@descriptors.2/@actualFigure/@children.0/@children.0/@children.0"/>
     </descriptors>
     <descriptors
         name="DomainElementsCompartmentFigure">
@@ -57,50 +114,67 @@
         name="DomainEntityFigure">
       <actualFigure
           xsi:type="gmfgraph:Rectangle"
-          name="">
+          name="DomainEntityFigure">
+        <insets/>
         <children
-            xsi:type="gmfgraph:Rectangle">
+            xsi:type="gmfgraph:Rectangle"
+            name="InnerRectangle"
+            outline="false"
+            fill="false">
           <layout
-              xsi:type="gmfgraph:GridLayout"
-              numColumns="3"
-              equalWidth="false"/>
+              xsi:type="gmfgraph:FlowLayout"
+              vertical="true"
+              matchMinorSize="true"
+              forceSingleLine="true"
+              majorAlignment="CENTER"
+              minorAlignment="CENTER"
+              majorSpacing="0"
+              minorSpacing="0"/>
           <children
-              xsi:type="gmfgraph:Label"
-              name="DomainEntityNameFigure">
-            <layoutData
-                xsi:type="gmfgraph:GridLayoutData"
-                horizontalSpan="3"/>
+              xsi:type="gmfgraph:Rectangle"
+              name="NameRectangle">
+            <layout
+                xsi:type="gmfgraph:GridLayout"/>
+            <children
+                xsi:type="gmfgraph:Label"
+                name="DomainEntityNameFigure">
+              <layoutData
+                  xsi:type="gmfgraph:GridLayoutData"
+                  grabExcessHorizontalSpace="true"
+                  grabExcessVerticalSpace="true"/>
+            </children>
           </children>
           <children
-              xsi:type="gmfgraph:Label"
-              name="firstCurlyBracket"
-              text="{"/>
-          <children
-              xsi:type="gmfgraph:Label"
-              name="DomainEntityAVSFigure"
-              text=""/>
-          <children
-              xsi:type="gmfgraph:Label"
-              name="secondCurlyBracket"
-              text="}"/>
+              xsi:type="gmfgraph:Rectangle"
+              name="AVSRectangle">
+            <layout
+                xsi:type="gmfgraph:GridLayout"
+                numColumns="3"
+                equalWidth="false"/>
+            <children
+                xsi:type="gmfgraph:Label"
+                name="firstCurlyBracket"
+                text="{"/>
+            <children
+                xsi:type="gmfgraph:Label"
+                name="DomainEntityAVSFigure"
+                text=""/>
+            <children
+                xsi:type="gmfgraph:Label"
+                name="secondCurlyBracket"
+                text="}"/>
+          </children>
         </children>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.0"/>
+          figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.0/@children.0"/>
       <accessors
-          figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.2"/>
+          figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.1/@children.1"/>
     </descriptors>
     <descriptors
         name="DomainEntityFieldCompartmentFigure">
       <actualFigure
-          xsi:type="gmfgraph:Rectangle">
-        <layout
-            xsi:type="gmfgraph:FlowLayout"
-            vertical="true"
-            matchMinorSize="true"
-            forceSingleLine="true"
-            minorAlignment="CENTER"/>
-      </actualFigure>
+          xsi:type="gmfgraph:Rectangle"/>
     </descriptors>
     <descriptors
         name="DomainEntityFieldFigure">

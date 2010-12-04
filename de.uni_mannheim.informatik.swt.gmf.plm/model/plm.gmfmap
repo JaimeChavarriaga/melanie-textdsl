@@ -23,7 +23,8 @@
           href="plm.gmftool#//@palette/@tools.0/@tools.0"/>
       <diagramNode
           href="plm.gmfgraph#Ontology"/>
-      <children>
+      <children
+          compartment="//@nodes.0/@ownedChild/@compartments.0">
         <containmentFeature
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Ontology/models"/>
         <ownedChild>
@@ -41,7 +42,8 @@
               href="plm.gmftool#//@palette/@tools.0/@tools.1"/>
           <diagramNode
               href="plm.gmfgraph#Model"/>
-          <children>
+          <children
+              compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@compartments.0">
             <containmentFeature
                 href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/elements"/>
             <ownedChild>
@@ -105,7 +107,8 @@
               </compartments>
             </ownedChild>
           </children>
-          <children>
+          <children
+              compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@compartments.0">
             <containmentFeature
                 href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/elements"/>
             <ownedChild>
@@ -128,13 +131,15 @@
                   href="plm.gmfgraph#DomainConnection"/>
             </ownedChild>
           </children>
-          <compartments>
+          <compartments
+              children="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.0 //@nodes.0/@ownedChild/@children.0/@ownedChild/@children.1">
             <compartment
                 href="plm.gmfgraph#DomainElementsComartment"/>
           </compartments>
         </ownedChild>
       </children>
-      <compartments>
+      <compartments
+          children="//@nodes.0/@ownedChild/@children.0">
         <compartment
             href="plm.gmfgraph#ModelCompartment"/>
       </compartments>
