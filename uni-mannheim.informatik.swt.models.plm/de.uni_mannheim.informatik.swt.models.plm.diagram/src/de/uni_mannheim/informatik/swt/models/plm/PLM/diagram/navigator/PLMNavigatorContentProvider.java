@@ -216,14 +216,14 @@ public class PLMNavigatorContentProvider implements ICommonContentProvider {
 		switch (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMVisualIDRegistry
 				.getVisualID(view)) {
 
-		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.InstantiationEditPart.VISUAL_ID: {
+		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.BinaryGeneralizationEditPart.VISUAL_ID: {
 			LinkedList<de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMAbstractNavigatorItem> result = new LinkedList<de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMAbstractNavigatorItem>();
 			Edge sv = (Edge) view;
 			de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMNavigatorGroup target = new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMNavigatorGroup(
-					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.Messages.NavigatorGroupName_Instantiation_4002_target,
+					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.Messages.NavigatorGroupName_BinaryGeneralization_4004_target,
 					"icons/linkTargetNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMNavigatorGroup source = new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMNavigatorGroup(
-					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.Messages.NavigatorGroupName_Instantiation_4002_source,
+					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.Messages.NavigatorGroupName_BinaryGeneralization_4004_source,
 					"icons/linkSourceNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection<View> connectedViews;
 			connectedViews = getLinksTargetByType(
@@ -256,6 +256,23 @@ public class PLMNavigatorContentProvider implements ICommonContentProvider {
 			if (!source.isEmpty()) {
 				result.add(source);
 			}
+			return result.toArray();
+		}
+
+		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.OntologyEditPart.VISUAL_ID: {
+			LinkedList<de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMAbstractNavigatorItem> result = new LinkedList<de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			Collection<View> connectedViews;
+			connectedViews = getChildrenByType(
+					Collections.singleton(sv),
+					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMVisualIDRegistry
+							.getType(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.OntologyOntologyLevelCompartmentEditPart.VISUAL_ID));
+			connectedViews = getChildrenByType(
+					connectedViews,
+					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMVisualIDRegistry
+							.getType(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.Model2EditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
 			return result.toArray();
 		}
 
@@ -318,6 +335,70 @@ public class PLMNavigatorContentProvider implements ICommonContentProvider {
 			return result.toArray();
 		}
 
+		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.Model2EditPart.VISUAL_ID: {
+			LinkedList<de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMAbstractNavigatorItem> result = new LinkedList<de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			Collection<View> connectedViews;
+			connectedViews = getChildrenByType(
+					Collections.singleton(sv),
+					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMVisualIDRegistry
+							.getType(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ModelDomainElementsComartmentEditPart.VISUAL_ID));
+			connectedViews = getChildrenByType(
+					connectedViews,
+					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMVisualIDRegistry
+							.getType(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntityEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			connectedViews = getChildrenByType(
+					Collections.singleton(sv),
+					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMVisualIDRegistry
+							.getType(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ModelDomainElementsComartmentEditPart.VISUAL_ID));
+			connectedViews = getChildrenByType(
+					connectedViews,
+					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMVisualIDRegistry
+							.getType(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			return result.toArray();
+		}
+
+		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionParticipantEditPart.VISUAL_ID: {
+			LinkedList<de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMAbstractNavigatorItem> result = new LinkedList<de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMAbstractNavigatorItem>();
+			Edge sv = (Edge) view;
+			de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMNavigatorGroup target = new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMNavigatorGroup(
+					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.Messages.NavigatorGroupName_DomainConnectionParticipant_4003_target,
+					"icons/linkTargetNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMNavigatorGroup source = new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMNavigatorGroup(
+					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.Messages.NavigatorGroupName_DomainConnectionParticipant_4003_source,
+					"icons/linkSourceNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection<View> connectedViews;
+			connectedViews = getLinksTargetByType(
+					Collections.singleton(sv),
+					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMVisualIDRegistry
+							.getType(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntityEditPart.VISUAL_ID));
+			target.addChildren(createNavigatorItems(connectedViews, target,
+					true));
+			connectedViews = getLinksTargetByType(
+					Collections.singleton(sv),
+					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMVisualIDRegistry
+							.getType(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionEditPart.VISUAL_ID));
+			target.addChildren(createNavigatorItems(connectedViews, target,
+					true));
+			connectedViews = getLinksSourceByType(
+					Collections.singleton(sv),
+					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMVisualIDRegistry
+							.getType(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionEditPart.VISUAL_ID));
+			source.addChildren(createNavigatorItems(connectedViews, source,
+					true));
+			if (!target.isEmpty()) {
+				result.add(target);
+			}
+			if (!source.isEmpty()) {
+				result.add(source);
+			}
+			return result.toArray();
+		}
+
 		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionEditPart.VISUAL_ID: {
 			LinkedList<de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMAbstractNavigatorItem> result = new LinkedList<de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMAbstractNavigatorItem>();
 			Node sv = (Node) view;
@@ -373,103 +454,6 @@ public class PLMNavigatorContentProvider implements ICommonContentProvider {
 			return result.toArray();
 		}
 
-		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionParticipantEditPart.VISUAL_ID: {
-			LinkedList<de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMAbstractNavigatorItem> result = new LinkedList<de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMAbstractNavigatorItem>();
-			Edge sv = (Edge) view;
-			de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMNavigatorGroup target = new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMNavigatorGroup(
-					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.Messages.NavigatorGroupName_DomainConnectionParticipant_4003_target,
-					"icons/linkTargetNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMNavigatorGroup source = new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMNavigatorGroup(
-					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.Messages.NavigatorGroupName_DomainConnectionParticipant_4003_source,
-					"icons/linkSourceNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection<View> connectedViews;
-			connectedViews = getLinksTargetByType(
-					Collections.singleton(sv),
-					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMVisualIDRegistry
-							.getType(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntityEditPart.VISUAL_ID));
-			target.addChildren(createNavigatorItems(connectedViews, target,
-					true));
-			connectedViews = getLinksTargetByType(
-					Collections.singleton(sv),
-					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMVisualIDRegistry
-							.getType(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionEditPart.VISUAL_ID));
-			target.addChildren(createNavigatorItems(connectedViews, target,
-					true));
-			connectedViews = getLinksSourceByType(
-					Collections.singleton(sv),
-					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMVisualIDRegistry
-							.getType(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionEditPart.VISUAL_ID));
-			source.addChildren(createNavigatorItems(connectedViews, source,
-					true));
-			if (!target.isEmpty()) {
-				result.add(target);
-			}
-			if (!source.isEmpty()) {
-				result.add(source);
-			}
-			return result.toArray();
-		}
-
-		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.OntologyEditPart.VISUAL_ID: {
-			LinkedList<de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMAbstractNavigatorItem> result = new LinkedList<de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMAbstractNavigatorItem>();
-			Node sv = (Node) view;
-			Collection<View> connectedViews;
-			connectedViews = getChildrenByType(
-					Collections.singleton(sv),
-					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMVisualIDRegistry
-							.getType(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.OntologyOntologyLevelCompartmentEditPart.VISUAL_ID));
-			connectedViews = getChildrenByType(
-					connectedViews,
-					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMVisualIDRegistry
-							.getType(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.Model2EditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			return result.toArray();
-		}
-
-		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.BinaryGeneralizationEditPart.VISUAL_ID: {
-			LinkedList<de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMAbstractNavigatorItem> result = new LinkedList<de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMAbstractNavigatorItem>();
-			Edge sv = (Edge) view;
-			de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMNavigatorGroup target = new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMNavigatorGroup(
-					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.Messages.NavigatorGroupName_BinaryGeneralization_4004_target,
-					"icons/linkTargetNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMNavigatorGroup source = new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMNavigatorGroup(
-					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.Messages.NavigatorGroupName_BinaryGeneralization_4004_source,
-					"icons/linkSourceNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection<View> connectedViews;
-			connectedViews = getLinksTargetByType(
-					Collections.singleton(sv),
-					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMVisualIDRegistry
-							.getType(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntityEditPart.VISUAL_ID));
-			target.addChildren(createNavigatorItems(connectedViews, target,
-					true));
-			connectedViews = getLinksTargetByType(
-					Collections.singleton(sv),
-					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMVisualIDRegistry
-							.getType(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionEditPart.VISUAL_ID));
-			target.addChildren(createNavigatorItems(connectedViews, target,
-					true));
-			connectedViews = getLinksSourceByType(
-					Collections.singleton(sv),
-					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMVisualIDRegistry
-							.getType(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntityEditPart.VISUAL_ID));
-			source.addChildren(createNavigatorItems(connectedViews, source,
-					true));
-			connectedViews = getLinksSourceByType(
-					Collections.singleton(sv),
-					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMVisualIDRegistry
-							.getType(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionEditPart.VISUAL_ID));
-			source.addChildren(createNavigatorItems(connectedViews, source,
-					true));
-			if (!target.isEmpty()) {
-				result.add(target);
-			}
-			if (!source.isEmpty()) {
-				result.add(source);
-			}
-			return result.toArray();
-		}
-
 		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ModelEditPart.VISUAL_ID: {
 			LinkedList<de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMAbstractNavigatorItem> result = new LinkedList<de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMAbstractNavigatorItem>();
 			Diagram sv = (Diagram) view;
@@ -504,30 +488,46 @@ public class PLMNavigatorContentProvider implements ICommonContentProvider {
 			return result.toArray();
 		}
 
-		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.Model2EditPart.VISUAL_ID: {
+		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.InstantiationEditPart.VISUAL_ID: {
 			LinkedList<de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMAbstractNavigatorItem> result = new LinkedList<de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMAbstractNavigatorItem>();
-			Node sv = (Node) view;
+			Edge sv = (Edge) view;
+			de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMNavigatorGroup target = new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMNavigatorGroup(
+					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.Messages.NavigatorGroupName_Instantiation_4002_target,
+					"icons/linkTargetNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMNavigatorGroup source = new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMNavigatorGroup(
+					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.Messages.NavigatorGroupName_Instantiation_4002_source,
+					"icons/linkSourceNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection<View> connectedViews;
-			connectedViews = getChildrenByType(
+			connectedViews = getLinksTargetByType(
 					Collections.singleton(sv),
-					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMVisualIDRegistry
-							.getType(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ModelDomainElementsComartmentEditPart.VISUAL_ID));
-			connectedViews = getChildrenByType(
-					connectedViews,
 					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMVisualIDRegistry
 							.getType(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntityEditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getChildrenByType(
+			target.addChildren(createNavigatorItems(connectedViews, target,
+					true));
+			connectedViews = getLinksTargetByType(
 					Collections.singleton(sv),
 					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMVisualIDRegistry
-							.getType(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ModelDomainElementsComartmentEditPart.VISUAL_ID));
-			connectedViews = getChildrenByType(
-					connectedViews,
+							.getType(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionEditPart.VISUAL_ID));
+			target.addChildren(createNavigatorItems(connectedViews, target,
+					true));
+			connectedViews = getLinksSourceByType(
+					Collections.singleton(sv),
+					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMVisualIDRegistry
+							.getType(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntityEditPart.VISUAL_ID));
+			source.addChildren(createNavigatorItems(connectedViews, source,
+					true));
+			connectedViews = getLinksSourceByType(
+					Collections.singleton(sv),
 					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMVisualIDRegistry
 							.getType(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionEditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
+			source.addChildren(createNavigatorItems(connectedViews, source,
+					true));
+			if (!target.isEmpty()) {
+				result.add(target);
+			}
+			if (!source.isEmpty()) {
+				result.add(source);
+			}
 			return result.toArray();
 		}
 		}
