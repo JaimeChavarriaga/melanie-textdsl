@@ -82,20 +82,16 @@ public class PLMParserProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
-	private IParser domainEntityPotency_5009Parser;
+	private de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.parsers.DomainEntityLabelExpressionLabelParser domainEntityLabel_5009Parser;
 
 	/**
 	 * @generated
 	 */
-	private IParser getDomainEntityPotency_5009Parser() {
-		if (domainEntityPotency_5009Parser == null) {
-			EAttribute[] features = new EAttribute[] { de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.eINSTANCE
-					.getPotentElement_Potency() };
-			de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.parsers.MessageFormatParser parser = new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.parsers.MessageFormatParser(
-					features);
-			domainEntityPotency_5009Parser = parser;
+	private IParser getDomainEntityLabel_5009Parser() {
+		if (domainEntityLabel_5009Parser == null) {
+			domainEntityLabel_5009Parser = new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.parsers.DomainEntityLabelExpressionLabelParser();
 		}
-		return domainEntityPotency_5009Parser;
+		return domainEntityLabel_5009Parser;
 	}
 
 	/**
@@ -145,26 +141,42 @@ public class PLMParserProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
-	private IParser domainConnectionNamePotency_5006Parser;
+	private IParser domainConnectionName_5006Parser;
 
 	/**
 	 * @generated
 	 */
-	private IParser getDomainConnectionNamePotency_5006Parser() {
-		if (domainConnectionNamePotency_5006Parser == null) {
-			EAttribute[] features = new EAttribute[] {
-					de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.eINSTANCE
-							.getElement_Name(),
-					de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.eINSTANCE
-							.getPotentElement_Potency() };
+	private IParser getDomainConnectionName_5006Parser() {
+		if (domainConnectionName_5006Parser == null) {
+			EAttribute[] features = new EAttribute[] { de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.eINSTANCE
+					.getElement_Name() };
 			de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.parsers.MessageFormatParser parser = new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.parsers.MessageFormatParser(
 					features);
-			parser.setViewPattern("{0}^{1}"); //$NON-NLS-1$
-			parser.setEditorPattern("{0}^{1}"); //$NON-NLS-1$
-			parser.setEditPattern("{0}^{1}"); //$NON-NLS-1$
-			domainConnectionNamePotency_5006Parser = parser;
+			parser.setViewPattern("{0}"); //$NON-NLS-1$
+			parser.setEditorPattern("{0}"); //$NON-NLS-1$
+			parser.setEditPattern("{0}"); //$NON-NLS-1$
+			domainConnectionName_5006Parser = parser;
 		}
-		return domainConnectionNamePotency_5006Parser;
+		return domainConnectionName_5006Parser;
+	}
+
+	/**
+	 * @generated
+	 */
+	private IParser domainConnectionPotency_5012Parser;
+
+	/**
+	 * @generated
+	 */
+	private IParser getDomainConnectionPotency_5012Parser() {
+		if (domainConnectionPotency_5012Parser == null) {
+			EAttribute[] features = new EAttribute[] { de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.eINSTANCE
+					.getPotentElement_Potency() };
+			de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.parsers.MessageFormatParser parser = new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.parsers.MessageFormatParser(
+					features);
+			domainConnectionPotency_5012Parser = parser;
+		}
+		return domainConnectionPotency_5012Parser;
 	}
 
 	/**
@@ -179,13 +191,15 @@ public class PLMParserProvider extends AbstractProvider implements
 		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntityNamePotencyEditPart.VISUAL_ID:
 			return getDomainEntityName_5005Parser();
 		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntityNameExpressedPotencyLevEditPart.VISUAL_ID:
-			return getDomainEntityPotency_5009Parser();
+			return getDomainEntityLabel_5009Parser();
 		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntityNameExpressedPotencyLev2EditPart.VISUAL_ID:
 			return getDomainEntityNameExpressedPotencyLevel_5011Parser();
 		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.FieldNamePotencyEditPart.VISUAL_ID:
 			return getFieldLabel_5010Parser();
 		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionNamePotencyEditPart.VISUAL_ID:
-			return getDomainConnectionNamePotency_5006Parser();
+			return getDomainConnectionName_5006Parser();
+		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionPotencyEditPart.VISUAL_ID:
+			return getDomainConnectionPotency_5012Parser();
 		}
 		return null;
 	}

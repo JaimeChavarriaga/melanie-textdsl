@@ -30,7 +30,7 @@ public class PLMOCLFactory {
 	 * @generated
 	 */
 	protected PLMOCLFactory() {
-		this.expressions = new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.expressions.PLMAbstractExpression[1];
+		this.expressions = new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.expressions.PLMAbstractExpression[2];
 	}
 
 	/**
@@ -49,7 +49,9 @@ public class PLMOCLFactory {
 			throw new IllegalArgumentException();
 		}
 		if (cached.expressions[index] == null) {
-			final String[] exprBodies = new String[] { "let name:String = self.name in\r\nlet dataType:String = self.datatype.name\r\nin\r\nname.concat(\':\').concat(dataType)", //$NON-NLS-1$
+			final String[] exprBodies = new String[] {
+					"let name:String = self.name in\r\nlet dataType:String = self.datatype.name in\r\nlet potency:String = if (self.potency >= 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(\r\n            denominator : Integer;\r\n            s : String = \'\'|\r\n            let numberAsString : String = OrderedSet{\r\n                    \'0\',\'1\',\'2\',\'3\',\'4\',\'5\',\'6\',\'7\',\'8\',\'9\'\r\n                }->at(self.potency.div(denominator).mod(10) + 1)\r\n            in\r\n                if s=\'\' and numberAsString = \'0\' then\r\n                    s\r\n                else\r\n                    s.concat(numberAsString)\r\n                endif\r\n        )\r\n\telse \r\n\t\t\'*\'\r\n\tendif\r\nin\r\nname.concat(\':\').concat(potency)", //$NON-NLS-1$
+					"let potency:String = if (self.potency >= 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(\r\n            denominator : Integer;\r\n            s : String = \'\'|\r\n            let numberAsString : String = OrderedSet{\r\n                    \'0\',\'1\',\'2\',\'3\',\'4\',\'5\',\'6\',\'7\',\'8\',\'9\'\r\n                }->at(self.potency.div(denominator).mod(10) + 1)\r\n            in\r\n                if s=\'\' and numberAsString = \'0\' then\r\n                    s\r\n                else\r\n                    s.concat(numberAsString)\r\n                endif\r\n        )\r\n\telse \r\n\t\t\'*\'\r\n\tendif\r\nin\r\npotency", //$NON-NLS-1$
 			};
 			cached.expressions[index] = getExpression(
 					exprBodies[index],

@@ -516,6 +516,10 @@ public class PLMViewProvider extends AbstractProvider implements IViewProvider {
 				node,
 				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMVisualIDRegistry
 						.getType(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionNamePotencyEditPart.VISUAL_ID));
+		Node label5012 = createLabel(
+				node,
+				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMVisualIDRegistry
+						.getType(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionPotencyEditPart.VISUAL_ID));
 		return node;
 	}
 

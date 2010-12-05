@@ -217,6 +217,9 @@ public class PLMVisualIDRegistry {
 			if (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionNamePotencyEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
+			if (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionPotencyEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			break;
 		case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.OntologyOntologyLevelCompartmentEditPart.VISUAL_ID:
 			if (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.Model2EditPart.VISUAL_ID == nodeVisualID) {
