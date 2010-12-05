@@ -92,12 +92,12 @@
                   <domainMetaElement
                       href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Field"/>
                   <labelMappings
-                      xsi:type="gmfmap:ExpressionLabelMapping"
-                      readOnly="true">
+                      xsi:type="gmfmap:FeatureLabelMapping"
+                      viewPattern="">
                     <diagramLabel
                         href="plm.gmfgraph#DomainEntityFieldFigureNameLabel"/>
-                    <viewExpression
-                        body="self.name&#xD;&#xA;"/>
+                    <features
+                        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/name"/>
                   </labelMappings>
                   <labelMappings
                       xsi:type="gmfmap:ExpressionLabelMapping"
@@ -111,7 +111,7 @@
                       xsi:type="gmfmap:ExpressionLabelMapping"
                       readOnly="true">
                     <diagramLabel
-                        href="plm.gmfgraph#DomainEntityFieldFigureDataTypeLabel"/>
+                        href="plm.gmfgraph#DomainEntityFieldFigureDefaultValueLabel"/>
                     <viewExpression
                         body="self.datatype.name"/>
                   </labelMappings>
