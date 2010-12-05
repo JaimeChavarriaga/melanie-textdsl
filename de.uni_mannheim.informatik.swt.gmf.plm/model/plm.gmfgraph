@@ -141,6 +141,9 @@
                   xsi:type="gmfgraph:GridLayoutData"
                   grabExcessHorizontalSpace="true"
                   horizontalAlignment="END"/>
+              <font
+                  xsi:type="gmfgraph:BasicFont"
+                  style="BOLD"/>
             </children>
             <children
                 xsi:type="gmfgraph:Label"
@@ -191,14 +194,67 @@
     <descriptors
         name="DomainEntityFieldFigure">
       <actualFigure
-          xsi:type="gmfgraph:Rectangle">
+          xsi:type="gmfgraph:Rectangle"
+          name="DomainEntityFieldFigure"
+          outline="false"
+          fill="false">
+        <layout
+            xsi:type="gmfgraph:FlowLayout"
+            vertical="true"
+            matchMinorSize="true"
+            forceSingleLine="true"
+            majorSpacing="0"
+            minorSpacing="0"/>
         <children
-            xsi:type="gmfgraph:Label"
-            name="FieldNameFigure"
-            text=""/>
+            xsi:type="gmfgraph:Rectangle"
+            name="InnerRectangle"
+            outline="false"
+            fill="false">
+          <layout
+              xsi:type="gmfgraph:GridLayout"
+              numColumns="4"
+              equalWidth="false"/>
+          <children
+              xsi:type="gmfgraph:Label"
+              name="FieldNameFigure"
+              text="">
+            <layoutData
+                xsi:type="gmfgraph:GridLayoutData"
+                horizontalAlignment="BEGINNING"/>
+          </children>
+          <children
+              xsi:type="gmfgraph:Label"
+              name="FieldPotencyFigure">
+            <layoutData
+                xsi:type="gmfgraph:GridLayoutData"
+                horizontalAlignment="BEGINNING"/>
+            <insets
+                bottom="10"/>
+          </children>
+          <children
+              xsi:type="gmfgraph:Label"
+              name="FieldDataTypeFigure">
+            <layoutData
+                xsi:type="gmfgraph:GridLayoutData"
+                horizontalAlignment="BEGINNING"/>
+          </children>
+          <children
+              xsi:type="gmfgraph:Label"
+              name="FieldDefaultValueFigure">
+            <layoutData
+                xsi:type="gmfgraph:GridLayoutData"
+                horizontalAlignment="BEGINNING"/>
+          </children>
+        </children>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.6/@actualFigure/@children.0"/>
+          figure="//@figures.0/@descriptors.6/@actualFigure/@children.0/@children.0"/>
+      <accessors
+          figure="//@figures.0/@descriptors.6/@actualFigure/@children.0/@children.1"/>
+      <accessors
+          figure="//@figures.0/@descriptors.6/@actualFigure/@children.0/@children.2"/>
+      <accessors
+          figure="//@figures.0/@descriptors.6/@actualFigure/@children.0/@children.3"/>
     </descriptors>
     <descriptors
         name="DomainConnectionFigure">
@@ -226,6 +282,9 @@
                 xsi:type="gmfgraph:GridLayoutData"
                 grabExcessHorizontalSpace="true"
                 horizontalAlignment="END"/>
+            <font
+                xsi:type="gmfgraph:BasicFont"
+                style="BOLD"/>
           </children>
           <children
               xsi:type="gmfgraph:Label"
@@ -357,6 +416,21 @@
       figure="DomainEntityFieldFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.6/@accessors.0"/>
+  <labels
+      name="DomainEntityFieldFigurePotencyLabel"
+      figure="DomainEntityFieldFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.6/@accessors.1"/>
+  <labels
+      name="DomainEntityFieldFigureDataTypeLabel"
+      figure="DomainEntityFieldFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.6/@accessors.2"/>
+  <labels
+      name="DomainEntityFieldFigureDefaultValueLabel"
+      figure="DomainEntityFieldFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.6/@accessors.3"/>
   <labels
       name="DomainConnectionFigureName"
       figure="DomainConnectionFigure"

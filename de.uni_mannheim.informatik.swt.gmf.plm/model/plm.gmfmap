@@ -63,7 +63,7 @@
                 <diagramLabel
                     href="plm.gmfgraph#DomainEntityFigurePotencyLabel"/>
                 <viewExpression
-                    body="let potency:String = if (self.potency >= 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.potency.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'*'&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;potency"/>
+                    body="let potency:String = if (self.potency > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.potency.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.potency = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;potency"/>
               </labelMappings>
               <labelMappings
                   xsi:type="gmfmap:FeatureLabelMapping"
@@ -97,7 +97,23 @@
                     <diagramLabel
                         href="plm.gmfgraph#DomainEntityFieldFigureNameLabel"/>
                     <viewExpression
-                        body="let name:String = self.name in&#xD;&#xA;let dataType:String = self.datatype.name in&#xD;&#xA;let potency:String = if (self.potency >= 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.potency.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'*'&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;name.concat(':').concat(potency)"/>
+                        body="self.name&#xD;&#xA;"/>
+                  </labelMappings>
+                  <labelMappings
+                      xsi:type="gmfmap:ExpressionLabelMapping"
+                      readOnly="true">
+                    <diagramLabel
+                        href="plm.gmfgraph#DomainEntityFieldFigurePotencyLabel"/>
+                    <viewExpression
+                        body="let potency:String = if (self.potency > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.potency.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.potency = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;potency"/>
+                  </labelMappings>
+                  <labelMappings
+                      xsi:type="gmfmap:ExpressionLabelMapping"
+                      readOnly="true">
+                    <diagramLabel
+                        href="plm.gmfgraph#DomainEntityFieldFigureDataTypeLabel"/>
+                    <viewExpression
+                        body="self.datatype.name"/>
                   </labelMappings>
                   <tool
                       xsi:type="gmftool:CreationTool"
@@ -129,11 +145,12 @@
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/name"/>
               </labelMappings>
               <labelMappings
-                  xsi:type="gmfmap:FeatureLabelMapping">
+                  xsi:type="gmfmap:ExpressionLabelMapping"
+                  readOnly="true">
                 <diagramLabel
                     href="plm.gmfgraph#DomainConnectionFigurePotency"/>
-                <features
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//PotentElement/potency"/>
+                <viewExpression
+                    body="let potency:String = if (self.potency > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.potency.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.potency = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;potency"/>
               </labelMappings>
               <tool
                   xsi:type="gmftool:CreationTool"
