@@ -131,14 +131,27 @@
               xsi:type="gmfgraph:Rectangle"
               name="NameRectangle">
             <layout
-                xsi:type="gmfgraph:GridLayout"/>
+                xsi:type="gmfgraph:GridLayout"
+                numColumns="2"
+                equalWidth="false"/>
             <children
                 xsi:type="gmfgraph:Label"
                 name="DomainEntityNameFigure">
               <layoutData
                   xsi:type="gmfgraph:GridLayoutData"
                   grabExcessHorizontalSpace="true"
-                  grabExcessVerticalSpace="true"/>
+                  horizontalAlignment="END"/>
+            </children>
+            <children
+                xsi:type="gmfgraph:Label"
+                name="DomainEntityPotencyLabel"
+                text="">
+              <layoutData
+                  xsi:type="gmfgraph:GridLayoutData"
+                  grabExcessHorizontalSpace="true"
+                  horizontalAlignment="BEGINNING"/>
+              <insets
+                  bottom="10"/>
             </children>
           </children>
           <children
@@ -167,6 +180,8 @@
           figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.0/@children.0"/>
       <accessors
           figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.1/@children.1"/>
+      <accessors
+          figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.0/@children.1"/>
     </descriptors>
     <descriptors
         name="DomainEntityFieldCompartmentFigure">
@@ -278,6 +293,11 @@
       figure="DomainEntityFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.4/@accessors.0"/>
+  <labels
+      name="DomainEntityFigurePotencyLabel"
+      figure="DomainEntityFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.4/@accessors.2"/>
   <labels
       name="DomainEntityFigureAVSLabel"
       figure="DomainEntityFigure"

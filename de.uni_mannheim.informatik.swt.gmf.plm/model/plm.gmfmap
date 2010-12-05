@@ -51,11 +51,16 @@
                   href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//DomainEntity"/>
               <labelMappings
                   xsi:type="gmfmap:FeatureLabelMapping"
-                  viewPattern="{0}^{1}">
+                  viewPattern="{0}">
                 <diagramLabel
                     href="plm.gmfgraph#DomainEntityFigureNameLabel"/>
                 <features
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/name"/>
+              </labelMappings>
+              <labelMappings
+                  xsi:type="gmfmap:FeatureLabelMapping">
+                <diagramLabel
+                    href="plm.gmfgraph#DomainEntityFigurePotencyLabel"/>
                 <features
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//PotentElement/potency"/>
               </labelMappings>

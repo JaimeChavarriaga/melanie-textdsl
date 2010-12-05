@@ -130,6 +130,12 @@ public class DomainEntityEditPart extends ShapeNodeEditPart {
 		if (childEditPart instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntityNameExpressedPotencyLevEditPart) {
 			((de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntityNameExpressedPotencyLevEditPart) childEditPart)
 					.setLabel(getPrimaryShape()
+							.getFigureDomainEntityPotencyLabel());
+			return true;
+		}
+		if (childEditPart instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntityNameExpressedPotencyLev2EditPart) {
+			((de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntityNameExpressedPotencyLev2EditPart) childEditPart)
+					.setLabel(getPrimaryShape()
 							.getFigureDomainEntityAVSFigure());
 			return true;
 		}
@@ -144,6 +150,9 @@ public class DomainEntityEditPart extends ShapeNodeEditPart {
 			return true;
 		}
 		if (childEditPart instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntityNameExpressedPotencyLevEditPart) {
+			return true;
+		}
+		if (childEditPart instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntityNameExpressedPotencyLev2EditPart) {
 			return true;
 		}
 		return false;
@@ -379,6 +388,11 @@ public class DomainEntityEditPart extends ShapeNodeEditPart {
 		/**
 		 * @generated
 		 */
+		private WrappingLabel fFigureDomainEntityPotencyLabel;
+
+		/**
+		 * @generated
+		 */
 		public DomainEntityFigure() {
 
 			this.setBorder(new MarginBorder(getMapMode().DPtoLP(0),
@@ -412,8 +426,8 @@ public class DomainEntityEditPart extends ShapeNodeEditPart {
 			innerRectangle0.add(nameRectangle1);
 
 			GridLayout layoutNameRectangle1 = new GridLayout();
-			layoutNameRectangle1.numColumns = 1;
-			layoutNameRectangle1.makeColumnsEqualWidth = true;
+			layoutNameRectangle1.numColumns = 2;
+			layoutNameRectangle1.makeColumnsEqualWidth = false;
 			nameRectangle1.setLayoutManager(layoutNameRectangle1);
 
 			fFigureDomainEntityNameFigure = new WrappingLabel();
@@ -421,14 +435,32 @@ public class DomainEntityEditPart extends ShapeNodeEditPart {
 
 			GridData constraintFFigureDomainEntityNameFigure = new GridData();
 			constraintFFigureDomainEntityNameFigure.verticalAlignment = GridData.CENTER;
-			constraintFFigureDomainEntityNameFigure.horizontalAlignment = GridData.CENTER;
+			constraintFFigureDomainEntityNameFigure.horizontalAlignment = GridData.END;
 			constraintFFigureDomainEntityNameFigure.horizontalIndent = 0;
 			constraintFFigureDomainEntityNameFigure.horizontalSpan = 1;
 			constraintFFigureDomainEntityNameFigure.verticalSpan = 1;
 			constraintFFigureDomainEntityNameFigure.grabExcessHorizontalSpace = true;
-			constraintFFigureDomainEntityNameFigure.grabExcessVerticalSpace = true;
+			constraintFFigureDomainEntityNameFigure.grabExcessVerticalSpace = false;
 			nameRectangle1.add(fFigureDomainEntityNameFigure,
 					constraintFFigureDomainEntityNameFigure);
+
+			fFigureDomainEntityPotencyLabel = new WrappingLabel();
+			fFigureDomainEntityPotencyLabel.setText("");
+
+			fFigureDomainEntityPotencyLabel.setBorder(new MarginBorder(
+					getMapMode().DPtoLP(0), getMapMode().DPtoLP(-2),
+					getMapMode().DPtoLP(10), getMapMode().DPtoLP(0)));
+
+			GridData constraintFFigureDomainEntityPotencyLabel = new GridData();
+			constraintFFigureDomainEntityPotencyLabel.verticalAlignment = GridData.CENTER;
+			constraintFFigureDomainEntityPotencyLabel.horizontalAlignment = GridData.BEGINNING;
+			constraintFFigureDomainEntityPotencyLabel.horizontalIndent = 0;
+			constraintFFigureDomainEntityPotencyLabel.horizontalSpan = 1;
+			constraintFFigureDomainEntityPotencyLabel.verticalSpan = 1;
+			constraintFFigureDomainEntityPotencyLabel.grabExcessHorizontalSpace = true;
+			constraintFFigureDomainEntityPotencyLabel.grabExcessVerticalSpace = false;
+			nameRectangle1.add(fFigureDomainEntityPotencyLabel,
+					constraintFFigureDomainEntityPotencyLabel);
 
 			RectangleFigure aVSRectangle1 = new RectangleFigure();
 
@@ -468,6 +500,13 @@ public class DomainEntityEditPart extends ShapeNodeEditPart {
 		 */
 		public WrappingLabel getFigureDomainEntityAVSFigure() {
 			return fFigureDomainEntityAVSFigure;
+		}
+
+		/**
+		 * @generated
+		 */
+		public WrappingLabel getFigureDomainEntityPotencyLabel() {
+			return fFigureDomainEntityPotencyLabel;
 		}
 
 	}

@@ -201,6 +201,9 @@ public class PLMVisualIDRegistry {
 			if (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntityNameExpressedPotencyLevEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
+			if (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntityNameExpressedPotencyLev2EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			if (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntityDomainEntityFieldsCompartmentEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}

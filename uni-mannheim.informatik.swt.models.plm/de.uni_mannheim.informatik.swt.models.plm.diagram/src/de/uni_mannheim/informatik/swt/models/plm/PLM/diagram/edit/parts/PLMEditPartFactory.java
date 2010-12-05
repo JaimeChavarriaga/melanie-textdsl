@@ -63,6 +63,10 @@ public class PLMEditPartFactory implements EditPartFactory {
 				return new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntityNameExpressedPotencyLevEditPart(
 						view);
 
+			case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntityNameExpressedPotencyLev2EditPart.VISUAL_ID:
+				return new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntityNameExpressedPotencyLev2EditPart(
+						view);
+
 			case de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.FieldEditPart.VISUAL_ID:
 				return new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.FieldEditPart(
 						view);
