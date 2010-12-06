@@ -421,16 +421,33 @@
       </actualFigure>
     </descriptors>
     <descriptors
-        name="SetRelationShipFigure">
+        name="ComplementFigure">
       <actualFigure
           xsi:type="gmfgraph:ScalablePolygon"
-          name="SetRelationShipFigure">
+          name="ComplementFigure">
         <preferredSize
-            dx="120"
-            dy="50"/>
+            dx="80"
+            dy="40"/>
         <children
             xsi:type="gmfgraph:Rectangle"
-            name="InnerRectangle"/>
+            name="NameRectangle"
+            outline="false"
+            fill="false">
+          <layout
+              xsi:type="gmfgraph:GridLayout"/>
+          <children
+              xsi:type="gmfgraph:Label"
+              name="ComplementNameFigure"
+              text="complements">
+            <layoutData
+                xsi:type="gmfgraph:GridLayoutData"
+                grabExcessHorizontalSpace="true"
+                grabExcessVerticalSpace="true"/>
+            <foregroundColor
+                xsi:type="gmfgraph:ConstantColor"
+                value="black"/>
+          </children>
+        </children>
         <template
             y="30"/>
         <template
@@ -476,6 +493,160 @@
         <template
             y="50"/>
       </actualFigure>
+      <accessors
+          figure="//@figures.0/@descriptors.12/@actualFigure/@children.0/@children.0"/>
+    </descriptors>
+    <descriptors
+        name="EqualsFigure">
+      <actualFigure
+          xsi:type="gmfgraph:ScalablePolygon"
+          name="EqualsFigure">
+        <preferredSize
+            dx="80"
+            dy="40"/>
+        <children
+            xsi:type="gmfgraph:Rectangle"
+            name="NameRectangle"
+            outline="false"
+            fill="false">
+          <layout
+              xsi:type="gmfgraph:GridLayout"/>
+          <children
+              xsi:type="gmfgraph:Label"
+              name="EqualsNameFigure"
+              text="equals">
+            <layoutData
+                xsi:type="gmfgraph:GridLayoutData"
+                grabExcessHorizontalSpace="true"
+                grabExcessVerticalSpace="true"/>
+            <foregroundColor
+                xsi:type="gmfgraph:ConstantColor"
+                value="black"/>
+          </children>
+        </children>
+        <template
+            y="30"/>
+        <template
+            x="10"
+            y="15"/>
+        <template
+            x="20"
+            y="5"/>
+        <template
+            x="30"/>
+        <template
+            x="40"/>
+        <template
+            x="50"
+            y="5"/>
+        <template
+            x="60"
+            y="15"/>
+        <template
+            x="70"
+            y="30"/>
+        <template
+            x="70"
+            y="50"/>
+        <template
+            x="60"
+            y="65"/>
+        <template
+            x="50"
+            y="75"/>
+        <template
+            x="40"
+            y="80"/>
+        <template
+            x="30"
+            y="80"/>
+        <template
+            x="20"
+            y="75"/>
+        <template
+            x="10"
+            y="65"/>
+        <template
+            y="50"/>
+      </actualFigure>
+      <accessors
+          figure="//@figures.0/@descriptors.13/@actualFigure/@children.0/@children.0"/>
+    </descriptors>
+    <descriptors
+        name="InversionFigure">
+      <actualFigure
+          xsi:type="gmfgraph:ScalablePolygon"
+          name="InversionFigure">
+        <preferredSize
+            dx="80"
+            dy="40"/>
+        <children
+            xsi:type="gmfgraph:Rectangle"
+            name="NameRectangle"
+            outline="false"
+            fill="false">
+          <layout
+              xsi:type="gmfgraph:GridLayout"/>
+          <children
+              xsi:type="gmfgraph:Label"
+              name="InversionNameFigure"
+              text="inverts">
+            <layoutData
+                xsi:type="gmfgraph:GridLayoutData"
+                grabExcessHorizontalSpace="true"
+                grabExcessVerticalSpace="true"/>
+            <foregroundColor
+                xsi:type="gmfgraph:ConstantColor"
+                value="black"/>
+          </children>
+        </children>
+        <template
+            y="30"/>
+        <template
+            x="10"
+            y="15"/>
+        <template
+            x="20"
+            y="5"/>
+        <template
+            x="30"/>
+        <template
+            x="40"/>
+        <template
+            x="50"
+            y="5"/>
+        <template
+            x="60"
+            y="15"/>
+        <template
+            x="70"
+            y="30"/>
+        <template
+            x="70"
+            y="50"/>
+        <template
+            x="60"
+            y="65"/>
+        <template
+            x="50"
+            y="75"/>
+        <template
+            x="40"
+            y="80"/>
+        <template
+            x="30"
+            y="80"/>
+        <template
+            x="20"
+            y="75"/>
+        <template
+            x="10"
+            y="65"/>
+        <template
+            y="50"/>
+      </actualFigure>
+      <accessors
+          figure="//@figures.0/@descriptors.14/@actualFigure/@children.0/@children.0"/>
     </descriptors>
   </figures>
   <nodes
@@ -498,7 +669,13 @@
       figure="DomainEntityMethodFigure"/>
   <nodes
       name="Complement"
-      figure="SetRelationShipFigure"/>
+      figure="ComplementFigure"/>
+  <nodes
+      name="Equals"
+      figure="EqualsFigure"/>
+  <nodes
+      name="Inversion"
+      figure="InversionFigure"/>
   <connections
       name="DomainConnectionParticipants"
       figure="DomainConnectionParticipantsFigure"/>
@@ -596,4 +773,19 @@
       figure="DomainConnectionFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.8/@accessors.1"/>
+  <labels
+      name="ComplementFigureName"
+      figure="ComplementFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.12/@accessors.0"/>
+  <labels
+      name="EqualsFigureName"
+      figure="EqualsFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.13/@accessors.0"/>
+  <labels
+      name="InversionFigureName"
+      figure="InversionFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.14/@accessors.0"/>
 </gmfgraph:Canvas>

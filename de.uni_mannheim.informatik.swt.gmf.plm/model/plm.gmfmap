@@ -186,6 +186,11 @@
             <ownedChild>
               <domainMetaElement
                   href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Complement"/>
+              <labelMappings
+                  readOnly="true">
+                <diagramLabel
+                    href="plm.gmfgraph#ComplementFigureName"/>
+              </labelMappings>
               <tool
                   xsi:type="gmftool:CreationTool"
                   href="plm.gmftool#//@palette/@tools.3/@tools.0"/>
@@ -193,8 +198,46 @@
                   href="plm.gmfgraph#Complement"/>
             </ownedChild>
           </children>
+          <children
+              compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@compartments.0">
+            <containmentFeature
+                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/elements"/>
+            <ownedChild>
+              <domainMetaElement
+                  href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Equals"/>
+              <labelMappings
+                  readOnly="true">
+                <diagramLabel
+                    href="plm.gmfgraph#EqualsFigureName"/>
+              </labelMappings>
+              <tool
+                  xsi:type="gmftool:CreationTool"
+                  href="plm.gmftool#//@palette/@tools.3/@tools.1"/>
+              <diagramNode
+                  href="plm.gmfgraph#Equals"/>
+            </ownedChild>
+          </children>
+          <children
+              compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@compartments.0">
+            <containmentFeature
+                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/elements"/>
+            <ownedChild>
+              <domainMetaElement
+                  href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Inversion"/>
+              <labelMappings
+                  readOnly="true">
+                <diagramLabel
+                    href="plm.gmfgraph#InversionFigureName"/>
+              </labelMappings>
+              <tool
+                  xsi:type="gmftool:CreationTool"
+                  href="plm.gmftool#//@palette/@tools.3/@tools.2"/>
+              <diagramNode
+                  href="plm.gmfgraph#Inversion"/>
+            </ownedChild>
+          </children>
           <compartments
-              children="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.0 //@nodes.0/@ownedChild/@children.0/@ownedChild/@children.1 //@nodes.0/@ownedChild/@children.0/@ownedChild/@children.2">
+              children="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.0 //@nodes.0/@ownedChild/@children.0/@ownedChild/@children.1 //@nodes.0/@ownedChild/@children.0/@ownedChild/@children.2 //@nodes.0/@ownedChild/@children.0/@ownedChild/@children.3 //@nodes.0/@ownedChild/@children.0/@ownedChild/@children.4">
             <compartment
                 href="plm.gmfgraph#DomainElementsComartment"/>
           </compartments>
