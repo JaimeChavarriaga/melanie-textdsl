@@ -12,6 +12,9 @@
           name="OntologyFigure"
           cornerWidth="20"
           cornerHeight="20">
+        <preferredSize
+            dx="500"
+            dy="350"/>
         <children
             xsi:type="gmfgraph:Rectangle"
             name="InnerRectangel"
@@ -26,6 +29,8 @@
               minorAlignment="CENTER"
               majorSpacing="0"
               minorSpacing="0"/>
+          <maximumSize
+              dy="25"/>
           <children
               xsi:type="gmfgraph:Rectangle"
               name="NameArea"
@@ -60,7 +65,6 @@
           xsi:type="gmfgraph:Rectangle"
           name="ModelFigure">
         <minimumSize
-            dx="300"
             dy="300"/>
         <children
             xsi:type="gmfgraph:Rectangle"
@@ -76,6 +80,8 @@
               minorAlignment="CENTER"
               majorSpacing="0"
               minorSpacing="0"/>
+          <maximumSize
+              dy="25"/>
           <children
               xsi:type="gmfgraph:Rectangle"
               name="NameRectangle"
@@ -187,7 +193,7 @@
           figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.0/@children.1"/>
     </descriptors>
     <descriptors
-        name="DomainEntityFieldCompartmentFigure">
+        name="DomainEntityCompartmentFigure">
       <actualFigure
           xsi:type="gmfgraph:Rectangle"/>
     </descriptors>
@@ -215,7 +221,7 @@
               equalWidth="false"/>
           <children
               xsi:type="gmfgraph:Label"
-              name="FieldNameFigure"
+              name="DomainEntityFieldNameFigure"
               text="">
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
@@ -223,7 +229,7 @@
           </children>
           <children
               xsi:type="gmfgraph:Label"
-              name="FieldPotencyFigure">
+              name="DomainEntityFieldPotencyFigure">
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
                 horizontalAlignment="BEGINNING"/>
@@ -232,14 +238,14 @@
           </children>
           <children
               xsi:type="gmfgraph:Label"
-              name="FieldDataTypeFigure">
+              name="DomainEntityFieldDataTypeFigure">
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
                 horizontalAlignment="BEGINNING"/>
           </children>
           <children
               xsi:type="gmfgraph:Label"
-              name="FieldDefaultValueFigure">
+              name="DomainEntityFieldDefaultValueFigure">
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
                 horizontalAlignment="BEGINNING"/>
@@ -254,6 +260,70 @@
           figure="//@figures.0/@descriptors.6/@actualFigure/@children.0/@children.2"/>
       <accessors
           figure="//@figures.0/@descriptors.6/@actualFigure/@children.0/@children.3"/>
+    </descriptors>
+    <descriptors
+        name="DomainEntityMethodFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="DomainEntityMethodFigure"
+          fill="false">
+        <layout
+            xsi:type="gmfgraph:FlowLayout"
+            vertical="true"
+            matchMinorSize="true"
+            forceSingleLine="true"
+            majorSpacing="0"
+            minorSpacing="0"/>
+        <children
+            xsi:type="gmfgraph:Rectangle"
+            name="InnerRectangle"
+            outline="false"
+            fill="false">
+          <layout
+              xsi:type="gmfgraph:GridLayout"
+              numColumns="3"
+              equalWidth="false"/>
+          <children
+              xsi:type="gmfgraph:Label"
+              name="DomainEntityMethodNameFigure"
+              text="">
+            <layoutData
+                xsi:type="gmfgraph:GridLayoutData"
+                horizontalAlignment="BEGINNING"/>
+          </children>
+          <children
+              xsi:type="gmfgraph:Label"
+              name="DomainEntityMethodPotencyFigure">
+            <layoutData
+                xsi:type="gmfgraph:GridLayoutData"
+                horizontalAlignment="BEGINNING"/>
+            <insets
+                bottom="10"/>
+          </children>
+          <children
+              xsi:type="gmfgraph:Label"
+              name="DomainEntityMethodInputFigure">
+            <layoutData
+                xsi:type="gmfgraph:GridLayoutData"
+                horizontalAlignment="BEGINNING"/>
+          </children>
+          <children
+              xsi:type="gmfgraph:Label"
+              name="DomainEntityMethodOutputFigure">
+            <layoutData
+                xsi:type="gmfgraph:GridLayoutData"
+                horizontalAlignment="BEGINNING"/>
+          </children>
+        </children>
+      </actualFigure>
+      <accessors
+          figure="//@figures.0/@descriptors.7/@actualFigure/@children.0/@children.0"/>
+      <accessors
+          figure="//@figures.0/@descriptors.7/@actualFigure/@children.0/@children.1"/>
+      <accessors
+          figure="//@figures.0/@descriptors.7/@actualFigure/@children.0/@children.3"/>
+      <accessors
+          figure="//@figures.0/@descriptors.7/@actualFigure/@children.0/@children.2"/>
     </descriptors>
     <descriptors
         name="DomainConnectionFigure">
@@ -314,9 +384,9 @@
             x="20"/>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.7/@actualFigure/@children.1/@children.0"/>
+          figure="//@figures.0/@descriptors.8/@actualFigure/@children.1/@children.0"/>
       <accessors
-          figure="//@figures.0/@descriptors.7/@actualFigure/@children.1/@children.1"/>
+          figure="//@figures.0/@descriptors.8/@actualFigure/@children.1/@children.1"/>
     </descriptors>
     <descriptors
         name="DomainConnectionParticipantsFigure">
@@ -328,7 +398,7 @@
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"
           lineKind="LINE_DASH"
-          targetDecoration="//@figures.0/@descriptors.9/@actualFigure/@children.0">
+          targetDecoration="//@figures.0/@descriptors.10/@actualFigure/@children.0">
         <children
             xsi:type="gmfgraph:PolylineDecoration"
             name="InstantiationTarget"/>
@@ -338,7 +408,7 @@
         name="BinaryGeneralizationFigure">
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"
-          targetDecoration="//@figures.0/@descriptors.10/@actualFigure/@children.0">
+          targetDecoration="//@figures.0/@descriptors.11/@actualFigure/@children.0">
         <children
             xsi:type="gmfgraph:PolygonDecoration"
             name="BinaryGenralizationTarget">
@@ -366,6 +436,9 @@
   <nodes
       name="DomnainEntityFieldNode"
       figure="DomainEntityFieldFigure"/>
+  <nodes
+      name="DomnainEntityMethodNode"
+      figure="DomainEntityMethodFigure"/>
   <connections
       name="DomainConnectionParticipants"
       figure="DomainConnectionParticipantsFigure"/>
@@ -383,8 +456,11 @@
       figure="DomainElementsCompartmentFigure"/>
   <compartments
       name="DomainEntityFieldsCompartment"
-      figure="DomainEntityFieldCompartmentFigure"
+      figure="DomainEntityCompartmentFigure"
       collapsible="true"/>
+  <compartments
+      name="DomainEntityMethodsCompartment"
+      figure="DomainEntityCompartmentFigure"/>
   <labels
       name="OntologyFigureNameLabel"
       figure="OntologyFigure"
@@ -431,13 +507,33 @@
       elementIcon="false"
       accessor="//@figures.0/@descriptors.6/@accessors.3"/>
   <labels
+      name="DomainEntityMethodFigureNameLabel"
+      figure="DomainEntityMethodFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.7/@accessors.0"/>
+  <labels
+      name="DomainEntityMethodFigurePotencyLabel"
+      figure="DomainEntityMethodFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.7/@accessors.1"/>
+  <labels
+      name="DomainEntityMethodFigureInputLabel"
+      figure="DomainEntityMethodFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.7/@accessors.3"/>
+  <labels
+      name="DomainEntityMethodFigureOutputLabel"
+      figure="DomainEntityMethodFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.7/@accessors.2"/>
+  <labels
       name="DomainConnectionFigureName"
       figure="DomainConnectionFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.7/@accessors.0"/>
+      accessor="//@figures.0/@descriptors.8/@accessors.0"/>
   <labels
       name="DomainConnectionFigurePotency"
       figure="DomainConnectionFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.7/@accessors.1"/>
+      accessor="//@figures.0/@descriptors.8/@accessors.1"/>
 </gmfgraph:Canvas>
