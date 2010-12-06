@@ -179,8 +179,22 @@
                   href="plm.gmfgraph#DomainConnection"/>
             </ownedChild>
           </children>
+          <children
+              compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@compartments.0">
+            <containmentFeature
+                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/elements"/>
+            <ownedChild>
+              <domainMetaElement
+                  href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Complement"/>
+              <tool
+                  xsi:type="gmftool:CreationTool"
+                  href="plm.gmftool#//@palette/@tools.3/@tools.0"/>
+              <diagramNode
+                  href="plm.gmfgraph#Complement"/>
+            </ownedChild>
+          </children>
           <compartments
-              children="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.0 //@nodes.0/@ownedChild/@children.0/@ownedChild/@children.1">
+              children="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.0 //@nodes.0/@ownedChild/@children.0/@ownedChild/@children.1 //@nodes.0/@ownedChild/@children.0/@ownedChild/@children.2">
             <compartment
                 href="plm.gmfgraph#DomainElementsComartment"/>
           </compartments>

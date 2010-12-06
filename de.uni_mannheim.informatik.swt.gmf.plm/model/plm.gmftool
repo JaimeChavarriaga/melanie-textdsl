@@ -80,5 +80,18 @@
             xsi:type="gmftool:DefaultImage"/>
       </tools>
     </tools>
+    <tools
+        xsi:type="gmftool:ToolGroup"
+        title="Set Relationships">
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Complement"
+          description="Create new Complement">
+        <smallIcon
+            xsi:type="gmftool:DefaultImage"/>
+        <largeIcon
+            xsi:type="gmftool:DefaultImage"/>
+      </tools>
+    </tools>
   </palette>
 </gmftool:ToolRegistry>

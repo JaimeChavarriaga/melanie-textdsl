@@ -420,6 +420,63 @@
         </children>
       </actualFigure>
     </descriptors>
+    <descriptors
+        name="SetRelationShipFigure">
+      <actualFigure
+          xsi:type="gmfgraph:ScalablePolygon"
+          name="SetRelationShipFigure">
+        <preferredSize
+            dx="120"
+            dy="50"/>
+        <children
+            xsi:type="gmfgraph:Rectangle"
+            name="InnerRectangle"/>
+        <template
+            y="30"/>
+        <template
+            x="10"
+            y="15"/>
+        <template
+            x="20"
+            y="5"/>
+        <template
+            x="30"/>
+        <template
+            x="40"/>
+        <template
+            x="50"
+            y="5"/>
+        <template
+            x="60"
+            y="15"/>
+        <template
+            x="70"
+            y="30"/>
+        <template
+            x="70"
+            y="50"/>
+        <template
+            x="60"
+            y="65"/>
+        <template
+            x="50"
+            y="75"/>
+        <template
+            x="40"
+            y="80"/>
+        <template
+            x="30"
+            y="80"/>
+        <template
+            x="20"
+            y="75"/>
+        <template
+            x="10"
+            y="65"/>
+        <template
+            y="50"/>
+      </actualFigure>
+    </descriptors>
   </figures>
   <nodes
       name="Ontology"
@@ -439,6 +496,9 @@
   <nodes
       name="DomnainEntityMethodNode"
       figure="DomainEntityMethodFigure"/>
+  <nodes
+      name="Complement"
+      figure="SetRelationShipFigure"/>
   <connections
       name="DomainConnectionParticipants"
       figure="DomainConnectionParticipantsFigure"/>
