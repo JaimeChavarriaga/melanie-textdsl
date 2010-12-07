@@ -2,8 +2,7 @@
 <gmfgen:GenEditorGenerator xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:gmfgen="http://www.eclipse.org/gmf/2009/GenModel" sameFileForDiagramAndModel="true"
-    diagramFileExtension="oca"
+    xmlns:gmfgen="http://www.eclipse.org/gmf/2009/GenModel" diagramFileExtension="oca"
     dynamicTemplates="true"
     templateDirectory="/de.uni_mannheim.informatik.swt.gmf.plm/templates">
   <diagram
@@ -649,6 +648,68 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/BinaryGeneralization/supertype"/>
       </modelFacet>
     </links>
+    <links
+        visualID="4006"
+        editPartClassName="SetRelationshipSourceEditPart"
+        itemSemanticEditPolicyClassName="SetRelationshipSourceItemSemanticEditPolicy"
+        notationViewFactoryClassName="SetRelationshipSourceViewFactory"
+        incomingCreationAllowed="true"
+        createCommandClassName="SetRelationshipSourceCreateCommand"
+        reorientCommandClassName="SetRelationshipSourceReorientCommand">
+      <diagramRunTimeClass
+          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Edge"/>
+      <elementType
+          xsi:type="gmfgen:SpecializationType"/>
+      <viewmap
+          xsi:type="gmfgen:FigureViewmap"
+          figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx"/>
+      <modelFacet
+          xsi:type="gmfgen:FeatureLinkModelFacet">
+        <metaFeature
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/SetRelationship/source"/>
+      </modelFacet>
+    </links>
+    <links
+        visualID="4005"
+        editPartClassName="SetRelationshipTargetEditPart"
+        itemSemanticEditPolicyClassName="SetRelationshipTargetItemSemanticEditPolicy"
+        notationViewFactoryClassName="SetRelationshipTargetViewFactory"
+        incomingCreationAllowed="true"
+        createCommandClassName="SetRelationshipTargetCreateCommand"
+        reorientCommandClassName="SetRelationshipTargetReorientCommand">
+      <diagramRunTimeClass
+          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Edge"/>
+      <elementType
+          xsi:type="gmfgen:SpecializationType"/>
+      <viewmap
+          xsi:type="gmfgen:FigureViewmap"
+          figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx"/>
+      <modelFacet
+          xsi:type="gmfgen:FeatureLinkModelFacet">
+        <metaFeature
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/SetRelationship/target"/>
+      </modelFacet>
+    </links>
+    <links
+        visualID="4007"
+        editPartClassName="DomainEntityRendererEditPart"
+        itemSemanticEditPolicyClassName="DomainEntityRendererItemSemanticEditPolicy"
+        createCommandClassName="DomainEntityRendererCreateCommand"
+        reorientCommandClassName="DomainEntityRendererReorientCommand">
+      <diagramRunTimeClass
+          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Edge"/>
+      <elementType
+          xsi:type="gmfgen:SpecializationType"/>
+      <viewmap
+          xsi:type="gmfgen:InnerClassViewmap"
+          className="RenderedByLinkFigure"
+          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class RenderedByLinkFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx {&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public RenderedByLinkFigure() {&#xA;&#x9;&#x9;this.setLineStyle(org.eclipse.draw2d.Graphics.LINE_DASH);&#xA;&#xA;&#x9;&#x9;setTargetDecoration(createTargetDecoration());&#xA;&#x9;}&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.draw2d.RotatableDecoration createTargetDecoration() {&#xA;&#x9;&#x9;org.eclipse.draw2d.PolylineDecoration df = new org.eclipse.draw2d.PolylineDecoration();&#xA;df.setLineStyle(org.eclipse.draw2d.Graphics.LINE_DASH);&#xA;&#x9;&#x9;return df;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
+      <modelFacet
+          xsi:type="gmfgen:FeatureLinkModelFacet">
+        <metaFeature
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainEntity/renderer"/>
+      </modelFacet>
+    </links>
     <compartments
         visualID="7003"
         editPartClassName="OntologyOntologyLevelCompartmentEditPart"
@@ -748,6 +809,11 @@
             title="Domain Connection Participants"
             description="Create new Domain Connection Participants"
             genLinks="//@diagram/@links.0"/>
+        <entries
+            xsi:type="gmfgen:ToolEntry"
+            title="Rendered By"
+            description="Create new Rendered By Connection"
+            genLinks="//@diagram/@links.5"/>
       </groups>
       <groups
           title="Connections">
@@ -774,6 +840,11 @@
             title="Equal"
             description="Create new Equal"
             genNodes="//@diagram/@childNodes.6"/>
+        <entries
+            xsi:type="gmfgen:ToolEntry"
+            title="Equal Link"
+            description="Create new Equal Link"
+            genLinks="//@diagram/@links.3 //@diagram/@links.4"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Inversion"
@@ -986,6 +1057,165 @@
     <childReferences
         parent="//@diagram/@childNodes.4"
         child="//@diagram/@links.2"
+        referenceType="out_target"
+        groupName="outgoing links"
+        groupIcon="icons/outgoingLinksNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram"
+        child="//@diagram/@links.3"
+        groupName="links"
+        groupIcon="icons/linksNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@links.3"
+        child="//@diagram/@childNodes.1"
+        referenceType="out_target"
+        groupName="target"
+        groupIcon="icons/linkTargetNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@childNodes.1"
+        child="//@diagram/@links.3"
+        referenceType="in_source"
+        groupName="incoming links"
+        groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@links.3"
+        child="//@diagram/@childNodes.4"
+        referenceType="out_target"
+        groupName="target"
+        groupIcon="icons/linkTargetNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@childNodes.4"
+        child="//@diagram/@links.3"
+        referenceType="in_source"
+        groupName="incoming links"
+        groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@links.3"
+        child="//@diagram/@childNodes.5"
+        referenceType="in_source"
+        groupName="source"
+        groupIcon="icons/linkSourceNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@childNodes.5"
+        child="//@diagram/@links.3"
+        referenceType="out_target"
+        groupName="outgoing links"
+        groupIcon="icons/outgoingLinksNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@links.3"
+        child="//@diagram/@childNodes.6"
+        referenceType="in_source"
+        groupName="source"
+        groupIcon="icons/linkSourceNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@childNodes.6"
+        child="//@diagram/@links.3"
+        referenceType="out_target"
+        groupName="outgoing links"
+        groupIcon="icons/outgoingLinksNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@links.3"
+        child="//@diagram/@childNodes.7"
+        referenceType="in_source"
+        groupName="source"
+        groupIcon="icons/linkSourceNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@childNodes.7"
+        child="//@diagram/@links.3"
+        referenceType="out_target"
+        groupName="outgoing links"
+        groupIcon="icons/outgoingLinksNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram"
+        child="//@diagram/@links.4"
+        groupName="links"
+        groupIcon="icons/linksNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@links.4"
+        child="//@diagram/@childNodes.1"
+        referenceType="out_target"
+        groupName="target"
+        groupIcon="icons/linkTargetNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@childNodes.1"
+        child="//@diagram/@links.4"
+        referenceType="in_source"
+        groupName="incoming links"
+        groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@links.4"
+        child="//@diagram/@childNodes.4"
+        referenceType="out_target"
+        groupName="target"
+        groupIcon="icons/linkTargetNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@childNodes.4"
+        child="//@diagram/@links.4"
+        referenceType="in_source"
+        groupName="incoming links"
+        groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@links.4"
+        child="//@diagram/@childNodes.5"
+        referenceType="in_source"
+        groupName="source"
+        groupIcon="icons/linkSourceNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@childNodes.5"
+        child="//@diagram/@links.4"
+        referenceType="out_target"
+        groupName="outgoing links"
+        groupIcon="icons/outgoingLinksNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@links.4"
+        child="//@diagram/@childNodes.6"
+        referenceType="in_source"
+        groupName="source"
+        groupIcon="icons/linkSourceNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@childNodes.6"
+        child="//@diagram/@links.4"
+        referenceType="out_target"
+        groupName="outgoing links"
+        groupIcon="icons/outgoingLinksNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@links.4"
+        child="//@diagram/@childNodes.7"
+        referenceType="in_source"
+        groupName="source"
+        groupIcon="icons/linkSourceNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@childNodes.7"
+        child="//@diagram/@links.4"
+        referenceType="out_target"
+        groupName="outgoing links"
+        groupIcon="icons/outgoingLinksNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram"
+        child="//@diagram/@links.5"
+        groupName="links"
+        groupIcon="icons/linksNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@links.5"
+        child="//@diagram/@childNodes.1"
+        referenceType="out_target"
+        groupName="target"
+        groupIcon="icons/linkTargetNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@childNodes.1"
+        child="//@diagram/@links.5"
+        referenceType="in_source"
+        groupName="incoming links"
+        groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@links.5"
+        child="//@diagram/@childNodes.1"
+        referenceType="in_source"
+        groupName="source"
+        groupIcon="icons/linkSourceNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@childNodes.1"
+        child="//@diagram/@links.5"
         referenceType="out_target"
         groupName="outgoing links"
         groupIcon="icons/outgoingLinksNavigatorGroup.gif"/>

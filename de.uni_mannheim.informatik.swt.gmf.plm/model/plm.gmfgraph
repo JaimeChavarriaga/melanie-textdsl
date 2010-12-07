@@ -648,6 +648,25 @@
       <accessors
           figure="//@figures.0/@descriptors.14/@actualFigure/@children.0/@children.0"/>
     </descriptors>
+    <descriptors
+        name="EqualsLinkFigure">
+      <actualFigure
+          xsi:type="gmfgraph:PolylineConnection"
+          name="EqualsLinkFigure"/>
+    </descriptors>
+    <descriptors
+        name="RenderedByLinkFigure">
+      <actualFigure
+          xsi:type="gmfgraph:PolylineConnection"
+          name="RenderedByLinkFigure"
+          lineKind="LINE_DASH"
+          targetDecoration="//@figures.0/@descriptors.16/@actualFigure/@children.0">
+        <children
+            xsi:type="gmfgraph:PolylineDecoration"
+            name="RenderedByLinkFigureTargetDecoration"
+            lineKind="LINE_DASH"/>
+      </actualFigure>
+    </descriptors>
   </figures>
   <nodes
       name="Ontology"
@@ -685,6 +704,12 @@
   <connections
       name="BinaryGeneralization"
       figure="BinaryGeneralizationFigure"/>
+  <connections
+      name="EqualsLink"
+      figure="EqualsLinkFigure"/>
+  <connections
+      name="RenderedByLink"
+      figure="RenderedByLinkFigure"/>
   <compartments
       name="ModelCompartment"
       figure="ModellCompartmentFigure"/>

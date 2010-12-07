@@ -231,7 +231,7 @@
               </labelMappings>
               <tool
                   xsi:type="gmftool:CreationTool"
-                  href="plm.gmftool#//@palette/@tools.3/@tools.2"/>
+                  href="plm.gmftool#//@palette/@tools.3/@tools.3"/>
               <diagramNode
                   href="plm.gmfgraph#Inversion"/>
             </ownedChild>
@@ -293,6 +293,36 @@
     <linkMetaFeature
         xsi:type="ecore:EReference"
         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//BinaryGeneralization/supertype"/>
+  </links>
+  <links>
+    <tool
+        xsi:type="gmftool:CreationTool"
+        href="plm.gmftool#//@palette/@tools.3/@tools.2"/>
+    <diagramLink
+        href="plm.gmfgraph#EqualsLink"/>
+    <linkMetaFeature
+        xsi:type="ecore:EReference"
+        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//SetRelationship/source"/>
+  </links>
+  <links>
+    <tool
+        xsi:type="gmftool:CreationTool"
+        href="plm.gmftool#//@palette/@tools.3/@tools.2"/>
+    <diagramLink
+        href="plm.gmfgraph#EqualsLink"/>
+    <linkMetaFeature
+        xsi:type="ecore:EReference"
+        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//SetRelationship/target"/>
+  </links>
+  <links>
+    <tool
+        xsi:type="gmftool:CreationTool"
+        href="plm.gmftool#//@palette/@tools.1/@tools.3"/>
+    <diagramLink
+        href="plm.gmfgraph#RenderedByLink"/>
+    <linkMetaFeature
+        xsi:type="ecore:EReference"
+        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//DomainEntity/renderer"/>
   </links>
   <diagram>
     <diagramCanvas
