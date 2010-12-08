@@ -665,7 +665,13 @@
             xsi:type="gmfgraph:PolylineDecoration"
             name="RenderedByLinkFigureTargetDecoration"
             lineKind="LINE_DASH"/>
+        <children
+            xsi:type="gmfgraph:Label"
+            name="RenderedByNameFigure"
+            text="&lt;&lt;renderedBy>>"/>
       </actualFigure>
+      <accessors
+          figure="//@figures.0/@descriptors.16/@actualFigure/@children.1"/>
     </descriptors>
   </figures>
   <nodes
@@ -813,4 +819,8 @@
       figure="InversionFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.14/@accessors.0"/>
+  <labels
+      name="RenderedByFigureName"
+      figure="RenderedByLinkFigure"
+      accessor="//@figures.0/@descriptors.16/@accessors.0"/>
 </gmfgraph:Canvas>

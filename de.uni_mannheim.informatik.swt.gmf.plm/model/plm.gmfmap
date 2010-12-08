@@ -315,6 +315,11 @@
         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//SetRelationship/target"/>
   </links>
   <links>
+    <labelMappings
+        readOnly="true">
+      <diagramLabel
+          href="plm.gmfgraph#RenderedByFigureName"/>
+    </labelMappings>
     <tool
         xsi:type="gmftool:CreationTool"
         href="plm.gmftool#//@palette/@tools.1/@tools.3"/>
