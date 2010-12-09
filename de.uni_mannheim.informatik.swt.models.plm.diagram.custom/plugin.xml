@@ -13,6 +13,16 @@
                label="Add Visualization">
          </action>
       </objectContribution>
+      <objectContribution
+            adaptable="false"
+            id="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.domainconnectioneditpart"
+            objectClass="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionEditPart">
+         <action
+               class="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.ToggleDomainConnectionAction"
+               id="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.toggledomainconnectionationaction"
+               label="Toggle Domain Connection">
+         </action>
+      </objectContribution>
    </extension>
 
 </plugin>

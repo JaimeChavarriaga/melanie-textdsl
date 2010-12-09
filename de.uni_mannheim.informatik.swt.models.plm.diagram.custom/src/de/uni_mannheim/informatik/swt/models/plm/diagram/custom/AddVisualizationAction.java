@@ -49,7 +49,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElemen
 
 public class AddVisualizationAction implements IObjectActionDelegate {
 
-	public final static String ID = "org.eclipse.gmf.examples.mindmap.popup.MindmapCreateSubtopicActionID";
+	public final static String ID = "de.uni_mannheim.informatik.swt.models.plm.diagram.custom.addvisualizationaction";
 	
 	private DomainEntityEditPart selectedElement;
 	
