@@ -115,6 +115,9 @@
                     <viewExpression
                         body="self.datatype.name"/>
                   </labelMappings>
+                  <tool
+                      xsi:type="gmftool:CreationTool"
+                      href="plm.gmftool#//@palette/@tools.1/@tools.1"/>
                   <diagramNode
                       href="plm.gmfgraph#DomnainEntityFieldNode"/>
                 </ownedChild>
@@ -133,6 +136,17 @@
                     <features
                         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/name"/>
                   </labelMappings>
+                  <labelMappings
+                      xsi:type="gmfmap:ExpressionLabelMapping"
+                      readOnly="true">
+                    <diagramLabel
+                        href="plm.gmfgraph#DomainEntityMethodFigurePotencyLabel"/>
+                    <viewExpression
+                        body="let potency:String = if (self.potency > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.potency.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.potency = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;potency"/>
+                  </labelMappings>
+                  <tool
+                      xsi:type="gmftool:CreationTool"
+                      href="plm.gmftool#//@palette/@tools.1/@tools.2"/>
                   <diagramNode
                       href="plm.gmfgraph#DomnainEntityMethodNode"/>
                 </ownedChild>
@@ -174,7 +188,7 @@
               </labelMappings>
               <tool
                   xsi:type="gmftool:CreationTool"
-                  href="plm.gmftool#//@palette/@tools.1/@tools.1"/>
+                  href="plm.gmftool#//@palette/@tools.1/@tools.3"/>
               <diagramNode
                   href="plm.gmfgraph#DomainConnection"/>
             </ownedChild>
@@ -253,7 +267,7 @@
   <links>
     <tool
         xsi:type="gmftool:CreationTool"
-        href="plm.gmftool#//@palette/@tools.1/@tools.2"/>
+        href="plm.gmftool#//@palette/@tools.1/@tools.4"/>
     <diagramLink
         href="plm.gmfgraph#DomainConnectionParticipants"/>
     <linkMetaFeature
@@ -322,7 +336,7 @@
     </labelMappings>
     <tool
         xsi:type="gmftool:CreationTool"
-        href="plm.gmftool#//@palette/@tools.1/@tools.3"/>
+        href="plm.gmftool#//@palette/@tools.1/@tools.5"/>
     <diagramLink
         href="plm.gmfgraph#RenderedByLink"/>
     <linkMetaFeature

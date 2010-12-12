@@ -124,7 +124,8 @@
       <actualFigure
           xsi:type="gmfgraph:Rectangle"
           name="DomainEntityFigure">
-        <insets/>
+        <insets
+            bottom="5"/>
         <children
             xsi:type="gmfgraph:Rectangle"
             name="InnerRectangle"
@@ -217,6 +218,8 @@
             forceSingleLine="true"
             majorSpacing="0"
             minorSpacing="0"/>
+        <preferredSize
+            dy="22"/>
         <insets/>
         <children
             xsi:type="gmfgraph:Rectangle"
@@ -227,6 +230,8 @@
               xsi:type="gmfgraph:GridLayout"
               numColumns="4"
               equalWidth="false"/>
+          <preferredSize
+              dy="22"/>
           <children
               xsi:type="gmfgraph:Label"
               name="DomainEntityFieldNameFigure"
@@ -274,6 +279,7 @@
       <actualFigure
           xsi:type="gmfgraph:Rectangle"
           name="DomainEntityMethodFigure"
+          outline="false"
           fill="false">
         <layout
             xsi:type="gmfgraph:FlowLayout"
@@ -282,6 +288,9 @@
             forceSingleLine="true"
             majorSpacing="0"
             minorSpacing="0"/>
+        <preferredSize
+            dy="22"/>
+        <insets/>
         <children
             xsi:type="gmfgraph:Rectangle"
             name="InnerRectangle"
@@ -289,8 +298,10 @@
             fill="false">
           <layout
               xsi:type="gmfgraph:GridLayout"
-              numColumns="3"
+              numColumns="4"
               equalWidth="false"/>
+          <preferredSize
+              dy="22"/>
           <children
               xsi:type="gmfgraph:Label"
               name="DomainEntityMethodNameFigure"
@@ -736,7 +747,8 @@
       collapsible="true"/>
   <compartments
       name="DomainEntityMethodsCompartment"
-      figure="DomainEntityCompartmentFigure"/>
+      figure="DomainEntityCompartmentFigure"
+      collapsible="true"/>
   <labels
       name="OntologyFigureNameLabel"
       figure="OntologyFigure"
