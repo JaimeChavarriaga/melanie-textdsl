@@ -72,10 +72,10 @@ public class AddVisualizationAction implements IObjectActionDelegate {
 		visualizationDomainEntityRequest.setLocation(p.translate(100, offset));
 
 		ModelDomainElementsComartmentEditPart mapEditPart = (ModelDomainElementsComartmentEditPart) selectedElement.getParent();
-		Command createTopicCmd = mapEditPart.getCommand(visualizationDomainEntityRequest);
+		Command createVisualizationDomainEntityCmd = mapEditPart.getCommand(visualizationDomainEntityRequest);
 		IAdaptable visualizationDomainEntityViewAdapter = (IAdaptable) ((List) visualizationDomainEntityRequest.getNewObject()).get(0);
 		
-		cc.add(createTopicCmd);
+		cc.add(createVisualizationDomainEntityCmd);
 
 		// create the visualization DomainEntity link command
 		ICommand createDomainEntityToVisualizationConnectionCommand = new DeferredCreateConnectionViewAndElementCommand(new CreateConnectionViewAndElementRequest(PLMElementTypes.DomainEntityRenderer_4007,
@@ -98,7 +98,8 @@ public class AddVisualizationAction implements IObjectActionDelegate {
 			//Setup of Visualization Object
 			//**************************************************************
 			DomainEntity visualizer = (DomainEntity) ViewUtil.resolveSemanticElement((View)elementPart.getModel());
-			SetRequest request = new SetRequest(visualizer, PLMPackage.eINSTANCE.getElement_Name(), "leftVisualization");
+			DomainEntity source = (DomainEntity) ViewUtil.resolveSemanticElement((View)selectedElement.getModel());
+			SetRequest request = new SetRequest(visualizer, PLMPackage.eINSTANCE.getElement_Name(), source.getName() + "Visualization");
 			SetValueCommand command = new SetValueCommand(request);
 			elementPart.getViewer().getEditDomain().getCommandStack().execute(new ICommandProxy(command));
 			
