@@ -349,6 +349,9 @@
       <actualFigure
           xsi:type="gmfgraph:ScalablePolygon"
           name="DomainConnectionFigure">
+        <insets
+            top="20"
+            bottom="45"/>
         <children
             xsi:type="gmfgraph:Rectangle"
             name="InnerRectangle"
@@ -703,14 +706,17 @@
       name="DomainEntity"
       figure="DomainEntityFigure"/>
   <nodes
-      name="DomainConnection"
-      figure="DomainConnectionFigure"/>
-  <nodes
       name="DomnainEntityFieldNode"
       figure="DomainEntityFieldFigure"/>
   <nodes
       name="DomnainEntityMethodNode"
       figure="DomainEntityMethodFigure"/>
+  <nodes
+      name="DomainConnection"
+      figure="DomainConnectionFigure"/>
+  <nodes
+      name="DomainConnectionField"
+      figure="DomainEntityFieldFigure"/>
   <nodes
       name="Complement"
       figure="ComplementFigure"/>
@@ -749,6 +755,9 @@
       name="DomainEntityMethodsCompartment"
       figure="DomainEntityCompartmentFigure"
       collapsible="true"/>
+  <compartments
+      name="DomainConnectionsFieldsCompartment"
+      figure="DomainEntityCompartmentFigure"/>
   <labels
       name="OntologyFigureNameLabel"
       figure="OntologyFigure"
