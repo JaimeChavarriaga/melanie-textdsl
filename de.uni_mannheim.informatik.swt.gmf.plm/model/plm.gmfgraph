@@ -413,7 +413,19 @@
     <descriptors
         name="DomainConnectionParticipantsFigure">
       <actualFigure
-          xsi:type="gmfgraph:PolylineConnection"/>
+          xsi:type="gmfgraph:PolylineConnection"
+          name="DomainConnectionParticipantsFigure">
+        <children
+            xsi:type="gmfgraph:Label"
+            name="DomainConnectionParticipantsNameFigure"
+            text="">
+          <foregroundColor
+              xsi:type="gmfgraph:ConstantColor"
+              value="black"/>
+        </children>
+      </actualFigure>
+      <accessors
+          figure="//@figures.0/@descriptors.9/@actualFigure/@children.0"/>
     </descriptors>
     <descriptors
         name="InstantiationFigure">
@@ -852,4 +864,9 @@
       name="RenderedByFigureName"
       figure="RenderedByLinkFigure"
       accessor="//@figures.0/@descriptors.16/@accessors.0"/>
+  <labels
+      name="DomainConnectionParticipantFigureName"
+      figure="DomainConnectionParticipantsFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.9/@accessors.0"/>
 </gmfgraph:Canvas>

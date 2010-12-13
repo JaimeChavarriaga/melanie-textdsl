@@ -308,6 +308,11 @@
     </ownedChild>
   </nodes>
   <links>
+    <labelMappings
+        readOnly="true">
+      <diagramLabel
+          href="plm.gmfgraph#DomainConnectionParticipantFigureName"/>
+    </labelMappings>
     <tool
         xsi:type="gmftool:CreationTool"
         href="plm.gmftool#//@palette/@tools.1/@tools.4"/>

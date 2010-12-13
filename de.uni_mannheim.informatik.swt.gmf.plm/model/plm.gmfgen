@@ -695,13 +695,36 @@
       <elementType
           xsi:type="gmfgen:SpecializationType"/>
       <viewmap
-          xsi:type="gmfgen:FigureViewmap"
-          figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx"/>
+          xsi:type="gmfgen:InnerClassViewmap"
+          className="DomainConnectionParticipantsFigure"
+          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class DomainConnectionParticipantsFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureDomainConnectionParticipantsNameFigure; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public DomainConnectionParticipantsFigure() {&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureDomainConnectionParticipantsNameFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureDomainConnectionParticipantsNameFigure.setText(&quot;&quot;);&#xA;&#x9;fFigureDomainConnectionParticipantsNameFigure.setForegroundColor(org.eclipse.draw2d.ColorConstants.black);&#xA;&#xA;this.add(fFigureDomainConnectionParticipantsNameFigure);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureDomainConnectionParticipantsNameFigure() {&#xA;&#x9;&#x9;return fFigureDomainConnectionParticipantsNameFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
       <modelFacet
           xsi:type="gmfgen:FeatureLinkModelFacet">
         <metaFeature
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainConnection/participant"/>
       </modelFacet>
+      <labels
+          visualID="6002"
+          editPartClassName="WrappingLabel10EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel10ItemSemanticEditPolicy"
+          notationViewFactoryClassName="DomainConnectionParticipantLabelViewFactory"
+          readOnly="true">
+        <diagramRunTimeClass
+            href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap
+            xsi:type="gmfgen:ParentAssignedViewmap"
+            getterName="getFigureDomainConnectionParticipantsNameFigure"
+            figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel">
+          <attributes
+              xsi:type="gmfgen:StyleAttributes"
+              fixedForeground="true"/>
+          <attributes
+              xsi:type="gmfgen:LabelOffsetAttributes"
+              y="40"/>
+        </viewmap>
+        <modelFacet
+            parser="//@labelParsers/@implementations.8"/>
+      </labels>
     </links>
     <links
         visualID="4002"
@@ -1484,7 +1507,7 @@
     </implementations>
     <implementations
         xsi:type="gmfgen:ExternalParser"
-        uses="//@diagram/@childNodes.6/@labels.0/@modelFacet //@diagram/@childNodes.7/@labels.0/@modelFacet //@diagram/@childNodes.8/@labels.0/@modelFacet //@diagram/@links.5/@labels.0/@modelFacet"/>
+        uses="//@diagram/@childNodes.6/@labels.0/@modelFacet //@diagram/@childNodes.7/@labels.0/@modelFacet //@diagram/@childNodes.8/@labels.0/@modelFacet //@diagram/@links.0/@labels.0/@modelFacet //@diagram/@links.5/@labels.0/@modelFacet"/>
   </labelParsers>
   <contextMenus
       context="//@diagram">
