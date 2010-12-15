@@ -2,21 +2,19 @@
 <gmfgen:GenEditorGenerator xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:gmfgen="http://www.eclipse.org/gmf/2009/GenModel" diagramFileExtension="oca"
-    dynamicTemplates="true"
-    templateDirectory="/de.uni_mannheim.informatik.swt.gmf.plm/templates">
+    xmlns:gmfgen="http://www.eclipse.org/gmf/2009/GenModel">
   <diagram
       visualID="1000"
-      editPartClassName="ModelEditPart"
-      itemSemanticEditPolicyClassName="ModelItemSemanticEditPolicy"
-      canonicalEditPolicyClassName="ModelCanonicalEditPolicy"
+      editPartClassName="LMLModelEditPart"
+      itemSemanticEditPolicyClassName="LMLModelItemSemanticEditPolicy"
+      canonicalEditPolicyClassName="LMLModelCanonicalEditPolicy"
       iconProviderPriority="Low"
       validationProviderPriority="Low">
     <diagramRunTimeClass
         href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Diagram"/>
     <elementType
         xsi:type="gmfgen:MetamodelType"
-        editHelperClassName="ModelEditHelper"/>
+        editHelperClassName="LMLModelEditHelper"/>
     <viewmap
         xsi:type="gmfgen:FigureViewmap"
         figureQualifiedClassName="org.eclipse.draw2d.FreeformLayer"/>
@@ -24,10 +22,9 @@
         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLModel"/>
     <childNodes
         visualID="3004"
-        editPartClassName="Model2EditPart"
-        itemSemanticEditPolicyClassName="Model2ItemSemanticEditPolicy"
-        notationViewFactoryClassName="ModelViewFactory"
-        canonicalEditPolicyClassName="Model2CanonicalEditPolicy"
+        editPartClassName="ModelEditPart"
+        itemSemanticEditPolicyClassName="ModelItemSemanticEditPolicy"
+        canonicalEditPolicyClassName="ModelCanonicalEditPolicy"
         compartments="//@diagram/@compartments.1"
         graphicalNodeEditPolicyClassName="ModelGraphicalNodeEditPolicy"
         createCommandClassName="ModelCreateCommand"
@@ -36,16 +33,11 @@
           href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
       <elementType
           xsi:type="gmfgen:MetamodelType"
-          editHelperClassName="Model2EditHelper"/>
+          editHelperClassName="ModelEditHelper"/>
       <viewmap
           xsi:type="gmfgen:InnerClassViewmap"
           className="ModelFigure"
-          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class ModelFigure extends org.eclipse.draw2d.RectangleFigure {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureOntologyLevelNameFigure; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public ModelFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setOutline(false);&#xA;this.setMinimumSize(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(300)&#xA;));&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;org.eclipse.draw2d.RectangleFigure innerRectangle0 = new org.eclipse.draw2d.RectangleFigure();&#xA;innerRectangle0.setFill(false);&#xA;innerRectangle0.setOutline(false);&#xA;innerRectangle0.setMaximumSize(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(25)&#xA;));&#xA;&#xA;this.add(innerRectangle0);&#xA;&#xA;&#x9;org.eclipse.draw2d.ToolbarLayout layoutInnerRectangle0 = new org.eclipse.draw2d.ToolbarLayout();&#xA;&#x9;layoutInnerRectangle0.setStretchMinorAxis(true);&#xA;&#x9;layoutInnerRectangle0.setMinorAlignment(org.eclipse.draw2d.ToolbarLayout.ALIGN_CENTER&#xA;);&#xA;&#xA;&#x9;layoutInnerRectangle0.setSpacing(0);&#xA;&#x9;layoutInnerRectangle0.setVertical(true);&#xA;&#xA;&#x9;innerRectangle0.setLayoutManager(layoutInnerRectangle0);&#xA;&#xA;&#xA;&#xA;org.eclipse.draw2d.RectangleFigure nameRectangle1 = new org.eclipse.draw2d.RectangleFigure();&#xA;nameRectangle1.setFill(false);&#xA;nameRectangle1.setOutline(false);&#xA;&#xA;innerRectangle0.add(nameRectangle1);&#xA;&#xA;&#x9;org.eclipse.draw2d.GridLayout layoutNameRectangle1 = new org.eclipse.draw2d.GridLayout();&#xA;&#x9;layoutNameRectangle1.numColumns = 1;&#xA;&#x9;layoutNameRectangle1.makeColumnsEqualWidth = true;&#xA;&#x9;nameRectangle1.setLayoutManager(layoutNameRectangle1);&#xA;&#xA;&#xA;&#xA;fFigureOntologyLevelNameFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureOntologyLevelNameFigure.setText(&quot;&quot;);&#xA;&#xA;fFigureOntologyLevelNameFigure.setFont(FFIGUREONTOLOGYLEVELNAMEFIGURE_FONT);&#xA;&#xA;&#xA;fFigureOntologyLevelNameFigure.setMaximumSize(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(20)&#xA;));&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureOntologyLevelNameFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureOntologyLevelNameFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureOntologyLevelNameFigure.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureOntologyLevelNameFigure.horizontalIndent = 0;&#xA;constraintFFigureOntologyLevelNameFigure.horizontalSpan = 1;&#xA;constraintFFigureOntologyLevelNameFigure.verticalSpan = 1;&#xA;constraintFFigureOntologyLevelNameFigure.grabExcessHorizontalSpace = true;&#xA;constraintFFigureOntologyLevelNameFigure.grabExcessVerticalSpace = true;&#xA;nameRectangle1.add(fFigureOntologyLevelNameFigure, constraintFFigureOntologyLevelNameFigure);&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureOntologyLevelNameFigure() {&#xA;&#x9;&#x9;return fFigureOntologyLevelNameFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGUREONTOLOGYLEVELNAMEFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 11, org.eclipse.swt.SWT.NORMAL);&#xA;&#xA;">
-        <attributes
-            xsi:type="gmfgen:DefaultSizeAttributes"
-            width="150"
-            height="150"/>
-      </viewmap>
+          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class ModelFigure extends org.eclipse.draw2d.RectangleFigure {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureOntologyLevelNameFigure; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public ModelFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setOutline(false);&#xA;this.setMinimumSize(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(300)&#xA;));&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;org.eclipse.draw2d.RectangleFigure innerRectangle0 = new org.eclipse.draw2d.RectangleFigure();&#xA;innerRectangle0.setFill(false);&#xA;innerRectangle0.setOutline(false);&#xA;innerRectangle0.setMaximumSize(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(25)&#xA;));&#xA;&#xA;this.add(innerRectangle0);&#xA;&#xA;&#x9;org.eclipse.draw2d.ToolbarLayout layoutInnerRectangle0 = new org.eclipse.draw2d.ToolbarLayout();&#xA;&#x9;layoutInnerRectangle0.setStretchMinorAxis(true);&#xA;&#x9;layoutInnerRectangle0.setMinorAlignment(org.eclipse.draw2d.ToolbarLayout.ALIGN_CENTER&#xA;);&#xA;&#xA;&#x9;layoutInnerRectangle0.setSpacing(0);&#xA;&#x9;layoutInnerRectangle0.setVertical(true);&#xA;&#xA;&#x9;innerRectangle0.setLayoutManager(layoutInnerRectangle0);&#xA;&#xA;&#xA;&#xA;org.eclipse.draw2d.RectangleFigure nameRectangle1 = new org.eclipse.draw2d.RectangleFigure();&#xA;nameRectangle1.setFill(false);&#xA;nameRectangle1.setOutline(false);&#xA;&#xA;innerRectangle0.add(nameRectangle1);&#xA;&#xA;&#x9;org.eclipse.draw2d.GridLayout layoutNameRectangle1 = new org.eclipse.draw2d.GridLayout();&#xA;&#x9;layoutNameRectangle1.numColumns = 1;&#xA;&#x9;layoutNameRectangle1.makeColumnsEqualWidth = true;&#xA;&#x9;nameRectangle1.setLayoutManager(layoutNameRectangle1);&#xA;&#xA;&#xA;&#xA;fFigureOntologyLevelNameFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureOntologyLevelNameFigure.setText(&quot;&quot;);&#xA;&#xA;fFigureOntologyLevelNameFigure.setFont(FFIGUREONTOLOGYLEVELNAMEFIGURE_FONT);&#xA;&#xA;&#xA;fFigureOntologyLevelNameFigure.setMaximumSize(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(20)&#xA;));&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureOntologyLevelNameFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureOntologyLevelNameFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureOntologyLevelNameFigure.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureOntologyLevelNameFigure.horizontalIndent = 0;&#xA;constraintFFigureOntologyLevelNameFigure.horizontalSpan = 1;&#xA;constraintFFigureOntologyLevelNameFigure.verticalSpan = 1;&#xA;constraintFFigureOntologyLevelNameFigure.grabExcessHorizontalSpace = true;&#xA;constraintFFigureOntologyLevelNameFigure.grabExcessVerticalSpace = true;&#xA;nameRectangle1.add(fFigureOntologyLevelNameFigure, constraintFFigureOntologyLevelNameFigure);&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureOntologyLevelNameFigure() {&#xA;&#x9;&#x9;return fFigureOntologyLevelNameFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGUREONTOLOGYLEVELNAMEFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 11, org.eclipse.swt.SWT.NORMAL);&#xA;&#xA;"/>
       <modelFacet>
         <metaClass
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model"/>
@@ -57,8 +49,7 @@
       <labels
           visualID="5007"
           editPartClassName="ModelNameEditPart"
-          itemSemanticEditPolicyClassName="ModelNameItemSemanticEditPolicy"
-          notationViewFactoryClassName="ModelNameViewFactory">
+          itemSemanticEditPolicyClassName="ModelNameItemSemanticEditPolicy">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap
@@ -81,7 +72,6 @@
         visualID="3005"
         editPartClassName="DomainEntityEditPart"
         itemSemanticEditPolicyClassName="DomainEntityItemSemanticEditPolicy"
-        notationViewFactoryClassName="DomainEntityViewFactory"
         canonicalEditPolicyClassName="DomainEntityCanonicalEditPolicy"
         compartments="//@diagram/@compartments.2 //@diagram/@compartments.3"
         graphicalNodeEditPolicyClassName="DomainEntityGraphicalNodeEditPolicy"
@@ -106,9 +96,8 @@
       </modelFacet>
       <labels
           visualID="5005"
-          editPartClassName="DomainEntityNamePotencyEditPart"
-          itemSemanticEditPolicyClassName="DomainEntityNamePotencyItemSemanticEditPolicy"
-          notationViewFactoryClassName="DomainEntityNamePotencyViewFactory">
+          editPartClassName="DomainEntityNameEditPart"
+          itemSemanticEditPolicyClassName="DomainEntityNameItemSemanticEditPolicy">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap
@@ -129,9 +118,8 @@
       </labels>
       <labels
           visualID="5009"
-          editPartClassName="DomainEntityNameExpressedPotencyLevEditPart"
-          itemSemanticEditPolicyClassName="DomainEntityNameExpressedPotencyLevItemSemanticEditPolicy"
-          notationViewFactoryClassName="DomainEntityNameExpressedPotencyLevelViewFactory"
+          editPartClassName="WrappingLabelEditPart"
+          itemSemanticEditPolicyClassName="WrappingLabelItemSemanticEditPolicy"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -145,9 +133,8 @@
       </labels>
       <labels
           visualID="5011"
-          editPartClassName="DomainEntityNameExpressedPotencyLev2EditPart"
-          itemSemanticEditPolicyClassName="DomainEntityNameExpressedPotencyLev2ItemSemanticEditPolicy"
-          notationViewFactoryClassName="DomainEntityNameExpressedPotencyLevelViewFactory">
+          editPartClassName="DomainEntityNameExpressedPotencyLevEditPart"
+          itemSemanticEditPolicyClassName="DomainEntityNameExpressedPotencyLevItemSemanticEditPolicy">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap
@@ -173,7 +160,6 @@
         visualID="3007"
         editPartClassName="FieldEditPart"
         itemSemanticEditPolicyClassName="FieldItemSemanticEditPolicy"
-        notationViewFactoryClassName="FieldViewFactory"
         canonicalEditPolicyClassName="FieldCanonicalEditPolicy"
         graphicalNodeEditPolicyClassName="FieldGraphicalNodeEditPolicy"
         createCommandClassName="FieldCreateCommand"
@@ -203,9 +189,8 @@
       </modelFacet>
       <labels
           visualID="5010"
-          editPartClassName="FieldNamePotencyEditPart"
-          itemSemanticEditPolicyClassName="FieldNamePotencyItemSemanticEditPolicy"
-          notationViewFactoryClassName="FieldNamePotencyViewFactory">
+          editPartClassName="FieldNameEditPart"
+          itemSemanticEditPolicyClassName="FieldNameItemSemanticEditPolicy">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap
@@ -222,9 +207,8 @@
       </labels>
       <labels
           visualID="5013"
-          editPartClassName="WrappingLabelEditPart"
-          itemSemanticEditPolicyClassName="WrappingLabelItemSemanticEditPolicy"
-          notationViewFactoryClassName="FieldLabelViewFactory"
+          editPartClassName="WrappingLabel2EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel2ItemSemanticEditPolicy"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -238,9 +222,8 @@
       </labels>
       <labels
           visualID="5014"
-          editPartClassName="WrappingLabel2EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel2ItemSemanticEditPolicy"
-          notationViewFactoryClassName="FieldLabelViewFactory"
+          editPartClassName="WrappingLabel3EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel3ItemSemanticEditPolicy"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -257,7 +240,6 @@
         visualID="3008"
         editPartClassName="MethodEditPart"
         itemSemanticEditPolicyClassName="MethodItemSemanticEditPolicy"
-        notationViewFactoryClassName="MethodViewFactory"
         canonicalEditPolicyClassName="MethodCanonicalEditPolicy"
         graphicalNodeEditPolicyClassName="MethodGraphicalNodeEditPolicy"
         createCommandClassName="MethodCreateCommand"
@@ -288,8 +270,7 @@
       <labels
           visualID="5015"
           editPartClassName="MethodNameEditPart"
-          itemSemanticEditPolicyClassName="MethodNameItemSemanticEditPolicy"
-          notationViewFactoryClassName="MethodNameViewFactory">
+          itemSemanticEditPolicyClassName="MethodNameItemSemanticEditPolicy">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap
@@ -305,9 +286,8 @@
       </labels>
       <labels
           visualID="5019"
-          editPartClassName="WrappingLabel7EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel7ItemSemanticEditPolicy"
-          notationViewFactoryClassName="MethodLabelViewFactory"
+          editPartClassName="WrappingLabel4EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel4ItemSemanticEditPolicy"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -324,7 +304,6 @@
         visualID="3006"
         editPartClassName="DomainConnectionEditPart"
         itemSemanticEditPolicyClassName="DomainConnectionItemSemanticEditPolicy"
-        notationViewFactoryClassName="DomainConnectionViewFactory"
         canonicalEditPolicyClassName="DomainConnectionCanonicalEditPolicy"
         compartments="//@diagram/@compartments.4"
         graphicalNodeEditPolicyClassName="DomainConnectionGraphicalNodeEditPolicy"
@@ -338,11 +317,7 @@
       <viewmap
           xsi:type="gmfgen:InnerClassViewmap"
           className="DomainConnectionFigure"
-          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class DomainConnectionFigure extends org.eclipse.draw2d.ScalablePolygonShape {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureDomainConnectionNameFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureDomainConnectionPotencyFigure; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public DomainConnectionFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(20)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(60)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(20)&#xA;, getMapMode().DPtoLP(80)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(40)&#xA;, getMapMode().DPtoLP(60)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(40)&#xA;, getMapMode().DPtoLP(20)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(20)&#xA;, getMapMode().DPtoLP(0)&#xA;));&#xA;this.setFill(true);&#xA;&#xA;this.setBorder(new org.eclipse.draw2d.MarginBorder(getMapMode().DPtoLP(20)&#xA;, getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(45)&#xA;, getMapMode().DPtoLP(0)&#xA;));&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;org.eclipse.draw2d.RectangleFigure innerRectangle0 = new org.eclipse.draw2d.RectangleFigure();&#xA;innerRectangle0.setFill(false);&#xA;innerRectangle0.setOutline(false);&#xA;&#xA;this.add(innerRectangle0);&#xA;&#xA;&#xA;&#xA;org.eclipse.draw2d.RectangleFigure nameRectangle0 = new org.eclipse.draw2d.RectangleFigure();&#xA;nameRectangle0.setFill(false);&#xA;nameRectangle0.setOutline(false);&#xA;&#xA;this.add(nameRectangle0);&#xA;&#xA;&#x9;org.eclipse.draw2d.GridLayout layoutNameRectangle0 = new org.eclipse.draw2d.GridLayout();&#xA;&#x9;layoutNameRectangle0.numColumns = 2;&#xA;&#x9;layoutNameRectangle0.makeColumnsEqualWidth = false;&#xA;&#x9;nameRectangle0.setLayoutManager(layoutNameRectangle0);&#xA;&#xA;&#xA;&#xA;fFigureDomainConnectionNameFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureDomainConnectionNameFigure.setText(&quot;&quot;);&#xA;&#xA;fFigureDomainConnectionNameFigure.setFont(FFIGUREDOMAINCONNECTIONNAMEFIGURE_FONT);&#xA;&#xA;&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureDomainConnectionNameFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureDomainConnectionNameFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureDomainConnectionNameFigure.horizontalAlignment = org.eclipse.draw2d.GridData.END;&#xA;constraintFFigureDomainConnectionNameFigure.horizontalIndent = 0;&#xA;constraintFFigureDomainConnectionNameFigure.horizontalSpan = 1;&#xA;constraintFFigureDomainConnectionNameFigure.verticalSpan = 1;&#xA;constraintFFigureDomainConnectionNameFigure.grabExcessHorizontalSpace = true;&#xA;constraintFFigureDomainConnectionNameFigure.grabExcessVerticalSpace = false;&#xA;nameRectangle0.add(fFigureDomainConnectionNameFigure, constraintFFigureDomainConnectionNameFigure);&#xA;&#xA;&#xA;&#xA;&#xA;fFigureDomainConnectionPotencyFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureDomainConnectionPotencyFigure.setText(&quot;&quot;);&#xA;&#xA;fFigureDomainConnectionPotencyFigure.setBorder(new org.eclipse.draw2d.MarginBorder(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(10)&#xA;, getMapMode().DPtoLP(0)&#xA;));&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureDomainConnectionPotencyFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureDomainConnectionPotencyFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureDomainConnectionPotencyFigure.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureDomainConnectionPotencyFigure.horizontalIndent = 0;&#xA;constraintFFigureDomainConnectionPotencyFigure.horizontalSpan = 1;&#xA;constraintFFigureDomainConnectionPotencyFigure.verticalSpan = 1;&#xA;constraintFFigureDomainConnectionPotencyFigure.grabExcessHorizontalSpace = true;&#xA;constraintFFigureDomainConnectionPotencyFigure.grabExcessVerticalSpace = false;&#xA;nameRectangle0.add(fFigureDomainConnectionPotencyFigure, constraintFFigureDomainConnectionPotencyFigure);&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureDomainConnectionNameFigure() {&#xA;&#x9;&#x9;return fFigureDomainConnectionNameFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureDomainConnectionPotencyFigure() {&#xA;&#x9;&#x9;return fFigureDomainConnectionPotencyFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGUREDOMAINCONNECTIONNAMEFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 9, org.eclipse.swt.SWT.BOLD);&#xA;&#xA;">
-        <attributes
-            xsi:type="gmfgen:StyleAttributes"
-            fixedBackground="true"/>
-      </viewmap>
+          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class DomainConnectionFigure extends org.eclipse.draw2d.ScalablePolygonShape {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureDomainConnectionNameFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureDomainConnectionPotencyFigure; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public DomainConnectionFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(20)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(60)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(20)&#xA;, getMapMode().DPtoLP(80)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(40)&#xA;, getMapMode().DPtoLP(60)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(40)&#xA;, getMapMode().DPtoLP(20)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(20)&#xA;, getMapMode().DPtoLP(0)&#xA;));&#xA;this.setFill(true);&#xA;&#xA;this.setBorder(new org.eclipse.draw2d.MarginBorder(getMapMode().DPtoLP(20)&#xA;, getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(45)&#xA;, getMapMode().DPtoLP(0)&#xA;));&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;org.eclipse.draw2d.RectangleFigure innerRectangle0 = new org.eclipse.draw2d.RectangleFigure();&#xA;innerRectangle0.setFill(false);&#xA;innerRectangle0.setOutline(false);&#xA;&#xA;this.add(innerRectangle0);&#xA;&#xA;&#xA;&#xA;org.eclipse.draw2d.RectangleFigure nameRectangle0 = new org.eclipse.draw2d.RectangleFigure();&#xA;nameRectangle0.setFill(false);&#xA;nameRectangle0.setOutline(false);&#xA;&#xA;this.add(nameRectangle0);&#xA;&#xA;&#x9;org.eclipse.draw2d.GridLayout layoutNameRectangle0 = new org.eclipse.draw2d.GridLayout();&#xA;&#x9;layoutNameRectangle0.numColumns = 2;&#xA;&#x9;layoutNameRectangle0.makeColumnsEqualWidth = false;&#xA;&#x9;nameRectangle0.setLayoutManager(layoutNameRectangle0);&#xA;&#xA;&#xA;&#xA;fFigureDomainConnectionNameFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureDomainConnectionNameFigure.setText(&quot;&quot;);&#xA;&#xA;fFigureDomainConnectionNameFigure.setFont(FFIGUREDOMAINCONNECTIONNAMEFIGURE_FONT);&#xA;&#xA;&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureDomainConnectionNameFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureDomainConnectionNameFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureDomainConnectionNameFigure.horizontalAlignment = org.eclipse.draw2d.GridData.END;&#xA;constraintFFigureDomainConnectionNameFigure.horizontalIndent = 0;&#xA;constraintFFigureDomainConnectionNameFigure.horizontalSpan = 1;&#xA;constraintFFigureDomainConnectionNameFigure.verticalSpan = 1;&#xA;constraintFFigureDomainConnectionNameFigure.grabExcessHorizontalSpace = true;&#xA;constraintFFigureDomainConnectionNameFigure.grabExcessVerticalSpace = false;&#xA;nameRectangle0.add(fFigureDomainConnectionNameFigure, constraintFFigureDomainConnectionNameFigure);&#xA;&#xA;&#xA;&#xA;&#xA;fFigureDomainConnectionPotencyFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureDomainConnectionPotencyFigure.setText(&quot;&quot;);&#xA;&#xA;fFigureDomainConnectionPotencyFigure.setBorder(new org.eclipse.draw2d.MarginBorder(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(10)&#xA;, getMapMode().DPtoLP(0)&#xA;));&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureDomainConnectionPotencyFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureDomainConnectionPotencyFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureDomainConnectionPotencyFigure.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureDomainConnectionPotencyFigure.horizontalIndent = 0;&#xA;constraintFFigureDomainConnectionPotencyFigure.horizontalSpan = 1;&#xA;constraintFFigureDomainConnectionPotencyFigure.verticalSpan = 1;&#xA;constraintFFigureDomainConnectionPotencyFigure.grabExcessHorizontalSpace = true;&#xA;constraintFFigureDomainConnectionPotencyFigure.grabExcessVerticalSpace = false;&#xA;nameRectangle0.add(fFigureDomainConnectionPotencyFigure, constraintFFigureDomainConnectionPotencyFigure);&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureDomainConnectionNameFigure() {&#xA;&#x9;&#x9;return fFigureDomainConnectionNameFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureDomainConnectionPotencyFigure() {&#xA;&#x9;&#x9;return fFigureDomainConnectionPotencyFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGUREDOMAINCONNECTIONNAMEFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 9, org.eclipse.swt.SWT.BOLD);&#xA;&#xA;"/>
       <modelFacet>
         <metaClass
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainConnection"/>
@@ -353,9 +328,8 @@
       </modelFacet>
       <labels
           visualID="5006"
-          editPartClassName="DomainConnectionNamePotencyEditPart"
-          itemSemanticEditPolicyClassName="DomainConnectionNamePotencyItemSemanticEditPolicy"
-          notationViewFactoryClassName="DomainConnectionNamePotencyViewFactory">
+          editPartClassName="DomainConnectionNameEditPart"
+          itemSemanticEditPolicyClassName="DomainConnectionNameItemSemanticEditPolicy">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap
@@ -376,9 +350,8 @@
       </labels>
       <labels
           visualID="5012"
-          editPartClassName="DomainConnectionPotencyEditPart"
-          itemSemanticEditPolicyClassName="DomainConnectionPotencyItemSemanticEditPolicy"
-          notationViewFactoryClassName="DomainConnectionPotencyViewFactory"
+          editPartClassName="WrappingLabel5EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel5ItemSemanticEditPolicy"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -395,7 +368,6 @@
         visualID="3012"
         editPartClassName="Field2EditPart"
         itemSemanticEditPolicyClassName="Field2ItemSemanticEditPolicy"
-        notationViewFactoryClassName="FieldViewFactory"
         canonicalEditPolicyClassName="Field2CanonicalEditPolicy"
         graphicalNodeEditPolicyClassName="Field2GraphicalNodeEditPolicy"
         createCommandClassName="Field2CreateCommand"
@@ -425,9 +397,8 @@
       </modelFacet>
       <labels
           visualID="5020"
-          editPartClassName="FieldNameEditPart"
-          itemSemanticEditPolicyClassName="FieldNameItemSemanticEditPolicy"
-          notationViewFactoryClassName="FieldNameViewFactory">
+          editPartClassName="FieldName2EditPart"
+          itemSemanticEditPolicyClassName="FieldName2ItemSemanticEditPolicy">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap
@@ -444,9 +415,8 @@
       </labels>
       <labels
           visualID="5021"
-          editPartClassName="WrappingLabel8EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel8ItemSemanticEditPolicy"
-          notationViewFactoryClassName="FieldLabelViewFactory"
+          editPartClassName="WrappingLabel6EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel6ItemSemanticEditPolicy"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -460,9 +430,8 @@
       </labels>
       <labels
           visualID="5022"
-          editPartClassName="WrappingLabel9EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel9ItemSemanticEditPolicy"
-          notationViewFactoryClassName="FieldLabelViewFactory"
+          editPartClassName="WrappingLabel7EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel7ItemSemanticEditPolicy"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -479,7 +448,6 @@
         visualID="3009"
         editPartClassName="ComplementEditPart"
         itemSemanticEditPolicyClassName="ComplementItemSemanticEditPolicy"
-        notationViewFactoryClassName="ComplementViewFactory"
         canonicalEditPolicyClassName="ComplementCanonicalEditPolicy"
         graphicalNodeEditPolicyClassName="ComplementGraphicalNodeEditPolicy"
         createCommandClassName="ComplementCreateCommand"
@@ -508,9 +476,8 @@
       </modelFacet>
       <labels
           visualID="5016"
-          editPartClassName="WrappingLabel3EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel3ItemSemanticEditPolicy"
-          notationViewFactoryClassName="ComplementLabelViewFactory"
+          editPartClassName="WrappingLabel8EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel8ItemSemanticEditPolicy"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -530,7 +497,6 @@
         visualID="3010"
         editPartClassName="EqualsEditPart"
         itemSemanticEditPolicyClassName="EqualsItemSemanticEditPolicy"
-        notationViewFactoryClassName="EqualsViewFactory"
         canonicalEditPolicyClassName="EqualsCanonicalEditPolicy"
         graphicalNodeEditPolicyClassName="EqualsGraphicalNodeEditPolicy"
         createCommandClassName="EqualsCreateCommand"
@@ -559,9 +525,8 @@
       </modelFacet>
       <labels
           visualID="5017"
-          editPartClassName="WrappingLabel4EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel4ItemSemanticEditPolicy"
-          notationViewFactoryClassName="EqualsLabelViewFactory"
+          editPartClassName="WrappingLabel9EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel9ItemSemanticEditPolicy"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -581,7 +546,6 @@
         visualID="3011"
         editPartClassName="InversionEditPart"
         itemSemanticEditPolicyClassName="InversionItemSemanticEditPolicy"
-        notationViewFactoryClassName="InversionViewFactory"
         canonicalEditPolicyClassName="InversionCanonicalEditPolicy"
         graphicalNodeEditPolicyClassName="InversionGraphicalNodeEditPolicy"
         createCommandClassName="InversionCreateCommand"
@@ -610,9 +574,8 @@
       </modelFacet>
       <labels
           visualID="5018"
-          editPartClassName="WrappingLabel5EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel5ItemSemanticEditPolicy"
-          notationViewFactoryClassName="InversionLabelViewFactory"
+          editPartClassName="WrappingLabel10EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel10ItemSemanticEditPolicy"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -632,7 +595,6 @@
         visualID="2002"
         editPartClassName="OntologyEditPart"
         itemSemanticEditPolicyClassName="OntologyItemSemanticEditPolicy"
-        notationViewFactoryClassName="OntologyViewFactory"
         canonicalEditPolicyClassName="OntologyCanonicalEditPolicy"
         compartments="//@diagram/@compartments.0"
         graphicalNodeEditPolicyClassName="OntologyGraphicalNodeEditPolicy"
@@ -662,8 +624,7 @@
       <labels
           visualID="5008"
           editPartClassName="OntologyNameEditPart"
-          itemSemanticEditPolicyClassName="OntologyNameItemSemanticEditPolicy"
-          notationViewFactoryClassName="OntologyNameViewFactory">
+          itemSemanticEditPolicyClassName="OntologyNameItemSemanticEditPolicy">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap
@@ -686,8 +647,6 @@
         visualID="4003"
         editPartClassName="DomainConnectionParticipantEditPart"
         itemSemanticEditPolicyClassName="DomainConnectionParticipantItemSemanticEditPolicy"
-        notationViewFactoryClassName="DomainConnectionParticipantViewFactory"
-        incomingCreationAllowed="true"
         createCommandClassName="DomainConnectionParticipantCreateCommand"
         reorientCommandClassName="DomainConnectionParticipantReorientCommand">
       <diagramRunTimeClass
@@ -705,9 +664,8 @@
       </modelFacet>
       <labels
           visualID="6002"
-          editPartClassName="WrappingLabel10EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel10ItemSemanticEditPolicy"
-          notationViewFactoryClassName="DomainConnectionParticipantLabelViewFactory"
+          editPartClassName="WrappingLabel11EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel11ItemSemanticEditPolicy"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -730,7 +688,6 @@
         visualID="4002"
         editPartClassName="InstantiationEditPart"
         itemSemanticEditPolicyClassName="InstantiationItemSemanticEditPolicy"
-        notationViewFactoryClassName="InstantiationViewFactory"
         createCommandClassName="InstantiationCreateCommand"
         reorientCommandClassName="InstantiationReorientCommand">
       <diagramRunTimeClass
@@ -760,7 +717,6 @@
         visualID="4004"
         editPartClassName="BinaryGeneralizationEditPart"
         itemSemanticEditPolicyClassName="BinaryGeneralizationItemSemanticEditPolicy"
-        notationViewFactoryClassName="BinaryGeneralizationViewFactory"
         createCommandClassName="BinaryGeneralizationCreateCommand"
         reorientCommandClassName="BinaryGeneralizationReorientCommand">
       <diagramRunTimeClass
@@ -790,8 +746,6 @@
         visualID="4006"
         editPartClassName="SetRelationshipSourceEditPart"
         itemSemanticEditPolicyClassName="SetRelationshipSourceItemSemanticEditPolicy"
-        notationViewFactoryClassName="SetRelationshipSourceViewFactory"
-        incomingCreationAllowed="true"
         createCommandClassName="SetRelationshipSourceCreateCommand"
         reorientCommandClassName="SetRelationshipSourceReorientCommand">
       <diagramRunTimeClass
@@ -811,8 +765,6 @@
         visualID="4005"
         editPartClassName="SetRelationshipTargetEditPart"
         itemSemanticEditPolicyClassName="SetRelationshipTargetItemSemanticEditPolicy"
-        notationViewFactoryClassName="SetRelationshipTargetViewFactory"
-        incomingCreationAllowed="true"
         createCommandClassName="SetRelationshipTargetCreateCommand"
         reorientCommandClassName="SetRelationshipTargetReorientCommand">
       <diagramRunTimeClass
@@ -832,7 +784,6 @@
         visualID="4007"
         editPartClassName="DomainEntityRendererEditPart"
         itemSemanticEditPolicyClassName="DomainEntityRendererItemSemanticEditPolicy"
-        notationViewFactoryClassName="DomainEntityRendererViewFactory"
         createCommandClassName="DomainEntityRendererCreateCommand"
         reorientCommandClassName="DomainEntityRendererReorientCommand">
       <diagramRunTimeClass
@@ -850,9 +801,8 @@
       </modelFacet>
       <labels
           visualID="6001"
-          editPartClassName="WrappingLabel6EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel6ItemSemanticEditPolicy"
-          notationViewFactoryClassName="DomainEntityRendererLabelViewFactory"
+          editPartClassName="WrappingLabel12EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel12ItemSemanticEditPolicy"
           readOnly="true"
           elementIcon="true">
         <diagramRunTimeClass
@@ -871,15 +821,15 @@
     </links>
     <compartments
         visualID="7003"
-        editPartClassName="OntologyOntologyLevelCompartmentEditPart"
-        itemSemanticEditPolicyClassName="OntologyOntologyLevelCompartmentItemSemanticEditPolicy"
-        notationViewFactoryClassName="OntologyOntologyLevelCompartmentViewFactory"
-        canonicalEditPolicyClassName="OntologyOntologyLevelCompartmentCanonicalEditPolicy"
+        editPartClassName="OntologyModelCompartmentEditPart"
+        itemSemanticEditPolicyClassName="OntologyModelCompartmentItemSemanticEditPolicy"
+        canonicalEditPolicyClassName="OntologyModelCompartmentCanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.0"
         title="ModelCompartment"
         canCollapse="false"
         needsTitle="false"
-        node="//@diagram/@topLevelNodes.0">
+        node="//@diagram/@topLevelNodes.0"
+        listLayout="false">
       <diagramRunTimeClass
           href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
       <viewmap
@@ -890,7 +840,6 @@
         visualID="7004"
         editPartClassName="ModelDomainElementsComartmentEditPart"
         itemSemanticEditPolicyClassName="ModelDomainElementsComartmentItemSemanticEditPolicy"
-        notationViewFactoryClassName="ModelDomainElementsComartmentViewFactory"
         canonicalEditPolicyClassName="ModelDomainElementsComartmentCanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.1 //@diagram/@childNodes.4 //@diagram/@childNodes.6 //@diagram/@childNodes.7 //@diagram/@childNodes.8"
         title="DomainElementsComartment"
@@ -909,7 +858,6 @@
         visualID="7005"
         editPartClassName="DomainEntityDomainEntityFieldsCompartmentEditPart"
         itemSemanticEditPolicyClassName="DomainEntityDomainEntityFieldsCompartmentItemSemanticEditPolicy"
-        notationViewFactoryClassName="DomainEntityDomainEntityFieldsCompartmentViewFactory"
         canonicalEditPolicyClassName="DomainEntityDomainEntityFieldsCompartmentCanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.2"
         title="DomainEntityFieldsCompartment"
@@ -925,11 +873,9 @@
         visualID="7006"
         editPartClassName="DomainEntityDomainEntityMethodsCompartmentEditPart"
         itemSemanticEditPolicyClassName="DomainEntityDomainEntityMethodsCompartmentItemSemanticEditPolicy"
-        notationViewFactoryClassName="DomainEntityDomainEntityMethodsCompartmentViewFactory"
         canonicalEditPolicyClassName="DomainEntityDomainEntityMethodsCompartmentCanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.3"
         title="DomainEntityMethodsCompartment"
-        canCollapse="false"
         needsTitle="false"
         node="//@diagram/@childNodes.1">
       <diagramRunTimeClass
@@ -940,10 +886,9 @@
     </compartments>
     <compartments
         visualID="7007"
-        editPartClassName="DomainConnectionDomainEntityFieldsCompartmentEditPart"
-        itemSemanticEditPolicyClassName="DomainConnectionDomainEntityFieldsCompartmentItemSemanticEditPolicy"
-        notationViewFactoryClassName="DomainConnectionDomainEntityFieldsCompartmentViewFactory"
-        canonicalEditPolicyClassName="DomainConnectionDomainEntityFieldsCompartmentCanonicalEditPolicy"
+        editPartClassName="DomainConnectionDomainConnectionsFieldsCompartmentEditPart"
+        itemSemanticEditPolicyClassName="DomainConnectionDomainConnectionsFieldsCompartmentItemSemanticEditPolicy"
+        canonicalEditPolicyClassName="DomainConnectionDomainConnectionsFieldsCompartmentCanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.5"
         title="DomainConnectionsFieldsCompartment"
         canCollapse="false"
@@ -1070,346 +1015,6 @@
     <requiredPlugins>org.eclipse.gmf.runtime.draw2d.ui</requiredPlugins>
   </plugin>
   <editor/>
-  <navigator>
-    <childReferences
-        child="//@diagram"/>
-    <childReferences
-        parent="//@diagram/@childNodes.1"
-        child="//@diagram/@childNodes.2"/>
-    <childReferences
-        parent="//@diagram/@childNodes.1"
-        child="//@diagram/@childNodes.3"/>
-    <childReferences
-        parent="//@diagram/@childNodes.0"
-        child="//@diagram/@childNodes.1"/>
-    <childReferences
-        parent="//@diagram/@childNodes.4"
-        child="//@diagram/@childNodes.5"/>
-    <childReferences
-        parent="//@diagram/@childNodes.0"
-        child="//@diagram/@childNodes.4"/>
-    <childReferences
-        parent="//@diagram/@childNodes.0"
-        child="//@diagram/@childNodes.6"/>
-    <childReferences
-        parent="//@diagram/@childNodes.0"
-        child="//@diagram/@childNodes.7"/>
-    <childReferences
-        parent="//@diagram/@childNodes.0"
-        child="//@diagram/@childNodes.8"/>
-    <childReferences
-        parent="//@diagram/@topLevelNodes.0"
-        child="//@diagram/@childNodes.0"/>
-    <childReferences
-        parent="//@diagram"
-        child="//@diagram/@topLevelNodes.0"/>
-    <childReferences
-        parent="//@diagram"
-        child="//@diagram/@links.0"
-        groupName="links"
-        groupIcon="icons/linksNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@links.0"
-        child="//@diagram/@childNodes.1"
-        referenceType="out_target"
-        groupName="target"
-        groupIcon="icons/linkTargetNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@childNodes.1"
-        child="//@diagram/@links.0"
-        referenceType="in_source"
-        groupName="incoming links"
-        groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@links.0"
-        child="//@diagram/@childNodes.4"
-        referenceType="out_target"
-        groupName="target"
-        groupIcon="icons/linkTargetNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@childNodes.4"
-        child="//@diagram/@links.0"
-        referenceType="in_source"
-        groupName="incoming links"
-        groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@links.0"
-        child="//@diagram/@childNodes.4"
-        referenceType="in_source"
-        groupName="source"
-        groupIcon="icons/linkSourceNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@childNodes.4"
-        child="//@diagram/@links.0"
-        referenceType="out_target"
-        groupName="outgoing links"
-        groupIcon="icons/outgoingLinksNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram"
-        child="//@diagram/@links.1"
-        groupName="links"
-        groupIcon="icons/linksNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@links.1"
-        child="//@diagram/@childNodes.1"
-        referenceType="out_target"
-        groupName="target"
-        groupIcon="icons/linkTargetNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@childNodes.1"
-        child="//@diagram/@links.1"
-        referenceType="in_source"
-        groupName="incoming links"
-        groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@links.1"
-        child="//@diagram/@childNodes.4"
-        referenceType="out_target"
-        groupName="target"
-        groupIcon="icons/linkTargetNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@childNodes.4"
-        child="//@diagram/@links.1"
-        referenceType="in_source"
-        groupName="incoming links"
-        groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@links.1"
-        child="//@diagram/@childNodes.1"
-        referenceType="in_source"
-        groupName="source"
-        groupIcon="icons/linkSourceNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@childNodes.1"
-        child="//@diagram/@links.1"
-        referenceType="out_target"
-        groupName="outgoing links"
-        groupIcon="icons/outgoingLinksNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@links.1"
-        child="//@diagram/@childNodes.4"
-        referenceType="in_source"
-        groupName="source"
-        groupIcon="icons/linkSourceNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@childNodes.4"
-        child="//@diagram/@links.1"
-        referenceType="out_target"
-        groupName="outgoing links"
-        groupIcon="icons/outgoingLinksNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram"
-        child="//@diagram/@links.2"
-        groupName="links"
-        groupIcon="icons/linksNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@links.2"
-        child="//@diagram/@childNodes.1"
-        referenceType="out_target"
-        groupName="target"
-        groupIcon="icons/linkTargetNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@childNodes.1"
-        child="//@diagram/@links.2"
-        referenceType="in_source"
-        groupName="incoming links"
-        groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@links.2"
-        child="//@diagram/@childNodes.4"
-        referenceType="out_target"
-        groupName="target"
-        groupIcon="icons/linkTargetNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@childNodes.4"
-        child="//@diagram/@links.2"
-        referenceType="in_source"
-        groupName="incoming links"
-        groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@links.2"
-        child="//@diagram/@childNodes.1"
-        referenceType="in_source"
-        groupName="source"
-        groupIcon="icons/linkSourceNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@childNodes.1"
-        child="//@diagram/@links.2"
-        referenceType="out_target"
-        groupName="outgoing links"
-        groupIcon="icons/outgoingLinksNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@links.2"
-        child="//@diagram/@childNodes.4"
-        referenceType="in_source"
-        groupName="source"
-        groupIcon="icons/linkSourceNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@childNodes.4"
-        child="//@diagram/@links.2"
-        referenceType="out_target"
-        groupName="outgoing links"
-        groupIcon="icons/outgoingLinksNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram"
-        child="//@diagram/@links.3"
-        groupName="links"
-        groupIcon="icons/linksNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@links.3"
-        child="//@diagram/@childNodes.1"
-        referenceType="out_target"
-        groupName="target"
-        groupIcon="icons/linkTargetNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@childNodes.1"
-        child="//@diagram/@links.3"
-        referenceType="in_source"
-        groupName="incoming links"
-        groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@links.3"
-        child="//@diagram/@childNodes.4"
-        referenceType="out_target"
-        groupName="target"
-        groupIcon="icons/linkTargetNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@childNodes.4"
-        child="//@diagram/@links.3"
-        referenceType="in_source"
-        groupName="incoming links"
-        groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@links.3"
-        child="//@diagram/@childNodes.6"
-        referenceType="in_source"
-        groupName="source"
-        groupIcon="icons/linkSourceNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@childNodes.6"
-        child="//@diagram/@links.3"
-        referenceType="out_target"
-        groupName="outgoing links"
-        groupIcon="icons/outgoingLinksNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@links.3"
-        child="//@diagram/@childNodes.7"
-        referenceType="in_source"
-        groupName="source"
-        groupIcon="icons/linkSourceNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@childNodes.7"
-        child="//@diagram/@links.3"
-        referenceType="out_target"
-        groupName="outgoing links"
-        groupIcon="icons/outgoingLinksNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@links.3"
-        child="//@diagram/@childNodes.8"
-        referenceType="in_source"
-        groupName="source"
-        groupIcon="icons/linkSourceNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@childNodes.8"
-        child="//@diagram/@links.3"
-        referenceType="out_target"
-        groupName="outgoing links"
-        groupIcon="icons/outgoingLinksNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram"
-        child="//@diagram/@links.4"
-        groupName="links"
-        groupIcon="icons/linksNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@links.4"
-        child="//@diagram/@childNodes.1"
-        referenceType="out_target"
-        groupName="target"
-        groupIcon="icons/linkTargetNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@childNodes.1"
-        child="//@diagram/@links.4"
-        referenceType="in_source"
-        groupName="incoming links"
-        groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@links.4"
-        child="//@diagram/@childNodes.4"
-        referenceType="out_target"
-        groupName="target"
-        groupIcon="icons/linkTargetNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@childNodes.4"
-        child="//@diagram/@links.4"
-        referenceType="in_source"
-        groupName="incoming links"
-        groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@links.4"
-        child="//@diagram/@childNodes.6"
-        referenceType="in_source"
-        groupName="source"
-        groupIcon="icons/linkSourceNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@childNodes.6"
-        child="//@diagram/@links.4"
-        referenceType="out_target"
-        groupName="outgoing links"
-        groupIcon="icons/outgoingLinksNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@links.4"
-        child="//@diagram/@childNodes.7"
-        referenceType="in_source"
-        groupName="source"
-        groupIcon="icons/linkSourceNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@childNodes.7"
-        child="//@diagram/@links.4"
-        referenceType="out_target"
-        groupName="outgoing links"
-        groupIcon="icons/outgoingLinksNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@links.4"
-        child="//@diagram/@childNodes.8"
-        referenceType="in_source"
-        groupName="source"
-        groupIcon="icons/linkSourceNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@childNodes.8"
-        child="//@diagram/@links.4"
-        referenceType="out_target"
-        groupName="outgoing links"
-        groupIcon="icons/outgoingLinksNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram"
-        child="//@diagram/@links.5"
-        groupName="links"
-        groupIcon="icons/linksNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@links.5"
-        child="//@diagram/@childNodes.1"
-        referenceType="out_target"
-        groupName="target"
-        groupIcon="icons/linkTargetNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@childNodes.1"
-        child="//@diagram/@links.5"
-        referenceType="in_source"
-        groupName="incoming links"
-        groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@links.5"
-        child="//@diagram/@childNodes.1"
-        referenceType="in_source"
-        groupName="source"
-        groupIcon="icons/linkSourceNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@childNodes.1"
-        child="//@diagram/@links.5"
-        referenceType="out_target"
-        groupName="outgoing links"
-        groupIcon="icons/outgoingLinksNavigatorGroup.gif"/>
-  </navigator>
   <diagramUpdater/>
   <propertySheet>
     <tabs
@@ -1426,10 +1031,239 @@
           xsi:type="gmfgen:TypeTabFilter">
         <types>org.eclipse.gmf.runtime.notation.View</types>
         <types>org.eclipse.gef.EditPart</types>
-        <generatedTypes>abstractNavigatorItem</generatedTypes>
       </filter>
     </tabs>
   </propertySheet>
+  <application>
+    <sharedContributionItems
+        xsi:type="gmfgen:GenActionFactoryContributionItem"
+        name="CLOSE"/>
+    <sharedContributionItems
+        xsi:type="gmfgen:GenActionFactoryContributionItem"
+        name="CLOSE_ALL"/>
+    <sharedContributionItems
+        xsi:type="gmfgen:GenActionFactoryContributionItem"
+        name="SAVE"/>
+    <sharedContributionItems
+        xsi:type="gmfgen:GenActionFactoryContributionItem"
+        name="SAVE_AS"/>
+    <sharedContributionItems
+        xsi:type="gmfgen:GenActionFactoryContributionItem"
+        name="SAVE_ALL"/>
+    <sharedContributionItems
+        xsi:type="gmfgen:GenActionFactoryContributionItem"
+        name="QUIT"/>
+    <sharedContributionItems
+        xsi:type="gmfgen:GenActionFactoryContributionItem"
+        name="UNDO"/>
+    <sharedContributionItems
+        xsi:type="gmfgen:GenActionFactoryContributionItem"
+        name="REDO"/>
+    <sharedContributionItems
+        xsi:type="gmfgen:GenActionFactoryContributionItem"
+        name="CUT"/>
+    <sharedContributionItems
+        xsi:type="gmfgen:GenActionFactoryContributionItem"
+        name="COPY"/>
+    <sharedContributionItems
+        xsi:type="gmfgen:GenActionFactoryContributionItem"
+        name="PASTE"/>
+    <sharedContributionItems
+        xsi:type="gmfgen:GenActionFactoryContributionItem"
+        name="DELETE"/>
+    <sharedContributionItems
+        xsi:type="gmfgen:GenActionFactoryContributionItem"
+        name="SELECT_ALL"/>
+    <sharedContributionItems
+        xsi:type="gmfgen:GenActionFactoryContributionItem"
+        name="OPEN_NEW_WINDOW"/>
+    <sharedContributionItems
+        xsi:type="gmfgen:GenActionFactoryContributionItem"
+        name="PRINT"/>
+    <mainMenu>
+      <items
+          xsi:type="gmfgen:GenMenuManager"
+          iD="org.eclipse.ui.IWorkbenchActionConstants.M_FILE"
+          name="&amp;File">
+        <items
+            xsi:type="gmfgen:GenGroupMarker"
+            groupName="org.eclipse.ui.IWorkbenchActionConstants.FILE_START"/>
+        <items
+            xsi:type="gmfgen:GenMenuManager"
+            iD="&quot;new&quot;"
+            name="&amp;New">
+          <items
+              xsi:type="gmfgen:GenGroupMarker"
+              groupName="org.eclipse.ui.IWorkbenchActionConstants.MB_ADDITIONS"/>
+        </items>
+        <items
+            xsi:type="gmfgen:GenSeparator"/>
+        <items
+            xsi:type="gmfgen:GenGroupMarker"
+            groupName="org.eclipse.ui.IWorkbenchActionConstants.MB_ADDITIONS"/>
+        <items
+            xsi:type="gmfgen:GenSeparator"/>
+        <items
+            xsi:type="gmfgen:GenSharedContributionItem"
+            actualItem="//@application/@sharedContributionItems.0"/>
+        <items
+            xsi:type="gmfgen:GenSharedContributionItem"
+            actualItem="//@application/@sharedContributionItems.1"/>
+        <items
+            xsi:type="gmfgen:GenSeparator"/>
+        <items
+            xsi:type="gmfgen:GenSharedContributionItem"
+            actualItem="//@application/@sharedContributionItems.2"/>
+        <items
+            xsi:type="gmfgen:GenSharedContributionItem"
+            actualItem="//@application/@sharedContributionItems.3"/>
+        <items
+            xsi:type="gmfgen:GenSharedContributionItem"
+            actualItem="//@application/@sharedContributionItems.4"/>
+        <items
+            xsi:type="gmfgen:GenSeparator"/>
+        <items
+            xsi:type="gmfgen:GenSharedContributionItem"
+            actualItem="//@application/@sharedContributionItems.5"/>
+        <items
+            xsi:type="gmfgen:GenGroupMarker"
+            groupName="org.eclipse.ui.IWorkbenchActionConstants.FILE_END"/>
+      </items>
+      <items
+          xsi:type="gmfgen:GenMenuManager"
+          iD="org.eclipse.ui.IWorkbenchActionConstants.M_EDIT"
+          name="&amp;Edit">
+        <items
+            xsi:type="gmfgen:GenGroupMarker"
+            groupName="org.eclipse.ui.IWorkbenchActionConstants.EDIT_START"/>
+        <items
+            xsi:type="gmfgen:GenSharedContributionItem"
+            actualItem="//@application/@sharedContributionItems.6"/>
+        <items
+            xsi:type="gmfgen:GenSharedContributionItem"
+            actualItem="//@application/@sharedContributionItems.7"/>
+        <items
+            xsi:type="gmfgen:GenGroupMarker"
+            groupName="org.eclipse.ui.IWorkbenchActionConstants.UNDO_EXT"/>
+        <items
+            xsi:type="gmfgen:GenSeparator"/>
+        <items
+            xsi:type="gmfgen:GenSharedContributionItem"
+            actualItem="//@application/@sharedContributionItems.8"/>
+        <items
+            xsi:type="gmfgen:GenSharedContributionItem"
+            actualItem="//@application/@sharedContributionItems.9"/>
+        <items
+            xsi:type="gmfgen:GenSharedContributionItem"
+            actualItem="//@application/@sharedContributionItems.10"/>
+        <items
+            xsi:type="gmfgen:GenGroupMarker"
+            groupName="org.eclipse.ui.IWorkbenchActionConstants.CUT_EXT"/>
+        <items
+            xsi:type="gmfgen:GenSeparator"/>
+        <items
+            xsi:type="gmfgen:GenSharedContributionItem"
+            actualItem="//@application/@sharedContributionItems.11"/>
+        <items
+            xsi:type="gmfgen:GenSharedContributionItem"
+            actualItem="//@application/@sharedContributionItems.12"/>
+        <items
+            xsi:type="gmfgen:GenSeparator"/>
+        <items
+            xsi:type="gmfgen:GenGroupMarker"
+            groupName="org.eclipse.ui.IWorkbenchActionConstants.ADD_EXT"/>
+        <items
+            xsi:type="gmfgen:GenGroupMarker"
+            groupName="org.eclipse.ui.IWorkbenchActionConstants.EDIT_END"/>
+        <items
+            xsi:type="gmfgen:GenSeparator"
+            groupName="org.eclipse.ui.IWorkbenchActionConstants.MB_ADDITIONS"/>
+      </items>
+      <items
+          xsi:type="gmfgen:GenGroupMarker"
+          groupName="org.eclipse.ui.IWorkbenchActionConstants.MB_ADDITIONS"/>
+      <items
+          xsi:type="gmfgen:GenMenuManager"
+          iD="org.eclipse.ui.IWorkbenchActionConstants.M_WINDOW"
+          name="&amp;Window">
+        <items
+            xsi:type="gmfgen:GenSharedContributionItem"
+            actualItem="//@application/@sharedContributionItems.13"/>
+        <items
+            xsi:type="gmfgen:GenGroupMarker"
+            groupName="org.eclipse.ui.IWorkbenchActionConstants.MB_ADDITIONS"/>
+      </items>
+      <items
+          xsi:type="gmfgen:GenMenuManager"
+          iD="org.eclipse.ui.IWorkbenchActionConstants.M_HELP"
+          name="&amp;Help">
+        <items
+            xsi:type="gmfgen:GenGroupMarker"
+            groupName="org.eclipse.ui.IWorkbenchActionConstants.HELP_START"/>
+        <items
+            xsi:type="gmfgen:GenGroupMarker"
+            groupName="org.eclipse.ui.IWorkbenchActionConstants.HELP_END"/>
+        <items
+            xsi:type="gmfgen:GenGroupMarker"
+            groupName="org.eclipse.ui.IWorkbenchActionConstants.MB_ADDITIONS"/>
+      </items>
+    </mainMenu>
+    <mainToolBar>
+      <items
+          xsi:type="gmfgen:GenGroupMarker"
+          groupName="&quot;group.file&quot;"/>
+      <items
+          xsi:type="gmfgen:GenToolBarManager"
+          iD="org.eclipse.ui.IWorkbenchActionConstants.TOOLBAR_FILE">
+        <items
+            xsi:type="gmfgen:GenSeparator"
+            groupName="org.eclipse.ui.IWorkbenchActionConstants.NEW_GROUP"/>
+        <items
+            xsi:type="gmfgen:GenGroupMarker"
+            groupName="org.eclipse.ui.IWorkbenchActionConstants.NEW_EXT"/>
+        <items
+            xsi:type="gmfgen:GenGroupMarker"
+            groupName="org.eclipse.ui.IWorkbenchActionConstants.SAVE_GROUP"/>
+        <items
+            xsi:type="gmfgen:GenSharedContributionItem"
+            actualItem="//@application/@sharedContributionItems.2"/>
+        <items
+            xsi:type="gmfgen:GenGroupMarker"
+            groupName="org.eclipse.ui.IWorkbenchActionConstants.SAVE_EXT"/>
+        <items
+            xsi:type="gmfgen:GenSharedContributionItem"
+            actualItem="//@application/@sharedContributionItems.14"/>
+        <items
+            xsi:type="gmfgen:GenGroupMarker"
+            groupName="org.eclipse.ui.IWorkbenchActionConstants.PRINT_EXT"/>
+        <items
+            xsi:type="gmfgen:GenSeparator"
+            groupName="org.eclipse.ui.IWorkbenchActionConstants.MB_ADDITIONS"/>
+      </items>
+      <items
+          xsi:type="gmfgen:GenGroupMarker"
+          groupName="org.eclipse.ui.IWorkbenchActionConstants.MB_ADDITIONS"/>
+      <items
+          xsi:type="gmfgen:GenGroupMarker"
+          groupName="&quot;group.nav&quot;"/>
+      <items
+          xsi:type="gmfgen:GenGroupMarker"
+          groupName="org.eclipse.ui.IWorkbenchActionConstants.GROUP_EDITOR"/>
+      <items
+          xsi:type="gmfgen:GenGroupMarker"
+          groupName="org.eclipse.ui.IWorkbenchActionConstants.GROUP_HELP"/>
+      <items
+          xsi:type="gmfgen:GenToolBarManager"
+          iD="org.eclipse.ui.IWorkbenchActionConstants.TOOLBAR_HELP">
+        <items
+            xsi:type="gmfgen:GenSeparator"
+            groupName="org.eclipse.ui.IWorkbenchActionConstants.GROUP_HELP"/>
+        <items
+            xsi:type="gmfgen:GenGroupMarker"
+            groupName="org.eclipse.ui.IWorkbenchActionConstants.GROUP_APP"/>
+      </items>
+    </mainToolBar>
+  </application>
   <domainGenModel
       href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#/"/>
   <expressionProviders>
