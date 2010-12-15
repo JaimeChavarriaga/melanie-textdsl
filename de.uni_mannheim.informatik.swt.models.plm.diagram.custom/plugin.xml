@@ -10,7 +10,7 @@
          <action
                class="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.AddVisualizationAction"
                id="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.addvisualizationaction"
-               label="Add Visualization">
+               label="%action.label">
          </action>
       </objectContribution>
       <objectContribution
@@ -20,7 +20,7 @@
          <action
                class="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.ToggleDomainConnectionAction"
                id="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.toggledomainconnectionationaction"
-               label="Toggle Domain Connection">
+               label="%action.label.0">
          </action>
       </objectContribution>
    </extension>
