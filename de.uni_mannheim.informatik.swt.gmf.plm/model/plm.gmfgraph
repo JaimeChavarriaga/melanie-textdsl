@@ -66,9 +66,11 @@
       <actualFigure
           xsi:type="gmfgraph:Rectangle"
           name="ModelFigure"
-          outline="false">
+          outline="false"
+          fill="false">
         <minimumSize
-            dy="300"/>
+            dx="500"
+            dy="150"/>
         <children
             xsi:type="gmfgraph:Rectangle"
             name="InnerRectangle"
