@@ -425,9 +425,15 @@
               xsi:type="gmfgraph:ConstantColor"
               value="black"/>
         </children>
+        <children
+            xsi:type="gmfgraph:Label"
+            name="DomainConnectionParticipantsMultiplicityFigure"
+            text="0..*"/>
       </actualFigure>
       <accessors
           figure="//@figures.0/@descriptors.9/@actualFigure/@children.0"/>
+      <accessors
+          figure="//@figures.0/@descriptors.9/@actualFigure/@children.1"/>
     </descriptors>
     <descriptors
         name="InstantiationFigure">
@@ -871,4 +877,12 @@
       figure="DomainConnectionParticipantsFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.9/@accessors.0"/>
+  <labels
+      name="DomainConnectionParticipantMultiplicity"
+      figure="DomainConnectionParticipantsFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.9/@accessors.1">
+    <facets
+        xsi:type="gmfgraph:AlignmentFacet"/>
+  </labels>
 </gmfgraph:Canvas>

@@ -313,6 +313,11 @@
       <diagramLabel
           href="plm.gmfgraph#DomainConnectionParticipantFigureName"/>
     </labelMappings>
+    <labelMappings
+        readOnly="true">
+      <diagramLabel
+          href="plm.gmfgraph#DomainConnectionParticipantMultiplicity"/>
+    </labelMappings>
     <tool
         xsi:type="gmftool:CreationTool"
         href="plm.gmftool#//@palette/@tools.1/@tools.4"/>
