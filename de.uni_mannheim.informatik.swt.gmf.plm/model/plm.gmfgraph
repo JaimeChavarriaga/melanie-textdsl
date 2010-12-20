@@ -352,8 +352,8 @@
           xsi:type="gmfgraph:ScalablePolygon"
           name="DomainConnectionFigure">
         <insets
-            top="20"
-            bottom="45"/>
+            top="3"
+            bottom="15"/>
         <children
             xsi:type="gmfgraph:Rectangle"
             name="InnerRectangle"
@@ -392,18 +392,18 @@
           </children>
         </children>
         <template
-            y="20"/>
+            y="5"/>
         <template
-            y="60"/>
+            y="40"/>
         <template
             x="20"
-            y="80"/>
+            y="45"/>
         <template
             x="40"
-            y="60"/>
+            y="40"/>
         <template
             x="40"
-            y="20"/>
+            y="5"/>
         <template
             x="20"/>
       </actualFigure>
