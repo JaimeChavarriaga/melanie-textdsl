@@ -351,14 +351,16 @@
       <actualFigure
           xsi:type="gmfgraph:ScalablePolygon"
           name="DomainConnectionFigure">
+        <layout
+            xsi:type="gmfgraph:FlowLayout"
+            vertical="true"
+            matchMinorSize="true"
+            forceSingleLine="true"
+            majorSpacing="0"
+            minorSpacing="0"/>
         <insets
             top="3"
             bottom="15"/>
-        <children
-            xsi:type="gmfgraph:Rectangle"
-            name="InnerRectangle"
-            outline="false"
-            fill="false"/>
         <children
             xsi:type="gmfgraph:Rectangle"
             name="NameRectangle"
@@ -408,9 +410,9 @@
             x="20"/>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.8/@actualFigure/@children.1/@children.0"/>
+          figure="//@figures.0/@descriptors.8/@actualFigure/@children.0/@children.0"/>
       <accessors
-          figure="//@figures.0/@descriptors.8/@actualFigure/@children.1/@children.1"/>
+          figure="//@figures.0/@descriptors.8/@actualFigure/@children.0/@children.1"/>
     </descriptors>
     <descriptors
         name="DomainConnectionParticipantsFigure">
