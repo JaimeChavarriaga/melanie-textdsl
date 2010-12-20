@@ -807,6 +807,7 @@
         editPartClassName="SetRelationshipSourceEditPart"
         itemSemanticEditPolicyClassName="SetRelationshipSourceItemSemanticEditPolicy"
         notationViewFactoryClassName="SetRelationshipSourceViewFactory"
+        incomingCreationAllowed="true"
         createCommandClassName="SetRelationshipSourceCreateCommand"
         reorientCommandClassName="SetRelationshipSourceReorientCommand">
       <diagramRunTimeClass
@@ -827,6 +828,7 @@
         editPartClassName="SetRelationshipTargetEditPart"
         itemSemanticEditPolicyClassName="SetRelationshipTargetItemSemanticEditPolicy"
         notationViewFactoryClassName="SetRelationshipTargetViewFactory"
+        incomingCreationAllowed="true"
         createCommandClassName="SetRelationshipTargetCreateCommand"
         reorientCommandClassName="SetRelationshipTargetReorientCommand">
       <diagramRunTimeClass
