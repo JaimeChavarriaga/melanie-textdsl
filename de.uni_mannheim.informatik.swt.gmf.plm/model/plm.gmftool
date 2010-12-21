@@ -7,7 +7,8 @@
       title="PLMPalette">
     <tools
         xsi:type="gmftool:ToolGroup"
-        title="Levels">
+        title="Levels"
+        collapsible="true">
       <tools
           xsi:type="gmftool:CreationTool"
           title="Ontology"
@@ -29,7 +30,8 @@
     </tools>
     <tools
         xsi:type="gmftool:ToolGroup"
-        title="Domain Elements">
+        title="Domain Elements"
+        collapsible="true">
       <tools
           xsi:type="gmftool:CreationTool"
           title="Domain Entity"
@@ -87,7 +89,8 @@
     </tools>
     <tools
         xsi:type="gmftool:ToolGroup"
-        title="Connections">
+        title="Connections"
+        collapsible="true">
       <tools
           xsi:type="gmftool:CreationTool"
           title="Instantiation"
@@ -109,7 +112,8 @@
     </tools>
     <tools
         xsi:type="gmftool:ToolGroup"
-        title="Set Relationships">
+        title="Set Relationships"
+        collapsible="true">
       <tools
           xsi:type="gmftool:CreationTool"
           title="Complement"
