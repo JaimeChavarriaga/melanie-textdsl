@@ -465,6 +465,170 @@
       </actualFigure>
     </descriptors>
     <descriptors
+        name="MultipleGeneralisationFigure">
+      <actualFigure
+          xsi:type="gmfgraph:ScalablePolygon"
+          name="MultipleGeneralisationFigure">
+        <preferredSize
+            dx="80"
+            dy="40"/>
+        <children
+            xsi:type="gmfgraph:Rectangle"
+            name="NameRectangle"
+            outline="false"
+            fill="false">
+          <layout
+              xsi:type="gmfgraph:GridLayout"/>
+          <children
+              xsi:type="gmfgraph:Label"
+              name="MultipleGeneralisationNameFigure"
+              text="">
+            <layoutData
+                xsi:type="gmfgraph:GridLayoutData"
+                grabExcessHorizontalSpace="true"
+                grabExcessVerticalSpace="true"/>
+            <foregroundColor
+                xsi:type="gmfgraph:ConstantColor"
+                value="black"/>
+          </children>
+        </children>
+        <template
+            y="30"/>
+        <template
+            x="10"
+            y="15"/>
+        <template
+            x="20"
+            y="5"/>
+        <template
+            x="30"/>
+        <template
+            x="40"/>
+        <template
+            x="50"
+            y="5"/>
+        <template
+            x="60"
+            y="15"/>
+        <template
+            x="70"
+            y="30"/>
+        <template
+            x="70"
+            y="50"/>
+        <template
+            x="60"
+            y="65"/>
+        <template
+            x="50"
+            y="75"/>
+        <template
+            x="40"
+            y="80"/>
+        <template
+            x="30"
+            y="80"/>
+        <template
+            x="20"
+            y="75"/>
+        <template
+            x="10"
+            y="65"/>
+        <template
+            y="50"/>
+      </actualFigure>
+      <accessors
+          figure="//@figures.0/@descriptors.12/@actualFigure/@children.0/@children.0"/>
+    </descriptors>
+    <descriptors
+        name="MultipleSpecialisationFigure">
+      <actualFigure
+          xsi:type="gmfgraph:ScalablePolygon"
+          name="EqualsFigure">
+        <preferredSize
+            dx="80"
+            dy="40"/>
+        <children
+            xsi:type="gmfgraph:Rectangle"
+            name="NameRectangle"
+            outline="false"
+            fill="false">
+          <layout
+              xsi:type="gmfgraph:GridLayout"/>
+          <children
+              xsi:type="gmfgraph:Label"
+              name="MultipleSpecialisationNameFigure"
+              text="">
+            <layoutData
+                xsi:type="gmfgraph:GridLayoutData"
+                grabExcessHorizontalSpace="true"
+                grabExcessVerticalSpace="true"/>
+            <foregroundColor
+                xsi:type="gmfgraph:ConstantColor"
+                value="black"/>
+          </children>
+          <children
+              xsi:type="gmfgraph:Label"
+              name="SetTheoryFigure"
+              text="">
+            <layoutData
+                xsi:type="gmfgraph:GridLayoutData"
+                grabExcessHorizontalSpace="true"
+                grabExcessVerticalSpace="true"/>
+            <foregroundColor
+                xsi:type="gmfgraph:ConstantColor"
+                value="black"/>
+          </children>
+        </children>
+        <template
+            y="30"/>
+        <template
+            x="10"
+            y="15"/>
+        <template
+            x="20"
+            y="5"/>
+        <template
+            x="30"/>
+        <template
+            x="40"/>
+        <template
+            x="50"
+            y="5"/>
+        <template
+            x="60"
+            y="15"/>
+        <template
+            x="70"
+            y="30"/>
+        <template
+            x="70"
+            y="50"/>
+        <template
+            x="60"
+            y="65"/>
+        <template
+            x="50"
+            y="75"/>
+        <template
+            x="40"
+            y="80"/>
+        <template
+            x="30"
+            y="80"/>
+        <template
+            x="20"
+            y="75"/>
+        <template
+            x="10"
+            y="65"/>
+        <template
+            y="50"/>
+      </actualFigure>
+      <accessors
+          figure="//@figures.0/@descriptors.13/@actualFigure/@children.0/@children.0"/>
+    </descriptors>
+    <descriptors
         name="ComplementFigure">
       <actualFigure
           xsi:type="gmfgraph:ScalablePolygon"
@@ -538,7 +702,7 @@
             y="50"/>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.12/@actualFigure/@children.0/@children.0"/>
+          figure="//@figures.0/@descriptors.14/@actualFigure/@children.0/@children.0"/>
     </descriptors>
     <descriptors
         name="EqualsFigure">
@@ -614,7 +778,7 @@
             y="50"/>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.13/@actualFigure/@children.0/@children.0"/>
+          figure="//@figures.0/@descriptors.15/@actualFigure/@children.0/@children.0"/>
     </descriptors>
     <descriptors
         name="InversionFigure">
@@ -690,7 +854,7 @@
             y="50"/>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.14/@actualFigure/@children.0/@children.0"/>
+          figure="//@figures.0/@descriptors.16/@actualFigure/@children.0/@children.0"/>
     </descriptors>
     <descriptors
         name="EqualsLinkFigure">
@@ -704,7 +868,7 @@
           xsi:type="gmfgraph:PolylineConnection"
           name="RenderedByLinkFigure"
           lineKind="LINE_DASH"
-          targetDecoration="//@figures.0/@descriptors.16/@actualFigure/@children.0">
+          targetDecoration="//@figures.0/@descriptors.18/@actualFigure/@children.0">
         <children
             xsi:type="gmfgraph:PolylineDecoration"
             name="RenderedByLinkFigureTargetDecoration"
@@ -715,7 +879,28 @@
             text="&lt;&lt;renderedBy>>"/>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.16/@actualFigure/@children.1"/>
+          figure="//@figures.0/@descriptors.18/@actualFigure/@children.1"/>
+    </descriptors>
+    <descriptors
+        name="GenaralisationSuperTypeConnectionFigure">
+      <actualFigure
+          xsi:type="gmfgraph:PolylineConnection"
+          targetDecoration="//@figures.0/@descriptors.19/@actualFigure/@children.0">
+        <children
+            xsi:type="gmfgraph:PolygonDecoration"
+            name="BinaryGenralizationTarget">
+          <backgroundColor
+              xsi:type="gmfgraph:RGBColor"
+              red="255"
+              green="255"
+              blue="255"/>
+        </children>
+      </actualFigure>
+    </descriptors>
+    <descriptors
+        name="GenaralisationSubTypeConnectionFigure">
+      <actualFigure
+          xsi:type="gmfgraph:PolylineConnection"/>
     </descriptors>
   </figures>
   <nodes
@@ -748,6 +933,12 @@
   <nodes
       name="Inversion"
       figure="InversionFigure"/>
+  <nodes
+      name="MultipleGeneralisation"
+      figure="MultipleGeneralisationFigure"/>
+  <nodes
+      name="MultipleSpecialisation"
+      figure="MultipleSpecialisationFigure"/>
   <connections
       name="DomainConnectionParticipants"
       figure="DomainConnectionParticipantsFigure"/>
@@ -763,6 +954,12 @@
   <connections
       name="RenderedByLink"
       figure="RenderedByLinkFigure"/>
+  <connections
+      name="GenaralisationSuperTypeConnection"
+      figure="GenaralisationSuperTypeConnectionFigure"/>
+  <connections
+      name="GenaralisationSubTypeConnection"
+      figure="GenaralisationSubTypeConnectionFigure"/>
   <compartments
       name="ModelCompartment"
       figure="ModellCompartmentFigure"/>
@@ -859,21 +1056,21 @@
       name="ComplementFigureName"
       figure="ComplementFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.12/@accessors.0"/>
+      accessor="//@figures.0/@descriptors.14/@accessors.0"/>
   <labels
       name="EqualsFigureName"
       figure="EqualsFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.13/@accessors.0"/>
+      accessor="//@figures.0/@descriptors.15/@accessors.0"/>
   <labels
       name="InversionFigureName"
       figure="InversionFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.14/@accessors.0"/>
+      accessor="//@figures.0/@descriptors.16/@accessors.0"/>
   <labels
       name="RenderedByFigureName"
       figure="RenderedByLinkFigure"
-      accessor="//@figures.0/@descriptors.16/@accessors.0"/>
+      accessor="//@figures.0/@descriptors.18/@accessors.0"/>
   <labels
       name="DomainConnectionParticipantFigureName"
       figure="DomainConnectionParticipantsFigure"
@@ -887,4 +1084,14 @@
     <facets
         xsi:type="gmfgraph:AlignmentFacet"/>
   </labels>
+  <labels
+      name="MultipleSpecialisationName"
+      figure="MultipleSpecialisationFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.13/@accessors.0"/>
+  <labels
+      name="MultipleGeneralisationName"
+      figure="MultipleGeneralisationFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.12/@accessors.0"/>
 </gmfgraph:Canvas>

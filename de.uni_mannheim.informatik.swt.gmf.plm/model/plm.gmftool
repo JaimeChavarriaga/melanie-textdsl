@@ -100,15 +100,6 @@
         <largeIcon
             xsi:type="gmftool:DefaultImage"/>
       </tools>
-      <tools
-          xsi:type="gmftool:CreationTool"
-          title="Binary Generalization"
-          description="Create new Binary Generalization">
-        <smallIcon
-            xsi:type="gmftool:DefaultImage"/>
-        <largeIcon
-            xsi:type="gmftool:DefaultImage"/>
-      </tools>
     </tools>
     <tools
         xsi:type="gmftool:ToolGroup"
@@ -145,6 +136,74 @@
           xsi:type="gmftool:CreationTool"
           title="Inversion"
           description="Create new Inversion">
+        <smallIcon
+            xsi:type="gmftool:DefaultImage"/>
+        <largeIcon
+            xsi:type="gmftool:DefaultImage"/>
+      </tools>
+    </tools>
+    <tools
+        xsi:type="gmftool:ToolGroup"
+        title="Generalisations"
+        collapsible="true">
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Binary Generalization"
+          description="Create new Binary Generalization">
+        <smallIcon
+            xsi:type="gmftool:DefaultImage"/>
+        <largeIcon
+            xsi:type="gmftool:DefaultImage"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Multiple Specialisation"
+          description="Create new Multiple Specialication">
+        <smallIcon
+            xsi:type="gmftool:DefaultImage"/>
+        <largeIcon
+            xsi:type="gmftool:DefaultImage"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Specialisation Supertype"
+          description="Create new Supertype">
+        <smallIcon
+            xsi:type="gmftool:DefaultImage"/>
+        <largeIcon
+            xsi:type="gmftool:DefaultImage"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Specialisation Subtype"
+          description="Create new Subtype">
+        <smallIcon
+            xsi:type="gmftool:DefaultImage"/>
+        <largeIcon
+            xsi:type="gmftool:DefaultImage"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Multiple Generalisation"
+          description="Create new Multiple Generalisation">
+        <smallIcon
+            xsi:type="gmftool:DefaultImage"/>
+        <largeIcon
+            xsi:type="gmftool:DefaultImage"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Generalisation Supertype"
+          description="Create new Supertype">
+        <smallIcon
+            xsi:type="gmftool:DefaultImage"/>
+        <largeIcon
+            xsi:type="gmftool:DefaultImage"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Generalisation Subtype"
+          description="Create new Generalisation">
         <smallIcon
             xsi:type="gmftool:DefaultImage"/>
         <largeIcon

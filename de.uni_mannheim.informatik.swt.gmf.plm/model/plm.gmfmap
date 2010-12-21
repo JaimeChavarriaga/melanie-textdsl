@@ -293,8 +293,50 @@
                   href="plm.gmfgraph#Inversion"/>
             </ownedChild>
           </children>
+          <children
+              compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@compartments.0">
+            <containmentFeature
+                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/elements"/>
+            <ownedChild>
+              <domainMetaElement
+                  href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//MultipleGeneralization"/>
+              <labelMappings
+                  xsi:type="gmfmap:FeatureLabelMapping">
+                <diagramLabel
+                    href="plm.gmfgraph#MultipleGeneralisationName"/>
+                <features
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/name"/>
+              </labelMappings>
+              <tool
+                  xsi:type="gmftool:CreationTool"
+                  href="plm.gmftool#//@palette/@tools.4/@tools.4"/>
+              <diagramNode
+                  href="plm.gmfgraph#MultipleGeneralisation"/>
+            </ownedChild>
+          </children>
+          <children
+              compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@compartments.0">
+            <containmentFeature
+                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/elements"/>
+            <ownedChild>
+              <domainMetaElement
+                  href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//MultipleSpecialization"/>
+              <labelMappings
+                  xsi:type="gmfmap:FeatureLabelMapping">
+                <diagramLabel
+                    href="plm.gmfgraph#MultipleSpecialisationName"/>
+                <features
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/name"/>
+              </labelMappings>
+              <tool
+                  xsi:type="gmftool:CreationTool"
+                  href="plm.gmftool#//@palette/@tools.4/@tools.1"/>
+              <diagramNode
+                  href="plm.gmfgraph#MultipleSpecialisation"/>
+            </ownedChild>
+          </children>
           <compartments
-              children="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.0 //@nodes.0/@ownedChild/@children.0/@ownedChild/@children.1 //@nodes.0/@ownedChild/@children.0/@ownedChild/@children.2 //@nodes.0/@ownedChild/@children.0/@ownedChild/@children.3 //@nodes.0/@ownedChild/@children.0/@ownedChild/@children.4">
+              children="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.0 //@nodes.0/@ownedChild/@children.0/@ownedChild/@children.1 //@nodes.0/@ownedChild/@children.0/@ownedChild/@children.2 //@nodes.0/@ownedChild/@children.0/@ownedChild/@children.3 //@nodes.0/@ownedChild/@children.0/@ownedChild/@children.4 //@nodes.0/@ownedChild/@children.0/@ownedChild/@children.5 //@nodes.0/@ownedChild/@children.0/@ownedChild/@children.6">
             <compartment
                 href="plm.gmfgraph#DomainElementsComartment"/>
           </compartments>
@@ -351,7 +393,7 @@
         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/elements"/>
     <tool
         xsi:type="gmftool:CreationTool"
-        href="plm.gmftool#//@palette/@tools.2/@tools.1"/>
+        href="plm.gmftool#//@palette/@tools.4/@tools.0"/>
     <diagramLink
         href="plm.gmfgraph#BinaryGeneralization"/>
     <sourceMetaFeature
@@ -395,6 +437,46 @@
     <linkMetaFeature
         xsi:type="ecore:EReference"
         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//DomainEntity/renderer"/>
+  </links>
+  <links>
+    <tool
+        xsi:type="gmftool:CreationTool"
+        href="plm.gmftool#//@palette/@tools.4/@tools.5"/>
+    <diagramLink
+        href="plm.gmfgraph#GenaralisationSuperTypeConnection"/>
+    <linkMetaFeature
+        xsi:type="ecore:EReference"
+        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//MultipleGeneralization/supertype"/>
+  </links>
+  <links>
+    <tool
+        xsi:type="gmftool:CreationTool"
+        href="plm.gmftool#//@palette/@tools.4/@tools.6"/>
+    <diagramLink
+        href="plm.gmfgraph#GenaralisationSubTypeConnection"/>
+    <linkMetaFeature
+        xsi:type="ecore:EReference"
+        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//MultipleGeneralization/subtype"/>
+  </links>
+  <links>
+    <tool
+        xsi:type="gmftool:CreationTool"
+        href="plm.gmftool#//@palette/@tools.4/@tools.2"/>
+    <diagramLink
+        href="plm.gmfgraph#GenaralisationSuperTypeConnection"/>
+    <linkMetaFeature
+        xsi:type="ecore:EReference"
+        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//MultipleSpecialization/supertype"/>
+  </links>
+  <links>
+    <tool
+        xsi:type="gmftool:CreationTool"
+        href="plm.gmftool#//@palette/@tools.4/@tools.3"/>
+    <diagramLink
+        href="plm.gmfgraph#GenaralisationSubTypeConnection"/>
+    <linkMetaFeature
+        xsi:type="ecore:EReference"
+        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//MultipleSpecialization/subtype"/>
   </links>
   <diagram>
     <diagramCanvas
