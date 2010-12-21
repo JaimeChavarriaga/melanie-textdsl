@@ -627,6 +627,8 @@
       </actualFigure>
       <accessors
           figure="//@figures.0/@descriptors.13/@actualFigure/@children.0/@children.0"/>
+      <accessors
+          figure="//@figures.0/@descriptors.13/@actualFigure/@children.0/@children.1"/>
     </descriptors>
     <descriptors
         name="ComplementFigure">
@@ -1089,6 +1091,11 @@
       figure="MultipleSpecialisationFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.13/@accessors.0"/>
+  <labels
+      name="MultipleSpecialisationSetTheoryLabel"
+      figure="MultipleSpecialisationFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.13/@accessors.1"/>
   <labels
       name="MultipleGeneralisationName"
       figure="MultipleGeneralisationFigure"

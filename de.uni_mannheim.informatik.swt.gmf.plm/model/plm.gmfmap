@@ -328,6 +328,13 @@
                 <features
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/name"/>
               </labelMappings>
+              <labelMappings
+                  xsi:type="gmfmap:ExpressionLabelMapping">
+                <diagramLabel
+                    href="plm.gmfgraph#MultipleSpecialisationSetTheoryLabel"/>
+                <viewExpression
+                    body="let disjoint:String = &#xD;&#xA;&#x9;if (self.disjoint) then &#xD;&#xA;&#x9;&#x9;'disjoint' &#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'overlaping ' &#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let complete:String = &#xD;&#xA;&#x9;if (self.complete) then &#xD;&#xA;&#x9;&#x9;'complete' &#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'incomplete' &#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (disjoint &lt;> ' ') then&#xD;&#xA;&#x9;'{'.concat(disjoint).concat('; ').concat(complete ).concat('}')&#xD;&#xA;else&#xD;&#xA;&#x9;' '&#xD;&#xA;endif"/>
+              </labelMappings>
               <tool
                   xsi:type="gmftool:CreationTool"
                   href="plm.gmftool#//@palette/@tools.4/@tools.1"/>
