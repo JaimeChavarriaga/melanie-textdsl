@@ -158,7 +158,9 @@
               <layoutData
                   xsi:type="gmfgraph:GridLayoutData"
                   grabExcessHorizontalSpace="true"
-                  horizontalAlignment="END"/>
+                  grabExcessVerticalSpace="true"
+                  horizontalAlignment="END"
+                  verticalSpan="4"/>
               <font
                   xsi:type="gmfgraph:BasicFont"
                   style="BOLD"/>
@@ -170,9 +172,22 @@
               <layoutData
                   xsi:type="gmfgraph:GridLayoutData"
                   grabExcessHorizontalSpace="true"
-                  horizontalAlignment="BEGINNING"/>
-              <insets
-                  bottom="10"/>
+                  grabExcessVerticalSpace="true"
+                  verticalAlignment="END"
+                  horizontalAlignment="BEGINNING"
+                  verticalSpan="2"/>
+            </children>
+            <children
+                xsi:type="gmfgraph:Label"
+                name="DomainEntityLevelFigure"
+                text="">
+              <layoutData
+                  xsi:type="gmfgraph:GridLayoutData"
+                  grabExcessHorizontalSpace="true"
+                  grabExcessVerticalSpace="true"
+                  verticalAlignment="BEGINNING"
+                  horizontalAlignment="BEGINNING"
+                  verticalSpan="2"/>
             </children>
           </children>
           <children
@@ -185,15 +200,34 @@
             <children
                 xsi:type="gmfgraph:Label"
                 name="firstCurlyBracket"
-                text="{"/>
+                text="{">
+              <layoutData
+                  xsi:type="gmfgraph:GridLayoutData"
+                  grabExcessHorizontalSpace="true"
+                  horizontalAlignment="END"/>
+              <foregroundColor
+                  xsi:type="gmfgraph:ConstantColor"
+                  value="black"/>
+            </children>
             <children
                 xsi:type="gmfgraph:Label"
                 name="DomainEntityAVSFigure"
-                text=""/>
+                text="">
+              <layoutData
+                  xsi:type="gmfgraph:GridLayoutData"/>
+            </children>
             <children
                 xsi:type="gmfgraph:Label"
                 name="secondCurlyBracket"
-                text="}"/>
+                text="}">
+              <layoutData
+                  xsi:type="gmfgraph:GridLayoutData"
+                  grabExcessHorizontalSpace="true"
+                  horizontalAlignment="BEGINNING"/>
+              <foregroundColor
+                  xsi:type="gmfgraph:ConstantColor"
+                  value="black"/>
+            </children>
           </children>
         </children>
       </actualFigure>
@@ -203,6 +237,8 @@
           figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.1/@children.1"/>
       <accessors
           figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.0/@children.1"/>
+      <accessors
+          figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.0/@children.2"/>
     </descriptors>
     <descriptors
         name="DomainEntityCompartmentFigure">
@@ -1002,6 +1038,11 @@
       figure="DomainEntityFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.4/@accessors.2"/>
+  <labels
+      name="DomainEntityFigureLevelLabel"
+      figure="DomainEntityFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.4/@accessors.3"/>
   <labels
       name="DomainEntityFigureAVSLabel"
       figure="DomainEntityFigure"

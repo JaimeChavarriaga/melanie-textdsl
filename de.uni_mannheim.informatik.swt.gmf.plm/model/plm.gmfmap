@@ -67,6 +67,15 @@
               </labelMappings>
               <labelMappings
                   xsi:type="gmfmap:FeatureLabelMapping"
+                  readOnly="true">
+                <diagramLabel
+                    href="plm.gmfgraph#DomainEntityFigureLevelLabel"/>
+                <features
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject/level"/>
+              </labelMappings>
+              <labelMappings
+                  xsi:type="gmfmap:FeatureLabelMapping"
+                  readOnly="true"
                   viewPattern="name = {0}, expressed = {1}, potency = {2} , level = {3}">
                 <diagramLabel
                     href="plm.gmfgraph#DomainEntityFigureAVSLabel"/>
