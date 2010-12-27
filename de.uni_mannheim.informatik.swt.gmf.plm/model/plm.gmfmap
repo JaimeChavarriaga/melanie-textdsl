@@ -297,7 +297,7 @@
               </labelMappings>
               <tool
                   xsi:type="gmftool:CreationTool"
-                  href="plm.gmftool#//@palette/@tools.3/@tools.3"/>
+                  href="plm.gmftool#//@palette/@tools.3/@tools.2"/>
               <diagramNode
                   href="plm.gmfgraph#Inversion"/>
             </ownedChild>
@@ -422,22 +422,54 @@
   <links>
     <tool
         xsi:type="gmftool:CreationTool"
-        href="plm.gmftool#//@palette/@tools.3/@tools.2"/>
+        href="plm.gmftool#//@palette/@tools.3/@tools.3"/>
     <diagramLink
-        href="plm.gmfgraph#EqualsLink"/>
+        href="plm.gmfgraph#SetRelationshipLink"/>
     <linkMetaFeature
         xsi:type="ecore:EReference"
-        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//SetRelationship/source"/>
+        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//SetRelationship/base"/>
   </links>
   <links>
     <tool
         xsi:type="gmftool:CreationTool"
-        href="plm.gmftool#//@palette/@tools.3/@tools.2"/>
+        href="plm.gmftool#//@palette/@tools.3/@tools.4"/>
     <diagramLink
-        href="plm.gmfgraph#EqualsLink"/>
+        href="plm.gmfgraph#SetRelationshipLink"/>
     <linkMetaFeature
         xsi:type="ecore:EReference"
-        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//SetRelationship/target"/>
+        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Equals/equal"/>
+    <creationConstraints>
+      <sourceEnd
+          body="self.oclIsTypeOf(Equals)"/>
+    </creationConstraints>
+  </links>
+  <links>
+    <tool
+        xsi:type="gmftool:CreationTool"
+        href="plm.gmftool#//@palette/@tools.3/@tools.4"/>
+    <diagramLink
+        href="plm.gmfgraph#SetRelationshipLink"/>
+    <linkMetaFeature
+        xsi:type="ecore:EReference"
+        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Inversion/inverse"/>
+    <creationConstraints>
+      <sourceEnd
+          body="self.oclIsTypeOf(Inversion)"/>
+    </creationConstraints>
+  </links>
+  <links>
+    <tool
+        xsi:type="gmftool:CreationTool"
+        href="plm.gmftool#//@palette/@tools.3/@tools.4"/>
+    <diagramLink
+        href="plm.gmfgraph#SetRelationshipLink"/>
+    <linkMetaFeature
+        xsi:type="ecore:EReference"
+        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Complement/complement"/>
+    <creationConstraints>
+      <sourceEnd
+          body="self.oclIsTypeOf(Complement)"/>
+    </creationConstraints>
   </links>
   <links>
     <labelMappings

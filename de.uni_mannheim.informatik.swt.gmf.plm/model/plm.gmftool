@@ -7,7 +7,7 @@
       title="PLMPalette">
     <tools
         xsi:type="gmftool:ToolGroup"
-        title="Levels"
+        title="Containers"
         collapsible="true">
       <tools
           xsi:type="gmftool:CreationTool"
@@ -125,15 +125,6 @@
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
-          title="Equal Link"
-          description="Create new Equal Link">
-        <smallIcon
-            xsi:type="gmftool:DefaultImage"/>
-        <largeIcon
-            xsi:type="gmftool:DefaultImage"/>
-      </tools>
-      <tools
-          xsi:type="gmftool:CreationTool"
           title="Inversion"
           description="Create new Inversion">
         <smallIcon
@@ -141,6 +132,19 @@
         <largeIcon
             xsi:type="gmftool:DefaultImage"/>
       </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Set Relation Base"
+          description="Create new Set Relation Base">
+        <smallIcon
+            xsi:type="gmftool:DefaultImage"/>
+        <largeIcon
+            xsi:type="gmftool:DefaultImage"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Set Relation Target"
+          description="Create new Set Relation Target"/>
     </tools>
     <tools
         xsi:type="gmftool:ToolGroup"

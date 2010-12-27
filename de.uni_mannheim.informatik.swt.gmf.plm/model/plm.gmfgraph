@@ -898,7 +898,7 @@
           figure="//@figures.0/@descriptors.16/@actualFigure/@children.0/@children.0"/>
     </descriptors>
     <descriptors
-        name="EqualsLinkFigure">
+        name="SetRelationshipLinkFigure">
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"
           name="EqualsLinkFigure"/>
@@ -990,8 +990,8 @@
       name="BinaryGeneralization"
       figure="BinaryGeneralizationFigure"/>
   <connections
-      name="EqualsLink"
-      figure="EqualsLinkFigure"/>
+      name="SetRelationshipLink"
+      figure="SetRelationshipLinkFigure"/>
   <connections
       name="RenderedByLink"
       figure="RenderedByLinkFigure"/>

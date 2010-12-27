@@ -952,13 +952,12 @@
       </modelFacet>
     </links>
     <links
-        visualID="4006"
-        editPartClassName="SetRelationshipSourceEditPart"
-        itemSemanticEditPolicyClassName="SetRelationshipSourceItemSemanticEditPolicy"
-        notationViewFactoryClassName="SetRelationshipSourceViewFactory"
-        incomingCreationAllowed="true"
-        createCommandClassName="SetRelationshipSourceCreateCommand"
-        reorientCommandClassName="SetRelationshipSourceReorientCommand">
+        visualID="4013"
+        editPartClassName="SetRelationshipBaseEditPart"
+        itemSemanticEditPolicyClassName="SetRelationshipBaseItemSemanticEditPolicy"
+        notationViewFactoryClassName="SetRelationshipBaseViewFactory"
+        createCommandClassName="SetRelationshipBaseCreateCommand"
+        reorientCommandClassName="SetRelationshipBaseReorientCommand">
       <diagramRunTimeClass
           href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Edge"/>
       <elementType
@@ -969,17 +968,16 @@
       <modelFacet
           xsi:type="gmfgen:FeatureLinkModelFacet">
         <metaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/SetRelationship/source"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/SetRelationship/base"/>
       </modelFacet>
     </links>
     <links
-        visualID="4005"
-        editPartClassName="SetRelationshipTargetEditPart"
-        itemSemanticEditPolicyClassName="SetRelationshipTargetItemSemanticEditPolicy"
-        notationViewFactoryClassName="SetRelationshipTargetViewFactory"
-        incomingCreationAllowed="true"
-        createCommandClassName="SetRelationshipTargetCreateCommand"
-        reorientCommandClassName="SetRelationshipTargetReorientCommand">
+        visualID="4014"
+        editPartClassName="EqualsEqualEditPart"
+        itemSemanticEditPolicyClassName="EqualsEqualItemSemanticEditPolicy"
+        notationViewFactoryClassName="EqualsEqualViewFactory"
+        createCommandClassName="EqualsEqualCreateCommand"
+        reorientCommandClassName="EqualsEqualReorientCommand">
       <diagramRunTimeClass
           href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Edge"/>
       <elementType
@@ -990,8 +988,54 @@
       <modelFacet
           xsi:type="gmfgen:FeatureLinkModelFacet">
         <metaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/SetRelationship/target"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Equals/equal"/>
       </modelFacet>
+      <creationConstraints
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.8"/>
+    </links>
+    <links
+        visualID="4015"
+        editPartClassName="InversionInverseEditPart"
+        itemSemanticEditPolicyClassName="InversionInverseItemSemanticEditPolicy"
+        notationViewFactoryClassName="InversionInverseViewFactory"
+        createCommandClassName="InversionInverseCreateCommand"
+        reorientCommandClassName="InversionInverseReorientCommand">
+      <diagramRunTimeClass
+          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Edge"/>
+      <elementType
+          xsi:type="gmfgen:SpecializationType"/>
+      <viewmap
+          xsi:type="gmfgen:FigureViewmap"
+          figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx"/>
+      <modelFacet
+          xsi:type="gmfgen:FeatureLinkModelFacet">
+        <metaFeature
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Inversion/inverse"/>
+      </modelFacet>
+      <creationConstraints
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.9"/>
+    </links>
+    <links
+        visualID="4016"
+        editPartClassName="ComplementComplementEditPart"
+        itemSemanticEditPolicyClassName="ComplementComplementItemSemanticEditPolicy"
+        notationViewFactoryClassName="ComplementComplementViewFactory"
+        createCommandClassName="ComplementComplementCreateCommand"
+        reorientCommandClassName="ComplementComplementReorientCommand">
+      <diagramRunTimeClass
+          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Edge"/>
+      <elementType
+          xsi:type="gmfgen:SpecializationType"/>
+      <viewmap
+          xsi:type="gmfgen:FigureViewmap"
+          figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx"/>
+      <modelFacet
+          xsi:type="gmfgen:FeatureLinkModelFacet">
+        <metaFeature
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Complement/complement"/>
+      </modelFacet>
+      <creationConstraints
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.10"/>
     </links>
     <links
         visualID="4007"
@@ -1203,7 +1247,7 @@
     </compartments>
     <palette>
       <groups
-          title="Levels"
+          title="Containers"
           collapse="true">
         <entries
             xsi:type="gmfgen:ToolEntry"
@@ -1248,7 +1292,7 @@
             xsi:type="gmfgen:ToolEntry"
             title="Rendered By"
             description="Create new Rendered By Connection"
-            genLinks="//@diagram/@links.5"/>
+            genLinks="//@diagram/@links.7"/>
       </groups>
       <groups
           title="Connections"
@@ -1274,14 +1318,19 @@
             genNodes="//@diagram/@childNodes.7"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
-            title="Equal Link"
-            description="Create new Equal Link"
-            genLinks="//@diagram/@links.3 //@diagram/@links.4"/>
-        <entries
-            xsi:type="gmfgen:ToolEntry"
             title="Inversion"
             description="Create new Inversion"
             genNodes="//@diagram/@childNodes.8"/>
+        <entries
+            xsi:type="gmfgen:ToolEntry"
+            title="Set Relation Base"
+            description="Create new Set Relation Base"
+            genLinks="//@diagram/@links.3"/>
+        <entries
+            xsi:type="gmfgen:ToolEntry"
+            title="Set Relation Target"
+            description="Create new Set Relation Target"
+            genLinks="//@diagram/@links.4 //@diagram/@links.5 //@diagram/@links.6"/>
       </groups>
       <groups
           title="Generalisations"
@@ -1300,12 +1349,12 @@
             xsi:type="gmfgen:ToolEntry"
             title="Specialisation Supertype"
             description="Create new Supertype"
-            genLinks="//@diagram/@links.8"/>
+            genLinks="//@diagram/@links.10"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Specialisation Subtype"
             description="Create new Subtype"
-            genLinks="//@diagram/@links.9"/>
+            genLinks="//@diagram/@links.11"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Multiple Generalisation"
@@ -1315,12 +1364,12 @@
             xsi:type="gmfgen:ToolEntry"
             title="Generalisation Supertype"
             description="Create new Supertype"
-            genLinks="//@diagram/@links.6"/>
+            genLinks="//@diagram/@links.8"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Generalisation Subtype"
             description="Create new Generalisation"
-            genLinks="//@diagram/@links.7"/>
+            genLinks="//@diagram/@links.9"/>
       </groups>
     </palette>
     <preferencePages
@@ -1397,6 +1446,15 @@
           body="let potency:String = if (self.potency > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.potency.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.potency = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;potency"/>
       <expressions
           body="let disjoint:String = &#xD;&#xA;&#x9;if (self.disjoint) then &#xD;&#xA;&#x9;&#x9;'disjoint' &#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'overlaping ' &#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let complete:String = &#xD;&#xA;&#x9;if (self.complete) then &#xD;&#xA;&#x9;&#x9;'complete' &#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'incomplete' &#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (disjoint &lt;> ' ') then&#xD;&#xA;&#x9;'{'.concat(disjoint).concat('; ').concat(complete ).concat('}')&#xD;&#xA;else&#xD;&#xA;&#x9;' '&#xD;&#xA;endif"/>
+      <expressions
+          xsi:type="gmfgen:GenConstraint"
+          body="self.oclIsTypeOf(Equals)"/>
+      <expressions
+          xsi:type="gmfgen:GenConstraint"
+          body="self.oclIsTypeOf(Inversion)"/>
+      <expressions
+          xsi:type="gmfgen:GenConstraint"
+          body="self.oclIsTypeOf(Complement)"/>
     </providers>
   </expressionProviders>
   <labelParsers
@@ -1455,7 +1513,7 @@
     </implementations>
     <implementations
         xsi:type="gmfgen:ExternalParser"
-        uses="//@diagram/@childNodes.6/@labels.0/@modelFacet //@diagram/@childNodes.7/@labels.0/@modelFacet //@diagram/@childNodes.8/@labels.0/@modelFacet //@diagram/@links.0/@labels.0/@modelFacet //@diagram/@links.0/@labels.1/@modelFacet //@diagram/@links.5/@labels.0/@modelFacet"/>
+        uses="//@diagram/@childNodes.6/@labels.0/@modelFacet //@diagram/@childNodes.7/@labels.0/@modelFacet //@diagram/@childNodes.8/@labels.0/@modelFacet //@diagram/@links.0/@labels.0/@modelFacet //@diagram/@links.0/@labels.1/@modelFacet //@diagram/@links.7/@labels.0/@modelFacet"/>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.10/@labels.1/@modelFacet"
