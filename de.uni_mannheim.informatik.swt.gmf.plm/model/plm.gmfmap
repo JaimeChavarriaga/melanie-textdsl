@@ -491,7 +491,7 @@
         xsi:type="gmftool:CreationTool"
         href="plm.gmftool#//@palette/@tools.4/@tools.3"/>
     <diagramLink
-        href="plm.gmfgraph#GenaralisationSuperTypeConnection"/>
+        href="plm.gmfgraph#SuperTypeConnection"/>
     <linkMetaFeature
         xsi:type="ecore:EReference"
         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//MultipleGeneralization/supertype"/>
@@ -505,7 +505,7 @@
         xsi:type="gmftool:CreationTool"
         href="plm.gmftool#//@palette/@tools.4/@tools.4"/>
     <diagramLink
-        href="plm.gmfgraph#GenaralisationSubTypeConnection"/>
+        href="plm.gmfgraph#SubTypeConnection"/>
     <linkMetaFeature
         xsi:type="ecore:EReference"
         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//MultipleGeneralization/subtype"/>
@@ -519,7 +519,7 @@
         xsi:type="gmftool:CreationTool"
         href="plm.gmftool#//@palette/@tools.4/@tools.3"/>
     <diagramLink
-        href="plm.gmfgraph#GenaralisationSuperTypeConnection"/>
+        href="plm.gmfgraph#SuperTypeConnection"/>
     <linkMetaFeature
         xsi:type="ecore:EReference"
         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//MultipleSpecialization/supertype"/>
@@ -533,7 +533,7 @@
         xsi:type="gmftool:CreationTool"
         href="plm.gmftool#//@palette/@tools.4/@tools.4"/>
     <diagramLink
-        href="plm.gmfgraph#GenaralisationSubTypeConnection"/>
+        href="plm.gmfgraph#SubTypeConnection"/>
     <linkMetaFeature
         xsi:type="ecore:EReference"
         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//MultipleSpecialization/subtype"/>

@@ -923,7 +923,7 @@
           figure="//@figures.0/@descriptors.18/@actualFigure/@children.1"/>
     </descriptors>
     <descriptors
-        name="GenaralisationSuperTypeConnectionFigure">
+        name="SuperTypeConnectionFigure">
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"
           targetDecoration="//@figures.0/@descriptors.19/@actualFigure/@children.0">
@@ -939,7 +939,7 @@
       </actualFigure>
     </descriptors>
     <descriptors
-        name="GenaralisationSubTypeConnectionFigure">
+        name="SubTypeConnectionFigure">
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"/>
     </descriptors>
@@ -987,20 +987,20 @@
       name="Instantiation"
       figure="InstantiationFigure"/>
   <connections
-      name="BinaryGeneralization"
-      figure="BinaryGeneralizationFigure"/>
-  <connections
       name="SetRelationshipLink"
       figure="SetRelationshipLinkFigure"/>
   <connections
+      name="BinaryGeneralization"
+      figure="BinaryGeneralizationFigure"/>
+  <connections
+      name="SuperTypeConnection"
+      figure="SuperTypeConnectionFigure"/>
+  <connections
+      name="SubTypeConnection"
+      figure="SubTypeConnectionFigure"/>
+  <connections
       name="RenderedByLink"
       figure="RenderedByLinkFigure"/>
-  <connections
-      name="GenaralisationSuperTypeConnection"
-      figure="GenaralisationSuperTypeConnectionFigure"/>
-  <connections
-      name="GenaralisationSubTypeConnection"
-      figure="GenaralisationSubTypeConnectionFigure"/>
   <compartments
       name="ModelCompartment"
       figure="ModellCompartmentFigure"/>
