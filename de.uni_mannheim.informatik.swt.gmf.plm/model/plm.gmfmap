@@ -318,7 +318,7 @@
               </labelMappings>
               <tool
                   xsi:type="gmftool:CreationTool"
-                  href="plm.gmftool#//@palette/@tools.4/@tools.4"/>
+                  href="plm.gmftool#//@palette/@tools.4/@tools.2"/>
               <diagramNode
                   href="plm.gmfgraph#MultipleGeneralisation"/>
             </ownedChild>
@@ -489,42 +489,58 @@
   <links>
     <tool
         xsi:type="gmftool:CreationTool"
-        href="plm.gmftool#//@palette/@tools.4/@tools.5"/>
+        href="plm.gmftool#//@palette/@tools.4/@tools.3"/>
     <diagramLink
         href="plm.gmfgraph#GenaralisationSuperTypeConnection"/>
     <linkMetaFeature
         xsi:type="ecore:EReference"
         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//MultipleGeneralization/supertype"/>
+    <creationConstraints>
+      <sourceEnd
+          body="self.oclIsTypeOf(MultipleGeneralization)"/>
+    </creationConstraints>
   </links>
   <links>
     <tool
         xsi:type="gmftool:CreationTool"
-        href="plm.gmftool#//@palette/@tools.4/@tools.6"/>
+        href="plm.gmftool#//@palette/@tools.4/@tools.4"/>
     <diagramLink
         href="plm.gmfgraph#GenaralisationSubTypeConnection"/>
     <linkMetaFeature
         xsi:type="ecore:EReference"
         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//MultipleGeneralization/subtype"/>
-  </links>
-  <links>
-    <tool
-        xsi:type="gmftool:CreationTool"
-        href="plm.gmftool#//@palette/@tools.4/@tools.2"/>
-    <diagramLink
-        href="plm.gmfgraph#GenaralisationSuperTypeConnection"/>
-    <linkMetaFeature
-        xsi:type="ecore:EReference"
-        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//MultipleSpecialization/supertype"/>
+    <creationConstraints>
+      <sourceEnd
+          body="self.oclIsTypeOf(MultipleGeneralization)"/>
+    </creationConstraints>
   </links>
   <links>
     <tool
         xsi:type="gmftool:CreationTool"
         href="plm.gmftool#//@palette/@tools.4/@tools.3"/>
     <diagramLink
+        href="plm.gmfgraph#GenaralisationSuperTypeConnection"/>
+    <linkMetaFeature
+        xsi:type="ecore:EReference"
+        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//MultipleSpecialization/supertype"/>
+    <creationConstraints>
+      <sourceEnd
+          body="self.oclIsTypeOf(MultipleSpecialization)"/>
+    </creationConstraints>
+  </links>
+  <links>
+    <tool
+        xsi:type="gmftool:CreationTool"
+        href="plm.gmftool#//@palette/@tools.4/@tools.4"/>
+    <diagramLink
         href="plm.gmfgraph#GenaralisationSubTypeConnection"/>
     <linkMetaFeature
         xsi:type="ecore:EReference"
         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//MultipleSpecialization/subtype"/>
+    <creationConstraints>
+      <sourceEnd
+          body="self.oclIsTypeOf(MultipleSpecialization)"/>
+    </creationConstraints>
   </links>
   <diagram>
     <diagramCanvas

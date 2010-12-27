@@ -170,24 +170,6 @@
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
-          title="Specialisation Supertype"
-          description="Create new Supertype">
-        <smallIcon
-            xsi:type="gmftool:DefaultImage"/>
-        <largeIcon
-            xsi:type="gmftool:DefaultImage"/>
-      </tools>
-      <tools
-          xsi:type="gmftool:CreationTool"
-          title="Specialisation Subtype"
-          description="Create new Subtype">
-        <smallIcon
-            xsi:type="gmftool:DefaultImage"/>
-        <largeIcon
-            xsi:type="gmftool:DefaultImage"/>
-      </tools>
-      <tools
-          xsi:type="gmftool:CreationTool"
           title="Multiple Generalisation"
           description="Create new Multiple Generalisation">
         <smallIcon
@@ -197,7 +179,7 @@
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
-          title="Generalisation Supertype"
+          title="Supertype"
           description="Create new Supertype">
         <smallIcon
             xsi:type="gmftool:DefaultImage"/>
@@ -206,8 +188,8 @@
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
-          title="Generalisation Subtype"
-          description="Create new Generalisation">
+          title="Subtype"
+          description="Create new Subtype">
         <smallIcon
             xsi:type="gmftool:DefaultImage"/>
         <largeIcon

@@ -1098,6 +1098,8 @@
         <metaFeature
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleGeneralization/supertype"/>
       </modelFacet>
+      <creationConstraints
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.11"/>
     </links>
     <links
         visualID="4009"
@@ -1118,6 +1120,8 @@
         <metaFeature
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleGeneralization/subtype"/>
       </modelFacet>
+      <creationConstraints
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.12"/>
     </links>
     <links
         visualID="4011"
@@ -1139,6 +1143,8 @@
         <metaFeature
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleSpecialization/supertype"/>
       </modelFacet>
+      <creationConstraints
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.13"/>
     </links>
     <links
         visualID="4012"
@@ -1159,6 +1165,8 @@
         <metaFeature
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleSpecialization/subtype"/>
       </modelFacet>
+      <creationConstraints
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.14"/>
     </links>
     <compartments
         visualID="7003"
@@ -1347,29 +1355,19 @@
             genNodes="//@diagram/@childNodes.10"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
-            title="Specialisation Supertype"
-            description="Create new Supertype"
-            genLinks="//@diagram/@links.10"/>
-        <entries
-            xsi:type="gmfgen:ToolEntry"
-            title="Specialisation Subtype"
-            description="Create new Subtype"
-            genLinks="//@diagram/@links.11"/>
-        <entries
-            xsi:type="gmfgen:ToolEntry"
             title="Multiple Generalisation"
             description="Create new Multiple Generalisation"
             genNodes="//@diagram/@childNodes.9"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
-            title="Generalisation Supertype"
+            title="Supertype"
             description="Create new Supertype"
-            genLinks="//@diagram/@links.8"/>
+            genLinks="//@diagram/@links.8 //@diagram/@links.10"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
-            title="Generalisation Subtype"
-            description="Create new Generalisation"
-            genLinks="//@diagram/@links.9"/>
+            title="Subtype"
+            description="Create new Subtype"
+            genLinks="//@diagram/@links.9 //@diagram/@links.11"/>
       </groups>
     </palette>
     <preferencePages
@@ -1455,6 +1453,18 @@
       <expressions
           xsi:type="gmfgen:GenConstraint"
           body="self.oclIsTypeOf(Complement)"/>
+      <expressions
+          xsi:type="gmfgen:GenConstraint"
+          body="self.oclIsTypeOf(MultipleGeneralization)"/>
+      <expressions
+          xsi:type="gmfgen:GenConstraint"
+          body="self.oclIsTypeOf(MultipleGeneralization)"/>
+      <expressions
+          xsi:type="gmfgen:GenConstraint"
+          body="self.oclIsTypeOf(MultipleSpecialization)"/>
+      <expressions
+          xsi:type="gmfgen:GenConstraint"
+          body="self.oclIsTypeOf(MultipleSpecialization)"/>
     </providers>
   </expressionProviders>
   <labelParsers
