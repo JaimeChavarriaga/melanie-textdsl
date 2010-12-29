@@ -79,14 +79,14 @@
       </labels>
     </childNodes>
     <childNodes
-        visualID="3005"
-        editPartClassName="DomainEntityEditPart"
-        itemSemanticEditPolicyClassName="DomainEntityItemSemanticEditPolicy"
+        visualID="3016"
+        editPartClassName="DomainEntity2EditPart"
+        itemSemanticEditPolicyClassName="DomainEntity2ItemSemanticEditPolicy"
         notationViewFactoryClassName="DomainEntityViewFactory"
-        canonicalEditPolicyClassName="DomainEntityCanonicalEditPolicy"
+        canonicalEditPolicyClassName="DomainEntity2CanonicalEditPolicy"
         compartments="//@diagram/@compartments.2 //@diagram/@compartments.3"
-        graphicalNodeEditPolicyClassName="DomainEntityGraphicalNodeEditPolicy"
-        createCommandClassName="DomainEntityCreateCommand"
+        graphicalNodeEditPolicyClassName="DomainEntity2GraphicalNodeEditPolicy"
+        createCommandClassName="DomainEntity2CreateCommand"
         containers="//@diagram/@compartments.1">
       <diagramRunTimeClass
           href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -106,9 +106,9 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/elements"/>
       </modelFacet>
       <labels
-          visualID="5005"
-          editPartClassName="DomainEntityNameEditPart"
-          itemSemanticEditPolicyClassName="DomainEntityNameItemSemanticEditPolicy"
+          visualID="5032"
+          editPartClassName="DomainEntityName2EditPart"
+          itemSemanticEditPolicyClassName="DomainEntityName2ItemSemanticEditPolicy"
           notationViewFactoryClassName="DomainEntityNameViewFactory">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -129,9 +129,9 @@
         </modelFacet>
       </labels>
       <labels
-          visualID="5009"
-          editPartClassName="WrappingLabelEditPart"
-          itemSemanticEditPolicyClassName="WrappingLabelItemSemanticEditPolicy"
+          visualID="5033"
+          editPartClassName="WrappingLabel15EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel15ItemSemanticEditPolicy"
           notationViewFactoryClassName="DomainEntityLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -145,10 +145,10 @@
             parser="//@labelParsers/@implementations.4"/>
       </labels>
       <labels
-          visualID="5011"
-          editPartClassName="DomainEntityNameExpressedPotencyLevEditPart"
-          itemSemanticEditPolicyClassName="DomainEntityNameExpressedPotencyLevItemSemanticEditPolicy"
-          notationViewFactoryClassName="DomainEntityNameExpressedPotencyLevelViewFactory"
+          visualID="5034"
+          editPartClassName="DomainEntityLevel2EditPart"
+          itemSemanticEditPolicyClassName="DomainEntityLevel2ItemSemanticEditPolicy"
+          notationViewFactoryClassName="DomainEntityLevelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -164,7 +164,7 @@
         </modelFacet>
       </labels>
       <labels
-          visualID="5026"
+          visualID="5035"
           editPartClassName="DomainEntityNameExpressedPotencyLev2EditPart"
           itemSemanticEditPolicyClassName="DomainEntityNameExpressedPotencyLev2ItemSemanticEditPolicy"
           notationViewFactoryClassName="DomainEntityNameExpressedPotencyLevelViewFactory"
@@ -198,7 +198,7 @@
         canonicalEditPolicyClassName="FieldCanonicalEditPolicy"
         graphicalNodeEditPolicyClassName="FieldGraphicalNodeEditPolicy"
         createCommandClassName="FieldCreateCommand"
-        containers="//@diagram/@compartments.2">
+        containers="//@diagram/@compartments.2 //@diagram/@compartments.5">
       <diagramRunTimeClass
           href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
       <elementType
@@ -208,11 +208,11 @@
           xsi:type="gmfgen:InnerClassViewmap"
           layoutType="TOOLBAR_LAYOUT"
           className="DomainEntityFieldFigure"
-          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class DomainEntityFieldFigure extends org.eclipse.draw2d.RectangleFigure {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureDomainEntityFieldNameFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureDomainEntityFieldPotencyFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureDomainEntityFieldDataTypeFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureDomainEntityFieldDefaultValueFigure; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public DomainEntityFieldFigure() {&#xA;&#x9;&#x9;&#xA;&#x9;org.eclipse.draw2d.ToolbarLayout layoutThis = new org.eclipse.draw2d.ToolbarLayout();&#xA;&#x9;layoutThis.setStretchMinorAxis(true);&#xA;&#x9;layoutThis.setMinorAlignment(org.eclipse.draw2d.ToolbarLayout.ALIGN_TOPLEFT&#xA;);&#xA;&#xA;&#x9;layoutThis.setSpacing(0);&#xA;&#x9;layoutThis.setVertical(true);&#xA;&#xA;&#x9;this.setLayoutManager(layoutThis);&#xA;&#xA;&#x9;&#x9;this.setFill(false);&#xA;this.setOutline(false);&#xA;this.setPreferredSize(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(22)&#xA;));&#xA;&#xA;this.setBorder(new org.eclipse.draw2d.MarginBorder(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(0)&#xA;));&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;org.eclipse.draw2d.RectangleFigure innerRectangle0 = new org.eclipse.draw2d.RectangleFigure();&#xA;innerRectangle0.setFill(false);&#xA;innerRectangle0.setOutline(false);&#xA;innerRectangle0.setPreferredSize(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(22)&#xA;));&#xA;&#xA;this.add(innerRectangle0);&#xA;&#xA;&#x9;org.eclipse.draw2d.GridLayout layoutInnerRectangle0 = new org.eclipse.draw2d.GridLayout();&#xA;&#x9;layoutInnerRectangle0.numColumns = 4;&#xA;&#x9;layoutInnerRectangle0.makeColumnsEqualWidth = false;&#xA;&#x9;innerRectangle0.setLayoutManager(layoutInnerRectangle0);&#xA;&#xA;&#xA;&#xA;fFigureDomainEntityFieldNameFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureDomainEntityFieldNameFigure.setText(&quot;&quot;);&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureDomainEntityFieldNameFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureDomainEntityFieldNameFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureDomainEntityFieldNameFigure.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureDomainEntityFieldNameFigure.horizontalIndent = 0;&#xA;constraintFFigureDomainEntityFieldNameFigure.horizontalSpan = 1;&#xA;constraintFFigureDomainEntityFieldNameFigure.verticalSpan = 1;&#xA;constraintFFigureDomainEntityFieldNameFigure.grabExcessHorizontalSpace = false;&#xA;constraintFFigureDomainEntityFieldNameFigure.grabExcessVerticalSpace = false;&#xA;innerRectangle0.add(fFigureDomainEntityFieldNameFigure, constraintFFigureDomainEntityFieldNameFigure);&#xA;&#xA;&#xA;&#xA;&#xA;fFigureDomainEntityFieldPotencyFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureDomainEntityFieldPotencyFigure.setText(&quot;&quot;);&#xA;&#xA;fFigureDomainEntityFieldPotencyFigure.setBorder(new org.eclipse.draw2d.MarginBorder(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(10)&#xA;, getMapMode().DPtoLP(0)&#xA;));&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureDomainEntityFieldPotencyFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureDomainEntityFieldPotencyFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureDomainEntityFieldPotencyFigure.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureDomainEntityFieldPotencyFigure.horizontalIndent = 0;&#xA;constraintFFigureDomainEntityFieldPotencyFigure.horizontalSpan = 1;&#xA;constraintFFigureDomainEntityFieldPotencyFigure.verticalSpan = 1;&#xA;constraintFFigureDomainEntityFieldPotencyFigure.grabExcessHorizontalSpace = false;&#xA;constraintFFigureDomainEntityFieldPotencyFigure.grabExcessVerticalSpace = false;&#xA;innerRectangle0.add(fFigureDomainEntityFieldPotencyFigure, constraintFFigureDomainEntityFieldPotencyFigure);&#xA;&#xA;&#xA;&#xA;&#xA;fFigureDomainEntityFieldDataTypeFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureDomainEntityFieldDataTypeFigure.setText(&quot;&quot;);&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureDomainEntityFieldDataTypeFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureDomainEntityFieldDataTypeFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureDomainEntityFieldDataTypeFigure.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureDomainEntityFieldDataTypeFigure.horizontalIndent = 0;&#xA;constraintFFigureDomainEntityFieldDataTypeFigure.horizontalSpan = 1;&#xA;constraintFFigureDomainEntityFieldDataTypeFigure.verticalSpan = 1;&#xA;constraintFFigureDomainEntityFieldDataTypeFigure.grabExcessHorizontalSpace = false;&#xA;constraintFFigureDomainEntityFieldDataTypeFigure.grabExcessVerticalSpace = false;&#xA;innerRectangle0.add(fFigureDomainEntityFieldDataTypeFigure, constraintFFigureDomainEntityFieldDataTypeFigure);&#xA;&#xA;&#xA;&#xA;&#xA;fFigureDomainEntityFieldDefaultValueFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureDomainEntityFieldDefaultValueFigure.setText(&quot;&quot;);&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureDomainEntityFieldDefaultValueFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureDomainEntityFieldDefaultValueFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureDomainEntityFieldDefaultValueFigure.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureDomainEntityFieldDefaultValueFigure.horizontalIndent = 0;&#xA;constraintFFigureDomainEntityFieldDefaultValueFigure.horizontalSpan = 1;&#xA;constraintFFigureDomainEntityFieldDefaultValueFigure.verticalSpan = 1;&#xA;constraintFFigureDomainEntityFieldDefaultValueFigure.grabExcessHorizontalSpace = false;&#xA;constraintFFigureDomainEntityFieldDefaultValueFigure.grabExcessVerticalSpace = false;&#xA;innerRectangle0.add(fFigureDomainEntityFieldDefaultValueFigure, constraintFFigureDomainEntityFieldDefaultValueFigure);&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureDomainEntityFieldNameFigure() {&#xA;&#x9;&#x9;return fFigureDomainEntityFieldNameFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureDomainEntityFieldPotencyFigure() {&#xA;&#x9;&#x9;return fFigureDomainEntityFieldPotencyFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureDomainEntityFieldDataTypeFigure() {&#xA;&#x9;&#x9;return fFigureDomainEntityFieldDataTypeFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureDomainEntityFieldDefaultValueFigure() {&#xA;&#x9;&#x9;return fFigureDomainEntityFieldDefaultValueFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;">
+          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class DomainEntityFieldFigure extends org.eclipse.draw2d.RectangleFigure {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureDomainEntityFieldNameFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureDomainEntityFieldPotencyFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureDomainEntityFieldDataTypeFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureDomainEntityFieldDefaultValueFigure; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public DomainEntityFieldFigure() {&#xA;&#x9;&#x9;&#xA;&#x9;org.eclipse.draw2d.ToolbarLayout layoutThis = new org.eclipse.draw2d.ToolbarLayout();&#xA;&#x9;layoutThis.setStretchMinorAxis(true);&#xA;&#x9;layoutThis.setMinorAlignment(org.eclipse.draw2d.ToolbarLayout.ALIGN_TOPLEFT&#xA;);&#xA;&#xA;&#x9;layoutThis.setSpacing(0);&#xA;&#x9;layoutThis.setVertical(true);&#xA;&#xA;&#x9;this.setLayoutManager(layoutThis);&#xA;&#xA;&#x9;&#x9;this.setFill(false);&#xA;this.setOutline(false);&#xA;this.setPreferredSize(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(24)&#xA;));&#xA;&#xA;this.setBorder(new org.eclipse.draw2d.MarginBorder(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(0)&#xA;));&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;org.eclipse.draw2d.RectangleFigure innerRectangle0 = new org.eclipse.draw2d.RectangleFigure();&#xA;innerRectangle0.setFill(false);&#xA;innerRectangle0.setOutline(false);&#xA;innerRectangle0.setPreferredSize(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(24)&#xA;));&#xA;&#xA;this.add(innerRectangle0);&#xA;&#xA;&#x9;org.eclipse.draw2d.GridLayout layoutInnerRectangle0 = new org.eclipse.draw2d.GridLayout();&#xA;&#x9;layoutInnerRectangle0.numColumns = 4;&#xA;&#x9;layoutInnerRectangle0.makeColumnsEqualWidth = false;&#xA;&#x9;innerRectangle0.setLayoutManager(layoutInnerRectangle0);&#xA;&#xA;&#xA;&#xA;fFigureDomainEntityFieldNameFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureDomainEntityFieldNameFigure.setText(&quot;&quot;);&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureDomainEntityFieldNameFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureDomainEntityFieldNameFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureDomainEntityFieldNameFigure.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureDomainEntityFieldNameFigure.horizontalIndent = 0;&#xA;constraintFFigureDomainEntityFieldNameFigure.horizontalSpan = 1;&#xA;constraintFFigureDomainEntityFieldNameFigure.verticalSpan = 1;&#xA;constraintFFigureDomainEntityFieldNameFigure.grabExcessHorizontalSpace = false;&#xA;constraintFFigureDomainEntityFieldNameFigure.grabExcessVerticalSpace = false;&#xA;innerRectangle0.add(fFigureDomainEntityFieldNameFigure, constraintFFigureDomainEntityFieldNameFigure);&#xA;&#xA;&#xA;&#xA;&#xA;fFigureDomainEntityFieldPotencyFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureDomainEntityFieldPotencyFigure.setText(&quot;&quot;);&#xA;&#xA;fFigureDomainEntityFieldPotencyFigure.setBorder(new org.eclipse.draw2d.MarginBorder(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(10)&#xA;, getMapMode().DPtoLP(0)&#xA;));&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureDomainEntityFieldPotencyFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureDomainEntityFieldPotencyFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureDomainEntityFieldPotencyFigure.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureDomainEntityFieldPotencyFigure.horizontalIndent = 0;&#xA;constraintFFigureDomainEntityFieldPotencyFigure.horizontalSpan = 1;&#xA;constraintFFigureDomainEntityFieldPotencyFigure.verticalSpan = 1;&#xA;constraintFFigureDomainEntityFieldPotencyFigure.grabExcessHorizontalSpace = false;&#xA;constraintFFigureDomainEntityFieldPotencyFigure.grabExcessVerticalSpace = false;&#xA;innerRectangle0.add(fFigureDomainEntityFieldPotencyFigure, constraintFFigureDomainEntityFieldPotencyFigure);&#xA;&#xA;&#xA;&#xA;&#xA;fFigureDomainEntityFieldDataTypeFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureDomainEntityFieldDataTypeFigure.setText(&quot;&quot;);&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureDomainEntityFieldDataTypeFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureDomainEntityFieldDataTypeFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureDomainEntityFieldDataTypeFigure.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureDomainEntityFieldDataTypeFigure.horizontalIndent = 0;&#xA;constraintFFigureDomainEntityFieldDataTypeFigure.horizontalSpan = 1;&#xA;constraintFFigureDomainEntityFieldDataTypeFigure.verticalSpan = 1;&#xA;constraintFFigureDomainEntityFieldDataTypeFigure.grabExcessHorizontalSpace = false;&#xA;constraintFFigureDomainEntityFieldDataTypeFigure.grabExcessVerticalSpace = false;&#xA;innerRectangle0.add(fFigureDomainEntityFieldDataTypeFigure, constraintFFigureDomainEntityFieldDataTypeFigure);&#xA;&#xA;&#xA;&#xA;&#xA;fFigureDomainEntityFieldDefaultValueFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureDomainEntityFieldDefaultValueFigure.setText(&quot;&quot;);&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureDomainEntityFieldDefaultValueFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureDomainEntityFieldDefaultValueFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureDomainEntityFieldDefaultValueFigure.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureDomainEntityFieldDefaultValueFigure.horizontalIndent = 0;&#xA;constraintFFigureDomainEntityFieldDefaultValueFigure.horizontalSpan = 1;&#xA;constraintFFigureDomainEntityFieldDefaultValueFigure.verticalSpan = 1;&#xA;constraintFFigureDomainEntityFieldDefaultValueFigure.grabExcessHorizontalSpace = false;&#xA;constraintFFigureDomainEntityFieldDefaultValueFigure.grabExcessVerticalSpace = false;&#xA;innerRectangle0.add(fFigureDomainEntityFieldDefaultValueFigure, constraintFFigureDomainEntityFieldDefaultValueFigure);&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureDomainEntityFieldNameFigure() {&#xA;&#x9;&#x9;return fFigureDomainEntityFieldNameFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureDomainEntityFieldPotencyFigure() {&#xA;&#x9;&#x9;return fFigureDomainEntityFieldPotencyFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureDomainEntityFieldDataTypeFigure() {&#xA;&#x9;&#x9;return fFigureDomainEntityFieldDataTypeFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureDomainEntityFieldDefaultValueFigure() {&#xA;&#x9;&#x9;return fFigureDomainEntityFieldDefaultValueFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;">
         <attributes
             xsi:type="gmfgen:DefaultSizeAttributes"
             width="0"
-            height="22"/>
+            height="24"/>
       </viewmap>
       <modelFacet>
         <metaClass
@@ -273,6 +273,25 @@
             xsi:type="gmfgen:ExpressionLabelModelFacet"
             parser="//@labelParsers/@implementations.2"/>
       </labels>
+      <labels
+          visualID="5036"
+          editPartClassName="FieldValueEditPart"
+          itemSemanticEditPolicyClassName="FieldValueItemSemanticEditPolicy"
+          notationViewFactoryClassName="FieldValueViewFactory">
+        <diagramRunTimeClass
+            href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap
+            xsi:type="gmfgen:ParentAssignedViewmap"
+            getterName="getFigureDomainEntityFieldDefaultValueFigure"
+            figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
+        <modelFacet
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0"
+            viewPattern="={0}">
+          <metaFeatures
+              href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Field/value"/>
+        </modelFacet>
+      </labels>
     </childNodes>
     <childNodes
         visualID="3008"
@@ -282,7 +301,7 @@
         canonicalEditPolicyClassName="MethodCanonicalEditPolicy"
         graphicalNodeEditPolicyClassName="MethodGraphicalNodeEditPolicy"
         createCommandClassName="MethodCreateCommand"
-        containers="//@diagram/@compartments.3">
+        containers="//@diagram/@compartments.3 //@diagram/@compartments.6">
       <diagramRunTimeClass
           href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
       <elementType
@@ -427,11 +446,11 @@
           xsi:type="gmfgen:InnerClassViewmap"
           layoutType="TOOLBAR_LAYOUT"
           className="DomainEntityFieldFigure"
-          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class DomainEntityFieldFigure extends org.eclipse.draw2d.RectangleFigure {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureDomainEntityFieldNameFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureDomainEntityFieldPotencyFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureDomainEntityFieldDataTypeFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureDomainEntityFieldDefaultValueFigure; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public DomainEntityFieldFigure() {&#xA;&#x9;&#x9;&#xA;&#x9;org.eclipse.draw2d.ToolbarLayout layoutThis = new org.eclipse.draw2d.ToolbarLayout();&#xA;&#x9;layoutThis.setStretchMinorAxis(true);&#xA;&#x9;layoutThis.setMinorAlignment(org.eclipse.draw2d.ToolbarLayout.ALIGN_TOPLEFT&#xA;);&#xA;&#xA;&#x9;layoutThis.setSpacing(0);&#xA;&#x9;layoutThis.setVertical(true);&#xA;&#xA;&#x9;this.setLayoutManager(layoutThis);&#xA;&#xA;&#x9;&#x9;this.setFill(false);&#xA;this.setOutline(false);&#xA;this.setPreferredSize(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(22)&#xA;));&#xA;&#xA;this.setBorder(new org.eclipse.draw2d.MarginBorder(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(0)&#xA;));&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;org.eclipse.draw2d.RectangleFigure innerRectangle0 = new org.eclipse.draw2d.RectangleFigure();&#xA;innerRectangle0.setFill(false);&#xA;innerRectangle0.setOutline(false);&#xA;innerRectangle0.setPreferredSize(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(22)&#xA;));&#xA;&#xA;this.add(innerRectangle0);&#xA;&#xA;&#x9;org.eclipse.draw2d.GridLayout layoutInnerRectangle0 = new org.eclipse.draw2d.GridLayout();&#xA;&#x9;layoutInnerRectangle0.numColumns = 4;&#xA;&#x9;layoutInnerRectangle0.makeColumnsEqualWidth = false;&#xA;&#x9;innerRectangle0.setLayoutManager(layoutInnerRectangle0);&#xA;&#xA;&#xA;&#xA;fFigureDomainEntityFieldNameFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureDomainEntityFieldNameFigure.setText(&quot;&quot;);&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureDomainEntityFieldNameFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureDomainEntityFieldNameFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureDomainEntityFieldNameFigure.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureDomainEntityFieldNameFigure.horizontalIndent = 0;&#xA;constraintFFigureDomainEntityFieldNameFigure.horizontalSpan = 1;&#xA;constraintFFigureDomainEntityFieldNameFigure.verticalSpan = 1;&#xA;constraintFFigureDomainEntityFieldNameFigure.grabExcessHorizontalSpace = false;&#xA;constraintFFigureDomainEntityFieldNameFigure.grabExcessVerticalSpace = false;&#xA;innerRectangle0.add(fFigureDomainEntityFieldNameFigure, constraintFFigureDomainEntityFieldNameFigure);&#xA;&#xA;&#xA;&#xA;&#xA;fFigureDomainEntityFieldPotencyFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureDomainEntityFieldPotencyFigure.setText(&quot;&quot;);&#xA;&#xA;fFigureDomainEntityFieldPotencyFigure.setBorder(new org.eclipse.draw2d.MarginBorder(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(10)&#xA;, getMapMode().DPtoLP(0)&#xA;));&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureDomainEntityFieldPotencyFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureDomainEntityFieldPotencyFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureDomainEntityFieldPotencyFigure.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureDomainEntityFieldPotencyFigure.horizontalIndent = 0;&#xA;constraintFFigureDomainEntityFieldPotencyFigure.horizontalSpan = 1;&#xA;constraintFFigureDomainEntityFieldPotencyFigure.verticalSpan = 1;&#xA;constraintFFigureDomainEntityFieldPotencyFigure.grabExcessHorizontalSpace = false;&#xA;constraintFFigureDomainEntityFieldPotencyFigure.grabExcessVerticalSpace = false;&#xA;innerRectangle0.add(fFigureDomainEntityFieldPotencyFigure, constraintFFigureDomainEntityFieldPotencyFigure);&#xA;&#xA;&#xA;&#xA;&#xA;fFigureDomainEntityFieldDataTypeFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureDomainEntityFieldDataTypeFigure.setText(&quot;&quot;);&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureDomainEntityFieldDataTypeFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureDomainEntityFieldDataTypeFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureDomainEntityFieldDataTypeFigure.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureDomainEntityFieldDataTypeFigure.horizontalIndent = 0;&#xA;constraintFFigureDomainEntityFieldDataTypeFigure.horizontalSpan = 1;&#xA;constraintFFigureDomainEntityFieldDataTypeFigure.verticalSpan = 1;&#xA;constraintFFigureDomainEntityFieldDataTypeFigure.grabExcessHorizontalSpace = false;&#xA;constraintFFigureDomainEntityFieldDataTypeFigure.grabExcessVerticalSpace = false;&#xA;innerRectangle0.add(fFigureDomainEntityFieldDataTypeFigure, constraintFFigureDomainEntityFieldDataTypeFigure);&#xA;&#xA;&#xA;&#xA;&#xA;fFigureDomainEntityFieldDefaultValueFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureDomainEntityFieldDefaultValueFigure.setText(&quot;&quot;);&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureDomainEntityFieldDefaultValueFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureDomainEntityFieldDefaultValueFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureDomainEntityFieldDefaultValueFigure.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureDomainEntityFieldDefaultValueFigure.horizontalIndent = 0;&#xA;constraintFFigureDomainEntityFieldDefaultValueFigure.horizontalSpan = 1;&#xA;constraintFFigureDomainEntityFieldDefaultValueFigure.verticalSpan = 1;&#xA;constraintFFigureDomainEntityFieldDefaultValueFigure.grabExcessHorizontalSpace = false;&#xA;constraintFFigureDomainEntityFieldDefaultValueFigure.grabExcessVerticalSpace = false;&#xA;innerRectangle0.add(fFigureDomainEntityFieldDefaultValueFigure, constraintFFigureDomainEntityFieldDefaultValueFigure);&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureDomainEntityFieldNameFigure() {&#xA;&#x9;&#x9;return fFigureDomainEntityFieldNameFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureDomainEntityFieldPotencyFigure() {&#xA;&#x9;&#x9;return fFigureDomainEntityFieldPotencyFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureDomainEntityFieldDataTypeFigure() {&#xA;&#x9;&#x9;return fFigureDomainEntityFieldDataTypeFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureDomainEntityFieldDefaultValueFigure() {&#xA;&#x9;&#x9;return fFigureDomainEntityFieldDefaultValueFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;">
+          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class DomainEntityFieldFigure extends org.eclipse.draw2d.RectangleFigure {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureDomainEntityFieldNameFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureDomainEntityFieldPotencyFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureDomainEntityFieldDataTypeFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureDomainEntityFieldDefaultValueFigure; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public DomainEntityFieldFigure() {&#xA;&#x9;&#x9;&#xA;&#x9;org.eclipse.draw2d.ToolbarLayout layoutThis = new org.eclipse.draw2d.ToolbarLayout();&#xA;&#x9;layoutThis.setStretchMinorAxis(true);&#xA;&#x9;layoutThis.setMinorAlignment(org.eclipse.draw2d.ToolbarLayout.ALIGN_TOPLEFT&#xA;);&#xA;&#xA;&#x9;layoutThis.setSpacing(0);&#xA;&#x9;layoutThis.setVertical(true);&#xA;&#xA;&#x9;this.setLayoutManager(layoutThis);&#xA;&#xA;&#x9;&#x9;this.setFill(false);&#xA;this.setOutline(false);&#xA;this.setPreferredSize(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(24)&#xA;));&#xA;&#xA;this.setBorder(new org.eclipse.draw2d.MarginBorder(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(0)&#xA;));&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;org.eclipse.draw2d.RectangleFigure innerRectangle0 = new org.eclipse.draw2d.RectangleFigure();&#xA;innerRectangle0.setFill(false);&#xA;innerRectangle0.setOutline(false);&#xA;innerRectangle0.setPreferredSize(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(24)&#xA;));&#xA;&#xA;this.add(innerRectangle0);&#xA;&#xA;&#x9;org.eclipse.draw2d.GridLayout layoutInnerRectangle0 = new org.eclipse.draw2d.GridLayout();&#xA;&#x9;layoutInnerRectangle0.numColumns = 4;&#xA;&#x9;layoutInnerRectangle0.makeColumnsEqualWidth = false;&#xA;&#x9;innerRectangle0.setLayoutManager(layoutInnerRectangle0);&#xA;&#xA;&#xA;&#xA;fFigureDomainEntityFieldNameFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureDomainEntityFieldNameFigure.setText(&quot;&quot;);&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureDomainEntityFieldNameFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureDomainEntityFieldNameFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureDomainEntityFieldNameFigure.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureDomainEntityFieldNameFigure.horizontalIndent = 0;&#xA;constraintFFigureDomainEntityFieldNameFigure.horizontalSpan = 1;&#xA;constraintFFigureDomainEntityFieldNameFigure.verticalSpan = 1;&#xA;constraintFFigureDomainEntityFieldNameFigure.grabExcessHorizontalSpace = false;&#xA;constraintFFigureDomainEntityFieldNameFigure.grabExcessVerticalSpace = false;&#xA;innerRectangle0.add(fFigureDomainEntityFieldNameFigure, constraintFFigureDomainEntityFieldNameFigure);&#xA;&#xA;&#xA;&#xA;&#xA;fFigureDomainEntityFieldPotencyFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureDomainEntityFieldPotencyFigure.setText(&quot;&quot;);&#xA;&#xA;fFigureDomainEntityFieldPotencyFigure.setBorder(new org.eclipse.draw2d.MarginBorder(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(10)&#xA;, getMapMode().DPtoLP(0)&#xA;));&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureDomainEntityFieldPotencyFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureDomainEntityFieldPotencyFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureDomainEntityFieldPotencyFigure.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureDomainEntityFieldPotencyFigure.horizontalIndent = 0;&#xA;constraintFFigureDomainEntityFieldPotencyFigure.horizontalSpan = 1;&#xA;constraintFFigureDomainEntityFieldPotencyFigure.verticalSpan = 1;&#xA;constraintFFigureDomainEntityFieldPotencyFigure.grabExcessHorizontalSpace = false;&#xA;constraintFFigureDomainEntityFieldPotencyFigure.grabExcessVerticalSpace = false;&#xA;innerRectangle0.add(fFigureDomainEntityFieldPotencyFigure, constraintFFigureDomainEntityFieldPotencyFigure);&#xA;&#xA;&#xA;&#xA;&#xA;fFigureDomainEntityFieldDataTypeFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureDomainEntityFieldDataTypeFigure.setText(&quot;&quot;);&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureDomainEntityFieldDataTypeFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureDomainEntityFieldDataTypeFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureDomainEntityFieldDataTypeFigure.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureDomainEntityFieldDataTypeFigure.horizontalIndent = 0;&#xA;constraintFFigureDomainEntityFieldDataTypeFigure.horizontalSpan = 1;&#xA;constraintFFigureDomainEntityFieldDataTypeFigure.verticalSpan = 1;&#xA;constraintFFigureDomainEntityFieldDataTypeFigure.grabExcessHorizontalSpace = false;&#xA;constraintFFigureDomainEntityFieldDataTypeFigure.grabExcessVerticalSpace = false;&#xA;innerRectangle0.add(fFigureDomainEntityFieldDataTypeFigure, constraintFFigureDomainEntityFieldDataTypeFigure);&#xA;&#xA;&#xA;&#xA;&#xA;fFigureDomainEntityFieldDefaultValueFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureDomainEntityFieldDefaultValueFigure.setText(&quot;&quot;);&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureDomainEntityFieldDefaultValueFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureDomainEntityFieldDefaultValueFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureDomainEntityFieldDefaultValueFigure.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureDomainEntityFieldDefaultValueFigure.horizontalIndent = 0;&#xA;constraintFFigureDomainEntityFieldDefaultValueFigure.horizontalSpan = 1;&#xA;constraintFFigureDomainEntityFieldDefaultValueFigure.verticalSpan = 1;&#xA;constraintFFigureDomainEntityFieldDefaultValueFigure.grabExcessHorizontalSpace = false;&#xA;constraintFFigureDomainEntityFieldDefaultValueFigure.grabExcessVerticalSpace = false;&#xA;innerRectangle0.add(fFigureDomainEntityFieldDefaultValueFigure, constraintFFigureDomainEntityFieldDefaultValueFigure);&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureDomainEntityFieldNameFigure() {&#xA;&#x9;&#x9;return fFigureDomainEntityFieldNameFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureDomainEntityFieldPotencyFigure() {&#xA;&#x9;&#x9;return fFigureDomainEntityFieldPotencyFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureDomainEntityFieldDataTypeFigure() {&#xA;&#x9;&#x9;return fFigureDomainEntityFieldDataTypeFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureDomainEntityFieldDefaultValueFigure() {&#xA;&#x9;&#x9;return fFigureDomainEntityFieldDefaultValueFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;">
         <attributes
             xsi:type="gmfgen:DefaultSizeAttributes"
             width="0"
-            height="22"/>
+            height="24"/>
       </viewmap>
       <modelFacet>
         <metaClass
@@ -827,6 +846,117 @@
         </modelFacet>
       </labels>
     </topLevelNodes>
+    <topLevelNodes
+        visualID="2003"
+        editPartClassName="DomainEntityEditPart"
+        itemSemanticEditPolicyClassName="DomainEntityItemSemanticEditPolicy"
+        notationViewFactoryClassName="DomainEntityViewFactory"
+        canonicalEditPolicyClassName="DomainEntityCanonicalEditPolicy"
+        compartments="//@diagram/@compartments.5 //@diagram/@compartments.6"
+        graphicalNodeEditPolicyClassName="DomainEntityGraphicalNodeEditPolicy"
+        createCommandClassName="DomainEntityCreateCommand">
+      <diagramRunTimeClass
+          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+      <elementType
+          xsi:type="gmfgen:SpecializationType"
+          metamodelType="//@diagram/@childNodes.1/@elementType"/>
+      <viewmap
+          xsi:type="gmfgen:InnerClassViewmap"
+          className="DomainEntityFigure"
+          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class DomainEntityFigure extends org.eclipse.draw2d.RectangleFigure {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureDomainEntityNameFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureDomainEntityAVSFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureDomainEntityPotencyLabel; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureDomainEntityLevelFigure; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public DomainEntityFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;&#xA;this.setBorder(new org.eclipse.draw2d.MarginBorder(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(0)&#xA;));&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;org.eclipse.draw2d.RectangleFigure innerRectangle0 = new org.eclipse.draw2d.RectangleFigure();&#xA;innerRectangle0.setFill(false);&#xA;innerRectangle0.setOutline(false);&#xA;&#xA;this.add(innerRectangle0);&#xA;&#xA;&#x9;org.eclipse.draw2d.ToolbarLayout layoutInnerRectangle0 = new org.eclipse.draw2d.ToolbarLayout();&#xA;&#x9;layoutInnerRectangle0.setStretchMinorAxis(true);&#xA;&#x9;layoutInnerRectangle0.setMinorAlignment(org.eclipse.draw2d.ToolbarLayout.ALIGN_CENTER&#xA;);&#xA;&#xA;&#x9;layoutInnerRectangle0.setSpacing(0);&#xA;&#x9;layoutInnerRectangle0.setVertical(true);&#xA;&#xA;&#x9;innerRectangle0.setLayoutManager(layoutInnerRectangle0);&#xA;&#xA;&#xA;&#xA;org.eclipse.draw2d.RectangleFigure nameRectangle1 = new org.eclipse.draw2d.RectangleFigure();&#xA;&#xA;innerRectangle0.add(nameRectangle1);&#xA;&#xA;&#x9;org.eclipse.draw2d.GridLayout layoutNameRectangle1 = new org.eclipse.draw2d.GridLayout();&#xA;&#x9;layoutNameRectangle1.numColumns = 2;&#xA;&#x9;layoutNameRectangle1.makeColumnsEqualWidth = false;&#xA;&#x9;nameRectangle1.setLayoutManager(layoutNameRectangle1);&#xA;&#xA;&#xA;&#xA;fFigureDomainEntityNameFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureDomainEntityNameFigure.setText(&quot;&quot;);&#xA;&#xA;fFigureDomainEntityNameFigure.setFont(FFIGUREDOMAINENTITYNAMEFIGURE_FONT);&#xA;&#xA;&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureDomainEntityNameFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureDomainEntityNameFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureDomainEntityNameFigure.horizontalAlignment = org.eclipse.draw2d.GridData.END;&#xA;constraintFFigureDomainEntityNameFigure.horizontalIndent = 0;&#xA;constraintFFigureDomainEntityNameFigure.horizontalSpan = 1;&#xA;constraintFFigureDomainEntityNameFigure.verticalSpan = 4;&#xA;constraintFFigureDomainEntityNameFigure.grabExcessHorizontalSpace = true;&#xA;constraintFFigureDomainEntityNameFigure.grabExcessVerticalSpace = true;&#xA;nameRectangle1.add(fFigureDomainEntityNameFigure, constraintFFigureDomainEntityNameFigure);&#xA;&#xA;&#xA;&#xA;&#xA;fFigureDomainEntityPotencyLabel = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureDomainEntityPotencyLabel.setText(&quot;&quot;);&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureDomainEntityPotencyLabel = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureDomainEntityPotencyLabel.verticalAlignment = org.eclipse.draw2d.GridData.END;&#xA;constraintFFigureDomainEntityPotencyLabel.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureDomainEntityPotencyLabel.horizontalIndent = 0;&#xA;constraintFFigureDomainEntityPotencyLabel.horizontalSpan = 1;&#xA;constraintFFigureDomainEntityPotencyLabel.verticalSpan = 2;&#xA;constraintFFigureDomainEntityPotencyLabel.grabExcessHorizontalSpace = true;&#xA;constraintFFigureDomainEntityPotencyLabel.grabExcessVerticalSpace = true;&#xA;nameRectangle1.add(fFigureDomainEntityPotencyLabel, constraintFFigureDomainEntityPotencyLabel);&#xA;&#xA;&#xA;&#xA;&#xA;fFigureDomainEntityLevelFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureDomainEntityLevelFigure.setText(&quot;&quot;);&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureDomainEntityLevelFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureDomainEntityLevelFigure.verticalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureDomainEntityLevelFigure.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureDomainEntityLevelFigure.horizontalIndent = 0;&#xA;constraintFFigureDomainEntityLevelFigure.horizontalSpan = 1;&#xA;constraintFFigureDomainEntityLevelFigure.verticalSpan = 2;&#xA;constraintFFigureDomainEntityLevelFigure.grabExcessHorizontalSpace = true;&#xA;constraintFFigureDomainEntityLevelFigure.grabExcessVerticalSpace = true;&#xA;nameRectangle1.add(fFigureDomainEntityLevelFigure, constraintFFigureDomainEntityLevelFigure);&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;org.eclipse.draw2d.RectangleFigure aVSRectangle1 = new org.eclipse.draw2d.RectangleFigure();&#xA;&#xA;innerRectangle0.add(aVSRectangle1);&#xA;&#xA;&#x9;org.eclipse.draw2d.GridLayout layoutAVSRectangle1 = new org.eclipse.draw2d.GridLayout();&#xA;&#x9;layoutAVSRectangle1.numColumns = 3;&#xA;&#x9;layoutAVSRectangle1.makeColumnsEqualWidth = false;&#xA;&#x9;aVSRectangle1.setLayoutManager(layoutAVSRectangle1);&#xA;&#xA;&#xA;&#xA;org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel firstCurlyBracket2 = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;firstCurlyBracket2.setText(&quot;{&quot;);&#xA;&#x9;firstCurlyBracket2.setForegroundColor(org.eclipse.draw2d.ColorConstants.black);&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFirstCurlyBracket2 = new org.eclipse.draw2d.GridData();&#xA;constraintFirstCurlyBracket2.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFirstCurlyBracket2.horizontalAlignment = org.eclipse.draw2d.GridData.END;&#xA;constraintFirstCurlyBracket2.horizontalIndent = 0;&#xA;constraintFirstCurlyBracket2.horizontalSpan = 1;&#xA;constraintFirstCurlyBracket2.verticalSpan = 1;&#xA;constraintFirstCurlyBracket2.grabExcessHorizontalSpace = true;&#xA;constraintFirstCurlyBracket2.grabExcessVerticalSpace = false;&#xA;aVSRectangle1.add(firstCurlyBracket2, constraintFirstCurlyBracket2);&#xA;&#xA;&#xA;&#xA;&#xA;fFigureDomainEntityAVSFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureDomainEntityAVSFigure.setText(&quot;&quot;);&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureDomainEntityAVSFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureDomainEntityAVSFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureDomainEntityAVSFigure.horizontalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureDomainEntityAVSFigure.horizontalIndent = 0;&#xA;constraintFFigureDomainEntityAVSFigure.horizontalSpan = 1;&#xA;constraintFFigureDomainEntityAVSFigure.verticalSpan = 1;&#xA;constraintFFigureDomainEntityAVSFigure.grabExcessHorizontalSpace = false;&#xA;constraintFFigureDomainEntityAVSFigure.grabExcessVerticalSpace = false;&#xA;aVSRectangle1.add(fFigureDomainEntityAVSFigure, constraintFFigureDomainEntityAVSFigure);&#xA;&#xA;&#xA;&#xA;&#xA;org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel secondCurlyBracket2 = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;secondCurlyBracket2.setText(&quot;}&quot;);&#xA;&#x9;secondCurlyBracket2.setForegroundColor(org.eclipse.draw2d.ColorConstants.black);&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintSecondCurlyBracket2 = new org.eclipse.draw2d.GridData();&#xA;constraintSecondCurlyBracket2.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintSecondCurlyBracket2.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintSecondCurlyBracket2.horizontalIndent = 0;&#xA;constraintSecondCurlyBracket2.horizontalSpan = 1;&#xA;constraintSecondCurlyBracket2.verticalSpan = 1;&#xA;constraintSecondCurlyBracket2.grabExcessHorizontalSpace = true;&#xA;constraintSecondCurlyBracket2.grabExcessVerticalSpace = false;&#xA;aVSRectangle1.add(secondCurlyBracket2, constraintSecondCurlyBracket2);&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureDomainEntityNameFigure() {&#xA;&#x9;&#x9;return fFigureDomainEntityNameFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureDomainEntityAVSFigure() {&#xA;&#x9;&#x9;return fFigureDomainEntityAVSFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureDomainEntityPotencyLabel() {&#xA;&#x9;&#x9;return fFigureDomainEntityPotencyLabel;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureDomainEntityLevelFigure() {&#xA;&#x9;&#x9;return fFigureDomainEntityLevelFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGUREDOMAINENTITYNAMEFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 9, org.eclipse.swt.SWT.BOLD);&#xA;&#xA;"/>
+      <modelFacet>
+        <metaClass
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainEntity"/>
+        <containmentMetaFeature
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLModel/elements"/>
+        <childMetaFeature
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLModel/elements"/>
+      </modelFacet>
+      <labels
+          visualID="5028"
+          editPartClassName="DomainEntityNameEditPart"
+          itemSemanticEditPolicyClassName="DomainEntityNameItemSemanticEditPolicy"
+          notationViewFactoryClassName="DomainEntityNameViewFactory">
+        <diagramRunTimeClass
+            href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap
+            xsi:type="gmfgen:ParentAssignedViewmap"
+            getterName="getFigureDomainEntityNameFigure"
+            figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel">
+          <attributes
+              xsi:type="gmfgen:StyleAttributes"
+              fixedFont="true"/>
+        </viewmap>
+        <modelFacet
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0"
+            viewPattern="{0}">
+          <metaFeatures
+              href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Element/name"/>
+        </modelFacet>
+      </labels>
+      <labels
+          visualID="5029"
+          editPartClassName="WrappingLabelEditPart"
+          itemSemanticEditPolicyClassName="WrappingLabelItemSemanticEditPolicy"
+          notationViewFactoryClassName="DomainEntityLabelViewFactory"
+          readOnly="true">
+        <diagramRunTimeClass
+            href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap
+            xsi:type="gmfgen:ParentAssignedViewmap"
+            getterName="getFigureDomainEntityPotencyLabel"
+            figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
+        <modelFacet
+            xsi:type="gmfgen:ExpressionLabelModelFacet"
+            parser="//@labelParsers/@implementations.10"/>
+      </labels>
+      <labels
+          visualID="5030"
+          editPartClassName="DomainEntityLevelEditPart"
+          itemSemanticEditPolicyClassName="DomainEntityLevelItemSemanticEditPolicy"
+          notationViewFactoryClassName="DomainEntityLevelViewFactory"
+          readOnly="true">
+        <diagramRunTimeClass
+            href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap
+            xsi:type="gmfgen:ParentAssignedViewmap"
+            getterName="getFigureDomainEntityLevelFigure"
+            figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
+        <modelFacet
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0">
+          <metaFeatures
+              href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/level"/>
+        </modelFacet>
+      </labels>
+      <labels
+          visualID="5031"
+          editPartClassName="DomainEntityNameExpressedPotencyLevEditPart"
+          itemSemanticEditPolicyClassName="DomainEntityNameExpressedPotencyLevItemSemanticEditPolicy"
+          notationViewFactoryClassName="DomainEntityNameExpressedPotencyLevelViewFactory"
+          readOnly="true">
+        <diagramRunTimeClass
+            href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap
+            xsi:type="gmfgen:ParentAssignedViewmap"
+            getterName="getFigureDomainEntityAVSFigure"
+            figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
+        <modelFacet
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0"
+            viewPattern="name = {0}, expressed = {1}, potency = {2} , level = {3}">
+          <metaFeatures
+              href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Element/name"/>
+          <metaFeatures
+              href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Element/expressed"/>
+          <metaFeatures
+              href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/PotentElement/potency"/>
+          <metaFeatures
+              href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/level"/>
+        </modelFacet>
+      </labels>
+    </topLevelNodes>
     <links
         visualID="4003"
         editPartClassName="DomainConnectionParticipantEditPart"
@@ -1038,12 +1168,12 @@
           sourceEnd="//@expressionProviders/@providers.0/@expressions.10"/>
     </links>
     <links
-        visualID="4007"
-        editPartClassName="DomainEntityRendererEditPart"
-        itemSemanticEditPolicyClassName="DomainEntityRendererItemSemanticEditPolicy"
-        notationViewFactoryClassName="DomainEntityRendererViewFactory"
-        createCommandClassName="DomainEntityRendererCreateCommand"
-        reorientCommandClassName="DomainEntityRendererReorientCommand">
+        visualID="4017"
+        editPartClassName="ElementRendererEditPart"
+        itemSemanticEditPolicyClassName="ElementRendererItemSemanticEditPolicy"
+        notationViewFactoryClassName="ElementRendererViewFactory"
+        createCommandClassName="ElementRendererCreateCommand"
+        reorientCommandClassName="ElementRendererReorientCommand">
       <diagramRunTimeClass
           href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Edge"/>
       <elementType
@@ -1055,13 +1185,13 @@
       <modelFacet
           xsi:type="gmfgen:FeatureLinkModelFacet">
         <metaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainEntity/renderer"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Element/renderer"/>
       </modelFacet>
       <labels
-          visualID="6001"
+          visualID="6004"
           editPartClassName="WrappingLabel12EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel12ItemSemanticEditPolicy"
-          notationViewFactoryClassName="DomainEntityRendererLabelViewFactory"
+          notationViewFactoryClassName="ElementRendererLabelViewFactory"
           readOnly="true"
           elementIcon="true">
         <diagramRunTimeClass
@@ -1205,11 +1335,11 @@
           classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class DomainElementsCompartmentFigure extends org.eclipse.draw2d.RectangleFigure {&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public DomainElementsCompartmentFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setFill(false);&#xA;this.setOutline(false);&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
     </compartments>
     <compartments
-        visualID="7005"
-        editPartClassName="DomainEntityDomainEntityFieldsCompartmentEditPart"
-        itemSemanticEditPolicyClassName="DomainEntityDomainEntityFieldsCompartmentItemSemanticEditPolicy"
+        visualID="7011"
+        editPartClassName="DomainEntityDomainEntityFieldsCompartment2EditPart"
+        itemSemanticEditPolicyClassName="DomainEntityDomainEntityFieldsCompartment2ItemSemanticEditPolicy"
         notationViewFactoryClassName="DomainEntityDomainEntityFieldsCompartmentViewFactory"
-        canonicalEditPolicyClassName="DomainEntityDomainEntityFieldsCompartmentCanonicalEditPolicy"
+        canonicalEditPolicyClassName="DomainEntityDomainEntityFieldsCompartment2CanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.2"
         title="DomainEntityFieldsCompartment"
         needsTitle="false"
@@ -1221,11 +1351,11 @@
           figureQualifiedClassName="org.eclipse.draw2d.RectangleFigure"/>
     </compartments>
     <compartments
-        visualID="7006"
-        editPartClassName="DomainEntityDomainEntityMethodsCompartmentEditPart"
-        itemSemanticEditPolicyClassName="DomainEntityDomainEntityMethodsCompartmentItemSemanticEditPolicy"
+        visualID="7012"
+        editPartClassName="DomainEntityDomainEntityMethodsCompartment2EditPart"
+        itemSemanticEditPolicyClassName="DomainEntityDomainEntityMethodsCompartment2ItemSemanticEditPolicy"
         notationViewFactoryClassName="DomainEntityDomainEntityMethodsCompartmentViewFactory"
-        canonicalEditPolicyClassName="DomainEntityDomainEntityMethodsCompartmentCanonicalEditPolicy"
+        canonicalEditPolicyClassName="DomainEntityDomainEntityMethodsCompartment2CanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.3"
         title="DomainEntityMethodsCompartment"
         needsTitle="false"
@@ -1247,6 +1377,38 @@
         canCollapse="false"
         needsTitle="false"
         node="//@diagram/@childNodes.4">
+      <diagramRunTimeClass
+          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+      <viewmap
+          xsi:type="gmfgen:FigureViewmap"
+          figureQualifiedClassName="org.eclipse.draw2d.RectangleFigure"/>
+    </compartments>
+    <compartments
+        visualID="7009"
+        editPartClassName="DomainEntityDomainEntityFieldsCompartmentEditPart"
+        itemSemanticEditPolicyClassName="DomainEntityDomainEntityFieldsCompartmentItemSemanticEditPolicy"
+        notationViewFactoryClassName="DomainEntityDomainEntityFieldsCompartmentViewFactory"
+        canonicalEditPolicyClassName="DomainEntityDomainEntityFieldsCompartmentCanonicalEditPolicy"
+        childNodes="//@diagram/@childNodes.2"
+        title="DomainEntityFieldsCompartment"
+        needsTitle="false"
+        node="//@diagram/@topLevelNodes.1">
+      <diagramRunTimeClass
+          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+      <viewmap
+          xsi:type="gmfgen:FigureViewmap"
+          figureQualifiedClassName="org.eclipse.draw2d.RectangleFigure"/>
+    </compartments>
+    <compartments
+        visualID="7010"
+        editPartClassName="DomainEntityDomainEntityMethodsCompartmentEditPart"
+        itemSemanticEditPolicyClassName="DomainEntityDomainEntityMethodsCompartmentItemSemanticEditPolicy"
+        notationViewFactoryClassName="DomainEntityDomainEntityMethodsCompartmentViewFactory"
+        canonicalEditPolicyClassName="DomainEntityDomainEntityMethodsCompartmentCanonicalEditPolicy"
+        childNodes="//@diagram/@childNodes.3"
+        title="DomainEntityMethodsCompartment"
+        needsTitle="false"
+        node="//@diagram/@topLevelNodes.1">
       <diagramRunTimeClass
           href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
       <viewmap
@@ -1275,7 +1437,7 @@
             xsi:type="gmfgen:ToolEntry"
             title="Domain Entity"
             description="Create new Domain Entity"
-            genNodes="//@diagram/@childNodes.1"/>
+            genNodes="//@diagram/@childNodes.1 //@diagram/@topLevelNodes.1"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Domain Entity Field"
@@ -1471,7 +1633,7 @@
       extensibleViaService="true">
     <implementations
         xsi:type="gmfgen:PredefinedParser"
-        uses="//@diagram/@childNodes.2/@labels.0/@modelFacet //@diagram/@childNodes.3/@labels.0/@modelFacet //@diagram/@childNodes.1/@labels.0/@modelFacet //@diagram/@childNodes.1/@labels.2/@modelFacet //@diagram/@childNodes.1/@labels.3/@modelFacet //@diagram/@childNodes.5/@labels.0/@modelFacet //@diagram/@childNodes.4/@labels.0/@modelFacet //@diagram/@childNodes.9/@labels.0/@modelFacet //@diagram/@childNodes.10/@labels.0/@modelFacet //@diagram/@childNodes.0/@labels.0/@modelFacet //@diagram/@topLevelNodes.0/@labels.0/@modelFacet"/>
+        uses="//@diagram/@childNodes.2/@labels.0/@modelFacet //@diagram/@childNodes.2/@labels.3/@modelFacet //@diagram/@childNodes.3/@labels.0/@modelFacet //@diagram/@childNodes.1/@labels.0/@modelFacet //@diagram/@childNodes.1/@labels.2/@modelFacet //@diagram/@childNodes.1/@labels.3/@modelFacet //@diagram/@childNodes.5/@labels.0/@modelFacet //@diagram/@childNodes.4/@labels.0/@modelFacet //@diagram/@childNodes.9/@labels.0/@modelFacet //@diagram/@childNodes.10/@labels.0/@modelFacet //@diagram/@childNodes.0/@labels.0/@modelFacet //@diagram/@topLevelNodes.0/@labels.0/@modelFacet //@diagram/@topLevelNodes.1/@labels.0/@modelFacet //@diagram/@topLevelNodes.1/@labels.2/@modelFacet //@diagram/@topLevelNodes.1/@labels.3/@modelFacet"/>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.2/@labels.1/@modelFacet"
@@ -1530,6 +1692,13 @@
         viewExpression="//@expressionProviders/@providers.0/@expressions.7">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleSpecialization"/>
+    </implementations>
+    <implementations
+        xsi:type="gmfgen:ExpressionLabelParser"
+        uses="//@diagram/@topLevelNodes.1/@labels.1/@modelFacet"
+        viewExpression="//@expressionProviders/@providers.0/@expressions.3">
+      <expressionContext
+          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainEntity"/>
     </implementations>
   </labelParsers>
   <contextMenus

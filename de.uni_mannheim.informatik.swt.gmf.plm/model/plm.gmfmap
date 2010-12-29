@@ -43,134 +43,10 @@
           <diagramNode
               href="plm.gmfgraph#Model"/>
           <children
-              compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@compartments.0">
+              compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@compartments.0"
+              referencedChild="//@nodes.1/@ownedChild">
             <containmentFeature
                 href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/elements"/>
-            <ownedChild>
-              <domainMetaElement
-                  href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//DomainEntity"/>
-              <labelMappings
-                  xsi:type="gmfmap:FeatureLabelMapping"
-                  viewPattern="{0}">
-                <diagramLabel
-                    href="plm.gmfgraph#DomainEntityFigureNameLabel"/>
-                <features
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/name"/>
-              </labelMappings>
-              <labelMappings
-                  xsi:type="gmfmap:ExpressionLabelMapping"
-                  readOnly="true">
-                <diagramLabel
-                    href="plm.gmfgraph#DomainEntityFigurePotencyLabel"/>
-                <viewExpression
-                    body="let potency:String = if (self.potency > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.potency.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.potency = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;potency"/>
-              </labelMappings>
-              <labelMappings
-                  xsi:type="gmfmap:FeatureLabelMapping"
-                  readOnly="true">
-                <diagramLabel
-                    href="plm.gmfgraph#DomainEntityFigureLevelLabel"/>
-                <features
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject/level"/>
-              </labelMappings>
-              <labelMappings
-                  xsi:type="gmfmap:FeatureLabelMapping"
-                  readOnly="true"
-                  viewPattern="name = {0}, expressed = {1}, potency = {2} , level = {3}">
-                <diagramLabel
-                    href="plm.gmfgraph#DomainEntityFigureAVSLabel"/>
-                <features
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/name"/>
-                <features
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/expressed"/>
-                <features
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//PotentElement/potency"/>
-                <features
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject/level"/>
-              </labelMappings>
-              <tool
-                  xsi:type="gmftool:CreationTool"
-                  href="plm.gmftool#//@palette/@tools.1/@tools.0"/>
-              <diagramNode
-                  href="plm.gmfgraph#DomainEntity"/>
-              <children
-                  compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.0/@ownedChild/@compartments.0">
-                <containmentFeature
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//DomainEntity/fields"/>
-                <ownedChild>
-                  <domainMetaElement
-                      href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Field"/>
-                  <labelMappings
-                      xsi:type="gmfmap:FeatureLabelMapping"
-                      viewPattern="">
-                    <diagramLabel
-                        href="plm.gmfgraph#DomainEntityFieldFigureNameLabel"/>
-                    <features
-                        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/name"/>
-                  </labelMappings>
-                  <labelMappings
-                      xsi:type="gmfmap:ExpressionLabelMapping"
-                      readOnly="true">
-                    <diagramLabel
-                        href="plm.gmfgraph#DomainEntityFieldFigurePotencyLabel"/>
-                    <viewExpression
-                        body="let potency:String = if (self.potency > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.potency.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.potency = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;potency"/>
-                  </labelMappings>
-                  <labelMappings
-                      xsi:type="gmfmap:ExpressionLabelMapping"
-                      readOnly="true">
-                    <diagramLabel
-                        href="plm.gmfgraph#DomainEntityFieldFigureDefaultValueLabel"/>
-                    <viewExpression
-                        body="self.datatype.name"/>
-                  </labelMappings>
-                  <tool
-                      xsi:type="gmftool:CreationTool"
-                      href="plm.gmftool#//@palette/@tools.1/@tools.1"/>
-                  <diagramNode
-                      href="plm.gmfgraph#DomnainEntityFieldNode"/>
-                </ownedChild>
-              </children>
-              <children
-                  compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.0/@ownedChild/@compartments.1">
-                <containmentFeature
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//DomainEntity/methods"/>
-                <ownedChild>
-                  <domainMetaElement
-                      href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Method"/>
-                  <labelMappings
-                      xsi:type="gmfmap:FeatureLabelMapping">
-                    <diagramLabel
-                        href="plm.gmfgraph#DomainEntityMethodFigureNameLabel"/>
-                    <features
-                        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/name"/>
-                  </labelMappings>
-                  <labelMappings
-                      xsi:type="gmfmap:ExpressionLabelMapping"
-                      readOnly="true">
-                    <diagramLabel
-                        href="plm.gmfgraph#DomainEntityMethodFigurePotencyLabel"/>
-                    <viewExpression
-                        body="let potency:String = if (self.potency > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.potency.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.potency = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;potency"/>
-                  </labelMappings>
-                  <tool
-                      xsi:type="gmftool:CreationTool"
-                      href="plm.gmftool#//@palette/@tools.1/@tools.2"/>
-                  <diagramNode
-                      href="plm.gmfgraph#DomnainEntityMethodNode"/>
-                </ownedChild>
-              </children>
-              <compartments
-                  children="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.0/@ownedChild/@children.0">
-                <compartment
-                    href="plm.gmfgraph#DomainEntityFieldsCompartment"/>
-              </compartments>
-              <compartments
-                  children="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.0/@ownedChild/@children.1">
-                <compartment
-                    href="plm.gmfgraph#DomainEntityMethodsCompartment"/>
-              </compartments>
-            </ownedChild>
           </children>
           <children
               compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@compartments.0">
@@ -365,6 +241,143 @@
       </compartments>
     </ownedChild>
   </nodes>
+  <nodes>
+    <containmentFeature
+        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//LMLModel/elements"/>
+    <ownedChild>
+      <domainMetaElement
+          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//DomainEntity"/>
+      <labelMappings
+          xsi:type="gmfmap:FeatureLabelMapping"
+          viewPattern="{0}">
+        <diagramLabel
+            href="plm.gmfgraph#DomainEntityFigureNameLabel"/>
+        <features
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/name"/>
+      </labelMappings>
+      <labelMappings
+          xsi:type="gmfmap:ExpressionLabelMapping"
+          readOnly="true">
+        <diagramLabel
+            href="plm.gmfgraph#DomainEntityFigurePotencyLabel"/>
+        <viewExpression
+            body="let potency:String = if (self.potency > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.potency.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.potency = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;potency"/>
+      </labelMappings>
+      <labelMappings
+          xsi:type="gmfmap:FeatureLabelMapping"
+          readOnly="true">
+        <diagramLabel
+            href="plm.gmfgraph#DomainEntityFigureLevelLabel"/>
+        <features
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject/level"/>
+      </labelMappings>
+      <labelMappings
+          xsi:type="gmfmap:FeatureLabelMapping"
+          readOnly="true"
+          viewPattern="name = {0}, expressed = {1}, potency = {2} , level = {3}">
+        <diagramLabel
+            href="plm.gmfgraph#DomainEntityFigureAVSLabel"/>
+        <features
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/name"/>
+        <features
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/expressed"/>
+        <features
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//PotentElement/potency"/>
+        <features
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject/level"/>
+      </labelMappings>
+      <tool
+          xsi:type="gmftool:CreationTool"
+          href="plm.gmftool#//@palette/@tools.1/@tools.0"/>
+      <diagramNode
+          href="plm.gmfgraph#DomainEntity"/>
+      <children
+          compartment="//@nodes.1/@ownedChild/@compartments.0">
+        <containmentFeature
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//DomainEntity/fields"/>
+        <ownedChild>
+          <domainMetaElement
+              href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Field"/>
+          <labelMappings
+              xsi:type="gmfmap:FeatureLabelMapping"
+              viewPattern="">
+            <diagramLabel
+                href="plm.gmfgraph#DomainEntityFieldFigureNameLabel"/>
+            <features
+                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/name"/>
+          </labelMappings>
+          <labelMappings
+              xsi:type="gmfmap:ExpressionLabelMapping"
+              readOnly="true">
+            <diagramLabel
+                href="plm.gmfgraph#DomainEntityFieldFigurePotencyLabel"/>
+            <viewExpression
+                body="let potency:String = if (self.potency > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.potency.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.potency = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;potency"/>
+          </labelMappings>
+          <labelMappings
+              xsi:type="gmfmap:ExpressionLabelMapping"
+              readOnly="true">
+            <diagramLabel
+                href="plm.gmfgraph#DomainEntityFieldFigureDefaultValueLabel"/>
+            <viewExpression
+                body="self.datatype.name"/>
+          </labelMappings>
+          <labelMappings
+              xsi:type="gmfmap:FeatureLabelMapping"
+              viewPattern="= {0}">
+            <diagramLabel
+                href="plm.gmfgraph#DomainEntityFieldFigureDefaultValueLabel"/>
+            <features
+                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Field/value"/>
+          </labelMappings>
+          <tool
+              xsi:type="gmftool:CreationTool"
+              href="plm.gmftool#//@palette/@tools.1/@tools.1"/>
+          <diagramNode
+              href="plm.gmfgraph#DomnainEntityFieldNode"/>
+        </ownedChild>
+      </children>
+      <children
+          compartment="//@nodes.1/@ownedChild/@compartments.1">
+        <containmentFeature
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//DomainEntity/methods"/>
+        <ownedChild>
+          <domainMetaElement
+              href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Method"/>
+          <labelMappings
+              xsi:type="gmfmap:FeatureLabelMapping">
+            <diagramLabel
+                href="plm.gmfgraph#DomainEntityMethodFigureNameLabel"/>
+            <features
+                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/name"/>
+          </labelMappings>
+          <labelMappings
+              xsi:type="gmfmap:ExpressionLabelMapping"
+              readOnly="true">
+            <diagramLabel
+                href="plm.gmfgraph#DomainEntityMethodFigurePotencyLabel"/>
+            <viewExpression
+                body="let potency:String = if (self.potency > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.potency.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.potency = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;potency"/>
+          </labelMappings>
+          <tool
+              xsi:type="gmftool:CreationTool"
+              href="plm.gmftool#//@palette/@tools.1/@tools.2"/>
+          <diagramNode
+              href="plm.gmfgraph#DomnainEntityMethodNode"/>
+        </ownedChild>
+      </children>
+      <compartments
+          children="//@nodes.1/@ownedChild/@children.0">
+        <compartment
+            href="plm.gmfgraph#DomainEntityFieldsCompartment"/>
+      </compartments>
+      <compartments
+          children="//@nodes.1/@ownedChild/@children.1">
+        <compartment
+            href="plm.gmfgraph#DomainEntityMethodsCompartment"/>
+      </compartments>
+    </ownedChild>
+  </nodes>
   <links>
     <labelMappings
         readOnly="true">
@@ -484,7 +497,7 @@
         href="plm.gmfgraph#RenderedByLink"/>
     <linkMetaFeature
         xsi:type="ecore:EReference"
-        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//DomainEntity/renderer"/>
+        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/renderer"/>
   </links>
   <links>
     <tool
