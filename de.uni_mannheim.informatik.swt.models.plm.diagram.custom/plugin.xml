@@ -5,8 +5,8 @@
          point="org.eclipse.ui.popupMenus">
       <objectContribution
             adaptable="false"
-            id="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.domainentityeditpart"
-            objectClass="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntityEditPart">
+            id="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.elementrendering"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart">
          <action
                class="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.AddVisualizationAction"
                id="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.addvisualizationaction"
