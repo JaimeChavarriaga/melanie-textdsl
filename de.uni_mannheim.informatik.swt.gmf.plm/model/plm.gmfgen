@@ -287,7 +287,7 @@
         <modelFacet
             xsi:type="gmfgen:FeatureLabelModelFacet"
             parser="//@labelParsers/@implementations.0"
-            viewPattern="={0}">
+            viewPattern="= {0}">
           <metaFeatures
               href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Field/value"/>
         </modelFacet>
@@ -1458,11 +1458,6 @@
             title="Domain Connection Participants"
             description="Create new Domain Connection Participants"
             genLinks="//@diagram/@links.0"/>
-        <entries
-            xsi:type="gmfgen:ToolEntry"
-            title="Rendered By"
-            description="Create new Rendered By Connection"
-            genLinks="//@diagram/@links.7"/>
       </groups>
       <groups
           title="Connections"
