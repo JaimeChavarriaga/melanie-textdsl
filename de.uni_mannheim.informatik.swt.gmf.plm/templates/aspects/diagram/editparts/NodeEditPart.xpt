@@ -1,0 +1,269 @@
+«IMPORT 'http://www.eclipse.org/gmf/2009/GenModel'»
+
+«AROUND additions FOR gmfgen::GenNode»
+«IF self.editPartClassName = 'DomainConnectionEditPart'»
+	«EXPAND toggleAttributes»
+	«EXPAND updateConnections-»
+	«EXPAND refreshSourceConnections-»
+	«EXPAND toggle-»
+«ENDIF»
+«ENDAROUND»
+
+«AROUND handleNotificationEvent FOR gmfgen::GenNode-»
+«IF self.editPartClassName = 'DomainConnectionEditPart'»
+	«EXPAND handleNotificationEventForDomainConnection-»
+«ENDIF»
+«ENDAROUND»
+
+«DEFINE updateConnections FOR gmfgen::GenNode»
+	/**
+	 * @generated
+	 */
+	private void updateConnections() {
+		if (this.sourceConnections == null)
+			return;
+
+		List<DomainConnectionParticipantEditPart> sourceConnections = this.sourceConnections;
+		DomainConnection domainConnection = (DomainConnection) ViewUtil
+				.resolveSemanticElement(this.getPrimaryView());
+
+		for (int i = 0; i < sourceConnections.size(); i++) {
+
+			//****************************************************************************
+			//Set navigable
+			//****************************************************************************
+			if (domainConnection.getIsNavigable().size() > i
+					&& domainConnection.getIsNavigable().get(i) == true) {
+				ConnectionEditPart connection = sourceConnections.get(i);
+				PolylineConnection connectionFigure = (PolylineConnection) connection
+						.getFigure();
+				connectionFigure.setTargetDecoration(new PolylineDecoration());
+			} else {
+				ConnectionEditPart connection = sourceConnections.get(i);
+				PolylineConnection connectionFigure = (PolylineConnection) connection
+						.getFigure();
+				connectionFigure.setTargetDecoration(null);
+			}
+
+			//****************************************************************************
+			//Set role
+			//****************************************************************************
+			if (domainConnection.getRoleName().size() > i) {
+				DomainConnectionParticipantEditPart connection = (DomainConnectionParticipantEditPart) sourceConnections
+						.get(i);
+				DomainConnectionParticipantsFigure connectionFigure = (DomainConnectionParticipantsFigure) connection
+						.getFigure();
+				connectionFigure
+						.getFigureDomainConnectionParticipantsNameFigure()
+						.setText(domainConnection.getRoleName().get(i));
+			} else {
+				DomainConnectionParticipantEditPart connection = (DomainConnectionParticipantEditPart) sourceConnections
+						.get(i);
+				DomainConnectionParticipantsFigure connectionFigure = (DomainConnectionParticipantsFigure) connection
+						.getFigure();
+				connectionFigure
+						.getFigureDomainConnectionParticipantsNameFigure()
+						.setText("");
+			}
+
+			//****************************************************************************
+			//Set multiplicity
+			//****************************************************************************
+			//can we assume default lower = 0 and default upper = 1?
+			int lower = 0, upper = 1;
+
+			if (domainConnection.getLower().size() > i)
+				lower = domainConnection.getLower().get(i);
+			if (domainConnection.getUpper().size() > i)
+				upper = domainConnection.getUpper().get(i);
+
+			//now set the string
+			String multiplicity = "";
+			if (lower == 0 && upper == 1)
+				;//Do nothing
+			else if (upper > 0)
+				multiplicity = lower + ".." + upper;
+			else if (lower == 0 && upper == -1)
+				multiplicity = "*";
+			else if (upper == -1)
+				multiplicity = lower + "..n";
+
+			//get the label to set
+			DomainConnectionParticipantEditPart connection = (DomainConnectionParticipantEditPart) sourceConnections
+					.get(i);
+			DomainConnectionParticipantsFigure connectionFigure = (DomainConnectionParticipantsFigure) connection
+					.getFigure();
+			connectionFigure
+					.getFigureDomainConnectionParticipantsMultiplicityFigure()
+					.setText(multiplicity);
+		}
+	}
+«ENDDEFINE»
+
+«DEFINE refreshSourceConnections FOR gmfgen::GenNode»
+	/**
+	 * Updates the connections after one is added. Needed for setting up connection
+	 * participants when diagram is loaded.
+	 *
+	 * @generated
+	 */
+	@Override
+	protected void refreshSourceConnections() {
+		super.refreshSourceConnections();
+		
+		if (this.sourceConnections != null)
+			updateConnections();
+	}
+«ENDDEFINE»
+
+«DEFINE handleNotificationEventForDomainConnection FOR gmfgen::GenNode»
+	/**
+	 * Updates the connections after a value was set.
+	 *
+	 * @generated
+	 */
+	@Override
+	protected void handleNotificationEvent(Notification notification) {
+		super.handleNotificationEvent(notification);
+
+		if (notification.getNotifier() instanceof DomainConnection) {
+			updateConnections();
+		}
+	}
+«ENDDEFINE»
+
+«DEFINE toggle FOR gmfgen::GenNode»
+/**
+	 * This renders the DomainConnectionEditPart based on information
+	 * in the model. Collapsed means that the DomainConnection is rendered as small 
+	 * black rectangle. Collapsed means that the DomainConnection will rendered as
+	 * hexagon, its default figure.
+	 * 
+	 * @generated
+	 */
+	public void toggle() {
+		boolean collapse = false;
+
+		//********************************************************
+		//Get the base Ontology as the rendering information for
+		//DomainConnections is connected to it
+		//********************************************************
+		EObject obj = (EObject) this.resolveSemanticElement();
+		LMLModel root = (LMLModel) EcoreUtil.getRootContainer(obj);
+		Ontology ont = (Ontology) EcoreUtil.getObjectByType(root.getElements(),
+				PLMPackage.eINSTANCE.getEClassifier("Ontology"));
+
+		//No rendering information found => all DomainConnections remain expanded
+		if (ont.getRenderer() == null)
+			return;
+
+		//********************************************************
+		//Do toggling based on information in the diagram
+		//********************************************************
+		Field collapsedDomainConnectionsField = null;
+
+		for (Field f : ont.getRenderer().getFields()) {
+			if (f.getName().equals("collapsedDomainConnections"))
+				;
+			collapsedDomainConnectionsField = f;
+		}
+
+		//get a array with all collapsed ids
+		String value = collapsedDomainConnectionsField.getValue();
+		String[] collapsedConnections = value.replace("Sequence{", "")
+				.replace("}", "").trim().split(";");
+
+		for (String s : collapsedConnections) {
+			if (s.trim().replace(";", "").equals(EMFCoreUtil.getProxyID(obj))) {
+				collapse = true;
+				break;
+			}
+		}
+
+		//expand element
+		if (!collapse) {
+			//Element was not previously collapsed -> Cann happen at diagram load
+			if (childrenChache == null)
+				return;
+
+			this.setBackgroundColor(Display.getDefault().getSystemColor(
+					SWT.COLOR_WHITE));
+
+			figure.getChildren().clear();
+			figure.getChildren().addAll(childrenChache);
+			childrenChache = null;
+
+			Rectangle rect = figure.getClientArea().getCopy();
+			rect.setSize((cachedSize != null) ? cachedSize : new Dimension(70,
+					60));
+			SetBoundsCommand sbc = new SetBoundsCommand(
+					this.getEditingDomain(), "change size", new EObjectAdapter(
+							(View) this.getModel()), rect);
+			getEditDomain().getCommandStack().execute(new ICommandProxy(sbc));
+
+			return;
+		}
+		//collapse element
+		else {
+			//**************************************************
+			//Create the new figure (Rectangle with black background)
+			//**************************************************
+
+			//figure.getClientArea() ==  null on startup
+			Rectangle rect = (figure.getClientArea() != null) ? figure
+					.getClientArea().getCopy() : null;
+			childrenChache = (List) ((ArrayList) figure.getChildren()).clone();
+			figure.getChildren().clear();
+
+			RectangleFigure rf = new RectangleFigure();
+
+			rf.setBackgroundColor(Display.getDefault().getSystemColor(
+					SWT.COLOR_BLACK));
+			figure.getChildren().add(rf);
+			rf.setParent(figure);
+
+			//A client rectangle existed
+			if (rect != null
+					&& (rect.width != 0 && rect.height != 0 && rect.x != 0 && rect.y != 0)) {
+				cachedSize = rect.getCopy().getSize();
+				rect.setSize(10, 10);
+				SetBoundsCommand sbc = new SetBoundsCommand(
+						this.getEditingDomain(), "change size",
+						new EObjectAdapter((View) this.getModel()), rect);
+				getEditDomain().getCommandStack().execute(
+						new ICommandProxy(sbc));
+			}
+			//A client rectangle does not exist -> called from activate
+			else {
+				rf.setSize(10, 10);
+			}
+		}
+	}
+«ENDDEFINE»
+
+«DEFINE addNotify FOR gmfgen::GenNode»
+	/**
+	 * Needed to toogle DomainConnections on diagram load
+	 *
+	 * @generated NOT
+	 */
+	@Override
+	public void addNotify() {
+		// TODO Auto-generated method stub
+		super.addNotify();
+		
+		toggle();
+	}
+«ENDDEFINE»	
+
+«DEFINE toggleAttributes FOR gmfgen::GenNode»
+	/**
+	 * @generated
+	 */
+	private List childrenChache = null;
+
+	/**
+	 * @generated
+	 */
+	private Dimension cachedSize = null;
+«ENDDEFINE»
