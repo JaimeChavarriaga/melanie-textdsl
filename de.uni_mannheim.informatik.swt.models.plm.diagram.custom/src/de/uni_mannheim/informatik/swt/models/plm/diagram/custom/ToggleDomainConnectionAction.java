@@ -25,7 +25,16 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainCo
 import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor;
 
 
-
+/**
+ * 
+ * @author Ralph Gerbig (rgerbig@rumms.uni-mannheim.de)
+ *
+ * This class is used to collapse/expand DomainConnections based on information
+ * in the model. Collapsed means that the DomainConnection is rendered as small 
+ * black rectangle. Collapsed means that the DomainConnection will rendered as
+ * hexagon, its default figure.
+ *
+ */
 public class ToggleDomainConnectionAction implements IObjectActionDelegate {
 
 	public final static String ID = "de.uni_mannheim.informatik.swt.models.plm.diagram.custom.toggledomainconnectionationaction";
@@ -36,6 +45,12 @@ public class ToggleDomainConnectionAction implements IObjectActionDelegate {
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * Reads the rendering information attached to the ontology. If no information
+	 * is present it will be created. After reading the information of collapsedDomainConnections
+	 * Field it is decided whether the ID of the connection will be removed or added to the
+	 * connection. In the end the visual state of the DomainConnectionEditPart is changed.
+	 */
 	@Override
 	public void run(IAction action) {
 		
@@ -88,19 +103,14 @@ public class ToggleDomainConnectionAction implements IObjectActionDelegate {
 		{
 			if (s.trim().replace(";", "").equals(EMFCoreUtil.getProxyID(obj)))
 			{
-				connection.toggle(false);
 				toggledID = s;
 				break;
 			}
 		}
 		
-		if (toggledID.equals(""))
-			connection.toggle(true);
-		
 		//********************************************************
 		//Save new information to the diagram
 		//********************************************************
-		
 		String newCollapsedIDs = "";
 		
 		//we have no previously collapsed item => add it to the list
@@ -129,6 +139,11 @@ public class ToggleDomainConnectionAction implements IObjectActionDelegate {
 			new SetRequest(collapsedDomainConnectionsField, PLMPackage.eINSTANCE.getField_Value(), "Sequence{" + newCollapsedIDs + "}");
 		SetValueCommand setNewValueCommand = new SetValueCommand(setNewValueRequest);
 		selectedElement.getViewer().getEditDomain().getCommandStack().execute(new ICommandProxy(setNewValueCommand));
+		
+		//********************************************************
+		//Change the connection's new visual state
+		//********************************************************
+		connection.toggle();
 	}
 
 	@Override
