@@ -9,7 +9,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPartViewer;
-import org.eclipse.gef.NodeEditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CompoundCommand;
@@ -18,6 +17,7 @@ import org.eclipse.gmf.runtime.diagram.core.edithelpers.CreateElementRequestAdap
 import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
 import org.eclipse.gmf.runtime.diagram.ui.commands.DeferredCreateConnectionViewAndElementCommand;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.CompartmentEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateConnectionViewAndElementRequest;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewAndElementRequest;
@@ -45,6 +45,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.DomainEntity;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Field;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntityDomainEntityFieldsCompartment2EditPart;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntityDomainEntityFieldsCompartmentEditPart;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.FieldEditPart;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.OntologyEditPart;
@@ -123,12 +124,20 @@ public class AddVisualizationAction implements IObjectActionDelegate {
 			//**************************************************************
 			//Add fields to compartment
 			//**************************************************************
-			DomainEntityDomainEntityFieldsCompartmentEditPart fieldsCompartment = null;
+			CompartmentEditPart fieldsCompartment = null;
 			//find the DomainEntityDomainEntityFieldsCompartmentEditPart
 			for (int i = 0; i <  elementPart.getChildren().size(); i++)
 			{
 				if (elementPart.getChildren().get(i) instanceof DomainEntityDomainEntityFieldsCompartmentEditPart)
-					fieldsCompartment = (DomainEntityDomainEntityFieldsCompartmentEditPart)elementPart.getChildren().get(i);
+				{
+					fieldsCompartment = (CompartmentEditPart)elementPart.getChildren().get(i);
+					break;
+				}
+				else if (elementPart.getChildren().get(i) instanceof DomainEntityDomainEntityFieldsCompartment2EditPart)
+				{
+					fieldsCompartment = (CompartmentEditPart)elementPart.getChildren().get(i);
+					break;
+				}
 			}
 			
 			if (fieldsCompartment != null)
@@ -151,9 +160,23 @@ public class AddVisualizationAction implements IObjectActionDelegate {
 					//Set values
 					FieldEditPart fieldPart = (FieldEditPart) viewer.getEditPartRegistry().get(fieldDescriptor.getAdapter(View.class));
 					Field field = (Field) ViewUtil.resolveSemanticElement((View)fieldPart.getModel());
+					
 					SetRequest setFieldNameRequest = new SetRequest(field, PLMPackage.eINSTANCE.getElement_Name(), attr.getName());
+					SetRequest setFieldDurabilityRequest = new SetRequest(field, PLMPackage.eINSTANCE.getFeature_Durability(), 0);
+					SetRequest setFieldValueVariabilityRequest = new SetRequest(field, PLMPackage.eINSTANCE.getField_ValueVariability(), 0);
+					SetRequest setFieldValueRequest = new SetRequest(field, PLMPackage.eINSTANCE.getField_Value(), "VisualRenderingEnum::MAX");
+					
+					
 					SetValueCommand setFieldNameCommand = new SetValueCommand(setFieldNameRequest);
+					SetValueCommand setFieldDurabilityCommand = new SetValueCommand(setFieldDurabilityRequest);
+					SetValueCommand setFieldValueVariabilityCommand = new SetValueCommand(setFieldValueVariabilityRequest);
+					SetValueCommand setFieldValueCommand = new SetValueCommand(setFieldValueRequest);
+					
+					
 					fieldPart.getViewer().getEditDomain().getCommandStack().execute(new ICommandProxy(setFieldNameCommand));
+					fieldPart.getViewer().getEditDomain().getCommandStack().execute(new ICommandProxy(setFieldDurabilityCommand));
+					fieldPart.getViewer().getEditDomain().getCommandStack().execute(new ICommandProxy(setFieldValueVariabilityCommand));
+					fieldPart.getViewer().getEditDomain().getCommandStack().execute(new ICommandProxy(setFieldValueCommand));
 				}
 			}		
 			
