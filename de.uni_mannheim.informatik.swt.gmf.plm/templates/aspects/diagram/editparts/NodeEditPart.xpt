@@ -6,6 +6,7 @@
 	«EXPAND updateConnections-»
 	«EXPAND refreshSourceConnections-»
 	«EXPAND toggle-»
+	«EXPAND partActivate-»
 «ENDIF»
 «ENDAROUND»
 
@@ -265,4 +266,16 @@
 	 * @generated
 	 */
 	private org.eclipse.draw2d.geometry.Dimension cachedSize = null;
+«ENDDEFINE»
+
+«DEFINE partActivate FOR gmfgen::GenNode»
+	/**
+	 * @generated
+	 */
+	@Override
+	public void addNotify() {
+		super.addNotify();
+		
+		toggle();
+	}
 «ENDDEFINE»
