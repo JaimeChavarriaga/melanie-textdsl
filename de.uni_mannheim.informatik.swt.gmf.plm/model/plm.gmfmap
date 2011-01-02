@@ -272,19 +272,12 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject/level"/>
       </labelMappings>
       <labelMappings
-          xsi:type="gmfmap:FeatureLabelMapping"
-          readOnly="true"
-          viewPattern="name = {0}, expressed = {1}, potency = {2} , level = {3}">
+          xsi:type="gmfmap:ExpressionLabelMapping"
+          readOnly="true">
         <diagramLabel
             href="plm.gmfgraph#DomainEntityFigureAVSLabel"/>
-        <features
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/name"/>
-        <features
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/expressed"/>
-        <features
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//PotentElement/potency"/>
-        <features
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject/level"/>
+        <viewExpression
+            body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (not self.renderer.oclIsUndefined()) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderName:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;self.renderer.fields->select(f | f.name = 'name')->first().value = 'VisualRenderingEnum::MAX' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;self.renderer.fields->select(f | f.name = 'name')->first().value = 'VisualRenderingEnum::AVS'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let name : String =&#xD;&#xA;&#x9;self.name&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;if (renderName) then&#xD;&#xA;&#x9;'name='.concat(name)&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
       </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"
