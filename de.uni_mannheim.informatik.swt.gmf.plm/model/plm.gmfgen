@@ -24,42 +24,37 @@
     <domainDiagramElement
         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLModel"/>
     <childNodes
-        visualID="3004"
-        editPartClassName="ModelEditPart"
-        itemSemanticEditPolicyClassName="ModelItemSemanticEditPolicy"
-        notationViewFactoryClassName="ModelViewFactory"
-        canonicalEditPolicyClassName="ModelCanonicalEditPolicy"
+        visualID="3017"
+        editPartClassName="ClabjectEditPart"
+        itemSemanticEditPolicyClassName="ClabjectItemSemanticEditPolicy"
+        notationViewFactoryClassName="ClabjectViewFactory"
+        canonicalEditPolicyClassName="ClabjectCanonicalEditPolicy"
         compartments="//@diagram/@compartments.1"
-        graphicalNodeEditPolicyClassName="ModelGraphicalNodeEditPolicy"
-        createCommandClassName="ModelCreateCommand"
+        graphicalNodeEditPolicyClassName="ClabjectGraphicalNodeEditPolicy"
+        createCommandClassName="ClabjectCreateCommand"
         containers="//@diagram/@compartments.0">
       <diagramRunTimeClass
           href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
       <elementType
           xsi:type="gmfgen:MetamodelType"
-          editHelperClassName="ModelEditHelper"/>
+          editHelperClassName="ClabjectEditHelper"/>
       <viewmap
           xsi:type="gmfgen:InnerClassViewmap"
           className="ModelFigure"
-          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class ModelFigure extends org.eclipse.draw2d.RectangleFigure {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureOntologyLevelNameFigure; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public ModelFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setFill(false);&#xA;this.setOutline(false);&#xA;this.setMinimumSize(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(500)&#xA;, getMapMode().DPtoLP(150)&#xA;));&#xA;this.setBorder(createBorder0());&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;org.eclipse.draw2d.RectangleFigure innerRectangle0 = new org.eclipse.draw2d.RectangleFigure();&#xA;innerRectangle0.setFill(false);&#xA;innerRectangle0.setOutline(false);&#xA;innerRectangle0.setMaximumSize(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(25)&#xA;));&#xA;&#xA;this.add(innerRectangle0);&#xA;&#xA;&#x9;org.eclipse.draw2d.ToolbarLayout layoutInnerRectangle0 = new org.eclipse.draw2d.ToolbarLayout();&#xA;&#x9;layoutInnerRectangle0.setStretchMinorAxis(true);&#xA;&#x9;layoutInnerRectangle0.setMinorAlignment(org.eclipse.draw2d.ToolbarLayout.ALIGN_CENTER&#xA;);&#xA;&#xA;&#x9;layoutInnerRectangle0.setSpacing(0);&#xA;&#x9;layoutInnerRectangle0.setVertical(true);&#xA;&#xA;&#x9;innerRectangle0.setLayoutManager(layoutInnerRectangle0);&#xA;&#xA;&#xA;&#xA;org.eclipse.draw2d.RectangleFigure nameRectangle1 = new org.eclipse.draw2d.RectangleFigure();&#xA;nameRectangle1.setFill(false);&#xA;nameRectangle1.setOutline(false);&#xA;&#xA;innerRectangle0.add(nameRectangle1);&#xA;&#xA;&#x9;org.eclipse.draw2d.GridLayout layoutNameRectangle1 = new org.eclipse.draw2d.GridLayout();&#xA;&#x9;layoutNameRectangle1.numColumns = 1;&#xA;&#x9;layoutNameRectangle1.makeColumnsEqualWidth = true;&#xA;&#x9;nameRectangle1.setLayoutManager(layoutNameRectangle1);&#xA;&#xA;&#xA;&#xA;fFigureOntologyLevelNameFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureOntologyLevelNameFigure.setText(&quot;&quot;);&#xA;&#xA;fFigureOntologyLevelNameFigure.setFont(FFIGUREONTOLOGYLEVELNAMEFIGURE_FONT);&#xA;&#xA;&#xA;fFigureOntologyLevelNameFigure.setMaximumSize(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(20)&#xA;));&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureOntologyLevelNameFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureOntologyLevelNameFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureOntologyLevelNameFigure.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureOntologyLevelNameFigure.horizontalIndent = 0;&#xA;constraintFFigureOntologyLevelNameFigure.horizontalSpan = 1;&#xA;constraintFFigureOntologyLevelNameFigure.verticalSpan = 1;&#xA;constraintFFigureOntologyLevelNameFigure.grabExcessHorizontalSpace = true;&#xA;constraintFFigureOntologyLevelNameFigure.grabExcessVerticalSpace = true;&#xA;nameRectangle1.add(fFigureOntologyLevelNameFigure, constraintFFigureOntologyLevelNameFigure);&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.draw2d.Border createBorder0() {&#xA;&#x9;&#x9;de.uni_mannheim.informatik.swt.gmf.borders.CustomBorder result = new de.uni_mannheim.informatik.swt.gmf.borders.CustomBorder();&#xA;&#x9;&#x9;&#xA;&#xA;&#xA;&#x9;&#x9;return result;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureOntologyLevelNameFigure() {&#xA;&#x9;&#x9;return fFigureOntologyLevelNameFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGUREONTOLOGYLEVELNAMEFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 11, org.eclipse.swt.SWT.NORMAL);&#xA;&#xA;">
-        <attributes
-            xsi:type="gmfgen:DefaultSizeAttributes"
-            width="500"
-            height="150"/>
-      </viewmap>
+          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class ModelFigure extends org.eclipse.draw2d.RectangleFigure {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureOntologyLevelNameFigure; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public ModelFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setFill(false);&#xA;this.setOutline(false);&#xA;this.setMinimumSize(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(500)&#xA;, getMapMode().DPtoLP(150)&#xA;));&#xA;this.setBorder(createBorder0());&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;org.eclipse.draw2d.RectangleFigure innerRectangle0 = new org.eclipse.draw2d.RectangleFigure();&#xA;innerRectangle0.setFill(false);&#xA;innerRectangle0.setOutline(false);&#xA;innerRectangle0.setMaximumSize(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(25)&#xA;));&#xA;&#xA;this.add(innerRectangle0);&#xA;&#xA;&#x9;org.eclipse.draw2d.ToolbarLayout layoutInnerRectangle0 = new org.eclipse.draw2d.ToolbarLayout();&#xA;&#x9;layoutInnerRectangle0.setStretchMinorAxis(true);&#xA;&#x9;layoutInnerRectangle0.setMinorAlignment(org.eclipse.draw2d.ToolbarLayout.ALIGN_CENTER&#xA;);&#xA;&#xA;&#x9;layoutInnerRectangle0.setSpacing(0);&#xA;&#x9;layoutInnerRectangle0.setVertical(true);&#xA;&#xA;&#x9;innerRectangle0.setLayoutManager(layoutInnerRectangle0);&#xA;&#xA;&#xA;&#xA;org.eclipse.draw2d.RectangleFigure nameRectangle1 = new org.eclipse.draw2d.RectangleFigure();&#xA;nameRectangle1.setFill(false);&#xA;nameRectangle1.setOutline(false);&#xA;&#xA;innerRectangle0.add(nameRectangle1);&#xA;&#xA;&#x9;org.eclipse.draw2d.GridLayout layoutNameRectangle1 = new org.eclipse.draw2d.GridLayout();&#xA;&#x9;layoutNameRectangle1.numColumns = 1;&#xA;&#x9;layoutNameRectangle1.makeColumnsEqualWidth = true;&#xA;&#x9;nameRectangle1.setLayoutManager(layoutNameRectangle1);&#xA;&#xA;&#xA;&#xA;fFigureOntologyLevelNameFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureOntologyLevelNameFigure.setText(&quot;&quot;);&#xA;&#xA;fFigureOntologyLevelNameFigure.setFont(FFIGUREONTOLOGYLEVELNAMEFIGURE_FONT);&#xA;&#xA;&#xA;fFigureOntologyLevelNameFigure.setMaximumSize(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(20)&#xA;));&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureOntologyLevelNameFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureOntologyLevelNameFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureOntologyLevelNameFigure.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureOntologyLevelNameFigure.horizontalIndent = 0;&#xA;constraintFFigureOntologyLevelNameFigure.horizontalSpan = 1;&#xA;constraintFFigureOntologyLevelNameFigure.verticalSpan = 1;&#xA;constraintFFigureOntologyLevelNameFigure.grabExcessHorizontalSpace = true;&#xA;constraintFFigureOntologyLevelNameFigure.grabExcessVerticalSpace = true;&#xA;nameRectangle1.add(fFigureOntologyLevelNameFigure, constraintFFigureOntologyLevelNameFigure);&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.draw2d.Border createBorder0() {&#xA;&#x9;&#x9;de.uni_mannheim.informatik.swt.gmf.borders.CustomBorder result = new de.uni_mannheim.informatik.swt.gmf.borders.CustomBorder();&#xA;&#x9;&#x9;&#xA;&#xA;&#xA;&#x9;&#x9;return result;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureOntologyLevelNameFigure() {&#xA;&#x9;&#x9;return fFigureOntologyLevelNameFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGUREONTOLOGYLEVELNAMEFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 11, org.eclipse.swt.SWT.NORMAL);&#xA;&#xA;"/>
       <modelFacet>
         <metaClass
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject"/>
         <containmentMetaFeature
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Ontology/models"/>
         <childMetaFeature
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Ontology/models"/>
       </modelFacet>
       <labels
-          visualID="5007"
-          editPartClassName="ModelNameEditPart"
-          itemSemanticEditPolicyClassName="ModelNameItemSemanticEditPolicy"
-          notationViewFactoryClassName="ModelNameViewFactory">
+          visualID="5058"
+          editPartClassName="ClabjectNameEditPart"
+          itemSemanticEditPolicyClassName="ClabjectNameItemSemanticEditPolicy"
+          notationViewFactoryClassName="ClabjectNameViewFactory">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap
@@ -79,7 +74,7 @@
       </labels>
     </childNodes>
     <childNodes
-        visualID="3016"
+        visualID="3018"
         editPartClassName="DomainEntity2EditPart"
         itemSemanticEditPolicyClassName="DomainEntity2ItemSemanticEditPolicy"
         notationViewFactoryClassName="DomainEntityViewFactory"
@@ -101,12 +96,12 @@
         <metaClass
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainEntity"/>
         <containmentMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/elements"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/children"/>
         <childMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/elements"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/children"/>
       </modelFacet>
       <labels
-          visualID="5032"
+          visualID="5043"
           editPartClassName="DomainEntityName2EditPart"
           itemSemanticEditPolicyClassName="DomainEntityName2ItemSemanticEditPolicy"
           notationViewFactoryClassName="DomainEntityNameViewFactory">
@@ -129,9 +124,9 @@
         </modelFacet>
       </labels>
       <labels
-          visualID="5033"
-          editPartClassName="WrappingLabel15EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel15ItemSemanticEditPolicy"
+          visualID="5044"
+          editPartClassName="WrappingLabel2EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel2ItemSemanticEditPolicy"
           notationViewFactoryClassName="DomainEntityLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -145,7 +140,7 @@
             parser="//@labelParsers/@implementations.4"/>
       </labels>
       <labels
-          visualID="5034"
+          visualID="5045"
           editPartClassName="DomainEntityLevel2EditPart"
           itemSemanticEditPolicyClassName="DomainEntityLevel2ItemSemanticEditPolicy"
           notationViewFactoryClassName="DomainEntityLevelViewFactory"
@@ -164,10 +159,10 @@
         </modelFacet>
       </labels>
       <labels
-          visualID="5035"
-          editPartClassName="DomainEntityNameExpressedPotencyLev2EditPart"
-          itemSemanticEditPolicyClassName="DomainEntityNameExpressedPotencyLev2ItemSemanticEditPolicy"
-          notationViewFactoryClassName="DomainEntityNameExpressedPotencyLevelViewFactory"
+          visualID="5046"
+          editPartClassName="WrappingLabel3EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel3ItemSemanticEditPolicy"
+          notationViewFactoryClassName="DomainEntityLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -181,7 +176,7 @@
       </labels>
     </childNodes>
     <childNodes
-        visualID="3007"
+        visualID="3019"
         editPartClassName="FieldEditPart"
         itemSemanticEditPolicyClassName="FieldItemSemanticEditPolicy"
         notationViewFactoryClassName="FieldViewFactory"
@@ -208,12 +203,12 @@
         <metaClass
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Field"/>
         <containmentMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainEntity/fields"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/children"/>
         <childMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainEntity/fields"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/children"/>
       </modelFacet>
       <labels
-          visualID="5010"
+          visualID="5037"
           editPartClassName="FieldNameEditPart"
           itemSemanticEditPolicyClassName="FieldNameItemSemanticEditPolicy"
           notationViewFactoryClassName="FieldNameViewFactory">
@@ -232,9 +227,9 @@
         </modelFacet>
       </labels>
       <labels
-          visualID="5013"
-          editPartClassName="WrappingLabel2EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel2ItemSemanticEditPolicy"
+          visualID="5038"
+          editPartClassName="WrappingLabel4EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel4ItemSemanticEditPolicy"
           notationViewFactoryClassName="FieldLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -248,9 +243,9 @@
             parser="//@labelParsers/@implementations.1"/>
       </labels>
       <labels
-          visualID="5014"
-          editPartClassName="WrappingLabel3EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel3ItemSemanticEditPolicy"
+          visualID="5039"
+          editPartClassName="WrappingLabel5EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel5ItemSemanticEditPolicy"
           notationViewFactoryClassName="FieldLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -264,7 +259,7 @@
             parser="//@labelParsers/@implementations.2"/>
       </labels>
       <labels
-          visualID="5036"
+          visualID="5040"
           editPartClassName="FieldValueEditPart"
           itemSemanticEditPolicyClassName="FieldValueItemSemanticEditPolicy"
           notationViewFactoryClassName="FieldValueViewFactory">
@@ -284,7 +279,7 @@
       </labels>
     </childNodes>
     <childNodes
-        visualID="3008"
+        visualID="3020"
         editPartClassName="MethodEditPart"
         itemSemanticEditPolicyClassName="MethodItemSemanticEditPolicy"
         notationViewFactoryClassName="MethodViewFactory"
@@ -311,12 +306,12 @@
         <metaClass
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Method"/>
         <containmentMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainEntity/methods"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/children"/>
         <childMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainEntity/methods"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/children"/>
       </modelFacet>
       <labels
-          visualID="5015"
+          visualID="5041"
           editPartClassName="MethodNameEditPart"
           itemSemanticEditPolicyClassName="MethodNameItemSemanticEditPolicy"
           notationViewFactoryClassName="MethodNameViewFactory">
@@ -334,9 +329,9 @@
         </modelFacet>
       </labels>
       <labels
-          visualID="5019"
-          editPartClassName="WrappingLabel4EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel4ItemSemanticEditPolicy"
+          visualID="5042"
+          editPartClassName="WrappingLabel6EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel6ItemSemanticEditPolicy"
           notationViewFactoryClassName="MethodLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -351,7 +346,7 @@
       </labels>
     </childNodes>
     <childNodes
-        visualID="3006"
+        visualID="3021"
         editPartClassName="DomainConnectionEditPart"
         itemSemanticEditPolicyClassName="DomainConnectionItemSemanticEditPolicy"
         notationViewFactoryClassName="DomainConnectionViewFactory"
@@ -374,12 +369,12 @@
         <metaClass
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainConnection"/>
         <containmentMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/elements"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/children"/>
         <childMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/elements"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/children"/>
       </modelFacet>
       <labels
-          visualID="5006"
+          visualID="5050"
           editPartClassName="DomainConnectionNameEditPart"
           itemSemanticEditPolicyClassName="DomainConnectionNameItemSemanticEditPolicy"
           notationViewFactoryClassName="DomainConnectionNameViewFactory">
@@ -402,9 +397,9 @@
         </modelFacet>
       </labels>
       <labels
-          visualID="5012"
-          editPartClassName="WrappingLabel5EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel5ItemSemanticEditPolicy"
+          visualID="5051"
+          editPartClassName="WrappingLabel7EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel7ItemSemanticEditPolicy"
           notationViewFactoryClassName="DomainConnectionLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -419,7 +414,7 @@
       </labels>
     </childNodes>
     <childNodes
-        visualID="3012"
+        visualID="3022"
         editPartClassName="Field2EditPart"
         itemSemanticEditPolicyClassName="Field2ItemSemanticEditPolicy"
         notationViewFactoryClassName="FieldViewFactory"
@@ -446,12 +441,12 @@
         <metaClass
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Field"/>
         <containmentMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainConnection/fields"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/children"/>
         <childMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainConnection/fields"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/children"/>
       </modelFacet>
       <labels
-          visualID="5020"
+          visualID="5047"
           editPartClassName="FieldName2EditPart"
           itemSemanticEditPolicyClassName="FieldName2ItemSemanticEditPolicy"
           notationViewFactoryClassName="FieldNameViewFactory">
@@ -470,9 +465,9 @@
         </modelFacet>
       </labels>
       <labels
-          visualID="5021"
-          editPartClassName="WrappingLabel6EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel6ItemSemanticEditPolicy"
+          visualID="5048"
+          editPartClassName="WrappingLabel8EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel8ItemSemanticEditPolicy"
           notationViewFactoryClassName="FieldLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -486,9 +481,9 @@
             parser="//@labelParsers/@implementations.6"/>
       </labels>
       <labels
-          visualID="5022"
-          editPartClassName="WrappingLabel7EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel7ItemSemanticEditPolicy"
+          visualID="5049"
+          editPartClassName="WrappingLabel9EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel9ItemSemanticEditPolicy"
           notationViewFactoryClassName="FieldLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -503,7 +498,7 @@
       </labels>
     </childNodes>
     <childNodes
-        visualID="3009"
+        visualID="3023"
         editPartClassName="ComplementEditPart"
         itemSemanticEditPolicyClassName="ComplementItemSemanticEditPolicy"
         notationViewFactoryClassName="ComplementViewFactory"
@@ -529,14 +524,14 @@
         <metaClass
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Complement"/>
         <containmentMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/elements"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/children"/>
         <childMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/elements"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/children"/>
       </modelFacet>
       <labels
-          visualID="5016"
-          editPartClassName="WrappingLabel8EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel8ItemSemanticEditPolicy"
+          visualID="5052"
+          editPartClassName="WrappingLabel10EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel10ItemSemanticEditPolicy"
           notationViewFactoryClassName="ComplementLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -554,19 +549,19 @@
       </labels>
     </childNodes>
     <childNodes
-        visualID="3010"
-        editPartClassName="EqualsEditPart"
-        itemSemanticEditPolicyClassName="EqualsItemSemanticEditPolicy"
-        notationViewFactoryClassName="EqualsViewFactory"
-        canonicalEditPolicyClassName="EqualsCanonicalEditPolicy"
-        graphicalNodeEditPolicyClassName="EqualsGraphicalNodeEditPolicy"
-        createCommandClassName="EqualsCreateCommand"
+        visualID="3024"
+        editPartClassName="EqualityEditPart"
+        itemSemanticEditPolicyClassName="EqualityItemSemanticEditPolicy"
+        notationViewFactoryClassName="EqualityViewFactory"
+        canonicalEditPolicyClassName="EqualityCanonicalEditPolicy"
+        graphicalNodeEditPolicyClassName="EqualityGraphicalNodeEditPolicy"
+        createCommandClassName="EqualityCreateCommand"
         containers="//@diagram/@compartments.1">
       <diagramRunTimeClass
           href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
       <elementType
           xsi:type="gmfgen:MetamodelType"
-          editHelperClassName="EqualsEditHelper"/>
+          editHelperClassName="EqualityEditHelper"/>
       <viewmap
           xsi:type="gmfgen:InnerClassViewmap"
           className="EqualsFigure"
@@ -578,17 +573,17 @@
       </viewmap>
       <modelFacet>
         <metaClass
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Equals"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Equality"/>
         <containmentMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/elements"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/children"/>
         <childMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/elements"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/children"/>
       </modelFacet>
       <labels
-          visualID="5017"
-          editPartClassName="WrappingLabel9EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel9ItemSemanticEditPolicy"
-          notationViewFactoryClassName="EqualsLabelViewFactory"
+          visualID="5053"
+          editPartClassName="WrappingLabel14EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel14ItemSemanticEditPolicy"
+          notationViewFactoryClassName="EqualityLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -605,7 +600,7 @@
       </labels>
     </childNodes>
     <childNodes
-        visualID="3011"
+        visualID="3025"
         editPartClassName="InversionEditPart"
         itemSemanticEditPolicyClassName="InversionItemSemanticEditPolicy"
         notationViewFactoryClassName="InversionViewFactory"
@@ -631,14 +626,14 @@
         <metaClass
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Inversion"/>
         <containmentMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/elements"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/children"/>
         <childMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/elements"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/children"/>
       </modelFacet>
       <labels
-          visualID="5018"
-          editPartClassName="WrappingLabel10EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel10ItemSemanticEditPolicy"
+          visualID="5054"
+          editPartClassName="WrappingLabel15EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel15ItemSemanticEditPolicy"
           notationViewFactoryClassName="InversionLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -656,7 +651,7 @@
       </labels>
     </childNodes>
     <childNodes
-        visualID="3013"
+        visualID="3026"
         editPartClassName="MultipleGeneralizationEditPart"
         itemSemanticEditPolicyClassName="MultipleGeneralizationItemSemanticEditPolicy"
         notationViewFactoryClassName="MultipleGeneralizationViewFactory"
@@ -682,12 +677,12 @@
         <metaClass
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleGeneralization"/>
         <containmentMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/elements"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/children"/>
         <childMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/elements"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/children"/>
       </modelFacet>
       <labels
-          visualID="5023"
+          visualID="5055"
           editPartClassName="MultipleGeneralizationNameEditPart"
           itemSemanticEditPolicyClassName="MultipleGeneralizationNameItemSemanticEditPolicy"
           notationViewFactoryClassName="MultipleGeneralizationNameViewFactory">
@@ -710,7 +705,7 @@
       </labels>
     </childNodes>
     <childNodes
-        visualID="3014"
+        visualID="3027"
         editPartClassName="MultipleSpecializationEditPart"
         itemSemanticEditPolicyClassName="MultipleSpecializationItemSemanticEditPolicy"
         notationViewFactoryClassName="MultipleSpecializationViewFactory"
@@ -736,12 +731,12 @@
         <metaClass
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleSpecialization"/>
         <containmentMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/elements"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/children"/>
         <childMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/elements"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/children"/>
       </modelFacet>
       <labels
-          visualID="5024"
+          visualID="5056"
           editPartClassName="MultipleSpecializationNameEditPart"
           itemSemanticEditPolicyClassName="MultipleSpecializationNameItemSemanticEditPolicy"
           notationViewFactoryClassName="MultipleSpecializationNameViewFactory">
@@ -763,9 +758,9 @@
         </modelFacet>
       </labels>
       <labels
-          visualID="5025"
-          editPartClassName="WrappingLabel14EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel14ItemSemanticEditPolicy"
+          visualID="5057"
+          editPartClassName="WrappingLabel16EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel16ItemSemanticEditPolicy"
           notationViewFactoryClassName="MultipleSpecializationLabelViewFactory">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -1022,9 +1017,9 @@
         <metaClass
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Instantiation"/>
         <containmentMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/elements"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/children"/>
         <childMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/elements"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/children"/>
         <sourceMetaFeature
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Instantiation/instance"/>
         <targetMetaFeature
@@ -1052,9 +1047,9 @@
         <metaClass
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/BinaryGeneralization"/>
         <containmentMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/elements"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/children"/>
         <childMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/elements"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/children"/>
         <sourceMetaFeature
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/BinaryGeneralization/subtype"/>
         <targetMetaFeature
@@ -1082,12 +1077,12 @@
       </modelFacet>
     </links>
     <links
-        visualID="4014"
-        editPartClassName="EqualsEqualEditPart"
-        itemSemanticEditPolicyClassName="EqualsEqualItemSemanticEditPolicy"
-        notationViewFactoryClassName="EqualsEqualViewFactory"
-        createCommandClassName="EqualsEqualCreateCommand"
-        reorientCommandClassName="EqualsEqualReorientCommand">
+        visualID="4018"
+        editPartClassName="EqualityEqualEditPart"
+        itemSemanticEditPolicyClassName="EqualityEqualItemSemanticEditPolicy"
+        notationViewFactoryClassName="EqualityEqualViewFactory"
+        createCommandClassName="EqualityEqualCreateCommand"
+        reorientCommandClassName="EqualityEqualReorientCommand">
       <diagramRunTimeClass
           href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Edge"/>
       <elementType
@@ -1098,7 +1093,7 @@
       <modelFacet
           xsi:type="gmfgen:FeatureLinkModelFacet">
         <metaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Equals/equal"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Equality/equal"/>
       </modelFacet>
       <creationConstraints
           sourceEnd="//@expressionProviders/@providers.0/@expressions.9"/>
@@ -1296,11 +1291,11 @@
           figureQualifiedClassName="org.eclipse.draw2d.RectangleFigure"/>
     </compartments>
     <compartments
-        visualID="7004"
-        editPartClassName="ModelDomainElementsCompartmentEditPart"
-        itemSemanticEditPolicyClassName="ModelDomainElementsCompartmentItemSemanticEditPolicy"
-        notationViewFactoryClassName="ModelDomainElementsComartmentViewFactory"
-        canonicalEditPolicyClassName="ModelDomainElementsCompartmentCanonicalEditPolicy"
+        visualID="7013"
+        editPartClassName="ClabjectDomainElementsCompartmentEditPart"
+        itemSemanticEditPolicyClassName="ClabjectDomainElementsCompartmentItemSemanticEditPolicy"
+        notationViewFactoryClassName="ClabjectDomainElementsCompartmentViewFactory"
+        canonicalEditPolicyClassName="ClabjectDomainElementsCompartmentCanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.1 //@diagram/@childNodes.4 //@diagram/@childNodes.6 //@diagram/@childNodes.7 //@diagram/@childNodes.8 //@diagram/@childNodes.9 //@diagram/@childNodes.10"
         title="DomainElementsCompartment"
         canCollapse="false"
@@ -1315,7 +1310,7 @@
           classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class DomainElementsCompartmentFigure extends org.eclipse.draw2d.RectangleFigure {&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public DomainElementsCompartmentFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setFill(false);&#xA;this.setOutline(false);&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
     </compartments>
     <compartments
-        visualID="7011"
+        visualID="7014"
         editPartClassName="DomainEntityDomainEntityFieldsCompartment2EditPart"
         itemSemanticEditPolicyClassName="DomainEntityDomainEntityFieldsCompartment2ItemSemanticEditPolicy"
         notationViewFactoryClassName="DomainEntityDomainEntityFieldsCompartmentViewFactory"
@@ -1331,7 +1326,7 @@
           figureQualifiedClassName="org.eclipse.draw2d.RectangleFigure"/>
     </compartments>
     <compartments
-        visualID="7012"
+        visualID="7015"
         editPartClassName="DomainEntityDomainEntityMethodsCompartment2EditPart"
         itemSemanticEditPolicyClassName="DomainEntityDomainEntityMethodsCompartment2ItemSemanticEditPolicy"
         notationViewFactoryClassName="DomainEntityDomainEntityMethodsCompartmentViewFactory"
@@ -1347,7 +1342,7 @@
           figureQualifiedClassName="org.eclipse.draw2d.RectangleFigure"/>
     </compartments>
     <compartments
-        visualID="7007"
+        visualID="7016"
         editPartClassName="DomainConnectionDomainConnectionsFieldsCompartmentEditPart"
         itemSemanticEditPolicyClassName="DomainConnectionDomainConnectionsFieldsCompartmentItemSemanticEditPolicy"
         notationViewFactoryClassName="DomainConnectionDomainConnectionsFieldsCompartmentViewFactory"
@@ -1574,7 +1569,7 @@
       <expressions
           body="let potency:String = if (self.potency > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.potency.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.potency = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;potency"/>
       <expressions
-          body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (not self.renderer.oclIsUndefined()) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderName:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;self.renderer.fields->select(f | f.name = 'name')->first().value = 'VisualRenderingEnum::MAX' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;self.renderer.fields->select(f | f.name = 'name')->first().value = 'VisualRenderingEnum::AVS'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let name : String =&#xD;&#xA;&#x9;self.name&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;if (renderName) then&#xD;&#xA;&#x9;'name='.concat(name)&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
+          body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (not self.renderer.oclIsUndefined()) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderName:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;self.renderer.children->select(c | c.name = 'name')->first().oclAsType(Field).value = 'VisualRenderingEnum::MAX' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;self.renderer.children->select(c | c.name = 'name')->first().oclAsType(Field).value = 'VisualRenderingEnum::AVS'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let name : String =&#xD;&#xA;&#x9;self.name&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;if (renderName) then&#xD;&#xA;&#x9;'name='.concat(name)&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
       <expressions
           body="let potency:String = if (self.potency > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.potency.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.potency = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;potency"/>
       <expressions
@@ -1585,7 +1580,7 @@
           body="let disjoint:String = &#xD;&#xA;&#x9;if (self.disjoint) then &#xD;&#xA;&#x9;&#x9;'disjoint' &#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'overlaping ' &#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let complete:String = &#xD;&#xA;&#x9;if (self.complete) then &#xD;&#xA;&#x9;&#x9;'complete' &#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'incomplete' &#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (disjoint &lt;> ' ') then&#xD;&#xA;&#x9;'{'.concat(disjoint).concat('; ').concat(complete ).concat('}')&#xD;&#xA;else&#xD;&#xA;&#x9;' '&#xD;&#xA;endif"/>
       <expressions
           xsi:type="gmfgen:GenConstraint"
-          body="self.oclIsTypeOf(Equals)"/>
+          body="self.oclIsTypeOf(Equality)"/>
       <expressions
           xsi:type="gmfgen:GenConstraint"
           body="self.oclIsTypeOf(Inversion)"/>

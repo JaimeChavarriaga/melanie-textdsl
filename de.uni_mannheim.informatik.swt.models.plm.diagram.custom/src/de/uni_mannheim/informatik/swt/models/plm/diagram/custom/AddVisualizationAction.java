@@ -77,7 +77,7 @@ public class AddVisualizationAction implements IObjectActionDelegate {
 			type = PLMElementTypes.DomainEntity_2003;
 		//Create View in Model
 		else
-			type = PLMElementTypes.DomainEntity_3016;
+			type = PLMElementTypes.DomainEntity_3018;
 		
 		// Create the new topic for the other end.
 		CreateViewRequest visualizationDomainEntityRequest = CreateViewRequestFactory.getCreateShapeRequest(type, selectedElement.getDiagramPreferencesHint());
@@ -146,9 +146,9 @@ public class AddVisualizationAction implements IObjectActionDelegate {
 				{
 					//Create Field
 					ViewAndElementDescriptor fieldDescriptor = new ViewAndElementDescriptor(
-							new CreateElementRequestAdapter(new CreateElementRequest(PLMElementTypes.Field_3007)),
+							new CreateElementRequestAdapter(new CreateElementRequest(PLMElementTypes.Field_3019)),
 							Node.class,
-							((IHintedType)PLMElementTypes.Field_3007).getSemanticHint(), 
+							((IHintedType)PLMElementTypes.Field_3019).getSemanticHint(), 
 							selectedElement.getDiagramPreferencesHint()
 							);
 					CreateViewAndElementRequest fieldRequest = new CreateViewAndElementRequest(fieldDescriptor);
@@ -189,9 +189,9 @@ public class AddVisualizationAction implements IObjectActionDelegate {
 				//Create Field
 				//**************************************************************
 				ViewAndElementDescriptor fieldDescriptor = new ViewAndElementDescriptor(
-						new CreateElementRequestAdapter(new CreateElementRequest(PLMElementTypes.Field_3007)),
+						new CreateElementRequestAdapter(new CreateElementRequest(PLMElementTypes.Field_3019)),
 						Node.class,
-						((IHintedType)PLMElementTypes.Field_3007).getSemanticHint(), 
+						((IHintedType)PLMElementTypes.Field_3019).getSemanticHint(), 
 						selectedElement.getDiagramPreferencesHint()
 						);
 				CreateViewAndElementRequest fieldRequest = new CreateViewAndElementRequest(fieldDescriptor);
@@ -207,7 +207,7 @@ public class AddVisualizationAction implements IObjectActionDelegate {
 				
 				//Configure Request
 				SetRequest setFieldNameRequest = new SetRequest(field, PLMPackage.eINSTANCE.getElement_Name(), "collapsedDomainConnections");
-				SetRequest setFieldDurabilityRequest =  new SetRequest(field, PLMPackage.eINSTANCE.getPotentElement_Potency(), 0);
+				SetRequest setFieldDurabilityRequest =  new SetRequest(field, PLMPackage.eINSTANCE.getClabject_Potency(), 0);
 				SetRequest setFieldDefaultValueRequest =  new SetRequest(field, PLMPackage.eINSTANCE.getField_Value(), "Sequence{}");
 				
 				//Configure Values

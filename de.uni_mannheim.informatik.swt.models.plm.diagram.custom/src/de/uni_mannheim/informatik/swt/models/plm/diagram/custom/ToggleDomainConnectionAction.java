@@ -17,6 +17,7 @@ import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Field;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.LMLModel;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology;
@@ -87,10 +88,14 @@ public class ToggleDomainConnectionAction implements IObjectActionDelegate {
 		//********************************************************
 		Field collapsedDomainConnectionsField = null;
 		
-		for(Field f : ont.getRenderer().getFields())
+		for(Element e : ont.getRenderer().getChildren())
 		{
-			if (f.getName().equals("collapsedDomainConnections"));
-				collapsedDomainConnectionsField = f;
+			//We are only interested in fields
+			if (e instanceof Field)
+			{
+				if (e.getName().equals("collapsedDomainConnections"));
+					collapsedDomainConnectionsField = (Field)e;
+			}
 		}
 		
 		//get a array with all collapsed ids

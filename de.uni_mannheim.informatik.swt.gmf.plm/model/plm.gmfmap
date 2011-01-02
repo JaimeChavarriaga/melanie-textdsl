@@ -29,7 +29,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Ontology/models"/>
         <ownedChild>
           <domainMetaElement
-              href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model"/>
+              href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject"/>
           <labelMappings
               xsi:type="gmfmap:FeatureLabelMapping">
             <diagramLabel
@@ -46,12 +46,12 @@
               compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@compartments.0"
               referencedChild="//@nodes.1/@ownedChild">
             <containmentFeature
-                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/elements"/>
+                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject/children"/>
           </children>
           <children
               compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@compartments.0">
             <containmentFeature
-                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/elements"/>
+                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject/children"/>
             <ownedChild>
               <domainMetaElement
                   href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//DomainConnection"/>
@@ -79,7 +79,7 @@
               <children
                   compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.1/@ownedChild/@compartments.0">
                 <containmentFeature
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//DomainConnection/fields"/>
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject/children"/>
                 <ownedChild>
                   <domainMetaElement
                       href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Field"/>
@@ -124,7 +124,7 @@
           <children
               compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@compartments.0">
             <containmentFeature
-                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/elements"/>
+                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject/children"/>
             <ownedChild>
               <domainMetaElement
                   href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Complement"/>
@@ -143,10 +143,10 @@
           <children
               compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@compartments.0">
             <containmentFeature
-                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/elements"/>
+                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject/children"/>
             <ownedChild>
               <domainMetaElement
-                  href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Equals"/>
+                  href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Equality"/>
               <labelMappings
                   readOnly="true">
                 <diagramLabel
@@ -162,7 +162,7 @@
           <children
               compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@compartments.0">
             <containmentFeature
-                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/elements"/>
+                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject/children"/>
             <ownedChild>
               <domainMetaElement
                   href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Inversion"/>
@@ -181,7 +181,7 @@
           <children
               compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@compartments.0">
             <containmentFeature
-                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/elements"/>
+                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject/children"/>
             <ownedChild>
               <domainMetaElement
                   href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//MultipleGeneralization"/>
@@ -202,7 +202,7 @@
           <children
               compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@compartments.0">
             <containmentFeature
-                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/elements"/>
+                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject/children"/>
             <ownedChild>
               <domainMetaElement
                   href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//MultipleSpecialization"/>
@@ -277,7 +277,7 @@
         <diagramLabel
             href="plm.gmfgraph#DomainEntityFigureAVSLabel"/>
         <viewExpression
-            body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (not self.renderer.oclIsUndefined()) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderName:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;self.renderer.fields->select(f | f.name = 'name')->first().value = 'VisualRenderingEnum::MAX' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;self.renderer.fields->select(f | f.name = 'name')->first().value = 'VisualRenderingEnum::AVS'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let name : String =&#xD;&#xA;&#x9;self.name&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;if (renderName) then&#xD;&#xA;&#x9;'name='.concat(name)&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
+            body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (not self.renderer.oclIsUndefined()) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderName:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;self.renderer.children->select(c | c.name = 'name')->first().oclAsType(Field).value = 'VisualRenderingEnum::MAX' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;self.renderer.children->select(c | c.name = 'name')->first().oclAsType(Field).value = 'VisualRenderingEnum::AVS'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let name : String =&#xD;&#xA;&#x9;self.name&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;if (renderName) then&#xD;&#xA;&#x9;'name='.concat(name)&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
       </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"
@@ -287,7 +287,7 @@
       <children
           compartment="//@nodes.1/@ownedChild/@compartments.0">
         <containmentFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//DomainEntity/fields"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject/children"/>
         <ownedChild>
           <domainMetaElement
               href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Field"/>
@@ -333,7 +333,7 @@
       <children
           compartment="//@nodes.1/@ownedChild/@compartments.1">
         <containmentFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//DomainEntity/methods"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject/children"/>
         <ownedChild>
           <domainMetaElement
               href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Method"/>
@@ -395,7 +395,7 @@
     <domainMetaElement
         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Instantiation"/>
     <containmentFeature
-        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/elements"/>
+        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject/children"/>
     <tool
         xsi:type="gmftool:CreationTool"
         href="plm.gmftool#//@palette/@tools.2/@tools.0"/>
@@ -412,7 +412,7 @@
     <domainMetaElement
         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//BinaryGeneralization"/>
     <containmentFeature
-        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/elements"/>
+        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject/children"/>
     <tool
         xsi:type="gmftool:CreationTool"
         href="plm.gmftool#//@palette/@tools.4/@tools.0"/>
@@ -443,10 +443,10 @@
         href="plm.gmfgraph#SetRelationshipLink"/>
     <linkMetaFeature
         xsi:type="ecore:EReference"
-        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Equals/equal"/>
+        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Equality/equal"/>
     <creationConstraints>
       <sourceEnd
-          body="self.oclIsTypeOf(Equals)"/>
+          body="self.oclIsTypeOf(Equality)"/>
     </creationConstraints>
   </links>
   <links>

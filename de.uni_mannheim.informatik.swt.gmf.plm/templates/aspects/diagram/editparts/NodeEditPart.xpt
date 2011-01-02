@@ -162,10 +162,13 @@
 		//********************************************************
 		de.uni_mannheim.informatik.swt.models.plm.PLM.Field collapsedDomainConnectionsField = null;
 
-		for (de.uni_mannheim.informatik.swt.models.plm.PLM.Field f : ont.getRenderer().getFields()) {
-			if (f.getName().equals("collapsedDomainConnections"))
-				;
-			collapsedDomainConnectionsField = f;
+		for (de.uni_mannheim.informatik.swt.models.plm.PLM.Element e : ont
+				.getRenderer().getChildren()) {
+			if (e instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Field)
+			{
+				if (e.getName().equals("collapsedDomainConnections"))
+					collapsedDomainConnectionsField = (de.uni_mannheim.informatik.swt.models.plm.PLM.Field)e;
+			}
 		}
 
 		//get a array with all collapsed ids
