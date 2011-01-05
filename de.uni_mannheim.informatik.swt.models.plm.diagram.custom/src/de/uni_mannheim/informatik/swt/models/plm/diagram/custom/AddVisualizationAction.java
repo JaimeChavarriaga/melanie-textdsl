@@ -19,6 +19,7 @@ import org.eclipse.gmf.runtime.diagram.ui.commands.DeferredCreateConnectionViewA
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.CompartmentEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editpolicies.CanonicalEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateConnectionViewAndElementRequest;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewAndElementRequest;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewAndElementRequest.ViewAndElementDescriptor;
@@ -178,8 +179,8 @@ public class AddVisualizationAction implements IObjectActionDelegate {
 					fieldPart.getViewer().getEditDomain().getCommandStack().execute(new ICommandProxy(setFieldValueVariabilityCommand));
 					fieldPart.getViewer().getEditDomain().getCommandStack().execute(new ICommandProxy(setFieldValueCommand));
 				}
-			}		
-			
+			}
+
 			//**************************************************************
 			//Add Special fields for Ontology (CollapsedDomainConnections)
 			//**************************************************************
