@@ -1535,6 +1535,59 @@
     <requiredPlugins>org.eclipse.gmf.runtime.draw2d.ui</requiredPlugins>
   </plugin>
   <editor/>
+  <navigator>
+    <childReferences
+        child="//@diagram"
+        groupName=""
+        hideIfEmpty="false"/>
+    <childReferences
+        parent="//@diagram"
+        child="//@diagram/@topLevelNodes.1"
+        groupName="Domain Entities"
+        hideIfEmpty="false"/>
+    <childReferences
+        parent="//@diagram"
+        child="//@diagram/@childNodes.1"
+        groupName="Domain Entities"
+        groupIcon=""
+        hideIfEmpty="false"/>
+    <childReferences
+        parent="//@diagram"
+        child="//@diagram/@childNodes.4"
+        groupName="Element Relations"
+        groupIcon=""
+        hideIfEmpty="false"/>
+    <childReferences
+        parent="//@diagram"
+        child="//@diagram/@childNodes.10"
+        groupName="Inheritance"
+        groupIcon=""
+        hideIfEmpty="false"/>
+    <childReferences
+        parent="//@diagram"
+        child="//@diagram/@childNodes.9"
+        groupName="Inheritance"
+        groupIcon=""
+        hideIfEmpty="false"/>
+    <childReferences
+        parent="//@diagram"
+        child="//@diagram/@childNodes.6"
+        groupName="Set Relations"
+        groupIcon=""
+        hideIfEmpty="false"/>
+    <childReferences
+        parent="//@diagram"
+        child="//@diagram/@childNodes.8"
+        groupName="Set Relations"
+        groupIcon=""
+        hideIfEmpty="false"/>
+    <childReferences
+        parent="//@diagram"
+        child="//@diagram/@childNodes.7"
+        groupName="Set Relations"
+        groupIcon=""
+        hideIfEmpty="false"/>
+  </navigator>
   <diagramUpdater/>
   <propertySheet>
     <tabs
