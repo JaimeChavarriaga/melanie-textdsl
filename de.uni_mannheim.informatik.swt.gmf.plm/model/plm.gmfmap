@@ -147,10 +147,25 @@
             <ownedChild>
               <domainMetaElement
                   href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Equality"/>
+              <domainInitializer
+                  xsi:type="gmfmap:FeatureSeqInitializer">
+                <initializers
+                    xsi:type="gmfmap:FeatureValueSpec">
+                  <feature
+                      xsi:type="ecore:EAttribute"
+                      href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/name"/>
+                  <value
+                      body="'equals'"/>
+                </initializers>
+              </domainInitializer>
               <labelMappings
-                  readOnly="true">
+                  xsi:type="gmfmap:FeatureLabelMapping"
+                  readOnly="true"
+                  viewPattern="{0}">
                 <diagramLabel
                     href="plm.gmfgraph#EqualsFigureName"/>
+                <features
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/name"/>
               </labelMappings>
               <tool
                   xsi:type="gmftool:CreationTool"

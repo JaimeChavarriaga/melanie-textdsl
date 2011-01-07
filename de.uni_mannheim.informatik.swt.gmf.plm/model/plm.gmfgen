@@ -565,7 +565,7 @@
       <viewmap
           xsi:type="gmfgen:InnerClassViewmap"
           className="EqualsFigure"
-          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class EqualsFigure extends org.eclipse.draw2d.ScalablePolygonShape {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureEqualsNameFigure; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public EqualsFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(30)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(10)&#xA;, getMapMode().DPtoLP(15)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(20)&#xA;, getMapMode().DPtoLP(5)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(30)&#xA;, getMapMode().DPtoLP(0)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(40)&#xA;, getMapMode().DPtoLP(0)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(50)&#xA;, getMapMode().DPtoLP(5)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(60)&#xA;, getMapMode().DPtoLP(15)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(70)&#xA;, getMapMode().DPtoLP(30)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(70)&#xA;, getMapMode().DPtoLP(50)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(60)&#xA;, getMapMode().DPtoLP(65)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(50)&#xA;, getMapMode().DPtoLP(75)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(40)&#xA;, getMapMode().DPtoLP(80)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(30)&#xA;, getMapMode().DPtoLP(80)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(20)&#xA;, getMapMode().DPtoLP(75)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(10)&#xA;, getMapMode().DPtoLP(65)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(50)&#xA;));&#xA;this.setFill(true);&#xA;this.setPreferredSize(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(80)&#xA;, getMapMode().DPtoLP(40)&#xA;));&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;org.eclipse.draw2d.RectangleFigure nameRectangle0 = new org.eclipse.draw2d.RectangleFigure();&#xA;nameRectangle0.setFill(false);&#xA;nameRectangle0.setOutline(false);&#xA;&#xA;this.add(nameRectangle0);&#xA;&#xA;&#x9;org.eclipse.draw2d.GridLayout layoutNameRectangle0 = new org.eclipse.draw2d.GridLayout();&#xA;&#x9;layoutNameRectangle0.numColumns = 1;&#xA;&#x9;layoutNameRectangle0.makeColumnsEqualWidth = true;&#xA;&#x9;nameRectangle0.setLayoutManager(layoutNameRectangle0);&#xA;&#xA;&#xA;&#xA;fFigureEqualsNameFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureEqualsNameFigure.setText(&quot;equals&quot;);&#xA;&#x9;fFigureEqualsNameFigure.setForegroundColor(org.eclipse.draw2d.ColorConstants.black);&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureEqualsNameFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureEqualsNameFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureEqualsNameFigure.horizontalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureEqualsNameFigure.horizontalIndent = 0;&#xA;constraintFFigureEqualsNameFigure.horizontalSpan = 1;&#xA;constraintFFigureEqualsNameFigure.verticalSpan = 1;&#xA;constraintFFigureEqualsNameFigure.grabExcessHorizontalSpace = true;&#xA;constraintFFigureEqualsNameFigure.grabExcessVerticalSpace = true;&#xA;nameRectangle0.add(fFigureEqualsNameFigure, constraintFFigureEqualsNameFigure);&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureEqualsNameFigure() {&#xA;&#x9;&#x9;return fFigureEqualsNameFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;">
+          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class EqualsFigure extends org.eclipse.draw2d.ScalablePolygonShape {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureEqualsNameFigure; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public EqualsFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(30)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(10)&#xA;, getMapMode().DPtoLP(15)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(20)&#xA;, getMapMode().DPtoLP(5)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(30)&#xA;, getMapMode().DPtoLP(0)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(40)&#xA;, getMapMode().DPtoLP(0)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(50)&#xA;, getMapMode().DPtoLP(5)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(60)&#xA;, getMapMode().DPtoLP(15)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(70)&#xA;, getMapMode().DPtoLP(30)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(70)&#xA;, getMapMode().DPtoLP(50)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(60)&#xA;, getMapMode().DPtoLP(65)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(50)&#xA;, getMapMode().DPtoLP(75)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(40)&#xA;, getMapMode().DPtoLP(80)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(30)&#xA;, getMapMode().DPtoLP(80)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(20)&#xA;, getMapMode().DPtoLP(75)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(10)&#xA;, getMapMode().DPtoLP(65)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(50)&#xA;));&#xA;this.setFill(true);&#xA;this.setPreferredSize(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(80)&#xA;, getMapMode().DPtoLP(40)&#xA;));&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;org.eclipse.draw2d.RectangleFigure nameRectangle0 = new org.eclipse.draw2d.RectangleFigure();&#xA;nameRectangle0.setFill(false);&#xA;nameRectangle0.setOutline(false);&#xA;&#xA;this.add(nameRectangle0);&#xA;&#xA;&#x9;org.eclipse.draw2d.GridLayout layoutNameRectangle0 = new org.eclipse.draw2d.GridLayout();&#xA;&#x9;layoutNameRectangle0.numColumns = 1;&#xA;&#x9;layoutNameRectangle0.makeColumnsEqualWidth = true;&#xA;&#x9;nameRectangle0.setLayoutManager(layoutNameRectangle0);&#xA;&#xA;&#xA;&#xA;fFigureEqualsNameFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureEqualsNameFigure.setText(&quot;&quot;);&#xA;&#x9;fFigureEqualsNameFigure.setForegroundColor(org.eclipse.draw2d.ColorConstants.black);&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureEqualsNameFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureEqualsNameFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureEqualsNameFigure.horizontalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureEqualsNameFigure.horizontalIndent = 0;&#xA;constraintFFigureEqualsNameFigure.horizontalSpan = 1;&#xA;constraintFFigureEqualsNameFigure.verticalSpan = 1;&#xA;constraintFFigureEqualsNameFigure.grabExcessHorizontalSpace = true;&#xA;constraintFFigureEqualsNameFigure.grabExcessVerticalSpace = true;&#xA;nameRectangle0.add(fFigureEqualsNameFigure, constraintFFigureEqualsNameFigure);&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureEqualsNameFigure() {&#xA;&#x9;&#x9;return fFigureEqualsNameFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;">
         <attributes
             xsi:type="gmfgen:DefaultSizeAttributes"
             width="80"
@@ -578,6 +578,15 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/children"/>
         <childMetaFeature
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/children"/>
+        <modelElementInitializer
+            xsi:type="gmfgen:GenFeatureSeqInitializer">
+          <initializers
+              xsi:type="gmfgen:GenFeatureValueSpec"
+              value="//@expressionProviders/@providers.0/@expressions.8">
+            <feature
+                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Element/name"/>
+          </initializers>
+        </modelElementInitializer>
       </modelFacet>
       <labels
           visualID="5053"
@@ -596,7 +605,12 @@
               fixedForeground="true"/>
         </viewmap>
         <modelFacet
-            parser="//@labelParsers/@implementations.9"/>
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0"
+            viewPattern="{0}">
+          <metaFeatures
+              href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Element/name"/>
+        </modelFacet>
       </labels>
     </childNodes>
     <childNodes
@@ -1096,7 +1110,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Equality/equal"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.9"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.10"/>
     </links>
     <links
         visualID="4015"
@@ -1118,7 +1132,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Inversion/inverse"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.10"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.11"/>
     </links>
     <links
         visualID="4016"
@@ -1140,7 +1154,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Complement/complement"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.11"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.12"/>
     </links>
     <links
         visualID="4017"
@@ -1204,7 +1218,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleGeneralization/supertype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.12"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.13"/>
     </links>
     <links
         visualID="4009"
@@ -1226,7 +1240,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleGeneralization/subtype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.13"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.14"/>
     </links>
     <links
         visualID="4011"
@@ -1249,7 +1263,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleSpecialization/supertype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.14"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.15"/>
     </links>
     <links
         visualID="4012"
@@ -1271,7 +1285,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleSpecialization/subtype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.15"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.16"/>
     </links>
     <compartments
         visualID="7003"
@@ -1398,11 +1412,15 @@
             xsi:type="gmfgen:ToolEntry"
             title="Ontology"
             description="Create new Ontology"
+            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/onthology16.gif"
+            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/onthology16.gif"
             genNodes="//@diagram/@topLevelNodes.0"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Model"
             description="Create new Model"
+            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/model16.gif"
+            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/model16.gif"
             genNodes="//@diagram/@childNodes.0"/>
       </groups>
       <groups
@@ -1412,26 +1430,36 @@
             xsi:type="gmfgen:ToolEntry"
             title="Domain Entity"
             description="Create new Domain Entity"
+            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/clabject16.gif"
+            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/clabject16.gif"
             genNodes="//@diagram/@childNodes.1 //@diagram/@topLevelNodes.1"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Domain Entity Field"
             description="Create new Domain Entity Field"
+            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/methodField16.gif"
+            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/methodField16.gif"
             genNodes="//@diagram/@childNodes.2 //@diagram/@childNodes.5"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Domain Entity Method"
             description="Create new Domain Entity Method"
+            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/methodField16.gif"
+            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/methodField16.gif"
             genNodes="//@diagram/@childNodes.3"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Domain Connection"
             description="Create new Domain Connection"
+            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/domainConnection16.gif"
+            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/domainConnection16.gif"
             genNodes="//@diagram/@childNodes.4"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Domain Connection Participants"
             description="Create new Domain Connection Participants"
+            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/domainConnectionParticipant16.gif"
+            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/domainConnectionParticipant16.gif"
             genLinks="//@diagram/@links.0"/>
       </groups>
       <groups
@@ -1441,6 +1469,8 @@
             xsi:type="gmfgen:ToolEntry"
             title="Instantiation"
             description="Create new Instantiation"
+            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/instantiation16.gif"
+            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/instantiation16.gif"
             genLinks="//@diagram/@links.1"/>
       </groups>
       <groups
@@ -1450,26 +1480,36 @@
             xsi:type="gmfgen:ToolEntry"
             title="Complement"
             description="Create new Complement"
+            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/setRelationship16.gif"
+            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/setRelationship16.gif"
             genNodes="//@diagram/@childNodes.6"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Equal"
             description="Create new Equal"
+            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/setRelationship16.gif"
+            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/setRelationship16.gif"
             genNodes="//@diagram/@childNodes.7"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Inversion"
             description="Create new Inversion"
+            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/setRelationship16.gif"
+            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/setRelationship16.gif"
             genNodes="//@diagram/@childNodes.8"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Set Relation Base"
             description="Create new Set Relation Base"
+            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/setRelationshipEnd16.gif"
+            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/setRelationshipEnd16.gif"
             genLinks="//@diagram/@links.3"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Set Relation Target"
             description="Create new Set Relation Target"
+            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/setRelationshipEnd16.gif"
+            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/setRelationshipEnd16.gif"
             genLinks="//@diagram/@links.4 //@diagram/@links.5 //@diagram/@links.6"/>
       </groups>
       <groups
@@ -1479,26 +1519,36 @@
             xsi:type="gmfgen:ToolEntry"
             title="Binary Generalization"
             description="Create new Binary Generalization"
+            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/inheritance16.gif"
+            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/inheritance16.gif"
             genLinks="//@diagram/@links.2"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Multiple Specialisation"
             description="Create new Multiple Specialication"
+            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/inheritance16.gif"
+            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/inheritance16.gif"
             genNodes="//@diagram/@childNodes.10"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Multiple Generalisation"
             description="Create new Multiple Generalisation"
+            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/inheritance16.gif"
+            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/inheritance16.gif"
             genNodes="//@diagram/@childNodes.9"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Supertype"
             description="Create new Supertype"
+            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/superType16.gif"
+            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/superType16.gif"
             genLinks="//@diagram/@links.8 //@diagram/@links.10"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Subtype"
             description="Create new Subtype"
+            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/subType16.gif"
+            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/subType16.gif"
             genLinks="//@diagram/@links.9 //@diagram/@links.11"/>
       </groups>
     </palette>
@@ -1536,57 +1586,53 @@
   </plugin>
   <editor/>
   <navigator>
+    <childReferences>
+      <child
+          xsi:type="gmfgen:GenDiagram"
+          href="#//@diagram"/>
+    </childReferences>
     <childReferences
-        child="//@diagram"
-        groupName=""
-        hideIfEmpty="false"/>
+        groupName="Onthologies"
+        groupIcon="icons/onthology16.gif"
+        hideIfEmpty="false">
+      <parent
+          xsi:type="gmfgen:GenDiagram"
+          href="#//@diagram"/>
+      <child
+          xsi:type="gmfgen:GenTopLevelNode"
+          href="#//@diagram/@topLevelNodes.0"/>
+    </childReferences>
     <childReferences
-        parent="//@diagram"
-        child="//@diagram/@topLevelNodes.1"
+        groupName="Models"
+        groupIcon="icons/model16.gif"
+        hideIfEmpty="false">
+      <parent
+          xsi:type="gmfgen:GenTopLevelNode"
+          href="#//@diagram/@topLevelNodes.0"/>
+      <child
+          xsi:type="gmfgen:GenChildNode"
+          href="#//@diagram/@childNodes.0"/>
+    </childReferences>
+    <childReferences
         groupName="Domain Entities"
-        hideIfEmpty="false"/>
+        groupIcon="/icons/clabject16.gif">
+      <parent
+          xsi:type="gmfgen:GenChildNode"
+          href="#//@diagram/@childNodes.0"/>
+      <child
+          xsi:type="gmfgen:GenChildNode"
+          href="#//@diagram/@childNodes.1"/>
+    </childReferences>
     <childReferences
-        parent="//@diagram"
-        child="//@diagram/@childNodes.1"
         groupName="Domain Entities"
-        groupIcon=""
-        hideIfEmpty="false"/>
-    <childReferences
-        parent="//@diagram"
-        child="//@diagram/@childNodes.4"
-        groupName="Element Relations"
-        groupIcon=""
-        hideIfEmpty="false"/>
-    <childReferences
-        parent="//@diagram"
-        child="//@diagram/@childNodes.10"
-        groupName="Inheritance"
-        groupIcon=""
-        hideIfEmpty="false"/>
-    <childReferences
-        parent="//@diagram"
-        child="//@diagram/@childNodes.9"
-        groupName="Inheritance"
-        groupIcon=""
-        hideIfEmpty="false"/>
-    <childReferences
-        parent="//@diagram"
-        child="//@diagram/@childNodes.6"
-        groupName="Set Relations"
-        groupIcon=""
-        hideIfEmpty="false"/>
-    <childReferences
-        parent="//@diagram"
-        child="//@diagram/@childNodes.8"
-        groupName="Set Relations"
-        groupIcon=""
-        hideIfEmpty="false"/>
-    <childReferences
-        parent="//@diagram"
-        child="//@diagram/@childNodes.7"
-        groupName="Set Relations"
-        groupIcon=""
-        hideIfEmpty="false"/>
+        groupIcon="/icons/clabject16.gif">
+      <parent
+          xsi:type="gmfgen:GenChildNode"
+          href="#//@diagram/@childNodes.0"/>
+      <child
+          xsi:type="gmfgen:GenTopLevelNode"
+          href="#//@diagram/@topLevelNodes.1"/>
+    </childReferences>
   </navigator>
   <diagramUpdater/>
   <propertySheet>
@@ -1630,6 +1676,8 @@
       <expressions
           body="let potency:String = if (self.potency > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.potency.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.potency = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;potency"/>
       <expressions
+          body="'equals'"/>
+      <expressions
           body="let disjoint:String = &#xD;&#xA;&#x9;if (self.disjoint) then &#xD;&#xA;&#x9;&#x9;'disjoint' &#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'overlaping ' &#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let complete:String = &#xD;&#xA;&#x9;if (self.complete) then &#xD;&#xA;&#x9;&#x9;'complete' &#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'incomplete' &#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (disjoint &lt;> ' ') then&#xD;&#xA;&#x9;'{'.concat(disjoint).concat('; ').concat(complete ).concat('}')&#xD;&#xA;else&#xD;&#xA;&#x9;' '&#xD;&#xA;endif"/>
       <expressions
           xsi:type="gmfgen:GenConstraint"
@@ -1658,7 +1706,7 @@
       extensibleViaService="true">
     <implementations
         xsi:type="gmfgen:PredefinedParser"
-        uses="//@diagram/@childNodes.2/@labels.0/@modelFacet //@diagram/@childNodes.2/@labels.3/@modelFacet //@diagram/@childNodes.3/@labels.0/@modelFacet //@diagram/@childNodes.1/@labels.0/@modelFacet //@diagram/@childNodes.1/@labels.2/@modelFacet //@diagram/@childNodes.5/@labels.0/@modelFacet //@diagram/@childNodes.4/@labels.0/@modelFacet //@diagram/@childNodes.9/@labels.0/@modelFacet //@diagram/@childNodes.10/@labels.0/@modelFacet //@diagram/@childNodes.0/@labels.0/@modelFacet //@diagram/@topLevelNodes.0/@labels.0/@modelFacet //@diagram/@topLevelNodes.1/@labels.0/@modelFacet //@diagram/@topLevelNodes.1/@labels.2/@modelFacet"/>
+        uses="//@diagram/@childNodes.2/@labels.0/@modelFacet //@diagram/@childNodes.2/@labels.3/@modelFacet //@diagram/@childNodes.3/@labels.0/@modelFacet //@diagram/@childNodes.1/@labels.0/@modelFacet //@diagram/@childNodes.1/@labels.2/@modelFacet //@diagram/@childNodes.5/@labels.0/@modelFacet //@diagram/@childNodes.4/@labels.0/@modelFacet //@diagram/@childNodes.7/@labels.0/@modelFacet //@diagram/@childNodes.9/@labels.0/@modelFacet //@diagram/@childNodes.10/@labels.0/@modelFacet //@diagram/@childNodes.0/@labels.0/@modelFacet //@diagram/@topLevelNodes.0/@labels.0/@modelFacet //@diagram/@topLevelNodes.1/@labels.0/@modelFacet //@diagram/@topLevelNodes.1/@labels.2/@modelFacet"/>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.2/@labels.1/@modelFacet"
@@ -1717,11 +1765,11 @@
     </implementations>
     <implementations
         xsi:type="gmfgen:ExternalParser"
-        uses="//@diagram/@childNodes.6/@labels.0/@modelFacet //@diagram/@childNodes.7/@labels.0/@modelFacet //@diagram/@childNodes.8/@labels.0/@modelFacet //@diagram/@links.0/@labels.0/@modelFacet //@diagram/@links.0/@labels.1/@modelFacet //@diagram/@links.7/@labels.0/@modelFacet"/>
+        uses="//@diagram/@childNodes.6/@labels.0/@modelFacet //@diagram/@childNodes.8/@labels.0/@modelFacet //@diagram/@links.0/@labels.0/@modelFacet //@diagram/@links.0/@labels.1/@modelFacet //@diagram/@links.7/@labels.0/@modelFacet"/>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.10/@labels.1/@modelFacet"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.8">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.9">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleSpecialization"/>
     </implementations>
