@@ -1586,53 +1586,56 @@
   </plugin>
   <editor/>
   <navigator>
-    <childReferences>
-      <child
-          xsi:type="gmfgen:GenDiagram"
-          href="#//@diagram"/>
-    </childReferences>
     <childReferences
+        child="//@diagram"/>
+    <childReferences
+        parent="//@diagram"
+        child="//@diagram/@topLevelNodes.1"
+        groupName="Domain Entities"
+        groupIcon="/icons/clabject16.gif"
+        hideIfEmpty="false"/>
+    <childReferences
+        parent="//@diagram/@topLevelNodes.1"
+        child="//@diagram/@childNodes.2"
+        groupName="Fields"
+        groupIcon="/icons/methodField16.gif"
+        hideIfEmpty="false"/>
+    <childReferences
+        parent="//@diagram/@topLevelNodes.1"
+        child="//@diagram/@childNodes.3"
+        groupName="Methods"
+        groupIcon="/icons/methodField16.gif"
+        hideIfEmpty="false"/>
+    <childReferences
+        parent="//@diagram"
+        child="//@diagram/@topLevelNodes.0"
         groupName="Onthologies"
         groupIcon="icons/onthology16.gif"
-        hideIfEmpty="false">
-      <parent
-          xsi:type="gmfgen:GenDiagram"
-          href="#//@diagram"/>
-      <child
-          xsi:type="gmfgen:GenTopLevelNode"
-          href="#//@diagram/@topLevelNodes.0"/>
-    </childReferences>
+        hideIfEmpty="false"/>
     <childReferences
+        parent="//@diagram/@topLevelNodes.0"
+        child="//@diagram/@childNodes.0"
         groupName="Models"
         groupIcon="icons/model16.gif"
-        hideIfEmpty="false">
-      <parent
-          xsi:type="gmfgen:GenTopLevelNode"
-          href="#//@diagram/@topLevelNodes.0"/>
-      <child
-          xsi:type="gmfgen:GenChildNode"
-          href="#//@diagram/@childNodes.0"/>
-    </childReferences>
+        hideIfEmpty="false"/>
     <childReferences
+        parent="//@diagram/@childNodes.0"
+        child="//@diagram/@childNodes.1"
         groupName="Domain Entities"
-        groupIcon="/icons/clabject16.gif">
-      <parent
-          xsi:type="gmfgen:GenChildNode"
-          href="#//@diagram/@childNodes.0"/>
-      <child
-          xsi:type="gmfgen:GenChildNode"
-          href="#//@diagram/@childNodes.1"/>
-    </childReferences>
+        groupIcon="/icons/clabject16.gif"
+        hideIfEmpty="false"/>
     <childReferences
-        groupName="Domain Entities"
-        groupIcon="/icons/clabject16.gif">
-      <parent
-          xsi:type="gmfgen:GenChildNode"
-          href="#//@diagram/@childNodes.0"/>
-      <child
-          xsi:type="gmfgen:GenTopLevelNode"
-          href="#//@diagram/@topLevelNodes.1"/>
-    </childReferences>
+        parent="//@diagram/@childNodes.1"
+        child="//@diagram/@childNodes.2"
+        groupName="Fields"
+        groupIcon="/icons/methodField16.gif"
+        hideIfEmpty="false"/>
+    <childReferences
+        parent="//@diagram/@childNodes.1"
+        child="//@diagram/@childNodes.3"
+        groupName="Fields"
+        groupIcon="/icons/methodField16.gif"
+        hideIfEmpty="false"/>
   </navigator>
   <diagramUpdater/>
   <propertySheet>
