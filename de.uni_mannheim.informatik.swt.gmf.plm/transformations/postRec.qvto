@@ -22,7 +22,7 @@ main() {
 	var ontologyChildReference := this.createChildReference("OntologyEditPart", "LMLModelEditPart", "Ontologies", "icons/onthology16.gif");
 	ontologyChildReference.parent := gmfgenModel.objects()[GenDiagram]->asOrderedSet()->select(n | n.editPartClassName = "LMLModelEditPart")->first();
 	--Group for all Models
-	var modelChildReference := this.createChildReference("OntologyEditPart", "ClabjectEditPart", "Models", "icons/model16.gif");
+	var modelChildReference := this.createChildReference("ClabjectEditPart", "OntologyEditPart", "Models", "icons/model16.gif");
 	
 	this.genNavigator.childReferences += OrderedSet{LMLModelChildReference, rootDomainEnitiyChildReference, ontologyChildReference, modelChildReference};
 }
