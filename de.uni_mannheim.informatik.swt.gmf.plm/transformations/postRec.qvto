@@ -1,0 +1,14 @@
+modeltype GMFGEN uses gmfgen('http://www.eclipse.org/gmf/2009/GenModel');
+	
+transformation postRec(inout gmfgenModel : GMFGEN);
+
+property genNavigator : GenNavigator = null;
+ 
+main() {
+	this.genNavigator := gmfgenModel.rootObjects()[GenNavigator]->asOrderedSet()->first();
+	this.genNavigator.childReferences := OrderedSet{};
+	log("GenNavigator", this.genNavigator);	
+	--assert fatal (genEditor.navigator <> null);
+	--genEditor.navigator := null;
+	--assert fatal (genEditor.navigator = null);
+}
