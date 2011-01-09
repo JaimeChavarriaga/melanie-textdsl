@@ -791,6 +791,58 @@
             parser="//@labelParsers/@implementations.10"/>
       </labels>
     </childNodes>
+    <childNodes
+        visualID="3028"
+        editPartClassName="BinaryGeneralizationEditPart"
+        itemSemanticEditPolicyClassName="BinaryGeneralizationItemSemanticEditPolicy"
+        canonicalEditPolicyClassName="BinaryGeneralizationCanonicalEditPolicy"
+        graphicalNodeEditPolicyClassName="BinaryGeneralizationGraphicalNodeEditPolicy"
+        createCommandClassName="BinaryGeneralizationCreateCommand"
+        containers="//@diagram/@compartments.1">
+      <diagramRunTimeClass
+          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+      <elementType
+          xsi:type="gmfgen:MetamodelType"
+          editHelperClassName="BinaryGeneralizationEditHelper"/>
+      <viewmap
+          xsi:type="gmfgen:InnerClassViewmap"
+          className="BinaryGeneralizationFigure"
+          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class BinaryGeneralizationFigure extends org.eclipse.draw2d.ScalablePolygonShape {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureBinaryGeneralisationNameFigure; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public BinaryGeneralizationFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(30)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(10)&#xA;, getMapMode().DPtoLP(15)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(20)&#xA;, getMapMode().DPtoLP(5)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(30)&#xA;, getMapMode().DPtoLP(0)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(40)&#xA;, getMapMode().DPtoLP(0)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(50)&#xA;, getMapMode().DPtoLP(5)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(60)&#xA;, getMapMode().DPtoLP(15)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(70)&#xA;, getMapMode().DPtoLP(30)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(70)&#xA;, getMapMode().DPtoLP(50)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(60)&#xA;, getMapMode().DPtoLP(65)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(50)&#xA;, getMapMode().DPtoLP(75)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(40)&#xA;, getMapMode().DPtoLP(80)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(30)&#xA;, getMapMode().DPtoLP(80)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(20)&#xA;, getMapMode().DPtoLP(75)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(10)&#xA;, getMapMode().DPtoLP(65)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(50)&#xA;));&#xA;this.setFill(true);&#xA;this.setPreferredSize(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(80)&#xA;, getMapMode().DPtoLP(40)&#xA;));&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;org.eclipse.draw2d.RectangleFigure nameRectangle0 = new org.eclipse.draw2d.RectangleFigure();&#xA;nameRectangle0.setFill(false);&#xA;nameRectangle0.setOutline(false);&#xA;&#xA;this.add(nameRectangle0);&#xA;&#xA;&#x9;org.eclipse.draw2d.GridLayout layoutNameRectangle0 = new org.eclipse.draw2d.GridLayout();&#xA;&#x9;layoutNameRectangle0.numColumns = 1;&#xA;&#x9;layoutNameRectangle0.makeColumnsEqualWidth = true;&#xA;&#x9;nameRectangle0.setLayoutManager(layoutNameRectangle0);&#xA;&#xA;&#xA;&#xA;fFigureBinaryGeneralisationNameFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureBinaryGeneralisationNameFigure.setText(&quot;&quot;);&#xA;&#x9;fFigureBinaryGeneralisationNameFigure.setForegroundColor(org.eclipse.draw2d.ColorConstants.black);&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureBinaryGeneralisationNameFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureBinaryGeneralisationNameFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureBinaryGeneralisationNameFigure.horizontalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureBinaryGeneralisationNameFigure.horizontalIndent = 0;&#xA;constraintFFigureBinaryGeneralisationNameFigure.horizontalSpan = 1;&#xA;constraintFFigureBinaryGeneralisationNameFigure.verticalSpan = 1;&#xA;constraintFFigureBinaryGeneralisationNameFigure.grabExcessHorizontalSpace = true;&#xA;constraintFFigureBinaryGeneralisationNameFigure.grabExcessVerticalSpace = true;&#xA;nameRectangle0.add(fFigureBinaryGeneralisationNameFigure, constraintFFigureBinaryGeneralisationNameFigure);&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureBinaryGeneralisationNameFigure() {&#xA;&#x9;&#x9;return fFigureBinaryGeneralisationNameFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;">
+        <attributes
+            xsi:type="gmfgen:DefaultSizeAttributes"
+            width="80"
+            height="40"/>
+      </viewmap>
+      <modelFacet>
+        <metaClass
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/BinaryGeneralization"/>
+        <containmentMetaFeature
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/children"/>
+        <childMetaFeature
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/children"/>
+      </modelFacet>
+      <labels
+          visualID="5059"
+          editPartClassName="BinaryGeneralizationNameEditPart"
+          itemSemanticEditPolicyClassName="BinaryGeneralizationNameItemSemanticEditPolicy">
+        <diagramRunTimeClass
+            href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap
+            xsi:type="gmfgen:ParentAssignedViewmap"
+            getterName="getFigureBinaryGeneralisationNameFigure"
+            figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel">
+          <attributes
+              xsi:type="gmfgen:StyleAttributes"
+              fixedForeground="true"/>
+        </viewmap>
+        <modelFacet
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0">
+          <metaFeatures
+              href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Element/name"/>
+        </modelFacet>
+      </labels>
+    </childNodes>
     <topLevelNodes
         visualID="2002"
         editPartClassName="OntologyEditPart"
@@ -1041,36 +1093,6 @@
       </modelFacet>
     </links>
     <links
-        visualID="4004"
-        editPartClassName="BinaryGeneralizationEditPart"
-        itemSemanticEditPolicyClassName="BinaryGeneralizationItemSemanticEditPolicy"
-        notationViewFactoryClassName="BinaryGeneralizationViewFactory"
-        createCommandClassName="BinaryGeneralizationCreateCommand"
-        reorientCommandClassName="BinaryGeneralizationReorientCommand">
-      <diagramRunTimeClass
-          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Edge"/>
-      <elementType
-          xsi:type="gmfgen:MetamodelType"
-          editHelperClassName="BinaryGeneralizationEditHelper"/>
-      <viewmap
-          xsi:type="gmfgen:InnerClassViewmap"
-          className="BinaryGeneralizationFigure"
-          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class BinaryGeneralizationFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx {&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public BinaryGeneralizationFigure() {&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;setTargetDecoration(createTargetDecoration());&#xA;&#x9;}&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.draw2d.RotatableDecoration createTargetDecoration() {&#xA;&#x9;&#x9;org.eclipse.draw2d.PolygonDecoration df = new org.eclipse.draw2d.PolygonDecoration();&#xA;df.setFill(true);&#xA;&#x9;df.setBackgroundColor(DF_BACK&#xA;);&#xA;&#x9;&#x9;return df;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Color DF_BACK = new org.eclipse.swt.graphics.Color(null, 255, 255, 255);&#xA;&#xA;"/>
-      <modelFacet
-          xsi:type="gmfgen:TypeLinkModelFacet">
-        <metaClass
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/BinaryGeneralization"/>
-        <containmentMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/children"/>
-        <childMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/children"/>
-        <sourceMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/BinaryGeneralization/subtype"/>
-        <targetMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/BinaryGeneralization/supertype"/>
-      </modelFacet>
-    </links>
-    <links
         visualID="4013"
         editPartClassName="SetRelationshipBaseEditPart"
         itemSemanticEditPolicyClassName="SetRelationshipBaseItemSemanticEditPolicy"
@@ -1287,6 +1309,49 @@
       <creationConstraints
           sourceEnd="//@expressionProviders/@providers.0/@expressions.16"/>
     </links>
+    <links
+        visualID="4019"
+        editPartClassName="BinaryGeneralizationSupertypeEditPart"
+        itemSemanticEditPolicyClassName="BinaryGeneralizationSupertypeItemSemanticEditPolicy"
+        createCommandClassName="BinaryGeneralizationSupertypeCreateCommand"
+        reorientCommandClassName="BinaryGeneralizationSupertypeReorientCommand">
+      <diagramRunTimeClass
+          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Edge"/>
+      <elementType
+          xsi:type="gmfgen:SpecializationType"/>
+      <viewmap
+          xsi:type="gmfgen:InnerClassViewmap"
+          className="SuperTypeConnectionFigure"
+          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class SuperTypeConnectionFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx {&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public SuperTypeConnectionFigure() {&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;setTargetDecoration(createTargetDecoration());&#xA;&#x9;}&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.draw2d.RotatableDecoration createTargetDecoration() {&#xA;&#x9;&#x9;org.eclipse.draw2d.PolygonDecoration df = new org.eclipse.draw2d.PolygonDecoration();&#xA;df.setFill(true);&#xA;&#x9;df.setBackgroundColor(DF_BACK&#xA;);&#xA;&#x9;&#x9;return df;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Color DF_BACK = new org.eclipse.swt.graphics.Color(null, 255, 255, 255);&#xA;&#xA;"/>
+      <modelFacet
+          xsi:type="gmfgen:FeatureLinkModelFacet">
+        <metaFeature
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/BinaryGeneralization/supertype"/>
+      </modelFacet>
+      <creationConstraints
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.17"/>
+    </links>
+    <links
+        visualID="4020"
+        editPartClassName="BinaryGeneralizationSubtypeEditPart"
+        itemSemanticEditPolicyClassName="BinaryGeneralizationSubtypeItemSemanticEditPolicy"
+        createCommandClassName="BinaryGeneralizationSubtypeCreateCommand"
+        reorientCommandClassName="BinaryGeneralizationSubtypeReorientCommand">
+      <diagramRunTimeClass
+          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Edge"/>
+      <elementType
+          xsi:type="gmfgen:SpecializationType"/>
+      <viewmap
+          xsi:type="gmfgen:FigureViewmap"
+          figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx"/>
+      <modelFacet
+          xsi:type="gmfgen:FeatureLinkModelFacet">
+        <metaFeature
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/BinaryGeneralization/subtype"/>
+      </modelFacet>
+      <creationConstraints
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.18"/>
+    </links>
     <compartments
         visualID="7003"
         editPartClassName="OntologyModelCompartmentEditPart"
@@ -1310,7 +1375,7 @@
         itemSemanticEditPolicyClassName="ClabjectDomainElementsCompartmentItemSemanticEditPolicy"
         notationViewFactoryClassName="ClabjectDomainElementsCompartmentViewFactory"
         canonicalEditPolicyClassName="ClabjectDomainElementsCompartmentCanonicalEditPolicy"
-        childNodes="//@diagram/@childNodes.1 //@diagram/@childNodes.4 //@diagram/@childNodes.6 //@diagram/@childNodes.7 //@diagram/@childNodes.8 //@diagram/@childNodes.9 //@diagram/@childNodes.10"
+        childNodes="//@diagram/@childNodes.1 //@diagram/@childNodes.4 //@diagram/@childNodes.6 //@diagram/@childNodes.7 //@diagram/@childNodes.8 //@diagram/@childNodes.9 //@diagram/@childNodes.10 //@diagram/@childNodes.11"
         title="DomainElementsCompartment"
         canCollapse="false"
         needsTitle="false"
@@ -1503,14 +1568,14 @@
             description="Create new Set Relation Base"
             largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/setRelationshipEnd16.gif"
             smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/setRelationshipEnd16.gif"
-            genLinks="//@diagram/@links.3"/>
+            genLinks="//@diagram/@links.2"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Set Relation Target"
             description="Create new Set Relation Target"
             largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/setRelationshipEnd16.gif"
             smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/setRelationshipEnd16.gif"
-            genLinks="//@diagram/@links.4 //@diagram/@links.5 //@diagram/@links.6"/>
+            genLinks="//@diagram/@links.3 //@diagram/@links.4 //@diagram/@links.5"/>
       </groups>
       <groups
           title="Generalisations"
@@ -1521,7 +1586,7 @@
             description="Create new Binary Generalization"
             largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/inheritance16.gif"
             smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/inheritance16.gif"
-            genLinks="//@diagram/@links.2"/>
+            genNodes="//@diagram/@childNodes.11"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Multiple Specialisation"
@@ -1542,14 +1607,14 @@
             description="Create new Supertype"
             largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/superType16.gif"
             smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/superType16.gif"
-            genLinks="//@diagram/@links.8 //@diagram/@links.10"/>
+            genLinks="//@diagram/@links.7 //@diagram/@links.9 //@diagram/@links.11"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Subtype"
             description="Create new Subtype"
             largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/subType16.gif"
             smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/subType16.gif"
-            genLinks="//@diagram/@links.9 //@diagram/@links.11"/>
+            genLinks="//@diagram/@links.8 //@diagram/@links.10 //@diagram/@links.12"/>
       </groups>
     </palette>
     <preferencePages
@@ -1641,6 +1706,12 @@
         child="//@diagram/@childNodes.3"
         groupName="Methods"
         groupIcon="icons/methodField16.gif"
+        hideIfEmpty="false"/>
+    <childReferences
+        parent="//@diagram/@childNodes.0"
+        child="//@diagram/@childNodes.11"
+        groupName="Generalizations"
+        groupIcon="icons/inheritance16.gif"
         hideIfEmpty="false"/>
     <childReferences
         parent="//@diagram/@childNodes.0"
@@ -1739,13 +1810,19 @@
       <expressions
           xsi:type="gmfgen:GenConstraint"
           body="self.oclIsTypeOf(MultipleSpecialization)"/>
+      <expressions
+          xsi:type="gmfgen:GenConstraint"
+          body="self.oclIsTypeOf(BinaryGeneralization)"/>
+      <expressions
+          xsi:type="gmfgen:GenConstraint"
+          body="self.oclIsTypeOf(BinaryGeneralization)"/>
     </providers>
   </expressionProviders>
   <labelParsers
       extensibleViaService="true">
     <implementations
         xsi:type="gmfgen:PredefinedParser"
-        uses="//@diagram/@childNodes.2/@labels.0/@modelFacet //@diagram/@childNodes.2/@labels.3/@modelFacet //@diagram/@childNodes.3/@labels.0/@modelFacet //@diagram/@childNodes.1/@labels.0/@modelFacet //@diagram/@childNodes.1/@labels.2/@modelFacet //@diagram/@childNodes.5/@labels.0/@modelFacet //@diagram/@childNodes.4/@labels.0/@modelFacet //@diagram/@childNodes.7/@labels.0/@modelFacet //@diagram/@childNodes.9/@labels.0/@modelFacet //@diagram/@childNodes.10/@labels.0/@modelFacet //@diagram/@childNodes.0/@labels.0/@modelFacet //@diagram/@topLevelNodes.0/@labels.0/@modelFacet //@diagram/@topLevelNodes.1/@labels.0/@modelFacet //@diagram/@topLevelNodes.1/@labels.2/@modelFacet"/>
+        uses="//@diagram/@childNodes.2/@labels.0/@modelFacet //@diagram/@childNodes.2/@labels.3/@modelFacet //@diagram/@childNodes.3/@labels.0/@modelFacet //@diagram/@childNodes.1/@labels.0/@modelFacet //@diagram/@childNodes.1/@labels.2/@modelFacet //@diagram/@childNodes.5/@labels.0/@modelFacet //@diagram/@childNodes.4/@labels.0/@modelFacet //@diagram/@childNodes.7/@labels.0/@modelFacet //@diagram/@childNodes.9/@labels.0/@modelFacet //@diagram/@childNodes.10/@labels.0/@modelFacet //@diagram/@childNodes.11/@labels.0/@modelFacet //@diagram/@childNodes.0/@labels.0/@modelFacet //@diagram/@topLevelNodes.0/@labels.0/@modelFacet //@diagram/@topLevelNodes.1/@labels.0/@modelFacet //@diagram/@topLevelNodes.1/@labels.2/@modelFacet"/>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.2/@labels.1/@modelFacet"
@@ -1804,7 +1881,7 @@
     </implementations>
     <implementations
         xsi:type="gmfgen:ExternalParser"
-        uses="//@diagram/@childNodes.6/@labels.0/@modelFacet //@diagram/@childNodes.8/@labels.0/@modelFacet //@diagram/@links.0/@labels.0/@modelFacet //@diagram/@links.0/@labels.1/@modelFacet //@diagram/@links.7/@labels.0/@modelFacet"/>
+        uses="//@diagram/@childNodes.6/@labels.0/@modelFacet //@diagram/@childNodes.8/@labels.0/@modelFacet //@diagram/@links.0/@labels.0/@modelFacet //@diagram/@links.0/@labels.1/@modelFacet //@diagram/@links.6/@labels.0/@modelFacet"/>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.10/@labels.1/@modelFacet"

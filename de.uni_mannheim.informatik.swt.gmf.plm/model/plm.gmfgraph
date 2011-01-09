@@ -490,18 +490,78 @@
     <descriptors
         name="BinaryGeneralizationFigure">
       <actualFigure
-          xsi:type="gmfgraph:PolylineConnection"
-          targetDecoration="//@figures.0/@descriptors.11/@actualFigure/@children.0">
+          xsi:type="gmfgraph:ScalablePolygon"
+          name="MultipleGeneralisationFigure">
+        <preferredSize
+            dx="80"
+            dy="40"/>
         <children
-            xsi:type="gmfgraph:PolygonDecoration"
-            name="BinaryGenralizationTarget">
-          <backgroundColor
-              xsi:type="gmfgraph:RGBColor"
-              red="255"
-              green="255"
-              blue="255"/>
+            xsi:type="gmfgraph:Rectangle"
+            name="NameRectangle"
+            outline="false"
+            fill="false">
+          <layout
+              xsi:type="gmfgraph:GridLayout"/>
+          <children
+              xsi:type="gmfgraph:Label"
+              name="BinaryGeneralisationNameFigure"
+              text="">
+            <layoutData
+                xsi:type="gmfgraph:GridLayoutData"
+                grabExcessHorizontalSpace="true"
+                grabExcessVerticalSpace="true"/>
+            <foregroundColor
+                xsi:type="gmfgraph:ConstantColor"
+                value="black"/>
+          </children>
         </children>
+        <template
+            y="30"/>
+        <template
+            x="10"
+            y="15"/>
+        <template
+            x="20"
+            y="5"/>
+        <template
+            x="30"/>
+        <template
+            x="40"/>
+        <template
+            x="50"
+            y="5"/>
+        <template
+            x="60"
+            y="15"/>
+        <template
+            x="70"
+            y="30"/>
+        <template
+            x="70"
+            y="50"/>
+        <template
+            x="60"
+            y="65"/>
+        <template
+            x="50"
+            y="75"/>
+        <template
+            x="40"
+            y="80"/>
+        <template
+            x="30"
+            y="80"/>
+        <template
+            x="20"
+            y="75"/>
+        <template
+            x="10"
+            y="65"/>
+        <template
+            y="50"/>
       </actualFigure>
+      <accessors
+          figure="//@figures.0/@descriptors.11/@actualFigure/@children.0/@children.0"/>
     </descriptors>
     <descriptors
         name="MultipleGeneralisationFigure">
@@ -980,6 +1040,9 @@
   <nodes
       name="MultipleSpecialisation"
       figure="MultipleSpecialisationFigure"/>
+  <nodes
+      name="BinaryGeneralization"
+      figure="BinaryGeneralizationFigure"/>
   <connections
       name="DomainConnectionParticipants"
       figure="DomainConnectionParticipantsFigure"/>
@@ -989,9 +1052,6 @@
   <connections
       name="SetRelationshipLink"
       figure="SetRelationshipLinkFigure"/>
-  <connections
-      name="BinaryGeneralization"
-      figure="BinaryGeneralizationFigure"/>
   <connections
       name="SuperTypeConnection"
       figure="SuperTypeConnectionFigure"/>
@@ -1145,4 +1205,9 @@
       figure="MultipleGeneralisationFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.12/@accessors.0"/>
+  <labels
+      name="BinaryGeneralisationName"
+      figure="BinaryGeneralizationFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.11/@accessors.0"/>
 </gmfgraph:Canvas>

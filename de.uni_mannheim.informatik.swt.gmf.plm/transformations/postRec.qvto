@@ -56,6 +56,9 @@ main() {
 	--Group for all Generalisations
 	var multipleSpecializationChildReference 
 		:= xmap createChildReference("MultipleSpecializationEditPart", "ClabjectEditPart", "Generalizations", "icons/inheritance16.gif");
+		--Group for all Generalisations
+	var binaryGeneralizationChildReference 
+		:= xmap createChildReference("BinaryGeneralizationEditPart", "ClabjectEditPart", "Generalizations", "icons/inheritance16.gif");
 	--Group for all SetRelationships
 	var complementChildReference 
 		:= xmap createChildReference("ComplementEditPart", "ClabjectEditPart", "Set Relationships", "icons/setRelationship16.gif");
@@ -73,7 +76,7 @@ main() {
 		OrderedSet{LMLModelChildReference, rootDomainEnitiyChildReference, rootFieldChildReference,
 					rootMethodChildReference, ontologyChildReference, modelChildReference,
 					domainEntityChildReference, domainConnectionChildReference, 
-					fieldChildReference, methodChildReference,
+					fieldChildReference, methodChildReference, binaryGeneralizationChildReference,
 					multipleGeneralizationChildReference, multipleSpecializationChildReference, 
 					complementChildReference, equalChildReference, inversionChildReference};
 }
