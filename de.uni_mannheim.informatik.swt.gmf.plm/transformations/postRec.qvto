@@ -11,20 +11,71 @@ main() {
 	this.genNavigator.childReferences := OrderedSet{};
 
 	--Root group for the LMLModel container
-	var LMLModelChildReference := new GenNavigatorChildReference();
-	LMLModelChildReference.child := gmfgenModel.objects()[GenDiagram]->asOrderedSet()->select(n | n.editPartClassName = "LMLModelEditPart")->first();
+	var LMLModelChildReference 
+		:= new GenNavigatorChildReference();
+	LMLModelChildReference.child 
+		:= gmfgenModel.objects()[GenDiagram]->asOrderedSet()->select(n | n.editPartClassName = "LMLModelEditPart")->first();
 	
 	--Group for all DomainEntities that contain Ontology rendering information
-	var rootDomainEnitiyChildReference := this.createChildReference("DomainEntityEditPart", "LMLModelEditPart", "Domain Entities",  "icons/clabject16.gif");
-	rootDomainEnitiyChildReference.parent := gmfgenModel.objects()[GenDiagram]->asOrderedSet()->select(n | n.editPartClassName = "LMLModelEditPart")->first();
+	var rootDomainEnitiyChildReference 
+		:= xmap createChildReference("DomainEntityEditPart", "LMLModelEditPart", "Domain Entities",  "icons/clabject16.gif");
+	rootDomainEnitiyChildReference.parent 
+		:= gmfgenModel.objects()[GenDiagram]->asOrderedSet()->select(n | n.editPartClassName = "LMLModelEditPart")->first();
+	--Fields for DomainEntities that describe rendering of ontologies
+	var rootFieldChildReference 
+		:= xmap createChildReference("FieldEditPart", "DomainEntityEditPart", "Fields", "icons/methodField16.gif");
+	--Methods for DomainEntities that describe rendering of ontologies
+	var rootMethodChildReference 
+		:= xmap createChildReference("MethodEditPart", "DomainEntityEditPart", "Methods", "icons/methodField16.gif");
 	
 	--Group for all Ontologies
-	var ontologyChildReference := this.createChildReference("OntologyEditPart", "LMLModelEditPart", "Ontologies", "icons/onthology16.gif");
-	ontologyChildReference.parent := gmfgenModel.objects()[GenDiagram]->asOrderedSet()->select(n | n.editPartClassName = "LMLModelEditPart")->first();
+	var ontologyChildReference 
+		:= xmap createChildReference("OntologyEditPart", "LMLModelEditPart", "Ontologies", "icons/ontology16.gif");
+	ontologyChildReference.parent 
+		:= gmfgenModel.objects()[GenDiagram]->asOrderedSet()->select(n | n.editPartClassName = "LMLModelEditPart")->first();
 	--Group for all Models
-	var modelChildReference := this.createChildReference("ClabjectEditPart", "OntologyEditPart", "Models", "icons/model16.gif");
+	var modelChildReference 
+		:= xmap createChildReference("ClabjectEditPart", "OntologyEditPart", "Models", "icons/model16.gif");
 	
-	this.genNavigator.childReferences += OrderedSet{LMLModelChildReference, rootDomainEnitiyChildReference, ontologyChildReference, modelChildReference};
+	--Group for all DomainEntities
+	var domainEntityChildReference 
+		:= xmap createChildReference("DomainEntity2EditPart", "ClabjectEditPart", "Domain Entities", "icons/clabject16.gif");
+		--Fields for DomainEntities that describe rendering of ontologies
+	var fieldChildReference 
+		:= xmap createChildReference("FieldEditPart", "DomainEntity2EditPart", "Fields", "icons/methodField16.gif");
+	--Methods for DomainEntities that describe rendering of ontologies
+	var methodChildReference 
+		:= xmap createChildReference("MethodEditPart", "DomainEntity2EditPart", "Methods", "icons/methodField16.gif");
+	
+	--Group for all DomainConnections
+	var domainConnectionChildReference 
+		:= xmap createChildReference("DomainConnectionEditPart", "ClabjectEditPart", "Domain Entities", "icons/domainConnection16.gif");
+	--Group for all Generalisations
+	var multipleGeneralizationChildReference 
+		:= xmap createChildReference("MultipleGeneralizationEditPart", "ClabjectEditPart", "Generalizations", "icons/inheritance16.gif");
+	--Group for all Generalisations
+	var multipleSpecializationChildReference 
+		:= xmap createChildReference("MultipleSpecializationEditPart", "ClabjectEditPart", "Generalizations", "icons/inheritance16.gif");
+	--Group for all SetRelationships
+	var complementChildReference 
+		:= xmap createChildReference("ComplementEditPart", "ClabjectEditPart", "Set Relationships", "icons/setRelationship16.gif");
+	--Group for all SetRelationships
+	var equalChildReference 
+		:= xmap createChildReference("EqualityEditPart", "ClabjectEditPart", "Set Relationships", "icons/setRelationship16.gif");
+	--Group for all SetRelationships
+	var inversionChildReference 
+		:= xmap createChildReference("InversionEditPart", "ClabjectEditPart", "Set Relationships", "icons/setRelationship16.gif");
+	
+	
+	
+	
+	this.genNavigator.childReferences += 
+		OrderedSet{LMLModelChildReference, rootDomainEnitiyChildReference, rootFieldChildReference,
+					rootMethodChildReference, ontologyChildReference, modelChildReference,
+					domainEntityChildReference, domainConnectionChildReference, 
+					fieldChildReference, methodChildReference,
+					multipleGeneralizationChildReference, multipleSpecializationChildReference, 
+					complementChildReference, equalChildReference, inversionChildReference};
 }
 
 mapping createChildReference(childEditPartName:String, parentEditPartName:String, groupName:String, icon:String): GenNavigatorChildReference

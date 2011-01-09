@@ -1412,8 +1412,8 @@
             xsi:type="gmfgen:ToolEntry"
             title="Ontology"
             description="Create new Ontology"
-            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/onthology16.gif"
-            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/onthology16.gif"
+            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/ontology16.gif"
+            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/ontology16.gif"
             genNodes="//@diagram/@topLevelNodes.0"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
@@ -1592,25 +1592,25 @@
         parent="//@diagram"
         child="//@diagram/@topLevelNodes.1"
         groupName="Domain Entities"
-        groupIcon="/icons/clabject16.gif"
+        groupIcon="icons/clabject16.gif"
         hideIfEmpty="false"/>
     <childReferences
         parent="//@diagram/@topLevelNodes.1"
         child="//@diagram/@childNodes.2"
         groupName="Fields"
-        groupIcon="/icons/methodField16.gif"
+        groupIcon="icons/methodField16.gif"
         hideIfEmpty="false"/>
     <childReferences
         parent="//@diagram/@topLevelNodes.1"
         child="//@diagram/@childNodes.3"
         groupName="Methods"
-        groupIcon="/icons/methodField16.gif"
+        groupIcon="icons/methodField16.gif"
         hideIfEmpty="false"/>
     <childReferences
         parent="//@diagram"
         child="//@diagram/@topLevelNodes.0"
-        groupName="Onthologies"
-        groupIcon="icons/onthology16.gif"
+        groupName="Ontologies"
+        groupIcon="icons/ontology16.gif"
         hideIfEmpty="false"/>
     <childReferences
         parent="//@diagram/@topLevelNodes.0"
@@ -1622,61 +1622,55 @@
         parent="//@diagram/@childNodes.0"
         child="//@diagram/@childNodes.1"
         groupName="Domain Entities"
-        groupIcon="/icons/clabject16.gif"
+        groupIcon="icons/clabject16.gif"
+        hideIfEmpty="false"/>
+    <childReferences
+        parent="//@diagram/@childNodes.0"
+        child="//@diagram/@childNodes.4"
+        groupName="Domain Entities"
+        groupIcon="icons/domainConnection16.gif"
         hideIfEmpty="false"/>
     <childReferences
         parent="//@diagram/@childNodes.1"
         child="//@diagram/@childNodes.2"
         groupName="Fields"
-        groupIcon="/icons/methodField16.gif"
+        groupIcon="icons/methodField16.gif"
         hideIfEmpty="false"/>
     <childReferences
         parent="//@diagram/@childNodes.1"
         child="//@diagram/@childNodes.3"
         groupName="Methods"
-        groupIcon="/icons/methodField16.gif"
-        hideIfEmpty="false"/>
-    <childReferences
-        parent="//@diagram/@childNodes.0"
-        child="//@diagram/@childNodes.4"
-        groupName="Domain Connections"
-        groupIcon="/icons/domainConnection16.gif"
-        hideIfEmpty="false"/>
-    <childReferences
-        parent="//@diagram/@childNodes.4"
-        child="//@diagram/@childNodes.5"
-        groupName="Fields"
-        groupIcon="/icons/methodField16.gif"
+        groupIcon="icons/methodField16.gif"
         hideIfEmpty="false"/>
     <childReferences
         parent="//@diagram/@childNodes.0"
         child="//@diagram/@childNodes.9"
         groupName="Generalizations"
-        groupIcon="/icons/inheritance16.gif"
+        groupIcon="icons/inheritance16.gif"
         hideIfEmpty="false"/>
     <childReferences
         parent="//@diagram/@childNodes.0"
         child="//@diagram/@childNodes.10"
         groupName="Generalizations"
-        groupIcon="/icons/inheritance16.gif"
+        groupIcon="icons/inheritance16.gif"
         hideIfEmpty="false"/>
     <childReferences
         parent="//@diagram/@childNodes.0"
         child="//@diagram/@childNodes.6"
         groupName="Set Relationships"
-        groupIcon="/icons/setRelationship16.gif"
+        groupIcon="icons/setRelationship16.gif"
         hideIfEmpty="false"/>
     <childReferences
         parent="//@diagram/@childNodes.0"
         child="//@diagram/@childNodes.7"
         groupName="Set Relationships"
-        groupIcon="/icons/setRelationship16.gif"
+        groupIcon="icons/setRelationship16.gif"
         hideIfEmpty="false"/>
     <childReferences
         parent="//@diagram/@childNodes.0"
         child="//@diagram/@childNodes.8"
         groupName="Set Relationships"
-        groupIcon="/icons/setRelationship16.gif"
+        groupIcon="icons/setRelationship16.gif"
         hideIfEmpty="false"/>
   </navigator>
   <diagramUpdater/>
