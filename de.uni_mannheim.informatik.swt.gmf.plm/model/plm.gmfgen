@@ -1524,15 +1524,15 @@
             xsi:type="gmfgen:ToolEntry"
             title="Domain Entity Field"
             description="Create new Domain Entity Field"
-            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/methodField16.gif"
-            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/methodField16.gif"
+            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/field16.gif"
+            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/field16.gif"
             genNodes="//@diagram/@childNodes.2 //@diagram/@childNodes.5"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Domain Entity Method"
             description="Create new Domain Entity Method"
-            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/methodField16.gif"
-            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/methodField16.gif"
+            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/method16.gif"
+            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/method16.gif"
             genNodes="//@diagram/@childNodes.3"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
@@ -1685,13 +1685,13 @@
         parent="//@diagram/@topLevelNodes.1"
         child="//@diagram/@childNodes.2"
         groupName="Fields"
-        groupIcon="icons/methodField16.gif"
+        groupIcon="icons/field16.gif"
         hideIfEmpty="false"/>
     <childReferences
         parent="//@diagram/@topLevelNodes.1"
         child="//@diagram/@childNodes.3"
         groupName="Methods"
-        groupIcon="icons/methodField16.gif"
+        groupIcon="icons/method16.gif"
         hideIfEmpty="false"/>
     <childReferences
         parent="//@diagram"
@@ -1721,13 +1721,13 @@
         parent="//@diagram/@childNodes.1"
         child="//@diagram/@childNodes.2"
         groupName="Fields"
-        groupIcon="icons/methodField16.gif"
+        groupIcon="icons/field16.gif"
         hideIfEmpty="false"/>
     <childReferences
         parent="//@diagram/@childNodes.1"
         child="//@diagram/@childNodes.3"
         groupName="Methods"
-        groupIcon="icons/methodField16.gif"
+        groupIcon="icons/method16.gif"
         hideIfEmpty="false"/>
     <childReferences
         parent="//@diagram/@childNodes.0"

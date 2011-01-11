@@ -23,10 +23,10 @@ main() {
 		:= gmfgenModel.objects()[GenDiagram]->asOrderedSet()->select(n | n.editPartClassName = "LMLModelEditPart")->first();
 	--Fields for DomainEntities that describe rendering of ontologies
 	var rootFieldChildReference 
-		:= xmap createChildReference("FieldEditPart", "DomainEntityEditPart", "Fields", "icons/methodField16.gif");
+		:= xmap createChildReference("FieldEditPart", "DomainEntityEditPart", "Fields", "icons/field16.gif");
 	--Methods for DomainEntities that describe rendering of ontologies
 	var rootMethodChildReference 
-		:= xmap createChildReference("MethodEditPart", "DomainEntityEditPart", "Methods", "icons/methodField16.gif");
+		:= xmap createChildReference("MethodEditPart", "DomainEntityEditPart", "Methods", "icons/method16.gif");
 	
 	--Group for all Ontologies
 	var ontologyChildReference 
@@ -42,10 +42,10 @@ main() {
 		:= xmap createChildReference("DomainEntity2EditPart", "ClabjectEditPart", "Domain Entities", "icons/clabject16.gif");
 		--Fields for DomainEntities that describe rendering of ontologies
 	var fieldChildReference 
-		:= xmap createChildReference("FieldEditPart", "DomainEntity2EditPart", "Fields", "icons/methodField16.gif");
+		:= xmap createChildReference("FieldEditPart", "DomainEntity2EditPart", "Fields", "icons/field16.gif");
 	--Methods for DomainEntities that describe rendering of ontologies
 	var methodChildReference 
-		:= xmap createChildReference("MethodEditPart", "DomainEntity2EditPart", "Methods", "icons/methodField16.gif");
+		:= xmap createChildReference("MethodEditPart", "DomainEntity2EditPart", "Methods", "icons/method16.gif");
 	
 	--Group for all DomainConnections
 	var domainConnectionChildReference 
