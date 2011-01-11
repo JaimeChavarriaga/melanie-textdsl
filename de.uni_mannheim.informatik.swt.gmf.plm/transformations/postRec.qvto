@@ -3,9 +3,38 @@ modeltype GMFGEN uses gmfgen('http://www.eclipse.org/gmf/2009/GenModel');
 transformation postRec(inout gmfgenModel : GMFGEN);
 
 property genNavigator : GenNavigator = null;
+property genStandardPrefencePage : GenStandardPreferencePage = null;
+property genPlugIn : GenPlugin = null;
+property genEditorGenerator : GenEditorGenerator = null;
+		
  
 main() {
-	this.genNavigator := gmfgenModel.objects()[GenNavigator]->asOrderedSet()->first();
+	
+	--Set ListLayout for Model(Clabject) Compartment
+	gmfgenModel.objectsOfType(GenCompartment)->asOrderedSet()
+				->select(c | c.editPartClassName = "OntologyModelCompartmentEditPart")->first()
+				.listLayout := true;
+	
+	--Setup the GenEditorGenerator
+	this.genEditorGenerator := gmfgenModel.objectsOfType(GenEditorGenerator)->asOrderedSet()->first();
+	genEditorGenerator.sameFileForDiagramAndModel := true;
+	genEditorGenerator.dynamicTemplates := true;
+	genEditorGenerator.templateDirectory := "/de.uni_mannheim.informatik.swt.gmf.plm/templates";
+	genEditorGenerator.diagramFileExtension := "lml";
+	genEditorGenerator.modelID := "LML";
+	
+	--Setup the GenPlugin
+	this.genPlugIn := gmfgenModel.objectsOfType(GenPlugin)->asOrderedSet()->first();
+	genPlugIn.provider := "University of Mannheim: Chair for Software Engineering";
+	genPlugIn.name := "Level-agnostic Modelling Language (LML) Plugin";
+	genPlugIn.printingEnabled := true;
+	
+	--Set the properties for the Prefrence Page (Window -> Preferences)
+	this.genStandardPrefencePage := gmfgenModel.objectsOfType(GenStandardPreferencePage)->asOrderedSet()->first();
+	genStandardPrefencePage.name := "LML Diagram Editor";
+	
+	--Build up the navigation structure
+	this.genNavigator := gmfgenModel.objectsOfType(GenNavigator)->asOrderedSet()->first();
 
 	--Clear all child entries
 	this.genNavigator.childReferences := OrderedSet{};
@@ -14,13 +43,13 @@ main() {
 	var LMLModelChildReference 
 		:= new GenNavigatorChildReference();
 	LMLModelChildReference.child 
-		:= gmfgenModel.objects()[GenDiagram]->asOrderedSet()->select(n | n.editPartClassName = "LMLModelEditPart")->first();
+		:= gmfgenModel.objectsOfType(GenDiagram)->asOrderedSet()->select(n | n.editPartClassName = "LMLModelEditPart")->first();
 	
 	--Group for all DomainEntities that contain Ontology rendering information
 	var rootDomainEnitiyChildReference 
 		:= xmap createChildReference("DomainEntityEditPart", "LMLModelEditPart", "Domain Entities",  "icons/clabject16.gif");
 	rootDomainEnitiyChildReference.parent 
-		:= gmfgenModel.objects()[GenDiagram]->asOrderedSet()->select(n | n.editPartClassName = "LMLModelEditPart")->first();
+		:= gmfgenModel.objectsOfType(GenDiagram)->asOrderedSet()->select(n | n.editPartClassName = "LMLModelEditPart")->first();
 	--Fields for DomainEntities that describe rendering of ontologies
 	var rootFieldChildReference 
 		:= xmap createChildReference("FieldEditPart", "DomainEntityEditPart", "Fields", "icons/field16.gif");
@@ -32,7 +61,7 @@ main() {
 	var ontologyChildReference 
 		:= xmap createChildReference("OntologyEditPart", "LMLModelEditPart", "Ontologies", "icons/ontology16.gif");
 	ontologyChildReference.parent 
-		:= gmfgenModel.objects()[GenDiagram]->asOrderedSet()->select(n | n.editPartClassName = "LMLModelEditPart")->first();
+		:= gmfgenModel.objectsOfType(GenDiagram)->asOrderedSet()->select(n | n.editPartClassName = "LMLModelEditPart")->first();
 	--Group for all Models
 	var modelChildReference 
 		:= xmap createChildReference("ClabjectEditPart", "OntologyEditPart", "Models", "icons/model16.gif");
@@ -83,8 +112,8 @@ main() {
 
 mapping createChildReference(childEditPartName:String, parentEditPartName:String, groupName:String, icon:String): GenNavigatorChildReference
 {
-	result.child := gmfgenModel.objects()[GenNode]->asOrderedSet()->select(n | n.editPartClassName = childEditPartName)->first();
-	result.parent := gmfgenModel.objects()[GenNode]->asOrderedSet()->select(n | n.editPartClassName = parentEditPartName)->first();
+	result.child := gmfgenModel.objectsOfType(GenNode)->asOrderedSet()->select(n | n.editPartClassName = childEditPartName)->first();
+	result.parent := gmfgenModel.objectsOfType(GenNode)->asOrderedSet()->select(n | n.editPartClassName = parentEditPartName)->first();
 	result.hideIfEmpty := false;
 	result.groupName := groupName;
 	result.groupIcon := icon;
