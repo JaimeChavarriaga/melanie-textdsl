@@ -185,18 +185,33 @@
 			}
 		}
 
+		//the figure containing the actual design of the editpart
+		//the outer parent is only a container for the border items
+		//and the figure of the editpart
+		org.eclipse.draw2d.IFigure fig = ((org.eclipse.draw2d.IFigure)figure.getChildren().get(0));
+
 		//expand element
 		if (!collapse) {
-			//Element was not previously collapsed -> Cann happen at diagram load
-			if (childrenChache == null)
+			//Element was not previously collapsed -> can happen at diagram load
+			if (childrenCache == null)
+			{
+				//Hide external name label
+				org.eclipse.draw2d.IFigure boderItemContainer = (org.eclipse.draw2d.IFigure)figure.getChildren().get(1);
+				((org.eclipse.draw2d.IFigure)boderItemContainer.getChildren().get(0)).setVisible(false);
+				
 				return;
+			}
 
 			this.setBackgroundColor(Display.getDefault().getSystemColor(
 					SWT.COLOR_WHITE));
 
-			figure.getChildren().clear();
-			figure.getChildren().addAll(childrenChache);
-			childrenChache = null;
+			fig.getChildren().clear();
+			fig.getChildren().addAll(childrenCache);
+			childrenCache = null;
+
+			//Hide external name label
+			org.eclipse.draw2d.IFigure boderItemContainer = (org.eclipse.draw2d.IFigure)figure.getChildren().get(1);
+			((org.eclipse.draw2d.IFigure)boderItemContainer.getChildren().get(0)).setVisible(false);
 
 			org.eclipse.draw2d.geometry.Rectangle rect = figure.getClientArea().getCopy();
 			rect.setSize((cachedSize != null) ? cachedSize : new org.eclipse.draw2d.geometry.Dimension(70,
@@ -217,15 +232,19 @@
 			//figure.getClientArea() ==  null on startup
 			org.eclipse.draw2d.geometry.Rectangle rect = (figure.getClientArea() != null) ? figure
 					.getClientArea().getCopy() : null;
-			childrenChache = (java.util.List) ((java.util.ArrayList) figure.getChildren()).clone();
-			figure.getChildren().clear();
+			childrenCache = (java.util.List) ((java.util.ArrayList) fig.getChildren()).clone();
+			fig.getChildren().clear();
 
 			org.eclipse.draw2d.RectangleFigure rf = new org.eclipse.draw2d.RectangleFigure();
 
 			rf.setBackgroundColor(Display.getDefault().getSystemColor(
 					SWT.COLOR_BLACK));
-			figure.getChildren().add(rf);
-			rf.setParent(figure);
+			fig.getChildren().add(rf);
+			rf.setParent(fig);
+
+			//Show external name label
+			org.eclipse.draw2d.IFigure boderItemContainer = (org.eclipse.draw2d.IFigure)figure.getChildren().get(1);
+			((org.eclipse.draw2d.IFigure)boderItemContainer.getChildren().get(0)).setVisible(true);
 
 			//A client rectangle existed
 			if (rect != null
@@ -265,7 +284,7 @@
 	/**
 	 * @generated
 	 */
-	private java.util.List childrenChache = null;
+	private java.util.List childrenCache = null;
 
 	/**
 	 * @generated
@@ -315,8 +334,8 @@
 					if (! (editorPart instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor))
 						return;
 					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor plmEditor = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor)editorPart;
-					DomainEntity2EditPart node =
-						(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntity2EditPart)plmEditor.getDiagramGraphicalViewer().findEditPartsForElement(org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getProxyID(obj), org.eclipse.gef.NodeEditPart.class).get(0);
+					//DomainEntity2EditPart node =
+					//	(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntity2EditPart)plmEditor.getDiagramGraphicalViewer().findEditPartsForElement(org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getProxyID(obj), org.eclipse.gef.NodeEditPart.class).get(0);
 					
 					//((DomainEntityFigure)node.getFigure().getChildren().get(0)).getFigureDomainEntityAVSFigure().getUpdateManager().;
 				}

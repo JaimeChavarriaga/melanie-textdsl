@@ -374,10 +374,28 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/children"/>
       </modelFacet>
       <labels
+          xsi:type="gmfgen:GenExternalNodeLabel"
           visualID="5050"
           editPartClassName="DomainConnectionNameEditPart"
           itemSemanticEditPolicyClassName="DomainConnectionNameItemSemanticEditPolicy"
           notationViewFactoryClassName="DomainConnectionNameViewFactory">
+        <diagramRunTimeClass
+            href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap
+            xsi:type="gmfgen:FigureViewmap"
+            figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
+        <modelFacet
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0">
+          <metaFeatures
+              href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Element/name"/>
+        </modelFacet>
+      </labels>
+      <labels
+          visualID="5051"
+          editPartClassName="WrappingLabel7EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel7ItemSemanticEditPolicy"
+          notationViewFactoryClassName="DomainConnectionLabelViewFactory">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap
@@ -397,9 +415,9 @@
         </modelFacet>
       </labels>
       <labels
-          visualID="5051"
-          editPartClassName="WrappingLabel7EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel7ItemSemanticEditPolicy"
+          visualID="5060"
+          editPartClassName="WrappingLabel17EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel17ItemSemanticEditPolicy"
           notationViewFactoryClassName="DomainConnectionLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -795,6 +813,7 @@
         visualID="3028"
         editPartClassName="BinaryGeneralizationEditPart"
         itemSemanticEditPolicyClassName="BinaryGeneralizationItemSemanticEditPolicy"
+        notationViewFactoryClassName="BinaryGeneralizationViewFactory"
         canonicalEditPolicyClassName="BinaryGeneralizationCanonicalEditPolicy"
         graphicalNodeEditPolicyClassName="BinaryGeneralizationGraphicalNodeEditPolicy"
         createCommandClassName="BinaryGeneralizationCreateCommand"
@@ -824,7 +843,8 @@
       <labels
           visualID="5059"
           editPartClassName="BinaryGeneralizationNameEditPart"
-          itemSemanticEditPolicyClassName="BinaryGeneralizationNameItemSemanticEditPolicy">
+          itemSemanticEditPolicyClassName="BinaryGeneralizationNameItemSemanticEditPolicy"
+          notationViewFactoryClassName="BinaryGeneralizationNameViewFactory">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap
@@ -1313,6 +1333,7 @@
         visualID="4019"
         editPartClassName="BinaryGeneralizationSupertypeEditPart"
         itemSemanticEditPolicyClassName="BinaryGeneralizationSupertypeItemSemanticEditPolicy"
+        notationViewFactoryClassName="BinaryGeneralizationSupertypeViewFactory"
         createCommandClassName="BinaryGeneralizationSupertypeCreateCommand"
         reorientCommandClassName="BinaryGeneralizationSupertypeReorientCommand">
       <diagramRunTimeClass
@@ -1335,6 +1356,7 @@
         visualID="4020"
         editPartClassName="BinaryGeneralizationSubtypeEditPart"
         itemSemanticEditPolicyClassName="BinaryGeneralizationSubtypeItemSemanticEditPolicy"
+        notationViewFactoryClassName="BinaryGeneralizationSubtypeViewFactory"
         createCommandClassName="BinaryGeneralizationSubtypeCreateCommand"
         reorientCommandClassName="BinaryGeneralizationSubtypeReorientCommand">
       <diagramRunTimeClass
@@ -1822,7 +1844,7 @@
       extensibleViaService="true">
     <implementations
         xsi:type="gmfgen:PredefinedParser"
-        uses="//@diagram/@childNodes.2/@labels.0/@modelFacet //@diagram/@childNodes.2/@labels.3/@modelFacet //@diagram/@childNodes.3/@labels.0/@modelFacet //@diagram/@childNodes.1/@labels.0/@modelFacet //@diagram/@childNodes.1/@labels.2/@modelFacet //@diagram/@childNodes.5/@labels.0/@modelFacet //@diagram/@childNodes.4/@labels.0/@modelFacet //@diagram/@childNodes.7/@labels.0/@modelFacet //@diagram/@childNodes.9/@labels.0/@modelFacet //@diagram/@childNodes.10/@labels.0/@modelFacet //@diagram/@childNodes.11/@labels.0/@modelFacet //@diagram/@childNodes.0/@labels.0/@modelFacet //@diagram/@topLevelNodes.0/@labels.0/@modelFacet //@diagram/@topLevelNodes.1/@labels.0/@modelFacet //@diagram/@topLevelNodes.1/@labels.2/@modelFacet"/>
+        uses="//@diagram/@childNodes.2/@labels.0/@modelFacet //@diagram/@childNodes.2/@labels.3/@modelFacet //@diagram/@childNodes.3/@labels.0/@modelFacet //@diagram/@childNodes.1/@labels.0/@modelFacet //@diagram/@childNodes.1/@labels.2/@modelFacet //@diagram/@childNodes.5/@labels.0/@modelFacet //@diagram/@childNodes.4/@labels.0/@modelFacet //@diagram/@childNodes.4/@labels.1/@modelFacet //@diagram/@childNodes.7/@labels.0/@modelFacet //@diagram/@childNodes.9/@labels.0/@modelFacet //@diagram/@childNodes.10/@labels.0/@modelFacet //@diagram/@childNodes.11/@labels.0/@modelFacet //@diagram/@childNodes.0/@labels.0/@modelFacet //@diagram/@topLevelNodes.0/@labels.0/@modelFacet //@diagram/@topLevelNodes.1/@labels.0/@modelFacet //@diagram/@topLevelNodes.1/@labels.2/@modelFacet"/>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.2/@labels.1/@modelFacet"
@@ -1874,7 +1896,7 @@
     </implementations>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
-        uses="//@diagram/@childNodes.4/@labels.1/@modelFacet"
+        uses="//@diagram/@childNodes.4/@labels.2/@modelFacet"
         viewExpression="//@expressionProviders/@providers.0/@expressions.7">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainConnection"/>

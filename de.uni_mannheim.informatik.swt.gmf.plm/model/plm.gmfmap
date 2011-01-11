@@ -56,6 +56,13 @@
               <domainMetaElement
                   href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//DomainConnection"/>
               <labelMappings
+                  xsi:type="gmfmap:FeatureLabelMapping">
+                <diagramLabel
+                    href="plm.gmfgraph#DomainConnectionFigureNameExternal"/>
+                <features
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/name"/>
+              </labelMappings>
+              <labelMappings
                   xsi:type="gmfmap:FeatureLabelMapping"
                   viewPattern="{0}">
                 <diagramLabel
