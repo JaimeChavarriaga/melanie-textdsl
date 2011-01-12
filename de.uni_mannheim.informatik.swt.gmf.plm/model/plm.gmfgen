@@ -740,7 +740,8 @@
           xsi:type="gmfgen:GenExternalNodeLabel"
           visualID="5062"
           editPartClassName="MultipleGeneralizationName2EditPart"
-          itemSemanticEditPolicyClassName="MultipleGeneralizationName2ItemSemanticEditPolicy">
+          itemSemanticEditPolicyClassName="MultipleGeneralizationName2ItemSemanticEditPolicy"
+          notationViewFactoryClassName="MultipleGeneralizationNameViewFactory">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap
@@ -811,13 +812,13 @@
           xsi:type="gmfgen:GenExternalNodeLabel"
           visualID="5057"
           editPartClassName="MultipleSpecializationName2EditPart"
-          itemSemanticEditPolicyClassName="MultipleSpecializationName2ItemSemanticEditPolicy">
+          itemSemanticEditPolicyClassName="MultipleSpecializationName2ItemSemanticEditPolicy"
+          notationViewFactoryClassName="MultipleSpecializationNameViewFactory">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap
-            xsi:type="gmfgen:InnerClassViewmap"
-            className="MultipleSpecializationFigure"
-            classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class MultipleSpecializationFigure extends org.eclipse.draw2d.ScalablePolygonShape {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureMultipleSpecialisationNameFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureSetTheoryFigure; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public MultipleSpecializationFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(30)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(10)&#xA;, getMapMode().DPtoLP(15)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(20)&#xA;, getMapMode().DPtoLP(5)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(30)&#xA;, getMapMode().DPtoLP(0)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(40)&#xA;, getMapMode().DPtoLP(0)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(50)&#xA;, getMapMode().DPtoLP(5)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(60)&#xA;, getMapMode().DPtoLP(15)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(70)&#xA;, getMapMode().DPtoLP(30)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(70)&#xA;, getMapMode().DPtoLP(50)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(60)&#xA;, getMapMode().DPtoLP(65)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(50)&#xA;, getMapMode().DPtoLP(75)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(40)&#xA;, getMapMode().DPtoLP(80)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(30)&#xA;, getMapMode().DPtoLP(80)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(20)&#xA;, getMapMode().DPtoLP(75)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(10)&#xA;, getMapMode().DPtoLP(65)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(50)&#xA;));&#xA;this.setFill(true);&#xA;this.setPreferredSize(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(80)&#xA;, getMapMode().DPtoLP(40)&#xA;));&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;org.eclipse.draw2d.RectangleFigure nameRectangle0 = new org.eclipse.draw2d.RectangleFigure();&#xA;nameRectangle0.setFill(false);&#xA;nameRectangle0.setOutline(false);&#xA;&#xA;this.add(nameRectangle0);&#xA;&#xA;&#x9;org.eclipse.draw2d.GridLayout layoutNameRectangle0 = new org.eclipse.draw2d.GridLayout();&#xA;&#x9;layoutNameRectangle0.numColumns = 1;&#xA;&#x9;layoutNameRectangle0.makeColumnsEqualWidth = true;&#xA;&#x9;nameRectangle0.setLayoutManager(layoutNameRectangle0);&#xA;&#xA;&#xA;&#xA;fFigureMultipleSpecialisationNameFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureMultipleSpecialisationNameFigure.setText(&quot;&quot;);&#xA;&#x9;fFigureMultipleSpecialisationNameFigure.setForegroundColor(org.eclipse.draw2d.ColorConstants.black);&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureMultipleSpecialisationNameFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureMultipleSpecialisationNameFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureMultipleSpecialisationNameFigure.horizontalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureMultipleSpecialisationNameFigure.horizontalIndent = 0;&#xA;constraintFFigureMultipleSpecialisationNameFigure.horizontalSpan = 1;&#xA;constraintFFigureMultipleSpecialisationNameFigure.verticalSpan = 1;&#xA;constraintFFigureMultipleSpecialisationNameFigure.grabExcessHorizontalSpace = true;&#xA;constraintFFigureMultipleSpecialisationNameFigure.grabExcessVerticalSpace = true;&#xA;nameRectangle0.add(fFigureMultipleSpecialisationNameFigure, constraintFFigureMultipleSpecialisationNameFigure);&#xA;&#xA;&#xA;&#xA;&#xA;fFigureSetTheoryFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureSetTheoryFigure.setText(&quot;&quot;);&#xA;&#x9;fFigureSetTheoryFigure.setForegroundColor(org.eclipse.draw2d.ColorConstants.black);&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureSetTheoryFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureSetTheoryFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureSetTheoryFigure.horizontalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureSetTheoryFigure.horizontalIndent = 0;&#xA;constraintFFigureSetTheoryFigure.horizontalSpan = 1;&#xA;constraintFFigureSetTheoryFigure.verticalSpan = 1;&#xA;constraintFFigureSetTheoryFigure.grabExcessHorizontalSpace = true;&#xA;constraintFFigureSetTheoryFigure.grabExcessVerticalSpace = true;&#xA;nameRectangle0.add(fFigureSetTheoryFigure, constraintFFigureSetTheoryFigure);&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureMultipleSpecialisationNameFigure() {&#xA;&#x9;&#x9;return fFigureMultipleSpecialisationNameFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureSetTheoryFigure() {&#xA;&#x9;&#x9;return fFigureSetTheoryFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
+            xsi:type="gmfgen:FigureViewmap"
+            figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
         <modelFacet
             xsi:type="gmfgen:FeatureLabelModelFacet"
             parser="//@labelParsers/@implementations.0">
@@ -826,9 +827,10 @@
         </modelFacet>
       </labels>
       <labels
-          visualID="5063"
+          visualID="5064"
           editPartClassName="WrappingLabel13EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel13ItemSemanticEditPolicy">
+          itemSemanticEditPolicyClassName="WrappingLabel13ItemSemanticEditPolicy"
+          notationViewFactoryClassName="MultipleSpecializationLabelViewFactory">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap

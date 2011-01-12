@@ -165,7 +165,13 @@
 
 		//No rendering information found => all DomainConnections remain expanded
 		if (ont.getRenderer() == null)
+		{
+			//Hide external name label
+			org.eclipse.draw2d.IFigure boderItemContainer = (org.eclipse.draw2d.IFigure)figure.getChildren().get(1);
+			((org.eclipse.draw2d.IFigure)boderItemContainer.getChildren().get(0)).setVisible(false);
+			
 			return;
+		}
 
 		//********************************************************
 		//Do toggling based on information in the diagram
