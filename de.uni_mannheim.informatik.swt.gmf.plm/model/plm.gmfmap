@@ -210,7 +210,14 @@
               <labelMappings
                   xsi:type="gmfmap:FeatureLabelMapping">
                 <diagramLabel
-                    href="plm.gmfgraph#MultipleGeneralisationName"/>
+                    href="plm.gmfgraph#MultipleGeneralizationName"/>
+                <features
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/name"/>
+              </labelMappings>
+              <labelMappings
+                  xsi:type="gmfmap:FeatureLabelMapping">
+                <diagramLabel
+                    href="plm.gmfgraph#MultipleGeneralizationNameExternal"/>
                 <features
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/name"/>
               </labelMappings>
@@ -231,14 +238,21 @@
               <labelMappings
                   xsi:type="gmfmap:FeatureLabelMapping">
                 <diagramLabel
-                    href="plm.gmfgraph#MultipleSpecialisationName"/>
+                    href="plm.gmfgraph#MultipleSpecializationName"/>
+                <features
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/name"/>
+              </labelMappings>
+              <labelMappings
+                  xsi:type="gmfmap:FeatureLabelMapping">
+                <diagramLabel
+                    href="plm.gmfgraph#MultipleSpecializationNameExternal"/>
                 <features
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/name"/>
               </labelMappings>
               <labelMappings
                   xsi:type="gmfmap:ExpressionLabelMapping">
                 <diagramLabel
-                    href="plm.gmfgraph#MultipleSpecialisationSetTheoryLabel"/>
+                    href="plm.gmfgraph#MultipleSpecializationSetTheoryLabel"/>
                 <viewExpression
                     body="let disjoint:String = &#xD;&#xA;&#x9;if (self.disjoint) then &#xD;&#xA;&#x9;&#x9;'disjoint' &#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'overlaping ' &#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let complete:String = &#xD;&#xA;&#x9;if (self.complete) then &#xD;&#xA;&#x9;&#x9;'complete' &#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'incomplete' &#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (disjoint &lt;> ' ') then&#xD;&#xA;&#x9;'{'.concat(disjoint).concat('; ').concat(complete ).concat('}')&#xD;&#xA;else&#xD;&#xA;&#x9;' '&#xD;&#xA;endif"/>
               </labelMappings>
@@ -260,6 +274,13 @@
                   xsi:type="gmfmap:FeatureLabelMapping">
                 <diagramLabel
                     href="plm.gmfgraph#BinaryGeneralisationName"/>
+                <features
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/name"/>
+              </labelMappings>
+              <labelMappings
+                  xsi:type="gmfmap:FeatureLabelMapping">
+                <diagramLabel
+                    href="plm.gmfgraph#BinaryGeneralizationNameExternal"/>
                 <features
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/name"/>
               </labelMappings>

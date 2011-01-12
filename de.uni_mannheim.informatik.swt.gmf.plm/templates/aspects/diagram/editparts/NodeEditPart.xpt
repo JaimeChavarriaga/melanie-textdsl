@@ -1,13 +1,21 @@
 «IMPORT 'http://www.eclipse.org/gmf/2009/GenModel'»
 
 «AROUND additions FOR gmfgen::GenNode»
-«IF self.editPartClassName = 'DomainConnectionEditPart'»
+//Gives the option to diplay a DomainConnection/Generalization/Specialization as black rectangle
+«IF self.editPartClassName = 'DomainConnectionEditPart' 
+	or self.editPartClassName = 'BinaryGeneralizationEditPart' 
+	or self.editPartClassName = 'MultipleSpecializationEditPart'
+	or self.editPartClassName = 'MultipleGeneralizationEditPart'»
+	
 	«EXPAND toggleAttributes»
-	«EXPAND updateConnections-»
-	«EXPAND refreshSourceConnections-»
 	«EXPAND toggle-»
 	«EXPAND partActivate-»
 «ENDIF»
+//Responsible for the multiplicity, role, navigation ends
+«IF self.editPartClassName = 'DomainConnectionEditPart'»
+	«EXPAND updateConnections-»
+	«EXPAND refreshSourceConnections-»
+«ENDIF»	
 «ENDAROUND»
 
 «AROUND handleNotificationEvent FOR gmfgen::GenNode-»
@@ -162,7 +170,7 @@
 		//********************************************************
 		//Do toggling based on information in the diagram
 		//********************************************************
-		de.uni_mannheim.informatik.swt.models.plm.PLM.Field collapsedDomainConnectionsField = null;
+		de.uni_mannheim.informatik.swt.models.plm.PLM.Field collapsedNodesField = null;
 
 		for (de.uni_mannheim.informatik.swt.models.plm.PLM.Element e : ont
 				.getRenderer().getChildren()) {
@@ -170,18 +178,18 @@
 			{
 				if (e.getName().equals("collapsedDomainConnections"))
 				{
-					collapsedDomainConnectionsField = (de.uni_mannheim.informatik.swt.models.plm.PLM.Field)e;
+					collapsedNodesField = (de.uni_mannheim.informatik.swt.models.plm.PLM.Field)e;
 					break;
 				}
 			}
 		}
 
 		//get a array with all collapsed ids
-		String value = collapsedDomainConnectionsField.getValue();
-		String[] collapsedConnections = value.replace("Sequence{", "")
+		String value = collapsedNodesField.getValue();
+		String[] collapsedNodes = value.replace("Sequence{", "")
 				.replace("}", "").trim().split(";");
 
-		for (String s : collapsedConnections) {
+		for (String s : collapsedNodes) {
 			if (s.trim().replace(";", "").equals(org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getProxyID(obj))) {
 				collapse = true;
 				break;
@@ -205,8 +213,8 @@
 				return;
 			}
 
-			this.setBackgroundColor(Display.getDefault().getSystemColor(
-					SWT.COLOR_WHITE));
+			this.setBackgroundColor(org.eclipse.swt.widgets.Display.getDefault().getSystemColor(
+					org.eclipse.swt.SWT.COLOR_WHITE));
 
 			fig.getChildren().clear();
 			fig.getChildren().addAll(childrenCache);
@@ -240,8 +248,8 @@
 
 			org.eclipse.draw2d.RectangleFigure rf = new org.eclipse.draw2d.RectangleFigure();
 
-			rf.setBackgroundColor(Display.getDefault().getSystemColor(
-					SWT.COLOR_BLACK));
+			rf.setBackgroundColor(org.eclipse.swt.widgets.Display.getDefault().getSystemColor(
+					org.eclipse.swt.SWT.COLOR_BLACK));
 			fig.getChildren().add(rf);
 			rf.setParent(fig);
 

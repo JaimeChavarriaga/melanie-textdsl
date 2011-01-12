@@ -4,7 +4,11 @@
 «EXTENSION xpt::diagram::Utils»
 
 «AROUND addBorderItem FOR gmfgen::GenNode»
-	«IF self.editPartClassName = 'DomainConnectionEditPart'»
+	«IF self.editPartClassName = 'DomainConnectionEditPart' 
+		or self.editPartClassName = 'BinaryGeneralizationEditPart'
+		or self.editPartClassName = 'MultipleSpecializationEditPart'
+		or self.editPartClassName = 'MultipleGeneralizationEditPart'»
+	
 		«IF getExternalLabels(self)->size() > 0-»
 			«EXPAND xpt::Common::generatedMemberComment»
 			protected void addBorderItem(org.eclipse.draw2d.IFigure borderItemContainer, org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart borderItemEditPart) {

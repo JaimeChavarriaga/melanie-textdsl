@@ -207,7 +207,7 @@ public class AddVisualizationAction implements IObjectActionDelegate {
 				Field field = (Field) ViewUtil.resolveSemanticElement((View)fieldPart.getModel());
 				
 				//Configure Request
-				SetRequest setFieldNameRequest = new SetRequest(field, PLMPackage.eINSTANCE.getElement_Name(), "collapsedDomainConnections");
+				SetRequest setFieldNameRequest = new SetRequest(field, PLMPackage.eINSTANCE.getElement_Name(), "collapsedNodes");
 				SetRequest setFieldDurabilityRequest =  new SetRequest(field, PLMPackage.eINSTANCE.getClabject_Potency(), 0);
 				SetRequest setFieldDefaultValueRequest =  new SetRequest(field, PLMPackage.eINSTANCE.getField_Value(), "Sequence{}");
 				

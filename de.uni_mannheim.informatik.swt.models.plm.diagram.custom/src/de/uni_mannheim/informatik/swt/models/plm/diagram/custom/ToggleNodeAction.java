@@ -5,6 +5,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.NodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
 import org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand;
@@ -17,12 +18,16 @@ import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 
+import de.uni_mannheim.informatik.swt.models.plm.PLM.BinaryGeneralization;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Field;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.LMLModel;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.BinaryGeneralizationEditPart;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionEditPart;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.MultipleGeneralizationEditPart;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.MultipleSpecializationEditPart;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor;
 
 
@@ -36,13 +41,13 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEdit
  * hexagon, its default figure.
  *
  */
-public class ToggleDomainConnectionAction implements IObjectActionDelegate {
+public class ToggleNodeAction implements IObjectActionDelegate {
 
 	public final static String ID = "de.uni_mannheim.informatik.swt.models.plm.diagram.custom.toggledomainconnectionationaction";
 	
-	private DomainConnectionEditPart selectedElement;
+	private AbstractBorderedShapeEditPart selectedElement;
 	
-	public ToggleDomainConnectionAction()  {
+	public ToggleNodeAction()  {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -55,8 +60,9 @@ public class ToggleDomainConnectionAction implements IObjectActionDelegate {
 	@Override
 	public void run(IAction action) {
 		
-		DomainConnectionEditPart connection = (DomainConnectionEditPart)selectedElement;
-		
+		if (selectedElement == null)
+			return;
+				
 		//********************************************************
 		//Get currently open editor for retrieving of EditParts
 		//********************************************************
@@ -148,16 +154,28 @@ public class ToggleDomainConnectionAction implements IObjectActionDelegate {
 		//********************************************************
 		//Change the connection's new visual state
 		//********************************************************
-		connection.toggle();
+		if (selectedElement instanceof DomainConnectionEditPart)
+			((DomainConnectionEditPart)selectedElement).toggle();
+		else if(selectedElement instanceof BinaryGeneralizationEditPart)
+			((BinaryGeneralizationEditPart)selectedElement).toggle();
+		else if(selectedElement instanceof MultipleSpecializationEditPart)
+			((MultipleSpecializationEditPart)selectedElement).toggle();
+		else if(selectedElement instanceof MultipleGeneralizationEditPart)
+			((MultipleGeneralizationEditPart)selectedElement).toggle();
 	}
 
 	@Override
 	public void selectionChanged(IAction action, ISelection selection) {
 		selectedElement = null;
-		if (selection instanceof IStructuredSelection) {
+		if (selection instanceof IStructuredSelection) 
+		{
 			IStructuredSelection structuredSelection = (IStructuredSelection) selection;
-			if (structuredSelection.getFirstElement() instanceof DomainConnectionEditPart) {
-				selectedElement = (DomainConnectionEditPart) structuredSelection.getFirstElement();
+			if (structuredSelection.getFirstElement() instanceof DomainConnectionEditPart 
+					|| structuredSelection.getFirstElement() instanceof BinaryGeneralizationEditPart
+					|| structuredSelection.getFirstElement() instanceof MultipleSpecializationEditPart
+					|| structuredSelection.getFirstElement() instanceof MultipleGeneralizationEditPart) 
+			{
+				selectedElement = (AbstractBorderedShapeEditPart) structuredSelection.getFirstElement();
 			}
 		}
 	}
