@@ -182,7 +182,7 @@
 				.getRenderer().getChildren()) {
 			if (e instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Field)
 			{
-				if (e.getName().equals("collapsedDomainConnections"))
+				if (e.getName().equals("collapsedNodes"))
 				{
 					collapsedNodesField = (de.uni_mannheim.informatik.swt.models.plm.PLM.Field)e;
 					break;
