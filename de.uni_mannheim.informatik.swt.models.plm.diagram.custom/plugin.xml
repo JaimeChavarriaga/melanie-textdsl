@@ -33,6 +33,26 @@
                label="%action.label.0">
          </action>
       </objectContribution>
+       <objectContribution
+            adaptable="false"
+            id="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.togglemultiplegeneralizationeditpart"
+            objectClass="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.MultipleGeneralizationEditPart">
+         <action
+               class="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.ToggleNodeAction"
+               id="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.toggledomainconnectionationaction"
+               label="%action.label.0">
+         </action>
+      </objectContribution>
+       <objectContribution
+            adaptable="false"
+            id="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.togglemultiplespecializationeditpart"
+            objectClass="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.MultipleSpecializationEditPart">
+         <action
+               class="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.ToggleNodeAction"
+               id="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.toggledomainconnectionationaction"
+               label="%action.label.0">
+         </action>
+      </objectContribution>
    </extension>
 
 </plugin>
