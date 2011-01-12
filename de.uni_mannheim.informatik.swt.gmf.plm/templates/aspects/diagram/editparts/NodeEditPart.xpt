@@ -169,7 +169,10 @@
 			if (e instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Field)
 			{
 				if (e.getName().equals("collapsedDomainConnections"))
+				{
 					collapsedDomainConnectionsField = (de.uni_mannheim.informatik.swt.models.plm.PLM.Field)e;
+					break;
+				}
 			}
 		}
 

@@ -375,28 +375,9 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/children"/>
       </modelFacet>
       <labels
-          xsi:type="gmfgen:GenExternalNodeLabel"
           visualID="5050"
           editPartClassName="DomainConnectionNameEditPart"
-          itemSemanticEditPolicyClassName="DomainConnectionNameItemSemanticEditPolicy"
-          notationViewFactoryClassName="DomainConnectionNameViewFactory">
-        <diagramRunTimeClass
-            href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
-        <viewmap
-            xsi:type="gmfgen:FigureViewmap"
-            figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
-        <modelFacet
-            xsi:type="gmfgen:FeatureLabelModelFacet"
-            parser="//@labelParsers/@implementations.0">
-          <metaFeatures
-              href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Element/name"/>
-        </modelFacet>
-      </labels>
-      <labels
-          visualID="5051"
-          editPartClassName="DomainConnectionName2EditPart"
-          itemSemanticEditPolicyClassName="DomainConnectionName2ItemSemanticEditPolicy"
-          notationViewFactoryClassName="DomainConnectionNameViewFactory">
+          itemSemanticEditPolicyClassName="DomainConnectionNameItemSemanticEditPolicy">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap
@@ -411,6 +392,23 @@
             xsi:type="gmfgen:FeatureLabelModelFacet"
             parser="//@labelParsers/@implementations.0"
             viewPattern="{0}">
+          <metaFeatures
+              href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Element/name"/>
+        </modelFacet>
+      </labels>
+      <labels
+          xsi:type="gmfgen:GenExternalNodeLabel"
+          visualID="5051"
+          editPartClassName="DomainConnectionName2EditPart"
+          itemSemanticEditPolicyClassName="DomainConnectionName2ItemSemanticEditPolicy">
+        <diagramRunTimeClass
+            href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap
+            xsi:type="gmfgen:FigureViewmap"
+            figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
+        <modelFacet
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0">
           <metaFeatures
               href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Element/name"/>
         </modelFacet>
