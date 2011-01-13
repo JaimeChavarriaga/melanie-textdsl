@@ -195,38 +195,14 @@
               name="AVSRectangle">
             <layout
                 xsi:type="gmfgraph:GridLayout"
-                numColumns="3"
                 equalWidth="false"/>
-            <children
-                xsi:type="gmfgraph:Label"
-                name="firstCurlyBracket"
-                text="{">
-              <layoutData
-                  xsi:type="gmfgraph:GridLayoutData"
-                  grabExcessHorizontalSpace="true"
-                  horizontalAlignment="END"/>
-              <foregroundColor
-                  xsi:type="gmfgraph:ConstantColor"
-                  value="black"/>
-            </children>
             <children
                 xsi:type="gmfgraph:Label"
                 name="DomainEntityAVSFigure"
                 text="">
               <layoutData
-                  xsi:type="gmfgraph:GridLayoutData"/>
-            </children>
-            <children
-                xsi:type="gmfgraph:Label"
-                name="secondCurlyBracket"
-                text="}">
-              <layoutData
                   xsi:type="gmfgraph:GridLayoutData"
-                  grabExcessHorizontalSpace="true"
-                  horizontalAlignment="BEGINNING"/>
-              <foregroundColor
-                  xsi:type="gmfgraph:ConstantColor"
-                  value="black"/>
+                  grabExcessHorizontalSpace="true"/>
             </children>
           </children>
         </children>
@@ -234,7 +210,7 @@
       <accessors
           figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.0/@children.0"/>
       <accessors
-          figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.1/@children.1"/>
+          figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.1/@children.0"/>
       <accessors
           figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.0/@children.1"/>
       <accessors
