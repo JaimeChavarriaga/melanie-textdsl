@@ -78,7 +78,7 @@ public class AddVisualizationAction implements IObjectActionDelegate {
 			type = PLMElementTypes.DomainEntity_2003;
 		//Create View in Model
 		else
-			type = PLMElementTypes.DomainEntity_3018;
+			type = PLMElementTypes.DomainEntity_3030;
 		
 		// Create the new topic for the other end.
 		CreateViewRequest visualizationDomainEntityRequest = CreateViewRequestFactory.getCreateShapeRequest(type, selectedElement.getDiagramPreferencesHint());
