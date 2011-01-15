@@ -26,10 +26,10 @@
       <children
           compartment="//@nodes.0/@ownedChild/@compartments.0">
         <containmentFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Ontology/models"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Ontology/children"/>
         <ownedChild>
           <domainMetaElement
-              href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject"/>
+              href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model"/>
           <labelMappings
               xsi:type="gmfmap:FeatureLabelMapping">
             <diagramLabel
@@ -46,12 +46,12 @@
               compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@compartments.0"
               referencedChild="//@nodes.1/@ownedChild">
             <containmentFeature
-                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject/children"/>
+                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/children"/>
           </children>
           <children
               compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@compartments.0">
             <containmentFeature
-                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject/children"/>
+                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/children"/>
             <ownedChild>
               <domainMetaElement
                   href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//DomainConnection"/>
@@ -131,7 +131,7 @@
           <children
               compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@compartments.0">
             <containmentFeature
-                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject/children"/>
+                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/children"/>
             <ownedChild>
               <domainMetaElement
                   href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Complement"/>
@@ -150,7 +150,7 @@
           <children
               compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@compartments.0">
             <containmentFeature
-                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject/children"/>
+                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/children"/>
             <ownedChild>
               <domainMetaElement
                   href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Equality"/>
@@ -184,7 +184,7 @@
           <children
               compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@compartments.0">
             <containmentFeature
-                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject/children"/>
+                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/children"/>
             <ownedChild>
               <domainMetaElement
                   href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Inversion"/>
@@ -203,7 +203,7 @@
           <children
               compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@compartments.0">
             <containmentFeature
-                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject/children"/>
+                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/children"/>
             <ownedChild>
               <domainMetaElement
                   href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//MultipleGeneralization"/>
@@ -231,7 +231,7 @@
           <children
               compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@compartments.0">
             <containmentFeature
-                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject/children"/>
+                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/children"/>
             <ownedChild>
               <domainMetaElement
                   href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//MultipleSpecialization"/>
@@ -266,7 +266,7 @@
           <children
               compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@compartments.0">
             <containmentFeature
-                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject/children"/>
+                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/children"/>
             <ownedChild>
               <domainMetaElement
                   href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//BinaryGeneralization"/>
@@ -459,7 +459,7 @@
     <domainMetaElement
         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Instantiation"/>
     <containmentFeature
-        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject/children"/>
+        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/children"/>
     <tool
         xsi:type="gmftool:CreationTool"
         href="plm.gmftool#//@palette/@tools.2/@tools.0"/>

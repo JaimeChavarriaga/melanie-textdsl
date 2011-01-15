@@ -267,7 +267,7 @@
 			if (rect != null
 					&& (rect.width != 0 && rect.height != 0 && rect.x != 0 && rect.y != 0)) {
 				cachedSize = rect.getCopy().getSize();
-				rect.setSize(10, 10);
+				rect.setSize(8, 8);
 				org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand sbc = new org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand(
 						this.getEditingDomain(), "change size",
 						new org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter((org.eclipse.gmf.runtime.notation.View) this.getModel()), rect);
@@ -276,7 +276,7 @@
 			}
 			//A client rectangle does not exist -> called from activate
 			else {
-				rf.setSize(10, 10);
+				rf.setSize(8, 8);
 			}
 		}
 	}
