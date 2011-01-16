@@ -1,8 +1,0 @@
-modeltype genModel uses "http://www.eclipse.org/gmf/2009/GenModel";
-
-library Guard;
-
-helper requiresSpecificGraphicalNodeEditPolicy(diagram : genModel::GenDiagram) : Boolean {
-	return 
-		'de.uni_mannheim.informatik.swt.models.plm.diagram' = diagram.editorGen.plugin.iD
-}
