@@ -1153,7 +1153,8 @@
           className="InstantiationFigure"
           classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class InstantiationFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx {&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public InstantiationFigure() {&#xA;&#x9;&#x9;this.setLineStyle(org.eclipse.draw2d.Graphics.LINE_DASH);&#xA;&#xA;&#x9;&#x9;setTargetDecoration(createTargetDecoration());&#xA;&#x9;}&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.draw2d.RotatableDecoration createTargetDecoration() {&#xA;&#x9;&#x9;org.eclipse.draw2d.PolylineDecoration df = new org.eclipse.draw2d.PolylineDecoration();&#xA;&#x9;&#x9;return df;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
       <modelFacet
-          xsi:type="gmfgen:TypeLinkModelFacet">
+          xsi:type="gmfgen:TypeLinkModelFacet"
+          modelElementSelector="//@expressionProviders/@providers.0/@expressions.10">
         <metaClass
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Instantiation"/>
         <containmentMetaFeature
@@ -1166,7 +1167,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Instantiation/type"/>
       </modelFacet>
       <creationConstraints
-          targetEnd="//@expressionProviders/@providers.0/@expressions.10"/>
+          targetEnd="//@expressionProviders/@providers.0/@expressions.11"/>
     </links>
     <links
         visualID="4013"
@@ -1208,7 +1209,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Equality/equal"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.11"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.12"/>
     </links>
     <links
         visualID="4015"
@@ -1230,7 +1231,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Inversion/inverse"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.12"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.13"/>
     </links>
     <links
         visualID="4016"
@@ -1252,7 +1253,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Complement/complement"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.13"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.14"/>
     </links>
     <links
         visualID="4017"
@@ -1316,7 +1317,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleGeneralization/supertype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.14"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.15"/>
     </links>
     <links
         visualID="4009"
@@ -1338,7 +1339,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleGeneralization/subtype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.15"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.16"/>
     </links>
     <links
         visualID="4011"
@@ -1361,7 +1362,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleSpecialization/supertype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.16"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.17"/>
     </links>
     <links
         visualID="4012"
@@ -1383,7 +1384,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleSpecialization/subtype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.17"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.18"/>
     </links>
     <links
         visualID="4019"
@@ -1406,7 +1407,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/BinaryGeneralization/supertype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.18"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.19"/>
     </links>
     <links
         visualID="4020"
@@ -1428,7 +1429,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/BinaryGeneralization/subtype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.19"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.20"/>
     </links>
     <compartments
         visualID="7003"
@@ -1868,6 +1869,9 @@
           body="'equals'"/>
       <expressions
           body="let disjoint:String = &#xD;&#xA;&#x9;if (self.disjoint) then &#xD;&#xA;&#x9;&#x9;'disjoint' &#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'overlaping ' &#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let complete:String = &#xD;&#xA;&#x9;if (self.complete) then &#xD;&#xA;&#x9;&#x9;'complete' &#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'incomplete' &#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (disjoint &lt;> ' ') then&#xD;&#xA;&#x9;'{'.concat(disjoint).concat('; ').concat(complete ).concat('}')&#xD;&#xA;else&#xD;&#xA;&#x9;' '&#xD;&#xA;endif"/>
+      <expressions
+          xsi:type="gmfgen:GenConstraint"
+          body="self.type.level &lt; self.instance.level"/>
       <expressions
           xsi:type="gmfgen:GenConstraint"
           body="self.potency &lt;> 0"/>

@@ -458,6 +458,8 @@
   <links>
     <domainMetaElement
         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Instantiation"/>
+    <domainSpecialization
+        body="self.type.level &lt; self.instance.level"/>
     <containmentFeature
         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/children"/>
     <tool
