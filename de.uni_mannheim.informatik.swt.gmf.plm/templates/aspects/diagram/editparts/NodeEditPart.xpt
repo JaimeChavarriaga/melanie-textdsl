@@ -1,5 +1,9 @@
 «IMPORT 'http://www.eclipse.org/gmf/2009/GenModel'»
 
+//**************************************************************
+//ADDITIONS
+//handle notifictaion is overriden later in this transformation
+//**************************************************************
 «AROUND additions FOR gmfgen::GenNode»
 //Gives the option to diplay a DomainConnection/Generalization/Specialization as black rectangle
 «IF self.editPartClassName = 'DomainConnectionEditPart' 
@@ -16,16 +20,28 @@
 	«EXPAND updateConnections-»
 	«EXPAND refreshSourceConnections-»
 «ENDIF»	
+//Sets the potency of instatiation ends
+«IF self.editPartClassName = 'InstantiationEditPart'»
+	«EXPAND updateSourcePotency-»
+«ENDIF»	
 «ENDAROUND»
 
+//**************************************************************
+//HANDLE NOTIFICATION
+//**************************************************************
 «AROUND handleNotificationEvent FOR gmfgen::GenNode-»
 «IF self.editPartClassName = 'DomainConnectionEditPart'»
 	«EXPAND handleNotificationEventForDomainConnection-»
 «ELSEIF self.editPartClassName = 'FieldEditPart'»
 	«EXPAND handleNotificationEventForField»
+«ELSEIF self.editPartClassName = 'InstantiationEditPart'»
+	«EXPAND handleNotificationEventForInstantiation»
 «ENDIF»
 «ENDAROUND»
 
+//**************************************************************
+//DEFINITIONS
+//**************************************************************
 «DEFINE updateConnections FOR gmfgen::GenNode»
 	/**
 	 * @generated
@@ -133,6 +149,7 @@
 	 *
 	 * @generated
 	 */
+	 @Override
 	protected void handleNotificationEvent(org.eclipse.emf.common.notify.Notification notification) {
 		super.handleNotificationEvent(notification);
 
@@ -358,5 +375,50 @@
 				}
 			}
 		}
+	}
+«ENDDEFINE»
+
+«DEFINE handleNotificationEventForDomainConnection FOR gmfgen::GenNode»
+	/**
+	 * updates the potency of the source element
+	 *
+	 * @generated
+	 */
+	 @Override
+	 protected void handleNotificationEvent(Notification notification) {
+		super.handleNotificationEvent(notification);
+
+		//Source is set before target, so now we can set the potency of the source with the one of the target - 1
+		if (((org.eclipse.emf.ecore.EStructuralFeature) notification.getFeature()).getName().equals(
+				"target"))
+			updateSourcePotency();
+		else if (((org.eclipse.emf.ecore.EStructuralFeature) notification.getFeature()).getName()
+				.equals("source")
+				&& ((de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation) resolveSemanticElement()).getType() != null)
+			updateSourcePotency();
+	}
+«ENDDEFINE»
+
+«DEFINE updateSourcePotency FOR gmfgen::GenNode»
+	/**
+	 * updates the potency of the source element
+	 *
+	 * @generated
+	 */
+	public void updateSourcePotency() {
+		de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation i = (de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation) resolveSemanticElement();
+
+		int newPotency = 0;
+
+		if (i.getType().getPotency() == -1)
+			newPotency = -1;
+		else if (i.getType().getPotency() > 0)
+			newPotency = i.getType().getPotency() - 1;
+
+		org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest request = new org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest(i.getInstance(),
+				de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.eINSTANCE.getClabject_Potency(), newPotency);
+		org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand command = new org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand(request);
+		this.getViewer().getEditDomain().getCommandStack()
+				.execute(new ICommandProxy(command));
 	}
 «ENDDEFINE»
