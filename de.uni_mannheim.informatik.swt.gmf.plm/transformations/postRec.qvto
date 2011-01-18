@@ -98,9 +98,6 @@ main() {
 	var inversionChildReference 
 		:= xmap createChildReference("InversionEditPart", "ModelEditPart", "Set Relationships", "icons/setRelationship16.gif");
 	
-	
-	
-	
 	this.genNavigator.childReferences += 
 		OrderedSet{LMLModelChildReference, rootDomainEnitiyChildReference, rootFieldChildReference,
 					rootMethodChildReference, ontologyChildReference, modelChildReference,
@@ -108,6 +105,15 @@ main() {
 					fieldChildReference, methodChildReference, binaryGeneralizationChildReference,
 					multipleGeneralizationChildReference, multipleSpecializationChildReference, 
 					complementChildReference, equalChildReference, inversionChildReference};
+	
+	--fix BUG 331875
+	var i = "a";
+	gmfgenModel.objectsOfType(ExpressionLabelParser)->forEach(parser)
+		{
+			parser.className := parser.className.concat(i);
+			i := i.concat("a");
+		};
+	 
 }
 
 mapping createChildReference(childEditPartName:String, parentEditPartName:String, groupName:String, icon:String): GenNavigatorChildReference

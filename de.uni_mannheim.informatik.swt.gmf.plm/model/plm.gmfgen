@@ -1903,6 +1903,7 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.2/@labels.1/@modelFacet"
+        className="FieldLabelExpressionLabelParsera"
         viewExpression="//@expressionProviders/@providers.0/@expressions.0">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Field"/>
@@ -1910,6 +1911,7 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.2/@labels.2/@modelFacet"
+        className="FieldLabelExpressionLabelParseraa"
         viewExpression="//@expressionProviders/@providers.0/@expressions.1">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Field"/>
@@ -1917,6 +1919,7 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.3/@labels.1/@modelFacet"
+        className="MethodLabelExpressionLabelParseraaa"
         viewExpression="//@expressionProviders/@providers.0/@expressions.2">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Method"/>
@@ -1924,6 +1927,7 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.1/@labels.1/@modelFacet"
+        className="DomainEntityLabelExpressionLabelParseraaaa"
         viewExpression="//@expressionProviders/@providers.0/@expressions.3">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainEntity"/>
@@ -1931,6 +1935,7 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.1/@labels.3/@modelFacet"
+        className="DomainEntityLabelExpressionLabelParseraaaaa"
         viewExpression="//@expressionProviders/@providers.0/@expressions.4">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainEntity"/>
@@ -1938,6 +1943,7 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.5/@labels.1/@modelFacet"
+        className="FieldLabelExpressionLabelParseraaaaaa"
         viewExpression="//@expressionProviders/@providers.0/@expressions.5">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Field"/>
@@ -1945,6 +1951,7 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.5/@labels.2/@modelFacet"
+        className="FieldLabelExpressionLabelParseraaaaaaa"
         viewExpression="//@expressionProviders/@providers.0/@expressions.6">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Field"/>
@@ -1952,6 +1959,7 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.4/@labels.2/@modelFacet"
+        className="DomainConnectionLabelExpressionLabelParseraaaaaaaa"
         viewExpression="//@expressionProviders/@providers.0/@expressions.7">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainConnection"/>
@@ -1962,6 +1970,7 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.10/@labels.2/@modelFacet"
+        className="MultipleSpecializationLabelExpressionLabelParseraaaaaaaaa"
         viewExpression="//@expressionProviders/@providers.0/@expressions.9">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleSpecialization"/>
@@ -1969,6 +1978,7 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@topLevelNodes.1/@labels.1/@modelFacet"
+        className="DomainEntityLabelExpressionLabelParseraaaaaaaaaa"
         viewExpression="//@expressionProviders/@providers.0/@expressions.3">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainEntity"/>
@@ -1976,6 +1986,7 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@topLevelNodes.1/@labels.3/@modelFacet"
+        className="DomainEntityLabelExpressionLabelParseraaaaaaaaaaa"
         viewExpression="//@expressionProviders/@providers.0/@expressions.4">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainEntity"/>
