@@ -471,6 +471,10 @@
     <linkMetaFeature
         xsi:type="ecore:EReference"
         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Instantiation/type"/>
+    <creationConstraints>
+      <targetEnd
+          body="self.potency &lt;> 0"/>
+    </creationConstraints>
   </links>
   <links>
     <tool
