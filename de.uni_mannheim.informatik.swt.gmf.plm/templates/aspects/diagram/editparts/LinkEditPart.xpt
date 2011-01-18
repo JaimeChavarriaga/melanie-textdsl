@@ -8,16 +8,8 @@
 //Sets the potency of instatiation ends
 «IF self.editPartClassName = 'InstantiationEditPart'»
 	«EXPAND updateSourcePotency-»
-«ENDIF»	
-«ENDAROUND»
-
-//**************************************************************
-//HANDLE NOTIFICATION
-//**************************************************************
-«AROUND handleNotificationEvent FOR gmfgen::GenLink-»
-«IF self.editPartClassName = 'InstantiationEditPart'»
 	«EXPAND handleNotificationEventForInstantiation»
-«ENDIF»
+«ENDIF»	
 «ENDAROUND»
 
 «DEFINE handleNotificationEventForInstantiation FOR gmfgen::GenLink»
@@ -27,7 +19,7 @@
 	 * @generated
 	 */
 	 @Override
-	 protected void handleNotificationEvent(Notification notification) {
+	 protected void handleNotificationEvent(org.eclipse.emf.common.notify.Notification notification) {
 		super.handleNotificationEvent(notification);
 
 		//Source is set before target, so now we can set the potency of the source with the one of the target - 1
