@@ -42,13 +42,21 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 
+import de.uni_mannheim.informatik.swt.models.plm.PLM.BinaryGeneralization;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.DomainConnection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.DomainEntity;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Field;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.MultipleGeneralization;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.MultipleSpecialization;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.BinaryGeneralizationEditPart;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionEditPart;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntityDomainEntityFieldsCompartment2EditPart;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntityDomainEntityFieldsCompartmentEditPart;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.FieldEditPart;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.MultipleGeneralizationEditPart;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.MultipleSpecializationEditPart;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.OntologyEditPart;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes;
 
@@ -71,7 +79,7 @@ public class AddVisualizationAction implements IObjectActionDelegate {
 	{
 		CompoundCommand cc = new CompoundCommand("Create Visualization DomainEntity and Connection");
 
-		IElementType type;;
+		IElementType type;
 		
 		//Create View in Root Container
 		if (selectedElement instanceof OntologyEditPart)
@@ -90,8 +98,8 @@ public class AddVisualizationAction implements IObjectActionDelegate {
 		int offset = (edgeCount * 50) > 100 ? (edgeCount * 50) - 100: 100;
 		visualizationDomainEntityRequest.setLocation(p.translate(100, offset));
 
-		EditPart mapEditPart = (EditPart) selectedElement.getParent();
-		Command createVisualizationDomainEntityCmd = mapEditPart.getCommand(visualizationDomainEntityRequest);
+		EditPart modelEditPart = (EditPart) selectedElement.getParent();
+		Command createVisualizationDomainEntityCmd = modelEditPart.getCommand(visualizationDomainEntityRequest);
 		IAdaptable visualizationDomainEntityViewAdapter = (IAdaptable) ((List) visualizationDomainEntityRequest.getNewObject()).get(0);
 		
 		cc.add(createVisualizationDomainEntityCmd);
@@ -182,9 +190,12 @@ public class AddVisualizationAction implements IObjectActionDelegate {
 			}
 
 			//**************************************************************
-			//Add Special fields for Ontology (CollapsedDomainConnections)
+			//Add Special fields for Connections (DomainConnection, Generalization)
 			//**************************************************************
-			if (selectedElement instanceof OntologyEditPart)
+			if (selectedElement instanceof DomainConnectionEditPart 
+					|| selectedElement instanceof BinaryGeneralizationEditPart 
+					|| selectedElement instanceof MultipleGeneralizationEditPart
+					|| selectedElement instanceof MultipleSpecializationEditPart)
 			{
 				//**************************************************************
 				//Create Field
@@ -207,9 +218,9 @@ public class AddVisualizationAction implements IObjectActionDelegate {
 				Field field = (Field) ViewUtil.resolveSemanticElement((View)fieldPart.getModel());
 				
 				//Configure Request
-				SetRequest setFieldNameRequest = new SetRequest(field, PLMPackage.eINSTANCE.getElement_Name(), "collapsedNodes");
+				SetRequest setFieldNameRequest = new SetRequest(field, PLMPackage.eINSTANCE.getElement_Name(), "collapsed");
 				SetRequest setFieldDurabilityRequest =  new SetRequest(field, PLMPackage.eINSTANCE.getClabject_Potency(), 0);
-				SetRequest setFieldDefaultValueRequest =  new SetRequest(field, PLMPackage.eINSTANCE.getField_Value(), "Sequence{}");
+				SetRequest setFieldDefaultValueRequest =  new SetRequest(field, PLMPackage.eINSTANCE.getField_Value(), "false");
 				
 				//Configure Values
 				SetValueCommand setFieldNameCommand = new SetValueCommand(setFieldNameRequest);

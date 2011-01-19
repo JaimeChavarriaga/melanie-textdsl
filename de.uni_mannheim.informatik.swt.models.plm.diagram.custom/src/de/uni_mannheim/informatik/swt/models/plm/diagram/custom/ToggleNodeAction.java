@@ -62,92 +62,39 @@ public class ToggleNodeAction implements IObjectActionDelegate {
 		
 		if (selectedElement == null)
 			return;
-				
-		//********************************************************
-		//Get currently open editor for retrieving of EditParts
-		//********************************************************
-		IEditorPart editorPart = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
-		//If no PLM Diagram is opened we want to do nothing
-		if (! (editorPart instanceof PLMDiagramEditor))
-			return;
-		PLMDiagramEditor plmEditor = (PLMDiagramEditor)editorPart;
 		
-		
-		//********************************************************
-		//Get the base Ontology as the rendering information for
-		//DomainConnections is connected to it
-		//********************************************************
-		EObject obj = (EObject)selectedElement.resolveSemanticElement();
-		LMLModel root = (LMLModel)EcoreUtil.getRootContainer(obj);
-		Ontology ont = (Ontology)EcoreUtil.getObjectByType(root.getElements(), PLMPackage.eINSTANCE.getEClassifier("Ontology"));
+		Element self = (Element)selectedElement.resolveSemanticElement();
 		
 		//No rendering information found => add new rendering information
-		if (ont.getRenderer() == null)
+		if (self.getRenderer() == null)
 		{
-			EditPart ontologyPart = 
-				(EditPart)plmEditor.getDiagramGraphicalViewer().findEditPartsForElement(EMFCoreUtil.getProxyID(ont), NodeEditPart.class).get(0);
-			AddVisualizationAction.execute((ShapeNodeEditPart)ontologyPart);
+			AddVisualizationAction.execute((ShapeNodeEditPart)selectedElement);
 		}
 		
 		//********************************************************
 		//Do toggling based on information in the diagram
 		//********************************************************
-		Field collapsedDomainConnectionsField = null;
+		Field collapsedField = null;
 		
-		for(Element e : ont.getRenderer().getChildren())
+		for(Element e : self.getRenderer().getChildren())
 		{
 			//We are only interested in fields
 			if (e instanceof Field)
 			{
-				if (e.getName().equals("collapsedDomainConnections"));
-					collapsedDomainConnectionsField = (Field)e;
+				if (e.getName().equals("collapsed"))
+				{
+					collapsedField = (Field)e;
+					break;
+				}
 			}
 		}
 		
 		//get a array with all collapsed ids
-		String value = collapsedDomainConnectionsField.getValue();
-		String[] collapsedConnections = value.replace("Sequence{", "").replace("}", "").trim().split(";");
-		//save the id if the connection was already toggled
-		String toggledID = "";
-		
-		for (String s: collapsedConnections)
-		{
-			if (s.trim().replace(";", "").equals(EMFCoreUtil.getProxyID(obj)))
-			{
-				toggledID = s;
-				break;
-			}
-		}
-		
-		//********************************************************
-		//Save new information to the diagram
-		//********************************************************
-		String newCollapsedIDs = "";
-		
-		//we have no previously collapsed item => add it to the list
-		if (toggledID.equals(""))
-		{
-			for (String s : collapsedConnections)
-			{
-				if(!s.equals(""))
-				newCollapsedIDs += s + ";";
-			}
-			
-			newCollapsedIDs += EMFCoreUtil.getProxyID(obj);
-		}
-		//we have a previously collapsed item => remove it from the list
-		else
-		{
-			for (String s : collapsedConnections)
-			{
-				if (!s.equals(EMFCoreUtil.getProxyID(obj)))
-					newCollapsedIDs += s + ";";
-			}
-		}
-		
+		boolean collapsed = Boolean.parseBoolean(collapsedField.getValue());
+
 		//write the new string to the command
 		SetRequest setNewValueRequest = 
-			new SetRequest(collapsedDomainConnectionsField, PLMPackage.eINSTANCE.getField_Value(), "Sequence{" + newCollapsedIDs + "}");
+			new SetRequest(collapsedField, PLMPackage.eINSTANCE.getField_Value(), Boolean.toString(!collapsed));
 		SetValueCommand setNewValueCommand = new SetValueCommand(setNewValueRequest);
 		selectedElement.getViewer().getEditDomain().getCommandStack().execute(new ICommandProxy(setNewValueCommand));
 		
@@ -164,6 +111,20 @@ public class ToggleNodeAction implements IObjectActionDelegate {
 			((MultipleGeneralizationEditPart)selectedElement).toggle();
 	}
 
+	//*****************************************************
+	// Find edit part for semantic element
+	//*****************************************************
+	//********************************************************
+	//Get currently open editor for retrieving of EditParts
+	//********************************************************
+	//IEditorPart editorPart = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+	//If no PLM Diagram is opened we want to do nothing
+	//if (! (editorPart instanceof PLMDiagramEditor))
+	//	return;
+	//PLMDiagramEditor plmEditor = (PLMDiagramEditor)editorPart;
+	//EditPart ontologyPart = 
+	//	(EditPart)plmEditor.getDiagramGraphicalViewer().findEditPartsForElement(EMFCoreUtil.getProxyID(ont), NodeEditPart.class).get(0);
+	
 	@Override
 	public void selectionChanged(IAction action, ISelection selection) {
 		selectedElement = null;
