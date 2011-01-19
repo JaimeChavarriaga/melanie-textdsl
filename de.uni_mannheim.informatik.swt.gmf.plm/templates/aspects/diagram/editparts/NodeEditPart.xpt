@@ -170,58 +170,41 @@
 		boolean collapse = false;
 
 		//********************************************************
-		//Get the base Ontology as the rendering information for
-		//DomainConnections is connected to it
+		//Find the renderer attached to this element 
 		//********************************************************
-		org.eclipse.emf.ecore.EObject obj = (org.eclipse.emf.ecore.EObject) this.resolveSemanticElement();
-		de.uni_mannheim.informatik.swt.models.plm.PLM.LMLModel root = (de.uni_mannheim.informatik.swt.models.plm.PLM.LMLModel) org.eclipse.emf.ecore.util.EcoreUtil.getRootContainer(obj);
-		de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology ont = (de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology) org.eclipse.emf.ecore.util.EcoreUtil.getObjectByType(root.getElements(),
-				de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.eINSTANCE.getEClassifier("Ontology"));
+		de.uni_mannheim.informatik.swt.models.plm.PLM.Element self = (de.uni_mannheim.informatik.swt.models.plm.PLM.Element) this.resolveSemanticElement();
 
-		//No rendering information found => all DomainConnections remain expanded
-		if (ont.getRenderer() == null)
-		{
+		//No rendering information found => all DomainConnection remains expanded
+		if (self.getRenderer() == null) {
 			//Hide external name label
-			org.eclipse.draw2d.IFigure boderItemContainer = (org.eclipse.draw2d.IFigure)figure.getChildren().get(1);
-			((org.eclipse.draw2d.IFigure)boderItemContainer.getChildren().get(0)).setVisible(false);
-			
+			org.eclipse.draw2d.IFigure boderItemContainer = (org.eclipse.draw2d.IFigure) figure.getChildren().get(1);
+			((org.eclipse.draw2d.IFigure) boderItemContainer.getChildren().get(0))
+					.setVisible(false);
+
 			return;
 		}
 
 		//********************************************************
 		//Do toggling based on information in the diagram
 		//********************************************************
-		de.uni_mannheim.informatik.swt.models.plm.PLM.Field collapsedNodesField = null;
+		de.uni_mannheim.informatik.swt.models.plm.PLM.Field collapsedField = null;
 
-		for (de.uni_mannheim.informatik.swt.models.plm.PLM.Element e : ont
+		for (de.uni_mannheim.informatik.swt.models.plm.PLM.Element e : self
 				.getRenderer().getChildren()) {
-			if (e instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Field)
-			{
-				if (e.getName().equals("collapsedNodes"))
-				{
-					collapsedNodesField = (de.uni_mannheim.informatik.swt.models.plm.PLM.Field)e;
+			if (e instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Field) {
+				if (e.getName().equals("collapsed")) {
+					collapse = java.lang.Boolean.parseBoolean(((de.uni_mannheim.informatik.swt.models.plm.PLM.Field) e)
+									.getValue());
 					break;
 				}
-			}
-		}
-
-		//get a array with all collapsed ids
-		String value = collapsedNodesField.getValue();
-		String[] collapsedNodes = value.replace("Sequence{", "")
-				.replace("}", "").trim().split(";");
-
-		for (String s : collapsedNodes) {
-			if (s.trim().replace(";", "").equals(org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getProxyID(obj))) {
-				collapse = true;
-				break;
 			}
 		}
 
 		//the figure containing the actual design of the editpart
 		//the outer parent is only a container for the border items
 		//and the figure of the editpart
-		org.eclipse.draw2d.IFigure fig = ((org.eclipse.draw2d.IFigure)figure.getChildren().get(0));
-
+		org.eclipse.draw2d.IFigure fig = ((org.eclipse.draw2d.IFigure) figure.getChildren().get(0));
+		
 		//expand element
 		if (!collapse) {
 			//Element was not previously collapsed -> can happen at diagram load
