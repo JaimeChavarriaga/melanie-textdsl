@@ -50,6 +50,10 @@
 
 		for (int i = 0; i < sourceConnections.size(); i++) {
 
+			//Take care that no renderer link is used here
+			if (! (sourceConnections.get(i) instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionParticipantEditPart))
+				continue;
+
 			//****************************************************************************
 			//Set navigable
 			//****************************************************************************
