@@ -403,6 +403,9 @@
 				{
 					de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject c = (de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)notification.getOldValue();
 					
+					if (!clabjectExists(c))
+						return;
+					
 					org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest request = new org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest(
 							c,
 							de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.eINSTANCE
@@ -506,6 +509,9 @@
 				{
 					de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject c = (de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject) notification
 							.getOldValue();
+
+					if (!clabjectExists(c))
+						return;
 
 					org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest request = new org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest(
 							c,
