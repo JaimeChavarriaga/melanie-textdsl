@@ -381,16 +381,23 @@
 			//old value != null; new value == null => delete operation
 			if((notification.getOldValue() != null) && (notification.getNewValue() == null))
 			{
-				de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject c = (de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)notification.getOldValue();
-				
-				org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest request = new org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest(
-						c,
-						de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.eINSTANCE
-								.getClabject_Template(), new java.util.LinkedList<de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject>());
-				
-				org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand command = new org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand(request);
-				this.getViewer().getEditDomain().getCommandStack()
-						.execute(new org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy(command));
+				//Just delete the template from the changed clabject
+				if (((EStructuralFeature) notification.getFeature()).getName().equals("subtype"))
+				{
+					de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject c = (de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)notification.getOldValue();
+					
+					org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest request = new org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest(
+							c,
+							de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.eINSTANCE
+									.getClabject_Template(), new java.util.LinkedList<de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject>());
+					
+					org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand command = new org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand(request);
+					this.getViewer().getEditDomain().getCommandStack()
+							.execute(new org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy(command));
+							
+					return;
+				}
+				//else execute the standard code
 			}
 			
 			de.uni_mannheim.informatik.swt.models.plm.PLM.MultipleSpecialization spezialization = (de.uni_mannheim.informatik.swt.models.plm.PLM.MultipleSpecialization)resolveSemanticElement();
