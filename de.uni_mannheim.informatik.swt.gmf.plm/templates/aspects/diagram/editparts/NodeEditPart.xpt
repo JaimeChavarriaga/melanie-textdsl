@@ -14,6 +14,7 @@
 	«EXPAND toggleAttributes»
 	«EXPAND toggle-»
 	«EXPAND partActivate-»
+	«EXPAND clabjectExists-»
 «ENDIF»
 //Responsible for the multiplicity, role, navigation ends
 «IF self.editPartClassName = 'DomainConnectionEditPart'»
@@ -29,6 +30,11 @@
 «IF self.editPartClassName = 'MultipleGeneralizationEditPart'»
 	«EXPAND refreshSourceConnectionsForMultipleGeneralization-»
 	«EXPAND removeNotifyForMultipleGeneralization-»
+«ENDIF»
+//Responsible for upating the subtype clabjects	
+«IF self.editPartClassName = 'BinaryGeneralizationEditPart'»
+	«EXPAND refreshSourceConnectionsForBinaryGeneralization-»
+	«EXPAND removeNotifyForBinaryGeneralization-»
 «ENDIF»
 «ENDAROUND»
 
@@ -46,6 +52,9 @@
 //Responsible for upating the subtype clabjects
 «ELSEIF self.editPartClassName = 'MultipleGeneralizationEditPart'»
 	«EXPAND handleNotificationEventForMultipleGeneralization-»
+	//Responsible for upating the subtype clabjects
+«ELSEIF self.editPartClassName = 'BinaryGeneralizationEditPart'»
+	«EXPAND handleNotificationEventForBinaryGeneralization-»
 «ENDIF»
 «ENDAROUND»
 
@@ -571,5 +580,135 @@
 					.execute(new org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy(command));
 		}
 		super.removeNotify();
+	}
+«ENDDEFINE»
+
+«DEFINE handleNotificationEventForBinaryGeneralization FOR gmfgen::GenNode»
+	/**
+	 * Backup subtype clabjects for removeNotify
+	 *
+	 * @generated
+	 */
+	@Override
+	protected void handleNotificationEvent(org.eclipse.emf.common.notify.Notification notification) {
+		super.handleNotificationEvent(notification);
+		
+		if (((org.eclipse.emf.ecore.EStructuralFeature) notification.getFeature()).getName().equals("subtype")
+			|| ((org.eclipse.emf.ecore.EStructuralFeature) notification.getFeature()).getName().equals("supertype")) {
+		
+			//old value != null; new value == null => delete operation
+		if ((notification.getOldValue() != null) && (notification.getNewValue() == null)) 
+		{
+			//Just delete the template from the changed clabject
+			if (((org.eclipse.emf.ecore.EStructuralFeature) notification.getFeature()).getName().equals("subtype")) 
+			{
+				de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject c = (de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject) notification
+						.getOldValue();
+
+				if (!clabjectExists(c))
+					return;
+				
+				org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest request = new org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest(
+						c,
+						de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.eINSTANCE
+								.getClabject_Template(),
+						new java.util.LinkedList<de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject>());
+
+				org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand command = new org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand(request);
+				
+				//Crashes when DomainEntity itself is deleted
+				this.getViewer().getEditDomain().getCommandStack()
+						.execute(new org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy(command));
+				
+				return;
+			}
+			//else execute the standard code
+		}
+
+		de.uni_mannheim.informatik.swt.models.plm.PLM.BinaryGeneralization binaryGeneralization = (de.uni_mannheim.informatik.swt.models.plm.PLM.BinaryGeneralization) resolveSemanticElement();
+
+		if (binaryGeneralization.getSubtype() == null)
+			return;
+		
+		java.util.LinkedList<de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject> supertypes = new java.util.LinkedList<de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject>();
+		if (binaryGeneralization.getSupertype() != null)
+			supertypes.add(binaryGeneralization.getSupertype());
+		
+		org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest request = new org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest(
+				binaryGeneralization.getSubtype(),
+				de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.eINSTANCE.getClabject_Template(), supertypes);
+
+		org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand command = new org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand(request);
+		this.getViewer().getEditDomain().getCommandStack()
+				.execute(new org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy(command));
+		}
+	}
+«ENDDEFINE»
+
+«DEFINE refreshSourceConnectionsForBinaryGeneralization FOR gmfgen::GenNode»
+	de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject subTypeClabject;
+
+	/**
+	 * Backup subtype clabjects for removeNotify
+	 *
+	 * @generated
+	 */
+	@Override
+	protected void refreshSourceConnections() {
+
+		de.uni_mannheim.informatik.swt.models.plm.PLM.BinaryGeneralization binaryGeneralization = (de.uni_mannheim.informatik.swt.models.plm.PLM.BinaryGeneralization) resolveSemanticElement();
+
+		subTypeClabject = binaryGeneralization.getSubtype();
+
+		super.refreshSourceConnections();
+	}
+«ENDDEFINE»
+
+«DEFINE removeNotifyForBinaryGeneralization FOR gmfgen::GenNode»
+	/**
+	 * remove the templates from all clabjects
+	 * 
+	 * @generated
+	 */
+	@Override
+	public void removeNotify() {
+
+		if (subTypeClabject != null)
+		{		
+			org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest request = new org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest(
+					subTypeClabject,
+					de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.eINSTANCE
+							.getClabject_Template(),
+					new java.util.LinkedList<de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject>());
+		
+			org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand command = new org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand(request);
+			this.getViewer().getEditDomain().getCommandStack()
+					.execute(new org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy(command));
+		}
+		
+		super.removeNotify();
+	}
+«ENDDEFINE»
+
+«DEFINE clabjectExists FOR gmfgen::GenNode»
+	/**
+	 * 
+	 * It is needed to to look up if the Clabject is still existing in the editor,
+	 * as notification.getOldValue() will return a value != null even though no
+	 * command can be executed on it as it does not exist anymore. Happens when 
+	 * user is deleting a subtype without removing the subtype connection beforehand
+	 * 
+	 * @param c - Clabject to test
+	 * @return
+	 */
+	private boolean clabjectExists(de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject c)
+	{
+		org.eclipse.ui.IEditorPart editorPart = org.eclipse.ui.PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+		//If no PLM Diagram is opened we want to do nothing
+		if (! (editorPart instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor))
+			return false;
+		de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor plmEditor = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor)editorPart;
+
+		return plmEditor.getDiagramGraphicalViewer().findEditPartsForElement(org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getProxyID(c), org.eclipse.gef.NodeEditPart.class).size() > 0? true : false;
 	}
 «ENDDEFINE»
