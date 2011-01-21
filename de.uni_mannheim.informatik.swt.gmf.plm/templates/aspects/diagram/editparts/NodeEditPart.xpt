@@ -382,7 +382,7 @@
 			if((notification.getOldValue() != null) && (notification.getNewValue() == null))
 			{
 				//Just delete the template from the changed clabject
-				if (((EStructuralFeature) notification.getFeature()).getName().equals("subtype"))
+				if (((org.eclipse.emf.ecore.EStructuralFeature) notification.getFeature()).getName().equals("subtype"))
 				{
 					de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject c = (de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)notification.getOldValue();
 					
@@ -405,7 +405,9 @@
 			for(de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject c : spezialization.getSubtype())
 			{
 				java.util.List<de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject> superTypes = new java.util.LinkedList<de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject>();
-				superTypes.add(spezialization.getSupertype());
+				
+				if (spezialization.getSupertype() != null)
+					superTypes.add(spezialization.getSupertype());
 				
 				org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest request = new org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest(
 						c,
