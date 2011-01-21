@@ -397,7 +397,7 @@
 			
 			for(de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject c : spezialization.getSubtype())
 			{
-				List<de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject> superTypes = new java.util.LinkedList<de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject>();
+				java.util.List<de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject> superTypes = new java.util.LinkedList<de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject>();
 				superTypes.add(spezialization.getSupertype());
 				
 				org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest request = new org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest(
