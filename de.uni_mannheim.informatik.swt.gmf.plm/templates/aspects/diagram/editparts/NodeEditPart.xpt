@@ -515,6 +515,9 @@
 
 			de.uni_mannheim.informatik.swt.models.plm.PLM.MultipleGeneralization generalization = (de.uni_mannheim.informatik.swt.models.plm.PLM.MultipleGeneralization) resolveSemanticElement();
 
+			if (generalization.getSubtype() == null)
+				return;
+
 			org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest request = new org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest(
 					generalization.getSubtype(),
 					de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.eINSTANCE
@@ -555,16 +558,18 @@
 	@Override
 	public void removeNotify() {
 
-		org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest request = new org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest(
-				subTypeClabject,
-				de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.eINSTANCE
-						.getClabject_Template(),
-				new java.util.LinkedList<de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject>());
-
-		org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand command = new org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand(request);
-		this.getViewer().getEditDomain().getCommandStack()
-				.execute(new org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy(command));
-
+		if (subTypeClabject != null)
+		{
+			org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest request = new org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest(
+					subTypeClabject,
+					de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.eINSTANCE
+							.getClabject_Template(),
+					new java.util.LinkedList<de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject>());
+	
+			org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand command = new org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand(request);
+			this.getViewer().getEditDomain().getCommandStack()
+					.execute(new org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy(command));
+		}
 		super.removeNotify();
 	}
 «ENDDEFINE»
