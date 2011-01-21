@@ -43,7 +43,6 @@
 //Responsible for upating the subtype clabjects
 «ELSEIF self.editPartClassName = 'MultipleSpecializationEditPart'»
 	«EXPAND handleNotificationEventForMultipleSpecialization-»
-«ENDIF»
 //Responsible for upating the subtype clabjects
 «ELSEIF self.editPartClassName = 'MultipleGeneralizationEditPart'»
 	«EXPAND handleNotificationEventForMultipleGeneralization-»
@@ -480,7 +479,7 @@
 	}
 «ENDDEFINE»
 
-«DEFINE handleNotificationEventForMultipleGeneralization»
+«DEFINE handleNotificationEventForMultipleGeneralization FOR gmfgen::GenNode»
 	/**
 	 * @generated
 	 */
@@ -528,7 +527,7 @@
 	}
 «ENDDEFINE»
 
-«DEFINE refreshSourceConnectionsForMultipleGeneralization»
+«DEFINE refreshSourceConnectionsForMultipleGeneralization FOR gmfgen::GenNode»
 	de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject subTypeClabject;
 
 	/**
@@ -547,7 +546,7 @@
 	}
 «ENDDEFINE»
 
-«DEFINE removeNotifyForMultipleGeneralization»
+«DEFINE removeNotifyForMultipleGeneralization FOR gmfgen::GenNode»
 	/**
 	 * remove the templates from all clabjects
 	 * 
