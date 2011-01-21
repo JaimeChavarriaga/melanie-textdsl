@@ -25,6 +25,11 @@
 	«EXPAND refreshSourceConnectionsForMultipleSpecialization-»
 	«EXPAND removeNotifyForMultipleSpecialization-»
 «ENDIF»
+//Responsible for upating the subtype clabjects	
+«IF self.editPartClassName = 'MultipleGeneralizationEditPart'»
+	«EXPAND refreshSourceConnectionsForMultipleGeneralization-»
+	«EXPAND removeNotifyForMultipleGeneralization-»
+«ENDIF»
 «ENDAROUND»
 
 //**************************************************************
@@ -38,6 +43,10 @@
 //Responsible for upating the subtype clabjects
 «ELSEIF self.editPartClassName = 'MultipleSpecializationEditPart'»
 	«EXPAND handleNotificationEventForMultipleSpecialization-»
+«ENDIF»
+//Responsible for upating the subtype clabjects
+«ELSEIF self.editPartClassName = 'MultipleGeneralizationEditPart'»
+	«EXPAND handleNotificationEventForMultipleGeneralization-»
 «ENDIF»
 «ENDAROUND»
 
@@ -467,6 +476,96 @@
 					.execute(new org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy(command));
 		}
 		
+		super.removeNotify();
+	}
+«ENDDEFINE»
+
+«DEFINE handleNotificationEventForMultipleGeneralization»
+	/**
+	 * @generated
+	 */
+	@Override
+	protected void handleNotificationEvent(org.eclipse.emf.common.notify.Notification notification) {
+		super.handleNotificationEvent(notification);
+
+		if (((org.eclipse.emf.ecore.EStructuralFeature) notification.getFeature()).getName().equals("subtype")
+				|| ((org.eclipse.emf.ecore.EStructuralFeature) notification.getFeature()).getName().equals("supertype")) 
+		{
+			//old value != null; new value == null => delete operation
+			if ((notification.getOldValue() != null) && (notification.getNewValue() == null)) {
+				//Just delete the template from the changed clabject
+				if (((org.eclipse.emf.ecore.EStructuralFeature) notification.getFeature()).getName().equals("subtype")) 
+				{
+					de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject c = (de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject) notification
+							.getOldValue();
+
+					org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest request = new org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest(
+							c,
+							de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.eINSTANCE
+									.getClabject_Template(),
+							new java.util.LinkedList<de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject>());
+
+					org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand command = new org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand(request);
+					this.getViewer().getEditDomain().getCommandStack()
+							.execute(new ICommandProxy(command));
+
+					return;
+				}
+				//else execute the standard code
+			}
+
+			de.uni_mannheim.informatik.swt.models.plm.PLM.MultipleGeneralization generalization = (de.uni_mannheim.informatik.swt.models.plm.PLM.MultipleGeneralization) resolveSemanticElement();
+
+			org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest request = new org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest(
+					generalization.getSubtype(),
+					de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.eINSTANCE
+							.getClabject_Template(), ((BasicEList<Clabject>)generalization.getSupertype()).clone());
+
+			org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand command = new org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand(request);
+			this.getViewer().getEditDomain().getCommandStack()
+					.execute(new ICommandProxy(command));
+		}
+	}
+«ENDDEFINE»
+
+«DEFINE refreshSourceConnectionsForMultipleGeneralization»
+	de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject subTypeClabject;
+
+	/**
+	 * Backup subtype clabjects for removeNotify
+	 *
+	 * @generated
+	 */
+	@Override
+	protected void refreshSourceConnections() {
+
+		de.uni_mannheim.informatik.swt.models.plm.PLM.MultipleGeneralization generalization = (de.uni_mannheim.informatik.swt.models.plm.PLM.MultipleGeneralization) resolveSemanticElement();
+
+		subTypeClabject = generalization.getSubtype();
+
+		super.refreshSourceConnections();
+	}
+«ENDDEFINE»
+
+«DEFINE removeNotifyForMultipleGeneralization»
+	/**
+	 * remove the templates from all clabjects
+	 * 
+	 * @generated
+	 */
+	@Override
+	public void removeNotify() {
+
+		org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest request = new org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest(
+				subTypeClabject,
+				de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.eINSTANCE
+						.getClabject_Template(),
+				new java.util.LinkedList<de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject>());
+
+		org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand command = new org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand(request);
+		this.getViewer().getEditDomain().getCommandStack()
+				.execute(new ICommandProxy(command));
+
 		super.removeNotify();
 	}
 «ENDDEFINE»
