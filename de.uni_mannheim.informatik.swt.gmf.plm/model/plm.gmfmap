@@ -634,4 +634,22 @@
     <palette
         href="plm.gmftool#//@palette"/>
   </diagram>
+  <audits
+      id="plmaudits"
+      name="PLM Audits"
+      description="Validation for PLM">
+    <audits
+        name="Check DomainEntity Potency"
+        id="plmaudits.checkdomainentitypotency"
+        severity="WARNING"
+        message="">
+      <rule
+          body="let instantiation: Instantiation = &#xD;&#xA;&#x9;PLM::Instantiation.allInstances()->select(i | i.instance = self)->asOrderedSet()->first()&#xD;&#xA;in&#xD;&#xA;&#x9;self.potency = instantiation.type.potency - 1"/>
+      <target
+          xsi:type="gmfmap:DomainElementTarget">
+        <element
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//DomainEntity"/>
+      </target>
+    </audits>
+  </audits>
 </gmfmap:Mapping>

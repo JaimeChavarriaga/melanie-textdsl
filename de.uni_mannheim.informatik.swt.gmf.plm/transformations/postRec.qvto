@@ -6,6 +6,7 @@ property genNavigator : GenNavigator = null;
 property genStandardPrefencePage : GenStandardPreferencePage = null;
 property genPlugIn : GenPlugin = null;
 property genEditorGenerator : GenEditorGenerator = null;
+property genDiagram: GenDiagram = null;
 		
  
 main() {
@@ -22,6 +23,12 @@ main() {
 	genEditorGenerator.templateDirectory := "/de.uni_mannheim.informatik.swt.gmf.plm/templates";
 	genEditorGenerator.diagramFileExtension := "lml";
 	genEditorGenerator.modelID := "LML";
+	
+	--Setup the GenDiagram
+	genDiagram
+		:= gmfgenModel.objectsOfType(GenDiagram)->asOrderedSet()->first();
+	genDiagram.validationEnabled := true;
+	genDiagram.validationDecorators := true;
 	
 	--Setup the GenPlugin
 	this.genPlugIn := gmfgenModel.objectsOfType(GenPlugin)->asOrderedSet()->first();

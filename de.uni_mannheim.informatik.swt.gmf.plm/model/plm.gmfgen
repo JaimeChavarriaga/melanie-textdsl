@@ -7,13 +7,39 @@
     diagramFileExtension="lml"
     dynamicTemplates="true"
     templateDirectory="/de.uni_mannheim.informatik.swt.gmf.plm/templates">
+  <audits>
+    <categories
+        id="plmaudits"
+        name="PLM Audits"
+        description="Validation for PLM"
+        path="//@audits/@categories.0"
+        audits="//@audits/@rules.0"/>
+    <rules
+        name="Check DomainEntity Potency"
+        id="plmaudits.checkdomainentitypotency"
+        rule="//@expressionProviders/@providers.0/@expressions.20"
+        message=""
+        severity="WARNING"
+        category="//@audits/@categories.0">
+      <target
+          xsi:type="gmfgen:GenDomainElementTarget"
+          contextSelector="//@audits/@clientContexts.0">
+        <element
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainEntity"/>
+      </target>
+    </rules>
+    <clientContexts
+        ruleTargets="//@audits/@rules.0/@target"/>
+  </audits>
   <diagram
       visualID="1000"
       editPartClassName="LMLModelEditPart"
       itemSemanticEditPolicyClassName="LMLModelItemSemanticEditPolicy"
       canonicalEditPolicyClassName="LMLModelCanonicalEditPolicy"
       iconProviderPriority="Low"
-      validationProviderPriority="Low">
+      validationProviderPriority="Low"
+      validationEnabled="true"
+      validationDecorators="true">
     <diagramRunTimeClass
         href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Diagram"/>
     <elementType
@@ -1898,6 +1924,9 @@
       <expressions
           xsi:type="gmfgen:GenConstraint"
           body="self.oclIsTypeOf(BinaryGeneralization)"/>
+      <expressions
+          xsi:type="gmfgen:GenConstraint"
+          body="let instantiation: Instantiation = &#xD;&#xA;&#x9;PLM::Instantiation.allInstances()->select(i | i.instance = self)->asOrderedSet()->first()&#xD;&#xA;in&#xD;&#xA;&#x9;self.potency = instantiation.type.potency - 1"/>
     </providers>
   </expressionProviders>
   <labelParsers
