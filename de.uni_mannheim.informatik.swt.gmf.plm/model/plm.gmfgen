@@ -9,16 +9,17 @@
     templateDirectory="/de.uni_mannheim.informatik.swt.gmf.plm/templates">
   <audits>
     <categories
-        id="plmaudits"
-        name="PLM Audits"
-        description="Validation for PLM"
+        id="audits"
+        name="Audits"
+        description="Audits"
         path="//@audits/@categories.0"
         audits="//@audits/@rules.0"/>
     <rules
-        name="Check DomainEntity Potency"
-        id="plmaudits.checkdomainentitypotency"
+        name="name"
+        description="desc"
+        id="rule"
         rule="//@expressionProviders/@providers.0/@expressions.20"
-        message=""
+        message="msg"
         severity="WARNING"
         category="//@audits/@categories.0">
       <target
@@ -39,7 +40,8 @@
       iconProviderPriority="Low"
       validationProviderPriority="Low"
       validationEnabled="true"
-      validationDecorators="true">
+      validationDecorators="true"
+      validationDecoratorProviderPriority="Medium">
     <diagramRunTimeClass
         href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Diagram"/>
     <elementType
@@ -1926,7 +1928,7 @@
           body="self.oclIsTypeOf(BinaryGeneralization)"/>
       <expressions
           xsi:type="gmfgen:GenConstraint"
-          body="let instantiation: Instantiation = &#xD;&#xA;&#x9;PLM::Instantiation.allInstances()->select(i | i.instance = self)->asOrderedSet()->first()&#xD;&#xA;in&#xD;&#xA;&#x9;self.potency = instantiation.type.potency - 1"/>
+          body="false"/>
     </providers>
   </expressionProviders>
   <labelParsers
