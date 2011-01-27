@@ -1,0 +1,30 @@
+«IMPORT 'http://www.eclipse.org/gmf/2009/GenModel'»
+«IMPORT 'http://www.eclipse.org/emf/2002/GenModel'»
+
+«EXTENSION xpt::diagram::editpolicies::Utils»
+«EXTENSION xpt::diagram::Utils»
+«EXTENSION xpt::GenModelUtils»
+
+//Alow domain connections to have more than one participant
+«AROUND canCreate FOR gmfgen::GenLink»
+	«IF getUniqueIdentifier() = 'DomainConnectionParticipant_4003'»
+		«EXPAND xpt::Common::generatedMemberComment»
+		public boolean canCreate«getUniqueIdentifier()»(«EXPAND canCreateParameters FOR modelFacet») {
+			//left out contains check to have multiple participants in an constraint.
+			
+			return canExist«getUniqueIdentifier()»(«EXPAND canCreateValues FOR modelFacet»);
+		}
+	«ELSE»
+		«targetDef.proceed()»
+	«ENDIF»
+«ENDAROUND»
+
+// FIXME mark as private (_) and move to impl::<find proper place>::LinkConstraints.xpt
+«DEFINE canCreateParameters FOR gmfgen::LinkModelFacet»«EXPAND sourceTargetParameters»«ENDDEFINE»// source and target are reasonable defaults
+«DEFINE canCreateParameters FOR gmfgen::TypeLinkModelFacet»«IF hasContainerOtherThanSource(self)»«EXPAND MetaModel::QualifiedClassName FOR containmentMetaFeature.genClass» container, «ENDIF»«EXPAND sourceTargetParameters»«ENDDEFINE»
+
+«DEFINE sourceTargetParameters FOR gmfgen::LinkModelFacet»«EXPAND MetaModel::QualifiedClassName FOR getSourceType()» source, «EXPAND MetaModel::QualifiedClassName FOR getTargetType()» target«ENDDEFINE»
+
+// these are in fact 'canExist' values
+«DEFINE canCreateValues FOR gmfgen::LinkModelFacet»source, target«ENDDEFINE» // defaults
+«DEFINE canCreateValues FOR gmfgen::TypeLinkModelFacet»«IF hasContainerOtherThanSource(self)»container, «ENDIF»null, source, target«ENDDEFINE»
