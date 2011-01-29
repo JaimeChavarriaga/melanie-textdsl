@@ -1898,7 +1898,7 @@
           body="let disjoint:String = &#xD;&#xA;&#x9;if (self.disjoint) then &#xD;&#xA;&#x9;&#x9;'disjoint' &#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'overlaping ' &#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let complete:String = &#xD;&#xA;&#x9;if (self.complete) then &#xD;&#xA;&#x9;&#x9;'complete' &#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'incomplete' &#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (disjoint &lt;> ' ') then&#xD;&#xA;&#x9;'{'.concat(disjoint).concat('; ').concat(complete ).concat('}')&#xD;&#xA;else&#xD;&#xA;&#x9;' '&#xD;&#xA;endif"/>
       <expressions
           xsi:type="gmfgen:GenConstraint"
-          body="self.potency &lt;> 0 and self.level &lt; oppositeEnd.level"/>
+          body="self.potency &lt;> 0 and self.level &lt; oppositeEnd.level and self.instantiable"/>
       <expressions
           xsi:type="gmfgen:GenConstraint"
           body="self.oclIsTypeOf(Equality)"/>
