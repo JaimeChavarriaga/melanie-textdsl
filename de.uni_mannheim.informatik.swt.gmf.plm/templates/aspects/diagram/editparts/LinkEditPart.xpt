@@ -92,7 +92,7 @@
 	}
 «ENDDEFINE»
 
-«DEFINE removeNotify»
+«DEFINE removeNotify FOR GenLink»
 	de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject cachedInstanceClabject;
 	
 	/**
