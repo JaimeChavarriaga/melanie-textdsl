@@ -8,7 +8,8 @@
 //Sets the potency of instatiation ends
 «IF self.editPartClassName = 'InstantiationEditPart'»
 	«EXPAND updateSourcePotency-»
-	«EXPAND handleNotificationEventForInstantiation»
+	«EXPAND updateSourceBlueprint-»
+	«EXPAND handleNotificationEventForInstantiation-»
 «ENDIF»	
 «ENDAROUND»
 
@@ -25,11 +26,18 @@
 		//Source is set before target, so now we can set the potency of the source with the one of the target - 1
 		if (((org.eclipse.emf.ecore.EStructuralFeature) notification.getFeature()).getName().equals(
 				"target"))
+		{
 			updateSourcePotency();
+			updateSourceBlueprint();
+			
+		}
 		else if (((org.eclipse.emf.ecore.EStructuralFeature) notification.getFeature()).getName()
 				.equals("source")
 				&& ((de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation) resolveSemanticElement()).getType() != null)
+		{
 			updateSourcePotency();
+			updateSourceBlueprint();
+		}
 	}
 «ENDDEFINE»
 
@@ -51,6 +59,25 @@
 
 		org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest request = new org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest(i.getInstance(),
 				de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.eINSTANCE.getClabject_Potency(), newPotency);
+		org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand command = new org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand(request);
+		this.getViewer().getEditDomain().getCommandStack()
+				.execute(new org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy(command));
+	}
+«ENDDEFINE»
+
+«DEFINE updateSourceBlueprint FOR GenLink»
+	/**
+	 * updates the blueprint in the source clabject
+	 * 
+	 * @generated
+	 */
+	public void updateSourceBlueprint(){
+		de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation i = (de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation) resolveSemanticElement();
+		
+		org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest request = new org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest(
+				i.getInstance(),
+				de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.eINSTANCE
+						.getClabject_Blueprint(), i.getType());
 		org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand command = new org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand(request);
 		this.getViewer().getEditDomain().getCommandStack()
 				.execute(new org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy(command));
