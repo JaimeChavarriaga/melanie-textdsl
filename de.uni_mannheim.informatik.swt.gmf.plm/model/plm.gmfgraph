@@ -41,7 +41,7 @@
             <children
                 xsi:type="gmfgraph:Label"
                 name="OntologyNameFigure"
-                text="Ontology Name">
+                text="">
               <layoutData
                   xsi:type="gmfgraph:GridLayoutData"
                   grabExcessHorizontalSpace="true"
@@ -391,7 +391,8 @@
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
                 grabExcessHorizontalSpace="true"
-                horizontalAlignment="END"/>
+                horizontalAlignment="END"
+                verticalSpan="4"/>
             <font
                 xsi:type="gmfgraph:BasicFont"
                 style="BOLD"/>
@@ -403,9 +404,23 @@
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
                 grabExcessHorizontalSpace="true"
-                horizontalAlignment="BEGINNING"/>
+                grabExcessVerticalSpace="true"
+                horizontalAlignment="BEGINNING"
+                verticalSpan="2"/>
             <insets
                 bottom="10"/>
+          </children>
+          <children
+              xsi:type="gmfgraph:Label"
+              name="DomainConnectionLevelFigure"
+              text="">
+            <layoutData
+                xsi:type="gmfgraph:GridLayoutData"
+                grabExcessHorizontalSpace="true"
+                grabExcessVerticalSpace="true"
+                verticalAlignment="BEGINNING"
+                horizontalAlignment="BEGINNING"
+                verticalSpan="2"/>
           </children>
         </children>
         <template
@@ -428,6 +443,8 @@
           figure="//@figures.0/@descriptors.8/@actualFigure/@children.0/@children.0"/>
       <accessors
           figure="//@figures.0/@descriptors.8/@actualFigure/@children.0/@children.1"/>
+      <accessors
+          figure="//@figures.0/@descriptors.8/@actualFigure/@children.0/@children.2"/>
     </descriptors>
     <descriptors
         name="DomainConnectionNameExternalLabelFigure">
@@ -1170,6 +1187,11 @@
       figure="DomainConnectionFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.8/@accessors.1"/>
+  <labels
+      name="DomainConnectionFigureLevelLabel"
+      figure="DomainConnectionFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.8/@accessors.2"/>
   <labels
       name="ComplementFigureName"
       figure="ComplementFigure"
