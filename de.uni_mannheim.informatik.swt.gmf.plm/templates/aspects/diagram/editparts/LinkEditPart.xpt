@@ -10,6 +10,7 @@
 	«EXPAND updateSourcePotency-»
 	«EXPAND updateSourceBlueprint-»
 	«EXPAND handleNotificationEventForInstantiation-»
+	«EXPAND removeNotify-»
 «ENDIF»	
 «ENDAROUND»
 
@@ -88,5 +89,36 @@
 		org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand command = new org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand(request);
 		this.getViewer().getEditDomain().getCommandStack()
 				.execute(new org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy(command));
+	}
+«ENDDEFINE»
+
+«DEFINE removeNotify»
+	de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject cachedInstanceClabject;
+	
+	/**
+	 * @generated
+	 */
+	@Override
+	protected void refreshSourceConnections() {
+		super.refreshSourceConnections();
+		
+		de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation i = (de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation)resolveSemanticElement();
+		
+		if(i.getInstance() != null)
+			cachedInstanceClabject = i.getInstance();
+		
+	}
+	
+	/**
+	 * @generated
+	 */
+	@Override
+	public void removeNotify() {
+		super.removeNotify();
+		
+		if (cachedInstanceClabject != null)
+		{
+			cachedInstanceClabject.setBlueprint(null);
+		}
 	}
 «ENDDEFINE»
