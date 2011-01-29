@@ -18,7 +18,7 @@
         name="name"
         description="desc"
         id="rule"
-        rule="//@expressionProviders/@providers.0/@expressions.20"
+        rule="//@expressionProviders/@providers.0/@expressions.21"
         message="msg"
         severity="WARNING"
         category="//@audits/@categories.0">
@@ -1194,7 +1194,8 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Instantiation/type"/>
       </modelFacet>
       <creationConstraints
-          targetEnd="//@expressionProviders/@providers.0/@expressions.10"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.10"
+          targetEnd="//@expressionProviders/@providers.0/@expressions.11"/>
     </links>
     <links
         visualID="4013"
@@ -1236,7 +1237,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Equality/equal"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.11"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.12"/>
     </links>
     <links
         visualID="4015"
@@ -1258,7 +1259,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Inversion/inverse"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.12"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.13"/>
     </links>
     <links
         visualID="4016"
@@ -1280,7 +1281,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Complement/complement"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.13"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.14"/>
     </links>
     <links
         visualID="4017"
@@ -1344,7 +1345,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleGeneralization/supertype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.14"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.15"/>
     </links>
     <links
         visualID="4009"
@@ -1366,7 +1367,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleGeneralization/subtype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.15"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.16"/>
     </links>
     <links
         visualID="4011"
@@ -1389,7 +1390,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleSpecialization/supertype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.16"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.17"/>
     </links>
     <links
         visualID="4012"
@@ -1411,7 +1412,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleSpecialization/subtype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.17"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.18"/>
     </links>
     <links
         visualID="4019"
@@ -1434,7 +1435,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/BinaryGeneralization/supertype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.18"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.19"/>
     </links>
     <links
         visualID="4020"
@@ -1456,7 +1457,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/BinaryGeneralization/subtype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.19"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.20"/>
     </links>
     <compartments
         visualID="7003"
@@ -1896,6 +1897,9 @@
           body="'equals'"/>
       <expressions
           body="let disjoint:String = &#xD;&#xA;&#x9;if (self.disjoint) then &#xD;&#xA;&#x9;&#x9;'disjoint' &#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'overlaping ' &#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let complete:String = &#xD;&#xA;&#x9;if (self.complete) then &#xD;&#xA;&#x9;&#x9;'complete' &#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'incomplete' &#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (disjoint &lt;> ' ') then&#xD;&#xA;&#x9;'{'.concat(disjoint).concat('; ').concat(complete ).concat('}')&#xD;&#xA;else&#xD;&#xA;&#x9;' '&#xD;&#xA;endif"/>
+      <expressions
+          xsi:type="gmfgen:GenConstraint"
+          body="Instantiation.allInstances()->select(i | i.instance = self)->size() = 0"/>
       <expressions
           xsi:type="gmfgen:GenConstraint"
           body="self.potency &lt;> 0 and self.level &lt; oppositeEnd.level and self.instantiable"/>
