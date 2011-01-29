@@ -38,6 +38,13 @@
 			updateSourcePotency();
 			updateSourceBlueprint();
 		}
+		//Re-orient -> Delete Blueprint of previous instance clabject
+		else if (((org.eclipse.emf.ecore.EStructuralFeature) notification.getFeature()).getName().equals("instance")
+				&& notification.getOldValue() != null
+				&& notification.getOldValue() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)
+		{
+			((de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)notification.getOldValue()).setBlueprint(null);
+		}
 	}
 «ENDDEFINE»
 
