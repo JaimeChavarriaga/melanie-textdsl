@@ -50,6 +50,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Field;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.MultipleGeneralization;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.MultipleSpecialization;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.BinaryGeneralizationEditPart;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionEditPart;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntityDomainEntityFieldsCompartment2EditPart;
@@ -58,6 +59,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.FieldEdi
 import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.MultipleGeneralizationEditPart;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.MultipleSpecializationEditPart;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.OntologyEditPart;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.RendererDomainEntityFieldsCompartmentEditPart;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes;
 
 public class AddVisualizationAction implements IObjectActionDelegate {
@@ -77,30 +79,35 @@ public class AddVisualizationAction implements IObjectActionDelegate {
 
 	public static void execute(ShapeNodeEditPart selectedElement)
 	{
-		CompoundCommand cc = new CompoundCommand("Create Visualization DomainEntity and Connection");
+		CompoundCommand cc = new CompoundCommand("Create Renderer and Connection");
 
 		IElementType type;
 		
 		//Create View in Root Container
-		if (selectedElement instanceof OntologyEditPart)
-			type = PLMElementTypes.DomainEntity_2003;
+		//if (selectedElement instanceof OntologyEditPart)
+		//	type = PLMElementTypes.DomainEntity_2003;
 		//Create View in Model
-		else
-			type = PLMElementTypes.DomainEntity_3030;
+		//else
+		
+		//Currently no support to visualiz ontologies
+		if (selectedElement instanceof OntologyEditPart)
+			return;
+		
+		type = PLMElementTypes.Renderer_3039;
 		
 		// Create the new topic for the other end.
-		CreateViewRequest visualizationDomainEntityRequest = CreateViewRequestFactory.getCreateShapeRequest(type, selectedElement.getDiagramPreferencesHint());
+		CreateViewRequest rendererRequest = CreateViewRequestFactory.getCreateShapeRequest(type, selectedElement.getDiagramPreferencesHint());
 			
 		Point p = selectedElement.getFigure().getBounds().getTopRight().getCopy();
 		selectedElement.getFigure().translateToAbsolute(p);
 		int edgeCount = selectedElement.getNotationView().getSourceEdges().size();
 		// A quick hack to get subtopics to layout to the right, from top to bottom; added edge count * 5 > 100 to prevent negative value
 		int offset = (edgeCount * 50) > 100 ? (edgeCount * 50) - 100: 100;
-		visualizationDomainEntityRequest.setLocation(p.translate(100, offset));
+		rendererRequest.setLocation(p.translate(100, offset));
 
 		EditPart modelEditPart = (EditPart) selectedElement.getParent();
-		Command createVisualizationDomainEntityCmd = modelEditPart.getCommand(visualizationDomainEntityRequest);
-		IAdaptable visualizationDomainEntityViewAdapter = (IAdaptable) ((List) visualizationDomainEntityRequest.getNewObject()).get(0);
+		Command createVisualizationDomainEntityCmd = modelEditPart.getCommand(rendererRequest);
+		IAdaptable visualizationDomainEntityViewAdapter = (IAdaptable) ((List) rendererRequest.getNewObject()).get(0);
 		
 		cc.add(createVisualizationDomainEntityCmd);
 
@@ -124,9 +131,9 @@ public class AddVisualizationAction implements IObjectActionDelegate {
 			//**************************************************************
 			//Setup of Visualization Object
 			//**************************************************************
-			DomainEntity visualizer = (DomainEntity) ViewUtil.resolveSemanticElement((View)elementPart.getModel());
+			Renderer visualizer = (Renderer) ViewUtil.resolveSemanticElement((View)elementPart.getModel());
 			Element source = (Element) ViewUtil.resolveSemanticElement((View)selectedElement.getModel());
-			SetRequest request = new SetRequest(visualizer, PLMPackage.eINSTANCE.getElement_Name(), source.getName() + "Visualization");
+			SetRequest request = new SetRequest(visualizer, PLMPackage.eINSTANCE.getElement_Name(), source.getName() + "Renderer");
 			SetValueCommand command = new SetValueCommand(request);
 			elementPart.getViewer().getEditDomain().getCommandStack().execute(new ICommandProxy(command));
 			
@@ -137,16 +144,16 @@ public class AddVisualizationAction implements IObjectActionDelegate {
 			//find the DomainEntityDomainEntityFieldsCompartmentEditPart
 			for (int i = 0; i <  elementPart.getChildren().size(); i++)
 			{
-				if (elementPart.getChildren().get(i) instanceof DomainEntityDomainEntityFieldsCompartmentEditPart)
+				if (elementPart.getChildren().get(i) instanceof RendererDomainEntityFieldsCompartmentEditPart)
 				{
 					fieldsCompartment = (CompartmentEditPart)elementPart.getChildren().get(i);
 					break;
 				}
-				else if (elementPart.getChildren().get(i) instanceof DomainEntityDomainEntityFieldsCompartment2EditPart)
+				/*else if (elementPart.getChildren().get(i) instanceof DomainEntityDomainEntityFieldsCompartment2EditPart)
 				{
 					fieldsCompartment = (CompartmentEditPart)elementPart.getChildren().get(i);
 					break;
-				}
+				}*/
 			}
 			
 			if (fieldsCompartment != null)
