@@ -395,9 +395,9 @@
 			}
 		}
 		else if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Model && 
-				((EStructuralFeature)notification.getFeature()).getName().equals("showRenderer"))
+				((org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature()).getName().equals("showRenderer"))
 		{
-			org.eclipse.ui.IEditorPart editor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+			org.eclipse.ui.IEditorPart editor = org.eclipse.ui.PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
 			if (! (editor instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor))
 				return;
 			
@@ -412,7 +412,7 @@
 				if (obj instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer)
 				{
 					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.RendererEditPart editPart = 
-						(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.RendererEditPart)plmEditor.getDiagramGraphicalViewer().findEditPartsForElement(EMFCoreUtil.getProxyID(obj), de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.RendererEditPart.class).get(0);
+						(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.RendererEditPart)plmEditor.getDiagramGraphicalViewer().findEditPartsForElement(org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getProxyID(obj), de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.RendererEditPart.class).get(0);
 					editPart.setRendererViewState();
 				}
 			}
@@ -431,12 +431,12 @@
 	{
 		boolean show = true;
 		
-		EObject obj = resolveSemanticElement();
+		org.eclipse.emf.ecore.EObject obj = resolveSemanticElement();
 		
 		while ((obj = obj.eContainer()) != null)
 		{
-			if (obj instanceof RenderingContainer 
-					&& ((RenderingContainer)obj).getShowRenderer().equals("ShowRenderingOptions::NONE"))
+			if (obj instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer 
+					&& ((de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer)obj).getShowRenderer().equals("ShowRenderingOptions::NONE"))
 			{
 				show = false;
 				break;
