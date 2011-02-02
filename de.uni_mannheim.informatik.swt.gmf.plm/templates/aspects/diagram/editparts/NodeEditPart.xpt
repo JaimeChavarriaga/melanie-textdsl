@@ -20,6 +20,9 @@
 	«EXPAND updateConnections-»
 	«EXPAND refreshSourceConnections-»
 «ENDIF»
+«IF self.editPartClassName = 'RendererEditPart'»
+	«EXPAND setRendererViewState»
+«ENDIF»
 «ENDAROUND»
 
 //**************************************************************
@@ -32,6 +35,8 @@
 	«EXPAND handleNotificationEventForField-»
 «ELSEIF self.editPartClassName = 'ModelEditPart'»
 	«EXPAND handleNotificationEventForModel-»
+«ELSEIF self.editPartClassName = 'OntologyEnditPart'»
+	«EXPAND handleNotificationEventForOntology»
 «ENDIF»
 «ENDAROUND»
 
@@ -374,10 +379,10 @@
 	{
 		super.handleNotificationEvent(notification);
 		
-		if(notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Model)
+		if(notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Model
+			&& ((org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature()).getName().equals("children"))
 		{
-			if (((org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature()).getName().equals("children")
-					&& notification.getNewValue() != null)
+			if (notification.getNewValue() != null)
 			{
 				de.uni_mannheim.informatik.swt.models.plm.PLM.Model m = (de.uni_mannheim.informatik.swt.models.plm.PLM.Model)notification.getNotifier();
 				
@@ -386,6 +391,104 @@
 					de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject c = (de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)notification.getNewValue();
 					de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology ont = (de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology)m.eContainer();
 					c.setLevel(ont.getChildren().indexOf(m));
+				}
+			}
+		}
+		else if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Model && 
+				((EStructuralFeature)notification.getFeature()).getName().equals("showRenderer"))
+		{
+			org.eclipse.ui.IEditorPart editor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+			if (! (editor instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor))
+				return;
+			
+			de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor plmEditor = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor)editor;
+			de.uni_mannheim.informatik.swt.models.plm.PLM.Model ont = (de.uni_mannheim.informatik.swt.models.plm.PLM.Model)notification.getNotifier();
+
+			org.eclipse.emf.common.util.TreeIterator<org.eclipse.emf.ecore.EObject> iterator = ont.eAllContents();
+			
+			while(iterator.hasNext())
+			{
+				org.eclipse.emf.ecore.EObject obj = iterator.next();
+				if (obj instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer)
+				{
+					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.RendererEditPart editPart = 
+						(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.RendererEditPart)plmEditor.getDiagramGraphicalViewer().findEditPartsForElement(EMFCoreUtil.getProxyID(obj), de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.RendererEditPart.class).get(0);
+					editPart.setRendererViewState();
+				}
+			}
+		}
+	}
+«ENDDEFINE»
+
+«DEFINE setRendererViewState FOR gmfgen::GenNode»
+	/**
+	 * Sets the renderer visible depending on the ShowRenderer attribut of 
+	 * all its containers.
+	 * 
+	 * @generated
+	 */
+	public void setRendererViewState()
+	{
+		boolean show = true;
+		
+		EObject obj = resolveSemanticElement();
+		
+		while ((obj = obj.eContainer()) != null)
+		{
+			if (obj instanceof RenderingContainer 
+					&& ((RenderingContainer)obj).getShowRenderer().equals("ShowRenderingOptions::NONE"))
+			{
+				show = false;
+				break;
+			}
+		}
+		
+		this.setVisibility(show);
+	}
+	
+	/**
+	 * Sets the view state on creation
+	 * 
+	 * @generated
+	 */
+	@Override
+	public void addNotify() {
+		super.addNotify();
+		
+		setRendererViewState();
+	}
+«ENDDEFINE»
+
+«DEFINE handleNotificationEventForOntology FOR gmfgen::GenNode»
+	/**
+	 * Inform all renderers to set their view state
+	 * 
+	 * @generated
+	 */
+	@Override
+	protected void handleNotificationEvent(org.eclipse.emf.common.notify.Notification notification) {
+		super.handleNotificationEvent(notification);
+		
+		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology && 
+				((org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature()).getName().equals("showRenderer"))
+		{
+			org.eclipse.ui.IEditorPart editor = org.eclipse.ui.PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+			if (! (editor instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor))
+				return;
+			
+			de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor plmEditor = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor)editor;
+			de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology ont = (de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology)notification.getNotifier();
+
+			org.eclipse.emf.common.util.TreeIterator<org.eclipse.emf.ecore.EObject> iterator = ont.eAllContents();
+			
+			while(iterator.hasNext())
+			{
+				org.eclipse.emf.ecore.EObject obj = iterator.next();
+				if (obj instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer)
+				{
+					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.RendererEditPart editPart = 
+						(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.RendererEditPart)plmEditor.getDiagramGraphicalViewer().findEditPartsForElement(org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getProxyID(obj), de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.RendererEditPart.class).get(0);
+					editPart.setRendererViewState();
 				}
 			}
 		}
