@@ -332,29 +332,32 @@
 		//***********************************************************
 		//Update DomainEntities on field change (for rendering)
 		//***********************************************************
-		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Field)
-		{
-			org.eclipse.emf.ecore.EObject field = (org.eclipse.emf.ecore.EObject)notification.getNotifier();
+		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Field) {
+			org.eclipse.emf.ecore.EObject field = (org.eclipse.emf.ecore.EObject) notification.getNotifier();
 			org.eclipse.emf.ecore.EObject container = field.eContainer();
-			
+
 			//Only DomainEntyties are used to store rendering information
-			if (container instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.DomainEntity)
-			{
+			if (container instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer) {
 				//Get all DomainEntities that reference this DomainEntity as renderer
-				java.util.Collection<org.eclipse.emf.ecore.EObject> rendererReferencere =
-					org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getReferencers(container, new org.eclipse.emf.ecore.EReference[] {de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.eINSTANCE.getElement_Renderer()});
-				
-				for(org.eclipse.emf.ecore.EObject obj : rendererReferencere)
-				{
-					org.eclipse.ui.IEditorPart editorPart = org.eclipse.ui.PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+				java.util.Collection<org.eclipse.emf.ecore.EObject> rendererReferencere = org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil
+						.getReferencers(
+								container,
+								new org.eclipse.emf.ecore.EReference[] { de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.eINSTANCE
+										.getElement_Renderer() });
+
+				for (org.eclipse.emf.ecore.EObject obj : rendererReferencere) {
+					org.eclipse.ui.IEditorPart editorPart = org.eclipse.ui.PlatformUI.getWorkbench()
+							.getActiveWorkbenchWindow().getActivePage()
+							.getActiveEditor();
 					//If no PLM Diagram is opened we want to do nothing
-					if (! (editorPart instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor))
+					if (!(editorPart instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor))
 						return;
-					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor plmEditor = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor)editorPart;
-					//DomainEntity2EditPart node =
-					//	(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntity2EditPart)plmEditor.getDiagramGraphicalViewer().findEditPartsForElement(org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getProxyID(obj), org.eclipse.gef.NodeEditPart.class).get(0);
+					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor plmEditor = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor) editorPart;
+					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntity2EditPart node =
+						(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntity2EditPart)plmEditor.getDiagramGraphicalViewer().findEditPartsForElement(org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getProxyID(obj), org.eclipse.gef.NodeEditPart.class).get(0);
 					
-					//((DomainEntityFigure)node.getFigure().getChildren().get(0)).getFigureDomainEntityAVSFigure().getUpdateManager().;
+					org.eclipse.gef.Request refreshRequest = new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH);
+					node.performRequest(refreshRequest);
 				}
 			}
 		}
