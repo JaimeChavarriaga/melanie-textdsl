@@ -18,7 +18,7 @@
         name="name"
         description="desc"
         id="rule"
-        rule="//@expressionProviders/@providers.0/@expressions.28"
+        rule="//@expressionProviders/@providers.0/@expressions.29"
         message="msg"
         severity="WARNING"
         category="//@audits/@categories.0">
@@ -405,8 +405,7 @@
           visualID="5065"
           editPartClassName="DomainEntityName2EditPart"
           itemSemanticEditPolicyClassName="DomainEntityName2ItemSemanticEditPolicy"
-          notationViewFactoryClassName="DomainEntityNameViewFactory"
-          readOnly="true">
+          notationViewFactoryClassName="DomainEntityNameViewFactory">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap
@@ -913,7 +912,7 @@
             xsi:type="gmfgen:GenFeatureSeqInitializer">
           <initializers
               xsi:type="gmfgen:GenFeatureValueSpec"
-              value="//@expressionProviders/@providers.0/@expressions.15">
+              value="//@expressionProviders/@providers.0/@expressions.16">
             <feature
                 href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Element/name"/>
           </initializers>
@@ -1314,8 +1313,7 @@
           visualID="5028"
           editPartClassName="DomainEntityNameEditPart"
           itemSemanticEditPolicyClassName="DomainEntityNameItemSemanticEditPolicy"
-          notationViewFactoryClassName="DomainEntityNameViewFactory"
-          readOnly="true">
+          notationViewFactoryClassName="DomainEntityNameViewFactory">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap
@@ -1471,8 +1469,8 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Instantiation/type"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.17"
-          targetEnd="//@expressionProviders/@providers.0/@expressions.18"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.18"
+          targetEnd="//@expressionProviders/@providers.0/@expressions.19"/>
     </links>
     <links
         visualID="4013"
@@ -1514,7 +1512,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Equality/equal"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.19"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.20"/>
     </links>
     <links
         visualID="4015"
@@ -1536,7 +1534,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Inversion/inverse"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.20"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.21"/>
     </links>
     <links
         visualID="4016"
@@ -1558,7 +1556,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Complement/complement"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.21"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.22"/>
     </links>
     <links
         visualID="4017"
@@ -1622,7 +1620,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleGeneralization/supertype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.22"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.23"/>
     </links>
     <links
         visualID="4009"
@@ -1644,7 +1642,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleGeneralization/subtype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.23"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.24"/>
     </links>
     <links
         visualID="4011"
@@ -1667,7 +1665,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleSpecialization/supertype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.24"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.25"/>
     </links>
     <links
         visualID="4012"
@@ -1689,7 +1687,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleSpecialization/subtype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.25"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.26"/>
     </links>
     <links
         visualID="4019"
@@ -1712,7 +1710,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/BinaryGeneralization/supertype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.26"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.27"/>
     </links>
     <links
         visualID="4020"
@@ -1734,7 +1732,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/BinaryGeneralization/subtype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.27"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.28"/>
     </links>
     <compartments
         visualID="7003"
@@ -2205,6 +2203,8 @@
       <expressions
           body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (not self.renderer.oclIsUndefined()) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let renderName:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;self.renderer.children->select(c | c.name = 'name')->first().oclAsType(Field).value = 'VisualRenderingEnum::MAX' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;self.renderer.children->select(c | c.name = 'name')->first().oclAsType(Field).value = 'VisualRenderingEnum::MIN'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (renderName) then&#xD;&#xA;&#x9;self.name&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
       <expressions
+          body="'&lt;Enter name>'"/>
+      <expressions
           body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (not self.renderer.oclIsUndefined()) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let renderPotency:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;self.renderer.children->select(c | c.name = 'potency')->first().oclAsType(Field).value = 'VisualRenderingEnum::MAX' &#xD;&#xA;&#x9;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;self.renderer.children->select(c | c.name = 'potency')->first().oclAsType(Field).value = 'VisualRenderingEnum::MIN'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let potency:String = if (self.potency > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.potency.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.potency = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (renderPotency) then&#xD;&#xA;&#x9;potency&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
       <expressions
           body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (not self.renderer.oclIsUndefined()) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let renderLevel:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;self.renderer.children->select(c | c.name = 'level')->first().oclAsType(Field).value = 'VisualRenderingEnum::MAX' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;self.renderer.children->select(c | c.name = 'level')->first().oclAsType(Field).value = 'VisualRenderingEnum::MIN'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (renderLevel) then&#xD;&#xA;&#x9;self.level&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
@@ -2266,7 +2266,7 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.2/@labels.1/@modelFacet"
-        className="FieldLabelExpressionLabelParsera"
+        className="FieldLabelExpressionLabelParser5038"
         viewExpression="//@expressionProviders/@providers.0/@expressions.0">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Field"/>
@@ -2274,7 +2274,7 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.2/@labels.2/@modelFacet"
-        className="FieldLabelExpressionLabelParseraa"
+        className="FieldLabelExpressionLabelParser5039"
         viewExpression="//@expressionProviders/@providers.0/@expressions.1">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Field"/>
@@ -2282,7 +2282,7 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.3/@labels.1/@modelFacet"
-        className="MethodLabelExpressionLabelParseraaa"
+        className="MethodLabelExpressionLabelParser5042"
         viewExpression="//@expressionProviders/@providers.0/@expressions.2">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Method"/>
@@ -2290,7 +2290,7 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.1/@labels.1/@modelFacet"
-        className="RendererLabelExpressionLabelParseraaaa"
+        className="RendererLabelExpressionLabelParser5085"
         viewExpression="//@expressionProviders/@providers.0/@expressions.3">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Renderer"/>
@@ -2298,7 +2298,7 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.1/@labels.3/@modelFacet"
-        className="RendererLabelExpressionLabelParseraaaaa"
+        className="RendererLabelExpressionLabelParser5087"
         viewExpression="//@expressionProviders/@providers.0/@expressions.4">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Renderer"/>
@@ -2306,7 +2306,7 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.5/@labels.1/@modelFacet"
-        className="FieldLabelExpressionLabelParseraaaaaa"
+        className="FieldLabelExpressionLabelParser5048"
         viewExpression="//@expressionProviders/@providers.0/@expressions.5">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Field"/>
@@ -2314,7 +2314,7 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.5/@labels.2/@modelFacet"
-        className="FieldLabelExpressionLabelParseraaaaaaa"
+        className="FieldLabelExpressionLabelParser5049"
         viewExpression="//@expressionProviders/@providers.0/@expressions.6">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Field"/>
@@ -2322,7 +2322,7 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.6/@labels.1/@modelFacet"
-        className="MethodLabelExpressionLabelParseraaaaaaaa"
+        className="MethodLabelExpressionLabelParser5090"
         viewExpression="//@expressionProviders/@providers.0/@expressions.7">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Method"/>
@@ -2330,56 +2330,57 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.4/@labels.0/@modelFacet"
-        className="DomainEntityLabelExpressionLabelParseraaaaaaaaa"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.8">
+        className="DomainEntityLabelExpressionLabelParser5065"
+        viewExpression="//@expressionProviders/@providers.0/@expressions.8"
+        editExpression="//@expressionProviders/@providers.0/@expressions.9">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainEntity"/>
     </implementations>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.4/@labels.1/@modelFacet"
-        className="DomainEntityLabelExpressionLabelParseraaaaaaaaaa"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.9">
-      <expressionContext
-          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainEntity"/>
-    </implementations>
-    <implementations
-        xsi:type="gmfgen:ExpressionLabelParser"
-        uses="//@diagram/@childNodes.4/@labels.2/@modelFacet"
-        className="DomainEntityLabelExpressionLabelParseraaaaaaaaaaa"
+        className="DomainEntityLabelExpressionLabelParser5066"
         viewExpression="//@expressionProviders/@providers.0/@expressions.10">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainEntity"/>
     </implementations>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
-        uses="//@diagram/@childNodes.4/@labels.3/@modelFacet"
-        className="DomainEntityLabelExpressionLabelParseraaaaaaaaaaaa"
+        uses="//@diagram/@childNodes.4/@labels.2/@modelFacet"
+        className="DomainEntityLabelExpressionLabelParser5067"
         viewExpression="//@expressionProviders/@providers.0/@expressions.11">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainEntity"/>
     </implementations>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
-        uses="//@diagram/@childNodes.8/@labels.1/@modelFacet"
-        className="FieldLabelExpressionLabelParseraaaaaaaaaaaaa"
+        uses="//@diagram/@childNodes.4/@labels.3/@modelFacet"
+        className="DomainEntityLabelExpressionLabelParser5068"
         viewExpression="//@expressionProviders/@providers.0/@expressions.12">
       <expressionContext
-          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Field"/>
+          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainEntity"/>
     </implementations>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
-        uses="//@diagram/@childNodes.8/@labels.2/@modelFacet"
-        className="FieldLabelExpressionLabelParseraaaaaaaaaaaaaa"
+        uses="//@diagram/@childNodes.8/@labels.1/@modelFacet"
+        className="FieldLabelExpressionLabelParser5092"
         viewExpression="//@expressionProviders/@providers.0/@expressions.13">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Field"/>
     </implementations>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
-        uses="//@diagram/@childNodes.7/@labels.3/@modelFacet"
-        className="DomainConnectionLabelExpressionLabelParseraaaaaaaaaaaaaaa"
+        uses="//@diagram/@childNodes.8/@labels.2/@modelFacet"
+        className="FieldLabelExpressionLabelParser5093"
         viewExpression="//@expressionProviders/@providers.0/@expressions.14">
+      <expressionContext
+          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Field"/>
+    </implementations>
+    <implementations
+        xsi:type="gmfgen:ExpressionLabelParser"
+        uses="//@diagram/@childNodes.7/@labels.3/@modelFacet"
+        className="DomainConnectionLabelExpressionLabelParser5083"
+        viewExpression="//@expressionProviders/@providers.0/@expressions.15">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainConnection"/>
     </implementations>
@@ -2389,40 +2390,41 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.13/@labels.2/@modelFacet"
-        className="MultipleSpecializationLabelExpressionLabelParseraaaaaaaaaaaaaaaa"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.16">
+        className="MultipleSpecializationLabelExpressionLabelParser5079"
+        viewExpression="//@expressionProviders/@providers.0/@expressions.17">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleSpecialization"/>
     </implementations>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@topLevelNodes.1/@labels.0/@modelFacet"
-        className="DomainEntityLabelExpressionLabelParseraaaaaaaaaaaaaaaaa"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.8">
+        className="DomainEntityLabelExpressionLabelParser5028"
+        viewExpression="//@expressionProviders/@providers.0/@expressions.8"
+        editExpression="//@expressionProviders/@providers.0/@expressions.9">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainEntity"/>
     </implementations>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@topLevelNodes.1/@labels.1/@modelFacet"
-        className="DomainEntityLabelExpressionLabelParseraaaaaaaaaaaaaaaaaa"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.9">
-      <expressionContext
-          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainEntity"/>
-    </implementations>
-    <implementations
-        xsi:type="gmfgen:ExpressionLabelParser"
-        uses="//@diagram/@topLevelNodes.1/@labels.2/@modelFacet"
-        className="DomainEntityLabelExpressionLabelParseraaaaaaaaaaaaaaaaaaa"
+        className="DomainEntityLabelExpressionLabelParser5029"
         viewExpression="//@expressionProviders/@providers.0/@expressions.10">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainEntity"/>
     </implementations>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
-        uses="//@diagram/@topLevelNodes.1/@labels.3/@modelFacet"
-        className="DomainEntityLabelExpressionLabelParseraaaaaaaaaaaaaaaaaaaa"
+        uses="//@diagram/@topLevelNodes.1/@labels.2/@modelFacet"
+        className="DomainEntityLabelExpressionLabelParser5030"
         viewExpression="//@expressionProviders/@providers.0/@expressions.11">
+      <expressionContext
+          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainEntity"/>
+    </implementations>
+    <implementations
+        xsi:type="gmfgen:ExpressionLabelParser"
+        uses="//@diagram/@topLevelNodes.1/@labels.3/@modelFacet"
+        className="DomainEntityLabelExpressionLabelParser5031"
+        viewExpression="//@expressionProviders/@providers.0/@expressions.12">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainEntity"/>
     </implementations>

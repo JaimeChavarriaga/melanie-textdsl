@@ -114,12 +114,10 @@ main() {
 					complementChildReference, equalChildReference, inversionChildReference};
 	
 	--fix BUG 331875
-	var i = "a";
 	gmfgenModel.objectsOfType(ExpressionLabelParser)->forEach(parser)
-		{
-			parser.className := parser.className.concat(i);
-			i := i.concat("a");
-		};
+	{
+		parser.className := parser.className.concat(parser._uses->first().container().oclAsType(GenNodeLabel).visualID.toString());
+	};
 	 
 }
 
