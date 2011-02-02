@@ -18,7 +18,7 @@
         name="name"
         description="desc"
         id="rule"
-        rule="//@expressionProviders/@providers.0/@expressions.27"
+        rule="//@expressionProviders/@providers.0/@expressions.28"
         message="msg"
         severity="WARNING"
         category="//@audits/@categories.0">
@@ -441,8 +441,7 @@
           visualID="5067"
           editPartClassName="DomainEntityLevel2EditPart"
           itemSemanticEditPolicyClassName="DomainEntityLevel2ItemSemanticEditPolicy"
-          notationViewFactoryClassName="DomainEntityLevelViewFactory"
-          readOnly="true">
+          notationViewFactoryClassName="DomainEntityLevelViewFactory">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap
@@ -450,11 +449,8 @@
             getterName="getFigureDomainEntityLevelFigure"
             figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
         <modelFacet
-            xsi:type="gmfgen:FeatureLabelModelFacet"
-            parser="//@labelParsers/@implementations.0">
-          <metaFeatures
-              href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/level"/>
-        </modelFacet>
+            xsi:type="gmfgen:ExpressionLabelModelFacet"
+            parser="//@labelParsers/@implementations.11"/>
       </labels>
       <labels
           visualID="5068"
@@ -470,7 +466,7 @@
             figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.11"/>
+            parser="//@labelParsers/@implementations.12"/>
       </labels>
     </childNodes>
     <childNodes
@@ -745,7 +741,7 @@
             figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.14"/>
+            parser="//@labelParsers/@implementations.15"/>
       </labels>
     </childNodes>
     <childNodes
@@ -813,7 +809,7 @@
             figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.12"/>
+            parser="//@labelParsers/@implementations.13"/>
       </labels>
       <labels
           visualID="5093"
@@ -829,7 +825,7 @@
             figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.13"/>
+            parser="//@labelParsers/@implementations.14"/>
       </labels>
     </childNodes>
     <childNodes
@@ -880,7 +876,7 @@
               fixedForeground="true"/>
         </viewmap>
         <modelFacet
-            parser="//@labelParsers/@implementations.15"/>
+            parser="//@labelParsers/@implementations.16"/>
       </labels>
     </childNodes>
     <childNodes
@@ -917,7 +913,7 @@
             xsi:type="gmfgen:GenFeatureSeqInitializer">
           <initializers
               xsi:type="gmfgen:GenFeatureValueSpec"
-              value="//@expressionProviders/@providers.0/@expressions.14">
+              value="//@expressionProviders/@providers.0/@expressions.15">
             <feature
                 href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Element/name"/>
           </initializers>
@@ -996,7 +992,7 @@
               fixedForeground="true"/>
         </viewmap>
         <modelFacet
-            parser="//@labelParsers/@implementations.15"/>
+            parser="//@labelParsers/@implementations.16"/>
       </labels>
     </childNodes>
     <childNodes
@@ -1159,7 +1155,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.16"/>
+            parser="//@labelParsers/@implementations.17"/>
       </labels>
     </childNodes>
     <childNodes
@@ -1332,7 +1328,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.17"/>
+            parser="//@labelParsers/@implementations.18"/>
       </labels>
       <labels
           visualID="5029"
@@ -1348,14 +1344,13 @@
             figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.18"/>
+            parser="//@labelParsers/@implementations.19"/>
       </labels>
       <labels
           visualID="5030"
           editPartClassName="DomainEntityLevelEditPart"
           itemSemanticEditPolicyClassName="DomainEntityLevelItemSemanticEditPolicy"
-          notationViewFactoryClassName="DomainEntityLevelViewFactory"
-          readOnly="true">
+          notationViewFactoryClassName="DomainEntityLevelViewFactory">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap
@@ -1363,11 +1358,8 @@
             getterName="getFigureDomainEntityLevelFigure"
             figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
         <modelFacet
-            xsi:type="gmfgen:FeatureLabelModelFacet"
-            parser="//@labelParsers/@implementations.0">
-          <metaFeatures
-              href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/level"/>
-        </modelFacet>
+            xsi:type="gmfgen:ExpressionLabelModelFacet"
+            parser="//@labelParsers/@implementations.20"/>
       </labels>
       <labels
           visualID="5031"
@@ -1383,7 +1375,7 @@
             figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.19"/>
+            parser="//@labelParsers/@implementations.21"/>
       </labels>
     </topLevelNodes>
     <links
@@ -1426,7 +1418,7 @@
               y="40"/>
         </viewmap>
         <modelFacet
-            parser="//@labelParsers/@implementations.15"/>
+            parser="//@labelParsers/@implementations.16"/>
       </labels>
       <labels
           visualID="6003"
@@ -1446,7 +1438,7 @@
               y="60"/>
         </viewmap>
         <modelFacet
-            parser="//@labelParsers/@implementations.15"/>
+            parser="//@labelParsers/@implementations.16"/>
       </labels>
     </links>
     <links
@@ -1479,8 +1471,8 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Instantiation/type"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.16"
-          targetEnd="//@expressionProviders/@providers.0/@expressions.17"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.17"
+          targetEnd="//@expressionProviders/@providers.0/@expressions.18"/>
     </links>
     <links
         visualID="4013"
@@ -1522,7 +1514,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Equality/equal"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.18"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.19"/>
     </links>
     <links
         visualID="4015"
@@ -1544,7 +1536,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Inversion/inverse"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.19"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.20"/>
     </links>
     <links
         visualID="4016"
@@ -1566,7 +1558,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Complement/complement"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.20"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.21"/>
     </links>
     <links
         visualID="4017"
@@ -1606,7 +1598,7 @@
               y="40"/>
         </viewmap>
         <modelFacet
-            parser="//@labelParsers/@implementations.15"/>
+            parser="//@labelParsers/@implementations.16"/>
       </labels>
     </links>
     <links
@@ -1630,7 +1622,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleGeneralization/supertype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.21"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.22"/>
     </links>
     <links
         visualID="4009"
@@ -1652,7 +1644,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleGeneralization/subtype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.22"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.23"/>
     </links>
     <links
         visualID="4011"
@@ -1675,7 +1667,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleSpecialization/supertype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.23"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.24"/>
     </links>
     <links
         visualID="4012"
@@ -1697,7 +1689,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleSpecialization/subtype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.24"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.25"/>
     </links>
     <links
         visualID="4019"
@@ -1720,7 +1712,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/BinaryGeneralization/supertype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.25"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.26"/>
     </links>
     <links
         visualID="4020"
@@ -1742,7 +1734,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/BinaryGeneralization/subtype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.26"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.27"/>
     </links>
     <compartments
         visualID="7003"
@@ -2215,7 +2207,9 @@
       <expressions
           body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (not self.renderer.oclIsUndefined()) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let renderPotency:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;self.renderer.children->select(c | c.name = 'potency')->first().oclAsType(Field).value = 'VisualRenderingEnum::MAX' &#xD;&#xA;&#x9;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;self.renderer.children->select(c | c.name = 'potency')->first().oclAsType(Field).value = 'VisualRenderingEnum::MIN'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let potency:String = if (self.potency > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.potency.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.potency = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (renderPotency) then&#xD;&#xA;&#x9;potency&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
       <expressions
-          body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (not self.renderer.oclIsUndefined()) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Check if attributes are rendered in AVS&#xD;&#xA;--**********************************&#xD;&#xA;let renderName:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;self.renderer.children->select(c | c.name = 'name')->first().oclAsType(Field).value = 'VisualRenderingEnum::MAX' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;self.renderer.children->select(c | c.name = 'name')->first().oclAsType(Field).value = 'VisualRenderingEnum::AVS'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderPotency:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;self.renderer.children->select(c | c.name = 'potency')->first().oclAsType(Field).value = 'VisualRenderingEnum::MAX' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;self.renderer.children->select(c | c.name = 'potency')->first().oclAsType(Field).value = 'VisualRenderingEnum::AVS'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderLevel:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;self.renderer.children->select(c | c.name = 'level')->first().oclAsType(Field).value = 'VisualRenderingEnum::MAX' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;self.renderer.children->select(c | c.name = 'level')->first().oclAsType(Field).value = 'VisualRenderingEnum::AVS'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderExpressed:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;self.renderer.children->select(c | c.name = 'expressed')->first().oclAsType(Field).value = 'VisualRenderingEnum::MAX' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;self.renderer.children->select(c | c.name = 'expressed')->first().oclAsType(Field).value = 'VisualRenderingEnum::AVS'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;--**********************************&#xD;&#xA;--Get the name&#xD;&#xA;--**********************************&#xD;&#xA;let name : String =&#xD;&#xA;&#x9;if (renderName) then&#xD;&#xA;&#x9;&#x9;'name='.concat(self.name).concat(';')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the potency&#xD;&#xA;--**********************************&#xD;&#xA;let potencyString:String = &#xD;&#xA;&#x9;if (renderPotency and self.potency > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.potency.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.potency = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let potency: String = &#xD;&#xA;&#x9;if (renderPotency) then&#xD;&#xA;&#x9;&#x9;'potency='.concat(potencyString).concat(';')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the level&#xD;&#xA;--**********************************&#xD;&#xA;let levelString:String = &#xD;&#xA;&#x9;if (renderLevel and self.level > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.level.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.level = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let level: String = &#xD;&#xA;&#x9;if (renderLevel) then&#xD;&#xA;&#x9;&#x9;'level='.concat(levelString).concat(';')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the expressed value&#xD;&#xA;--**********************************&#xD;&#xA;let expressedString:String = &#xD;&#xA;&#x9;if (expressed) then&#xD;&#xA;&#x9;&#x9;'true'&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'false'&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let expressed: String = &#xD;&#xA;&#x9;if (renderExpressed) then&#xD;&#xA;&#x9;&#x9;'expressed='.concat(expressedString).concat(';')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let output:String = &#xD;&#xA;&#x9;'{'.concat(name).concat(potency).concat(level).concat(expressed).concat('}')&#xD;&#xA;in&#xD;&#xA;--**********************************&#xD;&#xA;--Write the output&#xD;&#xA;--**********************************&#xD;&#xA;if (output &lt;> '{}') then&#xD;&#xA;&#x9;output&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
+          body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (not self.renderer.oclIsUndefined()) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let renderLevel:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;self.renderer.children->select(c | c.name = 'level')->first().oclAsType(Field).value = 'VisualRenderingEnum::MAX' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;self.renderer.children->select(c | c.name = 'level')->first().oclAsType(Field).value = 'VisualRenderingEnum::MIN'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (renderLevel) then&#xD;&#xA;&#x9;self.level&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
+      <expressions
+          body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (not self.renderer.oclIsUndefined()) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Check if attributes are rendered in AVS&#xD;&#xA;--**********************************&#xD;&#xA;let renderName:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;self.renderer.children->select(c | c.name = 'name')->first().oclAsType(Field).value = 'VisualRenderingEnum::MAX' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;self.renderer.children->select(c | c.name = 'name')->first().oclAsType(Field).value = 'VisualRenderingEnum::AVS'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderPotency:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;self.renderer.children->select(c | c.name = 'potency')->first().oclAsType(Field).value = 'VisualRenderingEnum::MAX' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;self.renderer.children->select(c | c.name = 'potency')->first().oclAsType(Field).value = 'VisualRenderingEnum::AVS'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderLevel:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;self.renderer.children->select(c | c.name = 'level')->first().oclAsType(Field).value = 'VisualRenderingEnum::MAX' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;self.renderer.children->select(c | c.name = 'level')->first().oclAsType(Field).value = 'VisualRenderingEnum::AVS'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderExpressed:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;self.renderer.children->select(c | c.name = 'expressed')->first().oclAsType(Field).value = 'VisualRenderingEnum::MAX' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;self.renderer.children->select(c | c.name = 'expressed')->first().oclAsType(Field).value = 'VisualRenderingEnum::AVS'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;--**********************************&#xD;&#xA;--Get the name&#xD;&#xA;--**********************************&#xD;&#xA;let name : String =&#xD;&#xA;&#x9;if (renderName) then&#xD;&#xA;&#x9;&#x9;'name='.concat(self.name).concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the potency&#xD;&#xA;--**********************************&#xD;&#xA;let potencyString:String = &#xD;&#xA;&#x9;if (renderPotency and self.potency > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.potency.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.potency = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let potency: String = &#xD;&#xA;&#x9;if (renderPotency) then&#xD;&#xA;&#x9;&#x9;'potency='.concat(potencyString).concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the level&#xD;&#xA;--**********************************&#xD;&#xA;let levelString:String = &#xD;&#xA;&#x9;if (renderLevel and self.level > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.level.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.level = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let level: String = &#xD;&#xA;&#x9;if (renderLevel) then&#xD;&#xA;&#x9;&#x9;'level='.concat(levelString).concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the expressed value&#xD;&#xA;--**********************************&#xD;&#xA;let expressedString:String = &#xD;&#xA;&#x9;if (expressed) then&#xD;&#xA;&#x9;&#x9;'true'&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'false'&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let expressed: String = &#xD;&#xA;&#x9;if (renderExpressed) then&#xD;&#xA;&#x9;&#x9;'expressed='.concat(expressedString).concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let output:String = &#xD;&#xA;&#x9;'{'.concat(name).concat(potency).concat(level).concat(expressed).concat('}')&#xD;&#xA;in&#xD;&#xA;--**********************************&#xD;&#xA;--Write the output&#xD;&#xA;--**********************************&#xD;&#xA;if (output &lt;> '{}') then&#xD;&#xA;&#x9;output&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
       <expressions
           body="let durability:String = if (self.durability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.durability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;durability"/>
       <expressions
@@ -2268,7 +2262,7 @@
       extensibleViaService="true">
     <implementations
         xsi:type="gmfgen:PredefinedParser"
-        uses="//@diagram/@childNodes.2/@labels.0/@modelFacet //@diagram/@childNodes.2/@labels.3/@modelFacet //@diagram/@childNodes.3/@labels.0/@modelFacet //@diagram/@childNodes.1/@labels.0/@modelFacet //@diagram/@childNodes.1/@labels.2/@modelFacet //@diagram/@childNodes.5/@labels.0/@modelFacet //@diagram/@childNodes.5/@labels.3/@modelFacet //@diagram/@childNodes.6/@labels.0/@modelFacet //@diagram/@childNodes.4/@labels.2/@modelFacet //@diagram/@childNodes.8/@labels.0/@modelFacet //@diagram/@childNodes.7/@labels.0/@modelFacet //@diagram/@childNodes.7/@labels.1/@modelFacet //@diagram/@childNodes.7/@labels.2/@modelFacet //@diagram/@childNodes.10/@labels.0/@modelFacet //@diagram/@childNodes.12/@labels.0/@modelFacet //@diagram/@childNodes.12/@labels.1/@modelFacet //@diagram/@childNodes.13/@labels.0/@modelFacet //@diagram/@childNodes.13/@labels.1/@modelFacet //@diagram/@childNodes.14/@labels.0/@modelFacet //@diagram/@childNodes.14/@labels.1/@modelFacet //@diagram/@childNodes.0/@labels.0/@modelFacet //@diagram/@topLevelNodes.0/@labels.0/@modelFacet //@diagram/@topLevelNodes.1/@labels.2/@modelFacet"/>
+        uses="//@diagram/@childNodes.2/@labels.0/@modelFacet //@diagram/@childNodes.2/@labels.3/@modelFacet //@diagram/@childNodes.3/@labels.0/@modelFacet //@diagram/@childNodes.1/@labels.0/@modelFacet //@diagram/@childNodes.1/@labels.2/@modelFacet //@diagram/@childNodes.5/@labels.0/@modelFacet //@diagram/@childNodes.5/@labels.3/@modelFacet //@diagram/@childNodes.6/@labels.0/@modelFacet //@diagram/@childNodes.8/@labels.0/@modelFacet //@diagram/@childNodes.7/@labels.0/@modelFacet //@diagram/@childNodes.7/@labels.1/@modelFacet //@diagram/@childNodes.7/@labels.2/@modelFacet //@diagram/@childNodes.10/@labels.0/@modelFacet //@diagram/@childNodes.12/@labels.0/@modelFacet //@diagram/@childNodes.12/@labels.1/@modelFacet //@diagram/@childNodes.13/@labels.0/@modelFacet //@diagram/@childNodes.13/@labels.1/@modelFacet //@diagram/@childNodes.14/@labels.0/@modelFacet //@diagram/@childNodes.14/@labels.1/@modelFacet //@diagram/@childNodes.0/@labels.0/@modelFacet //@diagram/@topLevelNodes.0/@labels.0/@modelFacet"/>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.2/@labels.1/@modelFacet"
@@ -2351,7 +2345,7 @@
     </implementations>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
-        uses="//@diagram/@childNodes.4/@labels.3/@modelFacet"
+        uses="//@diagram/@childNodes.4/@labels.2/@modelFacet"
         className="DomainEntityLabelExpressionLabelParseraaaaaaaaaaa"
         viewExpression="//@expressionProviders/@providers.0/@expressions.10">
       <expressionContext
@@ -2359,15 +2353,15 @@
     </implementations>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
-        uses="//@diagram/@childNodes.8/@labels.1/@modelFacet"
-        className="FieldLabelExpressionLabelParseraaaaaaaaaaaa"
+        uses="//@diagram/@childNodes.4/@labels.3/@modelFacet"
+        className="DomainEntityLabelExpressionLabelParseraaaaaaaaaaaa"
         viewExpression="//@expressionProviders/@providers.0/@expressions.11">
       <expressionContext
-          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Field"/>
+          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainEntity"/>
     </implementations>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
-        uses="//@diagram/@childNodes.8/@labels.2/@modelFacet"
+        uses="//@diagram/@childNodes.8/@labels.1/@modelFacet"
         className="FieldLabelExpressionLabelParseraaaaaaaaaaaaa"
         viewExpression="//@expressionProviders/@providers.0/@expressions.12">
       <expressionContext
@@ -2375,9 +2369,17 @@
     </implementations>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
-        uses="//@diagram/@childNodes.7/@labels.3/@modelFacet"
-        className="DomainConnectionLabelExpressionLabelParseraaaaaaaaaaaaaa"
+        uses="//@diagram/@childNodes.8/@labels.2/@modelFacet"
+        className="FieldLabelExpressionLabelParseraaaaaaaaaaaaaa"
         viewExpression="//@expressionProviders/@providers.0/@expressions.13">
+      <expressionContext
+          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Field"/>
+    </implementations>
+    <implementations
+        xsi:type="gmfgen:ExpressionLabelParser"
+        uses="//@diagram/@childNodes.7/@labels.3/@modelFacet"
+        className="DomainConnectionLabelExpressionLabelParseraaaaaaaaaaaaaaa"
+        viewExpression="//@expressionProviders/@providers.0/@expressions.14">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainConnection"/>
     </implementations>
@@ -2387,15 +2389,15 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.13/@labels.2/@modelFacet"
-        className="MultipleSpecializationLabelExpressionLabelParseraaaaaaaaaaaaaaa"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.15">
+        className="MultipleSpecializationLabelExpressionLabelParseraaaaaaaaaaaaaaaa"
+        viewExpression="//@expressionProviders/@providers.0/@expressions.16">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleSpecialization"/>
     </implementations>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@topLevelNodes.1/@labels.0/@modelFacet"
-        className="DomainEntityLabelExpressionLabelParseraaaaaaaaaaaaaaaa"
+        className="DomainEntityLabelExpressionLabelParseraaaaaaaaaaaaaaaaa"
         viewExpression="//@expressionProviders/@providers.0/@expressions.8">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainEntity"/>
@@ -2403,16 +2405,24 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@topLevelNodes.1/@labels.1/@modelFacet"
-        className="DomainEntityLabelExpressionLabelParseraaaaaaaaaaaaaaaaa"
+        className="DomainEntityLabelExpressionLabelParseraaaaaaaaaaaaaaaaaa"
         viewExpression="//@expressionProviders/@providers.0/@expressions.9">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainEntity"/>
     </implementations>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
-        uses="//@diagram/@topLevelNodes.1/@labels.3/@modelFacet"
-        className="DomainEntityLabelExpressionLabelParseraaaaaaaaaaaaaaaaaa"
+        uses="//@diagram/@topLevelNodes.1/@labels.2/@modelFacet"
+        className="DomainEntityLabelExpressionLabelParseraaaaaaaaaaaaaaaaaaa"
         viewExpression="//@expressionProviders/@providers.0/@expressions.10">
+      <expressionContext
+          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainEntity"/>
+    </implementations>
+    <implementations
+        xsi:type="gmfgen:ExpressionLabelParser"
+        uses="//@diagram/@topLevelNodes.1/@labels.3/@modelFacet"
+        className="DomainEntityLabelExpressionLabelParseraaaaaaaaaaaaaaaaaaaa"
+        viewExpression="//@expressionProviders/@providers.0/@expressions.11">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainEntity"/>
     </implementations>
