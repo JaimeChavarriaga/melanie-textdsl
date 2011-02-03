@@ -132,6 +132,14 @@
         <insets
             bottom="5"/>
         <children
+            xsi:type="gmfgraph:Label"
+            name="DomainEntityEllisionFigure"
+            text="...">
+          <foregroundColor
+              xsi:type="gmfgraph:ConstantColor"
+              value="black"/>
+        </children>
+        <children
             xsi:type="gmfgraph:Rectangle"
             name="InnerRectangle"
             outline="false"
@@ -208,13 +216,13 @@
         </children>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.0/@children.0"/>
+          figure="//@figures.0/@descriptors.4/@actualFigure/@children.1/@children.0/@children.0"/>
       <accessors
-          figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.1/@children.0"/>
+          figure="//@figures.0/@descriptors.4/@actualFigure/@children.1/@children.1/@children.0"/>
       <accessors
-          figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.0/@children.1"/>
+          figure="//@figures.0/@descriptors.4/@actualFigure/@children.1/@children.0/@children.1"/>
       <accessors
-          figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.0/@children.2"/>
+          figure="//@figures.0/@descriptors.4/@actualFigure/@children.1/@children.0/@children.2"/>
     </descriptors>
     <descriptors
         name="DomainEntityCompartmentFigure">

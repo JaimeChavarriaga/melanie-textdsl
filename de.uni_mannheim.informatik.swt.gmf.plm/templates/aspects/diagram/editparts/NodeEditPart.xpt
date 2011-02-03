@@ -21,7 +21,10 @@
 	«EXPAND refreshSourceConnections-»
 «ENDIF»
 «IF self.editPartClassName = 'RendererEditPart'»
-	«EXPAND setRendererViewState»
+	«EXPAND setRendererViewState-»
+«ENDIF»
+«IF self.editPartClassName = 'DomainEntityEditPart'»
+	«EXPAND elideDomainEntity»
 «ENDIF»
 «ENDAROUND»
 
@@ -37,6 +40,8 @@
 	«EXPAND handleNotificationEventForModel-»
 «ELSEIF self.editPartClassName = 'OntologyEnditPart'»
 	«EXPAND handleNotificationEventForOntology»
+«ELSEIF self.editPartClassName = 'DomainEntityEditPart'»
+	«EXPAND handleNotificationEventForDomainEntityEditPart»
 «ENDIF»
 «ENDAROUND»
 
@@ -358,8 +363,8 @@
 					if (!(editorPart instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor))
 						return;
 					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor plmEditor = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor) editorPart;
-					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntityEditPart node =
-						(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntityEditPart)plmEditor.getDiagramGraphicalViewer().findEditPartsForElement(org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getProxyID(obj), org.eclipse.gef.NodeEditPart.class).get(0);
+					org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart node =
+						(org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)plmEditor.getDiagramGraphicalViewer().findEditPartsForElement(org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getProxyID(obj), org.eclipse.gef.NodeEditPart.class).get(0);
 					
 					org.eclipse.gef.Request refreshRequest = new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH);
 					node.performRequest(refreshRequest);
@@ -492,5 +497,104 @@
 				}
 			}
 		}
+	}
+«ENDDEFINE»
+
+«DEFINE handleNotificationEventForDomainEntityEditPart FOR gmfgen::GenNode»
+	/**
+	 * Listens to the elided attribute and calls doElide
+	 * 
+	 * @generated
+	 */
+	@Override
+	protected void handleNotificationEvent(org.eclipse.emf.common.notify.Notification notification) {
+		super.handleNotificationEvent(notification);
+
+		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.DomainEntity
+				&& ((org.eclipse.emf.ecore.EStructuralFeature) notification.getFeature()).getName()
+						.equals("elided")) {
+			doElide(false);
+		}
+	}
+«ENDDEFINE»
+
+«DEFINE elideDomainEntity FOR gmfgen::GenNode»
+	/**
+	 * Elides the DomainEntity depending on the elided attribute
+	 * 
+	 * @param readOnlyTransaction when called from addNotify
+	 * 
+	 * @generated
+	 */
+	private void doElide(boolean readOnlyTransaction) {
+		de.uni_mannheim.informatik.swt.models.plm.PLM.DomainEntity notifier = (de.uni_mannheim.informatik.swt.models.plm.PLM.DomainEntity) resolveSemanticElement();
+		de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntityEditPart.DomainEntityFigure entityFigure = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntityEditPart.DomainEntityFigure) this.getFigure()
+				.getChildren().get(0);
+
+		if (notifier.isElided()) {
+			for (Object obj : entityFigure.getChildren()) {
+				if (obj == entityFigure.getChildren().get(0)
+						&& obj instanceof org.eclipse.draw2d.IFigure)
+					((org.eclipse.draw2d.IFigure) obj).setVisible(true);
+				else if (obj instanceof org.eclipse.draw2d.IFigure)
+					((org.eclipse.draw2d.IFigure) obj).setVisible(false);
+			}
+
+			entityFigure.setOutline(false);
+			org.eclipse.gef.Request autoSize = new org.eclipse.gef.Request(RequestConstants.REQ_AUTOSIZE);
+			performRequest(autoSize);
+
+			//when called from add notify the size is already present in the notational model
+			if (!readOnlyTransaction) {
+				org.eclipse.draw2d.geometry.Rectangle rect = figure.getClientArea().getCopy();
+				rect.setSize(new Dimension(15, 10));
+				org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand sbc = new org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand(
+						this.getEditingDomain(), "change size",
+						new org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter((View) this.getModel()), rect);
+				getEditDomain().getCommandStack().execute(
+						new ICommandProxy(sbc));
+			}
+
+			if (targetConnections != null) {
+				for (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart link : (java.util.List<org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart>) targetConnections) {
+					((org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx) ((de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionParticipantEditPart) link)
+							.getFigure()).setLineStyle(SWT.LINE_CUSTOM);
+					((org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx) ((de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionParticipantEditPart) link)
+							.getFigure()).setLineDash(new int[] { 10 });
+				}
+			}
+
+		} else {
+			for (Object obj : entityFigure.getChildren()) {
+				if (obj == entityFigure.getChildren().get(0)
+						&& obj instanceof org.eclipse.draw2d.IFigure)
+					((org.eclipse.draw2d.IFigure) obj).setVisible(false);
+				else if (obj instanceof org.eclipse.draw2d.IFigure)
+					((org.eclipse.draw2d.IFigure) obj).setVisible(true);
+			}
+
+			entityFigure.setOutline(true);
+			org.eclipse.gef.Request autoSize = new org.eclipse.gef.Request(RequestConstants.REQ_AUTOSIZE);
+			performRequest(autoSize);
+
+			if (targetConnections != null) {
+				for (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart link : (java.util.List<org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart>) targetConnections) {
+					((org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx) ((de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionParticipantEditPart) link)
+							.getFigure()).setLineStyle(SWT.LINE_SOLID);
+				}
+			}
+		}
+	}
+
+	/**
+	 * Elide on diagram start up
+	 * 
+	 * @generated
+	 */
+	@Override
+	public void addNotify() {
+		super.addNotify();
+
+		doElide(true);
 	}
 «ENDDEFINE»
