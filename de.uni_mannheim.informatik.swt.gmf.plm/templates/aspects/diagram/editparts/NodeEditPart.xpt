@@ -541,18 +541,18 @@
 			}
 
 			entityFigure.setOutline(false);
-			org.eclipse.gef.Request autoSize = new org.eclipse.gef.Request(RequestConstants.REQ_AUTOSIZE);
+			org.eclipse.gef.Request autoSize = new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_AUTOSIZE);
 			performRequest(autoSize);
 
 			//when called from add notify the size is already present in the notational model
 			if (!readOnlyTransaction) {
 				org.eclipse.draw2d.geometry.Rectangle rect = figure.getClientArea().getCopy();
-				rect.setSize(new Dimension(15, 10));
+				rect.setSize(new org.eclipse.draw2d.geometry.Dimension(15, 10));
 				org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand sbc = new org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand(
 						this.getEditingDomain(), "change size",
-						new org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter((View) this.getModel()), rect);
+						new org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter((org.eclipse.gmf.runtime.notation.View) this.getModel()), rect);
 				getEditDomain().getCommandStack().execute(
-						new ICommandProxy(sbc));
+						new org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy(sbc));
 			}
 
 			if (targetConnections != null) {
@@ -574,7 +574,7 @@
 			}
 
 			entityFigure.setOutline(true);
-			org.eclipse.gef.Request autoSize = new org.eclipse.gef.Request(RequestConstants.REQ_AUTOSIZE);
+			org.eclipse.gef.Request autoSize = new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_AUTOSIZE);
 			performRequest(autoSize);
 
 			if (targetConnections != null) {
