@@ -527,8 +527,8 @@
 	 * @generated
 	 */
 	private void doElide(boolean readOnlyTransaction) {
-		de.uni_mannheim.informatik.swt.models.plm.PLM.DomainEntity notifier = (de.uni_mannheim.informatik.swt.models.plm.PLM.DomainEntity) resolveSemanticElement();
-		de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntityEditPart.DomainEntityFigure entityFigure = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntityEditPart.DomainEntityFigure) this.getFigure()
+		de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject notifier = (de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject) resolveSemanticElement();
+		org.eclipse.draw2d.RectangleFigure entityFigure = (org.eclipse.draw2d.RectangleFigure) this.getFigure()
 				.getChildren().get(0);
 
 		if (notifier.isElided()) {
