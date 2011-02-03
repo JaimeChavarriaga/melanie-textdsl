@@ -385,6 +385,14 @@
             top="3"
             bottom="15"/>
         <children
+            xsi:type="gmfgraph:Label"
+            name="DomainConnectionEllisionFigure"
+            text="...">
+          <foregroundColor
+              xsi:type="gmfgraph:ConstantColor"
+              value="black"/>
+        </children>
+        <children
             xsi:type="gmfgraph:Rectangle"
             name="NameRectangle"
             outline="false"
@@ -448,11 +456,11 @@
             x="20"/>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.8/@actualFigure/@children.0/@children.0"/>
+          figure="//@figures.0/@descriptors.8/@actualFigure/@children.1/@children.0"/>
       <accessors
-          figure="//@figures.0/@descriptors.8/@actualFigure/@children.0/@children.1"/>
+          figure="//@figures.0/@descriptors.8/@actualFigure/@children.1/@children.1"/>
       <accessors
-          figure="//@figures.0/@descriptors.8/@actualFigure/@children.0/@children.2"/>
+          figure="//@figures.0/@descriptors.8/@actualFigure/@children.1/@children.2"/>
     </descriptors>
     <descriptors
         name="DomainConnectionNameExternalLabelFigure">

@@ -510,7 +510,7 @@
 	protected void handleNotificationEvent(org.eclipse.emf.common.notify.Notification notification) {
 		super.handleNotificationEvent(notification);
 
-		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.DomainEntity
+		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject
 				&& ((org.eclipse.emf.ecore.EStructuralFeature) notification.getFeature()).getName()
 						.equals("elided")) {
 			doElide(false);
@@ -557,13 +557,16 @@
 
 			if (targetConnections != null) {
 				for (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart link : (java.util.List<org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart>) targetConnections) {
-					((org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx) ((de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionParticipantEditPart) link)
-							.getFigure()).setLineStyle(SWT.LINE_CUSTOM);
-					((org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx) ((de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionParticipantEditPart) link)
-							.getFigure()).setLineDash(new int[] { 10 });
+					((org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx) link.getFigure()).setLineStyle(SWT.LINE_CUSTOM);
+					((org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx) link.getFigure()).setLineDash(new int[] { 10 });
 				}
 			}
-
+			else if (sourceConnections != null) {
+				for (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart link : (java.util.List<org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart>) sourceConnections) {
+					((org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx) link.getFigure()).setLineStyle(SWT.LINE_CUSTOM);
+					((org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx) link.getFigure()).setLineDash(new int[] { 10 });
+				}
+			}
 		} else {
 			for (Object obj : entityFigure.getChildren()) {
 				if (obj == entityFigure.getChildren().get(0)
@@ -579,8 +582,12 @@
 
 			if (targetConnections != null) {
 				for (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart link : (java.util.List<org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart>) targetConnections) {
-					((org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx) ((de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionParticipantEditPart) link)
-							.getFigure()).setLineStyle(SWT.LINE_SOLID);
+					((org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx) link.getFigure()).setLineStyle(SWT.LINE_SOLID);
+				}
+			}
+			else if (sourceConnections != null) {
+				for (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart link : (java.util.List<org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart>) sourceConnections) {
+					((org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx) link.getFigure()).setLineStyle(SWT.LINE_SOLID);
 				}
 			}
 		}
