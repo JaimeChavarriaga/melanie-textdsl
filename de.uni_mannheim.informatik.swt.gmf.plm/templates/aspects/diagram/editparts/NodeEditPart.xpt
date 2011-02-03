@@ -358,8 +358,8 @@
 					if (!(editorPart instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor))
 						return;
 					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor plmEditor = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor) editorPart;
-					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntity2EditPart node =
-						(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntity2EditPart)plmEditor.getDiagramGraphicalViewer().findEditPartsForElement(org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getProxyID(obj), org.eclipse.gef.NodeEditPart.class).get(0);
+					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntityEditPart node =
+						(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainEntityEditPart)plmEditor.getDiagramGraphicalViewer().findEditPartsForElement(org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getProxyID(obj), org.eclipse.gef.NodeEditPart.class).get(0);
 					
 					org.eclipse.gef.Request refreshRequest = new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH);
 					node.performRequest(refreshRequest);

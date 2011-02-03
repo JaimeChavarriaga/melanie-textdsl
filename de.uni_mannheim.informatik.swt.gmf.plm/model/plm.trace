@@ -12,28 +12,6 @@
         visualID="7003"
         queryText="true"/>
   </nodeTraces>
-  <nodeTraces
-      visualID="2003"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'DomainEntity') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'LMLModel') and _containmentMF_.name = 'elements')">
-    <nodeLabelTraces
-        visualID="5028"
-        queryText="true"/>
-    <nodeLabelTraces
-        visualID="5029"
-        queryText="true"/>
-    <nodeLabelTraces
-        visualID="5030"
-        queryText="true"/>
-    <nodeLabelTraces
-        visualID="5031"
-        queryText="true"/>
-    <compartmentTraces
-        visualID="7009"
-        queryText="true"/>
-    <compartmentTraces
-        visualID="7010"
-        queryText="true"/>
-  </nodeTraces>
   <childNodeTraces
       visualID="3019"
       queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Field') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Clabject') and _containmentMF_.name = 'children')">
@@ -71,9 +49,6 @@
         queryText="true"/>
     <nodeLabelTraces
         visualID="5049"
-        queryText="true"/>
-    <nodeLabelTraces
-        visualID="5088"
         queryText="true"/>
   </childNodeTraces>
   <childNodeTraces
@@ -224,6 +199,9 @@
         queryText="true"/>
     <nodeLabelTraces
         visualID="5093"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5094"
         queryText="true"/>
   </childNodeTraces>
   <linkTraces
