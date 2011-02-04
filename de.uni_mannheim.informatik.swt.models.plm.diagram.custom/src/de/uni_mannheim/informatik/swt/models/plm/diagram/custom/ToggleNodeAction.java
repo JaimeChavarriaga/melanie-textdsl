@@ -19,6 +19,7 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.BinaryGeneralization;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Field;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.LMLModel;
@@ -64,6 +65,10 @@ public class ToggleNodeAction implements IObjectActionDelegate {
 			return;
 		
 		Element self = (Element)selectedElement.resolveSemanticElement();
+		
+		//We are not toggeling elided nodes
+		if (self instanceof Clabject && ((Clabject)self).isElided())
+			return;
 		
 		//No rendering information found => add new rendering information
 		if (self.getRenderer() == null)
