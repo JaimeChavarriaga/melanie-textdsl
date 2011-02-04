@@ -485,18 +485,6 @@
 		
 		this.setVisibility(show);
 	}
-	
-	/**
-	 * Sets the view state on creation
-	 * 
-	 * @generated
-	 */
-	@Override
-	public void addNotify() {
-		super.addNotify();
-		
-		setRendererViewState();
-	}
 «ENDDEFINE»
 
 «DEFINE handleNotificationEventForOntology FOR gmfgen::GenNode»
@@ -637,6 +625,10 @@
 	public void addNotify() {
 		super.addNotify();
 
+		«IF self.editPartClassName = 'RendererEditPart'»
+			setRendererViewState();
+		«ENDIF»
+		
 		doElide(true);
 	}
 «ENDDEFINE»
