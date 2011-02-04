@@ -11,19 +11,21 @@
 	or self.editPartClassName = 'MultipleSpecializationEditPart'
 	or self.editPartClassName = 'MultipleGeneralizationEditPart'»
 	
-	«EXPAND toggleAttributes»
+	«EXPAND getToggleValue-»
 	«EXPAND toggle-»
-	«EXPAND partActivate-»
+	«EXPAND addNotifyForToggeling-»
 «ENDIF»
-//Responsible for the multiplicity, role, navigation ends
+//Responsible for the multiplicity, role, navigation ends and elision
 «IF self.editPartClassName = 'DomainConnectionEditPart'»
 	«EXPAND updateConnections-»
 	«EXPAND refreshSourceConnections-»
+	«EXPAND doElideForDomainConnectionEditPart-»
 «ENDIF»
 «IF self.editPartClassName = 'RendererEditPart'»
 	«EXPAND setRendererViewState-»
 «ENDIF»
-«IF self.editPartClassName = 'DomainEntityEditPart'»
+«IF self.editPartClassName = 'DomainEntityEditPart'
+		or self.editPartClassName = 'RendererEditPart'»
 	«EXPAND elideDomainEntity»
 «ENDIF»
 «ENDAROUND»
@@ -40,7 +42,8 @@
 	«EXPAND handleNotificationEventForModel-»
 «ELSEIF self.editPartClassName = 'OntologyEnditPart'»
 	«EXPAND handleNotificationEventForOntology»
-«ELSEIF self.editPartClassName = 'DomainEntityEditPart'»
+«ELSEIF self.editPartClassName = 'DomainEntityEditPart'
+			or self.editPartClassName = 'RendererEditPart'»
 	«EXPAND handleNotificationEventForDomainEntityEditPart»
 «ENDIF»
 «ENDAROUND»
@@ -155,7 +158,7 @@
 
 «DEFINE handleNotificationEventForDomainConnection FOR gmfgen::GenNode»
 	/**
-	 * Updates the connections after a value was set.
+	 * Updates the connections after a value was set and does elision
 	 *
 	 * @generated
 	 */
@@ -166,25 +169,28 @@
 		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.DomainConnection) {
 			updateConnections();
 		}
+		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject
+				&& ((org.eclipse.emf.ecore.EStructuralFeature) notification.getFeature()).getName()
+				.equals("elided")) {
+			doElide(false);
+		}
 	}
 «ENDDEFINE»
 
-«DEFINE toggle FOR gmfgen::GenNode»
-/**
-	 * This renders the DomainConnectionEditPart based on information
-	 * in the model. Collapsed means that the DomainConnection is rendered as small 
-	 * black rectangle. Collapsed means that the DomainConnection will rendered as
-	 * hexagon, its default figure.
+«DEFINE getToggleValue FOR gmfgen::GenNode»
+	/**
 	 * 
-	 * @generated
+	 * @return null if no toggeling infotmation is available, else true or fals
 	 */
-	public void toggle() {
+	private Boolean getToggleValue()
+	{
 		boolean collapse = false;
-
+		
 		//********************************************************
 		//Find the renderer attached to this element 
 		//********************************************************
-		de.uni_mannheim.informatik.swt.models.plm.PLM.Element self = (de.uni_mannheim.informatik.swt.models.plm.PLM.Element) this.resolveSemanticElement();
+		de.uni_mannheim.informatik.swt.models.plm.PLM.Element self = (de.uni_mannheim.informatik.swt.models.plm.PLM.Element) this
+				.resolveSemanticElement();
 
 		//No rendering information found => all DomainConnection remains expanded
 		if (self.getRenderer() == null) {
@@ -193,7 +199,7 @@
 			((org.eclipse.draw2d.IFigure) boderItemContainer.getChildren().get(0))
 					.setVisible(false);
 
-			return;
+			return null;
 		}
 
 		//********************************************************
@@ -205,12 +211,49 @@
 				.getRenderer().getChildren()) {
 			if (e instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Field) {
 				if (e.getName().equals("collapsed")) {
-					collapse = java.lang.Boolean.parseBoolean(((de.uni_mannheim.informatik.swt.models.plm.PLM.Field) e)
+					collapse = Boolean
+							.parseBoolean(((de.uni_mannheim.informatik.swt.models.plm.PLM.Field) e)
 									.getValue());
 					break;
 				}
 			}
 		}
+		
+		return collapse;
+	}
+«ENDDEFINE»
+
+«DEFINE toggle FOR gmfgen::GenNode»
+	/**
+	 * @generated
+	 */
+	private java.util.List childrenCache = null;
+
+	/**
+	 * @generated
+	 */
+	private org.eclipse.draw2d.geometry.Dimension cachedSize = null;
+	
+	/**
+	 * This renders the DomainConnectionEditPart based on information
+	 * in the model. Collapsed means that the DomainConnection is rendered as small 
+	 * black rectangle. Collapsed means that the DomainConnection will rendered as
+	 * hexagon, its default figure.
+	 * 
+	 * @generated
+	 */
+	public void toggle() {
+		java.lang.Boolean collapse = false;
+
+		«IF self.editPartClassName='DomainConnectionEditPart'»
+			//We do not toggle if no renderer is not available or element is elided
+			if (collapse == null || ((de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)resolveSemanticElement()).isElided())
+				return;
+		«ELSE»
+			//We do not toggle if no renderer is not available
+			if (collapse == null)
+				return;
+		«ENDIF»
 
 		//the figure containing the actual design of the editpart
 		//the outer parent is only a container for the border items
@@ -307,19 +350,7 @@
 	}
 «ENDDEFINE»	
 
-«DEFINE toggleAttributes FOR gmfgen::GenNode»
-	/**
-	 * @generated
-	 */
-	private java.util.List childrenCache = null;
-
-	/**
-	 * @generated
-	 */
-	private org.eclipse.draw2d.geometry.Dimension cachedSize = null;
-«ENDDEFINE»
-
-«DEFINE partActivate FOR gmfgen::GenNode»
+«DEFINE addNotifyForToggeling FOR gmfgen::GenNode»
 	/**
 	 * @generated
 	 */
@@ -328,6 +359,10 @@
 		super.addNotify();
 		
 		toggle();
+		«IF self.editPartClassName = 'DomainConnectionEditPart'»
+			doElide(true);
+		«ENDIF»
+		
 	}
 «ENDDEFINE»
 
@@ -603,5 +638,119 @@
 		super.addNotify();
 
 		doElide(true);
+	}
+«ENDDEFINE»
+
+«DEFINE doElideForDomainConnectionEditPart FOR gmfgen::GenNode»
+	private org.eclipse.draw2d.IFigure figureBeforeElision = null;
+	
+	/**
+	 * Elides the DomainEntity depending on the elided attribute
+	 * 
+	 * @param readOnlyTransaction when called from addNotify
+	 * 
+	 * @generated NOT
+	 */
+	private void doElide(boolean readOnlyTransaction) {
+		
+		//We do not want to ellide toggeled connections
+		if (getToggleValue())
+			return;
+		
+		de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject clab = (de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)resolveSemanticElement();
+		
+		//The container that contains the figure and the border item container
+		org.eclipse.draw2d.IFigure borderContainer = figure;
+		//The figure
+		org.eclipse.draw2d.IFigure defaultSizeNodeFigure = (org.eclipse.draw2d.IFigure)borderContainer.getChildren().get(0);
+		//the container that contains the border items
+		org.eclipse.draw2d.IFigure borderItemContainer = (org.eclipse.draw2d.IFigure)borderContainer.getChildren().get(1);
+		
+		//Hide the outer label
+		((org.eclipse.draw2d.IFigure)borderItemContainer.getChildren().get(0)).setVisible(false);
+		
+		
+		if (clab.isElided())
+		{
+			org.eclipse.draw2d.IFigure connectionFigure = (org.eclipse.draw2d.IFigure)defaultSizeNodeFigure.getChildren().get(0);
+			figureBeforeElision = connectionFigure;
+			
+			//Set up the new figure for the elided node
+			org.eclipse.draw2d.RectangleFigure rf = new org.eclipse.draw2d.RectangleFigure();
+			rf.setSize(new org.eclipse.draw2d.geometry.Dimension(30,15));
+			defaultSizeNodeFigure.remove(connectionFigure);
+			rf.setLayoutManager(new org.eclipse.draw2d.ToolbarLayout());
+			rf.setOutline(false);
+			
+			rf.add((org.eclipse.draw2d.IFigure)connectionFigure.getChildren().get(0));
+			//The "..." figure could have been hidden on startup
+			((org.eclipse.draw2d.IFigure)rf.getChildren().get(0)).setVisible(true);
+			
+			defaultSizeNodeFigure.add(rf, 0);
+			rf.setParent(defaultSizeNodeFigure);
+			
+			//On Startup the size is saved in the notational model
+			if (!readOnlyTransaction)
+			{
+				//Resize the elided node
+				org.eclipse.draw2d.geometry.Rectangle rect = figure.getClientArea().getCopy();
+				rect.setSize((cachedSize != null) ? cachedSize : new org.eclipse.draw2d.geometry.Dimension(10,
+						10));
+				org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand sbc = new org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand(
+						this.getEditingDomain(), "change size", new org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter(
+								(org.eclipse.gmf.runtime.notation.View) this.getModel()), rect);
+				getEditDomain().getCommandStack().execute(new org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy(sbc));
+			}
+			
+			//Dash all lines from to the elided element
+			if (targetConnections != null) {
+				for (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart link : (java.util.List<org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart>) targetConnections) {
+					((org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx) link.getFigure())
+							.setLineStyle(org.eclipse.swt.SWT.LINE_CUSTOM);
+					((org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx) link.getFigure())
+							.setLineDash(new int[] { 10 });
+				}
+			} else if (sourceConnections != null) {
+				for (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart link : (java.util.List<org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart>) sourceConnections) {
+					((org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx) link.getFigure())
+							.setLineStyle(org.eclipse.swt.SWT.LINE_CUSTOM);
+					((org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx) link.getFigure())
+							.setLineDash(new int[] { 10 });
+				}
+			}
+		}
+		//We only need to revert the elision if we have done it when the editor was open
+		else if (figureBeforeElision != null)
+		{
+			//Add back the "..." figure
+			org.eclipse.draw2d.RectangleFigure elidedFigure = (org.eclipse.draw2d.RectangleFigure)defaultSizeNodeFigure.getChildren().get(0);
+			figureBeforeElision.add((org.eclipse.draw2d.IFigure)elidedFigure.getChildren().get(0), 0);
+			
+			defaultSizeNodeFigure.getChildren().remove(0);
+			defaultSizeNodeFigure.add(figureBeforeElision);
+			((org.eclipse.draw2d.IFigure)figureBeforeElision.getChildren().get(0)).setVisible(false);
+			
+			org.eclipse.gef.Request rr = new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_AUTOSIZE);
+			performRequest(rr);
+			
+			//Make all lines from to the elided element solid
+			if (targetConnections != null) {
+				for (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart link : (java.util.List<org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart>) targetConnections) {
+					((org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx) link.getFigure())
+							.setLineStyle(org.eclipse.swt.SWT.LINE_SOLID);
+				}
+			} else if (sourceConnections != null) {
+				for (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart link : (java.util.List<org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart>) sourceConnections) {
+					((org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx) link.getFigure())
+							.setLineStyle(org.eclipse.swt.SWT.LINE_SOLID);
+				}
+			}
+		}
+		//We open the diagram unelided -> hide "..."
+		else
+		{
+			org.eclipse.draw2d.IFigure connectionFigure = (org.eclipse.draw2d.IFigure)defaultSizeNodeFigure.getChildren().get(0);
+			((org.eclipse.draw2d.IFigure)connectionFigure.getChildren().get(0)).setVisible(false);
+		}
 	}
 «ENDDEFINE»
