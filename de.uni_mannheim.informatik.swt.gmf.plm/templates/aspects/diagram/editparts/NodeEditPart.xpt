@@ -26,7 +26,8 @@
 «ENDIF»
 «IF self.editPartClassName = 'DomainEntityEditPart'
 		or self.editPartClassName = 'RendererEditPart'»
-	«EXPAND elideDomainEntity»
+	«EXPAND elideDomainEntity-»
+	«EXPAND setExpressedVisualStateForDomainEntity-»
 «ENDIF»
 «ENDAROUND»
 
@@ -538,6 +539,11 @@
 						.equals("elided")) {
 			doElide(false);
 		}
+		else if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject
+				&& ((EStructuralFeature) notification.getFeature()).getName()
+						.equals("expressed")) {
+			setExpressedVisualState();
+		}
 	}
 «ENDDEFINE»
 
@@ -630,6 +636,7 @@
 		«ENDIF»
 		
 		doElide(true);
+		setExpressedVisualState();
 	}
 «ENDDEFINE»
 
@@ -743,6 +750,28 @@
 		{
 			org.eclipse.draw2d.IFigure connectionFigure = (org.eclipse.draw2d.IFigure)defaultSizeNodeFigure.getChildren().get(0);
 			((org.eclipse.draw2d.IFigure)connectionFigure.getChildren().get(0)).setVisible(false);
+		}
+	}
+«ENDDEFINE»
+
+«DEFINE setExpressedVisualStateForDomainEntity FOR gmfgen::GenNode»
+	/**
+	 * Sets the figure to visually expressed or computed. Depending on the expressed
+	 * value.
+	 * 
+	 * @generated
+	 */
+	private void setExpressedVisualState() {
+		de.uni_mannheim.informatik.swt.models.plm.PLM.Element self = (de.uni_mannheim.informatik.swt.models.plm.PLM.Element) resolveSemanticElement();
+		if (self.isExpressed()) {
+			((org.eclipse.draw2d.RectangleFigure) figure.getChildren().get(0))
+					.setLineStyle(org.eclipse.swt.SWT.LINE_SOLID);
+		} else {
+			((org.eclipse.draw2d.RectangleFigure) figure.getChildren().get(0))
+			.setLineStyle(org.eclipse.swt.SWT.LINE_CUSTOM);
+			((org.eclipse.draw2d.RectangleFigure) figure.getChildren().get(0))
+					.setLineDash(new float[] { 10 });
+
 		}
 	}
 «ENDDEFINE»

@@ -155,7 +155,9 @@
               minorSpacing="0"/>
           <children
               xsi:type="gmfgraph:Rectangle"
-              name="NameRectangle">
+              name="NameRectangle"
+              outline="false"
+              fill="false">
             <layout
                 xsi:type="gmfgraph:GridLayout"
                 numColumns="2"
@@ -200,7 +202,9 @@
           </children>
           <children
               xsi:type="gmfgraph:Rectangle"
-              name="AVSRectangle">
+              name="AVSRectangle"
+              outline="false"
+              fill="false">
             <layout
                 xsi:type="gmfgraph:GridLayout"
                 equalWidth="false"/>
@@ -227,7 +231,9 @@
     <descriptors
         name="DomainEntityCompartmentFigure">
       <actualFigure
-          xsi:type="gmfgraph:Rectangle"/>
+          xsi:type="gmfgraph:Rectangle"
+          outline="false"
+          fill="false"/>
     </descriptors>
     <descriptors
         name="DomainEntityFieldFigure">
