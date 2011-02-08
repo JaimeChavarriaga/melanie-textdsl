@@ -826,6 +826,8 @@
 	 */
 	@Override
 	protected void handleNotificationEvent(org.eclipse.emf.common.notify.Notification notification) {
+		super.handleNotificationEvent(notification);
+	
 		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Element
 				&& ((org.eclipse.emf.ecore.EStructuralFeature) notification.getFeature()).getName()
 						.equals("expressed") && childrenCache == null) {
