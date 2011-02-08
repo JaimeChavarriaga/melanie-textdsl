@@ -14,6 +14,7 @@
 	«EXPAND getToggleValue-»
 	«EXPAND toggle-»
 	«EXPAND addNotifyForToggeling-»
+	«EXPAND setExpressedVisualStateForConnections-»
 «ENDIF»
 //Responsible for the multiplicity, role, navigation ends and elision
 «IF self.editPartClassName = 'DomainConnectionEditPart'»
@@ -46,6 +47,10 @@
 «ELSEIF self.editPartClassName = 'DomainEntityEditPart'
 			or self.editPartClassName = 'RendererEditPart'»
 	«EXPAND handleNotificationEventForDomainEntityEditPart»
+«ELSEIF self.editPartClassName = 'BinaryGeneralizationEditPart' 
+	or self.editPartClassName = 'MultipleSpecializationEditPart'
+	or self.editPartClassName = 'MultipleGeneralizationEditPart'»
+	«EXPAND handleNotificationEventForInheritance-»
 «ENDIF»
 «ENDAROUND»
 
@@ -175,6 +180,11 @@
 				.equals("elided")) {
 			doElide(false);
 		}
+		else if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Element
+				&& ((org.eclipse.emf.ecore.EStructuralFeature) notification.getFeature()).getName()
+						.equals("expressed")) {
+			setExpressedVisualState();
+		}
 	}
 «ENDDEFINE»
 
@@ -182,6 +192,8 @@
 	/**
 	 * 
 	 * @return null if no toggeling infotmation is available, else true or fals
+	 *
+	 * @generated
 	 */
 	private Boolean getToggleValue()
 	{
@@ -340,7 +352,7 @@
 	/**
 	 * Needed to toogle DomainConnections on diagram load
 	 *
-	 * @generated NOT
+	 * @generated
 	 */
 	@Override
 	public void addNotify() {
@@ -364,6 +376,34 @@
 			doElide(true);
 		«ENDIF»
 		
+		setExpressedVisualState();
+		
+	}
+«ENDDEFINE»
+
+«DEFINE setExpressedVisualStateForConnections FOR gmfgen::GenNode»
+	/**
+	 * Sets the figure to visually expressed or computed. Depending on the expressed
+	 * value.
+	 * 
+	 * @generated
+	 */
+	private void setExpressedVisualState() {
+		de.uni_mannheim.informatik.swt.models.plm.PLM.Element self = (de.uni_mannheim.informatik.swt.models.plm.PLM.Element) resolveSemanticElement();
+		if (self.isExpressed()) {
+			//get(1) is the border item container
+			org.eclipse.draw2d.IFigure defalutSizeNodeFigure = (org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure) figure
+					.getChildren().get(0);
+			((org.eclipse.draw2d.ScalablePolygonShape) defalutSizeNodeFigure.getChildren().get(0))
+					.setLineStyle(SWT.LINE_SOLID);
+		} else {
+			org.eclipse.draw2d.IFigure defalutSizeNodeFigure = (org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure) figure
+					.getChildren().get(0);
+			((org.eclipse.draw2d.ScalablePolygonShape) defalutSizeNodeFigure.getChildren().get(0))
+					.setLineStyle(SWT.LINE_CUSTOM);
+			((org.eclipse.draw2d.ScalablePolygonShape) defalutSizeNodeFigure.getChildren().get(0))
+					.setLineDash(new float[] { 10 });
+		}
 	}
 «ENDDEFINE»
 
@@ -526,7 +566,7 @@
 
 «DEFINE handleNotificationEventForDomainEntityEditPart FOR gmfgen::GenNode»
 	/**
-	 * Listens to the elided attribute and calls doElide
+	 * Listens to the elided and expressed attributes and calls doElide / setExpressedVisualState
 	 * 
 	 * @generated
 	 */
@@ -540,7 +580,7 @@
 			doElide(false);
 		}
 		else if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject
-				&& ((EStructuralFeature) notification.getFeature()).getName()
+				&& ((org.eclipse.emf.ecore.EStructuralFeature) notification.getFeature()).getName()
 						.equals("expressed")) {
 			setExpressedVisualState();
 		}
@@ -648,7 +688,7 @@
 	 * 
 	 * @param readOnlyTransaction when called from addNotify
 	 * 
-	 * @generated NOT
+	 * @generated
 	 */
 	private void doElide(boolean readOnlyTransaction) {
 		
@@ -772,6 +812,22 @@
 			((org.eclipse.draw2d.RectangleFigure) figure.getChildren().get(0))
 					.setLineDash(new float[] { 10 });
 
+		}
+	}
+«ENDDEFINE»
+
+«DEFINE handleNotificationEventForInheritance FOR gmfgen::GenNode»
+	/**
+	 * Listens to the expressed attribute and calls setExpressedVisualState
+	 * 
+	 * @generated
+	 */
+	@Override
+	protected void handleNotificationEvent(org.eclipse.emf.common.notify.Notification notification) {
+		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Element
+				&& ((org.eclipse.emf.ecore.EStructuralFeature) notification.getFeature()).getName()
+						.equals("expressed")) {
+			setExpressedVisualState();
 		}
 	}
 «ENDDEFINE»
