@@ -182,7 +182,7 @@
 		}
 		else if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Element
 				&& ((org.eclipse.emf.ecore.EStructuralFeature) notification.getFeature()).getName()
-						.equals("expressed")) {
+						.equals("expressed") && childrenCache == null) {
 			setExpressedVisualState();
 		}
 	}
@@ -256,7 +256,7 @@
 	 * @generated
 	 */
 	public void toggle() {
-		java.lang.Boolean collapse = false;
+		java.lang.Boolean collapse = getToggleValue();
 
 		«IF self.editPartClassName='DomainConnectionEditPart'»
 			//We do not toggle if no renderer is not available or element is elided
@@ -376,7 +376,9 @@
 			doElide(true);
 		«ENDIF»
 		
-		setExpressedVisualState();
+		//Toggled, when childerenChache != null
+		if (childrenCache == null)
+			setExpressedVisualState();
 		
 	}
 «ENDDEFINE»
@@ -826,7 +828,7 @@
 	protected void handleNotificationEvent(org.eclipse.emf.common.notify.Notification notification) {
 		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Element
 				&& ((org.eclipse.emf.ecore.EStructuralFeature) notification.getFeature()).getName()
-						.equals("expressed")) {
+						.equals("expressed") && childrenCache == null) {
 			setExpressedVisualState();
 		}
 	}
