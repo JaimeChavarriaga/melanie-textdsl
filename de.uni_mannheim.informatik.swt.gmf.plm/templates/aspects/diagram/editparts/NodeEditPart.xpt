@@ -695,7 +695,7 @@
 	private void doElide(boolean readOnlyTransaction) {
 		
 		//We do not want to ellide toggeled connections
-		if (getToggleValue())
+		if (getToggleValue() != null && getToggleValue())
 			return;
 		
 		de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject clab = (de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)resolveSemanticElement();
