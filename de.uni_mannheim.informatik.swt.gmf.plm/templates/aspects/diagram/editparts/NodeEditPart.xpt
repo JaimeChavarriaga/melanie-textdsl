@@ -611,7 +611,7 @@
 						.evaluate(org.eclipse.emf.ecore.util.EcoreUtil
 								.getRootContainer(resolveSemanticElement()), q))
 						.toArray(new de.uni_mannheim.informatik.swt.models.plm.PLM.Field[] {});
-			} catch (ParserException e) {
+			} catch (org.eclipse.ocl.ParserException e) {
 				e.printStackTrace();
 			}
 			
