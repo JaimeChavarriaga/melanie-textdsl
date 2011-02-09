@@ -492,9 +492,9 @@
                       xsi:type="gmfmap:ExpressionLabelMapping"
                       readOnly="true">
                     <diagramLabel
-                        href="plm.gmfgraph#DomainEntityFieldFigureDefaultValueLabel"/>
+                        href="plm.gmfgraph#DomainEntityFieldFigureDataTypeLabel"/>
                     <viewExpression
-                        body="let dataTypeName: String =&#xD;&#xA;&#x9;if (not self.datatype.oclIsUndefined()) then&#xD;&#xA;&#x9;&#x9;self.datatype.name&#x9;&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let output: String =&#xD;&#xA;&#x9;if (dataTypeName &lt;> '') then&#xD;&#xA;&#x9;&#x9;':'.concat(dataTypeName)&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;output"/>
+                        body="self.datatype.name&#x9;"/>
                   </labelMappings>
                   <labelMappings
                       xsi:type="gmfmap:FeatureLabelMapping"

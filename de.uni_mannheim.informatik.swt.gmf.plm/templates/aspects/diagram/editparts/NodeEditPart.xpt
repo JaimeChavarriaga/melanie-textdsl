@@ -585,12 +585,56 @@
 		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject
 				&& ((org.eclipse.emf.ecore.EStructuralFeature) notification.getFeature()).getName()
 						.equals("elided")) {
+						
 			doElide(false);
 		}
 		else if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject
 				&& ((org.eclipse.emf.ecore.EStructuralFeature) notification.getFeature()).getName()
 						.equals("expressed")) {
+						
 			setExpressedVisualState();
+		}
+		else if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject
+				&& ((org.eclipse.emf.ecore.EStructuralFeature) notification.getFeature()).getName()
+						.equals("name")) {
+						
+			de.uni_mannheim.informatik.swt.models.plm.PLM.Field[] fields = new de.uni_mannheim.informatik.swt.models.plm.PLM.Field[] {};
+			
+			org.eclipse.ocl.ecore.OCL ocl = org.eclipse.ocl.ecore.OCL.newInstance();
+			org.eclipse.ocl.helper.OCLHelper<org.eclipse.emf.ecore.EClassifier, ?, ?, org.eclipse.ocl.ecore.Constraint> helper = ocl.createOCLHelper();
+			helper.setContext(de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.Literals.LML_MODEL);
+			
+			try {
+				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper
+						.createQuery("Field.allInstances()");
+				fields = ((java.util.HashSet<de.uni_mannheim.informatik.swt.models.plm.PLM.Field>) ocl
+						.evaluate(org.eclipse.emf.ecore.util.EcoreUtil
+								.getRootContainer(resolveSemanticElement()), q))
+						.toArray(new de.uni_mannheim.informatik.swt.models.plm.PLM.Field[] {});
+			} catch (ParserException e) {
+				e.printStackTrace();
+			}
+			
+			//We found fields
+			if (fields.length > 0) {
+				org.eclipse.ui.IEditorPart editor = org.eclipse.ui.PlatformUI.getWorkbench()
+						.getActiveWorkbenchWindow().getActivePage()
+						.getActiveEditor();
+				if (!(editor instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor))
+					return;
+
+				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor plmEditor = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor) editor;
+
+				for (de.uni_mannheim.informatik.swt.models.plm.PLM.Field f : fields) {
+					org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart fieldEditPart = (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart) plmEditor
+							.getDiagramGraphicalViewer()
+							.findEditPartsForElement(
+									org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getProxyID(f),
+									org.eclipse.gef.NodeEditPart.class).get(0);
+					fieldEditPart.performRequest(new org.eclipse.gef.Request(
+							org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
+				}
+			}
 		}
 	}
 «ENDDEFINE»
