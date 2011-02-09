@@ -69,17 +69,23 @@
 		de.uni_mannheim.informatik.swt.models.plm.PLM.DomainConnection domainConnection = (de.uni_mannheim.informatik.swt.models.plm.PLM.DomainConnection) org.eclipse.gmf.runtime.diagram.core.util.ViewUtil
 				.resolveSemanticElement(this.getPrimaryView());
 
+		//needs to be used as source connections can have non participant connections
+		int numberNonParticipantConnection = 0;
+
 		for (int i = 0; i < sourceConnections.size(); i++) {
 
 			//Take care that no renderer link is used here
 			if (! (sourceConnections.get(i) instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionParticipantEditPart))
+			{
+				numberNonParticipantConnection++;
 				continue;
+			}
 
 			//****************************************************************************
 			//Set navigable
 			//****************************************************************************
-			if (domainConnection.getIsNavigable().size() > i
-					&& domainConnection.getIsNavigable().get(i) == true) {
+			if (domainConnection.getIsNavigable().size() > i  - numberNonParticipantConnection
+					&& domainConnection.getIsNavigable().get(i  - numberNonParticipantConnection) == true) {
 				org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart connection = sourceConnections.get(i);
 				org.eclipse.draw2d.PolylineConnection connectionFigure = (org.eclipse.draw2d.PolylineConnection) connection
 						.getFigure();
@@ -94,14 +100,14 @@
 			//****************************************************************************
 			//Set role
 			//****************************************************************************
-			if (domainConnection.getRoleName().size() > i) {
+			if (domainConnection.getRoleName().size() > i  - numberNonParticipantConnection) {
 				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionParticipantEditPart connection = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionParticipantEditPart) sourceConnections
 						.get(i);
 				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionParticipantEditPart.DomainConnectionParticipantsFigure connectionFigure = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionParticipantEditPart.DomainConnectionParticipantsFigure) connection
 						.getFigure();
 				connectionFigure
 						.getFigureDomainConnectionParticipantsNameFigure()
-						.setText(domainConnection.getRoleName().get(i));
+						.setText(domainConnection.getRoleName().get(i  - numberNonParticipantConnection));
 			} else {
 				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionParticipantEditPart connection = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionParticipantEditPart) sourceConnections
 						.get(i);
@@ -118,10 +124,10 @@
 			//can we assume default lower = 0 and default upper = 1?
 			int lower = 0, upper = 1;
 
-			if (domainConnection.getLower().size() > i)
-				lower = domainConnection.getLower().get(i);
-			if (domainConnection.getUpper().size() > i)
-				upper = domainConnection.getUpper().get(i);
+			if (domainConnection.getLower().size() > i - numberNonParticipantConnection)
+				lower = domainConnection.getLower().get(i - numberNonParticipantConnection);
+			if (domainConnection.getUpper().size() > i - numberNonParticipantConnection)
+				upper = domainConnection.getUpper().get(i - numberNonParticipantConnection);
 
 			//now set the string
 			String multiplicity = "";
