@@ -42,6 +42,9 @@
 			or self.editPartClassName = 'Field2EditPart'
 			or self.editPartClassName = 'Field3EditPart'»
 	«EXPAND handleNotificationEventForField-»
+«ELSEIF self.editPartClassName = 'MethodEditPart'
+			or self.editPartClassName = 'Method2EditPart'»
+	«EXPAND handleNotificationEventForMethod-»
 «ELSEIF self.editPartClassName = 'ModelEditPart'»
 	«EXPAND handleNotificationEventForModel-»
 «ELSEIF self.editPartClassName = 'OntologyEnditPart'»
@@ -479,6 +482,32 @@
 	}
 «ENDDEFINE»
 
+«DEFINE handleNotificationEventForMethod FOR gmfgen::GenNode»
+	/**
+	 * @generated
+	 */
+	@Override
+	protected void handleNotificationEvent(org.eclipse.emf.common.notify.Notification notification) {
+		super.handleNotificationEvent(notification);
+
+		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Feature 
+				&& ((org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature()).getName().equals("expressed"))
+		{
+			
+			de.uni_mannheim.informatik.swt.models.plm.PLM.Feature f = (de.uni_mannheim.informatik.swt.models.plm.PLM.Feature)resolveSemanticElement();
+			if (f.isExpressed())
+			{
+				((org.eclipse.gmf.runtime.notation.Shape)this.getNotationView()).setItalic(false);
+				((org.eclipse.gmf.runtime.notation.Shape)this.getNotationView()).setFontColor(0);
+			}
+			else
+			{
+				((org.eclipse.gmf.runtime.notation.Shape)this.getNotationView()).setItalic(true);
+				((org.eclipse.gmf.runtime.notation.Shape)this.getNotationView()).setFontColor(org.eclipse.gmf.runtime.diagram.ui.figures.DiagramColorConstants.diagramGray.handle);
+			}
+		}
+	}
+«ENDDEFINE»
 
 «DEFINE handleNotificationEventForModel FOR gmfgen::GenNode»
 	/**
