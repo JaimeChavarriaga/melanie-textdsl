@@ -22,9 +22,6 @@
 	«EXPAND refreshSourceConnections-»
 	«EXPAND doElideForDomainConnectionEditPart-»
 «ENDIF»
-«IF self.editPartClassName = 'RendererEditPart'»
-	«EXPAND setRendererViewState-»
-«ENDIF»
 «IF self.editPartClassName = 'DomainEntityEditPart'
 		or self.editPartClassName = 'RendererEditPart'»
 	«EXPAND elideDomainEntity-»
@@ -536,53 +533,53 @@
 		else if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Model && 
 				((org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature()).getName().equals("showRenderer"))
 		{
-			org.eclipse.ui.IEditorPart editor = org.eclipse.ui.PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
-			if (! (editor instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor))
-				return;
-			
-			de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor plmEditor = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor)editor;
-			de.uni_mannheim.informatik.swt.models.plm.PLM.Model ont = (de.uni_mannheim.informatik.swt.models.plm.PLM.Model)notification.getNotifier();
+			de.uni_mannheim.informatik.swt.models.plm.PLM.Model model = (de.uni_mannheim.informatik.swt.models.plm.PLM.Model) notification.getNotifier();
 
-			org.eclipse.emf.common.util.TreeIterator<org.eclipse.emf.ecore.EObject> iterator = ont.eAllContents();
-			
-			while(iterator.hasNext())
+			de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer[] renderers = new de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer[] {};
+
+			//find all renderers in the model
+			org.eclipse.ocl.ecore.OCL ocl = org.eclipse.ocl.ecore.OCL.newInstance();
+			org.eclipse.ocl.helper.OCLHelper<org.eclipse.emf.ecore.EClassifier, ?, ?, org.eclipse.ocl.ecore.Constraint> helper = ocl.createOCLHelper();
+			helper.setContext(de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.Literals.MODEL);
+
+			try 
 			{
-				org.eclipse.emf.ecore.EObject obj = iterator.next();
-				if (obj instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer)
+				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.children->select(c | c.oclIsTypeOf(Renderer))");
+				renderers = ((java.util.HashSet<de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer>) ocl.evaluate(resolveSemanticElement(), q)).toArray(new de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer[] {});
+			}
+			catch (org.eclipse.ocl.ParserException e) 
+			{
+				e.printStackTrace();
+			}
+			
+			//find the notational elements for the renderers
+			for(de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer r : renderers)
+			{
+				org.eclipse.emf.common.util.TreeIterator<org.eclipse.emf.ecore.EObject> iter = (getNotationView().eAllContents());
+				
+				while (iter.hasNext())
 				{
-					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.RendererEditPart editPart = 
-						(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.RendererEditPart)plmEditor.getDiagramGraphicalViewer().findEditPartsForElement(org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getProxyID(obj), de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.RendererEditPart.class).get(0);
-					editPart.setRendererViewState();
+					org.eclipse.emf.ecore.EObject obj = iter.next();
+					
+					if (obj instanceof org.eclipse.gmf.runtime.notation.Shape)
+					{
+						org.eclipse.gmf.runtime.notation.Shape s = (org.eclipse.gmf.runtime.notation.Shape)obj;
+						
+						if (s.getElement() == r)
+						{
+							if (model.getShowRenderer().equals("ShowRenderingOptions::NONE"))
+								s.setVisible(false);
+							else
+								s.setVisible(true);
+							
+							break;
+						}
+					}
 				}
 			}
+			
+			performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
 		}
-	}
-«ENDDEFINE»
-
-«DEFINE setRendererViewState FOR gmfgen::GenNode»
-	/**
-	 * Sets the renderer visible depending on the ShowRenderer attribut of 
-	 * all its containers.
-	 * 
-	 * @generated
-	 */
-	public void setRendererViewState()
-	{
-		boolean show = true;
-		
-		org.eclipse.emf.ecore.EObject obj = resolveSemanticElement();
-		
-		while ((obj = obj.eContainer()) != null)
-		{
-			if (obj instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer 
-					&& ((de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer)obj).getShowRenderer().equals("ShowRenderingOptions::NONE"))
-			{
-				show = false;
-				break;
-			}
-		}
-		
-		this.setVisibility(show);
 	}
 «ENDDEFINE»
 
@@ -773,10 +770,6 @@
 	public void addNotify() {
 		super.addNotify();
 
-		«IF self.editPartClassName = 'RendererEditPart'»
-			setRendererViewState();
-		«ENDIF»
-		
 		doElide(true);
 		setExpressedVisualState();
 	}
