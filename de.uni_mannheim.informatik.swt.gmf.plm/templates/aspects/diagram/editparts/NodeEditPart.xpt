@@ -581,7 +581,7 @@
 			performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
 		}
 				 else if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Model
-					&& ((EStructuralFeature) notification.getFeature()).getName()
+					&& ((org.eclipse.emf.ecore.EStructuralFeature) notification.getFeature()).getName()
 							.equals("origin")) 
 		{
 			de.uni_mannheim.informatik.swt.models.plm.PLM.Element[] elements = new de.uni_mannheim.informatik.swt.models.plm.PLM.Element[] {};
