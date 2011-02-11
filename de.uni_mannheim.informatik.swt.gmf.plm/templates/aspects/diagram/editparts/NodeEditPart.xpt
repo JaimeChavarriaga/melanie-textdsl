@@ -580,6 +580,56 @@
 			
 			performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
 		}
+				 else if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Model
+					&& ((EStructuralFeature) notification.getFeature()).getName()
+							.equals("origin")) 
+		{
+			de.uni_mannheim.informatik.swt.models.plm.PLM.Element[] elements = new de.uni_mannheim.informatik.swt.models.plm.PLM.Element[] {};
+			de.uni_mannheim.informatik.swt.models.plm.PLM.Model model = (de.uni_mannheim.informatik.swt.models.plm.PLM.Model)resolveSemanticElement();
+			
+			//find all renderers in the model
+			org.eclipse.ocl.ecore.OCL ocl = org.eclipse.ocl.ecore.OCL
+					.newInstance();
+			org.eclipse.ocl.helper.OCLHelper<org.eclipse.emf.ecore.EClassifier, ?, ?, org.eclipse.ocl.ecore.Constraint> helper = ocl
+					.createOCLHelper();
+			helper.setContext(de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.Literals.MODEL);
+
+			try {
+				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.children");
+				
+				elements = ((java.util.HashSet<de.uni_mannheim.informatik.swt.models.plm.PLM.Element>) ocl
+						.evaluate(resolveSemanticElement(), q))
+						.toArray(new de.uni_mannheim.informatik.swt.models.plm.PLM.Element[] {});
+			} catch (org.eclipse.ocl.ParserException e) {
+				e.printStackTrace();
+			}
+
+			//find the notational elements for the renderers
+			for (de.uni_mannheim.informatik.swt.models.plm.PLM.Element e : elements) {
+				org.eclipse.emf.common.util.TreeIterator<org.eclipse.emf.ecore.EObject> iter = (getNotationView().eAllContents());
+
+				while (iter.hasNext()) {
+					org.eclipse.emf.ecore.EObject obj = iter.next();
+
+					if (obj instanceof org.eclipse.gmf.runtime.notation.Shape) {
+						org.eclipse.gmf.runtime.notation.Shape s = (org.eclipse.gmf.runtime.notation.Shape) obj;
+
+						if (s.getElement() == e) {
+							if (model.getOrigin().equals("OriginOptions::Expressed") && e.isExpressed()
+									|| model.getOrigin().equals("OriginOptions::Computed") && !e.isExpressed()
+									|| model.getOrigin().equals("OriginOptions::All"))
+								s.setVisible(true);
+							else
+								s.setVisible(false);
+
+							break;
+						}
+					}
+				}
+			}
+			
+			performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
+		}
 	}
 «ENDDEFINE»
 
