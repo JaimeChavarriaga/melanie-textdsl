@@ -199,22 +199,14 @@
                   horizontalAlignment="BEGINNING"
                   verticalSpan="2"/>
             </children>
-          </children>
-          <children
-              xsi:type="gmfgraph:Rectangle"
-              name="AVSRectangle"
-              outline="false"
-              fill="false">
-            <layout
-                xsi:type="gmfgraph:GridLayout"
-                equalWidth="false"/>
             <children
                 xsi:type="gmfgraph:Label"
                 name="DomainEntityAVSFigure"
                 text="">
               <layoutData
                   xsi:type="gmfgraph:GridLayoutData"
-                  grabExcessHorizontalSpace="true"/>
+                  grabExcessHorizontalSpace="true"
+                  horizontalSpan="2"/>
             </children>
           </children>
         </children>
@@ -222,7 +214,7 @@
       <accessors
           figure="//@figures.0/@descriptors.4/@actualFigure/@children.1/@children.0/@children.0"/>
       <accessors
-          figure="//@figures.0/@descriptors.4/@actualFigure/@children.1/@children.1/@children.0"/>
+          figure="//@figures.0/@descriptors.4/@actualFigure/@children.1/@children.0/@children.3"/>
       <accessors
           figure="//@figures.0/@descriptors.4/@actualFigure/@children.1/@children.0/@children.1"/>
       <accessors
