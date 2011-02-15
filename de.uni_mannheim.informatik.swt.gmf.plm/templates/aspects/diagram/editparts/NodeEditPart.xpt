@@ -822,8 +822,6 @@
 			}
 
 			entityFigure.setOutline(false);
-			org.eclipse.gef.Request autoSize = new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_AUTOSIZE);
-			performRequest(autoSize);
 
 			//when called from add notify the size is already present in the notational model
 			if (!readOnlyTransaction) {
@@ -834,6 +832,9 @@
 						new org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter((org.eclipse.gmf.runtime.notation.View) this.getModel()), rect);
 				getEditDomain().getCommandStack().execute(
 						new org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy(sbc));
+						
+				removeEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE);
+				installEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE, new org.eclipse.gmf.runtime.diagram.ui.editpolicies.NonResizableEditPolicyEx());
 			}
 
 			if (targetConnections != null) {
@@ -848,10 +849,6 @@
 					((org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx) link.getFigure()).setLineDash(new int[] { 10 });
 				}
 			}
-			
-			removeEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE);
-			installEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE, new org.eclipse.gmf.runtime.diagram.ui.editpolicies.NonResizableEditPolicyEx());
-			
 		} else {
 			for (Object obj : entityFigure.getChildren()) {
 				if (obj == entityFigure.getChildren().get(0)
@@ -862,9 +859,16 @@
 			}
 
 			entityFigure.setOutline(true);
-			org.eclipse.gef.Request autoSize = new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_AUTOSIZE);
-			performRequest(autoSize);
-
+			
+			if (!readOnlyTransaction)
+			{
+				removeEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE);
+				installEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE, new org.eclipse.gmf.runtime.diagram.ui.editpolicies.ResizableShapeEditPolicy());
+				
+				org.eclipse.gef.Request autoSize = new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_AUTOSIZE);
+				performRequest(autoSize);
+			}
+			
 			if (targetConnections != null) {
 				for (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart link : (java.util.List<org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart>) targetConnections) {
 					((org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx) link.getFigure()).setLineStyle(SWT.LINE_SOLID);
@@ -875,9 +879,6 @@
 					((org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx) link.getFigure()).setLineStyle(SWT.LINE_SOLID);
 				}
 			}
-			
-			removeEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE);
-			installEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE, new org.eclipse.gmf.runtime.diagram.ui.editpolicies.ResizableShapeEditPolicy());
 		}
 	}
 
