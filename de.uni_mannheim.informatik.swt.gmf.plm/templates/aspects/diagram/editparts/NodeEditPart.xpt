@@ -400,6 +400,13 @@
 	 */
 	private void setExpressedVisualState() {
 		de.uni_mannheim.informatik.swt.models.plm.PLM.Element self = (de.uni_mannheim.informatik.swt.models.plm.PLM.Element) resolveSemanticElement();
+		
+		«IF self.editPartClassName = 'DomainConnectionEditPart'»
+		//We cannot set expressed state of elided object as they are only "..."
+		if (((de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)self).isElided())
+			return;
+		«ENDIF»
+		
 		if (self.isExpressed()) {
 			//get(1) is the border item container
 			org.eclipse.draw2d.IFigure defalutSizeNodeFigure = (org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure) figure
@@ -952,6 +959,10 @@
 							.setLineDash(new int[] { 10 });
 				}
 			}
+			
+			removeEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE);
+			installEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE, new org.eclipse.gmf.runtime.diagram.ui.editpolicies.NonResizableEditPolicyEx());
+			
 		}
 		//We only need to revert the elision if we have done it when the editor was open
 		else if (figureBeforeElision != null)
@@ -979,6 +990,9 @@
 							.setLineStyle(org.eclipse.swt.SWT.LINE_SOLID);
 				}
 			}
+			
+			removeEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE);
+			installEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE, new org.eclipse.gmf.runtime.diagram.ui.editpolicies.ResizableShapeEditPolicy());
 		}
 		//We open the diagram unelided -> hide "..."
 		else
