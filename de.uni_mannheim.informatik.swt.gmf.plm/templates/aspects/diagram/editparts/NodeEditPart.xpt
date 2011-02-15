@@ -312,6 +312,9 @@
 							(org.eclipse.gmf.runtime.notation.View) this.getModel()), rect);
 			getEditDomain().getCommandStack().execute(new org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy(sbc));
 
+			removeEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE);
+			installEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE, new org.eclipse.gmf.runtime.diagram.ui.editpolicies.ResizableShapeEditPolicy());
+
 			return;
 		}
 		//collapse element
@@ -352,6 +355,9 @@
 			else {
 				rf.setSize(8, 8);
 			}
+			
+			removeEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE);
+			installEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE, new org.eclipse.gmf.runtime.diagram.ui.editpolicies.NonResizableEditPolicyEx());
 		}
 	}
 «ENDDEFINE»
@@ -842,6 +848,10 @@
 					((org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx) link.getFigure()).setLineDash(new int[] { 10 });
 				}
 			}
+			
+			removeEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE);
+			installEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE, new org.eclipse.gmf.runtime.diagram.ui.editpolicies.NonResizableEditPolicyEx());
+			
 		} else {
 			for (Object obj : entityFigure.getChildren()) {
 				if (obj == entityFigure.getChildren().get(0)
@@ -865,6 +875,9 @@
 					((org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx) link.getFigure()).setLineStyle(SWT.LINE_SOLID);
 				}
 			}
+			
+			removeEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE);
+			installEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE, new org.eclipse.gmf.runtime.diagram.ui.editpolicies.ResizableShapeEditPolicy());
 		}
 	}
 
