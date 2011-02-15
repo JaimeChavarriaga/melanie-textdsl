@@ -265,7 +265,7 @@
 	 */
 	public void toggle() {
 		java.lang.Boolean collapse = getToggleValue();
-
+		
 		«IF self.editPartClassName='DomainConnectionEditPart'»
 			//We do not toggle if no renderer is not available or element is elided
 			if (collapse == null || ((de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)resolveSemanticElement()).isElided())
@@ -314,6 +314,11 @@
 
 			removeEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE);
 			installEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE, new org.eclipse.gmf.runtime.diagram.ui.editpolicies.ResizableShapeEditPolicy());
+
+			«IF self.editPartClassName='DomainConnectionEditPart'»
+			//dirty hack to get rid of the dots above the name :)
+			doElide(false);
+			«ENDIF»
 
 			return;
 		}
