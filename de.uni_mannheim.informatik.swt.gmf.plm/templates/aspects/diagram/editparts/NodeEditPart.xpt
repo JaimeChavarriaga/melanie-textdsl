@@ -790,14 +790,17 @@
 
 				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor plmEditor = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor) editor;
 
-				for (de.uni_mannheim.informatik.swt.models.plm.PLM.Field f : fields) {
-					org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart fieldEditPart = (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart) plmEditor
-							.getDiagramGraphicalViewer()
-							.findEditPartsForElement(
-									org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getProxyID(f),
-									org.eclipse.gef.NodeEditPart.class).get(0);
-					fieldEditPart.performRequest(new org.eclipse.gef.Request(
-							org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
+				for (de.uni_mannheim.informatik.swt.models.plm.PLM.Field f : fields) 
+				{	
+					//if a field is hidden via the notational model it cannot be resolved
+					java.util.List fieldEditParts = 
+						 plmEditor.getDiagramGraphicalViewer().findEditPartsForElement(org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getProxyID(f),org.eclipse.gef.NodeEditPart.class);
+					
+					 if (fieldEditParts.size() > 0)
+					 {
+						 org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart fieldEditPart = (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)fieldEditParts.get(0);
+						 fieldEditPart.performRequest(new Request(RequestConstants.REQ_REFRESH));
+					}
 				}
 			}
 		}
