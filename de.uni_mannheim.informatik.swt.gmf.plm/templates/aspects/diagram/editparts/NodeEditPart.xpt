@@ -459,6 +459,35 @@
 				((org.eclipse.gmf.runtime.notation.Shape)this.getNotationView()).setFontColor(org.eclipse.gmf.runtime.diagram.ui.figures.DiagramColorConstants.diagramGray.handle);
 			}
 		}
+		else if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Feature
+				&& ((org.eclipse.emf.ecore.EStructuralFeature) notification.getFeature()).getName().equals("elided")) {
+
+			de.uni_mannheim.informatik.swt.models.plm.PLM.Feature f = (de.uni_mannheim.informatik.swt.models.plm.PLM.Feature) resolveSemanticElement();
+			if (f.isElided()) {
+				//hide all other labels
+				for (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart editPart : (java.util.List<org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart>)children)
+				{
+					if (editPart == children.get(0))
+						continue;
+					((org.eclipse.gmf.runtime.notation.DecorationNode) editPart.getNotationView()).setVisible(false);
+				}
+				
+				performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
+				
+				//Set the name label to "..."
+				((org.eclipse.gmf.runtime.diagram.ui.editparts.ITextAwareEditPart)children.get(0)).setLabelText("...");
+			} else {
+				//hide all other labels
+				for (org.eclipse.gmf.runtime.notation.DecorationNode view : (java.util.List<org.eclipse.gmf.runtime.notation.DecorationNode>)getNotationView().getChildren())
+				{
+					view.setVisible(true);
+				}
+				
+				performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
+				
+				((org.eclipse.gmf.runtime.diagram.ui.editparts.ITextAwareEditPart)children.get(0)).setLabelText(f.getName());
+			}
+		}
 
 		«IF self.editPartClassName = 'FieldEditPart'»
 		//***********************************************************
@@ -799,7 +828,7 @@
 					 if (fieldEditParts.size() > 0)
 					 {
 						 org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart fieldEditPart = (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)fieldEditParts.get(0);
-						 fieldEditPart.performRequest(new Request(RequestConstants.REQ_REFRESH));
+						 fieldEditPart.performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
 					}
 				}
 			}
