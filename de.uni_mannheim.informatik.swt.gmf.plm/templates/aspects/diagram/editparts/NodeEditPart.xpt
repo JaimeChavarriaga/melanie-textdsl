@@ -14,18 +14,24 @@
 	«EXPAND getToggleValue-»
 	«EXPAND toggle-»
 	«EXPAND addNotifyForToggeling-»
-	«EXPAND setExpressedVisualStateForConnections-»
 «ENDIF»
 //Responsible for the multiplicity, role, navigation ends and elision
 «IF self.editPartClassName = 'DomainConnectionEditPart'»
 	«EXPAND updateConnections-»
 	«EXPAND refreshSourceConnections-»
+«ENDIF»
+«IF self.editPartClassName = 'DomainEntityEditPart'
+		or self.editPartClassName = 'RendererEditPart'
+		or self.editPartClassName = 'DomainConnectionEditPart'»
 	«EXPAND doElideForDomainConnectionEditPart-»
 «ENDIF»
 «IF self.editPartClassName = 'DomainEntityEditPart'
-		or self.editPartClassName = 'RendererEditPart'»
-	«EXPAND elideDomainEntity-»
-	«EXPAND setExpressedVisualStateForDomainEntity-»
+		or self.editPartClassName = 'RendererEditPart'
+		or self.editPartClassName = 'DomainConnectionEditPart'
+		or self.editPartClassName = 'BinaryGeneralizationEditPart' 
+		or self.editPartClassName = 'MultipleSpecializationEditPart'
+		or self.editPartClassName = 'MultipleGeneralizationEditPart'»
+	«EXPAND setExpressedVisualStateForConnections-»
 «ENDIF»
 «ENDAROUND»
 
@@ -340,7 +346,6 @@
 	 * @generated
 	 */
 	private org.eclipse.draw2d.ScalablePolygonShape polygonFigureCache = null;
-
 	/**
 	 * @generated
 	 */
@@ -993,6 +998,18 @@
 «ENDDEFINE»
 
 «DEFINE doElideForDomainConnectionEditPart FOR gmfgen::GenNode»
+
+	«IF not(self.editPartClassName = 'DomainConnectionEditPart')»
+	/**
+	 * @generated
+	 */
+	private org.eclipse.draw2d.geometry.Dimension cachedSize = null;
+	/**
+	 * @generated
+	 */
+	private org.eclipse.draw2d.ScalablePolygonShape polygonFigureCache = null;
+	«ENDIF»
+
 	/**
 	 * Elides the DomainEntity depending on the elided attribute
 	 * 
