@@ -174,15 +174,17 @@
 	/**
 	 * Updates the connections after a value was set and does elision
 	 *
-	 * @generated NOT
+	 * @generated
 	 */
 	@Override
 	protected void handleNotificationEvent(org.eclipse.emf.common.notify.Notification notification) {
 		super.handleNotificationEvent(notification);
 
+		«IF self.editPartClassName = "DomainConnectionEditPart"»
 		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.DomainConnection) {
 			updateConnections();
 		}
+		«ENDIF»
 		
 		org.eclipse.emf.ecore.EStructuralFeature changedFeature = (org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature();
 		
@@ -208,13 +210,28 @@
 		if (toggleValue != null)
 			toggle(readOnlyContext);
 		
+		«IF self.editPartClassName = 'DomainConnectionEditPart'
+			or self.editPartClassName = 'RendererEditPart'
+			or self.editPartClassName = 'DomainEntityEditPart'»
 		//We can do elide as long as a domain connection is not toggled
 		if(toggleValue == null || toggleValue == false)
 			doElide(readOnlyContext);
+		«ENDIF»
 		
+		«IF self.editPartClassName = 'DomainConnectionEditPart'»
 		//We can change expressed as long as domain connection is not elided and not toggled
 		if (!c.isElided() && (toggleValue == null || toggleValue == false))
 			setExpressedVisualState();
+		«ELSEIF self.editPartClassName = 'RendererEditPart'
+			or self.editPartClassName = 'DomainEntityEditPart'»
+		//We can change expressed as long as domain connection is not elided and not toggled
+		if (!c.isElided())
+			setExpressedVisualState();
+		«ELSE»
+		//We can change expressed as long as domain connection is not elided and not toggled
+		if ((toggleValue == null || toggleValue == false))
+			setExpressedVisualState();
+		«ENDIF»
 	}
 «ENDDEFINE»
 
