@@ -203,7 +203,12 @@
 	 */
 	public void updateView(boolean readOnlyContext)
 	{
+		«IF self.editPartClassName = 'DomainConnectionEditPart'
+			or self.editPartClassName = 'RendererEditPart'
+			or self.editPartClassName = 'DomainEntityEditPart'»
 		de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject c = (de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)resolveSemanticElement();
+		«ENDIF»
+		
 		java.lang.Boolean toggleValue = getToggleValue();
 		
 		//We do toggle the domain connection
