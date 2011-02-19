@@ -67,8 +67,8 @@ public class ToggleNodeAction implements IObjectActionDelegate {
 		Element self = (Element)selectedElement.resolveSemanticElement();
 		
 		//We are not toggeling elided nodes
-		if (self instanceof Clabject && ((Clabject)self).isElided())
-			return;
+		/*if (self instanceof Clabject && ((Clabject)self).isElided())
+			return;*/
 		
 		//No rendering information found => add new rendering information
 		if (self.getRenderer() == null)
@@ -107,13 +107,13 @@ public class ToggleNodeAction implements IObjectActionDelegate {
 		//Change the connection's new visual state
 		//********************************************************
 		if (selectedElement instanceof DomainConnectionEditPart)
-			((DomainConnectionEditPart)selectedElement).toggle();
+			((DomainConnectionEditPart)selectedElement).updateView(false);
 		else if(selectedElement instanceof BinaryGeneralizationEditPart)
-			((BinaryGeneralizationEditPart)selectedElement).toggle();
+			((BinaryGeneralizationEditPart)selectedElement).updateView(false);
 		else if(selectedElement instanceof MultipleSpecializationEditPart)
-			((MultipleSpecializationEditPart)selectedElement).toggle();
+			((MultipleSpecializationEditPart)selectedElement).updateView(false);
 		else if(selectedElement instanceof MultipleGeneralizationEditPart)
-			((MultipleGeneralizationEditPart)selectedElement).toggle();
+			((MultipleGeneralizationEditPart)selectedElement).updateView(false);
 	}
 
 	//*****************************************************
