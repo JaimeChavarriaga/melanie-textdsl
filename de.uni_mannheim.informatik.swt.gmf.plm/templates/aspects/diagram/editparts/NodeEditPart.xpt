@@ -318,9 +318,6 @@
 
 			((org.eclipse.draw2d.IFigure)figure.getChildren().get(0)).getChildren().remove(0);
 			((org.eclipse.draw2d.IFigure)figure.getChildren().get(0)).getChildren().add(0, polygonFigureCache);
-
-			//Hide label for elision
-			((org.eclipse.draw2d.IFigure)polygonFigureCache.getChildren().get(0)).setVisible(false);
 			
 			//Hide external name label
 			org.eclipse.draw2d.IFigure boderItemContainer = (org.eclipse.draw2d.IFigure)figure.getChildren().get(1);
