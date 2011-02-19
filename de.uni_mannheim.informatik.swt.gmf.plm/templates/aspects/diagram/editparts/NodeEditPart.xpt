@@ -52,7 +52,7 @@
 «ELSEIF self.editPartClassName = 'BinaryGeneralizationEditPart' 
 	or self.editPartClassName = 'MultipleSpecializationEditPart'
 	or self.editPartClassName = 'MultipleGeneralizationEditPart'»
-	«EXPAND handleNotificationEventForInheritance-»
+	«EXPAND handleNotificationEventForDomainConnection-»
 «ENDIF»
 «ENDAROUND»
 
@@ -174,25 +174,47 @@
 	/**
 	 * Updates the connections after a value was set and does elision
 	 *
-	 * @generated
+	 * @generated NOT
 	 */
-	 @Override
+	@Override
 	protected void handleNotificationEvent(org.eclipse.emf.common.notify.Notification notification) {
 		super.handleNotificationEvent(notification);
 
 		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.DomainConnection) {
 			updateConnections();
 		}
-		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject
-				&& ((org.eclipse.emf.ecore.EStructuralFeature) notification.getFeature()).getName()
-				.equals("elided")) {
-			doElide(false);
+		
+		org.eclipse.emf.ecore.EStructuralFeature changedFeature = (org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature();
+		
+		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)
+		{
+			if (changedFeature.getName().equals("elided")|| 
+				changedFeature.getName().equals("expressed"))
+			{
+				updateView(false);
+			}
 		}
-		else if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Element
-				&& ((org.eclipse.emf.ecore.EStructuralFeature) notification.getFeature()).getName()
-						.equals("expressed") && childrenCache == null) {
+	}
+	
+	/**
+	 * @generated
+	 */
+	public void updateView(boolean readOnlyContext)
+	{
+		de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject c = (de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)resolveSemanticElement();
+		java.lang.Boolean toggleValue = getToggleValue();
+		
+		//We do toggle the domain connection
+		if (toggleValue != null)
+			toggle(readOnlyContext);
+		
+		//We can do elide as long as a domain connection is not toggled
+		if(toggleValue == null || toggleValue == false)
+			doElide(readOnlyContext);
+		
+		//We can change expressed as long as domain connection is not elided and not toggled
+		if (!c.isElided() && (toggleValue == null || toggleValue == false))
 			setExpressedVisualState();
-		}
 	}
 «ENDDEFINE»
 
@@ -248,12 +270,12 @@
 	/**
 	 * @generated
 	 */
-	private java.util.List childrenCache = null;
+	private ScalablePolygonShape polygonFigureCache = null;
 
 	/**
 	 * @generated
 	 */
-	private org.eclipse.draw2d.geometry.Dimension cachedSize = null;
+	private Dimension cachedSize = null;
 	
 	/**
 	 * This renders the DomainConnectionEditPart based on information
@@ -263,62 +285,41 @@
 	 * 
 	 * @generated
 	 */
-	public void toggle() {
+	private void toggle(boolean readOnlyContext) {
 		java.lang.Boolean collapse = getToggleValue();
 		
-		«IF self.editPartClassName='DomainConnectionEditPart'»
-			//We do not toggle if no renderer is not available or element is elided
-			if (collapse == null || ((de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)resolveSemanticElement()).isElided())
-				return;
-		«ELSE»
-			//We do not toggle if no renderer is not available
-			if (collapse == null)
-				return;
-		«ENDIF»
-
-		//the figure containing the actual design of the editpart
-		//the outer parent is only a container for the border items
-		//and the figure of the editpart
-		org.eclipse.draw2d.IFigure fig = ((org.eclipse.draw2d.IFigure) figure.getChildren().get(0));
-		
 		//expand element
-		if (!collapse) {
-			//Element was not previously collapsed -> can happen at diagram load
-			if (childrenCache == null)
-			{
-				//Hide external name label
-				org.eclipse.draw2d.IFigure boderItemContainer = (org.eclipse.draw2d.IFigure)figure.getChildren().get(1);
-				((org.eclipse.draw2d.IFigure)boderItemContainer.getChildren().get(0)).setVisible(false);
-				
-				return;
-			}
+		if (collapse == null || !collapse) {
 
 			this.setBackgroundColor(org.eclipse.swt.widgets.Display.getDefault().getSystemColor(
 					org.eclipse.swt.SWT.COLOR_WHITE));
 
-			fig.getChildren().clear();
-			fig.getChildren().addAll(childrenCache);
-			childrenCache = null;
+			((org.eclipse.draw2d.IFigure)figure.getChildren().get(0)).getChildren().remove(0);
+			((org.eclipse.draw2d.IFigure)figure.getChildren().get(0)).getChildren().add(0, polygonFigureCache);
 
+			//Hide label for elision
+			((org.eclipse.draw2d.IFigure)polygonFigureCache.getChildren().get(0)).setVisible(false);
+			
 			//Hide external name label
 			org.eclipse.draw2d.IFigure boderItemContainer = (org.eclipse.draw2d.IFigure)figure.getChildren().get(1);
-			((org.eclipse.draw2d.IFigure)boderItemContainer.getChildren().get(0)).setVisible(false);
+			((org.eclipse.draw2d.IFigure) boderItemContainer.getChildren().get(0))
+					.setVisible(false);
 
-			org.eclipse.draw2d.geometry.Rectangle rect = figure.getClientArea().getCopy();
-			rect.setSize((cachedSize != null) ? cachedSize : new org.eclipse.draw2d.geometry.Dimension(70,
-					60));
-			org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand sbc = new org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand(
-					this.getEditingDomain(), "change size", new org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter(
-							(org.eclipse.gmf.runtime.notation.View) this.getModel()), rect);
-			getEditDomain().getCommandStack().execute(new org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy(sbc));
-
+			//When we come from read only context / addNotify the size should be in the
+			//notation model
+			if (!readOnlyContext)
+			{
+				org.eclipse.draw2d.geometry.Rectangle rect = figure.getClientArea().getCopy();
+				rect.setSize((cachedSize != null) ? cachedSize : new org.eclipse.draw2d.geometry.Dimension(70,
+						60));
+				org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand sbc = new org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand(
+						this.getEditingDomain(), "change size", new org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter(
+								(org.eclipse.gmf.runtime.notation.View) this.getModel()), rect);
+				getEditDomain().getCommandStack().execute(new org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy(sbc));
+			}
 			removeEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE);
-			installEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE, new org.eclipse.gmf.runtime.diagram.ui.editpolicies.ResizableShapeEditPolicy());
-
-			«IF self.editPartClassName='DomainConnectionEditPart'»
-			//dirty hack to get rid of the dots above the name :)
-			doElide(false);
-			«ENDIF»
+			installEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE,
+					new org.eclipse.gmf.runtime.diagram.ui.editpolicies.ResizableShapeEditPolicy());
 
 			return;
 		}
@@ -327,23 +328,22 @@
 			//**************************************************
 			//Create the new figure (Rectangle with black background)
 			//**************************************************
-
-			//figure.getClientArea() ==  null on startup
+			
 			org.eclipse.draw2d.geometry.Rectangle rect = (figure.getClientArea() != null) ? figure
 					.getClientArea().getCopy() : null;
-			childrenCache = (java.util.List) ((java.util.ArrayList) fig.getChildren()).clone();
-			fig.getChildren().clear();
+
+			((org.eclipse.draw2d.IFigure)figure.getChildren().get(0)).getChildren().clear();
 
 			org.eclipse.draw2d.RectangleFigure rf = new org.eclipse.draw2d.RectangleFigure();
 
 			rf.setBackgroundColor(org.eclipse.swt.widgets.Display.getDefault().getSystemColor(
 					org.eclipse.swt.SWT.COLOR_BLACK));
-			fig.getChildren().add(rf);
-			rf.setParent(fig);
+			((org.eclipse.draw2d.IFigure)figure.getChildren().get(0)).getChildren().add(0, rf);
+			rf.setParent(((org.eclipse.draw2d.IFigure)figure.getChildren().get(0)));
 
-			//Show external name label
-			org.eclipse.draw2d.IFigure boderItemContainer = (org.eclipse.draw2d.IFigure)figure.getChildren().get(1);
-			((org.eclipse.draw2d.IFigure)boderItemContainer.getChildren().get(0)).setVisible(true);
+			//Hide external name label
+			org.eclipse.draw2d.IFigure boderItemContainer = (org.eclipse.draw2d.IFigure) figure.getChildren().get(1);
+			((org.eclipse.draw2d.IFigure) boderItemContainer.getChildren().get(0)).setVisible(true);
 
 			//A client rectangle existed
 			if (rect != null
@@ -360,9 +360,10 @@
 			else {
 				rf.setSize(8, 8);
 			}
-			
+
 			removeEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE);
-			installEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE, new org.eclipse.gmf.runtime.diagram.ui.editpolicies.NonResizableEditPolicyEx());
+			installEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE,
+					new org.eclipse.gmf.runtime.diagram.ui.editpolicies.NonResizableEditPolicyEx());
 		}
 	}
 «ENDDEFINE»
@@ -389,16 +390,11 @@
 	@Override
 	public void addNotify() {
 		super.addNotify();
+
+		//save the initial children
+		polygonFigureCache = (org.eclipse.draw2d.ScalablePolygonShape)((org.eclipse.draw2d.IFigure)figure.getChildren().get(0)).getChildren().get(0);
 		
-		toggle();
-		«IF self.editPartClassName = 'DomainConnectionEditPart'»
-			doElide(true);
-		«ENDIF»
-		
-		//Toggled, when childerenChache != null
-		if (childrenCache == null)
-			setExpressedVisualState();
-		
+		updateView(true);
 	}
 «ENDDEFINE»
 
@@ -411,24 +407,17 @@
 	 */
 	private void setExpressedVisualState() {
 		de.uni_mannheim.informatik.swt.models.plm.PLM.Element self = (de.uni_mannheim.informatik.swt.models.plm.PLM.Element) resolveSemanticElement();
-		
-		«IF self.editPartClassName = 'DomainConnectionEditPart'»
-		//We cannot set expressed state of elided object as they are only "..."
-		if (((de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)self).isElided())
-			return;
-		«ENDIF»
-		
+
 		if (self.isExpressed()) {
-			//get(1) is the border item container
 			org.eclipse.draw2d.IFigure defalutSizeNodeFigure = (org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure) figure
 					.getChildren().get(0);
 			((org.eclipse.draw2d.ScalablePolygonShape) defalutSizeNodeFigure.getChildren().get(0))
-					.setLineStyle(SWT.LINE_SOLID);
+					.setLineStyle(org.eclipse.swt.SWT.LINE_SOLID);
 		} else {
 			org.eclipse.draw2d.IFigure defalutSizeNodeFigure = (org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure) figure
 					.getChildren().get(0);
 			((org.eclipse.draw2d.ScalablePolygonShape) defalutSizeNodeFigure.getChildren().get(0))
-					.setLineStyle(SWT.LINE_CUSTOM);
+					.setLineStyle(org.eclipse.swt.SWT.LINE_CUSTOM);
 			((org.eclipse.draw2d.ScalablePolygonShape) defalutSizeNodeFigure.getChildren().get(0))
 					.setLineDash(new float[] { 10 });
 		}
@@ -934,66 +923,59 @@
 «ENDDEFINE»
 
 «DEFINE doElideForDomainConnectionEditPart FOR gmfgen::GenNode»
-	private org.eclipse.draw2d.IFigure figureBeforeElision = null;
-	
 	/**
 	 * Elides the DomainEntity depending on the elided attribute
 	 * 
 	 * @param readOnlyTransaction when called from addNotify
 	 * 
-	 * @generated
+	 * @generated NOT
 	 */
 	private void doElide(boolean readOnlyTransaction) {
-		
-		//We do not want to ellide toggeled connections
-		if (getToggleValue() != null && getToggleValue())
-			return;
-		
-		de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject clab = (de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)resolveSemanticElement();
-		
+
+		de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject clab = (de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject) resolveSemanticElement();
+
 		//The container that contains the figure and the border item container
 		org.eclipse.draw2d.IFigure borderContainer = figure;
 		//The figure
-		org.eclipse.draw2d.IFigure defaultSizeNodeFigure = (org.eclipse.draw2d.IFigure)borderContainer.getChildren().get(0);
+		org.eclipse.draw2d.IFigure defaultSizeNodeFigure = (org.eclipse.draw2d.IFigure) borderContainer.getChildren()
+				.get(0);
 		//the container that contains the border items
-		org.eclipse.draw2d.IFigure borderItemContainer = (org.eclipse.draw2d.IFigure)borderContainer.getChildren().get(1);
+		org.eclipse.draw2d.IFigure borderItemContainer = (org.eclipse.draw2d.IFigure) borderContainer.getChildren()
+				.get(1);
 		
-		//Hide the outer label
-		((org.eclipse.draw2d.IFigure)borderItemContainer.getChildren().get(0)).setVisible(false);
-		
-		
-		if (clab.isElided())
-		{
-			org.eclipse.draw2d.IFigure connectionFigure = (org.eclipse.draw2d.IFigure)defaultSizeNodeFigure.getChildren().get(0);
-			figureBeforeElision = connectionFigure;
+		if (clab.isElided()) {
+
+			defaultSizeNodeFigure.getChildren().remove(0);
 			
 			//Set up the new figure for the elided node
 			org.eclipse.draw2d.RectangleFigure rf = new org.eclipse.draw2d.RectangleFigure();
-			rf.setSize(new org.eclipse.draw2d.geometry.Dimension(30,15));
-			defaultSizeNodeFigure.remove(connectionFigure);
+			rf.setSize(new org.eclipse.draw2d.geometry.Dimension(30, 15));
+			
 			rf.setLayoutManager(new org.eclipse.draw2d.ToolbarLayout());
 			rf.setOutline(false);
-			
-			rf.add((org.eclipse.draw2d.IFigure)connectionFigure.getChildren().get(0));
-			//The "..." figure could have been hidden on startup
-			((org.eclipse.draw2d.IFigure)rf.getChildren().get(0)).setVisible(true);
-			
-			defaultSizeNodeFigure.add(rf, 0);
+
+			org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel wl = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();
+			wl.setText("...");
+			org.eclipse.swt.graphics.Color black = PlatformUI.getWorkbench().getDisplay().getCurrent().getSystemColor(org.eclipse.swt.SWT.COLOR_BLACK);
+			wl.setForegroundColor(black);
+
+			rf.add(wl);
+			defaultSizeNodeFigure.getChildren().add(0, rf);
 			rf.setParent(defaultSizeNodeFigure);
 			
 			//On Startup the size is saved in the notational model
-			if (!readOnlyTransaction)
-			{
+			if (!readOnlyTransaction) {
 				//Resize the elided node
 				org.eclipse.draw2d.geometry.Rectangle rect = figure.getClientArea().getCopy();
-				rect.setSize((cachedSize != null) ? cachedSize : new org.eclipse.draw2d.geometry.Dimension(10,
-						10));
+				rect.setSize((cachedSize != null) ? cachedSize : new Dimension(
+						10, 10));
 				org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand sbc = new org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand(
-						this.getEditingDomain(), "change size", new org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter(
-								(org.eclipse.gmf.runtime.notation.View) this.getModel()), rect);
-				getEditDomain().getCommandStack().execute(new org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy(sbc));
+						this.getEditingDomain(), "change size",
+						new org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter((org.eclipse.gmf.runtime.notation.View) this.getModel()), rect);
+				getEditDomain().getCommandStack().execute(
+						new org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy(sbc));
 			}
-			
+
 			//Dash all lines from to the elided element
 			if (targetConnections != null) {
 				for (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart link : (java.util.List<org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart>) targetConnections) {
@@ -1010,24 +992,25 @@
 							.setLineDash(new int[] { 10 });
 				}
 			}
-			
+
 			removeEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE);
-			installEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE, new org.eclipse.gmf.runtime.diagram.ui.editpolicies.NonResizableEditPolicyEx());
-			
+			installEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE,
+					new org.eclipse.gmf.runtime.diagram.ui.editpolicies.NonResizableEditPolicyEx());
+
 		}
 		//We only need to revert the elision if we have done it when the editor was open
-		else if (figureBeforeElision != null)
+		else
 		{
-			//Add back the "..." figure
-			org.eclipse.draw2d.RectangleFigure elidedFigure = (org.eclipse.draw2d.RectangleFigure)defaultSizeNodeFigure.getChildren().get(0);
-			figureBeforeElision.add((org.eclipse.draw2d.IFigure)elidedFigure.getChildren().get(0), 0);
-			
 			defaultSizeNodeFigure.getChildren().remove(0);
-			defaultSizeNodeFigure.add(figureBeforeElision);
-			((org.eclipse.draw2d.IFigure)figureBeforeElision.getChildren().get(0)).setVisible(false);
-			
-			org.eclipse.gef.Request rr = new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_AUTOSIZE);
-			performRequest(rr);
+			defaultSizeNodeFigure.getChildren().add(0, polygonFigureCache);
+			polygonFigureCache.setParent(defaultSizeNodeFigure);
+
+			//We cannot execute commands in read only context
+			if (!readOnlyTransaction)
+			{
+				org.eclipse.gef.Request rr = new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_AUTOSIZE);
+				performRequest(rr);
+			}
 			
 			//Make all lines from to the elided element solid
 			if (targetConnections != null) {
@@ -1041,16 +1024,15 @@
 							.setLineStyle(org.eclipse.swt.SWT.LINE_SOLID);
 				}
 			}
-			
+
 			removeEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE);
-			installEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE, new org.eclipse.gmf.runtime.diagram.ui.editpolicies.ResizableShapeEditPolicy());
+			installEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE,
+					new org.eclipse.gmf.runtime.diagram.ui.editpolicies.ResizableShapeEditPolicy());
 		}
-		//We open the diagram unelided -> hide "..."
-		else
-		{
-			org.eclipse.draw2d.IFigure connectionFigure = (org.eclipse.draw2d.IFigure)defaultSizeNodeFigure.getChildren().get(0);
-			((org.eclipse.draw2d.IFigure)connectionFigure.getChildren().get(0)).setVisible(false);
-		}
+		
+		performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
+		//Hide the outer label
+		((org.eclipse.draw2d.IFigure) borderItemContainer.getChildren().get(0)).setVisible(false);
 	}
 «ENDDEFINE»
 
