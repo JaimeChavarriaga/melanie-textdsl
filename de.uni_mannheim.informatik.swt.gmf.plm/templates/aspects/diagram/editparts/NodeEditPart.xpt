@@ -270,12 +270,12 @@
 	/**
 	 * @generated
 	 */
-	private ScalablePolygonShape polygonFigureCache = null;
+	private org.eclipse.draw2d.ScalablePolygonShape polygonFigureCache = null;
 
 	/**
 	 * @generated
 	 */
-	private Dimension cachedSize = null;
+	private org.eclipse.draw2d.geometry.Dimension cachedSize = null;
 	
 	/**
 	 * This renders the DomainConnectionEditPart based on information
@@ -956,7 +956,7 @@
 
 			org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel wl = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();
 			wl.setText("...");
-			org.eclipse.swt.graphics.Color black = PlatformUI.getWorkbench().getDisplay().getCurrent().getSystemColor(org.eclipse.swt.SWT.COLOR_BLACK);
+			org.eclipse.swt.graphics.Color black = org.eclipse.ui.PlatformUI.getWorkbench().getDisplay().getCurrent().getSystemColor(org.eclipse.swt.SWT.COLOR_BLACK);
 			wl.setForegroundColor(black);
 
 			rf.add(wl);
@@ -967,7 +967,7 @@
 			if (!readOnlyTransaction) {
 				//Resize the elided node
 				org.eclipse.draw2d.geometry.Rectangle rect = figure.getClientArea().getCopy();
-				rect.setSize((cachedSize != null) ? cachedSize : new Dimension(
+				rect.setSize((cachedSize != null) ? cachedSize : new org.eclipse.draw2d.geometry.Dimension(
 						10, 10));
 				org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand sbc = new org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand(
 						this.getEditingDomain(), "change size",
