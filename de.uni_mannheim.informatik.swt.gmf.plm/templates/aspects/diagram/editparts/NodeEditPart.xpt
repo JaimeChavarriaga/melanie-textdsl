@@ -463,8 +463,15 @@
 	public void addNotify() {
 		super.addNotify();
 
+		//DomainEntity EditParts do not have a outer BorderItemContainer in contrast
+		//to DomainConnections etc. as those have external labels
+		«IF self.editPartClassName = 'DomainEntityEditPart'
+			or self.editPartClassName = 'RendererEditPart'»
+		polygonFigureCache = (org.eclipse.draw2d.IFigure)figure.getChildren().get(0);
+		«ELSE»
 		//save the initial children
 		polygonFigureCache = (org.eclipse.draw2d.IFigure)((org.eclipse.draw2d.IFigure)figure.getChildren().get(0)).getChildren().get(0);
+		«ENDIF»
 		
 		updateView(true);
 	}
