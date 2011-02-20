@@ -23,7 +23,7 @@
 		or self.editPartClassName = 'RendererEditPart'
 		or self.editPartClassName = 'DomainConnectionEditPart'»
 
-	«EXPAND doElideForDomainConnectionEditPart-»
+	«EXPAND doElide-»
 «ENDIF»
 «IF self.editPartClassName = 'DomainEntityEditPart'
 		or self.editPartClassName = 'RendererEditPart'
@@ -32,8 +32,8 @@
 		or self.editPartClassName = 'MultipleSpecializationEditPart'
 		or self.editPartClassName = 'MultipleGeneralizationEditPart'»
 
-	«EXPAND setExpressedVisualStateForConnections-»
-	«EXPAND addNotifyForToggeling-»
+	«EXPAND setExpressedVisualState-»
+	«EXPAND addNotify-»
 «ENDIF»
 «ENDAROUND»
 
@@ -48,7 +48,7 @@
 	or self.editPartClassName = 'DomainEntityEditPart'
 	or self.editPartClassName = 'RendererEditPart'»
 
-	«EXPAND handleNotificationEventForDomainConnection-»
+	«EXPAND handleNotificationEventForClabjectLogicElement-»
 «ELSEIF self.editPartClassName = 'FieldEditPart'
 			or self.editPartClassName = 'Field2EditPart'
 			or self.editPartClassName = 'Field3EditPart'»
@@ -177,7 +177,7 @@
 	}
 «ENDDEFINE»
 
-«DEFINE handleNotificationEventForDomainConnection FOR gmfgen::GenNode»
+«DEFINE handleNotificationEventForClabjectLogicElement FOR gmfgen::GenNode»
 	/**
 	 * Updates the connections after a value was set and does elision
 	 *
@@ -445,21 +445,6 @@
 
 «DEFINE addNotify FOR gmfgen::GenNode»
 	/**
-	 * Needed to toogle DomainConnections on diagram load
-	 *
-	 * @generated
-	 */
-	@Override
-	public void addNotify() {
-		// TODO Auto-generated method stub
-		super.addNotify();
-		
-		toggle();
-	}
-«ENDDEFINE»	
-
-«DEFINE addNotifyForToggeling FOR gmfgen::GenNode»
-	/**
 	 * @generated
 	 */
 	@Override
@@ -480,7 +465,7 @@
 	}
 «ENDDEFINE»
 
-«DEFINE setExpressedVisualStateForConnections FOR gmfgen::GenNode»
+«DEFINE setExpressedVisualState FOR gmfgen::GenNode»
 	/**
 	 * Sets the figure to visually expressed or computed. Depending on the expressed
 	 * value.
@@ -851,178 +836,7 @@
 	}
 «ENDDEFINE»
 
-«DEFINE handleNotificationEventForDomainEntityEditPart FOR gmfgen::GenNode»
-	/**
-	 * Listens to the elided and expressed attributes and calls doElide / setExpressedVisualState
-	 * 
-	 * @generated
-	 */
-	@Override
-	protected void handleNotificationEvent(org.eclipse.emf.common.notify.Notification notification) {
-		super.handleNotificationEvent(notification);
-
-		«IF self.editPartClassName = "DomainConnectionEditPart"»
-		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.DomainConnection) {
-			updateConnections();
-		}
-		«ENDIF»
-		
-		org.eclipse.emf.ecore.EStructuralFeature changedFeature = (org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature();
-		
-		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)
-		{
-			if (changedFeature.getName().equals("elided")|| 
-				changedFeature.getName().equals("expressed"))
-			{
-				updateView(false);
-			}
-			«IF self.editPartClassName='DomainEntityEditPart'»
-			else if (changedFeature.getName().equals("name"))
-			{
-				de.uni_mannheim.informatik.swt.models.plm.PLM.Field[] fields = new de.uni_mannheim.informatik.swt.models.plm.PLM.Field[] {};
-			
-				org.eclipse.ocl.ecore.OCL ocl = org.eclipse.ocl.ecore.OCL.newInstance();
-				org.eclipse.ocl.helper.OCLHelper<org.eclipse.emf.ecore.EClassifier, ?, ?, org.eclipse.ocl.ecore.Constraint> helper = ocl.createOCLHelper();
-				helper.setContext(de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.Literals.LML_MODEL);
-				
-				try {
-					org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper
-							.createQuery("Field.allInstances()");
-					fields = ((java.util.HashSet<de.uni_mannheim.informatik.swt.models.plm.PLM.Field>) ocl
-							.evaluate(org.eclipse.emf.ecore.util.EcoreUtil
-									.getRootContainer(resolveSemanticElement()), q))
-							.toArray(new de.uni_mannheim.informatik.swt.models.plm.PLM.Field[] {});
-				} catch (org.eclipse.ocl.ParserException e) {
-					e.printStackTrace();
-				}
-			
-				//We found fields
-				if (fields.length > 0) {
-					org.eclipse.ui.IEditorPart editor = org.eclipse.ui.PlatformUI.getWorkbench()
-							.getActiveWorkbenchWindow().getActivePage()
-							.getActiveEditor();
-					if (!(editor instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor))
-						return;
-
-					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor plmEditor = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor) editor;
-
-					for (de.uni_mannheim.informatik.swt.models.plm.PLM.Field f : fields) 
-					{	
-						//if a field is hidden via the notational model it cannot be resolved
-						java.util.List fieldEditParts = 
-							 plmEditor.getDiagramGraphicalViewer().findEditPartsForElement(org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getProxyID(f),org.eclipse.gef.NodeEditPart.class);
-					
-					 	if (fieldEditParts.size() > 0)
-					 	{
-							 org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart fieldEditPart = (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)fieldEditParts.get(0);
-							 fieldEditPart.performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
-						}
-					}
-				}
-			} 
-			«ENDIF»
-		}
-	}
-«ENDDEFINE»
-
-«DEFINE elideDomainEntity FOR gmfgen::GenNode»
-	/**
-	 * Elides the DomainEntity depending on the elided attribute
-	 * 
-	 * @param readOnlyTransaction when called from addNotify
-	 * 
-	 * @generated
-	 */
-	private void doElide(boolean readOnlyTransaction) {
-		de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject notifier = (de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject) resolveSemanticElement();
-		org.eclipse.draw2d.RectangleFigure entityFigure = (org.eclipse.draw2d.RectangleFigure) this.getFigure()
-				.getChildren().get(0);
-
-		if (notifier.isElided()) {
-			for (Object obj : entityFigure.getChildren()) {
-				if (obj == entityFigure.getChildren().get(0)
-						&& obj instanceof org.eclipse.draw2d.IFigure)
-					((org.eclipse.draw2d.IFigure) obj).setVisible(true);
-				else if (obj instanceof org.eclipse.draw2d.IFigure)
-					((org.eclipse.draw2d.IFigure) obj).setVisible(false);
-			}
-
-			entityFigure.setOutline(false);
-
-			//when called from add notify the size is already present in the notational model
-			if (!readOnlyTransaction) {
-				org.eclipse.draw2d.geometry.Rectangle rect = figure.getClientArea().getCopy();
-				rect.setSize(new org.eclipse.draw2d.geometry.Dimension(15, 10));
-				org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand sbc = new org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand(
-						this.getEditingDomain(), "change size",
-						new org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter((org.eclipse.gmf.runtime.notation.View) this.getModel()), rect);
-				getEditDomain().getCommandStack().execute(
-						new org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy(sbc));
-						
-				removeEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE);
-				installEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE, new org.eclipse.gmf.runtime.diagram.ui.editpolicies.NonResizableEditPolicyEx());
-			}
-
-			if (targetConnections != null) {
-				for (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart link : (java.util.List<org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart>) targetConnections) {
-					((org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx) link.getFigure()).setLineStyle(SWT.LINE_CUSTOM);
-					((org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx) link.getFigure()).setLineDash(new int[] { 10 });
-				}
-			}
-			else if (sourceConnections != null) {
-				for (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart link : (java.util.List<org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart>) sourceConnections) {
-					((org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx) link.getFigure()).setLineStyle(SWT.LINE_CUSTOM);
-					((org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx) link.getFigure()).setLineDash(new int[] { 10 });
-				}
-			}
-		} else {
-			for (Object obj : entityFigure.getChildren()) {
-				if (obj == entityFigure.getChildren().get(0)
-						&& obj instanceof org.eclipse.draw2d.IFigure)
-					((org.eclipse.draw2d.IFigure) obj).setVisible(false);
-				else if (obj instanceof org.eclipse.draw2d.IFigure)
-					((org.eclipse.draw2d.IFigure) obj).setVisible(true);
-			}
-
-			entityFigure.setOutline(true);
-			
-			if (!readOnlyTransaction)
-			{
-				removeEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE);
-				installEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE, new org.eclipse.gmf.runtime.diagram.ui.editpolicies.ResizableShapeEditPolicy());
-				
-				org.eclipse.gef.Request autoSize = new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_AUTOSIZE);
-				performRequest(autoSize);
-			}
-			
-			if (targetConnections != null) {
-				for (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart link : (java.util.List<org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart>) targetConnections) {
-					((org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx) link.getFigure()).setLineStyle(SWT.LINE_SOLID);
-				}
-			}
-			else if (sourceConnections != null) {
-				for (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart link : (java.util.List<org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart>) sourceConnections) {
-					((org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx) link.getFigure()).setLineStyle(SWT.LINE_SOLID);
-				}
-			}
-		}
-	}
-
-	/**
-	 * Elide on diagram start up
-	 * 
-	 * @generated
-	 */
-	@Override
-	public void addNotify() {
-		super.addNotify();
-
-		doElide(true);
-		setExpressedVisualState();
-	}
-«ENDDEFINE»
-
-«DEFINE doElideForDomainConnectionEditPart FOR gmfgen::GenNode»
+«DEFINE doElide FOR gmfgen::GenNode»
 
 	«IF not(self.editPartClassName = 'DomainConnectionEditPart')»
 	/**
@@ -1151,45 +965,5 @@
 		//Hide the outer label
 		((org.eclipse.draw2d.IFigure) borderItemContainer.getChildren().get(0)).setVisible(false);
 		«ENDIF»
-	}
-«ENDDEFINE»
-
-«DEFINE setExpressedVisualStateForDomainEntity FOR gmfgen::GenNode»
-	/**
-	 * Sets the figure to visually expressed or computed. Depending on the expressed
-	 * value.
-	 * 
-	 * @generated
-	 */
-	private void setExpressedVisualState() {
-		de.uni_mannheim.informatik.swt.models.plm.PLM.Element self = (de.uni_mannheim.informatik.swt.models.plm.PLM.Element) resolveSemanticElement();
-		if (self.isExpressed()) {
-			((org.eclipse.draw2d.RectangleFigure) figure.getChildren().get(0))
-					.setLineStyle(org.eclipse.swt.SWT.LINE_SOLID);
-		} else {
-			((org.eclipse.draw2d.RectangleFigure) figure.getChildren().get(0))
-			.setLineStyle(org.eclipse.swt.SWT.LINE_CUSTOM);
-			((org.eclipse.draw2d.RectangleFigure) figure.getChildren().get(0))
-					.setLineDash(new float[] { 10 });
-
-		}
-	}
-«ENDDEFINE»
-
-«DEFINE handleNotificationEventForInheritance FOR gmfgen::GenNode»
-	/**
-	 * Listens to the expressed attribute and calls setExpressedVisualState
-	 * 
-	 * @generated
-	 */
-	@Override
-	protected void handleNotificationEvent(org.eclipse.emf.common.notify.Notification notification) {
-		super.handleNotificationEvent(notification);
-	
-		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Element
-				&& ((org.eclipse.emf.ecore.EStructuralFeature) notification.getFeature()).getName()
-						.equals("expressed") && childrenCache == null) {
-			setExpressedVisualState();
-		}
 	}
 «ENDDEFINE»
