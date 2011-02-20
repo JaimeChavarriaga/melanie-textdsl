@@ -491,9 +491,9 @@
       <actualFigure
           xsi:type="gmfgraph:ScalablePolygon"
           name="MultipleGeneralisationFigure">
-        <preferredSize
-            dx="80"
-            dy="40"/>
+        <layout
+            xsi:type="gmfgraph:CustomLayout"
+            qualifiedClassName="de.itemis.gmf.runtime.layout.ScaleInnerFigureLayout"/>
         <children
             xsi:type="gmfgraph:Rectangle"
             name="NameRectangle"
@@ -575,9 +575,9 @@
       <actualFigure
           xsi:type="gmfgraph:ScalablePolygon"
           name="MultipleGeneralisationFigure">
-        <preferredSize
-            dx="80"
-            dy="40"/>
+        <layout
+            xsi:type="gmfgraph:CustomLayout"
+            qualifiedClassName="de.itemis.gmf.runtime.layout.ScaleInnerFigureLayout"/>
         <children
             xsi:type="gmfgraph:Rectangle"
             name="NameRectangle"
@@ -659,9 +659,9 @@
       <actualFigure
           xsi:type="gmfgraph:ScalablePolygon"
           name="EqualsFigure">
-        <preferredSize
-            dx="80"
-            dy="40"/>
+        <layout
+            xsi:type="gmfgraph:CustomLayout"
+            qualifiedClassName="de.itemis.gmf.runtime.layout.ScaleInnerFigureLayout"/>
         <children
             xsi:type="gmfgraph:Rectangle"
             name="NameRectangle"
@@ -757,9 +757,9 @@
       <actualFigure
           xsi:type="gmfgraph:ScalablePolygon"
           name="ComplementFigure">
-        <preferredSize
-            dx="80"
-            dy="40"/>
+        <layout
+            xsi:type="gmfgraph:CustomLayout"
+            qualifiedClassName="de.itemis.gmf.runtime.layout.ScaleInnerFigureLayout"/>
         <children
             xsi:type="gmfgraph:Rectangle"
             name="NameRectangle"
@@ -833,9 +833,9 @@
       <actualFigure
           xsi:type="gmfgraph:ScalablePolygon"
           name="EqualsFigure">
-        <preferredSize
-            dx="80"
-            dy="40"/>
+        <layout
+            xsi:type="gmfgraph:CustomLayout"
+            qualifiedClassName="de.itemis.gmf.runtime.layout.ScaleInnerFigureLayout"/>
         <children
             xsi:type="gmfgraph:Rectangle"
             name="NameRectangle"
@@ -909,9 +909,9 @@
       <actualFigure
           xsi:type="gmfgraph:ScalablePolygon"
           name="InversionFigure">
-        <preferredSize
-            dx="80"
-            dy="40"/>
+        <layout
+            xsi:type="gmfgraph:CustomLayout"
+            qualifiedClassName="de.itemis.gmf.runtime.layout.ScaleInnerFigureLayout"/>
         <children
             xsi:type="gmfgraph:Rectangle"
             name="NameRectangle"

@@ -1,0 +1,6 @@
+«IMPORT 'http://www.eclipse.org/gmf/2009/GenModel'»
+
+«AROUND executionEnvironment FOR gmfgen::GenPlugin-»
+ de.itemis.gmf.runtime.extensions;
+«targetDef.proceed()»
+«ENDAROUND»
