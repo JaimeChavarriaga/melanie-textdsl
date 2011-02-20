@@ -30,7 +30,10 @@
 		or self.editPartClassName = 'DomainConnectionEditPart'
 		or self.editPartClassName = 'BinaryGeneralizationEditPart' 
 		or self.editPartClassName = 'MultipleSpecializationEditPart'
-		or self.editPartClassName = 'MultipleGeneralizationEditPart'»
+		or self.editPartClassName = 'MultipleGeneralizationEditPart'
+		or self.editPartClassName = 'ComplementEditPart'
+		or self.editPartClassName = 'EqualityEditPart'
+		or self.editPartClassName = 'InversionEditPart'»
 
 	«EXPAND setExpressedVisualState-»
 	«EXPAND addNotify-»
@@ -46,7 +49,10 @@
 	or self.editPartClassName = 'MultipleSpecializationEditPart'
 	or self.editPartClassName = 'MultipleGeneralizationEditPart'
 	or self.editPartClassName = 'DomainEntityEditPart'
-	or self.editPartClassName = 'RendererEditPart'»
+	or self.editPartClassName = 'RendererEditPart'
+	or self.editPartClassName = 'ComplementEditPart'
+	or self.editPartClassName = 'EqualityEditPart'
+	or self.editPartClassName = 'InversionEditPart'»
 
 	«EXPAND handleNotificationEventForClabjectLogicElement-»
 «ELSEIF self.editPartClassName = 'FieldEditPart'
@@ -263,7 +269,10 @@
 		«ENDIF»
 		
 		«IF not(self.editPartClassName='DomainEntityEditPart'
-			or  self.editPartClassName='RendererEditPart')»
+			or  self.editPartClassName='RendererEditPart'
+			or self.editPartClassName = 'ComplementEditPart'
+			or self.editPartClassName = 'EqualityEditPart'
+			or self.editPartClassName = 'InversionEditPart')»
 		java.lang.Boolean toggleValue = getToggleValue();
 		
 		//We do toggle the domain connection
@@ -289,6 +298,10 @@
 		//We can change expressed as long as domain connection is not elided and not toggled
 		if (!c.isElided())
 			setExpressedVisualState();
+		«ELSEIF self.editPartClassName = 'ComplementEditPart'
+			or self.editPartClassName = 'EqualityEditPart'
+			or self.editPartClassName = 'InversionEditPart'»
+		setExpressedVisualState();
 		«ELSE»
 		//We can change expressed as long as domain connection is not elided and not toggled
 		if ((toggleValue == null || toggleValue == false))
@@ -346,15 +359,6 @@
 «ENDDEFINE»
 
 «DEFINE toggle FOR gmfgen::GenNode»
-	/**
-	 * @generated
-	 */
-	private org.eclipse.draw2d.IFigure polygonFigureCache = null;
-	/**
-	 * @generated
-	 */
-	private org.eclipse.draw2d.geometry.Dimension cachedSize = null;
-	
 	/**
 	 * This renders the DomainConnectionEditPart based on information
 	 * in the model. Collapsed means that the DomainConnection is rendered as small 
@@ -454,7 +458,10 @@
 		//DomainEntity EditParts do not have a outer BorderItemContainer in contrast
 		//to DomainConnections etc. as those have external labels
 		«IF self.editPartClassName = 'DomainEntityEditPart'
-			or self.editPartClassName = 'RendererEditPart'»
+			or self.editPartClassName = 'RendererEditPart'
+			or self.editPartClassName = 'ComplementEditPart'
+			or self.editPartClassName = 'EqualityEditPart'
+			or self.editPartClassName = 'InversionEditPart'»
 		polygonFigureCache = (org.eclipse.draw2d.IFigure)figure.getChildren().get(0);
 		«ELSE»
 		//save the initial children
@@ -467,6 +474,15 @@
 
 «DEFINE setExpressedVisualState FOR gmfgen::GenNode»
 	/**
+	 * @generated
+	 */
+	private org.eclipse.draw2d.geometry.Dimension cachedSize = null;
+	/**
+	 * @generated
+	 */
+	private org.eclipse.draw2d.IFigure polygonFigureCache = null;
+	
+	/**
 	 * Sets the figure to visually expressed or computed. Depending on the expressed
 	 * value.
 	 * 
@@ -477,8 +493,11 @@
 
 		if (self.isExpressed()) {
 			«IF self.editPartClassName = 'DomainEntityEditPart'
-				or self.editPartClassName = 'RendererEditPart'»
-			((org.eclipse.draw2d.RectangleFigure) figure.getChildren().get(0))
+				or self.editPartClassName = 'RendererEditPart'
+				or self.editPartClassName = 'ComplementEditPart'
+				or self.editPartClassName = 'EqualityEditPart'
+				or self.editPartClassName = 'InversionEditPart'»
+			((org.eclipse.draw2d.Shape) figure.getChildren().get(0))
 				.setLineStyle(org.eclipse.swt.SWT.LINE_SOLID);
 			«ELSE»
 			org.eclipse.draw2d.IFigure defalutSizeNodeFigure = (org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure) figure
@@ -488,10 +507,13 @@
 			«ENDIF»
 		} else {
 			«IF self.editPartClassName = 'DomainEntityEditPart'
-				or self.editPartClassName = 'RendererEditPart'»
-			((org.eclipse.draw2d.RectangleFigure) figure.getChildren().get(0))
+				or self.editPartClassName = 'RendererEditPart'
+				or self.editPartClassName = 'ComplementEditPart'
+				or self.editPartClassName = 'EqualityEditPart'
+				or self.editPartClassName = 'InversionEditPart'»
+			((org.eclipse.draw2d.Shape) figure.getChildren().get(0))
 				.setLineStyle(org.eclipse.swt.SWT.LINE_CUSTOM);
-			((org.eclipse.draw2d.RectangleFigure) figure.getChildren().get(0))
+			((org.eclipse.draw2d.Shape) figure.getChildren().get(0))
 				.setLineDash(new float[] { 10 });
 			«ELSE»
 			org.eclipse.draw2d.IFigure defalutSizeNodeFigure = (org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure) figure
@@ -837,18 +859,6 @@
 «ENDDEFINE»
 
 «DEFINE doElide FOR gmfgen::GenNode»
-
-	«IF not(self.editPartClassName = 'DomainConnectionEditPart')»
-	/**
-	 * @generated
-	 */
-	private org.eclipse.draw2d.geometry.Dimension cachedSize = null;
-	/**
-	 * @generated
-	 */
-	private org.eclipse.draw2d.IFigure polygonFigureCache = null;
-	«ENDIF»
-
 	/**
 	 * Elides the DomainEntity depending on the elided attribute
 	 * 
