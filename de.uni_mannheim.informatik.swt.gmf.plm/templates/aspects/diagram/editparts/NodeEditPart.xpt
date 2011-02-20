@@ -22,6 +22,7 @@
 «IF self.editPartClassName = 'DomainEntityEditPart'
 		or self.editPartClassName = 'RendererEditPart'
 		or self.editPartClassName = 'DomainConnectionEditPart'»
+
 	«EXPAND doElideForDomainConnectionEditPart-»
 «ENDIF»
 «IF self.editPartClassName = 'DomainEntityEditPart'
@@ -30,6 +31,7 @@
 		or self.editPartClassName = 'BinaryGeneralizationEditPart' 
 		or self.editPartClassName = 'MultipleSpecializationEditPart'
 		or self.editPartClassName = 'MultipleGeneralizationEditPart'»
+
 	«EXPAND setExpressedVisualStateForConnections-»
 	«EXPAND addNotifyForToggeling-»
 «ENDIF»
@@ -45,6 +47,7 @@
 	or self.editPartClassName = 'MultipleGeneralizationEditPart'
 	or self.editPartClassName = 'DomainEntityEditPart'
 	or self.editPartClassName = 'RendererEditPart'»
+
 	«EXPAND handleNotificationEventForDomainConnection-»
 «ELSEIF self.editPartClassName = 'FieldEditPart'
 			or self.editPartClassName = 'Field2EditPart'
@@ -192,7 +195,7 @@
 		
 		org.eclipse.emf.ecore.EStructuralFeature changedFeature = (org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature();
 		
-		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)
+		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Element)
 		{
 			if (changedFeature.getName().equals("elided")|| 
 				changedFeature.getName().equals("expressed"))
