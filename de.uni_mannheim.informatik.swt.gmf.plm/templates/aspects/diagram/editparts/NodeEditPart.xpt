@@ -268,6 +268,17 @@
 		de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject c = (de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)resolveSemanticElement();
 		«ENDIF»
 		
+		«IF self.editPartClassName = 'RendererEditPart'»
+		//We need to check if we are allowed to view a renderer due to model constraints.
+		if (c.eContainer() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Model 
+				&& ((de.uni_mannheim.informatik.swt.models.plm.PLM.Model)c.eContainer()).getShowRenderer().equals( "ShowRenderingOptions::NONE"))
+		{
+			((org.eclipse.gmf.runtime.notation.Shape)getNotationView()).setVisible(false);
+			//As we cannot see the editpart we are not interested in all other options
+			return;
+		}
+		«ENDIF»
+		
 		«IF not(self.editPartClassName='DomainEntityEditPart'
 			or  self.editPartClassName='RendererEditPart'
 			or self.editPartClassName = 'ComplementEditPart'
