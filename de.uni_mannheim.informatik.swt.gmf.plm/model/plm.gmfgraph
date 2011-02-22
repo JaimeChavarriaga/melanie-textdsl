@@ -178,6 +178,9 @@
                   verticalAlignment="END"
                   horizontalAlignment="BEGINNING"
                   verticalSpan="2"/>
+              <font
+                  xsi:type="gmfgraph:BasicFont"
+                  height="7"/>
             </children>
             <children
                 xsi:type="gmfgraph:Label"
@@ -190,6 +193,9 @@
                   verticalAlignment="BEGINNING"
                   horizontalAlignment="BEGINNING"
                   verticalSpan="2"/>
+              <font
+                  xsi:type="gmfgraph:BasicFont"
+                  height="7"/>
             </children>
             <children
                 xsi:type="gmfgraph:Label"
@@ -199,6 +205,9 @@
                   xsi:type="gmfgraph:GridLayoutData"
                   grabExcessHorizontalSpace="true"
                   horizontalSpan="2"/>
+              <font
+                  xsi:type="gmfgraph:BasicFont"
+                  height="8"/>
             </children>
           </children>
         </children>
@@ -234,7 +243,7 @@
             majorSpacing="0"
             minorSpacing="0"/>
         <preferredSize
-            dy="24"/>
+            dy="22"/>
         <insets/>
         <children
             xsi:type="gmfgraph:Rectangle"
@@ -246,7 +255,7 @@
               numColumns="4"
               equalWidth="false"/>
           <preferredSize
-              dy="24"/>
+              dy="22"/>
           <children
               xsi:type="gmfgraph:Label"
               name="DomainEntityFieldNameFigure"
@@ -254,6 +263,9 @@
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
                 horizontalAlignment="BEGINNING"/>
+            <font
+                xsi:type="gmfgraph:BasicFont"
+                height="8"/>
           </children>
           <children
               xsi:type="gmfgraph:Label"
@@ -261,6 +273,9 @@
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
                 horizontalAlignment="BEGINNING"/>
+            <font
+                xsi:type="gmfgraph:BasicFont"
+                height="7"/>
             <insets
                 bottom="10"/>
           </children>
@@ -270,6 +285,9 @@
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
                 horizontalAlignment="BEGINNING"/>
+            <font
+                xsi:type="gmfgraph:BasicFont"
+                height="8"/>
           </children>
           <children
               xsi:type="gmfgraph:Label"
@@ -277,6 +295,9 @@
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
                 horizontalAlignment="BEGINNING"/>
+            <font
+                xsi:type="gmfgraph:BasicFont"
+                height="8"/>
           </children>
         </children>
       </actualFigure>
@@ -324,6 +345,9 @@
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
                 horizontalAlignment="BEGINNING"/>
+            <font
+                xsi:type="gmfgraph:BasicFont"
+                height="8"/>
           </children>
           <children
               xsi:type="gmfgraph:Label"
@@ -331,6 +355,9 @@
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
                 horizontalAlignment="BEGINNING"/>
+            <font
+                xsi:type="gmfgraph:BasicFont"
+                height="7"/>
             <insets
                 bottom="10"/>
           </children>
@@ -340,6 +367,9 @@
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
                 horizontalAlignment="BEGINNING"/>
+            <font
+                xsi:type="gmfgraph:BasicFont"
+                height="8"/>
           </children>
           <children
               xsi:type="gmfgraph:Label"
@@ -347,6 +377,9 @@
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
                 horizontalAlignment="BEGINNING"/>
+            <font
+                xsi:type="gmfgraph:BasicFont"
+                height="8"/>
           </children>
         </children>
       </actualFigure>
@@ -405,6 +438,9 @@
                 grabExcessVerticalSpace="true"
                 horizontalAlignment="BEGINNING"
                 verticalSpan="2"/>
+            <font
+                xsi:type="gmfgraph:BasicFont"
+                height="7"/>
             <insets
                 bottom="10"/>
           </children>
@@ -419,6 +455,9 @@
                 verticalAlignment="BEGINNING"
                 horizontalAlignment="BEGINNING"
                 verticalSpan="2"/>
+            <font
+                xsi:type="gmfgraph:BasicFont"
+                height="7"/>
           </children>
         </children>
         <template
@@ -448,7 +487,11 @@
         name="DomainConnectionNameExternalLabelFigure">
       <actualFigure
           xsi:type="gmfgraph:Label"
-          name="DomainConnectionNameExternalFigure"/>
+          name="DomainConnectionNameExternalFigure">
+        <font
+            xsi:type="gmfgraph:BasicFont"
+            height="8"/>
+      </actualFigure>
       <accessors
           figure="//@figures.0/@descriptors.9/@actualFigure"/>
     </descriptors>
@@ -464,11 +507,18 @@
           <foregroundColor
               xsi:type="gmfgraph:ConstantColor"
               value="black"/>
+          <font
+              xsi:type="gmfgraph:BasicFont"
+              height="8"/>
         </children>
         <children
             xsi:type="gmfgraph:Label"
             name="DomainConnectionParticipantsMultiplicityFigure"
-            text="0..*"/>
+            text="0..*">
+          <font
+              xsi:type="gmfgraph:BasicFont"
+              height="8"/>
+        </children>
       </actualFigure>
       <accessors
           figure="//@figures.0/@descriptors.10/@actualFigure/@children.0"/>
@@ -512,6 +562,9 @@
             <foregroundColor
                 xsi:type="gmfgraph:ConstantColor"
                 value="black"/>
+            <font
+                xsi:type="gmfgraph:BasicFont"
+                height="8"/>
           </children>
         </children>
         <template
@@ -566,7 +619,11 @@
         name="BinaryGeneralizationExternalLabelFigure">
       <actualFigure
           xsi:type="gmfgraph:Label"
-          name="BinaryGeneralizationNameExternalFigure"/>
+          name="BinaryGeneralizationNameExternalFigure">
+        <font
+            xsi:type="gmfgraph:BasicFont"
+            height="8"/>
+      </actualFigure>
       <accessors
           figure="//@figures.0/@descriptors.13/@actualFigure"/>
     </descriptors>
@@ -596,6 +653,9 @@
             <foregroundColor
                 xsi:type="gmfgraph:ConstantColor"
                 value="black"/>
+            <font
+                xsi:type="gmfgraph:BasicFont"
+                height="8"/>
           </children>
         </children>
         <template
@@ -650,7 +710,11 @@
         name="MultipleGeneralizationExternalLabelFigure">
       <actualFigure
           xsi:type="gmfgraph:Label"
-          name="MultipleGeneralizationNameExternalFigure"/>
+          name="MultipleGeneralizationNameExternalFigure">
+        <font
+            xsi:type="gmfgraph:BasicFont"
+            height="8"/>
+      </actualFigure>
       <accessors
           figure="//@figures.0/@descriptors.15/@actualFigure"/>
     </descriptors>
@@ -680,6 +744,9 @@
             <foregroundColor
                 xsi:type="gmfgraph:ConstantColor"
                 value="black"/>
+            <font
+                xsi:type="gmfgraph:BasicFont"
+                height="8"/>
           </children>
           <children
               xsi:type="gmfgraph:Label"
@@ -692,6 +759,9 @@
             <foregroundColor
                 xsi:type="gmfgraph:ConstantColor"
                 value="black"/>
+            <font
+                xsi:type="gmfgraph:BasicFont"
+                height="8"/>
           </children>
         </children>
         <template
@@ -748,7 +818,11 @@
         name="MultipleSpecializationExternalLabelFigure">
       <actualFigure
           xsi:type="gmfgraph:Label"
-          name="MultipleSpecializationNameExternalFigure"/>
+          name="MultipleSpecializationNameExternalFigure">
+        <font
+            xsi:type="gmfgraph:BasicFont"
+            height="8"/>
+      </actualFigure>
       <accessors
           figure="//@figures.0/@descriptors.17/@actualFigure"/>
     </descriptors>
@@ -778,6 +852,9 @@
             <foregroundColor
                 xsi:type="gmfgraph:ConstantColor"
                 value="black"/>
+            <font
+                xsi:type="gmfgraph:BasicFont"
+                height="8"/>
           </children>
         </children>
         <template
@@ -854,6 +931,9 @@
             <foregroundColor
                 xsi:type="gmfgraph:ConstantColor"
                 value="black"/>
+            <font
+                xsi:type="gmfgraph:BasicFont"
+                height="8"/>
           </children>
         </children>
         <template
@@ -930,6 +1010,9 @@
             <foregroundColor
                 xsi:type="gmfgraph:ConstantColor"
                 value="black"/>
+            <font
+                xsi:type="gmfgraph:BasicFont"
+                height="8"/>
           </children>
         </children>
         <template
