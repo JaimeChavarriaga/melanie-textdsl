@@ -138,8 +138,6 @@
         <foregroundColor
             xsi:type="gmfgraph:ConstantColor"
             value="black"/>
-        <insets
-            bottom="5"/>
         <children
             xsi:type="gmfgraph:Rectangle"
             name="InnerRectangle"
@@ -437,7 +435,9 @@
               xsi:type="gmfgraph:GridLayout"
               numColumns="2"
               equalWidth="false">
-            <margins/>
+            <margins
+                dx="3"
+                dy="3"/>
             <spacing/>
           </layout>
           <children

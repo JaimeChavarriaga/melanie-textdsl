@@ -240,9 +240,17 @@
                       xsi:type="gmfmap:ExpressionLabelMapping"
                       readOnly="true">
                     <diagramLabel
-                        href="plm.gmfgraph#DomainEntityFieldFigureDefaultValueLabel"/>
+                        href="plm.gmfgraph#DomainEntityFieldFigureDataTypeLabel"/>
                     <viewExpression
-                        body="self.datatype.name "/>
+                        body="self.datatype.name&#x9;"/>
+                  </labelMappings>
+                  <labelMappings
+                      xsi:type="gmfmap:FeatureLabelMapping"
+                      viewPattern="= {0}">
+                    <diagramLabel
+                        href="plm.gmfgraph#DomainEntityFieldFigureDefaultValueLabel"/>
+                    <features
+                        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Field/value"/>
                   </labelMappings>
                   <tool
                       xsi:type="gmftool:CreationTool"
