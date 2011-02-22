@@ -12,6 +12,9 @@
           name="OntologyFigure"
           cornerWidth="20"
           cornerHeight="20">
+        <foregroundColor
+            xsi:type="gmfgraph:ConstantColor"
+            value="black"/>
         <preferredSize
             dx="500"
             dy="350"/>
@@ -68,6 +71,9 @@
           name="ModelFigure"
           outline="false"
           fill="false">
+        <foregroundColor
+            xsi:type="gmfgraph:ConstantColor"
+            value="black"/>
         <minimumSize
             dx="500"
             dy="150"/>
@@ -129,6 +135,9 @@
       <actualFigure
           xsi:type="gmfgraph:Rectangle"
           name="DomainEntityFigure">
+        <foregroundColor
+            xsi:type="gmfgraph:ConstantColor"
+            value="black"/>
         <insets
             bottom="5"/>
         <children
@@ -404,6 +413,9 @@
             forceSingleLine="true"
             majorSpacing="0"
             minorSpacing="0"/>
+        <foregroundColor
+            xsi:type="gmfgraph:ConstantColor"
+            value="black"/>
         <insets
             top="3"
             bottom="15"/>
@@ -500,6 +512,9 @@
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"
           name="DomainConnectionParticipantsFigure">
+        <foregroundColor
+            xsi:type="gmfgraph:ConstantColor"
+            value="black"/>
         <children
             xsi:type="gmfgraph:Label"
             name="DomainConnectionParticipantsNameFigure"
@@ -531,6 +546,9 @@
           xsi:type="gmfgraph:PolylineConnection"
           lineKind="LINE_DASH"
           targetDecoration="//@figures.0/@descriptors.11/@actualFigure/@children.0">
+        <foregroundColor
+            xsi:type="gmfgraph:ConstantColor"
+            value="black"/>
         <children
             xsi:type="gmfgraph:PolylineDecoration"
             name="InstantiationTarget"/>
@@ -544,6 +562,9 @@
         <layout
             xsi:type="gmfgraph:CustomLayout"
             qualifiedClassName="de.itemis.gmf.runtime.layout.ScaleInnerFigureLayout"/>
+        <foregroundColor
+            xsi:type="gmfgraph:ConstantColor"
+            value="black"/>
         <children
             xsi:type="gmfgraph:Rectangle"
             name="NameRectangle"
@@ -635,6 +656,9 @@
         <layout
             xsi:type="gmfgraph:CustomLayout"
             qualifiedClassName="de.itemis.gmf.runtime.layout.ScaleInnerFigureLayout"/>
+        <foregroundColor
+            xsi:type="gmfgraph:ConstantColor"
+            value="black"/>
         <children
             xsi:type="gmfgraph:Rectangle"
             name="NameRectangle"
@@ -726,6 +750,9 @@
         <layout
             xsi:type="gmfgraph:CustomLayout"
             qualifiedClassName="de.itemis.gmf.runtime.layout.ScaleInnerFigureLayout"/>
+        <foregroundColor
+            xsi:type="gmfgraph:ConstantColor"
+            value="black"/>
         <children
             xsi:type="gmfgraph:Rectangle"
             name="NameRectangle"
@@ -834,6 +861,9 @@
         <layout
             xsi:type="gmfgraph:CustomLayout"
             qualifiedClassName="de.itemis.gmf.runtime.layout.ScaleInnerFigureLayout"/>
+        <foregroundColor
+            xsi:type="gmfgraph:ConstantColor"
+            value="black"/>
         <children
             xsi:type="gmfgraph:Rectangle"
             name="NameRectangle"
@@ -913,6 +943,9 @@
         <layout
             xsi:type="gmfgraph:CustomLayout"
             qualifiedClassName="de.itemis.gmf.runtime.layout.ScaleInnerFigureLayout"/>
+        <foregroundColor
+            xsi:type="gmfgraph:ConstantColor"
+            value="black"/>
         <children
             xsi:type="gmfgraph:Rectangle"
             name="NameRectangle"
@@ -992,6 +1025,9 @@
         <layout
             xsi:type="gmfgraph:CustomLayout"
             qualifiedClassName="de.itemis.gmf.runtime.layout.ScaleInnerFigureLayout"/>
+        <foregroundColor
+            xsi:type="gmfgraph:ConstantColor"
+            value="black"/>
         <children
             xsi:type="gmfgraph:Rectangle"
             name="NameRectangle"
@@ -1067,7 +1103,11 @@
         name="SetRelationshipLinkFigure">
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"
-          name="EqualsLinkFigure"/>
+          name="EqualsLinkFigure">
+        <foregroundColor
+            xsi:type="gmfgraph:ConstantColor"
+            value="black"/>
+      </actualFigure>
     </descriptors>
     <descriptors
         name="RenderedByLinkFigure">
@@ -1076,6 +1116,9 @@
           name="RenderedByLinkFigure"
           lineKind="LINE_DASH"
           targetDecoration="//@figures.0/@descriptors.22/@actualFigure/@children.0">
+        <foregroundColor
+            xsi:type="gmfgraph:ConstantColor"
+            value="black"/>
         <children
             xsi:type="gmfgraph:PolylineDecoration"
             name="RenderedByLinkFigureTargetDecoration"
@@ -1083,7 +1126,11 @@
         <children
             xsi:type="gmfgraph:Label"
             name="RenderedByNameFigure"
-            text="&lt;&lt;renderedBy>>"/>
+            text="&lt;&lt;renderedBy>>">
+          <font
+              xsi:type="gmfgraph:BasicFont"
+              height="8"/>
+        </children>
       </actualFigure>
       <accessors
           figure="//@figures.0/@descriptors.22/@actualFigure/@children.1"/>
@@ -1093,6 +1140,9 @@
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"
           targetDecoration="//@figures.0/@descriptors.23/@actualFigure/@children.0">
+        <foregroundColor
+            xsi:type="gmfgraph:ConstantColor"
+            value="black"/>
         <children
             xsi:type="gmfgraph:PolygonDecoration"
             name="BinaryGenralizationTarget">
@@ -1107,7 +1157,11 @@
     <descriptors
         name="SubTypeConnectionFigure">
       <actualFigure
-          xsi:type="gmfgraph:PolylineConnection"/>
+          xsi:type="gmfgraph:PolylineConnection">
+        <foregroundColor
+            xsi:type="gmfgraph:ConstantColor"
+            value="black"/>
+      </actualFigure>
     </descriptors>
   </figures>
   <nodes
