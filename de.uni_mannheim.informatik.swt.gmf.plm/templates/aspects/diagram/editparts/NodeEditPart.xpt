@@ -711,16 +711,16 @@
 				{
 					org.eclipse.emf.ecore.EObject obj = iter.next();
 					
-					if (obj instanceof org.eclipse.gmf.runtime.notation.Shape)
+					if (obj instanceof org.eclipse.gmf.runtime.notation.Node)
 					{
-						org.eclipse.gmf.runtime.notation.Shape s = (org.eclipse.gmf.runtime.notation.Shape)obj;
+						org.eclipse.gmf.runtime.notation.Node n = (org.eclipse.gmf.runtime.notation.Node)obj;
 						
-						if (s.getElement() == r)
+						if (n.getElement() == r)
 						{
 							if (model.getShowRenderer().equals("ShowRenderingOptions::NONE"))
-								s.setVisible(false);
+								n.setVisible(false);
 							else
-								s.setVisible(true);
+								n.setVisible(true);
 							
 							break;
 						}
