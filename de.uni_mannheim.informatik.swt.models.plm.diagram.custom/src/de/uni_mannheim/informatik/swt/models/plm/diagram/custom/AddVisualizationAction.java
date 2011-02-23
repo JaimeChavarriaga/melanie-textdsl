@@ -238,6 +238,7 @@ public class AddVisualizationAction implements IObjectActionDelegate {
 				fieldPart.getViewer().getEditDomain().getCommandStack().execute(new ICommandProxy(setFieldDefaultValueCommand));
 			}
 			
+			//If containing model does not want to show renderers => Hide it.
 			if (rendererEditPart.resolveSemanticElement().eContainer() instanceof Model
 					&& ((Model)rendererEditPart.resolveSemanticElement().eContainer()).getShowRenderer().equals("ShowRenderingOptions::NONE"))
 			{
