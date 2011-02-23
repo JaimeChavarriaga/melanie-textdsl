@@ -244,7 +244,6 @@ public class AddVisualizationAction implements IObjectActionDelegate {
 				org.eclipse.emf.common.command.Command cmd =
 					SetCommand.create(rendererEditPart.getEditingDomain(), rendererEditPart.getNotationView(), NotationPackage.eINSTANCE.DECORATION_NODE__VISIBLE, false);
 				rendererEditPart.getEditingDomain().getCommandStack().execute(cmd);
-				//((Node)rendererEditPart.getNotationView()).setVisible(false);
 			}
 			else
 			{
