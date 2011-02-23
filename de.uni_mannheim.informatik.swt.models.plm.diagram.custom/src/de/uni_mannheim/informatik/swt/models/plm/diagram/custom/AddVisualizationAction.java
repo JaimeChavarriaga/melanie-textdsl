@@ -7,6 +7,7 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.Request;
@@ -18,6 +19,7 @@ import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
 import org.eclipse.gmf.runtime.diagram.ui.commands.DeferredCreateConnectionViewAndElementCommand;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.CompartmentEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateConnectionViewAndElementRequest;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewAndElementRequest;
@@ -32,6 +34,7 @@ import org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest;
 import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
@@ -43,6 +46,7 @@ import org.eclipse.ui.IWorkbenchPart;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Field;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.BinaryGeneralizationEditPart;
@@ -116,29 +120,29 @@ public class AddVisualizationAction implements IObjectActionDelegate {
 		//Set up new DomainEntity
 		//**************************************************************
 		final EditPartViewer viewer = selectedElement.getViewer();
-		final EditPart elementPart = (EditPart) viewer.getEditPartRegistry().get(visualizationDomainEntityViewAdapter.getAdapter(View.class));
+		final IGraphicalEditPart rendererEditPart = (IGraphicalEditPart) viewer.getEditPartRegistry().get(visualizationDomainEntityViewAdapter.getAdapter(View.class));
 		
-		if (elementPart != null) {
+		if (rendererEditPart != null) {
 			
 			//**************************************************************
 			//Setup of Visualization Object
 			//**************************************************************
-			Renderer visualizer = (Renderer) ViewUtil.resolveSemanticElement((View)elementPart.getModel());
+			Renderer visualizer = (Renderer) ViewUtil.resolveSemanticElement((View)rendererEditPart.getModel());
 			Element source = (Element) ViewUtil.resolveSemanticElement((View)selectedElement.getModel());
 			SetRequest request = new SetRequest(visualizer, PLMPackage.eINSTANCE.getElement_Name(), source.getName() + "Renderer");
 			SetValueCommand command = new SetValueCommand(request);
-			elementPart.getViewer().getEditDomain().getCommandStack().execute(new ICommandProxy(command));
+			rendererEditPart.getViewer().getEditDomain().getCommandStack().execute(new ICommandProxy(command));
 			
 			//**************************************************************
 			//Add fields to compartment
 			//**************************************************************
 			CompartmentEditPart fieldsCompartment = null;
 			//find the DomainEntityDomainEntityFieldsCompartmentEditPart
-			for (int i = 0; i <  elementPart.getChildren().size(); i++)
+			for (int i = 0; i <  rendererEditPart.getChildren().size(); i++)
 			{
-				if (elementPart.getChildren().get(i) instanceof RendererDomainEntityFieldsCompartmentEditPart)
+				if (rendererEditPart.getChildren().get(i) instanceof RendererDomainEntityFieldsCompartmentEditPart)
 				{
-					fieldsCompartment = (CompartmentEditPart)elementPart.getChildren().get(i);
+					fieldsCompartment = (CompartmentEditPart)rendererEditPart.getChildren().get(i);
 					break;
 				}
 				/*else if (elementPart.getChildren().get(i) instanceof DomainEntityDomainEntityFieldsCompartment2EditPart)
@@ -150,6 +154,7 @@ public class AddVisualizationAction implements IObjectActionDelegate {
 			
 			if (fieldsCompartment != null)
 			{
+				//Go through all meta model attributes and create a field
 				for(EStructuralFeature attr : visualizer.eClass().getEAllAttributes())
 				{
 					//Create Field
@@ -232,20 +237,30 @@ public class AddVisualizationAction implements IObjectActionDelegate {
 				fieldPart.getViewer().getEditDomain().getCommandStack().execute(new ICommandProxy(setFieldDurabilityCommand));
 				fieldPart.getViewer().getEditDomain().getCommandStack().execute(new ICommandProxy(setFieldDefaultValueCommand));
 			}
-
 			
-			//**************************************************************
-			//Set edit element
-			//**************************************************************
-			Display.getCurrent().asyncExec(new Runnable() {
-
-				public void run() {
-					
-					viewer.setSelection(new StructuredSelection(elementPart));
-					Request der = new Request(RequestConstants.REQ_DIRECT_EDIT);
-					elementPart.performRequest(der);
-				}
-			});
+			if (rendererEditPart.resolveSemanticElement().eContainer() instanceof Model
+					&& ((Model)rendererEditPart.resolveSemanticElement().eContainer()).getShowRenderer().equals("ShowRenderingOptions::NONE"))
+			{
+				org.eclipse.emf.common.command.Command cmd =
+					SetCommand.create(rendererEditPart.getEditingDomain(), rendererEditPart.getNotationView(), NotationPackage.eINSTANCE.DECORATION_NODE__VISIBLE, false);
+				rendererEditPart.getEditingDomain().getCommandStack().execute(cmd);
+				//((Node)rendererEditPart.getNotationView()).setVisible(false);
+			}
+			else
+			{
+				//**************************************************************
+				//Set edit element
+				//**************************************************************
+				Display.getCurrent().asyncExec(new Runnable() {
+	
+					public void run() {
+						
+						viewer.setSelection(new StructuredSelection(rendererEditPart));
+						Request der = new Request(RequestConstants.REQ_DIRECT_EDIT);
+						rendererEditPart.performRequest(der);
+					}
+				});
+			}
 		}
 	}
 	
