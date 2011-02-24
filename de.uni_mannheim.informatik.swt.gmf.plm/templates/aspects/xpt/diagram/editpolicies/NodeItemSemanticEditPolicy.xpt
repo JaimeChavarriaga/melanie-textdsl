@@ -37,9 +37,9 @@
 			
 			«IF ol.getEditPartQualifiedClassName() = 'de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ElementRendererEditPart'»
 			//we need also to destroy the elements renderer
-			DestroyElementRequest der =  new DestroyElementRequest(getEditingDomain(), outgoingLink.getTarget().getElement(), false);
-			cmd.add(new DestroyElementCommand(der));
-			cmd.add(new DeleteCommand(getEditingDomain(), outgoingLink.getTarget()));
+			org.eclipse.gmf.runtime.emf.type.core.requests.DestroyElementRequest der =  new org.eclipse.gmf.runtime.emf.type.core.requests.DestroyElementRequest(getEditingDomain(), outgoingLink.getTarget().getElement(), false);
+			cmd.add(new org.eclipse.gmf.runtime.emf.type.core.commands.DestroyElementCommand(der));
+			cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), outgoingLink.getTarget()));
 			«ENDIF»
 			continue;
 		}
