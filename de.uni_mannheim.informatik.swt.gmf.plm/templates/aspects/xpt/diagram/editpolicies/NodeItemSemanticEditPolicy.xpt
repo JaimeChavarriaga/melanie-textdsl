@@ -1,0 +1,52 @@
+
+«IMPORT 'http://www.eclipse.org/gmf/2009/GenModel'»
+
+«EXTENSION xpt::diagram::editpolicies::Utils»
+«EXTENSION xpt::editor::Utils»
+
+«AROUND destroyEdges(String view) FOR gmfgen::GenNode-»
+
+«/***********************************************
+*************************************************
+** Only for DomainEntityItemSemanticEditPolicy **
+*************************************************
+*************************************************/»
+«IF self.itemSemanticEditPolicyClassName = 'DomainEntityItemSemanticEditPolicy'»
+
+«IF genIncomingLinks->notEmpty()-»
+	for («EXPAND CodeStyle::G('java.util.Iterator', '?' /*FIXME Refactor once Notation model is Java5*/)» it = «view».getTargetEdges().iterator(); it.hasNext();) {
+		org.eclipse.gmf.runtime.notation.Edge incomingLink = (org.eclipse.gmf.runtime.notation.Edge) it.next();
+«FOREACH genIncomingLinks AS il-»
+		if («EXPAND xpt::editor::VisualIDRegistry::getVisualIDMethodCall FOR getDiagram()»(incomingLink) == «EXPAND xpt::editor::VisualIDRegistry::visualID FOR il») {
+			«EXPAND impl::diagram::commands::DeleteLinkCommand::newRequest('r', 'incomingLink') FOR il-»
+			cmd.add(«EXPAND impl::diagram::commands::DeleteLinkCommand::newInstance('r') FOR il»);
+			cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), incomingLink));
+			continue;
+		}
+«ENDFOREACH-»
+	}
+«ENDIF-»
+«IF genOutgoingLinks->notEmpty()-»
+	for («EXPAND CodeStyle::G('java.util.Iterator', '?' /*FIXME Refactor once Notation model is Java5*/)» it = «view».getSourceEdges().iterator(); it.hasNext();) {
+		org.eclipse.gmf.runtime.notation.Edge outgoingLink = (org.eclipse.gmf.runtime.notation.Edge) it.next();
+«FOREACH genOutgoingLinks AS ol-»
+		if («EXPAND xpt::editor::VisualIDRegistry::getVisualIDMethodCall FOR getDiagram()»(outgoingLink) == «EXPAND xpt::editor::VisualIDRegistry::visualID FOR ol») {
+			«EXPAND impl::diagram::commands::DeleteLinkCommand::newRequest('r', 'outgoingLink') FOR ol-»
+			cmd.add(«EXPAND impl::diagram::commands::DeleteLinkCommand::newInstance('r') FOR ol»);
+			cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), outgoingLink));
+			
+			«IF ol.getEditPartQualifiedClassName() = 'de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ElementRendererEditPart'»
+			//we need also to destroy the elements renderer
+			DestroyElementRequest der =  new DestroyElementRequest(getEditingDomain(), outgoingLink.getTarget().getElement(), false);
+			cmd.add(new DestroyElementCommand(der));
+			cmd.add(new DeleteCommand(getEditingDomain(), outgoingLink.getTarget()));
+			«ENDIF»
+			continue;
+		}
+«ENDFOREACH-»
+	}
+«ENDIF-»
+«ELSE»
+	«targetDef.proceed()»
+«ENDIF»
+«ENDAROUND»
