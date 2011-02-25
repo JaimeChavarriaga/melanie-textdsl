@@ -118,10 +118,27 @@
               outline="false"
               fill="false">
             <layout
-                xsi:type="gmfgraph:GridLayout"/>
+                xsi:type="gmfgraph:GridLayout"
+                numColumns="2"
+                equalWidth="false">
+              <margins/>
+              <spacing/>
+            </layout>
             <children
                 xsi:type="gmfgraph:Label"
                 name="OntologyLevelNameFigure">
+              <layoutData
+                  xsi:type="gmfgraph:GridLayoutData"
+                  horizontalAlignment="BEGINNING"/>
+              <maximumSize
+                  dy="20"/>
+              <font
+                  xsi:type="gmfgraph:BasicFont"
+                  height="10"/>
+            </children>
+            <children
+                xsi:type="gmfgraph:Label"
+                name="OntologyLevelAVSFigure">
               <layoutData
                   xsi:type="gmfgraph:GridLayoutData"
                   grabExcessHorizontalSpace="true"
@@ -138,6 +155,8 @@
       </actualFigure>
       <accessors
           figure="//@figures.0/@descriptors.2/@actualFigure/@children.0/@children.0/@children.0"/>
+      <accessors
+          figure="//@figures.0/@descriptors.2/@actualFigure/@children.0/@children.0/@children.1"/>
     </descriptors>
     <descriptors
         name="DomainElementsCompartmentFigure">
@@ -1297,6 +1316,11 @@
       figure="ModelFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.2/@accessors.0"/>
+  <labels
+      name="ModelFigureAVSLabel"
+      figure="ModelFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.2/@accessors.1"/>
   <labels
       name="DomainEntityFigureNameLabel"
       figure="DomainEntityFigure"
