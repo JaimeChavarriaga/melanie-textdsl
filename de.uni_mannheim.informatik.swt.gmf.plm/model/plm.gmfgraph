@@ -33,14 +33,17 @@
               majorSpacing="0"
               minorSpacing="0"/>
           <maximumSize
-              dy="25"/>
+              dy="50"/>
           <children
               xsi:type="gmfgraph:Rectangle"
               name="NameArea"
               outline="false"
               fill="false">
             <layout
-                xsi:type="gmfgraph:GridLayout"/>
+                xsi:type="gmfgraph:GridLayout">
+              <margins/>
+              <spacing/>
+            </layout>
             <children
                 xsi:type="gmfgraph:Label"
                 name="OntologyNameFigure"
@@ -51,13 +54,26 @@
                   grabExcessVerticalSpace="true"/>
               <font
                   xsi:type="gmfgraph:BasicFont"
-                  height="11"/>
+                  height="10"/>
+            </children>
+            <children
+                xsi:type="gmfgraph:Label"
+                name="OntologyAVSFigure">
+              <layoutData
+                  xsi:type="gmfgraph:GridLayoutData"
+                  grabExcessHorizontalSpace="true"
+                  grabExcessVerticalSpace="true"/>
+              <font
+                  xsi:type="gmfgraph:BasicFont"
+                  height="8"/>
             </children>
           </children>
         </children>
       </actualFigure>
       <accessors
           figure="//@figures.0/@descriptors.0/@actualFigure/@children.0/@children.0/@children.0"/>
+      <accessors
+          figure="//@figures.0/@descriptors.0/@actualFigure/@children.0/@children.0/@children.1"/>
     </descriptors>
     <descriptors
         name="ModellCompartmentFigure">
@@ -115,7 +131,7 @@
                   dy="20"/>
               <font
                   xsi:type="gmfgraph:BasicFont"
-                  height="11"/>
+                  height="10"/>
             </children>
           </children>
         </children>
@@ -1271,6 +1287,11 @@
       figure="OntologyFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.0/@accessors.0"/>
+  <labels
+      name="OntologyFigureAVSLabel"
+      figure="OntologyFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.0/@accessors.1"/>
   <labels
       name="ModelFigureNameLabel"
       figure="ModelFigure"
