@@ -375,6 +375,13 @@
                 <features
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/name"/>
               </labelMappings>
+              <labelMappings
+                  xsi:type="gmfmap:ExpressionLabelMapping">
+                <diagramLabel
+                    href="plm.gmfgraph#MultipleGeneralizationSubtitle"/>
+                <viewExpression
+                    body="let intersection:String = &#xD;&#xA;&#x9;if (self.intersection) then &#xD;&#xA;&#x9;&#x9;'intersection' &#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'no intersection' &#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let union:String = &#xD;&#xA;&#x9;if (self.union) then &#xD;&#xA;&#x9;&#x9;'union' &#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'no union' &#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (intersection &lt;> ' ') then&#xD;&#xA;&#x9;'{'.concat(intersection).concat('; ').concat(union).concat('}')&#xD;&#xA;else&#xD;&#xA;&#x9;' '&#xD;&#xA;endif"/>
+              </labelMappings>
               <tool
                   xsi:type="gmftool:CreationTool"
                   href="plm.gmftool#//@palette/@tools.4/@tools.2"/>

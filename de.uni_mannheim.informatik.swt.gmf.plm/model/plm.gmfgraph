@@ -739,6 +739,20 @@
                 xsi:type="gmfgraph:BasicFont"
                 height="8"/>
           </children>
+          <children
+              xsi:type="gmfgraph:Label"
+              name="MultipleGeneralisationSubtitleFigure"
+              text="">
+            <layoutData
+                xsi:type="gmfgraph:GridLayoutData"/>
+            <foregroundColor
+                xsi:type="gmfgraph:ConstantColor"
+                value="black"/>
+            <font
+                xsi:type="gmfgraph:BasicFont"
+                height="7"/>
+            <insets/>
+          </children>
         </children>
         <template
             y="30"/>
@@ -787,6 +801,8 @@
       </actualFigure>
       <accessors
           figure="//@figures.0/@descriptors.14/@actualFigure/@children.0/@children.0"/>
+      <accessors
+          figure="//@figures.0/@descriptors.14/@actualFigure/@children.0/@children.1"/>
     </descriptors>
     <descriptors
         name="MultipleGeneralizationExternalLabelFigure">
@@ -846,7 +862,7 @@
                 value="black"/>
             <font
                 xsi:type="gmfgraph:BasicFont"
-                height="8"/>
+                height="7"/>
             <insets/>
           </children>
         </children>
@@ -1456,6 +1472,11 @@
       figure="MultipleGeneralizationFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.14/@accessors.0"/>
+  <labels
+      name="MultipleGeneralizationSubtitle"
+      figure="MultipleGeneralizationFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.14/@accessors.1"/>
   <labels
       name="MultipleGeneralizationNameExternal"
       figure="MultipleGeneralizationExternalLabelFigure"
