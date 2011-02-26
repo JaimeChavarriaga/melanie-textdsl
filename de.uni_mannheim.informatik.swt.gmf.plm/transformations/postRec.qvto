@@ -30,6 +30,7 @@ main() {
 	genDiagram.validationEnabled := true;
 	genDiagram.validationDecorators := true;
 	genDiagram.validationProviderPriority := ProviderPriority::Medium;
+	genDiagram.validationDecoratorProviderPriority := ProviderPriority::Medium;
 	
 	--Setup the GenPlugin
 	this.genPlugIn := gmfgenModel.objectsOfType(GenPlugin)->asOrderedSet()->first();

@@ -20,7 +20,6 @@
         id="audits.attributes.domainEntityNameAudit"
         rule="//@expressionProviders/@providers.0/@expressions.31"
         message="Name wrong"
-        useInLiveMode="true"
         category="//@audits/@categories.0">
       <target
           xsi:type="gmfgen:GenDomainElementTarget"
@@ -38,7 +37,7 @@
       itemSemanticEditPolicyClassName="LMLModelItemSemanticEditPolicy"
       canonicalEditPolicyClassName="LMLModelCanonicalEditPolicy"
       iconProviderPriority="Low"
-      validationProviderPriority="Low"
+      validationProviderPriority="Medium"
       validationEnabled="true"
       validationDecorators="true"
       validationDecoratorProviderPriority="Medium">
