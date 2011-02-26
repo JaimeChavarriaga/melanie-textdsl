@@ -29,6 +29,7 @@ main() {
 		:= gmfgenModel.objectsOfType(GenDiagram)->asOrderedSet()->first();
 	genDiagram.validationEnabled := true;
 	genDiagram.validationDecorators := true;
+	genDiagram.validationProviderPriority := ProviderPriority::Medium;
 	
 	--Setup the GenPlugin
 	this.genPlugIn := gmfgenModel.objectsOfType(GenPlugin)->asOrderedSet()->first();

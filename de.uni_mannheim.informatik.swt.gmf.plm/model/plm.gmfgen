@@ -9,24 +9,24 @@
     templateDirectory="/de.uni_mannheim.informatik.swt.gmf.plm/templates">
   <audits>
     <categories
-        id="audits"
-        name="Audits"
-        description="Audits"
+        id="audits.attributes"
+        name="attributes"
+        description="Container for Attribute Audits"
         path="//@audits/@categories.0"
         audits="//@audits/@rules.0"/>
     <rules
-        name="name"
-        description="desc"
-        id="rule"
-        rule="//@expressionProviders/@providers.0/@expressions.32"
-        message="msg"
-        severity="WARNING"
+        name="domainEntityNameCheck"
+        description="Checks the name of elements"
+        id="audits.attributes.domainEntityNameAudit"
+        rule="//@expressionProviders/@providers.0/@expressions.31"
+        message="Name wrong"
+        useInLiveMode="true"
         category="//@audits/@categories.0">
       <target
           xsi:type="gmfgen:GenDomainElementTarget"
           contextSelector="//@audits/@clientContexts.0">
         <element
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainEntity"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainElement"/>
       </target>
     </rules>
     <clientContexts
@@ -40,7 +40,8 @@
       iconProviderPriority="Low"
       validationProviderPriority="Low"
       validationEnabled="true"
-      validationDecorators="true">
+      validationDecorators="true"
+      validationDecoratorProviderPriority="Medium">
     <diagramRunTimeClass
         href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Diagram"/>
     <elementType
@@ -1627,8 +1628,8 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Instantiation/type"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.21"
-          targetEnd="//@expressionProviders/@providers.0/@expressions.22"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.20"
+          targetEnd="//@expressionProviders/@providers.0/@expressions.21"/>
     </links>
     <links
         visualID="4013"
@@ -1680,7 +1681,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Equality/equal"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.23"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.22"/>
     </links>
     <links
         visualID="4015"
@@ -1707,7 +1708,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Inversion/inverse"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.24"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.23"/>
     </links>
     <links
         visualID="4016"
@@ -1734,7 +1735,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Complement/complement"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.25"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.24"/>
     </links>
     <links
         visualID="4017"
@@ -1809,7 +1810,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleGeneralization/supertype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.26"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.25"/>
     </links>
     <links
         visualID="4009"
@@ -1836,7 +1837,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleGeneralization/subtype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.27"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.26"/>
     </links>
     <links
         visualID="4011"
@@ -1863,7 +1864,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleSpecialization/supertype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.28"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.27"/>
     </links>
     <links
         visualID="4012"
@@ -1890,7 +1891,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleSpecialization/subtype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.29"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.28"/>
     </links>
     <links
         visualID="4019"
@@ -1917,7 +1918,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/BinaryGeneralization/supertype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.30"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.29"/>
     </links>
     <links
         visualID="4020"
@@ -1944,7 +1945,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/BinaryGeneralization/subtype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.31"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.30"/>
     </links>
     <compartments
         visualID="7003"
@@ -2384,8 +2385,6 @@
       <expressions
           body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (not self.renderer.oclIsUndefined()) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let renderName:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;self.renderer.children->select(c | c.name = 'name')->first().oclAsType(Field).value = 'VisualRenderingEnum::MAX' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;self.renderer.children->select(c | c.name = 'name')->first().oclAsType(Field).value = 'VisualRenderingEnum::MIN'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (self.elided) then&#xD;&#xA;&#x9;'...'&#xD;&#xA;else&#xD;&#xA;&#x9;if (renderName) then&#xD;&#xA;&#x9;&#x9;self.name&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;endif"/>
       <expressions
-          body="'&lt;Enter name>'"/>
-      <expressions
           body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (not self.renderer.oclIsUndefined()) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let renderPotency:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;self.renderer.children->select(c | c.name = 'potency')->first().oclAsType(Field).value = 'VisualRenderingEnum::MAX' &#xD;&#xA;&#x9;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;self.renderer.children->select(c | c.name = 'potency')->first().oclAsType(Field).value = 'VisualRenderingEnum::MIN'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let potency:String = if (self.potency > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.potency.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.potency = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (renderPotency) then&#xD;&#xA;&#x9;potency&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
       <expressions
           body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (not self.renderer.oclIsUndefined()) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let renderLevel:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;self.renderer.children->select(c | c.name = 'level')->first().oclAsType(Field).value = 'VisualRenderingEnum::MAX' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;self.renderer.children->select(c | c.name = 'level')->first().oclAsType(Field).value = 'VisualRenderingEnum::MIN'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (renderLevel) then&#xD;&#xA;&#x9;self.level&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
@@ -2430,7 +2429,7 @@
           body="self.oclIsTypeOf(BinaryGeneralization)"/>
       <expressions
           xsi:type="gmfgen:GenConstraint"
-          body="false"/>
+          body="self.name.size() > 0"/>
     </providers>
   </expressionProviders>
   <labelParsers
@@ -2549,8 +2548,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.12/@labels.0/@modelFacet"
         className="DomainEntityLabelExpressionLabelParser5065"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.14"
-        editExpression="//@expressionProviders/@providers.0/@expressions.15">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.14">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainEntity"/>
     </implementations>
@@ -2558,7 +2556,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.12/@labels.1/@modelFacet"
         className="DomainEntityLabelExpressionLabelParser5066"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.16">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.15">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainEntity"/>
     </implementations>
@@ -2566,7 +2564,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.12/@labels.2/@modelFacet"
         className="DomainEntityLabelExpressionLabelParser5067"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.17">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.16">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainEntity"/>
     </implementations>
@@ -2574,7 +2572,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.12/@labels.3/@modelFacet"
         className="DomainEntityLabelExpressionLabelParser5068"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.18">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.17">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainEntity"/>
     </implementations>
@@ -2582,7 +2580,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.0/@labels.1/@modelFacet"
         className="ModelLabelExpressionLabelParser5097"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.19">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.18">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model"/>
     </implementations>
@@ -2590,7 +2588,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@topLevelNodes.0/@labels.1/@modelFacet"
         className="OntologyLabelExpressionLabelParser5096"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.20">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.19">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Ontology"/>
     </implementations>
