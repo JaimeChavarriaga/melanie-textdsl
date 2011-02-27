@@ -380,7 +380,7 @@
                 <diagramLabel
                     href="plm.gmfgraph#MultipleGeneralizationSubtitle"/>
                 <viewExpression
-                    body="let intersection:String = &#xD;&#xA;&#x9;if (self.intersection) then &#xD;&#xA;&#x9;&#x9;'intersection' &#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'no intersection' &#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let union:String = &#xD;&#xA;&#x9;if (self.union) then &#xD;&#xA;&#x9;&#x9;'union' &#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'no union' &#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (intersection &lt;> ' ') then&#xD;&#xA;&#x9;'{'.concat(intersection).concat('; ').concat(union).concat('}')&#xD;&#xA;else&#xD;&#xA;&#x9;' '&#xD;&#xA;endif"/>
+                    body="let intersection:String = &#xD;&#xA;&#x9;if (self.intersection) then &#xD;&#xA;&#x9;&#x9;'intersection;' &#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'' &#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let union:String = &#xD;&#xA;&#x9;if (self.union) then &#xD;&#xA;&#x9;&#x9;'union;' &#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'' &#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (intersection &lt;> '' or union &lt;> '') then&#xD;&#xA;&#x9;'{'.concat(intersection).concat(union).concat('}')&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
               </labelMappings>
               <tool
                   xsi:type="gmftool:CreationTool"
@@ -415,7 +415,7 @@
                 <diagramLabel
                     href="plm.gmfgraph#MultipleSpecializationSetTheoryLabel"/>
                 <viewExpression
-                    body="let disjoint:String = &#xD;&#xA;&#x9;if (self.disjoint) then &#xD;&#xA;&#x9;&#x9;'disjoint' &#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'overlaping ' &#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let complete:String = &#xD;&#xA;&#x9;if (self.complete) then &#xD;&#xA;&#x9;&#x9;'complete' &#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'incomplete' &#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (disjoint &lt;> ' ') then&#xD;&#xA;&#x9;'{'.concat(disjoint).concat('; ').concat(complete ).concat('}')&#xD;&#xA;else&#xD;&#xA;&#x9;' '&#xD;&#xA;endif"/>
+                    body="let disjoint:String = &#xD;&#xA;&#x9;if (self.disjoint) then &#xD;&#xA;&#x9;&#x9;'disjoint;' &#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'' &#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let complete:String = &#xD;&#xA;&#x9;if (self.complete) then &#xD;&#xA;&#x9;&#x9;'complete;' &#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (disjoint &lt;> '' or complete &lt;> '') then&#xD;&#xA;&#x9;'{'.concat(disjoint).concat(complete ).concat('}')&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
               </labelMappings>
               <tool
                   xsi:type="gmftool:CreationTool"
