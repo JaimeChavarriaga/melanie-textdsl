@@ -384,22 +384,37 @@
 			((org.eclipse.draw2d.IFigure) boderItemContainer.getChildren().get(0))
 					.setVisible(false);
 
+			//Allow Resizing
+			removeEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE);
+			installEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE,
+					new org.eclipse.gmf.runtime.diagram.ui.editpolicies.ResizableShapeEditPolicy());
+
 			//When we come from read only context / addNotify the size should be in the
 			//notation model
 			if (!readOnlyContext)
 			{
-				org.eclipse.draw2d.geometry.Rectangle rect = figure.getClientArea().getCopy();
+				//Old code -> Altentative to Autosize
+				/*org.eclipse.draw2d.geometry.Rectangle rect = figure.getClientArea().getCopy();
+				«IF self.editPartClassName = 'DomainConnectionEditPart'»
 				rect.setSize((cachedSize != null) ? cachedSize : new org.eclipse.draw2d.geometry.Dimension(70,
 						60));
 				org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand sbc = new org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand(
 						this.getEditingDomain(), "change size", new org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter(
 								(org.eclipse.gmf.runtime.notation.View) this.getModel()), rect);
 				getEditDomain().getCommandStack().execute(new org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy(sbc));
+				«ELSE»
+				rect.setSize((cachedSize != null) ? cachedSize : new org.eclipse.draw2d.geometry.Dimension(60,
+						25));
+				org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand sbc = new org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand(
+						this.getEditingDomain(), "change size", new org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter(
+								(org.eclipse.gmf.runtime.notation.View) this.getModel()), rect);
+				getEditDomain().getCommandStack().execute(new org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy(sbc));
+				«ENDIF»*/
+				
+				org.eclipse.gef.Request rr = new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_AUTOSIZE);
+				performRequest(rr);
 			}
-			removeEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE);
-			installEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE,
-					new org.eclipse.gmf.runtime.diagram.ui.editpolicies.ResizableShapeEditPolicy());
-
+			
 			return;
 		}
 		//collapse element
