@@ -193,6 +193,41 @@
             <ownedChild>
               <domainMetaElement
                   href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//DomainConnection"/>
+              <domainInitializer
+                  xsi:type="gmfmap:FeatureSeqInitializer">
+                <initializers
+                    xsi:type="gmfmap:FeatureValueSpec">
+                  <feature
+                      xsi:type="ecore:EAttribute"
+                      href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//DomainConnection/isNavigable"/>
+                  <value
+                      body="Sequence{false,false}"/>
+                </initializers>
+                <initializers
+                    xsi:type="gmfmap:FeatureValueSpec">
+                  <feature
+                      xsi:type="ecore:EAttribute"
+                      href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//DomainConnection/roleName"/>
+                  <value
+                      body="Sequence{'',''}"/>
+                </initializers>
+                <initializers
+                    xsi:type="gmfmap:FeatureValueSpec">
+                  <feature
+                      xsi:type="ecore:EAttribute"
+                      href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//DomainConnection/lower"/>
+                  <value
+                      body="Sequence{0,0}"/>
+                </initializers>
+                <initializers
+                    xsi:type="gmfmap:FeatureValueSpec">
+                  <feature
+                      xsi:type="ecore:EAttribute"
+                      href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//DomainConnection/upper"/>
+                  <value
+                      body="Sequence{1,1}"/>
+                </initializers>
+              </domainInitializer>
               <labelMappings
                   xsi:type="gmfmap:FeatureLabelMapping"
                   viewPattern="{0}">
