@@ -2272,7 +2272,8 @@
   <plugin
       name="Level-agnostic Modelling Language (LML) Plugin"
       provider="University of Mannheim: Chair for Software Engineering"
-      printingEnabled="true">
+      printingEnabled="true"
+      activatorClassName="PLMDiagramEditorPlugin">
     <requiredPlugins>org.eclipse.draw2d</requiredPlugins>
     <requiredPlugins>org.eclipse.gmf.runtime.draw2d.ui</requiredPlugins>
     <requiredPlugins>de.itemis.gmf.runtime.extensions</requiredPlugins>
