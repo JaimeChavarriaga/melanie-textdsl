@@ -178,6 +178,26 @@
         visualID="5100"
         queryText="true"/>
   </childNodeTraces>
+  <childNodeTraces
+      visualID="3041"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Renderer') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Element') and _containmentMF_.name = 'renderer')">
+    <nodeLabelTraces
+        visualID="5101"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5102"
+        queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="3042"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Renderer') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Element') and _containmentMF_.name = 'renderer')">
+    <nodeLabelTraces
+        visualID="5103"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5104"
+        queryText="true"/>
+  </childNodeTraces>
   <linkTraces
       visualID="4002"
       queryText="modelFacet.oclIsKindOf(gmfgen::TypeLinkModelFacet) and (let _eClass_:ecore::EClass = modelFacet.oclAsType(gmfgen::TypeLinkModelFacet).metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Instantiation')"/>
