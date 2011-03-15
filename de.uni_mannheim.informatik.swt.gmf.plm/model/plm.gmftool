@@ -105,6 +105,15 @@
             path="/icons/domainConnectionParticipant16.gif"
             bundle="de.uni_mannheim.informatik.swt.gmf.plm"/>
       </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Renderer"
+          description="Creates a new Renderer">
+        <smallIcon
+            xsi:type="gmftool:DefaultImage"/>
+        <largeIcon
+            xsi:type="gmftool:DefaultImage"/>
+      </tools>
     </tools>
     <tools
         xsi:type="gmftool:ToolGroup"

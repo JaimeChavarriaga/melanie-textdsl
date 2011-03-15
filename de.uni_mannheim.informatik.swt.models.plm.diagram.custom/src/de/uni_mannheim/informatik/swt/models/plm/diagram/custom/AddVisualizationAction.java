@@ -25,7 +25,7 @@ public class AddVisualizationAction implements IObjectActionDelegate {
 
 	public static void execute(ShapeNodeEditPart selectedElement)
 	{
-		AddVisualizationHelper.addVisualization(selectedElement);
+		//AddVisualizationHelper.addVisualization(selectedElement);
 	}
 	
 	@Override
