@@ -1,35 +1,23 @@
 package de.uni_mannheim.informatik.swt.models.plm.diagram.custom;
 
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.gef.EditPart;
-import org.eclipse.gef.NodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
-import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
 import org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.PlatformUI;
 
-import de.uni_mannheim.informatik.swt.models.plm.PLM.BinaryGeneralization;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Field;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.LMLModel;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.BinaryGeneralizationEditPart;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionEditPart;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.MultipleGeneralizationEditPart;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.MultipleSpecializationEditPart;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor;
 
 
 /**
@@ -81,7 +69,11 @@ public class ToggleNodeAction implements IObjectActionDelegate {
 		//********************************************************
 		Field collapsedField = null;
 		
-		for(Element e : self.getRenderer().getChildren())
+		/*
+		 * ************************************************************
+		 * Needs to be fixed
+		 * ************************************************************
+		 * for(Element e : self.getRenderer().getChildren())
 		{
 			//We are only interested in fields
 			if (e instanceof Field)
@@ -92,7 +84,7 @@ public class ToggleNodeAction implements IObjectActionDelegate {
 					break;
 				}
 			}
-		}
+		}*/
 		
 		//get a array with all collapsed ids
 		boolean collapsed = Boolean.parseBoolean(collapsedField.getValue());
