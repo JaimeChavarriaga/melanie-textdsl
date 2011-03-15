@@ -1265,6 +1265,68 @@
             value="black"/>
       </actualFigure>
     </descriptors>
+    <descriptors
+        name="RendererFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="DomainEntityFieldFigure"
+          outline="false"
+          fill="false">
+        <layout
+            xsi:type="gmfgraph:FlowLayout"
+            vertical="true"
+            matchMinorSize="true"
+            forceSingleLine="true"
+            majorSpacing="0"
+            minorSpacing="0"/>
+        <preferredSize
+            dy="22"/>
+        <insets/>
+        <children
+            xsi:type="gmfgraph:Rectangle"
+            name="InnerRectangle"
+            outline="false"
+            fill="false">
+          <layout
+              xsi:type="gmfgraph:GridLayout"
+              numColumns="2"
+              equalWidth="false">
+            <margins
+                dx="3"/>
+            <spacing/>
+          </layout>
+          <preferredSize
+              dy="22"/>
+          <children
+              xsi:type="gmfgraph:Label"
+              name="RendererAttributeValueFigureFigure"
+              text="">
+            <layoutData
+                xsi:type="gmfgraph:GridLayoutData"
+                horizontalAlignment="BEGINNING"/>
+            <font
+                xsi:type="gmfgraph:BasicFont"
+                height="8"/>
+          </children>
+          <children
+              xsi:type="gmfgraph:Label"
+              name="RendererPotencyFigure">
+            <layoutData
+                xsi:type="gmfgraph:GridLayoutData"
+                horizontalAlignment="BEGINNING"/>
+            <font
+                xsi:type="gmfgraph:BasicFont"
+                height="7"/>
+            <insets
+                bottom="10"/>
+          </children>
+        </children>
+      </actualFigure>
+      <accessors
+          figure="//@figures.0/@descriptors.25/@actualFigure/@children.0/@children.0"/>
+      <accessors
+          figure="//@figures.0/@descriptors.25/@actualFigure/@children.0/@children.1"/>
+    </descriptors>
   </figures>
   <nodes
       name="Ontology"
@@ -1305,6 +1367,9 @@
   <nodes
       name="BinaryGeneralization"
       figure="BinaryGeneralizationFigure"/>
+  <nodes
+      name="RendererNode"
+      figure="RendererFigure"/>
   <connections
       name="DomainConnectionParticipants"
       figure="DomainConnectionParticipantsFigure"/>
@@ -1508,4 +1573,14 @@
       name="BinaryGeneralizationNameExternal"
       figure="BinaryGeneralizationExternalLabelFigure"
       elementIcon="false"/>
+  <labels
+      name="RendererAttributeValueLabel"
+      figure="RendererFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.25/@accessors.0"/>
+  <labels
+      name="RendererPotencyLabel"
+      figure="RendererFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.25/@accessors.1"/>
 </gmfgraph:Canvas>
