@@ -1367,6 +1367,7 @@
         visualID="3042"
         editPartClassName="Renderer3EditPart"
         itemSemanticEditPolicyClassName="Renderer3ItemSemanticEditPolicy"
+        notationViewFactoryClassName="RendererViewFactory"
         canonicalEditPolicyClassName="Renderer3CanonicalEditPolicy"
         graphicalNodeEditPolicyClassName="Renderer3GraphicalNodeEditPolicy"
         createCommandClassName="Renderer3CreateCommand"
@@ -1398,6 +1399,7 @@
           visualID="5103"
           editPartClassName="RendererAttributes2EditPart"
           itemSemanticEditPolicyClassName="RendererAttributes2ItemSemanticEditPolicy"
+          notationViewFactoryClassName="RendererAttributesViewFactory"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -1421,6 +1423,7 @@
           visualID="5104"
           editPartClassName="WrappingLabel16EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel16ItemSemanticEditPolicy"
+          notationViewFactoryClassName="RendererLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
