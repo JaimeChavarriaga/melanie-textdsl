@@ -307,7 +307,7 @@
 «DEFINE getToggleValue FOR gmfgen::GenNode»
 	/**
 	 * 
-	 * @return null if no toggeling infotmation is available, else true or fals
+	 * @return null if no toggeling infotmation is available, else true or false
 	 *
 	 * @generated
 	 */
@@ -334,21 +334,24 @@
 		//********************************************************
 		//Do toggling based on information in the diagram
 		//********************************************************
-		de.uni_mannheim.informatik.swt.models.plm.PLM.Field collapsedField = null;
+		//de.uni_mannheim.informatik.swt.models.plm.PLM.Field collapsedField = null;
 
-		for (de.uni_mannheim.informatik.swt.models.plm.PLM.Element e : self
-				.getRenderer().getChildren()) {
-			if (e instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Field) {
-				if (e.getName().equals("collapsed")) {
-					collapse = Boolean
-							.parseBoolean(((de.uni_mannheim.informatik.swt.models.plm.PLM.Field) e)
-									.getValue());
-					break;
-				}
-			}
-		}
+		//for (de.uni_mannheim.informatik.swt.models.plm.PLM.Element e : self
+		//		.getRenderer().getChildren()) {
+		//	if (e instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Field) {
+		//		if (e.getName().equals("collapsed")) {
+		//			collapse = Boolean
+		//					.parseBoolean(((de.uni_mannheim.informatik.swt.models.plm.PLM.Field) e)
+		//							.getValue());
+		//			break;
+		//		}
+		//	}
+		//}
 		
-		return collapse;
+		de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer r = self.getRenderer();
+		String collapsedString = r.getValueForKey("collapsed");
+		
+		return java.lang.Boolean.parseBoolean(collapsedString);
 	}
 «ENDDEFINE»
 

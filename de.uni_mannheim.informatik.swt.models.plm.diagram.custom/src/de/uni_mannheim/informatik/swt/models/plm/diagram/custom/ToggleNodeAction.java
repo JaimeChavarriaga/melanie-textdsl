@@ -73,7 +73,7 @@ public class ToggleNodeAction implements IObjectActionDelegate {
 			{
 				attributes.remove(attr);
 				String value = self.getRenderer().getValueForKey("collapsed");
-				attr = (value.equals(true)) ? "collapsed= false":"collapsed= true";
+				attr = (value.equals("true")) ? "collapsed= false":"collapsed= true";
 				attributes.add(attr);
 			}
 			else
