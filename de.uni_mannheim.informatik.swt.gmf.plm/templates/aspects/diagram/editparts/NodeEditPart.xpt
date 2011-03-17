@@ -63,7 +63,7 @@
 	«EXPAND handleNotificationEventForModel-»
 «ELSEIF self.editPartClassName.startsWith('Renderer')»
 	«EXPAND handleNotificationEventForRenderer-»
-«ELSEIF self.editPartClassName = 'OntologyEnditPart'»
+«ELSEIF self.editPartClassName = 'OntologyEditPart'»
 	«EXPAND handleNotificationEventForOntology»
 «ENDIF»
 «ENDAROUND»
@@ -692,8 +692,8 @@
 
 			try 
 			{
-				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.children->select(c | c.oclIsTypeOf(Renderer))");
-				renderers = ((java.util.HashSet<de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer>) ocl.evaluate(resolveSemanticElement(), q)).toArray(new de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer[] {});
+				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.children->collect(e | e.renderer)");
+				renderers = ((java.util.ArrayList<de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer>) ocl.evaluate(resolveSemanticElement(), q)).toArray(new de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer[] {});
 			}
 			catch (org.eclipse.ocl.ParserException e) 
 			{
