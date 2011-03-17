@@ -1,5 +1,13 @@
 package de.uni_mannheim.informatik.swt.models.plm.diagram.custom;
 
+import java.util.LinkedList;
+
+import org.eclipse.emf.common.util.BasicEList;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.edit.command.SetCommand;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
@@ -54,20 +62,43 @@ public class ToggleNodeAction implements IObjectActionDelegate {
 		
 		Element self = (Element)selectedElement.resolveSemanticElement();
 		
+		if (self.getRenderer() == null)
+			return;
+		
+		LinkedList<String> attributes = new LinkedList<String>();
+		
+		for (String attr : self.getRenderer().getAttributes())
+		{
+			if (attr.startsWith("collapsed"))
+			{
+				attributes.remove(attr);
+				String value = self.getRenderer().getValueForKey("collapsed");
+				attr = (value.equals(true)) ? "collapsed= false":"collapsed= true";
+				attributes.add(attr);
+			}
+			else
+			{
+				attributes.add(attr);
+			}
+		}
+		
+		EditingDomain domain = selectedElement.getEditingDomain();
+		domain.getCommandStack().execute(SetCommand.create(domain, self.getRenderer(), PLMPackage.eINSTANCE.getRenderer_Attributes(), attributes));
+		
 		//We are not toggeling elided nodes
 		/*if (self instanceof Clabject && ((Clabject)self).isElided())
 			return;*/
 		
 		//No rendering information found => add new rendering information
-		if (self.getRenderer() == null)
-		{
-			AddVisualizationAction.execute((ShapeNodeEditPart)selectedElement);
-		}
+		//if (self.getRenderer() == null)
+		//{
+		//	AddVisualizationAction.execute((ShapeNodeEditPart)selectedElement);
+		//}
 		
 		//********************************************************
 		//Do toggling based on information in the diagram
 		//********************************************************
-		Field collapsedField = null;
+		//Field collapsedField = null;
 		
 		/*
 		 * ************************************************************
@@ -87,13 +118,13 @@ public class ToggleNodeAction implements IObjectActionDelegate {
 		}*/
 		
 		//get a array with all collapsed ids
-		boolean collapsed = Boolean.parseBoolean(collapsedField.getValue());
+		//boolean collapsed = Boolean.parseBoolean(collapsedField.getValue());
 
 		//write the new string to the command
-		SetRequest setNewValueRequest = 
-			new SetRequest(collapsedField, PLMPackage.eINSTANCE.getField_Value(), Boolean.toString(!collapsed));
-		SetValueCommand setNewValueCommand = new SetValueCommand(setNewValueRequest);
-		selectedElement.getViewer().getEditDomain().getCommandStack().execute(new ICommandProxy(setNewValueCommand));
+		//SetRequest setNewValueRequest = 
+		//	new SetRequest(collapsedField, PLMPackage.eINSTANCE.getField_Value(), Boolean.toString(!collapsed));
+		//SetValueCommand setNewValueCommand = new SetValueCommand(setNewValueRequest);
+		//selectedElement.getViewer().getEditDomain().getCommandStack().execute(new ICommandProxy(setNewValueCommand));
 		
 		//********************************************************
 		//Change the connection's new visual state
