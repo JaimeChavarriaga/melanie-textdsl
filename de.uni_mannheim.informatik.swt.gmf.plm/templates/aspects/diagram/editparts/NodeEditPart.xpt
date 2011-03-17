@@ -20,13 +20,11 @@
 	«EXPAND refreshSourceConnections-»
 «ENDIF»
 «IF self.editPartClassName = 'DomainEntityEditPart'
-		or self.editPartClassName = 'RendererEditPart'
 		or self.editPartClassName = 'DomainConnectionEditPart'»
 
 	«EXPAND doElide-»
 «ENDIF»
 «IF self.editPartClassName = 'DomainEntityEditPart'
-		or self.editPartClassName = 'RendererEditPart'
 		or self.editPartClassName = 'DomainConnectionEditPart'
 		or self.editPartClassName = 'BinaryGeneralizationEditPart' 
 		or self.editPartClassName = 'MultipleSpecializationEditPart'
@@ -49,7 +47,6 @@
 	or self.editPartClassName = 'MultipleSpecializationEditPart'
 	or self.editPartClassName = 'MultipleGeneralizationEditPart'
 	or self.editPartClassName = 'DomainEntityEditPart'
-	or self.editPartClassName = 'RendererEditPart'
 	or self.editPartClassName = 'ComplementEditPart'
 	or self.editPartClassName = 'EqualityEditPart'
 	or self.editPartClassName = 'InversionEditPart'»
@@ -64,6 +61,8 @@
 	«EXPAND handleNotificationEventForMethod-»
 «ELSEIF self.editPartClassName = 'ModelEditPart'»
 	«EXPAND handleNotificationEventForModel-»
+«ELSEIF self.editPartClassName.startsWith('Renderer')»
+	«EXPAND handleNotificationEventForRenderer-»
 «ELSEIF self.editPartClassName = 'OntologyEnditPart'»
 	«EXPAND handleNotificationEventForOntology»
 «ENDIF»
@@ -208,8 +207,7 @@
 			{
 				updateView(false);
 			}
-			«IF self.editPartClassName='DomainEntityEditPart'
-				or self.editPartClassName = 'RendererEditPart'»
+			«IF self.editPartClassName='DomainEntityEditPart'»
 			else if (changedFeature.getName().equals("name"))
 			{
 				de.uni_mannheim.informatik.swt.models.plm.PLM.Field[] fields = new de.uni_mannheim.informatik.swt.models.plm.PLM.Field[] {};
@@ -263,13 +261,11 @@
 	public void updateView(boolean readOnlyContext)
 	{
 		«IF self.editPartClassName = 'DomainConnectionEditPart'
-			or self.editPartClassName = 'RendererEditPart'
 			or self.editPartClassName = 'DomainEntityEditPart'»
 		de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject c = (de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)resolveSemanticElement();
 		«ENDIF»
 		
 		«IF not(self.editPartClassName='DomainEntityEditPart'
-			or  self.editPartClassName='RendererEditPart'
 			or self.editPartClassName = 'ComplementEditPart'
 			or self.editPartClassName = 'EqualityEditPart'
 			or self.editPartClassName = 'InversionEditPart')»
@@ -284,8 +280,7 @@
 		//We can do elide as long as a domain connection is not toggled
 		if(toggleValue == null || toggleValue == false)
 			doElide(readOnlyContext);
-		«ELSEIF self.editPartClassName = 'RendererEditPart'
-			or self.editPartClassName = 'DomainEntityEditPart'»
+		«ELSEIF self.editPartClassName = 'DomainEntityEditPart'»
 		doElide(readOnlyContext);
 		«ENDIF»
 		
@@ -293,8 +288,7 @@
 		//We can change expressed as long as domain connection is not elided and not toggled
 		if (!c.isElided() && (toggleValue == null || toggleValue == false))
 			setExpressedVisualState();
-		«ELSEIF self.editPartClassName = 'RendererEditPart'
-			or self.editPartClassName = 'DomainEntityEditPart'»
+		«ELSEIF self.editPartClassName = 'DomainEntityEditPart'»
 		//We can change expressed as long as domain connection is not elided and not toggled
 		if (!c.isElided())
 			setExpressedVisualState();
@@ -473,7 +467,6 @@
 		//DomainEntity EditParts do not have a outer BorderItemContainer in contrast
 		//to DomainConnections etc. as those have external labels
 		«IF self.editPartClassName = 'DomainEntityEditPart'
-			or self.editPartClassName = 'RendererEditPart'
 			or self.editPartClassName = 'ComplementEditPart'
 			or self.editPartClassName = 'EqualityEditPart'
 			or self.editPartClassName = 'InversionEditPart'»
@@ -508,7 +501,6 @@
 
 		if (self.isExpressed()) {
 			«IF self.editPartClassName = 'DomainEntityEditPart'
-				or self.editPartClassName = 'RendererEditPart'
 				or self.editPartClassName = 'ComplementEditPart'
 				or self.editPartClassName = 'EqualityEditPart'
 				or self.editPartClassName = 'InversionEditPart'»
@@ -522,7 +514,6 @@
 			«ENDIF»
 		} else {
 			«IF self.editPartClassName = 'DomainEntityEditPart'
-				or self.editPartClassName = 'RendererEditPart'
 				or self.editPartClassName = 'ComplementEditPart'
 				or self.editPartClassName = 'EqualityEditPart'
 				or self.editPartClassName = 'InversionEditPart'»
@@ -833,6 +824,23 @@
 			}
 
 			performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
+		}
+	}
+«ENDDEFINE»
+
+«DEFINE handleNotificationEventForRenderer FOR gmfgen::GenNode»
+	/**
+	 * @generated
+	 */
+	@Override
+	protected void handleNotificationEvent(org.eclipse.emf.common.notify.Notification notification) 
+	{
+		super.handleNotificationEvent(notification);
+		
+		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer 
+			&& getParent() != null)
+		{
+			getParent().performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
 		}
 	}
 «ENDDEFINE»
