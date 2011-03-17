@@ -1041,28 +1041,41 @@
             dy="25"/>
         <children
             xsi:type="gmfgraph:Rectangle"
-            name="NameRectangle"
+            name="InnerRectangle"
             outline="false"
             fill="false">
           <layout
-              xsi:type="gmfgraph:GridLayout">
-            <margins/>
-            <spacing/>
-          </layout>
+              xsi:type="gmfgraph:FlowLayout"
+              vertical="true"
+              matchMinorSize="true"
+              forceSingleLine="true"
+              majorSpacing="0"
+              minorSpacing="0"/>
           <children
-              xsi:type="gmfgraph:Label"
-              name="EqualsNameFigure"
-              text="">
-            <layoutData
-                xsi:type="gmfgraph:GridLayoutData"
-                grabExcessHorizontalSpace="true"
-                grabExcessVerticalSpace="true"/>
-            <foregroundColor
-                xsi:type="gmfgraph:ConstantColor"
-                value="black"/>
-            <font
-                xsi:type="gmfgraph:BasicFont"
-                height="8"/>
+              xsi:type="gmfgraph:Rectangle"
+              name="NameRectangle"
+              outline="false"
+              fill="false">
+            <layout
+                xsi:type="gmfgraph:GridLayout">
+              <margins/>
+              <spacing/>
+            </layout>
+            <children
+                xsi:type="gmfgraph:Label"
+                name="EqualsNameFigure"
+                text="equals">
+              <layoutData
+                  xsi:type="gmfgraph:GridLayoutData"
+                  grabExcessHorizontalSpace="true"
+                  grabExcessVerticalSpace="true"/>
+              <foregroundColor
+                  xsi:type="gmfgraph:ConstantColor"
+                  value="black"/>
+              <font
+                  xsi:type="gmfgraph:BasicFont"
+                  height="8"/>
+            </children>
           </children>
         </children>
         <template
@@ -1111,7 +1124,7 @@
             y="50"/>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.19/@actualFigure/@children.0/@children.0"/>
+          figure="//@figures.0/@descriptors.19/@actualFigure/@children.0/@children.0/@children.0"/>
     </descriptors>
     <descriptors
         name="InversionFigure">

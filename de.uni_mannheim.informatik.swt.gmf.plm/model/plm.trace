@@ -208,6 +208,36 @@
         visualID="5106"
         queryText="true"/>
   </childNodeTraces>
+  <childNodeTraces
+      visualID="3044"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Renderer') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Element') and _containmentMF_.name = 'renderer')">
+    <nodeLabelTraces
+        visualID="5107"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5108"
+        queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="3045"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Renderer') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Element') and _containmentMF_.name = 'renderer')">
+    <nodeLabelTraces
+        visualID="5109"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5110"
+        queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="3046"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Renderer') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Element') and _containmentMF_.name = 'renderer')">
+    <nodeLabelTraces
+        visualID="5111"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5112"
+        queryText="true"/>
+  </childNodeTraces>
   <linkTraces
       visualID="4002"
       queryText="modelFacet.oclIsKindOf(gmfgen::TypeLinkModelFacet) and (let _eClass_:ecore::EClass = modelFacet.oclAsType(gmfgen::TypeLinkModelFacet).metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Instantiation')"/>
