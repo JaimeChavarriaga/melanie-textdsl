@@ -52,12 +52,9 @@
 	or self.editPartClassName = 'InversionEditPart'»
 
 	«EXPAND handleNotificationEventForClabjectLogicElement-»
-«ELSEIF self.editPartClassName = 'FieldEditPart'
-			or self.editPartClassName = 'Field2EditPart'
-			or self.editPartClassName = 'Field3EditPart'»
+«ELSEIF self.editPartClassName.startsWith('Field')»
 	«EXPAND handleNotificationEventForField-»
-«ELSEIF self.editPartClassName = 'MethodEditPart'
-			or self.editPartClassName = 'Method2EditPart'»
+«ELSEIF self.editPartClassName.startsWith('Method')»
 	«EXPAND handleNotificationEventForMethod-»
 «ELSEIF self.editPartClassName = 'ModelEditPart'»
 	«EXPAND handleNotificationEventForModel-»
@@ -557,7 +554,7 @@
 			else
 			{
 				((org.eclipse.gmf.runtime.notation.Shape)this.getNotationView()).setItalic(true);
-				((org.eclipse.gmf.runtime.notation.Shape)this.getNotationView()).setFontColor(org.eclipse.gmf.runtime.diagram.ui.figures.DiagramColorConstants.diagramGray.handle);
+				((org.eclipse.gmf.runtime.notation.Shape)this.getNotationView()).setFontColor(org.eclipse.gmf.runtime.draw2d.ui.figures.FigureUtilities.colorToInteger(org.eclipse.gmf.runtime.diagram.ui.figures.DiagramColorConstants.diagramGray));
 			}
 		}
 		else if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Feature
@@ -594,35 +591,35 @@
 		//***********************************************************
 		//Update DomainEntities on field change (for rendering)
 		//***********************************************************
-		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Field) {
-			org.eclipse.emf.ecore.EObject field = (org.eclipse.emf.ecore.EObject) notification.getNotifier();
-			org.eclipse.emf.ecore.EObject container = field.eContainer();
+//		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Field) {
+//			org.eclipse.emf.ecore.EObject field = (org.eclipse.emf.ecore.EObject) notification.getNotifier();
+//			org.eclipse.emf.ecore.EObject container = field.eContainer();
 
 			//Only DomainEntyties are used to store rendering information
-			if (container instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer) {
+//			if (container instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer) {
 				//Get all DomainEntities that reference this DomainEntity as renderer
-				java.util.Collection<org.eclipse.emf.ecore.EObject> rendererReferencere = org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil
-						.getReferencers(
-								container,
-								new org.eclipse.emf.ecore.EReference[] { de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.eINSTANCE
-										.getElement_Renderer() });
+//				java.util.Collection<org.eclipse.emf.ecore.EObject> rendererReferencere = org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil
+//						.getReferencers(
+//								container,
+//								new org.eclipse.emf.ecore.EReference[] { de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.eINSTANCE
+//										.getElement_Renderer() });
 
-				for (org.eclipse.emf.ecore.EObject obj : rendererReferencere) {
-					org.eclipse.ui.IEditorPart editorPart = org.eclipse.ui.PlatformUI.getWorkbench()
-							.getActiveWorkbenchWindow().getActivePage()
-							.getActiveEditor();
+//				for (org.eclipse.emf.ecore.EObject obj : rendererReferencere) {
+//					org.eclipse.ui.IEditorPart editorPart = org.eclipse.ui.PlatformUI.getWorkbench()
+//							.getActiveWorkbenchWindow().getActivePage()
+//							.getActiveEditor();
 					//If no PLM Diagram is opened we want to do nothing
-					if (!(editorPart instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor))
-						return;
-					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor plmEditor = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor) editorPart;
-					org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart node =
-						(org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)plmEditor.getDiagramGraphicalViewer().findEditPartsForElement(org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getProxyID(obj), org.eclipse.gef.NodeEditPart.class).get(0);
+//					if (!(editorPart instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor))
+//						return;
+//					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor plmEditor = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor) editorPart;
+//					org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart node =
+//						(org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)plmEditor.getDiagramGraphicalViewer().findEditPartsForElement(org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getProxyID(obj), org.eclipse.gef.NodeEditPart.class).get(0);
 					
-					org.eclipse.gef.Request refreshRequest = new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH);
-					node.performRequest(refreshRequest);
-				}
-			}
-		}
+//					org.eclipse.gef.Request refreshRequest = new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH);
+//					node.performRequest(refreshRequest);
+//				}
+//			}
+//		}
 		«ENDIF»
 	}
 «ENDDEFINE»
@@ -648,7 +645,7 @@
 			else
 			{
 				((org.eclipse.gmf.runtime.notation.Shape)this.getNotationView()).setItalic(true);
-				((org.eclipse.gmf.runtime.notation.Shape)this.getNotationView()).setFontColor(org.eclipse.gmf.runtime.diagram.ui.figures.DiagramColorConstants.diagramGray.handle);
+				((org.eclipse.gmf.runtime.notation.Shape)this.getNotationView()).setFontColor(org.eclipse.gmf.runtime.draw2d.ui.figures.FigureUtilities.colorToInteger(org.eclipse.gmf.runtime.diagram.ui.figures.DiagramColorConstants.diagramGray));
 			}
 		}
 	}
