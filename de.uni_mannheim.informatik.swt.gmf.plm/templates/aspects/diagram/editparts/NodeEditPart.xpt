@@ -841,6 +841,10 @@
 			&& getParent() != null)
 		{
 			getParent().performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
+			
+			//For DomainConnections we need to take care of the external label -> updateView()
+			if (((org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)getParent()).resolveSemanticElement() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.DomainConnection)
+				((de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionEditPart)getParent()).updateView(false);
 		}
 	}
 «ENDDEFINE»

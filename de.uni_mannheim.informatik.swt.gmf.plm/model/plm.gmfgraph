@@ -524,6 +524,20 @@
                 xsi:type="gmfgraph:BasicFont"
                 height="7"/>
           </children>
+          <children
+              xsi:type="gmfgraph:Label"
+              name="DomainConnectionAVSFigure"
+              text="">
+            <layoutData
+                xsi:type="gmfgraph:GridLayoutData"
+                grabExcessHorizontalSpace="true"
+                grabExcessVerticalSpace="true"
+                verticalAlignment="BEGINNING"
+                horizontalSpan="2"/>
+            <font
+                xsi:type="gmfgraph:BasicFont"
+                height="7"/>
+          </children>
         </children>
         <template
             y="5"/>
@@ -547,6 +561,8 @@
           figure="//@figures.0/@descriptors.8/@actualFigure/@children.0/@children.1"/>
       <accessors
           figure="//@figures.0/@descriptors.8/@actualFigure/@children.0/@children.2"/>
+      <accessors
+          figure="//@figures.0/@descriptors.8/@actualFigure/@children.0/@children.3"/>
     </descriptors>
     <descriptors
         name="DomainConnectionNameExternalLabelFigure">
@@ -1499,6 +1515,11 @@
       figure="DomainEntityMethodFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.7/@accessors.2"/>
+  <labels
+      name="DomainConnectionAVSLabel"
+      figure="DomainConnectionFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.8/@accessors.3"/>
   <labels
       name="DomainConnectionFigureName"
       figure="DomainConnectionFigure"
