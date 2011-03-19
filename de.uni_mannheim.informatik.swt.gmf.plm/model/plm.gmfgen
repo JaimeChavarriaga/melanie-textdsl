@@ -18,7 +18,7 @@
         name="domainEntityNameCheck"
         description="Checks the name of elements"
         id="audits.attributes.domainEntityNameAudit"
-        rule="//@expressionProviders/@providers.0/@expressions.69"
+        rule="//@expressionProviders/@providers.0/@expressions.71"
         message="Name wrong"
         category="//@audits/@categories.0">
       <target
@@ -145,7 +145,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.32"/>
+            parser="//@labelParsers/@implementations.34"/>
       </labels>
     </childNodes>
     <childNodes
@@ -1685,7 +1685,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.28"/>
+            parser="//@labelParsers/@implementations.30"/>
       </labels>
       <labels
           visualID="5066"
@@ -1705,7 +1705,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.29"/>
+            parser="//@labelParsers/@implementations.31"/>
       </labels>
       <labels
           visualID="5067"
@@ -1725,7 +1725,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.30"/>
+            parser="//@labelParsers/@implementations.32"/>
       </labels>
       <labels
           visualID="5068"
@@ -1745,7 +1745,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.31"/>
+            parser="//@labelParsers/@implementations.33"/>
       </labels>
     </childNodes>
     <childNodes
@@ -1885,7 +1885,7 @@
           xsi:type="gmfgen:InnerClassViewmap"
           layoutType="TOOLBAR_LAYOUT"
           className="DomainEntityMethodFigure"
-          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class DomainEntityMethodFigure extends org.eclipse.draw2d.RectangleFigure {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureDomainEntityMethodNameFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureDomainEntityMethodPotencyFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureDomainEntityMethodOutputFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureDomainEntityMethodInputFigure; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public DomainEntityMethodFigure() {&#xA;&#x9;&#x9;&#xA;&#x9;org.eclipse.draw2d.ToolbarLayout layoutThis = new org.eclipse.draw2d.ToolbarLayout();&#xA;&#x9;layoutThis.setStretchMinorAxis(true);&#xA;&#x9;layoutThis.setMinorAlignment(org.eclipse.draw2d.ToolbarLayout.ALIGN_TOPLEFT&#xA;);&#xA;&#xA;&#x9;layoutThis.setSpacing(0);&#xA;&#x9;layoutThis.setVertical(true);&#xA;&#xA;&#x9;this.setLayoutManager(layoutThis);&#xA;&#xA;&#x9;&#x9;this.setFill(false);&#xA;this.setOutline(false);&#xA;this.setPreferredSize(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(22)&#xA;));&#xA;&#xA;this.setBorder(new org.eclipse.draw2d.MarginBorder(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(0)&#xA;));&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;org.eclipse.draw2d.RectangleFigure innerRectangle0 = new org.eclipse.draw2d.RectangleFigure();&#xA;innerRectangle0.setFill(false);&#xA;innerRectangle0.setOutline(false);&#xA;innerRectangle0.setPreferredSize(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(22)&#xA;));&#xA;&#xA;this.add(innerRectangle0);&#xA;&#xA;&#x9;org.eclipse.draw2d.GridLayout layoutInnerRectangle0 = new org.eclipse.draw2d.GridLayout();&#xA;&#x9;layoutInnerRectangle0.numColumns = 4;&#xA;&#x9;layoutInnerRectangle0.makeColumnsEqualWidth = false;&#xA;&#x9;layoutInnerRectangle0.horizontalSpacing = 0;&#xA;&#x9;layoutInnerRectangle0.verticalSpacing = 0;&#xA;&#x9;layoutInnerRectangle0.marginWidth = 3;&#xA;&#x9;layoutInnerRectangle0.marginHeight = 0;&#xA;&#x9;innerRectangle0.setLayoutManager(layoutInnerRectangle0);&#xA;&#xA;&#xA;&#xA;fFigureDomainEntityMethodNameFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureDomainEntityMethodNameFigure.setText(&quot;&quot;);&#xA;&#xA;fFigureDomainEntityMethodNameFigure.setFont(FFIGUREDOMAINENTITYMETHODNAMEFIGURE_FONT);&#xA;&#xA;&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureDomainEntityMethodNameFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureDomainEntityMethodNameFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureDomainEntityMethodNameFigure.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureDomainEntityMethodNameFigure.horizontalIndent = 0;&#xA;constraintFFigureDomainEntityMethodNameFigure.horizontalSpan = 1;&#xA;constraintFFigureDomainEntityMethodNameFigure.verticalSpan = 1;&#xA;constraintFFigureDomainEntityMethodNameFigure.grabExcessHorizontalSpace = false;&#xA;constraintFFigureDomainEntityMethodNameFigure.grabExcessVerticalSpace = false;&#xA;innerRectangle0.add(fFigureDomainEntityMethodNameFigure, constraintFFigureDomainEntityMethodNameFigure);&#xA;&#xA;&#xA;&#xA;&#xA;fFigureDomainEntityMethodPotencyFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureDomainEntityMethodPotencyFigure.setText(&quot;&quot;);&#xA;&#xA;fFigureDomainEntityMethodPotencyFigure.setFont(FFIGUREDOMAINENTITYMETHODPOTENCYFIGURE_FONT);&#xA;&#xA;&#xA;&#xA;fFigureDomainEntityMethodPotencyFigure.setBorder(new org.eclipse.draw2d.MarginBorder(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(10)&#xA;, getMapMode().DPtoLP(0)&#xA;));&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureDomainEntityMethodPotencyFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureDomainEntityMethodPotencyFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureDomainEntityMethodPotencyFigure.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureDomainEntityMethodPotencyFigure.horizontalIndent = 0;&#xA;constraintFFigureDomainEntityMethodPotencyFigure.horizontalSpan = 1;&#xA;constraintFFigureDomainEntityMethodPotencyFigure.verticalSpan = 1;&#xA;constraintFFigureDomainEntityMethodPotencyFigure.grabExcessHorizontalSpace = false;&#xA;constraintFFigureDomainEntityMethodPotencyFigure.grabExcessVerticalSpace = false;&#xA;innerRectangle0.add(fFigureDomainEntityMethodPotencyFigure, constraintFFigureDomainEntityMethodPotencyFigure);&#xA;&#xA;&#xA;&#xA;&#xA;fFigureDomainEntityMethodInputFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureDomainEntityMethodInputFigure.setText(&quot;&quot;);&#xA;&#xA;fFigureDomainEntityMethodInputFigure.setFont(FFIGUREDOMAINENTITYMETHODINPUTFIGURE_FONT);&#xA;&#xA;&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureDomainEntityMethodInputFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureDomainEntityMethodInputFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureDomainEntityMethodInputFigure.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureDomainEntityMethodInputFigure.horizontalIndent = 0;&#xA;constraintFFigureDomainEntityMethodInputFigure.horizontalSpan = 1;&#xA;constraintFFigureDomainEntityMethodInputFigure.verticalSpan = 1;&#xA;constraintFFigureDomainEntityMethodInputFigure.grabExcessHorizontalSpace = false;&#xA;constraintFFigureDomainEntityMethodInputFigure.grabExcessVerticalSpace = false;&#xA;innerRectangle0.add(fFigureDomainEntityMethodInputFigure, constraintFFigureDomainEntityMethodInputFigure);&#xA;&#xA;&#xA;&#xA;&#xA;fFigureDomainEntityMethodOutputFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureDomainEntityMethodOutputFigure.setText(&quot;&quot;);&#xA;&#xA;fFigureDomainEntityMethodOutputFigure.setFont(FFIGUREDOMAINENTITYMETHODOUTPUTFIGURE_FONT);&#xA;&#xA;&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureDomainEntityMethodOutputFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureDomainEntityMethodOutputFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureDomainEntityMethodOutputFigure.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureDomainEntityMethodOutputFigure.horizontalIndent = 0;&#xA;constraintFFigureDomainEntityMethodOutputFigure.horizontalSpan = 1;&#xA;constraintFFigureDomainEntityMethodOutputFigure.verticalSpan = 1;&#xA;constraintFFigureDomainEntityMethodOutputFigure.grabExcessHorizontalSpace = false;&#xA;constraintFFigureDomainEntityMethodOutputFigure.grabExcessVerticalSpace = false;&#xA;innerRectangle0.add(fFigureDomainEntityMethodOutputFigure, constraintFFigureDomainEntityMethodOutputFigure);&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureDomainEntityMethodNameFigure() {&#xA;&#x9;&#x9;return fFigureDomainEntityMethodNameFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureDomainEntityMethodPotencyFigure() {&#xA;&#x9;&#x9;return fFigureDomainEntityMethodPotencyFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureDomainEntityMethodOutputFigure() {&#xA;&#x9;&#x9;return fFigureDomainEntityMethodOutputFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureDomainEntityMethodInputFigure() {&#xA;&#x9;&#x9;return fFigureDomainEntityMethodInputFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGUREDOMAINENTITYMETHODNAMEFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 8, org.eclipse.swt.SWT.NORMAL);&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGUREDOMAINENTITYMETHODPOTENCYFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 7, org.eclipse.swt.SWT.NORMAL);&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGUREDOMAINENTITYMETHODINPUTFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 8, org.eclipse.swt.SWT.NORMAL);&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGUREDOMAINENTITYMETHODOUTPUTFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 8, org.eclipse.swt.SWT.NORMAL);&#xA;&#xA;">
+          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class DomainEntityMethodFigure extends org.eclipse.draw2d.RectangleFigure {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureDomainEntityMethodNameFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureDomainEntityMethodPotencyFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureDomainEntityMethodOutputFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureDomainEntityMethodInputFigure; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public DomainEntityMethodFigure() {&#xA;&#x9;&#x9;&#xA;&#x9;org.eclipse.draw2d.ToolbarLayout layoutThis = new org.eclipse.draw2d.ToolbarLayout();&#xA;&#x9;layoutThis.setStretchMinorAxis(true);&#xA;&#x9;layoutThis.setMinorAlignment(org.eclipse.draw2d.ToolbarLayout.ALIGN_TOPLEFT&#xA;);&#xA;&#xA;&#x9;layoutThis.setSpacing(0);&#xA;&#x9;layoutThis.setVertical(true);&#xA;&#xA;&#x9;this.setLayoutManager(layoutThis);&#xA;&#xA;&#x9;&#x9;this.setFill(false);&#xA;this.setOutline(false);&#xA;this.setPreferredSize(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(22)&#xA;));&#xA;&#xA;this.setBorder(new org.eclipse.draw2d.MarginBorder(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(0)&#xA;));&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;org.eclipse.draw2d.RectangleFigure innerRectangle0 = new org.eclipse.draw2d.RectangleFigure();&#xA;innerRectangle0.setFill(false);&#xA;innerRectangle0.setOutline(false);&#xA;innerRectangle0.setPreferredSize(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(22)&#xA;));&#xA;&#xA;this.add(innerRectangle0);&#xA;&#xA;&#x9;org.eclipse.draw2d.GridLayout layoutInnerRectangle0 = new org.eclipse.draw2d.GridLayout();&#xA;&#x9;layoutInnerRectangle0.numColumns = 4;&#xA;&#x9;layoutInnerRectangle0.makeColumnsEqualWidth = false;&#xA;&#x9;layoutInnerRectangle0.horizontalSpacing = 0;&#xA;&#x9;layoutInnerRectangle0.verticalSpacing = 0;&#xA;&#x9;layoutInnerRectangle0.marginWidth = 3;&#xA;&#x9;layoutInnerRectangle0.marginHeight = 0;&#xA;&#x9;innerRectangle0.setLayoutManager(layoutInnerRectangle0);&#xA;&#xA;&#xA;&#xA;fFigureDomainEntityMethodNameFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureDomainEntityMethodNameFigure.setText(&quot;&quot;);&#xA;&#xA;fFigureDomainEntityMethodNameFigure.setFont(FFIGUREDOMAINENTITYMETHODNAMEFIGURE_FONT);&#xA;&#xA;&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureDomainEntityMethodNameFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureDomainEntityMethodNameFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureDomainEntityMethodNameFigure.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureDomainEntityMethodNameFigure.horizontalIndent = 0;&#xA;constraintFFigureDomainEntityMethodNameFigure.horizontalSpan = 1;&#xA;constraintFFigureDomainEntityMethodNameFigure.verticalSpan = 1;&#xA;constraintFFigureDomainEntityMethodNameFigure.grabExcessHorizontalSpace = false;&#xA;constraintFFigureDomainEntityMethodNameFigure.grabExcessVerticalSpace = false;&#xA;innerRectangle0.add(fFigureDomainEntityMethodNameFigure, constraintFFigureDomainEntityMethodNameFigure);&#xA;&#xA;&#xA;&#xA;&#xA;fFigureDomainEntityMethodPotencyFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureDomainEntityMethodPotencyFigure.setText(&quot;&quot;);&#xA;&#xA;fFigureDomainEntityMethodPotencyFigure.setFont(FFIGUREDOMAINENTITYMETHODPOTENCYFIGURE_FONT);&#xA;&#xA;&#xA;&#xA;fFigureDomainEntityMethodPotencyFigure.setBorder(new org.eclipse.draw2d.MarginBorder(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(10)&#xA;, getMapMode().DPtoLP(0)&#xA;));&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureDomainEntityMethodPotencyFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureDomainEntityMethodPotencyFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureDomainEntityMethodPotencyFigure.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureDomainEntityMethodPotencyFigure.horizontalIndent = 0;&#xA;constraintFFigureDomainEntityMethodPotencyFigure.horizontalSpan = 1;&#xA;constraintFFigureDomainEntityMethodPotencyFigure.verticalSpan = 1;&#xA;constraintFFigureDomainEntityMethodPotencyFigure.grabExcessHorizontalSpace = false;&#xA;constraintFFigureDomainEntityMethodPotencyFigure.grabExcessVerticalSpace = false;&#xA;innerRectangle0.add(fFigureDomainEntityMethodPotencyFigure, constraintFFigureDomainEntityMethodPotencyFigure);&#xA;&#xA;&#xA;&#xA;&#xA;fFigureDomainEntityMethodInputFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureDomainEntityMethodInputFigure.setText(&quot;&quot;);&#xA;&#xA;fFigureDomainEntityMethodInputFigure.setFont(FFIGUREDOMAINENTITYMETHODINPUTFIGURE_FONT);&#xA;&#xA;&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureDomainEntityMethodInputFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureDomainEntityMethodInputFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureDomainEntityMethodInputFigure.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureDomainEntityMethodInputFigure.horizontalIndent = 0;&#xA;constraintFFigureDomainEntityMethodInputFigure.horizontalSpan = 1;&#xA;constraintFFigureDomainEntityMethodInputFigure.verticalSpan = 1;&#xA;constraintFFigureDomainEntityMethodInputFigure.grabExcessHorizontalSpace = false;&#xA;constraintFFigureDomainEntityMethodInputFigure.grabExcessVerticalSpace = false;&#xA;innerRectangle0.add(fFigureDomainEntityMethodInputFigure, constraintFFigureDomainEntityMethodInputFigure);&#xA;&#xA;&#xA;&#xA;&#xA;fFigureDomainEntityMethodOutputFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureDomainEntityMethodOutputFigure.setText(&quot;ddd&quot;);&#xA;&#xA;fFigureDomainEntityMethodOutputFigure.setFont(FFIGUREDOMAINENTITYMETHODOUTPUTFIGURE_FONT);&#xA;&#xA;&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureDomainEntityMethodOutputFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureDomainEntityMethodOutputFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureDomainEntityMethodOutputFigure.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureDomainEntityMethodOutputFigure.horizontalIndent = 0;&#xA;constraintFFigureDomainEntityMethodOutputFigure.horizontalSpan = 1;&#xA;constraintFFigureDomainEntityMethodOutputFigure.verticalSpan = 1;&#xA;constraintFFigureDomainEntityMethodOutputFigure.grabExcessHorizontalSpace = false;&#xA;constraintFFigureDomainEntityMethodOutputFigure.grabExcessVerticalSpace = false;&#xA;innerRectangle0.add(fFigureDomainEntityMethodOutputFigure, constraintFFigureDomainEntityMethodOutputFigure);&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureDomainEntityMethodNameFigure() {&#xA;&#x9;&#x9;return fFigureDomainEntityMethodNameFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureDomainEntityMethodPotencyFigure() {&#xA;&#x9;&#x9;return fFigureDomainEntityMethodPotencyFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureDomainEntityMethodOutputFigure() {&#xA;&#x9;&#x9;return fFigureDomainEntityMethodOutputFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureDomainEntityMethodInputFigure() {&#xA;&#x9;&#x9;return fFigureDomainEntityMethodInputFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGUREDOMAINENTITYMETHODNAMEFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 8, org.eclipse.swt.SWT.NORMAL);&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGUREDOMAINENTITYMETHODPOTENCYFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 7, org.eclipse.swt.SWT.NORMAL);&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGUREDOMAINENTITYMETHODINPUTFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 8, org.eclipse.swt.SWT.NORMAL);&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGUREDOMAINENTITYMETHODOUTPUTFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 8, org.eclipse.swt.SWT.NORMAL);&#xA;&#xA;">
         <attributes
             xsi:type="gmfgen:DefaultSizeAttributes"
             width="0"
@@ -1931,7 +1931,7 @@
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap
             xsi:type="gmfgen:ParentAssignedViewmap"
-            getterName="getFigureDomainEntityMethodPotencyFigure"
+            getterName="getFigureDomainEntityMethodInputFigure"
             figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel">
           <attributes
               xsi:type="gmfgen:StyleAttributes"
@@ -1940,6 +1940,46 @@
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
             parser="//@labelParsers/@implementations.25"/>
+      </labels>
+      <labels
+          visualID="5119"
+          editPartClassName="WrappingLabel36EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel36ItemSemanticEditPolicy"
+          notationViewFactoryClassName="MethodLabelViewFactory"
+          readOnly="true">
+        <diagramRunTimeClass
+            href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap
+            xsi:type="gmfgen:ParentAssignedViewmap"
+            getterName="getFigureDomainEntityMethodPotencyFigure"
+            figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel">
+          <attributes
+              xsi:type="gmfgen:StyleAttributes"
+              fixedFont="true"/>
+        </viewmap>
+        <modelFacet
+            xsi:type="gmfgen:ExpressionLabelModelFacet"
+            parser="//@labelParsers/@implementations.26"/>
+      </labels>
+      <labels
+          visualID="5120"
+          editPartClassName="WrappingLabel37EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel37ItemSemanticEditPolicy"
+          notationViewFactoryClassName="MethodLabelViewFactory"
+          readOnly="true">
+        <diagramRunTimeClass
+            href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap
+            xsi:type="gmfgen:ParentAssignedViewmap"
+            getterName="getFigureDomainEntityMethodOutputFigure"
+            figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel">
+          <attributes
+              xsi:type="gmfgen:StyleAttributes"
+              fixedFont="true"/>
+        </viewmap>
+        <modelFacet
+            xsi:type="gmfgen:ExpressionLabelModelFacet"
+            parser="//@labelParsers/@implementations.27"/>
       </labels>
     </childNodes>
     <childNodes
@@ -1992,7 +2032,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.26"/>
+            parser="//@labelParsers/@implementations.28"/>
       </labels>
       <labels
           visualID="5116"
@@ -2012,7 +2052,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.27"/>
+            parser="//@labelParsers/@implementations.29"/>
       </labels>
     </childNodes>
     <childNodes
@@ -2065,7 +2105,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.33"/>
+            parser="//@labelParsers/@implementations.35"/>
       </labels>
       <labels
           visualID="5118"
@@ -2085,7 +2125,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.34"/>
+            parser="//@labelParsers/@implementations.36"/>
       </labels>
     </childNodes>
     <topLevelNodes
@@ -2185,7 +2225,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.35"/>
+            parser="//@labelParsers/@implementations.37"/>
       </labels>
     </topLevelNodes>
     <links
@@ -2293,8 +2333,8 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Instantiation/type"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.58"
-          targetEnd="//@expressionProviders/@providers.0/@expressions.59"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.60"
+          targetEnd="//@expressionProviders/@providers.0/@expressions.61"/>
     </links>
     <links
         visualID="4013"
@@ -2346,7 +2386,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Equality/equal"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.60"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.62"/>
     </links>
     <links
         visualID="4015"
@@ -2373,7 +2413,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Inversion/inverse"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.61"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.63"/>
     </links>
     <links
         visualID="4016"
@@ -2400,7 +2440,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Complement/complement"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.62"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.64"/>
     </links>
     <links
         visualID="4008"
@@ -2427,7 +2467,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleGeneralization/supertype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.63"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.65"/>
     </links>
     <links
         visualID="4009"
@@ -2454,7 +2494,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleGeneralization/subtype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.64"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.66"/>
     </links>
     <links
         visualID="4011"
@@ -2481,7 +2521,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleSpecialization/supertype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.65"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.67"/>
     </links>
     <links
         visualID="4012"
@@ -2508,7 +2548,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleSpecialization/subtype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.66"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.68"/>
     </links>
     <links
         visualID="4019"
@@ -2535,7 +2575,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/BinaryGeneralization/supertype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.67"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.69"/>
     </links>
     <links
         visualID="4020"
@@ -2562,7 +2602,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/BinaryGeneralization/subtype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.68"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.70"/>
     </links>
     <compartments
         visualID="7003"
@@ -3046,7 +3086,11 @@
       <expressions
           body="if (not self.datatype.oclIsUndefined()) then&#xD;&#xA;&#x9;':'.concat(self.datatype.name)&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
       <expressions
+          body="'('.concat(Sequence{1..input->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let iAsString:String = &#xD;&#xA;&#x9;&#x9;OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(denominator : Integer; s : String = ''|&#xD;&#xA;            &#x9;&#x9;let numberAsString : String = OrderedSet{&#xD;&#xA;                    &#x9;&#x9;'0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                &#x9;}->at(i.div(denominator).mod(10) + 1)&#xD;&#xA;            &#x9;&#x9;in&#xD;&#xA;                &#x9;&#x9;if s='' and numberAsString = '0' then&#xD;&#xA;                    &#x9;&#x9;&#x9;s&#xD;&#xA;                &#x9;&#x9;else&#xD;&#xA;                    &#x9;&#x9;&#x9;s.concat(numberAsString)&#xD;&#xA;                &#x9;&#x9;endif&#xD;&#xA;        &#x9;)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;str.concat('[').concat(iAsString).concat(']:').concat(input->at(i).name).concat(';'))&#xD;&#xA;).concat(')')"/>
+      <expressions
           body="let durability:String = if (self.durability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.durability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;durability"/>
+      <expressions
+          body="':'.concat(Sequence{1..output->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let iAsString:String = &#xD;&#xA;&#x9;&#x9;OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(denominator : Integer; s : String = ''|&#xD;&#xA;            &#x9;&#x9;let numberAsString : String = OrderedSet{&#xD;&#xA;                    &#x9;&#x9;'0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                &#x9;}->at(i.div(denominator).mod(10) + 1)&#xD;&#xA;            &#x9;&#x9;in&#xD;&#xA;                &#x9;&#x9;if s='' and numberAsString = '0' then&#xD;&#xA;                    &#x9;&#x9;&#x9;s&#xD;&#xA;                &#x9;&#x9;else&#xD;&#xA;                    &#x9;&#x9;&#x9;s.concat(numberAsString)&#xD;&#xA;                &#x9;&#x9;endif&#xD;&#xA;        &#x9;)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;str.concat('[').concat(iAsString).concat(']:').concat(output->at(i).name).concat(';'))&#xD;&#xA;)"/>
       <expressions
           xsi:type="gmfgen:GenConstraint"
           body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min') then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat(';') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
@@ -3309,9 +3353,25 @@
     </implementations>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
+        uses="//@diagram/@childNodes.19/@labels.2/@modelFacet"
+        className="MethodLabelExpressionLabelParser5119"
+        viewExpression="//@expressionProviders/@providers.0/@expressions.48">
+      <expressionContext
+          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Method"/>
+    </implementations>
+    <implementations
+        xsi:type="gmfgen:ExpressionLabelParser"
+        uses="//@diagram/@childNodes.19/@labels.3/@modelFacet"
+        className="MethodLabelExpressionLabelParser5120"
+        viewExpression="//@expressionProviders/@providers.0/@expressions.49">
+      <expressionContext
+          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Method"/>
+    </implementations>
+    <implementations
+        xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.20/@labels.0/@modelFacet"
         className="RendererLabelExpressionLabelParser5115"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.48">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.50">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Renderer"/>
     </implementations>
@@ -3319,7 +3379,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.20/@labels.1/@modelFacet"
         className="RendererLabelExpressionLabelParser5116"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.49">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.51">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Renderer"/>
     </implementations>
@@ -3327,7 +3387,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.17/@labels.0/@modelFacet"
         className="DomainEntityLabelExpressionLabelParser5065"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.50">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.52">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainEntity"/>
     </implementations>
@@ -3335,7 +3395,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.17/@labels.1/@modelFacet"
         className="DomainEntityLabelExpressionLabelParser5066"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.51">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.53">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainEntity"/>
     </implementations>
@@ -3343,7 +3403,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.17/@labels.2/@modelFacet"
         className="DomainEntityLabelExpressionLabelParser5067"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.52">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.54">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainEntity"/>
     </implementations>
@@ -3351,7 +3411,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.17/@labels.3/@modelFacet"
         className="DomainEntityLabelExpressionLabelParser5068"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.53">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.55">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainEntity"/>
     </implementations>
@@ -3359,7 +3419,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.0/@labels.1/@modelFacet"
         className="ModelLabelExpressionLabelParser5097"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.54">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.56">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model"/>
     </implementations>
@@ -3367,7 +3427,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.21/@labels.0/@modelFacet"
         className="RendererLabelExpressionLabelParser5117"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.55">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.57">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Renderer"/>
     </implementations>
@@ -3375,7 +3435,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.21/@labels.1/@modelFacet"
         className="RendererLabelExpressionLabelParser5118"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.56">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.58">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Renderer"/>
     </implementations>
@@ -3383,7 +3443,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@topLevelNodes.0/@labels.1/@modelFacet"
         className="OntologyLabelExpressionLabelParser5096"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.57">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.59">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Ontology"/>
     </implementations>
