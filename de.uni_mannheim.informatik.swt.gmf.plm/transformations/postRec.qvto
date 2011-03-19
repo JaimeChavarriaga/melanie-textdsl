@@ -61,9 +61,9 @@ main() {
 	--	:= xmap createChildReference("DomainEntityEditPart", "LMLModelEditPart", "Domain Entities",  "icons/clabject16.gif");
 	--rootDomainEnitiyChildReference.parent 
 	--	:= gmfgenModel.objectsOfType(GenDiagram)->asOrderedSet()->select(n | n.editPartClassName = "LMLModelEditPart")->first();
-	--Fields for DomainEntities that describe rendering of ontologies
-	--var rootFieldChildReference 
-	--	:= xmap createChildReference("FieldEditPart", "DomainEntityEditPart", "Fields", "icons/field16.gif");
+	--s for DomainEntities that describe rendering of ontologies
+	--var rootChildReference 
+	--	:= xmap createChildReference("EditPart", "DomainEntityEditPart", "s", "icons/16.gif");
 	--Methods for DomainEntities that describe rendering of ontologies
 	--var rootMethodChildReference 
 	--	:= xmap createChildReference("MethodEditPart", "DomainEntityEditPart", "Methods", "icons/method16.gif");
@@ -80,9 +80,9 @@ main() {
 	--Group for all DomainEntities
 	var domainEntityChildReference 
 		:= xmap createChildReference("DomainEntityEditPart", "ModelEditPart", "Domain Entities", "icons/clabject16.gif");
-		--Fields for DomainEntities that describe rendering of ontologies
-	var fieldChildReference 
-		:= xmap createChildReference("FieldEditPart", "DomainEntityEditPart", "Fields", "icons/field16.gif");
+		--s for DomainEntities that describe rendering of ontologies
+	var attributeChildReference 
+		:= xmap createChildReference("AttributeEditPart", "DomainEntityEditPart", "Attributes", "icons/16.gif");
 	--Methods for DomainEntities that describe rendering of ontologies
 	var methodChildReference 
 		:= xmap createChildReference("MethodEditPart", "DomainEntityEditPart", "Methods", "icons/method16.gif");
@@ -110,10 +110,10 @@ main() {
 		:= xmap createChildReference("InversionEditPart", "ModelEditPart", "Set Relationships", "icons/setRelationship16.gif");
 	
 	this.genNavigator.childReferences += 
-		OrderedSet{LMLModelChildReference, --rootDomainEnitiyChildReference, rootFieldChildReference, rootMethodChildReference,
+		OrderedSet{LMLModelChildReference, --rootDomainEnitiyChildReference, rootChildReference, rootMethodChildReference,
 					 ontologyChildReference, modelChildReference,
 					domainEntityChildReference, domainConnectionChildReference, 
-					fieldChildReference, methodChildReference, binaryGeneralizationChildReference,
+					attributeChildReference, methodChildReference, binaryGeneralizationChildReference,
 					multipleGeneralizationChildReference, multipleSpecializationChildReference, 
 					complementChildReference, equalChildReference, inversionChildReference};
 	

@@ -52,8 +52,8 @@
 	or self.editPartClassName = 'InversionEditPart'»
 
 	«EXPAND handleNotificationEventForClabjectLogicElement-»
-«ELSEIF self.editPartClassName.startsWith('Field')»
-	«EXPAND handleNotificationEventForField-»
+«ELSEIF self.editPartClassName.startsWith('Attribute')»
+	«EXPAND handleNotificationEventForAttribute-»
 «ELSEIF self.editPartClassName.startsWith('Method')»
 	«EXPAND handleNotificationEventForMethod-»
 «ELSEIF self.editPartClassName = 'ModelEditPart'»
@@ -207,7 +207,7 @@
 			«IF self.editPartClassName='DomainEntityEditPart'»
 			else if (changedFeature.getName().equals("name"))
 			{
-				de.uni_mannheim.informatik.swt.models.plm.PLM.Field[] fields = new de.uni_mannheim.informatik.swt.models.plm.PLM.Field[] {};
+				de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute[] attributes = new de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute[] {};
 			
 				org.eclipse.ocl.ecore.OCL ocl = org.eclipse.ocl.ecore.OCL.newInstance();
 				org.eclipse.ocl.helper.OCLHelper<org.eclipse.emf.ecore.EClassifier, ?, ?, org.eclipse.ocl.ecore.Constraint> helper = ocl.createOCLHelper();
@@ -215,17 +215,17 @@
 				
 				try {
 					org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper
-							.createQuery("Field.allInstances()");
-					fields = ((java.util.HashSet<de.uni_mannheim.informatik.swt.models.plm.PLM.Field>) ocl
+							.createQuery("Attribute.allInstances()");
+					attributes = ((java.util.HashSet<de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute>) ocl
 							.evaluate(org.eclipse.emf.ecore.util.EcoreUtil
 									.getRootContainer(resolveSemanticElement()), q))
-							.toArray(new de.uni_mannheim.informatik.swt.models.plm.PLM.Field[] {});
+							.toArray(new de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute[] {});
 				} catch (org.eclipse.ocl.ParserException e) {
 					e.printStackTrace();
 				}
 			
-				//We found fields
-				if (fields.length > 0) {
+				//We found attributes
+				if (attributes.length > 0) {
 					org.eclipse.ui.IEditorPart editor = org.eclipse.ui.PlatformUI.getWorkbench()
 							.getActiveWorkbenchWindow().getActivePage()
 							.getActiveEditor();
@@ -234,16 +234,16 @@
 
 					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor plmEditor = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor) editor;
 
-					for (de.uni_mannheim.informatik.swt.models.plm.PLM.Field f : fields) 
+					for (de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute a : attributes) 
 					{	
-						//if a field is hidden via the notational model it cannot be resolved
-						java.util.List fieldEditParts = 
-							 plmEditor.getDiagramGraphicalViewer().findEditPartsForElement(org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getProxyID(f),org.eclipse.gef.NodeEditPart.class);
+						//if a attribute is hidden via the notational model it cannot be resolved
+						java.util.List attributeEditParts = 
+							 plmEditor.getDiagramGraphicalViewer().findEditPartsForElement(org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getProxyID(a),org.eclipse.gef.NodeEditPart.class);
 					
-					 	if (fieldEditParts.size() > 0)
+					 	if (attributeEditParts.size() > 0)
 					 	{
-							 org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart fieldEditPart = (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)fieldEditParts.get(0);
-							 fieldEditPart.performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
+							 org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart attributeEditPart = (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)attributeEditParts.get(0);
+							 attributeEditPart.performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
 						}
 					}
 				}
@@ -533,7 +533,7 @@
 	}
 «ENDDEFINE»
 
-«DEFINE handleNotificationEventForField FOR gmfgen::GenNode»
+«DEFINE handleNotificationEventForAttribute FOR gmfgen::GenNode»
 	/**
 	 * @generated
 	 */
@@ -587,7 +587,7 @@
 			}
 		}
 
-		«IF self.editPartClassName = 'FieldEditPart'»
+		«IF self.editPartClassName = 'AttributeEditPart'»
 		//***********************************************************
 		//Update DomainEntities on field change (for rendering)
 		//***********************************************************
