@@ -1,15 +1,3 @@
-/*
- * Copyright (c) 2006, 2010 Borland Software Corporation and others
- * 
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *    Alexander Shatalin (Borland) - initial API and implementation
- */
-
 «IMPORT 'http://www.eclipse.org/gmf/2009/GenModel'»
 «EXTENSION xpt::editor::Utils»
 
@@ -28,6 +16,9 @@
 			{
 				org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart editPart = (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)((org.eclipse.jface.viewers.IStructuredSelection)selection).getFirstElement();
 				ValidateAction.runValidation((org.eclipse.gmf.runtime.notation.View)org.eclipse.emf.ecore.util.EcoreUtil.getRootContainer(editPart.getNotationView()));
+				
+				//Debugcode
+				System.out.println("Selected : " + editPart.getClass().getName());
 			}
 		}
 	};

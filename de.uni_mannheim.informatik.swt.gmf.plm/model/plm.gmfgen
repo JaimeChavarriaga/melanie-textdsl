@@ -2915,9 +2915,21 @@
         hideIfEmpty="false"/>
     <childReferences
         parent="//@diagram/@topLevelNodes.0"
+        child="//@diagram/@childNodes.21"
+        groupName="Renderers"
+        groupIcon="icons/renderer16.gif"
+        hideIfEmpty="false"/>
+    <childReferences
+        parent="//@diagram/@topLevelNodes.0"
         child="//@diagram/@childNodes.0"
         groupName="Models"
         groupIcon="icons/model16.gif"
+        hideIfEmpty="false"/>
+    <childReferences
+        parent="//@diagram/@childNodes.0"
+        child="//@diagram/@childNodes.1"
+        groupName="Renderers"
+        groupIcon="icons/renderer16.gif"
         hideIfEmpty="false"/>
     <childReferences
         parent="//@diagram/@childNodes.0"
@@ -2926,16 +2938,16 @@
         groupIcon="icons/clabject16.gif"
         hideIfEmpty="false"/>
     <childReferences
-        parent="//@diagram/@childNodes.0"
-        child="//@diagram/@childNodes.2"
-        groupName="Domain Entities"
-        groupIcon="icons/domainConnection16.gif"
+        parent="//@diagram/@childNodes.17"
+        child="//@diagram/@childNodes.20"
+        groupName="Renderers"
+        groupIcon="icons/renderer16.gif"
         hideIfEmpty="false"/>
     <childReferences
         parent="//@diagram/@childNodes.17"
-        child="//@diagram/@childNodes.4"
+        child="//@diagram/@childNodes.18"
         groupName="Attributes"
-        groupIcon="icons/16.gif"
+        groupIcon="icons/field16.gif"
         hideIfEmpty="false"/>
     <childReferences
         parent="//@diagram/@childNodes.17"
@@ -2945,9 +2957,33 @@
         hideIfEmpty="false"/>
     <childReferences
         parent="//@diagram/@childNodes.0"
+        child="//@diagram/@childNodes.2"
+        groupName="Domain Connections"
+        groupIcon="icons/domainConnection16.gif"
+        hideIfEmpty="false"/>
+    <childReferences
+        parent="//@diagram/@childNodes.2"
+        child="//@diagram/@childNodes.3"
+        groupName="Renderers"
+        groupIcon="icons/renderer16.gif"
+        hideIfEmpty="false"/>
+    <childReferences
+        parent="//@diagram/@childNodes.2"
+        child="//@diagram/@childNodes.4"
+        groupName="Attributes"
+        groupIcon="icons/field16.gif"
+        hideIfEmpty="false"/>
+    <childReferences
+        parent="//@diagram/@childNodes.0"
         child="//@diagram/@childNodes.15"
         groupName="Generalizations"
         groupIcon="icons/inheritance16.gif"
+        hideIfEmpty="false"/>
+    <childReferences
+        parent="//@diagram/@childNodes.15"
+        child="//@diagram/@childNodes.16"
+        groupName="Renderers"
+        groupIcon="icons/renderer16.gif"
         hideIfEmpty="false"/>
     <childReferences
         parent="//@diagram/@childNodes.0"
@@ -2956,10 +2992,22 @@
         groupIcon="icons/inheritance16.gif"
         hideIfEmpty="false"/>
     <childReferences
+        parent="//@diagram/@childNodes.11"
+        child="//@diagram/@childNodes.12"
+        groupName="Renderers"
+        groupIcon="icons/renderer16.gif"
+        hideIfEmpty="false"/>
+    <childReferences
         parent="//@diagram/@childNodes.0"
         child="//@diagram/@childNodes.13"
         groupName="Generalizations"
         groupIcon="icons/inheritance16.gif"
+        hideIfEmpty="false"/>
+    <childReferences
+        parent="//@diagram/@childNodes.13"
+        child="//@diagram/@childNodes.14"
+        groupName="Renderers"
+        groupIcon="icons/renderer16.gif"
         hideIfEmpty="false"/>
     <childReferences
         parent="//@diagram/@childNodes.0"
@@ -2968,16 +3016,34 @@
         groupIcon="icons/setRelationship16.gif"
         hideIfEmpty="false"/>
     <childReferences
+        parent="//@diagram/@childNodes.5"
+        child="//@diagram/@childNodes.6"
+        groupName="Renderers"
+        groupIcon="icons/renderer16.gif"
+        hideIfEmpty="false"/>
+    <childReferences
         parent="//@diagram/@childNodes.0"
         child="//@diagram/@childNodes.7"
         groupName="Set Relationships"
         groupIcon="icons/setRelationship16.gif"
         hideIfEmpty="false"/>
     <childReferences
+        parent="//@diagram/@childNodes.7"
+        child="//@diagram/@childNodes.8"
+        groupName="Renderers"
+        groupIcon="icons/renderer16.gif"
+        hideIfEmpty="false"/>
+    <childReferences
         parent="//@diagram/@childNodes.0"
         child="//@diagram/@childNodes.9"
         groupName="Set Relationships"
         groupIcon="icons/setRelationship16.gif"
+        hideIfEmpty="false"/>
+    <childReferences
+        parent="//@diagram/@childNodes.9"
+        child="//@diagram/@childNodes.10"
+        groupName="Renderers"
+        groupIcon="icons/renderer16.gif"
         hideIfEmpty="false"/>
   </navigator>
   <diagramUpdater/>
