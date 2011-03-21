@@ -55,32 +55,6 @@
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
-          title="Domain Entity Field"
-          description="Create new Domain Entity Field">
-        <smallIcon
-            xsi:type="gmftool:BundleImage"
-            path="/icons/field16.gif"
-            bundle="de.uni_mannheim.informatik.swt.gmf.plm"/>
-        <largeIcon
-            xsi:type="gmftool:BundleImage"
-            path="/icons/field16.gif"
-            bundle="de.uni_mannheim.informatik.swt.gmf.plm"/>
-      </tools>
-      <tools
-          xsi:type="gmftool:CreationTool"
-          title="Domain Entity Method"
-          description="Create new Domain Entity Method">
-        <smallIcon
-            xsi:type="gmftool:BundleImage"
-            path="/icons/method16.gif"
-            bundle="de.uni_mannheim.informatik.swt.gmf.plm"/>
-        <largeIcon
-            xsi:type="gmftool:BundleImage"
-            path="/icons/method16.gif"
-            bundle="de.uni_mannheim.informatik.swt.gmf.plm"/>
-      </tools>
-      <tools
-          xsi:type="gmftool:CreationTool"
           title="Domain Connection"
           description="Create new Domain Connection">
         <smallIcon
@@ -103,6 +77,32 @@
         <largeIcon
             xsi:type="gmftool:BundleImage"
             path="/icons/domainConnectionParticipant16.gif"
+            bundle="de.uni_mannheim.informatik.swt.gmf.plm"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Field"
+          description="Create new Field">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="/icons/field16.gif"
+            bundle="de.uni_mannheim.informatik.swt.gmf.plm"/>
+        <largeIcon
+            xsi:type="gmftool:BundleImage"
+            path="/icons/field16.gif"
+            bundle="de.uni_mannheim.informatik.swt.gmf.plm"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Method"
+          description="Create new Method">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="/icons/method16.gif"
+            bundle="de.uni_mannheim.informatik.swt.gmf.plm"/>
+        <largeIcon
+            xsi:type="gmftool:BundleImage"
+            path="/icons/method16.gif"
             bundle="de.uni_mannheim.informatik.swt.gmf.plm"/>
       </tools>
       <tools

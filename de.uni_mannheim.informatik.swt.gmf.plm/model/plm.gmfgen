@@ -2740,31 +2740,31 @@
             genNodes="//@diagram/@childNodes.17"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
-            title="Domain Entity Field"
-            description="Create new Domain Entity Field"
-            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/field16.gif"
-            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/field16.gif"
-            genNodes="//@diagram/@childNodes.4 //@diagram/@childNodes.18"/>
-        <entries
-            xsi:type="gmfgen:ToolEntry"
-            title="Domain Entity Method"
-            description="Create new Domain Entity Method"
-            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/method16.gif"
-            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/method16.gif"
-            genNodes="//@diagram/@childNodes.19"/>
-        <entries
-            xsi:type="gmfgen:ToolEntry"
             title="Domain Connection"
             description="Create new Domain Connection"
             largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/domainConnection16.gif"
             smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/domainConnection16.gif"
-            genNodes="//@diagram/@childNodes.2"/>
+            genNodes="//@diagram/@childNodes.4 //@diagram/@childNodes.18"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Domain Connection Participants"
             description="Create new Domain Connection Participants"
             largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/domainConnectionParticipant16.gif"
             smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/domainConnectionParticipant16.gif"
+            genNodes="//@diagram/@childNodes.19"/>
+        <entries
+            xsi:type="gmfgen:ToolEntry"
+            title="Field"
+            description="Create new Field"
+            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/field16.gif"
+            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/field16.gif"
+            genNodes="//@diagram/@childNodes.2"/>
+        <entries
+            xsi:type="gmfgen:ToolEntry"
+            title="Method"
+            description="Create new Method"
+            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/method16.gif"
+            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/method16.gif"
             genLinks="//@diagram/@links.0"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
