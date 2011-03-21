@@ -806,8 +806,8 @@
 				while (iter.hasNext()) {
 					org.eclipse.emf.ecore.EObject obj = iter.next();
 
-					if (obj instanceof org.eclipse.gmf.runtime.notation.Shape) {
-						org.eclipse.gmf.runtime.notation.Shape s = (org.eclipse.gmf.runtime.notation.Shape) obj;
+					if (obj instanceof org.eclipse.gmf.runtime.notation.Node) {
+						org.eclipse.gmf.runtime.notation.Node s = (org.eclipse.gmf.runtime.notation.Node) obj;
 
 						if (s.getElement() == c) {
 							if (model.getCompletness().equals(
