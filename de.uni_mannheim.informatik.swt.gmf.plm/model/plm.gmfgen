@@ -129,8 +129,8 @@
       </labels>
       <labels
           visualID="5097"
-          editPartClassName="WrappingLabel23EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel23ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel2EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel2ItemSemanticEditPolicy"
           notationViewFactoryClassName="ModelLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -150,12 +150,12 @@
     </childNodes>
     <childNodes
         visualID="3040"
-        editPartClassName="Renderer2EditPart"
-        itemSemanticEditPolicyClassName="Renderer2ItemSemanticEditPolicy"
+        editPartClassName="RendererEditPart"
+        itemSemanticEditPolicyClassName="RendererItemSemanticEditPolicy"
         notationViewFactoryClassName="RendererViewFactory"
-        canonicalEditPolicyClassName="Renderer2CanonicalEditPolicy"
-        graphicalNodeEditPolicyClassName="Renderer2GraphicalNodeEditPolicy"
-        createCommandClassName="Renderer2CreateCommand"
+        canonicalEditPolicyClassName="RendererCanonicalEditPolicy"
+        graphicalNodeEditPolicyClassName="RendererGraphicalNodeEditPolicy"
+        createCommandClassName="RendererCreateCommand"
         containers="//@diagram/@childNodes.0">
       <diagramRunTimeClass
           href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -171,9 +171,6 @@
             xsi:type="gmfgen:DefaultSizeAttributes"
             width="0"
             height="22"/>
-        <attributes
-            xsi:type="gmfgen:StyleAttributes"
-            fixedForeground="true"/>
       </viewmap>
       <modelFacet>
         <metaClass
@@ -185,9 +182,9 @@
       </modelFacet>
       <labels
           visualID="5099"
-          editPartClassName="RendererName2EditPart"
-          itemSemanticEditPolicyClassName="RendererName2ItemSemanticEditPolicy"
-          notationViewFactoryClassName="RendererNameViewFactory"
+          editPartClassName="WrappingLabel3EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel3ItemSemanticEditPolicy"
+          notationViewFactoryClassName="RendererLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -205,8 +202,8 @@
       </labels>
       <labels
           visualID="5100"
-          editPartClassName="WrappingLabelEditPart"
-          itemSemanticEditPolicyClassName="WrappingLabelItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel4EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel4ItemSemanticEditPolicy"
           notationViewFactoryClassName="RendererLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -374,8 +371,8 @@
       </labels>
       <labels
           visualID="5083"
-          editPartClassName="WrappingLabel6EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel6ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel5EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel5ItemSemanticEditPolicy"
           notationViewFactoryClassName="DomainConnectionLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -394,8 +391,8 @@
       </labels>
       <labels
           visualID="5129"
-          editPartClassName="WrappingLabel38EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel38ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel6EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel6ItemSemanticEditPolicy"
           notationViewFactoryClassName="DomainConnectionLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -415,12 +412,12 @@
     </childNodes>
     <childNodes
         visualID="3041"
-        editPartClassName="RendererEditPart"
-        itemSemanticEditPolicyClassName="RendererItemSemanticEditPolicy"
+        editPartClassName="Renderer2EditPart"
+        itemSemanticEditPolicyClassName="Renderer2ItemSemanticEditPolicy"
         notationViewFactoryClassName="RendererViewFactory"
-        canonicalEditPolicyClassName="RendererCanonicalEditPolicy"
-        graphicalNodeEditPolicyClassName="RendererGraphicalNodeEditPolicy"
-        createCommandClassName="RendererCreateCommand"
+        canonicalEditPolicyClassName="Renderer2CanonicalEditPolicy"
+        graphicalNodeEditPolicyClassName="Renderer2GraphicalNodeEditPolicy"
+        createCommandClassName="Renderer2CreateCommand"
         containers="//@diagram/@childNodes.2">
       <diagramRunTimeClass
           href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -447,9 +444,9 @@
       </modelFacet>
       <labels
           visualID="5101"
-          editPartClassName="RendererAttributesEditPart"
-          itemSemanticEditPolicyClassName="RendererAttributesItemSemanticEditPolicy"
-          notationViewFactoryClassName="RendererAttributesViewFactory"
+          editPartClassName="WrappingLabel7EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel7ItemSemanticEditPolicy"
+          notationViewFactoryClassName="RendererLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -467,8 +464,8 @@
       </labels>
       <labels
           visualID="5102"
-          editPartClassName="WrappingLabel2EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel2ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel8EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel8ItemSemanticEditPolicy"
           notationViewFactoryClassName="RendererLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -543,8 +540,8 @@
       </labels>
       <labels
           visualID="5122"
-          editPartClassName="WrappingLabel3EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel3ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel9EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel9ItemSemanticEditPolicy"
           notationViewFactoryClassName="AttributeLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -563,8 +560,8 @@
       </labels>
       <labels
           visualID="5123"
-          editPartClassName="WrappingLabel4EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel4ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel10EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel10ItemSemanticEditPolicy"
           notationViewFactoryClassName="AttributeLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -664,8 +661,8 @@
       </modelFacet>
       <labels
           visualID="5072"
-          editPartClassName="WrappingLabel9EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel9ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel11EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel11ItemSemanticEditPolicy"
           notationViewFactoryClassName="ComplementLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -717,9 +714,9 @@
       </modelFacet>
       <labels
           visualID="5103"
-          editPartClassName="RendererAttributes2EditPart"
-          itemSemanticEditPolicyClassName="RendererAttributes2ItemSemanticEditPolicy"
-          notationViewFactoryClassName="RendererAttributesViewFactory"
+          editPartClassName="WrappingLabel12EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel12ItemSemanticEditPolicy"
+          notationViewFactoryClassName="RendererLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -737,8 +734,8 @@
       </labels>
       <labels
           visualID="5104"
-          editPartClassName="WrappingLabel16EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel16ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel13EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel13ItemSemanticEditPolicy"
           notationViewFactoryClassName="RendererLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -873,8 +870,8 @@
       </modelFacet>
       <labels
           visualID="5105"
-          editPartClassName="WrappingLabel17EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel17ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel14EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel14ItemSemanticEditPolicy"
           notationViewFactoryClassName="RendererLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -893,8 +890,8 @@
       </labels>
       <labels
           visualID="5106"
-          editPartClassName="WrappingLabel18EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel18ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel15EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel15ItemSemanticEditPolicy"
           notationViewFactoryClassName="RendererLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -971,8 +968,8 @@
       </modelFacet>
       <labels
           visualID="5074"
-          editPartClassName="WrappingLabel10EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel10ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel16EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel16ItemSemanticEditPolicy"
           notationViewFactoryClassName="InversionLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -1024,8 +1021,8 @@
       </modelFacet>
       <labels
           visualID="5107"
-          editPartClassName="WrappingLabel21EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel21ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel17EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel17ItemSemanticEditPolicy"
           notationViewFactoryClassName="RendererLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -1044,8 +1041,8 @@
       </labels>
       <labels
           visualID="5108"
-          editPartClassName="WrappingLabel25EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel25ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel18EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel18ItemSemanticEditPolicy"
           notationViewFactoryClassName="RendererLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -1168,8 +1165,8 @@
       </labels>
       <labels
           visualID="5098"
-          editPartClassName="WrappingLabel24EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel24ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel19EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel19ItemSemanticEditPolicy"
           notationViewFactoryClassName="MultipleGeneralizationLabelViewFactory">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -1221,8 +1218,8 @@
       </modelFacet>
       <labels
           visualID="5109"
-          editPartClassName="WrappingLabel26EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel26ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel20EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel20ItemSemanticEditPolicy"
           notationViewFactoryClassName="RendererLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -1241,8 +1238,8 @@
       </labels>
       <labels
           visualID="5110"
-          editPartClassName="WrappingLabel27EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel27ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel21EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel21ItemSemanticEditPolicy"
           notationViewFactoryClassName="RendererLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -1365,8 +1362,8 @@
       </labels>
       <labels
           visualID="5079"
-          editPartClassName="WrappingLabel11EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel11ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel22EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel22ItemSemanticEditPolicy"
           notationViewFactoryClassName="MultipleSpecializationLabelViewFactory">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -1418,8 +1415,8 @@
       </modelFacet>
       <labels
           visualID="5111"
-          editPartClassName="WrappingLabel28EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel28ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel23EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel23ItemSemanticEditPolicy"
           notationViewFactoryClassName="RendererLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -1438,8 +1435,8 @@
       </labels>
       <labels
           visualID="5112"
-          editPartClassName="WrappingLabel29EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel29ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel24EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel24ItemSemanticEditPolicy"
           notationViewFactoryClassName="RendererLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -1595,8 +1592,8 @@
       </modelFacet>
       <labels
           visualID="5113"
-          editPartClassName="WrappingLabel30EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel30ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel25EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel25ItemSemanticEditPolicy"
           notationViewFactoryClassName="RendererLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -1615,8 +1612,8 @@
       </labels>
       <labels
           visualID="5114"
-          editPartClassName="WrappingLabel31EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel31ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel26EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel26ItemSemanticEditPolicy"
           notationViewFactoryClassName="RendererLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -1690,8 +1687,8 @@
       </modelFacet>
       <labels
           visualID="5065"
-          editPartClassName="WrappingLabel12EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel12ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel27EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel27ItemSemanticEditPolicy"
           notationViewFactoryClassName="DomainEntityLabelViewFactory">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -1709,8 +1706,8 @@
       </labels>
       <labels
           visualID="5066"
-          editPartClassName="WrappingLabel13EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel13ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel28EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel28ItemSemanticEditPolicy"
           notationViewFactoryClassName="DomainEntityLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -1729,8 +1726,8 @@
       </labels>
       <labels
           visualID="5067"
-          editPartClassName="WrappingLabel14EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel14ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel29EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel29ItemSemanticEditPolicy"
           notationViewFactoryClassName="DomainEntityLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -1749,8 +1746,8 @@
       </labels>
       <labels
           visualID="5068"
-          editPartClassName="WrappingLabel15EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel15ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel30EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel30ItemSemanticEditPolicy"
           notationViewFactoryClassName="DomainEntityLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -1825,8 +1822,8 @@
       </labels>
       <labels
           visualID="5126"
-          editPartClassName="WrappingLabel7EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel7ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel31EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel31ItemSemanticEditPolicy"
           notationViewFactoryClassName="AttributeLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -1845,8 +1842,8 @@
       </labels>
       <labels
           visualID="5127"
-          editPartClassName="WrappingLabel8EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel8ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel32EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel32ItemSemanticEditPolicy"
           notationViewFactoryClassName="AttributeLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -1943,8 +1940,8 @@
       </labels>
       <labels
           visualID="5042"
-          editPartClassName="WrappingLabel5EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel5ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel33EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel33ItemSemanticEditPolicy"
           notationViewFactoryClassName="MethodLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -1963,8 +1960,8 @@
       </labels>
       <labels
           visualID="5119"
-          editPartClassName="WrappingLabel36EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel36ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel34EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel34ItemSemanticEditPolicy"
           notationViewFactoryClassName="MethodLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -1983,8 +1980,8 @@
       </labels>
       <labels
           visualID="5120"
-          editPartClassName="WrappingLabel37EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel37ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel35EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel35ItemSemanticEditPolicy"
           notationViewFactoryClassName="MethodLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -2036,8 +2033,8 @@
       </modelFacet>
       <labels
           visualID="5115"
-          editPartClassName="WrappingLabel32EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel32ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel36EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel36ItemSemanticEditPolicy"
           notationViewFactoryClassName="RendererLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -2056,8 +2053,8 @@
       </labels>
       <labels
           visualID="5116"
-          editPartClassName="WrappingLabel33EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel33ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel37EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel37ItemSemanticEditPolicy"
           notationViewFactoryClassName="RendererLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -2109,8 +2106,8 @@
       </modelFacet>
       <labels
           visualID="5117"
-          editPartClassName="WrappingLabel34EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel34ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel38EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel38ItemSemanticEditPolicy"
           notationViewFactoryClassName="RendererLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -2129,8 +2126,8 @@
       </labels>
       <labels
           visualID="5118"
-          editPartClassName="WrappingLabel35EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel35ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel39EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel39ItemSemanticEditPolicy"
           notationViewFactoryClassName="RendererLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -2229,8 +2226,8 @@
       </labels>
       <labels
           visualID="5096"
-          editPartClassName="WrappingLabel22EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel22ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabelEditPart"
+          itemSemanticEditPolicyClassName="WrappingLabelItemSemanticEditPolicy"
           notationViewFactoryClassName="OntologyLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -2274,8 +2271,8 @@
       </modelFacet>
       <labels
           visualID="6002"
-          editPartClassName="WrappingLabel19EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel19ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel40EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel40ItemSemanticEditPolicy"
           notationViewFactoryClassName="DomainConnectionParticipantLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -2297,8 +2294,8 @@
       </labels>
       <labels
           visualID="6003"
-          editPartClassName="WrappingLabel20EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel20ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel41EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel41ItemSemanticEditPolicy"
           notationViewFactoryClassName="DomainConnectionParticipantLabelViewFactory"
           readOnly="true"
           alignment="SOURCE">
@@ -2896,8 +2893,7 @@
   <plugin
       name="Level-agnostic Modelling Language (LML) Plugin"
       provider="University of Mannheim: Chair for Software Engineering"
-      printingEnabled="true"
-      activatorClassName="PLMDiagramEditorPlugin">
+      printingEnabled="true">
     <requiredPlugins>org.eclipse.draw2d</requiredPlugins>
     <requiredPlugins>org.eclipse.gmf.runtime.draw2d.ui</requiredPlugins>
     <requiredPlugins>de.itemis.gmf.runtime.extensions</requiredPlugins>
@@ -2916,9 +2912,8 @@
     <childReferences
         parent="//@diagram/@topLevelNodes.0"
         child="//@diagram/@childNodes.21"
-        groupName="Renderers"
-        groupIcon="icons/renderer16.gif"
-        hideIfEmpty="false"/>
+        groupName="Renderers123"
+        groupIcon="icons/renderer16.gif"/>
     <childReferences
         parent="//@diagram/@topLevelNodes.0"
         child="//@diagram/@childNodes.0"
@@ -2927,7 +2922,7 @@
         hideIfEmpty="false"/>
     <childReferences
         parent="//@diagram/@childNodes.0"
-        child="//@diagram/@childNodes.1"
+        child="//@diagram/@childNodes.3"
         groupName="Renderers"
         groupIcon="icons/renderer16.gif"
         hideIfEmpty="false"/>
@@ -2963,7 +2958,7 @@
         hideIfEmpty="false"/>
     <childReferences
         parent="//@diagram/@childNodes.2"
-        child="//@diagram/@childNodes.3"
+        child="//@diagram/@childNodes.1"
         groupName="Renderers"
         groupIcon="icons/renderer16.gif"
         hideIfEmpty="false"/>
