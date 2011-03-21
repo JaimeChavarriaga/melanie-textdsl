@@ -252,36 +252,6 @@
                   href="plm.gmftool#//@palette/@tools.1/@tools.1"/>
               <diagramNode
                   href="plm.gmfgraph#DomainConnection"/>
-              <children>
-                <containmentFeature
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/renderer"/>
-                <ownedChild>
-                  <domainMetaElement
-                      href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Renderer"/>
-                  <labelMappings
-                      xsi:type="gmfmap:ExpressionLabelMapping"
-                      readOnly="true">
-                    <diagramLabel
-                        href="plm.gmfgraph#RendererAttributeValueLabel"/>
-                    <viewExpression
-                        xsi:type="gmfmap:Constraint"
-                        body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(1, 'collapsed'.size()) = 'collapsed') then&#xD;&#xA;&#x9;&#x9;&#x9;str&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat(';') &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str&#xD;&#xA;&#x9;&#x9;&#x9;endif &#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
-                  </labelMappings>
-                  <labelMappings
-                      xsi:type="gmfmap:ExpressionLabelMapping"
-                      readOnly="true">
-                    <diagramLabel
-                        href="plm.gmfgraph#RendererPotencyLabel"/>
-                    <viewExpression
-                        body="let durability:String =&#xD;&#xA;&#x9; if (self.durability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.durability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;endif&#x9;&#x9;&#xD;&#xA;endif&#xD;&#xA;in&#xD;&#xA;durability"/>
-                  </labelMappings>
-                  <tool
-                      xsi:type="gmftool:CreationTool"
-                      href="plm.gmftool#//@palette/@tools.1/@tools.5"/>
-                  <diagramNode
-                      href="plm.gmfgraph#RendererNode"/>
-                </ownedChild>
-              </children>
               <children
                   compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.1/@ownedChild/@compartments.0">
                 <containmentFeature
@@ -328,10 +298,90 @@
                       href="plm.gmfgraph#DomnainEntityFieldNode"/>
                 </ownedChild>
               </children>
+              <children
+                  compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.1/@ownedChild/@compartments.1">
+                <containmentFeature
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject/children"/>
+                <ownedChild>
+                  <domainMetaElement
+                      href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Method"/>
+                  <labelMappings
+                      xsi:type="gmfmap:FeatureLabelMapping">
+                    <diagramLabel
+                        href="plm.gmfgraph#DomainEntityMethodFigureNameLabel"/>
+                    <features
+                        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/name"/>
+                  </labelMappings>
+                  <labelMappings
+                      xsi:type="gmfmap:ExpressionLabelMapping"
+                      readOnly="true">
+                    <diagramLabel
+                        href="plm.gmfgraph#DomainEntityMethodFigureInputLabel"/>
+                    <viewExpression
+                        body="'('.concat(Sequence{1..input->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let iAsString:String = &#xD;&#xA;&#x9;&#x9;OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(denominator : Integer; s : String = ''|&#xD;&#xA;            &#x9;&#x9;let numberAsString : String = OrderedSet{&#xD;&#xA;                    &#x9;&#x9;'0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                &#x9;}->at(i.div(denominator).mod(10) + 1)&#xD;&#xA;            &#x9;&#x9;in&#xD;&#xA;                &#x9;&#x9;if s='' and numberAsString = '0' then&#xD;&#xA;                    &#x9;&#x9;&#x9;s&#xD;&#xA;                &#x9;&#x9;else&#xD;&#xA;                    &#x9;&#x9;&#x9;s.concat(numberAsString)&#xD;&#xA;                &#x9;&#x9;endif&#xD;&#xA;        &#x9;)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (i &lt;> output->size()) then&#xD;&#xA;&#x9;&#x9;&#x9;str.concat(input->at(i).oclAsType(ecore::EObject).eClass().name).concat(' ').concat(input->at(i).name).concat(', ')&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;str.concat(input->at(i).oclAsType(ecore::EObject).eClass().name).concat(' ').concat(input->at(i).name)&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;)&#xD;&#xA;).concat(')')"/>
+                  </labelMappings>
+                  <labelMappings
+                      xsi:type="gmfmap:ExpressionLabelMapping"
+                      readOnly="true">
+                    <diagramLabel
+                        href="plm.gmfgraph#DomainEntityMethodFigurePotencyLabel"/>
+                    <viewExpression
+                        body="let durability:String = if (self.durability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.durability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;durability"/>
+                  </labelMappings>
+                  <labelMappings
+                      xsi:type="gmfmap:ExpressionLabelMapping"
+                      readOnly="true">
+                    <diagramLabel
+                        href="plm.gmfgraph#DomainEntityMethodFigureOutputLabel"/>
+                    <viewExpression
+                        body="':'.concat(Sequence{1..output->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let iAsString:String = &#xD;&#xA;&#x9;&#x9;OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(denominator : Integer; s : String = ''|&#xD;&#xA;            &#x9;&#x9;let numberAsString : String = OrderedSet{&#xD;&#xA;                    &#x9;&#x9;'0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                &#x9;}->at(i.div(denominator).mod(10) + 1)&#xD;&#xA;            &#x9;&#x9;in&#xD;&#xA;                &#x9;&#x9;if s='' and numberAsString = '0' then&#xD;&#xA;                    &#x9;&#x9;&#x9;s&#xD;&#xA;                &#x9;&#x9;else&#xD;&#xA;                    &#x9;&#x9;&#x9;s.concat(numberAsString)&#xD;&#xA;                &#x9;&#x9;endif&#xD;&#xA;        &#x9;)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (i &lt;> output->size()) then&#xD;&#xA;&#x9;&#x9;&#x9;str.concat(output->at(i).name).concat(', ')&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;str.concat(output->at(i).name)&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;)&#xD;&#xA;)"/>
+                  </labelMappings>
+                  <tool
+                      xsi:type="gmftool:CreationTool"
+                      href="plm.gmftool#//@palette/@tools.1/@tools.4"/>
+                  <diagramNode
+                      href="plm.gmfgraph#DomnainEntityMethodNode"/>
+                </ownedChild>
+              </children>
+              <children>
+                <containmentFeature
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/renderer"/>
+                <ownedChild>
+                  <domainMetaElement
+                      href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Renderer"/>
+                  <labelMappings
+                      xsi:type="gmfmap:ExpressionLabelMapping"
+                      readOnly="true">
+                    <diagramLabel
+                        href="plm.gmfgraph#RendererAttributeValueLabel"/>
+                    <viewExpression
+                        xsi:type="gmfmap:Constraint"
+                        body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(1, 'collapsed'.size()) = 'collapsed') then&#xD;&#xA;&#x9;&#x9;&#x9;str&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat(';') &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str&#xD;&#xA;&#x9;&#x9;&#x9;endif &#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
+                  </labelMappings>
+                  <labelMappings
+                      xsi:type="gmfmap:ExpressionLabelMapping"
+                      readOnly="true">
+                    <diagramLabel
+                        href="plm.gmfgraph#RendererPotencyLabel"/>
+                    <viewExpression
+                        body="let durability:String =&#xD;&#xA;&#x9; if (self.durability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.durability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;endif&#x9;&#x9;&#xD;&#xA;endif&#xD;&#xA;in&#xD;&#xA;durability"/>
+                  </labelMappings>
+                  <tool
+                      xsi:type="gmftool:CreationTool"
+                      href="plm.gmftool#//@palette/@tools.1/@tools.5"/>
+                  <diagramNode
+                      href="plm.gmfgraph#RendererNode"/>
+                </ownedChild>
+              </children>
+              <compartments
+                  children="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.1/@ownedChild/@children.0">
+                <compartment
+                    href="plm.gmfgraph#DomainConnectionsFieldsCompartment"/>
+              </compartments>
               <compartments
                   children="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.1/@ownedChild/@children.1">
                 <compartment
-                    href="plm.gmfgraph#DomainConnectionsFieldsCompartment"/>
+                    href="plm.gmfgraph#DomainConnectionsMethodsCompartment"/>
               </compartments>
             </ownedChild>
           </children>

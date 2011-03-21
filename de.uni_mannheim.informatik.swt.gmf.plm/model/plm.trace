@@ -87,6 +87,9 @@
     <compartmentTraces
         visualID="7020"
         queryText="true"/>
+    <compartmentTraces
+        visualID="7021"
+        queryText="true"/>
   </childNodeTraces>
   <childNodeTraces
       visualID="3032"
@@ -275,6 +278,22 @@
         queryText="true"/>
     <nodeLabelTraces
         visualID="5128"
+        queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="3052"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Method') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Clabject') and _containmentMF_.name = 'children')">
+    <nodeLabelTraces
+        visualID="5130"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5131"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5132"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5133"
         queryText="true"/>
   </childNodeTraces>
   <linkTraces

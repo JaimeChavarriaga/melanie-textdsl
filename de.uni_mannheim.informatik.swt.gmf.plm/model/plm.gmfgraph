@@ -1438,7 +1438,12 @@
       collapsible="true"/>
   <compartments
       name="DomainConnectionsFieldsCompartment"
-      figure="DomainEntityCompartmentFigure"/>
+      figure="DomainEntityCompartmentFigure"
+      collapsible="true"/>
+  <compartments
+      name="DomainConnectionsMethodsCompartment"
+      figure="DomainEntityCompartmentFigure"
+      collapsible="true"/>
   <labels
       name="OntologyFigureNameLabel"
       figure="OntologyFigure"
