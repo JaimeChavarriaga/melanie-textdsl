@@ -1333,6 +1333,8 @@
               text="">
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
+                grabExcessVerticalSpace="true"
+                verticalAlignment="BEGINNING"
                 horizontalAlignment="BEGINNING"/>
             <font
                 xsi:type="gmfgraph:BasicFont"
@@ -1343,6 +1345,8 @@
               name="RendererPotencyFigure">
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
+                grabExcessVerticalSpace="true"
+                verticalAlignment="BEGINNING"
                 horizontalAlignment="BEGINNING"/>
             <font
                 xsi:type="gmfgraph:BasicFont"
