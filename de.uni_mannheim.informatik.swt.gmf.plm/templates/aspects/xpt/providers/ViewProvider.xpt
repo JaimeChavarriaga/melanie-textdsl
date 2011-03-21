@@ -31,16 +31,20 @@
 		«EXPAND initCompartment('node', 'prefStore') FOREACH compartments-»
 		
 		//Code to determine visibility
-		EObject parent = domainElement.eContainer();
+		org.eclipse.emf.ecore.EObject parent = domainElement.eContainer();
 		
-		while (parent != null && !(parent instanceof Model) && !(parent instanceof OntologyEditPart))
+		while (parent != null)
 		{
 			parent = parent.eContainer();
+			
+			//We found a RenderingContainer that is not the direct parent.
+			if (parent != domainElement.eContainer() && parent instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer)
+				break;
 		}
 		
-		if (parent != null && parent instanceof RenderingContainer)
+		if (parent != null && parent instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer)
 		{
-			if (((RenderingContainer)parent).getShowRenderer().equals("ShowRenderingOptions::NONE"))
+			if (((de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer)parent).getShowRenderer().equals("ShowRenderingOptions::NONE"))
 				node.setVisible(false);
 		}
 		
