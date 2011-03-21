@@ -689,7 +689,7 @@
 
 			try 
 			{
-				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.children->collect(e | e.renderer)");
+				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.children->collect(c | c.renderer)");
 				renderers = ((java.util.ArrayList<de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer>) ocl.evaluate(resolveSemanticElement(), q)).toArray(new de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer[] {});
 			}
 			catch (org.eclipse.ocl.ParserException e) 
@@ -862,25 +862,52 @@
 		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology && 
 				((org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature()).getName().equals("showRenderer"))
 		{
-			org.eclipse.ui.IEditorPart editor = org.eclipse.ui.PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
-			if (! (editor instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor))
-				return;
-			
-			de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor plmEditor = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor)editor;
-			de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology ont = (de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology)notification.getNotifier();
+			de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology ont = (de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology) notification.getNotifier();
 
-			org.eclipse.emf.common.util.TreeIterator<org.eclipse.emf.ecore.EObject> iterator = ont.eAllContents();
-			
-			while(iterator.hasNext())
+			de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer[] renderers = new de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer[] {};
+
+			//find all renderers in the ontology
+			org.eclipse.ocl.ecore.OCL ocl = org.eclipse.ocl.ecore.OCL.newInstance();
+			org.eclipse.ocl.helper.OCLHelper<org.eclipse.emf.ecore.EClassifier, ?, ?, org.eclipse.ocl.ecore.Constraint> helper = ocl.createOCLHelper();
+			helper.setContext(de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.Literals.ONTOLOGY);
+
+			try 
 			{
-				org.eclipse.emf.ecore.EObject obj = iterator.next();
-				if (obj instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer)
+				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.children->collect(c | c.renderer)");
+				renderers = ((java.util.ArrayList<de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer>) ocl.evaluate(resolveSemanticElement(), q)).toArray(new de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer[] {});
+			}
+			catch (org.eclipse.ocl.ParserException e) 
+			{
+				e.printStackTrace();
+			}
+			
+			//find the notational elements for the renderers
+			for(de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer r : renderers)
+			{
+				org.eclipse.emf.common.util.TreeIterator<org.eclipse.emf.ecore.EObject> iter = (getNotationView().eAllContents());
+				
+				while (iter.hasNext())
 				{
-					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.RendererEditPart editPart = 
-						(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.RendererEditPart)plmEditor.getDiagramGraphicalViewer().findEditPartsForElement(org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getProxyID(obj), de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.RendererEditPart.class).get(0);
-					editPart.setRendererViewState();
+					org.eclipse.emf.ecore.EObject obj = iter.next();
+					
+					if (obj instanceof org.eclipse.gmf.runtime.notation.Node)
+					{
+						org.eclipse.gmf.runtime.notation.Node n = (org.eclipse.gmf.runtime.notation.Node)obj;
+						
+						if (n.getElement() == r)
+						{
+							if (ont.getShowRenderer().equals("ShowRenderingOptions::NONE"))
+								n.setVisible(false);
+							else
+								n.setVisible(true);
+							
+							break;
+						}
+					}
 				}
 			}
+			
+			performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
 		}
 	}
 «ENDDEFINE»
