@@ -2750,7 +2750,8 @@
             title="Domain Connection Participants"
             description="Create new Domain Connection Participants"
             largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/domainConnectionParticipant16.gif"
-            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/domainConnectionParticipant16.gif"/>
+            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/domainConnectionParticipant16.gif"
+            genLinks="//@diagram/@links.0"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Field"
@@ -2764,8 +2765,7 @@
             description="Create new Method"
             largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/method16.gif"
             smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/method16.gif"
-            genNodes="//@diagram/@childNodes.19"
-            genLinks="//@diagram/@links.0"/>
+            genNodes="//@diagram/@childNodes.19"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Renderer"

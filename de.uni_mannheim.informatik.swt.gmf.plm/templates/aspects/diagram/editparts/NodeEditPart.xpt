@@ -937,6 +937,7 @@
 		org.eclipse.draw2d.IFigure defaultSizeNodeFigure = figure;
 		«ENDIF»
 		
+		//Elide and hide if model.complteness = NoElision
 		if (clab.isElided()) {
 
 			defaultSizeNodeFigure.getChildren().remove(0);
@@ -995,6 +996,11 @@
 			installEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE,
 					new org.eclipse.gmf.runtime.diagram.ui.editpolicies.NonResizableEditPolicyEx());
 
+			performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
+
+			if (clab.eContainer() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Model 
+					&& ((de.uni_mannheim.informatik.swt.models.plm.PLM.Model)clab.eContainer()).getCompletness().equalsIgnoreCase("CompletnessOptions::NoElision"))
+				getNotationView().setVisible(false);
 		}
 		//We only need to revert the elision if we have done it when the editor was open
 		else
@@ -1028,9 +1034,10 @@
 			removeEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE);
 			installEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE,
 					new org.eclipse.gmf.runtime.diagram.ui.editpolicies.ResizableShapeEditPolicy());
+					
+			performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
 		}
-		
-		performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
+	
 		«IF self.editPartClassName = 'DomainConnectionEditPart'»
 		//Hide the outer label
 		((org.eclipse.draw2d.IFigure) borderItemContainer.getChildren().get(0)).setVisible(false);
