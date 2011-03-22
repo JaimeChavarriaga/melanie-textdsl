@@ -58,12 +58,12 @@ public class ToggleNodeAction implements IObjectActionDelegate {
 		
 		LinkedList<String> attributes = new LinkedList<String>();
 		
-		for (String attr : self.getRenderer().getAttributes())
+		for (String attr : self.getRenderer().get(0).getAttributes())
 		{
 			if (attr.startsWith("collapsed"))
 			{
 				attributes.remove(attr);
-				String value = self.getRenderer().getValueForKey("collapsed");
+				String value = self.getRenderer().get(0).getValueForKey("collapsed");
 				attr = (value.equals("true")) ? "collapsed= false":"collapsed= true";
 				attributes.add(attr);
 			}

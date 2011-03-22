@@ -310,7 +310,7 @@
 	 */
 	private Boolean getToggleValue()
 	{
-		boolean collapse = false;
+		//boolean collapse = false;
 		
 		//********************************************************
 		//Find the renderer attached to this element 
@@ -319,7 +319,7 @@
 				.resolveSemanticElement();
 
 		//No rendering information found => all DomainConnection remains expanded
-		if (self.getRenderer() == null) {
+		if (self.getRenderer().size() == 0) {
 			//Hide external name label
 			org.eclipse.draw2d.IFigure boderItemContainer = (org.eclipse.draw2d.IFigure) figure.getChildren().get(1);
 			((org.eclipse.draw2d.IFigure) boderItemContainer.getChildren().get(0))
@@ -345,7 +345,7 @@
 		//	}
 		//}
 		
-		de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer r = self.getRenderer();
+		de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer r = self.getRenderer().get(0);
 		String collapsedString = r.getValueForKey("collapsed");
 		
 		return java.lang.Boolean.parseBoolean(collapsedString);
