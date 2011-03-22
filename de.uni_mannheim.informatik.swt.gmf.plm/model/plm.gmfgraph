@@ -868,7 +868,9 @@
               name="MultipleSpecialisationNameFigure"
               text="">
             <layoutData
-                xsi:type="gmfgraph:GridLayoutData"/>
+                xsi:type="gmfgraph:GridLayoutData"
+                grabExcessHorizontalSpace="true"
+                grabExcessVerticalSpace="true"/>
             <foregroundColor
                 xsi:type="gmfgraph:ConstantColor"
                 value="black"/>
