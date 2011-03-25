@@ -5,8 +5,8 @@
 //handle notifictaion is overriden later in this transformation
 //**************************************************************
 «AROUND additions FOR gmfgen::GenNode»
-//Gives the option to diplay a DomainConnection/Generalization/Specialization as black rectangle
-«IF self.editPartClassName = 'DomainConnectionEditPart' 
+//Gives the option to diplay a Connection/Generalization/Specialization as black rectangle
+«IF self.editPartClassName = 'ConnectionEditPart' 
 	or self.editPartClassName = 'BinaryGeneralizationEditPart' 
 	or self.editPartClassName = 'MultipleSpecializationEditPart'
 	or self.editPartClassName = 'MultipleGeneralizationEditPart'»
@@ -15,17 +15,17 @@
 	«EXPAND toggle-»
 «ENDIF»
 //Responsible for the multiplicity, role, navigation ends and elision
-«IF self.editPartClassName = 'DomainConnectionEditPart'»
+«IF self.editPartClassName = 'ConnectionEditPart'»
 	«EXPAND updateConnections-»
 	«EXPAND refreshSourceConnections-»
 «ENDIF»
-«IF self.editPartClassName = 'DomainEntityEditPart'
-		or self.editPartClassName = 'DomainConnectionEditPart'»
+«IF self.editPartClassName = 'EntityEditPart'
+		or self.editPartClassName = 'ConnectionEditPart'»
 
 	«EXPAND doElide-»
 «ENDIF»
-«IF self.editPartClassName = 'DomainEntityEditPart'
-		or self.editPartClassName = 'DomainConnectionEditPart'
+«IF self.editPartClassName = 'EntityEditPart'
+		or self.editPartClassName = 'ConnectionEditPart'
 		or self.editPartClassName = 'BinaryGeneralizationEditPart' 
 		or self.editPartClassName = 'MultipleSpecializationEditPart'
 		or self.editPartClassName = 'MultipleGeneralizationEditPart'
@@ -42,11 +42,11 @@
 //HANDLE NOTIFICATION
 //**************************************************************
 «AROUND handleNotificationEvent FOR gmfgen::GenNode-»
-«IF self.editPartClassName = 'DomainConnectionEditPart'
+«IF self.editPartClassName = 'ConnectionEditPart'
 	or self.editPartClassName = 'BinaryGeneralizationEditPart' 
 	or self.editPartClassName = 'MultipleSpecializationEditPart'
 	or self.editPartClassName = 'MultipleGeneralizationEditPart'
-	or self.editPartClassName = 'DomainEntityEditPart'
+	or self.editPartClassName = 'EntityEditPart'
 	or self.editPartClassName = 'ComplementEditPart'
 	or self.editPartClassName = 'EqualityEditPart'
 	or self.editPartClassName = 'InversionEditPart'»
@@ -76,8 +76,8 @@
 		if (this.sourceConnections == null)
 			return;
 
-		java.util.List<DomainConnectionParticipantEditPart> sourceConnections = this.sourceConnections;
-		de.uni_mannheim.informatik.swt.models.plm.PLM.DomainConnection domainConnection = (de.uni_mannheim.informatik.swt.models.plm.PLM.DomainConnection) org.eclipse.gmf.runtime.diagram.core.util.ViewUtil
+		java.util.List<ConnectionParticipantEditPart> sourceConnections = this.sourceConnections;
+		de.uni_mannheim.informatik.swt.models.plm.PLM.Connection self = (de.uni_mannheim.informatik.swt.models.plm.PLM.Connection) org.eclipse.gmf.runtime.diagram.core.util.ViewUtil
 				.resolveSemanticElement(this.getPrimaryView());
 
 		//needs to be used as source connections can have non participant connections
@@ -86,7 +86,7 @@
 		for (int i = 0; i < sourceConnections.size(); i++) {
 
 			//Take care that no renderer link is used here
-			if (! (sourceConnections.get(i) instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionParticipantEditPart))
+			if (! (sourceConnections.get(i) instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionParticipantEditPart))
 			{
 				numberNonParticipantConnection++;
 				continue;
@@ -95,8 +95,8 @@
 			//****************************************************************************
 			//Set navigable
 			//****************************************************************************
-			if (domainConnection.getIsNavigable().size() > i  - numberNonParticipantConnection
-					&& domainConnection.getIsNavigable().get(i  - numberNonParticipantConnection) == true) {
+			if (self.getIsNavigable().size() > i  - numberNonParticipantConnection
+					&&self.getIsNavigable().get(i  - numberNonParticipantConnection) == true) {
 				org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart connection = sourceConnections.get(i);
 				org.eclipse.draw2d.PolylineConnection connectionFigure = (org.eclipse.draw2d.PolylineConnection) connection
 						.getFigure();
@@ -111,21 +111,21 @@
 			//****************************************************************************
 			//Set role
 			//****************************************************************************
-			if (domainConnection.getRoleName().size() > i  - numberNonParticipantConnection) {
-				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionParticipantEditPart connection = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionParticipantEditPart) sourceConnections
+			if (self.getRoleName().size() > i  - numberNonParticipantConnection) {
+				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionParticipantEditPart connection = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionParticipantEditPart) sourceConnections
 						.get(i);
-				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionParticipantEditPart.DomainConnectionParticipantsFigure connectionFigure = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionParticipantEditPart.DomainConnectionParticipantsFigure) connection
+				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionParticipantEditPart.ConnectionParticipantsFigure connectionFigure = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionParticipantEditPart.ConnectionParticipantsFigure) connection
 						.getFigure();
 				connectionFigure
-						.getFigureDomainConnectionParticipantsNameFigure()
-						.setText(domainConnection.getRoleName().get(i  - numberNonParticipantConnection));
+						.getFigureConnectionParticipantsNameFigure()
+						.setText(self.getRoleName().get(i  - numberNonParticipantConnection));
 			} else {
-				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionParticipantEditPart connection = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionParticipantEditPart) sourceConnections
+				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionParticipantEditPart connection = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionParticipantEditPart) sourceConnections
 						.get(i);
-				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionParticipantEditPart.DomainConnectionParticipantsFigure connectionFigure = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionParticipantEditPart.DomainConnectionParticipantsFigure) connection
+				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionParticipantEditPart.ConnectionParticipantsFigure connectionFigure = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionParticipantEditPart.ConnectionParticipantsFigure) connection
 						.getFigure();
 				connectionFigure
-						.getFigureDomainConnectionParticipantsNameFigure()
+						.getFigureConnectionParticipantsNameFigure()
 						.setText("");
 			}
 
@@ -135,10 +135,10 @@
 			//can we assume default lower = 0 and default upper = 1?
 			int lower = 0, upper = 1;
 
-			if (domainConnection.getLower().size() > i - numberNonParticipantConnection)
-				lower = domainConnection.getLower().get(i - numberNonParticipantConnection);
-			if (domainConnection.getUpper().size() > i - numberNonParticipantConnection)
-				upper = domainConnection.getUpper().get(i - numberNonParticipantConnection);
+			if (self.getLower().size() > i - numberNonParticipantConnection)
+				lower = self.getLower().get(i - numberNonParticipantConnection);
+			if (self.getUpper().size() > i - numberNonParticipantConnection)
+				upper = self.getUpper().get(i - numberNonParticipantConnection);
 
 			//now set the string
 			String multiplicity = "";
@@ -152,12 +152,12 @@
 				multiplicity = lower + "..n";
 
 			//get the label to set
-			DomainConnectionParticipantEditPart connection = (DomainConnectionParticipantEditPart) sourceConnections
+			ConnectionParticipantEditPart connection = (ConnectionParticipantEditPart) sourceConnections
 					.get(i);
-			de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionParticipantEditPart.DomainConnectionParticipantsFigure connectionFigure = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionParticipantEditPart.DomainConnectionParticipantsFigure) connection
+			de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionParticipantEditPart.ConnectionParticipantsFigure connectionFigure = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionParticipantEditPart.ConnectionParticipantsFigure) connection
 					.getFigure();
 			connectionFigure
-					.getFigureDomainConnectionParticipantsMultiplicityFigure()
+					.getFigureConnectionParticipantsMultiplicityFigure()
 					.setText(multiplicity);
 		}
 	}
@@ -189,8 +189,8 @@
 	protected void handleNotificationEvent(org.eclipse.emf.common.notify.Notification notification) {
 		super.handleNotificationEvent(notification);
 
-		«IF self.editPartClassName = 'DomainConnectionEditPart'»
-		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.DomainConnection) {
+		«IF self.editPartClassName = 'ConnectionEditPart'»
+		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Connection) {
 			updateConnections();
 		}
 		«ENDIF»
@@ -204,7 +204,7 @@
 			{
 				updateView(false);
 			}
-			«IF self.editPartClassName='DomainEntityEditPart'»
+			«IF self.editPartClassName='EntityEditPart'»
 			else if (changedFeature.getName().equals("name"))
 			{
 				de.uni_mannheim.informatik.swt.models.plm.PLM.Feature[] features = new de.uni_mannheim.informatik.swt.models.plm.PLM.Feature[] {};
@@ -257,36 +257,36 @@
 	 */
 	public void updateView(boolean readOnlyContext)
 	{
-		«IF self.editPartClassName = 'DomainConnectionEditPart'
-			or self.editPartClassName = 'DomainEntityEditPart'»
+		«IF self.editPartClassName = 'ConnectionEditPart'
+			or self.editPartClassName = 'EntityEditPart'»
 		de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject c = (de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)resolveSemanticElement();
 		«ENDIF»
 		
-		«IF not(self.editPartClassName='DomainEntityEditPart'
+		«IF not(self.editPartClassName='EntityEditPart'
 			or self.editPartClassName = 'ComplementEditPart'
 			or self.editPartClassName = 'EqualityEditPart'
 			or self.editPartClassName = 'InversionEditPart')»
 		java.lang.Boolean toggleValue = getToggleValue();
 		
-		//We do toggle the domain connection
+		//We do toggle the connection
 		if (toggleValue != null)
 			toggle(readOnlyContext);
 		«ENDIF»
 		
-		«IF self.editPartClassName = 'DomainConnectionEditPart'»
-		//We can do elide as long as a domain connection is not toggled
+		«IF self.editPartClassName = 'ConnectionEditPart'»
+		//We can do elide as long as a connection is not toggled
 		if(toggleValue == null || toggleValue == false)
 			doElide(readOnlyContext);
-		«ELSEIF self.editPartClassName = 'DomainEntityEditPart'»
+		«ELSEIF self.editPartClassName = 'EntityEditPart'»
 		doElide(readOnlyContext);
 		«ENDIF»
 		
-		«IF self.editPartClassName = 'DomainConnectionEditPart'»
-		//We can change expressed as long as domain connection is not elided and not toggled
+		«IF self.editPartClassName = 'ConnectionEditPart'»
+		//We can change expressed as long as connection is not elided and not toggled
 		if (!c.isElided() && (toggleValue == null || toggleValue == false))
 			setExpressedVisualState();
-		«ELSEIF self.editPartClassName = 'DomainEntityEditPart'»
-		//We can change expressed as long as domain connection is not elided and not toggled
+		«ELSEIF self.editPartClassName = 'EntityEditPart'»
+		//We can change expressed as long as connection is not elided and not toggled
 		if (!c.isElided())
 			setExpressedVisualState();
 		«ELSEIF self.editPartClassName = 'ComplementEditPart'
@@ -294,7 +294,7 @@
 			or self.editPartClassName = 'InversionEditPart'»
 		setExpressedVisualState();
 		«ELSE»
-		//We can change expressed as long as domain connection is not elided and not toggled
+		//We can change expressed as long as connection is not elided and not toggled
 		if ((toggleValue == null || toggleValue == false))
 			setExpressedVisualState();
 		«ENDIF»
@@ -318,7 +318,7 @@
 		de.uni_mannheim.informatik.swt.models.plm.PLM.Element self = (de.uni_mannheim.informatik.swt.models.plm.PLM.Element) this
 				.resolveSemanticElement();
 
-		//No rendering information found => all DomainConnection remains expanded
+		//No rendering information found => all Connection remains expanded
 		if (self.getRenderer().size() == 0) {
 			//Hide external name label
 			org.eclipse.draw2d.IFigure boderItemContainer = (org.eclipse.draw2d.IFigure) figure.getChildren().get(1);
@@ -354,9 +354,9 @@
 
 «DEFINE toggle FOR gmfgen::GenNode»
 	/**
-	 * This renders the DomainConnectionEditPart based on information
-	 * in the model. Collapsed means that the DomainConnection is rendered as small 
-	 * black rectangle. Collapsed means that the DomainConnection will rendered as
+	 * This renders the ConnectionEditPart based on information
+	 * in the model. Collapsed means that the Connection is rendered as small 
+	 * black rectangle. Collapsed means that the Connection will rendered as
 	 * hexagon, its default figure.
 	 * 
 	 * @generated
@@ -389,7 +389,7 @@
 			{
 				//Old code -> Altentative to Autosize
 				/*org.eclipse.draw2d.geometry.Rectangle rect = figure.getClientArea().getCopy();
-				«IF self.editPartClassName = 'DomainConnectionEditPart'»
+				«IF self.editPartClassName = 'ConnectionEditPart'»
 				rect.setSize((cachedSize != null) ? cachedSize : new org.eclipse.draw2d.geometry.Dimension(70,
 						60));
 				org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand sbc = new org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand(
@@ -464,9 +464,9 @@
 	public void addNotify() {
 		super.addNotify();
 
-		//DomainEntity EditParts do not have a outer BorderItemContainer in contrast
-		//to DomainConnections etc. as those have external labels
-		«IF self.editPartClassName = 'DomainEntityEditPart'
+		//Entity EditParts do not have a outer BorderItemContainer in contrast
+		//to Connections etc. as those have external labels
+		«IF self.editPartClassName = 'EntityEditPart'
 			or self.editPartClassName = 'ComplementEditPart'
 			or self.editPartClassName = 'EqualityEditPart'
 			or self.editPartClassName = 'InversionEditPart'»
@@ -500,7 +500,7 @@
 		de.uni_mannheim.informatik.swt.models.plm.PLM.Element self = (de.uni_mannheim.informatik.swt.models.plm.PLM.Element) resolveSemanticElement();
 
 		if (self.isExpressed()) {
-			«IF self.editPartClassName = 'DomainEntityEditPart'
+			«IF self.editPartClassName = 'EntityEditPart'
 				or self.editPartClassName = 'ComplementEditPart'
 				or self.editPartClassName = 'EqualityEditPart'
 				or self.editPartClassName = 'InversionEditPart'»
@@ -513,7 +513,7 @@
 				.setLineStyle(org.eclipse.swt.SWT.LINE_SOLID);
 			«ENDIF»
 		} else {
-			«IF self.editPartClassName = 'DomainEntityEditPart'
+			«IF self.editPartClassName = 'EntityEditPart'
 				or self.editPartClassName = 'ComplementEditPart'
 				or self.editPartClassName = 'EqualityEditPart'
 				or self.editPartClassName = 'InversionEditPart'»
@@ -589,15 +589,15 @@
 
 		«IF self.editPartClassName = 'AttributeEditPart'»
 		//***********************************************************
-		//Update DomainEntities on field change (for rendering)
+		//Update Entities on field change (for rendering)
 		//***********************************************************
 //		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Field) {
 //			org.eclipse.emf.ecore.EObject field = (org.eclipse.emf.ecore.EObject) notification.getNotifier();
 //			org.eclipse.emf.ecore.EObject container = field.eContainer();
 
-			//Only DomainEntyties are used to store rendering information
+			//Only Entyties are used to store rendering information
 //			if (container instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer) {
-				//Get all DomainEntities that reference this DomainEntity as renderer
+				//Get all Entities that reference this Entity as renderer
 //				java.util.Collection<org.eclipse.emf.ecore.EObject> rendererReferencere = org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil
 //						.getReferencers(
 //								container,
@@ -842,9 +842,9 @@
 		{
 			getParent().performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
 			
-			//For DomainConnections we need to take care of the external label -> updateView()
-			if (((org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)getParent()).resolveSemanticElement() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.DomainConnection)
-				((de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionEditPart)getParent()).updateView(false);
+			//For Connections we need to take care of the external label -> updateView()
+			if (((org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)getParent()).resolveSemanticElement() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)
+				((de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionEditPart)getParent()).updateView(false);
 		}
 	}
 «ENDDEFINE»
@@ -914,7 +914,7 @@
 
 «DEFINE doElide FOR gmfgen::GenNode»
 	/**
-	 * Elides the DomainEntity depending on the elided attribute
+	 * Elides the Entity depending on the elided attribute
 	 * 
 	 * @param readOnlyTransaction when called from addNotify
 	 * 
@@ -924,7 +924,7 @@
 
 		de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject clab = (de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject) resolveSemanticElement();
 
-		«IF self.editPartClassName = 'DomainConnectionEditPart'»
+		«IF self.editPartClassName = 'ConnectionEditPart'»
 		//The container that contains the figure and the border item container
 		org.eclipse.draw2d.IFigure borderContainer = figure;
 		//The figure
@@ -1038,7 +1038,7 @@
 			performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
 		}
 	
-		«IF self.editPartClassName = 'DomainConnectionEditPart'»
+		«IF self.editPartClassName = 'ConnectionEditPart'»
 		//Hide the outer label
 		((org.eclipse.draw2d.IFigure) borderItemContainer.getChildren().get(0)).setVisible(false);
 		«ENDIF»

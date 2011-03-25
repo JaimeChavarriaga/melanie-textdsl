@@ -8,10 +8,10 @@
 
 «/***********************************************
 *************************************************
-** Only for DomainEntityItemSemanticEditPolicy **
+** Only for EntityItemSemanticEditPolicy **
 *************************************************
 *************************************************/»
-«IF self.itemSemanticEditPolicyClassName = 'DomainEntityItemSemanticEditPolicy'»
+«IF self.itemSemanticEditPolicyClassName = 'EntityItemSemanticEditPolicy'»
 
 «IF genIncomingLinks->notEmpty()-»
 	for («EXPAND CodeStyle::G('java.util.Iterator', '?' /*FIXME Refactor once Notation model is Java5*/)» it = «view».getTargetEdges().iterator(); it.hasNext();) {

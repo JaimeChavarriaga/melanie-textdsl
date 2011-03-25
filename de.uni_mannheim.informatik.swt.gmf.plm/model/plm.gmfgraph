@@ -168,10 +168,10 @@
           fill="false"/>
     </descriptors>
     <descriptors
-        name="DomainEntityFigure">
+        name="EntityFigure">
       <actualFigure
           xsi:type="gmfgraph:Rectangle"
-          name="DomainEntityFigure">
+          name="EntityFigure">
         <foregroundColor
             xsi:type="gmfgraph:ConstantColor"
             value="black"/>
@@ -204,7 +204,7 @@
             </layout>
             <children
                 xsi:type="gmfgraph:Label"
-                name="DomainEntityNameFigure">
+                name="EntityNameFigure">
               <layoutData
                   xsi:type="gmfgraph:GridLayoutData"
                   grabExcessHorizontalSpace="true"
@@ -217,7 +217,7 @@
             </children>
             <children
                 xsi:type="gmfgraph:Label"
-                name="DomainEntityPotencyLabel"
+                name="EntityPotencyLabel"
                 text="">
               <layoutData
                   xsi:type="gmfgraph:GridLayoutData"
@@ -232,7 +232,7 @@
             </children>
             <children
                 xsi:type="gmfgraph:Label"
-                name="DomainEntityLevelFigure"
+                name="EntityLevelFigure"
                 text="">
               <layoutData
                   xsi:type="gmfgraph:GridLayoutData"
@@ -247,7 +247,7 @@
             </children>
             <children
                 xsi:type="gmfgraph:Label"
-                name="DomainEntityAVSFigure"
+                name="EntityAVSFigure"
                 text="">
               <layoutData
                   xsi:type="gmfgraph:GridLayoutData"
@@ -277,10 +277,10 @@
           fill="false"/>
     </descriptors>
     <descriptors
-        name="DomainEntityFieldFigure">
+        name="EntityFieldFigure">
       <actualFigure
           xsi:type="gmfgraph:Rectangle"
-          name="DomainEntityFieldFigure"
+          name="EntityFieldFigure"
           outline="false"
           fill="false">
         <layout
@@ -310,7 +310,7 @@
               dy="22"/>
           <children
               xsi:type="gmfgraph:Label"
-              name="DomainEntityFieldNameFigure"
+              name="EntityFieldNameFigure"
               text="">
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
@@ -321,7 +321,7 @@
           </children>
           <children
               xsi:type="gmfgraph:Label"
-              name="DomainEntityFieldPotencyFigure">
+              name="EntityFieldPotencyFigure">
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
                 horizontalAlignment="BEGINNING"/>
@@ -333,7 +333,7 @@
           </children>
           <children
               xsi:type="gmfgraph:Label"
-              name="DomainEntityFieldDataTypeFigure">
+              name="EntityFieldDataTypeFigure">
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
                 horizontalAlignment="BEGINNING"/>
@@ -343,7 +343,7 @@
           </children>
           <children
               xsi:type="gmfgraph:Label"
-              name="DomainEntityFieldDefaultValueFigure">
+              name="EntityFieldDefaultValueFigure">
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
                 horizontalAlignment="BEGINNING"/>
@@ -363,10 +363,10 @@
           figure="//@figures.0/@descriptors.6/@actualFigure/@children.0/@children.3"/>
     </descriptors>
     <descriptors
-        name="DomainEntityMethodFigure">
+        name="EntityMethodFigure">
       <actualFigure
           xsi:type="gmfgraph:Rectangle"
-          name="DomainEntityMethodFigure"
+          name="EntityMethodFigure"
           outline="false"
           fill="false">
         <layout
@@ -396,7 +396,7 @@
               dy="22"/>
           <children
               xsi:type="gmfgraph:Label"
-              name="DomainEntityMethodNameFigure"
+              name="EntityMethodNameFigure"
               text="">
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
@@ -407,7 +407,7 @@
           </children>
           <children
               xsi:type="gmfgraph:Label"
-              name="DomainEntityMethodPotencyFigure">
+              name="EntityMethodPotencyFigure">
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
                 horizontalAlignment="BEGINNING"/>
@@ -419,7 +419,7 @@
           </children>
           <children
               xsi:type="gmfgraph:Label"
-              name="DomainEntityMethodInputFigure">
+              name="EntityMethodInputFigure">
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
                 horizontalAlignment="BEGINNING"/>
@@ -429,7 +429,7 @@
           </children>
           <children
               xsi:type="gmfgraph:Label"
-              name="DomainEntityMethodOutputFigure"
+              name="EntityMethodOutputFigure"
               text="">
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
@@ -450,10 +450,10 @@
           figure="//@figures.0/@descriptors.7/@actualFigure/@children.0/@children.2"/>
     </descriptors>
     <descriptors
-        name="DomainConnectionFigure">
+        name="ConnectionFigure">
       <actualFigure
           xsi:type="gmfgraph:ScalablePolygon"
-          name="DomainConnectionFigure">
+          name="ConnectionFigure">
         <layout
             xsi:type="gmfgraph:FlowLayout"
             vertical="true"
@@ -483,7 +483,7 @@
           </layout>
           <children
               xsi:type="gmfgraph:Label"
-              name="DomainConnectionNameFigure">
+              name="ConnectionNameFigure">
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
                 grabExcessHorizontalSpace="true"
@@ -495,7 +495,7 @@
           </children>
           <children
               xsi:type="gmfgraph:Label"
-              name="DomainConnectionPotencyFigure"
+              name="ConnectionPotencyFigure"
               text="">
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
@@ -511,7 +511,7 @@
           </children>
           <children
               xsi:type="gmfgraph:Label"
-              name="DomainConnectionLevelFigure"
+              name="ConnectionLevelFigure"
               text="">
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
@@ -526,7 +526,7 @@
           </children>
           <children
               xsi:type="gmfgraph:Label"
-              name="DomainConnectionAVSFigure"
+              name="ConnectionAVSFigure"
               text="">
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
@@ -565,10 +565,10 @@
           figure="//@figures.0/@descriptors.8/@actualFigure/@children.0/@children.3"/>
     </descriptors>
     <descriptors
-        name="DomainConnectionNameExternalLabelFigure">
+        name="ConnectionNameExternalLabelFigure">
       <actualFigure
           xsi:type="gmfgraph:Label"
-          name="DomainConnectionNameExternalFigure">
+          name="ConnectionNameExternalFigure">
         <font
             xsi:type="gmfgraph:BasicFont"
             height="8"/>
@@ -577,16 +577,16 @@
           figure="//@figures.0/@descriptors.9/@actualFigure"/>
     </descriptors>
     <descriptors
-        name="DomainConnectionParticipantsFigure">
+        name="ConnectionParticipantsFigure">
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"
-          name="DomainConnectionParticipantsFigure">
+          name="ConnectionParticipantsFigure">
         <foregroundColor
             xsi:type="gmfgraph:ConstantColor"
             value="black"/>
         <children
             xsi:type="gmfgraph:Label"
-            name="DomainConnectionParticipantsNameFigure"
+            name="ConnectionParticipantsNameFigure"
             text="">
           <foregroundColor
               xsi:type="gmfgraph:ConstantColor"
@@ -597,7 +597,7 @@
         </children>
         <children
             xsi:type="gmfgraph:Label"
-            name="DomainConnectionParticipantsMultiplicityFigure"
+            name="ConnectionParticipantsMultiplicityFigure"
             text="0..*">
           <font
               xsi:type="gmfgraph:BasicFont"
@@ -1371,20 +1371,20 @@
       name="Model"
       figure="ModelFigure"/>
   <nodes
-      name="DomainEntity"
-      figure="DomainEntityFigure"/>
+      name="Entity"
+      figure="EntityFigure"/>
   <nodes
-      name="DomnainEntityFieldNode"
-      figure="DomainEntityFieldFigure"/>
+      name="EntityFieldNode"
+      figure="EntityFieldFigure"/>
   <nodes
-      name="DomnainEntityMethodNode"
-      figure="DomainEntityMethodFigure"/>
+      name="EntityMethodNode"
+      figure="EntityMethodFigure"/>
   <nodes
-      name="DomainConnection"
-      figure="DomainConnectionFigure"/>
+      name="Connection"
+      figure="ConnectionFigure"/>
   <nodes
-      name="DomainConnectionField"
-      figure="DomainEntityFieldFigure"/>
+      name="ConnectionField"
+      figure="EntityFieldFigure"/>
   <nodes
       name="Complement"
       figure="ComplementFigure"/>
@@ -1407,8 +1407,8 @@
       name="RendererNode"
       figure="RendererFigure"/>
   <connections
-      name="DomainConnectionParticipants"
-      figure="DomainConnectionParticipantsFigure"/>
+      name="ConnectionParticipants"
+      figure="ConnectionParticipantsFigure"/>
   <connections
       name="Instantiation"
       figure="InstantiationFigure"/>
@@ -1431,19 +1431,19 @@
       name="DomainElementsCompartment"
       figure="DomainElementsCompartmentFigure"/>
   <compartments
-      name="DomainEntityFieldsCompartment"
+      name="EntityFieldsCompartment"
       figure="DomainEntityCompartmentFigure"
       collapsible="true"/>
   <compartments
-      name="DomainEntityMethodsCompartment"
+      name="EntityMethodsCompartment"
       figure="DomainEntityCompartmentFigure"
       collapsible="true"/>
   <compartments
-      name="DomainConnectionsFieldsCompartment"
+      name="ConnectionsFieldsCompartment"
       figure="DomainEntityCompartmentFigure"
       collapsible="true"/>
   <compartments
-      name="DomainConnectionsMethodsCompartment"
+      name="ConnectionsMethodsCompartment"
       figure="DomainEntityCompartmentFigure"
       collapsible="true"/>
   <labels
@@ -1467,87 +1467,87 @@
       elementIcon="false"
       accessor="//@figures.0/@descriptors.2/@accessors.1"/>
   <labels
-      name="DomainEntityFigureNameLabel"
-      figure="DomainEntityFigure"
+      name="EntityFigureNameLabel"
+      figure="EntityFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.4/@accessors.0"/>
   <labels
-      name="DomainEntityFigurePotencyLabel"
-      figure="DomainEntityFigure"
+      name="EntityFigurePotencyLabel"
+      figure="EntityFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.4/@accessors.2"/>
   <labels
-      name="DomainEntityFigureLevelLabel"
-      figure="DomainEntityFigure"
+      name="EntityFigureLevelLabel"
+      figure="EntityFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.4/@accessors.3"/>
   <labels
-      name="DomainEntityFigureAVSLabel"
-      figure="DomainEntityFigure"
+      name="EntityFigureAVSLabel"
+      figure="EntityFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.4/@accessors.1"/>
   <labels
-      name="DomainEntityFieldFigureNameLabel"
-      figure="DomainEntityFieldFigure"
+      name="EntityFieldFigureNameLabel"
+      figure="EntityFieldFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.6/@accessors.0"/>
   <labels
-      name="DomainEntityFieldFigurePotencyLabel"
-      figure="DomainEntityFieldFigure"
+      name="EntityFieldFigurePotencyLabel"
+      figure="EntityFieldFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.6/@accessors.1"/>
   <labels
-      name="DomainEntityFieldFigureDataTypeLabel"
-      figure="DomainEntityFieldFigure"
+      name="EntityFieldFigureDataTypeLabel"
+      figure="EntityFieldFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.6/@accessors.2"/>
   <labels
-      name="DomainEntityFieldFigureDefaultValueLabel"
-      figure="DomainEntityFieldFigure"
+      name="EntityFieldFigureDefaultValueLabel"
+      figure="EntityFieldFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.6/@accessors.3"/>
   <labels
-      name="DomainEntityMethodFigureNameLabel"
-      figure="DomainEntityMethodFigure"
+      name="EntityMethodFigureNameLabel"
+      figure="EntityMethodFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.7/@accessors.0"/>
   <labels
-      name="DomainEntityMethodFigurePotencyLabel"
-      figure="DomainEntityMethodFigure"
+      name="EntityMethodFigurePotencyLabel"
+      figure="EntityMethodFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.7/@accessors.1"/>
   <labels
-      name="DomainEntityMethodFigureInputLabel"
-      figure="DomainEntityMethodFigure"
+      name="EntityMethodFigureInputLabel"
+      figure="EntityMethodFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.7/@accessors.3"/>
   <labels
-      name="DomainEntityMethodFigureOutputLabel"
-      figure="DomainEntityMethodFigure"
+      name="EntityMethodFigureOutputLabel"
+      figure="EntityMethodFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.7/@accessors.2"/>
   <labels
-      name="DomainConnectionAVSLabel"
-      figure="DomainConnectionFigure"
+      name="ConnectionAVSLabel"
+      figure="ConnectionFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.8/@accessors.3"/>
   <labels
-      name="DomainConnectionFigureName"
-      figure="DomainConnectionFigure"
+      name="ConnectionFigureName"
+      figure="ConnectionFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.8/@accessors.0"/>
   <labels
-      name="DomainConnectionFigureNameExternal"
-      figure="DomainConnectionNameExternalLabelFigure"
+      name="ConnectionFigureNameExternal"
+      figure="ConnectionNameExternalLabelFigure"
       elementIcon="false"/>
   <labels
-      name="DomainConnectionFigurePotency"
-      figure="DomainConnectionFigure"
+      name="ConnectionFigurePotency"
+      figure="ConnectionFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.8/@accessors.1"/>
   <labels
-      name="DomainConnectionFigureLevelLabel"
-      figure="DomainConnectionFigure"
+      name="ConnectionFigureLevelLabel"
+      figure="ConnectionFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.8/@accessors.2"/>
   <labels
@@ -1570,13 +1570,13 @@
       figure="RenderedByLinkFigure"
       accessor="//@figures.0/@descriptors.22/@accessors.0"/>
   <labels
-      name="DomainConnectionParticipantFigureName"
-      figure="DomainConnectionParticipantsFigure"
+      name="ConnectionParticipantFigureName"
+      figure="ConnectionParticipantsFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.10/@accessors.0"/>
   <labels
-      name="DomainConnectionParticipantMultiplicity"
-      figure="DomainConnectionParticipantsFigure"
+      name="ConnectionParticipantMultiplicity"
+      figure="ConnectionParticipantsFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.10/@accessors.1">
     <facets

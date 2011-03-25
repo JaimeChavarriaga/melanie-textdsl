@@ -56,17 +56,17 @@ main() {
 	LMLModelChildReference.child 
 		:= gmfgenModel.objectsOfType(GenDiagram)->asOrderedSet()->select(n | n.editPartClassName = "LMLModelEditPart")->first();
 	
-	--Group for all DomainEntities that contain Ontology rendering information
-	--var rootDomainEnitiyChildReference 
-	--	:= xmap createChildReference("DomainEntityEditPart", "LMLModelEditPart", "Domain Entities",  "icons/clabject16.gif");
-	--rootDomainEnitiyChildReference.parent 
+	--Group for all Entities that contain Ontology rendering information
+	--var rootEnitiyChildReference 
+	--	:= xmap createChildReference("EditPart", "LMLModelEditPart", "Entities",  "icons/clabject16.gif");
+	--rootEnitiyChildReference.parent 
 	--	:= gmfgenModel.objectsOfType(GenDiagram)->asOrderedSet()->select(n | n.editPartClassName = "LMLModelEditPart")->first();
-	--s for DomainEntities that describe rendering of ontologies
+	--s for Entities that describe rendering of ontologies
 	--var rootChildReference 
-	--	:= xmap createChildReference("EditPart", "DomainEntityEditPart", "s", "icons/16.gif");
-	--Methods for DomainEntities that describe rendering of ontologies
+	--	:= xmap createChildReference("EditPart", "EntityEditPart", "s", "icons/16.gif");
+	--Methods for Entities that describe rendering of ontologies
 	--var rootMethodChildReference 
-	--	:= xmap createChildReference("MethodEditPart", "DomainEntityEditPart", "Methods", "icons/method16.gif");
+	--	:= xmap createChildReference("MethodEditPart", "EntityEditPart", "Methods", "icons/method16.gif");
 	
 	--Group for all Ontologies
 	var ontologyChildReference 
@@ -85,28 +85,28 @@ main() {
 		:= xmap createChildReference("Renderer2EditPart", "ModelEditPart", "Renderers", "icons/renderer16.gif");
 	
 	
-	--Group for all DomainEntities
-	var domainEntityChildReference 
-		:= xmap createChildReference("DomainEntityEditPart", "ModelEditPart", "Domain Entities", "icons/clabject16.gif");
-		--s for DomainEntities that describe rendering of ontologies
-	var domainEntityAttributeChildReference 
-		:= xmap createChildReference("Attribute2EditPart", "DomainEntityEditPart", "Attributes", "icons/field16.gif");
-	--Methods for DomainEntities that describe rendering of ontologies
-	var domainEntityMethodChildReference
-		:= xmap createChildReference("MethodEditPart", "DomainEntityEditPart", "Methods", "icons/method16.gif");
-	var domainEntityRendererChildReference
-		:= xmap createChildReference("Renderer9EditPart", "DomainEntityEditPart", "Renderers", "icons/renderer16.gif");
+	--Group for all Entities
+	var entityChildReference 
+		:= xmap createChildReference("EntityEditPart", "ModelEditPart", "Entities", "icons/clabject16.gif");
+		--s for Entities that describe rendering of ontologies
+	var entityAttributeChildReference 
+		:= xmap createChildReference("Attribute2EditPart", "EntityEditPart", "Attributes", "icons/field16.gif");
+	--Methods for Entities that describe rendering of ontologies
+	var entityMethodChildReference
+		:= xmap createChildReference("MethodEditPart", "EntityEditPart", "Methods", "icons/method16.gif");
+	var entityRendererChildReference
+		:= xmap createChildReference("Renderer9EditPart", "EntityEditPart", "Renderers", "icons/renderer16.gif");
 	
 	
-	--Group for all DomainConnections
-	var domainConnectionChildReference 
-		:= xmap createChildReference("DomainConnectionEditPart", "ModelEditPart", "Domain Connections", "icons/domainConnection16.gif");
-	--Group for all DomainConnectionAttributes
-	var domainConnectionAttributeChildReference 
-		:= xmap createChildReference("AttributeEditPart", "DomainConnectionEditPart", "Attributes", "icons/field16.gif");
-	--Group for all DomainConnectionRenderers
-	var domainConnectionRendererChildReference 
-		:= xmap createChildReference("RendererEditPart", "DomainConnectionEditPart", "Renderers", "icons/renderer16.gif");
+	--Group for all Connections
+	var connectionChildReference 
+		:= xmap createChildReference("ConnectionEditPart", "ModelEditPart", "Connections", "icons/Connection16.gif");
+	--Group for all ConnectionAttributes
+	var connectionAttributeChildReference 
+		:= xmap createChildReference("AttributeEditPart", "ConnectionEditPart", "Attributes", "icons/field16.gif");
+	--Group for all ConnectionRenderers
+	var connectionRendererChildReference 
+		:= xmap createChildReference("RendererEditPart", "ConnectionEditPart", "Renderers", "icons/renderer16.gif");
 		
 	--Group for all MultipleGeneralizations
 	var multipleGeneralizationChildReference 
@@ -154,11 +154,11 @@ main() {
 		:= xmap createChildReference("Renderer5EditPart", "InversionEditPart", "Renderers", "icons/renderer16.gif");
 	
 	this.genNavigator.childReferences += 
-		OrderedSet{LMLModelChildReference, --rootDomainEnitiyChildReference, rootChildReference, rootMethodChildReference,
+		OrderedSet{LMLModelChildReference, --rootEnitiyChildReference, rootChildReference, rootMethodChildReference,
 					 ontologyChildReference, ontRendererChildReference, modelChildReference, modelRendererChildReference,
-					domainEntityChildReference, domainEntityRendererChildReference, domainEntityAttributeChildReference, 
-					domainEntityMethodChildReference, domainConnectionChildReference, domainConnectionRendererChildReference, 
-					domainConnectionAttributeChildReference, --DomainConnectionFieldMethodChildReference
+					entityChildReference, entityRendererChildReference, entityAttributeChildReference, 
+					entityMethodChildReference, connectionChildReference, connectionRendererChildReference, 
+					connectionAttributeChildReference, --connectionFieldMethodChildReference
 					binaryGeneralizationChildReference, binaryGeneralizationRendererChildReference,
 					multipleGeneralizationChildReference, multipleGeneralizationRendererChildReference, 
 					multipleSpecializationChildReference, multipleSpecializationRendererChildReference,

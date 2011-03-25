@@ -148,14 +148,14 @@
                 href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/children"/>
             <ownedChild>
               <domainMetaElement
-                  href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//DomainConnection"/>
+                  href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Connection"/>
               <domainInitializer
                   xsi:type="gmfmap:FeatureSeqInitializer">
                 <initializers
                     xsi:type="gmfmap:FeatureValueSpec">
                   <feature
                       xsi:type="ecore:EAttribute"
-                      href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//DomainConnection/isNavigable"/>
+                      href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Connection/isNavigable"/>
                   <value
                       body="Sequence{false,false}"/>
                 </initializers>
@@ -163,7 +163,7 @@
                     xsi:type="gmfmap:FeatureValueSpec">
                   <feature
                       xsi:type="ecore:EAttribute"
-                      href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//DomainConnection/roleName"/>
+                      href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Connection/roleName"/>
                   <value
                       body="Sequence{'',''}"/>
                 </initializers>
@@ -171,7 +171,7 @@
                     xsi:type="gmfmap:FeatureValueSpec">
                   <feature
                       xsi:type="ecore:EAttribute"
-                      href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//DomainConnection/lower"/>
+                      href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Connection/lower"/>
                   <value
                       body="Sequence{0,0}"/>
                 </initializers>
@@ -179,7 +179,7 @@
                     xsi:type="gmfmap:FeatureValueSpec">
                   <feature
                       xsi:type="ecore:EAttribute"
-                      href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//DomainConnection/upper"/>
+                      href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Connection/upper"/>
                   <value
                       body="Sequence{1,1}"/>
                 </initializers>
@@ -211,21 +211,21 @@
               <labelMappings
                   xsi:type="gmfmap:FeatureLabelMapping">
                 <diagramLabel
-                    href="plm.gmfgraph#DomainConnectionFigureNameExternal"/>
+                    href="plm.gmfgraph#ConnectionFigureName"/>
                 <features
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/name"/>
               </labelMappings>
               <labelMappings
                   xsi:type="gmfmap:ExpressionLabelMapping">
                 <diagramLabel
-                    href="plm.gmfgraph#DomainConnectionFigureName"/>
+                    href="plm.gmfgraph#ConnectionFigureNameExternal"/>
                 <viewExpression
                     body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderName:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('name') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('name') = 'min'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (self.elided) then&#xD;&#xA;&#x9;'...'&#xD;&#xA;else&#xD;&#xA;&#x9;if (renderName) then&#xD;&#xA;&#x9;&#x9;self.name&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;endif"/>
               </labelMappings>
               <labelMappings
                   xsi:type="gmfmap:ExpressionLabelMapping">
                 <diagramLabel
-                    href="plm.gmfgraph#DomainConnectionFigureLevelLabel"/>
+                    href="plm.gmfgraph#ConnectionFigureLevelLabel"/>
                 <viewExpression
                     body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderLevel:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('level') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('level') = 'min'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (renderLevel) then&#xD;&#xA;&#x9;self.level&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
               </labelMappings>
@@ -233,7 +233,7 @@
                   xsi:type="gmfmap:ExpressionLabelMapping"
                   readOnly="true">
                 <diagramLabel
-                    href="plm.gmfgraph#DomainConnectionFigurePotency"/>
+                    href="plm.gmfgraph#ConnectionFigurePotency"/>
                 <viewExpression
                     body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderPotency:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('potency') = 'max' &#xD;&#xA;&#x9;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('potency') = 'min'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let potency:String = if (self.potency > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.potency.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.potency = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (renderPotency) then&#xD;&#xA;&#x9;potency&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
               </labelMappings>
@@ -241,7 +241,7 @@
                   xsi:type="gmfmap:ExpressionLabelMapping"
                   readOnly="true">
                 <diagramLabel
-                    href="plm.gmfgraph#DomainConnectionAVSLabel"/>
+                    href="plm.gmfgraph#ConnectionAVSLabel"/>
                 <viewExpression
                     body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;--**********************************&#xD;&#xA;--Check if attributes are rendered in AVS&#xD;&#xA;--**********************************&#xD;&#xA;let renderName:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('name') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('name') = 'avs'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderPotency:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('potency') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('potency') = 'avs' &#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderLevel:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('level') = 'max'&#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('level') = 'avs'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderExpressed:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('expressed')  = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('expressed')  = 'avs' &#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;--**********************************&#xD;&#xA;--Get the name&#xD;&#xA;--**********************************&#xD;&#xA;let name : String =&#xD;&#xA;&#x9;if (renderName) then&#xD;&#xA;&#x9;&#x9;'name='.concat(self.name).concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the potency&#xD;&#xA;--**********************************&#xD;&#xA;let potencyString:String = &#xD;&#xA;&#x9;if (renderPotency and self.potency > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.potency.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.potency = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let potency: String = &#xD;&#xA;&#x9;if (renderPotency) then&#xD;&#xA;&#x9;&#x9;'potency='.concat(potencyString).concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the level&#xD;&#xA;--**********************************&#xD;&#xA;let levelString:String = &#xD;&#xA;&#x9;if (renderLevel and self.level > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.level.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.level = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let level: String = &#xD;&#xA;&#x9;if (renderLevel) then&#xD;&#xA;&#x9;&#x9;'level='.concat(levelString).concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the expressed value&#xD;&#xA;--**********************************&#xD;&#xA;let expressedString:String = &#xD;&#xA;&#x9;if (expressed) then&#xD;&#xA;&#x9;&#x9;'true'&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'false'&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let expressed: String = &#xD;&#xA;&#x9;if (renderExpressed) then&#xD;&#xA;&#x9;&#x9;'expressed='.concat(expressedString).concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let output:String = &#xD;&#xA;&#x9;'{'.concat(name).concat(potency).concat(level).concat(expressed).concat('}')&#xD;&#xA;in&#xD;&#xA;--**********************************&#xD;&#xA;--Write the output&#xD;&#xA;--**********************************&#xD;&#xA;if (output &lt;> '{}') then&#xD;&#xA;&#x9;output&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
               </labelMappings>
@@ -249,7 +249,7 @@
                   xsi:type="gmftool:CreationTool"
                   href="plm.gmftool#//@palette/@tools.1/@tools.1"/>
               <diagramNode
-                  href="plm.gmfgraph#DomainConnection"/>
+                  href="plm.gmfgraph#Connection"/>
               <children
                   compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.1/@ownedChild/@compartments.0">
                 <containmentFeature
@@ -261,7 +261,7 @@
                       xsi:type="gmfmap:FeatureLabelMapping"
                       viewPattern="">
                     <diagramLabel
-                        href="plm.gmfgraph#DomainEntityFieldFigureNameLabel"/>
+                        href="plm.gmfgraph#EntityFieldFigureNameLabel"/>
                     <features
                         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/name"/>
                   </labelMappings>
@@ -269,7 +269,7 @@
                       xsi:type="gmfmap:ExpressionLabelMapping"
                       readOnly="true">
                     <diagramLabel
-                        href="plm.gmfgraph#DomainEntityFieldFigurePotencyLabel"/>
+                        href="plm.gmfgraph#EntityFieldFigurePotencyLabel"/>
                     <viewExpression
                         body="let durability:String = if (self.durability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.durability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;durability"/>
                   </labelMappings>
@@ -277,7 +277,7 @@
                       xsi:type="gmfmap:ExpressionLabelMapping"
                       readOnly="true">
                     <diagramLabel
-                        href="plm.gmfgraph#DomainEntityFieldFigureDataTypeLabel"/>
+                        href="plm.gmfgraph#EntityFieldFigureDataTypeLabel"/>
                     <viewExpression
                         body="self.datatype.name&#x9;"/>
                   </labelMappings>
@@ -285,7 +285,7 @@
                       xsi:type="gmfmap:FeatureLabelMapping"
                       viewPattern="= {0}">
                     <diagramLabel
-                        href="plm.gmfgraph#DomainEntityFieldFigureDefaultValueLabel"/>
+                        href="plm.gmfgraph#EntityFieldFigureDefaultValueLabel"/>
                     <features
                         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Attribute/value"/>
                   </labelMappings>
@@ -293,7 +293,7 @@
                       xsi:type="gmftool:CreationTool"
                       href="plm.gmftool#//@palette/@tools.1/@tools.3"/>
                   <diagramNode
-                      href="plm.gmfgraph#DomnainEntityFieldNode"/>
+                      href="plm.gmfgraph#EntityFieldNode"/>
                 </ownedChild>
               </children>
               <children
@@ -306,7 +306,7 @@
                   <labelMappings
                       xsi:type="gmfmap:FeatureLabelMapping">
                     <diagramLabel
-                        href="plm.gmfgraph#DomainEntityMethodFigureNameLabel"/>
+                        href="plm.gmfgraph#EntityMethodFigureNameLabel"/>
                     <features
                         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/name"/>
                   </labelMappings>
@@ -314,7 +314,7 @@
                       xsi:type="gmfmap:ExpressionLabelMapping"
                       readOnly="true">
                     <diagramLabel
-                        href="plm.gmfgraph#DomainEntityMethodFigureInputLabel"/>
+                        href="plm.gmfgraph#EntityMethodFigureInputLabel"/>
                     <viewExpression
                         body="'('.concat(Sequence{1..input->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let iAsString:String = &#xD;&#xA;&#x9;&#x9;OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(denominator : Integer; s : String = ''|&#xD;&#xA;            &#x9;&#x9;let numberAsString : String = OrderedSet{&#xD;&#xA;                    &#x9;&#x9;'0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                &#x9;}->at(i.div(denominator).mod(10) + 1)&#xD;&#xA;            &#x9;&#x9;in&#xD;&#xA;                &#x9;&#x9;if s='' and numberAsString = '0' then&#xD;&#xA;                    &#x9;&#x9;&#x9;s&#xD;&#xA;                &#x9;&#x9;else&#xD;&#xA;                    &#x9;&#x9;&#x9;s.concat(numberAsString)&#xD;&#xA;                &#x9;&#x9;endif&#xD;&#xA;        &#x9;)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (i &lt;> output->size()) then&#xD;&#xA;&#x9;&#x9;&#x9;str.concat(input->at(i).oclAsType(ecore::EObject).eClass().name).concat(' ').concat(input->at(i).name).concat(', ')&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;str.concat(input->at(i).oclAsType(ecore::EObject).eClass().name).concat(' ').concat(input->at(i).name)&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;)&#xD;&#xA;).concat(')')"/>
                   </labelMappings>
@@ -322,7 +322,7 @@
                       xsi:type="gmfmap:ExpressionLabelMapping"
                       readOnly="true">
                     <diagramLabel
-                        href="plm.gmfgraph#DomainEntityMethodFigurePotencyLabel"/>
+                        href="plm.gmfgraph#EntityMethodFigurePotencyLabel"/>
                     <viewExpression
                         body="let durability:String = if (self.durability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.durability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;durability"/>
                   </labelMappings>
@@ -330,7 +330,7 @@
                       xsi:type="gmfmap:ExpressionLabelMapping"
                       readOnly="true">
                     <diagramLabel
-                        href="plm.gmfgraph#DomainEntityMethodFigureOutputLabel"/>
+                        href="plm.gmfgraph#EntityMethodFigureOutputLabel"/>
                     <viewExpression
                         body="':'.concat(Sequence{1..output->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let iAsString:String = &#xD;&#xA;&#x9;&#x9;OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(denominator : Integer; s : String = ''|&#xD;&#xA;            &#x9;&#x9;let numberAsString : String = OrderedSet{&#xD;&#xA;                    &#x9;&#x9;'0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                &#x9;}->at(i.div(denominator).mod(10) + 1)&#xD;&#xA;            &#x9;&#x9;in&#xD;&#xA;                &#x9;&#x9;if s='' and numberAsString = '0' then&#xD;&#xA;                    &#x9;&#x9;&#x9;s&#xD;&#xA;                &#x9;&#x9;else&#xD;&#xA;                    &#x9;&#x9;&#x9;s.concat(numberAsString)&#xD;&#xA;                &#x9;&#x9;endif&#xD;&#xA;        &#x9;)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (i &lt;> output->size()) then&#xD;&#xA;&#x9;&#x9;&#x9;str.concat(output->at(i).name).concat(', ')&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;str.concat(output->at(i).name)&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;)&#xD;&#xA;)"/>
                   </labelMappings>
@@ -338,7 +338,7 @@
                       xsi:type="gmftool:CreationTool"
                       href="plm.gmftool#//@palette/@tools.1/@tools.4"/>
                   <diagramNode
-                      href="plm.gmfgraph#DomnainEntityMethodNode"/>
+                      href="plm.gmfgraph#EntityMethodNode"/>
                 </ownedChild>
               </children>
               <children>
@@ -374,12 +374,12 @@
               <compartments
                   children="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.1/@ownedChild/@children.0">
                 <compartment
-                    href="plm.gmfgraph#DomainConnectionsFieldsCompartment"/>
+                    href="plm.gmfgraph#EntityFieldsCompartment"/>
               </compartments>
               <compartments
                   children="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.1/@ownedChild/@children.1">
                 <compartment
-                    href="plm.gmfgraph#DomainConnectionsMethodsCompartment"/>
+                    href="plm.gmfgraph#EntityMethodsCompartment"/>
               </compartments>
             </ownedChild>
           </children>
@@ -890,7 +890,7 @@
                 href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/children"/>
             <ownedChild>
               <domainMetaElement
-                  href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//DomainEntity"/>
+                  href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Entity"/>
               <domainInitializer
                   xsi:type="gmfmap:FeatureSeqInitializer">
                 <initializers
@@ -921,7 +921,7 @@
               <labelMappings
                   xsi:type="gmfmap:ExpressionLabelMapping">
                 <diagramLabel
-                    href="plm.gmfgraph#DomainEntityFigureNameLabel"/>
+                    href="plm.gmfgraph#EntityFigureNameLabel"/>
                 <viewExpression
                     body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderName:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('name') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('name') = 'min'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (self.elided) then&#xD;&#xA;&#x9;'...'&#xD;&#xA;else&#xD;&#xA;&#x9;if (renderName) then&#xD;&#xA;&#x9;&#x9;self.name&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;endif"/>
               </labelMappings>
@@ -929,7 +929,7 @@
                   xsi:type="gmfmap:ExpressionLabelMapping"
                   readOnly="true">
                 <diagramLabel
-                    href="plm.gmfgraph#DomainEntityFigurePotencyLabel"/>
+                    href="plm.gmfgraph#EntityFigurePotencyLabel"/>
                 <viewExpression
                     body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderPotency:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('potency') = 'max' &#xD;&#xA;&#x9;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('potency') = 'min'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let potency:String = if (self.potency > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.potency.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.potency = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (renderPotency) then&#xD;&#xA;&#x9;potency&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
               </labelMappings>
@@ -937,7 +937,7 @@
                   xsi:type="gmfmap:ExpressionLabelMapping"
                   readOnly="true">
                 <diagramLabel
-                    href="plm.gmfgraph#DomainEntityFigureLevelLabel"/>
+                    href="plm.gmfgraph#EntityFigureLevelLabel"/>
                 <viewExpression
                     body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderLevel:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('level') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('level') = 'min'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (renderLevel) then&#xD;&#xA;&#x9;self.level&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
               </labelMappings>
@@ -945,7 +945,7 @@
                   xsi:type="gmfmap:ExpressionLabelMapping"
                   readOnly="true">
                 <diagramLabel
-                    href="plm.gmfgraph#DomainEntityFigureAVSLabel"/>
+                    href="plm.gmfgraph#EntityFigureAVSLabel"/>
                 <viewExpression
                     body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Check if attributes are rendered in AVS&#xD;&#xA;--**********************************&#xD;&#xA;let renderName:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('name') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('name') = 'avs'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderPotency:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('potency') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('potency') = 'avs' &#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderLevel:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('level') = 'max'&#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('level') = 'avs'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderExpressed:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('expressed')  = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('expressed')  = 'avs' &#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;--**********************************&#xD;&#xA;--Get the name&#xD;&#xA;--**********************************&#xD;&#xA;let name : String =&#xD;&#xA;&#x9;if (renderName) then&#xD;&#xA;&#x9;&#x9;'name='.concat(self.name).concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the potency&#xD;&#xA;--**********************************&#xD;&#xA;let potencyString:String = &#xD;&#xA;&#x9;if (renderPotency and self.potency > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.potency.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.potency = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let potency: String = &#xD;&#xA;&#x9;if (renderPotency) then&#xD;&#xA;&#x9;&#x9;'potency='.concat(potencyString).concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the level&#xD;&#xA;--**********************************&#xD;&#xA;let levelString:String = &#xD;&#xA;&#x9;if (renderLevel and self.level > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.level.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.level = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let level: String = &#xD;&#xA;&#x9;if (renderLevel) then&#xD;&#xA;&#x9;&#x9;'level='.concat(levelString).concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the expressed value&#xD;&#xA;--**********************************&#xD;&#xA;let expressedString:String = &#xD;&#xA;&#x9;if (expressed) then&#xD;&#xA;&#x9;&#x9;'true'&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'false'&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let expressed: String = &#xD;&#xA;&#x9;if (renderExpressed) then&#xD;&#xA;&#x9;&#x9;'expressed='.concat(expressedString).concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let output:String = &#xD;&#xA;&#x9;'{'.concat(name).concat(potency).concat(level).concat(expressed).concat('}')&#xD;&#xA;in&#xD;&#xA;--**********************************&#xD;&#xA;--Write the output&#xD;&#xA;--**********************************&#xD;&#xA;if (output &lt;> '{}') then&#xD;&#xA;&#x9;output&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
               </labelMappings>
@@ -953,7 +953,7 @@
                   xsi:type="gmftool:CreationTool"
                   href="plm.gmftool#//@palette/@tools.1/@tools.0"/>
               <diagramNode
-                  href="plm.gmfgraph#DomainEntity"/>
+                  href="plm.gmfgraph#Entity"/>
               <children
                   compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.8/@ownedChild/@compartments.0">
                 <containmentFeature
@@ -965,7 +965,7 @@
                       xsi:type="gmfmap:FeatureLabelMapping"
                       viewPattern="">
                     <diagramLabel
-                        href="plm.gmfgraph#DomainEntityFieldFigureNameLabel"/>
+                        href="plm.gmfgraph#EntityFieldFigureNameLabel"/>
                     <features
                         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/name"/>
                   </labelMappings>
@@ -973,7 +973,7 @@
                       xsi:type="gmfmap:ExpressionLabelMapping"
                       readOnly="true">
                     <diagramLabel
-                        href="plm.gmfgraph#DomainEntityFieldFigurePotencyLabel"/>
+                        href="plm.gmfgraph#EntityFieldFigurePotencyLabel"/>
                     <viewExpression
                         body="let durability:String = if (self.durability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.durability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;durability"/>
                   </labelMappings>
@@ -981,7 +981,7 @@
                       xsi:type="gmfmap:ExpressionLabelMapping"
                       readOnly="true">
                     <diagramLabel
-                        href="plm.gmfgraph#DomainEntityFieldFigureDataTypeLabel"/>
+                        href="plm.gmfgraph#EntityFieldFigureDataTypeLabel"/>
                     <viewExpression
                         body="if (not self.datatype.oclIsUndefined()) then&#xD;&#xA;&#x9;':'.concat(self.datatype.name)&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
                   </labelMappings>
@@ -989,7 +989,7 @@
                       xsi:type="gmfmap:FeatureLabelMapping"
                       viewPattern="= {0}">
                     <diagramLabel
-                        href="plm.gmfgraph#DomainEntityFieldFigureDefaultValueLabel"/>
+                        href="plm.gmfgraph#EntityFieldFigureDefaultValueLabel"/>
                     <features
                         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Attribute/value"/>
                   </labelMappings>
@@ -997,7 +997,7 @@
                       xsi:type="gmftool:CreationTool"
                       href="plm.gmftool#//@palette/@tools.1/@tools.3"/>
                   <diagramNode
-                      href="plm.gmfgraph#DomnainEntityFieldNode"/>
+                      href="plm.gmfgraph#EntityFieldNode"/>
                 </ownedChild>
               </children>
               <children
@@ -1010,7 +1010,7 @@
                   <labelMappings
                       xsi:type="gmfmap:FeatureLabelMapping">
                     <diagramLabel
-                        href="plm.gmfgraph#DomainEntityMethodFigureNameLabel"/>
+                        href="plm.gmfgraph#EntityMethodFigureNameLabel"/>
                     <features
                         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/name"/>
                   </labelMappings>
@@ -1018,7 +1018,7 @@
                       xsi:type="gmfmap:ExpressionLabelMapping"
                       readOnly="true">
                     <diagramLabel
-                        href="plm.gmfgraph#DomainEntityMethodFigureInputLabel"/>
+                        href="plm.gmfgraph#EntityMethodFigureInputLabel"/>
                     <viewExpression
                         body="'('.concat(Sequence{1..input->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let iAsString:String = &#xD;&#xA;&#x9;&#x9;OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(denominator : Integer; s : String = ''|&#xD;&#xA;            &#x9;&#x9;let numberAsString : String = OrderedSet{&#xD;&#xA;                    &#x9;&#x9;'0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                &#x9;}->at(i.div(denominator).mod(10) + 1)&#xD;&#xA;            &#x9;&#x9;in&#xD;&#xA;                &#x9;&#x9;if s='' and numberAsString = '0' then&#xD;&#xA;                    &#x9;&#x9;&#x9;s&#xD;&#xA;                &#x9;&#x9;else&#xD;&#xA;                    &#x9;&#x9;&#x9;s.concat(numberAsString)&#xD;&#xA;                &#x9;&#x9;endif&#xD;&#xA;        &#x9;)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (i &lt;> output->size()) then&#xD;&#xA;&#x9;&#x9;&#x9;str.concat(input->at(i).oclAsType(ecore::EObject).eClass().name).concat(' ').concat(input->at(i).name).concat(', ')&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;str.concat(input->at(i).oclAsType(ecore::EObject).eClass().name).concat(' ').concat(input->at(i).name)&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;)&#xD;&#xA;).concat(')')"/>
                   </labelMappings>
@@ -1026,7 +1026,7 @@
                       xsi:type="gmfmap:ExpressionLabelMapping"
                       readOnly="true">
                     <diagramLabel
-                        href="plm.gmfgraph#DomainEntityMethodFigurePotencyLabel"/>
+                        href="plm.gmfgraph#EntityMethodFigurePotencyLabel"/>
                     <viewExpression
                         body="let durability:String = if (self.durability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.durability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;durability"/>
                   </labelMappings>
@@ -1034,7 +1034,7 @@
                       xsi:type="gmfmap:ExpressionLabelMapping"
                       readOnly="true">
                     <diagramLabel
-                        href="plm.gmfgraph#DomainEntityMethodFigureOutputLabel"/>
+                        href="plm.gmfgraph#EntityMethodFigureOutputLabel"/>
                     <viewExpression
                         body="':'.concat(Sequence{1..output->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let iAsString:String = &#xD;&#xA;&#x9;&#x9;OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(denominator : Integer; s : String = ''|&#xD;&#xA;            &#x9;&#x9;let numberAsString : String = OrderedSet{&#xD;&#xA;                    &#x9;&#x9;'0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                &#x9;}->at(i.div(denominator).mod(10) + 1)&#xD;&#xA;            &#x9;&#x9;in&#xD;&#xA;                &#x9;&#x9;if s='' and numberAsString = '0' then&#xD;&#xA;                    &#x9;&#x9;&#x9;s&#xD;&#xA;                &#x9;&#x9;else&#xD;&#xA;                    &#x9;&#x9;&#x9;s.concat(numberAsString)&#xD;&#xA;                &#x9;&#x9;endif&#xD;&#xA;        &#x9;)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (i &lt;> output->size()) then&#xD;&#xA;&#x9;&#x9;&#x9;str.concat(output->at(i).name).concat(', ')&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;str.concat(output->at(i).name)&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;)&#xD;&#xA;)"/>
                   </labelMappings>
@@ -1042,7 +1042,7 @@
                       xsi:type="gmftool:CreationTool"
                       href="plm.gmftool#//@palette/@tools.1/@tools.4"/>
                   <diagramNode
-                      href="plm.gmfgraph#DomnainEntityMethodNode"/>
+                      href="plm.gmfgraph#EntityMethodNode"/>
                 </ownedChild>
               </children>
               <children>
@@ -1078,12 +1078,12 @@
               <compartments
                   children="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.8/@ownedChild/@children.0">
                 <compartment
-                    href="plm.gmfgraph#DomainEntityFieldsCompartment"/>
+                    href="plm.gmfgraph#EntityFieldsCompartment"/>
               </compartments>
               <compartments
                   children="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.8/@ownedChild/@children.1">
                 <compartment
-                    href="plm.gmfgraph#DomainEntityMethodsCompartment"/>
+                    href="plm.gmfgraph#EntityMethodsCompartment"/>
               </compartments>
             </ownedChild>
           </children>
@@ -1135,21 +1135,21 @@
     <labelMappings
         readOnly="true">
       <diagramLabel
-          href="plm.gmfgraph#DomainConnectionParticipantFigureName"/>
+          href="plm.gmfgraph#ConnectionParticipantFigureName"/>
     </labelMappings>
     <labelMappings
         readOnly="true">
       <diagramLabel
-          href="plm.gmfgraph#DomainConnectionParticipantMultiplicity"/>
+          href="plm.gmfgraph#ConnectionParticipantMultiplicity"/>
     </labelMappings>
     <tool
         xsi:type="gmftool:CreationTool"
         href="plm.gmftool#//@palette/@tools.1/@tools.2"/>
     <diagramLink
-        href="plm.gmfgraph#DomainConnectionParticipants"/>
+        href="plm.gmfgraph#ConnectionParticipants"/>
     <linkMetaFeature
         xsi:type="ecore:EReference"
-        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//DomainConnection/participant"/>
+        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Connection/participant"/>
   </links>
   <links>
     <domainMetaElement
