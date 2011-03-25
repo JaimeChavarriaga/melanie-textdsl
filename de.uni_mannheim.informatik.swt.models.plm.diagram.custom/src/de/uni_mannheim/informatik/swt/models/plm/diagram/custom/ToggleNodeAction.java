@@ -14,7 +14,7 @@ import org.eclipse.ui.IWorkbenchPart;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.BinaryGeneralizationEditPart;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.DomainConnectionEditPart;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionEditPart;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.MultipleGeneralizationEditPart;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.MultipleSpecializationEditPart;
 
@@ -120,8 +120,8 @@ public class ToggleNodeAction implements IObjectActionDelegate {
 		//********************************************************
 		//Change the connection's new visual state
 		//********************************************************
-		if (selectedElement instanceof DomainConnectionEditPart)
-			((DomainConnectionEditPart)selectedElement).updateView(false);
+		if (selectedElement instanceof ConnectionEditPart)
+			((ConnectionEditPart)selectedElement).updateView(false);
 		else if(selectedElement instanceof BinaryGeneralizationEditPart)
 			((BinaryGeneralizationEditPart)selectedElement).updateView(false);
 		else if(selectedElement instanceof MultipleSpecializationEditPart)
@@ -150,7 +150,7 @@ public class ToggleNodeAction implements IObjectActionDelegate {
 		if (selection instanceof IStructuredSelection) 
 		{
 			IStructuredSelection structuredSelection = (IStructuredSelection) selection;
-			if (structuredSelection.getFirstElement() instanceof DomainConnectionEditPart 
+			if (structuredSelection.getFirstElement() instanceof ConnectionEditPart 
 					|| structuredSelection.getFirstElement() instanceof BinaryGeneralizationEditPart
 					|| structuredSelection.getFirstElement() instanceof MultipleSpecializationEditPart
 					|| structuredSelection.getFirstElement() instanceof MultipleGeneralizationEditPart) 
