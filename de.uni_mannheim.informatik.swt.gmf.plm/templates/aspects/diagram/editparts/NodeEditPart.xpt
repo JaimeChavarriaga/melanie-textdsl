@@ -353,6 +353,15 @@
 «ENDDEFINE»
 
 «DEFINE toggle FOR gmfgen::GenNode»
+	
+	/**
+	 *
+	 * Tracks the editPartsToggledState
+	 * 
+	 * @generated
+	 */
+	private boolean inToggeledState = false;
+	
 	/**
 	 * This renders the ConnectionEditPart based on information
 	 * in the model. Collapsed means that the Connection is rendered as small 
@@ -370,7 +379,9 @@
 			this.setBackgroundColor(org.eclipse.swt.widgets.Display.getDefault().getSystemColor(
 					org.eclipse.swt.SWT.COLOR_WHITE));
 
+			//remove previous shape
 			((org.eclipse.draw2d.IFigure)figure.getChildren().get(0)).getChildren().remove(0);
+			//add default figure
 			((org.eclipse.draw2d.IFigure)figure.getChildren().get(0)).getChildren().add(0, polygonFigureCache);
 			
 			//Hide external name label
@@ -409,6 +420,8 @@
 				performRequest(rr);
 			}
 			
+			inToggeledState = false;
+			
 			return;
 		}
 		//collapse element
@@ -416,6 +429,10 @@
 			//**************************************************
 			//Create the new figure (Rectangle with black background)
 			//**************************************************
+			
+			//if already toggled -> return
+			if (inToggeledState == true)
+				return;
 			
 			org.eclipse.draw2d.geometry.Rectangle rect = (figure.getClientArea() != null) ? figure
 					.getClientArea().getCopy() : null;
@@ -452,6 +469,8 @@
 			removeEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE);
 			installEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE,
 					new org.eclipse.gmf.runtime.diagram.ui.editpolicies.NonResizableEditPolicyEx());
+					
+			inToggeledState = true;
 		}
 	}
 «ENDDEFINE»
