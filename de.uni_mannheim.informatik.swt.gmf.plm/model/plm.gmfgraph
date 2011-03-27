@@ -270,7 +270,7 @@
           figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.0/@children.2"/>
     </descriptors>
     <descriptors
-        name="DomainEntityCompartmentFigure">
+        name="EntityCompartmentFigure">
       <actualFigure
           xsi:type="gmfgraph:Rectangle"
           outline="false"
@@ -1432,19 +1432,19 @@
       figure="DomainElementsCompartmentFigure"/>
   <compartments
       name="EntityFieldsCompartment"
-      figure="DomainEntityCompartmentFigure"
+      figure="EntityCompartmentFigure"
       collapsible="true"/>
   <compartments
       name="EntityMethodsCompartment"
-      figure="DomainEntityCompartmentFigure"
+      figure="EntityCompartmentFigure"
       collapsible="true"/>
   <compartments
       name="ConnectionsFieldsCompartment"
-      figure="DomainEntityCompartmentFigure"
+      figure="EntityCompartmentFigure"
       collapsible="true"/>
   <compartments
       name="ConnectionsMethodsCompartment"
-      figure="DomainEntityCompartmentFigure"
+      figure="EntityCompartmentFigure"
       collapsible="true"/>
   <labels
       name="OntologyFigureNameLabel"
