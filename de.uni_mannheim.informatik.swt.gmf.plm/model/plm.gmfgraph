@@ -277,10 +277,10 @@
           fill="false"/>
     </descriptors>
     <descriptors
-        name="EntityFieldFigure">
+        name="AttributeFigure">
       <actualFigure
           xsi:type="gmfgraph:Rectangle"
-          name="EntityFieldFigure"
+          name="AttributeFigure"
           outline="false"
           fill="false">
         <layout
@@ -310,7 +310,7 @@
               dy="22"/>
           <children
               xsi:type="gmfgraph:Label"
-              name="EntityFieldNameFigure"
+              name="AttributeNameFigure"
               text="">
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
@@ -321,7 +321,7 @@
           </children>
           <children
               xsi:type="gmfgraph:Label"
-              name="EntityFieldPotencyFigure">
+              name="AttributePotencyFigure">
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
                 horizontalAlignment="BEGINNING"/>
@@ -333,7 +333,7 @@
           </children>
           <children
               xsi:type="gmfgraph:Label"
-              name="EntityFieldDataTypeFigure">
+              name="AttributeDataTypeFigure">
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
                 horizontalAlignment="BEGINNING"/>
@@ -343,7 +343,7 @@
           </children>
           <children
               xsi:type="gmfgraph:Label"
-              name="EntityFieldDefaultValueFigure">
+              name="AttributeDefaultValueFigure">
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
                 horizontalAlignment="BEGINNING"/>
@@ -363,10 +363,10 @@
           figure="//@figures.0/@descriptors.6/@actualFigure/@children.0/@children.3"/>
     </descriptors>
     <descriptors
-        name="EntityMethodFigure">
+        name="MethodFigure">
       <actualFigure
           xsi:type="gmfgraph:Rectangle"
-          name="EntityMethodFigure"
+          name="MethodFigure"
           outline="false"
           fill="false">
         <layout
@@ -396,7 +396,7 @@
               dy="22"/>
           <children
               xsi:type="gmfgraph:Label"
-              name="EntityMethodNameFigure"
+              name="MethodNameFigure"
               text="">
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
@@ -407,7 +407,7 @@
           </children>
           <children
               xsi:type="gmfgraph:Label"
-              name="EntityMethodPotencyFigure">
+              name="MethodPotencyFigure">
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
                 horizontalAlignment="BEGINNING"/>
@@ -419,7 +419,7 @@
           </children>
           <children
               xsi:type="gmfgraph:Label"
-              name="EntityMethodInputFigure">
+              name="MethodInputFigure">
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
                 horizontalAlignment="BEGINNING"/>
@@ -429,7 +429,7 @@
           </children>
           <children
               xsi:type="gmfgraph:Label"
-              name="EntityMethodOutputFigure"
+              name="MethodOutputFigure"
               text="">
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
@@ -1374,17 +1374,17 @@
       name="Entity"
       figure="EntityFigure"/>
   <nodes
-      name="EntityFieldNode"
-      figure="EntityFieldFigure"/>
+      name="AttributeNode"
+      figure="AttributeFigure"/>
   <nodes
-      name="EntityMethodNode"
-      figure="EntityMethodFigure"/>
+      name="MethodNode"
+      figure="MethodFigure"/>
   <nodes
       name="Connection"
       figure="ConnectionFigure"/>
   <nodes
       name="ConnectionField"
-      figure="EntityFieldFigure"/>
+      figure="AttributeFigure"/>
   <nodes
       name="Complement"
       figure="ComplementFigure"/>
@@ -1488,42 +1488,42 @@
       accessor="//@figures.0/@descriptors.4/@accessors.1"/>
   <labels
       name="EntityFieldFigureNameLabel"
-      figure="EntityFieldFigure"
+      figure="AttributeFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.6/@accessors.0"/>
   <labels
       name="EntityFieldFigurePotencyLabel"
-      figure="EntityFieldFigure"
+      figure="AttributeFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.6/@accessors.1"/>
   <labels
       name="EntityFieldFigureDataTypeLabel"
-      figure="EntityFieldFigure"
+      figure="AttributeFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.6/@accessors.2"/>
   <labels
       name="EntityFieldFigureDefaultValueLabel"
-      figure="EntityFieldFigure"
+      figure="AttributeFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.6/@accessors.3"/>
   <labels
       name="EntityMethodFigureNameLabel"
-      figure="EntityMethodFigure"
+      figure="MethodFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.7/@accessors.0"/>
   <labels
       name="EntityMethodFigurePotencyLabel"
-      figure="EntityMethodFigure"
+      figure="MethodFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.7/@accessors.1"/>
   <labels
       name="EntityMethodFigureInputLabel"
-      figure="EntityMethodFigure"
+      figure="MethodFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.7/@accessors.3"/>
   <labels
       name="EntityMethodFigureOutputLabel"
-      figure="EntityMethodFigure"
+      figure="MethodFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.7/@accessors.2"/>
   <labels

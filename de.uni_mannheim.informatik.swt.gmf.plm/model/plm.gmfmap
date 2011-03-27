@@ -293,7 +293,7 @@
                       xsi:type="gmftool:CreationTool"
                       href="plm.gmftool#//@palette/@tools.1/@tools.3"/>
                   <diagramNode
-                      href="plm.gmfgraph#EntityFieldNode"/>
+                      href="plm.gmfgraph#AttributeNode"/>
                 </ownedChild>
               </children>
               <children
@@ -338,7 +338,7 @@
                       xsi:type="gmftool:CreationTool"
                       href="plm.gmftool#//@palette/@tools.1/@tools.4"/>
                   <diagramNode
-                      href="plm.gmfgraph#EntityMethodNode"/>
+                      href="plm.gmfgraph#MethodNode"/>
                 </ownedChild>
               </children>
               <children>
@@ -961,6 +961,33 @@
                 <ownedChild>
                   <domainMetaElement
                       href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Attribute"/>
+                  <domainInitializer
+                      xsi:type="gmfmap:FeatureSeqInitializer">
+                    <initializers
+                        xsi:type="gmfmap:ReferenceNewElementSpec">
+                      <feature
+                          xsi:type="ecore:EReference"
+                          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/renderer"/>
+                      <newElementInitializers>
+                        <initializers
+                            xsi:type="gmfmap:FeatureValueSpec">
+                          <feature
+                              xsi:type="ecore:EAttribute"
+                              href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Renderer/attributes"/>
+                          <value
+                              body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= min'))"/>
+                        </initializers>
+                        <initializers
+                            xsi:type="gmfmap:FeatureValueSpec">
+                          <feature
+                              xsi:type="ecore:EAttribute"
+                              href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Renderer/durability"/>
+                          <value
+                              body="0"/>
+                        </initializers>
+                      </newElementInitializers>
+                    </initializers>
+                  </domainInitializer>
                   <labelMappings
                       xsi:type="gmfmap:FeatureLabelMapping"
                       viewPattern="">
@@ -997,7 +1024,37 @@
                       xsi:type="gmftool:CreationTool"
                       href="plm.gmftool#//@palette/@tools.1/@tools.3"/>
                   <diagramNode
-                      href="plm.gmfgraph#EntityFieldNode"/>
+                      href="plm.gmfgraph#AttributeNode"/>
+                  <children>
+                    <containmentFeature
+                        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/renderer"/>
+                    <ownedChild>
+                      <domainMetaElement
+                          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Renderer"/>
+                      <labelMappings
+                          xsi:type="gmfmap:ExpressionLabelMapping"
+                          readOnly="true">
+                        <diagramLabel
+                            href="plm.gmfgraph#RendererAttributeValueLabel"/>
+                        <viewExpression
+                            xsi:type="gmfmap:Constraint"
+                            body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
+                      </labelMappings>
+                      <labelMappings
+                          xsi:type="gmfmap:ExpressionLabelMapping"
+                          readOnly="true">
+                        <diagramLabel
+                            href="plm.gmfgraph#RendererPotencyLabel"/>
+                        <viewExpression
+                            body="let durability:String =&#xD;&#xA;&#x9; if (self.durability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.durability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;endif&#x9;&#x9;&#xD;&#xA;endif&#xD;&#xA;in&#xD;&#xA;durability"/>
+                      </labelMappings>
+                      <tool
+                          xsi:type="gmftool:CreationTool"
+                          href="plm.gmftool#//@palette/@tools.1/@tools.5"/>
+                      <diagramNode
+                          href="plm.gmfgraph#RendererNode"/>
+                    </ownedChild>
+                  </children>
                 </ownedChild>
               </children>
               <children
@@ -1042,7 +1099,7 @@
                       xsi:type="gmftool:CreationTool"
                       href="plm.gmftool#//@palette/@tools.1/@tools.4"/>
                   <diagramNode
-                      href="plm.gmfgraph#EntityMethodNode"/>
+                      href="plm.gmfgraph#MethodNode"/>
                 </ownedChild>
               </children>
               <children>
