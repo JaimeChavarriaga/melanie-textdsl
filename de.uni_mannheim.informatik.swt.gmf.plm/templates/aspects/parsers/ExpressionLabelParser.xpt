@@ -3,8 +3,13 @@
 «EXTENSION xpt::StringOperations»
 
 «AROUND body FOR gmfgen::ExpressionLabelParser»
-	«/*Parsing for Domain Entity/Connection Label -> Needed that name can be set via label*/»
-	«IF self.getQualifiedClassName().xpandSplit('\\.')->last() = 'EntityLabelExpressionLabelParser5139'»
+	«/*
+	  *
+	  * Parsing for Domain Entity/Connection Label -> Needed that name can be set via label
+	  *
+	  */»
+	«IF self.getQualifiedClassName().xpandSplit('\\.')->last() = 'EntityLabelExpressionLabelParser5139'
+		or self.getQualifiedClassName().xpandSplit('\\.')->last() = 'ConnectionLabelExpressionLabelParser5134'»
 		«EXPAND xpt::Common::generatedMemberComment»
 		public String getEditString(org.eclipse.core.runtime.IAdaptable element, int flags) {
 			«EXPAND impl::parsers::ExpressionLabelParser::accessEditExpression-»

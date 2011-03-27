@@ -5,9 +5,13 @@
 «EXTENSION xpt::diagram::Utils»
 «EXTENSION xpt::GenModelUtils»
 
-//Alow domain connections to have more than one participant
+«/*
+  *
+  * Alow domain connections to have more than one participant
+  *
+  */»
 «AROUND canCreate FOR gmfgen::GenLink»
-	«IF getUniqueIdentifier() = 'DomainConnectionParticipant_4003'»
+	«IF getUniqueIdentifier() = 'ConnectionParticipant_4021'»
 		«EXPAND xpt::Common::generatedMemberComment»
 		public boolean canCreate«getUniqueIdentifier()»(«EXPAND canCreateParameters FOR modelFacet») {
 			//left out contains check to have multiple participants in an constraint.

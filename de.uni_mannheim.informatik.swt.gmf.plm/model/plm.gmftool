@@ -42,8 +42,8 @@
         collapsible="true">
       <tools
           xsi:type="gmftool:CreationTool"
-          title="Domain Entity"
-          description="Create new Domain Entity">
+          title="Entity"
+          description="Create new Entity">
         <smallIcon
             xsi:type="gmftool:BundleImage"
             path="/icons/clabject16.gif"
@@ -55,8 +55,8 @@
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
-          title="Domain Connection"
-          description="Create new Domain Connection">
+          title="Connection"
+          description="Create new Connection">
         <smallIcon
             xsi:type="gmftool:BundleImage"
             path="/icons/domainConnection16.gif"
@@ -68,8 +68,8 @@
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
-          title="Domain Connection Participants"
-          description="Create new Domain Connection Participants">
+          title="Connection Participant"
+          description="Create new Connection Participant">
         <smallIcon
             xsi:type="gmftool:BundleImage"
             path="/icons/domainConnectionParticipant16.gif"
