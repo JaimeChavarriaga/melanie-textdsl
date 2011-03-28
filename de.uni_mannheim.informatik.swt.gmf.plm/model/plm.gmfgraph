@@ -290,8 +290,6 @@
             forceSingleLine="true"
             majorSpacing="0"
             minorSpacing="0"/>
-        <preferredSize
-            dy="22"/>
         <insets/>
         <children
             xsi:type="gmfgraph:Rectangle"
@@ -306,8 +304,6 @@
                 dx="3"/>
             <spacing/>
           </layout>
-          <preferredSize
-              dy="22"/>
           <children
               xsi:type="gmfgraph:Label"
               name="AttributeNameFigure"
@@ -376,8 +372,6 @@
             forceSingleLine="true"
             majorSpacing="0"
             minorSpacing="0"/>
-        <preferredSize
-            dy="22"/>
         <insets/>
         <children
             xsi:type="gmfgraph:Rectangle"
@@ -392,8 +386,6 @@
                 dx="3"/>
             <spacing/>
           </layout>
-          <preferredSize
-              dy="22"/>
           <children
               xsi:type="gmfgraph:Label"
               name="MethodNameFigure"
@@ -1431,19 +1423,11 @@
       name="DomainElementsCompartment"
       figure="DomainElementsCompartmentFigure"/>
   <compartments
-      name="EntityFieldsCompartment"
+      name="AttributesCompartment"
       figure="EntityCompartmentFigure"
       collapsible="true"/>
   <compartments
-      name="EntityMethodsCompartment"
-      figure="EntityCompartmentFigure"
-      collapsible="true"/>
-  <compartments
-      name="ConnectionsFieldsCompartment"
-      figure="EntityCompartmentFigure"
-      collapsible="true"/>
-  <compartments
-      name="ConnectionsMethodsCompartment"
+      name="MethodsCompartment"
       figure="EntityCompartmentFigure"
       collapsible="true"/>
   <labels

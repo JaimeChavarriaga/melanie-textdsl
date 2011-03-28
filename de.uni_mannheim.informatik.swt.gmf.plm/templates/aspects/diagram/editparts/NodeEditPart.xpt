@@ -247,7 +247,15 @@
 						}
 					}
 				}
-			} 
+			}
+			«ENDIF»
+			
+			«IF self.editPartClassName = 'EntityEditPart' or self.editPartClassName = 'ConnectionEditPart'»
+			if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer && 
+				((org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature()).getName().equals("showRenderer"))
+			{
+				«EXPAND showHideRenderers FOR self»
+			}
 			«ENDIF»
 		}
 	}
@@ -697,56 +705,11 @@
 		else if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Model && 
 				((org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature()).getName().equals("showRenderer"))
 		{
-			de.uni_mannheim.informatik.swt.models.plm.PLM.Model model = (de.uni_mannheim.informatik.swt.models.plm.PLM.Model) notification.getNotifier();
-
-			de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer[] renderers = new de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer[] {};
-
-			//find all renderers in the model
-			org.eclipse.ocl.ecore.OCL ocl = org.eclipse.ocl.ecore.OCL.newInstance();
-			org.eclipse.ocl.helper.OCLHelper<org.eclipse.emf.ecore.EClassifier, ?, ?, org.eclipse.ocl.ecore.Constraint> helper = ocl.createOCLHelper();
-			helper.setContext(de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.Literals.MODEL);
-
-			try 
-			{
-				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.children->collect(c | c.renderer)");
-				renderers = ((java.util.ArrayList<de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer>) ocl.evaluate(resolveSemanticElement(), q)).toArray(new de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer[] {});
-			}
-			catch (org.eclipse.ocl.ParserException e) 
-			{
-				e.printStackTrace();
-			}
-			
-			//find the notational elements for the renderers
-			for(de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer r : renderers)
-			{
-				org.eclipse.emf.common.util.TreeIterator<org.eclipse.emf.ecore.EObject> iter = (getNotationView().eAllContents());
-				
-				while (iter.hasNext())
-				{
-					org.eclipse.emf.ecore.EObject obj = iter.next();
-					
-					if (obj instanceof org.eclipse.gmf.runtime.notation.Node)
-					{
-						org.eclipse.gmf.runtime.notation.Node n = (org.eclipse.gmf.runtime.notation.Node)obj;
-						
-						if (n.getElement() == r)
-						{
-							if (model.getShowRenderer().equals("ShowRenderingOptions::NONE"))
-								n.setVisible(false);
-							else
-								n.setVisible(true);
-							
-							break;
-						}
-					}
-				}
-			}
-			
-			performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
+		 	«EXPAND showHideRenderers FOR self»
 		}
-				 else if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Model
-					&& ((org.eclipse.emf.ecore.EStructuralFeature) notification.getFeature()).getName()
-							.equals("origin")) 
+		else if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Model
+			&& ((org.eclipse.emf.ecore.EStructuralFeature) notification.getFeature()).getName()
+					.equals("origin")) 
 		{
 			de.uni_mannheim.informatik.swt.models.plm.PLM.Element[] elements = new de.uni_mannheim.informatik.swt.models.plm.PLM.Element[] {};
 			de.uni_mannheim.informatik.swt.models.plm.PLM.Model model = (de.uni_mannheim.informatik.swt.models.plm.PLM.Model)resolveSemanticElement();
@@ -847,6 +810,63 @@
 	}
 «ENDDEFINE»
 
+«DEFINE showHideRenderers FOR gmfgen::GenNode»
+			de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer container = (de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer) notification.getNotifier();
+
+			de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer[] renderers = new de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer[] {};
+
+			//find all renderers in the model
+			org.eclipse.ocl.ecore.OCL ocl = org.eclipse.ocl.ecore.OCL.newInstance();
+			org.eclipse.ocl.helper.OCLHelper<org.eclipse.emf.ecore.EClassifier, ?, ?, org.eclipse.ocl.ecore.Constraint> helper = ocl.createOCLHelper();
+			
+			«IF self.editPartClassName = 'ModelEditPart'»
+			helper.setContext(de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.Literals.MODEL);
+			«ELSEIF self.editPartClassName = 'OntologyEditPart'»
+			helper.setContext(de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.Literals.ONTOLOGY);
+			«ELSEIF self.editPartClassName = 'EntityEditPart'»
+			helper.setContext(de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.Literals.ENTITY);
+			«ENDIF»
+			
+			try 
+			{
+				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.children->collect(c | c.renderer)");
+				renderers = ((java.util.ArrayList<de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer>) ocl.evaluate(resolveSemanticElement(), q)).toArray(new de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer[] {});
+			}
+			catch (org.eclipse.ocl.ParserException e) 
+			{
+				e.printStackTrace();
+			}
+			
+			//find the notational elements for the renderers
+			for(de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer r : renderers)
+			{
+				org.eclipse.emf.common.util.TreeIterator<org.eclipse.emf.ecore.EObject> iter = (getNotationView().eAllContents());
+				
+				while (iter.hasNext())
+				{
+					org.eclipse.emf.ecore.EObject obj = iter.next();
+					
+					if (obj instanceof org.eclipse.gmf.runtime.notation.Node)
+					{
+						org.eclipse.gmf.runtime.notation.Node n = (org.eclipse.gmf.runtime.notation.Node)obj;
+						
+						if (n.getElement() == r)
+						{
+							if (container.getShowRenderer().equals("NONE"))
+								n.setVisible(false);
+							else
+								n.setVisible(true);
+							
+							break;
+						}
+					}
+				}
+			}
+			
+			performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
+
+«ENDDEFINE»
+
 «DEFINE handleNotificationEventForRenderer FOR gmfgen::GenNode»
 	/**
 	 * @generated
@@ -878,55 +898,10 @@
 	protected void handleNotificationEvent(org.eclipse.emf.common.notify.Notification notification) {
 		super.handleNotificationEvent(notification);
 		
-		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology && 
+		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer && 
 				((org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature()).getName().equals("showRenderer"))
 		{
-			de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology ont = (de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology) notification.getNotifier();
-
-			de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer[] renderers = new de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer[] {};
-
-			//find all renderers in the ontology
-			org.eclipse.ocl.ecore.OCL ocl = org.eclipse.ocl.ecore.OCL.newInstance();
-			org.eclipse.ocl.helper.OCLHelper<org.eclipse.emf.ecore.EClassifier, ?, ?, org.eclipse.ocl.ecore.Constraint> helper = ocl.createOCLHelper();
-			helper.setContext(de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.Literals.ONTOLOGY);
-
-			try 
-			{
-				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.children->collect(c | c.renderer)");
-				renderers = ((java.util.ArrayList<de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer>) ocl.evaluate(resolveSemanticElement(), q)).toArray(new de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer[] {});
-			}
-			catch (org.eclipse.ocl.ParserException e) 
-			{
-				e.printStackTrace();
-			}
-			
-			//find the notational elements for the renderers
-			for(de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer r : renderers)
-			{
-				org.eclipse.emf.common.util.TreeIterator<org.eclipse.emf.ecore.EObject> iter = (getNotationView().eAllContents());
-				
-				while (iter.hasNext())
-				{
-					org.eclipse.emf.ecore.EObject obj = iter.next();
-					
-					if (obj instanceof org.eclipse.gmf.runtime.notation.Node)
-					{
-						org.eclipse.gmf.runtime.notation.Node n = (org.eclipse.gmf.runtime.notation.Node)obj;
-						
-						if (n.getElement() == r)
-						{
-							if (ont.getShowRenderer().equals("ShowRenderingOptions::NONE"))
-								n.setVisible(false);
-							else
-								n.setVisible(true);
-							
-							break;
-						}
-					}
-				}
-			}
-			
-			performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
+			«EXPAND showHideRenderers FOR self»
 		}
 	}
 «ENDDEFINE»

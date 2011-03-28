@@ -4,6 +4,11 @@
 «EXTENSION xpt::diagram::ViewmapAttributesUtils»
 «EXTENSION xpt::diagram::editpolicies::LinkUtils»
 
+/**
+  *
+  * Hide renderers on creation according to showRenderer attribute
+  *
+  */
 «AROUND createNodeMethod FOR gmfgen::GenNode-»
 «IF getUniqueIdentifier().startsWith('Renderer_')»
 	«EXPAND xpt::Common::generatedMemberComment»
@@ -44,7 +49,7 @@
 		
 		if (parent != null && parent instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer)
 		{
-			if (((de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer)parent).getShowRenderer().equals("ShowRenderingOptions::NONE"))
+			if (((de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer)parent).getShowRenderer().equals("NONE"))
 				node.setVisible(false);
 		}
 		
