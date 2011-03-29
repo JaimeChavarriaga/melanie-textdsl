@@ -288,7 +288,7 @@
                       xsi:type="gmfmap:FeatureLabelMapping"
                       viewPattern="">
                     <diagramLabel
-                        href="plm.gmfgraph#EntityFieldFigureNameLabel"/>
+                        href="plm.gmfgraph#AttributeFigureNameLabel"/>
                     <features
                         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/name"/>
                   </labelMappings>
@@ -296,7 +296,7 @@
                       xsi:type="gmfmap:ExpressionLabelMapping"
                       readOnly="true">
                     <diagramLabel
-                        href="plm.gmfgraph#EntityFieldFigurePotencyLabel"/>
+                        href="plm.gmfgraph#AttributeFigureDurabilityLabel"/>
                     <viewExpression
                         body="let durability:String = if (self.durability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.durability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;durability"/>
                   </labelMappings>
@@ -304,7 +304,7 @@
                       xsi:type="gmfmap:ExpressionLabelMapping"
                       readOnly="true">
                     <diagramLabel
-                        href="plm.gmfgraph#EntityFieldFigureDataTypeLabel"/>
+                        href="plm.gmfgraph#AttributeFigureDataTypeLabel"/>
                     <viewExpression
                         body="self.datatype.name&#x9;"/>
                   </labelMappings>
@@ -1106,7 +1106,7 @@
                       xsi:type="gmfmap:FeatureLabelMapping"
                       viewPattern="">
                     <diagramLabel
-                        href="plm.gmfgraph#EntityFieldFigureNameLabel"/>
+                        href="plm.gmfgraph#AttributeFigureNameLabel"/>
                     <features
                         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/name"/>
                   </labelMappings>
@@ -1114,15 +1114,22 @@
                       xsi:type="gmfmap:ExpressionLabelMapping"
                       readOnly="true">
                     <diagramLabel
-                        href="plm.gmfgraph#EntityFieldFigurePotencyLabel"/>
+                        href="plm.gmfgraph#AttributeFigureDurabilityLabel"/>
                     <viewExpression
                         body="let durability:String = if (self.durability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.durability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;durability"/>
+                  </labelMappings>
+                  <labelMappings
+                      xsi:type="gmfmap:FeatureLabelMapping">
+                    <diagramLabel
+                        href="plm.gmfgraph#AttributeFigureValueVariabilityLabel"/>
+                    <features
+                        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Attribute/valueVariability"/>
                   </labelMappings>
                   <labelMappings
                       xsi:type="gmfmap:ExpressionLabelMapping"
                       readOnly="true">
                     <diagramLabel
-                        href="plm.gmfgraph#EntityFieldFigureDataTypeLabel"/>
+                        href="plm.gmfgraph#AttributeFigureDataTypeLabel"/>
                     <viewExpression
                         body="if (not self.datatype.oclIsUndefined()) then&#xD;&#xA;&#x9;':'.concat(self.datatype.name)&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
                   </labelMappings>
