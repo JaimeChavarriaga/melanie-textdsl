@@ -504,7 +504,29 @@
           visualID="5123"
           editPartClassName="WrappingLabel10EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel10ItemSemanticEditPolicy"
-          notationViewFactoryClassName="AttributeLabelViewFactory"
+          notationViewFactoryClassName="AttributeLabelViewFactory">
+        <diagramRunTimeClass
+            href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap
+            xsi:type="gmfgen:ParentAssignedViewmap"
+            getterName="getFigureAttributeVariabilityFigure"
+            figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel">
+          <attributes
+              xsi:type="gmfgen:StyleAttributes"
+              fixedFont="true"/>
+        </viewmap>
+        <modelFacet
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.4">
+          <metaFeatures
+              href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Attribute/valueVariability"/>
+        </modelFacet>
+      </labels>
+      <labels
+          visualID="5124"
+          editPartClassName="AttributeValueEditPart"
+          itemSemanticEditPolicyClassName="AttributeValueItemSemanticEditPolicy"
+          notationViewFactoryClassName="AttributeValueViewFactory"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -521,9 +543,9 @@
             parser="//@labelParsers/@implementations.6"/>
       </labels>
       <labels
-          visualID="5124"
-          editPartClassName="AttributeValueEditPart"
-          itemSemanticEditPolicyClassName="AttributeValueItemSemanticEditPolicy"
+          visualID="5152"
+          editPartClassName="AttributeValue4EditPart"
+          itemSemanticEditPolicyClassName="AttributeValue4ItemSemanticEditPolicy"
           notationViewFactoryClassName="AttributeValueViewFactory">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -3631,9 +3653,9 @@
       <expressions
           body="let durability:String =&#xD;&#xA;&#x9; if (self.durability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.durability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;endif&#x9;&#x9;&#xD;&#xA;endif&#xD;&#xA;in&#xD;&#xA;durability"/>
       <expressions
-          body="let durability:String = if (self.durability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.durability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;durability"/>
+          body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderDurability:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('durability') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('durability') = 'min'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let durability:String = if (self.durability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.durability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;if (renderDurability) then&#xD;&#xA;&#x9;durability&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
       <expressions
-          body="self.datatype.name&#x9;"/>
+          body="if (not self.datatype.oclIsUndefined()) then&#xD;&#xA;&#x9;':'.concat(self.datatype.name)&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
       <expressions
           body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= min'))"/>
       <expressions
@@ -3848,7 +3870,7 @@
     </implementations>
     <implementations
         xsi:type="gmfgen:PredefinedParser"
-        uses="//@diagram/@childNodes.3/@labels.0/@modelFacet //@diagram/@childNodes.3/@labels.3/@modelFacet //@diagram/@childNodes.5/@labels.0/@modelFacet //@diagram/@childNodes.2/@labels.1/@modelFacet //@diagram/@childNodes.10/@labels.0/@modelFacet //@diagram/@childNodes.14/@labels.0/@modelFacet //@diagram/@childNodes.14/@labels.1/@modelFacet //@diagram/@childNodes.16/@labels.0/@modelFacet //@diagram/@childNodes.16/@labels.1/@modelFacet //@diagram/@childNodes.18/@labels.0/@modelFacet //@diagram/@childNodes.18/@labels.1/@modelFacet //@diagram/@childNodes.21/@labels.0/@modelFacet //@diagram/@childNodes.21/@labels.2/@modelFacet //@diagram/@childNodes.21/@labels.4/@modelFacet //@diagram/@childNodes.23/@labels.0/@modelFacet //@diagram/@childNodes.0/@labels.0/@modelFacet //@diagram/@topLevelNodes.0/@labels.0/@modelFacet"/>
+        uses="//@diagram/@childNodes.3/@labels.0/@modelFacet //@diagram/@childNodes.3/@labels.2/@modelFacet //@diagram/@childNodes.3/@labels.4/@modelFacet //@diagram/@childNodes.5/@labels.0/@modelFacet //@diagram/@childNodes.2/@labels.1/@modelFacet //@diagram/@childNodes.10/@labels.0/@modelFacet //@diagram/@childNodes.14/@labels.0/@modelFacet //@diagram/@childNodes.14/@labels.1/@modelFacet //@diagram/@childNodes.16/@labels.0/@modelFacet //@diagram/@childNodes.16/@labels.1/@modelFacet //@diagram/@childNodes.18/@labels.0/@modelFacet //@diagram/@childNodes.18/@labels.1/@modelFacet //@diagram/@childNodes.21/@labels.0/@modelFacet //@diagram/@childNodes.21/@labels.2/@modelFacet //@diagram/@childNodes.21/@labels.4/@modelFacet //@diagram/@childNodes.23/@labels.0/@modelFacet //@diagram/@childNodes.0/@labels.0/@modelFacet //@diagram/@topLevelNodes.0/@labels.0/@modelFacet"/>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.3/@labels.1/@modelFacet"
@@ -3859,8 +3881,8 @@
     </implementations>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
-        uses="//@diagram/@childNodes.3/@labels.2/@modelFacet"
-        className="AttributeLabelExpressionLabelParser5123"
+        uses="//@diagram/@childNodes.3/@labels.3/@modelFacet"
+        className="AttributeLabelExpressionLabelParser5124"
         viewExpression="//@expressionProviders/@providers.0/@expressions.17">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Attribute"/>
