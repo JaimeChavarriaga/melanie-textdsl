@@ -7,6 +7,34 @@ import org.eclipse.draw2d.geometry.Insets;
 
 public class CustomBorder extends LineBorder {
 
+	private boolean top = false;
+	
+	public void setTop(boolean value)
+	{
+		top = value;
+	}
+	
+	private boolean bottom = false;
+	
+	public void setBottom(boolean value)
+	{
+		bottom = value;
+	}
+	
+	private boolean left = false;
+	
+	public void setLeft(boolean value)
+	{
+		left = value;
+	}
+	
+	private boolean right = false;
+	
+	public void setRight(boolean value)
+	{
+		right = value;
+	}
+	
 	/**
 	 * @see org.eclipse.draw2d.Border#paint(IFigure, Graphics, Insets)
 	 */
@@ -22,6 +50,13 @@ public class CustomBorder extends LineBorder {
 		if (getColor() != null)
 			graphics.setForegroundColor(getColor());
 		
-		graphics.drawLine(tempRect.getBottomLeft(), tempRect.getBottomRight());
+		if (bottom)
+			graphics.drawLine(tempRect.getBottomLeft(), tempRect.getBottomRight());
+		if (top)
+			graphics.drawLine(tempRect.getTopLeft(), tempRect.getTopRight());
+		if (left)
+			graphics.drawLine(tempRect.getTopLeft(), tempRect.getBottomLeft());
+		if (right)
+			graphics.drawLine(tempRect.getTopRight(), tempRect.getBottomRight());
 	}
 }

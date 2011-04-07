@@ -1,7 +1,8 @@
 «IMPORT 'http://www.eclipse.org/gmf/2009/GenModel'»
 
 «AROUND createFigure FOR gmfgen::GenCompartment»
-	«IF self.editPartClassName = 'ModelDomainElementsCompartmentEditPart'»
+	«IF self.editPartClassName = 'ModelDomainElementsCompartmentEditPart'
+		or self.editPartClassName = 'ConnectionRenderersCompartmentEditPart'»
 		«REM»By default titles are shown even if there are no TitleStyle, we need to switch it off«ENDREM»«-»
 		«EXPAND xpt::Common::generatedMemberComment»
 		public org.eclipse.draw2d.IFigure createFigure() {

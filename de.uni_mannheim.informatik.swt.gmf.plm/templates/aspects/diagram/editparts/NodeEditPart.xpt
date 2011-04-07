@@ -883,7 +883,7 @@
 			
 			//For Connections we need to take care of the external label -> updateView()
 			if (((org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)getParent()).resolveSemanticElement() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)
-				((de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionEditPart)getParent()).updateView(false);
+				((de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionEditPart)getParent().getParent()).updateView(false);
 		}
 	}
 «ENDDEFINE»

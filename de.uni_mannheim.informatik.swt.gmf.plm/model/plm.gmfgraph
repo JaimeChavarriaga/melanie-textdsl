@@ -96,7 +96,11 @@
             dy="150"/>
         <border
             xsi:type="gmfgraph:CustomBorder"
-            qualifiedClassName="de.uni_mannheim.informatik.swt.gmf.borders.CustomBorder"/>
+            qualifiedClassName="de.uni_mannheim.informatik.swt.gmf.borders.CustomBorder">
+          <attributes
+              name="bottom"
+              value="true"/>
+        </border>
         <children
             xsi:type="gmfgraph:Rectangle"
             name="InnerRectangle"
@@ -610,6 +614,13 @@
           figure="//@figures.0/@descriptors.8/@actualFigure/@children.0/@children.3"/>
     </descriptors>
     <descriptors
+        name="RendererCompartmentFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          outline="false"
+          fill="false"/>
+    </descriptors>
+    <descriptors
         name="ConnectionNameExternalLabelFigure">
       <actualFigure
           xsi:type="gmfgraph:Label"
@@ -619,7 +630,7 @@
             height="8"/>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.9/@actualFigure"/>
+          figure="//@figures.0/@descriptors.10/@actualFigure"/>
     </descriptors>
     <descriptors
         name="ConnectionParticipantsFigure">
@@ -650,16 +661,16 @@
         </children>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.10/@actualFigure/@children.0"/>
+          figure="//@figures.0/@descriptors.11/@actualFigure/@children.0"/>
       <accessors
-          figure="//@figures.0/@descriptors.10/@actualFigure/@children.1"/>
+          figure="//@figures.0/@descriptors.11/@actualFigure/@children.1"/>
     </descriptors>
     <descriptors
         name="InstantiationFigure">
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"
           lineKind="LINE_DASH"
-          targetDecoration="//@figures.0/@descriptors.11/@actualFigure/@children.0">
+          targetDecoration="//@figures.0/@descriptors.12/@actualFigure/@children.0">
         <foregroundColor
             xsi:type="gmfgraph:ConstantColor"
             value="black"/>
@@ -754,7 +765,7 @@
             y="50"/>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.12/@actualFigure/@children.0/@children.0"/>
+          figure="//@figures.0/@descriptors.13/@actualFigure/@children.0/@children.0"/>
     </descriptors>
     <descriptors
         name="BinaryGeneralizationExternalLabelFigure">
@@ -766,7 +777,7 @@
             height="8"/>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.13/@actualFigure"/>
+          figure="//@figures.0/@descriptors.14/@actualFigure"/>
     </descriptors>
     <descriptors
         name="MultipleGeneralizationFigure">
@@ -868,9 +879,9 @@
             y="50"/>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.14/@actualFigure/@children.0/@children.0"/>
+          figure="//@figures.0/@descriptors.15/@actualFigure/@children.0/@children.0"/>
       <accessors
-          figure="//@figures.0/@descriptors.14/@actualFigure/@children.0/@children.1"/>
+          figure="//@figures.0/@descriptors.15/@actualFigure/@children.0/@children.1"/>
     </descriptors>
     <descriptors
         name="MultipleGeneralizationExternalLabelFigure">
@@ -882,7 +893,7 @@
             height="8"/>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.15/@actualFigure"/>
+          figure="//@figures.0/@descriptors.16/@actualFigure"/>
     </descriptors>
     <descriptors
         name="MultipleSpecializationFigure">
@@ -985,9 +996,9 @@
             y="50"/>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.16/@actualFigure/@children.0/@children.0"/>
+          figure="//@figures.0/@descriptors.17/@actualFigure/@children.0/@children.0"/>
       <accessors
-          figure="//@figures.0/@descriptors.16/@actualFigure/@children.0/@children.1"/>
+          figure="//@figures.0/@descriptors.17/@actualFigure/@children.0/@children.1"/>
     </descriptors>
     <descriptors
         name="MultipleSpecializationExternalLabelFigure">
@@ -999,7 +1010,7 @@
             height="8"/>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.17/@actualFigure"/>
+          figure="//@figures.0/@descriptors.18/@actualFigure"/>
     </descriptors>
     <descriptors
         name="ComplementFigure">
@@ -1087,7 +1098,7 @@
             y="50"/>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.18/@actualFigure/@children.0/@children.0"/>
+          figure="//@figures.0/@descriptors.19/@actualFigure/@children.0/@children.0"/>
     </descriptors>
     <descriptors
         name="EqualsFigure">
@@ -1188,7 +1199,7 @@
             y="50"/>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.19/@actualFigure/@children.0/@children.0/@children.0"/>
+          figure="//@figures.0/@descriptors.20/@actualFigure/@children.0/@children.0/@children.0"/>
     </descriptors>
     <descriptors
         name="InversionFigure">
@@ -1276,7 +1287,7 @@
             y="50"/>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.20/@actualFigure/@children.0/@children.0"/>
+          figure="//@figures.0/@descriptors.21/@actualFigure/@children.0/@children.0"/>
     </descriptors>
     <descriptors
         name="SetRelationshipLinkFigure">
@@ -1294,7 +1305,7 @@
           xsi:type="gmfgraph:PolylineConnection"
           name="RenderedByLinkFigure"
           lineKind="LINE_DASH"
-          targetDecoration="//@figures.0/@descriptors.22/@actualFigure/@children.0">
+          targetDecoration="//@figures.0/@descriptors.23/@actualFigure/@children.0">
         <foregroundColor
             xsi:type="gmfgraph:ConstantColor"
             value="black"/>
@@ -1312,13 +1323,13 @@
         </children>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.22/@actualFigure/@children.1"/>
+          figure="//@figures.0/@descriptors.23/@actualFigure/@children.1"/>
     </descriptors>
     <descriptors
         name="SuperTypeConnectionFigure">
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"
-          targetDecoration="//@figures.0/@descriptors.23/@actualFigure/@children.0">
+          targetDecoration="//@figures.0/@descriptors.24/@actualFigure/@children.0">
         <foregroundColor
             xsi:type="gmfgraph:ConstantColor"
             value="black"/>
@@ -1404,9 +1415,9 @@
         </children>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.25/@actualFigure/@children.0/@children.0"/>
+          figure="//@figures.0/@descriptors.26/@actualFigure/@children.0/@children.0"/>
       <accessors
-          figure="//@figures.0/@descriptors.25/@actualFigure/@children.0/@children.1"/>
+          figure="//@figures.0/@descriptors.26/@actualFigure/@children.0/@children.1"/>
     </descriptors>
   </figures>
   <nodes
@@ -1482,6 +1493,10 @@
   <compartments
       name="MethodsCompartment"
       figure="EntityCompartmentFigure"
+      collapsible="true"/>
+  <compartments
+      name="RenderersCompartment"
+      figure="RendererCompartmentFigure"
       collapsible="true"/>
   <labels
       name="OntologyFigureNameLabel"
@@ -1596,31 +1611,31 @@
       name="ComplementFigureName"
       figure="ComplementFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.18/@accessors.0"/>
+      accessor="//@figures.0/@descriptors.19/@accessors.0"/>
   <labels
       name="EqualsFigureName"
       figure="EqualsFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.19/@accessors.0"/>
+      accessor="//@figures.0/@descriptors.20/@accessors.0"/>
   <labels
       name="InversionFigureName"
       figure="InversionFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.20/@accessors.0"/>
+      accessor="//@figures.0/@descriptors.21/@accessors.0"/>
   <labels
       name="RenderedByFigureName"
       figure="RenderedByLinkFigure"
-      accessor="//@figures.0/@descriptors.22/@accessors.0"/>
+      accessor="//@figures.0/@descriptors.23/@accessors.0"/>
   <labels
       name="ConnectionParticipantFigureName"
       figure="ConnectionParticipantsFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.10/@accessors.0"/>
+      accessor="//@figures.0/@descriptors.11/@accessors.0"/>
   <labels
       name="ConnectionParticipantMultiplicity"
       figure="ConnectionParticipantsFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.10/@accessors.1">
+      accessor="//@figures.0/@descriptors.11/@accessors.1">
     <facets
         xsi:type="gmfgraph:AlignmentFacet"/>
   </labels>
@@ -1628,12 +1643,12 @@
       name="MultipleSpecializationName"
       figure="MultipleSpecializationFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.16/@accessors.0"/>
+      accessor="//@figures.0/@descriptors.17/@accessors.0"/>
   <labels
       name="MultipleSpecializationSetTheoryLabel"
       figure="MultipleSpecializationFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.16/@accessors.1"/>
+      accessor="//@figures.0/@descriptors.17/@accessors.1"/>
   <labels
       name="MultipleSpecializationNameExternal"
       figure="MultipleSpecializationExternalLabelFigure"
@@ -1642,12 +1657,12 @@
       name="MultipleGeneralizationName"
       figure="MultipleGeneralizationFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.14/@accessors.0"/>
+      accessor="//@figures.0/@descriptors.15/@accessors.0"/>
   <labels
       name="MultipleGeneralizationSubtitle"
       figure="MultipleGeneralizationFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.14/@accessors.1"/>
+      accessor="//@figures.0/@descriptors.15/@accessors.1"/>
   <labels
       name="MultipleGeneralizationNameExternal"
       figure="MultipleGeneralizationExternalLabelFigure"
@@ -1656,7 +1671,7 @@
       name="BinaryGeneralisationName"
       figure="BinaryGeneralizationFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.12/@accessors.0"/>
+      accessor="//@figures.0/@descriptors.13/@accessors.0"/>
   <labels
       name="BinaryGeneralizationNameExternal"
       figure="BinaryGeneralizationExternalLabelFigure"
@@ -1665,10 +1680,10 @@
       name="RendererAttributeValueLabel"
       figure="RendererFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.25/@accessors.0"/>
+      accessor="//@figures.0/@descriptors.26/@accessors.0"/>
   <labels
       name="RendererPotencyLabel"
       figure="RendererFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.25/@accessors.1"/>
+      accessor="//@figures.0/@descriptors.26/@accessors.1"/>
 </gmfgraph:Canvas>
