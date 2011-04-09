@@ -18,7 +18,7 @@
         name="domainEntityNameCheck"
         description="Checks the name of elements"
         id="audits.attributes.domainEntityNameAudit"
-        rule="//@expressionProviders/@providers.0/@expressions.93"
+        rule="//@expressionProviders/@providers.0/@expressions.97"
         message="Name wrong"
         category="//@audits/@categories.0">
       <target
@@ -2911,6 +2911,8 @@
         <metaFeature
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/SetRelationship/base"/>
       </modelFacet>
+      <creationConstraints
+          targetEnd="//@expressionProviders/@providers.0/@expressions.84"/>
     </links>
     <links
         visualID="4018"
@@ -2937,7 +2939,8 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Equality/equal"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.84"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.85"
+          targetEnd="//@expressionProviders/@providers.0/@expressions.86"/>
     </links>
     <links
         visualID="4015"
@@ -2964,7 +2967,8 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Inversion/inverse"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.85"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.87"
+          targetEnd="//@expressionProviders/@providers.0/@expressions.88"/>
     </links>
     <links
         visualID="4016"
@@ -2991,7 +2995,8 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Complement/complement"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.86"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.89"
+          targetEnd="//@expressionProviders/@providers.0/@expressions.90"/>
     </links>
     <links
         visualID="4008"
@@ -3018,7 +3023,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleGeneralization/supertype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.87"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.91"/>
     </links>
     <links
         visualID="4009"
@@ -3045,7 +3050,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleGeneralization/subtype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.88"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.92"/>
     </links>
     <links
         visualID="4011"
@@ -3072,7 +3077,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleSpecialization/supertype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.89"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.93"/>
     </links>
     <links
         visualID="4012"
@@ -3099,7 +3104,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleSpecialization/subtype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.90"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.94"/>
     </links>
     <links
         visualID="4019"
@@ -3126,7 +3131,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/BinaryGeneralization/supertype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.91"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.95"/>
     </links>
     <links
         visualID="4020"
@@ -3153,7 +3158,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/BinaryGeneralization/subtype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.92"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.96"/>
     </links>
     <compartments
         visualID="7003"
@@ -3240,7 +3245,7 @@
       <viewmap
           xsi:type="gmfgen:InnerClassViewmap"
           className="RendererCompartmentFigure"
-          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class RendererCompartmentFigure extends org.eclipse.draw2d.RectangleFigure {&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public RendererCompartmentFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setFill(false);&#xA;this.setOutline(false);&#xA;this.setBorder(createBorder0());&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
+          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class RendererCompartmentFigure extends org.eclipse.draw2d.RectangleFigure {&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public RendererCompartmentFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setFill(false);&#xA;this.setOutline(false);&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
     </compartments>
     <compartments
         visualID="7024"
@@ -3378,14 +3383,14 @@
             genNodes="//@diagram/@childNodes.12"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
-            title="Set Relation Base"
+            title="Base"
             description="Create new Set Relation Base"
             largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/setRelationshipEnd16.gif"
             smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/setRelationshipEnd16.gif"
             genLinks="//@diagram/@links.2"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
-            title="Set Relation Target"
+            title="Target"
             description="Create new Set Relation Target"
             largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/setRelationshipEnd16.gif"
             smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/setRelationshipEnd16.gif"
@@ -3820,13 +3825,25 @@
           body="self.potency &lt;> 0 and self.level &lt; oppositeEnd.level and self.instantiable"/>
       <expressions
           xsi:type="gmfgen:GenConstraint"
+          body="if (oppositeEnd.oclIsTypeOf(Inversion)) then&#xD;&#xA;&#x9;self.oclIsTypeOf(Connection)&#xD;&#xA;--all other SetRelationships connect Entities&#xD;&#xA;else&#xD;&#xA;&#x9;self.oclIsTypeOf(Entity)&#xD;&#xA;endif"/>
+      <expressions
+          xsi:type="gmfgen:GenConstraint"
           body="self.oclIsTypeOf(Equality)"/>
+      <expressions
+          xsi:type="gmfgen:GenConstraint"
+          body="self.oclIsTypeOf(Entity)"/>
       <expressions
           xsi:type="gmfgen:GenConstraint"
           body="self.oclIsTypeOf(Inversion)"/>
       <expressions
           xsi:type="gmfgen:GenConstraint"
+          body="self.oclIsTypeOf(Connection)"/>
+      <expressions
+          xsi:type="gmfgen:GenConstraint"
           body="self.oclIsTypeOf(Complement)"/>
+      <expressions
+          xsi:type="gmfgen:GenConstraint"
+          body="self.oclIsTypeOf(Entity)"/>
       <expressions
           xsi:type="gmfgen:GenConstraint"
           body="self.oclIsTypeOf(MultipleGeneralization)"/>

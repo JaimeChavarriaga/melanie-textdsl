@@ -1431,6 +1431,10 @@
     <linkMetaFeature
         xsi:type="ecore:EReference"
         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//SetRelationship/base"/>
+    <creationConstraints>
+      <targetEnd
+          body="if (oppositeEnd.oclIsTypeOf(Inversion)) then&#xD;&#xA;&#x9;self.oclIsTypeOf(Connection)&#xD;&#xA;--all other SetRelationships connect Entities&#xD;&#xA;else&#xD;&#xA;&#x9;self.oclIsTypeOf(Entity)&#xD;&#xA;endif"/>
+    </creationConstraints>
   </links>
   <links>
     <tool
@@ -1444,6 +1448,8 @@
     <creationConstraints>
       <sourceEnd
           body="self.oclIsTypeOf(Equality)"/>
+      <targetEnd
+          body="self.oclIsTypeOf(Entity)"/>
     </creationConstraints>
   </links>
   <links>
@@ -1458,6 +1464,8 @@
     <creationConstraints>
       <sourceEnd
           body="self.oclIsTypeOf(Inversion)"/>
+      <targetEnd
+          body="self.oclIsTypeOf(Connection)"/>
     </creationConstraints>
   </links>
   <links>
@@ -1472,6 +1480,8 @@
     <creationConstraints>
       <sourceEnd
           body="self.oclIsTypeOf(Complement)"/>
+      <targetEnd
+          body="self.oclIsTypeOf(Entity)"/>
     </creationConstraints>
   </links>
   <links>
