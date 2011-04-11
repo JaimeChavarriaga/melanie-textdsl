@@ -1297,7 +1297,20 @@
         <foregroundColor
             xsi:type="gmfgraph:ConstantColor"
             value="black"/>
+        <children
+            xsi:type="gmfgraph:Label"
+            name="SetRelationshipRoleNameFigure"
+            text="">
+          <foregroundColor
+              xsi:type="gmfgraph:ConstantColor"
+              value="black"/>
+          <font
+              xsi:type="gmfgraph:BasicFont"
+              height="8"/>
+        </children>
       </actualFigure>
+      <accessors
+          figure="//@figures.0/@descriptors.22/@actualFigure/@children.0"/>
     </descriptors>
     <descriptors
         name="RenderedByLinkFigure">
@@ -1687,4 +1700,12 @@
       figure="RendererFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.26/@accessors.1"/>
+  <labels
+      name="SetRelationShipLinkRoleNameLabel"
+      figure="SetRelationshipLinkFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.22/@accessors.0">
+    <facets
+        xsi:type="gmfgraph:AlignmentFacet"/>
+  </labels>
 </gmfgraph:Canvas>
