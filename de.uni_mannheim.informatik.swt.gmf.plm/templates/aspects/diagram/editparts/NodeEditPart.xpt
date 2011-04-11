@@ -451,7 +451,7 @@
 
 			rf.setBackgroundColor(org.eclipse.swt.widgets.Display.getDefault().getSystemColor(
 					org.eclipse.swt.SWT.COLOR_BLACK));
-			rf.setBorder(new org.eclipse.draw2d.LineBorder(org.eclipse.ui.PlatformUI.getWorkbench().getDisplay().getSystemColor(SWT.COLOR_WHITE), 3));	
+			rf.setBorder(new org.eclipse.draw2d.LineBorder(org.eclipse.ui.PlatformUI.getWorkbench().getDisplay().getSystemColor(SWT.COLOR_WHITE), 2));	
 			
 			((org.eclipse.draw2d.IFigure)figure.getChildren().get(0)).getChildren().add(0, rf);
 			rf.setParent(((org.eclipse.draw2d.IFigure)figure.getChildren().get(0)));
