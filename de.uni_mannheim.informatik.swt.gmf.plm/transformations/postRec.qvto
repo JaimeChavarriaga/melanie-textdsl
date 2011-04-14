@@ -100,7 +100,7 @@ main() {
 	
 	--Group for all Connections
 	var connectionChildReference 
-		:= xmap createChildReference("ConnectionEditPart", "ModelEditPart", "Connections", "icons/Connection16.gif");
+		:= xmap createChildReference("ConnectionEditPart", "ModelEditPart", "Connections", "icons/connection16.gif");
 	--Group for all ConnectionAttributes
 	var connectionAttributeChildReference 
 		:= xmap createChildReference("AttributeEditPart", "ConnectionEditPart", "Attributes", "icons/field16.gif");
@@ -171,7 +171,6 @@ main() {
 	{
 		parser.className := parser.className.concat(parser._uses->first().container().oclAsType(GenNodeLabel).visualID.toString());
 	};
-	 
 }
 
 mapping createChildReference(childEditPartName:String, parentEditPartName:String, groupName:String, icon:String): GenNavigatorChildReference
