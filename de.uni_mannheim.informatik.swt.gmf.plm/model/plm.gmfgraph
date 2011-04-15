@@ -1290,7 +1290,7 @@
           figure="//@figures.0/@descriptors.21/@actualFigure/@children.0/@children.0"/>
     </descriptors>
     <descriptors
-        name="SetRelationshipLinkFigure">
+        name="SetRelationshipBaseLinkFigure">
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"
           name="EqualsLinkFigure">
@@ -1299,8 +1299,8 @@
             value="black"/>
         <children
             xsi:type="gmfgraph:Label"
-            name="SetRelationshipRoleNameFigure"
-            text="">
+            name="SetRelationshipBaseLinkRoleNameFigure"
+            text="base">
           <foregroundColor
               xsi:type="gmfgraph:ConstantColor"
               value="black"/>
@@ -1313,12 +1313,81 @@
           figure="//@figures.0/@descriptors.22/@actualFigure/@children.0"/>
     </descriptors>
     <descriptors
+        name="SetRelationshipEqualLinkFigure">
+      <actualFigure
+          xsi:type="gmfgraph:PolylineConnection"
+          name="EqualsLinkFigure">
+        <foregroundColor
+            xsi:type="gmfgraph:ConstantColor"
+            value="black"/>
+        <children
+            xsi:type="gmfgraph:Label"
+            name="SetRelationshipEqualLinkRoleNameFigure"
+            text="equal">
+          <foregroundColor
+              xsi:type="gmfgraph:ConstantColor"
+              value="black"/>
+          <font
+              xsi:type="gmfgraph:BasicFont"
+              height="8"/>
+        </children>
+      </actualFigure>
+      <accessors
+          figure="//@figures.0/@descriptors.23/@actualFigure/@children.0"/>
+    </descriptors>
+    <descriptors
+        name="SetRelationshipInverseLinkFigure">
+      <actualFigure
+          xsi:type="gmfgraph:PolylineConnection"
+          name="EqualsLinkFigure">
+        <foregroundColor
+            xsi:type="gmfgraph:ConstantColor"
+            value="black"/>
+        <children
+            xsi:type="gmfgraph:Label"
+            name="SetRelationshipInverseLinkRoleNameFigure"
+            text="inverse">
+          <foregroundColor
+              xsi:type="gmfgraph:ConstantColor"
+              value="black"/>
+          <font
+              xsi:type="gmfgraph:BasicFont"
+              height="8"/>
+        </children>
+      </actualFigure>
+      <accessors
+          figure="//@figures.0/@descriptors.24/@actualFigure/@children.0"/>
+    </descriptors>
+    <descriptors
+        name="SetRelationshipComplementLinkFigure">
+      <actualFigure
+          xsi:type="gmfgraph:PolylineConnection"
+          name="EqualsLinkFigure">
+        <foregroundColor
+            xsi:type="gmfgraph:ConstantColor"
+            value="black"/>
+        <children
+            xsi:type="gmfgraph:Label"
+            name="SetRelationshipComplementLinkRoleNameFigure"
+            text="complement">
+          <foregroundColor
+              xsi:type="gmfgraph:ConstantColor"
+              value="black"/>
+          <font
+              xsi:type="gmfgraph:BasicFont"
+              height="8"/>
+        </children>
+      </actualFigure>
+      <accessors
+          figure="//@figures.0/@descriptors.25/@actualFigure/@children.0"/>
+    </descriptors>
+    <descriptors
         name="RenderedByLinkFigure">
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"
           name="RenderedByLinkFigure"
           lineKind="LINE_DASH"
-          targetDecoration="//@figures.0/@descriptors.23/@actualFigure/@children.0">
+          targetDecoration="//@figures.0/@descriptors.26/@actualFigure/@children.0">
         <foregroundColor
             xsi:type="gmfgraph:ConstantColor"
             value="black"/>
@@ -1336,13 +1405,13 @@
         </children>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.23/@actualFigure/@children.1"/>
+          figure="//@figures.0/@descriptors.26/@actualFigure/@children.1"/>
     </descriptors>
     <descriptors
         name="SuperTypeConnectionFigure">
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"
-          targetDecoration="//@figures.0/@descriptors.24/@actualFigure/@children.0">
+          targetDecoration="//@figures.0/@descriptors.27/@actualFigure/@children.0">
         <foregroundColor
             xsi:type="gmfgraph:ConstantColor"
             value="black"/>
@@ -1428,9 +1497,9 @@
         </children>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.26/@actualFigure/@children.0/@children.0"/>
+          figure="//@figures.0/@descriptors.29/@actualFigure/@children.0/@children.0"/>
       <accessors
-          figure="//@figures.0/@descriptors.26/@actualFigure/@children.0/@children.1"/>
+          figure="//@figures.0/@descriptors.29/@actualFigure/@children.0/@children.1"/>
     </descriptors>
   </figures>
   <nodes
@@ -1482,8 +1551,14 @@
       name="Instantiation"
       figure="InstantiationFigure"/>
   <connections
-      name="SetRelationshipLink"
-      figure="SetRelationshipLinkFigure"/>
+      name="SetRelationshipBaseLink"
+      figure="SetRelationshipBaseLinkFigure"/>
+  <connections
+      name="SetRelationshipEqualLink"
+      figure="SetRelationshipEqualLinkFigure"/>
+  <connections
+      name="SetRelationshipInverseLink"
+      figure="SetRelationshipInverseLinkFigure"/>
   <connections
       name="SuperTypeConnection"
       figure="SuperTypeConnectionFigure"/>
@@ -1493,6 +1568,9 @@
   <connections
       name="RenderedByLink"
       figure="RenderedByLinkFigure"/>
+  <connections
+      name="SetRelationshipComplementLink"
+      figure="SetRelationshipComplementLinkFigure"/>
   <compartments
       name="ModelCompartment"
       figure="ModellCompartmentFigure"/>
@@ -1639,7 +1717,7 @@
   <labels
       name="RenderedByFigureName"
       figure="RenderedByLinkFigure"
-      accessor="//@figures.0/@descriptors.23/@accessors.0"/>
+      accessor="//@figures.0/@descriptors.26/@accessors.0"/>
   <labels
       name="ConnectionParticipantFigureName"
       figure="ConnectionParticipantsFigure"
@@ -1694,18 +1772,54 @@
       name="RendererAttributeValueLabel"
       figure="RendererFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.26/@accessors.0"/>
+      accessor="//@figures.0/@descriptors.29/@accessors.0"/>
   <labels
       name="RendererPotencyLabel"
       figure="RendererFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.26/@accessors.1"/>
+      accessor="//@figures.0/@descriptors.29/@accessors.1"/>
   <labels
-      name="SetRelationShipLinkRoleNameLabel"
-      figure="SetRelationshipLinkFigure"
+      name="SetRelationShipBaseLinkRoleNameLabel"
+      figure="SetRelationshipBaseLinkFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.22/@accessors.0">
     <facets
         xsi:type="gmfgraph:AlignmentFacet"/>
+    <facets
+        xsi:type="gmfgraph:LabelOffsetFacet"
+        y="10"/>
+  </labels>
+  <labels
+      name="SetRelationShipEqualLinkRoleNameLabel"
+      figure="SetRelationshipEqualLinkFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.23/@accessors.0">
+    <facets
+        xsi:type="gmfgraph:AlignmentFacet"/>
+    <facets
+        xsi:type="gmfgraph:LabelOffsetFacet"
+        y="10"/>
+  </labels>
+  <labels
+      name="SetRelationShipInverseLinkRoleNameLabel"
+      figure="SetRelationshipInverseLinkFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.24/@accessors.0">
+    <facets
+        xsi:type="gmfgraph:AlignmentFacet"/>
+    <facets
+        xsi:type="gmfgraph:LabelOffsetFacet"
+        y="10"/>
+  </labels>
+  <labels
+      name="SetRelationShipComplementLinkRoleNameLabel"
+      figure="SetRelationshipComplementLinkFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.25/@accessors.0">
+    <facets
+        xsi:type="gmfgraph:AlignmentFacet"/>
+    <facets
+        xsi:type="gmfgraph:LabelOffsetFacet"
+        y="10"/>
   </labels>
 </gmfgraph:Canvas>

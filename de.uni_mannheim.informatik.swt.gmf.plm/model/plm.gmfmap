@@ -1424,40 +1424,34 @@
   </links>
   <links>
     <labelMappings
-        xsi:type="gmfmap:ExpressionLabelMapping"
         readOnly="true">
       <diagramLabel
-          href="plm.gmfgraph#SetRelationShipLinkRoleNameLabel"/>
-      <viewExpression
-          body="'base'"/>
+          href="plm.gmfgraph#SetRelationShipBaseLinkRoleNameLabel"/>
     </labelMappings>
     <tool
         xsi:type="gmftool:CreationTool"
         href="plm.gmftool#//@palette/@tools.3/@tools.3"/>
     <diagramLink
-        href="plm.gmfgraph#SetRelationshipLink"/>
+        href="plm.gmfgraph#SetRelationshipBaseLink"/>
     <linkMetaFeature
         xsi:type="ecore:EReference"
         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//SetRelationship/base"/>
     <creationConstraints>
       <targetEnd
-          body="if (oppositeEnd.oclIsTypeOf(Inversion)) then&#xD;&#xA;&#x9;self.oclIsTypeOf(Connection)&#xD;&#xA;--all other SetRelationships connect Entities&#xD;&#xA;else&#xD;&#xA;&#x9;self.oclIsTypeOf(Entity)&#xD;&#xA;endif"/>
+          body="if (oppositeEnd.oclIsTypeOf(Inversion)) then&#xD;&#xA;&#x9;self.oclIsTypeOf(Connection) and self &lt;> oppositeEnd.oclAsType(Inversion).inverse&#xD;&#xA;--all other SetRelationships connect Entities&#xD;&#xA;else&#xD;&#xA;&#x9;if (oppositeEnd.oclIsTypeOf(Equality)) then&#xD;&#xA;&#x9;&#x9;self.oclIsTypeOf(Entity) and self &lt;> oppositeEnd.oclAsType(Equality).equal&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;self.oclIsTypeOf(Entity) and self&lt;> oppositeEnd.oclAsType(Complement).complement&#xD;&#xA;&#x9;endif&#xD;&#xA;endif"/>
     </creationConstraints>
   </links>
   <links>
     <labelMappings
-        xsi:type="gmfmap:ExpressionLabelMapping"
         readOnly="true">
       <diagramLabel
-          href="plm.gmfgraph#SetRelationShipLinkRoleNameLabel"/>
-      <viewExpression
-          body="'equal'"/>
+          href="plm.gmfgraph#SetRelationShipEqualLinkRoleNameLabel"/>
     </labelMappings>
     <tool
         xsi:type="gmftool:CreationTool"
         href="plm.gmftool#//@palette/@tools.3/@tools.4"/>
     <diagramLink
-        href="plm.gmfgraph#SetRelationshipLink"/>
+        href="plm.gmfgraph#SetRelationshipEqualLink"/>
     <linkMetaFeature
         xsi:type="ecore:EReference"
         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Equality/equal"/>
@@ -1465,23 +1459,20 @@
       <sourceEnd
           body="self.oclIsTypeOf(Equality)"/>
       <targetEnd
-          body="self.oclIsTypeOf(Entity)"/>
+          body="self.oclIsTypeOf(Entity) and self &lt;> oppositeEnd.base"/>
     </creationConstraints>
   </links>
   <links>
     <labelMappings
-        xsi:type="gmfmap:ExpressionLabelMapping"
         readOnly="true">
       <diagramLabel
-          href="plm.gmfgraph#SetRelationShipLinkRoleNameLabel"/>
-      <viewExpression
-          body="'inverse'"/>
+          href="plm.gmfgraph#SetRelationShipInverseLinkRoleNameLabel"/>
     </labelMappings>
     <tool
         xsi:type="gmftool:CreationTool"
         href="plm.gmftool#//@palette/@tools.3/@tools.4"/>
     <diagramLink
-        href="plm.gmfgraph#SetRelationshipLink"/>
+        href="plm.gmfgraph#SetRelationshipInverseLink"/>
     <linkMetaFeature
         xsi:type="ecore:EReference"
         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Inversion/inverse"/>
@@ -1489,23 +1480,20 @@
       <sourceEnd
           body="self.oclIsTypeOf(Inversion)"/>
       <targetEnd
-          body="self.oclIsTypeOf(Connection)"/>
+          body="self.oclIsTypeOf(Connection) and self &lt;> oppositeEnd.base"/>
     </creationConstraints>
   </links>
   <links>
     <labelMappings
-        xsi:type="gmfmap:ExpressionLabelMapping"
         readOnly="true">
       <diagramLabel
-          href="plm.gmfgraph#SetRelationShipLinkRoleNameLabel"/>
-      <viewExpression
-          body="'complement'"/>
+          href="plm.gmfgraph#SetRelationShipComplementLinkRoleNameLabel"/>
     </labelMappings>
     <tool
         xsi:type="gmftool:CreationTool"
         href="plm.gmftool#//@palette/@tools.3/@tools.4"/>
     <diagramLink
-        href="plm.gmfgraph#SetRelationshipLink"/>
+        href="plm.gmfgraph#SetRelationshipComplementLink"/>
     <linkMetaFeature
         xsi:type="ecore:EReference"
         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Complement/complement"/>
@@ -1513,7 +1501,7 @@
       <sourceEnd
           body="self.oclIsTypeOf(Complement)"/>
       <targetEnd
-          body="self.oclIsTypeOf(Entity)"/>
+          body="self.oclIsTypeOf(Entity) and self &lt;> oppositeEnd.base"/>
     </creationConstraints>
   </links>
   <links>

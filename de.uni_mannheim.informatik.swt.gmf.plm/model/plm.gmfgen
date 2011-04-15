@@ -18,7 +18,7 @@
         name="domainEntityNameCheck"
         description="Checks the name of elements"
         id="audits.attributes.domainEntityNameAudit"
-        rule="//@expressionProviders/@providers.0/@expressions.101"
+        rule="//@expressionProviders/@providers.0/@expressions.97"
         message="Name wrong"
         category="//@audits/@categories.0">
       <target
@@ -2880,8 +2880,8 @@
           xsi:type="gmfgen:SpecializationType"/>
       <viewmap
           xsi:type="gmfgen:InnerClassViewmap"
-          className="SetRelationshipLinkFigure"
-          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class SetRelationshipLinkFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureSetRelationshipRoleNameFigure; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public SetRelationshipLinkFigure() {&#xA;&#x9;&#x9;&#x9;this.setForegroundColor(org.eclipse.draw2d.ColorConstants.black);&#xA;&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureSetRelationshipRoleNameFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureSetRelationshipRoleNameFigure.setText(&quot;&quot;);&#xA;&#x9;fFigureSetRelationshipRoleNameFigure.setForegroundColor(org.eclipse.draw2d.ColorConstants.black);&#xA;&#xA;fFigureSetRelationshipRoleNameFigure.setFont(FFIGURESETRELATIONSHIPROLENAMEFIGURE_FONT);&#xA;&#xA;&#xA;&#xA;this.add(fFigureSetRelationshipRoleNameFigure);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureSetRelationshipRoleNameFigure() {&#xA;&#x9;&#x9;return fFigureSetRelationshipRoleNameFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGURESETRELATIONSHIPROLENAMEFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 8, org.eclipse.swt.SWT.NORMAL);&#xA;&#xA;">
+          className="SetRelationshipBaseLinkFigure"
+          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class SetRelationshipBaseLinkFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureSetRelationshipBaseLinkRoleNameFigure; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public SetRelationshipBaseLinkFigure() {&#xA;&#x9;&#x9;&#x9;this.setForegroundColor(org.eclipse.draw2d.ColorConstants.black);&#xA;&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureSetRelationshipBaseLinkRoleNameFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureSetRelationshipBaseLinkRoleNameFigure.setText(&quot;base&quot;);&#xA;&#x9;fFigureSetRelationshipBaseLinkRoleNameFigure.setForegroundColor(org.eclipse.draw2d.ColorConstants.black);&#xA;&#xA;fFigureSetRelationshipBaseLinkRoleNameFigure.setFont(FFIGURESETRELATIONSHIPBASELINKROLENAMEFIGURE_FONT);&#xA;&#xA;&#xA;&#xA;this.add(fFigureSetRelationshipBaseLinkRoleNameFigure);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureSetRelationshipBaseLinkRoleNameFigure() {&#xA;&#x9;&#x9;return fFigureSetRelationshipBaseLinkRoleNameFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGURESETRELATIONSHIPBASELINKROLENAMEFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 8, org.eclipse.swt.SWT.NORMAL);&#xA;&#xA;">
         <attributes
             xsi:type="gmfgen:StyleAttributes"
             fixedForeground="true"/>
@@ -2902,7 +2902,7 @@
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap
             xsi:type="gmfgen:ParentAssignedViewmap"
-            getterName="getFigureSetRelationshipRoleNameFigure"
+            getterName="getFigureSetRelationshipBaseLinkRoleNameFigure"
             figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel">
           <attributes
               xsi:type="gmfgen:StyleAttributes"
@@ -2910,14 +2910,13 @@
               fixedForeground="true"/>
           <attributes
               xsi:type="gmfgen:LabelOffsetAttributes"
-              y="40"/>
+              y="10"/>
         </viewmap>
         <modelFacet
-            xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.52"/>
+            parser="//@labelParsers/@implementations.20"/>
       </labels>
       <creationConstraints
-          targetEnd="//@expressionProviders/@providers.0/@expressions.85"/>
+          targetEnd="//@expressionProviders/@providers.0/@expressions.84"/>
     </links>
     <links
         visualID="4018"
@@ -2932,8 +2931,8 @@
           xsi:type="gmfgen:SpecializationType"/>
       <viewmap
           xsi:type="gmfgen:InnerClassViewmap"
-          className="SetRelationshipLinkFigure"
-          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class SetRelationshipLinkFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureSetRelationshipRoleNameFigure; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public SetRelationshipLinkFigure() {&#xA;&#x9;&#x9;&#x9;this.setForegroundColor(org.eclipse.draw2d.ColorConstants.black);&#xA;&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureSetRelationshipRoleNameFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureSetRelationshipRoleNameFigure.setText(&quot;&quot;);&#xA;&#x9;fFigureSetRelationshipRoleNameFigure.setForegroundColor(org.eclipse.draw2d.ColorConstants.black);&#xA;&#xA;fFigureSetRelationshipRoleNameFigure.setFont(FFIGURESETRELATIONSHIPROLENAMEFIGURE_FONT);&#xA;&#xA;&#xA;&#xA;this.add(fFigureSetRelationshipRoleNameFigure);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureSetRelationshipRoleNameFigure() {&#xA;&#x9;&#x9;return fFigureSetRelationshipRoleNameFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGURESETRELATIONSHIPROLENAMEFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 8, org.eclipse.swt.SWT.NORMAL);&#xA;&#xA;">
+          className="SetRelationshipEqualLinkFigure"
+          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class SetRelationshipEqualLinkFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureSetRelationshipEqualLinkRoleNameFigure; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public SetRelationshipEqualLinkFigure() {&#xA;&#x9;&#x9;&#x9;this.setForegroundColor(org.eclipse.draw2d.ColorConstants.black);&#xA;&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureSetRelationshipEqualLinkRoleNameFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureSetRelationshipEqualLinkRoleNameFigure.setText(&quot;equal&quot;);&#xA;&#x9;fFigureSetRelationshipEqualLinkRoleNameFigure.setForegroundColor(org.eclipse.draw2d.ColorConstants.black);&#xA;&#xA;fFigureSetRelationshipEqualLinkRoleNameFigure.setFont(FFIGURESETRELATIONSHIPEQUALLINKROLENAMEFIGURE_FONT);&#xA;&#xA;&#xA;&#xA;this.add(fFigureSetRelationshipEqualLinkRoleNameFigure);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureSetRelationshipEqualLinkRoleNameFigure() {&#xA;&#x9;&#x9;return fFigureSetRelationshipEqualLinkRoleNameFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGURESETRELATIONSHIPEQUALLINKROLENAMEFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 8, org.eclipse.swt.SWT.NORMAL);&#xA;&#xA;">
         <attributes
             xsi:type="gmfgen:StyleAttributes"
             fixedForeground="true"/>
@@ -2954,7 +2953,7 @@
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap
             xsi:type="gmfgen:ParentAssignedViewmap"
-            getterName="getFigureSetRelationshipRoleNameFigure"
+            getterName="getFigureSetRelationshipEqualLinkRoleNameFigure"
             figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel">
           <attributes
               xsi:type="gmfgen:StyleAttributes"
@@ -2962,15 +2961,14 @@
               fixedForeground="true"/>
           <attributes
               xsi:type="gmfgen:LabelOffsetAttributes"
-              y="40"/>
+              y="10"/>
         </viewmap>
         <modelFacet
-            xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.53"/>
+            parser="//@labelParsers/@implementations.20"/>
       </labels>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.87"
-          targetEnd="//@expressionProviders/@providers.0/@expressions.88"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.85"
+          targetEnd="//@expressionProviders/@providers.0/@expressions.86"/>
     </links>
     <links
         visualID="4015"
@@ -2985,8 +2983,8 @@
           xsi:type="gmfgen:SpecializationType"/>
       <viewmap
           xsi:type="gmfgen:InnerClassViewmap"
-          className="SetRelationshipLinkFigure"
-          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class SetRelationshipLinkFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureSetRelationshipRoleNameFigure; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public SetRelationshipLinkFigure() {&#xA;&#x9;&#x9;&#x9;this.setForegroundColor(org.eclipse.draw2d.ColorConstants.black);&#xA;&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureSetRelationshipRoleNameFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureSetRelationshipRoleNameFigure.setText(&quot;&quot;);&#xA;&#x9;fFigureSetRelationshipRoleNameFigure.setForegroundColor(org.eclipse.draw2d.ColorConstants.black);&#xA;&#xA;fFigureSetRelationshipRoleNameFigure.setFont(FFIGURESETRELATIONSHIPROLENAMEFIGURE_FONT);&#xA;&#xA;&#xA;&#xA;this.add(fFigureSetRelationshipRoleNameFigure);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureSetRelationshipRoleNameFigure() {&#xA;&#x9;&#x9;return fFigureSetRelationshipRoleNameFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGURESETRELATIONSHIPROLENAMEFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 8, org.eclipse.swt.SWT.NORMAL);&#xA;&#xA;">
+          className="SetRelationshipInverseLinkFigure"
+          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class SetRelationshipInverseLinkFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureSetRelationshipInverseLinkRoleNameFigure; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public SetRelationshipInverseLinkFigure() {&#xA;&#x9;&#x9;&#x9;this.setForegroundColor(org.eclipse.draw2d.ColorConstants.black);&#xA;&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureSetRelationshipInverseLinkRoleNameFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureSetRelationshipInverseLinkRoleNameFigure.setText(&quot;inverse&quot;);&#xA;&#x9;fFigureSetRelationshipInverseLinkRoleNameFigure.setForegroundColor(org.eclipse.draw2d.ColorConstants.black);&#xA;&#xA;fFigureSetRelationshipInverseLinkRoleNameFigure.setFont(FFIGURESETRELATIONSHIPINVERSELINKROLENAMEFIGURE_FONT);&#xA;&#xA;&#xA;&#xA;this.add(fFigureSetRelationshipInverseLinkRoleNameFigure);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureSetRelationshipInverseLinkRoleNameFigure() {&#xA;&#x9;&#x9;return fFigureSetRelationshipInverseLinkRoleNameFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGURESETRELATIONSHIPINVERSELINKROLENAMEFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 8, org.eclipse.swt.SWT.NORMAL);&#xA;&#xA;">
         <attributes
             xsi:type="gmfgen:StyleAttributes"
             fixedForeground="true"/>
@@ -3007,7 +3005,7 @@
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap
             xsi:type="gmfgen:ParentAssignedViewmap"
-            getterName="getFigureSetRelationshipRoleNameFigure"
+            getterName="getFigureSetRelationshipInverseLinkRoleNameFigure"
             figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel">
           <attributes
               xsi:type="gmfgen:StyleAttributes"
@@ -3015,15 +3013,14 @@
               fixedForeground="true"/>
           <attributes
               xsi:type="gmfgen:LabelOffsetAttributes"
-              y="40"/>
+              y="10"/>
         </viewmap>
         <modelFacet
-            xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.54"/>
+            parser="//@labelParsers/@implementations.20"/>
       </labels>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.90"
-          targetEnd="//@expressionProviders/@providers.0/@expressions.91"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.87"
+          targetEnd="//@expressionProviders/@providers.0/@expressions.88"/>
     </links>
     <links
         visualID="4016"
@@ -3038,8 +3035,8 @@
           xsi:type="gmfgen:SpecializationType"/>
       <viewmap
           xsi:type="gmfgen:InnerClassViewmap"
-          className="SetRelationshipLinkFigure"
-          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class SetRelationshipLinkFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureSetRelationshipRoleNameFigure; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public SetRelationshipLinkFigure() {&#xA;&#x9;&#x9;&#x9;this.setForegroundColor(org.eclipse.draw2d.ColorConstants.black);&#xA;&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureSetRelationshipRoleNameFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureSetRelationshipRoleNameFigure.setText(&quot;&quot;);&#xA;&#x9;fFigureSetRelationshipRoleNameFigure.setForegroundColor(org.eclipse.draw2d.ColorConstants.black);&#xA;&#xA;fFigureSetRelationshipRoleNameFigure.setFont(FFIGURESETRELATIONSHIPROLENAMEFIGURE_FONT);&#xA;&#xA;&#xA;&#xA;this.add(fFigureSetRelationshipRoleNameFigure);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureSetRelationshipRoleNameFigure() {&#xA;&#x9;&#x9;return fFigureSetRelationshipRoleNameFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGURESETRELATIONSHIPROLENAMEFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 8, org.eclipse.swt.SWT.NORMAL);&#xA;&#xA;">
+          className="SetRelationshipComplementLinkFigure"
+          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class SetRelationshipComplementLinkFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureSetRelationshipComplementLinkRoleNameFigure; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public SetRelationshipComplementLinkFigure() {&#xA;&#x9;&#x9;&#x9;this.setForegroundColor(org.eclipse.draw2d.ColorConstants.black);&#xA;&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureSetRelationshipComplementLinkRoleNameFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureSetRelationshipComplementLinkRoleNameFigure.setText(&quot;complement&quot;);&#xA;&#x9;fFigureSetRelationshipComplementLinkRoleNameFigure.setForegroundColor(org.eclipse.draw2d.ColorConstants.black);&#xA;&#xA;fFigureSetRelationshipComplementLinkRoleNameFigure.setFont(FFIGURESETRELATIONSHIPCOMPLEMENTLINKROLENAMEFIGURE_FONT);&#xA;&#xA;&#xA;&#xA;this.add(fFigureSetRelationshipComplementLinkRoleNameFigure);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureSetRelationshipComplementLinkRoleNameFigure() {&#xA;&#x9;&#x9;return fFigureSetRelationshipComplementLinkRoleNameFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGURESETRELATIONSHIPCOMPLEMENTLINKROLENAMEFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 8, org.eclipse.swt.SWT.NORMAL);&#xA;&#xA;">
         <attributes
             xsi:type="gmfgen:StyleAttributes"
             fixedForeground="true"/>
@@ -3060,7 +3057,7 @@
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap
             xsi:type="gmfgen:ParentAssignedViewmap"
-            getterName="getFigureSetRelationshipRoleNameFigure"
+            getterName="getFigureSetRelationshipComplementLinkRoleNameFigure"
             figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel">
           <attributes
               xsi:type="gmfgen:StyleAttributes"
@@ -3068,15 +3065,14 @@
               fixedForeground="true"/>
           <attributes
               xsi:type="gmfgen:LabelOffsetAttributes"
-              y="40"/>
+              y="10"/>
         </viewmap>
         <modelFacet
-            xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.55"/>
+            parser="//@labelParsers/@implementations.20"/>
       </labels>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.93"
-          targetEnd="//@expressionProviders/@providers.0/@expressions.94"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.89"
+          targetEnd="//@expressionProviders/@providers.0/@expressions.90"/>
     </links>
     <links
         visualID="4008"
@@ -3103,7 +3099,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleGeneralization/supertype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.95"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.91"/>
     </links>
     <links
         visualID="4009"
@@ -3130,7 +3126,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleGeneralization/subtype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.96"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.92"/>
     </links>
     <links
         visualID="4011"
@@ -3157,7 +3153,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleSpecialization/supertype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.97"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.93"/>
     </links>
     <links
         visualID="4012"
@@ -3184,7 +3180,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleSpecialization/subtype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.98"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.94"/>
     </links>
     <links
         visualID="4019"
@@ -3211,7 +3207,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/BinaryGeneralization/supertype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.99"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.95"/>
     </links>
     <links
         visualID="4020"
@@ -3238,7 +3234,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/BinaryGeneralization/subtype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.100"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.96"/>
     </links>
     <compartments
         visualID="7003"
@@ -3908,34 +3904,26 @@
           xsi:type="gmfgen:GenConstraint"
           body="self.potency &lt;> 0 and self.level &lt; oppositeEnd.level and self.instantiable"/>
       <expressions
-          body="'base'"/>
-      <expressions
           xsi:type="gmfgen:GenConstraint"
-          body="if (oppositeEnd.oclIsTypeOf(Inversion)) then&#xD;&#xA;&#x9;self.oclIsTypeOf(Connection)&#xD;&#xA;--all other SetRelationships connect Entities&#xD;&#xA;else&#xD;&#xA;&#x9;self.oclIsTypeOf(Entity)&#xD;&#xA;endif"/>
-      <expressions
-          body="'equal'"/>
+          body="if (oppositeEnd.oclIsTypeOf(Inversion)) then&#xD;&#xA;&#x9;self.oclIsTypeOf(Connection) and self &lt;> oppositeEnd.oclAsType(Inversion).inverse&#xD;&#xA;--all other SetRelationships connect Entities&#xD;&#xA;else&#xD;&#xA;&#x9;if (oppositeEnd.oclIsTypeOf(Equality)) then&#xD;&#xA;&#x9;&#x9;self.oclIsTypeOf(Entity) and self &lt;> oppositeEnd.oclAsType(Equality).equal&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;self.oclIsTypeOf(Entity) and self&lt;> oppositeEnd.oclAsType(Complement).complement&#xD;&#xA;&#x9;endif&#xD;&#xA;endif"/>
       <expressions
           xsi:type="gmfgen:GenConstraint"
           body="self.oclIsTypeOf(Equality)"/>
       <expressions
           xsi:type="gmfgen:GenConstraint"
-          body="self.oclIsTypeOf(Entity)"/>
-      <expressions
-          body="'inverse'"/>
+          body="self.oclIsTypeOf(Entity) and self &lt;> oppositeEnd.base"/>
       <expressions
           xsi:type="gmfgen:GenConstraint"
           body="self.oclIsTypeOf(Inversion)"/>
       <expressions
           xsi:type="gmfgen:GenConstraint"
-          body="self.oclIsTypeOf(Connection)"/>
-      <expressions
-          body="'complement'"/>
+          body="self.oclIsTypeOf(Connection) and self &lt;> oppositeEnd.base"/>
       <expressions
           xsi:type="gmfgen:GenConstraint"
           body="self.oclIsTypeOf(Complement)"/>
       <expressions
           xsi:type="gmfgen:GenConstraint"
-          body="self.oclIsTypeOf(Entity)"/>
+          body="self.oclIsTypeOf(Entity) and self &lt;> oppositeEnd.base"/>
       <expressions
           xsi:type="gmfgen:GenConstraint"
           body="self.oclIsTypeOf(MultipleGeneralization)"/>
@@ -4118,7 +4106,7 @@
     </implementations>
     <implementations
         xsi:type="gmfgen:ExternalParser"
-        uses="//@diagram/@childNodes.8/@labels.0/@modelFacet //@diagram/@childNodes.12/@labels.0/@modelFacet //@diagram/@links.0/@labels.0/@modelFacet //@diagram/@links.0/@labels.1/@modelFacet"/>
+        uses="//@diagram/@childNodes.8/@labels.0/@modelFacet //@diagram/@childNodes.12/@labels.0/@modelFacet //@diagram/@links.0/@labels.0/@modelFacet //@diagram/@links.0/@labels.1/@modelFacet //@diagram/@links.2/@labels.0/@modelFacet //@diagram/@links.3/@labels.0/@modelFacet //@diagram/@links.4/@labels.0/@modelFacet //@diagram/@links.5/@labels.0/@modelFacet"/>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.11/@labels.0/@modelFacet"
@@ -4366,34 +4354,6 @@
         viewExpression="//@expressionProviders/@providers.0/@expressions.81">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Ontology"/>
-    </implementations>
-    <implementations
-        xsi:type="gmfgen:ExpressionLabelParser"
-        uses="//@diagram/@links.2/@labels.0/@modelFacet"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.84">
-      <expressionContext
-          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/SetRelationship"/>
-    </implementations>
-    <implementations
-        xsi:type="gmfgen:ExpressionLabelParser"
-        uses="//@diagram/@links.3/@labels.0/@modelFacet"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.86">
-      <expressionContext
-          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Equality"/>
-    </implementations>
-    <implementations
-        xsi:type="gmfgen:ExpressionLabelParser"
-        uses="//@diagram/@links.4/@labels.0/@modelFacet"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.89">
-      <expressionContext
-          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Inversion"/>
-    </implementations>
-    <implementations
-        xsi:type="gmfgen:ExpressionLabelParser"
-        uses="//@diagram/@links.5/@labels.0/@modelFacet"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.92">
-      <expressionContext
-          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Complement"/>
     </implementations>
   </labelParsers>
   <contextMenus
