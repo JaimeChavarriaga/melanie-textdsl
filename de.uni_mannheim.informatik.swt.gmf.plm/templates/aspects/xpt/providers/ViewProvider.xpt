@@ -49,7 +49,7 @@
 		
 		if (parent != null && parent instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer)
 		{
-			if (((de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer)parent).getShowRenderer().equals("NONE"))
+			if (((de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer)parent).getShowRenderer().equalsIgnoreCase("none"))
 				node.setVisible(false);
 		}
 		

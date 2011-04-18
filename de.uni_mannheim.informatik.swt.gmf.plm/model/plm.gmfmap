@@ -1402,6 +1402,14 @@
   <links>
     <domainMetaElement
         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Instantiation"/>
+    <labelMappings
+        xsi:type="gmfmap:ExpressionLabelMapping"
+        readOnly="true">
+      <diagramLabel
+          href="plm.gmfgraph#InstantiationTypeNameLabel"/>
+      <viewExpression
+          body="'isonym'"/>
+    </labelMappings>
     <containmentFeature
         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/children"/>
     <tool
