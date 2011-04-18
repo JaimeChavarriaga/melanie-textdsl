@@ -199,8 +199,8 @@
 		
 		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Element)
 		{
-			if (changedFeature.getName().equals("elided")|| 
-				changedFeature.getName().equals("expressed"))
+			if (changedFeature.getName().equalsIgnoreCase("elided")|| 
+				changedFeature.getName().equalsIgnoreCase("expressed"))
 			{
 				updateView(false);
 			}
@@ -744,9 +744,9 @@
 						org.eclipse.gmf.runtime.notation.Shape s = (org.eclipse.gmf.runtime.notation.Shape) obj;
 
 						if (s.getElement() == e) {
-							if (model.getOrigin().equals("OriginOptions::Expressed") && e.isExpressed()
-									|| model.getOrigin().equals("OriginOptions::Computed") && !e.isExpressed()
-									|| model.getOrigin().equals("OriginOptions::All"))
+							if (model.getOrigin().equalsIgnoreCase("expressed") && e.isExpressed()
+									|| model.getOrigin().equalsIgnoreCase("computed") && !e.isExpressed()
+									|| model.getOrigin().equalsIgnoreCase("all"))
 								s.setVisible(true);
 							else
 								s.setVisible(false);
@@ -794,8 +794,8 @@
 						org.eclipse.gmf.runtime.notation.Node s = (org.eclipse.gmf.runtime.notation.Node) obj;
 
 						if (s.getElement() == c) {
-							if (model.getCompletness().equals(
-									"CompletnessOptions::NoElision")
+							if (model.getCompletness().equalsIgnoreCase(
+									"NoElision")
 									&& c.isElided())
 								s.setVisible(false);
 							else
@@ -854,7 +854,7 @@
 						
 						if (n.getElement() == r)
 						{
-							if (container.getShowRenderer().equals("NONE"))
+							if (container.getShowRenderer().equalsIgnoreCase("none"))
 								n.setVisible(false);
 							else
 								n.setVisible(true);
@@ -995,7 +995,7 @@
 			performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
 
 			if (clab.eContainer() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Model 
-					&& ((de.uni_mannheim.informatik.swt.models.plm.PLM.Model)clab.eContainer()).getCompletness().equalsIgnoreCase("CompletnessOptions::NoElision"))
+					&& ((de.uni_mannheim.informatik.swt.models.plm.PLM.Model)clab.eContainer()).getCompletness().equalsIgnoreCase("noelision"))
 				getNotationView().setVisible(false);
 		}
 		//We only need to revert the elision if we have done it when the editor was open
