@@ -2788,7 +2788,8 @@
           editPartClassName="WrappingLabel53EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel53ItemSemanticEditPolicy"
           notationViewFactoryClassName="ConnectionParticipantLabelViewFactory"
-          readOnly="true">
+          readOnly="true"
+          alignment="SOURCE">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap
@@ -2801,7 +2802,8 @@
               fixedForeground="true"/>
           <attributes
               xsi:type="gmfgen:LabelOffsetAttributes"
-              y="40"/>
+              x="-10"
+              y="-10"/>
         </viewmap>
         <modelFacet
             parser="//@labelParsers/@implementations.20"/>
@@ -2824,7 +2826,8 @@
               fixedFont="true"/>
           <attributes
               xsi:type="gmfgen:LabelOffsetAttributes"
-              y="60"/>
+              x="10"
+              y="10"/>
         </viewmap>
         <modelFacet
             parser="//@labelParsers/@implementations.20"/>
@@ -2882,6 +2885,7 @@
               fixedForeground="true"/>
           <attributes
               xsi:type="gmfgen:LabelOffsetAttributes"
+              x="10"
               y="10"/>
         </viewmap>
         <modelFacet
@@ -3764,7 +3768,7 @@
       <expressions
           body="Sequence{0,0}"/>
       <expressions
-          body="Sequence{1,1}"/>
+          body="Sequence{-1,-1}"/>
       <expressions
           body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= min'))->append('collapsed= false')"/>
       <expressions

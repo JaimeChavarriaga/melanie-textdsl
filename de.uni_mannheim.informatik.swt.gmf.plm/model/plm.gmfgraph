@@ -1735,7 +1735,14 @@
       name="ConnectionParticipantFigureName"
       figure="ConnectionParticipantsFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.11/@accessors.0"/>
+      accessor="//@figures.0/@descriptors.11/@accessors.0">
+    <facets
+        xsi:type="gmfgraph:AlignmentFacet"/>
+    <facets
+        xsi:type="gmfgraph:LabelOffsetFacet"
+        x="-10"
+        y="-10"/>
+  </labels>
   <labels
       name="ConnectionParticipantMultiplicity"
       figure="ConnectionParticipantsFigure"
@@ -1743,6 +1750,10 @@
       accessor="//@figures.0/@descriptors.11/@accessors.1">
     <facets
         xsi:type="gmfgraph:AlignmentFacet"/>
+    <facets
+        xsi:type="gmfgraph:LabelOffsetFacet"
+        x="10"
+        y="10"/>
   </labels>
   <labels
       name="MultipleSpecializationName"
@@ -1845,6 +1856,7 @@
         alignment="END"/>
     <facets
         xsi:type="gmfgraph:LabelOffsetFacet"
+        x="10"
         y="10"/>
   </labels>
 </gmfgraph:Canvas>
