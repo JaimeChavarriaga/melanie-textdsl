@@ -16,6 +16,18 @@ main() {
 				->select(c | c.editPartClassName = "OntologyModelCompartmentEditPart")->first()
 				.listLayout := true;
 	
+	gmfgenModel.objectsOfType(GenCompartment)->asOrderedSet()
+				->select(c | c.editPartClassName.find("Attributes") > 0)->forEach(comp)
+				{
+					comp.listLayout := true;
+				};
+	
+	gmfgenModel.objectsOfType(GenCompartment)->asOrderedSet()
+				->select(c | c.editPartClassName.find("Methods") > 0)->forEach(comp)
+				{
+					comp.listLayout := true;
+				};
+	
 	--Setup the GenEditorGenerator
 	this.genEditorGenerator := gmfgenModel.objectsOfType(GenEditorGenerator)->asOrderedSet()->first();
 	genEditorGenerator.sameFileForDiagramAndModel := true;
