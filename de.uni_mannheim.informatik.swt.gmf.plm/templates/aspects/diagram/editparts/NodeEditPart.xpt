@@ -827,6 +827,8 @@
 			helper.setContext(de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.Literals.ONTOLOGY);
 			«ELSEIF self.editPartClassName = 'EntityEditPart'»
 			helper.setContext(de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.Literals.ENTITY);
+			«ELSEIF self.editPartClassName = 'ConnectionEditPart'»
+			helper.setContext(de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.Literals.CONNECTION);
 			«ENDIF»
 			
 			try 

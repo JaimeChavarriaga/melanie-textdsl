@@ -285,7 +285,6 @@
       <actualFigure
           xsi:type="gmfgraph:Rectangle"
           name="AttributeFigure"
-          outline="false"
           fill="false">
         <layout
             xsi:type="gmfgraph:FlowLayout"
@@ -298,7 +297,6 @@
         <children
             xsi:type="gmfgraph:Rectangle"
             name="InnerRectangle"
-            outline="false"
             fill="false">
           <layout
               xsi:type="gmfgraph:GridLayout"
@@ -311,7 +309,6 @@
           <children
               xsi:type="gmfgraph:Rectangle"
               name="left"
-              outline="false"
               fill="false">
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
@@ -366,7 +363,6 @@
           <children
               xsi:type="gmfgraph:Rectangle"
               name="right"
-              outline="false"
               fill="false">
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
