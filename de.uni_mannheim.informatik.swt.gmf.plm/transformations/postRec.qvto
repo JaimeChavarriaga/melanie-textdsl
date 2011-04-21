@@ -11,6 +11,19 @@ property genDiagram: GenDiagram = null;
  
 main() {
 	
+	--*************************************************************************************
+	--TODO
+	--Needed for Attribute/Method Resize when renderers are shown/hidden
+	--*************************************************************************************
+	--gmfgenModel.objectsOfType(GenChildNode)->asOrderedSet()
+	--			->select(c | c.editPartClassName.startsWith("Attribute"))->forEach(node)
+	--			{
+	--				var defaultSize := new DefaultSizeAttributes();
+	--				defaultSize.height := 22;
+	--				defaultSize.width := 0;
+	--				node.viewmap.attributes->insertAt(0, defaultSize);
+	--			};
+	
 	--Set ListLayout for Model(Clabject) Compartment
 	gmfgenModel.objectsOfType(GenCompartment)->asOrderedSet()
 				->select(c | c.editPartClassName = "OntologyModelCompartmentEditPart")->first()
@@ -28,6 +41,8 @@ main() {
 					comp.listLayout := true;
 				};
 	
+	
+	
 	--Setup the GenEditorGenerator
 	this.genEditorGenerator := gmfgenModel.objectsOfType(GenEditorGenerator)->asOrderedSet()->first();
 	genEditorGenerator.sameFileForDiagramAndModel := true;
@@ -43,6 +58,7 @@ main() {
 	genDiagram.validationDecorators := true;
 	genDiagram.validationProviderPriority := ProviderPriority::Medium;
 	genDiagram.validationDecoratorProviderPriority := ProviderPriority::Medium;
+	genDiagram.creationWizardCategoryID := "de.uni_mannheim.informatik.swt.lmlcategory";
 	
 	--Setup the GenPlugin
 	this.genPlugIn := gmfgenModel.objectsOfType(GenPlugin)->asOrderedSet()->first();
