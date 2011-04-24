@@ -11,18 +11,16 @@ property genDiagram: GenDiagram = null;
  
 main() {
 	
-	--*************************************************************************************
-	--TODO
 	--Needed for Attribute/Method Resize when renderers are shown/hidden
-	--*************************************************************************************
-	--gmfgenModel.objectsOfType(GenChildNode)->asOrderedSet()
-	--			->select(c | c.editPartClassName.startsWith("Attribute"))->forEach(node)
-	--			{
-	--				var defaultSize := new DefaultSizeAttributes();
-	--				defaultSize.height := 22;
-	--				defaultSize.width := 0;
-	--				node.viewmap.attributes->insertAt(0, defaultSize);
-	--			};
+	gmfgenModel.objectsOfType(GenChildNode)->asOrderedSet()
+		->select(c | c.editPartClassName.startsWith("Attribute") 
+			or c.editPartClassName.startsWith("Method"))->forEach(node)
+		{
+			var defaultSize := new DefaultSizeAttributes();
+			defaultSize.height := 22;
+			defaultSize.width := 0;
+			node.viewmap.attributes := Sequence {defaultSize};
+		};
 	
 	--Set ListLayout for Model(Clabject) Compartment
 	gmfgenModel.objectsOfType(GenCompartment)->asOrderedSet()
