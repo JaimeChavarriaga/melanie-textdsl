@@ -195,7 +195,8 @@ main() {
 	--fix BUG 331875
 	gmfgenModel.objectsOfType(ExpressionLabelParser)->forEach(parser)
 	{
-		parser.className := parser.className.concat(parser._uses->first().container().oclAsType(GenNodeLabel).visualID.toString());
+		
+		parser.className := parser.className.concat(parser._uses->first().container().oclAsType(GenCommonBase).visualID.toString());
 	};
 }
 

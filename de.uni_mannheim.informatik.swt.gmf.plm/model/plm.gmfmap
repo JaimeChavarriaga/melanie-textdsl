@@ -1406,9 +1406,17 @@
         xsi:type="gmfmap:ExpressionLabelMapping"
         readOnly="true">
       <diagramLabel
+          href="plm.gmfgraph#InstantiationBlueprintNameLabel"/>
+      <viewExpression
+          body="if (self.instantiationType = InstantiationType::blueprint) then&#xD;&#xA;&#x9;'blueprint'&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
+    </labelMappings>
+    <labelMappings
+        xsi:type="gmfmap:ExpressionLabelMapping"
+        readOnly="true">
+      <diagramLabel
           href="plm.gmfgraph#InstantiationTypeNameLabel"/>
       <viewExpression
-          body="'isonym'"/>
+          body="if (self.instantiationType = InstantiationType::blueprint or self.instantiationType = InstantiationType::isonym) then&#xD;&#xA;&#x9;'isonym'&#xD;&#xA;else&#xD;&#xA;&#x9;'hyponym'&#xD;&#xA;endif"/>
     </labelMappings>
     <containmentFeature
         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/children"/>
