@@ -11,7 +11,7 @@ property genDiagram: GenDiagram = null;
  
 main() {
 	
-	--Needed for Attribute/Method Resize when renderers are shown/hidden
+	--Needed for Attribute/Method Resize when renderers are shown/hidden Bug 344104
 	gmfgenModel.objectsOfType(GenChildNode)->asOrderedSet()
 		->select(c | c.editPartClassName.startsWith("Attribute") 
 			or c.editPartClassName.startsWith("Method"))->forEach(node)
@@ -195,7 +195,6 @@ main() {
 	--fix BUG 331875
 	gmfgenModel.objectsOfType(ExpressionLabelParser)->forEach(parser)
 	{
-		
 		parser.className := parser.className.concat(parser._uses->first().container().oclAsType(GenCommonBase).visualID.toString());
 	};
 }
