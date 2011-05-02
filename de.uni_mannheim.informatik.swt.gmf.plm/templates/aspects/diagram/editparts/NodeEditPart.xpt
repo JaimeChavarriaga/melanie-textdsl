@@ -132,8 +132,8 @@
 			//****************************************************************************
 			//Set multiplicity
 			//****************************************************************************
-			//can we assume default lower = 0 and default upper = 1?
-			int lower = 0, upper = 1;
+			//can we assume default lower = 0 and default upper = -1
+			int lower = 0, upper = -1;
 
 			if (self.getLower().size() > i - numberNonParticipantConnection)
 				lower = self.getLower().get(i - numberNonParticipantConnection);
@@ -143,7 +143,7 @@
 			//now set the string
 			String multiplicity = "";
 			if (lower == upper)
-				multiplicity = upper;
+				multiplicity = "" + upper;
 			else if (lower != upper && upper > 0)
 				multiplicity = lower + ".." + upper;
 			else if (lower == 0 && upper == -1)
