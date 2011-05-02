@@ -142,15 +142,15 @@
 
 			//now set the string
 			String multiplicity = "";
-			if (lower == 0 && upper == 1)
-				;//Do nothing
-			else if (upper > 0)
+			if (lower == upper)
+				multiplicity = upper;
+			else if (lower != upper && upper > 0)
 				multiplicity = lower + ".." + upper;
 			else if (lower == 0 && upper == -1)
-				multiplicity = "*";
+				multiplicity = "";
 			else if (upper == -1)
 				multiplicity = lower + "..n";
-
+			
 			//get the label to set
 			ConnectionParticipantEditPart connection = (ConnectionParticipantEditPart) sourceConnections
 					.get(i);
