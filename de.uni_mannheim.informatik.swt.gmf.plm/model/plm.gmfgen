@@ -228,7 +228,8 @@
         itemSemanticEditPolicyClassName="ConnectionItemSemanticEditPolicy"
         notationViewFactoryClassName="ConnectionViewFactory"
         canonicalEditPolicyClassName="ConnectionCanonicalEditPolicy"
-        compartments="//@diagram/@compartments.2 //@diagram/@compartments.3 //@diagram/@compartments.4"
+        childNodes="//@diagram/@childNodes.7"
+        compartments="//@diagram/@compartments.2 //@diagram/@compartments.3"
         graphicalNodeEditPolicyClassName="ConnectionGraphicalNodeEditPolicy"
         createCommandClassName="ConnectionCreateCommand"
         containers="//@diagram/@compartments.1">
@@ -858,7 +859,7 @@
         canonicalEditPolicyClassName="Renderer4CanonicalEditPolicy"
         graphicalNodeEditPolicyClassName="Renderer4GraphicalNodeEditPolicy"
         createCommandClassName="Renderer4CreateCommand"
-        containers="//@diagram/@compartments.4">
+        containers="//@diagram/@childNodes.2">
       <diagramRunTimeClass
           href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
       <elementType
@@ -1959,7 +1960,7 @@
         notationViewFactoryClassName="EntityViewFactory"
         canonicalEditPolicyClassName="EntityCanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.25"
-        compartments="//@diagram/@compartments.5 //@diagram/@compartments.6"
+        compartments="//@diagram/@compartments.4 //@diagram/@compartments.5"
         graphicalNodeEditPolicyClassName="EntityGraphicalNodeEditPolicy"
         createCommandClassName="EntityCreateCommand"
         containers="//@diagram/@compartments.1">
@@ -2095,7 +2096,7 @@
         childNodes="//@diagram/@childNodes.22"
         graphicalNodeEditPolicyClassName="Attribute2GraphicalNodeEditPolicy"
         createCommandClassName="Attribute2CreateCommand"
-        containers="//@diagram/@compartments.5">
+        containers="//@diagram/@compartments.4">
       <diagramRunTimeClass
           href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
       <elementType
@@ -2330,7 +2331,7 @@
         childNodes="//@diagram/@childNodes.24"
         graphicalNodeEditPolicyClassName="Method2GraphicalNodeEditPolicy"
         createCommandClassName="Method2CreateCommand"
-        containers="//@diagram/@compartments.6">
+        containers="//@diagram/@compartments.5">
       <diagramRunTimeClass
           href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
       <elementType
@@ -3379,23 +3380,6 @@
           xsi:type="gmfgen:InnerClassViewmap"
           className="EntityCompartmentFigure"
           classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class EntityCompartmentFigure extends org.eclipse.draw2d.RectangleFigure {&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public EntityCompartmentFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setFill(false);&#xA;this.setOutline(false);&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
-    </compartments>
-    <compartments
-        visualID="7026"
-        editPartClassName="ConnectionRenderersCompartmentEditPart"
-        itemSemanticEditPolicyClassName="ConnectionRenderersCompartmentItemSemanticEditPolicy"
-        notationViewFactoryClassName="ConnectionRenderersCompartmentViewFactory"
-        canonicalEditPolicyClassName="ConnectionRenderersCompartmentCanonicalEditPolicy"
-        childNodes="//@diagram/@childNodes.7"
-        title="RenderersCompartment"
-        needsTitle="false"
-        node="//@diagram/@childNodes.2">
-      <diagramRunTimeClass
-          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
-      <viewmap
-          xsi:type="gmfgen:InnerClassViewmap"
-          className="RendererCompartmentFigure"
-          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class RendererCompartmentFigure extends org.eclipse.draw2d.RectangleFigure {&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public RendererCompartmentFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setFill(false);&#xA;this.setOutline(false);&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
     </compartments>
     <compartments
         visualID="7024"
