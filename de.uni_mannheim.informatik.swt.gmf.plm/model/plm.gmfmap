@@ -1411,7 +1411,7 @@
       <diagramLabel
           href="plm.gmfgraph#InstantiationTypeNameLabel"/>
       <viewExpression
-          body="if (self.instantiationType = InstantiationType::blueprint or self.instantiationType = InstantiationType::isonym) then&#xD;&#xA;&#x9;'isonym'&#xD;&#xA;else&#xD;&#xA;&#x9;'hyponym'&#xD;&#xA;endif"/>
+          body="if (self.instantiationType = InstantiationType::isonym) then&#xD;&#xA;&#x9;'isonym'&#xD;&#xA;else&#xD;&#xA;       if (self.instantiationType = InstantiationType::hyponym) then&#xD;&#xA;&#x9;&#x9;'hyponym'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;'offspring'&#xD;&#xA;&#x9;endif&#xD;&#xA;endif"/>
     </labelMappings>
     <containmentFeature
         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/children"/>
