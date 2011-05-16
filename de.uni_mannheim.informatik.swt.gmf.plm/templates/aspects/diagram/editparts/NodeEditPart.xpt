@@ -601,7 +601,24 @@
 		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Feature 
 				&& ((org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature()).getName().equals("expressed"))
 		{
-			
+			org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart parent = (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)getParent();
+			de.uni_mannheim.informatik.swt.models.plm.PLM.Element self = (de.uni_mannheim.informatik.swt.models.plm.PLM.Element) resolveSemanticElement();
+		
+			//Check is visible
+			if (parent.resolveSemanticElement() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer)
+			{
+				de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer container = (de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer)parent.resolveSemanticElement();
+				if ((container.getOrigin().equalsIgnoreCase("computed") && self.isExpressed())
+						|| (container.getOrigin().equalsIgnoreCase("expressed") && !self.isExpressed()))
+				{
+					getNotationView().setVisible(false);
+				}
+			}
+			else
+			{
+				getNotationView().setVisible(true);
+			}
+				
 			de.uni_mannheim.informatik.swt.models.plm.PLM.Feature f = (de.uni_mannheim.informatik.swt.models.plm.PLM.Feature)resolveSemanticElement();
 			if (f.isExpressed())
 			{
@@ -692,6 +709,23 @@
 		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Feature 
 				&& ((org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature()).getName().equals("expressed"))
 		{
+			org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart parent = (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)getParent();
+			de.uni_mannheim.informatik.swt.models.plm.PLM.Element self = (de.uni_mannheim.informatik.swt.models.plm.PLM.Element) resolveSemanticElement();
+			
+			//Check is visible
+			if (parent.resolveSemanticElement() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer)
+			{
+				de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer container = (de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer)parent.resolveSemanticElement();
+				if ((container.getOrigin().equalsIgnoreCase("computed") && self.isExpressed())
+						|| (container.getOrigin().equalsIgnoreCase("expressed") && !self.isExpressed()))
+				{
+					getNotationView().setVisible(false);
+				}
+			}
+			else
+			{
+				getNotationView().setVisible(true);
+			}
 			
 			de.uni_mannheim.informatik.swt.models.plm.PLM.Feature f = (de.uni_mannheim.informatik.swt.models.plm.PLM.Feature)resolveSemanticElement();
 			if (f.isExpressed())
@@ -730,6 +764,27 @@
 					de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology ont = (de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology)m.eContainer();
 					c.setLevel(ont.getContent().indexOf(m));
 				}
+			}
+		}
+		if(notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Model
+			&& ((org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature()).getName().equals("expressed"))
+		{
+			org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart parent = (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)getParent();
+			de.uni_mannheim.informatik.swt.models.plm.PLM.Element self = (de.uni_mannheim.informatik.swt.models.plm.PLM.Element) resolveSemanticElement();
+			
+			//Check is visible
+			if (parent.resolveSemanticElement() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer)
+			{
+				de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer container = (de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer)parent.resolveSemanticElement();
+				if ((container.getOrigin().equalsIgnoreCase("computed") && self.isExpressed())
+						|| (container.getOrigin().equalsIgnoreCase("expressed") && !self.isExpressed()))
+				{
+					getNotationView().setVisible(false);
+				}
+			}
+			else
+			{
+				getNotationView().setVisible(true);
 			}
 		}
 		else if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Model && 
