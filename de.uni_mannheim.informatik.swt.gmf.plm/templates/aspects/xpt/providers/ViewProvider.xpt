@@ -35,6 +35,15 @@
 		«EXPAND initLabel('node', 'prefStore') FOREACH labels-»
 		«EXPAND initCompartment('node', 'prefStore') FOREACH compartments-»
 		
+		//Ontology renderers are the only one effected by their direct container
+		if (domainElement.eContainer() != null && domainElement.eContainer() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology)
+		{
+			if (((de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer)domainElement.eContainer()).getShowRenderer().equalsIgnoreCase("none"))
+				node.setVisible(false);
+				
+			return node;
+		}
+		
 		//Code to determine visibility
 		org.eclipse.emf.ecore.EObject parent = domainElement.eContainer();
 		
@@ -47,7 +56,7 @@
 				break;
 		}
 		
-		if (parent != null && parent instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer)
+		if ((parent != null) && parent instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer)
 		{
 			if (((de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer)parent).getShowRenderer().equalsIgnoreCase("none"))
 				node.setVisible(false);

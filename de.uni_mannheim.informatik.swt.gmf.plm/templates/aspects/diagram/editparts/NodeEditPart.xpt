@@ -836,7 +836,7 @@
 			    «IF self.editPartClassName = 'ModelEditPart'»
 				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.content->collect(c | c.renderer)");
 				«ELSEIF self.editPartClassName = 'OntologyEditPart'»
-				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.content->collect(c | c.renderer)");
+				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.content->collect(c | c.renderer)->union(self.renderer->collect(r|r))");
 				«ELSEIF self.editPartClassName = 'EntityEditPart'»
 				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.features->collect(f | f.renderer)");
 				«ELSEIF self.editPartClassName = 'ConnectionEditPart'»
