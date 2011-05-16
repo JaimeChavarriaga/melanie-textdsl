@@ -256,6 +256,11 @@
 			{
 				«EXPAND showHideRenderers FOR self»
 			}
+			else if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer && 
+				((org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature()).getName().equals("origin")) 
+			{
+				«EXPAND ShowHideExpressed FOR self»
+			}
 			«ENDIF»
 		}
 	}
@@ -713,51 +718,7 @@
 			&& ((org.eclipse.emf.ecore.EStructuralFeature) notification.getFeature()).getName()
 					.equals("origin")) 
 		{
-			de.uni_mannheim.informatik.swt.models.plm.PLM.Element[] elements = new de.uni_mannheim.informatik.swt.models.plm.PLM.Element[] {};
-			de.uni_mannheim.informatik.swt.models.plm.PLM.Model model = (de.uni_mannheim.informatik.swt.models.plm.PLM.Model)resolveSemanticElement();
-			
-			//find all renderers in the model
-			org.eclipse.ocl.ecore.OCL ocl = org.eclipse.ocl.ecore.OCL
-					.newInstance();
-			org.eclipse.ocl.helper.OCLHelper<org.eclipse.emf.ecore.EClassifier, ?, ?, org.eclipse.ocl.ecore.Constraint> helper = ocl
-					.createOCLHelper();
-			helper.setContext(de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.Literals.MODEL);
-
-			try {
-				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.content");
-				
-				elements = ((java.util.HashSet<de.uni_mannheim.informatik.swt.models.plm.PLM.Element>) ocl
-						.evaluate(resolveSemanticElement(), q))
-						.toArray(new de.uni_mannheim.informatik.swt.models.plm.PLM.Element[] {});
-			} catch (org.eclipse.ocl.ParserException e) {
-				e.printStackTrace();
-			}
-
-			//find the notational elements for the renderers
-			for (de.uni_mannheim.informatik.swt.models.plm.PLM.Element e : elements) {
-				org.eclipse.emf.common.util.TreeIterator<org.eclipse.emf.ecore.EObject> iter = (getNotationView().eAllContents());
-
-				while (iter.hasNext()) {
-					org.eclipse.emf.ecore.EObject obj = iter.next();
-
-					if (obj instanceof org.eclipse.gmf.runtime.notation.Shape) {
-						org.eclipse.gmf.runtime.notation.Shape s = (org.eclipse.gmf.runtime.notation.Shape) obj;
-
-						if (s.getElement() == e) {
-							if (model.getOrigin().equalsIgnoreCase("expressed") && e.isExpressed()
-									|| model.getOrigin().equalsIgnoreCase("computed") && !e.isExpressed()
-									|| model.getOrigin().equalsIgnoreCase("all"))
-								s.setVisible(true);
-							else
-								s.setVisible(false);
-
-							break;
-						}
-					}
-				}
-			}
-			
-			performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
+			«EXPAND ShowHideExpressed FOR self»
 		}
 		else if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Model
 				&& ((org.eclipse.emf.ecore.EStructuralFeature) notification.getFeature()).getName()
@@ -812,6 +773,7 @@
 	}
 «ENDDEFINE»
 
+«/* Manages to show hide renderers when setting showRenderer trait */»
 «DEFINE showHideRenderers FOR gmfgen::GenNode»
 			de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer container = (de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer) notification.getNotifier();
 
@@ -880,6 +842,72 @@
 
 «ENDDEFINE»
 
+«/*Manages to show hide expressed when setting origin trait */»
+«DEFINE ShowHideExpressed FOR gmfgen::GenNode»
+	de.uni_mannheim.informatik.swt.models.plm.PLM.Element[] elements = new de.uni_mannheim.informatik.swt.models.plm.PLM.Element[] {};
+	de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer container = (de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer) resolveSemanticElement();
+	
+	//find all renderers in the model
+	org.eclipse.ocl.ecore.OCL ocl = org.eclipse.ocl.ecore.OCL
+			.newInstance();
+	org.eclipse.ocl.helper.OCLHelper<org.eclipse.emf.ecore.EClassifier, ?, ?, org.eclipse.ocl.ecore.Constraint> helper = ocl
+			.createOCLHelper();
+	
+	«IF self.editPartClassName = 'ModelEditPart'»
+	helper.setContext(de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.Literals.MODEL);
+	«ELSEIF self.editPartClassName = 'OntologyEditPart'»
+	helper.setContext(de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.Literals.ONTOLOGY);
+	«ELSEIF self.editPartClassName = 'EntityEditPart'»
+	helper.setContext(de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.Literals.ENTITY);
+	«ELSEIF self.editPartClassName = 'ConnectionEditPart'»
+	helper.setContext(de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.Literals.CONNECTION);
+	«ENDIF»
+
+	try {	
+		«IF self.editPartClassName = 'ModelEditPart'»
+		org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.content");
+		«ELSEIF self.editPartClassName = 'OntologyEditPart'»
+		org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.content");
+		«ELSEIF self.editPartClassName = 'EntityEditPart'»
+		org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.features");
+		«ELSEIF self.editPartClassName = 'ConnectionEditPart'»
+		org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.features");
+		«ENDIF»
+		
+		elements = ((java.util.HashSet<de.uni_mannheim.informatik.swt.models.plm.PLM.Element>) ocl
+				.evaluate(resolveSemanticElement(), q))
+				.toArray(new de.uni_mannheim.informatik.swt.models.plm.PLM.Element[] {});
+	} catch (org.eclipse.ocl.ParserException e) {
+		e.printStackTrace();
+	}
+
+	//find the notational elements for the renderers
+	for (de.uni_mannheim.informatik.swt.models.plm.PLM.Element e : elements) {
+		org.eclipse.emf.common.util.TreeIterator<org.eclipse.emf.ecore.EObject> iter = (getNotationView().eAllContents());
+
+		while (iter.hasNext()) {
+			org.eclipse.emf.ecore.EObject obj = iter.next();
+
+			if (obj instanceof org.eclipse.gmf.runtime.notation.Node) {
+				org.eclipse.gmf.runtime.notation.Node s = (org.eclipse.gmf.runtime.notation.Node) obj;
+
+				if (s.getElement() == e) {
+					if (container.getOrigin().equalsIgnoreCase("expressed") && e.isExpressed()
+							|| container.getOrigin().equalsIgnoreCase("computed") && !e.isExpressed()
+							|| container.getOrigin().equalsIgnoreCase("all"))
+						s.setVisible(true);
+					else
+						s.setVisible(false);
+
+					break;
+				}
+			}
+		}
+	}
+			
+	performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
+«ENDDEFINE»
+
 «DEFINE handleNotificationEventForRenderer FOR gmfgen::GenNode»
 	/**
 	 * @generated
@@ -915,6 +943,11 @@
 				((org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature()).getName().equals("showRenderer"))
 		{
 			«EXPAND showHideRenderers FOR self»
+		}
+		else if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer && 
+				((org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature()).getName().equals("origin")) 
+		{
+			«EXPAND ShowHideExpressed FOR self»
 		}
 	}
 «ENDDEFINE»
