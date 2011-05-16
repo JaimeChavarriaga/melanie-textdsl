@@ -297,19 +297,19 @@
 		«IF self.editPartClassName = 'ConnectionEditPart'»
 		//We can change expressed as long as connection is not elided and not toggled
 		if (!c.isElided() && (toggleValue == null || toggleValue == false))
-			setExpressedVisualState();
+			setExpressedVisualState(readOnlyContext);
 		«ELSEIF self.editPartClassName = 'EntityEditPart'»
 		//We can change expressed as long as connection is not elided and not toggled
 		if (!c.isElided())
-			setExpressedVisualState();
+			setExpressedVisualState(readOnlyContext);
 		«ELSEIF self.editPartClassName = 'ComplementEditPart'
 			or self.editPartClassName = 'EqualityEditPart'
 			or self.editPartClassName = 'InversionEditPart'»
-		setExpressedVisualState();
+		setExpressedVisualState(readOnlyContext);
 		«ELSE»
 		//We can change expressed as long as connection is not elided and not toggled
 		if ((toggleValue == null || toggleValue == false))
-			setExpressedVisualState();
+			setExpressedVisualState(readOnlyContext);
 		«ENDIF»
 	}
 «ENDDEFINE»
@@ -530,9 +530,32 @@
 	 * 
 	 * @generated
 	 */
-	private void setExpressedVisualState() {
+	private void setExpressedVisualState(boolean readOnlyTransaction) {
+		
+		org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart parent = (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)getParent();
 		de.uni_mannheim.informatik.swt.models.plm.PLM.Element self = (de.uni_mannheim.informatik.swt.models.plm.PLM.Element) resolveSemanticElement();
 
+		//Check is visible
+		if (parent.resolveSemanticElement() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer)
+		{
+			de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer container = (de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer)parent.resolveSemanticElement();
+			if ((container.getOrigin().equalsIgnoreCase("computed") && self.isExpressed())
+					|| (container.getOrigin().equalsIgnoreCase("expressed") && !self.isExpressed()))
+			{
+				if (!readOnlyTransaction)
+				{
+					getNotationView().setVisible(false);
+				}
+			}
+		}
+		else
+		{
+			if (!readOnlyTransaction)
+			{
+				getNotationView().setVisible(true);
+			}
+		}
+		
 		if (self.isExpressed()) {
 			«IF self.editPartClassName = 'EntityEditPart'
 				or self.editPartClassName = 'ComplementEditPart'
