@@ -462,7 +462,8 @@
                   </children>
                 </ownedChild>
               </children>
-              <children>
+              <children
+                  compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.1/@ownedChild/@compartments.2">
                 <containmentFeature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/renderer"/>
                 <ownedChild>
@@ -501,6 +502,11 @@
                   children="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.1/@ownedChild/@children.1">
                 <compartment
                     href="plm.gmfgraph#MethodsCompartment"/>
+              </compartments>
+              <compartments
+                  children="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.1/@ownedChild/@children.2">
+                <compartment
+                    href="plm.gmfgraph#RenderersCompartment"/>
               </compartments>
             </ownedChild>
           </children>
