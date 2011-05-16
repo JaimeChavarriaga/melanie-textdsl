@@ -690,7 +690,7 @@
 		super.handleNotificationEvent(notification);
 		
 		if(notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Model
-			&& ((org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature()).getName().equals("children"))
+			&& ((org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature()).getName().equals("content"))
 		{
 			if (notification.getNewValue() != null)
 			{
@@ -724,7 +724,7 @@
 			helper.setContext(de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.Literals.MODEL);
 
 			try {
-				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.children");
+				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.content");
 				
 				elements = ((java.util.HashSet<de.uni_mannheim.informatik.swt.models.plm.PLM.Element>) ocl
 						.evaluate(resolveSemanticElement(), q))
@@ -774,7 +774,7 @@
 
 			try {
 				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper
-						.createQuery("self.children->select(c | c.oclIsKindOf(Clabject))");
+						.createQuery("self.content->select(c | c.oclIsKindOf(Clabject))");
 
 				clabjects = ((java.util.HashSet<de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject>) ocl
 						.evaluate(resolveSemanticElement(), q))
@@ -833,7 +833,16 @@
 			
 			try 
 			{
-				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.children->collect(c | c.renderer)");
+			    «IF self.editPartClassName = 'ModelEditPart'»
+				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.content->collect(c | c.renderer)");
+				«ELSEIF self.editPartClassName = 'OntologyEditPart'»
+				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.content->collect(c | c.renderer)");
+				«ELSEIF self.editPartClassName = 'EntityEditPart'»
+				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.features->collect(f | f.renderer)");
+				«ELSEIF self.editPartClassName = 'ConnectionEditPart'»
+				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.features->collect(f | f.renderer)");
+				«ENDIF»
+				
 				renderers = ((java.util.ArrayList<de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer>) ocl.evaluate(resolveSemanticElement(), q)).toArray(new de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer[] {});
 			}
 			catch (org.eclipse.ocl.ParserException e) 
