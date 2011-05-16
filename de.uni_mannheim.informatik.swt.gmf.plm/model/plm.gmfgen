@@ -53,7 +53,7 @@
     <domainDiagramElement
         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLModel"/>
     <childNodes
-        visualID="3029"
+        visualID="3059"
         editPartClassName="ModelEditPart"
         itemSemanticEditPolicyClassName="ModelItemSemanticEditPolicy"
         notationViewFactoryClassName="ModelViewFactory"
@@ -80,9 +80,9 @@
         <metaClass
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model"/>
         <containmentMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Ontology/children"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Ontology/content"/>
         <childMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Ontology/children"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Ontology/content"/>
         <modelElementInitializer
             xsi:type="gmfgen:GenFeatureSeqInitializer">
           <initializers
@@ -107,7 +107,7 @@
         </modelElementInitializer>
       </modelFacet>
       <labels
-          visualID="5082"
+          visualID="5191"
           editPartClassName="ModelNameEditPart"
           itemSemanticEditPolicyClassName="ModelNameItemSemanticEditPolicy"
           notationViewFactoryClassName="ModelNameViewFactory">
@@ -129,7 +129,7 @@
         </modelFacet>
       </labels>
       <labels
-          visualID="5097"
+          visualID="5192"
           editPartClassName="WrappingLabel2EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel2ItemSemanticEditPolicy"
           notationViewFactoryClassName="ModelLabelViewFactory"
@@ -223,7 +223,7 @@
       </labels>
     </childNodes>
     <childNodes
-        visualID="3053"
+        visualID="3060"
         editPartClassName="ConnectionEditPart"
         itemSemanticEditPolicyClassName="ConnectionItemSemanticEditPolicy"
         notationViewFactoryClassName="ConnectionViewFactory"
@@ -251,9 +251,9 @@
         <metaClass
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Connection"/>
         <containmentMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/children"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/content"/>
         <childMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/children"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/content"/>
         <modelElementInitializer
             xsi:type="gmfgen:GenFeatureSeqInitializer">
           <initializers
@@ -302,7 +302,7 @@
         </modelElementInitializer>
       </modelFacet>
       <labels
-          visualID="5134"
+          visualID="5162"
           editPartClassName="WrappingLabel5EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel5ItemSemanticEditPolicy"
           notationViewFactoryClassName="ConnectionLabelViewFactory">
@@ -322,7 +322,7 @@
       </labels>
       <labels
           xsi:type="gmfgen:GenExternalNodeLabel"
-          visualID="5135"
+          visualID="5163"
           editPartClassName="ConnectionNameEditPart"
           itemSemanticEditPolicyClassName="ConnectionNameItemSemanticEditPolicy"
           notationViewFactoryClassName="ConnectionNameViewFactory">
@@ -344,7 +344,7 @@
         </modelFacet>
       </labels>
       <labels
-          visualID="5136"
+          visualID="5164"
           editPartClassName="WrappingLabel6EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel6ItemSemanticEditPolicy"
           notationViewFactoryClassName="ConnectionLabelViewFactory">
@@ -363,7 +363,7 @@
             parser="//@labelParsers/@implementations.15"/>
       </labels>
       <labels
-          visualID="5137"
+          visualID="5165"
           editPartClassName="WrappingLabel7EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel7ItemSemanticEditPolicy"
           notationViewFactoryClassName="ConnectionLabelViewFactory"
@@ -383,7 +383,7 @@
             parser="//@labelParsers/@implementations.16"/>
       </labels>
       <labels
-          visualID="5138"
+          visualID="5166"
           editPartClassName="WrappingLabel8EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel8ItemSemanticEditPolicy"
           notationViewFactoryClassName="ConnectionLabelViewFactory"
@@ -404,7 +404,7 @@
       </labels>
     </childNodes>
     <childNodes
-        visualID="3050"
+        visualID="3061"
         editPartClassName="AttributeEditPart"
         itemSemanticEditPolicyClassName="AttributeItemSemanticEditPolicy"
         notationViewFactoryClassName="AttributeViewFactory"
@@ -432,9 +432,9 @@
         <metaClass
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Attribute"/>
         <containmentMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/children"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/features"/>
         <childMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/children"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/features"/>
         <modelElementInitializer
             xsi:type="gmfgen:GenFeatureSeqInitializer">
           <initializers
@@ -459,7 +459,7 @@
         </modelElementInitializer>
       </modelFacet>
       <labels
-          visualID="5121"
+          visualID="5153"
           editPartClassName="AttributeNameEditPart"
           itemSemanticEditPolicyClassName="AttributeNameItemSemanticEditPolicy"
           notationViewFactoryClassName="AttributeNameViewFactory">
@@ -482,7 +482,7 @@
         </modelFacet>
       </labels>
       <labels
-          visualID="5122"
+          visualID="5154"
           editPartClassName="WrappingLabel9EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel9ItemSemanticEditPolicy"
           notationViewFactoryClassName="AttributeLabelViewFactory"
@@ -502,7 +502,7 @@
             parser="//@labelParsers/@implementations.5"/>
       </labels>
       <labels
-          visualID="5123"
+          visualID="5155"
           editPartClassName="AttributeValueVariabilityEditPart"
           itemSemanticEditPolicyClassName="AttributeValueVariabilityItemSemanticEditPolicy"
           notationViewFactoryClassName="AttributeValueVariabilityViewFactory">
@@ -524,7 +524,7 @@
         </modelFacet>
       </labels>
       <labels
-          visualID="5124"
+          visualID="5156"
           editPartClassName="WrappingLabel10EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel10ItemSemanticEditPolicy"
           notationViewFactoryClassName="AttributeLabelViewFactory"
@@ -544,7 +544,7 @@
             parser="//@labelParsers/@implementations.6"/>
       </labels>
       <labels
-          visualID="5152"
+          visualID="5157"
           editPartClassName="AttributeValueEditPart"
           itemSemanticEditPolicyClassName="AttributeValueItemSemanticEditPolicy"
           notationViewFactoryClassName="AttributeValueViewFactory">
@@ -641,7 +641,7 @@
       </labels>
     </childNodes>
     <childNodes
-        visualID="3020"
+        visualID="3062"
         editPartClassName="MethodEditPart"
         itemSemanticEditPolicyClassName="MethodItemSemanticEditPolicy"
         notationViewFactoryClassName="MethodViewFactory"
@@ -669,9 +669,9 @@
         <metaClass
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Method"/>
         <containmentMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/children"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/features"/>
         <childMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/children"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/features"/>
         <modelElementInitializer
             xsi:type="gmfgen:GenFeatureSeqInitializer">
           <initializers
@@ -696,7 +696,7 @@
         </modelElementInitializer>
       </modelFacet>
       <labels
-          visualID="5041"
+          visualID="5158"
           editPartClassName="MethodNameEditPart"
           itemSemanticEditPolicyClassName="MethodNameItemSemanticEditPolicy"
           notationViewFactoryClassName="MethodNameViewFactory">
@@ -718,7 +718,7 @@
         </modelFacet>
       </labels>
       <labels
-          visualID="5042"
+          visualID="5159"
           editPartClassName="WrappingLabel13EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel13ItemSemanticEditPolicy"
           notationViewFactoryClassName="MethodLabelViewFactory"
@@ -738,7 +738,7 @@
             parser="//@labelParsers/@implementations.9"/>
       </labels>
       <labels
-          visualID="5119"
+          visualID="5160"
           editPartClassName="WrappingLabel14EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel14ItemSemanticEditPolicy"
           notationViewFactoryClassName="MethodLabelViewFactory"
@@ -758,7 +758,7 @@
             parser="//@labelParsers/@implementations.10"/>
       </labels>
       <labels
-          visualID="5120"
+          visualID="5161"
           editPartClassName="WrappingLabel15EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel15ItemSemanticEditPolicy"
           notationViewFactoryClassName="MethodLabelViewFactory"
@@ -925,7 +925,7 @@
       </labels>
     </childNodes>
     <childNodes
-        visualID="3032"
+        visualID="3063"
         editPartClassName="ComplementEditPart"
         itemSemanticEditPolicyClassName="ComplementItemSemanticEditPolicy"
         notationViewFactoryClassName="ComplementViewFactory"
@@ -955,9 +955,9 @@
         <metaClass
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Complement"/>
         <containmentMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/children"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/content"/>
         <childMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/children"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/content"/>
         <modelElementInitializer
             xsi:type="gmfgen:GenFeatureSeqInitializer">
           <initializers
@@ -982,7 +982,7 @@
         </modelElementInitializer>
       </modelFacet>
       <labels
-          visualID="5072"
+          visualID="5167"
           editPartClassName="WrappingLabel20EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel20ItemSemanticEditPolicy"
           notationViewFactoryClassName="ComplementLabelViewFactory"
@@ -1076,7 +1076,7 @@
       </labels>
     </childNodes>
     <childNodes
-        visualID="3033"
+        visualID="3064"
         editPartClassName="EqualityEditPart"
         itemSemanticEditPolicyClassName="EqualityItemSemanticEditPolicy"
         notationViewFactoryClassName="EqualityViewFactory"
@@ -1106,9 +1106,9 @@
         <metaClass
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Equality"/>
         <containmentMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/children"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/content"/>
         <childMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/children"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/content"/>
         <modelElementInitializer
             xsi:type="gmfgen:GenFeatureSeqInitializer">
           <initializers
@@ -1133,7 +1133,7 @@
         </modelElementInitializer>
       </modelFacet>
       <labels
-          visualID="5073"
+          visualID="5168"
           editPartClassName="EqualityNameEditPart"
           itemSemanticEditPolicyClassName="EqualityNameItemSemanticEditPolicy"
           notationViewFactoryClassName="EqualityNameViewFactory"
@@ -1232,7 +1232,7 @@
       </labels>
     </childNodes>
     <childNodes
-        visualID="3034"
+        visualID="3065"
         editPartClassName="InversionEditPart"
         itemSemanticEditPolicyClassName="InversionItemSemanticEditPolicy"
         notationViewFactoryClassName="InversionViewFactory"
@@ -1262,9 +1262,9 @@
         <metaClass
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Inversion"/>
         <containmentMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/children"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/content"/>
         <childMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/children"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/content"/>
         <modelElementInitializer
             xsi:type="gmfgen:GenFeatureSeqInitializer">
           <initializers
@@ -1289,7 +1289,7 @@
         </modelElementInitializer>
       </modelFacet>
       <labels
-          visualID="5074"
+          visualID="5169"
           editPartClassName="WrappingLabel25EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel25ItemSemanticEditPolicy"
           notationViewFactoryClassName="InversionLabelViewFactory"
@@ -1383,7 +1383,7 @@
       </labels>
     </childNodes>
     <childNodes
-        visualID="3035"
+        visualID="3066"
         editPartClassName="MultipleGeneralizationEditPart"
         itemSemanticEditPolicyClassName="MultipleGeneralizationItemSemanticEditPolicy"
         notationViewFactoryClassName="MultipleGeneralizationViewFactory"
@@ -1413,9 +1413,9 @@
         <metaClass
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleGeneralization"/>
         <containmentMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/children"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/content"/>
         <childMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/children"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/content"/>
         <modelElementInitializer
             xsi:type="gmfgen:GenFeatureSeqInitializer">
           <initializers
@@ -1440,7 +1440,7 @@
         </modelElementInitializer>
       </modelFacet>
       <labels
-          visualID="5075"
+          visualID="5170"
           editPartClassName="MultipleGeneralizationNameEditPart"
           itemSemanticEditPolicyClassName="MultipleGeneralizationNameItemSemanticEditPolicy"
           notationViewFactoryClassName="MultipleGeneralizationNameViewFactory">
@@ -1464,7 +1464,7 @@
       </labels>
       <labels
           xsi:type="gmfgen:GenExternalNodeLabel"
-          visualID="5076"
+          visualID="5171"
           editPartClassName="MultipleGeneralizationName2EditPart"
           itemSemanticEditPolicyClassName="MultipleGeneralizationName2ItemSemanticEditPolicy"
           notationViewFactoryClassName="MultipleGeneralizationNameViewFactory">
@@ -1486,7 +1486,7 @@
         </modelFacet>
       </labels>
       <labels
-          visualID="5098"
+          visualID="5172"
           editPartClassName="WrappingLabel28EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel28ItemSemanticEditPolicy"
           notationViewFactoryClassName="MultipleGeneralizationLabelViewFactory">
@@ -1580,7 +1580,7 @@
       </labels>
     </childNodes>
     <childNodes
-        visualID="3036"
+        visualID="3067"
         editPartClassName="MultipleSpecializationEditPart"
         itemSemanticEditPolicyClassName="MultipleSpecializationItemSemanticEditPolicy"
         notationViewFactoryClassName="MultipleSpecializationViewFactory"
@@ -1610,9 +1610,9 @@
         <metaClass
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleSpecialization"/>
         <containmentMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/children"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/content"/>
         <childMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/children"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/content"/>
         <modelElementInitializer
             xsi:type="gmfgen:GenFeatureSeqInitializer">
           <initializers
@@ -1637,7 +1637,7 @@
         </modelElementInitializer>
       </modelFacet>
       <labels
-          visualID="5077"
+          visualID="5173"
           editPartClassName="MultipleSpecializationNameEditPart"
           itemSemanticEditPolicyClassName="MultipleSpecializationNameItemSemanticEditPolicy"
           notationViewFactoryClassName="MultipleSpecializationNameViewFactory">
@@ -1661,7 +1661,7 @@
       </labels>
       <labels
           xsi:type="gmfgen:GenExternalNodeLabel"
-          visualID="5078"
+          visualID="5174"
           editPartClassName="MultipleSpecializationName2EditPart"
           itemSemanticEditPolicyClassName="MultipleSpecializationName2ItemSemanticEditPolicy"
           notationViewFactoryClassName="MultipleSpecializationNameViewFactory">
@@ -1683,7 +1683,7 @@
         </modelFacet>
       </labels>
       <labels
-          visualID="5079"
+          visualID="5175"
           editPartClassName="WrappingLabel31EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel31ItemSemanticEditPolicy"
           notationViewFactoryClassName="MultipleSpecializationLabelViewFactory">
@@ -1777,7 +1777,7 @@
       </labels>
     </childNodes>
     <childNodes
-        visualID="3037"
+        visualID="3068"
         editPartClassName="BinaryGeneralizationEditPart"
         itemSemanticEditPolicyClassName="BinaryGeneralizationItemSemanticEditPolicy"
         notationViewFactoryClassName="BinaryGeneralizationViewFactory"
@@ -1807,9 +1807,9 @@
         <metaClass
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/BinaryGeneralization"/>
         <containmentMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/children"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/content"/>
         <childMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/children"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/content"/>
         <modelElementInitializer
             xsi:type="gmfgen:GenFeatureSeqInitializer">
           <initializers
@@ -1834,7 +1834,7 @@
         </modelElementInitializer>
       </modelFacet>
       <labels
-          visualID="5080"
+          visualID="5176"
           editPartClassName="BinaryGeneralizationNameEditPart"
           itemSemanticEditPolicyClassName="BinaryGeneralizationNameItemSemanticEditPolicy"
           notationViewFactoryClassName="BinaryGeneralizationNameViewFactory">
@@ -1858,7 +1858,7 @@
       </labels>
       <labels
           xsi:type="gmfgen:GenExternalNodeLabel"
-          visualID="5081"
+          visualID="5177"
           editPartClassName="BinaryGeneralizationName2EditPart"
           itemSemanticEditPolicyClassName="BinaryGeneralizationName2ItemSemanticEditPolicy"
           notationViewFactoryClassName="BinaryGeneralizationNameViewFactory">
@@ -1954,7 +1954,7 @@
       </labels>
     </childNodes>
     <childNodes
-        visualID="3054"
+        visualID="3069"
         editPartClassName="EntityEditPart"
         itemSemanticEditPolicyClassName="EntityItemSemanticEditPolicy"
         notationViewFactoryClassName="EntityViewFactory"
@@ -1981,9 +1981,9 @@
         <metaClass
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Entity"/>
         <containmentMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/children"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/content"/>
         <childMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/children"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/content"/>
         <modelElementInitializer
             xsi:type="gmfgen:GenFeatureSeqInitializer">
           <initializers
@@ -2008,7 +2008,7 @@
         </modelElementInitializer>
       </modelFacet>
       <labels
-          visualID="5139"
+          visualID="5187"
           editPartClassName="WrappingLabel36EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel36ItemSemanticEditPolicy"
           notationViewFactoryClassName="EntityLabelViewFactory">
@@ -2027,7 +2027,7 @@
             parser="//@labelParsers/@implementations.45"/>
       </labels>
       <labels
-          visualID="5140"
+          visualID="5188"
           editPartClassName="WrappingLabel37EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel37ItemSemanticEditPolicy"
           notationViewFactoryClassName="EntityLabelViewFactory"
@@ -2047,7 +2047,7 @@
             parser="//@labelParsers/@implementations.46"/>
       </labels>
       <labels
-          visualID="5141"
+          visualID="5189"
           editPartClassName="WrappingLabel38EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel38ItemSemanticEditPolicy"
           notationViewFactoryClassName="EntityLabelViewFactory"
@@ -2067,7 +2067,7 @@
             parser="//@labelParsers/@implementations.47"/>
       </labels>
       <labels
-          visualID="5142"
+          visualID="5190"
           editPartClassName="WrappingLabel39EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel39ItemSemanticEditPolicy"
           notationViewFactoryClassName="EntityLabelViewFactory"
@@ -2088,7 +2088,7 @@
       </labels>
     </childNodes>
     <childNodes
-        visualID="3051"
+        visualID="3070"
         editPartClassName="Attribute2EditPart"
         itemSemanticEditPolicyClassName="Attribute2ItemSemanticEditPolicy"
         notationViewFactoryClassName="AttributeViewFactory"
@@ -2116,9 +2116,9 @@
         <metaClass
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Attribute"/>
         <containmentMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/children"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/features"/>
         <childMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/children"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/features"/>
         <modelElementInitializer
             xsi:type="gmfgen:GenFeatureSeqInitializer">
           <initializers
@@ -2143,7 +2143,7 @@
         </modelElementInitializer>
       </modelFacet>
       <labels
-          visualID="5125"
+          visualID="5178"
           editPartClassName="AttributeName2EditPart"
           itemSemanticEditPolicyClassName="AttributeName2ItemSemanticEditPolicy"
           notationViewFactoryClassName="AttributeNameViewFactory">
@@ -2166,7 +2166,7 @@
         </modelFacet>
       </labels>
       <labels
-          visualID="5126"
+          visualID="5179"
           editPartClassName="WrappingLabel40EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel40ItemSemanticEditPolicy"
           notationViewFactoryClassName="AttributeLabelViewFactory"
@@ -2186,10 +2186,10 @@
             parser="//@labelParsers/@implementations.35"/>
       </labels>
       <labels
-          visualID="5127"
-          editPartClassName="AttributeValueVariability2EditPart"
-          itemSemanticEditPolicyClassName="AttributeValueVariability2ItemSemanticEditPolicy"
-          notationViewFactoryClassName="AttributeValueVariabilityViewFactory"
+          visualID="5180"
+          editPartClassName="WrappingLabel41EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel41ItemSemanticEditPolicy"
+          notationViewFactoryClassName="AttributeLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -2206,9 +2206,9 @@
             parser="//@labelParsers/@implementations.36"/>
       </labels>
       <labels
-          visualID="5128"
-          editPartClassName="WrappingLabel41EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel41ItemSemanticEditPolicy"
+          visualID="5181"
+          editPartClassName="WrappingLabel42EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel42ItemSemanticEditPolicy"
           notationViewFactoryClassName="AttributeLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -2226,7 +2226,7 @@
             parser="//@labelParsers/@implementations.37"/>
       </labels>
       <labels
-          visualID="5151"
+          visualID="5182"
           editPartClassName="AttributeValue2EditPart"
           itemSemanticEditPolicyClassName="AttributeValue2ItemSemanticEditPolicy"
           notationViewFactoryClassName="AttributeValueViewFactory">
@@ -2283,8 +2283,8 @@
       </modelFacet>
       <labels
           visualID="5143"
-          editPartClassName="WrappingLabel42EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel42ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel43EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel43ItemSemanticEditPolicy"
           notationViewFactoryClassName="RendererLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -2303,8 +2303,8 @@
       </labels>
       <labels
           visualID="5144"
-          editPartClassName="WrappingLabel43EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel43ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel44EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel44ItemSemanticEditPolicy"
           notationViewFactoryClassName="RendererLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -2323,7 +2323,7 @@
       </labels>
     </childNodes>
     <childNodes
-        visualID="3052"
+        visualID="3071"
         editPartClassName="Method2EditPart"
         itemSemanticEditPolicyClassName="Method2ItemSemanticEditPolicy"
         notationViewFactoryClassName="MethodViewFactory"
@@ -2351,9 +2351,9 @@
         <metaClass
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Method"/>
         <containmentMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/children"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/features"/>
         <childMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/children"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Clabject/features"/>
         <modelElementInitializer
             xsi:type="gmfgen:GenFeatureSeqInitializer">
           <initializers
@@ -2378,7 +2378,7 @@
         </modelElementInitializer>
       </modelFacet>
       <labels
-          visualID="5130"
+          visualID="5183"
           editPartClassName="MethodName2EditPart"
           itemSemanticEditPolicyClassName="MethodName2ItemSemanticEditPolicy"
           notationViewFactoryClassName="MethodNameViewFactory">
@@ -2400,9 +2400,9 @@
         </modelFacet>
       </labels>
       <labels
-          visualID="5131"
-          editPartClassName="WrappingLabel44EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel44ItemSemanticEditPolicy"
+          visualID="5184"
+          editPartClassName="WrappingLabel45EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel45ItemSemanticEditPolicy"
           notationViewFactoryClassName="MethodLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -2420,9 +2420,9 @@
             parser="//@labelParsers/@implementations.40"/>
       </labels>
       <labels
-          visualID="5132"
-          editPartClassName="WrappingLabel45EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel45ItemSemanticEditPolicy"
+          visualID="5185"
+          editPartClassName="WrappingLabel46EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel46ItemSemanticEditPolicy"
           notationViewFactoryClassName="MethodLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -2440,9 +2440,9 @@
             parser="//@labelParsers/@implementations.41"/>
       </labels>
       <labels
-          visualID="5133"
-          editPartClassName="WrappingLabel46EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel46ItemSemanticEditPolicy"
+          visualID="5186"
+          editPartClassName="WrappingLabel47EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel47ItemSemanticEditPolicy"
           notationViewFactoryClassName="MethodLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -2494,8 +2494,8 @@
       </modelFacet>
       <labels
           visualID="5145"
-          editPartClassName="WrappingLabel47EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel47ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel48EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel48ItemSemanticEditPolicy"
           notationViewFactoryClassName="RendererLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -2514,8 +2514,8 @@
       </labels>
       <labels
           visualID="5146"
-          editPartClassName="WrappingLabel48EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel48ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel49EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel49ItemSemanticEditPolicy"
           notationViewFactoryClassName="RendererLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -2567,8 +2567,8 @@
       </modelFacet>
       <labels
           visualID="5147"
-          editPartClassName="WrappingLabel49EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel49ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel50EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel50ItemSemanticEditPolicy"
           notationViewFactoryClassName="RendererLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -2587,8 +2587,8 @@
       </labels>
       <labels
           visualID="5148"
-          editPartClassName="WrappingLabel50EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel50ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel51EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel51ItemSemanticEditPolicy"
           notationViewFactoryClassName="RendererLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -2640,8 +2640,8 @@
       </modelFacet>
       <labels
           visualID="5149"
-          editPartClassName="WrappingLabel51EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel51ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel52EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel52ItemSemanticEditPolicy"
           notationViewFactoryClassName="RendererLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -2660,8 +2660,8 @@
       </labels>
       <labels
           visualID="5150"
-          editPartClassName="WrappingLabel52EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel52ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel53EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel53ItemSemanticEditPolicy"
           notationViewFactoryClassName="RendererLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
@@ -2805,8 +2805,8 @@
       </modelFacet>
       <labels
           visualID="6004"
-          editPartClassName="WrappingLabel53EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel53ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel54EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel54ItemSemanticEditPolicy"
           notationViewFactoryClassName="ConnectionParticipantLabelViewFactory"
           readOnly="true"
           alignment="SOURCE">
@@ -2830,8 +2830,8 @@
       </labels>
       <labels
           visualID="6005"
-          editPartClassName="WrappingLabel54EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel54ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel55EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel55ItemSemanticEditPolicy"
           notationViewFactoryClassName="ConnectionParticipantLabelViewFactory"
           readOnly="true"
           alignment="SOURCE">
@@ -2878,9 +2878,9 @@
         <metaClass
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Instantiation"/>
         <containmentMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/children"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/content"/>
         <childMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/children"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model/content"/>
         <sourceMetaFeature
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Instantiation/instance"/>
         <targetMetaFeature
@@ -2888,8 +2888,8 @@
       </modelFacet>
       <labels
           visualID="6010"
-          editPartClassName="WrappingLabel55EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel55ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel56EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel56ItemSemanticEditPolicy"
           notationViewFactoryClassName="InstantiationLabelViewFactory"
           readOnly="true"
           alignment="SOURCE">
@@ -2914,8 +2914,8 @@
       </labels>
       <labels
           visualID="6011"
-          editPartClassName="WrappingLabel60EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel60ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel57EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel57ItemSemanticEditPolicy"
           notationViewFactoryClassName="InstantiationLabelViewFactory"
           readOnly="true"
           alignment="TARGET">
@@ -2968,8 +2968,8 @@
       </modelFacet>
       <labels
           visualID="6006"
-          editPartClassName="WrappingLabel56EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel56ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel58EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel58ItemSemanticEditPolicy"
           notationViewFactoryClassName="SetRelationshipBaseLabelViewFactory"
           readOnly="true"
           alignment="SOURCE">
@@ -3019,8 +3019,8 @@
       </modelFacet>
       <labels
           visualID="6007"
-          editPartClassName="WrappingLabel57EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel57ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel59EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel59ItemSemanticEditPolicy"
           notationViewFactoryClassName="EqualityEqualLabelViewFactory"
           readOnly="true"
           alignment="SOURCE">
@@ -3071,8 +3071,8 @@
       </modelFacet>
       <labels
           visualID="6008"
-          editPartClassName="WrappingLabel58EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel58ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel60EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel60ItemSemanticEditPolicy"
           notationViewFactoryClassName="InversionInverseLabelViewFactory"
           readOnly="true"
           alignment="SOURCE">
@@ -3123,8 +3123,8 @@
       </modelFacet>
       <labels
           visualID="6009"
-          editPartClassName="WrappingLabel59EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel59ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel61EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel61ItemSemanticEditPolicy"
           notationViewFactoryClassName="ComplementComplementLabelViewFactory"
           readOnly="true"
           alignment="SOURCE">
@@ -3329,7 +3329,7 @@
           figureQualifiedClassName="org.eclipse.draw2d.RectangleFigure"/>
     </compartments>
     <compartments
-        visualID="7017"
+        visualID="7026"
         editPartClassName="ModelDomainElementsCompartmentEditPart"
         itemSemanticEditPolicyClassName="ModelDomainElementsCompartmentItemSemanticEditPolicy"
         notationViewFactoryClassName="ModelDomainElementsCompartmentViewFactory"
@@ -3348,7 +3348,7 @@
           classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class DomainElementsCompartmentFigure extends org.eclipse.draw2d.RectangleFigure {&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public DomainElementsCompartmentFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setFill(false);&#xA;this.setOutline(false);&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
     </compartments>
     <compartments
-        visualID="7022"
+        visualID="7027"
         editPartClassName="ConnectionAttributesCompartmentEditPart"
         itemSemanticEditPolicyClassName="ConnectionAttributesCompartmentItemSemanticEditPolicy"
         notationViewFactoryClassName="ConnectionAttributesCompartmentViewFactory"
@@ -3365,7 +3365,7 @@
           classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class EntityCompartmentFigure extends org.eclipse.draw2d.RectangleFigure {&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public EntityCompartmentFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setFill(false);&#xA;this.setOutline(false);&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
     </compartments>
     <compartments
-        visualID="7023"
+        visualID="7028"
         editPartClassName="ConnectionMethodsCompartmentEditPart"
         itemSemanticEditPolicyClassName="ConnectionMethodsCompartmentItemSemanticEditPolicy"
         notationViewFactoryClassName="ConnectionMethodsCompartmentViewFactory"
@@ -3382,7 +3382,7 @@
           classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class EntityCompartmentFigure extends org.eclipse.draw2d.RectangleFigure {&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public EntityCompartmentFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setFill(false);&#xA;this.setOutline(false);&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
     </compartments>
     <compartments
-        visualID="7024"
+        visualID="7029"
         editPartClassName="EntityAttributesCompartmentEditPart"
         itemSemanticEditPolicyClassName="EntityAttributesCompartmentItemSemanticEditPolicy"
         notationViewFactoryClassName="EntityAttributesCompartmentViewFactory"
@@ -3399,7 +3399,7 @@
           classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class EntityCompartmentFigure extends org.eclipse.draw2d.RectangleFigure {&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public EntityCompartmentFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setFill(false);&#xA;this.setOutline(false);&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
     </compartments>
     <compartments
-        visualID="7025"
+        visualID="7030"
         editPartClassName="EntityMethodsCompartmentEditPart"
         itemSemanticEditPolicyClassName="EntityMethodsCompartmentItemSemanticEditPolicy"
         notationViewFactoryClassName="EntityMethodsCompartmentViewFactory"
@@ -3774,16 +3774,16 @@
     <providers
         xsi:type="gmfgen:GenExpressionInterpreter">
       <expressions
-          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= min'))"/>
+          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))"/>
       <expressions
           body="0"/>
       <expressions
-          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= min'))"/>
+          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))"/>
       <expressions
           body="0"/>
       <expressions
           xsi:type="gmfgen:GenConstraint"
-          body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
+          body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
       <expressions
           body="let durability:String =&#xD;&#xA;&#x9; if (self.durability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.durability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;endif&#x9;&#x9;&#xD;&#xA;endif&#xD;&#xA;in&#xD;&#xA;durability"/>
       <expressions
@@ -3795,29 +3795,29 @@
       <expressions
           body="Sequence{-1,-1}"/>
       <expressions
-          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= min'))->append('collapsed= false')"/>
+          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))->append('collapsed= false')"/>
       <expressions
           body="0"/>
       <expressions
-          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= min'))"/>
+          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))"/>
       <expressions
           body="0"/>
       <expressions
           xsi:type="gmfgen:GenConstraint"
-          body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
+          body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
       <expressions
           body="let durability:String =&#xD;&#xA;&#x9; if (self.durability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.durability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;endif&#x9;&#x9;&#xD;&#xA;endif&#xD;&#xA;in&#xD;&#xA;durability"/>
       <expressions
-          body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderDurability:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('durability') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('durability') = 'min'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let durability:String = if (self.durability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.durability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;if (renderDurability) then&#xD;&#xA;&#x9;durability&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
+          body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderDurability:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('durability') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('durability') = 'default'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let durability:String = if (self.durability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.durability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;if (renderDurability) then&#xD;&#xA;&#x9;durability&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
       <expressions
           body="if (not self.datatype.oclIsUndefined()) then&#xD;&#xA;&#x9;':'.concat(self.datatype.name)&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
       <expressions
-          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= min'))"/>
+          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))"/>
       <expressions
           body="0"/>
       <expressions
           xsi:type="gmfgen:GenConstraint"
-          body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
+          body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
       <expressions
           body="let durability:String =&#xD;&#xA;&#x9; if (self.durability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.durability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;endif&#x9;&#x9;&#xD;&#xA;endif&#xD;&#xA;in&#xD;&#xA;durability"/>
       <expressions
@@ -3828,101 +3828,101 @@
           body="':'.concat(Sequence{1..output->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let iAsString:String = &#xD;&#xA;&#x9;&#x9;OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(denominator : Integer; s : String = ''|&#xD;&#xA;            &#x9;&#x9;let numberAsString : String = OrderedSet{&#xD;&#xA;                    &#x9;&#x9;'0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                &#x9;}->at(i.div(denominator).mod(10) + 1)&#xD;&#xA;            &#x9;&#x9;in&#xD;&#xA;                &#x9;&#x9;if s='' and numberAsString = '0' then&#xD;&#xA;                    &#x9;&#x9;&#x9;s&#xD;&#xA;                &#x9;&#x9;else&#xD;&#xA;                    &#x9;&#x9;&#x9;s.concat(numberAsString)&#xD;&#xA;                &#x9;&#x9;endif&#xD;&#xA;        &#x9;)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (i &lt;> output->size()) then&#xD;&#xA;&#x9;&#x9;&#x9;str.concat(output->at(i).name).concat(', ')&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;str.concat(output->at(i).name)&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;)&#xD;&#xA;)"/>
       <expressions
           xsi:type="gmfgen:GenConstraint"
-          body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
+          body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
       <expressions
           body="let durability:String =&#xD;&#xA;&#x9; if (self.durability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.durability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;endif&#x9;&#x9;&#xD;&#xA;endif&#xD;&#xA;in&#xD;&#xA;durability"/>
       <expressions
-          body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderName:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('name') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('name') = 'min'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (self.elided) then&#xD;&#xA;&#x9;'...'&#xD;&#xA;else&#xD;&#xA;&#x9;if (renderName and not self.name.oclIsUndefined()) then&#xD;&#xA;&#x9;&#x9;self.name&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;endif"/>
+          body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderName:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('name') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('name') = 'default'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (self.elided) then&#xD;&#xA;&#x9;'...'&#xD;&#xA;else&#xD;&#xA;&#x9;if (renderName and not self.name.oclIsUndefined()) then&#xD;&#xA;&#x9;&#x9;self.name&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;endif"/>
       <expressions
-          body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderLevel:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('level') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('level') = 'min'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (renderLevel) then&#xD;&#xA;&#x9;self.level&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
+          body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderLevel:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('level') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('level') = 'default'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (renderLevel) then&#xD;&#xA;&#x9;self.level&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
       <expressions
-          body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderPotency:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('potency') = 'max' &#xD;&#xA;&#x9;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('potency') = 'min'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let potency:String = if (self.potency > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.potency.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.potency = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (renderPotency) then&#xD;&#xA;&#x9;potency&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
+          body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderPotency:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('potency') = 'max' &#xD;&#xA;&#x9;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('potency') = 'default'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let potency:String = if (self.potency > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.potency.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.potency = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (renderPotency) then&#xD;&#xA;&#x9;potency&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
       <expressions
           body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;--**********************************&#xD;&#xA;--Check if attributes are rendered in AVS&#xD;&#xA;--**********************************&#xD;&#xA;let renderName:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('name') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('name') = 'avs'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderPotency:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('potency') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('potency') = 'avs' &#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderLevel:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('level') = 'max'&#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('level') = 'avs'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderExpressed:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('expressed')  = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('expressed')  = 'avs' &#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderShowRenderer:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('showRenderer') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('showRenderer') = 'avs'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderOrigin:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('origin') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('origin') = 'avs'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;--**********************************&#xD;&#xA;--Get the name&#xD;&#xA;--**********************************&#xD;&#xA;let name : String =&#xD;&#xA;&#x9;if (renderName) then&#xD;&#xA;&#x9;&#x9;'name='.concat(self.name).concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the potency&#xD;&#xA;--**********************************&#xD;&#xA;let potencyString:String = &#xD;&#xA;&#x9;if (renderPotency and self.potency > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.potency.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.potency = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let potency: String = &#xD;&#xA;&#x9;if (renderPotency) then&#xD;&#xA;&#x9;&#x9;'potency='.concat(potencyString).concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the level&#xD;&#xA;--**********************************&#xD;&#xA;let levelString:String = &#xD;&#xA;&#x9;if (renderLevel and self.level > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.level.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.level = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let level: String = &#xD;&#xA;&#x9;if (renderLevel) then&#xD;&#xA;&#x9;&#x9;'level='.concat(levelString).concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the expressed value&#xD;&#xA;--**********************************&#xD;&#xA;let expressedString:String = &#xD;&#xA;&#x9;if (expressed) then&#xD;&#xA;&#x9;&#x9;'true'&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'false'&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let expressed: String = &#xD;&#xA;&#x9;if (renderExpressed) then&#xD;&#xA;&#x9;&#x9;'expressed='.concat(expressedString).concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the showRenderer&#xD;&#xA;--**********************************&#xD;&#xA;let showRenderer : String =&#xD;&#xA;&#x9;if (renderShowRenderer) then&#xD;&#xA;&#x9;&#x9;'showRenderer='.concat(self.showRenderer).concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the origin&#xD;&#xA;--**********************************&#xD;&#xA;let origin : String =&#xD;&#xA;&#x9;if (renderOrigin) then&#xD;&#xA;&#x9;&#x9;'origin='.concat(self.origin).concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let output:String = &#xD;&#xA;&#x9;'{'.concat(name).concat(potency).concat(level).concat(expressed).concat(showRenderer ).concat(origin).concat('}')&#xD;&#xA;in&#xD;&#xA;--**********************************&#xD;&#xA;--Write the output&#xD;&#xA;--**********************************&#xD;&#xA;if (output &lt;> '{}') then&#xD;&#xA;&#x9;output&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
       <expressions
-          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= min'))->append('collapsed= false')"/>
+          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))->append('collapsed= false')"/>
       <expressions
           body="0"/>
       <expressions
           xsi:type="gmfgen:GenConstraint"
-          body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
+          body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
       <expressions
           body="let durability:String =&#xD;&#xA;&#x9; if (self.durability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.durability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;endif&#x9;&#x9;&#xD;&#xA;endif&#xD;&#xA;in&#xD;&#xA;durability"/>
       <expressions
-          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= min'))->append('collapsed= false')"/>
+          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))->append('collapsed= false')"/>
       <expressions
           body="0"/>
       <expressions
           xsi:type="gmfgen:GenConstraint"
-          body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
+          body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
       <expressions
           body="let durability:String =&#xD;&#xA;&#x9; if (self.durability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.durability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;endif&#x9;&#x9;&#xD;&#xA;endif&#xD;&#xA;in&#xD;&#xA;durability"/>
       <expressions
-          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= min'))->append('collapsed= false')"/>
+          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))->append('collapsed= false')"/>
       <expressions
           body="0"/>
       <expressions
           xsi:type="gmfgen:GenConstraint"
-          body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
+          body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
       <expressions
           body="let durability:String =&#xD;&#xA;&#x9; if (self.durability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.durability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;endif&#x9;&#x9;&#xD;&#xA;endif&#xD;&#xA;in&#xD;&#xA;durability"/>
       <expressions
-          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= min'))->append('collapsed= false')"/>
+          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))->append('collapsed= false')"/>
       <expressions
           body="0"/>
       <expressions
           xsi:type="gmfgen:GenConstraint"
-          body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
+          body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
       <expressions
           body="let durability:String =&#xD;&#xA;&#x9; if (self.durability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.durability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;endif&#x9;&#x9;&#xD;&#xA;endif&#xD;&#xA;in&#xD;&#xA;durability"/>
       <expressions
           body="let intersection:String = &#xD;&#xA;&#x9;if (self.intersection) then &#xD;&#xA;&#x9;&#x9;'intersection;' &#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'' &#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let union:String = &#xD;&#xA;&#x9;if (self.union) then &#xD;&#xA;&#x9;&#x9;'union;' &#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'' &#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (intersection &lt;> '' or union &lt;> '') then&#xD;&#xA;&#x9;'{'.concat(intersection).concat(union).concat('}')&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
       <expressions
-          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= min'))->append('collapsed= false')"/>
+          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))->append('collapsed= false')"/>
       <expressions
           body="0"/>
       <expressions
           xsi:type="gmfgen:GenConstraint"
-          body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
+          body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
       <expressions
           body="let durability:String =&#xD;&#xA;&#x9; if (self.durability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.durability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;endif&#x9;&#x9;&#xD;&#xA;endif&#xD;&#xA;in&#xD;&#xA;durability"/>
       <expressions
           body="let disjoint:String = &#xD;&#xA;&#x9;if (self.disjoint) then &#xD;&#xA;&#x9;&#x9;'disjoint;' &#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'' &#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let complete:String = &#xD;&#xA;&#x9;if (self.complete) then &#xD;&#xA;&#x9;&#x9;'complete;' &#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (disjoint &lt;> '' or complete &lt;> '') then&#xD;&#xA;&#x9;'{'.concat(disjoint).concat(complete ).concat('}')&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
       <expressions
-          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= min'))->append('collapsed= false')"/>
+          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))->append('collapsed= false')"/>
       <expressions
           body="0"/>
       <expressions
           xsi:type="gmfgen:GenConstraint"
-          body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
+          body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
       <expressions
           body="let durability:String =&#xD;&#xA;&#x9; if (self.durability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.durability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;endif&#x9;&#x9;&#xD;&#xA;endif&#xD;&#xA;in&#xD;&#xA;durability"/>
       <expressions
-          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= min'))"/>
+          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))"/>
       <expressions
           body="0"/>
       <expressions
-          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= min'))"/>
+          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))"/>
       <expressions
           body="0"/>
       <expressions
           xsi:type="gmfgen:GenConstraint"
-          body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
+          body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
       <expressions
           body="let durability:String =&#xD;&#xA;&#x9; if (self.durability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.durability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;endif&#x9;&#x9;&#xD;&#xA;endif&#xD;&#xA;in&#xD;&#xA;durability"/>
       <expressions
-          body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderDurability:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('durability') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('durability') = 'min'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let durability:String = if (self.durability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.durability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;if (renderDurability) then&#xD;&#xA;&#x9;durability&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
+          body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderDurability:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('durability') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('durability') = 'default'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let durability:String = if (self.durability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.durability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;if (renderDurability) then&#xD;&#xA;&#x9;durability&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
       <expressions
-          body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderValueVariability:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('valueVariability') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('valueVariability') = 'min'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let valueVariability:String = if (self.valueVariability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.valueVariability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;if (renderValueVariability) then&#xD;&#xA;&#x9;valueVariability&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
+          body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderValueVariability:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('valueVariability') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('valueVariability') = 'default'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let valueVariability:String = if (self.valueVariability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.valueVariability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;if (renderValueVariability) then&#xD;&#xA;&#x9;valueVariability&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
       <expressions
           body="if (not self.datatype.oclIsUndefined()) then&#xD;&#xA;&#x9;':'.concat(self.datatype.name)&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
       <expressions
-          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= min'))"/>
+          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))"/>
       <expressions
           body="0"/>
       <expressions
           xsi:type="gmfgen:GenConstraint"
-          body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
+          body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
       <expressions
           body="let durability:String =&#xD;&#xA;&#x9; if (self.durability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.durability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;endif&#x9;&#x9;&#xD;&#xA;endif&#xD;&#xA;in&#xD;&#xA;durability"/>
       <expressions
@@ -3933,22 +3933,22 @@
           body="':'.concat(Sequence{1..output->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let iAsString:String = &#xD;&#xA;&#x9;&#x9;OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(denominator : Integer; s : String = ''|&#xD;&#xA;            &#x9;&#x9;let numberAsString : String = OrderedSet{&#xD;&#xA;                    &#x9;&#x9;'0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                &#x9;}->at(i.div(denominator).mod(10) + 1)&#xD;&#xA;            &#x9;&#x9;in&#xD;&#xA;                &#x9;&#x9;if s='' and numberAsString = '0' then&#xD;&#xA;                    &#x9;&#x9;&#x9;s&#xD;&#xA;                &#x9;&#x9;else&#xD;&#xA;                    &#x9;&#x9;&#x9;s.concat(numberAsString)&#xD;&#xA;                &#x9;&#x9;endif&#xD;&#xA;        &#x9;)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (i &lt;> output->size()) then&#xD;&#xA;&#x9;&#x9;&#x9;str.concat(output->at(i).name).concat(', ')&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;str.concat(output->at(i).name)&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;)&#xD;&#xA;)"/>
       <expressions
           xsi:type="gmfgen:GenConstraint"
-          body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
+          body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
       <expressions
           body="let durability:String =&#xD;&#xA;&#x9; if (self.durability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.durability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;endif&#x9;&#x9;&#xD;&#xA;endif&#xD;&#xA;in&#xD;&#xA;durability"/>
       <expressions
-          body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderName:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('name') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('name') = 'min'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (self.elided) then&#xD;&#xA;&#x9;'...'&#xD;&#xA;else&#xD;&#xA;&#x9;if (renderName and not self.name.oclIsUndefined()) then&#xD;&#xA;&#x9;&#x9;self.name&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;endif"/>
+          body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderName:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('name') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('name') = 'default'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (self.elided) then&#xD;&#xA;&#x9;'...'&#xD;&#xA;else&#xD;&#xA;&#x9;if (renderName and not self.name.oclIsUndefined()) then&#xD;&#xA;&#x9;&#x9;self.name&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;endif"/>
       <expressions
-          body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderPotency:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('potency') = 'max' &#xD;&#xA;&#x9;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('potency') = 'min'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let potency:String = if (self.potency > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.potency.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.potency = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (renderPotency) then&#xD;&#xA;&#x9;potency&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
+          body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderPotency:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('potency') = 'max' &#xD;&#xA;&#x9;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('potency') = 'default'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let potency:String = if (self.potency > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.potency.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.potency = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (renderPotency) then&#xD;&#xA;&#x9;potency&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
       <expressions
-          body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderLevel:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('level') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('level') = 'min'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (renderLevel) then&#xD;&#xA;&#x9;self.level&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
+          body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderLevel:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('level') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('level') = 'default'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (renderLevel) then&#xD;&#xA;&#x9;self.level&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
       <expressions
           body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Check if attributes are rendered in AVS&#xD;&#xA;--**********************************&#xD;&#xA;let renderName:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('name') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('name') = 'avs'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderPotency:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('potency') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('potency') = 'avs' &#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderLevel:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('level') = 'max'&#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('level') = 'avs'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderExpressed:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('expressed')  = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('expressed')  = 'avs' &#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderInstantiable:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('instantiable')  = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('instantiable')  = 'avs' &#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderShowRenderer:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('showRenderer') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('showRenderer') = 'avs'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderOrigin:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('origin') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('origin') = 'avs'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the name&#xD;&#xA;--**********************************&#xD;&#xA;let name : String =&#xD;&#xA;&#x9;if (renderName) then&#xD;&#xA;&#x9;&#x9;'name='.concat(self.name).concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the potency&#xD;&#xA;--**********************************&#xD;&#xA;let potencyString:String = &#xD;&#xA;&#x9;if (renderPotency and self.potency > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.potency.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.potency = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let potency: String = &#xD;&#xA;&#x9;if (renderPotency) then&#xD;&#xA;&#x9;&#x9;'potency='.concat(potencyString).concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the level&#xD;&#xA;--**********************************&#xD;&#xA;let levelString:String = &#xD;&#xA;&#x9;if (renderLevel and self.level > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.level.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.level = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let level: String = &#xD;&#xA;&#x9;if (renderLevel) then&#xD;&#xA;&#x9;&#x9;'level='.concat(levelString).concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the expressed value&#xD;&#xA;--**********************************&#xD;&#xA;let expressedString:String = &#xD;&#xA;&#x9;if (expressed) then&#xD;&#xA;&#x9;&#x9;'true'&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'false'&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let expressed: String = &#xD;&#xA;&#x9;if (renderExpressed) then&#xD;&#xA;&#x9;&#x9;'expressed='.concat(expressedString).concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the instantiable value&#xD;&#xA;--**********************************&#xD;&#xA;let instantiableString:String = &#xD;&#xA;&#x9;if (instantiable) then&#xD;&#xA;&#x9;&#x9;'true'&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'false'&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let instantiable: String = &#xD;&#xA;&#x9;if (renderInstantiable) then&#xD;&#xA;&#x9;&#x9;'instantiable='.concat(instantiableString).concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the showRenderer&#xD;&#xA;--**********************************&#xD;&#xA;let showRenderer : String =&#xD;&#xA;&#x9;if (renderShowRenderer) then&#xD;&#xA;&#x9;&#x9;'showRenderer='.concat(self.showRenderer).concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the origin&#xD;&#xA;--**********************************&#xD;&#xA;let origin : String =&#xD;&#xA;&#x9;if (renderOrigin) then&#xD;&#xA;&#x9;&#x9;'origin='.concat(self.origin).concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let output:String = &#xD;&#xA;&#x9;'{'.concat(name).concat(potency).concat(level).concat(expressed).concat(instantiable).concat(showRenderer ).concat(origin).concat('}')&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Write the output&#xD;&#xA;--**********************************&#xD;&#xA;if (output &lt;> '{}') then&#xD;&#xA;&#x9;output&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
       <expressions
           body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;--**********************************&#xD;&#xA;--Check if attributes are rendered in AVS&#xD;&#xA;--**********************************&#xD;&#xA;let renderName:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('name') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('name') = 'avs'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderCompletness:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('completness') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('completness') = 'avs' &#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderOrigin:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('origin') = 'max'&#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('origin') = 'avs'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderExpressed:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('expressed')  = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('expressed')  = 'avs' &#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderRelevant:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('relevant')  = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('relevant')  = 'avs' &#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderShowRenderer:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('showRenderer')  = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('showRenderer')  = 'avs' &#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;--**********************************&#xD;&#xA;--Get the name&#xD;&#xA;--**********************************&#xD;&#xA;let name : String =&#xD;&#xA;&#x9;if (renderName) then&#xD;&#xA;&#x9;&#x9;'name='.concat(self.name).concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the completness&#xD;&#xA;--**********************************&#xD;&#xA;let completness : String =&#xD;&#xA;&#x9;if (renderCompletness) then&#xD;&#xA;&#x9;&#x9;'completness='.concat(self.completness).concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the origin value&#xD;&#xA;--**********************************&#xD;&#xA;let origin:String = &#xD;&#xA;&#x9;if (renderCompletness) then&#xD;&#xA;&#x9;&#x9;'origin='.concat(self.origin).concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the showRenderer value&#xD;&#xA;--**********************************&#xD;&#xA;let showRenderer:String = &#xD;&#xA;&#x9;if (renderShowRenderer) then&#xD;&#xA;&#x9;&#x9;'ShowRenderer='.concat(self.showRenderer).concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the expressed value&#xD;&#xA;--**********************************&#xD;&#xA;let expressedString:String = &#xD;&#xA;&#x9;if (expressed) then&#xD;&#xA;&#x9;&#x9;'true'&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'false'&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let expressed: String = &#xD;&#xA;&#x9;if (renderExpressed) then&#xD;&#xA;&#x9;&#x9;'expressed='.concat(expressedString).concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the relevant value&#xD;&#xA;--**********************************&#xD;&#xA;let relevantString:String = &#xD;&#xA;&#x9;if (relevant) then&#xD;&#xA;&#x9;&#x9;'true'&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'false'&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let relevant: String = &#xD;&#xA;&#x9;if (renderRelevant) then&#xD;&#xA;&#x9;&#x9;'relevant='.concat(relevantString).concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let output:String = &#xD;&#xA;&#x9;'{'.concat(name).concat(completness).concat(origin).concat(expressed).concat(relevant).concat(showRenderer).concat('}')&#xD;&#xA;in&#xD;&#xA;--**********************************&#xD;&#xA;--Write the output&#xD;&#xA;--**********************************&#xD;&#xA;if (output &lt;> '{}') then&#xD;&#xA;&#x9;output&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
       <expressions
           xsi:type="gmfgen:GenConstraint"
-          body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
+          body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
       <expressions
           body="let durability:String =&#xD;&#xA;&#x9; if (self.durability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.durability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;endif&#x9;&#x9;&#xD;&#xA;endif&#xD;&#xA;in&#xD;&#xA;durability"/>
       <expressions
@@ -4047,7 +4047,7 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.3/@labels.1/@modelFacet"
-        className="AttributeLabelExpressionLabelParser5122"
+        className="AttributeLabelExpressionLabelParser5154"
         viewExpression="//@expressionProviders/@providers.0/@expressions.16">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Attribute"/>
@@ -4055,7 +4055,7 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.3/@labels.3/@modelFacet"
-        className="AttributeLabelExpressionLabelParser5124"
+        className="AttributeLabelExpressionLabelParser5156"
         viewExpression="//@expressionProviders/@providers.0/@expressions.17">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Attribute"/>
@@ -4079,7 +4079,7 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.5/@labels.1/@modelFacet"
-        className="MethodLabelExpressionLabelParser5042"
+        className="MethodLabelExpressionLabelParser5159"
         viewExpression="//@expressionProviders/@providers.0/@expressions.22">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Method"/>
@@ -4087,7 +4087,7 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.5/@labels.2/@modelFacet"
-        className="MethodLabelExpressionLabelParser5119"
+        className="MethodLabelExpressionLabelParser5160"
         viewExpression="//@expressionProviders/@providers.0/@expressions.23">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Method"/>
@@ -4095,7 +4095,7 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.5/@labels.3/@modelFacet"
-        className="MethodLabelExpressionLabelParser5120"
+        className="MethodLabelExpressionLabelParser5161"
         viewExpression="//@expressionProviders/@providers.0/@expressions.24">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Method"/>
@@ -4119,7 +4119,7 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.2/@labels.0/@modelFacet"
-        className="ConnectionLabelExpressionLabelParser5134"
+        className="ConnectionLabelExpressionLabelParser5162"
         viewExpression="//@expressionProviders/@providers.0/@expressions.27">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Connection"/>
@@ -4127,7 +4127,7 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.2/@labels.2/@modelFacet"
-        className="ConnectionLabelExpressionLabelParser5136"
+        className="ConnectionLabelExpressionLabelParser5164"
         viewExpression="//@expressionProviders/@providers.0/@expressions.28">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Connection"/>
@@ -4135,7 +4135,7 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.2/@labels.3/@modelFacet"
-        className="ConnectionLabelExpressionLabelParser5137"
+        className="ConnectionLabelExpressionLabelParser5165"
         viewExpression="//@expressionProviders/@providers.0/@expressions.29">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Connection"/>
@@ -4143,7 +4143,7 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.2/@labels.4/@modelFacet"
-        className="ConnectionLabelExpressionLabelParser5138"
+        className="ConnectionLabelExpressionLabelParser5166"
         viewExpression="//@expressionProviders/@providers.0/@expressions.30">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Connection"/>
@@ -4218,7 +4218,7 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.14/@labels.2/@modelFacet"
-        className="MultipleGeneralizationLabelExpressionLabelParser5098"
+        className="MultipleGeneralizationLabelExpressionLabelParser5172"
         viewExpression="//@expressionProviders/@providers.0/@expressions.47">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleGeneralization"/>
@@ -4242,7 +4242,7 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.16/@labels.2/@modelFacet"
-        className="MultipleSpecializationLabelExpressionLabelParser5079"
+        className="MultipleSpecializationLabelExpressionLabelParser5175"
         viewExpression="//@expressionProviders/@providers.0/@expressions.52">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleSpecialization"/>
@@ -4282,7 +4282,7 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.21/@labels.1/@modelFacet"
-        className="AttributeLabelExpressionLabelParser5126"
+        className="AttributeLabelExpressionLabelParser5179"
         viewExpression="//@expressionProviders/@providers.0/@expressions.63">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Attribute"/>
@@ -4290,7 +4290,7 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.21/@labels.2/@modelFacet"
-        className="AttributeLabelExpressionLabelParser5127"
+        className="AttributeLabelExpressionLabelParser5180"
         viewExpression="//@expressionProviders/@providers.0/@expressions.64">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Attribute"/>
@@ -4298,7 +4298,7 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.21/@labels.3/@modelFacet"
-        className="AttributeLabelExpressionLabelParser5128"
+        className="AttributeLabelExpressionLabelParser5181"
         viewExpression="//@expressionProviders/@providers.0/@expressions.65">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Attribute"/>
@@ -4322,7 +4322,7 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.23/@labels.1/@modelFacet"
-        className="MethodLabelExpressionLabelParser5131"
+        className="MethodLabelExpressionLabelParser5184"
         viewExpression="//@expressionProviders/@providers.0/@expressions.70">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Method"/>
@@ -4330,7 +4330,7 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.23/@labels.2/@modelFacet"
-        className="MethodLabelExpressionLabelParser5132"
+        className="MethodLabelExpressionLabelParser5185"
         viewExpression="//@expressionProviders/@providers.0/@expressions.71">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Method"/>
@@ -4338,7 +4338,7 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.23/@labels.3/@modelFacet"
-        className="MethodLabelExpressionLabelParser5133"
+        className="MethodLabelExpressionLabelParser5186"
         viewExpression="//@expressionProviders/@providers.0/@expressions.72">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Method"/>
@@ -4362,7 +4362,7 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.20/@labels.0/@modelFacet"
-        className="EntityLabelExpressionLabelParser5139"
+        className="EntityLabelExpressionLabelParser5187"
         viewExpression="//@expressionProviders/@providers.0/@expressions.75">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Entity"/>
@@ -4370,7 +4370,7 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.20/@labels.1/@modelFacet"
-        className="EntityLabelExpressionLabelParser5140"
+        className="EntityLabelExpressionLabelParser5188"
         viewExpression="//@expressionProviders/@providers.0/@expressions.76">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Entity"/>
@@ -4378,7 +4378,7 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.20/@labels.2/@modelFacet"
-        className="EntityLabelExpressionLabelParser5141"
+        className="EntityLabelExpressionLabelParser5189"
         viewExpression="//@expressionProviders/@providers.0/@expressions.77">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Entity"/>
@@ -4386,7 +4386,7 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.20/@labels.3/@modelFacet"
-        className="EntityLabelExpressionLabelParser5142"
+        className="EntityLabelExpressionLabelParser5190"
         viewExpression="//@expressionProviders/@providers.0/@expressions.78">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Entity"/>
@@ -4394,7 +4394,7 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.0/@labels.1/@modelFacet"
-        className="ModelLabelExpressionLabelParser5097"
+        className="ModelLabelExpressionLabelParser5192"
         viewExpression="//@expressionProviders/@providers.0/@expressions.79">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model"/>

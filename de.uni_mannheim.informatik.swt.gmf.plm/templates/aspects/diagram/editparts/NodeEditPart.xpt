@@ -700,7 +700,7 @@
 				{
 					de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject c = (de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)notification.getNewValue();
 					de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology ont = (de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology)m.eContainer();
-					c.setLevel(ont.getChildren().indexOf(m));
+					c.setLevel(ont.getContent().indexOf(m));
 				}
 			}
 		}

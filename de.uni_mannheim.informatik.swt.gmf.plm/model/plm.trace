@@ -16,92 +16,6 @@
         queryText="true"/>
   </nodeTraces>
   <childNodeTraces
-      visualID="3020"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Method') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Clabject') and _containmentMF_.name = 'children')">
-    <nodeLabelTraces
-        visualID="5041"
-        queryText="true"/>
-    <nodeLabelTraces
-        visualID="5042"
-        queryText="true"/>
-    <nodeLabelTraces
-        visualID="5119"
-        queryText="true"/>
-    <nodeLabelTraces
-        visualID="5120"
-        queryText="true"/>
-  </childNodeTraces>
-  <childNodeTraces
-      visualID="3029"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Model') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Ontology') and _containmentMF_.name = 'children')">
-    <nodeLabelTraces
-        visualID="5082"
-        queryText="true"/>
-    <nodeLabelTraces
-        visualID="5097"
-        queryText="true"/>
-    <compartmentTraces
-        visualID="7017"
-        queryText="true"/>
-  </childNodeTraces>
-  <childNodeTraces
-      visualID="3032"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Complement') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Model') and _containmentMF_.name = 'children')">
-    <nodeLabelTraces
-        visualID="5072"
-        queryText="true"/>
-  </childNodeTraces>
-  <childNodeTraces
-      visualID="3033"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Equality') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Model') and _containmentMF_.name = 'children')">
-    <nodeLabelTraces
-        visualID="5073"
-        queryText="true"/>
-  </childNodeTraces>
-  <childNodeTraces
-      visualID="3034"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Inversion') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Model') and _containmentMF_.name = 'children')">
-    <nodeLabelTraces
-        visualID="5074"
-        queryText="true"/>
-  </childNodeTraces>
-  <childNodeTraces
-      visualID="3035"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'MultipleGeneralization') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Model') and _containmentMF_.name = 'children')">
-    <nodeLabelTraces
-        visualID="5075"
-        queryText="true"/>
-    <nodeLabelTraces
-        visualID="5076"
-        queryText="true"/>
-    <nodeLabelTraces
-        visualID="5098"
-        queryText="true"/>
-  </childNodeTraces>
-  <childNodeTraces
-      visualID="3036"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'MultipleSpecialization') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Model') and _containmentMF_.name = 'children')">
-    <nodeLabelTraces
-        visualID="5077"
-        queryText="true"/>
-    <nodeLabelTraces
-        visualID="5078"
-        queryText="true"/>
-    <nodeLabelTraces
-        visualID="5079"
-        queryText="true"/>
-  </childNodeTraces>
-  <childNodeTraces
-      visualID="3037"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'BinaryGeneralization') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Model') and _containmentMF_.name = 'children')">
-    <nodeLabelTraces
-        visualID="5080"
-        queryText="true"/>
-    <nodeLabelTraces
-        visualID="5081"
-        queryText="true"/>
-  </childNodeTraces>
-  <childNodeTraces
       visualID="3040"
       queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Renderer') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Element') and _containmentMF_.name = 'renderer')">
     <nodeLabelTraces
@@ -202,107 +116,6 @@
         queryText="true"/>
   </childNodeTraces>
   <childNodeTraces
-      visualID="3050"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Attribute') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Clabject') and _containmentMF_.name = 'children')">
-    <nodeLabelTraces
-        visualID="5121"
-        queryText="true"/>
-    <nodeLabelTraces
-        visualID="5122"
-        queryText="true"/>
-    <nodeLabelTraces
-        visualID="5123"
-        queryText="true"/>
-    <nodeLabelTraces
-        visualID="5124"
-        queryText="true"/>
-    <nodeLabelTraces
-        visualID="5152"
-        queryText="true"/>
-  </childNodeTraces>
-  <childNodeTraces
-      visualID="3051"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Attribute') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Clabject') and _containmentMF_.name = 'children')">
-    <nodeLabelTraces
-        visualID="5125"
-        queryText="true"/>
-    <nodeLabelTraces
-        visualID="5126"
-        queryText="true"/>
-    <nodeLabelTraces
-        visualID="5127"
-        queryText="true"/>
-    <nodeLabelTraces
-        visualID="5128"
-        queryText="true"/>
-    <nodeLabelTraces
-        visualID="5151"
-        queryText="true"/>
-  </childNodeTraces>
-  <childNodeTraces
-      visualID="3052"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Method') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Clabject') and _containmentMF_.name = 'children')">
-    <nodeLabelTraces
-        visualID="5130"
-        queryText="true"/>
-    <nodeLabelTraces
-        visualID="5131"
-        queryText="true"/>
-    <nodeLabelTraces
-        visualID="5132"
-        queryText="true"/>
-    <nodeLabelTraces
-        visualID="5133"
-        queryText="true"/>
-  </childNodeTraces>
-  <childNodeTraces
-      visualID="3053"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Connection') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Model') and _containmentMF_.name = 'children')">
-    <nodeLabelTraces
-        visualID="5134"
-        queryText="true"/>
-    <nodeLabelTraces
-        visualID="5135"
-        queryText="true"/>
-    <nodeLabelTraces
-        visualID="5136"
-        queryText="true"/>
-    <nodeLabelTraces
-        visualID="5137"
-        queryText="true"/>
-    <nodeLabelTraces
-        visualID="5138"
-        queryText="true"/>
-    <compartmentTraces
-        visualID="7022"
-        queryText="true"/>
-    <compartmentTraces
-        visualID="7023"
-        queryText="true"/>
-  </childNodeTraces>
-  <childNodeTraces
-      visualID="3054"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Entity') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Model') and _containmentMF_.name = 'children')">
-    <nodeLabelTraces
-        visualID="5139"
-        queryText="true"/>
-    <nodeLabelTraces
-        visualID="5140"
-        queryText="true"/>
-    <nodeLabelTraces
-        visualID="5141"
-        queryText="true"/>
-    <nodeLabelTraces
-        visualID="5142"
-        queryText="true"/>
-    <compartmentTraces
-        visualID="7024"
-        queryText="true"/>
-    <compartmentTraces
-        visualID="7025"
-        queryText="true"/>
-  </childNodeTraces>
-  <childNodeTraces
       visualID="3055"
       queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Renderer') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Element') and _containmentMF_.name = 'renderer')">
     <nodeLabelTraces
@@ -340,6 +153,193 @@
         queryText="true"/>
     <nodeLabelTraces
         visualID="5150"
+        queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="3059"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Model') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Ontology') and _containmentMF_.name = 'content')">
+    <nodeLabelTraces
+        visualID="5191"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5192"
+        queryText="true"/>
+    <compartmentTraces
+        visualID="7026"
+        queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="3060"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Connection') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Model') and _containmentMF_.name = 'content')">
+    <nodeLabelTraces
+        visualID="5162"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5163"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5164"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5165"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5166"
+        queryText="true"/>
+    <compartmentTraces
+        visualID="7027"
+        queryText="true"/>
+    <compartmentTraces
+        visualID="7028"
+        queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="3061"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Attribute') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Clabject') and _containmentMF_.name = 'features')">
+    <nodeLabelTraces
+        visualID="5153"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5154"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5155"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5156"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5157"
+        queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="3062"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Method') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Clabject') and _containmentMF_.name = 'features')">
+    <nodeLabelTraces
+        visualID="5158"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5159"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5160"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5161"
+        queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="3063"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Complement') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Model') and _containmentMF_.name = 'content')">
+    <nodeLabelTraces
+        visualID="5167"
+        queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="3064"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Equality') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Model') and _containmentMF_.name = 'content')">
+    <nodeLabelTraces
+        visualID="5168"
+        queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="3065"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Inversion') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Model') and _containmentMF_.name = 'content')">
+    <nodeLabelTraces
+        visualID="5169"
+        queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="3066"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'MultipleGeneralization') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Model') and _containmentMF_.name = 'content')">
+    <nodeLabelTraces
+        visualID="5170"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5171"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5172"
+        queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="3067"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'MultipleSpecialization') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Model') and _containmentMF_.name = 'content')">
+    <nodeLabelTraces
+        visualID="5173"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5174"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5175"
+        queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="3068"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'BinaryGeneralization') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Model') and _containmentMF_.name = 'content')">
+    <nodeLabelTraces
+        visualID="5176"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5177"
+        queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="3069"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Entity') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Model') and _containmentMF_.name = 'content')">
+    <nodeLabelTraces
+        visualID="5187"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5188"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5189"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5190"
+        queryText="true"/>
+    <compartmentTraces
+        visualID="7029"
+        queryText="true"/>
+    <compartmentTraces
+        visualID="7030"
+        queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="3070"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Attribute') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Clabject') and _containmentMF_.name = 'features')">
+    <nodeLabelTraces
+        visualID="5178"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5179"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5180"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5181"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5182"
+        queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="3071"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Method') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Clabject') and _containmentMF_.name = 'features')">
+    <nodeLabelTraces
+        visualID="5183"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5184"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5185"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5186"
         queryText="true"/>
   </childNodeTraces>
   <linkTraces

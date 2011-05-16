@@ -25,7 +25,7 @@
                   xsi:type="ecore:EAttribute"
                   href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Renderer/attributes"/>
               <value
-                  body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= min'))"/>
+                  body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))"/>
             </initializers>
             <initializers
                 xsi:type="gmfmap:FeatureValueSpec">
@@ -61,7 +61,7 @@
       <children
           compartment="//@nodes.0/@ownedChild/@compartments.0">
         <containmentFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Ontology/children"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Ontology/content"/>
         <ownedChild>
           <domainMetaElement
               href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model"/>
@@ -79,7 +79,7 @@
                       xsi:type="ecore:EAttribute"
                       href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Renderer/attributes"/>
                   <value
-                      body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= min'))"/>
+                      body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))"/>
                 </initializers>
                 <initializers
                     xsi:type="gmfmap:FeatureValueSpec">
@@ -125,7 +125,7 @@
                     href="plm.gmfgraph#RendererAttributeValueLabel"/>
                 <viewExpression
                     xsi:type="gmfmap:Constraint"
-                    body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
+                    body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
               </labelMappings>
               <labelMappings
                   xsi:type="gmfmap:ExpressionLabelMapping"
@@ -145,7 +145,7 @@
           <children
               compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@compartments.0">
             <containmentFeature
-                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/children"/>
+                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/content"/>
             <ownedChild>
               <domainMetaElement
                   href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Connection"/>
@@ -195,7 +195,7 @@
                           xsi:type="ecore:EAttribute"
                           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Renderer/attributes"/>
                       <value
-                          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= min'))->append('collapsed= false')"/>
+                          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))->append('collapsed= false')"/>
                     </initializers>
                     <initializers
                         xsi:type="gmfmap:FeatureValueSpec">
@@ -213,7 +213,7 @@
                 <diagramLabel
                     href="plm.gmfgraph#ConnectionFigureName"/>
                 <viewExpression
-                    body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderName:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('name') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('name') = 'min'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (self.elided) then&#xD;&#xA;&#x9;'...'&#xD;&#xA;else&#xD;&#xA;&#x9;if (renderName and not self.name.oclIsUndefined()) then&#xD;&#xA;&#x9;&#x9;self.name&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;endif"/>
+                    body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderName:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('name') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('name') = 'default'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (self.elided) then&#xD;&#xA;&#x9;'...'&#xD;&#xA;else&#xD;&#xA;&#x9;if (renderName and not self.name.oclIsUndefined()) then&#xD;&#xA;&#x9;&#x9;self.name&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;endif"/>
               </labelMappings>
               <labelMappings
                   xsi:type="gmfmap:FeatureLabelMapping">
@@ -227,7 +227,7 @@
                 <diagramLabel
                     href="plm.gmfgraph#ConnectionFigureLevelLabel"/>
                 <viewExpression
-                    body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderLevel:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('level') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('level') = 'min'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (renderLevel) then&#xD;&#xA;&#x9;self.level&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
+                    body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderLevel:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('level') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('level') = 'default'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (renderLevel) then&#xD;&#xA;&#x9;self.level&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
               </labelMappings>
               <labelMappings
                   xsi:type="gmfmap:ExpressionLabelMapping"
@@ -235,7 +235,7 @@
                 <diagramLabel
                     href="plm.gmfgraph#ConnectionFigurePotency"/>
                 <viewExpression
-                    body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderPotency:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('potency') = 'max' &#xD;&#xA;&#x9;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('potency') = 'min'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let potency:String = if (self.potency > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.potency.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.potency = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (renderPotency) then&#xD;&#xA;&#x9;potency&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
+                    body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderPotency:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('potency') = 'max' &#xD;&#xA;&#x9;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('potency') = 'default'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let potency:String = if (self.potency > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.potency.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.potency = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (renderPotency) then&#xD;&#xA;&#x9;potency&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
               </labelMappings>
               <labelMappings
                   xsi:type="gmfmap:ExpressionLabelMapping"
@@ -253,7 +253,7 @@
               <children
                   compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.1/@ownedChild/@compartments.0">
                 <containmentFeature
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject/children"/>
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject/features"/>
                 <ownedChild>
                   <domainMetaElement
                       href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Attribute"/>
@@ -271,7 +271,7 @@
                               xsi:type="ecore:EAttribute"
                               href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Renderer/attributes"/>
                           <value
-                              body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= min'))"/>
+                              body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))"/>
                         </initializers>
                         <initializers
                             xsi:type="gmfmap:FeatureValueSpec">
@@ -298,7 +298,7 @@
                     <diagramLabel
                         href="plm.gmfgraph#AttributeFigureDurabilityLabel"/>
                     <viewExpression
-                        body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderDurability:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('durability') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('durability') = 'min'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let durability:String = if (self.durability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.durability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;if (renderDurability) then&#xD;&#xA;&#x9;durability&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
+                        body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderDurability:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('durability') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('durability') = 'default'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let durability:String = if (self.durability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.durability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;if (renderDurability) then&#xD;&#xA;&#x9;durability&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
                   </labelMappings>
                   <labelMappings
                       xsi:type="gmfmap:FeatureLabelMapping">
@@ -341,7 +341,7 @@
                             href="plm.gmfgraph#RendererAttributeValueLabel"/>
                         <viewExpression
                             xsi:type="gmfmap:Constraint"
-                            body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
+                            body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
                       </labelMappings>
                       <labelMappings
                           xsi:type="gmfmap:ExpressionLabelMapping"
@@ -363,7 +363,7 @@
               <children
                   compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.1/@ownedChild/@compartments.1">
                 <containmentFeature
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject/children"/>
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject/features"/>
                 <ownedChild>
                   <domainMetaElement
                       href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Method"/>
@@ -381,7 +381,7 @@
                               xsi:type="ecore:EAttribute"
                               href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Renderer/attributes"/>
                           <value
-                              body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= min'))"/>
+                              body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))"/>
                         </initializers>
                         <initializers
                             xsi:type="gmfmap:FeatureValueSpec">
@@ -443,7 +443,7 @@
                             href="plm.gmfgraph#RendererAttributeValueLabel"/>
                         <viewExpression
                             xsi:type="gmfmap:Constraint"
-                            body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
+                            body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
                       </labelMappings>
                       <labelMappings
                           xsi:type="gmfmap:ExpressionLabelMapping"
@@ -475,7 +475,7 @@
                         href="plm.gmfgraph#RendererAttributeValueLabel"/>
                     <viewExpression
                         xsi:type="gmfmap:Constraint"
-                        body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
+                        body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
                   </labelMappings>
                   <labelMappings
                       xsi:type="gmfmap:ExpressionLabelMapping"
@@ -507,7 +507,7 @@
           <children
               compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@compartments.0">
             <containmentFeature
-                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/children"/>
+                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/content"/>
             <ownedChild>
               <domainMetaElement
                   href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Complement"/>
@@ -525,7 +525,7 @@
                           xsi:type="ecore:EAttribute"
                           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Renderer/attributes"/>
                       <value
-                          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= min'))->append('collapsed= false')"/>
+                          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))->append('collapsed= false')"/>
                     </initializers>
                     <initializers
                         xsi:type="gmfmap:FeatureValueSpec">
@@ -561,7 +561,7 @@
                         href="plm.gmfgraph#RendererAttributeValueLabel"/>
                     <viewExpression
                         xsi:type="gmfmap:Constraint"
-                        body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
+                        body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
                   </labelMappings>
                   <labelMappings
                       xsi:type="gmfmap:ExpressionLabelMapping"
@@ -583,7 +583,7 @@
           <children
               compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@compartments.0">
             <containmentFeature
-                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/children"/>
+                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/content"/>
             <ownedChild>
               <domainMetaElement
                   href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Equality"/>
@@ -601,7 +601,7 @@
                           xsi:type="ecore:EAttribute"
                           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Renderer/attributes"/>
                       <value
-                          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= min'))->append('collapsed= false')"/>
+                          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))->append('collapsed= false')"/>
                     </initializers>
                     <initializers
                         xsi:type="gmfmap:FeatureValueSpec">
@@ -641,7 +641,7 @@
                         href="plm.gmfgraph#RendererAttributeValueLabel"/>
                     <viewExpression
                         xsi:type="gmfmap:Constraint"
-                        body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
+                        body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
                   </labelMappings>
                   <labelMappings
                       xsi:type="gmfmap:ExpressionLabelMapping"
@@ -663,7 +663,7 @@
           <children
               compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@compartments.0">
             <containmentFeature
-                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/children"/>
+                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/content"/>
             <ownedChild>
               <domainMetaElement
                   href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Inversion"/>
@@ -681,7 +681,7 @@
                           xsi:type="ecore:EAttribute"
                           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Renderer/attributes"/>
                       <value
-                          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= min'))->append('collapsed= false')"/>
+                          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))->append('collapsed= false')"/>
                     </initializers>
                     <initializers
                         xsi:type="gmfmap:FeatureValueSpec">
@@ -717,7 +717,7 @@
                         href="plm.gmfgraph#RendererAttributeValueLabel"/>
                     <viewExpression
                         xsi:type="gmfmap:Constraint"
-                        body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
+                        body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
                   </labelMappings>
                   <labelMappings
                       xsi:type="gmfmap:ExpressionLabelMapping"
@@ -739,7 +739,7 @@
           <children
               compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@compartments.0">
             <containmentFeature
-                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/children"/>
+                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/content"/>
             <ownedChild>
               <domainMetaElement
                   href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//MultipleGeneralization"/>
@@ -757,7 +757,7 @@
                           xsi:type="ecore:EAttribute"
                           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Renderer/attributes"/>
                       <value
-                          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= min'))->append('collapsed= false')"/>
+                          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))->append('collapsed= false')"/>
                     </initializers>
                     <initializers
                         xsi:type="gmfmap:FeatureValueSpec">
@@ -809,7 +809,7 @@
                         href="plm.gmfgraph#RendererAttributeValueLabel"/>
                     <viewExpression
                         xsi:type="gmfmap:Constraint"
-                        body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
+                        body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
                   </labelMappings>
                   <labelMappings
                       xsi:type="gmfmap:ExpressionLabelMapping"
@@ -831,7 +831,7 @@
           <children
               compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@compartments.0">
             <containmentFeature
-                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/children"/>
+                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/content"/>
             <ownedChild>
               <domainMetaElement
                   href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//MultipleSpecialization"/>
@@ -849,7 +849,7 @@
                           xsi:type="ecore:EAttribute"
                           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Renderer/attributes"/>
                       <value
-                          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= min'))->append('collapsed= false')"/>
+                          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))->append('collapsed= false')"/>
                     </initializers>
                     <initializers
                         xsi:type="gmfmap:FeatureValueSpec">
@@ -901,7 +901,7 @@
                         href="plm.gmfgraph#RendererAttributeValueLabel"/>
                     <viewExpression
                         xsi:type="gmfmap:Constraint"
-                        body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
+                        body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
                   </labelMappings>
                   <labelMappings
                       xsi:type="gmfmap:ExpressionLabelMapping"
@@ -923,7 +923,7 @@
           <children
               compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@compartments.0">
             <containmentFeature
-                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/children"/>
+                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/content"/>
             <ownedChild>
               <domainMetaElement
                   href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//BinaryGeneralization"/>
@@ -941,7 +941,7 @@
                           xsi:type="ecore:EAttribute"
                           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Renderer/attributes"/>
                       <value
-                          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= min'))->append('collapsed= false')"/>
+                          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))->append('collapsed= false')"/>
                     </initializers>
                     <initializers
                         xsi:type="gmfmap:FeatureValueSpec">
@@ -986,7 +986,7 @@
                         href="plm.gmfgraph#RendererAttributeValueLabel"/>
                     <viewExpression
                         xsi:type="gmfmap:Constraint"
-                        body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
+                        body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
                   </labelMappings>
                   <labelMappings
                       xsi:type="gmfmap:ExpressionLabelMapping"
@@ -1008,7 +1008,7 @@
           <children
               compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@compartments.0">
             <containmentFeature
-                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/children"/>
+                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/content"/>
             <ownedChild>
               <domainMetaElement
                   href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Entity"/>
@@ -1026,7 +1026,7 @@
                           xsi:type="ecore:EAttribute"
                           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Renderer/attributes"/>
                       <value
-                          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= min'))"/>
+                          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))"/>
                     </initializers>
                     <initializers
                         xsi:type="gmfmap:FeatureValueSpec">
@@ -1044,7 +1044,7 @@
                 <diagramLabel
                     href="plm.gmfgraph#EntityFigureNameLabel"/>
                 <viewExpression
-                    body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderName:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('name') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('name') = 'min'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (self.elided) then&#xD;&#xA;&#x9;'...'&#xD;&#xA;else&#xD;&#xA;&#x9;if (renderName and not self.name.oclIsUndefined()) then&#xD;&#xA;&#x9;&#x9;self.name&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;endif"/>
+                    body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderName:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('name') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('name') = 'default'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (self.elided) then&#xD;&#xA;&#x9;'...'&#xD;&#xA;else&#xD;&#xA;&#x9;if (renderName and not self.name.oclIsUndefined()) then&#xD;&#xA;&#x9;&#x9;self.name&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;endif"/>
               </labelMappings>
               <labelMappings
                   xsi:type="gmfmap:ExpressionLabelMapping"
@@ -1052,7 +1052,7 @@
                 <diagramLabel
                     href="plm.gmfgraph#EntityFigurePotencyLabel"/>
                 <viewExpression
-                    body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderPotency:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('potency') = 'max' &#xD;&#xA;&#x9;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('potency') = 'min'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let potency:String = if (self.potency > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.potency.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.potency = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (renderPotency) then&#xD;&#xA;&#x9;potency&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
+                    body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderPotency:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('potency') = 'max' &#xD;&#xA;&#x9;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('potency') = 'default'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let potency:String = if (self.potency > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.potency.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.potency = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (renderPotency) then&#xD;&#xA;&#x9;potency&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
               </labelMappings>
               <labelMappings
                   xsi:type="gmfmap:ExpressionLabelMapping"
@@ -1060,7 +1060,7 @@
                 <diagramLabel
                     href="plm.gmfgraph#EntityFigureLevelLabel"/>
                 <viewExpression
-                    body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderLevel:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('level') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('level') = 'min'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (renderLevel) then&#xD;&#xA;&#x9;self.level&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
+                    body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderLevel:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('level') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('level') = 'default'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (renderLevel) then&#xD;&#xA;&#x9;self.level&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
               </labelMappings>
               <labelMappings
                   xsi:type="gmfmap:ExpressionLabelMapping"
@@ -1078,7 +1078,7 @@
               <children
                   compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.8/@ownedChild/@compartments.0">
                 <containmentFeature
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject/children"/>
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject/features"/>
                 <ownedChild>
                   <domainMetaElement
                       href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Attribute"/>
@@ -1096,7 +1096,7 @@
                               xsi:type="ecore:EAttribute"
                               href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Renderer/attributes"/>
                           <value
-                              body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= min'))"/>
+                              body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))"/>
                         </initializers>
                         <initializers
                             xsi:type="gmfmap:FeatureValueSpec">
@@ -1123,7 +1123,7 @@
                     <diagramLabel
                         href="plm.gmfgraph#AttributeFigureDurabilityLabel"/>
                     <viewExpression
-                        body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderDurability:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('durability') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('durability') = 'min'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let durability:String = if (self.durability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.durability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;if (renderDurability) then&#xD;&#xA;&#x9;durability&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
+                        body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderDurability:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('durability') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('durability') = 'default'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let durability:String = if (self.durability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.durability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;if (renderDurability) then&#xD;&#xA;&#x9;durability&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
                   </labelMappings>
                   <labelMappings
                       xsi:type="gmfmap:ExpressionLabelMapping"
@@ -1131,7 +1131,7 @@
                     <diagramLabel
                         href="plm.gmfgraph#AttributeFigureValueVariabilityLabel"/>
                     <viewExpression
-                        body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderValueVariability:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('valueVariability') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('valueVariability') = 'min'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let valueVariability:String = if (self.valueVariability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.valueVariability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;if (renderValueVariability) then&#xD;&#xA;&#x9;valueVariability&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
+                        body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.renderer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderer:Renderer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.renderer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderValueVariability:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('valueVariability') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;renderer.getValueForKey('valueVariability') = 'default'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let valueVariability:String = if (self.valueVariability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.valueVariability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;if (renderValueVariability) then&#xD;&#xA;&#x9;valueVariability&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
                   </labelMappings>
                   <labelMappings
                       xsi:type="gmfmap:ExpressionLabelMapping"
@@ -1167,7 +1167,7 @@
                             href="plm.gmfgraph#RendererAttributeValueLabel"/>
                         <viewExpression
                             xsi:type="gmfmap:Constraint"
-                            body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
+                            body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
                       </labelMappings>
                       <labelMappings
                           xsi:type="gmfmap:ExpressionLabelMapping"
@@ -1189,7 +1189,7 @@
               <children
                   compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.8/@ownedChild/@compartments.1">
                 <containmentFeature
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject/children"/>
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject/features"/>
                 <ownedChild>
                   <domainMetaElement
                       href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Method"/>
@@ -1207,7 +1207,7 @@
                               xsi:type="ecore:EAttribute"
                               href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Renderer/attributes"/>
                           <value
-                              body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= min'))"/>
+                              body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))"/>
                         </initializers>
                         <initializers
                             xsi:type="gmfmap:FeatureValueSpec">
@@ -1269,7 +1269,7 @@
                             href="plm.gmfgraph#RendererAttributeValueLabel"/>
                         <viewExpression
                             xsi:type="gmfmap:Constraint"
-                            body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
+                            body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
                       </labelMappings>
                       <labelMappings
                           xsi:type="gmfmap:ExpressionLabelMapping"
@@ -1301,7 +1301,7 @@
                         href="plm.gmfgraph#RendererAttributeValueLabel"/>
                     <viewExpression
                         xsi:type="gmfmap:Constraint"
-                        body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
+                        body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
                   </labelMappings>
                   <labelMappings
                       xsi:type="gmfmap:ExpressionLabelMapping"
@@ -1350,7 +1350,7 @@
                 href="plm.gmfgraph#RendererAttributeValueLabel"/>
             <viewExpression
                 xsi:type="gmfmap:Constraint"
-                body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 2, currentAttribute.size()) &lt;> 'min') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
+                body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
           </labelMappings>
           <labelMappings
               xsi:type="gmfmap:ExpressionLabelMapping"
@@ -1414,7 +1414,7 @@
           body="if (self.instantiationType = InstantiationType::isonym) then&#xD;&#xA;&#x9;'isonym'&#xD;&#xA;else&#xD;&#xA;       if (self.instantiationType = InstantiationType::hyponym) then&#xD;&#xA;&#x9;&#x9;'hyponym'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;'offspring'&#xD;&#xA;&#x9;endif&#xD;&#xA;endif"/>
     </labelMappings>
     <containmentFeature
-        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/children"/>
+        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/content"/>
     <tool
         xsi:type="gmftool:CreationTool"
         href="plm.gmftool#//@palette/@tools.2/@tools.0"/>
