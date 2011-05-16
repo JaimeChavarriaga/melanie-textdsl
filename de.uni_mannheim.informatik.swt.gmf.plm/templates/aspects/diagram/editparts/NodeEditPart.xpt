@@ -938,6 +938,8 @@
 		//Elide and hide if model.complteness = NoElision
 		if (clab.isElided()) {
 
+			org.eclipse.draw2d.geometry.Rectangle rect = figure.getClientArea().getCopy();
+			
 			defaultSizeNodeFigure.getChildren().remove(0);
 			
 			//Set up the new figure for the elided node
@@ -959,7 +961,6 @@
 			//On Startup the size is saved in the notational model
 			if (!readOnlyTransaction) {
 				//Resize the elided node
-				org.eclipse.draw2d.geometry.Rectangle rect = figure.getClientArea().getCopy();
 				rect.setSize((cachedSize != null) ? cachedSize : new org.eclipse.draw2d.geometry.Dimension(
 						10, 10));
 				org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand sbc = new org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand(
