@@ -317,12 +317,12 @@
                         body="if (not self.datatype.oclIsUndefined()) then&#xD;&#xA;&#x9;':'.concat(self.datatype.name)&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
                   </labelMappings>
                   <labelMappings
-                      xsi:type="gmfmap:FeatureLabelMapping"
-                      viewPattern="= {0}">
+                      xsi:type="gmfmap:ExpressionLabelMapping"
+                      readOnly="true">
                     <diagramLabel
-                        href="plm.gmfgraph#EntityFieldFigureDefaultValueLabel"/>
-                    <features
-                        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Attribute/value"/>
+                        href="plm.gmfgraph#AttributeFigureDefaultValueLabel"/>
+                    <viewExpression
+                        body="if (not self.value.oclIsUndefined()) then&#xD;&#xA;&#x9;'='.concat(self.value)&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
                   </labelMappings>
                   <tool
                       xsi:type="gmftool:CreationTool"
@@ -1149,12 +1149,12 @@
                         body="if (not self.datatype.oclIsUndefined()) then&#xD;&#xA;&#x9;':'.concat(self.datatype.name)&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
                   </labelMappings>
                   <labelMappings
-                      xsi:type="gmfmap:FeatureLabelMapping"
-                      viewPattern="= {0}">
+                      xsi:type="gmfmap:ExpressionLabelMapping"
+                      readOnly="true">
                     <diagramLabel
-                        href="plm.gmfgraph#EntityFieldFigureDefaultValueLabel"/>
-                    <features
-                        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Attribute/value"/>
+                        href="plm.gmfgraph#AttributeFigureDefaultValueLabel"/>
+                    <viewExpression
+                        body="if (not self.value.oclIsUndefined() and self.value &lt;> '') then&#xD;&#xA;&#x9;'='.concat(self.value)&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
                   </labelMappings>
                   <tool
                       xsi:type="gmftool:CreationTool"
