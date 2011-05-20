@@ -302,118 +302,79 @@
             fill="false">
           <layout
               xsi:type="gmfgraph:GridLayout"
-              numColumns="2"
+              numColumns="5"
               equalWidth="false">
             <margins
                 dx="3"/>
             <spacing/>
           </layout>
           <children
-              xsi:type="gmfgraph:Rectangle"
-              name="left"
-              outline="false"
-              fill="false">
+              xsi:type="gmfgraph:Label"
+              name="AttributeNameFigure"
+              text="">
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
                 horizontalAlignment="BEGINNING"/>
-            <layout
-                xsi:type="gmfgraph:GridLayout"
-                numColumns="2"
-                equalWidth="false">
-              <margins/>
-              <spacing/>
-            </layout>
-            <children
-                xsi:type="gmfgraph:Label"
-                name="AttributeNameFigure"
-                text="">
-              <layoutData
-                  xsi:type="gmfgraph:GridLayoutData"
-                  grabExcessVerticalSpace="true"
-                  horizontalAlignment="BEGINNING"
-                  verticalSpan="4"/>
-              <font
-                  xsi:type="gmfgraph:BasicFont"
-                  height="8"/>
-            </children>
-            <children
-                xsi:type="gmfgraph:Label"
-                name="AttributeDurabilityFigure">
-              <layoutData
-                  xsi:type="gmfgraph:GridLayoutData"
-                  grabExcessVerticalSpace="true"
-                  verticalAlignment="BEGINNING"
-                  horizontalAlignment="BEGINNING"
-                  verticalSpan="2"/>
-              <font
-                  xsi:type="gmfgraph:BasicFont"
-                  height="7"/>
-            </children>
-            <children
-                xsi:type="gmfgraph:Label"
-                name="AttributeVariabilityFigure">
-              <layoutData
-                  xsi:type="gmfgraph:GridLayoutData"
-                  grabExcessVerticalSpace="true"
-                  verticalAlignment="END"
-                  horizontalAlignment="BEGINNING"
-                  verticalSpan="2"/>
-              <font
-                  xsi:type="gmfgraph:BasicFont"
-                  height="7"/>
-            </children>
+            <font
+                xsi:type="gmfgraph:BasicFont"
+                height="8"/>
           </children>
           <children
-              xsi:type="gmfgraph:Rectangle"
-              name="right"
-              outline="false"
-              fill="false">
+              xsi:type="gmfgraph:Label"
+              name="AttributeDurabilityFigure">
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
-                grabExcessHorizontalSpace="true"
-                grabExcessVerticalSpace="true"
                 horizontalAlignment="BEGINNING"/>
-            <layout
-                xsi:type="gmfgraph:GridLayout"
-                numColumns="2"
-                equalWidth="false">
-              <margins/>
-              <spacing/>
-            </layout>
-            <children
-                xsi:type="gmfgraph:Label"
-                name="AttributeDataTypeFigure">
-              <layoutData
-                  xsi:type="gmfgraph:GridLayoutData"
-                  horizontalAlignment="BEGINNING"/>
-              <font
-                  xsi:type="gmfgraph:BasicFont"
-                  height="8"/>
-            </children>
-            <children
-                xsi:type="gmfgraph:Label"
-                name="AttributeDefaultValueFigure">
-              <layoutData
-                  xsi:type="gmfgraph:GridLayoutData"
-                  grabExcessHorizontalSpace="true"
-                  horizontalAlignment="BEGINNING"/>
-              <font
-                  xsi:type="gmfgraph:BasicFont"
-                  height="8"/>
-            </children>
+            <font
+                xsi:type="gmfgraph:BasicFont"
+                height="7"/>
+            <insets
+                bottom="10"/>
+          </children>
+          <children
+              xsi:type="gmfgraph:Label"
+              name="AttributeDataTypeFigure">
+            <layoutData
+                xsi:type="gmfgraph:GridLayoutData"
+                horizontalAlignment="BEGINNING"/>
+            <font
+                xsi:type="gmfgraph:BasicFont"
+                height="8"/>
+          </children>
+          <children
+              xsi:type="gmfgraph:Label"
+              name="AttributeDefaultValueFigure">
+            <layoutData
+                xsi:type="gmfgraph:GridLayoutData"
+                horizontalAlignment="BEGINNING"/>
+            <font
+                xsi:type="gmfgraph:BasicFont"
+                height="8"/>
+          </children>
+          <children
+              xsi:type="gmfgraph:Label"
+              name="AttributeVariabilityFigure">
+            <layoutData
+                xsi:type="gmfgraph:GridLayoutData"
+                horizontalAlignment="BEGINNING"/>
+            <font
+                xsi:type="gmfgraph:BasicFont"
+                height="7"/>
+            <insets
+                bottom="10"/>
           </children>
         </children>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.6/@actualFigure/@children.0/@children.0/@children.0"/>
+          figure="//@figures.0/@descriptors.6/@actualFigure/@children.0/@children.0"/>
       <accessors
-          figure="//@figures.0/@descriptors.6/@actualFigure/@children.0/@children.0/@children.1"/>
+          figure="//@figures.0/@descriptors.6/@actualFigure/@children.0/@children.1"/>
       <accessors
-          figure="//@figures.0/@descriptors.6/@actualFigure/@children.0/@children.0/@children.2"/>
+          figure="//@figures.0/@descriptors.6/@actualFigure/@children.0/@children.4"/>
       <accessors
-          figure="//@figures.0/@descriptors.6/@actualFigure/@children.0/@children.1/@children.0"/>
+          figure="//@figures.0/@descriptors.6/@actualFigure/@children.0/@children.2"/>
       <accessors
-          figure="//@figures.0/@descriptors.6/@actualFigure/@children.0/@children.1/@children.1"/>
+          figure="//@figures.0/@descriptors.6/@actualFigure/@children.0/@children.3"/>
     </descriptors>
     <descriptors
         name="MethodFigure">
