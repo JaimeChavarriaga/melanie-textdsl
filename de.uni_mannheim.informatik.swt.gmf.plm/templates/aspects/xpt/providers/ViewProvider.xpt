@@ -6,12 +6,12 @@
 
 /**
   *
-  * Hide renderers on creation according to showRenderer attribute
+  * Hide visualizers on creation according to showVisualizer attribute
   *
   */
 «AROUND createNodeMethod FOR gmfgen::GenNode-»
-«/* Show/Hide renderers when adding them. */»
-«IF getUniqueIdentifier().startsWith('Renderer_')»
+«/* Show/Hide visualizers when adding them. */»
+«IF getUniqueIdentifier().startsWith('Visualizer_')»
 	«EXPAND xpt::Common::generatedMemberComment»
 	public org.eclipse.gmf.runtime.notation.Node create«getUniqueIdentifier()»(org.eclipse.emf.ecore.EObject domainElement, org.eclipse.gmf.runtime.notation.View containerView, int index, boolean persisted, org.eclipse.gmf.runtime.diagram.core.preferences.PreferencesHint preferencesHint) {
 «IF viewmap.canUseShapeStyle()-»
@@ -36,10 +36,10 @@
 		«EXPAND initLabel('node', 'prefStore') FOREACH labels-»
 		«EXPAND initCompartment('node', 'prefStore') FOREACH compartments-»
 		
-		//Ontology renderers are the only one effected by their direct container
+		//Ontology visualizers are the only one effected by their direct container
 		if (domainElement.eContainer() != null && domainElement.eContainer() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology)
 		{
-			if (((de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer)domainElement.eContainer()).getShowRenderer().equalsIgnoreCase("none"))
+			if (((de.uni_mannheim.informatik.swt.models.plm.PLM.VisualizationContainer)domainElement.eContainer()).getShowVisualizer().equalsIgnoreCase("none"))
 				node.setVisible(false);
 				
 			return node;
@@ -52,14 +52,14 @@
 		{
 			parent = parent.eContainer();
 			
-			//We found a RenderingContainer that is not the direct parent.
-			if (parent != domainElement.eContainer() && parent instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer)
+			//We found a VisualizationContainer that is not the direct parent.
+			if (parent != domainElement.eContainer() && parent instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.VisualizationContainer)
 				break;
 		}
 		
-		if ((parent != null) && parent instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer)
+		if ((parent != null) && parent instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.VisualizationContainer)
 		{
-			if (((de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer)parent).getShowRenderer().equalsIgnoreCase("none"))
+			if (((de.uni_mannheim.informatik.swt.models.plm.PLM.VisualizationContainer)parent).getShowVisualizer().equalsIgnoreCase("none"))
 				node.setVisible(false);
 		}
 		

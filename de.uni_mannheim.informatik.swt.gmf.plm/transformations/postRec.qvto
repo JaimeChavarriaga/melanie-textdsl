@@ -11,7 +11,7 @@ property genDiagram: GenDiagram = null;
  
 main() {
 	
-	--Needed for Attribute/Method Resize when renderers are shown/hidden Bug 344104
+	--Needed for Attribute/Method Resize when visualizers are shown/hidden Bug 344104
 	gmfgenModel.objectsOfType(GenChildNode)->asOrderedSet()
 		->select(c | c.editPartClassName.startsWith("Attribute") 
 			or c.editPartClassName.startsWith("Method"))->forEach(node)
@@ -99,16 +99,16 @@ main() {
 		:= xmap createChildReference("OntologyEditPart", "LMLModelEditPart", "Ontologies", "icons/ontology16.gif");
 	ontologyChildReference.parent 
 		:= gmfgenModel.objectsOfType(GenDiagram)->asOrderedSet()->select(n | n.editPartClassName = "LMLModelEditPart")->first();
-	--Group for the renderers of the ontology
-	var ontRendererChildReference 
-		:= xmap createChildReference("Renderer10EditPart", "OntologyEditPart", "Renderers", "icons/renderer16.gif");
+	--Group for the visualizers of the ontology
+	var ontVisualizerChildReference 
+		:= xmap createChildReference("Visualizer10EditPart", "OntologyEditPart", "Visualizers", "icons/visualizer16.gif");
 	
 	--Group for all Models
 	var modelChildReference 
 		:= xmap createChildReference("ModelEditPart", "OntologyEditPart", "Models", "icons/model16.gif");
-	--Group for all ModelRenderers
-	var modelRendererChildReference 
-		:= xmap createChildReference("Renderer2EditPart", "ModelEditPart", "Renderers", "icons/renderer16.gif");
+	--Group for all ModelVisualizers
+	var modelVisualizerChildReference 
+		:= xmap createChildReference("Visualizer2EditPart", "ModelEditPart", "Visualizers", "icons/visualizer16.gif");
 	
 	
 	--Group for all Entities
@@ -120,8 +120,8 @@ main() {
 	--Methods for Entities that describe rendering of ontologies
 	var entityMethodChildReference
 		:= xmap createChildReference("MethodEditPart", "EntityEditPart", "Methods", "icons/method16.gif");
-	var entityRendererChildReference
-		:= xmap createChildReference("Renderer9EditPart", "EntityEditPart", "Renderers", "icons/renderer16.gif");
+	var entityVisualizerChildReference
+		:= xmap createChildReference("Visualizer9EditPart", "EntityEditPart", "Visualizers", "icons/visualizer16.gif");
 	
 	
 	--Group for all Connections
@@ -130,67 +130,67 @@ main() {
 	--Group for all ConnectionAttributes
 	var connectionAttributeChildReference 
 		:= xmap createChildReference("AttributeEditPart", "ConnectionEditPart", "Attributes", "icons/field16.gif");
-	--Group for all ConnectionRenderers
-	var connectionRendererChildReference 
-		:= xmap createChildReference("RendererEditPart", "ConnectionEditPart", "Renderers", "icons/renderer16.gif");
+	--Group for all ConnectionVisualizers
+	var connectionVisualizerChildReference 
+		:= xmap createChildReference("VisualizerEditPart", "ConnectionEditPart", "Visualizers", "icons/visualizer16.gif");
 		
 	--Group for all MultipleGeneralizations
 	var multipleGeneralizationChildReference 
 		:= xmap createChildReference("MultipleGeneralizationEditPart", "ModelEditPart", "Generalizations", "icons/inheritance16.gif");
-	--Group for all MultipleGeneralizationRenderers
-	var multipleGeneralizationRendererChildReference 
-		:= xmap createChildReference("Renderer6EditPart", "MultipleGeneralizationEditPart", "Renderers", "icons/renderer16.gif");
+	--Group for all MultipleGeneralizationVisualizers
+	var multipleGeneralizationVisualizerChildReference 
+		:= xmap createChildReference("Visualizer6EditPart", "MultipleGeneralizationEditPart", "Visualizers", "icons/visualizer16.gif");
 	
 		
 	--Group for all MultipleSpecializations
 	var multipleSpecializationChildReference 
 		:= xmap createChildReference("MultipleSpecializationEditPart", "ModelEditPart", "Generalizations", "icons/inheritance16.gif");
-	--Group for all MultipleSpecializationRenderers
-	var multipleSpecializationRendererChildReference 
-		:= xmap createChildReference("Renderer7EditPart", "MultipleSpecializationEditPart", "Renderers", "icons/renderer16.gif");
+	--Group for all MultipleSpecializationVisualizers
+	var multipleSpecializationVisualizerChildReference 
+		:= xmap createChildReference("Visualizer7EditPart", "MultipleSpecializationEditPart", "Visualizers", "icons/visualizer16.gif");
 	
 	
 	--Group for all BinaryGeneralizations
 	var binaryGeneralizationChildReference 
 		:= xmap createChildReference("BinaryGeneralizationEditPart", "ModelEditPart", "Generalizations", "icons/inheritance16.gif");
-	--Group for all BinaryGeneralizationRenderers
-	var binaryGeneralizationRendererChildReference
-		:= xmap createChildReference("Renderer8EditPart", "BinaryGeneralizationEditPart", "Renderers", "icons/renderer16.gif");
+	--Group for all BinaryGeneralizationVisualizers
+	var binaryGeneralizationVisualizerChildReference
+		:= xmap createChildReference("Visualizer8EditPart", "BinaryGeneralizationEditPart", "Visualizers", "icons/visualizer16.gif");
 	
 	--Group for all ComplementSetRelationships
 	var complementChildReference 
 		:= xmap createChildReference("ComplementEditPart", "ModelEditPart", "Set Relationships", "icons/setRelationship16.gif");
-	--Group for all ComplementSetRelationshipRenderers
-	var complementRendererChildReference 
-		:= xmap createChildReference("Renderer3EditPart", "ComplementEditPart", "Renderers", "icons/renderer16.gif");
+	--Group for all ComplementSetRelationshipVisualizers
+	var complementVisualizerChildReference 
+		:= xmap createChildReference("Visualizer3EditPart", "ComplementEditPart", "Visualizers", "icons/visualizer16.gif");
 		
 		
 	--Group for all EqualSetRelationships
 	var equalChildReference 
 		:= xmap createChildReference("EqualityEditPart", "ModelEditPart", "Set Relationships", "icons/setRelationship16.gif");
 	--Group for all EqualSetRelationships
-	var equalRendererChildReference 
-		:= xmap createChildReference("Renderer4EditPart", "EqualityEditPart", "Renderers", "icons/renderer16.gif");		
+	var equalVisualizerChildReference 
+		:= xmap createChildReference("Visualizer4EditPart", "EqualityEditPart", "Visualizers", "icons/visualizer16.gif");		
 	
 	--Group for all InversionSetRelationships
 	var inversionChildReference 
 		:= xmap createChildReference("InversionEditPart", "ModelEditPart", "Set Relationships", "icons/setRelationship16.gif");
-	--Group for all InversionSetRelationshipRenderers
-	var inversionRendererChildReference 
-		:= xmap createChildReference("Renderer5EditPart", "InversionEditPart", "Renderers", "icons/renderer16.gif");
+	--Group for all InversionSetRelationshipVisualizers
+	var inversionVisualizerChildReference 
+		:= xmap createChildReference("Visualizer5EditPart", "InversionEditPart", "Visualizers", "icons/visualizer16.gif");
 	
 	this.genNavigator.childReferences += 
 		OrderedSet{LMLModelChildReference, --rootEnitiyChildReference, rootChildReference, rootMethodChildReference,
-					 ontologyChildReference, ontRendererChildReference, modelChildReference, modelRendererChildReference,
-					entityChildReference, entityRendererChildReference, entityAttributeChildReference, 
-					entityMethodChildReference, connectionChildReference, connectionRendererChildReference, 
+					 ontologyChildReference, ontVisualizerChildReference, modelChildReference, modelVisualizerChildReference,
+					entityChildReference, entityVisualizerChildReference, entityAttributeChildReference, 
+					entityMethodChildReference, connectionChildReference, connectionVisualizerChildReference, 
 					connectionAttributeChildReference, --connectionFieldMethodChildReference
-					binaryGeneralizationChildReference, binaryGeneralizationRendererChildReference,
-					multipleGeneralizationChildReference, multipleGeneralizationRendererChildReference, 
-					multipleSpecializationChildReference, multipleSpecializationRendererChildReference,
-					complementChildReference, complementRendererChildReference, 
-					equalChildReference, equalRendererChildReference,
-					inversionChildReference, inversionRendererChildReference};
+					binaryGeneralizationChildReference, binaryGeneralizationVisualizerChildReference,
+					multipleGeneralizationChildReference, multipleGeneralizationVisualizerChildReference, 
+					multipleSpecializationChildReference, multipleSpecializationVisualizerChildReference,
+					complementChildReference, complementVisualizerChildReference, 
+					equalChildReference, equalVisualizerChildReference,
+					inversionChildReference, inversionVisualizerChildReference};
 	
 	--fix BUG 331875
 	gmfgenModel.objectsOfType(ExpressionLabelParser)->forEach(parser)

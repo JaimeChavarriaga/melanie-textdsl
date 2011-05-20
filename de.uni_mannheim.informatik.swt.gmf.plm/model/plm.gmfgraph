@@ -575,7 +575,7 @@
           figure="//@figures.0/@descriptors.8/@actualFigure/@children.0/@children.3"/>
     </descriptors>
     <descriptors
-        name="RendererCompartmentFigure">
+        name="VisualizerCompartmentFigure">
       <actualFigure
           xsi:type="gmfgraph:Rectangle"
           outline="false"
@@ -1423,7 +1423,7 @@
       </actualFigure>
     </descriptors>
     <descriptors
-        name="RendererFigure">
+        name="VisualizerFigure">
       <actualFigure
           xsi:type="gmfgraph:Rectangle"
           name="DomainEntityFieldFigure"
@@ -1456,7 +1456,7 @@
               dy="22"/>
           <children
               xsi:type="gmfgraph:Label"
-              name="RendererAttributeValueFigureFigure"
+              name="VisualizerAttributeValueFigureFigure"
               text="">
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
@@ -1469,7 +1469,7 @@
           </children>
           <children
               xsi:type="gmfgraph:Label"
-              name="RendererPotencyFigure">
+              name="VisualizerPotencyFigure">
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
                 grabExcessVerticalSpace="true"
@@ -1529,8 +1529,8 @@
       name="BinaryGeneralization"
       figure="BinaryGeneralizationFigure"/>
   <nodes
-      name="RendererNode"
-      figure="RendererFigure"/>
+      name="VisualizerNode"
+      figure="VisualizerFigure"/>
   <connections
       name="ConnectionParticipants"
       figure="ConnectionParticipantsFigure"/>
@@ -1573,8 +1573,8 @@
       figure="EntityCompartmentFigure"
       collapsible="true"/>
   <compartments
-      name="RenderersCompartment"
-      figure="RendererCompartmentFigure"
+      name="VisualizersCompartment"
+      figure="VisualizerCompartmentFigure"
       collapsible="true"/>
   <labels
       name="OntologyFigureNameLabel"
@@ -1767,13 +1767,13 @@
       figure="BinaryGeneralizationExternalLabelFigure"
       elementIcon="false"/>
   <labels
-      name="RendererAttributeValueLabel"
-      figure="RendererFigure"
+      name="VisualizerAttributeValueLabel"
+      figure="VisualizerFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.29/@accessors.0"/>
   <labels
-      name="RendererPotencyLabel"
-      figure="RendererFigure"
+      name="VisualizerPotencyLabel"
+      figure="VisualizerFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.29/@accessors.1"/>
   <labels

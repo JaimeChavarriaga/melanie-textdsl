@@ -58,8 +58,8 @@
 	«EXPAND handleNotificationEventForMethod-»
 «ELSEIF self.editPartClassName = 'ModelEditPart'»
 	«EXPAND handleNotificationEventForModel-»
-«ELSEIF self.editPartClassName.startsWith('Renderer')»
-	«EXPAND handleNotificationEventForRenderer-»
+«ELSEIF self.editPartClassName.startsWith('Visualizer')»
+	«EXPAND handleNotificationEventForVisualizer-»
 «ELSEIF self.editPartClassName = 'OntologyEditPart'»
 	«EXPAND handleNotificationEventForOntology»
 «ENDIF»
@@ -85,7 +85,7 @@
 
 		for (int i = 0; i < sourceConnections.size(); i++) {
 
-			//Take care that no renderer link is used here
+			//Take care that no visualizer link is used here
 			if (! (sourceConnections.get(i) instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionParticipantEditPart))
 			{
 				numberNonParticipantConnection++;
@@ -251,12 +251,12 @@
 			«ENDIF»
 			
 			«IF self.editPartClassName = 'EntityEditPart' or self.editPartClassName = 'ConnectionEditPart'»
-			if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer && 
-				((org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature()).getName().equals("showRenderer"))
+			if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.VisualizationContainer && 
+				((org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature()).getName().equals("showVisualizer"))
 			{
-				«EXPAND showHideRenderers FOR self»
+				«EXPAND showHideVisualizers FOR self»
 			}
-			else if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer && 
+			else if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.VisualizationContainer && 
 				((org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature()).getName().equals("origin")) 
 			{
 				«EXPAND ShowHideExpressed FOR self»
@@ -326,13 +326,13 @@
 		//boolean collapse = false;
 		
 		//********************************************************
-		//Find the renderer attached to this element 
+		//Find the visualizer attached to this element 
 		//********************************************************
 		de.uni_mannheim.informatik.swt.models.plm.PLM.Element self = (de.uni_mannheim.informatik.swt.models.plm.PLM.Element) this
 				.resolveSemanticElement();
 
 		//No rendering information found => all Connection remains expanded
-		if (self.getRenderer().size() == 0) {
+		if (self.getVisualizer().size() == 0) {
 			//Hide external name label
 			org.eclipse.draw2d.IFigure boderItemContainer = (org.eclipse.draw2d.IFigure) figure.getChildren().get(1);
 			((org.eclipse.draw2d.IFigure) boderItemContainer.getChildren().get(0))
@@ -347,7 +347,7 @@
 		//de.uni_mannheim.informatik.swt.models.plm.PLM.Field collapsedField = null;
 
 		//for (de.uni_mannheim.informatik.swt.models.plm.PLM.Element e : self
-		//		.getRenderer().getChildren()) {
+		//		.getVisualizer().getChildren()) {
 		//	if (e instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Field) {
 		//		if (e.getName().equals("collapsed")) {
 		//			collapse = Boolean
@@ -358,7 +358,7 @@
 		//	}
 		//}
 		
-		de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer r = self.getRenderer().get(0);
+		de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer r = self.getVisualizer().get(0);
 		String collapsedString = r.getValueForKey("collapsed");
 		
 		return java.lang.Boolean.parseBoolean(collapsedString);
@@ -536,9 +536,9 @@
 		de.uni_mannheim.informatik.swt.models.plm.PLM.Element self = (de.uni_mannheim.informatik.swt.models.plm.PLM.Element) resolveSemanticElement();
 
 		//Check is visible
-		if (parent.resolveSemanticElement() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer)
+		if (parent.resolveSemanticElement() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.VisualizationContainer)
 		{
-			de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer container = (de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer)parent.resolveSemanticElement();
+			de.uni_mannheim.informatik.swt.models.plm.PLM.VisualizationContainer container = (de.uni_mannheim.informatik.swt.models.plm.PLM.VisualizationContainer)parent.resolveSemanticElement();
 			if ((container.getOrigin().equalsIgnoreCase("computed") && self.isExpressed())
 					|| (container.getOrigin().equalsIgnoreCase("expressed") && !self.isExpressed()))
 			{
@@ -605,9 +605,9 @@
 			de.uni_mannheim.informatik.swt.models.plm.PLM.Element self = (de.uni_mannheim.informatik.swt.models.plm.PLM.Element) resolveSemanticElement();
 		
 			//Check is visible
-			if (parent.resolveSemanticElement() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer)
+			if (parent.resolveSemanticElement() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.VisualizationContainer)
 			{
-				de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer container = (de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer)parent.resolveSemanticElement();
+				de.uni_mannheim.informatik.swt.models.plm.PLM.VisualizationContainer container = (de.uni_mannheim.informatik.swt.models.plm.PLM.VisualizationContainer)parent.resolveSemanticElement();
 				if ((container.getOrigin().equalsIgnoreCase("computed") && self.isExpressed())
 						|| (container.getOrigin().equalsIgnoreCase("expressed") && !self.isExpressed()))
 				{
@@ -670,15 +670,15 @@
 //			org.eclipse.emf.ecore.EObject container = field.eContainer();
 
 			//Only Entyties are used to store rendering information
-//			if (container instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer) {
-				//Get all Entities that reference this Entity as renderer
-//				java.util.Collection<org.eclipse.emf.ecore.EObject> rendererReferencere = org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil
+//			if (container instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer) {
+				//Get all Entities that reference this Entity as visualizer
+//				java.util.Collection<org.eclipse.emf.ecore.EObject> visualizerReferencere = org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil
 //						.getReferencers(
 //								container,
 //								new org.eclipse.emf.ecore.EReference[] { de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.eINSTANCE
-//										.getElement_Renderer() });
+//										.getElement_Visualizer() });
 
-//				for (org.eclipse.emf.ecore.EObject obj : rendererReferencere) {
+//				for (org.eclipse.emf.ecore.EObject obj : visualizerReferencere) {
 //					org.eclipse.ui.IEditorPart editorPart = org.eclipse.ui.PlatformUI.getWorkbench()
 //							.getActiveWorkbenchWindow().getActivePage()
 //							.getActiveEditor();
@@ -713,9 +713,9 @@
 			de.uni_mannheim.informatik.swt.models.plm.PLM.Element self = (de.uni_mannheim.informatik.swt.models.plm.PLM.Element) resolveSemanticElement();
 			
 			//Check is visible
-			if (parent.resolveSemanticElement() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer)
+			if (parent.resolveSemanticElement() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.VisualizationContainer)
 			{
-				de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer container = (de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer)parent.resolveSemanticElement();
+				de.uni_mannheim.informatik.swt.models.plm.PLM.VisualizationContainer container = (de.uni_mannheim.informatik.swt.models.plm.PLM.VisualizationContainer)parent.resolveSemanticElement();
 				if ((container.getOrigin().equalsIgnoreCase("computed") && self.isExpressed())
 						|| (container.getOrigin().equalsIgnoreCase("expressed") && !self.isExpressed()))
 				{
@@ -773,9 +773,9 @@
 			de.uni_mannheim.informatik.swt.models.plm.PLM.Element self = (de.uni_mannheim.informatik.swt.models.plm.PLM.Element) resolveSemanticElement();
 			
 			//Check is visible
-			if (parent.resolveSemanticElement() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer)
+			if (parent.resolveSemanticElement() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.VisualizationContainer)
 			{
-				de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer container = (de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer)parent.resolveSemanticElement();
+				de.uni_mannheim.informatik.swt.models.plm.PLM.VisualizationContainer container = (de.uni_mannheim.informatik.swt.models.plm.PLM.VisualizationContainer)parent.resolveSemanticElement();
 				if ((container.getOrigin().equalsIgnoreCase("computed") && self.isExpressed())
 						|| (container.getOrigin().equalsIgnoreCase("expressed") && !self.isExpressed()))
 				{
@@ -788,9 +788,9 @@
 			}
 		}
 		else if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Model && 
-				((org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature()).getName().equals("showRenderer"))
+				((org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature()).getName().equals("showVisualizer"))
 		{
-		 	«EXPAND showHideRenderers FOR self»
+		 	«EXPAND showHideVisualizers FOR self»
 		}
 		else if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Model
 			&& ((org.eclipse.emf.ecore.EStructuralFeature) notification.getFeature()).getName()
@@ -804,7 +804,7 @@
 			de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject[] clabjects = new de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject[] {};
 			de.uni_mannheim.informatik.swt.models.plm.PLM.Model model = (de.uni_mannheim.informatik.swt.models.plm.PLM.Model) resolveSemanticElement();
 
-			//find all renderers in the model
+			//find all visualizers in the model
 			org.eclipse.ocl.ecore.OCL ocl = org.eclipse.ocl.ecore.OCL
 					.newInstance();
 			org.eclipse.ocl.helper.OCLHelper<org.eclipse.emf.ecore.EClassifier, ?, ?, org.eclipse.ocl.ecore.Constraint> helper = ocl
@@ -822,7 +822,7 @@
 				e.printStackTrace();
 			}
 
-			//find the notational elements for the renderers
+			//find the notational elements for the visualizers
 			for (de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject c : clabjects) {
 				org.eclipse.emf.common.util.TreeIterator<org.eclipse.emf.ecore.EObject> iter = (getNotationView().eAllContents());
 
@@ -851,13 +851,13 @@
 	}
 «ENDDEFINE»
 
-«/* Manages to show hide renderers when setting showRenderer trait */»
-«DEFINE showHideRenderers FOR gmfgen::GenNode»
-			de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer container = (de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer) notification.getNotifier();
+«/* Manages to show hide visualizers when setting showVisualizer trait */»
+«DEFINE showHideVisualizers FOR gmfgen::GenNode»
+			de.uni_mannheim.informatik.swt.models.plm.PLM.VisualizationContainer container = (de.uni_mannheim.informatik.swt.models.plm.PLM.VisualizationContainer) notification.getNotifier();
 
-			de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer[] renderers = new de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer[] {};
+			de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer[] visualizers = new de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer[] {};
 
-			//find all renderers in the model
+			//find all visualizers in the model
 			org.eclipse.ocl.ecore.OCL ocl = org.eclipse.ocl.ecore.OCL.newInstance();
 			org.eclipse.ocl.helper.OCLHelper<org.eclipse.emf.ecore.EClassifier, ?, ?, org.eclipse.ocl.ecore.Constraint> helper = ocl.createOCLHelper();
 			
@@ -874,24 +874,24 @@
 			try 
 			{
 			    «IF self.editPartClassName = 'ModelEditPart'»
-				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.content->collect(c | c.renderer)");
+				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.content->collect(c | c.visualizer)");
 				«ELSEIF self.editPartClassName = 'OntologyEditPart'»
-				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.content->collect(c | c.renderer)->union(self.renderer->collect(r|r))");
+				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.content->collect(c | c.visualizer)->union(self.visualizer->collect(r|r))");
 				«ELSEIF self.editPartClassName = 'EntityEditPart'»
-				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.features->collect(f | f.renderer)");
+				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.features->collect(f | f.visualizer)");
 				«ELSEIF self.editPartClassName = 'ConnectionEditPart'»
-				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.features->collect(f | f.renderer)");
+				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.features->collect(f | f.visualizer)");
 				«ENDIF»
 				
-				renderers = ((java.util.ArrayList<de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer>) ocl.evaluate(resolveSemanticElement(), q)).toArray(new de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer[] {});
+				visualizers = ((java.util.ArrayList<de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer>) ocl.evaluate(resolveSemanticElement(), q)).toArray(new de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer[] {});
 			}
 			catch (org.eclipse.ocl.ParserException e) 
 			{
 				e.printStackTrace();
 			}
 			
-			//find the notational elements for the renderers
-			for(de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer r : renderers)
+			//find the notational elements for the visualizers
+			for(de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer r : visualizers)
 			{
 				org.eclipse.emf.common.util.TreeIterator<org.eclipse.emf.ecore.EObject> iter = (getNotationView().eAllContents());
 				
@@ -905,7 +905,7 @@
 						
 						if (n.getElement() == r)
 						{
-							if (container.getShowRenderer().equalsIgnoreCase("none"))
+							if (container.getShowVisualizer().equalsIgnoreCase("none"))
 								n.setVisible(false);
 							else
 								n.setVisible(true);
@@ -923,9 +923,9 @@
 «/*Manages to show hide expressed when setting origin trait */»
 «DEFINE ShowHideExpressed FOR gmfgen::GenNode»
 	de.uni_mannheim.informatik.swt.models.plm.PLM.Element[] elements = new de.uni_mannheim.informatik.swt.models.plm.PLM.Element[] {};
-	de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer container = (de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer) resolveSemanticElement();
+	de.uni_mannheim.informatik.swt.models.plm.PLM.VisualizationContainer container = (de.uni_mannheim.informatik.swt.models.plm.PLM.VisualizationContainer) resolveSemanticElement();
 	
-	//find all renderers in the model
+	//find all visualizers in the model
 	org.eclipse.ocl.ecore.OCL ocl = org.eclipse.ocl.ecore.OCL
 			.newInstance();
 	org.eclipse.ocl.helper.OCLHelper<org.eclipse.emf.ecore.EClassifier, ?, ?, org.eclipse.ocl.ecore.Constraint> helper = ocl
@@ -959,7 +959,7 @@
 		e.printStackTrace();
 	}
 
-	//find the notational elements for the renderers
+	//find the notational elements for the visualizers
 	for (de.uni_mannheim.informatik.swt.models.plm.PLM.Element e : elements) {
 		org.eclipse.emf.common.util.TreeIterator<org.eclipse.emf.ecore.EObject> iter = (getNotationView().eAllContents());
 
@@ -986,7 +986,7 @@
 	performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
 «ENDDEFINE»
 
-«DEFINE handleNotificationEventForRenderer FOR gmfgen::GenNode»
+«DEFINE handleNotificationEventForVisualizer FOR gmfgen::GenNode»
 	/**
 	 * @generated
 	 */
@@ -995,7 +995,7 @@
 	{
 		super.handleNotificationEvent(notification);
 		
-		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Renderer 
+		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer 
 			&& getParent() != null)
 		{
 			getParent().performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
@@ -1009,7 +1009,7 @@
 
 «DEFINE handleNotificationEventForOntology FOR gmfgen::GenNode»
 	/**
-	 * Inform all renderers to set their view state
+	 * Inform all visualizers to set their view state
 	 * 
 	 * @generated
 	 */
@@ -1017,12 +1017,12 @@
 	protected void handleNotificationEvent(org.eclipse.emf.common.notify.Notification notification) {
 		super.handleNotificationEvent(notification);
 		
-		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer && 
-				((org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature()).getName().equals("showRenderer"))
+		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.VisualizationContainer && 
+				((org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature()).getName().equals("showVisualizer"))
 		{
-			«EXPAND showHideRenderers FOR self»
+			«EXPAND showHideVisualizers FOR self»
 		}
-		else if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.RenderingContainer && 
+		else if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.VisualizationContainer && 
 				((org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature()).getName().equals("origin")) 
 		{
 			«EXPAND ShowHideExpressed FOR self»

@@ -35,8 +35,8 @@
 			cmd.add(«EXPAND impl::diagram::commands::DeleteLinkCommand::newInstance('r') FOR ol»);
 			cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), outgoingLink));
 			
-			«IF ol.getEditPartQualifiedClassName() = 'de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ElementRendererEditPart'»
-			//we need also to destroy the elements renderer
+			«IF ol.getEditPartQualifiedClassName() = 'de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ElementVisualizerEditPart'»
+			//we need also to destroy the elements visualizer
 			org.eclipse.gmf.runtime.emf.type.core.requests.DestroyElementRequest der =  new org.eclipse.gmf.runtime.emf.type.core.requests.DestroyElementRequest(getEditingDomain(), outgoingLink.getTarget().getElement(), false);
 			cmd.add(new org.eclipse.gmf.runtime.emf.type.core.commands.DestroyElementCommand(der));
 			cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), outgoingLink.getTarget()));

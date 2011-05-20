@@ -107,15 +107,15 @@
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
-          title="Renderer"
-          description="Creates a new Renderer">
+          title="Visualizer"
+          description="Creates a new Visualizer">
         <smallIcon
             xsi:type="gmftool:BundleImage"
-            path="/icons/renderer16.gif"
+            path="/icons/visualizer16.gif"
             bundle="de.uni_mannheim.informatik.swt.gmf.plm"/>
         <largeIcon
             xsi:type="gmftool:BundleImage"
-            path="/icons/renderer16.gif"
+            path="/icons/visualizer16.gif"
             bundle="de.uni_mannheim.informatik.swt.gmf.plm"/>
       </tools>
     </tools>

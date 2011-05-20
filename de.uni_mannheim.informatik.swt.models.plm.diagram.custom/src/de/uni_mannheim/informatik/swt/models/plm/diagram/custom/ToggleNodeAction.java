@@ -53,17 +53,17 @@ public class ToggleNodeAction implements IObjectActionDelegate {
 		
 		Element self = (Element)selectedElement.resolveSemanticElement();
 		
-		if (self.getRenderer() == null)
+		if (self.getVisualizer() == null)
 			return;
 		
 		LinkedList<String> attributes = new LinkedList<String>();
 		
-		for (String attr : self.getRenderer().get(0).getAttributes())
+		for (String attr : self.getVisualizer().get(0).getAttributes())
 		{
 			if (attr.startsWith("collapsed"))
 			{
 				attributes.remove(attr);
-				String value = self.getRenderer().get(0).getValueForKey("collapsed");
+				String value = self.getVisualizer().get(0).getValueForKey("collapsed");
 				attr = (value.equals("true")) ? "collapsed= false":"collapsed= true";
 				attributes.add(attr);
 			}
@@ -74,14 +74,14 @@ public class ToggleNodeAction implements IObjectActionDelegate {
 		}
 		
 		EditingDomain domain = selectedElement.getEditingDomain();
-		domain.getCommandStack().execute(SetCommand.create(domain, self.getRenderer().get(0), PLMPackage.eINSTANCE.getRenderer_Attributes(), attributes));
+		domain.getCommandStack().execute(SetCommand.create(domain, self.getVisualizer().get(0), PLMPackage.eINSTANCE.getVisualizer_Attributes(), attributes));
 		
 		//We are not toggeling elided nodes
 		/*if (self instanceof Clabject && ((Clabject)self).isElided())
 			return;*/
 		
 		//No rendering information found => add new rendering information
-		//if (self.getRenderer() == null)
+		//if (self.getVisualizer() == null)
 		//{
 		//	AddVisualizationAction.execute((ShapeNodeEditPart)selectedElement);
 		//}
@@ -95,7 +95,7 @@ public class ToggleNodeAction implements IObjectActionDelegate {
 		 * ************************************************************
 		 * Needs to be fixed
 		 * ************************************************************
-		 * for(Element e : self.getRenderer().getChildren())
+		 * for(Element e : self.getVisualizer().getChildren())
 		{
 			//We are only interested in fields
 			if (e instanceof Field)
