@@ -1410,7 +1410,7 @@
       <diagramLabel
           href="plm.gmfgraph#InstantiationBlueprintNameLabel"/>
       <viewExpression
-          body="if (self.instantiationType = InstantiationType::blueprint) then&#xD;&#xA;&#x9;'blueprint'&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
+          body="let renderRoleName:Boolean=&#xD;&#xA;&#x9;if (Ontology.allInstances()->asSequence()->at(1).visualizer->asSequence()->at(1).getValueForKey('showInstantiationRoleNames') = 'true') then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;if (renderRoleName and self.instantiationType = InstantiationType::blueprint) then&#xD;&#xA;&#x9;'blueprint'&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
     </labelMappings>
     <labelMappings
         xsi:type="gmfmap:ExpressionLabelMapping"
@@ -1418,7 +1418,7 @@
       <diagramLabel
           href="plm.gmfgraph#InstantiationTypeNameLabel"/>
       <viewExpression
-          body="if (self.instantiationType = InstantiationType::isonym) then&#xD;&#xA;&#x9;'isonym'&#xD;&#xA;else&#xD;&#xA;       if (self.instantiationType = InstantiationType::hyponym) then&#xD;&#xA;&#x9;&#x9;'hyponym'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;'offspring'&#xD;&#xA;&#x9;endif&#xD;&#xA;endif"/>
+          body="let renderRoleName:Boolean=&#xD;&#xA;&#x9;if (Ontology.allInstances()->asSequence()->at(1).visualizer->asSequence()->at(1).getValueForKey('showInstantiationRoleNames') = 'true') then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;if (renderRoleName and self.instantiationType = InstantiationType::hyponym) then&#xD;&#xA;&#x9;'hyponym'&#xD;&#xA;else&#xD;&#xA;&#x9;if (renderRoleName and self.instantiationType = InstantiationType::isonym) then&#xD;&#xA;&#x9;&#x9;'isonym'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;if (renderRoleName and self.instantiationType = InstantiationType::blueprint) then&#xD;&#xA;&#x9;&#x9;&#x9;'offspring'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;''&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;endif"/>
     </labelMappings>
     <containmentFeature
         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/content"/>
