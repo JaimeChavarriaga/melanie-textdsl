@@ -149,7 +149,7 @@
 			else if (lower == 0 && upper == -1)
 				multiplicity = "";
 			else if (upper == -1)
-				multiplicity = lower + "..n";
+				multiplicity = lower + "..*";
 			
 			//get the label to set
 			ConnectionParticipantEditPart connection = (ConnectionParticipantEditPart) sourceConnections
