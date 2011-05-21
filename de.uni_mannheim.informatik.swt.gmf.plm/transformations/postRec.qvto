@@ -17,7 +17,7 @@ main() {
 			or c.editPartClassName.startsWith("Method"))->forEach(node)
 		{
 			var defaultSize := new DefaultSizeAttributes();
-			defaultSize.height := 22;
+			defaultSize.height := 20;
 			defaultSize.width := 0;
 			node.viewmap.attributes := Sequence{defaultSize};
 		};

@@ -278,7 +278,15 @@
       <actualFigure
           xsi:type="gmfgraph:Rectangle"
           outline="false"
-          fill="false"/>
+          fill="false">
+        <layout
+            xsi:type="gmfgraph:FlowLayout"
+            vertical="true"
+            forceSingleLine="true"
+            majorSpacing="0"
+            minorSpacing="0"/>
+        <insets/>
+      </actualFigure>
     </descriptors>
     <descriptors
         name="AttributeFigure">
@@ -290,7 +298,6 @@
         <layout
             xsi:type="gmfgraph:FlowLayout"
             vertical="true"
-            matchMinorSize="true"
             forceSingleLine="true"
             majorSpacing="0"
             minorSpacing="0"/>
