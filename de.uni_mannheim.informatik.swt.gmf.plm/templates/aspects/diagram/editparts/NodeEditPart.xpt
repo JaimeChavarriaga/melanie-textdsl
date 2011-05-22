@@ -252,7 +252,7 @@
 			
 			«IF self.editPartClassName = 'EntityEditPart' or self.editPartClassName = 'ConnectionEditPart'»
 			if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.VisualizationContainer && 
-				((org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature()).getName().equals("showVisualizer"))
+				((org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature()).getName().equals("visualizersShown"))
 			{
 				«EXPAND showHideVisualizers FOR self»
 			}
@@ -788,7 +788,7 @@
 			}
 		}
 		else if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Model && 
-				((org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature()).getName().equals("showVisualizer"))
+				((org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature()).getName().equals("visualizersShown"))
 		{
 		 	«EXPAND showHideVisualizers FOR self»
 		}
@@ -851,7 +851,7 @@
 	}
 «ENDDEFINE»
 
-«/* Manages to show hide visualizers when setting showVisualizer trait */»
+«/* Manages to show hide visualizers when setting visualizersShown trait */»
 «DEFINE showHideVisualizers FOR gmfgen::GenNode»
 			de.uni_mannheim.informatik.swt.models.plm.PLM.VisualizationContainer container = (de.uni_mannheim.informatik.swt.models.plm.PLM.VisualizationContainer) notification.getNotifier();
 
@@ -905,7 +905,7 @@
 						
 						if (n.getElement() == r)
 						{
-							if (container.getShowVisualizer().equalsIgnoreCase("none"))
+							if (container.getVisualizersShown().equalsIgnoreCase("none"))
 								n.setVisible(false);
 							else
 								n.setVisible(true);
@@ -1018,7 +1018,7 @@
 		super.handleNotificationEvent(notification);
 		
 		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.VisualizationContainer && 
-				((org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature()).getName().equals("showVisualizer"))
+				((org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature()).getName().equals("visualizersShown"))
 		{
 			«EXPAND showHideVisualizers FOR self»
 		}

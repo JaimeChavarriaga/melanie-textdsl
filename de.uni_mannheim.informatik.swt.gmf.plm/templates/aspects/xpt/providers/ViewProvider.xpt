@@ -6,7 +6,7 @@
 
 /**
   *
-  * Hide visualizers on creation according to showVisualizer attribute
+  * Hide visualizers on creation according to visualizersShown attribute
   *
   */
 «AROUND createNodeMethod FOR gmfgen::GenNode-»
@@ -39,7 +39,7 @@
 		//Ontology visualizers are the only one effected by their direct container
 		if (domainElement.eContainer() != null && domainElement.eContainer() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology)
 		{
-			if (((de.uni_mannheim.informatik.swt.models.plm.PLM.VisualizationContainer)domainElement.eContainer()).getShowVisualizer().equalsIgnoreCase("none"))
+			if (((de.uni_mannheim.informatik.swt.models.plm.PLM.VisualizationContainer)domainElement.eContainer()).getVisualizersShown().equalsIgnoreCase("none"))
 				node.setVisible(false);
 				
 			return node;
@@ -59,7 +59,7 @@
 		
 		if ((parent != null) && parent instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.VisualizationContainer)
 		{
-			if (((de.uni_mannheim.informatik.swt.models.plm.PLM.VisualizationContainer)parent).getShowVisualizer().equalsIgnoreCase("none"))
+			if (((de.uni_mannheim.informatik.swt.models.plm.PLM.VisualizationContainer)parent).getVisualizersShown().equalsIgnoreCase("none"))
 				node.setVisible(false);
 		}
 		
