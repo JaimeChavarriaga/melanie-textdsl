@@ -207,7 +207,7 @@
 			«IF self.editPartClassName='EntityEditPart' or self.editPartClassName='ConnectionEditPart'»
 			else if (changedFeature.getName().equals("potency"))
 			{
-				for(org.eclipse.emf.ecore.EObject eObj : ((de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)resolveSemanticElement()).getFeatures())
+				for(org.eclipse.emf.ecore.EObject eObj : ((de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)resolveSemanticElement()).getFeature())
 				{
 					findEditPart(this, eObj).performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
 				}
@@ -216,7 +216,7 @@
 			«IF self.editPartClassName='EntityEditPart'»
 			else if (changedFeature.getName().equals("name"))
 			{
-				de.uni_mannheim.informatik.swt.models.plm.PLM.Feature[] features = new de.uni_mannheim.informatik.swt.models.plm.PLM.Feature[] {};
+				de.uni_mannheim.informatik.swt.models.plm.PLM.Feature[] feature = new de.uni_mannheim.informatik.swt.models.plm.PLM.Feature[] {};
 			
 				org.eclipse.ocl.ecore.OCL ocl = org.eclipse.ocl.ecore.OCL.newInstance();
 				org.eclipse.ocl.helper.OCLHelper<org.eclipse.emf.ecore.EClassifier, ?, ?, org.eclipse.ocl.ecore.Constraint> helper = ocl.createOCLHelper();
@@ -225,7 +225,7 @@
 				try {
 					org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper
 							.createQuery("Feature.allInstances()");
-					features = ((java.util.HashSet<de.uni_mannheim.informatik.swt.models.plm.PLM.Feature>) ocl
+					feature = ((java.util.HashSet<de.uni_mannheim.informatik.swt.models.plm.PLM.Feature>) ocl
 							.evaluate(org.eclipse.emf.ecore.util.EcoreUtil
 									.getRootContainer(resolveSemanticElement()), q))
 							.toArray(new de.uni_mannheim.informatik.swt.models.plm.PLM.Feature[] {});
@@ -233,8 +233,8 @@
 					e.printStackTrace();
 				}
 			
-				//We found features
-				if (features.length > 0) {
+				//We found feature
+				if (feature.length > 0) {
 					org.eclipse.ui.IEditorPart editor = org.eclipse.ui.PlatformUI.getWorkbench()
 							.getActiveWorkbenchWindow().getActivePage()
 							.getActiveEditor();
@@ -243,7 +243,7 @@
 
 					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor plmEditor = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor) editor;
 
-					for (de.uni_mannheim.informatik.swt.models.plm.PLM.Feature f : features) 
+					for (de.uni_mannheim.informatik.swt.models.plm.PLM.Feature f : feature) 
 					{	
 						//if a attribute is hidden via the notational model it cannot be resolved
 						java.util.List featureEditParts = 
@@ -887,9 +887,9 @@
 				«ELSEIF self.editPartClassName = 'OntologyEditPart'»
 				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.content->collect(c | c.visualizer)->union(self.visualizer->collect(r|r))");
 				«ELSEIF self.editPartClassName = 'EntityEditPart'»
-				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.features->collect(f | f.visualizer)");
+				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.feature->collect(f | f.visualizer)");
 				«ELSEIF self.editPartClassName = 'ConnectionEditPart'»
-				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.features->collect(f | f.visualizer)");
+				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.feature->collect(f | f.visualizer)");
 				«ENDIF»
 				
 				visualizers = ((java.util.ArrayList<de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer>) ocl.evaluate(resolveSemanticElement(), q)).toArray(new de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer[] {});
@@ -956,9 +956,9 @@
 		«ELSEIF self.editPartClassName = 'OntologyEditPart'»
 		org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.content");
 		«ELSEIF self.editPartClassName = 'EntityEditPart'»
-		org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.features");
+		org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.feature");
 		«ELSEIF self.editPartClassName = 'ConnectionEditPart'»
-		org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.features");
+		org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.feature");
 		«ENDIF»
 		
 		elements = ((java.util.HashSet<de.uni_mannheim.informatik.swt.models.plm.PLM.Element>) ocl
