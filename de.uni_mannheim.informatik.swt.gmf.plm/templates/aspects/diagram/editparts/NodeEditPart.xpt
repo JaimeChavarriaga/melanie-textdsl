@@ -204,6 +204,15 @@
 			{
 				updateView(false);
 			}
+			«IF self.editPartClassName='EntityEditPart' or self.editPartClassName='ConnectionEditPart'»
+			else if (changedFeature.getName().equals("potency"))
+			{
+				for(org.eclipse.emf.ecore.EObject eObj : ((de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)resolveSemanticElement()).getFeatures())
+				{
+					findEditPart(this, eObj).performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
+				}
+			}
+			«ENDIF»
 			«IF self.editPartClassName='EntityEditPart'»
 			else if (changedFeature.getName().equals("name"))
 			{
