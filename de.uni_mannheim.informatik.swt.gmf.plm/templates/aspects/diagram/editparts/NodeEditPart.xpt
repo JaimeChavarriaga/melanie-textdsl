@@ -96,16 +96,16 @@
 			//Set navigable
 			//****************************************************************************
 			if (self.getIsNavigable().size() > i  - numberNonParticipantConnection
-					&&self.getIsNavigable().get(i  - numberNonParticipantConnection) == true) {
-				org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart connection = sourceConnections.get(i);
-				org.eclipse.draw2d.PolylineConnection connectionFigure = (org.eclipse.draw2d.PolylineConnection) connection
-						.getFigure();
-				connectionFigure.setTargetDecoration(new org.eclipse.draw2d.PolylineDecoration());
-			} else {
+					&&self.getIsNavigable().get(i  - numberNonParticipantConnection) == false) {
 				org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart connection = sourceConnections.get(i);
 				org.eclipse.draw2d.PolylineConnection connectionFigure = (org.eclipse.draw2d.PolylineConnection) connection
 						.getFigure();
 				connectionFigure.setTargetDecoration(null);
+			} else {
+				org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart connection = sourceConnections.get(i);
+				org.eclipse.draw2d.PolylineConnection connectionFigure = (org.eclipse.draw2d.PolylineConnection) connection
+						.getFigure();
+				connectionFigure.setTargetDecoration(new org.eclipse.draw2d.PolylineDecoration());
 			}
 
 			//****************************************************************************
