@@ -18,7 +18,7 @@
 				ValidateAction.runValidation((org.eclipse.gmf.runtime.notation.View)org.eclipse.emf.ecore.util.EcoreUtil.getRootContainer(editPart.getNotationView()));
 				
 				//Debugcode
-				System.out.println("Selected : " + editPart.getClass().getName());
+				//System.out.println("Selected : " + editPart.getClass().getName());
 			}
 		}
 	};
