@@ -134,7 +134,7 @@
 				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor.NodeToolEntry entry = new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor.NodeToolEntry(
 						e.getName(),
 						"Creates a new " + e.getName(),
-						java.util.Collections.singletonList(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes));
+						java.util.Collections.singletonList(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.Entity_3069));
 				
 				entry.setId(e.getName() + "CreationTool");
 				entry.setSmallIcon(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditorPlugin
