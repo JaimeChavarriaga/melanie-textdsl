@@ -136,7 +136,7 @@
 						"Creates a new " + e.getName(),
 						java.util.Collections.singletonList(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.Entity_3069));
 				
-				entry.setId(e.getName() + "CreationTool");
+				entry.setId("dsl." + e.getName() + "CreationTool");
 				entry.setSmallIcon(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditorPlugin
 						.findImageDescriptor("/de.uni_mannheim.informatik.swt.gmf.plm/icons/clabject16.gif")); //$NON-NLS-1$
 				entry.setLargeIcon(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditorPlugin
@@ -154,7 +154,7 @@
 						"Creates a new " + e.getName(),
 						java.util.Collections.singletonList(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.Connection_3060));
 				
-				entry.setId(e.getName() + "CreationTool");
+				entry.setId("dsl." + e.getName() + "CreationTool");
 				entry.setSmallIcon(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditorPlugin
 						.findImageDescriptor("/de.uni_mannheim.informatik.swt.gmf.plm/icons/connection16.gif"));
 				entry.setLargeIcon(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditorPlugin
@@ -167,7 +167,7 @@
 						"Creates a new " + e.getName(),
 						java.util.Collections.singletonList(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.ConnectionParticipant_4021));
 						
-				linkEntry.setId(e.getName() + "ConnectionCreationTool");
+				linkEntry.setId("dsl." +  e.getName() + "ConnectionCreationTool");
 				linkEntry.setSmallIcon(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditorPlugin
 						.findImageDescriptor("/de.uni_mannheim.informatik.swt.gmf.plm/icons/connectionParticipant16.gif"));
 				linkEntry.setLargeIcon(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditorPlugin
