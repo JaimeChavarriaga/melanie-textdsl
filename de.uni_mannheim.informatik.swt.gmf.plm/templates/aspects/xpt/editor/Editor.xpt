@@ -120,8 +120,24 @@
 			if (e instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Entity && ((de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)e).isInstantiable()
 				&& ((de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)e).getPotency() != 0)
 			{
-				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor.NodeToolEntry entry = new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor.NodeToolEntry(e.getName(), "Creates a new " + e.getName(), java.util.Collections
-								.singletonList(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.Entity_3069));
+				org.eclipse.gmf.runtime.emf.type.core.IElementType dslEntityType = null;
+				
+				try
+				{
+					dslEntityType = new org.eclipse.gmf.runtime.emf.type.core.MetamodelType("de.uni_mannhei.swt.informatik.dsl." + e.getName(), 
+							new java.net.URL("platform:///de.uni_mannheim.informatik.swt.gmf.plm/icons/clabject16.gif") ,
+							e.getName(), de.uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMPackageImpl.eINSTANCE.getClabject(), 
+							new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.helpers.EntityEditHelper());
+				}
+				catch (Exception ex)
+				{
+					ex.printStackTrace();
+				}
+				
+				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor.NodeToolEntry entry = new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor.NodeToolEntry(
+						e.getName(),
+						"Creates a new " + e.getName(),
+						java.util.Collections.singletonList(dslEntityType));
 				
 				entry.setId(e.getName() + "CreationTool");
 				entry.setSmallIcon(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditorPlugin
@@ -136,8 +152,24 @@
 			else if (e instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Connection && ((de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)e).isInstantiable()
 						&& ((de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)e).getPotency() != 0)
 			{
-				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor.NodeToolEntry entry = new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor.NodeToolEntry(e.getName(), "Creates a new " + e.getName(), java.util.Collections
-								.singletonList(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.Connection_3060));
+				org.eclipse.gmf.runtime.emf.type.core.IElementType dslConnectionType = null;
+				
+				try
+				{
+					dslConnectionType = new org.eclipse.gmf.runtime.emf.type.core.MetamodelType("de.uni_mannhei.swt.informatik.dsl." + e.getName(), 
+							new java.net.URL("platform:///de.uni_mannheim.informatik.swt.gmf.plm/icons/connection16.gif") ,
+							e.getName(), de.uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMPackageImpl.eINSTANCE.getClabject(), 
+							new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.helpers.ConnectionEditHelper());
+				}
+				catch (Exception ex)
+				{
+					ex.printStackTrace();
+				}
+				
+				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor.NodeToolEntry entry = new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor.NodeToolEntry(
+						e.getName(),
+						"Creates a new " + e.getName(),
+						java.util.Collections.singletonList(dslConnectionType));
 				
 				entry.setId(e.getName() + "CreationTool");
 				entry.setSmallIcon(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditorPlugin
@@ -147,9 +179,25 @@
 				
 				dslElementsGroup.add(entry);
 			
-				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor.LinkToolEntry linkEntry = new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor.LinkToolEntry(e.getName(), "Creates a new " + e.getName() + " connection",
-						Collections
-								.singletonList(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.ConnectionParticipant_4021));
+				org.eclipse.gmf.runtime.emf.type.core.IElementType dslParticipantType = null;
+				
+				try
+				{
+					dslParticipantType = new org.eclipse.gmf.runtime.emf.type.core.MetamodelType("de.uni_mannhei.swt.informatik.dsl." + e.getName() + "Participant", 
+							new java.net.URL("platform:///de.uni_mannheim.informatik.swt.gmf.plm/icons/connectionParticipant16.gif") ,
+							e.getName(), de.uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMPackageImpl.eINSTANCE.getClabject(), 
+							new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.helpers.ConnectionEditHelper());
+				}
+				catch (Exception ex)
+				{
+					ex.printStackTrace();
+				}
+				
+				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor.LinkToolEntry linkEntry = new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor.LinkToolEntry(
+						e.getName(),
+						"Creates a new " + e.getName(),
+						java.util.Collections.singletonList(dslParticipantType));
+						
 				linkEntry.setId(e.getName() + "ConnectionCreationTool");
 				linkEntry.setSmallIcon(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditorPlugin
 						.findImageDescriptor("/de.uni_mannheim.informatik.swt.gmf.plm/icons/connectionParticipant16.gif"));
