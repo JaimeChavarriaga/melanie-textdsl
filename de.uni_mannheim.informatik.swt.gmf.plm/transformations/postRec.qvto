@@ -6,7 +6,8 @@ property genNavigator : GenNavigator = null;
 property genStandardPrefencePage : GenStandardPreferencePage = null;
 property genPlugIn : GenPlugin = null;
 property genEditorGenerator : GenEditorGenerator = null;
-property genDiagram: GenDiagram = null;
+property genDiagram : GenDiagram = null;
+property genPropertySheet : GenPropertySheet = null;
 		
  
 main() {
@@ -69,6 +70,10 @@ main() {
 	--Set the properties for the Prefrence Page (Window -> Preferences)
 	this.genStandardPrefencePage := gmfgenModel.objectsOfType(GenStandardPreferencePage)->asOrderedSet()->first();
 	genStandardPrefencePage.name := "LML Diagram Editor";
+	
+	--Setup the linguistic properties view
+	this.genPropertySheet := gmfgenModel.objectsOfType(GenPropertySheet)->asOrderedSet()->first();
+	genPropertySheet.tabs->select(t | t.iD = 'domain')->first().label := 'Linguistic';
 	
 	--Build up the navigation structure
 	this.genNavigator := gmfgenModel.objectsOfType(GenNavigator)->asOrderedSet()->first();

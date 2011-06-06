@@ -69,5 +69,30 @@
             name="LML Editing">
       </category>
    </extension>
-
+	<extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs" id="proptabs">
+      <propertyTabs contributorId="de.uni_mannheim.informatik.swt.models.plm.diagram">
+          <propertyTab
+                afterTab="property.tab.domain"
+                category="domain"
+                id="property.tab.ontological"
+                label="Ontological">
+          </propertyTab>
+      </propertyTabs>
+   </extension>
+      <extension point="org.eclipse.ui.views.properties.tabbed.propertySections" id="propsections">
+      <?gmfgen generated="true"?>   
+      <propertySections contributorId="de.uni_mannheim.informatik.swt.models.plm.diagram">
+         <propertySection
+               class="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.OntologicalPropertySectionAbstractPropertySection"
+               id="property.section.ontological"
+               tab="property.tab.ontological">
+            <input
+                  type="org.eclipse.gef.EditPart">
+            </input>
+            <input
+                  type="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMAbstractNavigatorItem">
+            </input>
+         </propertySection>
+      </propertySections>
+   </extension>
 </plugin>
