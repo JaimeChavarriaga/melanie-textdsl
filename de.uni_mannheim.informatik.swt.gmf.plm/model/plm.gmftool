@@ -59,11 +59,11 @@
           description="Create new Connection">
         <smallIcon
             xsi:type="gmftool:BundleImage"
-            path="/icons/domainConnection16.gif"
+            path="/icons/connection16.gif"
             bundle="de.uni_mannheim.informatik.swt.gmf.plm"/>
         <largeIcon
             xsi:type="gmftool:BundleImage"
-            path="/icons/domainConnection16.gif"
+            path="/icons/connection16.gif"
             bundle="de.uni_mannheim.informatik.swt.gmf.plm"/>
       </tools>
       <tools
@@ -72,11 +72,11 @@
           description="Create new Connection Participant">
         <smallIcon
             xsi:type="gmftool:BundleImage"
-            path="/icons/domainConnectionParticipant16.gif"
+            path="/icons/connectionParticipant16.gif"
             bundle="de.uni_mannheim.informatik.swt.gmf.plm"/>
         <largeIcon
             xsi:type="gmftool:BundleImage"
-            path="/icons/domainConnectionParticipant16.gif"
+            path="/icons/connectionParticipant16.gif"
             bundle="de.uni_mannheim.informatik.swt.gmf.plm"/>
       </tools>
       <tools
@@ -122,7 +122,8 @@
     <tools
         xsi:type="gmftool:ToolGroup"
         title="Connections"
-        collapsible="true">
+        collapsible="true"
+        stack="true">
       <tools
           xsi:type="gmftool:CreationTool"
           title="Instantiation"
@@ -140,7 +141,8 @@
     <tools
         xsi:type="gmftool:ToolGroup"
         title="Set Relationships"
-        collapsible="true">
+        collapsible="true"
+        stack="true">
       <tools
           xsi:type="gmftool:CreationTool"
           title="Complement"
@@ -210,7 +212,8 @@
     <tools
         xsi:type="gmftool:ToolGroup"
         title="Generalisations"
-        collapsible="true">
+        collapsible="true"
+        stack="true">
       <tools
           xsi:type="gmftool:CreationTool"
           title="Binary Generalization"

@@ -3492,15 +3492,15 @@
             xsi:type="gmfgen:ToolEntry"
             title="Connection"
             description="Create new Connection"
-            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/domainConnection16.gif"
-            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/domainConnection16.gif"
+            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/connection16.gif"
+            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/connection16.gif"
             genNodes="//@diagram/@childNodes.2"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Connection Participant"
             description="Create new Connection Participant"
-            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/domainConnectionParticipant16.gif"
-            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/domainConnectionParticipant16.gif"
+            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/connectionParticipant16.gif"
+            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/connectionParticipant16.gif"
             genLinks="//@diagram/@links.0"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
@@ -3526,6 +3526,7 @@
       </groups>
       <groups
           title="Connections"
+          stack="true"
           collapse="true">
         <entries
             xsi:type="gmfgen:ToolEntry"
@@ -3537,6 +3538,7 @@
       </groups>
       <groups
           title="Set Relationships"
+          stack="true"
           collapse="true">
         <entries
             xsi:type="gmfgen:ToolEntry"
@@ -3576,6 +3578,7 @@
       </groups>
       <groups
           title="Generalisations"
+          stack="true"
           collapse="true">
         <entries
             xsi:type="gmfgen:ToolEntry"

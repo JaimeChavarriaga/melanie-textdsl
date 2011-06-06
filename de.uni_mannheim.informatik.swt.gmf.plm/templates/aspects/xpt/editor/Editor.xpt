@@ -1,6 +1,11 @@
 «IMPORT 'http://www.eclipse.org/gmf/2009/GenModel'»
 «EXTENSION xpt::editor::Utils»
 
+«/*
+	- Validation on SelectionChanged
+	- Rebuild of DSL Palette on Selection Changed
+ */»
+
 «AROUND additions FOR gmfgen::GenEditorView-»
 	/**
  	 * @generated
@@ -19,6 +24,9 @@
 				
 				//Debugcode
 				//System.out.println("Selected : " + editPart.getClass().getName());
+				
+				if (editPart.resolveSemanticElement() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Element)
+					managePalette((de.uni_mannheim.informatik.swt.models.plm.PLM.Element)editPart.resolveSemanticElement());
 			}
 		}
 	};
@@ -51,6 +59,167 @@
 		de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.ValidateAction.runValidation(this.getDiagram());
 		
 		super.doSave(progressMonitor);
+	}
+	
+	private org.eclipse.gef.palette.PaletteDrawer dslElementsGroup = null;
+	
+	/**
+	 * @generated
+	 */
+	private void managePalette(de.uni_mannheim.informatik.swt.models.plm.PLM.Element selectedElement)
+	{
+		//Does the DSL Elements group alread exist? => Create it
+		if (dslElementsGroup == null)
+		{
+			org.eclipse.gef.palette.PaletteRoot root = getEditDomain().getPaletteViewer().getPaletteRoot();
+			
+			dslElementsGroup = new org.eclipse.gef.palette.PaletteDrawer("DSL Elements");
+			dslElementsGroup.setId("dslElementsGroup"); 
+			
+			root.add(dslElementsGroup);
+		}
+		
+		dslElementsGroup.getChildren().clear();
+		
+		//An ontology offers no context from which we can retrieve the DSL Elements
+		if (selectedElement instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology)
+		{
+			dslElementsGroup.setVisible(false);
+			return;
+		}
+			
+		org.eclipse.emf.ecore.EObject container = selectedElement;
+		
+		//Find the containing model
+		while (container != null && !(container instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Model))
+			container = container.eContainer();
+		
+		//No model found..
+		if (container == null)
+		{
+			dslElementsGroup.setVisible(false);
+			return;
+		}
+		
+		// search for the next higher level
+		de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology o = (de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology)container.eContainer();
+		
+		//We are at the highest level
+		if (o.getContent().indexOf(container) == 0)
+		{
+			dslElementsGroup.setVisible(false);
+			return;
+		}
+		else
+			dslElementsGroup.setVisible(true);
+		
+		de.uni_mannheim.informatik.swt.models.plm.PLM.Model higherModel = o.getContent().get(o.getContent().indexOf(container) - 1);
+		
+		for (de.uni_mannheim.informatik.swt.models.plm.PLM.Element e : higherModel.getContent())
+		{
+			if (e instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Entity && ((de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)e).isInstantiable()
+				&& ((de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)e).getPotency() != 0)
+			{
+				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor.NodeToolEntry entry = new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor.NodeToolEntry(e.getName(), "Creates a new " + e.getName(), java.util.Collections
+								.singletonList(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.Entity_3069));
+				
+				entry.setId(e.getName() + "CreationTool");
+				entry.setSmallIcon(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditorPlugin
+						.findImageDescriptor("/de.uni_mannheim.informatik.swt.gmf.plm/icons/clabject16.gif")); //$NON-NLS-1$
+				entry.setLargeIcon(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditorPlugin
+						.findImageDescriptor("/de.uni_mannheim.informatik.swt.gmf.plm/icons/clabject16.gif"));
+				
+				dslElementsGroup.add(entry);
+			}
+			
+			//For connections we also need to have the connecting lines
+			else if (e instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Connection && ((de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)e).isInstantiable()
+						&& ((de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)e).getPotency() != 0)
+			{
+				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor.NodeToolEntry entry = new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor.NodeToolEntry(e.getName(), "Creates a new " + e.getName(), java.util.Collections
+								.singletonList(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.Connection_3060));
+				
+				entry.setId(e.getName() + "CreationTool");
+				entry.setSmallIcon(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditorPlugin
+						.findImageDescriptor("/de.uni_mannheim.informatik.swt.gmf.plm/icons/connection16.gif"));
+				entry.setLargeIcon(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditorPlugin
+						.findImageDescriptor("/de.uni_mannheim.informatik.swt.gmf.plm/icons/connection16.gif"));
+				
+				dslElementsGroup.add(entry);
+			
+				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor.LinkToolEntry linkEntry = new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor.LinkToolEntry(e.getName(), "Creates a new " + e.getName() + " connection",
+						Collections
+								.singletonList(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.ConnectionParticipant_4021));
+				linkEntry.setId(e.getName() + "ConnectionCreationTool");
+				linkEntry.setSmallIcon(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditorPlugin
+						.findImageDescriptor("/de.uni_mannheim.informatik.swt.gmf.plm/icons/connectionParticipant16.gif"));
+				linkEntry.setLargeIcon(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditorPlugin
+						.findImageDescriptor("/de.uni_mannheim.informatik.swt.gmf.plm/icons/connectionParticipant16.gif"));
+				
+				dslElementsGroup.add(linkEntry);
+			}
+		}
+		
+		if (dslElementsGroup.getChildren().size() == 0)
+			dslElementsGroup.setVisible(false);
+	}
+	
+	/**
+	 * @generated
+	 */
+	private static class NodeToolEntry extends org.eclipse.gef.palette.ToolEntry {
+
+		/**
+		 * @generated
+		 */
+		private final java.util.List<org.eclipse.gmf.runtime.emf.type.core.IElementType> elementTypes;
+
+		/**
+		 * @generated
+		 */
+		private NodeToolEntry(String title, String description,
+				java.util.List<org.eclipse.gmf.runtime.emf.type.core.IElementType> elementTypes) {
+			super(title, description, null, null);
+			this.elementTypes = elementTypes;
+		}
+
+		/**
+		 * @generated
+		 */
+		public org.eclipse.gef.Tool createTool() {
+			org.eclipse.gef.Tool tool = new org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeCreationTool(elementTypes);
+			tool.setProperties(getToolProperties());
+			return tool;
+		}
+	}
+	
+		/**
+	 * @generated
+	 */
+	private static class LinkToolEntry extends org.eclipse.gef.palette.ToolEntry {
+
+		/**
+		 * @generated
+		 */
+		private final java.util.List<org.eclipse.gmf.runtime.emf.type.core.IElementType> relationshipTypes;
+
+		/**
+		 * @generated
+		 */
+		private LinkToolEntry(String title, String description,
+				java.util.List<org.eclipse.gmf.runtime.emf.type.core.IElementType> relationshipTypes) {
+			super(title, description, null, null);
+			this.relationshipTypes = relationshipTypes;
+		}
+
+		/**
+		 * @generated
+		 */
+		public org.eclipse.gef.Tool createTool() {
+			org.eclipse.gef.Tool tool = new org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeConnectionTool(relationshipTypes);
+			tool.setProperties(getToolProperties());
+			return tool;
+		}
 	}
 «ENDAROUND»
 
