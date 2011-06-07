@@ -74,6 +74,60 @@ public class «getElementInitializersClassName()» {
 	public void init_«diagramElement.getUniqueIdentifier()»(«EXPAND MetaModel::QualifiedClassName FOR elementClass» instance) {
 		try {
 			«FOREACH initializers AS i»«EXPAND performInit(diagramElement, 'instance', elementClass, getSuffixes((initializers->indexOf(i) - 1))) FOR i»«ENDFOREACH-»
+
+			«/*********************************************************
+				Customization for automatic instance setup
+			***********************************************************/»			
+			«IF diagramElement.getUniqueIdentifier().startsWith('Entity_')»
+			de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor editor = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor)org.eclipse.ui.PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+			org.eclipse.gef.ui.palette.PaletteViewer viewer = editor.getPalette();
+			
+			//We create an instance of a DSL element
+			if (viewer.getActiveTool().getId().startsWith("dsl."))
+			{
+				String typeName = viewer.getActiveTool().getId().substring(viewer.getActiveTool().getId().indexOf(".") + 1).replace("CreationTool", "");
+				de.uni_mannheim.informatik.swt.models.plm.PLM.Model containingModel = (de.uni_mannheim.informatik.swt.models.plm.PLM.Model)instance.eContainer();
+				de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology ont = (de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology)containingModel.eContainer();
+				de.uni_mannheim.informatik.swt.models.plm.PLM.Model higherModel = ont.getContent().get(ont.getContent().indexOf(containingModel) - 1);
+				
+				for (de.uni_mannheim.informatik.swt.models.plm.PLM.OwnedElement e : higherModel.getContent())
+				{
+					if (e.getName().equals(typeName) && e instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Entity)
+					{
+					
+						de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation i = de.uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMFactoryImpl.eINSTANCE.createInstantiation();
+						
+						i.setType((de.uni_mannheim.informatik.swt.models.plm.PLM.Entity)e);
+						i.setInstance((de.uni_mannheim.informatik.swt.models.plm.PLM.Entity)instance);
+						i.setIsonym(true);
+						containingModel.getContent().add(i);
+						
+						instance.setBlueprint((de.uni_mannheim.informatik.swt.models.plm.PLM.Entity)e);
+					
+						for (de.uni_mannheim.informatik.swt.models.plm.PLM.Feature f : ((de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)e).getFeature())
+						{
+							if (f instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute && f.getDurability() > 0)
+							{
+								de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute attr = de.uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMFactoryImpl.eINSTANCE.createAttribute();
+								instance.getFeature().add(attr);
+								init_Attribute_3061(attr);
+								attr.setDurability(f.getDurability() - 1);
+								attr.setMutability(((de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute)f).getMutability() > 0 ? ((de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute)f).getMutability() - 1 : 1);
+								attr.setDatatype(((de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute)f).getDatatype());
+								attr.setExpressed(f.isExpressed());
+								attr.setElided(f.isElided());
+								attr.setValue(((de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute)f).getValue());
+								attr.setName(f.getName());
+							}
+							else if (f instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Method && f.getDurability() > 0)
+								;
+						}
+						
+						instance.setPotency(((de.uni_mannheim.informatik.swt.models.plm.PLM.Entity)e).getPotency() -1);
+					}
+				}
+			}
+			«ENDIF»
 		} catch(RuntimeException e) {
 			«diagramElement.getDiagram().editorGen.plugin.getActivatorQualifiedClassName()».getInstance().logError("Element initialization failed", e); //$NON-NLS-1$						
 		}
