@@ -185,19 +185,19 @@
             outline="false"
             fill="false">
           <layout
-              xsi:type="gmfgraph:FlowLayout"
-              vertical="true"
-              matchMinorSize="true"
-              forceSingleLine="true"
-              majorAlignment="CENTER"
-              minorAlignment="CENTER"
-              majorSpacing="0"
-              minorSpacing="0"/>
+              xsi:type="gmfgraph:GridLayout"
+              equalWidth="false">
+            <margins/>
+            <spacing/>
+          </layout>
           <children
               xsi:type="gmfgraph:Rectangle"
               name="NameRectangle"
               outline="false"
               fill="false">
+            <layoutData
+                xsi:type="gmfgraph:GridLayoutData"
+                grabExcessHorizontalSpace="true"/>
             <layout
                 xsi:type="gmfgraph:GridLayout"
                 numColumns="5"
@@ -211,9 +211,8 @@
                 name="EntityProximityInheritanceFigure">
               <layoutData
                   xsi:type="gmfgraph:GridLayoutData"
-                  grabExcessHorizontalSpace="true"
                   grabExcessVerticalSpace="true"
-                  horizontalAlignment="END"
+                  horizontalAlignment="BEGINNING"
                   verticalSpan="4"/>
               <font
                   xsi:type="gmfgraph:BasicFont"/>
@@ -223,9 +222,8 @@
                 name="EntityProximityContainmentFigure">
               <layoutData
                   xsi:type="gmfgraph:GridLayoutData"
-                  grabExcessHorizontalSpace="true"
                   grabExcessVerticalSpace="true"
-                  horizontalAlignment="END"
+                  horizontalAlignment="BEGINNING"
                   verticalSpan="4"/>
               <font
                   xsi:type="gmfgraph:BasicFont"/>
@@ -235,7 +233,6 @@
                 name="EntityNameFigure">
               <layoutData
                   xsi:type="gmfgraph:GridLayoutData"
-                  grabExcessHorizontalSpace="true"
                   grabExcessVerticalSpace="true"
                   horizontalAlignment="END"
                   verticalSpan="4"/>
@@ -248,9 +245,8 @@
                 name="EntityProximityInstantiationFigure">
               <layoutData
                   xsi:type="gmfgraph:GridLayoutData"
-                  grabExcessHorizontalSpace="true"
                   grabExcessVerticalSpace="true"
-                  horizontalAlignment="END"
+                  horizontalAlignment="BEGINNING"
                   verticalSpan="4"/>
               <font
                   xsi:type="gmfgraph:BasicFont"/>
@@ -261,7 +257,6 @@
                 text="">
               <layoutData
                   xsi:type="gmfgraph:GridLayoutData"
-                  grabExcessHorizontalSpace="true"
                   grabExcessVerticalSpace="true"
                   verticalAlignment="END"
                   horizontalAlignment="BEGINNING"
@@ -276,7 +271,6 @@
                 text="">
               <layoutData
                   xsi:type="gmfgraph:GridLayoutData"
-                  grabExcessHorizontalSpace="true"
                   grabExcessVerticalSpace="true"
                   verticalAlignment="BEGINNING"
                   horizontalAlignment="BEGINNING"
@@ -291,8 +285,7 @@
                 text="">
               <layoutData
                   xsi:type="gmfgraph:GridLayoutData"
-                  grabExcessHorizontalSpace="true"
-                  horizontalSpan="2"/>
+                  horizontalSpan="5"/>
               <font
                   xsi:type="gmfgraph:BasicFont"
                   height="8"/>
