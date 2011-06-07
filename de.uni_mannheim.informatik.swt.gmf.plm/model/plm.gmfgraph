@@ -200,12 +200,36 @@
               fill="false">
             <layout
                 xsi:type="gmfgraph:GridLayout"
-                numColumns="2"
+                numColumns="5"
                 equalWidth="false">
               <margins
                   dx="3"/>
               <spacing/>
             </layout>
+            <children
+                xsi:type="gmfgraph:Label"
+                name="EntityProximityInheritanceFigure">
+              <layoutData
+                  xsi:type="gmfgraph:GridLayoutData"
+                  grabExcessHorizontalSpace="true"
+                  grabExcessVerticalSpace="true"
+                  horizontalAlignment="END"
+                  verticalSpan="4"/>
+              <font
+                  xsi:type="gmfgraph:BasicFont"/>
+            </children>
+            <children
+                xsi:type="gmfgraph:Label"
+                name="EntityProximityContainmentFigure">
+              <layoutData
+                  xsi:type="gmfgraph:GridLayoutData"
+                  grabExcessHorizontalSpace="true"
+                  grabExcessVerticalSpace="true"
+                  horizontalAlignment="END"
+                  verticalSpan="4"/>
+              <font
+                  xsi:type="gmfgraph:BasicFont"/>
+            </children>
             <children
                 xsi:type="gmfgraph:Label"
                 name="EntityNameFigure">
@@ -218,6 +242,18 @@
               <font
                   xsi:type="gmfgraph:BasicFont"
                   style="BOLD"/>
+            </children>
+            <children
+                xsi:type="gmfgraph:Label"
+                name="EntityProximityInstantiationFigure">
+              <layoutData
+                  xsi:type="gmfgraph:GridLayoutData"
+                  grabExcessHorizontalSpace="true"
+                  grabExcessVerticalSpace="true"
+                  horizontalAlignment="END"
+                  verticalSpan="4"/>
+              <font
+                  xsi:type="gmfgraph:BasicFont"/>
             </children>
             <children
                 xsi:type="gmfgraph:Label"
@@ -265,13 +301,19 @@
         </children>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.0/@children.0"/>
+          figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.0/@children.2"/>
       <accessors
-          figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.0/@children.3"/>
+          figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.0/@children.6"/>
+      <accessors
+          figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.0/@children.4"/>
+      <accessors
+          figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.0/@children.5"/>
+      <accessors
+          figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.0/@children.0"/>
       <accessors
           figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.0/@children.1"/>
       <accessors
-          figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.0/@children.2"/>
+          figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.0/@children.3"/>
     </descriptors>
     <descriptors
         name="EntityCompartmentFigure">
@@ -1604,10 +1646,25 @@
       elementIcon="false"
       accessor="//@figures.0/@descriptors.2/@accessors.1"/>
   <labels
+      name="EntityFigureProximityInheritanceLabel"
+      figure="EntityFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.4/@accessors.4"/>
+  <labels
+      name="EntityFigureProximityContainmentLabel"
+      figure="EntityFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.4/@accessors.5"/>
+  <labels
       name="EntityFigureNameLabel"
       figure="EntityFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.4/@accessors.0"/>
+  <labels
+      name="EntityFigureProximityInstantiationLabel"
+      figure="EntityFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.4/@accessors.6"/>
   <labels
       name="EntityFigurePotencyLabel"
       figure="EntityFigure"
