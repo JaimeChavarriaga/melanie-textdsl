@@ -7,10 +7,11 @@
 /**
   *
   * Hide visualizers on creation according to visualizersShown attribute
+  * Hide Instantiations on creation accoring to proximity indication of instance
   *
   */
 «AROUND createNodeMethod FOR gmfgen::GenNode-»
-«/* Show/Hide visualizers when adding them. */»
+«/* Show/Hide visualizers when adding them.*/»
 «IF getUniqueIdentifier().startsWith('Visualizer_')»
 	«EXPAND xpt::Common::generatedMemberComment»
 	public org.eclipse.gmf.runtime.notation.Node create«getUniqueIdentifier()»(org.eclipse.emf.ecore.EObject domainElement, org.eclipse.gmf.runtime.notation.View containerView, int index, boolean persisted, org.eclipse.gmf.runtime.diagram.core.preferences.PreferencesHint preferencesHint) {
@@ -35,7 +36,11 @@
 		«EXPAND initializeStyles('node', 'prefStore', not viewmap.isFixedForeground(), not viewmap.isFixedBackground(), not viewmap.isFixedFont())-»
 		«EXPAND initLabel('node', 'prefStore') FOREACH labels-»
 		«EXPAND initCompartment('node', 'prefStore') FOREACH compartments-»
-		
+
+		//**********************
+		//Custom Code
+		//**********************
+
 		//Ontology visualizers are the only one effected by their direct container
 		if (domainElement.eContainer() != null && domainElement.eContainer() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology)
 		{
@@ -64,6 +69,59 @@
 		}
 		
 		return node;
+	}
+«ELSE»
+	«targetDef.proceed()»
+«ENDIF»
+«ENDAROUND»
+
+«AROUND createEdgeMethod FOR gmfgen::GenLink-»
+«/* Show/Hide instantiations when adding them. */»
+«IF getUniqueIdentifier().startsWith('Instantiation_')»
+	«EXPAND xpt::Common::generatedMemberComment»
+	public org.eclipse.gmf.runtime.notation.Edge create«getUniqueIdentifier()»(«IF isTypeLink()»org.eclipse.emf.ecore.EObject domainElement, «ENDIF»org.eclipse.gmf.runtime.notation.View containerView, int index, boolean persisted, org.eclipse.gmf.runtime.diagram.core.preferences.PreferencesHint preferencesHint) {
+	«IF viewmap.isFixedForeground()-»
+		org.eclipse.gmf.runtime.notation.Edge edge = org.eclipse.gmf.runtime.notation.NotationFactory.eINSTANCE.createEdge();
+		edge.getStyles().add(org.eclipse.gmf.runtime.notation.NotationFactory.eINSTANCE.createRoutingStyle());
+	«ELSE-»
+		org.eclipse.gmf.runtime.notation.Connector edge = org.eclipse.gmf.runtime.notation.NotationFactory.eINSTANCE.createConnector();
+	«ENDIF-»
+	«IF not viewmap.isFixedFont()-»
+		edge.getStyles().add(org.eclipse.gmf.runtime.notation.NotationFactory.eINSTANCE.createFontStyle());
+	«ENDIF-»
+		«EXPAND xpt::diagram::views::Utils::addCustomStyles('edge.getStyles()')-»
+		org.eclipse.gmf.runtime.notation.RelativeBendpoints bendpoints = org.eclipse.gmf.runtime.notation.NotationFactory.eINSTANCE.createRelativeBendpoints();
+		«EXPAND CodeStyle::newGenericInstance('points', 'java.util.ArrayList', 'org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint')»(2);
+		points.add(new org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint());
+		points.add(new org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint());
+		bendpoints.setPoints(points);
+		edge.setBendpoints(bendpoints);
+		org.eclipse.gmf.runtime.diagram.core.util.ViewUtil.insertChildView(containerView, edge, index, persisted);
+		edge.setType(«EXPAND xpt::editor::VisualIDRegistry::typeMethodCall»);
+		edge.setElement(«IF isTypeLink()»domainElement«ELSE»null«ENDIF»);
+		// initializePreferences
+		final org.eclipse.jface.preference.IPreferenceStore prefStore = (org.eclipse.jface.preference.IPreferenceStore) preferencesHint.getPreferenceStore();
+		«EXPAND initializeStyles('edge', 'prefStore', not viewmap.isFixedForeground(), false, not viewmap.isFixedFont())-»
+		org.eclipse.gmf.runtime.notation.Routing routing = org.eclipse.gmf.runtime.notation.Routing.get(prefStore.getInt(org.eclipse.gmf.runtime.diagram.ui.preferences.IPreferenceConstants.PREF_LINE_STYLE));
+		if (routing != null) {
+			org.eclipse.gmf.runtime.diagram.core.util.ViewUtil.setStructuralFeatureValue(edge, org.eclipse.gmf.runtime.notation.NotationPackage.eINSTANCE.getRoutingStyle_Routing(), routing);
+		}
+«EXPAND initLabel('edge', 'prefStore') FOREACH labels-»
+
+		//**********************
+		//Custom Code
+		//**********************
+		
+		//Check if proximity indication is used -> hide instantiation
+		de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation i = (de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation)domainElement;
+		if (i.getInstance().getVisualizer().size()>0)
+		{
+			de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer v = i.getInstance().getVisualizer().get(0);
+			if ("1".equals(v.getValueForKey("ProximityInstantiation")))
+					edge.setVisible(false);
+		}
+		
+		return edge;
 	}
 «ELSE»
 	«targetDef.proceed()»
