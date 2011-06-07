@@ -1064,6 +1064,34 @@
 			if (((org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)getParent()).resolveSemanticElement() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)
 				((de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionEditPart)getParent().getParent()).updateView(false);
 		}
+		
+		//Manage the instantiations view state according to proximity indication
+		if(((org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)getParent()).resolveSemanticElement() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)
+		{
+			org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart ep = ((org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)getParent());
+			org.eclipse.gmf.runtime.notation.View v = ep.getNotationView();
+			org.eclipse.gmf.runtime.notation.View clab = (org.eclipse.gmf.runtime.notation.View)ep.getNotationView();
+			de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer self = (de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer)resolveSemanticElement();
+			
+			org.eclipse.gmf.runtime.notation.View[] instantiations = new org.eclipse.gmf.runtime.notation.View[]{};
+			org.eclipse.ocl.ecore.OCL ocl = org.eclipse.ocl.ecore.OCL.newInstance();
+			
+			org.eclipse.ocl.helper.OCLHelper<org.eclipse.emf.ecore.EClassifier, ?, ?, org.eclipse.ocl.ecore.Constraint> helper = ocl.createOCLHelper();
+			helper.setContext(org.eclipse.gmf.runtime.notation.NotationPackage.Literals.VIEW);
+	
+			try {
+				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper
+						.createQuery("Edge.allInstances()->select(e | e.source = self)");
+				instantiations = ((java.util.HashSet<org.eclipse.gmf.runtime.notation.View>) ocl.evaluate(clab ,q)).toArray(new org.eclipse.gmf.runtime.notation.View[] {});
+			} catch (org.eclipse.ocl.ParserException e) {
+				e.printStackTrace();
+			}
+			
+			if ("1".equals(self.getValueForKey("ProximityInstantiation")))
+				instantiations[0].setVisible(false);
+			else
+				instantiations[0].setVisible(true);
+		}
 	}
 «ENDDEFINE»
 
