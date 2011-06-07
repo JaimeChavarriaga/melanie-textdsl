@@ -92,7 +92,8 @@ public class «getElementInitializersClassName()» {
 				
 				for (de.uni_mannheim.informatik.swt.models.plm.PLM.OwnedElement e : higherModel.getContent())
 				{
-					if (e.getName().equals(typeName) && e instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Entity)
+					if (e instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Entity
+							&& e.getName().equals(typeName))
 					{
 					
 						de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation i = de.uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMFactoryImpl.eINSTANCE.createInstantiation();
@@ -120,7 +121,17 @@ public class «getElementInitializersClassName()» {
 								attr.setName(f.getName());
 							}
 							else if (f instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Method && f.getDurability() > 0)
-								;
+							{
+								de.uni_mannheim.informatik.swt.models.plm.PLM.Method m = de.uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMFactoryImpl.eINSTANCE.createMethod();
+								m.setName(f.getName());
+								m.setDurability(f.getDurability());
+								m.setBody(((de.uni_mannheim.informatik.swt.models.plm.PLM.Method)f).getBody());
+								m.setElided(f.isElided());
+								m.setExpressed(f.isExpressed());
+								m.getInput().addAll(((de.uni_mannheim.informatik.swt.models.plm.PLM.Method)f).getInput());
+								m.getOutput().addAll(((de.uni_mannheim.informatik.swt.models.plm.PLM.Method)f).getOutput());
+								instance.getFeature().add(m);
+							}
 						}
 						
 						instance.setPotency(((de.uni_mannheim.informatik.swt.models.plm.PLM.Entity)e).getPotency() -1);
