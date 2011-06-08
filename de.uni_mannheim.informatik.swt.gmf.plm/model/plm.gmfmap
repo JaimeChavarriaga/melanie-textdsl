@@ -195,7 +195,7 @@
                           xsi:type="ecore:EAttribute"
                           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Visualizer/attributes"/>
                       <value
-                          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))->append('collapsed= false')"/>
+                          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))->append('collapsed= false')->append('ProximityInstantiation= 1')"/>
                     </initializers>
                     <initializers
                         xsi:type="gmfmap:FeatureValueSpec">
