@@ -521,74 +521,119 @@
             bottom="15"/>
         <children
             xsi:type="gmfgraph:Rectangle"
-            name="NameRectangle"
+            name="InnerRectangle"
             outline="false"
             fill="false">
           <layout
               xsi:type="gmfgraph:GridLayout"
-              numColumns="2"
               equalWidth="false">
-            <margins
-                dx="3"
-                dy="3"/>
+            <margins/>
             <spacing/>
           </layout>
           <children
-              xsi:type="gmfgraph:Label"
-              name="ConnectionNameFigure">
+              xsi:type="gmfgraph:Rectangle"
+              name="NameRectangle"
+              outline="false"
+              fill="false">
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
-                grabExcessHorizontalSpace="true"
-                horizontalAlignment="END"
-                verticalSpan="4"/>
-            <font
-                xsi:type="gmfgraph:BasicFont"
-                style="BOLD"/>
-          </children>
-          <children
-              xsi:type="gmfgraph:Label"
-              name="ConnectionPotencyFigure"
-              text="">
-            <layoutData
-                xsi:type="gmfgraph:GridLayoutData"
-                grabExcessHorizontalSpace="true"
-                grabExcessVerticalSpace="true"
-                horizontalAlignment="BEGINNING"
-                verticalSpan="2"/>
-            <font
-                xsi:type="gmfgraph:BasicFont"
-                height="7"/>
-            <insets
-                bottom="10"/>
-          </children>
-          <children
-              xsi:type="gmfgraph:Label"
-              name="ConnectionLevelFigure"
-              text="">
-            <layoutData
-                xsi:type="gmfgraph:GridLayoutData"
-                grabExcessHorizontalSpace="true"
-                grabExcessVerticalSpace="true"
-                verticalAlignment="BEGINNING"
-                horizontalAlignment="BEGINNING"
-                verticalSpan="2"/>
-            <font
-                xsi:type="gmfgraph:BasicFont"
-                height="7"/>
-          </children>
-          <children
-              xsi:type="gmfgraph:Label"
-              name="ConnectionAVSFigure"
-              text="">
-            <layoutData
-                xsi:type="gmfgraph:GridLayoutData"
-                grabExcessHorizontalSpace="true"
-                grabExcessVerticalSpace="true"
-                verticalAlignment="BEGINNING"
-                horizontalSpan="2"/>
-            <font
-                xsi:type="gmfgraph:BasicFont"
-                height="8"/>
+                grabExcessHorizontalSpace="true"/>
+            <layout
+                xsi:type="gmfgraph:GridLayout"
+                numColumns="5"
+                equalWidth="false">
+              <margins
+                  dx="3"
+                  dy="3"/>
+              <spacing/>
+            </layout>
+            <children
+                xsi:type="gmfgraph:Label"
+                name="ConnectionProximityInheritanceFigure">
+              <layoutData
+                  xsi:type="gmfgraph:GridLayoutData"
+                  grabExcessVerticalSpace="true"
+                  horizontalAlignment="BEGINNING"
+                  verticalSpan="4"/>
+              <font
+                  xsi:type="gmfgraph:BasicFont"/>
+            </children>
+            <children
+                xsi:type="gmfgraph:Label"
+                name="ConnetctionProximityContainmentFigure">
+              <layoutData
+                  xsi:type="gmfgraph:GridLayoutData"
+                  grabExcessVerticalSpace="true"
+                  horizontalAlignment="BEGINNING"
+                  verticalSpan="4"/>
+              <font
+                  xsi:type="gmfgraph:BasicFont"/>
+            </children>
+            <children
+                xsi:type="gmfgraph:Label"
+                name="ConnectionNameFigure">
+              <layoutData
+                  xsi:type="gmfgraph:GridLayoutData"
+                  horizontalAlignment="END"
+                  verticalSpan="4"/>
+              <font
+                  xsi:type="gmfgraph:BasicFont"
+                  style="BOLD"/>
+            </children>
+            <children
+                xsi:type="gmfgraph:Label"
+                name="ConnectionProximityInstantiationFigure"
+                text=":Type">
+              <layoutData
+                  xsi:type="gmfgraph:GridLayoutData"
+                  grabExcessVerticalSpace="true"
+                  horizontalAlignment="BEGINNING"
+                  verticalSpan="4"/>
+              <font
+                  xsi:type="gmfgraph:BasicFont"/>
+            </children>
+            <children
+                xsi:type="gmfgraph:Label"
+                name="ConnectionPotencyFigure"
+                text="">
+              <layoutData
+                  xsi:type="gmfgraph:GridLayoutData"
+                  grabExcessVerticalSpace="true"
+                  horizontalAlignment="BEGINNING"
+                  verticalSpan="2"/>
+              <font
+                  xsi:type="gmfgraph:BasicFont"
+                  height="7"/>
+              <insets
+                  bottom="10"/>
+            </children>
+            <children
+                xsi:type="gmfgraph:Label"
+                name="ConnectionLevelFigure"
+                text="">
+              <layoutData
+                  xsi:type="gmfgraph:GridLayoutData"
+                  grabExcessVerticalSpace="true"
+                  verticalAlignment="BEGINNING"
+                  horizontalAlignment="BEGINNING"
+                  verticalSpan="2"/>
+              <font
+                  xsi:type="gmfgraph:BasicFont"
+                  height="7"/>
+            </children>
+            <children
+                xsi:type="gmfgraph:Label"
+                name="ConnectionAVSFigure"
+                text="">
+              <layoutData
+                  xsi:type="gmfgraph:GridLayoutData"
+                  grabExcessVerticalSpace="true"
+                  verticalAlignment="BEGINNING"
+                  horizontalSpan="2"/>
+              <font
+                  xsi:type="gmfgraph:BasicFont"
+                  height="8"/>
+            </children>
           </children>
         </children>
         <template
@@ -608,13 +653,13 @@
             x="20"/>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.8/@actualFigure/@children.0/@children.0"/>
+          figure="//@figures.0/@descriptors.8/@actualFigure/@children.0/@children.0/@children.2"/>
       <accessors
-          figure="//@figures.0/@descriptors.8/@actualFigure/@children.0/@children.1"/>
+          figure="//@figures.0/@descriptors.8/@actualFigure/@children.0/@children.0/@children.4"/>
       <accessors
-          figure="//@figures.0/@descriptors.8/@actualFigure/@children.0/@children.2"/>
+          figure="//@figures.0/@descriptors.8/@actualFigure/@children.0/@children.0/@children.5"/>
       <accessors
-          figure="//@figures.0/@descriptors.8/@actualFigure/@children.0/@children.3"/>
+          figure="//@figures.0/@descriptors.8/@actualFigure/@children.0/@children.0/@children.6"/>
     </descriptors>
     <descriptors
         name="VisualizerCompartmentFigure">
