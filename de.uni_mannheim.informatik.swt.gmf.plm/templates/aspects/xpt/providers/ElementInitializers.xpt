@@ -124,6 +124,7 @@ public class «getElementInitializersClassName()» {
 							else if (f instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Method && f.getDurability() > 0)
 							{
 								de.uni_mannheim.informatik.swt.models.plm.PLM.Method m = de.uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMFactoryImpl.eINSTANCE.createMethod();
+								init_Method_3062(m);
 								m.setName(f.getName());
 								m.setDurability(f.getDurability());
 								m.setBody(((de.uni_mannheim.informatik.swt.models.plm.PLM.Method)f).getBody());
@@ -136,6 +137,10 @@ public class «getElementInitializersClassName()» {
 						}
 						
 						instance.setPotency(((de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)e).getPotency() -1);
+						
+						//Copy all visualizers from the parent
+						instance.getVisualizer().clear();
+						instance.getVisualizer().add(org.eclipse.emf.ecore.util.EcoreUtil.copy(e.getVisualizer().get(0)));
 					}
 				}
 			}
