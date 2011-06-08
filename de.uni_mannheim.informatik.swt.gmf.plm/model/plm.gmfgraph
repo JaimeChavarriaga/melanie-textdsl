@@ -583,7 +583,7 @@
             <children
                 xsi:type="gmfgraph:Label"
                 name="ConnectionProximityInstantiationFigure"
-                text=":Type">
+                text="">
               <layoutData
                   xsi:type="gmfgraph:GridLayoutData"
                   grabExcessVerticalSpace="true"
@@ -653,7 +653,13 @@
             x="20"/>
       </actualFigure>
       <accessors
+          figure="//@figures.0/@descriptors.8/@actualFigure/@children.0/@children.0/@children.0"/>
+      <accessors
+          figure="//@figures.0/@descriptors.8/@actualFigure/@children.0/@children.0/@children.1"/>
+      <accessors
           figure="//@figures.0/@descriptors.8/@actualFigure/@children.0/@children.0/@children.2"/>
+      <accessors
+          figure="//@figures.0/@descriptors.8/@actualFigure/@children.0/@children.0/@children.3"/>
       <accessors
           figure="//@figures.0/@descriptors.8/@actualFigure/@children.0/@children.0/@children.4"/>
       <accessors
@@ -1767,12 +1773,27 @@
       name="ConnectionAVSLabel"
       figure="ConnectionFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.8/@accessors.3"/>
+      accessor="//@figures.0/@descriptors.8/@accessors.6"/>
+  <labels
+      name="ConnectionFigureProximityInheritanceLabel"
+      figure="ConnectionFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.8/@accessors.0"/>
+  <labels
+      name="ConnectionFigureProximityContainmentLabel"
+      figure="ConnectionFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.8/@accessors.1"/>
   <labels
       name="ConnectionFigureName"
       figure="ConnectionFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.8/@accessors.0"/>
+      accessor="//@figures.0/@descriptors.8/@accessors.2"/>
+  <labels
+      name="ConnectionFigureProximityInstantiationLabel"
+      figure="ConnectionFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.8/@accessors.3"/>
   <labels
       name="ConnectionFigureNameExternal"
       figure="ConnectionNameExternalLabelFigure"
@@ -1782,12 +1803,12 @@
       name="ConnectionFigurePotency"
       figure="ConnectionFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.8/@accessors.1"/>
+      accessor="//@figures.0/@descriptors.8/@accessors.4"/>
   <labels
       name="ConnectionFigureLevelLabel"
       figure="ConnectionFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.8/@accessors.2"/>
+      accessor="//@figures.0/@descriptors.8/@accessors.5"/>
   <labels
       name="ComplementFigureName"
       figure="ComplementFigure"

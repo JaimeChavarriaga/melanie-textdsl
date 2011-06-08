@@ -18,7 +18,7 @@
         name="domainEntityNameCheck"
         description="Checks the name of elements"
         id="audits.attributes.domainEntityNameAudit"
-        rule="//@expressionProviders/@providers.0/@expressions.110"
+        rule="//@expressionProviders/@providers.0/@expressions.111"
         message="Name wrong"
         category="//@audits/@categories.0">
       <target
@@ -146,7 +146,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.53"/>
+            parser="//@labelParsers/@implementations.54"/>
       </labels>
     </childNodes>
     <childNodes
@@ -241,7 +241,7 @@
           xsi:type="gmfgen:InnerClassViewmap"
           layoutType="TOOLBAR_LAYOUT"
           className="ConnectionFigure"
-          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class ConnectionFigure extends org.eclipse.draw2d.ScalablePolygonShape {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureConnectionNameFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureConnectionPotencyFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureConnectionLevelFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureConnectionAVSFigure; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public ConnectionFigure() {&#xA;&#x9;&#x9;&#xA;&#x9;org.eclipse.draw2d.ToolbarLayout layoutThis = new org.eclipse.draw2d.ToolbarLayout();&#xA;&#x9;layoutThis.setStretchMinorAxis(true);&#xA;&#x9;layoutThis.setMinorAlignment(org.eclipse.draw2d.ToolbarLayout.ALIGN_TOPLEFT&#xA;);&#xA;&#xA;&#x9;layoutThis.setSpacing(0);&#xA;&#x9;layoutThis.setVertical(true);&#xA;&#xA;&#x9;this.setLayoutManager(layoutThis);&#xA;&#xA;&#x9;&#x9;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(3)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(40)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(20)&#xA;, getMapMode().DPtoLP(42)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(40)&#xA;, getMapMode().DPtoLP(40)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(40)&#xA;, getMapMode().DPtoLP(3)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(20)&#xA;, getMapMode().DPtoLP(0)&#xA;));&#xA;this.setFill(true);&#xA;&#x9;this.setForegroundColor(org.eclipse.draw2d.ColorConstants.black);&#xA;&#xA;this.setBorder(new org.eclipse.draw2d.MarginBorder(getMapMode().DPtoLP(3)&#xA;, getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(15)&#xA;, getMapMode().DPtoLP(0)&#xA;));&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;org.eclipse.draw2d.RectangleFigure innerRectangle0 = new org.eclipse.draw2d.RectangleFigure();&#xA;innerRectangle0.setFill(false);&#xA;innerRectangle0.setOutline(false);&#xA;&#xA;this.add(innerRectangle0);&#xA;&#xA;&#x9;org.eclipse.draw2d.GridLayout layoutInnerRectangle0 = new org.eclipse.draw2d.GridLayout();&#xA;&#x9;layoutInnerRectangle0.numColumns = 1;&#xA;&#x9;layoutInnerRectangle0.makeColumnsEqualWidth = false;&#xA;&#x9;layoutInnerRectangle0.horizontalSpacing = 0;&#xA;&#x9;layoutInnerRectangle0.verticalSpacing = 0;&#xA;&#x9;layoutInnerRectangle0.marginWidth = 0;&#xA;&#x9;layoutInnerRectangle0.marginHeight = 0;&#xA;&#x9;innerRectangle0.setLayoutManager(layoutInnerRectangle0);&#xA;&#xA;&#xA;&#xA;org.eclipse.draw2d.RectangleFigure nameRectangle1 = new org.eclipse.draw2d.RectangleFigure();&#xA;nameRectangle1.setFill(false);&#xA;nameRectangle1.setOutline(false);&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintNameRectangle1 = new org.eclipse.draw2d.GridData();&#xA;constraintNameRectangle1.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintNameRectangle1.horizontalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintNameRectangle1.horizontalIndent = 0;&#xA;constraintNameRectangle1.horizontalSpan = 1;&#xA;constraintNameRectangle1.verticalSpan = 1;&#xA;constraintNameRectangle1.grabExcessHorizontalSpace = true;&#xA;constraintNameRectangle1.grabExcessVerticalSpace = false;&#xA;innerRectangle0.add(nameRectangle1, constraintNameRectangle1);&#xA;&#xA;&#xA;&#x9;org.eclipse.draw2d.GridLayout layoutNameRectangle1 = new org.eclipse.draw2d.GridLayout();&#xA;&#x9;layoutNameRectangle1.numColumns = 5;&#xA;&#x9;layoutNameRectangle1.makeColumnsEqualWidth = false;&#xA;&#x9;layoutNameRectangle1.horizontalSpacing = 0;&#xA;&#x9;layoutNameRectangle1.verticalSpacing = 0;&#xA;&#x9;layoutNameRectangle1.marginWidth = 3;&#xA;&#x9;layoutNameRectangle1.marginHeight = 3;&#xA;&#x9;nameRectangle1.setLayoutManager(layoutNameRectangle1);&#xA;&#xA;&#xA;&#xA;org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel connectionProximityInheritanceFigure2 = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;connectionProximityInheritanceFigure2.setText(&quot;&quot;);&#xA;&#xA;connectionProximityInheritanceFigure2.setFont(CONNECTIONPROXIMITYINHERITANCEFIGURE2_FONT);&#xA;&#xA;&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintConnectionProximityInheritanceFigure2 = new org.eclipse.draw2d.GridData();&#xA;constraintConnectionProximityInheritanceFigure2.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintConnectionProximityInheritanceFigure2.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintConnectionProximityInheritanceFigure2.horizontalIndent = 0;&#xA;constraintConnectionProximityInheritanceFigure2.horizontalSpan = 1;&#xA;constraintConnectionProximityInheritanceFigure2.verticalSpan = 4;&#xA;constraintConnectionProximityInheritanceFigure2.grabExcessHorizontalSpace = false;&#xA;constraintConnectionProximityInheritanceFigure2.grabExcessVerticalSpace = true;&#xA;nameRectangle1.add(connectionProximityInheritanceFigure2, constraintConnectionProximityInheritanceFigure2);&#xA;&#xA;&#xA;&#xA;&#xA;org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel connetctionProximityContainmentFigure2 = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;connetctionProximityContainmentFigure2.setText(&quot;&quot;);&#xA;&#xA;connetctionProximityContainmentFigure2.setFont(CONNETCTIONPROXIMITYCONTAINMENTFIGURE2_FONT);&#xA;&#xA;&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintConnetctionProximityContainmentFigure2 = new org.eclipse.draw2d.GridData();&#xA;constraintConnetctionProximityContainmentFigure2.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintConnetctionProximityContainmentFigure2.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintConnetctionProximityContainmentFigure2.horizontalIndent = 0;&#xA;constraintConnetctionProximityContainmentFigure2.horizontalSpan = 1;&#xA;constraintConnetctionProximityContainmentFigure2.verticalSpan = 4;&#xA;constraintConnetctionProximityContainmentFigure2.grabExcessHorizontalSpace = false;&#xA;constraintConnetctionProximityContainmentFigure2.grabExcessVerticalSpace = true;&#xA;nameRectangle1.add(connetctionProximityContainmentFigure2, constraintConnetctionProximityContainmentFigure2);&#xA;&#xA;&#xA;&#xA;&#xA;fFigureConnectionNameFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureConnectionNameFigure.setText(&quot;&quot;);&#xA;&#xA;fFigureConnectionNameFigure.setFont(FFIGURECONNECTIONNAMEFIGURE_FONT);&#xA;&#xA;&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureConnectionNameFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureConnectionNameFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureConnectionNameFigure.horizontalAlignment = org.eclipse.draw2d.GridData.END;&#xA;constraintFFigureConnectionNameFigure.horizontalIndent = 0;&#xA;constraintFFigureConnectionNameFigure.horizontalSpan = 1;&#xA;constraintFFigureConnectionNameFigure.verticalSpan = 4;&#xA;constraintFFigureConnectionNameFigure.grabExcessHorizontalSpace = false;&#xA;constraintFFigureConnectionNameFigure.grabExcessVerticalSpace = false;&#xA;nameRectangle1.add(fFigureConnectionNameFigure, constraintFFigureConnectionNameFigure);&#xA;&#xA;&#xA;&#xA;&#xA;org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel connectionProximityInstantiationFigure2 = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;connectionProximityInstantiationFigure2.setText(&quot;:Type&quot;);&#xA;&#xA;connectionProximityInstantiationFigure2.setFont(CONNECTIONPROXIMITYINSTANTIATIONFIGURE2_FONT);&#xA;&#xA;&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintConnectionProximityInstantiationFigure2 = new org.eclipse.draw2d.GridData();&#xA;constraintConnectionProximityInstantiationFigure2.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintConnectionProximityInstantiationFigure2.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintConnectionProximityInstantiationFigure2.horizontalIndent = 0;&#xA;constraintConnectionProximityInstantiationFigure2.horizontalSpan = 1;&#xA;constraintConnectionProximityInstantiationFigure2.verticalSpan = 4;&#xA;constraintConnectionProximityInstantiationFigure2.grabExcessHorizontalSpace = false;&#xA;constraintConnectionProximityInstantiationFigure2.grabExcessVerticalSpace = true;&#xA;nameRectangle1.add(connectionProximityInstantiationFigure2, constraintConnectionProximityInstantiationFigure2);&#xA;&#xA;&#xA;&#xA;&#xA;fFigureConnectionPotencyFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureConnectionPotencyFigure.setText(&quot;&quot;);&#xA;&#xA;fFigureConnectionPotencyFigure.setFont(FFIGURECONNECTIONPOTENCYFIGURE_FONT);&#xA;&#xA;&#xA;&#xA;fFigureConnectionPotencyFigure.setBorder(new org.eclipse.draw2d.MarginBorder(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(10)&#xA;, getMapMode().DPtoLP(0)&#xA;));&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureConnectionPotencyFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureConnectionPotencyFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureConnectionPotencyFigure.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureConnectionPotencyFigure.horizontalIndent = 0;&#xA;constraintFFigureConnectionPotencyFigure.horizontalSpan = 1;&#xA;constraintFFigureConnectionPotencyFigure.verticalSpan = 2;&#xA;constraintFFigureConnectionPotencyFigure.grabExcessHorizontalSpace = false;&#xA;constraintFFigureConnectionPotencyFigure.grabExcessVerticalSpace = true;&#xA;nameRectangle1.add(fFigureConnectionPotencyFigure, constraintFFigureConnectionPotencyFigure);&#xA;&#xA;&#xA;&#xA;&#xA;fFigureConnectionLevelFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureConnectionLevelFigure.setText(&quot;&quot;);&#xA;&#xA;fFigureConnectionLevelFigure.setFont(FFIGURECONNECTIONLEVELFIGURE_FONT);&#xA;&#xA;&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureConnectionLevelFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureConnectionLevelFigure.verticalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureConnectionLevelFigure.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureConnectionLevelFigure.horizontalIndent = 0;&#xA;constraintFFigureConnectionLevelFigure.horizontalSpan = 1;&#xA;constraintFFigureConnectionLevelFigure.verticalSpan = 2;&#xA;constraintFFigureConnectionLevelFigure.grabExcessHorizontalSpace = false;&#xA;constraintFFigureConnectionLevelFigure.grabExcessVerticalSpace = true;&#xA;nameRectangle1.add(fFigureConnectionLevelFigure, constraintFFigureConnectionLevelFigure);&#xA;&#xA;&#xA;&#xA;&#xA;fFigureConnectionAVSFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureConnectionAVSFigure.setText(&quot;&quot;);&#xA;&#xA;fFigureConnectionAVSFigure.setFont(FFIGURECONNECTIONAVSFIGURE_FONT);&#xA;&#xA;&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureConnectionAVSFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureConnectionAVSFigure.verticalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureConnectionAVSFigure.horizontalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureConnectionAVSFigure.horizontalIndent = 0;&#xA;constraintFFigureConnectionAVSFigure.horizontalSpan = 2;&#xA;constraintFFigureConnectionAVSFigure.verticalSpan = 1;&#xA;constraintFFigureConnectionAVSFigure.grabExcessHorizontalSpace = false;&#xA;constraintFFigureConnectionAVSFigure.grabExcessVerticalSpace = true;&#xA;nameRectangle1.add(fFigureConnectionAVSFigure, constraintFFigureConnectionAVSFigure);&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureConnectionNameFigure() {&#xA;&#x9;&#x9;return fFigureConnectionNameFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureConnectionPotencyFigure() {&#xA;&#x9;&#x9;return fFigureConnectionPotencyFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureConnectionLevelFigure() {&#xA;&#x9;&#x9;return fFigureConnectionLevelFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureConnectionAVSFigure() {&#xA;&#x9;&#x9;return fFigureConnectionAVSFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font CONNECTIONPROXIMITYINHERITANCEFIGURE2_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 9, org.eclipse.swt.SWT.NORMAL);&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font CONNETCTIONPROXIMITYCONTAINMENTFIGURE2_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 9, org.eclipse.swt.SWT.NORMAL);&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGURECONNECTIONNAMEFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 9, org.eclipse.swt.SWT.BOLD);&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font CONNECTIONPROXIMITYINSTANTIATIONFIGURE2_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 9, org.eclipse.swt.SWT.NORMAL);&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGURECONNECTIONPOTENCYFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 7, org.eclipse.swt.SWT.NORMAL);&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGURECONNECTIONLEVELFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 7, org.eclipse.swt.SWT.NORMAL);&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGURECONNECTIONAVSFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 8, org.eclipse.swt.SWT.NORMAL);&#xA;&#xA;">
+          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class ConnectionFigure extends org.eclipse.draw2d.ScalablePolygonShape {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureConnectionProximityInheritanceFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureConnetctionProximityContainmentFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureConnectionNameFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureConnectionProximityInstantiationFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureConnectionPotencyFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureConnectionLevelFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureConnectionAVSFigure; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public ConnectionFigure() {&#xA;&#x9;&#x9;&#xA;&#x9;org.eclipse.draw2d.ToolbarLayout layoutThis = new org.eclipse.draw2d.ToolbarLayout();&#xA;&#x9;layoutThis.setStretchMinorAxis(true);&#xA;&#x9;layoutThis.setMinorAlignment(org.eclipse.draw2d.ToolbarLayout.ALIGN_TOPLEFT&#xA;);&#xA;&#xA;&#x9;layoutThis.setSpacing(0);&#xA;&#x9;layoutThis.setVertical(true);&#xA;&#xA;&#x9;this.setLayoutManager(layoutThis);&#xA;&#xA;&#x9;&#x9;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(3)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(40)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(20)&#xA;, getMapMode().DPtoLP(42)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(40)&#xA;, getMapMode().DPtoLP(40)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(40)&#xA;, getMapMode().DPtoLP(3)&#xA;));&#xA;this.addPoint(new org.eclipse.draw2d.geometry.Point(getMapMode().DPtoLP(20)&#xA;, getMapMode().DPtoLP(0)&#xA;));&#xA;this.setFill(true);&#xA;&#x9;this.setForegroundColor(org.eclipse.draw2d.ColorConstants.black);&#xA;&#xA;this.setBorder(new org.eclipse.draw2d.MarginBorder(getMapMode().DPtoLP(3)&#xA;, getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(15)&#xA;, getMapMode().DPtoLP(0)&#xA;));&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;org.eclipse.draw2d.RectangleFigure innerRectangle0 = new org.eclipse.draw2d.RectangleFigure();&#xA;innerRectangle0.setFill(false);&#xA;innerRectangle0.setOutline(false);&#xA;&#xA;this.add(innerRectangle0);&#xA;&#xA;&#x9;org.eclipse.draw2d.GridLayout layoutInnerRectangle0 = new org.eclipse.draw2d.GridLayout();&#xA;&#x9;layoutInnerRectangle0.numColumns = 1;&#xA;&#x9;layoutInnerRectangle0.makeColumnsEqualWidth = false;&#xA;&#x9;layoutInnerRectangle0.horizontalSpacing = 0;&#xA;&#x9;layoutInnerRectangle0.verticalSpacing = 0;&#xA;&#x9;layoutInnerRectangle0.marginWidth = 0;&#xA;&#x9;layoutInnerRectangle0.marginHeight = 0;&#xA;&#x9;innerRectangle0.setLayoutManager(layoutInnerRectangle0);&#xA;&#xA;&#xA;&#xA;org.eclipse.draw2d.RectangleFigure nameRectangle1 = new org.eclipse.draw2d.RectangleFigure();&#xA;nameRectangle1.setFill(false);&#xA;nameRectangle1.setOutline(false);&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintNameRectangle1 = new org.eclipse.draw2d.GridData();&#xA;constraintNameRectangle1.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintNameRectangle1.horizontalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintNameRectangle1.horizontalIndent = 0;&#xA;constraintNameRectangle1.horizontalSpan = 1;&#xA;constraintNameRectangle1.verticalSpan = 1;&#xA;constraintNameRectangle1.grabExcessHorizontalSpace = true;&#xA;constraintNameRectangle1.grabExcessVerticalSpace = false;&#xA;innerRectangle0.add(nameRectangle1, constraintNameRectangle1);&#xA;&#xA;&#xA;&#x9;org.eclipse.draw2d.GridLayout layoutNameRectangle1 = new org.eclipse.draw2d.GridLayout();&#xA;&#x9;layoutNameRectangle1.numColumns = 5;&#xA;&#x9;layoutNameRectangle1.makeColumnsEqualWidth = false;&#xA;&#x9;layoutNameRectangle1.horizontalSpacing = 0;&#xA;&#x9;layoutNameRectangle1.verticalSpacing = 0;&#xA;&#x9;layoutNameRectangle1.marginWidth = 3;&#xA;&#x9;layoutNameRectangle1.marginHeight = 3;&#xA;&#x9;nameRectangle1.setLayoutManager(layoutNameRectangle1);&#xA;&#xA;&#xA;&#xA;fFigureConnectionProximityInheritanceFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureConnectionProximityInheritanceFigure.setText(&quot;&quot;);&#xA;&#xA;fFigureConnectionProximityInheritanceFigure.setFont(FFIGURECONNECTIONPROXIMITYINHERITANCEFIGURE_FONT);&#xA;&#xA;&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureConnectionProximityInheritanceFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureConnectionProximityInheritanceFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureConnectionProximityInheritanceFigure.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureConnectionProximityInheritanceFigure.horizontalIndent = 0;&#xA;constraintFFigureConnectionProximityInheritanceFigure.horizontalSpan = 1;&#xA;constraintFFigureConnectionProximityInheritanceFigure.verticalSpan = 4;&#xA;constraintFFigureConnectionProximityInheritanceFigure.grabExcessHorizontalSpace = false;&#xA;constraintFFigureConnectionProximityInheritanceFigure.grabExcessVerticalSpace = true;&#xA;nameRectangle1.add(fFigureConnectionProximityInheritanceFigure, constraintFFigureConnectionProximityInheritanceFigure);&#xA;&#xA;&#xA;&#xA;&#xA;fFigureConnetctionProximityContainmentFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureConnetctionProximityContainmentFigure.setText(&quot;&quot;);&#xA;&#xA;fFigureConnetctionProximityContainmentFigure.setFont(FFIGURECONNETCTIONPROXIMITYCONTAINMENTFIGURE_FONT);&#xA;&#xA;&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureConnetctionProximityContainmentFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureConnetctionProximityContainmentFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureConnetctionProximityContainmentFigure.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureConnetctionProximityContainmentFigure.horizontalIndent = 0;&#xA;constraintFFigureConnetctionProximityContainmentFigure.horizontalSpan = 1;&#xA;constraintFFigureConnetctionProximityContainmentFigure.verticalSpan = 4;&#xA;constraintFFigureConnetctionProximityContainmentFigure.grabExcessHorizontalSpace = false;&#xA;constraintFFigureConnetctionProximityContainmentFigure.grabExcessVerticalSpace = true;&#xA;nameRectangle1.add(fFigureConnetctionProximityContainmentFigure, constraintFFigureConnetctionProximityContainmentFigure);&#xA;&#xA;&#xA;&#xA;&#xA;fFigureConnectionNameFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureConnectionNameFigure.setText(&quot;&quot;);&#xA;&#xA;fFigureConnectionNameFigure.setFont(FFIGURECONNECTIONNAMEFIGURE_FONT);&#xA;&#xA;&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureConnectionNameFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureConnectionNameFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureConnectionNameFigure.horizontalAlignment = org.eclipse.draw2d.GridData.END;&#xA;constraintFFigureConnectionNameFigure.horizontalIndent = 0;&#xA;constraintFFigureConnectionNameFigure.horizontalSpan = 1;&#xA;constraintFFigureConnectionNameFigure.verticalSpan = 4;&#xA;constraintFFigureConnectionNameFigure.grabExcessHorizontalSpace = false;&#xA;constraintFFigureConnectionNameFigure.grabExcessVerticalSpace = false;&#xA;nameRectangle1.add(fFigureConnectionNameFigure, constraintFFigureConnectionNameFigure);&#xA;&#xA;&#xA;&#xA;&#xA;fFigureConnectionProximityInstantiationFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureConnectionProximityInstantiationFigure.setText(&quot;&quot;);&#xA;&#xA;fFigureConnectionProximityInstantiationFigure.setFont(FFIGURECONNECTIONPROXIMITYINSTANTIATIONFIGURE_FONT);&#xA;&#xA;&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureConnectionProximityInstantiationFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureConnectionProximityInstantiationFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureConnectionProximityInstantiationFigure.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureConnectionProximityInstantiationFigure.horizontalIndent = 0;&#xA;constraintFFigureConnectionProximityInstantiationFigure.horizontalSpan = 1;&#xA;constraintFFigureConnectionProximityInstantiationFigure.verticalSpan = 4;&#xA;constraintFFigureConnectionProximityInstantiationFigure.grabExcessHorizontalSpace = false;&#xA;constraintFFigureConnectionProximityInstantiationFigure.grabExcessVerticalSpace = true;&#xA;nameRectangle1.add(fFigureConnectionProximityInstantiationFigure, constraintFFigureConnectionProximityInstantiationFigure);&#xA;&#xA;&#xA;&#xA;&#xA;fFigureConnectionPotencyFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureConnectionPotencyFigure.setText(&quot;&quot;);&#xA;&#xA;fFigureConnectionPotencyFigure.setFont(FFIGURECONNECTIONPOTENCYFIGURE_FONT);&#xA;&#xA;&#xA;&#xA;fFigureConnectionPotencyFigure.setBorder(new org.eclipse.draw2d.MarginBorder(getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(10)&#xA;, getMapMode().DPtoLP(0)&#xA;));&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureConnectionPotencyFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureConnectionPotencyFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureConnectionPotencyFigure.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureConnectionPotencyFigure.horizontalIndent = 0;&#xA;constraintFFigureConnectionPotencyFigure.horizontalSpan = 1;&#xA;constraintFFigureConnectionPotencyFigure.verticalSpan = 2;&#xA;constraintFFigureConnectionPotencyFigure.grabExcessHorizontalSpace = false;&#xA;constraintFFigureConnectionPotencyFigure.grabExcessVerticalSpace = true;&#xA;nameRectangle1.add(fFigureConnectionPotencyFigure, constraintFFigureConnectionPotencyFigure);&#xA;&#xA;&#xA;&#xA;&#xA;fFigureConnectionLevelFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureConnectionLevelFigure.setText(&quot;&quot;);&#xA;&#xA;fFigureConnectionLevelFigure.setFont(FFIGURECONNECTIONLEVELFIGURE_FONT);&#xA;&#xA;&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureConnectionLevelFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureConnectionLevelFigure.verticalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureConnectionLevelFigure.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureConnectionLevelFigure.horizontalIndent = 0;&#xA;constraintFFigureConnectionLevelFigure.horizontalSpan = 1;&#xA;constraintFFigureConnectionLevelFigure.verticalSpan = 2;&#xA;constraintFFigureConnectionLevelFigure.grabExcessHorizontalSpace = false;&#xA;constraintFFigureConnectionLevelFigure.grabExcessVerticalSpace = true;&#xA;nameRectangle1.add(fFigureConnectionLevelFigure, constraintFFigureConnectionLevelFigure);&#xA;&#xA;&#xA;&#xA;&#xA;fFigureConnectionAVSFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureConnectionAVSFigure.setText(&quot;&quot;);&#xA;&#xA;fFigureConnectionAVSFigure.setFont(FFIGURECONNECTIONAVSFIGURE_FONT);&#xA;&#xA;&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureConnectionAVSFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureConnectionAVSFigure.verticalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureConnectionAVSFigure.horizontalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureConnectionAVSFigure.horizontalIndent = 0;&#xA;constraintFFigureConnectionAVSFigure.horizontalSpan = 2;&#xA;constraintFFigureConnectionAVSFigure.verticalSpan = 1;&#xA;constraintFFigureConnectionAVSFigure.grabExcessHorizontalSpace = false;&#xA;constraintFFigureConnectionAVSFigure.grabExcessVerticalSpace = true;&#xA;nameRectangle1.add(fFigureConnectionAVSFigure, constraintFFigureConnectionAVSFigure);&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureConnectionProximityInheritanceFigure() {&#xA;&#x9;&#x9;return fFigureConnectionProximityInheritanceFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureConnetctionProximityContainmentFigure() {&#xA;&#x9;&#x9;return fFigureConnetctionProximityContainmentFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureConnectionNameFigure() {&#xA;&#x9;&#x9;return fFigureConnectionNameFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureConnectionProximityInstantiationFigure() {&#xA;&#x9;&#x9;return fFigureConnectionProximityInstantiationFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureConnectionPotencyFigure() {&#xA;&#x9;&#x9;return fFigureConnectionPotencyFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureConnectionLevelFigure() {&#xA;&#x9;&#x9;return fFigureConnectionLevelFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureConnectionAVSFigure() {&#xA;&#x9;&#x9;return fFigureConnectionAVSFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGURECONNECTIONPROXIMITYINHERITANCEFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 9, org.eclipse.swt.SWT.NORMAL);&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGURECONNETCTIONPROXIMITYCONTAINMENTFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 9, org.eclipse.swt.SWT.NORMAL);&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGURECONNECTIONNAMEFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 9, org.eclipse.swt.SWT.BOLD);&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGURECONNECTIONPROXIMITYINSTANTIATIONFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 9, org.eclipse.swt.SWT.NORMAL);&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGURECONNECTIONPOTENCYFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 7, org.eclipse.swt.SWT.NORMAL);&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGURECONNECTIONLEVELFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 7, org.eclipse.swt.SWT.NORMAL);&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGURECONNECTIONAVSFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 8, org.eclipse.swt.SWT.NORMAL);&#xA;&#xA;">
         <attributes
             xsi:type="gmfgen:StyleAttributes"
             fixedForeground="true"/>
@@ -400,6 +400,25 @@
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
             parser="//@labelParsers/@implementations.19"/>
+      </labels>
+      <labels
+          visualID="5194"
+          editPartClassName="WrappingLabel66EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel66ItemSemanticEditPolicy"
+          readOnly="true">
+        <diagramRunTimeClass
+            href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap
+            xsi:type="gmfgen:ParentAssignedViewmap"
+            getterName="getFigureConnectionProximityInstantiationFigure"
+            figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel">
+          <attributes
+              xsi:type="gmfgen:StyleAttributes"
+              fixedFont="true"/>
+        </viewmap>
+        <modelFacet
+            xsi:type="gmfgen:ExpressionLabelModelFacet"
+            parser="//@labelParsers/@implementations.20"/>
       </labels>
     </childNodes>
     <childNodes
@@ -979,13 +998,13 @@
             <newElementInitializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
-                  value="//@expressionProviders/@providers.0/@expressions.36">
+                  value="//@expressionProviders/@providers.0/@expressions.37">
                 <feature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/attributes"/>
               </initializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
-                  value="//@expressionProviders/@providers.0/@expressions.37">
+                  value="//@expressionProviders/@providers.0/@expressions.38">
                 <feature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/durability"/>
               </initializers>
@@ -1011,7 +1030,7 @@
               fixedForeground="true"/>
         </viewmap>
         <modelFacet
-            parser="//@labelParsers/@implementations.22"/>
+            parser="//@labelParsers/@implementations.23"/>
       </labels>
     </childNodes>
     <childNodes
@@ -1064,7 +1083,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.20"/>
+            parser="//@labelParsers/@implementations.21"/>
       </labels>
       <labels
           visualID="5108"
@@ -1084,7 +1103,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.21"/>
+            parser="//@labelParsers/@implementations.22"/>
       </labels>
     </childNodes>
     <childNodes
@@ -1130,13 +1149,13 @@
             <newElementInitializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
-                  value="//@expressionProviders/@providers.0/@expressions.40">
+                  value="//@expressionProviders/@providers.0/@expressions.41">
                 <feature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/attributes"/>
               </initializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
-                  value="//@expressionProviders/@providers.0/@expressions.41">
+                  value="//@expressionProviders/@providers.0/@expressions.42">
                 <feature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/durability"/>
               </initializers>
@@ -1220,7 +1239,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.23"/>
+            parser="//@labelParsers/@implementations.24"/>
       </labels>
       <labels
           visualID="5110"
@@ -1240,7 +1259,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.24"/>
+            parser="//@labelParsers/@implementations.25"/>
       </labels>
     </childNodes>
     <childNodes
@@ -1286,13 +1305,13 @@
             <newElementInitializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
-                  value="//@expressionProviders/@providers.0/@expressions.44">
+                  value="//@expressionProviders/@providers.0/@expressions.45">
                 <feature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/attributes"/>
               </initializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
-                  value="//@expressionProviders/@providers.0/@expressions.45">
+                  value="//@expressionProviders/@providers.0/@expressions.46">
                 <feature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/durability"/>
               </initializers>
@@ -1318,7 +1337,7 @@
               fixedForeground="true"/>
         </viewmap>
         <modelFacet
-            parser="//@labelParsers/@implementations.22"/>
+            parser="//@labelParsers/@implementations.23"/>
       </labels>
     </childNodes>
     <childNodes
@@ -1371,7 +1390,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.25"/>
+            parser="//@labelParsers/@implementations.26"/>
       </labels>
       <labels
           visualID="5112"
@@ -1391,7 +1410,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.26"/>
+            parser="//@labelParsers/@implementations.27"/>
       </labels>
     </childNodes>
     <childNodes
@@ -1437,13 +1456,13 @@
             <newElementInitializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
-                  value="//@expressionProviders/@providers.0/@expressions.48">
+                  value="//@expressionProviders/@providers.0/@expressions.49">
                 <feature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/attributes"/>
               </initializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
-                  value="//@expressionProviders/@providers.0/@expressions.49">
+                  value="//@expressionProviders/@providers.0/@expressions.50">
                 <feature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/durability"/>
               </initializers>
@@ -1515,7 +1534,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.29"/>
+            parser="//@labelParsers/@implementations.30"/>
       </labels>
     </childNodes>
     <childNodes
@@ -1568,7 +1587,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.27"/>
+            parser="//@labelParsers/@implementations.28"/>
       </labels>
       <labels
           visualID="5114"
@@ -1588,7 +1607,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.28"/>
+            parser="//@labelParsers/@implementations.29"/>
       </labels>
     </childNodes>
     <childNodes
@@ -1634,13 +1653,13 @@
             <newElementInitializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
-                  value="//@expressionProviders/@providers.0/@expressions.53">
+                  value="//@expressionProviders/@providers.0/@expressions.54">
                 <feature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/attributes"/>
               </initializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
-                  value="//@expressionProviders/@providers.0/@expressions.54">
+                  value="//@expressionProviders/@providers.0/@expressions.55">
                 <feature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/durability"/>
               </initializers>
@@ -1712,7 +1731,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.32"/>
+            parser="//@labelParsers/@implementations.33"/>
       </labels>
     </childNodes>
     <childNodes
@@ -1765,7 +1784,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.30"/>
+            parser="//@labelParsers/@implementations.31"/>
       </labels>
       <labels
           visualID="5116"
@@ -1785,7 +1804,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.31"/>
+            parser="//@labelParsers/@implementations.32"/>
       </labels>
     </childNodes>
     <childNodes
@@ -1831,13 +1850,13 @@
             <newElementInitializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
-                  value="//@expressionProviders/@providers.0/@expressions.58">
+                  value="//@expressionProviders/@providers.0/@expressions.59">
                 <feature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/attributes"/>
               </initializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
-                  value="//@expressionProviders/@providers.0/@expressions.59">
+                  value="//@expressionProviders/@providers.0/@expressions.60">
                 <feature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/durability"/>
               </initializers>
@@ -1942,7 +1961,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.33"/>
+            parser="//@labelParsers/@implementations.34"/>
       </labels>
       <labels
           visualID="5118"
@@ -1962,7 +1981,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.34"/>
+            parser="//@labelParsers/@implementations.35"/>
       </labels>
     </childNodes>
     <childNodes
@@ -2005,13 +2024,13 @@
             <newElementInitializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
-                  value="//@expressionProviders/@providers.0/@expressions.62">
+                  value="//@expressionProviders/@providers.0/@expressions.63">
                 <feature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/attributes"/>
               </initializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
-                  value="//@expressionProviders/@providers.0/@expressions.63">
+                  value="//@expressionProviders/@providers.0/@expressions.64">
                 <feature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/durability"/>
               </initializers>
@@ -2036,7 +2055,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.48"/>
+            parser="//@labelParsers/@implementations.49"/>
       </labels>
       <labels
           visualID="5188"
@@ -2056,7 +2075,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.49"/>
+            parser="//@labelParsers/@implementations.50"/>
       </labels>
       <labels
           visualID="5189"
@@ -2076,7 +2095,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.50"/>
+            parser="//@labelParsers/@implementations.51"/>
       </labels>
       <labels
           visualID="5190"
@@ -2096,7 +2115,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.51"/>
+            parser="//@labelParsers/@implementations.52"/>
       </labels>
       <labels
           visualID="5193"
@@ -2116,7 +2135,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.52"/>
+            parser="//@labelParsers/@implementations.53"/>
       </labels>
     </childNodes>
     <childNodes
@@ -2160,13 +2179,13 @@
             <newElementInitializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
-                  value="//@expressionProviders/@providers.0/@expressions.64">
+                  value="//@expressionProviders/@providers.0/@expressions.65">
                 <feature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/attributes"/>
               </initializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
-                  value="//@expressionProviders/@providers.0/@expressions.65">
+                  value="//@expressionProviders/@providers.0/@expressions.66">
                 <feature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/durability"/>
               </initializers>
@@ -2174,13 +2193,13 @@
           </initializers>
           <initializers
               xsi:type="gmfgen:GenFeatureValueSpec"
-              value="//@expressionProviders/@providers.0/@expressions.66">
+              value="//@expressionProviders/@providers.0/@expressions.67">
             <feature
                 href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Feature/durability"/>
           </initializers>
           <initializers
               xsi:type="gmfgen:GenFeatureValueSpec"
-              value="//@expressionProviders/@providers.0/@expressions.67">
+              value="//@expressionProviders/@providers.0/@expressions.68">
             <feature
                 href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Attribute/mutability"/>
           </initializers>
@@ -2227,7 +2246,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.37"/>
+            parser="//@labelParsers/@implementations.38"/>
       </labels>
       <labels
           visualID="5180"
@@ -2247,7 +2266,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.38"/>
+            parser="//@labelParsers/@implementations.39"/>
       </labels>
       <labels
           visualID="5181"
@@ -2267,7 +2286,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.39"/>
+            parser="//@labelParsers/@implementations.40"/>
       </labels>
       <labels
           visualID="5182"
@@ -2287,7 +2306,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.40"/>
+            parser="//@labelParsers/@implementations.41"/>
       </labels>
     </childNodes>
     <childNodes
@@ -2340,7 +2359,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.35"/>
+            parser="//@labelParsers/@implementations.36"/>
       </labels>
       <labels
           visualID="5144"
@@ -2360,7 +2379,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.36"/>
+            parser="//@labelParsers/@implementations.37"/>
       </labels>
     </childNodes>
     <childNodes
@@ -2404,13 +2423,13 @@
             <newElementInitializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
-                  value="//@expressionProviders/@providers.0/@expressions.74">
+                  value="//@expressionProviders/@providers.0/@expressions.75">
                 <feature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/attributes"/>
               </initializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
-                  value="//@expressionProviders/@providers.0/@expressions.75">
+                  value="//@expressionProviders/@providers.0/@expressions.76">
                 <feature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/durability"/>
               </initializers>
@@ -2418,7 +2437,7 @@
           </initializers>
           <initializers
               xsi:type="gmfgen:GenFeatureValueSpec"
-              value="//@expressionProviders/@providers.0/@expressions.76">
+              value="//@expressionProviders/@providers.0/@expressions.77">
             <feature
                 href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Feature/durability"/>
           </initializers>
@@ -2464,7 +2483,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.43"/>
+            parser="//@labelParsers/@implementations.44"/>
       </labels>
       <labels
           visualID="5185"
@@ -2484,7 +2503,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.44"/>
+            parser="//@labelParsers/@implementations.45"/>
       </labels>
       <labels
           visualID="5186"
@@ -2504,7 +2523,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.45"/>
+            parser="//@labelParsers/@implementations.46"/>
       </labels>
     </childNodes>
     <childNodes
@@ -2557,7 +2576,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.41"/>
+            parser="//@labelParsers/@implementations.42"/>
       </labels>
       <labels
           visualID="5146"
@@ -2577,7 +2596,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.42"/>
+            parser="//@labelParsers/@implementations.43"/>
       </labels>
     </childNodes>
     <childNodes
@@ -2630,7 +2649,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.46"/>
+            parser="//@labelParsers/@implementations.47"/>
       </labels>
       <labels
           visualID="5148"
@@ -2650,7 +2669,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.47"/>
+            parser="//@labelParsers/@implementations.48"/>
       </labels>
     </childNodes>
     <childNodes
@@ -2703,7 +2722,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.54"/>
+            parser="//@labelParsers/@implementations.55"/>
       </labels>
       <labels
           visualID="5150"
@@ -2723,7 +2742,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.55"/>
+            parser="//@labelParsers/@implementations.56"/>
       </labels>
     </childNodes>
     <topLevelNodes
@@ -2823,7 +2842,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.56"/>
+            parser="//@labelParsers/@implementations.57"/>
       </labels>
     </topLevelNodes>
     <links
@@ -2873,7 +2892,7 @@
               y="-10"/>
         </viewmap>
         <modelFacet
-            parser="//@labelParsers/@implementations.22"/>
+            parser="//@labelParsers/@implementations.23"/>
       </labels>
       <labels
           visualID="6005"
@@ -2897,7 +2916,7 @@
               y="10"/>
         </viewmap>
         <modelFacet
-            parser="//@labelParsers/@implementations.22"/>
+            parser="//@labelParsers/@implementations.23"/>
       </labels>
     </links>
     <links
@@ -2957,7 +2976,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.57"/>
+            parser="//@labelParsers/@implementations.58"/>
       </labels>
       <labels
           visualID="6011"
@@ -2983,11 +3002,11 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.58"/>
+            parser="//@labelParsers/@implementations.59"/>
       </labels>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.95"
-          targetEnd="//@expressionProviders/@providers.0/@expressions.96"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.96"
+          targetEnd="//@expressionProviders/@providers.0/@expressions.97"/>
     </links>
     <links
         visualID="4013"
@@ -3035,10 +3054,10 @@
               y="10"/>
         </viewmap>
         <modelFacet
-            parser="//@labelParsers/@implementations.22"/>
+            parser="//@labelParsers/@implementations.23"/>
       </labels>
       <creationConstraints
-          targetEnd="//@expressionProviders/@providers.0/@expressions.97"/>
+          targetEnd="//@expressionProviders/@providers.0/@expressions.98"/>
     </links>
     <links
         visualID="4018"
@@ -3086,11 +3105,11 @@
               y="10"/>
         </viewmap>
         <modelFacet
-            parser="//@labelParsers/@implementations.22"/>
+            parser="//@labelParsers/@implementations.23"/>
       </labels>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.98"
-          targetEnd="//@expressionProviders/@providers.0/@expressions.99"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.99"
+          targetEnd="//@expressionProviders/@providers.0/@expressions.100"/>
     </links>
     <links
         visualID="4015"
@@ -3138,11 +3157,11 @@
               y="10"/>
         </viewmap>
         <modelFacet
-            parser="//@labelParsers/@implementations.22"/>
+            parser="//@labelParsers/@implementations.23"/>
       </labels>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.100"
-          targetEnd="//@expressionProviders/@providers.0/@expressions.101"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.101"
+          targetEnd="//@expressionProviders/@providers.0/@expressions.102"/>
     </links>
     <links
         visualID="4016"
@@ -3190,11 +3209,11 @@
               y="10"/>
         </viewmap>
         <modelFacet
-            parser="//@labelParsers/@implementations.22"/>
+            parser="//@labelParsers/@implementations.23"/>
       </labels>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.102"
-          targetEnd="//@expressionProviders/@providers.0/@expressions.103"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.103"
+          targetEnd="//@expressionProviders/@providers.0/@expressions.104"/>
     </links>
     <links
         visualID="4008"
@@ -3221,7 +3240,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleGeneralization/supertype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.104"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.105"/>
     </links>
     <links
         visualID="4009"
@@ -3248,7 +3267,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleGeneralization/subtype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.105"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.106"/>
     </links>
     <links
         visualID="4011"
@@ -3275,7 +3294,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleSpecialization/supertype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.106"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.107"/>
     </links>
     <links
         visualID="4012"
@@ -3302,7 +3321,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleSpecialization/subtype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.107"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.108"/>
     </links>
     <links
         visualID="4019"
@@ -3329,7 +3348,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/BinaryGeneralization/supertype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.108"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.109"/>
     </links>
     <links
         visualID="4020"
@@ -3356,7 +3375,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/BinaryGeneralization/subtype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.109"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.110"/>
     </links>
     <compartments
         visualID="7003"
@@ -3917,6 +3936,8 @@
       <expressions
           body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.visualizer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let visualizer:Visualizer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.visualizer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;--**********************************&#xD;&#xA;--Check if attributes are rendered in tvs&#xD;&#xA;--**********************************&#xD;&#xA;let renderName:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('name') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('name') = 'tvs'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderPotency:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('potency') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('potency') = 'tvs' &#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderLevel:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('level') = 'max'&#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('level') = 'tvs'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderInstantiable:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('instantiable')  = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('instantiable')  = 'tvs' &#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderExpressed:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('expressed')  = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('expressed')  = 'tvs' &#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderRelevant:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('relevant')  = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('relevant')  = 'tvs' &#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderVisualizersShown:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('visualizersShown') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('visualizersShown') = 'tvs'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderOrigin:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('origin') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('origin') = 'tvs'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;--**********************************&#xD;&#xA;--Get the name&#xD;&#xA;--**********************************&#xD;&#xA;let name : String =&#xD;&#xA;&#x9;if (renderName) then&#xD;&#xA;&#x9;&#x9;'name='.concat(self.name).concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the potency&#xD;&#xA;--**********************************&#xD;&#xA;let potencyString:String = &#xD;&#xA;&#x9;if (renderPotency and self.potency > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.potency.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.potency = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let potency: String = &#xD;&#xA;&#x9;if (renderPotency) then&#xD;&#xA;&#x9;&#x9;'potency='.concat(potencyString).concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the level&#xD;&#xA;--**********************************&#xD;&#xA;let levelString:String = &#xD;&#xA;&#x9;if (renderLevel and self.level > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.level.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.level = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let level: String = &#xD;&#xA;&#x9;if (renderLevel) then&#xD;&#xA;&#x9;&#x9;'level='.concat(levelString).concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the instantiable value&#xD;&#xA;--**********************************&#xD;&#xA;let instantiableString:String = &#xD;&#xA;&#x9;if (instantiable) then&#xD;&#xA;&#x9;&#x9;'instantiable'&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'!instantiable'&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let instantiable: String = &#xD;&#xA;&#x9;if (renderInstantiable) then&#xD;&#xA;&#x9;&#x9;instantiableString.concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the expressed value&#xD;&#xA;--**********************************&#xD;&#xA;let expressedString:String = &#xD;&#xA;&#x9;if (expressed) then&#xD;&#xA;&#x9;&#x9;'expressed'&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'!expressed'&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let expressed: String = &#xD;&#xA;&#x9;if (renderExpressed) then&#xD;&#xA;&#x9;&#x9;expressedString.concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the relevant value&#xD;&#xA;--**********************************&#xD;&#xA;let relevantString:String = &#xD;&#xA;&#x9;if (relevant) then&#xD;&#xA;&#x9;&#x9;'relevant'&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'!relevant'&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let relevant: String = &#xD;&#xA;&#x9;if (renderRelevant) then&#xD;&#xA;&#x9;&#x9;relevantString.concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the visualizersShown&#xD;&#xA;--**********************************&#xD;&#xA;let visualizersShown : String =&#xD;&#xA;&#x9;if (renderVisualizersShown) then&#xD;&#xA;&#x9;&#x9;'visualizersShown='.concat(self.visualizersShown).concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the origin&#xD;&#xA;--**********************************&#xD;&#xA;let origin : String =&#xD;&#xA;&#x9;if (renderOrigin) then&#xD;&#xA;&#x9;&#x9;'origin='.concat(self.origin).concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let output:String = &#xD;&#xA;&#x9;'{'.concat(name).concat(potency).concat(level).concat(instantiable).concat(expressed).concat(relevant).concat(visualizersShown ).concat(origin).concat('}')&#xD;&#xA;in&#xD;&#xA;--**********************************&#xD;&#xA;--Write the output&#xD;&#xA;--**********************************&#xD;&#xA;if (output &lt;> '{}') then&#xD;&#xA;&#x9;output&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
       <expressions
+          body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.visualizer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let visualizer:Visualizer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.visualizer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderInstantiation:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('ProximityInstantiation') = '1' &#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (self.elided) then&#xD;&#xA;&#x9;'...'&#xD;&#xA;else&#xD;&#xA;&#x9;if (renderInstantiation) then&#xD;&#xA;&#x9;&#x9;if (Instantiation.allInstances()->select(i | i.instance = self)->size() > 0) then&#xD;&#xA;&#x9;&#x9;&#x9;':'.concat(Instantiation.allInstances()->asSequence()->first().type.name)&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;''&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;endif"/>
+      <expressions
           body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))->append('collapsed= false')"/>
       <expressions
           body="0"/>
@@ -4253,9 +4274,17 @@
     </implementations>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
+        uses="//@diagram/@childNodes.2/@labels.5/@modelFacet"
+        className="ConnectionLabelExpressionLabelParser5194"
+        viewExpression="//@expressionProviders/@providers.0/@expressions.36">
+      <expressionContext
+          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Connection"/>
+    </implementations>
+    <implementations
+        xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.9/@labels.0/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5107"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.38">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.39">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4263,7 +4292,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.9/@labels.1/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5108"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.39">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.40">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4274,7 +4303,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.11/@labels.0/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5109"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.42">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.43">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4282,7 +4311,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.11/@labels.1/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5110"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.43">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.44">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4290,7 +4319,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.13/@labels.0/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5111"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.46">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.47">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4298,7 +4327,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.13/@labels.1/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5112"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.47">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.48">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4306,7 +4335,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.15/@labels.0/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5113"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.50">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.51">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4314,7 +4343,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.15/@labels.1/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5114"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.51">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.52">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4322,7 +4351,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.14/@labels.2/@modelFacet"
         className="MultipleGeneralizationLabelExpressionLabelParser5172"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.52">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.53">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleGeneralization"/>
     </implementations>
@@ -4330,7 +4359,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.17/@labels.0/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5115"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.55">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.56">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4338,7 +4367,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.17/@labels.1/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5116"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.56">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.57">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4346,7 +4375,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.16/@labels.2/@modelFacet"
         className="MultipleSpecializationLabelExpressionLabelParser5175"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.57">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.58">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleSpecialization"/>
     </implementations>
@@ -4354,7 +4383,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.19/@labels.0/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5117"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.60">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.61">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4362,7 +4391,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.19/@labels.1/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5118"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.61">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.62">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4370,7 +4399,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.22/@labels.0/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5143"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.68">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.69">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4378,7 +4407,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.22/@labels.1/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5144"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.69">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.70">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4386,7 +4415,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.21/@labels.1/@modelFacet"
         className="AttributeLabelExpressionLabelParser5179"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.70">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.71">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Attribute"/>
     </implementations>
@@ -4394,7 +4423,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.21/@labels.2/@modelFacet"
         className="AttributeLabelExpressionLabelParser5180"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.71">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.72">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Attribute"/>
     </implementations>
@@ -4402,7 +4431,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.21/@labels.3/@modelFacet"
         className="AttributeLabelExpressionLabelParser5181"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.72">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.73">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Attribute"/>
     </implementations>
@@ -4410,7 +4439,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.21/@labels.4/@modelFacet"
         className="AttributeLabelExpressionLabelParser5182"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.73">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.74">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Attribute"/>
     </implementations>
@@ -4418,7 +4447,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.24/@labels.0/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5145"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.77">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.78">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4426,7 +4455,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.24/@labels.1/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5146"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.78">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.79">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4434,7 +4463,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.23/@labels.1/@modelFacet"
         className="MethodLabelExpressionLabelParser5184"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.79">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.80">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Method"/>
     </implementations>
@@ -4442,7 +4471,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.23/@labels.2/@modelFacet"
         className="MethodLabelExpressionLabelParser5185"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.80">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.81">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Method"/>
     </implementations>
@@ -4450,7 +4479,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.23/@labels.3/@modelFacet"
         className="MethodLabelExpressionLabelParser5186"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.81">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.82">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Method"/>
     </implementations>
@@ -4458,7 +4487,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.25/@labels.0/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5147"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.82">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.83">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4466,7 +4495,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.25/@labels.1/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5148"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.83">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.84">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4474,7 +4503,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.20/@labels.0/@modelFacet"
         className="EntityLabelExpressionLabelParser5187"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.84">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.85">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Entity"/>
     </implementations>
@@ -4482,7 +4511,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.20/@labels.1/@modelFacet"
         className="EntityLabelExpressionLabelParser5188"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.85">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.86">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Entity"/>
     </implementations>
@@ -4490,7 +4519,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.20/@labels.2/@modelFacet"
         className="EntityLabelExpressionLabelParser5189"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.86">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.87">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Entity"/>
     </implementations>
@@ -4498,7 +4527,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.20/@labels.3/@modelFacet"
         className="EntityLabelExpressionLabelParser5190"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.87">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.88">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Entity"/>
     </implementations>
@@ -4506,7 +4535,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.20/@labels.4/@modelFacet"
         className="EntityLabelExpressionLabelParser5193"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.88">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.89">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Entity"/>
     </implementations>
@@ -4514,7 +4543,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.0/@labels.1/@modelFacet"
         className="ModelLabelExpressionLabelParser5192"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.89">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.90">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model"/>
     </implementations>
@@ -4522,7 +4551,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.26/@labels.0/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5149"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.90">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.91">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4530,7 +4559,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.26/@labels.1/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5150"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.91">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.92">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4538,7 +4567,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@topLevelNodes.0/@labels.1/@modelFacet"
         className="OntologyLabelExpressionLabelParser5096"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.92">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.93">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Ontology"/>
     </implementations>
@@ -4546,7 +4575,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@links.1/@labels.0/@modelFacet"
         className="InstantiationLabelExpressionLabelParser6010"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.93">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.94">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Instantiation"/>
     </implementations>
@@ -4554,7 +4583,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@links.1/@labels.1/@modelFacet"
         className="InstantiationLabelExpressionLabelParser6011"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.94">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.95">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Instantiation"/>
     </implementations>
