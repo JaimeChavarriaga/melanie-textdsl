@@ -78,7 +78,8 @@ public class «getElementInitializersClassName()» {
 			«/*********************************************************
 				Customization for automatic instance setup
 			***********************************************************/»			
-			«IF diagramElement.getUniqueIdentifier().startsWith('Entity_')»
+			«IF diagramElement.getUniqueIdentifier().startsWith('Entity_')
+				or diagramElement.getUniqueIdentifier().startsWith('Connection_')»
 			de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor editor = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor)org.eclipse.ui.PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
 			org.eclipse.gef.ui.palette.PaletteViewer viewer = editor.getPalette();
 			
@@ -92,18 +93,18 @@ public class «getElementInitializersClassName()» {
 				
 				for (de.uni_mannheim.informatik.swt.models.plm.PLM.OwnedElement e : higherModel.getContent())
 				{
-					if (e instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Entity
+					if (e instanceof «elementClass.genPackage.basePackage».PLM.«elementClass.ecoreClass.name» //de.uni_mannheim.informatik.swt.models.plm.PLM.Entity
 							&& e.getName().equals(typeName))
 					{
 					
 						de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation i = de.uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMFactoryImpl.eINSTANCE.createInstantiation();
 						
-						i.setType((de.uni_mannheim.informatik.swt.models.plm.PLM.Entity)e);
-						i.setInstance((de.uni_mannheim.informatik.swt.models.plm.PLM.Entity)instance);
+						i.setType((«elementClass.genPackage.basePackage».PLM.«elementClass.ecoreClass.name»)e);
+						i.setInstance((«elementClass.genPackage.basePackage».PLM.«elementClass.ecoreClass.name»)instance);
 						i.setIsonym(true);
 						containingModel.getContent().add(i);
 						
-						instance.setBlueprint((de.uni_mannheim.informatik.swt.models.plm.PLM.Entity)e);
+						instance.setBlueprint((«elementClass.genPackage.basePackage».PLM.«elementClass.ecoreClass.name»)e);
 					
 						for (de.uni_mannheim.informatik.swt.models.plm.PLM.Feature f : ((de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)e).getFeature())
 						{
@@ -134,7 +135,7 @@ public class «getElementInitializersClassName()» {
 							}
 						}
 						
-						instance.setPotency(((de.uni_mannheim.informatik.swt.models.plm.PLM.Entity)e).getPotency() -1);
+						instance.setPotency(((de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)e).getPotency() -1);
 					}
 				}
 			}
