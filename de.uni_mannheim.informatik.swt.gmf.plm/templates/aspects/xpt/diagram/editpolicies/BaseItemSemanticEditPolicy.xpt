@@ -11,7 +11,7 @@
   *
   */»
 «AROUND canCreate FOR gmfgen::GenLink»
-	«IF getUniqueIdentifier() = 'ConnectionParticipant_4021'»
+	«IF getUniqueIdentifier().startsWith('ConnectionParticipant_')»
 		«EXPAND xpt::Common::generatedMemberComment»
 		public boolean canCreate«getUniqueIdentifier()»(«EXPAND canCreateParameters FOR modelFacet») {
 			//left out contains check to have multiple participants in an constraint.
