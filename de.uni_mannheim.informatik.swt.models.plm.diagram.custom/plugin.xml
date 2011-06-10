@@ -77,6 +77,12 @@
                 id="property.tab.ontological"
                 label="Ontological">
           </propertyTab>
+          <propertyTab
+                afterTab="property.tab.ontological"
+                category="domain"
+                id="property.tab.visualization"
+                label="Visualization">
+          </propertyTab>
       </propertyTabs>
    </extension>
       <extension point="org.eclipse.ui.views.properties.tabbed.propertySections" id="propsections">
@@ -86,6 +92,17 @@
                class="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.OntologicalPropertySectionAbstractPropertySection"
                id="property.section.ontological"
                tab="property.tab.ontological">
+            <input
+                  type="org.eclipse.gef.EditPart">
+            </input>
+            <input
+                  type="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMAbstractNavigatorItem">
+            </input>
+         </propertySection>
+         <propertySection
+               class="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.VisualizationPropertySectionAbstractPropertySection"
+               id="property.section.visualization"
+               tab="property.tab.visualization">
             <input
                   type="org.eclipse.gef.EditPart">
             </input>
