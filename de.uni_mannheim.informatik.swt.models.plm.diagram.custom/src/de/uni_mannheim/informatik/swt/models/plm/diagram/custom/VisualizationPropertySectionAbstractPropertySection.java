@@ -8,7 +8,9 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.command.SetCommand;
+import org.eclipse.gef.Request;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants;
 import org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.CellEditor;
@@ -95,7 +97,7 @@ public class VisualizationPropertySectionAbstractPropertySection extends
 		
 		visualizerSelectionCombo = getWidgetFactory().createCCombo(composite);
 		
-		viewer = new TableViewer(composite);
+		viewer = new TableViewer(composite, SWT.FULL_SELECTION);
 		
 		visualizerSelectionCombo.addSelectionListener(new SelectionListener() {
 			
@@ -178,6 +180,7 @@ public class VisualizationPropertySectionAbstractPropertySection extends
 				Command cmd = selectedElement.getEditingDomain().createCommand(SetCommand.class, parameters);
 				selectedElement.getEditingDomain().getCommandStack().execute(cmd);
 				
+				selectedElement.performRequest(new Request(RequestConstants.REQ_REFRESH));
 				viewer.refresh();
 			}
 			
