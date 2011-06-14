@@ -1,6 +1,15 @@
 package de.uni_mannheim.informatik.swt.models.plm.diagram.custom;
 
+import java.util.LinkedList;
+import java.util.List;
+
+import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.command.CommandParameter;
+import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.CellLabelProvider;
@@ -14,6 +23,8 @@ import org.eclipse.jface.viewers.ViewerCell;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.custom.CLabel;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -24,6 +35,8 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMFactoryImpl;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMPackageImpl;
 
 public class VisualizationPropertySectionAbstractPropertySection extends
 		AbstractPropertySection {
@@ -34,7 +47,10 @@ public class VisualizationPropertySectionAbstractPropertySection extends
 
 	private IGraphicalEditPart selectedElement = null;
 	
+	
 	CCombo visualizerSelectionCombo = null;
+	List<Visualizer> visualizers = null;
+	TableViewer viewer;
 	
 	@Override
 	public void setInput(IWorkbenchPart part, ISelection selection) {
@@ -55,8 +71,14 @@ public class VisualizationPropertySectionAbstractPropertySection extends
 		for (Visualizer v : e.getVisualizer())
 			visualizerSelectionCombo.add("Visualizer^" + v.getDurability());
 		
+		visualizers = e.getVisualizer();
+		
 		if (visualizerSelectionCombo.getItems().length > 0)
+		{
 			visualizerSelectionCombo.select(0);
+			viewer.setInput(visualizers.get(0).getAttributes());
+			viewer.refresh();
+		}
 	}
 	
 	@Override
@@ -70,12 +92,27 @@ public class VisualizationPropertySectionAbstractPropertySection extends
 		composite.setLayout(gl);
 		
 		CLabel visualizerSelectionLabel = getWidgetFactory().createCLabel(composite, "Visualizer");
+		
 		visualizerSelectionCombo = getWidgetFactory().createCCombo(composite);
+		
+		viewer = new TableViewer(composite);
+		
+		visualizerSelectionCombo.addSelectionListener(new SelectionListener() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				viewer.setInput(visualizers.get(visualizerSelectionCombo.getSelectionIndex()).getAttributes());
+			}
+			
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				viewer.setInput(visualizers.get(visualizerSelectionCombo.getSelectionIndex()).getAttributes());
+			}
+		});
 		
 		GridData visualizerComboData = new GridData(GridData.FILL, GridData.FILL, true, false);
 		visualizerSelectionCombo.setLayoutData(visualizerComboData);
 		
-		final TableViewer viewer = new TableViewer(composite);
 		Table table = viewer.getTable();
 		
 		GridData tableGridData = new GridData(GridData.FILL, GridData.FILL, true, true);
@@ -89,29 +126,67 @@ public class VisualizationPropertySectionAbstractPropertySection extends
 		//Add ContentProviders
 		viewer.setContentProvider(ArrayContentProvider.getInstance());
 		
-		TableViewerColumn column = new TableViewerColumn(viewer, SWT.NONE);
-		column.getColumn().setText("Name");
-		column.getColumn().setWidth(100);
+		TableViewerColumn keyColumn = new TableViewerColumn(viewer, SWT.NONE);
+		keyColumn.getColumn().setText("Name");
+		keyColumn.getColumn().setWidth(200);
 		
-		column.setLabelProvider(new CellLabelProvider() {
+		keyColumn.setLabelProvider(new CellLabelProvider() {
 			
 			@Override
 			public void update(ViewerCell cell) {
-				cell.setText(((Visualizer)cell.getElement()).toString());
+				String keyValuePair = (String)cell.getElement();
+				String key = keyValuePair.substring(0, keyValuePair.indexOf("=")).trim();
+				cell.setText(key);
 			}
 		});
 		
-		column.setEditingSupport(new EditingSupport(viewer) {
+		TableViewerColumn valueColumn = new TableViewerColumn(viewer, SWT.NONE);
+		valueColumn.getColumn().setText("Value");
+		valueColumn.getColumn().setWidth(100);
+		
+		valueColumn.setLabelProvider(new CellLabelProvider() {
+			
+			@Override
+			public void update(ViewerCell cell) {
+				String keyValuePair = (String)cell.getElement();
+				int equalIndex = keyValuePair.indexOf("=") + 1;
+				String value = keyValuePair.substring(equalIndex, keyValuePair.length()).trim();
+				cell.setText(value);
+			}
+		});
+		
+		valueColumn.setEditingSupport(new EditingSupport(viewer) {
 			
 			@Override
 			protected void setValue(Object element, Object value) {
-				//((Visualizer)element).setName(value)
-				viewer.refresh(element);
+			
+				Visualizer visualizer = visualizers.get(visualizerSelectionCombo.getSelectionIndex());
+				
+				String keyValuePair = (String)element;
+				String key = keyValuePair.substring(0, keyValuePair.indexOf("=")).trim();
+				
+				int oldIndex  = -1;
+				for (String s : visualizer.getAttributes())
+					if (s.equals(element))
+					{
+						oldIndex = visualizer.getAttributes().indexOf(s);
+						break;
+					}
+				
+				CommandParameter parameters = new CommandParameter(visualizer, PLMPackageImpl.eINSTANCE.getVisualizer_Attributes(), key + "= " + value, oldIndex);
+				
+				Command cmd = selectedElement.getEditingDomain().createCommand(SetCommand.class, parameters);
+				selectedElement.getEditingDomain().getCommandStack().execute(cmd);
+				
+				viewer.refresh();
 			}
 			
 			@Override
 			protected Object getValue(Object element) {
-				return ((Visualizer)element).toString();
+				String keyValuePair = (String)element;
+				int equalIndex = keyValuePair.indexOf("=") + 1;
+				String value = keyValuePair.substring(equalIndex, keyValuePair.length()).trim();
+				return value;
 			}
 			
 			@Override
@@ -125,7 +200,7 @@ public class VisualizationPropertySectionAbstractPropertySection extends
 			}
 		});
 		
-		viewer.setInput(new Object[]{});
+		//viewer.setInput(new Object[]{});
 		
 		/*FormData data = new FormData();
 		data.left = new FormAttachment(0, STANDARD_LABEL_WIDTH);
