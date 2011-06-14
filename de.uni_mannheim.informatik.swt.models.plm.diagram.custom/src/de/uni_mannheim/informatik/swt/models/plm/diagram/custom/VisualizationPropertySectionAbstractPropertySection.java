@@ -23,12 +23,14 @@ import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.jface.viewers.TextCellEditor;
 import org.eclipse.jface.viewers.ViewerCell;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.CBanner;
 import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.ui.IWorkbenchPart;
@@ -90,12 +92,16 @@ public class VisualizationPropertySectionAbstractPropertySection extends
 		
 		Composite composite = getWidgetFactory().createFlatFormComposite(parent);
 		
-		GridLayout gl = new GridLayout(2, false);
+		GridLayout gl = new GridLayout(5, false);
 		composite.setLayout(gl);
 		
 		CLabel visualizerSelectionLabel = getWidgetFactory().createCLabel(composite, "Visualizer");
 		
 		visualizerSelectionCombo = getWidgetFactory().createCCombo(composite);
+		
+		Button addButton = getWidgetFactory().createButton(composite, "Add", SWT.NONE);
+		Button removeButton = getWidgetFactory().createButton(composite, "Remove", SWT.NONE);
+		Button editButton = getWidgetFactory().createButton(composite, "Edit", SWT.NONE);
 		
 		viewer = new TableViewer(composite, SWT.FULL_SELECTION);
 		
@@ -118,7 +124,7 @@ public class VisualizationPropertySectionAbstractPropertySection extends
 		Table table = viewer.getTable();
 		
 		GridData tableGridData = new GridData(GridData.FILL, GridData.FILL, true, true);
-		tableGridData.horizontalSpan = 2;
+		tableGridData.horizontalSpan = 5;
 		
 		table.setLayoutData(tableGridData);
 		
