@@ -118,7 +118,7 @@ public class VisualizationPropertySectionAbstractPropertySection extends
 			}
 		});
 		
-		GridData visualizerComboData = new GridData(GridData.FILL, GridData.FILL, true, false);
+		GridData visualizerComboData = new GridData(GridData.FILL, GridData.CENTER, true, false);
 		visualizerSelectionCombo.setLayoutData(visualizerComboData);
 		
 		Table table = viewer.getTable();
