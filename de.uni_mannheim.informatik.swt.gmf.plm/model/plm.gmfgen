@@ -4141,13 +4141,13 @@
           body="self.oclIsTypeOf(BinaryGeneralization)"/>
       <expressions
           xsi:type="gmfgen:GenConstraint"
-          body="Sequence{1..self.name.size()}->iterate(i:Integer; res:Boolean =true | if(res = true and self.name.substring(i,i) = ':') then false else res endif )"/>
+          body="if self.name.oclIsUndefined() or self.name.size() = 0 then&#xD;&#xA;&#x9;true&#xD;&#xA;else&#xD;&#xA;&#x9;Sequence{1..self.name.size()}->iterate(i:Integer; res:Boolean =true | if(res = true and self.name.substring(i,i) = ':') then false else res endif )&#xD;&#xA;endif"/>
       <expressions
           xsi:type="gmfgen:GenConstraint"
-          body="Sequence{1..self.name.size()}->iterate(i:Integer; res:Boolean = true | if(res = true and self.name.substring(i,i) = '>') then false else res endif )"/>
+          body="if self.name.oclIsUndefined() or self.name.size() = 0 then&#xD;&#xA;&#x9;true&#xD;&#xA;else&#xD;&#xA;&#x9;Sequence{1..self.name.size()}->iterate(i:Integer; res:Boolean = true | if(res = true and self.name.substring(i,i) = '>') then false else res endif )&#xD;&#xA;endif"/>
       <expressions
           xsi:type="gmfgen:GenConstraint"
-          body="Sequence{1..self.name.size()}->iterate(i:Integer; res:Boolean = true | if(res = true and self.name.substring(i,i) = '.') then false else res endif )"/>
+          body="if self.name.oclIsUndefined() or self.name.size() = 0 then&#xD;&#xA;&#x9;true&#xD;&#xA;else&#xD;&#xA;&#x9;Sequence{1..self.name.size()}->iterate(i:Integer; res:Boolean = true | if(res = true and self.name.substring(i,i) = '.') then false else res endif )&#xD;&#xA;endif"/>
     </providers>
   </expressionProviders>
   <labelParsers
