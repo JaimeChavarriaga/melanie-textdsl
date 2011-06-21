@@ -1687,10 +1687,36 @@
     <audits
         name="domainEntityNameCheck"
         description="Checks the name of elements"
-        id="audits.attributes.domainEntityNameAudit"
-        message="Name wrong">
+        id="audits.attributes.domainEntityNameAudit.Colon"
+        message="Name is not allowed to contain ':'">
       <rule
-          body="self.name.size() > 0"/>
+          body="Sequence{1..self.name.size()}->iterate(i:Integer; res:Boolean =true | if(res = true and self.name.substring(i,i) = ':') then false else res endif )"/>
+      <target
+          xsi:type="gmfmap:DomainElementTarget">
+        <element
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//DomainElement"/>
+      </target>
+    </audits>
+    <audits
+        name="domainEntityNameCheck"
+        description="Checks the name of elements"
+        id="audits.attributes.domainEntityNameAudit.GreaterThan"
+        message="Name is not allowed to contain '>'">
+      <rule
+          body="Sequence{1..self.name.size()}->iterate(i:Integer; res:Boolean = true | if(res = true and self.name.substring(i,i) = '>') then false else res endif )"/>
+      <target
+          xsi:type="gmfmap:DomainElementTarget">
+        <element
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//DomainElement"/>
+      </target>
+    </audits>
+    <audits
+        name="domainEntityNameCheck"
+        description="Checks the name of elements"
+        id="audits.attributes.domainEntityNameAudit.Dot"
+        message="Name is not allowed to contain '.'">
+      <rule
+          body="Sequence{1..self.name.size()}->iterate(i:Integer; res:Boolean = true | if(res = true and self.name.substring(i,i) = '.') then false else res endif )"/>
       <target
           xsi:type="gmfmap:DomainElementTarget">
         <element

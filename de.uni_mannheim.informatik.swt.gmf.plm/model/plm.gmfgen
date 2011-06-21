@@ -13,13 +13,41 @@
         name="attributes"
         description="Container for Attribute Audits"
         path="//@audits/@categories.0"
-        audits="//@audits/@rules.0"/>
+        audits="//@audits/@rules.0 //@audits/@rules.1 //@audits/@rules.2"/>
     <rules
         name="domainEntityNameCheck"
         description="Checks the name of elements"
-        id="audits.attributes.domainEntityNameAudit"
+        id="audits.attributes.domainEntityNameAudit.Colon"
         rule="//@expressionProviders/@providers.0/@expressions.111"
-        message="Name wrong"
+        message="Name is not allowed to contain ':'"
+        category="//@audits/@categories.0">
+      <target
+          xsi:type="gmfgen:GenDomainElementTarget"
+          contextSelector="//@audits/@clientContexts.0">
+        <element
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainElement"/>
+      </target>
+    </rules>
+    <rules
+        name="domainEntityNameCheck"
+        description="Checks the name of elements"
+        id="audits.attributes.domainEntityNameAudit.GreaterThan"
+        rule="//@expressionProviders/@providers.0/@expressions.112"
+        message="Name is not allowed to contain '>'"
+        category="//@audits/@categories.0">
+      <target
+          xsi:type="gmfgen:GenDomainElementTarget"
+          contextSelector="//@audits/@clientContexts.0">
+        <element
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/DomainElement"/>
+      </target>
+    </rules>
+    <rules
+        name="domainEntityNameCheck"
+        description="Checks the name of elements"
+        id="audits.attributes.domainEntityNameAudit.Dot"
+        rule="//@expressionProviders/@providers.0/@expressions.113"
+        message="Name is not allowed to contain '.'"
         category="//@audits/@categories.0">
       <target
           xsi:type="gmfgen:GenDomainElementTarget"
@@ -29,7 +57,7 @@
       </target>
     </rules>
     <clientContexts
-        ruleTargets="//@audits/@rules.0/@target"/>
+        ruleTargets="//@audits/@rules.0/@target //@audits/@rules.1/@target //@audits/@rules.2/@target"/>
   </audits>
   <diagram
       visualID="1000"
@@ -4113,7 +4141,13 @@
           body="self.oclIsTypeOf(BinaryGeneralization)"/>
       <expressions
           xsi:type="gmfgen:GenConstraint"
-          body="self.name.size() > 0"/>
+          body="Sequence{1..self.name.size()}->iterate(i:Integer; res:Boolean =true | if(res = true and self.name.substring(i,i) = ':') then false else res endif )"/>
+      <expressions
+          xsi:type="gmfgen:GenConstraint"
+          body="Sequence{1..self.name.size()}->iterate(i:Integer; res:Boolean = true | if(res = true and self.name.substring(i,i) = '>') then false else res endif )"/>
+      <expressions
+          xsi:type="gmfgen:GenConstraint"
+          body="Sequence{1..self.name.size()}->iterate(i:Integer; res:Boolean = true | if(res = true and self.name.substring(i,i) = '.') then false else res endif )"/>
     </providers>
   </expressionProviders>
   <labelParsers
