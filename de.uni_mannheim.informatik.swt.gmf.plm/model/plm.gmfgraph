@@ -577,6 +577,8 @@
                 name="ConnectionNameFigure">
               <layoutData
                   xsi:type="gmfgraph:GridLayoutData"
+                  grabExcessHorizontalSpace="true"
+                  grabExcessVerticalSpace="true"
                   horizontalAlignment="END"
                   verticalSpan="4"/>
               <font
@@ -601,6 +603,7 @@
                 text="">
               <layoutData
                   xsi:type="gmfgraph:GridLayoutData"
+                  grabExcessHorizontalSpace="true"
                   grabExcessVerticalSpace="true"
                   horizontalAlignment="BEGINNING"
                   verticalSpan="2"/>
@@ -616,6 +619,7 @@
                 text="">
               <layoutData
                   xsi:type="gmfgraph:GridLayoutData"
+                  grabExcessHorizontalSpace="true"
                   grabExcessVerticalSpace="true"
                   verticalAlignment="BEGINNING"
                   horizontalAlignment="BEGINNING"
@@ -632,7 +636,7 @@
                   xsi:type="gmfgraph:GridLayoutData"
                   grabExcessVerticalSpace="true"
                   verticalAlignment="BEGINNING"
-                  horizontalSpan="2"/>
+                  horizontalSpan="5"/>
               <font
                   xsi:type="gmfgraph:BasicFont"
                   height="8"/>
