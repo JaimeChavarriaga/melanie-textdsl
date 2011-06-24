@@ -213,6 +213,34 @@
 				}
 			}
 			«ENDIF»
+			«IF self.editPartClassName='ConnectionEditPart'»
+			else if (changedFeature.getName().equalsIgnoreCase("participant"))
+			{
+				de.uni_mannheim.informatik.swt.models.plm.PLM.Connection self = (de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)resolveSemanticElement();
+				
+				//Participant was added attach values at the end
+				if (notification.getOldValue() ==  null && notification.getNewValue() != null
+					&& notification.getPosition() + 1 > self.getIsNavigable().size()){
+					
+					self.getIsNavigable().add(true);
+					self.getLower().add(0);
+					self.getUpper().add(-1);
+					self.getRoleName().add("");
+				}
+				//Participant was removed
+				else if(notification.getOldValue() !=  null && notification.getNewValue() == null)
+				{
+					int oldIndex = notification.getPosition();
+					
+					self.getIsNavigable().remove(oldIndex);
+					self.getLower().remove(oldIndex);
+					self.getUpper().remove(oldIndex);
+					self.getRoleName().remove(oldIndex);
+				}
+				
+				updateConnections();
+			}
+			«ENDIF»
 			«IF self.editPartClassName='EntityEditPart'»
 			else if (changedFeature.getName().equals("name"))
 			{
