@@ -80,6 +80,12 @@
           <propertyTab
                 afterTab="property.tab.ontological"
                 category="domain"
+                id="property.tab.associate"
+                label="Associates">
+          </propertyTab>
+          <propertyTab
+                afterTab="property.tab.associate"
+                category="domain"
                 id="property.tab.visualization"
                 label="Visualization">
           </propertyTab>
@@ -94,6 +100,17 @@
                tab="property.tab.ontological">
             <input
                   type="org.eclipse.gef.EditPart">
+            </input>
+            <input
+                  type="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMAbstractNavigatorItem">
+            </input>
+         </propertySection>
+         <propertySection
+               class="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.AssociatePropertySectionAbstractPropertySection"
+               id="property.section.associate"
+               tab="property.tab.associate">
+            <input
+                  type="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionEditPart">
             </input>
             <input
                   type="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMAbstractNavigatorItem">
