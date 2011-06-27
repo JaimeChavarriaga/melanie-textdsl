@@ -22,7 +22,9 @@ public class PLMModelLoader extends EMFModelLoader {
 		//	return new ASMPLMModel(name, extent, (ASMEMFModel)metamodel, isTarget, this);
 		//The model itself is handeled by the plm handler
 		//else
-			return new ASMPLMModel(name, extent, (ASMEMFModel)metamodel, isTarget, this);
+		return new ASMPLMModel(name, extent, (ASMEMFModel)metamodel, isTarget, this);
 	}
+	
+	
 	
 }
