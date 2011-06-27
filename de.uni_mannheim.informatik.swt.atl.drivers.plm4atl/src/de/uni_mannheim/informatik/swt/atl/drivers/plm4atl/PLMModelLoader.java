@@ -8,17 +8,20 @@ import org.eclipse.m2m.atl.engine.vm.nativelib.ASMModel;
 
 public class PLMModelLoader extends EMFModelLoader {
 
+	public static EMFModelLoader eInstance = null;
+	
 	@Override
 	protected ASMEMFModel createASMEMFModel(String name, Resource extent,
 			ASMModel metamodel, boolean isTarget) {
+		
 		// TODO Auto-generated method stub
-		ASMEMFModel model = super.createASMEMFModel(name, extent, metamodel, isTarget);
+		//ASMEMFModel model = super.createASMEMFModel(name, extent, metamodel, isTarget);
 		
 		//The meta-meta model is handeled by EMF
-		if ("MOF".equals(metamodel.getName()))
-			return model;
+		//if ("MOF".equals(metamodel.getName()))
+		//	return new ASMPLMModel(name, extent, (ASMEMFModel)metamodel, isTarget, this);
 		//The model itself is handeled by the plm handler
-		else
+		//else
 			return new ASMPLMModel(name, extent, (ASMEMFModel)metamodel, isTarget, this);
 	}
 	

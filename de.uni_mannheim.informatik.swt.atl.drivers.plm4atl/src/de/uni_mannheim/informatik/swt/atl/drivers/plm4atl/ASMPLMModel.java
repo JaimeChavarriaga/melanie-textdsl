@@ -30,23 +30,86 @@ public class ASMPLMModel extends ASMEMFModel {
 	@Override
 	public ASMModelElement findModelElement(String name) {
 		// TODO Auto-generated method stub
-		
-		String[] indentifier = name.split("::");
-		
-		//We have something in the form OX::Element
-		if (indentifier.length == 2)
-		{
-			EObject obj = null;
-			
-			Iterator<EObject> it = extent.getAllContents();
-			while(it.hasNext())
-			{
-				obj = (EObject)it.next();
-			}
-			return new ASMPLMModelElement(modelElements, this, obj);
+		return getClassifier(name);
+	}
+	
+	/**
+	 * Returns the classifier with the given name.
+	 * 
+	 * @param name
+	 *            the classifier name
+	 * @return the classifier with the given name
+	 */
+	private synchronized ASMModelElement getClassifier(String name) {
+		// TODO reinstate double checked locking with final field when switching to Java 5
+		if (classifiers == null) {
+			classifiers = initClassifiersInAllExtents();
 		}
-		else 
-			return null;
+		EObject eo = (EObject)classifiers.get(name);
+
+		ASMModelElement ret = null;
+		if (eo != null) {
+			ret = getASMModelElement(eo);
+		}
+		return ret;
+	}
+	
+	/**
+	 * Indexes all classifiers in main extent and referenced extents.
+	 * 
+	 * @return The classifier map to build.
+	 * @see #register(Map, String, EObject)
+	 * @author <a href="mailto:dennis.wagelaar@vub.ac.be">Dennis Wagelaar</a>
+	 */
+	private Map initClassifiersInAllExtents() {
+		Map allClassifiers = new HashMap();
+		initClassifiers(getExtent().getContents().iterator(), allClassifiers, null);
+		Iterator refExtents = referencedExtents.iterator();
+		while (refExtents.hasNext()) {
+			initClassifiers(((Resource)refExtents.next()).getContents().iterator(), allClassifiers, null);
+		}
+		return allClassifiers;
+	}
+
+	private void initClassifiers(Iterator i, Map allClassifiers, String base) {
+		for ( ; i.hasNext();) {
+			EObject eo = (EObject)i.next();
+			if (eo instanceof EPackage) {
+				String name = ((EPackage)eo).getName();
+				if (base != null) {
+					name = base + "::" + name;
+				}
+				initClassifiers(((EPackage)eo).eContents().iterator(), allClassifiers, name);
+			} else if (eo instanceof EClassifier) {
+				String name = ((EClassifier)eo).getName();
+				// register the classifier under its simple name
+				register(allClassifiers, name, eo);
+				if (base != null) {
+					name = base + "::" + name;
+					// register the classifier under its full name
+					register(allClassifiers, name, eo);
+				}
+			}
+			else if (eo instanceof DomainElement){
+				String name = ((DomainElement)eo).getName();
+				String modelName = ((Model)eo.eContainer()).getName();
+				register(allClassifiers, modelName + "::" + name, eo);
+			}
+			else {
+				// No meta-package or meta-class => just keep digging.
+				// N.B. This situation occurs in UML2 profiles, where
+				// EPackages containing EClasses are buried somewhere
+				// underneath other elements.
+				initClassifiers(eo.eContents().iterator(), allClassifiers, base);
+			}
+		}
+	}
+	
+	private void register(Map allClassifiers, String name, EObject classifier) {
+		if (allClassifiers.containsKey(name)) {
+			ATLLogger.warning("metamodel contains several classifiers with same name: " + name);
+		}
+		allClassifiers.put(name, classifier);
 	}
 	
 	@Override
@@ -71,17 +134,5 @@ public class ASMPLMModel extends ASMEMFModel {
 	public Set getElementsByType(String typeName) {
 		// TODO Auto-generated method stub
 		return super.getElementsByType(typeName);
-	}
-	
-	@Override
-	public synchronized ASMModelElement getASMModelElement(EObject object) {
-		// TODO Auto-generated method stub
-		return super.getASMModelElement(object);
-	}
-	
-	@Override
-	public ModelLoader getModelLoader() {
-		// TODO Auto-generated method stub
-		return super.getModelLoader();
 	}
 }
