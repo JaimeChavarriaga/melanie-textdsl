@@ -1,0 +1,15 @@
+-- @path MOF=/Project/Activity.ecore
+-- @nsURI PLM=http://swt.informatik.uni-mannheim.de/PLM
+
+module m_mm2mmm;
+
+create OUT:MOF from IN:PLM;
+
+rule name {
+	from
+		s : PLM!"O0::Start"
+	to 
+		t : MOF!Start (
+			
+		)
+}

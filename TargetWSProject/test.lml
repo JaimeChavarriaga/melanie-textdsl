@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:PLM="http://swt.informatik.uni-mannheim.de/PLM" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation">
+  <PLM:LMLModel xmi:id="_4JaGQaCUEeCccODIo0X0EA">
+    <elements xmi:type="PLM:Ontology" xmi:id="_4v3CQKCUEeCccODIo0X0EA" name="Process">
+      <visualizer xmi:type="PLM:Visualizer" xmi:id="_4w5kEKCUEeCccODIo0X0EA">
+        <attributes>name= default</attributes>
+        <attributes>expressed= default</attributes>
+        <attributes>relevant= default</attributes>
+        <attributes>origin= default</attributes>
+        <attributes>visualizersShown= default</attributes>
+        <attributes>completness= default</attributes>
+        <attributes>showInstantiationRoleNames = false</attributes>
+      </visualizer>
+      <content xmi:type="PLM:Model" xmi:id="_6MFvsKCUEeCccODIo0X0EA" name="O0">
+        <visualizer xmi:type="PLM:Visualizer" xmi:id="_6MFvsaCUEeCccODIo0X0EA">
+          <attributes>name= default</attributes>
+          <attributes>expressed= default</attributes>
+          <attributes>relevant= default</attributes>
+          <attributes>origin= default</attributes>
+          <attributes>visualizersShown= default</attributes>
+          <attributes>completness= default</attributes>
+        </visualizer>
+        <content xmi:type="PLM:Entity" xmi:id="_8cCZEKCUEeCccODIo0X0EA" name="Start">
+          <visualizer xmi:type="PLM:Visualizer" xmi:id="_8cCZEaCUEeCccODIo0X0EA">
+            <attributes>name= default</attributes>
+            <attributes>expressed= default</attributes>
+            <attributes>relevant= default</attributes>
+            <attributes>elided= default</attributes>
+            <attributes>origin= default</attributes>
+            <attributes>visualizersShown= default</attributes>
+            <attributes>instantiable= default</attributes>
+            <attributes>potency= default</attributes>
+            <attributes>level= default</attributes>
+            <attributes>ProximityInstantiation= 1</attributes>
+          </visualizer>
+          <feature xmi:type="PLM:Attribute" xmi:id="_tBT7AKCVEeC9uNOXkPLUdg" name="name" durability="1" mutability="1">
+            <visualizer xmi:type="PLM:Visualizer" xmi:id="_tBT7AaCVEeC9uNOXkPLUdg">
+              <attributes>name= default</attributes>
+              <attributes>expressed= default</attributes>
+              <attributes>relevant= default</attributes>
+              <attributes>elided= default</attributes>
+              <attributes>durability= default</attributes>
+              <attributes>value= default</attributes>
+              <attributes>mutability= default</attributes>
+            </visualizer>
+          </feature>
+        </content>
+      </content>
+      <content xmi:type="PLM:Model" xmi:id="_oQScAKCVEeC9uNOXkPLUdg" name="O1">
+        <visualizer xmi:type="PLM:Visualizer" xmi:id="_oQScAaCVEeC9uNOXkPLUdg">
+          <attributes>name= default</attributes>
+          <attributes>expressed= default</attributes>
+          <attributes>relevant= default</attributes>
+          <attributes>origin= default</attributes>
+          <attributes>visualizersShown= default</attributes>
+          <attributes>completness= default</attributes>
+        </visualizer>
+        <content xmi:type="PLM:Entity" xmi:id="_uNwgAKCVEeC9uNOXkPLUdg" name="ProcessStart" potency="0" level="1" blueprint="_8cCZEKCUEeCccODIo0X0EA">
+          <visualizer xmi:type="PLM:Visualizer" xmi:id="_uNwgBaCVEeC9uNOXkPLUdg">
+            <attributes>name= default</attributes>
+            <attributes>expressed= default</attributes>
+            <attributes>relevant= default</attributes>
+            <attributes>elided= default</attributes>
+            <attributes>origin= default</attributes>
+            <attributes>visualizersShown= default</attributes>
+            <attributes>instantiable= default</attributes>
+            <attributes>potency= default</attributes>
+            <attributes>level= default</attributes>
+            <attributes>ProximityInstantiation= 1</attributes>
+          </visualizer>
+          <feature xmi:type="PLM:Attribute" xmi:id="_uNwgA6CVEeC9uNOXkPLUdg" name="name" value="Start">
+            <visualizer xmi:type="PLM:Visualizer" xmi:id="_uNwgBKCVEeC9uNOXkPLUdg">
+              <attributes>name= default</attributes>
+              <attributes>expressed= default</attributes>
+              <attributes>relevant= default</attributes>
+              <attributes>elided= default</attributes>
+              <attributes>durability= default</attributes>
+              <attributes>value= default</attributes>
+              <attributes>mutability= default</attributes>
+            </visualizer>
+          </feature>
+        </content>
+        <content xmi:type="PLM:Instantiation" xmi:id="_uNwgAqCVEeC9uNOXkPLUdg" instance="_uNwgAKCVEeC9uNOXkPLUdg" type="_8cCZEKCUEeCccODIo0X0EA"/>
+      </content>
+    </elements>
+  </PLM:LMLModel>
+  <notation:Diagram xmi:id="_4KJtIKCUEeCccODIo0X0EA" type="LML" element="_4JaGQaCUEeCccODIo0X0EA" name="test.lml" measurementUnit="Pixel">
+    <children xmi:type="notation:Node" xmi:id="_41ODYKCUEeCccODIo0X0EA" type="2002" element="_4v3CQKCUEeCccODIo0X0EA">
+      <children xmi:type="notation:DecorationNode" xmi:id="_41ODZaCUEeCccODIo0X0EA" type="5008"/>
+      <children xmi:type="notation:DecorationNode" xmi:id="_41ODZqCUEeCccODIo0X0EA" type="5096"/>
+      <children xmi:type="notation:DecorationNode" xmi:id="_41ODZ6CUEeCccODIo0X0EA" type="7003">
+        <children xmi:type="notation:Node" xmi:id="_6MFvsqCUEeCccODIo0X0EA" type="3059" element="_6MFvsKCUEeCccODIo0X0EA">
+          <children xmi:type="notation:DecorationNode" xmi:id="_6MFvt6CUEeCccODIo0X0EA" type="5191"/>
+          <children xmi:type="notation:DecorationNode" xmi:id="_6MFvuKCUEeCccODIo0X0EA" type="5192"/>
+          <children xmi:type="notation:DecorationNode" xmi:id="_6MFvuaCUEeCccODIo0X0EA" type="7026">
+            <children xmi:type="notation:Node" xmi:id="_8cCZEqCUEeCccODIo0X0EA" type="3069" element="_8cCZEKCUEeCccODIo0X0EA">
+              <children xmi:type="notation:DecorationNode" xmi:id="_8cCZF6CUEeCccODIo0X0EA" type="5187"/>
+              <children xmi:type="notation:DecorationNode" xmi:id="_8cCZGKCUEeCccODIo0X0EA" type="5188"/>
+              <children xmi:type="notation:DecorationNode" xmi:id="_8cCZGaCUEeCccODIo0X0EA" type="5189"/>
+              <children xmi:type="notation:DecorationNode" xmi:id="_8cCZGqCUEeCccODIo0X0EA" type="5190"/>
+              <children xmi:type="notation:DecorationNode" xmi:id="_8cCZG6CUEeCccODIo0X0EA" type="5193"/>
+              <children xmi:type="notation:BasicCompartment" xmi:id="_8cCZHKCUEeCccODIo0X0EA" type="7029">
+                <children xmi:type="notation:Shape" xmi:id="_tBT7AqCVEeC9uNOXkPLUdg" type="3070" element="_tBT7AKCVEeC9uNOXkPLUdg">
+                  <children xmi:type="notation:DecorationNode" xmi:id="_tBT7BKCVEeC9uNOXkPLUdg" type="5178"/>
+                  <children xmi:type="notation:DecorationNode" xmi:id="_tBT7BaCVEeC9uNOXkPLUdg" type="5179"/>
+                  <children xmi:type="notation:DecorationNode" xmi:id="_tBT7BqCVEeC9uNOXkPLUdg" type="5180"/>
+                  <children xmi:type="notation:DecorationNode" xmi:id="_tBT7B6CVEeC9uNOXkPLUdg" type="5181"/>
+                  <children xmi:type="notation:DecorationNode" xmi:id="_tBT7CKCVEeC9uNOXkPLUdg" type="5182"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tBT7A6CVEeC9uNOXkPLUdg"/>
+                </children>
+                <styles xmi:type="notation:SortingStyle" xmi:id="_8cCZHaCUEeCccODIo0X0EA"/>
+                <styles xmi:type="notation:FilteringStyle" xmi:id="_8cCZHqCUEeCccODIo0X0EA"/>
+              </children>
+              <children xmi:type="notation:BasicCompartment" xmi:id="_8cCZH6CUEeCccODIo0X0EA" type="7030">
+                <styles xmi:type="notation:SortingStyle" xmi:id="_8cCZIKCUEeCccODIo0X0EA"/>
+                <styles xmi:type="notation:FilteringStyle" xmi:id="_8cCZIaCUEeCccODIo0X0EA"/>
+              </children>
+              <styles xmi:type="notation:DescriptionStyle" xmi:id="_8cCZE6CUEeCccODIo0X0EA"/>
+              <styles xmi:type="notation:FontStyle" xmi:id="_8cCZFKCUEeCccODIo0X0EA"/>
+              <styles xmi:type="notation:FillStyle" xmi:id="_8cCZFaCUEeCccODIo0X0EA"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8cCZFqCUEeCccODIo0X0EA" x="39" y="9"/>
+            </children>
+          </children>
+          <styles xmi:type="notation:DescriptionStyle" xmi:id="_6MFvs6CUEeCccODIo0X0EA"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_6MFvtKCUEeCccODIo0X0EA"/>
+          <styles xmi:type="notation:FillStyle" xmi:id="_6MFvtaCUEeCccODIo0X0EA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6MFvtqCUEeCccODIo0X0EA"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_oQScAqCVEeC9uNOXkPLUdg" type="3059" element="_oQScAKCVEeC9uNOXkPLUdg">
+          <children xmi:type="notation:DecorationNode" xmi:id="_oQScB6CVEeC9uNOXkPLUdg" type="5191"/>
+          <children xmi:type="notation:DecorationNode" xmi:id="_oQScCKCVEeC9uNOXkPLUdg" type="5192"/>
+          <children xmi:type="notation:DecorationNode" xmi:id="_oQScCaCVEeC9uNOXkPLUdg" type="7026">
+            <children xmi:type="notation:Node" xmi:id="_uNwgBqCVEeC9uNOXkPLUdg" type="3069" element="_uNwgAKCVEeC9uNOXkPLUdg">
+              <children xmi:type="notation:DecorationNode" xmi:id="_uNwgC6CVEeC9uNOXkPLUdg" type="5187"/>
+              <children xmi:type="notation:DecorationNode" xmi:id="_uNwgDKCVEeC9uNOXkPLUdg" type="5188"/>
+              <children xmi:type="notation:DecorationNode" xmi:id="_uNwgDaCVEeC9uNOXkPLUdg" type="5189"/>
+              <children xmi:type="notation:DecorationNode" xmi:id="_uNwgDqCVEeC9uNOXkPLUdg" type="5190"/>
+              <children xmi:type="notation:DecorationNode" xmi:id="_uNwgD6CVEeC9uNOXkPLUdg" type="5193"/>
+              <children xmi:type="notation:BasicCompartment" xmi:id="_uNwgEKCVEeC9uNOXkPLUdg" type="7029">
+                <styles xmi:type="notation:SortingStyle" xmi:id="_uNwgEaCVEeC9uNOXkPLUdg"/>
+                <styles xmi:type="notation:FilteringStyle" xmi:id="_uNwgEqCVEeC9uNOXkPLUdg"/>
+              </children>
+              <children xmi:type="notation:BasicCompartment" xmi:id="_uNwgE6CVEeC9uNOXkPLUdg" type="7030">
+                <styles xmi:type="notation:SortingStyle" xmi:id="_uNwgFKCVEeC9uNOXkPLUdg"/>
+                <styles xmi:type="notation:FilteringStyle" xmi:id="_uNwgFaCVEeC9uNOXkPLUdg"/>
+              </children>
+              <styles xmi:type="notation:DescriptionStyle" xmi:id="_uNwgB6CVEeC9uNOXkPLUdg"/>
+              <styles xmi:type="notation:FontStyle" xmi:id="_uNwgCKCVEeC9uNOXkPLUdg"/>
+              <styles xmi:type="notation:FillStyle" xmi:id="_uNwgCaCVEeC9uNOXkPLUdg"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_uNwgCqCVEeC9uNOXkPLUdg" x="34" y="-5"/>
+            </children>
+          </children>
+          <styles xmi:type="notation:DescriptionStyle" xmi:id="_oQScA6CVEeC9uNOXkPLUdg"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_oQScBKCVEeC9uNOXkPLUdg"/>
+          <styles xmi:type="notation:FillStyle" xmi:id="_oQScBaCVEeC9uNOXkPLUdg"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_oQScBqCVEeC9uNOXkPLUdg"/>
+        </children>
+        <styles xmi:type="notation:SortingStyle" xmi:id="_41ODaKCUEeCccODIo0X0EA"/>
+        <styles xmi:type="notation:FilteringStyle" xmi:id="_41ODaaCUEeCccODIo0X0EA"/>
+      </children>
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_41ODYaCUEeCccODIo0X0EA"/>
+      <styles xmi:type="notation:FontStyle" xmi:id="_41ODYqCUEeCccODIo0X0EA"/>
+      <styles xmi:type="notation:FillStyle" xmi:id="_41ODY6CUEeCccODIo0X0EA"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_41ODZKCUEeCccODIo0X0EA" x="60" y="25" width="536" height="446"/>
+    </children>
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_4KJtIaCUEeCccODIo0X0EA"/>
+  </notation:Diagram>
+</xmi:XMI>
