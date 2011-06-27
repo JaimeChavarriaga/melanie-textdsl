@@ -1,15 +1,31 @@
--- @path MOF=/Project/Activity.ecore
+-- @path MOF=/TargetWSProject/Activity.ecore
 -- @nsURI PLM=http://swt.informatik.uni-mannheim.de/PLM
 
 module m_mm2mmm;
 
 create OUT:MOF from IN:PLM;
 
+helper def: diagram:MOF!Diagram = OclUndefined;
+
 rule name {
 	from
 		s : PLM!"O0::Start"
 	to 
 		t : MOF!Start (
+			name <- 'Test'
+		)
+	do{
+		thisModule.diagram.content <- thisModule.diagram.content->append(t);
+	}
+}
+
+entrypoint rule entry(){
+	to
+		t:MOF!Diagram(
 			
 		)
+	do{
+		thisModule.diagram <- t;
+		t;
+	}
 }
