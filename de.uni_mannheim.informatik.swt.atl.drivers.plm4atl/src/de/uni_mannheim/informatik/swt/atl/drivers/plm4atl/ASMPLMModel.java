@@ -67,8 +67,13 @@ public class ASMPLMModel extends ASMEMFModel {
 		
 		Map allClassifiers = new HashMap();
 		
+		//*******************************************************************************
 		//Additionally to the linguistic type we need to register the ontological ones
+		//*******************************************************************************
 		initClassifiers(in.getExtent().getContents().iterator(), allClassifiers, null);
+		//*******************************************************************************
+		//END
+		//*******************************************************************************
 		
 		initClassifiers(getExtent().getContents().iterator(), allClassifiers, null);
 		Iterator refExtents = referencedExtents.iterator();
