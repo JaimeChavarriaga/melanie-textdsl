@@ -14,8 +14,7 @@ public class AtlPLMModelHandler extends AtlEMFModelHandler {
 	
 	@Override
 	public ModelLoader createModelLoader() {
-		// TODO Auto-generated method stub
-		//return super.createModelLoader();
+		//We need to have our custom model loader here
 		return new PLMModelLoader();
 	}
 }

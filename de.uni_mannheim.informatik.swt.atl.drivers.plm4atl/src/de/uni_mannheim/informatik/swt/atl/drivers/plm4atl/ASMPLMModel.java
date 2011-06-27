@@ -62,7 +62,14 @@ public class ASMPLMModel extends ASMEMFModel {
 	 * @author <a href="mailto:dennis.wagelaar@vub.ac.be">Dennis Wagelaar</a>
 	 */
 	private Map initClassifiersInAllExtents() {
+		
+		ASMPLMModel in = (ASMPLMModel)PLMModelLoader.eInstance.getLoadedModels().get("IN");
+		
 		Map allClassifiers = new HashMap();
+		
+		//Additionally to the linguistic type we need to register the ontological ones
+		initClassifiers(in.getExtent().getContents().iterator(), allClassifiers, null);
+		
 		initClassifiers(getExtent().getContents().iterator(), allClassifiers, null);
 		Iterator refExtents = referencedExtents.iterator();
 		while (refExtents.hasNext()) {

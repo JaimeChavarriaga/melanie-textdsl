@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.logging.Level;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.m2m.atl.common.ATLLogger;
 import org.eclipse.m2m.atl.drivers.emf4atl.ASMEMFModel;
 import org.eclipse.m2m.atl.drivers.emf4atl.ASMEMFModelElement;
@@ -26,15 +27,79 @@ public class ASMPLMModelElement extends ASMEMFModelElement {
 		super(modelElements, model, object);
 		// TODO Auto-generated constructor stub
 	}
-
-	private static void registerMOFOperation(String modelelementName, String methodName, Class[] args)
-	throws Exception {
-		List realArgs = new ArrayList(Arrays.asList(args));
-		realArgs.add(0, ASMEMFModelElement.class);
-		realArgs.add(0, StackFrame.class);
-		ClassNativeOperation no = new ClassNativeOperation(ASMEMFModelElement.class.getMethod(methodName,
-				(Class[])realArgs.toArray(args)));
-		ASMModelElement amme = ASMEMFModel.getMOF().findModelElement(modelelementName);
-		amme.registerVMOperation(no);
+	
+	@Override
+	public void addSupertype(ASMOclType supertype) {
+		// TODO Auto-generated method stub
+		super.addSupertype(supertype);
 	}
+	
+	@Override
+	public ASMBoolean conformsTo(ASMOclType other) {
+		// TODO Auto-generated method stub
+		return super.conformsTo(other);
+	}
+	
+	@Override
+	protected ASMOclAny emf2ASM(StackFrame frame, Object value) {
+		// TODO Auto-generated method stub
+		return super.emf2ASM(frame, value);
+	}
+	
+	@Override
+	protected Object asm2EMF(StackFrame frame, ASMOclAny value,
+			String propName, EStructuralFeature feature) {
+		// TODO Auto-generated method stub
+		return super.asm2EMF(frame, value, propName, feature);
+	}
+	
+	@Override
+	public ASMModelElement getAcquaintance(String name) {
+		// TODO Auto-generated method stub
+		return super.getAcquaintance(name);
+	}
+	
+	@Override
+	public ASMModelElement getMetaobject() {
+		// TODO Auto-generated method stub
+		return super.getMetaobject();
+	}
+	
+	@Override
+	public ASMModel getModel() {
+		// TODO Auto-generated method stub
+		return super.getModel();
+	}
+	
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return super.getName();
+	}
+	
+	@Override
+	public EObject getObject() {
+		// TODO Auto-generated method stub
+		return super.getObject();
+	}
+	
+	@Override
+	public ASMModelElement getProperty(String name) {
+		// TODO Auto-generated method stub
+		return super.getProperty(name);
+	}
+	
+	@Override
+	public ASMModelElement getPropertyType(String name) {
+		// TODO Auto-generated method stub
+		return super.getPropertyType(name);
+	}
+	
+	@Override
+	public List getSupertypes() {
+		// TODO Auto-generated method stub
+		return super.getSupertypes();
+	}
+	
+	
 }
