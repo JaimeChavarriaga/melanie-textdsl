@@ -1,0 +1,42 @@
+﻿/***********************************************************************
+*
+* All figures shall have a rectangular routing
+*
+***********************************************************************/
+«IMPORT 'http://www.eclipse.org/gmf/2009/GenModel'»
+
+«AROUND createLinkFigure(link : gmfgen::GenLink) FOR gmfgen::InnerClassViewmap»
+	protected org.eclipse.draw2d.Connection createConnectionFigure() {
+		«className» figure = new «className»();
+		
+		org.eclipse.gmf.runtime.notation.RoutingStyle style = (org.eclipse.gmf.runtime.notation.RoutingStyle)((org.eclipse.gmf.runtime.notation.View)getModel()).getStyle(org.eclipse.gmf.runtime.notation.NotationPackage.Literals.ROUTING_STYLE);
+		if (! (style.getRouting() == org.eclipse.gmf.runtime.notation.Routing.RECTILINEAR_LITERAL))
+		{
+			org.eclipse.emf.workspace.AbstractEMFOperation emfOp = new org.eclipse.emf.workspace.AbstractEMFOperation(getEditingDomain(), "routing") {
+				
+				@Override
+				protected org.eclipse.core.runtime.IStatus doExecute(org.eclipse.core.runtime.IProgressMonitor monitor, org.eclipse.core.runtime.IAdaptable info)
+						throws org.eclipse.core.commands.ExecutionException {
+					
+					org.eclipse.gmf.runtime.notation.RoutingStyle style = (org.eclipse.gmf.runtime.notation.RoutingStyle)((org.eclipse.gmf.runtime.notation.View)getModel()).getStyle(org.eclipse.gmf.runtime.notation.NotationPackage.Literals.ROUTING_STYLE);
+					style.setRouting(org.eclipse.gmf.runtime.notation.Routing.RECTILINEAR_LITERAL);
+					return org.eclipse.core.runtime.Status.OK_STATUS;
+				}
+			};
+			try{
+				org.eclipse.core.commands.operations.OperationHistoryFactory.getOperationHistory().execute(emfOp, null, null);
+			}catch(org.eclipse.core.commands.ExecutionException ex){
+				ex.printStackTrace();
+			}
+		}
+		
+		return figure;
+	}
+
+	«EXPAND xpt::Common::generatedMemberComment»
+	public «className» getPrimaryShape() {
+		return («className») getFigure();
+	}
+
+	«classBody»
+«ENDAROUND»
