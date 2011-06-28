@@ -11,8 +11,11 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.m2m.atl.common.ATLLogger;
 import org.eclipse.m2m.atl.drivers.emf4atl.ASMEMFModel;
+import org.eclipse.m2m.atl.drivers.emf4atl.ASMEMFModelElement;
 import org.eclipse.m2m.atl.engine.vm.ModelLoader;
+import org.eclipse.m2m.atl.engine.vm.StackFrame;
 import org.eclipse.m2m.atl.engine.vm.nativelib.ASMModelElement;
+import org.eclipse.m2m.atl.engine.vm.nativelib.ASMOclAny;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.DomainElement;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
@@ -29,7 +32,6 @@ public class ASMPLMModel extends ASMEMFModel {
 	
 	@Override
 	public ASMModelElement findModelElement(String name) {
-		// TODO Auto-generated method stub
 		return getClassifier(name);
 	}
 	
@@ -124,27 +126,25 @@ public class ASMPLMModel extends ASMEMFModel {
 		allClassifiers.put(name, classifier);
 	}
 	
-	@Override
-	public Set getAllElementsByType(ASMModelElement type) {
-		// TODO Auto-generated method stub
-		return super.getAllElementsByType(type);
-	}
-	
-	@Override
-	public Set getAllElementsByType(String typeName) {
-		// TODO Auto-generated method stub
-		return super.getAllElementsByType(typeName);
-	}
-	
-	@Override
-	public Set getElementsByType(ASMModelElement type) {
-		// TODO Auto-generated method stub
-		return super.getElementsByType(type);
-	}
-	
-	@Override
-	public Set getElementsByType(String typeName) {
-		// TODO Auto-generated method stub
-		return super.getElementsByType(typeName);
+	/**
+	 * Returns the ASMModelElement corresponding to the given {@link EObject}.
+	 * 
+	 * @param object
+	 *            the given {@link EObject}
+	 * @return the {@link ASMModelElement}
+	 */
+	public synchronized ASMModelElement getASMModelElement(EObject object) {
+		// TODO reinstate double checked locking with final field when switching to Java 5
+		ASMModelElement ret = (ASMModelElement)modelElements.get(object);
+		if (ret == null) {
+			//***********************************************
+			//We are only interested in onotological types
+			//***********************************************
+			if (object instanceof DomainElement)
+				ret = new ASMPLMModelElement(modelElements, this, object);
+			else
+				ret = super.getASMModelElement(object);
+		}
+		return ret;
 	}
 }
