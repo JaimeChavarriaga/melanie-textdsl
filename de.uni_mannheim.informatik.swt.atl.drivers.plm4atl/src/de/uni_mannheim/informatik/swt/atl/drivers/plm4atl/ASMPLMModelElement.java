@@ -27,10 +27,12 @@ import org.eclipse.ocl.ecore.Constraint;
 import org.eclipse.ocl.ecore.OCL;
 import org.eclipse.ocl.expressions.OCLExpression;
 import org.eclipse.ocl.helper.OCLHelper;
+import org.eclipse.ocl.util.Bag;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.DomainElement;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 
 public class ASMPLMModelElement extends ASMEMFModelElement {
@@ -66,7 +68,7 @@ public class ASMPLMModelElement extends ASMEMFModelElement {
 		}
 		else if (ontologicAttribute)
 		{
-			Feature[] feature = null;
+			Element[] feature = null;
 			//find all visualizers in the model
 			OCL ocl = OCL.newInstance();
 			OCLHelper<EClassifier, ?, ?, Constraint> helper = ocl
@@ -76,9 +78,19 @@ public class ASMPLMModelElement extends ASMEMFModelElement {
 
 			try {
 
+				//At first do the easy part check the attributes
 				OCLExpression<EClassifier> q = helper.createQuery("self.feature->select(f | f.name = '" + name + "')");
-
-				feature = ((HashSet<Feature>) ocl.evaluate(object, q)).toArray(new Feature[] {});
+				
+				feature = ((HashSet<Element>) ocl.evaluate(object, q)).toArray(new Element[] {});
+				
+				//No attributes found -> check the connections (references)
+				if (feature.length == 0)
+				{
+					q = helper.createQuery("Connection.allInstances()->select(c | c.participant->includes(self)).participant->reject(p | p = self)->select(p | Instantiation.allInstances()->select(i | i.type.name = '" + name + "').instance->includes(p))");
+					
+					feature = ((Bag<Element>) ocl.evaluate(object, q)).toArray(new Element[] {});
+				}
+					
 			} catch (ParserException e) {
 				e.printStackTrace();
 			}
@@ -89,7 +101,7 @@ public class ASMPLMModelElement extends ASMEMFModelElement {
 			}
 			
 			ontologicAttribute = null;
-			return emf2ASM(frame, ((Attribute)feature[0]).getValue());
+		 	return feature[0] instanceof Attribute? emf2ASM(frame, ((Attribute)feature[0]).getValue()) : emf2ASM(frame, feature[0]);
 		}
 		else
 		{
