@@ -12,7 +12,7 @@ rule name {
 		s : PLM!"O0::Start"
 	to 
 		t : MOF!Start (
-			name <- 'Test'
+			name <- s._l_.name
 		)
 	do{
 		thisModule.diagram.content <- thisModule.diagram.content->append(t);
