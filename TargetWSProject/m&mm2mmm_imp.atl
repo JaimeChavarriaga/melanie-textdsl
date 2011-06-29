@@ -7,11 +7,24 @@ create OUT:MOF from IN:PLM;
 
 helper def: diagram:MOF!Diagram = OclUndefined;
 
-rule name {
+rule Start2Start {
 	from
 		s : PLM!"O0::Start"
 	to 
 		t : MOF!Start (
+			name <- s._l_.name,
+			firstStep <- s._l_.Step
+		)
+	do{
+		thisModule.diagram.content <- thisModule.diagram.content->append(t);
+	}
+}
+
+rule Step2Step {
+	from
+		s : PLM!"O0::Step"
+	to 
+		t : MOF!Step (
 			name <- s._l_.name
 		)
 	do{

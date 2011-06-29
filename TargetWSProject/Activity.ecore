@@ -10,7 +10,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="DiagramElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Start" eSuperTypes="#//DiagramElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Start" eSuperTypes="#//DiagramElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="firstStep" eType="#//Step"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Stop" eSuperTypes="#//DiagramElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="Step" eSuperTypes="#//DiagramElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="Connector" eSuperTypes="#//DiagramElement">
