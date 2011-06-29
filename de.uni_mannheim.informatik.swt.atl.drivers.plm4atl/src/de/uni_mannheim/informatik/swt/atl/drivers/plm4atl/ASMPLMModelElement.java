@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.m2m.atl.common.ATLLogger;
 import org.eclipse.m2m.atl.drivers.emf4atl.ASMEMFModel;
 import org.eclipse.m2m.atl.drivers.emf4atl.ASMEMFModelElement;
+import org.eclipse.m2m.atl.engine.vm.ASMExecEnv;
 import org.eclipse.m2m.atl.engine.vm.ClassNativeOperation;
 import org.eclipse.m2m.atl.engine.vm.StackFrame;
 import org.eclipse.m2m.atl.engine.vm.VMException;
@@ -20,6 +21,7 @@ import org.eclipse.m2m.atl.engine.vm.nativelib.ASMBoolean;
 import org.eclipse.m2m.atl.engine.vm.nativelib.ASMModel;
 import org.eclipse.m2m.atl.engine.vm.nativelib.ASMModelElement;
 import org.eclipse.m2m.atl.engine.vm.nativelib.ASMOclAny;
+import org.eclipse.m2m.atl.engine.vm.nativelib.ASMOclSimpleType;
 import org.eclipse.m2m.atl.engine.vm.nativelib.ASMOclType;
 import org.eclipse.m2m.atl.engine.vm.nativelib.ASMString;
 import org.eclipse.ocl.ParserException;
@@ -49,6 +51,37 @@ public class ASMPLMModelElement extends ASMEMFModelElement {
 		return super.getHelper(frame, name);
 	}
 	
+	//Have to override this as we are not only looking for helpers on linguistic
+	//types but also ontological ones
+	@Override
+	public boolean isHelper(StackFrame frame, String name) {
+		boolean isHelper = ((ASMExecEnv)frame.getExecEnv()).isHelper(getType(), name);
+		
+		//linguistic helper not found -> look for ontological one
+		if (!isHelper)
+		{
+			Clabject[] type = null;
+			OCL ocl = OCL.newInstance();
+			OCLHelper<EClassifier, ?, ?, Constraint> helper = ocl
+					.createOCLHelper();
+			OCLExpression<EClassifier> q;
+			
+			helper.setContext(de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.Literals.CLABJECT);
+			
+			try {
+				q = helper.createQuery("Instantiation.allInstances()->select(i | i.instance = self).type->asSequence()");
+			
+				type = ((ArrayList<Clabject>) ocl.evaluate(object, q)).toArray(new Clabject[] {});
+				isHelper = ((ASMExecEnv)frame.getExecEnv()).isHelper((ASMOclType)emf2ASM(frame, type[0]), name);
+			} catch (ParserException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		return isHelper;
+	}
+	
 	@Override
 	public ASMOclAny get(StackFrame frame, String name) {
 		
@@ -62,6 +95,8 @@ public class ASMPLMModelElement extends ASMEMFModelElement {
 			ontologicAttribute = false;
 			return this;
 		}
+		else if ((frame != null) && isHelper(frame, name))
+			return getHelper(frame, name);
 		else if (ontologicAttribute == null)
 		{
 			throw new VMException(frame, "Neither linguistic (_l_) nor ontological (_o_) dimension were selected!", null);
@@ -69,7 +104,7 @@ public class ASMPLMModelElement extends ASMEMFModelElement {
 		else if (ontologicAttribute)
 		{
 			Element[] feature = null;
-			//find all visualizers in the model
+			
 			OCL ocl = OCL.newInstance();
 			OCLHelper<EClassifier, ?, ?, Constraint> helper = ocl
 					.createOCLHelper();
