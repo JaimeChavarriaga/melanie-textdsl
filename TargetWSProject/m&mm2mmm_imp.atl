@@ -12,8 +12,8 @@ rule Start2Start {
 		s : PLM!"O0::Start"
 	to 
 		t : MOF!Start (
-			name <- s._l_.name,
-			firstStep <- s._l_.Step
+			name <- s._o_.name,
+			firstStep <- s._o_.Step
 		)
 	do{
 		thisModule.diagram.content <- thisModule.diagram.content->append(t);
@@ -25,7 +25,7 @@ rule Step2Step {
 		s : PLM!"O0::Step"
 	to 
 		t : MOF!Step (
-			name <- s._l_.name
+			name <- s._o_.name
 		)
 	do{
 		thisModule.diagram.content <- thisModule.diagram.content->append(t);
