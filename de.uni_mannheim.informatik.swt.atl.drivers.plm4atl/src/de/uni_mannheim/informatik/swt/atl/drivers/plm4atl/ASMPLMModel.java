@@ -14,6 +14,7 @@ import org.eclipse.m2m.atl.drivers.emf4atl.ASMEMFModel;
 import org.eclipse.m2m.atl.drivers.emf4atl.ASMEMFModelElement;
 import org.eclipse.m2m.atl.engine.vm.ModelLoader;
 import org.eclipse.m2m.atl.engine.vm.StackFrame;
+import org.eclipse.m2m.atl.engine.vm.nativelib.ASMModel;
 import org.eclipse.m2m.atl.engine.vm.nativelib.ASMModelElement;
 import org.eclipse.m2m.atl.engine.vm.nativelib.ASMOclAny;
 
@@ -64,8 +65,25 @@ public class ASMPLMModel extends ASMEMFModel {
 	 * @author <a href="mailto:dennis.wagelaar@vub.ac.be">Dennis Wagelaar</a>
 	 */
 	private Map initClassifiersInAllExtents() {
+		//********************************************************************
+		//We need to register the ontological types as meta model elements
+		//********************************************************************
+		ASMPLMModel in = null;
 		
-		ASMPLMModel in = (ASMPLMModel)PLMModelLoader.eInstance.getLoadedModels().get("IN");
+		Map m = PLMModelLoader.eInstance.getLoadedModels();
+
+		for (Object o : m.values())
+		{
+			if (o instanceof ASMPLMModel &&
+				((ASMPLMModel)o).getMetamodel() == this)
+			{
+					in = (ASMPLMModel)o;
+					break;
+			}
+		}
+		//********************************************************************
+		//END
+		//********************************************************************
 		
 		Map allClassifiers = new HashMap();
 		
