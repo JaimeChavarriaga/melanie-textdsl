@@ -483,7 +483,7 @@
 			//remove previous shape
 			((org.eclipse.draw2d.IFigure)figure.getChildren().get(0)).getChildren().remove(0);
 			//add default figure
-			((org.eclipse.draw2d.IFigure)figure.getChildren().get(0)).getChildren().add(0, polygonFigureCache);
+			((org.eclipse.draw2d.IFigure)figure.getChildren().get(0)).getChildren().add(0, getPrimaryShape());
 			
 			//Hide external name label
 			org.eclipse.draw2d.IFigure boderItemContainer = (org.eclipse.draw2d.IFigure)figure.getChildren().get(1);
@@ -588,16 +588,7 @@
 
 		//Entity EditParts do not have a outer BorderItemContainer in contrast
 		//to Connections etc. as those have external labels
-		«IF self.editPartClassName = 'EntityEditPart'
-			or self.editPartClassName = 'ComplementEditPart'
-			or self.editPartClassName = 'EqualityEditPart'
-			or self.editPartClassName = 'InversionEditPart'»
-		polygonFigureCache = (org.eclipse.draw2d.IFigure)figure.getChildren().get(0);
-		«ELSE»
-		//save the initial children
-		polygonFigureCache = (org.eclipse.draw2d.IFigure)((org.eclipse.draw2d.IFigure)figure.getChildren().get(0)).getChildren().get(0);
-		«ENDIF»
-		
+				
 		updateView(true);
 	}
 «ENDDEFINE»
@@ -607,10 +598,6 @@
 	 * @generated
 	 */
 	private org.eclipse.draw2d.geometry.Dimension cachedSize = null;
-	/**
-	 * @generated
-	 */
-	private org.eclipse.draw2d.IFigure polygonFigureCache = null;
 	
 	/**
 	 * Sets the figure to visually expressed or computed. Depending on the expressed
@@ -1241,8 +1228,8 @@
 		else
 		{
 			defaultSizeNodeFigure.getChildren().remove(0);
-			defaultSizeNodeFigure.getChildren().add(0, polygonFigureCache);
-			polygonFigureCache.setParent(defaultSizeNodeFigure);
+			defaultSizeNodeFigure.getChildren().add(0, getPrimaryShape());
+			getPrimaryShape().setParent(defaultSizeNodeFigure);
 
 			//We cannot execute commands in read only context
 			if (!readOnlyTransaction)
