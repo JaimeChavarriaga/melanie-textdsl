@@ -107,8 +107,10 @@ public class ASMPLMModelElement extends ASMEMFModelElement {
 			q = helper.createQuery("Instantiation.allInstances()->select(i | i.instance = self).type->asSequence()");
 		
 			type = ((ArrayList<Clabject>) ocl.evaluate(object, q)).toArray(new Clabject[] {});
+			
 			String qn = ((Model)type[0].eContainer()).getName() + "::" + type[0].getName();
-			return ((ASMPLMModel)PLMModelLoader.eInstance.getLoadedModels().get("PLM")).findModelElement(qn);
+			
+			return (getMetaobject().getModel()).findModelElement(qn);
 		}
 		catch (ParserException e) {
 			e.printStackTrace();
