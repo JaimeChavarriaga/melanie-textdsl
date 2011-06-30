@@ -5,7 +5,6 @@ import java.util.Map;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.m2m.atl.drivers.emf4atl.ASMEMFModel;
 import org.eclipse.m2m.atl.drivers.emf4atl.EMFModelLoader;
-import org.eclipse.m2m.atl.engine.vm.ASMEmitter;
 import org.eclipse.m2m.atl.engine.vm.nativelib.ASMModel;
 
 public class PLMModelLoader extends EMFModelLoader {

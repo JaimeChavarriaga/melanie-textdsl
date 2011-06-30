@@ -8,8 +8,7 @@ public class AtlPLMModelHandler extends AtlEMFModelHandler {
 
 	@Override
 	public boolean isHandling(ASMModel model) {
-		// TODO Auto-generated method stub
-		return super.isHandling(model);
+		return model instanceof ASMPLMModel;
 	}
 	
 	@Override
