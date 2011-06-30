@@ -428,23 +428,6 @@
 
 			return null;
 		}
-
-		//********************************************************
-		//Do toggling based on information in the diagram
-		//********************************************************
-		//de.uni_mannheim.informatik.swt.models.plm.PLM.Field collapsedField = null;
-
-		//for (de.uni_mannheim.informatik.swt.models.plm.PLM.Element e : self
-		//		.getVisualizer().getChildren()) {
-		//	if (e instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Field) {
-		//		if (e.getName().equals("collapsed")) {
-		//			collapse = Boolean
-		//					.parseBoolean(((de.uni_mannheim.informatik.swt.models.plm.PLM.Field) e)
-		//							.getValue());
-		//			break;
-		//		}
-		//	}
-		//}
 		
 		de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer r = self.getVisualizer().get(0);
 		String collapsedString = r.getValueForKey("collapsed");
@@ -481,9 +464,9 @@
 					org.eclipse.swt.SWT.COLOR_WHITE));
 
 			//remove previous shape
-			((org.eclipse.draw2d.IFigure)figure.getChildren().get(0)).getChildren().remove(0);
+			getMainFigure().getChildren().remove(0);
 			//add default figure
-			((org.eclipse.draw2d.IFigure)figure.getChildren().get(0)).getChildren().add(0, getPrimaryShape());
+			getMainFigure().getChildren().add(0, getPrimaryShape());
 			
 			//Hide external name label
 			org.eclipse.draw2d.IFigure boderItemContainer = (org.eclipse.draw2d.IFigure)figure.getChildren().get(1);
@@ -499,24 +482,6 @@
 			//notation model
 			if (!readOnlyContext)
 			{
-				//Old code -> Altentative to Autosize
-				/*org.eclipse.draw2d.geometry.Rectangle rect = figure.getClientArea().getCopy();
-				«IF self.editPartClassName = 'ConnectionEditPart'»
-				rect.setSize((cachedSize != null) ? cachedSize : new org.eclipse.draw2d.geometry.Dimension(70,
-						60));
-				org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand sbc = new org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand(
-						this.getEditingDomain(), "change size", new org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter(
-								(org.eclipse.gmf.runtime.notation.View) this.getModel()), rect);
-				getEditDomain().getCommandStack().execute(new org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy(sbc));
-				«ELSE»
-				rect.setSize((cachedSize != null) ? cachedSize : new org.eclipse.draw2d.geometry.Dimension(60,
-						25));
-				org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand sbc = new org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand(
-						this.getEditingDomain(), "change size", new org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter(
-								(org.eclipse.gmf.runtime.notation.View) this.getModel()), rect);
-				getEditDomain().getCommandStack().execute(new org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy(sbc));
-				«ENDIF»*/
-				
 				org.eclipse.gef.Request rr = new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_AUTOSIZE);
 				performRequest(rr);
 			}
@@ -546,8 +511,8 @@
 					org.eclipse.swt.SWT.COLOR_BLACK));
 			rf.setBorder(new org.eclipse.draw2d.LineBorder(org.eclipse.ui.PlatformUI.getWorkbench().getDisplay().getSystemColor(SWT.COLOR_WHITE), 2));	
 			
-			((org.eclipse.draw2d.IFigure)figure.getChildren().get(0)).getChildren().add(0, rf);
-			rf.setParent(((org.eclipse.draw2d.IFigure)figure.getChildren().get(0)));
+			getMainFigure().getChildren().add(0, rf);
+			rf.setParent(getMainFigure());
 
 			//Hide external name label
 			org.eclipse.draw2d.IFigure boderItemContainer = (org.eclipse.draw2d.IFigure) figure.getChildren().get(1);
