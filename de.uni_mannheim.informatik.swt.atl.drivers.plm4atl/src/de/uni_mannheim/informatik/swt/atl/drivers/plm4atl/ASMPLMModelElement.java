@@ -48,6 +48,10 @@ public class ASMPLMModelElement extends ASMEMFModelElement {
 		// TODO Auto-generated constructor stub
 	}
 	
+	/**
+	 * Gets the helper. Extended to also support helpers that are
+	 * defined on an ontological context.
+	 */
 	@Override
 	public ASMOclAny getHelper(StackFrame frame, String name) {
 		Boolean cachedOntologicalMode = ontologicalMode;
@@ -69,7 +73,8 @@ public class ASMPLMModelElement extends ASMEMFModelElement {
 	}
 	
 	/**
-	 * 
+	 * Can get the linguistic or ontologic type according to
+	 * the value of ontologicalMode. 
 	 */
 	@Override
 	public ASMOclType getType() {
