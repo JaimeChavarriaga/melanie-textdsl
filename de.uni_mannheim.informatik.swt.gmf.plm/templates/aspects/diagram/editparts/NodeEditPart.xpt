@@ -509,7 +509,7 @@
 
 			rf.setBackgroundColor(org.eclipse.swt.widgets.Display.getDefault().getSystemColor(
 					org.eclipse.swt.SWT.COLOR_BLACK));
-			rf.setBorder(new org.eclipse.draw2d.LineBorder(org.eclipse.ui.PlatformUI.getWorkbench().getDisplay().getSystemColor(SWT.COLOR_WHITE), 2));	
+			rf.setBorder(new org.eclipse.draw2d.LineBorder(org.eclipse.ui.PlatformUI.getWorkbench().getDisplay().getSystemColor(org.eclipse.swt.SWT.COLOR_WHITE), 2));	
 			
 			getMainFigure().getChildren().add(0, rf);
 			rf.setParent(getMainFigure());
@@ -1111,14 +1111,10 @@
 		de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject clab = (de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject) resolveSemanticElement();
 
 		«IF self.editPartClassName = 'ConnectionEditPart'»
-		//The container that contains the figure and the border item container
-		org.eclipse.draw2d.IFigure borderContainer = figure;
 		//The figure
-		org.eclipse.draw2d.IFigure defaultSizeNodeFigure = (org.eclipse.draw2d.IFigure) borderContainer.getChildren()
-				.get(0);
+		org.eclipse.draw2d.IFigure defaultSizeNodeFigure = getMainFigure();
 		//the container that contains the border items
-		org.eclipse.draw2d.IFigure borderItemContainer = (org.eclipse.draw2d.IFigure) borderContainer.getChildren()
-				.get(1);
+		org.eclipse.draw2d.IFigure borderItemContainer = (org.eclipse.draw2d.IFigure) figure.getChildren().get(1);
 		«ELSE»
 		org.eclipse.draw2d.IFigure defaultSizeNodeFigure = figure;
 		«ENDIF»
