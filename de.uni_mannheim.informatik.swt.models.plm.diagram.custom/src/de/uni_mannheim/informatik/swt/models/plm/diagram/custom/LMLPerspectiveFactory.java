@@ -15,6 +15,8 @@ import org.eclipse.ui.IFolderLayout;
 import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IPerspectiveFactory;
 
+import de.uni_mannheim.informatik.swt.plm.visualization.editor.views.ModelOutlineView;
+
 /**
  * @author Ralph Gerbig
  *
@@ -45,8 +47,12 @@ public class LMLPerspectiveFactory implements IPerspectiveFactory {
         bottomLeft.addView(IPageLayout.ID_OUTLINE);
         
         IFolderLayout bottom = 
-        	layout.createFolder("bottom", IPageLayout.BOTTOM, 0.70f, editorArea);
+        	layout.createFolder("bottom", IPageLayout.BOTTOM, 0.5f, editorArea);
         bottom.addView(IPageLayout.ID_PROP_SHEET);
+        
+        IFolderLayout bottomRight = 
+        	layout.createFolder("bottomRight", IPageLayout.BOTTOM, 0.5f, "right");
+        bottomRight.addView(ModelOutlineView.ID);
 	}
 
 }
