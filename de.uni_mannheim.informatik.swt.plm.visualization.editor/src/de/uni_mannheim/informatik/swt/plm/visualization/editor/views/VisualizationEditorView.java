@@ -10,34 +10,50 @@
  *******************************************************************************/ 
 package de.uni_mannheim.informatik.swt.plm.visualization.editor.views;
 
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import java.util.ArrayList;
+import java.util.Collection;
+
+import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.edit.domain.IEditingDomainProvider;
+import org.eclipse.emf.edit.ui.action.CreateChildAction;
+import org.eclipse.emf.edit.ui.action.CreateSiblingAction;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.eclipse.jface.viewers.IContentProvider;
-import org.eclipse.jface.viewers.ILabelProvider;
-import org.eclipse.jface.viewers.ILabelProviderListener;
+import org.eclipse.jface.action.Action;
+import org.eclipse.jface.action.ActionContributionItem;
+import org.eclipse.jface.action.IAction;
+import org.eclipse.jface.action.IContributionItem;
+import org.eclipse.jface.action.IContributionManager;
+import org.eclipse.jface.action.IMenuCreator;
+import org.eclipse.jface.action.IMenuListener;
+import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.action.MenuManager;
+import org.eclipse.jface.action.Separator;
+import org.eclipse.jface.action.SubContributionItem;
+import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.events.HelpListener;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Tree;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.application.ActionBarAdvisor;
 import org.eclipse.ui.part.ViewPart;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.ShapeInformation;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.presentation.PLMEditorPlugin;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.provider.PLMItemProviderAdapterFactory;
 
 /**
@@ -53,6 +69,13 @@ public class VisualizationEditorView extends ViewPart implements ISelectionListe
 	
 	TreeViewer viewer;
 	
+	//Used by the menuBuilder SelectionChangedListener
+	MenuManager createChildMenuManager = new MenuManager(PLMEditorPlugin.INSTANCE.getString("_UI_CreateChild_menu_item"));
+	MenuManager createSiblingMenuManager = new MenuManager(PLMEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item"));
+	Collection<IAction> createSiblingActions;
+	Collection<IAction> createChildActions;
+	
+	
 	/**
 	 * 
 	 */
@@ -67,12 +90,12 @@ public class VisualizationEditorView extends ViewPart implements ISelectionListe
 	public void createPartControl(Composite parent) {
 		viewer = new TreeViewer(parent);
 		
+		//Allow only visualizers to be displayed
 		viewer.addFilter(new ViewerFilter() {
 			
 			@Override
 			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				// TODO Auto-generated method stub
-				return element instanceof Visualizer;
+				return (element instanceof Visualizer) || (element instanceof ShapeInformation);
 			}
 		});
 		
@@ -80,6 +103,33 @@ public class VisualizationEditorView extends ViewPart implements ISelectionListe
 		
 		viewer.setContentProvider(new AdapterFactoryContentProvider(factory));
 		viewer.setLabelProvider(new AdapterFactoryLabelProvider(factory));
+		viewer.addSelectionChangedListener(menuBuilder);
+		
+		MenuManager menu = new MenuManager();
+		menu.setRemoveAllWhenShown(true);
+		menu.addMenuListener(new IMenuListener() {
+			
+			@Override
+			public void menuAboutToShow(IMenuManager manager) {
+				
+				manager.add(new Separator("additions"));
+				manager.insertBefore("additions", createChildMenuManager);
+				manager.insertBefore("additions", createSiblingMenuManager);
+				
+//				Action a = new Action("Test Entry") {
+//					@Override
+//					public void run() {
+//						super.run();
+//					}
+//				};
+//				
+//				manager.add(a);
+			}
+		});
+		
+		Menu m = menu.createContextMenu(viewer.getTree());
+		viewer.getTree().setMenu(m);
+		getSite().registerContextMenu(menu, viewer);
 		
 		getSite().getPage().addSelectionListener(PLMDiagramEditor.ID ,this);
 	}
@@ -112,5 +162,119 @@ public class VisualizationEditorView extends ViewPart implements ISelectionListe
 		Element ele = (Element)editPart.resolveSemanticElement();
 		viewer.setInput(ele);
 	}
+	
+	ISelectionChangedListener menuBuilder = new ISelectionChangedListener() {
+		/**
+		 * This implements {@link org.eclipse.jface.viewers.ISelectionChangedListener},
+		 * handling {@link org.eclipse.jface.viewers.SelectionChangedEvent}s by querying for the children and siblings
+		 * that can be added to the selected object and updating the menus accordingly.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		@Override
+		public void selectionChanged(SelectionChangedEvent event) {
+			
+			
+			// Remove any menu items for old selection.
+			//
+			if (createChildMenuManager != null) {
+				depopulateManager(createChildMenuManager, createChildActions);
+			}
+			if (createSiblingMenuManager != null) {
+				depopulateManager(createSiblingMenuManager, createSiblingActions);
+			}
 
+			// Query the new selection for appropriate new child/sibling descriptors
+			//
+			Collection<?> newChildDescriptors = null;
+			Collection<?> newSiblingDescriptors = null;
+
+			ISelection selection = event.getSelection();
+			//ISelection selection = event.getSelection();
+			if (selection instanceof IStructuredSelection && ((IStructuredSelection)selection).size() == 1) {
+				Object object = ((IStructuredSelection)selection).getFirstElement();
+
+				EditingDomain domain = ((PLMDiagramEditor)getSite().getWorkbenchWindow().getActivePage().getActiveEditor()).getEditingDomain();
+				//EditingDomain domain = ((IEditingDomainProvider)activeEditorPart).getEditingDomain();
+
+				newChildDescriptors = domain.getNewChildDescriptors(object, null);
+				newSiblingDescriptors = domain.getNewChildDescriptors(null, object);
+			}
+
+			// Generate actions for selection; populate and redraw the menus.
+			//
+			createChildActions = generateCreateChildActions(newChildDescriptors, selection);
+			createSiblingActions = generateCreateSiblingActions(newSiblingDescriptors, selection);
+
+			if (createChildMenuManager != null) {
+				populateManager(createChildMenuManager, createChildActions, null);
+				createChildMenuManager.update(true);
+			}
+			if (createSiblingMenuManager != null) {
+				populateManager(createSiblingMenuManager, createSiblingActions, null);
+				createSiblingMenuManager.update(true);
+			}			
+		}
+		
+		protected void depopulateManager(IContributionManager manager, Collection<? extends IAction> actions) {
+			if (actions != null) {
+				IContributionItem[] items = manager.getItems();
+				for (int i = 0; i < items.length; i++) {
+					// Look into SubContributionItems
+					//
+					IContributionItem contributionItem = items[i];
+					while (contributionItem instanceof SubContributionItem) {
+						contributionItem = ((SubContributionItem)contributionItem).getInnerItem();
+					}
+
+					// Delete the ActionContributionItems with matching action.
+					//
+					if (contributionItem instanceof ActionContributionItem) {
+						IAction action = ((ActionContributionItem)contributionItem).getAction();
+						if (actions.contains(action)) {
+							manager.remove(contributionItem);
+						}
+					}
+				}
+			}
+		}
+		
+		protected void populateManager(IContributionManager manager, Collection<? extends IAction> actions, String contributionID) {
+			if (actions != null) {
+				for (IAction action : actions) {
+					if (contributionID != null) {
+						manager.insertBefore(contributionID, action);
+					}
+					else {
+						manager.add(action);
+					}
+				}
+			}
+		}
+		
+		protected Collection<IAction> generateCreateChildActions(Collection<?> descriptors, ISelection selection) {
+			Collection<IAction> actions = new ArrayList<IAction>();
+			if (descriptors != null) {
+				for (Object descriptor : descriptors) {
+					EditingDomain domain = ((PLMDiagramEditor)getSite().getWorkbenchWindow().getActivePage().getActiveEditor()).getEditingDomain();
+					actions.add(new CreateChildAction(domain, selection, descriptor));
+					//actions.add(new CreateChildAction(activeEditorPart, selection, descriptor));
+				}
+			}
+			return actions;
+		}
+
+		protected Collection<IAction> generateCreateSiblingActions(Collection<?> descriptors, ISelection selection) {
+			Collection<IAction> actions = new ArrayList<IAction>();
+			if (descriptors != null) {
+				for (Object descriptor : descriptors) {
+					EditingDomain domain = ((PLMDiagramEditor)getSite().getWorkbenchWindow().getActivePage().getActiveEditor()).getEditingDomain();
+					actions.add(new CreateSiblingAction(domain, selection, descriptor));
+					//actions.add(new CreateSiblingAction(activeEditorPart, selection, descriptor));
+				}
+			}
+			return actions;
+		}
+	};
 }
