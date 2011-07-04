@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="Visualization"
+            id="de.uni_mannheim.informatik.swt.plm.visualization">
+      </category>
+      <view
+            name="Visualization Editor"
+            icon="icons/sample.gif"
+            category="de.uni_mannheim.informatik.swt.plm.visualization"
+            class="de.uni_mannheim.informatik.swt.plm.visualization.editor.views.VisualizationEditorView"
+            id="de.uni_mannheim.informatik.swt.plm.visualization.editor.views.VisualizationEditorView">
+      </view>
+   </extension>
+
+</plugin>
