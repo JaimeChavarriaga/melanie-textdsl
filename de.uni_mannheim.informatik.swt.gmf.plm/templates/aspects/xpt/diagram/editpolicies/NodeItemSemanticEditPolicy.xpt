@@ -1,3 +1,14 @@
+/*******************************************************************************
+ * Copyright (c) 2011 University of Mannheim: Chair for Software Engineering
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Ralph Gerbig - initial API and implementation and initial documentation
+ *******************************************************************************/
+
 «IMPORT 'http://www.eclipse.org/gmf/2009/GenModel'»
 
 «EXTENSION xpt::diagram::editpolicies::Utils»
@@ -59,38 +70,3 @@ protected org.eclipse.gef.commands.Command getDestroyElementCommand(org.eclipse.
 // @param view - Notation element for the passed node
 // assumes 'cmd' to point to composite command
 «DEFINE destroyEdges(String view) FOR gmfgen::GenNode-»
-«REM»
-	XXX: Though semantic editpolicy is supposed to create commands that operate with semantic elements only,
-	old code used to delegate child/link deletion to respective editparts, which in turn led to semantic commands
-	being combined with notational commands (BaseItemSemanticEditPolicy#addDeleteViewCommand()).
-	---
-	Use DiagramUpdater.get[Incoming|Outgoing]View instead, to clean links that are not present on a diagram
-	(but don't forget to clean corresponding Edge, if any)
-«ENDREM-»
-«IF genIncomingLinks->notEmpty()-»
-	for («EXPAND CodeStyle::G('java.util.Iterator', '?' /*FIXME Refactor once Notation model is Java5*/)» it = «view».getTargetEdges().iterator(); it.hasNext();) {
-		org.eclipse.gmf.runtime.notation.Edge incomingLink = (org.eclipse.gmf.runtime.notation.Edge) it.next();
-«FOREACH genIncomingLinks AS il-»
-		if («EXPAND xpt::editor::VisualIDRegistry::getVisualIDMethodCall FOR getDiagram()»(incomingLink) == «EXPAND xpt::editor::VisualIDRegistry::visualID FOR il») {
-			«EXPAND impl::diagram::commands::DeleteLinkCommand::newRequest('r', 'incomingLink') FOR il-»
-			cmd.add(«EXPAND impl::diagram::commands::DeleteLinkCommand::newInstance('r') FOR il»);
-			cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), incomingLink));
-			continue;
-		}
-«ENDFOREACH-»
-	}
-«ENDIF-»
-«IF genOutgoingLinks->notEmpty()-»
-	for («EXPAND CodeStyle::G('java.util.Iterator', '?' /*FIXME Refactor once Notation model is Java5*/)» it = «view».getSourceEdges().iterator(); it.hasNext();) {
-		org.eclipse.gmf.runtime.notation.Edge outgoingLink = (org.eclipse.gmf.runtime.notation.Edge) it.next();
-«FOREACH genOutgoingLinks AS ol-»
-		if («EXPAND xpt::editor::VisualIDRegistry::getVisualIDMethodCall FOR getDiagram()»(outgoingLink) == «EXPAND xpt::editor::VisualIDRegistry::visualID FOR ol») {
-			«EXPAND impl::diagram::commands::DeleteLinkCommand::newRequest('r', 'outgoingLink') FOR ol-»
-			cmd.add(«EXPAND impl::diagram::commands::DeleteLinkCommand::newInstance('r') FOR ol»);
-			cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), outgoingLink));
-			continue;
-		}
-«ENDFOREACH-»
-	}
-«ENDIF-»
-«ENDDEFINE»
