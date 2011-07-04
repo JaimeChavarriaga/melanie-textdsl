@@ -25,7 +25,6 @@ import org.eclipse.emf.edit.ui.action.UndoAction;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionItem;
@@ -48,7 +47,6 @@ import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.part.ViewPart;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
@@ -154,19 +152,7 @@ public class VisualizationEditorView extends ViewPart implements ISelectionListe
 
 			    RedoAction redoAction = new RedoAction(domain);
 			    redoAction.setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_REDO));
-			    manager.add(redoAction);
-			    
-			    //manager.insertAfter("additions", standardOptionsManager);
-			    //actionBars.setGlobalActionHandler(ActionFactory.REDO.getId(), redoAction);
-			    
-//				Action a = new Action("Test Entry") {
-//					@Override
-//					public void run() {
-//						super.run();
-//					}
-//				};
-//				
-//				manager.add(a);
+			    manager.add(redoAction);			    
 			}
 		});
 		
@@ -175,6 +161,9 @@ public class VisualizationEditorView extends ViewPart implements ISelectionListe
 		getSite().registerContextMenu(menu, viewer);
 		
 		getSite().getPage().addSelectionListener(PLMDiagramEditor.ID ,this);
+		
+		//If diagram is already open we cannot subscribe via SelectionService
+		//IEditorPart part = getSite().getWorkbenchWindow().getActivePage().getActiveEditor();
 	}
 
 	/* (non-Javadoc)
