@@ -14,9 +14,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.edit.domain.IEditingDomainProvider;
+import org.eclipse.emf.edit.ui.action.CopyAction;
 import org.eclipse.emf.edit.ui.action.CreateChildAction;
 import org.eclipse.emf.edit.ui.action.CreateSiblingAction;
+import org.eclipse.emf.edit.ui.action.CutAction;
+import org.eclipse.emf.edit.ui.action.DeleteAction;
+import org.eclipse.emf.edit.ui.action.PasteAction;
+import org.eclipse.emf.edit.ui.action.RedoAction;
+import org.eclipse.emf.edit.ui.action.UndoAction;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
@@ -25,14 +30,11 @@ import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.IContributionManager;
-import org.eclipse.jface.action.IMenuCreator;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.action.SubContributionItem;
-import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -40,13 +42,13 @@ import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
-import org.eclipse.swt.events.HelpListener;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.ISelectionListener;
+import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.application.ActionBarAdvisor;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.part.ViewPart;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
@@ -116,6 +118,47 @@ public class VisualizationEditorView extends ViewPart implements ISelectionListe
 				manager.insertBefore("additions", createChildMenuManager);
 				manager.insertBefore("additions", createSiblingMenuManager);
 				
+				
+				EditingDomain domain = ((PLMDiagramEditor)getSite().getWorkbenchWindow().getActivePage().getActiveEditor()).getEditingDomain();
+				
+				ISharedImages sharedImages = PlatformUI.getWorkbench().getSharedImages();
+
+			    DeleteAction deleteAction = new DeleteAction(domain);
+			    deleteAction.selectionChanged((IStructuredSelection)viewer.getSelection());
+			    deleteAction.setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_DELETE));
+			    manager.add(deleteAction);
+			    //actionBars.setGlobalActionHandler(ActionFactory.DELETE.getId(), deleteAction);
+
+			    CutAction cutAction = new CutAction(domain);
+			    cutAction.selectionChanged((IStructuredSelection)viewer.getSelection());
+			    cutAction.setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_CUT));
+			    manager.add(cutAction);
+			    //actionBars.setGlobalActionHandler(ActionFactory.CUT.getId(), cutAction);
+
+			    CopyAction copyAction = new CopyAction(domain);
+			    copyAction.selectionChanged((IStructuredSelection)viewer.getSelection());
+			    copyAction.setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_COPY));
+			    manager.add(copyAction);
+			    //actionBars.setGlobalActionHandler(ActionFactory.COPY.getId(), copyAction);
+
+			    PasteAction pasteAction = new PasteAction(domain);
+			    pasteAction.selectionChanged((IStructuredSelection)viewer.getSelection());
+			    pasteAction.setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_PASTE));
+			    manager.add(pasteAction);
+			    //actionBars.setGlobalActionHandler(ActionFactory.PASTE.getId(), pasteAction);
+
+			    UndoAction undoAction = new UndoAction(domain);
+			    undoAction.setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_UNDO));
+			    manager.add(undoAction);
+			    //actionBars.setGlobalActionHandler(ActionFactory.UNDO.getId(), undoAction);
+
+			    RedoAction redoAction = new RedoAction(domain);
+			    redoAction.setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_REDO));
+			    manager.add(redoAction);
+			    
+			    //manager.insertAfter("additions", standardOptionsManager);
+			    //actionBars.setGlobalActionHandler(ActionFactory.REDO.getId(), redoAction);
+			    
 //				Action a = new Action("Test Entry") {
 //					@Override
 //					public void run() {
