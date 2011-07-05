@@ -8,7 +8,7 @@ create OUT:MOF from IN:PLM;
 helper def: diagram:MOF!Diagram = OclUndefined;
 
 
-helper def: test:String = 'TestContLess';
+helper context PLM!"O0::Step" def: test:String = 'Test';
 
 rule Start2Start {
 	from
@@ -28,7 +28,7 @@ rule Step2Step {
 		s : PLM!"O0::Step"
 	to 
 		t : MOF!Step (
-			name <- thisModule.test
+			name <- s.test
 		)
 	do{
 		thisModule.diagram.content <- thisModule.diagram.content->append(t);
