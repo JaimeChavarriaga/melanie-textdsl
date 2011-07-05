@@ -43,7 +43,8 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
-import org.eclipse.ui.ISelectionListener;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.INullSelectionListener;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
@@ -60,7 +61,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.provider.PLMItemProviderAda
  * @author User01
  *
  */
-public class VisualizationEditorView extends ViewPart implements ISelectionListener{
+public class VisualizationEditorView extends ViewPart implements INullSelectionListener{
 
 	/**
 	 * The ID of the view as specified by the extension.
@@ -160,10 +161,13 @@ public class VisualizationEditorView extends ViewPart implements ISelectionListe
 		viewer.getTree().setMenu(m);
 		getSite().registerContextMenu(menu, viewer);
 		
-		getSite().getPage().addSelectionListener(PLMDiagramEditor.ID ,this);
+//		getSite().getPage().addSelectionListener(PLMDiagramEditor.ID ,this);
+		getSite().getPage().addSelectionListener(this);
 		
 		//If diagram is already open we cannot subscribe via SelectionService
-		//IEditorPart part = getSite().getWorkbenchWindow().getActivePage().getActiveEditor();
+		IEditorPart part = getSite().getWorkbenchWindow().getActivePage().getActiveEditor();
+//		if (part instanceof PLMDiagramEditor)
+//			part.getSite().getPage().addSelectionListener(PLMDiagramEditor.ID, this);
 	}
 
 	/* (non-Javadoc)
@@ -206,8 +210,6 @@ public class VisualizationEditorView extends ViewPart implements ISelectionListe
 		 */
 		@Override
 		public void selectionChanged(SelectionChangedEvent event) {
-			
-			
 			// Remove any menu items for old selection.
 			//
 			if (createChildMenuManager != null) {
