@@ -243,22 +243,10 @@
             </children>
             <children
                 xsi:type="gmfgraph:Label"
-                name="EntityProximityInstantiationFigure">
-              <layoutData
-                  xsi:type="gmfgraph:GridLayoutData"
-                  grabExcessVerticalSpace="true"
-                  horizontalAlignment="BEGINNING"
-                  verticalSpan="4"/>
-              <font
-                  xsi:type="gmfgraph:BasicFont"/>
-            </children>
-            <children
-                xsi:type="gmfgraph:Label"
                 name="EntityPotencyLabel"
                 text="">
               <layoutData
                   xsi:type="gmfgraph:GridLayoutData"
-                  grabExcessHorizontalSpace="true"
                   grabExcessVerticalSpace="true"
                   verticalAlignment="END"
                   horizontalAlignment="BEGINNING"
@@ -269,11 +257,22 @@
             </children>
             <children
                 xsi:type="gmfgraph:Label"
+                name="EntityProximityInstantiationFigure">
+              <layoutData
+                  xsi:type="gmfgraph:GridLayoutData"
+                  grabExcessHorizontalSpace="true"
+                  grabExcessVerticalSpace="true"
+                  horizontalAlignment="BEGINNING"
+                  verticalSpan="4"/>
+              <font
+                  xsi:type="gmfgraph:BasicFont"/>
+            </children>
+            <children
+                xsi:type="gmfgraph:Label"
                 name="EntityLevelFigure"
                 text="">
               <layoutData
                   xsi:type="gmfgraph:GridLayoutData"
-                  grabExcessHorizontalSpace="true"
                   grabExcessVerticalSpace="true"
                   verticalAlignment="BEGINNING"
                   horizontalAlignment="BEGINNING"
@@ -301,7 +300,7 @@
       <accessors
           figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.0/@children.6"/>
       <accessors
-          figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.0/@children.4"/>
+          figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.0/@children.3"/>
       <accessors
           figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.0/@children.5"/>
       <accessors
@@ -309,7 +308,7 @@
       <accessors
           figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.0/@children.1"/>
       <accessors
-          figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.0/@children.3"/>
+          figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.0/@children.4"/>
     </descriptors>
     <descriptors
         name="EntityCompartmentFigure">
