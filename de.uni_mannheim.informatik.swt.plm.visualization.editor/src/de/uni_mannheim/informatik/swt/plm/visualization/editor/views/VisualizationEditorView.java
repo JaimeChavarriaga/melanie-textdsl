@@ -54,7 +54,8 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.presentation.PLMEditorPlugin;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.provider.PLMItemProviderAdapterFactory;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.visualization.VisualizationDescriptor;
+import de.uni_mannheim.informatik.swt.models.plm.visualization.VisualizationDescriptor;
+import de.uni_mannheim.informatik.swt.plm.provider.customfactory.PLMCustomItemProviderAdapterFactory;
 
 /**
  * Contains code from the EMF generated editor plug-in
@@ -99,7 +100,7 @@ public class VisualizationEditorView extends ViewPart implements INullSelectionL
 			}
 		});
 		
-		PLMItemProviderAdapterFactory factory = new PLMItemProviderAdapterFactory();
+		PLMCustomItemProviderAdapterFactory factory = new PLMCustomItemProviderAdapterFactory();
 		
 		viewer.setContentProvider(new AdapterFactoryContentProvider(factory));
 		viewer.setLabelProvider(new AdapterFactoryLabelProvider(factory));
