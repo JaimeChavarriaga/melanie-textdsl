@@ -43,7 +43,6 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
-import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.INullSelectionListener;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchPart;
@@ -58,7 +57,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.presentation.PLMEditorPlugi
 import de.uni_mannheim.informatik.swt.models.plm.PLM.provider.PLMItemProviderAdapterFactory;
 
 /**
- * @author User01
+ * Contains code from the EMF generated editor plug-in
  *
  */
 public class VisualizationEditorView extends ViewPart implements INullSelectionListener{
@@ -126,30 +125,25 @@ public class VisualizationEditorView extends ViewPart implements INullSelectionL
 			    deleteAction.selectionChanged((IStructuredSelection)viewer.getSelection());
 			    deleteAction.setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_DELETE));
 			    manager.add(deleteAction);
-			    //actionBars.setGlobalActionHandler(ActionFactory.DELETE.getId(), deleteAction);
 
 			    CutAction cutAction = new CutAction(domain);
 			    cutAction.selectionChanged((IStructuredSelection)viewer.getSelection());
 			    cutAction.setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_CUT));
 			    manager.add(cutAction);
-			    //actionBars.setGlobalActionHandler(ActionFactory.CUT.getId(), cutAction);
 
 			    CopyAction copyAction = new CopyAction(domain);
 			    copyAction.selectionChanged((IStructuredSelection)viewer.getSelection());
 			    copyAction.setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_COPY));
 			    manager.add(copyAction);
-			    //actionBars.setGlobalActionHandler(ActionFactory.COPY.getId(), copyAction);
 
 			    PasteAction pasteAction = new PasteAction(domain);
 			    pasteAction.selectionChanged((IStructuredSelection)viewer.getSelection());
 			    pasteAction.setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_PASTE));
 			    manager.add(pasteAction);
-			    //actionBars.setGlobalActionHandler(ActionFactory.PASTE.getId(), pasteAction);
 
 			    UndoAction undoAction = new UndoAction(domain);
 			    undoAction.setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_UNDO));
 			    manager.add(undoAction);
-			    //actionBars.setGlobalActionHandler(ActionFactory.UNDO.getId(), undoAction);
 
 			    RedoAction redoAction = new RedoAction(domain);
 			    redoAction.setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_REDO));
@@ -160,25 +154,12 @@ public class VisualizationEditorView extends ViewPart implements INullSelectionL
 		Menu m = menu.createContextMenu(viewer.getTree());
 		viewer.getTree().setMenu(m);
 		getSite().registerContextMenu(menu, viewer);
-		
+
+		//Better use this but does not work due to bug
 //		getSite().getPage().addSelectionListener(PLMDiagramEditor.ID ,this);
 		getSite().getPage().addSelectionListener(this);
-		
-		//If diagram is already open we cannot subscribe via SelectionService
-		IEditorPart part = getSite().getWorkbenchWindow().getActivePage().getActiveEditor();
-//		if (part instanceof PLMDiagramEditor)
-//			part.getSite().getPage().addSelectionListener(PLMDiagramEditor.ID, this);
 	}
-
-	/* (non-Javadoc)
-	 * @see org.eclipse.ui.part.WorkbenchPart#setFocus()
-	 */
-	@Override
-	public void setFocus() {
-		// TODO Auto-generated method stub
-
-	}
-
+	
 	@Override
 	public void selectionChanged(IWorkbenchPart part, ISelection selection) {
 		
@@ -225,12 +206,10 @@ public class VisualizationEditorView extends ViewPart implements INullSelectionL
 			Collection<?> newSiblingDescriptors = null;
 
 			ISelection selection = event.getSelection();
-			//ISelection selection = event.getSelection();
 			if (selection instanceof IStructuredSelection && ((IStructuredSelection)selection).size() == 1) {
 				Object object = ((IStructuredSelection)selection).getFirstElement();
 
 				EditingDomain domain = ((PLMDiagramEditor)getSite().getWorkbenchWindow().getActivePage().getActiveEditor()).getEditingDomain();
-				//EditingDomain domain = ((IEditingDomainProvider)activeEditorPart).getEditingDomain();
 
 				newChildDescriptors = domain.getNewChildDescriptors(object, null);
 				newSiblingDescriptors = domain.getNewChildDescriptors(null, object);
@@ -293,7 +272,6 @@ public class VisualizationEditorView extends ViewPart implements INullSelectionL
 				for (Object descriptor : descriptors) {
 					EditingDomain domain = ((PLMDiagramEditor)getSite().getWorkbenchWindow().getActivePage().getActiveEditor()).getEditingDomain();
 					actions.add(new CreateChildAction(domain, selection, descriptor));
-					//actions.add(new CreateChildAction(activeEditorPart, selection, descriptor));
 				}
 			}
 			return actions;
@@ -305,10 +283,25 @@ public class VisualizationEditorView extends ViewPart implements INullSelectionL
 				for (Object descriptor : descriptors) {
 					EditingDomain domain = ((PLMDiagramEditor)getSite().getWorkbenchWindow().getActivePage().getActiveEditor()).getEditingDomain();
 					actions.add(new CreateSiblingAction(domain, selection, descriptor));
-					//actions.add(new CreateSiblingAction(activeEditorPart, selection, descriptor));
 				}
 			}
 			return actions;
 		}
 	};
+	
+	/* (non-Javadoc)
+	 * @see org.eclipse.ui.part.WorkbenchPart#setFocus()
+	 */
+	@Override
+	public void setFocus() {
+		// Do nothing
+	}
+	
+	@Override
+	public void dispose() {
+		//Remove the listener
+		getSite().getPage().removeSelectionListener(this);
+		
+		super.dispose();
+	}
 }
