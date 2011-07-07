@@ -12,8 +12,10 @@ package de.uni_mannheim.informatik.swt.plm.visualization.editor.views;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.ui.action.CopyAction;
 import org.eclipse.emf.edit.ui.action.CreateChildAction;
 import org.eclipse.emf.edit.ui.action.CreateSiblingAction;
@@ -55,6 +57,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEdit
 import de.uni_mannheim.informatik.swt.models.plm.PLM.presentation.PLMEditorPlugin;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.provider.PLMItemProviderAdapterFactory;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.VisualizationDescriptor;
+import de.uni_mannheim.informatik.swt.models.plm.visualization.provider.FlowLayoutItemProvider;
 import de.uni_mannheim.informatik.swt.plm.provider.customfactory.PLMCustomItemProviderAdapterFactory;
 
 /**
@@ -75,7 +78,7 @@ public class VisualizationEditorView extends ViewPart implements INullSelectionL
 	MenuManager createSiblingMenuManager = new MenuManager(PLMEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item"));
 	Collection<IAction> createSiblingActions;
 	Collection<IAction> createChildActions;
-	
+	PLMCustomItemProviderAdapterFactory factory = new PLMCustomItemProviderAdapterFactory();
 	
 	/**
 	 * 
@@ -99,8 +102,6 @@ public class VisualizationEditorView extends ViewPart implements INullSelectionL
 				return (element instanceof Visualizer) || (element instanceof VisualizationDescriptor);
 			}
 		});
-		
-		PLMCustomItemProviderAdapterFactory factory = new PLMCustomItemProviderAdapterFactory();
 		
 		viewer.setContentProvider(new AdapterFactoryContentProvider(factory));
 		viewer.setLabelProvider(new AdapterFactoryLabelProvider(factory));
@@ -212,7 +213,13 @@ public class VisualizationEditorView extends ViewPart implements INullSelectionL
 
 				EditingDomain domain = ((PLMDiagramEditor)getSite().getWorkbenchWindow().getActivePage().getActiveEditor()).getEditingDomain();
 
-				newChildDescriptors = domain.getNewChildDescriptors(object, null);
+				   // If there is an adapter of the correct type...
+			    //
+			    IEditingDomainItemProvider provider = 
+			      (IEditingDomainItemProvider)
+			        factory.adapt(object, IEditingDomainItemProvider.class);
+			    
+			    newChildDescriptors = provider.getNewChildDescriptors(object, domain, null);
 				newSiblingDescriptors = domain.getNewChildDescriptors(null, object);
 			}
 
