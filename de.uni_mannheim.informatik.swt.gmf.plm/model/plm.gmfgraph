@@ -586,23 +586,10 @@
             </children>
             <children
                 xsi:type="gmfgraph:Label"
-                name="ConnectionProximityInstantiationFigure"
-                text="">
-              <layoutData
-                  xsi:type="gmfgraph:GridLayoutData"
-                  grabExcessVerticalSpace="true"
-                  horizontalAlignment="BEGINNING"
-                  verticalSpan="4"/>
-              <font
-                  xsi:type="gmfgraph:BasicFont"/>
-            </children>
-            <children
-                xsi:type="gmfgraph:Label"
                 name="ConnectionPotencyFigure"
                 text="">
               <layoutData
                   xsi:type="gmfgraph:GridLayoutData"
-                  grabExcessHorizontalSpace="true"
                   grabExcessVerticalSpace="true"
                   horizontalAlignment="BEGINNING"
                   verticalSpan="2"/>
@@ -614,11 +601,23 @@
             </children>
             <children
                 xsi:type="gmfgraph:Label"
-                name="ConnectionLevelFigure"
+                name="ConnectionProximityInstantiationFigure"
                 text="">
               <layoutData
                   xsi:type="gmfgraph:GridLayoutData"
                   grabExcessHorizontalSpace="true"
+                  grabExcessVerticalSpace="true"
+                  horizontalAlignment="BEGINNING"
+                  verticalSpan="4"/>
+              <font
+                  xsi:type="gmfgraph:BasicFont"/>
+            </children>
+            <children
+                xsi:type="gmfgraph:Label"
+                name="ConnectionLevelFigure"
+                text="">
+              <layoutData
+                  xsi:type="gmfgraph:GridLayoutData"
                   grabExcessVerticalSpace="true"
                   verticalAlignment="BEGINNING"
                   horizontalAlignment="BEGINNING"
@@ -665,9 +664,9 @@
       <accessors
           figure="//@figures.0/@descriptors.8/@actualFigure/@children.0/@children.0/@children.2"/>
       <accessors
-          figure="//@figures.0/@descriptors.8/@actualFigure/@children.0/@children.0/@children.3"/>
-      <accessors
           figure="//@figures.0/@descriptors.8/@actualFigure/@children.0/@children.0/@children.4"/>
+      <accessors
+          figure="//@figures.0/@descriptors.8/@actualFigure/@children.0/@children.0/@children.3"/>
       <accessors
           figure="//@figures.0/@descriptors.8/@actualFigure/@children.0/@children.0/@children.5"/>
       <accessors
