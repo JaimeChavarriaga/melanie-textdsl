@@ -12,7 +12,6 @@ package de.uni_mannheim.informatik.swt.plm.visualization.editor.views;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -55,9 +54,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.presentation.PLMEditorPlugin;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.provider.PLMItemProviderAdapterFactory;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.VisualizationDescriptor;
-import de.uni_mannheim.informatik.swt.models.plm.visualization.provider.FlowLayoutItemProvider;
 import de.uni_mannheim.informatik.swt.plm.provider.customfactory.PLMCustomItemProviderAdapterFactory;
 
 /**
@@ -213,14 +210,15 @@ public class VisualizationEditorView extends ViewPart implements INullSelectionL
 
 				EditingDomain domain = ((PLMDiagramEditor)getSite().getWorkbenchWindow().getActivePage().getActiveEditor()).getEditingDomain();
 
-				   // If there is an adapter of the correct type...
+				// If there is an adapter of the correct type...
 			    //
 			    IEditingDomainItemProvider provider = 
 			      (IEditingDomainItemProvider)
 			        factory.adapt(object, IEditingDomainItemProvider.class);
 			    
 			    newChildDescriptors = provider.getNewChildDescriptors(object, domain, null);
-				newSiblingDescriptors = domain.getNewChildDescriptors(null, object);
+				//Needs to be replaced with similar code as for children
+			    newSiblingDescriptors = domain.getNewChildDescriptors(null, object);
 			}
 
 			// Generate actions for selection; populate and redraw the menus.
@@ -235,7 +233,7 @@ public class VisualizationEditorView extends ViewPart implements INullSelectionL
 			if (createSiblingMenuManager != null) {
 				populateManager(createSiblingMenuManager, createSiblingActions, null);
 				createSiblingMenuManager.update(true);
-			}			
+			}
 		}
 		
 		protected void depopulateManager(IContributionManager manager, Collection<? extends IAction> actions) {
@@ -302,7 +300,6 @@ public class VisualizationEditorView extends ViewPart implements INullSelectionL
 	 */
 	@Override
 	public void setFocus() {
-		// Do nothing
 	}
 	
 	@Override
