@@ -322,6 +322,14 @@ public class VisualizationEditorView extends ViewPart implements INullSelectionL
 		
 	}
 	
+	@Override
+	public void dispose() {
+		//Remove the listener
+		getSite().getPage().removeSelectionListener(this);
+		
+		super.dispose();
+	}
+	
 	private class ChangeListener extends EContentAdapter{
 		
 		@Override
