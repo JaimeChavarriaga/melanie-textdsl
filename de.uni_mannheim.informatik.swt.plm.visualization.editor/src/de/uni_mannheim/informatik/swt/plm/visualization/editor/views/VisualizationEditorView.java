@@ -13,6 +13,12 @@ package de.uni_mannheim.informatik.swt.plm.visualization.editor.views;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.Notifier;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EContentAdapter;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.ui.action.CopyAction;
@@ -26,6 +32,7 @@ import org.eclipse.emf.edit.ui.action.UndoAction;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionItem;
@@ -54,6 +61,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.presentation.PLMEditorPlugin;
+import de.uni_mannheim.informatik.swt.models.plm.visualization.MappingLabelDescriptor;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.VisualizationDescriptor;
 import de.uni_mannheim.informatik.swt.plm.provider.customfactory.PLMCustomItemProviderAdapterFactory;
 
@@ -69,13 +77,15 @@ public class VisualizationEditorView extends ViewPart implements INullSelectionL
 	public static final String ID = "de.uni_mannheim.informatik.swt.plm.visualization.editor.views.VisualizationEditorView";
 	
 	TreeViewer viewer;
-	
+	EContentAdapter adapter;
 	//Used by the menuBuilder SelectionChangedListener
 	MenuManager createChildMenuManager = new MenuManager(PLMEditorPlugin.INSTANCE.getString("_UI_CreateChild_menu_item"));
 	MenuManager createSiblingMenuManager = new MenuManager(PLMEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item"));
 	Collection<IAction> createSiblingActions;
 	Collection<IAction> createChildActions;
 	PLMCustomItemProviderAdapterFactory factory = new PLMCustomItemProviderAdapterFactory();
+	EObject model = null;
+	ChangeListener modelListener = new ChangeListener();
 	
 	/**
 	 * 
@@ -151,9 +161,10 @@ public class VisualizationEditorView extends ViewPart implements INullSelectionL
 		});
 		
 		Menu m = menu.createContextMenu(viewer.getTree());
+		
 		viewer.getTree().setMenu(m);
 		getSite().registerContextMenu(menu, viewer);
-
+		
 		//Better use this but does not work due to bug
 //		getSite().getPage().addSelectionListener(PLMDiagramEditor.ID ,this);
 		getSite().getPage().addSelectionListener(this);
@@ -177,6 +188,18 @@ public class VisualizationEditorView extends ViewPart implements INullSelectionL
 		
 		Element ele = (Element)editPart.resolveSemanticElement();
 		viewer.setInput(ele);
+		
+		//We need to install/uninstall listeners to the model
+		EObject newModel = EcoreUtil.getRootContainer(ele);
+		if (newModel != model)
+		{
+			//No previous model
+			if (model != null)
+				model.eAdapters().remove(modelListener);
+			
+			model = newModel;
+			model.eAdapters().add(modelListener); 
+		}
 	}
 	
 	ISelectionChangedListener menuBuilder = new ISelectionChangedListener() {
@@ -294,19 +317,24 @@ public class VisualizationEditorView extends ViewPart implements INullSelectionL
 			return actions;
 		}
 	};
-	
-	/* (non-Javadoc)
-	 * @see org.eclipse.ui.part.WorkbenchPart#setFocus()
-	 */
+
 	@Override
 	public void setFocus() {
+		// TODO Auto-generated method stub
+		
 	}
 	
-	@Override
-	public void dispose() {
-		//Remove the listener
-		getSite().getPage().removeSelectionListener(this);
+	private class ChangeListener extends EContentAdapter{
 		
-		super.dispose();
+		@Override
+		public void notifyChanged(Notification notification) {
+			super.notifyChanged(notification);
+			
+			viewer.refresh();
+			if (viewer.getTree().getSelection().length > 0)
+				viewer.getTree().getSelection()[0].setExpanded(true);
+			viewer.refresh();
+		}
+		
 	}
 }
