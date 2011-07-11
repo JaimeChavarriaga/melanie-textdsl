@@ -11,6 +11,8 @@
 
 package de.uni_mannheim.informatik.swt.models.plm.diagram.custom;
 
+import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
@@ -60,10 +62,17 @@ public class VisualizationPropertySectionAbstractPropertySection extends
 	CCombo visualizerSelectionCombo = null;
 	List<Visualizer> visualizers = null;
 	TableViewer viewer;
+
+	private ISelection selection;
+	private IWorkbenchPart part;
+	
 	
 	@Override
 	public void setInput(IWorkbenchPart part, ISelection selection) {
 		super.setInput(part, selection);
+		
+		this.part = part;
+		this.selection = selection;
 		
 		if (selection instanceof StructuredSelection
 				&& ((StructuredSelection) selection).getFirstElement() instanceof IGraphicalEditPart)
@@ -137,7 +146,7 @@ public class VisualizationPropertySectionAbstractPropertySection extends
 		table.setLinesVisible(true);
 		
 		//Add ContentProviders
-		viewer.setContentProvider(ArrayContentProvider.getInstance());
+		viewer.setContentProvider(new VisualizerContentProvider());
 		
 		TableViewerColumn keyColumn = new TableViewerColumn(viewer, SWT.NONE);
 		keyColumn.getColumn().setText("Name");
@@ -178,21 +187,30 @@ public class VisualizationPropertySectionAbstractPropertySection extends
 				String keyValuePair = (String)element;
 				String key = keyValuePair.substring(0, keyValuePair.indexOf("=")).trim();
 				
-				int oldIndex  = -1;
-				for (String s : visualizer.getAttributes())
-					if (s.equals(element))
-					{
-						oldIndex = visualizer.getAttributes().indexOf(s);
-						break;
-					}
-				
-				CommandParameter parameters = new CommandParameter(visualizer, PLMPackageImpl.eINSTANCE.getVisualizer_Attributes(), key + "= " + value, oldIndex);
+				CommandParameter parameters = null;
+				//The durability is a special case
+				if ("durability".equals(key)){
+					parameters = new CommandParameter(visualizer, PLMPackageImpl.eINSTANCE.getVisualizer_Durability(), Integer.parseInt((String) value));
+				}
+				else
+				{
+					int oldIndex  = -1;
+					for (String s : visualizer.getAttributes())
+						if (s.equals(element))
+						{
+							oldIndex = visualizer.getAttributes().indexOf(s);
+							break;
+						}
+					
+					parameters = new CommandParameter(visualizer, PLMPackageImpl.eINSTANCE.getVisualizer_Attributes(), key + "= " + value, oldIndex);
+				}
 				
 				Command cmd = selectedElement.getEditingDomain().createCommand(SetCommand.class, parameters);
 				selectedElement.getEditingDomain().getCommandStack().execute(cmd);
 				
 				selectedElement.performRequest(new Request(RequestConstants.REQ_REFRESH));
 				viewer.refresh();
+				setInput(part, selection);
 			}
 			
 			@Override
@@ -212,16 +230,23 @@ public class VisualizationPropertySectionAbstractPropertySection extends
 			protected boolean canEdit(Object element) {
 				return true;
 			}
-		});
-		
-		//viewer.setInput(new Object[]{});
-		
-		/*FormData data = new FormData();
-		data.left = new FormAttachment(0, STANDARD_LABEL_WIDTH);
-		data.right = new FormAttachment(100, 0);
-		data.top = new FormAttachment(0, ITabbedPropertyConstants.VSPACE);*/
-		
-		
+		});		
+	}
+	
+	private class VisualizerContentProvider extends ArrayContentProvider{
+		@Override
+		public Object[] getElements(Object inputElement) {
+			
+			//Durability needs to be added
+			LinkedList<Object> elementsPlusTraits = new LinkedList<Object>();
+			Visualizer v = visualizers.get(visualizerSelectionCombo.getSelectionIndex());
+			elementsPlusTraits.add("durability= " + v.getDurability());
+			
+			//Append the attributes list
+			elementsPlusTraits.addAll(Arrays.asList(super.getElements(inputElement)));
+			
+			return elementsPlusTraits.toArray();
+		}
 	}
 
 }
