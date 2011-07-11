@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
+import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.ui.action.CopyAction;
 import org.eclipse.emf.edit.ui.action.CreateChildAction;
 import org.eclipse.emf.edit.ui.action.CreateSiblingAction;
@@ -29,6 +30,7 @@ import org.eclipse.emf.edit.ui.action.RedoAction;
 import org.eclipse.emf.edit.ui.action.UndoAction;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.emf.edit.ui.provider.PropertySource;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IAction;
@@ -41,8 +43,10 @@ import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.action.SubContributionItem;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
@@ -65,7 +69,7 @@ import de.uni_mannheim.informatik.swt.plm.provider.customfactory.PLMCustomItemPr
  * Contains code from the EMF generated editor plug-in
  *
  */
-public class VisualizationEditorView extends ViewPart implements INullSelectionListener{
+public class VisualizationEditorView extends ViewPart implements INullSelectionListener, ISelectionProvider{
 
 	/**
 	 * The ID of the view as specified by the extension.
@@ -164,6 +168,7 @@ public class VisualizationEditorView extends ViewPart implements INullSelectionL
 		//Better use this but does not work due to bug
 //		getSite().getPage().addSelectionListener(PLMDiagramEditor.ID ,this);
 		getSite().getPage().addSelectionListener(this);
+		getSite().setSelectionProvider(this);
 	}
 	
 	@Override
@@ -341,6 +346,38 @@ public class VisualizationEditorView extends ViewPart implements INullSelectionL
 				viewer.getTree().getSelection()[0].setExpanded(true);
 			viewer.refresh();
 		}
+		
+	}
+
+	@Override
+	public void addSelectionChangedListener(ISelectionChangedListener listener) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public ISelection getSelection() {
+		IStructuredSelection selection = (IStructuredSelection)viewer.getSelection();
+		
+		 if (selection.getFirstElement() == null)
+		   return StructuredSelection.EMPTY; 
+				
+		 IItemPropertySource source = (IItemPropertySource)factory.adapt(selection.getFirstElement(), IItemPropertySource.class);
+				
+		 return new StructuredSelection(new PropertySource(selection.getFirstElement(), source));
+
+	}
+
+	@Override
+	public void removeSelectionChangedListener(
+			ISelectionChangedListener listener) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setSelection(ISelection selection) {
+		// TODO Auto-generated method stub
 		
 	}
 }
