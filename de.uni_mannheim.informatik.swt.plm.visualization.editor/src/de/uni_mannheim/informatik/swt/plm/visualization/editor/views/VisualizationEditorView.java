@@ -329,9 +329,12 @@ public class VisualizationEditorView extends ViewPart implements INullSelectionL
 	
 	@Override
 	public void dispose() {
-		//Remove the listener
-		getSite().getPage().removeSelectionListener(this);
-		getSite().setSelectionProvider(null);
+		//Throws exception if workbench is closing -> We do not care about this
+		try{
+			//Remove the listener
+			getSite().getPage().removeSelectionListener(this);
+			getSite().setSelectionProvider(null);
+		}catch(Exception ex){}
 		
 		super.dispose();
 	}
