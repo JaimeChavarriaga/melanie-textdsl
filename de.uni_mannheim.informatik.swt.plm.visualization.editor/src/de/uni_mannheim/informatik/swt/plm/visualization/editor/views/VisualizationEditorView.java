@@ -13,9 +13,7 @@ package de.uni_mannheim.informatik.swt.plm.visualization.editor.views;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -32,7 +30,6 @@ import org.eclipse.emf.edit.ui.action.UndoAction;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionItem;
@@ -61,7 +58,6 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.presentation.PLMEditorPlugin;
-import de.uni_mannheim.informatik.swt.models.plm.visualization.MappingLabelDescriptor;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.VisualizationDescriptor;
 import de.uni_mannheim.informatik.swt.plm.provider.customfactory.PLMCustomItemProviderAdapterFactory;
 
@@ -200,6 +196,8 @@ public class VisualizationEditorView extends ViewPart implements INullSelectionL
 			model = newModel;
 			model.eAdapters().add(modelListener); 
 		}
+		
+		viewer.expandAll();
 	}
 	
 	ISelectionChangedListener menuBuilder = new ISelectionChangedListener() {
