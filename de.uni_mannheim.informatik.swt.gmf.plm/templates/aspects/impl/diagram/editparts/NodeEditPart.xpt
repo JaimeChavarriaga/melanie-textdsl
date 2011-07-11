@@ -36,3 +36,30 @@
 		«targetDef.proceed()»
 	«ENDIF»
 «ENDAROUND»
+
+«REM»Needed to have connections only starting in the middle of each side«ENDREM»
+«AROUND setupNodePlate FOR gmfgen::GenNode»
+		«IF self.editPartClassName = 'ConnectionEditPart' 
+		or self.editPartClassName = 'BinaryGeneralizationEditPart'
+		or self.editPartClassName = 'MultipleSpecializationEditPart'
+		or self.editPartClassName = 'MultipleGeneralizationEditPart'
+		or self.editPartClassName = 'InversionEditPart'
+		or self.editPartClassName = 'EqualityEditPart'
+		or self.editPartClassName = 'ComplementEditPart'
+		»
+		
+			if (true){
+				java.util.HashMap<String, org.eclipse.draw2d.geometry.PrecisionPoint> anchorLocations = new java.util.HashMap<String, org.eclipse.draw2d.geometry.PrecisionPoint>();
+				anchorLocations.put("WEST", new org.eclipse.draw2d.geometry.PrecisionPoint(0, 0.5d));
+				anchorLocations.put("EAST", new org.eclipse.draw2d.geometry.PrecisionPoint(1d, 0.5d));
+				anchorLocations.put("NORTH", new org.eclipse.draw2d.geometry.PrecisionPoint(0.5d, 0));
+				anchorLocations.put("SOUTH", new org.eclipse.draw2d.geometry.PrecisionPoint(0.5d, 1d));
+		
+				result = new de.uni_mannheim.informatik.swt.gmf.figures.DefaultSizeNodeFixedAnchors(40, 40, anchorLocations);
+		
+				return result;
+			}
+		«ELSE»
+		«targetDef.proceed()»
+		«ENDIF»
+«ENDAROUND»
