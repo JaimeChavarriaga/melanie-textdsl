@@ -331,6 +331,7 @@ public class VisualizationEditorView extends ViewPart implements INullSelectionL
 	public void dispose() {
 		//Remove the listener
 		getSite().getPage().removeSelectionListener(this);
+		getSite().setSelectionProvider(null);
 		
 		super.dispose();
 	}
