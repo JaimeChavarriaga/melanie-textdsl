@@ -74,7 +74,6 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.presentation.PLMEditorPlugi
 import de.uni_mannheim.informatik.swt.models.plm.PLM.provider.PLMItemProviderAdapterFactory;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.VisualizationDescriptor;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.provider.VisualizationItemProviderAdapterFactory;
-import de.uni_mannheim.informatik.swt.plm.provider.customfactory.PLMCustomItemProviderAdapterFactory;
 
 /**
  * Contains code from the EMF generated editor plug-in
