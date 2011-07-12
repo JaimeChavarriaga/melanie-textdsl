@@ -120,6 +120,10 @@ public class VisualizationEditorView extends ViewPart implements INullSelectionL
 	
 	public IPropertySheetPage getPropertySheetPage() {
 		if (propertySheetPage == null) {
+			if (getSite().getWorkbenchWindow().getActivePage().getActiveEditor() == null ||
+					! (getSite().getWorkbenchWindow().getActivePage().getActiveEditor() instanceof PLMDiagramEditor))
+				return null;
+			
 			EditingDomain domain = ((PLMDiagramEditor)getSite().getWorkbenchWindow().getActivePage().getActiveEditor()).getEditingDomain();
 			propertySheetPage =
 				new ExtendedPropertySheetPage((AdapterFactoryEditingDomain) domain) {
@@ -403,6 +407,7 @@ public class VisualizationEditorView extends ViewPart implements INullSelectionL
 			//Remove the listener
 			getSite().getPage().removeSelectionListener(this);
 			getSite().setSelectionProvider(null);
+			propertySheetPage = null;
 		}catch(Exception ex){}
 		
 		super.dispose();
