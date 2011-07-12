@@ -51,10 +51,10 @@
 			if (true){
 				java.util.HashMap<String, org.eclipse.draw2d.geometry.PrecisionPoint> anchorLocations = new java.util.HashMap<String, org.eclipse.draw2d.geometry.PrecisionPoint>();
 				
-				anchorLocations.put("N", new org.eclipse.draw2d.geometry.PrecisionPoint(0.5d, 0));
-				anchorLocations.put("E", new org.eclipse.draw2d.geometry.PrecisionPoint(1d, 0.5d));
-				anchorLocations.put("S", new org.eclipse.draw2d.geometry.PrecisionPoint(0.5d, 1d));
-				anchorLocations.put("W", new org.eclipse.draw2d.geometry.PrecisionPoint(0, 0.5d));
+				anchorLocations.put("NORTH", new org.eclipse.draw2d.geometry.PrecisionPoint(0.5d, 0));
+				anchorLocations.put("EAST", new org.eclipse.draw2d.geometry.PrecisionPoint(1d, 0.5d));
+				anchorLocations.put("SOUTH", new org.eclipse.draw2d.geometry.PrecisionPoint(0.5d, 1d));
+				anchorLocations.put("WEST", new org.eclipse.draw2d.geometry.PrecisionPoint(0, 0.5d));
 		
 				result = new de.uni_mannheim.informatik.swt.gmf.figures.DefaultSizeNodeFixedAnchors(40, 40, anchorLocations);
 		

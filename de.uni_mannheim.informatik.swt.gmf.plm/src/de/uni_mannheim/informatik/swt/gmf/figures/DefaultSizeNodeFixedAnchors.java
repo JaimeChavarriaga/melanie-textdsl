@@ -78,7 +78,7 @@ public class DefaultSizeNodeFixedAnchors extends DefaultSizeNodeFigure {
 		
 		for (String terminal : anchors.keySet())
 		{
-			if (distance < point.getDistance(anchors.get(terminal).getLocation())) {
+			if (distance > point.getDistance(anchors.get(terminal).getLocation())) {
 				distance = point.getDistance(anchors.get(terminal).getLocation());
 				nearestTerminal = terminal;
 			}
