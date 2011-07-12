@@ -69,6 +69,13 @@
             name="LML Editing">
       </category>
    </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="de.uni_mannheim.informatik.swt.lmlcategory_views"
+            name="LML Editing">
+      </category>
+   </extension>
 	<extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs" id="proptabs">
       <propertyTabs contributorId="de.uni_mannheim.informatik.swt.models.plm.diagram">
           <propertyTab
