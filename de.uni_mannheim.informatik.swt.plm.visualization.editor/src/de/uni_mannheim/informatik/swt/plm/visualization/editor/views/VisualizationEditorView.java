@@ -21,7 +21,10 @@ import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
+import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
+import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
 import org.eclipse.emf.edit.ui.action.CopyAction;
 import org.eclipse.emf.edit.ui.action.CreateChildAction;
 import org.eclipse.emf.edit.ui.action.CreateSiblingAction;
@@ -68,7 +71,9 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.presentation.PLMEditorPlugin;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.provider.PLMItemProviderAdapterFactory;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.VisualizationDescriptor;
+import de.uni_mannheim.informatik.swt.models.plm.visualization.provider.VisualizationItemProviderAdapterFactory;
 import de.uni_mannheim.informatik.swt.plm.provider.customfactory.PLMCustomItemProviderAdapterFactory;
 
 /**
@@ -89,7 +94,7 @@ public class VisualizationEditorView extends ViewPart implements INullSelectionL
 	MenuManager createSiblingMenuManager = new MenuManager(PLMEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item"));
 	Collection<IAction> createSiblingActions;
 	Collection<IAction> createChildActions;
-	PLMCustomItemProviderAdapterFactory factory = new PLMCustomItemProviderAdapterFactory();
+	ComposedAdapterFactory factory;
 	EObject model = null;
 	ChangeListener modelListener = new ChangeListener();public void addPropertyListener(org.eclipse.ui.IPropertyListener listener) {};
 	PropertySheetPage propertySheetPage;
@@ -164,6 +169,13 @@ public class VisualizationEditorView extends ViewPart implements INullSelectionL
 				return (element instanceof Visualizer) || (element instanceof VisualizationDescriptor);
 			}
 		});
+		
+		factory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
+
+		factory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
+		factory.addAdapterFactory(new PLMItemProviderAdapterFactory());
+		factory.addAdapterFactory(new VisualizationItemProviderAdapterFactory());
+		factory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 		
 		viewer.setContentProvider(new AdapterFactoryContentProvider(factory));
 		viewer.setLabelProvider(new AdapterFactoryLabelProvider(factory));
@@ -420,15 +432,6 @@ public class VisualizationEditorView extends ViewPart implements INullSelectionL
 
 	@Override
 	public ISelection getSelection() {
-//		IStructuredSelection selection = (IStructuredSelection)viewer.getSelection();
-//		
-//		 if (selection.getFirstElement() == null)
-//		   return StructuredSelection.EMPTY; 
-//				
-//		 IItemPropertySource source = (IItemPropertySource)factory.adapt(selection.getFirstElement(), IItemPropertySource.class);
-//				
-//		 return new StructuredSelection(new PropertySource(selection.getFirstElement(), source));
-				
 		return viewer.getSelection();
 	}
 
