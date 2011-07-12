@@ -4,14 +4,10 @@
 
    <extension
          point="org.eclipse.ui.views">
-      <category
-            name="Visualization"
-            id="de.uni_mannheim.informatik.swt.plm.visualization">
-      </category>
       <view
             name="Visualization Editor"
-            icon="icons/sample.gif"
-            category="de.uni_mannheim.informatik.swt.plm.visualization"
+            icon="icons/visualizer_transp.gif"
+            category="de.uni_mannheim.informatik.swt.lmlcategory_views"
             class="de.uni_mannheim.informatik.swt.plm.visualization.editor.views.VisualizationEditorView"
             id="de.uni_mannheim.informatik.swt.plm.visualization.editor.views.VisualizationEditorView">
       </view>
