@@ -12,25 +12,28 @@ package de.uni_mannheim.informatik.swt.plm.visualization.editor.views;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedList;
+import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.ui.action.CopyAction;
 import org.eclipse.emf.edit.ui.action.CreateChildAction;
 import org.eclipse.emf.edit.ui.action.CreateSiblingAction;
 import org.eclipse.emf.edit.ui.action.CutAction;
 import org.eclipse.emf.edit.ui.action.DeleteAction;
+import org.eclipse.emf.edit.ui.action.EditingDomainActionBarContributor;
 import org.eclipse.emf.edit.ui.action.PasteAction;
 import org.eclipse.emf.edit.ui.action.RedoAction;
 import org.eclipse.emf.edit.ui.action.UndoAction;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.emf.edit.ui.provider.PropertySource;
+import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IAction;
@@ -46,17 +49,20 @@ import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
-import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
+import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.INullSelectionListener;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.ide.IGotoMarker;
 import org.eclipse.ui.part.ViewPart;
+import org.eclipse.ui.views.properties.IPropertySheetPage;
+import org.eclipse.ui.views.properties.PropertySheetPage;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer;
@@ -85,7 +91,56 @@ public class VisualizationEditorView extends ViewPart implements INullSelectionL
 	Collection<IAction> createChildActions;
 	PLMCustomItemProviderAdapterFactory factory = new PLMCustomItemProviderAdapterFactory();
 	EObject model = null;
-	ChangeListener modelListener = new ChangeListener();
+	ChangeListener modelListener = new ChangeListener();public void addPropertyListener(org.eclipse.ui.IPropertyListener listener) {};
+	PropertySheetPage propertySheetPage;
+	
+	/**
+	 * This is how the framework determines which interfaces we implement.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("rawtypes")
+	@Override
+	public Object getAdapter(Class key) {
+		if (key.equals(IPropertySheetPage.class)) {
+			return getPropertySheetPage();
+		}
+		else if (key.equals(IGotoMarker.class)) {
+			return this;
+		}
+		else {
+			return super.getAdapter(key);
+		}
+	}
+	
+	public IPropertySheetPage getPropertySheetPage() {
+		if (propertySheetPage == null) {
+			EditingDomain domain = ((PLMDiagramEditor)getSite().getWorkbenchWindow().getActivePage().getActiveEditor()).getEditingDomain();
+			propertySheetPage =
+				new ExtendedPropertySheetPage((AdapterFactoryEditingDomain) domain) {
+					@Override
+					public void setSelectionToViewer(List<?> selection) {
+						this.setSelectionToViewer(selection);
+						this.setFocus();
+					}
+
+					@Override
+					public void setActionBars(IActionBars actionBars) {
+						super.setActionBars(actionBars);
+						//getActionBarContributor().shareGlobalActions(this, actionBars);
+					}
+				};
+			propertySheetPage.setPropertySourceProvider(new AdapterFactoryContentProvider(factory));
+		}
+
+		return propertySheetPage;
+	}
+	
+	public EditingDomainActionBarContributor getActionBarContributor() {
+		return null; //(EditingDomainActionBarContributor)getEditorSite().getActionBarContributor();
+	}
+
 	
 	/**
 	 * 
@@ -260,6 +315,9 @@ public class VisualizationEditorView extends ViewPart implements INullSelectionL
 				populateManager(createSiblingMenuManager, createSiblingActions, null);
 				createSiblingMenuManager.update(true);
 			}
+			
+			setSelection(selection);
+			propertySheetPage.refresh();
 		}
 		
 		protected void depopulateManager(IContributionManager manager, Collection<? extends IAction> actions) {
@@ -352,36 +410,42 @@ public class VisualizationEditorView extends ViewPart implements INullSelectionL
 		}
 		
 	}
+	
+	List<ISelectionChangedListener> listeners = new LinkedList<ISelectionChangedListener>();
 
 	@Override
 	public void addSelectionChangedListener(ISelectionChangedListener listener) {
-		// TODO Auto-generated method stub
-		
+		listeners.add(listener);		
 	}
 
 	@Override
 	public ISelection getSelection() {
-		IStructuredSelection selection = (IStructuredSelection)viewer.getSelection();
-		
-		 if (selection.getFirstElement() == null)
-		   return StructuredSelection.EMPTY; 
+//		IStructuredSelection selection = (IStructuredSelection)viewer.getSelection();
+//		
+//		 if (selection.getFirstElement() == null)
+//		   return StructuredSelection.EMPTY; 
+//				
+//		 IItemPropertySource source = (IItemPropertySource)factory.adapt(selection.getFirstElement(), IItemPropertySource.class);
+//				
+//		 return new StructuredSelection(new PropertySource(selection.getFirstElement(), source));
 				
-		 IItemPropertySource source = (IItemPropertySource)factory.adapt(selection.getFirstElement(), IItemPropertySource.class);
-				
-		 return new StructuredSelection(new PropertySource(selection.getFirstElement(), source));
-
+		return viewer.getSelection();
 	}
 
 	@Override
 	public void removeSelectionChangedListener(
 			ISelectionChangedListener listener) {
-		// TODO Auto-generated method stub
-		
+		listeners.remove(listener);
 	}
 
+	ISelection viewSelection;
+	
 	@Override
 	public void setSelection(ISelection selection) {
-		// TODO Auto-generated method stub
 		
+		for (ISelectionChangedListener l : listeners)
+			l.selectionChanged(new SelectionChangedEvent(viewer, selection));
+		
+		viewSelection = selection;
 	}
 }
