@@ -53,6 +53,16 @@
                label="%action.label.0">
          </action>
       </objectContribution>
+       <objectContribution
+             adaptable="false"
+             id="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.dsl"
+             objectClass="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.EntityEditPart">
+          <action
+                class="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.DSL"
+                id="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.addvisualizationaction"
+                label="DSL">
+          </action>
+       </objectContribution>
    </extension>
    <extension
          point="org.eclipse.ui.perspectives">
