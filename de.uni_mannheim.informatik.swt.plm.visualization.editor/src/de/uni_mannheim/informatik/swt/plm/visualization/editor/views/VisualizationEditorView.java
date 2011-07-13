@@ -72,6 +72,8 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.presentation.PLMEditorPlugin;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.provider.PLMItemProviderAdapterFactory;
+import de.uni_mannheim.informatik.swt.models.plm.visualization.LayoutInformationDescriptor;
+import de.uni_mannheim.informatik.swt.models.plm.visualization.Point;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.VisualizationDescriptor;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.provider.VisualizationItemProviderAdapterFactory;
 
@@ -169,7 +171,8 @@ public class VisualizationEditorView extends ViewPart implements INullSelectionL
 			
 			@Override
 			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof Visualizer) || (element instanceof VisualizationDescriptor);
+				return (element instanceof Visualizer) || (element instanceof VisualizationDescriptor) 
+					|| (element instanceof Point) || (element instanceof LayoutInformationDescriptor);
 			}
 		});
 		
