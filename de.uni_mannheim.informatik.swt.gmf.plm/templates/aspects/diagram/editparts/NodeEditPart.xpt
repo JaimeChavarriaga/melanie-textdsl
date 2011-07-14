@@ -34,6 +34,7 @@
 		or self.editPartClassName = 'ConnectionEditPart'»
 
 	«EXPAND doElide-»
+	«EXPAND updateDSL-»
 «ENDIF»
 «IF self.editPartClassName = 'EntityEditPart'
 		or self.editPartClassName = 'ConnectionEditPart'
@@ -1226,5 +1227,37 @@
 		//Hide the outer label
 		((org.eclipse.draw2d.IFigure) borderItemContainer.getChildren().get(0)).setVisible(false);
 		«ENDIF»
+	}
+«ENDDEFINE»
+
+«DEFINE updateDSL FOR gmfgen::GenNode»
+	public void updateDSL() {
+		
+		if (((de.uni_mannheim.informatik.swt.models.plm.PLM.Element)resolveSemanticElement()).getVisualizer().size() == 0)
+			return;
+		
+		de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer v = ((de.uni_mannheim.informatik.swt.models.plm.PLM.Element)resolveSemanticElement()).getVisualizer().get(0);
+		
+		if (v.getChild() == null)
+			return;
+		
+		//Clear the children editparts in the right way <> children.clear
+		while (children.size() > 0)
+			children.remove(0);
+		
+		figure.getChildren().clear();
+		
+		//figure.setLayoutManager(new ToolbarLayout());
+		
+		de.uni_mannheim.informatik.swt.models.plm.diagram.custom.ModelToFigureTransfomator tranformator = new de.uni_mannheim.informatik.swt.models.plm.diagram.custom.ModelToFigureTransfomator(v);
+		org.eclipse.draw2d.IFigure customFigure = tranformator.run();
+		
+		customFigure.setParent(figure);
+		figure.add(customFigure);
+		
+		figure.invalidateTree();
+		refreshVisuals();
+		performRequest(new org.eclipse.gef.Request.Request(Object)(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
+		figure.repaint();
 	}
 «ENDDEFINE»
