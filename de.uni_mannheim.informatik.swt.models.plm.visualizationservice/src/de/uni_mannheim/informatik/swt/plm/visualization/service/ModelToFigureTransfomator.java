@@ -26,6 +26,7 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
+import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.ocl.ParserException;
 import org.eclipse.ocl.ecore.Constraint;
 import org.eclipse.ocl.expressions.OCLExpression;
@@ -187,10 +188,10 @@ public class ModelToFigureTransfomator {
 		if (desc.getFont() != null)
 		{
 			FontDescriptor fontDesc = desc.getFont();
-			FontData fd = new FontData(fontDesc.getFontName(), fontDesc.getSize(), 
+			org.eclipse.jface.resource.FontDescriptor fd = org.eclipse.jface.resource.FontDescriptor.createFrom(fontDesc.getFontName(), fontDesc.getSize(), 
 					fontDesc.getFontStyle() == FontStyle.NORMAL? SWT.NORMAL : 
 						fontDesc.getFontStyle() == FontStyle.ITALICS ? SWT.ITALIC : SWT.BOLD);
-			label.setFont(new Font(PlatformUI.getWorkbench().getDisplay(), fd));
+			label.setFont(JFaceResources.getResources(PlatformUI.getWorkbench().getDisplay()).createFont(fd));
 		}
 		//Execute the OCL expression to get the value
 		de.uni_mannheim.informatik.swt.models.plm.PLM.Feature[] feature = new de.uni_mannheim.informatik.swt.models.plm.PLM.Feature[] {};
