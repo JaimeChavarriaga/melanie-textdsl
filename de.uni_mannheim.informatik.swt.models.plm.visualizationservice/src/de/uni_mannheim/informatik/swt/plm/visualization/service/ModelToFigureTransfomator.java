@@ -32,6 +32,8 @@ import org.eclipse.ocl.expressions.OCLExpression;
 import org.eclipse.ocl.helper.OCLHelper;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Font;
+import org.eclipse.swt.graphics.FontData;
 import org.eclipse.ui.PlatformUI;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
@@ -40,6 +42,8 @@ import de.uni_mannheim.informatik.swt.models.plm.visualization.Alignment;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.ColorConstant;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.ExpressionLabel;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.FlowLayout;
+import de.uni_mannheim.informatik.swt.models.plm.visualization.FontDescriptor;
+import de.uni_mannheim.informatik.swt.models.plm.visualization.FontStyle;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.LayoutContentDescriptor;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.LayoutDescriptor;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.LayoutInformationDescriptor;
@@ -180,6 +184,14 @@ public class ModelToFigureTransfomator {
 		label.setBackgroundColor(colorConstant2Color(desc.getBackgroundColor()));
 		label.setForegroundColor(colorConstant2Color(desc.getForegroundColor()));
 		
+		if (desc.getFont() != null)
+		{
+			FontDescriptor fontDesc = desc.getFont();
+			FontData fd = new FontData(fontDesc.getFontName(), fontDesc.getSize(), 
+					fontDesc.getFontStyle() == FontStyle.NORMAL? SWT.NORMAL : 
+						fontDesc.getFontStyle() == FontStyle.ITALICS ? SWT.ITALIC : SWT.BOLD);
+			label.setFont(new Font(PlatformUI.getWorkbench().getDisplay(), fd));
+		}
 		//Execute the OCL expression to get the value
 		de.uni_mannheim.informatik.swt.models.plm.PLM.Feature[] feature = new de.uni_mannheim.informatik.swt.models.plm.PLM.Feature[] {};
 
