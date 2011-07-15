@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Visualizationservice
-Bundle-SymbolicName: de.uni_mannheim.informatik.swt.models.plm.visualizationservice
+Bundle-SymbolicName: de.uni_mannheim.informatik.swt.plm.visualization.service
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: de.uni_mannheim.informatik.swt.models.plm.visualizationservice.Activator
+Bundle-Activator: de.uni_mannheim.informatik.swt.plm.visualization.service.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.draw2d;bundle-version="3.7.0",
@@ -12,4 +12,4 @@ Require-Bundle: org.eclipse.ui,
  de.uni_mannheim.informatik.swt.models.plm;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: de.uni_mannheim.informatik.swt.models.plm.visualizationservice
+Export-Package: de.uni_mannheim.informatik.swt.plm.visualization.service

@@ -1,4 +1,4 @@
-package de.uni_mannheim.informatik.swt.models.plm.visualizationservice;
+package de.uni_mannheim.informatik.swt.plm.visualization.service;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;

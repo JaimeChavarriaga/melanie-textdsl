@@ -8,7 +8,7 @@
  * Contributors:
  *    Ralph Gerbig - initial API and implementation and initial documentation
  *******************************************************************************/ 
-package de.uni_mannheim.informatik.swt.models.plm.visualizationservice;
+package de.uni_mannheim.informatik.swt.plm.visualization.service;
 
 import java.util.HashMap;
 import java.util.HashSet;
