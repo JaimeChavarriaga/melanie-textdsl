@@ -1249,7 +1249,7 @@
 		
 		//figure.setLayoutManager(new ToolbarLayout());
 		
-		de.uni_mannheim.informatik.swt.models.plm.diagram.custom.ModelToFigureTransfomator tranformator = new de.uni_mannheim.informatik.swt.models.plm.diagram.custom.ModelToFigureTransfomator(v);
+		de.uni_mannheim.informatik.swt.plm.visualization.service.ModelToFigureTransfomator tranformator = new de.uni_mannheim.informatik.swt.plm.visualization.service.ModelToFigureTransfomator(v);
 		org.eclipse.draw2d.IFigure customFigure = tranformator.run();
 		
 		customFigure.setParent(figure);
@@ -1257,7 +1257,7 @@
 		
 		figure.invalidateTree();
 		refreshVisuals();
-		performRequest(new org.eclipse.gef.Request.Request(Object)(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
+		performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
 		figure.repaint();
 	}
 «ENDDEFINE»
