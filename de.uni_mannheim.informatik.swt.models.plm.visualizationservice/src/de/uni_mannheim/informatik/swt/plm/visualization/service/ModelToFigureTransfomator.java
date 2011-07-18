@@ -19,6 +19,8 @@ import org.eclipse.draw2d.Ellipse;
 import org.eclipse.draw2d.GridData;
 import org.eclipse.draw2d.GridLayout;
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.PolygonShape;
+import org.eclipse.draw2d.PolylineShape;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.geometry.Dimension;
@@ -33,8 +35,6 @@ import org.eclipse.ocl.expressions.OCLExpression;
 import org.eclipse.ocl.helper.OCLHelper;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.graphics.Font;
-import org.eclipse.swt.graphics.FontData;
 import org.eclipse.ui.PlatformUI;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
@@ -45,9 +45,11 @@ import de.uni_mannheim.informatik.swt.models.plm.visualization.ExpressionLabel;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.FlowLayout;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.FontDescriptor;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.FontStyle;
+import de.uni_mannheim.informatik.swt.models.plm.visualization.FreehandShape;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.LayoutContentDescriptor;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.LayoutDescriptor;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.LayoutInformationDescriptor;
+import de.uni_mannheim.informatik.swt.models.plm.visualization.Point;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.ShapeDescriptor;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.TableLayout;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.TableLayoutInformation;
@@ -124,10 +126,31 @@ public class ModelToFigureTransfomator {
 			return createRectangle((de.uni_mannheim.informatik.swt.models.plm.visualization.Rectangle)desc); 
 		else if (desc instanceof de.uni_mannheim.informatik.swt.models.plm.visualization.Circle)
 			return createCircle((de.uni_mannheim.informatik.swt.models.plm.visualization.Circle)desc);
+		else if (desc instanceof FreehandShape)
+			return createFreehandShape((de.uni_mannheim.informatik.swt.models.plm.visualization.FreehandShape)desc);
+		
+		//Labels
 		else if (desc instanceof ExpressionLabel)
 			return createExpressionLabel((ExpressionLabel)desc);
 			
 		return null;
+	}
+
+	private IFigure createFreehandShape(FreehandShape desc) {
+		PolygonShape fig = new PolygonShape();
+		
+		for (Point p : desc.getPoints())
+			fig.addPoint(new org.eclipse.draw2d.geometry.Point(p.getX(), p.getY()));
+		
+		fig.setOutline(desc.isOutline());
+		fig.setFill(desc.isFill());
+		fig.setBackgroundColor(colorConstant2Color(desc.getBackgroundColor()));
+		fig.setForegroundColor(colorConstant2Color(desc.getForegroundColor()));
+		
+		if (desc.getLayout() != null)
+			fig.setLayoutManager(createLayout(desc.getLayout()));
+		
+		return fig;
 	}
 
 	private IFigure createRectangle(de.uni_mannheim.informatik.swt.models.plm.visualization.Rectangle rect){
