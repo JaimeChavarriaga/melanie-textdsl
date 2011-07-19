@@ -37,13 +37,13 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.Multiple
  *
  *
  */
-public class DSL implements IObjectActionDelegate {
+public class DSLAction implements IObjectActionDelegate {
 
 	public final static String ID = "de.uni_mannheim.informatik.swt.models.plm.diagram.custom.toggledomainconnectionationaction";
 	
 	private EntityEditPart selectedElement;
 	
-	public DSL()  {
+	public DSLAction()  {
 		// TODO Auto-generated constructor stub
 	}
 
