@@ -23,6 +23,7 @@ import org.eclipse.draw2d.PolygonShape;
 import org.eclipse.draw2d.PolylineShape;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.RoundedRectangle;
+import org.eclipse.draw2d.ScalablePolygonShape;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClassifier;
@@ -137,7 +138,7 @@ public class ModelToFigureTransfomator {
 	}
 
 	private IFigure createFreehandShape(FreehandShape desc) {
-		PolygonShape fig = new PolygonShape();
+		ScalablePolygonShape fig = new ScalablePolygonShape();
 		
 		for (Point p : desc.getPoints())
 			fig.addPoint(new org.eclipse.draw2d.geometry.Point(p.getX(), p.getY()));
