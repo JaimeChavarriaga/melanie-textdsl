@@ -21,6 +21,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.CellLabelProvider;
+import org.eclipse.jface.viewers.ComboBoxViewerCellEditor;
 import org.eclipse.jface.viewers.EditingSupport;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -241,6 +242,18 @@ public class AssociatePropertySectionAbstractPropertySection extends
 			
 			@Override
 			protected CellEditor getCellEditor(Object element) {
+				String keyValuePair = (String)element;
+				int equalIndex = keyValuePair.indexOf("=") + 1;
+				String value = keyValuePair.substring(equalIndex, keyValuePair.length()).trim();
+				
+				if ("false".equals(value) || "true".equals(value))
+				{
+					ComboBoxViewerCellEditor cb = new ComboBoxViewerCellEditor(viewer.getTable());
+					cb.setContentProvider(ArrayContentProvider.getInstance());
+					cb.setInput(new String[]{"true", "false"});
+					return cb;
+				}
+				
 				return new TextCellEditor(viewer.getTable());
 			}
 			
