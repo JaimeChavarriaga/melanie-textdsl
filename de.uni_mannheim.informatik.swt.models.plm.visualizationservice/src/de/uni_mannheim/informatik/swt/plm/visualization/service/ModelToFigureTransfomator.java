@@ -147,6 +147,7 @@ public class ModelToFigureTransfomator {
 		fig.setFill(desc.isFill());
 		fig.setBackgroundColor(colorConstant2Color(desc.getBackgroundColor()));
 		fig.setForegroundColor(colorConstant2Color(desc.getForegroundColor()));
+		fig.setLineWidth(desc.getOutlineWidth());
 		
 		if (desc.getLayout() != null)
 			fig.setLayoutManager(createLayout(desc.getLayout()));
@@ -161,6 +162,7 @@ public class ModelToFigureTransfomator {
 		fig.setFill(rect.isFill());
 		fig.setBackgroundColor(colorConstant2Color(rect.getBackgroundColor()));
 		fig.setForegroundColor(colorConstant2Color(rect.getForegroundColor()));
+		fig.setLineWidth(rect.getOutlineWidth());
 		
 		if (rect.getLayout() != null)
 			fig.setLayoutManager(createLayout(rect.getLayout()));
@@ -176,6 +178,7 @@ public class ModelToFigureTransfomator {
 		fig.setBackgroundColor(colorConstant2Color(rect.getBackgroundColor()));
 		fig.setForegroundColor(colorConstant2Color(rect.getForegroundColor()));
 		fig.setCornerDimensions(new Dimension(rect.getRadius(), rect.getRadius()));
+		fig.setLineWidth(rect.getOutlineWidth());
 		
 		if (rect.getLayout() != null)
 			fig.setLayoutManager(createLayout(rect.getLayout()));
@@ -191,6 +194,7 @@ public class ModelToFigureTransfomator {
 		fig.setFill(circle.isFill());
 		fig.setBackgroundColor(colorConstant2Color(circle.getBackgroundColor()));
 		fig.setForegroundColor(colorConstant2Color(circle.getForegroundColor()));
+		fig.setLineWidth(circle.getOutlineWidth());
 		
 		if (circle.getLayout() != null)
 			fig.setLayoutManager(createLayout(circle.getLayout()));
