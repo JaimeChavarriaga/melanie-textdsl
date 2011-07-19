@@ -404,6 +404,8 @@
 	 */
 	public void updateView(boolean readOnlyContext)
 	{
+		«IF self.editPartClassName = 'ConnectionEditPart'
+			or self.editPartClassName = 'EntityEditPart'»
 		java.lang.Boolean dslRendering = getDSLRenderingValue();
 		de.uni_mannheim.informatik.swt.models.plm.PLM.Element self = (de.uni_mannheim.informatik.swt.models.plm.PLM.Element)resolveSemanticElement();
 		
@@ -413,10 +415,7 @@
 		{
 			updateDSL();
 			return;
-		}	
-		
-		«IF self.editPartClassName = 'ConnectionEditPart'
-			or self.editPartClassName = 'EntityEditPart'»
+		}
 		«ENDIF»
 	
 		«IF self.editPartClassName = 'ConnectionEditPart'
@@ -461,8 +460,9 @@
 			setExpressedVisualState(readOnlyContext);
 		«ENDIF»
 	}
-	
-		public void updateDSL() {
+	«IF self.editPartClassName = 'ConnectionEditPart'
+			or self.editPartClassName = 'EntityEditPart'»
+	public void updateDSL() {
 		
 		if (((de.uni_mannheim.informatik.swt.models.plm.PLM.Element)resolveSemanticElement()).getVisualizer().size() == 0)
 			return;
@@ -491,6 +491,7 @@
 		performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
 		figure.repaint();
 	}
+	«ENDIF»
 «ENDDEFINE»
 
 «DEFINE getToggleValue FOR gmfgen::GenNode»
