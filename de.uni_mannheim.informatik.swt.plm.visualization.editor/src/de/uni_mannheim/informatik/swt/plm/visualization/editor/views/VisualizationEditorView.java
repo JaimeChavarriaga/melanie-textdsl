@@ -74,6 +74,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.presentation.PLMEditorPlugi
 import de.uni_mannheim.informatik.swt.models.plm.PLM.provider.PLMItemProviderAdapterFactory;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.FontDescriptor;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.LayoutInformationDescriptor;
+import de.uni_mannheim.informatik.swt.models.plm.visualization.LinkDecoration;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.Point;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.VisualizationDescriptor;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.provider.VisualizationItemProviderAdapterFactory;
@@ -174,7 +175,7 @@ public class VisualizationEditorView extends ViewPart implements INullSelectionL
 			public boolean select(Viewer viewer, Object parentElement, Object element) {
 				return (element instanceof Visualizer) || (element instanceof VisualizationDescriptor) 
 					|| (element instanceof Point) || (element instanceof LayoutInformationDescriptor)
-					|| (element instanceof FontDescriptor);
+					|| (element instanceof FontDescriptor) || (element instanceof LinkDecoration);
 			}
 		});
 		

@@ -19,8 +19,8 @@ import org.eclipse.draw2d.Ellipse;
 import org.eclipse.draw2d.GridData;
 import org.eclipse.draw2d.GridLayout;
 import org.eclipse.draw2d.IFigure;
-import org.eclipse.draw2d.PolygonShape;
-import org.eclipse.draw2d.PolylineShape;
+import org.eclipse.draw2d.PolygonDecoration;
+import org.eclipse.draw2d.PolylineDecoration;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.ScalablePolygonShape;
@@ -28,6 +28,7 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.ocl.ParserException;
@@ -42,6 +43,8 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.Alignment;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.ColorConstant;
+import de.uni_mannheim.informatik.swt.models.plm.visualization.DefaultLinkDecoration;
+import de.uni_mannheim.informatik.swt.models.plm.visualization.DefaultLinkDecorationTypes;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.ExpressionLabel;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.FlowLayout;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.FontDescriptor;
@@ -50,6 +53,7 @@ import de.uni_mannheim.informatik.swt.models.plm.visualization.FreehandShape;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.LayoutContentDescriptor;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.LayoutDescriptor;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.LayoutInformationDescriptor;
+import de.uni_mannheim.informatik.swt.models.plm.visualization.Link;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.Point;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.ShapeDescriptor;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.TableLayout;
@@ -130,11 +134,27 @@ public class ModelToFigureTransfomator {
 		else if (desc instanceof FreehandShape)
 			return createFreehandShape((de.uni_mannheim.informatik.swt.models.plm.visualization.FreehandShape)desc);
 		
+		//Links
+		else if (desc instanceof Link)
+			return createLinkShape((de.uni_mannheim.informatik.swt.models.plm.visualization.Link)desc);
+		
 		//Labels
 		else if (desc instanceof ExpressionLabel)
 			return createExpressionLabel((ExpressionLabel)desc);
 			
 		return null;
+	}
+
+	private IFigure createLinkShape(Link desc) {
+		PolylineConnectionEx fig = new PolylineConnectionEx();
+		
+		if (desc.getDecoration() instanceof DefaultLinkDecoration)
+			if (((DefaultLinkDecoration)desc.getDecoration()).getDecorationType() == DefaultLinkDecorationTypes.POLY_LINE_DECORATION)
+				fig.setTargetDecoration(new PolylineDecoration());
+			else if (((DefaultLinkDecoration)desc.getDecoration()).getDecorationType() == DefaultLinkDecorationTypes.POLYGONE_LINE_DECORATION)
+				fig.setTargetDecoration(new PolygonDecoration());
+		
+		return fig;
 	}
 
 	private IFigure createFreehandShape(FreehandShape desc) {
