@@ -148,6 +148,7 @@ public class ModelToFigureTransfomator {
 		fig.setBackgroundColor(colorConstant2Color(desc.getBackgroundColor()));
 		fig.setForegroundColor(colorConstant2Color(desc.getForegroundColor()));
 		fig.setLineWidth(desc.getOutlineWidth());
+		fig.setPreferredSize(desc.getWidth(), desc.getHeight());
 		
 		if (desc.getLayout() != null)
 			fig.setLayoutManager(createLayout(desc.getLayout()));
@@ -157,7 +158,7 @@ public class ModelToFigureTransfomator {
 
 	private IFigure createRectangle(de.uni_mannheim.informatik.swt.models.plm.visualization.Rectangle rect){
 		RectangleFigure fig = new RectangleFigure();
-		fig.setSize(new Dimension(rect.getWidth(), rect.getHeight()));
+		fig.setPreferredSize(rect.getWidth(), rect.getHeight());
 		fig.setOutline(rect.isOutline());
 		fig.setFill(rect.isFill());
 		fig.setBackgroundColor(colorConstant2Color(rect.getBackgroundColor()));
@@ -172,7 +173,7 @@ public class ModelToFigureTransfomator {
 	
 	private IFigure createRoundedRectangle(de.uni_mannheim.informatik.swt.models.plm.visualization.RoundedRectangle rect){
 		RoundedRectangle fig = new RoundedRectangle();
-		fig.setSize(new Dimension(rect.getWidth(), rect.getHeight()));
+		fig.setPreferredSize(rect.getWidth(), rect.getHeight());
 		fig.setOutline(rect.isOutline());
 		fig.setFill(rect.isFill());
 		fig.setBackgroundColor(colorConstant2Color(rect.getBackgroundColor()));
@@ -188,8 +189,8 @@ public class ModelToFigureTransfomator {
 	
 	private IFigure createCircle(de.uni_mannheim.informatik.swt.models.plm.visualization.Circle circle){
 		Ellipse fig = new Ellipse();
-		fig.setSize(circle.getRadius(), circle.getRadius());
 		
+		fig.setPreferredSize(circle.getRadius(), circle.getRadius());
 		fig.setOutline(circle.isOutline());
 		fig.setFill(circle.isFill());
 		fig.setBackgroundColor(colorConstant2Color(circle.getBackgroundColor()));
