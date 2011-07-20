@@ -159,6 +159,9 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <import plugin="org.eclipse.core.runtime" version="3.6.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.emf.transaction" version="1.4.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.gmf.runtime.diagram.ui" version="1.4.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.draw2d" version="3.7.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.gmf.runtime.draw2d.ui" version="1.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ocl.ecore" version="3.1.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin
@@ -219,6 +222,13 @@ This Agreement is governed by the laws of the State of New York and the intellec
 
    <plugin
          id="de.uni_mannheim.informatik.swt.plm.visualization.editor"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="de.uni_mannheim.informatik.swt.plm.visualization.service"
          download-size="0"
          install-size="0"
          version="0.0.0"
