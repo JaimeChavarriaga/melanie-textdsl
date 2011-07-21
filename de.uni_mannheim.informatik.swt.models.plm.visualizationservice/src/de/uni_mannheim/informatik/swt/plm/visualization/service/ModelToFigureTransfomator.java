@@ -28,7 +28,6 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.ocl.ParserException;
@@ -146,14 +145,31 @@ public class ModelToFigureTransfomator {
 	}
 
 	private IFigure createLinkShape(Link desc) {
-		PolylineConnectionEx fig = new PolylineConnectionEx();
+		VisualizationServicePolylineConnection fig = new VisualizationServicePolylineConnection();
+		
+		fig.setForegroundColor(colorConstant2Color(desc.getForegroundColor()));
+		fig.setBackgroundColor(colorConstant2Color(desc.getBackgroundColor()));
 		
 		if (desc.getDecoration() instanceof DefaultLinkDecoration)
 			if (((DefaultLinkDecoration)desc.getDecoration()).getDecorationType() == DefaultLinkDecorationTypes.POLY_LINE_DECORATION)
-				fig.setTargetDecoration(new PolylineDecoration());
+			{
+				DefaultLinkDecoration decoDescription = (DefaultLinkDecoration)desc.getDecoration();
+				PolylineDecoration decoration = new PolylineDecoration();
+				decoration.setBackgroundColor(colorConstant2Color(decoDescription.getBackgroundColor()));
+				decoration.setForegroundColor(colorConstant2Color(decoDescription.getForegroundColor()));
+				decoration.setLineWidth(decoDescription.getOutlineWidth());
+				fig.setTargetDecoration(decoration);
+				
+			}
 			else if (((DefaultLinkDecoration)desc.getDecoration()).getDecorationType() == DefaultLinkDecorationTypes.POLYGONE_LINE_DECORATION)
-				fig.setTargetDecoration(new PolygonDecoration());
-		
+			{
+				DefaultLinkDecoration decoDescription = (DefaultLinkDecoration)desc.getDecoration();
+				PolygonDecoration decoration = new PolygonDecoration();
+				decoration.setBackgroundColor(colorConstant2Color(decoDescription.getBackgroundColor()));
+				decoration.setForegroundColor(colorConstant2Color(decoDescription.getForegroundColor()));
+				decoration.setLineWidth(decoDescription.getOutlineWidth());
+				fig.setTargetDecoration(decoration);
+			}
 		return fig;
 	}
 
