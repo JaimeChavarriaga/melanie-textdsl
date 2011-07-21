@@ -16,6 +16,7 @@ import java.util.LinkedList;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -41,7 +42,7 @@ public class DSLAction implements IObjectActionDelegate {
 
 	public final static String ID = "de.uni_mannheim.informatik.swt.models.plm.diagram.custom.toggledomainconnectionationaction";
 	
-	private EntityEditPart selectedElement;
+	private IGraphicalEditPart selectedElement;
 	
 	public DSLAction()  {
 		// TODO Auto-generated constructor stub
@@ -59,7 +60,10 @@ public class DSLAction implements IObjectActionDelegate {
 		if (selectedElement == null)
 			return;
 		
-		((EntityEditPart)selectedElement).updateDSL();
+		if (selectedElement instanceof EntityEditPart)
+			((EntityEditPart)selectedElement).updateDSL();
+		if (selectedElement instanceof ConnectionEditPart)
+			((ConnectionEditPart)selectedElement).updateDSL();
 		
 	}	
 	@Override
@@ -68,9 +72,10 @@ public class DSLAction implements IObjectActionDelegate {
 		if (selection instanceof IStructuredSelection) 
 		{
 			IStructuredSelection structuredSelection = (IStructuredSelection) selection;
-			if (structuredSelection.getFirstElement() instanceof EntityEditPart) 
+			if (structuredSelection.getFirstElement() instanceof EntityEditPart 
+					|| structuredSelection.getFirstElement() instanceof ConnectionEditPart) 
 			{
-				selectedElement = (EntityEditPart) structuredSelection.getFirstElement();
+				selectedElement = (IGraphicalEditPart) structuredSelection.getFirstElement();
 			}
 		}
 	}
