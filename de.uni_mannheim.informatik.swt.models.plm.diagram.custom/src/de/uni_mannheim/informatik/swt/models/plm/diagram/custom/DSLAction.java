@@ -63,7 +63,7 @@ public class DSLAction implements IObjectActionDelegate {
 		if (selectedElement instanceof EntityEditPart)
 			((EntityEditPart)selectedElement).updateDSL();
 		if (selectedElement instanceof ConnectionEditPart)
-			((ConnectionEditPart)selectedElement).updateDSL();
+			((ConnectionEditPart)selectedElement).updateView(false);
 		
 	}	
 	@Override

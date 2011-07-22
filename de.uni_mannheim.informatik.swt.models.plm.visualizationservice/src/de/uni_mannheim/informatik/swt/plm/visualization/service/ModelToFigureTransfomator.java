@@ -341,7 +341,7 @@ public class ModelToFigureTransfomator {
 		return data;
 	}
 	
-	private Color colorConstant2Color(ColorConstant constant)
+	public static Color colorConstant2Color(ColorConstant constant)
 	{
 		switch (constant.getValue()) {
 		case ColorConstant.BLACK_VALUE:

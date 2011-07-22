@@ -87,9 +87,19 @@
 		if (this.sourceConnections == null)
 			return;
 
+		de.uni_mannheim.informatik.swt.models.plm.PLM.Connection self = (de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)resolveSemanticElement();
+		
+		java.lang.Boolean dslRendering = getDSLRenderingValue();
+		
+		//Is visualization information available? Is link visualization available?
+		if (dslRendering != null && dslRendering == true
+				&& self.getVisualizer().size() > 0 
+				&& (self.getVisualizer().get(0).getChild() instanceof de.uni_mannheim.informatik.swt.models.plm.visualization.Link) )
+			dslRendering = true;
+		else
+			dslRendering = false;
+
 		java.util.List<ConnectionParticipantEditPart> sourceConnections = this.sourceConnections;
-		de.uni_mannheim.informatik.swt.models.plm.PLM.Connection self = (de.uni_mannheim.informatik.swt.models.plm.PLM.Connection) org.eclipse.gmf.runtime.diagram.core.util.ViewUtil
-				.resolveSemanticElement(this.getPrimaryView());
 
 		//needs to be used as source connections can have non participant connections
 		int numberNonParticipantConnection = 0;
@@ -103,10 +113,40 @@
 				continue;
 			}
 
+			//Do the DSL rendering -> Set decoration independent of isNavigable
+			if (dslRendering != null && dslRendering)
+			{
+				int index = i - numberNonParticipantConnection;
+				
+				de.uni_mannheim.informatik.swt.models.plm.visualization.Link l = (de.uni_mannheim.informatik.swt.models.plm.visualization.Link)((de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer)self.getVisualizer().get(0)).getChild();
+				
+				org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart connection = sourceConnections.get(i);
+				org.eclipse.draw2d.PolylineConnection connectionFigure = (org.eclipse.draw2d.PolylineConnection) connection.getFigure();
+				connectionFigure.setForegroundColor(de.uni_mannheim.informatik.swt.plm.visualization.service.ModelToFigureTransfomator.colorConstant2Color(l.getForegroundColor()));
+				connectionFigure.setBackgroundColor(de.uni_mannheim.informatik.swt.plm.visualization.service.ModelToFigureTransfomator.colorConstant2Color(l.getBackgroundColor()));
+				
+				//Decoration defined
+				if (l.getDecoration().size() > index)
+				{
+					de.uni_mannheim.informatik.swt.models.plm.visualization.LinkDecoration decoDesc = l.getDecoration().get(i);
+					
+					org.eclipse.draw2d.RotatableDecoration decoration = ((de.uni_mannheim.informatik.swt.models.plm.visualization.DefaultLinkDecoration)decoDesc).getDecorationType() ==  de.uni_mannheim.informatik.swt.models.plm.visualization.DefaultLinkDecorationTypes.POLY_LINE_DECORATION ? new org.eclipse.draw2d.PolylineDecoration() : new org.eclipse.draw2d.PolygonDecoration();
+					decoration.setBackgroundColor(de.uni_mannheim.informatik.swt.plm.visualization.service.ModelToFigureTransfomator.colorConstant2Color(decoDesc.getBackgroundColor()));
+					decoration.setForegroundColor(de.uni_mannheim.informatik.swt.plm.visualization.service.ModelToFigureTransfomator.colorConstant2Color(decoDesc.getForegroundColor()));
+					
+					//set the decoration
+					connectionFigure.setTargetDecoration(decoration);
+				}
+				//No decoration defined
+				else{
+					connectionFigure.setTargetDecoration(null);
+				}
+			}
+
 			//****************************************************************************
 			//Set navigable
 			//****************************************************************************
-			if (self.getIsNavigable().size() > i  - numberNonParticipantConnection
+			else if (self.getIsNavigable().size() > i  - numberNonParticipantConnection
 					&&self.getIsNavigable().get(i  - numberNonParticipantConnection) == false) {
 				org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart connection = sourceConnections.get(i);
 				org.eclipse.draw2d.PolylineConnection connectionFigure = (org.eclipse.draw2d.PolylineConnection) connection
@@ -413,7 +453,13 @@
 				&& self.getVisualizer().size() > 0 
 				&& self.getVisualizer().get(0).getChild() != null)
 		{
+			«IF self.editPartClassName = 'ConnectionEditPart'»  
+			toggle(true);
+			updateConnections();
+			«ELSE»
 			updateDSL();
+			«ENDIF»
+			
 			return;
 		}
 		«ENDIF»
@@ -460,8 +506,7 @@
 			setExpressedVisualState(readOnlyContext);
 		«ENDIF»
 	}
-	«IF self.editPartClassName = 'ConnectionEditPart'
-			or self.editPartClassName = 'EntityEditPart'»
+	«IF self.editPartClassName = 'EntityEditPart'»
 	public void updateDSL() {
 		
 		if (((de.uni_mannheim.informatik.swt.models.plm.PLM.Element)resolveSemanticElement()).getVisualizer().size() == 0)
