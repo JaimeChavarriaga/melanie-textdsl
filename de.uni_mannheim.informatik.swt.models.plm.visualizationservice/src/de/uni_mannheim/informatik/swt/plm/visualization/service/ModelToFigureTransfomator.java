@@ -19,8 +19,6 @@ import org.eclipse.draw2d.Ellipse;
 import org.eclipse.draw2d.GridData;
 import org.eclipse.draw2d.GridLayout;
 import org.eclipse.draw2d.IFigure;
-import org.eclipse.draw2d.PolygonDecoration;
-import org.eclipse.draw2d.PolylineDecoration;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.ScalablePolygonShape;
@@ -42,8 +40,6 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.Alignment;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.ColorConstant;
-import de.uni_mannheim.informatik.swt.models.plm.visualization.DefaultLinkDecoration;
-import de.uni_mannheim.informatik.swt.models.plm.visualization.DefaultLinkDecorationTypes;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.ExpressionLabel;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.FlowLayout;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.FontDescriptor;
@@ -52,7 +48,6 @@ import de.uni_mannheim.informatik.swt.models.plm.visualization.FreehandShape;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.LayoutContentDescriptor;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.LayoutDescriptor;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.LayoutInformationDescriptor;
-import de.uni_mannheim.informatik.swt.models.plm.visualization.Link;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.Point;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.ShapeDescriptor;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.TableLayout;
@@ -61,7 +56,10 @@ import de.uni_mannheim.informatik.swt.models.plm.visualization.VisualizationDesc
 
 /**
  * Translates a visualizer model excerpt into a figure that
- * can be used with gef and gmf
+ * can be used with gef and gmf. Does not translates links to figures.
+ * This need to be done in the editparts because the direct figure of
+ * an editpart cannot be exchanged and the getters and setters of link
+ * figures are very limited.
  *
  */
 public class ModelToFigureTransfomator {
@@ -133,44 +131,11 @@ public class ModelToFigureTransfomator {
 		else if (desc instanceof FreehandShape)
 			return createFreehandShape((de.uni_mannheim.informatik.swt.models.plm.visualization.FreehandShape)desc);
 		
-		//Links
-		else if (desc instanceof Link)
-			return createLinkShape((de.uni_mannheim.informatik.swt.models.plm.visualization.Link)desc);
-		
 		//Labels
 		else if (desc instanceof ExpressionLabel)
 			return createExpressionLabel((ExpressionLabel)desc);
 			
 		return null;
-	}
-
-	private IFigure createLinkShape(Link desc) {
-		VisualizationServicePolylineConnection fig = new VisualizationServicePolylineConnection();
-		
-		fig.setForegroundColor(colorConstant2Color(desc.getForegroundColor()));
-		fig.setBackgroundColor(colorConstant2Color(desc.getBackgroundColor()));
-		
-		if (desc.getDecoration() instanceof DefaultLinkDecoration)
-			if (((DefaultLinkDecoration)desc.getDecoration()).getDecorationType() == DefaultLinkDecorationTypes.POLY_LINE_DECORATION)
-			{
-				DefaultLinkDecoration decoDescription = (DefaultLinkDecoration)desc.getDecoration();
-				PolylineDecoration decoration = new PolylineDecoration();
-				decoration.setBackgroundColor(colorConstant2Color(decoDescription.getBackgroundColor()));
-				decoration.setForegroundColor(colorConstant2Color(decoDescription.getForegroundColor()));
-				decoration.setLineWidth(decoDescription.getOutlineWidth());
-				fig.setTargetDecoration(decoration);
-				
-			}
-			else if (((DefaultLinkDecoration)desc.getDecoration()).getDecorationType() == DefaultLinkDecorationTypes.POLYGONE_LINE_DECORATION)
-			{
-				DefaultLinkDecoration decoDescription = (DefaultLinkDecoration)desc.getDecoration();
-				PolygonDecoration decoration = new PolygonDecoration();
-				decoration.setBackgroundColor(colorConstant2Color(decoDescription.getBackgroundColor()));
-				decoration.setForegroundColor(colorConstant2Color(decoDescription.getForegroundColor()));
-				decoration.setLineWidth(decoDescription.getOutlineWidth());
-				fig.setTargetDecoration(decoration);
-			}
-		return fig;
 	}
 
 	private IFigure createFreehandShape(FreehandShape desc) {
