@@ -36,7 +36,6 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.ui.PlatformUI;
 
-import de.uni_mannheim.informartik.swt.plm.workbench.interfaces.IVisualModelToFigureTransformator;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.Alignment;
@@ -54,6 +53,7 @@ import de.uni_mannheim.informatik.swt.models.plm.visualization.ShapeDescriptor;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.TableLayout;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.TableLayoutInformation;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.VisualizationDescriptor;
+import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IVisualModelToFigureTransformator;
 
 /**
  * Translates a visualizer model excerpt into a figure that

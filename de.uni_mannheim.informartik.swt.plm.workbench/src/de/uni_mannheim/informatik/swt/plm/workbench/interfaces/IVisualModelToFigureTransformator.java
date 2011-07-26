@@ -8,12 +8,27 @@
  * Contributors:
  *    Ralph Gerbig - initial API and implementation and initial documentation
  *******************************************************************************/ 
-package de.uni_mannheim.informartik.swt.plm.workbench;
+package de.uni_mannheim.informatik.swt.plm.workbench.interfaces;
+
+import org.eclipse.draw2d.IFigure;
+
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer;
 
 /**
- * This class manages loading extension points
+ * Interface for a visual model to figure transformator.
+ * The transformator takes a visualizer as input and generates
+ * a renderable figure as output (e.g. a draw2d figure).
  *
  */
-public class ExtensionPointService {
+public interface IVisualModelToFigureTransformator {
+	
+	/**
+	 * Runs the transformation
+	 * 
+	 * @param v visualizer to translate into a figure
+	 * 
+	 * @return renderable figure
+	 */
+	public IFigure run(Visualizer v);
 	
 }
