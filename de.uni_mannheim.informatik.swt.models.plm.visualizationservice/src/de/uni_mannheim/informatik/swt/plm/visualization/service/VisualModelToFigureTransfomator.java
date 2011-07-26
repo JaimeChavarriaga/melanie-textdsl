@@ -300,7 +300,8 @@ public class VisualModelToFigureTransfomator implements IVisualModelToFigureTran
 		return data;
 	}
 	
-	public static Color colorConstant2Color(ColorConstant constant)
+	@Override
+	public Color colorConstant2Color(ColorConstant constant)
 	{
 		switch (constant.getValue()) {
 		case ColorConstant.BLACK_VALUE:

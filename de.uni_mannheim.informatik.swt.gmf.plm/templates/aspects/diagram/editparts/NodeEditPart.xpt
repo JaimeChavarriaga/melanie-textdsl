@@ -116,14 +116,22 @@
 			//Do the DSL rendering -> Set decoration independent of isNavigable
 			if (dslRendering != null && dslRendering)
 			{
+				de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IVisualModelToFigureTransformator transformator = null; 
+				
+				try {
+					transformator = de.uni_mannheim.informatik.swt.plm.workbench.ExtensionPointService.Instance().getVisualizationService("de.uni_mannheim.informatik.swt.plm.visualization.service");
+				} catch (org.eclipse.core.runtime.CoreException e) {
+					e.printStackTrace();
+				}
+				
 				int index = i - numberNonParticipantConnection;
 				
 				de.uni_mannheim.informatik.swt.models.plm.visualization.Link l = (de.uni_mannheim.informatik.swt.models.plm.visualization.Link)((de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer)self.getVisualizer().get(0)).getChild();
 				
 				org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart connection = sourceConnections.get(i);
 				org.eclipse.draw2d.PolylineConnection connectionFigure = (org.eclipse.draw2d.PolylineConnection) connection.getFigure();
-				connectionFigure.setForegroundColor(de.uni_mannheim.informatik.swt.plm.visualization.service.ModelToFigureTransfomator.colorConstant2Color(l.getForegroundColor()));
-				connectionFigure.setBackgroundColor(de.uni_mannheim.informatik.swt.plm.visualization.service.ModelToFigureTransfomator.colorConstant2Color(l.getBackgroundColor()));
+				connectionFigure.setForegroundColor(transformator.colorConstant2Color(l.getForegroundColor()));
+				connectionFigure.setBackgroundColor(transformator.colorConstant2Color(l.getBackgroundColor()));
 				
 				//Decoration defined
 				if (l.getDecoration().size() > index) {
@@ -137,13 +145,9 @@
 								.getDecorationType() == de.uni_mannheim.informatik.swt.models.plm.visualization.DefaultLinkDecorationTypes.POLY_LINE_DECORATION ? new org.eclipse.draw2d.PolylineDecoration()
 								: new org.eclipse.draw2d.PolygonDecoration();
 						decoration
-								.setBackgroundColor(de.uni_mannheim.informatik.swt.plm.visualization.service.ModelToFigureTransfomator
-										.colorConstant2Color(decoDesc
-												.getBackgroundColor()));
+								.setBackgroundColor(transformator.colorConstant2Color(decoDesc.getBackgroundColor()));
 						decoration
-								.setForegroundColor(de.uni_mannheim.informatik.swt.plm.visualization.service.ModelToFigureTransfomator
-										.colorConstant2Color(decoDesc
-												.getForegroundColor()));
+								.setForegroundColor(transformator.colorConstant2Color(decoDesc.getForegroundColor()));
 						//set the decoration
 						connectionFigure.setTargetDecoration(decoration);
 					}
@@ -539,8 +543,15 @@
 		
 		//figure.setLayoutManager(new ToolbarLayout());
 		
-		de.uni_mannheim.informatik.swt.plm.visualization.service.ModelToFigureTransfomator tranformator = new de.uni_mannheim.informatik.swt.plm.visualization.service.ModelToFigureTransfomator(v);
-		org.eclipse.draw2d.IFigure customFigure = tranformator.run();
+		de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IVisualModelToFigureTransformator tranformator = null;
+		
+		try {
+			tranformator = de.uni_mannheim.informatik.swt.plm.workbench.ExtensionPointService.Instance().getVisualizationService("de.uni_mannheim.informatik.swt.plm.visualization.service");
+		} catch (org.eclipse.core.runtime.CoreException e) {
+			e.printStackTrace();
+		}
+		
+		org.eclipse.draw2d.IFigure customFigure = tranformator.run(v);
 		
 		customFigure.setParent(figure);
 		figure.add(customFigure);

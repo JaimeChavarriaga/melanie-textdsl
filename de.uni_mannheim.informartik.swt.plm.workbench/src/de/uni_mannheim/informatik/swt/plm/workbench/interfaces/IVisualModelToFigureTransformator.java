@@ -11,8 +11,10 @@
 package de.uni_mannheim.informatik.swt.plm.workbench.interfaces;
 
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.swt.graphics.Color;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer;
+import de.uni_mannheim.informatik.swt.models.plm.visualization.ColorConstant;
 
 /**
  * Interface for a visual model to figure transformator.
@@ -31,4 +33,11 @@ public interface IVisualModelToFigureTransformator {
 	 */
 	public IFigure run(Visualizer v);
 	
+	/**
+	 * Translates a color constant into a SWT Color
+	 * 
+	 * @param constant constant to translate
+	 * @return SWT Color
+	 */
+	public Color colorConstant2Color(ColorConstant constant);
 }
