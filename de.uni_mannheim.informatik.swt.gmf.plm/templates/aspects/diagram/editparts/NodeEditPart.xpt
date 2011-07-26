@@ -126,19 +126,33 @@
 				connectionFigure.setBackgroundColor(de.uni_mannheim.informatik.swt.plm.visualization.service.ModelToFigureTransfomator.colorConstant2Color(l.getBackgroundColor()));
 				
 				//Decoration defined
-				if (l.getDecoration().size() > index)
-				{
-					de.uni_mannheim.informatik.swt.models.plm.visualization.LinkDecoration decoDesc = l.getDecoration().get(i);
-					
-					org.eclipse.draw2d.RotatableDecoration decoration = ((de.uni_mannheim.informatik.swt.models.plm.visualization.DefaultLinkDecoration)decoDesc).getDecorationType() ==  de.uni_mannheim.informatik.swt.models.plm.visualization.DefaultLinkDecorationTypes.POLY_LINE_DECORATION ? new org.eclipse.draw2d.PolylineDecoration() : new org.eclipse.draw2d.PolygonDecoration();
-					decoration.setBackgroundColor(de.uni_mannheim.informatik.swt.plm.visualization.service.ModelToFigureTransfomator.colorConstant2Color(decoDesc.getBackgroundColor()));
-					decoration.setForegroundColor(de.uni_mannheim.informatik.swt.plm.visualization.service.ModelToFigureTransfomator.colorConstant2Color(decoDesc.getForegroundColor()));
-					
-					//set the decoration
-					connectionFigure.setTargetDecoration(decoration);
+				if (l.getDecoration().size() > index) {
+					de.uni_mannheim.informatik.swt.models.plm.visualization.LinkDecoration decoDesc = l
+							.getDecoration().get(i);
+				
+					//We have a special decoration
+					if (((de.uni_mannheim.informatik.swt.models.plm.visualization.DefaultLinkDecoration) decoDesc).getDecorationType() != de.uni_mannheim.informatik.swt.models.plm.visualization.DefaultLinkDecorationTypes.NO_LINE_DECORATION)
+					{
+						org.eclipse.draw2d.RotatableDecoration decoration = ((de.uni_mannheim.informatik.swt.models.plm.visualization.DefaultLinkDecoration) decoDesc)
+								.getDecorationType() == de.uni_mannheim.informatik.swt.models.plm.visualization.DefaultLinkDecorationTypes.POLY_LINE_DECORATION ? new org.eclipse.draw2d.PolylineDecoration()
+								: new org.eclipse.draw2d.PolygonDecoration();
+						decoration
+								.setBackgroundColor(de.uni_mannheim.informatik.swt.plm.visualization.service.ModelToFigureTransfomator
+										.colorConstant2Color(decoDesc
+												.getBackgroundColor()));
+						decoration
+								.setForegroundColor(de.uni_mannheim.informatik.swt.plm.visualization.service.ModelToFigureTransfomator
+										.colorConstant2Color(decoDesc
+												.getForegroundColor()));
+						//set the decoration
+						connectionFigure.setTargetDecoration(decoration);
+					}
+					//We have no special decoration
+					else
+						connectionFigure.setTargetDecoration(null);
 				}
 				//No decoration defined
-				else{
+				else {
 					connectionFigure.setTargetDecoration(null);
 				}
 			}
