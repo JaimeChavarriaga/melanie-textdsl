@@ -534,14 +534,8 @@
 		
 		if (v.getChild() == null)
 			return;
-		
-		//Clear the children editparts in the right way <> children.clear
-		while (children.size() > 0)
-			children.remove(0);
-		
+	
 		figure.getChildren().clear();
-		
-		//figure.setLayoutManager(new ToolbarLayout());
 		
 		de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IVisualModelToFigureTransformator tranformator = null;
 		
@@ -789,6 +783,12 @@
 	@Override
 	protected void handleNotificationEvent(org.eclipse.emf.common.notify.Notification notification) {
 		super.handleNotificationEvent(notification);
+
+		//We want to update the DSL notation for Entities
+		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Feature
+				&& ((org.eclipse.emf.ecore.EStructuralFeature) notification.getFeature()).getName().equals("value")
+				&& getParent().getParent() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.EntityEditPart)
+			((de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.EntityEditPart)getParent().getParent()).updateView(true);
 
 		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Feature 
 				&& ((org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature()).getName().equals("expressed"))
