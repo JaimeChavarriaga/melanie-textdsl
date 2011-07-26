@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         id="de.uni_mannheim.informatik.swt.plm.visualization.service"
+         point="de.uni_mannheim.informatik.swt.plm.visualization.servic">
+      <service
+            class="de.uni_mannheim.informatik.swt.plm.visualization.service.VisualModelToFigureTransfomator">
+      </service>
+   </extension>
+
+
+</plugin>
