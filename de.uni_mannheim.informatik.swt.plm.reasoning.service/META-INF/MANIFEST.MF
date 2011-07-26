@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Service
+Bundle-SymbolicName: de.uni_mannheim.informatik.swt.plm.reasoning.service
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: de.uni_mannheim.informatik.swt.plm.reasoning.service.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ de.uni_mannheim.informatik.swt.models.plm;bundle-version="1.0.0"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
