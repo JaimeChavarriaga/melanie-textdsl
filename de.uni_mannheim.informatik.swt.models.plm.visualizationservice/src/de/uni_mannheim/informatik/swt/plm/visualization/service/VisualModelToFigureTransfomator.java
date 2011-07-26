@@ -36,6 +36,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.ui.PlatformUI;
 
+import de.uni_mannheim.informartik.swt.plm.workbench.interfaces.IVisualModelToFigureTransformator;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.Alignment;
@@ -62,23 +63,16 @@ import de.uni_mannheim.informatik.swt.models.plm.visualization.VisualizationDesc
  * figures are very limited.
  *
  */
-public class ModelToFigureTransfomator {
+public class VisualModelToFigureTransfomator implements IVisualModelToFigureTransformator {
 	
-	private Visualizer visualizer = null;
 	private Map<VisualizationDescriptor, IFigure> descriptor2figure = new HashMap<VisualizationDescriptor, IFigure>();
+	private Visualizer visualizer = null;
 	
-	
-	public ModelToFigureTransfomator(Visualizer v){
+	@Override
+	public IFigure run(Visualizer v){
 		
-		if (v == null)
-			throw new IllegalArgumentException("Visualizer must not be null!");
-		
-		visualizer = v;
-		
-	}
-	
-	public IFigure run(){
-		TreeIterator<EObject> iterator = visualizer.eAllContents();
+		visualizer = v;		
+		TreeIterator<EObject> iterator = v.eAllContents();
 		
 		while(iterator.hasNext())
 		{
@@ -106,7 +100,7 @@ public class ModelToFigureTransfomator {
 			}
 		}
 	
-		return descriptor2figure.get(visualizer.getChild());
+		return descriptor2figure.get(v.getChild());
 	}
 
 	private ShapeDescriptor getPaVisualizationDescriptor(LayoutContentDescriptor desc){
