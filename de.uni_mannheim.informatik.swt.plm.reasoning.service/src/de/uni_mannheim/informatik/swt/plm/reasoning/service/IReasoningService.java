@@ -94,18 +94,22 @@ public interface IReasoningService {
 	/**
 	 * Checks whether instance is an instance of type
 	 * 
-	 * @param instance
-	 * @param type
-	 * @return
+	 * @param instance Clabject to check type for
+	 * 
+	 * @param type Clabject assumed as tyoe
+	 * 
+	 * @return true => instance is an instance of type; false => else
 	 */
 	public boolean isInstanceOf(Clabject instance, Clabject type);
 	
 	/**
 	 * Checks whether type is a type of instance 
 	 * 
-	 * @param type
-	 * @param instance
-	 * @return
+	 * @param type Type to check type for
+	 * 
+	 * @param instance Clabject that is assumed to be an instance of type
+	 * 
+	 * @return true => type is type of instance; false => else
 	 */
 	public boolean isTypeOf(Clabject type, Clabject instance);
 }
