@@ -10,10 +10,17 @@
  *******************************************************************************/ 
 package de.uni_mannheim.informatik.swt.plm.visualization.service;
 
+import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 
+import org.eclipse.core.filesystem.URIUtil;
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.draw2d.AbstractLayout;
 import org.eclipse.draw2d.Ellipse;
 import org.eclipse.draw2d.GridData;
@@ -24,6 +31,7 @@ import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.ScalablePolygonShape;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
@@ -49,6 +57,7 @@ import de.uni_mannheim.informatik.swt.models.plm.visualization.LayoutContentDesc
 import de.uni_mannheim.informatik.swt.models.plm.visualization.LayoutDescriptor;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.LayoutInformationDescriptor;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.Point;
+import de.uni_mannheim.informatik.swt.models.plm.visualization.SVGFigure;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.ShapeDescriptor;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.TableLayout;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.TableLayoutInformation;
@@ -124,12 +133,27 @@ public class VisualModelToFigureTransfomator implements IVisualModelToFigureTran
 			return createCircle((de.uni_mannheim.informatik.swt.models.plm.visualization.Circle)desc);
 		else if (desc instanceof FreehandShape)
 			return createFreehandShape((de.uni_mannheim.informatik.swt.models.plm.visualization.FreehandShape)desc);
+		else if (desc instanceof SVGFigure)
+			return createSVGFigure((de.uni_mannheim.informatik.swt.models.plm.visualization.SVGFigure)desc);
 		
 		//Labels
 		else if (desc instanceof ExpressionLabel)
 			return createExpressionLabel((ExpressionLabel)desc);
 			
 		return null;
+	}
+
+	private IFigure createSVGFigure(SVGFigure desc) {
+		org.eclipse.gmf.runtime.lite.svg.SVGFigure figure = new org.eclipse.gmf.runtime.lite.svg.SVGFigure();
+		
+		IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(desc.getDocumentURI()));
+		figure.setURI("file:///" + file.getLocation().toOSString());
+
+		
+		if (desc.getLayout() != null)
+			figure.setLayoutManager(createLayout(desc.getLayout()));
+		
+		return figure;
 	}
 
 	private IFigure createFreehandShape(FreehandShape desc) {
