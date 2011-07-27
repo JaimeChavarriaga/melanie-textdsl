@@ -119,10 +119,6 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <import plugin="org.eclipse.gmf.runtime.diagram.ui" version="1.1.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui.ide" version="3.4.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.gmf.runtime.diagram.ui.resources.editor" version="1.1.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.m2m.atl.drivers.emf4atl" version="3.1.2" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.m2m.atl.common" version="3.1.2" match="greaterOrEqual"/>
-      <import plugin="de.uni_mannheim.informatik.swt.models.plm" version="1.0.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.ocl.ecore" version="3.0.2" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.resources"/>
       <import plugin="org.eclipse.core.expressions"/>
       <import plugin="org.eclipse.jface"/>
@@ -142,9 +138,11 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <import plugin="org.eclipse.gmf.runtime.diagram.ui.resources.editor.ide"/>
       <import plugin="org.eclipse.draw2d"/>
       <import plugin="org.eclipse.gmf.runtime.draw2d.ui"/>
+      <import plugin="org.eclipse.ocl.ecore" version="3.0.2" match="greaterOrEqual"/>
       <import plugin="org.eclipse.emf.validation"/>
       <import plugin="org.eclipse.emf.validation.ocl"/>
       <import plugin="org.eclipse.gef"/>
+      <import plugin="de.uni_mannheim.informatik.swt.plm.workbench" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui.ide" version="3.6.1" match="greaterOrEqual"/>
       <import plugin="org.eclipse.gmf.runtime.diagram.ui.resources.editor" version="1.4.1" match="greaterOrEqual"/>
       <import plugin="de.uni_mannheim.informatik.swt.plm.visualization.editor" version="1.0.0" match="greaterOrEqual"/>
@@ -152,6 +150,7 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <import plugin="org.eclipse.core.databinding.observable"/>
       <import plugin="org.eclipse.jface.databinding"/>
       <import plugin="org.eclipse.emf.edit"/>
+      <import plugin="de.uni_mannheim.informatik.swt.models.plm" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="de.uni_mannheim.informatik.swt.models.plm.diagram" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="de.uni_mannheim.informatik.swt.models.plm.editor" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui" version="3.6.1" match="greaterOrEqual"/>
@@ -166,13 +165,6 @@ This Agreement is governed by the laws of the State of New York and the intellec
 
    <plugin
          id="de.itemis.gmf.runtime.extensions"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="de.uni_mannheim.informatik.swt.atl.drivers.plm4atl"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -221,6 +213,13 @@ This Agreement is governed by the laws of the State of New York and the intellec
          unpack="false"/>
 
    <plugin
+         id="de.uni_mannheim.informatik.swt.plm.reasoning.service"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
          id="de.uni_mannheim.informatik.swt.plm.visualization.editor"
          download-size="0"
          install-size="0"
@@ -229,6 +228,13 @@ This Agreement is governed by the laws of the State of New York and the intellec
 
    <plugin
          id="de.uni_mannheim.informatik.swt.plm.visualization.service"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="de.uni_mannheim.informatik.swt.plm.workbench"
          download-size="0"
          install-size="0"
          version="0.0.0"
