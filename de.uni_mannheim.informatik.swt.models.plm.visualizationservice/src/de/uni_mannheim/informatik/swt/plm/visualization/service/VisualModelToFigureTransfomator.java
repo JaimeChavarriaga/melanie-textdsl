@@ -149,7 +149,7 @@ public class VisualModelToFigureTransfomator implements IVisualModelToFigureTran
 		IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(desc.getDocumentURI()));
 		figure.setURI("file:///" + file.getLocation().toOSString());
 
-		figure.setSize(desc.getWidth(), desc.getHeight());
+		figure.setPreferredSize(desc.getWidth(), desc.getHeight());
 		
 		if (desc.getLayout() != null)
 			figure.setLayoutManager(createLayout(desc.getLayout()));
