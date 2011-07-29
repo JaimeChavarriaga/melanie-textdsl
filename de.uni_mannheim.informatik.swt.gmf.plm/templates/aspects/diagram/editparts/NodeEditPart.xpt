@@ -259,10 +259,8 @@
 	protected void handleNotificationEvent(org.eclipse.emf.common.notify.Notification notification) {
 		super.handleNotificationEvent(notification);
 
-		«IF self.editPartClassName='EntityEditPart' or self.editPartClassName='ConnectionEditPart'»
 		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer)
-			updateView(true);
-		«ENDIF»
+			updateView(false);
 
 		«IF self.editPartClassName = 'ConnectionEditPart'»
 		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Connection) {
@@ -478,7 +476,7 @@
 				&& self.getVisualizer().get(0).getChild() != null)
 		{
 			«IF self.editPartClassName = 'ConnectionEditPart'»  
-			toggle(true);
+			toggle(readOnlyContext);
 			updateConnections();
 			«ELSE»
 			updateDSL();
