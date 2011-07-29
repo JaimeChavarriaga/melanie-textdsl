@@ -34,6 +34,7 @@
 		or self.editPartClassName = 'ConnectionEditPart'»
 
 	«EXPAND doElide-»
+	«EXPAND registerVisualizersForHandleNotification-»
 «ENDIF»
 «IF self.editPartClassName = 'EntityEditPart'
 		or self.editPartClassName = 'ConnectionEditPart'
@@ -257,6 +258,11 @@
 	@Override
 	protected void handleNotificationEvent(org.eclipse.emf.common.notify.Notification notification) {
 		super.handleNotificationEvent(notification);
+
+		«IF self.editPartClassName='EntityEditPart' or self.editPartClassName='ConnectionEditPart'»
+		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer)
+			updateView(true);
+		«ENDIF»
 
 		«IF self.editPartClassName = 'ConnectionEditPart'»
 		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Connection) {
@@ -1377,5 +1383,22 @@
 		//Hide the outer label
 		((org.eclipse.draw2d.IFigure) borderItemContainer.getChildren().get(0)).setVisible(false);
 		«ENDIF»
+	}
+«ENDDEFINE»
+
+«DEFINE registerVisualizersForHandleNotification FOR gmfgen::GenNode»
+	/**
+	 * Registers the Edipart to fire handleNotification on changes
+	 * in visualizer
+	 * 
+	 * @generated
+	 */
+	@Override
+	protected void addSemanticListeners() {
+		super.addSemanticListeners();
+		
+		de.uni_mannheim.informatik.swt.models.plm.PLM.Element e = (de.uni_mannheim.informatik.swt.models.plm.PLM.Element) resolveSemanticElement();
+		for (de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer v : e.getVisualizer())
+			addListenerFilter(v.toString().substring(0, v.toString().indexOf(" ")), this, v);
 	}
 «ENDDEFINE»
