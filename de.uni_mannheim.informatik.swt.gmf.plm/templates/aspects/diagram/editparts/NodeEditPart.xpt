@@ -34,7 +34,6 @@
 		or self.editPartClassName = 'ConnectionEditPart'»
 
 	«EXPAND doElide-»
-	«EXPAND registerVisualizersForHandleNotification-»
 «ENDIF»
 «IF self.editPartClassName = 'EntityEditPart'
 		or self.editPartClassName = 'ConnectionEditPart'
@@ -47,6 +46,7 @@
 
 	«EXPAND setExpressedVisualState-»
 	«EXPAND addNotify-»
+	«EXPAND registerVisualizersForHandleNotification-»
 «ENDIF»
 «ENDAROUND»
 
