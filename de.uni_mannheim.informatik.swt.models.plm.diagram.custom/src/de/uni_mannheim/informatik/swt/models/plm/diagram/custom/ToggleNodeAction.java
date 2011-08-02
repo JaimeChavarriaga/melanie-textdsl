@@ -131,14 +131,14 @@ public class ToggleNodeAction implements IObjectActionDelegate {
 		//********************************************************
 		//Change the connection's new visual state
 		//********************************************************
-		if (selectedElement instanceof ConnectionEditPart)
-			((ConnectionEditPart)selectedElement).updateView(false);
-		else if(selectedElement instanceof BinaryGeneralizationEditPart)
-			((BinaryGeneralizationEditPart)selectedElement).updateView(false);
-		else if(selectedElement instanceof MultipleSpecializationEditPart)
-			((MultipleSpecializationEditPart)selectedElement).updateView(false);
-		else if(selectedElement instanceof MultipleGeneralizationEditPart)
-			((MultipleGeneralizationEditPart)selectedElement).updateView(false);
+//		if (selectedElement instanceof ConnectionEditPart)
+//			((ConnectionEditPart)selectedElement).updateView(false);
+//		else if(selectedElement instanceof BinaryGeneralizationEditPart)
+//			((BinaryGeneralizationEditPart)selectedElement).updateView(false);
+//		else if(selectedElement instanceof MultipleSpecializationEditPart)
+//			((MultipleSpecializationEditPart)selectedElement).updateView(false);
+//		else if(selectedElement instanceof MultipleGeneralizationEditPart)
+//			((MultipleGeneralizationEditPart)selectedElement).updateView(false);
 	}
 
 	//*****************************************************
