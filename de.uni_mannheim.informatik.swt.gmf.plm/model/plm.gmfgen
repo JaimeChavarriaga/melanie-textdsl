@@ -174,7 +174,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.54"/>
+            parser="//@labelParsers/@implementations.55"/>
       </labels>
     </childNodes>
     <childNodes
@@ -2166,6 +2166,26 @@
             xsi:type="gmfgen:ExpressionLabelModelFacet"
             parser="//@labelParsers/@implementations.53"/>
       </labels>
+      <labels
+          xsi:type="gmfgen:GenExternalNodeLabel"
+          visualID="5195"
+          editPartClassName="ConnectionNameExternalLabelEditPart"
+          itemSemanticEditPolicyClassName="ConnectionNameExternalLabelItemSemanticEditPolicy"
+          notationViewFactoryClassName="EntityLabelViewFactory">
+        <diagramRunTimeClass
+            href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap
+            xsi:type="gmfgen:InnerClassViewmap"
+            className="ConnectionNameExternalLabelFigure"
+            classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class ConnectionNameExternalLabelFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureConnectionNameExternalFigure; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public ConnectionNameExternalLabelFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setText(&quot;&quot;);&#xA;&#xA;this.setFont(THIS_FONT);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureConnectionNameExternalFigure() {&#xA;&#x9;&#x9;return fFigureConnectionNameExternalFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font THIS_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 8, org.eclipse.swt.SWT.NORMAL);&#xA;&#xA;">
+          <attributes
+              xsi:type="gmfgen:StyleAttributes"
+              fixedFont="true"/>
+        </viewmap>
+        <modelFacet
+            xsi:type="gmfgen:DesignLabelModelFacet"
+            parser="//@labelParsers/@implementations.54"/>
+      </labels>
     </childNodes>
     <childNodes
         visualID="3070"
@@ -2751,7 +2771,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.55"/>
+            parser="//@labelParsers/@implementations.56"/>
       </labels>
       <labels
           visualID="5150"
@@ -2771,7 +2791,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.56"/>
+            parser="//@labelParsers/@implementations.57"/>
       </labels>
     </childNodes>
     <topLevelNodes
@@ -2871,7 +2891,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.57"/>
+            parser="//@labelParsers/@implementations.58"/>
       </labels>
     </topLevelNodes>
     <links
@@ -3005,7 +3025,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.58"/>
+            parser="//@labelParsers/@implementations.59"/>
       </labels>
       <labels
           visualID="6011"
@@ -3031,7 +3051,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:ExpressionLabelModelFacet"
-            parser="//@labelParsers/@implementations.59"/>
+            parser="//@labelParsers/@implementations.60"/>
       </labels>
       <creationConstraints
           sourceEnd="//@expressionProviders/@providers.0/@expressions.96"
@@ -4575,6 +4595,9 @@
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Entity"/>
     </implementations>
+    <implementations
+        xsi:type="gmfgen:ExternalParser"
+        uses="//@diagram/@childNodes.20/@labels.5/@modelFacet"/>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.0/@labels.1/@modelFacet"

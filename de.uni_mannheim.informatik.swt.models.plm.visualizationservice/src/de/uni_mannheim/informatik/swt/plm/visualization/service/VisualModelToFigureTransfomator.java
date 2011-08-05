@@ -34,7 +34,10 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gmf.runtime.diagram.ui.figures.BorderedNodeFigure;
+import org.eclipse.gmf.runtime.diagram.ui.internal.figures.BorderItemContainerFigure;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
+import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.ocl.ParserException;
 import org.eclipse.ocl.ecore.Constraint;
@@ -80,7 +83,15 @@ public class VisualModelToFigureTransfomator implements IVisualModelToFigureTran
 	@Override
 	public IFigure run(Visualizer v){
 		
-		visualizer = v;		
+		visualizer = v;
+		
+		DefaultSizeNodeFigure defaultSizeNodeFigure = new DefaultSizeNodeFigure(40,40);
+		//If we have border items we need a BorderNodeFigure as outermost container
+		BorderedNodeFigure borderNode = null;
+		
+		if (v.getChild().size() > 1){
+			borderNode = new BorderedNodeFigure(defaultSizeNodeFigure);
+		}
 		TreeIterator<EObject> iterator = v.eAllContents();
 		
 		while(iterator.hasNext())
@@ -90,29 +101,33 @@ public class VisualModelToFigureTransfomator implements IVisualModelToFigureTran
 			if (! (eObj instanceof LayoutContentDescriptor))
 				continue;
 			
-			IFigure newFig = createFigure((LayoutContentDescriptor)eObj);
-			descriptor2figure.put((VisualizationDescriptor)eObj, newFig);
+			IFigure newFigure = createFigure((LayoutContentDescriptor)eObj);
+			descriptor2figure.put((VisualizationDescriptor)eObj, newFigure);
 			
 			IFigure parentFigure;
-			if ((parentFigure = descriptor2figure.get(getPaVisualizationDescriptor((LayoutContentDescriptor)eObj)))!= null )
+			if ((parentFigure = descriptor2figure.get(getParentVisualizationDescriptor((LayoutContentDescriptor)eObj)))!= null )
 			{
 				if (((LayoutContentDescriptor)eObj).getLayoutInformation() != null)
 				{
-					parentFigure.add(newFig, createLayoutInformation(((LayoutContentDescriptor)eObj).getLayoutInformation()));
-					newFig.setParent(parentFigure);
+					parentFigure.add(newFigure, createLayoutInformation(((LayoutContentDescriptor)eObj).getLayoutInformation()));
+					newFigure.setParent(parentFigure);
 				}
 				else
 				{
-					parentFigure.add(newFig);
-					newFig.setParent(parentFigure);
+					parentFigure.add(newFigure);
+					newFigure.setParent(parentFigure);
 				}
 			}
+			else if (v.getChild().indexOf(eObj) == 0)
+				defaultSizeNodeFigure.add(newFigure);
+			else if (v.getChild().indexOf(eObj) > 0)
+				borderNode.getBorderItemContainer().add(newFigure);
 		}
 	
-		return descriptor2figure.get(v.getChild());
+		return borderNode != null ? borderNode : defaultSizeNodeFigure;
 	}
 
-	private ShapeDescriptor getPaVisualizationDescriptor(LayoutContentDescriptor desc){
+	private ShapeDescriptor getParentVisualizationDescriptor(LayoutContentDescriptor desc){
 		return desc.eContainer() instanceof Visualizer ? null : desc.eContainer() instanceof ShapeDescriptor ? (ShapeDescriptor)desc.eContainer() : (ShapeDescriptor)desc.eContainer().eContainer();
 	}
 	

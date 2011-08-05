@@ -567,8 +567,6 @@
 		
 		if (v.getChild() == null)
 			return;
-	
-		figure.getChildren().clear();
 		
 		de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IVisualModelToFigureTransformator tranformator = null;
 		
@@ -580,13 +578,44 @@
 		
 		org.eclipse.draw2d.IFigure customFigure = tranformator.run(v);
 		
-		customFigure.setParent(figure);
-		figure.add(customFigure);
+		//It is important to only take the content of the DefaultSizeNode and 
+		//BorderItemContainer. Everything else will break the diagram
 		
-		figure.invalidateTree();
-		refreshVisuals();
-		performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
-		figure.repaint();
+		org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure sourceDFN = (org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure)figure.getChildren().get(0); 
+		org.eclipse.gmf.runtime.diagram.ui.internal.figures.BorderItemContainerFigure sourceBICF = (org.eclipse.gmf.runtime.diagram.ui.internal.figures.BorderItemContainerFigure)figure.getChildren().get(1); 
+		
+		//Clear the DefaultSizeNodeFigure children
+		sourceDFN.getChildren().clear();
+		//Clear the BorderItemContainer children
+		sourceBICF.getChildren().clear();
+		
+		if (customFigure instanceof org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure){
+			org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure targetDFN = (org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure)customFigure;  
+			
+			//Add customFigure children to the DefaultSizeNodeFigure
+			for(org.eclipse.draw2d.IFigure f : (java.util.List<org.eclipse.draw2d.IFigure>)targetDFN.getChildren()){
+				f.setParent(sourceDFN);
+				sourceDFN.add(f);
+			}
+		} else if (customFigure instanceof org.eclipse.gmf.runtime.diagram.ui.figures.BorderedNodeFigure){
+			
+			org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure targetDFN = (org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure)customFigure.getChildren().get(0); 
+			org.eclipse.gmf.runtime.diagram.ui.internal.figures.BorderItemContainerFigure targetBICF = (org.eclipse.gmf.runtime.diagram.ui.internal.figures.BorderItemContainerFigure)customFigure.getChildren().get(1); 
+			
+			//Add customFigure children to the DefaultSizeNodeFigure
+			for(org.eclipse.draw2d.IFigure f : (java.util.List<org.eclipse.draw2d.IFigure>)targetDFN.getChildren()){
+				f.setParent(sourceDFN);
+				sourceDFN.add(f);
+			}
+			
+			//Add customFigure children to the BorderItemContainer
+			for (org.eclipse.draw2d.IFigure f : (java.util.List<org.eclipse.draw2d.IFigure>)targetBICF.getChildren()){
+				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionNameExternalLabelEditPart ep = new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionNameExternalLabelEditPart(org.eclipse.gmf.runtime.notation.impl.NotationFactoryImpl.eINSTANCE.createNode());
+				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionNameExternalLabelEditPart.ConnectionNameExternalLabelFigure borderFig = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionNameExternalLabelEditPart.ConnectionNameExternalLabelFigure)ep.getFigure();
+				borderFig.setText(((org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel)f).getText());
+				addBorderItem(sourceBICF, ep);
+			}
+		}
 	}
 	«ENDIF»
 «ENDDEFINE»
@@ -1246,14 +1275,10 @@
 
 		de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject clab = (de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject) resolveSemanticElement();
 
-		«IF self.editPartClassName = 'ConnectionEditPart'»
 		//The figure
 		org.eclipse.draw2d.IFigure defaultSizeNodeFigure = getMainFigure();
 		//the container that contains the border items
 		org.eclipse.draw2d.IFigure borderItemContainer = (org.eclipse.draw2d.IFigure) figure.getChildren().get(1);
-		«ELSE»
-		org.eclipse.draw2d.IFigure defaultSizeNodeFigure = figure;
-		«ENDIF»
 		
 		//Elide and hide if model.complteness = NoElision
 		if (clab.isElided()) {
