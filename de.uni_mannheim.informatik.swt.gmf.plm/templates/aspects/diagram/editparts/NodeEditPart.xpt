@@ -273,7 +273,8 @@
 			helper.setContext(org.eclipse.gmf.runtime.notation.NotationPackage.Literals.VIEW);
 	
 			try {
-				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("Edge.allInstances()->select(e | e.source = self)");
+				//Need to take care to only select instantiation
+				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("Edge.allInstances()->select(e | e.source = self)->select(e | e.element.oclIsUndefined() <> true)");
 				instantiations = ((java.util.HashSet<org.eclipse.gmf.runtime.notation.View>) ocl.evaluate(v ,q)).toArray(new org.eclipse.gmf.runtime.notation.View[] {});
 			} catch (org.eclipse.ocl.ParserException e) {
 				e.printStackTrace();
