@@ -59,6 +59,7 @@ import de.uni_mannheim.informatik.swt.models.plm.visualization.FreehandShape;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.LayoutContentDescriptor;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.LayoutDescriptor;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.LayoutInformationDescriptor;
+import de.uni_mannheim.informatik.swt.models.plm.visualization.LinkDecoration;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.Point;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.SVGFigure;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.ShapeDescriptor;

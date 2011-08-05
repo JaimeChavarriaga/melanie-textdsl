@@ -93,7 +93,7 @@
 		//Is visualization information available? Is link visualization available?
 		if (dslRendering != null && dslRendering == true
 				&& self.getVisualizer().size() > 0 
-				&& (self.getVisualizer().get(0).getChild() instanceof de.uni_mannheim.informatik.swt.models.plm.visualization.Link) )
+				&& (self.getVisualizer().get(0).getChild().get(0) instanceof de.uni_mannheim.informatik.swt.models.plm.visualization.Link))
 			dslRendering = true;
 		else
 			dslRendering = false;
@@ -125,7 +125,7 @@
 				
 				int index = i - numberNonParticipantConnection;
 				
-				de.uni_mannheim.informatik.swt.models.plm.visualization.Link l = (de.uni_mannheim.informatik.swt.models.plm.visualization.Link)((de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer)self.getVisualizer().get(0)).getChild();
+				de.uni_mannheim.informatik.swt.models.plm.visualization.Link l = (de.uni_mannheim.informatik.swt.models.plm.visualization.Link)((de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer)self.getVisualizer().get(0)).getChild().get(0);
 				
 				org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart connection = sourceConnections.get(i);
 				org.eclipse.draw2d.PolylineConnection connectionFigure = (org.eclipse.draw2d.PolylineConnection) connection.getFigure();
