@@ -3931,7 +3931,7 @@
       <expressions
           body="Sequence{-1,-1}"/>
       <expressions
-          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))->append('collapsed= false')->append('ProximityInstantiation= 1')->append('DSLRendering= true')"/>
+          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))->append('collapsed= false')->append('ProximityInstantiation= 1')->append('DSLRendering= false')"/>
       <expressions
           body="0"/>
       <expressions

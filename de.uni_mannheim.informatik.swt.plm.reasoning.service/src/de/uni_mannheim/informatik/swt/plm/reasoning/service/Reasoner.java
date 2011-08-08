@@ -6,20 +6,31 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    Ralph Gerbig - initial API and implementation and initial documentation
+ *    Bastian Kennel - initial API and implementation and initial documentation
  *******************************************************************************/ 
 package de.uni_mannheim.informatik.swt.plm.reasoning.service;
 
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
+import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.ocl.ParserException;
+import org.eclipse.ocl.ecore.Constraint;
+import org.eclipse.ocl.ecore.OCL;
+import org.eclipse.ocl.expressions.OCLExpression;
+import org.eclipse.ocl.helper.OCLHelper;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Entity;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Generalization;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
 import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService;
 
-/**
- * @author User01
- *
- */
 public class Reasoner implements IReasoningService {
 
 	/* (non-Javadoc)
@@ -101,6 +112,54 @@ public class Reasoner implements IReasoningService {
 	public boolean isTypeOf(Clabject type, Clabject instance) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public List<Clabject> getAllClabjects(Model m) {
+		// 
+		return null;
+	}
+
+	@Override
+	public List<Entity> getAllEntities(Model m) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Connection> getAllConnections(Model m) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Set<Generalization> getAllGeneralizations(Model m) {
+		Set<Generalization> result = new HashSet<Generalization>();
+		OCL ocl = OCL.newInstance();
+		OCLHelper<EClassifier, ?, ?, Constraint> helper = ocl
+				.createOCLHelper();
+		OCLExpression<EClassifier> q;
+		helper.setContext(de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.Literals.MODEL);
+		try {
+			q = helper.createQuery("self.content->select(e|e.oclIsKindOf(Generalization))->asSet()");
+			result = (HashSet) ocl.evaluate(m, q);
+			}
+		catch (ParserException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	@Override
+	public List<Instantiation> getAllInstantiations(Model m) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Clabject> getAllModelSupertypes(Clabject c) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
