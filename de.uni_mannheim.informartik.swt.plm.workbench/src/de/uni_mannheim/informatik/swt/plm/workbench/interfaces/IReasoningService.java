@@ -27,17 +27,27 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
  */
 public interface IReasoningService {
 	
-	public List<Clabject> getAllClabjects(Model m);
+	public Set<Clabject> getAllClabjects(Model m);
 	
-	public List<Entity> getAllEntities(Model m);
+	public Set<Entity> getAllEntities(Model m);
 	
-	public List<Connection> getAllConnections(Model m);
+	public Set<Connection> getAllConnections(Model m);
 	
 	public Set<Generalization> getAllGeneralizations(Model m);
 	
-	public List<Instantiation> getAllInstantiations(Model m);
+	public Set<Instantiation> getAllInstantiations(Model m);
 	
-	public List<Clabject> getAllModelSupertypes(Clabject c);
+	public Set<Clabject> getAllModelSupertypes(Clabject c);
+	
+	public Set<Clabject> getAllModelTypes(Clabject c);
+	
+	public boolean isModelInstanceOf(Clabject instance, Clabject type);
+	
+	public boolean isModelTypeOf(Clabject instance, Clabject type);
+	
+	public Set<Clabject> getAllModelInstances(Clabject t);
+	
+	public Set<Clabject> getAllModelSubtypes(Clabject sup);
 	
 	/**
 	 * Creates an instance of the clabject c.
@@ -48,33 +58,6 @@ public interface IReasoningService {
 	 */
 	public Clabject createInstanceFrom(Clabject type);
 	
-	/**
-	 * Returns all instances of the clabject type.
-	 * 
-	 * @param type The clabject to return all instances of
-	 * 
-	 * @return A list with instances of the clabject
-	 */
-	public List<Clabject> getAllInstancesOf(Clabject type);
-	
-	/**
-	 * Returns all clabjects that inherit from clabject c.
-	 * 
-	 * @param c The clabject from which the sub clabjects are retrieved
-
-	 * @return A list of clabjects that inherit from c
-	 */
-	public List<Clabject> getAllSubClabjectsOf(Clabject c);
-	
-	
-	/**
-	 * Returns all clabjects from which c inherits from
-	 * 
-	 * @param c The clabject to retrieve all super clabjects from
-	 * 
-	 * @return A list of super clabjects
-	 */
-	public List<Clabject> getAllSyperClabjectsOf(Clabject c);
 	
 	/**
 	 * Checks whether a connection can exist between source and target
@@ -87,16 +70,7 @@ public interface IReasoningService {
 	 */
 	public boolean canConnectionExist(Clabject source, Clabject target);
 	
-	/**
-	 * Checks whether child can be added to parent
-	 * 
-	 * @param parent The element child is added to
-	 * 
-	 * @param child The element which is added to parent
-	 * 
-	 * @return true => child can be added; false => else
-	 */
-	public boolean canAddAsChild(Clabject parent, Clabject child);
+
 	
 	/**
 	 * Returns all types from which instances can be created in e. e can
@@ -106,27 +80,5 @@ public interface IReasoningService {
 	 * 
 	 * @return A list with possible types for creating instances
 	 */
-	public List<Clabject> getAllPossibleTypeForParent(Element e);
-	
-	/**
-	 * Checks whether instance is an instance of type
-	 * 
-	 * @param instance Clabject to check type for
-	 * 
-	 * @param type Clabject assumed as tyoe
-	 * 
-	 * @return true => instance is an instance of type; false => else
-	 */
-	public boolean isInstanceOf(Clabject instance, Clabject type);
-	
-	/**
-	 * Checks whether type is a type of instance 
-	 * 
-	 * @param type Type to check type for
-	 * 
-	 * @param instance Clabject that is assumed to be an instance of type
-	 * 
-	 * @return true => type is type of instance; false => else
-	 */
-	public boolean isTypeOf(Clabject type, Clabject instance);
+	public List<Clabject> getAllPossibleTypeForModel(Element e);
 }
