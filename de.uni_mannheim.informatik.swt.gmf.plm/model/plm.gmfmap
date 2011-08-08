@@ -1065,7 +1065,7 @@
                           xsi:type="ecore:EAttribute"
                           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Visualizer/attributes"/>
                       <value
-                          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))->append('ProximityInstantiation= 1')->append('DSLRendering= true')"/>
+                          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))->append('ProximityInstantiation= 1')->append('DSLRendering= false')"/>
                     </initializers>
                     <initializers
                         xsi:type="gmfmap:FeatureValueSpec">
