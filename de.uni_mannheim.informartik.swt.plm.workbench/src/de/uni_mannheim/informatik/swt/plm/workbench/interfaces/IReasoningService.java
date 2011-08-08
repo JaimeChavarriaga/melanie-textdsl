@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    Ralph Gerbig - initial API and implementation and initial documentation
+ *    Bastian Kennel - initial API and implementation and initial documentation
  *******************************************************************************/ 
 package de.uni_mannheim.informatik.swt.plm.workbench.interfaces;
 
