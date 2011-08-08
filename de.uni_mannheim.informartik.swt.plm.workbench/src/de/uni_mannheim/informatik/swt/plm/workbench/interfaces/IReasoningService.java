@@ -13,13 +13,30 @@ package de.uni_mannheim.informatik.swt.plm.workbench.interfaces;
 import java.util.List;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Entity;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Generalization;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
 
 /**
  * Interface that must be implemented for all reasoing engines
  *
  */
 public interface IReasoningService {
+	
+	public List<Clabject> getAllClabjects(Model m);
+	
+	public List<Entity> getAllEntities(Model m);
+	
+	public List<Connection> getAllConnections(Model m);
+	
+	public List<Generalization> getAllGeneralizations(Model m);
+	
+	public List<Instantiation> getAllInstantiations(Model m);
+	
+	public List<Clabject> getAllModelSupertypes(Clabject c);
 	
 	/**
 	 * Creates an instance of the clabject c.

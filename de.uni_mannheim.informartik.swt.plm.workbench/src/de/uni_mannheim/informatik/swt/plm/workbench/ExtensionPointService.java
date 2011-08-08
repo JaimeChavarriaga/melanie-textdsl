@@ -28,7 +28,7 @@ import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IVisualModelToFig
 public class ExtensionPointService {
 	
 	private static String VISUALIZATION_SERVICE_ID = "de.uni_mannheim.informatik.swt.visualization.service";
-	private static String REASONING_SERVICE_ID = "de.uni_mannheim.informatik.swt.visualization.service";
+	private static String REASONING_SERVICE_ID = "de.uni_mannheim.informatik.swt.reasoning.service";
 	
 	private static ExtensionPointService instance = null;
 	
