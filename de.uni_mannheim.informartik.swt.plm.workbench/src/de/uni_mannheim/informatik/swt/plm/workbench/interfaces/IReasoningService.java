@@ -11,6 +11,7 @@
 package de.uni_mannheim.informatik.swt.plm.workbench.interfaces;
 
 import java.util.List;
+import java.util.Set;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
@@ -32,7 +33,7 @@ public interface IReasoningService {
 	
 	public List<Connection> getAllConnections(Model m);
 	
-	public List<Generalization> getAllGeneralizations(Model m);
+	public Set<Generalization> getAllGeneralizations(Model m);
 	
 	public List<Instantiation> getAllInstantiations(Model m);
 	
