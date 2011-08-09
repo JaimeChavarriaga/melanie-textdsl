@@ -44,8 +44,15 @@ public class ExecuteModelTests implements IObjectActionDelegate {
 	public void run(IAction action) {
 		try
 		{
-			if (selectedElements.size() > 0)
-				((IReasoningService )ExtensionPointService.Instance().getReasoningService(ID)).getAllModelSupertypes((Clabject) selectedElements.get(0));
+			if (selectedElements.size() > 0) {
+				Clabject c = (Clabject) selectedElements.get(0);
+				IReasoningService reasoner = ((IReasoningService )ExtensionPointService.Instance().getReasoningService(ID));
+				
+				System.out.println("Model Supertypes" + reasoner.getAllModelSupertypes(c));
+				System.out.println("Model Subtypes" + reasoner.getAllModelSubtypes(c));
+				System.out.println("Model Instances" + reasoner.getAllModelInstances(c));
+				System.out.println("Model Types" + reasoner.getAllModelTypes(c));
+			}
 		} catch (CoreException e) {
 			e.printStackTrace();
 		}
