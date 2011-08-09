@@ -6,7 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    Bastian Kennel - initial API and implementation and initial documentation
+ *    Ralph Gerbig, Bastian Kennel 
+ *    				  - initial API and implementation and initial documentation
  *******************************************************************************/ 
 package de.uni_mannheim.swt.plm.reasoning.service.test;
 
@@ -36,10 +37,6 @@ public class ExecuteModelTests implements IObjectActionDelegate {
 	private List<Element> selectedElements = new LinkedList<Element>();
 	private static final String ID = "de.uni_mannheim.informatik.swt.plm.reasoning.service";
 	
-	public ExecuteModelTests() {
-		// TODO Auto-generated constructor stub
-	}
-
 	/* (non-Javadoc)
 	 * @see org.eclipse.ui.IActionDelegate#run(org.eclipse.jface.action.IAction)
 	 */
