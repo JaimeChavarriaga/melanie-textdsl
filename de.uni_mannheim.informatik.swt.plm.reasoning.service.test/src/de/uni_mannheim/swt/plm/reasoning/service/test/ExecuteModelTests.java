@@ -10,6 +10,10 @@
  *******************************************************************************/ 
 package de.uni_mannheim.swt.plm.reasoning.service.test;
 
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.jface.action.IAction;
@@ -29,7 +33,7 @@ import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService
  */
 public class ExecuteModelTests implements IObjectActionDelegate {
 
-	private Element el;
+	private List<Element> selectedElements = new LinkedList<Element>();
 	private static final String ID = "de.uni_mannheim.informatik.swt.plm.reasoning.service";
 	
 	public ExecuteModelTests() {
@@ -41,8 +45,10 @@ public class ExecuteModelTests implements IObjectActionDelegate {
 	 */
 	@Override
 	public void run(IAction action) {
-		try {
-			((IReasoningService )ExtensionPointService.Instance().getReasoningService(ID)).getAllModelSupertypes((Clabject) el);
+		try
+		{
+			if (selectedElements.size() > 0)
+				((IReasoningService )ExtensionPointService.Instance().getReasoningService(ID)).getAllModelSupertypes((Clabject) selectedElements.get(0));
 		} catch (CoreException e) {
 			e.printStackTrace();
 		}
@@ -52,9 +58,21 @@ public class ExecuteModelTests implements IObjectActionDelegate {
 	 * @see org.eclipse.ui.IActionDelegate#selectionChanged(org.eclipse.jface.action.IAction, org.eclipse.jface.viewers.ISelection)
 	 */
 	@Override
-	public void selectionChanged(IAction action, ISelection selection) {
-		if (selection instanceof IStructuredSelection && ((IStructuredSelection) selection).getFirstElement() instanceof IGraphicalEditPart) {
-			el = (Element) ((IGraphicalEditPart) ((IStructuredSelection) selection).getFirstElement()).resolveSemanticElement();
+	public void selectionChanged(IAction action, ISelection selection)
+	{	
+		selectedElements.clear();
+		
+		if (selection instanceof IStructuredSelection)
+		{
+			Iterator i = ((IStructuredSelection) selection).iterator();
+			
+			while (i.hasNext())
+			{
+				Object obj = i.next();
+				
+				if (obj instanceof IGraphicalEditPart && ((IGraphicalEditPart)obj).resolveSemanticElement() instanceof Element)
+					selectedElements.add((Element)((IGraphicalEditPart)obj).resolveSemanticElement());
+			}
 		}
 	}
 
