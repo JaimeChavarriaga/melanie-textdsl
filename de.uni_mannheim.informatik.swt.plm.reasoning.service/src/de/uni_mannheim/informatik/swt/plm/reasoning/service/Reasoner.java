@@ -29,100 +29,205 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Entity;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Generalization;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.MultipleGeneralization;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.MultipleSpecialization;
 import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService;
 
 public class Reasoner implements IReasoningService {
 
 	@Override
-	public Set<Generalization> getAllGeneralizations(Model m) {
+	public Set<Generalization> getAllGeneralizations(Model m) 
+	{
 		Set<Generalization> result = new HashSet<Generalization>();
 		OCL ocl = OCL.newInstance();
+		
 		OCLHelper<EClassifier, ?, ?, Constraint> helper = ocl.createOCLHelper();
 		OCLExpression<EClassifier> q;
 		helper.setContext(de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.Literals.MODEL);
-		try {
-			q = helper
-					.createQuery("self.content->select(e|e.oclIsKindOf(Generalization))->asSet()");
+		
+		try 
+		{
+			q = helper.createQuery("self.content->select(e|e.oclIsKindOf(Generalization))->asSet()");
 			result = (HashSet) ocl.evaluate(m, q);
-		} catch (ParserException e) {
+		} 
+		catch (ParserException e) 
+		{
 			e.printStackTrace();
 		}
+		
 		return result;
 	}
 
 
 	@Override
-	public Set<Clabject> getAllModelSupertypes(Clabject c) {
+	public Set<Clabject> getAllClabjects(Model m) 
+	{
 		Set<Clabject> result = new HashSet<Clabject>();
+		OCL ocl = OCL.newInstance();
+		
+		OCLHelper<EClassifier, ?, ?, Constraint> helper = ocl.createOCLHelper();
+		OCLExpression<EClassifier> q;
+		helper.setContext(de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.Literals.MODEL);
+		
+		try 
+		{
+			q = helper.createQuery("self.content->select(e|e.oclIsKindOf(Clabject))->asSet()");
+			result = (HashSet) ocl.evaluate(m, q);
+		} 
+		catch (ParserException e) 
+		{
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
+
+	@Override
+	public Set<Entity> getAllEntities(Model m) 
+	{
+		Set<Entity> result = new HashSet<Entity>();
+		OCL ocl = OCL.newInstance();
+		
+		OCLHelper<EClassifier, ?, ?, Constraint> helper = ocl.createOCLHelper();
+		OCLExpression<EClassifier> q;
+		helper.setContext(de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.Literals.MODEL);
+		
+		try 
+		{
+			q = helper.createQuery("self.content->select(e|e.oclIsKindOf(Entity))->asSet()");
+			result = (HashSet) ocl.evaluate(m, q);
+		} 
+		catch (ParserException e) 
+		{
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
+
+	@Override
+	public Set<Connection> getAllConnections(Model m) 
+	{
+		Set<Connection> result = new HashSet<Connection>();
+		OCL ocl = OCL.newInstance();
+		
+		OCLHelper<EClassifier, ?, ?, Constraint> helper = ocl.createOCLHelper();
+		OCLExpression<EClassifier> q;
+		helper.setContext(de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.Literals.MODEL);
+		
+		try 
+		{
+			q = helper.createQuery("self.content->select(e|e.oclIsKindOf(Connection))->asSet()");
+			result = (HashSet) ocl.evaluate(m, q);
+		} 
+		catch (ParserException e) 
+		{
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
+
+	@Override
+	public Set<Instantiation> getAllInstantiations(Model m) 
+	{
+		Set<Instantiation> result = new HashSet<Instantiation>();
+		OCL ocl = OCL.newInstance();
+		
+		OCLHelper<EClassifier, ?, ?, Constraint> helper = ocl.createOCLHelper();
+		OCLExpression<EClassifier> q;
+		helper.setContext(de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.Literals.MODEL);
+		
+		try 
+		{
+			q = helper.createQuery("self.content->select(e|e.oclIsKindOf(Instantiation))->asSet()");
+			result = (HashSet) ocl.evaluate(m, q);
+		} 
+		catch (ParserException e) 
+		{
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
+
+	@Override
+	public Set<Clabject> getAllModelSupertypes(Clabject c) 
+	{
+		Set<Clabject> result = new HashSet<Clabject>();
+		
 		OCL ocl = OCL.newInstance();
 		OCLHelper<EClassifier, ?, ?, Constraint> helper = ocl.createOCLHelper();
 		OCLExpression<EClassifier> q;
 		helper.setContext(de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.Literals.CLABJECT);
-		try {
-			q = helper
-					.createQuery("self.oclAsType(ecore::EObject).eContainer()");
-			Model m = (Model) ocl.evaluate(c, q);
-			Set<Generalization> allGeners = getAllGeneralizations(m);
-			for (Generalization g : allGeners) {
-				if (g instanceof BinaryGeneralization) {
-					BinaryGeneralization temp = (BinaryGeneralization) g;
-					Clabject supertype, subtype;
-					supertype = temp.getSupertype();
-					subtype = temp.getSubtype();
-					if (supertype != null && subtype != null) {
-						if (((BinaryGeneralization) g).getSubtype().equals(c)) {
-
-							result.add(((BinaryGeneralization) g)
-									.getSupertype());
-							result.addAll(getAllModelSupertypes(((BinaryGeneralization) g)
-									.getSupertype()));
-						}
-					}
-					else {
-						System.out.println("malformed Binary Generalization"+g);
-					}
-				}
-			}
-		} catch (ParserException e) {
+		
+		Model m = null;
+		
+		try 
+		{	
+			//Find the containing model
+			q = helper.createQuery("self.oclAsType(ecore::EObject).eContainer()");
+			m = (Model) ocl.evaluate(c, q);
+		}
+		catch (ParserException e) {
 			e.printStackTrace();
 		}
-//		System.out.println(result);
+		
+		if (m == null)
+			return result;
+		
+		//Get all generalizations from the containing model
+		Set<Generalization> generalizations = getAllGeneralizations(m);
+		
+		//Go through all generalizations and check if we are a subtype
+		for (Generalization g : generalizations) 
+		{
+			if (g instanceof BinaryGeneralization
+					&& ((BinaryGeneralization)g).getSupertype() != null
+					&& ((BinaryGeneralization)g).getSubtype() != null
+					&& ((BinaryGeneralization) g).getSubtype().equals(c))
+			{
+				//Add this supertype and all
+				result.add(((BinaryGeneralization) g).getSupertype());
+				//Find all supertypes of supertype
+				result.addAll(getAllModelSupertypes(((BinaryGeneralization) g).getSupertype()));
+			}
+			else if (g instanceof MultipleSpecialization
+						&& ((MultipleSpecialization)g).getSupertype() != null
+						&& ((MultipleSpecialization)g).getSubtype().size() > 0
+						&& ((MultipleSpecialization) g).getSubtype().equals(c))
+			{
+				//Add this supertype
+				result.add(((MultipleSpecialization) g).getSupertype());
+				//Find all supertypes of supertype
+				result.addAll(getAllModelSupertypes(((MultipleSpecialization) g).getSupertype()));
+			}
+			else if (g instanceof MultipleGeneralization
+						&& ((MultipleGeneralization)g).getSupertype().size() > 0
+						&& ((MultipleGeneralization)g).getSubtype() != null
+						&& ((MultipleGeneralization) g).getSubtype().equals(c))
+			{
+				//Add this supertype
+				result.addAll(((MultipleGeneralization) g).getSupertype());
+				//Find all supertypes of supertype
+				for (Clabject superType : ((MultipleGeneralization) g).getSupertype())
+					result.addAll(getAllModelSupertypes(superType));
+			}
+		}
+		
 		return result;
 	}
 
 
 	@Override
-	public Set<Clabject> getAllClabjects(Model m) {
-		// model content nach oclIskindof clabject durchsuchen
-		return null;
-	}
-
-
-	@Override
-	public Set<Entity> getAllEntities(Model m) {
-		// model content nach ocliskindof Entity durchsuchen
-		return null;
-	}
-
-
-	@Override
-	public Set<Connection> getAllConnections(Model m) {
-		// model content nach ocliskindof connection durchsuchen
-		return null;
-	}
-
-
-	@Override
-	public Set<Instantiation> getAllInstantiations(Model m) {
-		// model contentn nach ocliskindof instantiation durchsuchen
-		return null;
-	}
-
-
-	@Override
-	public Set<Clabject> getAllModelTypes(Clabject c) {
+	public Set<Clabject> getAllModelTypes(Clabject c) 
+	{
 		// alle model instantiations (vom model von c) durchsuchen
-//		wenn c oder ein supertyp von c die instance ist sind der type und alle supertypen vom type im erg
+		//wenn c oder ein supertyp von c die instance ist sind der type und alle supertypen vom type im erg
 		return null;
 	}
 
