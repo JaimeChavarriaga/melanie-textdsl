@@ -13,12 +13,15 @@ package de.uni_mannheim.informatik.swt.plm.workbench.interfaces;
 import java.util.List;
 import java.util.Set;
 
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Entity;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Generalization;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Method;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
 
 /**
@@ -26,6 +29,8 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
  *
  */
 public interface IReasoningService {
+	
+	public Model getModel(Clabject c);
 	
 	public Set<Clabject> getAllClabjects(Model m);
 	
@@ -53,7 +58,31 @@ public interface IReasoningService {
 	
 	public Set<Instantiation> getAllModelInstantiationsAsType(Clabject t);
 	
+	public Clabject geParticipantForRoleName(Connection c, String roleName);
 	
+	public String getRoleNameForParticipant(Connection c, Clabject p);
+	
+	public boolean isNavigableForRoleName(Connection c, String roleName);
+	
+	public boolean isNavigableParticipant(Connection con, Clabject p);
+	
+	public int getLowerForRoleName(Connection c, String roleName);
+	
+	public int getUpperForRoleName(Connection c, String roleName);
+	
+	public Set<Connection> getConnections(Clabject c);
+	
+	public Set<Clabject> getAllAssociates(Clabject c);
+	
+	public Set<String> getAssociateRoleNames(Clabject c);
+	
+	public Set<Clabject> getAssociatesForRoleName(Clabject source, String roleName);
+	
+	public Set<Feature> getAllFeatures(Clabject c);
+	
+	public Set<Attribute> getAllAttributes(Clabject c);
+	
+	public Set<Method> getAllMethods(Clabject c);
 	
 	/**
 	 * Creates an instance of the clabject c.

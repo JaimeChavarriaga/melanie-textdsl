@@ -11,6 +11,7 @@
  *******************************************************************************/
 package de.uni_mannheim.informatik.swt.plm.reasoning.service;
 
+import java.nio.channels.GatheringByteChannel;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Queue;
@@ -24,19 +25,46 @@ import org.eclipse.ocl.ecore.OCL;
 import org.eclipse.ocl.expressions.OCLExpression;
 import org.eclipse.ocl.helper.OCLHelper;
 
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.BinaryGeneralization;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Entity;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Generalization;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Method;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.MultipleGeneralization;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.MultipleSpecialization;
 import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService;
 
 public class Reasoner implements IReasoningService {
+	
+	
+
+	@Override
+	public Model getModel(Clabject c) {
+		OCL ocl = OCL.newInstance();
+		OCLHelper<EClassifier, ?, ?, Constraint> helper = ocl.createOCLHelper();
+		OCLExpression<EClassifier> q;
+		helper.setContext(de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.Literals.CLABJECT);
+		
+		Model m = null;
+		
+		try 
+		{	
+			//Find the containing model
+			q = helper.createQuery("self.oclAsType(ecore::EObject).eContainer()");
+			m = (Model) ocl.evaluate(c, q);
+		}
+		catch (ParserException e) {
+			e.printStackTrace();
+		}
+		return m;
+	}
+
 
 	@Override
 	public Set<Generalization> getAllGeneralizations(Model m) 
@@ -163,22 +191,7 @@ public class Reasoner implements IReasoningService {
 	{
 		Set<Clabject> result = new HashSet<Clabject>();
 		
-		OCL ocl = OCL.newInstance();
-		OCLHelper<EClassifier, ?, ?, Constraint> helper = ocl.createOCLHelper();
-		OCLExpression<EClassifier> q;
-		helper.setContext(de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.Literals.CLABJECT);
-		
-		Model m = null;
-		
-		try 
-		{	
-			//Find the containing model
-			q = helper.createQuery("self.oclAsType(ecore::EObject).eContainer()");
-			m = (Model) ocl.evaluate(c, q);
-		}
-		catch (ParserException e) {
-			e.printStackTrace();
-		}
+		Model m = getModel(c);
 		
 		if (m == null)
 			return result;
@@ -230,22 +243,7 @@ public class Reasoner implements IReasoningService {
 	{
 		Set<Clabject> result = new HashSet<Clabject>();
 		
-		OCL ocl = OCL.newInstance();
-		OCLHelper<EClassifier, ?, ?, Constraint> helper = ocl.createOCLHelper();
-		OCLExpression<EClassifier> q;
-		helper.setContext(de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.Literals.CLABJECT);
-		
-		Model m = null;
-		
-		try 
-		{	
-			//Find the containing model
-			q = helper.createQuery("self.oclAsType(ecore::EObject).eContainer()");
-			m = (Model) ocl.evaluate(c, q);
-		}
-		catch (ParserException e) {
-			e.printStackTrace();
-		}
+		Model m = getModel(c);
 		
 		if (m == null)
 			return result;
@@ -383,6 +381,152 @@ public class Reasoner implements IReasoningService {
 	}
 
 
+	@Override
+	public Clabject geParticipantForRoleName(Connection c, String roleName) {
+		if (!c.getRoleName().contains(roleName))
+			return null;
+		return c.getParticipant().get(c.getRoleName().indexOf(roleName));
+	}
+
+	
+	@Override
+	public String getRoleNameForParticipant(Connection c, Clabject p) {
+		if (!c.getParticipant().contains(p))
+			return null;
+		return c.getRoleName().get(c.getParticipant().indexOf(p));
+	}
+
+
+	@Override
+	public boolean isNavigableForRoleName(Connection c, String roleName) {
+		if (!c.getRoleName().contains(roleName))
+			return false;
+		return c.getIsNavigable().get(c.getRoleName().indexOf(roleName));
+	}
+	
+	@Override
+	public boolean isNavigableParticipant(Connection con, Clabject p) {
+		if (!con.getParticipant().contains(p))
+			return false;
+		return con.getIsNavigable().get(con.getParticipant().indexOf(p));
+	}
+
+
+	@Override
+	public int getLowerForRoleName(Connection c, String roleName) {
+		if (!c.getRoleName().contains(roleName))
+			return Integer.MAX_VALUE;
+		return c.getLower().get(c.getRoleName().indexOf(roleName));
+	}
+
+
+	@Override
+	public int getUpperForRoleName(Connection c, String roleName) {
+		if (!c.getRoleName().contains(roleName))
+			return Integer.MIN_VALUE;
+		return c.getUpper().get(c.getRoleName().indexOf(roleName));
+	}
+
+
+	@Override
+	public Set<Connection> getConnections(Clabject c) {
+		Set<Connection> result = new HashSet<Connection>();
+		
+		OCL ocl = OCL.newInstance();
+		OCLHelper<EClassifier, ?, ?, Constraint> helper = ocl.createOCLHelper();
+		OCLExpression<EClassifier> q;
+		helper.setContext(de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.Literals.CLABJECT);
+		try 
+		{	
+			//Find the containing model
+			q = helper.createQuery("Connection.allInstances()->select(c|c.participant->contains(self))");
+			result = (Set<Connection>) ocl.evaluate(c, q);
+		}
+		catch (ParserException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+
+	@Override
+	public Set<Clabject> getAllAssociates(Clabject c) {
+		Set<Clabject> result = new HashSet<Clabject>();
+		for (Connection con: getConnections(c)) {
+			for (Clabject p: con.getParticipant()) {
+				if (isNavigableParticipant(con, p)) {
+					result.add(p);
+				}
+			}
+		}
+		return result;
+	}
+
+
+	@Override
+	public Set<String> getAssociateRoleNames(Clabject c) {
+		Set<String> result = new HashSet<String>();
+		for (Connection con: getConnections(c)) {
+			for (Clabject p: con.getParticipant()) {
+				if (isNavigableParticipant(con, p)) {
+					result.add(getRoleNameForParticipant(con, p));
+				}
+			}
+		}
+		return result;
+	}
+
+
+	@Override
+	public Set<Clabject> getAssociatesForRoleName(Clabject source, String roleName) {
+		Set<Clabject> result = new HashSet<Clabject>();
+		for (Connection con : getConnections(source)) {
+			if (con.getRoleName().contains(roleName) && isNavigableForRoleName(con, roleName)) {
+				result.add(geParticipantForRoleName(con, roleName));
+			}
+		}
+		return result;
+	}
+
+
+	@Override
+	public Set<Feature> getAllFeatures(Clabject c) {
+		Set<Feature> result = new HashSet<Feature>();
+		Queue<Clabject> queue = new ConcurrentLinkedQueue<Clabject>();
+		queue.add(c);
+		queue.addAll(getAllModelSupertypes(c));
+		while (!queue.isEmpty()) {
+			Clabject current = queue.poll();
+			result.addAll(current.getFeature());
+		}
+		return result;
+	}
+
+
+	@Override
+	public Set<Attribute> getAllAttributes(Clabject c) {
+		Set<Attribute> result = new HashSet<Attribute>();
+		Set<Feature> features = getAllFeatures(c);
+		
+		for (Feature f : features)
+			if (f instanceof Attribute)
+				result.add((Attribute)f);
+		
+		return result;
+	}
+
+
+	@Override
+	public Set<Method> getAllMethods(Clabject c) {
+		Set<Method> result = new HashSet<Method>();
+		Set<Feature> features = getAllFeatures(c);
+		
+		for (Feature f : features)
+			if (f instanceof Method)
+				result.add((Method)f);
+		
+		return result;
+	}
 
 
 	@Override
