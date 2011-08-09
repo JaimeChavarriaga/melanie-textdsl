@@ -39,6 +39,8 @@ public interface IReasoningService {
 	
 	public Set<Clabject> getAllModelSupertypes(Clabject c);
 	
+	public Set<Clabject> getAllModelSubtypes(Clabject c);
+	
 	public Set<Clabject> getAllModelTypes(Clabject c);
 	
 	public boolean isModelInstanceOf(Clabject instance, Clabject type);
@@ -47,7 +49,11 @@ public interface IReasoningService {
 	
 	public Set<Clabject> getAllModelInstances(Clabject t);
 	
-	public Set<Clabject> getAllModelSubtypes(Clabject sup);
+	public Set<Instantiation> getAllModelInstantiationsAsInstance(Clabject i);
+	
+	public Set<Instantiation> getAllModelInstantiationsAsType(Clabject t);
+	
+	
 	
 	/**
 	 * Creates an instance of the clabject c.
