@@ -16,6 +16,7 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator;
+import org.eclipse.gmf.runtime.draw2d.ui.mapmode.MapModeUtil;
 
 /**
  * 
@@ -27,13 +28,24 @@ public class CenteredBorderItemLocator extends BorderItemLocator {
 
 	public CenteredBorderItemLocator(IFigure mainFigure, int preferredSide) {
 		super(mainFigure, preferredSide);
-	}
-
+	}	
+	
 	/**
 	 * If position is set to south calculate the center
 	 */
 	protected Point getPreferredLocation(int side, IFigure borderItem) {
-		if (side == PositionConstants.SOUTH) {
+		if (side == PositionConstants.NORTH){
+			Rectangle bounds = getParentBorder();
+			int parentFigureWidth = bounds.width;
+			
+			int x = -(getSize(borderItem).width / 2) + (parentFigureWidth / 2);
+			int y = 0;
+			
+			setBorderItemOffset(new Dimension(x, y));
+			
+			return super.getPreferredLocation(side, borderItem);
+		}
+		else if (side == PositionConstants.SOUTH) {
 			
 			Rectangle bounds = getParentBorder();
 			int parentFigureWidth = bounds.width;

@@ -65,17 +65,24 @@ import de.uni_mannheim.informatik.swt.models.plm.visualization.VisualizationDesc
 import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IVisualModelToFigureTransformator;
 
 /**
- * Translates a visualizer model excerpt into a figure that
- * can be used with gef and gmf. Does not translates links to figures.
+ * <p>Translates a visualizer model excerpt into a figure that
+ * can be used with gef and gmf.</p> 
+ * 
+ * <p>Does not translates links to figures.
  * This need to be done in the editparts because the direct figure of
  * an editpart cannot be exchanged and the getters and setters of link
- * figures are very limited.
+ * figures are very limited.</p>
+ * 
+ * <p>Figures containing a border Item need to be completely copied as they contain
+ * a DefaultNode Figure. The locator needs to be created newly, because this locator
+ * has the wrong figure as main figure.</p>
  *
  */
 public class VisualModelToFigureTransfomator implements IVisualModelToFigureTransformator {
 	
 	private Map<VisualizationDescriptor, IFigure> descriptor2figure = new HashMap<VisualizationDescriptor, IFigure>();
 	private Visualizer visualizer = null;
+	
 	
 	@Override
 	public IFigure run(Visualizer v){
@@ -321,35 +328,35 @@ public class VisualModelToFigureTransfomator implements IVisualModelToFigureTran
 		
 		if (layoutInformation.getVerticalAlignment() == Alignment.BEGIN
 				&& layoutInformation.getHorizontalAlignment() == Alignment.BEGIN)
-			 locator = new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(
+			 return new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(
 					 descriptor2figure.get(layoutInformation.eContainer()), PositionConstants.NORTH_WEST);
 		else if (layoutInformation.getVerticalAlignment() == Alignment.BEGIN
 					&& layoutInformation.getHorizontalAlignment() == Alignment.CENTER)
-			 locator = new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(
+			 return new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(
 					 descriptor2figure.get(layoutInformation.eContainer()), PositionConstants.NORTH);
 		else if (layoutInformation.getVerticalAlignment() == Alignment.BEGIN
 				&& layoutInformation.getHorizontalAlignment() == Alignment.END)
-		 locator = new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(
+		 	return new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(
 				 descriptor2figure.get(layoutInformation.eContainer()), PositionConstants.NORTH_EAST);
 		else if (layoutInformation.getVerticalAlignment() == Alignment.CENTER
 				&& layoutInformation.getHorizontalAlignment() == Alignment.BEGIN)
-		 locator = new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(
+			return new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(
 				 descriptor2figure.get(layoutInformation.eContainer()), PositionConstants.WEST);
 		else if (layoutInformation.getVerticalAlignment() == Alignment.CENTER
 				&& layoutInformation.getHorizontalAlignment() == Alignment.END)
-		 locator = new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(
+			return new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(
 				 descriptor2figure.get(layoutInformation.eContainer()), PositionConstants.EAST);
 		else if (layoutInformation.getVerticalAlignment() == Alignment.END
 				&& layoutInformation.getHorizontalAlignment() == Alignment.BEGIN)
-		 locator = new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(
+			return new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(
 				 descriptor2figure.get(layoutInformation.eContainer()), PositionConstants.SOUTH_WEST);
 		else if (layoutInformation.getVerticalAlignment() == Alignment.END
 				&& layoutInformation.getHorizontalAlignment() == Alignment.CENTER)
-		 locator = new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(
+			return new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(
 				 descriptor2figure.get(layoutInformation.eContainer()), PositionConstants.SOUTH);
 		else if (layoutInformation.getVerticalAlignment() == Alignment.END
 				&& layoutInformation.getHorizontalAlignment() == Alignment.END)
-		 locator = new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(
+		 	return new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(
 				 descriptor2figure.get(layoutInformation.eContainer()), PositionConstants.SOUTH_EAST);
 		
 		return locator;

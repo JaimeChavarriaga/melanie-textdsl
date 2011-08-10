@@ -611,10 +611,22 @@
 			
 			//Add customFigure children to the BorderItemContainer
 			for (org.eclipse.draw2d.IFigure f : (java.util.List<org.eclipse.draw2d.IFigure>)targetBICF.getChildren()){
-				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionNameExternalLabelEditPart ep = new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionNameExternalLabelEditPart(org.eclipse.gmf.runtime.notation.impl.NotationFactoryImpl.eINSTANCE.createNode());
-				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionNameExternalLabelEditPart.ConnectionNameExternalLabelFigure borderFig = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionNameExternalLabelEditPart.ConnectionNameExternalLabelFigure)ep.getFigure();
-				borderFig.setText(((org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel)f).getText());
-				addBorderItem(sourceBICF, ep);
+				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionNameExternalLabelEditPart ep = new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionNameExternalLabelEditPart(
+						org.eclipse.gmf.runtime.notation.impl.NotationFactoryImpl.eINSTANCE.createNode());
+				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionNameExternalLabelEditPart.ConnectionNameExternalLabelFigure borderFig = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionNameExternalLabelEditPart.ConnectionNameExternalLabelFigure) ep
+						.getFigure();
+				borderFig.setText(((org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel) f).getText());
+				org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator locator = 
+						(org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator) (f.getParent().getLayoutManager().getConstraint(f) instanceof org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator?f.getParent().getLayoutManager().getConstraint(f):null);
+				
+				//We need to do this as the main figure is not right when build up in visualizer
+				if (locator != null && locator instanceof de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator)
+					locator = new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(getMainFigure(), locator.getPreferredSideOfParent());
+				
+				if (locator == null || ! (locator instanceof de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator))
+					locator = new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(getMainFigure(), org.eclipse.draw2d.PositionConstants.SOUTH);
+				
+				sourceBICF.add(borderFig, locator);
 			}
 		}
 	}
