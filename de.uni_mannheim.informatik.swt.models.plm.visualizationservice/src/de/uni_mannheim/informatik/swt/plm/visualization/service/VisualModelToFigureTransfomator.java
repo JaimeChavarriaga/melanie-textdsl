@@ -10,32 +10,28 @@
  *******************************************************************************/ 
 package de.uni_mannheim.informatik.swt.plm.visualization.service;
 
-import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 
-import org.eclipse.core.filesystem.URIUtil;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.draw2d.AbstractLayout;
 import org.eclipse.draw2d.Ellipse;
 import org.eclipse.draw2d.GridData;
 import org.eclipse.draw2d.GridLayout;
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.ScalablePolygonShape;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.emf.common.util.TreeIterator;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator;
 import org.eclipse.gmf.runtime.diagram.ui.figures.BorderedNodeFigure;
-import org.eclipse.gmf.runtime.diagram.ui.internal.figures.BorderItemContainerFigure;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.jface.resource.JFaceResources;
@@ -50,6 +46,7 @@ import org.eclipse.ui.PlatformUI;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.Alignment;
+import de.uni_mannheim.informatik.swt.models.plm.visualization.BorderLayoutInformationDescriptor;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.ColorConstant;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.ExpressionLabel;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.FlowLayout;
@@ -59,7 +56,6 @@ import de.uni_mannheim.informatik.swt.models.plm.visualization.FreehandShape;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.LayoutContentDescriptor;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.LayoutDescriptor;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.LayoutInformationDescriptor;
-import de.uni_mannheim.informatik.swt.models.plm.visualization.LinkDecoration;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.Point;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.SVGFigure;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.ShapeDescriptor;
@@ -122,7 +118,10 @@ public class VisualModelToFigureTransfomator implements IVisualModelToFigureTran
 			else if (v.getChild().indexOf(eObj) == 0)
 				defaultSizeNodeFigure.add(newFigure);
 			else if (v.getChild().indexOf(eObj) > 0)
-				borderNode.getBorderItemContainer().add(newFigure);
+				if (((LayoutContentDescriptor)eObj).getLayoutInformation() != null)
+					borderNode.getBorderItemContainer().add(newFigure, createLayoutInformation(((LayoutContentDescriptor)eObj).getLayoutInformation()));
+				else
+					borderNode.getBorderItemContainer().add(newFigure);
 		}
 	
 		return borderNode != null ? borderNode : defaultSizeNodeFigure;
@@ -309,8 +308,51 @@ public class VisualModelToFigureTransfomator implements IVisualModelToFigureTran
 		
 		if (layoutInformation instanceof TableLayoutInformation)
 			return createTableLayoutInformation((TableLayoutInformation) layoutInformation);
+		if (layoutInformation instanceof BorderLayoutInformationDescriptor)
+			return createBorderLayoutInformation((BorderLayoutInformationDescriptor) layoutInformation);
 		
 		return null;
+	}
+
+	private Object createBorderLayoutInformation(
+			BorderLayoutInformationDescriptor layoutInformation) {
+		
+		BorderItemLocator locator = null;
+		
+		if (layoutInformation.getVerticalAlignment() == Alignment.BEGIN
+				&& layoutInformation.getHorizontalAlignment() == Alignment.BEGIN)
+			 locator = new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(
+					 descriptor2figure.get(layoutInformation.eContainer()), PositionConstants.NORTH_WEST);
+		else if (layoutInformation.getVerticalAlignment() == Alignment.BEGIN
+					&& layoutInformation.getHorizontalAlignment() == Alignment.CENTER)
+			 locator = new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(
+					 descriptor2figure.get(layoutInformation.eContainer()), PositionConstants.NORTH);
+		else if (layoutInformation.getVerticalAlignment() == Alignment.BEGIN
+				&& layoutInformation.getHorizontalAlignment() == Alignment.END)
+		 locator = new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(
+				 descriptor2figure.get(layoutInformation.eContainer()), PositionConstants.NORTH_EAST);
+		else if (layoutInformation.getVerticalAlignment() == Alignment.CENTER
+				&& layoutInformation.getHorizontalAlignment() == Alignment.BEGIN)
+		 locator = new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(
+				 descriptor2figure.get(layoutInformation.eContainer()), PositionConstants.WEST);
+		else if (layoutInformation.getVerticalAlignment() == Alignment.CENTER
+				&& layoutInformation.getHorizontalAlignment() == Alignment.END)
+		 locator = new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(
+				 descriptor2figure.get(layoutInformation.eContainer()), PositionConstants.EAST);
+		else if (layoutInformation.getVerticalAlignment() == Alignment.END
+				&& layoutInformation.getHorizontalAlignment() == Alignment.BEGIN)
+		 locator = new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(
+				 descriptor2figure.get(layoutInformation.eContainer()), PositionConstants.SOUTH_WEST);
+		else if (layoutInformation.getVerticalAlignment() == Alignment.END
+				&& layoutInformation.getHorizontalAlignment() == Alignment.CENTER)
+		 locator = new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(
+				 descriptor2figure.get(layoutInformation.eContainer()), PositionConstants.SOUTH);
+		else if (layoutInformation.getVerticalAlignment() == Alignment.END
+				&& layoutInformation.getHorizontalAlignment() == Alignment.END)
+		 locator = new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(
+				 descriptor2figure.get(layoutInformation.eContainer()), PositionConstants.SOUTH_EAST);
+		
+		return locator;
 	}
 
 	private Object createTableLayoutInformation(
