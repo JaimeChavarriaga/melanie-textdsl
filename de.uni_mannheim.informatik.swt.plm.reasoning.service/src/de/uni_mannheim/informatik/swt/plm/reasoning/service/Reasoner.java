@@ -11,14 +11,15 @@
  *******************************************************************************/
 package de.uni_mannheim.informatik.swt.plm.reasoning.service;
 
-import java.nio.channels.GatheringByteChannel;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import java.util.Set;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.ocl.ParserException;
 import org.eclipse.ocl.ecore.Constraint;
 import org.eclipse.ocl.ecore.OCL;
@@ -38,6 +39,8 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Method;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.MultipleGeneralization;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.MultipleSpecialization;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMFactoryImpl;
 import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService;
 
 public class Reasoner implements IReasoningService {
@@ -528,11 +531,117 @@ public class Reasoner implements IReasoningService {
 		return result;
 	}
 
-
 	@Override
-	public Clabject createInstanceFrom(Clabject type) {
-		// TODO Auto-generated method stub
-		return null;
+	public Clabject createInstanceFromTypeName(String typeName,
+			Model targetModel, Clabject instance) throws Exception 
+	{
+		Ontology ont = (Ontology)targetModel.eContainer();
+		
+		if (ont.getContent().indexOf(targetModel) == 0)
+			throw new Exception("Cannot create type on level with index 0.");
+		
+		Model typeModel = ont.getContent().get(ont.getContent().indexOf(targetModel) - 1);
+		
+		Set<Clabject> type = new HashSet<Clabject>();
+		OCL ocl = OCL.newInstance();
+		OCLHelper<EClassifier, ?, ?, Constraint> helper = ocl.createOCLHelper();
+		OCLExpression<EClassifier> q;
+		helper.setContext(de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.Literals.MODEL);
+		try 
+		{	
+			//Find the containing model
+			q = helper.createQuery("self.content->select(c | c.name = '"+ typeName +"')");
+			type = (Set<Clabject>) ocl.evaluate(typeModel, q);
+		}
+		catch (ParserException e) {
+			e.printStackTrace();
+		}
+		
+		if (type.size() > 1)
+			throw new Exception("More then one type for name found!");
+		else if (type.size() == 0)
+			throw new Exception("No type for name found!");
+		
+		Clabject newClabject = createInstanceFrom(type.iterator().next(), instance); 
+		targetModel.getContent().add(newClabject);
+		
+		return newClabject;
+	}
+	@Override
+	public Clabject createInstanceFrom(Clabject type, Clabject instance) throws Exception {
+		
+		if (!type.isInstantiable())
+			throw new Exception("Not instantiable clabject cannot be instantiated!");
+		else if (type.getPotency() == 0)
+			throw new Exception("Cannot create instance of type with potency 0.");
+		
+		instance.setBlueprint(type);
+		instance.setLevel(type.getLevel() + 1);
+		instance.setElided(type.isElided());
+		instance.setExpressed(type.isExpressed());
+		instance.setOrigin(type.getOrigin());
+		
+		//Quick hack to get a visualizer from type in
+		instance.getVisualizer().clear();
+		instance.getVisualizer().add(EcoreUtil.copy(type.getVisualizer().get(0)));
+		
+		int newPotency = -1;
+		
+		if (type.getPotency() == -1)
+			newPotency = -1;
+		else if (type.getPotency() > 0)
+			newPotency = type.getPotency() - 1;
+		
+		instance.setPotency(newPotency);
+		instance.setRelevant(type.isRelevant());
+		instance.setVisualizersShown(type.getVisualizersShown());
+		
+		List<Feature> features = new LinkedList<Feature>();
+		
+		for (Feature f : getAllFeatures(type))
+		{
+			Feature newFeature = f instanceof Method? PLMFactoryImpl.eINSTANCE.createMethod() : PLMFactoryImpl.eINSTANCE.createAttribute();
+			
+			int newDurability = -1;
+			
+			if (f.getDurability() == -1)
+				newDurability = -1;
+			else if (f.getDurability() > 0)
+				newDurability = f.getDurability() - 1;
+			
+			newFeature.setDurability(newDurability);
+			newFeature.setElided(f.isElided());
+			newFeature.setExpressed(f.isExpressed());
+			newFeature.setName(f.getName());
+			newFeature.setRelevant(f.isRelevant());
+			
+			//Quick hack to get a visualizer from type in
+			newFeature.getVisualizer().add(EcoreUtil.copy(f.getVisualizer().get(0)));
+			
+			if (f instanceof Attribute){
+				((Attribute)newFeature).setDatatype(((Attribute) f).getDatatype());
+				
+				int newMutability = -1;
+				
+				if (((Attribute) f).getMutability() == -1)
+					newMutability = -1;
+				else if (((Attribute) f).getMutability() > 0)
+					newMutability = ((Attribute) f).getMutability() - 1;
+				
+				((Attribute)newFeature).setMutability(newMutability);
+			}
+			
+			features.add(newFeature);
+		}
+		
+		instance.getFeature().addAll(features);
+		
+		Instantiation i = PLMFactoryImpl.eINSTANCE.createInstantiation();
+		i.setType(type);
+		i.setInstance(instance);
+		((Model)instance.eContainer()).getContent().add(i);
+		
+		return instance;
 	}
 
 

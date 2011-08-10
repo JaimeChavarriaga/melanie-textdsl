@@ -80,6 +80,10 @@ public class «getElementInitializersClassName()» {
 
 «DEFINE initMethod(diagramElement : gmfgen::GenCommonBase) FOR gmfgen::GenElementInitializer»«ERROR 'No idea how to init using ' + self.repr()»«ENDDEFINE»
 
+«AROUND additions FOR gmfgen::GenDiagram»
+private static final String REASONING_SERVICE_ID = "de.uni_mannheim.informatik.swt.plm.reasoning.service";
+«ENDAROUND»
+
 «DEFINE initMethod(diagramElement : gmfgen::GenCommonBase) FOR gmfgen::GenFeatureSeqInitializer-»
 	«EXPAND xpt::Common::generatedMemberComment»
 	public void init_«diagramElement.getUniqueIdentifier()»(«EXPAND MetaModel::QualifiedClassName FOR elementClass» instance) {
@@ -99,7 +103,15 @@ public class «getElementInitializersClassName()» {
 			{
 				String typeName = viewer.getActiveTool().getId().substring(viewer.getActiveTool().getId().indexOf(".") + 1).replace("CreationTool", "");
 				de.uni_mannheim.informatik.swt.models.plm.PLM.Model containingModel = (de.uni_mannheim.informatik.swt.models.plm.PLM.Model)instance.eContainer();
-				de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology ont = (de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology)containingModel.eContainer();
+				
+				try {
+					de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService service = de.uni_mannheim.informatik.swt.plm.workbench.ExtensionPointService.Instance().getReasoningService(REASONING_SERVICE_ID);
+					service.createInstanceFromTypeName(typeName, containingModel, instance);
+				} catch (java.lang.Exception e) {
+					e.printStackTrace();
+				}
+				
+				/*de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology ont = (de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology)containingModel.eContainer();
 				de.uni_mannheim.informatik.swt.models.plm.PLM.Model higherModel = ont.getContent().get(ont.getContent().indexOf(containingModel) - 1);
 				
 				for (de.uni_mannheim.informatik.swt.models.plm.PLM.OwnedElement e : higherModel.getContent())
@@ -153,7 +165,7 @@ public class «getElementInitializersClassName()» {
 						instance.getVisualizer().clear();
 						instance.getVisualizer().add(org.eclipse.emf.ecore.util.EcoreUtil.copy(e.getVisualizer().get(0)));
 					}
-				}
+				}*/
 			}
 			«ENDIF»
 		} catch(RuntimeException e) {
