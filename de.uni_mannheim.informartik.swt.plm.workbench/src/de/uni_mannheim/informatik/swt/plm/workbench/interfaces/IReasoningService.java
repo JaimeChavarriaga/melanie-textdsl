@@ -84,29 +84,11 @@ public interface IReasoningService {
 	
 	public Set<Method> getAllMethods(Clabject c);
 	
-	/**
-	 * Creates an instance given the types name and the model where it shall be created in.
-	 * The method searches for the type level model, the clabject in it and calls 
-	 * {@link #createInstanceFrom(Clabject)}.
-	 * 
-	 * @param typeName The name of the clabject to create an instance from
-	 * @param targetModel Model to create clabject in
-	 * 
-	 * @return An instance of the clabject with typename
-	 * @throws Exception 
-	 */
-	public Clabject createInstanceFromTypeName(String typeName, Model targetModel, Clabject instance) throws Exception;
+	public void dressInstanceFromType(Clabject type, Clabject instance) throws Exception;
 	
-	/**
-	 * Creates an instance of the clabject c.
-	 * 
-	 * @param type The Clabject to create an instance from
-	 * 
-	 * @return The clabject which is an instance
-	 * @throws Exception 
-	 */
-	public Clabject createInstanceFrom(Clabject type, Clabject instance) throws Exception;
+	public Attribute createAttribute(Attribute type);
 	
+	public Method createMethod(Method type);
 	
 	/**
 	 * Checks whether a connection can exist between source and target
@@ -130,4 +112,6 @@ public interface IReasoningService {
 	 * @return A list with possible types for creating instances
 	 */
 	public List<Clabject> getAllPossibleTypeForModel(Element e);
+
+	
 }
