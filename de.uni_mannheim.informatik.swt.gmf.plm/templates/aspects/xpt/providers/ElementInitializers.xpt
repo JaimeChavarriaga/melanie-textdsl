@@ -99,73 +99,28 @@ private static final String REASONING_SERVICE_ID = "de.uni_mannheim.informatik.s
 			org.eclipse.gef.ui.palette.PaletteViewer viewer = editor.getPalette();
 			
 			//We create an instance of a DSL element
-			if (viewer.getActiveTool().getId().startsWith("dsl."))
-			{
-				String typeName = viewer.getActiveTool().getId().substring(viewer.getActiveTool().getId().indexOf(".") + 1).replace("CreationTool", "");
-				de.uni_mannheim.informatik.swt.models.plm.PLM.Model containingModel = (de.uni_mannheim.informatik.swt.models.plm.PLM.Model)instance.eContainer();
-				
-				try {
-					de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService service = de.uni_mannheim.informatik.swt.plm.workbench.ExtensionPointService.Instance().getReasoningService(REASONING_SERVICE_ID);
-					service.createInstanceFromTypeName(typeName, containingModel, instance);
-				} catch (java.lang.Exception e) {
-					e.printStackTrace();
-				}
-				
-				/*de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology ont = (de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology)containingModel.eContainer();
-				de.uni_mannheim.informatik.swt.models.plm.PLM.Model higherModel = ont.getContent().get(ont.getContent().indexOf(containingModel) - 1);
-				
-				for (de.uni_mannheim.informatik.swt.models.plm.PLM.OwnedElement e : higherModel.getContent())
-				{
-					if (e instanceof «elementClass.genPackage.basePackage».PLM.«elementClass.ecoreClass.name» //de.uni_mannheim.informatik.swt.models.plm.PLM.Entity
-							&& e.getName().equals(typeName))
-					{
-					
-						de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation i = de.uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMFactoryImpl.eINSTANCE.createInstantiation();
-						
-						i.setType((«elementClass.genPackage.basePackage».PLM.«elementClass.ecoreClass.name»)e);
-						i.setInstance((«elementClass.genPackage.basePackage».PLM.«elementClass.ecoreClass.name»)instance);
-						i.setIsonym(true);
-						containingModel.getContent().add(i);
-						
-						instance.setBlueprint((«elementClass.genPackage.basePackage».PLM.«elementClass.ecoreClass.name»)e);
-					
-						for (de.uni_mannheim.informatik.swt.models.plm.PLM.Feature f : ((de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)e).getFeature())
-						{
-							if (f instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute && (f.getDurability() > 0 || f.getDurability() == -1))
-							{
-								de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute attr = de.uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMFactoryImpl.eINSTANCE.createAttribute();
-								instance.getFeature().add(attr);
-								init_Attribute_3061(attr);
-								attr.setDurability(f.getDurability() > 0 ? f.getDurability() - 1 : -1);
-								attr.setMutability(((de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute)f).getMutability() > 0 ? ((de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute)f).getMutability() - 1 : ((de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute)f).getMutability());
-								attr.setDatatype(((de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute)f).getDatatype());
-								attr.setExpressed(f.isExpressed());
-								attr.setElided(f.isElided());
-								attr.setValue(((de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute)f).getValue());
-								attr.setName(f.getName());
-							}
-							else if (f instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Method && (f.getDurability() > 0 || f.getDurability() == -1))
-							{
-								de.uni_mannheim.informatik.swt.models.plm.PLM.Method m = de.uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMFactoryImpl.eINSTANCE.createMethod();
-								instance.getFeature().add(m);
-								init_Method_3062(m);
-								m.setName(f.getName());
-								m.setDurability(f.getDurability() > 0 ? f.getDurability() - 1 : -1);
-								m.setBody(((de.uni_mannheim.informatik.swt.models.plm.PLM.Method)f).getBody());
-								m.setElided(f.isElided());
-								m.setExpressed(f.isExpressed());
-								m.getInput().addAll(((de.uni_mannheim.informatik.swt.models.plm.PLM.Method)f).getInput());
-								m.getOutput().addAll(((de.uni_mannheim.informatik.swt.models.plm.PLM.Method)f).getOutput());
-							}
+			if (viewer.getActiveTool().getId().startsWith("dsl.")) {
+				String typeName = viewer
+						.getActiveTool()
+						.getId()
+						.substring(
+								viewer.getActiveTool().getId().indexOf(".") + 1)
+						.replace(".CreationTool", "");
+				org.eclipse.emf.common.util.TreeIterator<org.eclipse.emf.ecore.EObject> iter = org.eclipse.emf.ecore.util.EcoreUtil.getRootContainer(instance).eAllContents();
+				while (iter.hasNext()) {
+					org.eclipse.emf.ecore.EObject current = iter.next();
+					if (org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getProxyID(current).equals(typeName)) {
+						try {
+							de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService service = de.uni_mannheim.informatik.swt.plm.workbench.ExtensionPointService
+									.Instance().getReasoningService(
+											REASONING_SERVICE_ID);
+							service.dressInstanceFromType((de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject) current, instance);
+						} catch (java.lang.Exception e) {
+							e.printStackTrace();
 						}
-						
-						instance.setPotency(((de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)e).getPotency() -1);
-						
-						//Copy all visualizers from the parent
-						instance.getVisualizer().clear();
-						instance.getVisualizer().add(org.eclipse.emf.ecore.util.EcoreUtil.copy(e.getVisualizer().get(0)));
+						break;
 					}
-				}*/
+				}
 			}
 			«ENDIF»
 		} catch(RuntimeException e) {
