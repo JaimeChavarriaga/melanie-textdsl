@@ -34,6 +34,16 @@ public class CenteredBorderItemLocator extends BorderItemLocator {
 	 * If position is set to south calculate the center
 	 */
 	protected Point getPreferredLocation(int side, IFigure borderItem) {
+		if (side == PositionConstants.NORTH_EAST){
+			Rectangle bounds = getParentBorder();
+			
+			int x = -getSize(borderItem).width;
+			int y = 0;
+			
+			setBorderItemOffset(new Dimension(x, y));
+			
+			return super.getPreferredLocation(side, borderItem);
+		}
 		if (side == PositionConstants.NORTH){
 			Rectangle bounds = getParentBorder();
 			int parentFigureWidth = bounds.width;
@@ -44,6 +54,44 @@ public class CenteredBorderItemLocator extends BorderItemLocator {
 			setBorderItemOffset(new Dimension(x, y));
 			
 			return super.getPreferredLocation(side, borderItem);
+		}
+		if (side == PositionConstants.NORTH_WEST){
+			Rectangle bounds = getParentBorder();
+			
+			int x = (bounds.width);
+			int y = 0;
+			
+			setBorderItemOffset(new Dimension(x, y));
+			
+			return super.getPreferredLocation(side, borderItem);
+		}
+		else if (side == PositionConstants.EAST) {
+			
+			Rectangle bounds = getParentBorder();
+			int parentFigureHeight = bounds.height;
+			int parentFigureWidth = bounds.width;
+			int parentFigureX = bounds.x;
+			int parentFigureY = bounds.y;
+			int x = parentFigureX;
+			int y = parentFigureY;
+			Dimension borderItemSize = getSize(borderItem);
+			
+			x = parentFigureX + parentFigureWidth - getBorderItemOffset().width;
+			y += (parentFigureHeight / 2) - (borderItemSize.height / 2);
+			
+			return new Point(x, y);
+		}
+		else if (side == PositionConstants.SOUTH_EAST) {
+			
+			Rectangle bounds = getParentBorder();
+			int parentFigureWidth = bounds.width;
+			
+			int x = -getSize(borderItem).width;
+			int y = 0;
+			
+			setBorderItemOffset(new Dimension(x, y));
+			
+			return super.getPreferredLocation(PositionConstants.SOUTH, borderItem);
 		}
 		else if (side == PositionConstants.SOUTH) {
 			
@@ -56,9 +104,38 @@ public class CenteredBorderItemLocator extends BorderItemLocator {
 			setBorderItemOffset(new Dimension(x, y));
 			
 			return super.getPreferredLocation(side, borderItem);
-		} else {
+		}
+		else if (side == PositionConstants.WEST) {
+			
+			Rectangle bounds = getParentBorder();
+			int parentFigureHeight = bounds.height;
+			int parentFigureX = bounds.x;
+			int parentFigureY = bounds.y;
+			int x = parentFigureX;
+			int y = parentFigureY;
+			Dimension borderItemSize = getSize(borderItem);
+			
+			x = parentFigureX - getSize(borderItem).width
+					+ getBorderItemOffset().width;
+			y += (parentFigureHeight / 2) - (borderItemSize.height / 2);
+			
+			return new Point(x, y);
+		}
+		else {
 			return super.getPreferredLocation(side, borderItem);
 		}
 	}
 
+	@Override
+	protected void calculateNextNonConflictingPosition(Point currentLocation,
+			int interval, int currentSide, IFigure borderItem,
+			Rectangle obstacle) {
+		
+		super.calculateNextNonConflictingPosition(currentLocation, interval,
+			currentSide, borderItem, obstacle);
+		
+		if (currentSide == PositionConstants.SOUTH_EAST)
+			super.calculateNextNonConflictingPosition(currentLocation, interval,
+					PositionConstants.SOUTH, borderItem, obstacle);
+	}
 }
