@@ -85,9 +85,23 @@ public class CenteredBorderItemLocator extends BorderItemLocator {
 			
 			Rectangle bounds = getParentBorder();
 			int parentFigureWidth = bounds.width;
+			int parentFigureHeight = bounds.height;
 			
 			int x = -getSize(borderItem).width;
-			int y = 0;
+			int y = parentFigureHeight + getSize(borderItem).height;
+			
+			setBorderItemOffset(new Dimension(x, y));
+			
+			return super.getPreferredLocation(PositionConstants.SOUTH, borderItem);
+		}
+		else if (side == PositionConstants.SOUTH_WEST) {
+			
+			Rectangle bounds = getParentBorder();
+			int parentFigureWidth = bounds.width;
+			int parentFigureHeight = bounds.height;
+			
+			int x = bounds.width;
+			int y = parentFigureHeight + getSize(borderItem).height;
 			
 			setBorderItemOffset(new Dimension(x, y));
 			
