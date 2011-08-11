@@ -559,6 +559,9 @@
 		«ENDIF»
 	}
 	«IF self.editPartClassName = 'EntityEditPart'»
+	/**
+	 * @generated
+	 */
 	public void updateDSL() {
 		
 		if (((de.uni_mannheim.informatik.swt.models.plm.PLM.Element)resolveSemanticElement()).getVisualizer().size() == 0)
@@ -616,17 +619,26 @@
 				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionNameExternalLabelEditPart.ConnectionNameExternalLabelFigure borderFig = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionNameExternalLabelEditPart.ConnectionNameExternalLabelFigure) ep
 						.getFigure();
 				borderFig.setText(((org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel) f).getText());
-				org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator locator = 
-						(org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator) (f.getParent().getLayoutManager().getConstraint(f) instanceof org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator?f.getParent().getLayoutManager().getConstraint(f):null);
+				
+				de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator oldLocator = 
+						(de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator) (f.getParent().getLayoutManager().getConstraint(f) instanceof de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator?f.getParent().getLayoutManager().getConstraint(f):null);
+				
+				de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator newLocator = null;
 				
 				//We need to do this as the main figure is not right when build up in visualizer
-				if (locator != null && locator instanceof de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator)
-					locator = new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(getMainFigure(), locator.getPreferredSideOfParent());
+				if (oldLocator != null
+						&& oldLocator instanceof de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator)
+				{
+					newLocator = new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(
+							getMainFigure(), oldLocator.getPreferredSideOfParent());
+					newLocator.setInitialOffset(oldLocator.getInitialOffset());
+				}
+				else if (oldLocator == null
+						|| !(oldLocator instanceof de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator))
+					newLocator = new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(
+							getMainFigure(), org.eclipse.draw2d.PositionConstants.SOUTH);
 				
-				if (locator == null || ! (locator instanceof de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator))
-					locator = new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(getMainFigure(), org.eclipse.draw2d.PositionConstants.SOUTH);
-				
-				sourceBICF.add(borderFig, locator);
+				sourceBICF.add(borderFig, newLocator);
 			}
 		}
 	}
