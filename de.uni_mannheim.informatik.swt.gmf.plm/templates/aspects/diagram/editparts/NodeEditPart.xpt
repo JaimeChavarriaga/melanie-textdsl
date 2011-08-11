@@ -287,7 +287,9 @@
 					instantiations[0].setVisible(true);
 					
 				org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart edgeEP = (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)getViewer().getEditPartRegistry().get(instantiations[0]);
-				edgeEP.performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
+				
+				if (edgeEP != null)
+					edgeEP.performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
 			}
 			«ENDIF»
 		}
