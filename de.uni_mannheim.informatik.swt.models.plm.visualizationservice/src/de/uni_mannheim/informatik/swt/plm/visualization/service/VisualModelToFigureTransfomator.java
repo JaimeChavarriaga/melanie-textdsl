@@ -43,6 +43,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.ui.PlatformUI;
 
+import de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.Alignment;
@@ -324,40 +325,44 @@ public class VisualModelToFigureTransfomator implements IVisualModelToFigureTran
 	private Object createBorderLayoutInformation(
 			BorderLayoutInformationDescriptor layoutInformation) {
 		
-		BorderItemLocator locator = null;
+		CenteredBorderItemLocator locator = null;
 		
+		//We need to find out at which side the item shall be place
 		if (layoutInformation.getVerticalAlignment() == Alignment.BEGIN
 				&& layoutInformation.getHorizontalAlignment() == Alignment.BEGIN)
-			 return new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(
+			locator = new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(
 					 descriptor2figure.get(layoutInformation.eContainer()), PositionConstants.NORTH_WEST);
 		else if (layoutInformation.getVerticalAlignment() == Alignment.BEGIN
 					&& layoutInformation.getHorizontalAlignment() == Alignment.CENTER)
-			 return new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(
+			locator = new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(
 					 descriptor2figure.get(layoutInformation.eContainer()), PositionConstants.NORTH);
 		else if (layoutInformation.getVerticalAlignment() == Alignment.BEGIN
 				&& layoutInformation.getHorizontalAlignment() == Alignment.END)
-		 	return new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(
+			locator = new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(
 				 descriptor2figure.get(layoutInformation.eContainer()), PositionConstants.NORTH_EAST);
 		else if (layoutInformation.getVerticalAlignment() == Alignment.CENTER
 				&& layoutInformation.getHorizontalAlignment() == Alignment.BEGIN)
-			return new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(
+			locator = new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(
 				 descriptor2figure.get(layoutInformation.eContainer()), PositionConstants.WEST);
 		else if (layoutInformation.getVerticalAlignment() == Alignment.CENTER
 				&& layoutInformation.getHorizontalAlignment() == Alignment.END)
-			return new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(
+			locator = new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(
 				 descriptor2figure.get(layoutInformation.eContainer()), PositionConstants.EAST);
 		else if (layoutInformation.getVerticalAlignment() == Alignment.END
 				&& layoutInformation.getHorizontalAlignment() == Alignment.BEGIN)
-			return new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(
+			locator = new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(
 				 descriptor2figure.get(layoutInformation.eContainer()), PositionConstants.SOUTH_WEST);
 		else if (layoutInformation.getVerticalAlignment() == Alignment.END
 				&& layoutInformation.getHorizontalAlignment() == Alignment.CENTER)
-			return new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(
+			locator = new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(
 				 descriptor2figure.get(layoutInformation.eContainer()), PositionConstants.SOUTH);
 		else if (layoutInformation.getVerticalAlignment() == Alignment.END
 				&& layoutInformation.getHorizontalAlignment() == Alignment.END)
-		 	return new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(
+			locator = new de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator(
 				 descriptor2figure.get(layoutInformation.eContainer()), PositionConstants.SOUTH_EAST);
+		
+		if (locator != null)
+			locator.setInitialOffset(layoutInformation.getHorizontalOffset(), layoutInformation.getVerticalOffset());
 		
 		return locator;
 	}

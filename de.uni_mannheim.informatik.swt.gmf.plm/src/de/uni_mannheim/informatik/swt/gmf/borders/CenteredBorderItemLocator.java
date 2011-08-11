@@ -26,6 +26,14 @@ import org.eclipse.gmf.runtime.draw2d.ui.mapmode.MapModeUtil;
  */
 public class CenteredBorderItemLocator extends BorderItemLocator {
 
+	private Dimension initialOffset = new Dimension(0, 0);
+	
+	public void setInitialOffset(int x, int y){initialOffset = new Dimension(x, y);}
+	
+	public void setInitialOffset(Dimension d){initialOffset = d;}
+	
+	public Dimension getInitialOffset(){return initialOffset;}
+	
 	public CenteredBorderItemLocator(IFigure mainFigure, int preferredSide) {
 		super(mainFigure, preferredSide);
 	}	
@@ -40,6 +48,9 @@ public class CenteredBorderItemLocator extends BorderItemLocator {
 			int x = -getSize(borderItem).width;
 			int y = 0;
 			
+			x += initialOffset.width;
+			y += initialOffset.height;
+			
 			setBorderItemOffset(new Dimension(x, y));
 			
 			return super.getPreferredLocation(side, borderItem);
@@ -51,6 +62,9 @@ public class CenteredBorderItemLocator extends BorderItemLocator {
 			int x = -(getSize(borderItem).width / 2) + (parentFigureWidth / 2);
 			int y = 0;
 			
+			x += initialOffset.width;
+			y += initialOffset.height;
+			
 			setBorderItemOffset(new Dimension(x, y));
 			
 			return super.getPreferredLocation(side, borderItem);
@@ -60,6 +74,9 @@ public class CenteredBorderItemLocator extends BorderItemLocator {
 			
 			int x = (bounds.width);
 			int y = 0;
+			
+			x += initialOffset.width;
+			y += initialOffset.height;
 			
 			setBorderItemOffset(new Dimension(x, y));
 			
@@ -79,6 +96,9 @@ public class CenteredBorderItemLocator extends BorderItemLocator {
 			x = parentFigureX + parentFigureWidth - getBorderItemOffset().width;
 			y += (parentFigureHeight / 2) - (borderItemSize.height / 2);
 			
+			x += initialOffset.width;
+			y += initialOffset.height;
+			
 			return new Point(x, y);
 		}
 		else if (side == PositionConstants.SOUTH_EAST) {
@@ -89,6 +109,9 @@ public class CenteredBorderItemLocator extends BorderItemLocator {
 			
 			int x = -getSize(borderItem).width;
 			int y = parentFigureHeight + getSize(borderItem).height;
+			
+			x += initialOffset.width;
+			y += initialOffset.height;
 			
 			setBorderItemOffset(new Dimension(x, y));
 			
@@ -103,6 +126,9 @@ public class CenteredBorderItemLocator extends BorderItemLocator {
 			int x = bounds.width;
 			int y = parentFigureHeight + getSize(borderItem).height;
 			
+			x += initialOffset.width;
+			y += initialOffset.height;
+			
 			setBorderItemOffset(new Dimension(x, y));
 			
 			return super.getPreferredLocation(PositionConstants.SOUTH, borderItem);
@@ -114,6 +140,9 @@ public class CenteredBorderItemLocator extends BorderItemLocator {
 			
 			int x = -(getSize(borderItem).width / 2) + (parentFigureWidth / 2);
 			int y = 0;
+			
+			x += initialOffset.width;
+			y += initialOffset.height;
 			
 			setBorderItemOffset(new Dimension(x, y));
 			
@@ -132,6 +161,9 @@ public class CenteredBorderItemLocator extends BorderItemLocator {
 			x = parentFigureX - getSize(borderItem).width
 					+ getBorderItemOffset().width;
 			y += (parentFigureHeight / 2) - (borderItemSize.height / 2);
+			
+			x += initialOffset.width;
+			y += initialOffset.height;
 			
 			return new Point(x, y);
 		}
