@@ -51,7 +51,12 @@ main() {
 					comp.listLayout := true;
 				};
 	
-	
+	--Fix the Create Undefined Bug 354467 
+	gmfgenModel.objectsOfType(GenLink)->asOrderedSet()
+				->select(l | l.elementType.oclIsTypeOf(SpecializationType) and l.elementType.displayName = 'Undefined')->forEach(link)
+				{
+					link.elementType.displayName := link.modelFacet.oclAsType(FeatureLinkModelFacet).metaFeature.ecoreFeature.name.firstToUpper();
+				};
 	
 	--Setup the GenEditorGenerator
 	this.genEditorGenerator := gmfgenModel.objectsOfType(GenEditorGenerator)->asOrderedSet()->first();
