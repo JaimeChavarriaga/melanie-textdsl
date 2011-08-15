@@ -111,7 +111,7 @@ public interface IReasoningService {
 	 * 
 	 * @return A list with possible types for creating instances
 	 */
-	public List<Clabject> getAllPossibleTypeForModel(Element e);
+	Set<Clabject> getAllPossibleTypeForModel(Model m);
 
 	
 }

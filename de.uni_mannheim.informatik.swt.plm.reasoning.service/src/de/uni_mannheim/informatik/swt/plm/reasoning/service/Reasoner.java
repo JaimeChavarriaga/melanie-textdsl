@@ -645,8 +645,31 @@ public class Reasoner implements IReasoningService {
 
 
 	@Override
-	public List<Clabject> getAllPossibleTypeForModel(Element e) {
-		// TODO Auto-generated method stub
-		return null;
+	public Set<Clabject> getAllPossibleTypeForModel(Model m) {
+		OCL ocl = OCL.newInstance();
+		OCLHelper<EClassifier, ?, ?, Constraint> helper = ocl.createOCLHelper();
+		OCLExpression<EClassifier> q;
+		helper.setContext(de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.Literals.MODEL);
+		
+		int index = ((Ontology)m.eContainer()).getContent().indexOf(m);
+		
+		if (index <= 0)
+			new HashSet<Clabject>();
+		
+		Model typeModel = ((Ontology)m.eContainer()).getContent().get(index - 1);
+		
+		Set result = null;
+
+		try
+		{	
+			//Find the containing model
+			q = helper.createQuery("self.content->select(c | c.oclIsKindOf(Clabject) and c.oclAsType(Clabject).instantiable and (c.oclAsType(Clabject).potency > 0 or c.oclAsType(Clabject).potency = -1))");
+			result = (Set)ocl.evaluate(typeModel, q);
+		}
+		catch (ParserException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 }
