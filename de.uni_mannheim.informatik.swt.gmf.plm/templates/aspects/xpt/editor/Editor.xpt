@@ -86,6 +86,10 @@
 	 * @generated
 	 */
 	private org.eclipse.gef.palette.PaletteDrawer dslElementsGroup = null;
+	/**
+	 * @generated
+	 */
+	
 	
 	/**
 	 * @generated
@@ -139,8 +143,10 @@
 		
 		de.uni_mannheim.informatik.swt.models.plm.PLM.Model higherModel = o.getContent().get(o.getContent().indexOf(container) - 1);
 		
+		//Fill the palette
 		for (de.uni_mannheim.informatik.swt.models.plm.PLM.Element e : higherModel.getContent())
 		{
+			//For entities we simply create the entry
 			if (e instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Entity && ((de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)e).isInstantiable()
 				&& ((de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)e).getPotency() != 0)
 			{
@@ -167,7 +173,7 @@
 						"Creates a new " + e.getName(),
 						java.util.Collections.singletonList(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.Connection_3060));
 				
-				entry.setId("dsl." + e.getName() + "CreationTool");
+				entry.setId("dsl." + org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getProxyID(e) + ".CreationTool");
 				entry.setSmallIcon(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditorPlugin
 						.findImageDescriptor("/de.uni_mannheim.informatik.swt.gmf.plm/icons/connection16.gif"));
 				entry.setLargeIcon(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditorPlugin
@@ -180,7 +186,7 @@
 						"Creates a new " + e.getName(),
 						java.util.Collections.singletonList(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.ConnectionParticipant_4021));
 						
-				linkEntry.setId("dsl." +  e.getName() + "ConnectionCreationTool");
+				linkEntry.setId("dsl." + org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getProxyID(e) + ".CreationTool");
 				linkEntry.setSmallIcon(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditorPlugin
 						.findImageDescriptor("/de.uni_mannheim.informatik.swt.gmf.plm/icons/connectionParticipant16.gif"));
 				linkEntry.setLargeIcon(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditorPlugin
