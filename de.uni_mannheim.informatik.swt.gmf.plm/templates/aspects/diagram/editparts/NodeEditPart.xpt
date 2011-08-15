@@ -112,7 +112,11 @@
 				continue;
 			}
 
+			//****************************************************************************
+			//DSL Rendering
+			//****************************************************************************
 			//Do the DSL rendering -> Set decoration independent of isNavigable
+			//Set labels independent of DSL rendering
 			if (dslRendering != null && dslRendering)
 			{
 				de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IVisualModelToFigureTransformator transformator = null; 
@@ -157,6 +161,15 @@
 				//No decoration defined
 				else {
 					connectionFigure.setTargetDecoration(null);
+				}
+				
+				//Add DSl labels
+				for (de.uni_mannheim.informatik.swt.models.plm.visualization.LabelDescriptor labelDesc : l.getLabel()){
+					org.eclipse.draw2d.IFigure fig = ((de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionParticipantEditPart)connection).getFigure();
+					org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel label = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel("Huhu");
+					label.setParent(fig);
+					fig.getChildren().clear();
+					fig.add(label, new org.eclipse.gmf.runtime.diagram.ui.figures.LabelLocator(fig, new org.eclipse.draw2d.geometry.Point(-10,-10), org.eclipse.draw2d.ConnectionLocator.SOURCE));
 				}
 			}
 
