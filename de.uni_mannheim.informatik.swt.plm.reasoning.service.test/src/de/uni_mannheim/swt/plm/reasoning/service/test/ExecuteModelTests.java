@@ -55,8 +55,10 @@ public class ExecuteModelTests implements IObjectActionDelegate {
 						Clabject type = (Clabject) selectedElements.get(0);
 						Clabject instance = (Clabject) selectedElements.get(1);
 						System.out.println("Local Conformance " + reasoner.localConforms(type, instance));
+						System.out.println("Neighbourhood Conformance " + reasoner.neighbourhoodConforms(type, instance));
 						if (type instanceof Connection) {
-							System.out.println("Construction Conformance " + reasoner.localConstructionConformsConnection((Connection) type, (Connection) instance));
+							System.out.println("Local Construction Conformance " + reasoner.localConstructionConformsConnection((Connection) type, (Connection) instance));
+							System.out.println("Neighbour Construction Conformance " + reasoner.neighbourhoodConstructionConformsConnection((Connection) type, (Connection) instance) );
 						} 
 					} else {
 						Clabject c = (Clabject) e;

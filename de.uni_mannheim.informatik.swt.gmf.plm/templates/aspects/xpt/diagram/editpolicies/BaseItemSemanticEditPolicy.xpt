@@ -23,80 +23,45 @@
   */»
 «AROUND canCreate FOR gmfgen::GenLink»
 	«IF getUniqueIdentifier().startsWith('ConnectionParticipant_')»
+	
+		«EXPAND xpt::Common::generatedMemberComment»
+		private final String REASONING_SERVICE_ID = "de.uni_mannheim.informatik.swt.plm.reasoning.service";
+		
 		«EXPAND xpt::Common::generatedMemberComment»
 		public boolean canCreate«getUniqueIdentifier()»(«EXPAND canCreateParameters FOR modelFacet») {
-						//left out contains check to have multiple participants to the same clabject.
+			
+			//left out contains check to have multiple participants to the same clabject.
 			
 			de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor editor = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor) org.eclipse.ui.PlatformUI
-			.getWorkbench().getActiveWorkbenchWindow().getActivePage()
-			.getActiveEditor();
-			
+					.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+					.getActiveEditor();
+
 			if (editor.getPalette().getActiveTool().getId().startsWith("dsl.")) {
-				
-				de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation[] targetInstantiations = new de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation[] {};
-				de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation[] sourceInstantiations = new de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation[] {};
-				
-				org.eclipse.ocl.ecore.OCL ocl = org.eclipse.ocl.ecore.OCL
-						.newInstance();
-				org.eclipse.ocl.helper.OCLHelper<org.eclipse.emf.ecore.EClassifier, ?, ?, org.eclipse.ocl.ecore.Constraint> helper = ocl
-						.createOCLHelper();
-				helper.setContext(de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.Literals.LML_MODEL);
-	
-				de.uni_mannheim.informatik.swt.models.plm.PLM.Connection typeConnection = null;
+
+				de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService reasoner = null;
 				
 				try {
-					org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("Instantiation.allInstances()->select(i | i.instance = self)");
-					sourceInstantiations = ((java.util.HashSet<de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation>) ocl
-							.evaluate(source, q))
-							.toArray(new de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation[] {});
-					
-					//We can only apply a DSL tool to something that is an instance
-					if(sourceInstantiations.length == 0)
-						return false;
-					
-					typeConnection = (de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)sourceInstantiations[0].getType();
-					
-					if (typeConnection.getName().equals(editor.getPalette().getActiveTool().getLabel()))
-					{
-						if (target == null)
-							return true;
-					}
-					else
-					{
-						return false;
-					}
-					
-					q = helper
-							.createQuery("Instantiation.allInstances()->select(i | i.instance = self)");
-					targetInstantiations = ((java.util.HashSet<de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation>) ocl
-							.evaluate(target, q))
-							.toArray(new de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation[] {});
-					
-				} catch (org.eclipse.ocl.ParserException e) {
+					reasoner = de.uni_mannheim.informatik.swt.plm.workbench.ExtensionPointService.Instance().getReasoningService(REASONING_SERVICE_ID);
+				} catch (org.eclipse.core.runtime.CoreException e) {
 					e.printStackTrace();
 				}
-			
-				//We cannot connect an instance of an connection to a clabject which is 
-				//not an instance of a type
-				if (targetInstantiations.length == 0)
-					return false;
-
-				String typeName = editor.getPalette().getActiveTool()
-						.getLabel();
-				de.uni_mannheim.informatik.swt.models.plm.PLM.Model instanceModel = (de.uni_mannheim.informatik.swt.models.plm.PLM.Model) source.eContainer();
-				de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology ont = (de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology) instanceModel.eContainer();
-
-				//We cannot use dsl tools on the highest level
-				if (!(ont.getContent().indexOf(instanceModel) > 0))
-					return false;
-
-				de.uni_mannheim.informatik.swt.models.plm.PLM.Model typeModel = (de.uni_mannheim.informatik.swt.models.plm.PLM.Model) ont.getContent().get(
-						ont.getContent().indexOf(instanceModel) - 1);
-
-				//check if it is in the types
-				return (typeConnection.getParticipant().indexOf(
-						targetInstantiations[0].getType()) > -1)
-						&& canExist«getUniqueIdentifier()»(«EXPAND canCreateValues FOR modelFacet»);
+				String typeID = editor.getPalette().getActiveTool().getId().replace("dsl.", "").replace(".CreationTool", "");
+				de.uni_mannheim.informatik.swt.models.plm.PLM.Connection typeConnection = (de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)reasoner.getElementByXMIID(typeID, source);
+				//Start of drawing the line. possible if the source conforms what was used to construct the participation from
+				if (source != null && target == null){
+					return reasoner.neighbourhoodConstructionConformsConnection(typeConnection, source);
+				}
+				java.util.Set<de.uni_mannheim.informatik.swt.models.plm.PLM.Connection> possibleTypeConnections = new java.util.HashSet<de.uni_mannheim.informatik.swt.models.plm.PLM.Connection>();
+				possibleTypeConnections.add(typeConnection);
+				for (de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject con: reasoner.getAllModelSupertypes(typeConnection))
+					possibleTypeConnections.add((de.uni_mannheim.informatik.swt.models.plm.PLM.Connection) con);
+				java.util.Set<de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject> possibleTypes = new java.util.HashSet<de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject>();
+				for (de.uni_mannheim.informatik.swt.models.plm.PLM.Connection con: possibleTypeConnections)
+					possibleTypes.addAll(con.getParticipant());
+				for (de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject possible: possibleTypes)
+					if (reasoner.localConforms(possible, target))
+						return true;
+				return false;
 			}
 			
 			return canExist«getUniqueIdentifier()»(«EXPAND canCreateValues FOR modelFacet»);

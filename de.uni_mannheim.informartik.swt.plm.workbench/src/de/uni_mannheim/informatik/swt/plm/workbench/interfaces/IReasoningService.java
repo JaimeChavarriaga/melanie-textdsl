@@ -99,7 +99,7 @@ public interface IReasoningService {
 	 * 
 	 * @return true => Connection can exist; false => else
 	 */
-	public boolean canConnectionExist(Clabject source, Clabject target);
+	public boolean canConnectionExist(Connection source, Clabject target);
 	
 
 	
@@ -138,5 +138,7 @@ public interface IReasoningService {
 	public Set<Connection> getAllModelConnections(Clabject c);
 	
 	public Set<Connection> getAllConnections(Clabject c);
+	
+	public Element getElementByXMIID(String id, Element modelElement);
 	
 }

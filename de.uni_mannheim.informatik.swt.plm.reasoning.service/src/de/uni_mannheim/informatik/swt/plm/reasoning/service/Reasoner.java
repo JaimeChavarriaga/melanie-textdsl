@@ -11,8 +11,6 @@
  *******************************************************************************/
 package de.uni_mannheim.informatik.swt.plm.reasoning.service;
 
-import java.util.Collection;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,8 +18,11 @@ import java.util.Queue;
 import java.util.Set;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
 import org.eclipse.ocl.ParserException;
 import org.eclipse.ocl.ecore.Constraint;
 import org.eclipse.ocl.ecore.OCL;
@@ -660,8 +661,7 @@ public class Reasoner implements IReasoningService {
 
 
 	@Override
-	public boolean canConnectionExist(Clabject source, Clabject target) {
-		// TODO Auto-generated method stub
+	public boolean canConnectionExist(Connection source, Clabject target) {
 		return false;
 	}
 
@@ -895,6 +895,18 @@ public class Reasoner implements IReasoningService {
 			}
 		}
 		return true;
+	}
+
+
+	@Override
+	public Element getElementByXMIID(String id, Element modelElement) {
+		TreeIterator<EObject> iter = EcoreUtil.getRootContainer(modelElement).eAllContents();
+		while (iter.hasNext()) {
+			EObject current = iter.next();
+			if (EMFCoreUtil.getProxyID(current).equals(id)) 
+				return (Element) current;
+		}
+		return null;
 	}
 	
 	
