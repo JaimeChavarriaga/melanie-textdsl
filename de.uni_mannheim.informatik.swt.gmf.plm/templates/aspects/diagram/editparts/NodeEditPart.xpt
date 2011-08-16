@@ -46,7 +46,7 @@
 
 	«EXPAND setExpressedVisualState-»
 	«EXPAND addNotify-»
-	«EXPAND registerVisualizersForHandleNotification-»
+	«EXPAND registerToHandleNotificationForChildren-»
 «ENDIF»
 «ENDAROUND»
 
@@ -166,7 +166,27 @@
 				//Add DSl labels
 				for (de.uni_mannheim.informatik.swt.models.plm.visualization.LabelDescriptor labelDesc : l.getLabel()){
 					org.eclipse.draw2d.IFigure fig = ((de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionParticipantEditPart)connection).getFigure();
-					org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel label = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel("Huhu");
+					
+					//Execute the OCL expression to get the value
+					java.util.Set feature = null;
+
+					org.eclipse.ocl.ecore.OCL ocl = org.eclipse.ocl.ecore.OCL
+							.newInstance();
+					org.eclipse.ocl.helper.OCLHelper<org.eclipse.emf.ecore.EClassifier, ?, ?, org.eclipse.ocl.ecore.Constraint> helper = ocl
+							.createOCLHelper();
+					helper.setContext(de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.Literals.CONNECTION);
+
+					try {
+						org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.feature->select(f | f.oclIsKindOf(Attribute) and f.name = '"+ ((de.uni_mannheim.informatik.swt.models.plm.visualization.ExpressionLabel)labelDesc).getExpression() +"')");
+						feature = (java.util.Set)ocl.evaluate(resolveSemanticElement(),q);
+					} catch (org.eclipse.ocl.ParserException e) {
+						e.printStackTrace();
+					}
+					
+					if (feature.isEmpty())
+						continue;
+					
+					org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel label = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel(((de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute)feature.iterator().next()).getValue());
 					label.setParent(fig);
 					fig.getChildren().clear();
 					fig.add(label, new org.eclipse.gmf.runtime.diagram.ui.figures.LabelLocator(fig, new org.eclipse.draw2d.geometry.Point(-10,-10), org.eclipse.draw2d.ConnectionLocator.SOURCE));
@@ -270,12 +290,24 @@
 	protected void handleNotificationEvent(org.eclipse.emf.common.notify.Notification notification) {
 		super.handleNotificationEvent(notification);
 
+		«IF self.editPartClassName = 'ConnectionEditPart'
+				or self.editPartClassName = 'EntityEditPart'»
+		//*************************************************************************
+		//We want to update the DSL notation for Entities
+		//*************************************************************************
+		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute
+				&& ((org.eclipse.emf.ecore.EStructuralFeature) notification.getFeature()).getName().equals("value"))
+			updateView(true);
+		«ENDIF»
+		
 		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer) {
 			updateView(false);
 			
 			«IF self.editPartClassName = 'ConnectionEditPart'
 				or self.editPartClassName = 'EntityEditPart'»
+			//*************************************************************************
 			//Manage the instantiations view state according to proximity indication
+			//*************************************************************************
 			org.eclipse.gmf.runtime.notation.View v = this.getNotationView();
 			de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer visualizer = (de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer)notification.getNotifier();
 				
@@ -886,12 +918,6 @@
 	protected void handleNotificationEvent(org.eclipse.emf.common.notify.Notification notification) {
 		super.handleNotificationEvent(notification);
 
-		//We want to update the DSL notation for Entities
-		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Feature
-				&& ((org.eclipse.emf.ecore.EStructuralFeature) notification.getFeature()).getName().equals("value")
-				&& getParent().getParent() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.EntityEditPart)
-			((de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.EntityEditPart)getParent().getParent()).updateView(true);
-
 		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Feature 
 				&& ((org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature()).getName().equals("expressed"))
 		{
@@ -1429,10 +1455,13 @@
 	}
 «ENDDEFINE»
 
-«DEFINE registerVisualizersForHandleNotification FOR gmfgen::GenNode»
+«DEFINE registerToHandleNotificationForChildren FOR gmfgen::GenNode»
 	/**
 	 * Registers the Edipart to fire handleNotification on changes
-	 * in visualizer
+	 * in visualizer.
+	 *
+	 * BUG: Only runs on EditPartCrearion. Items which are added Afterwards are not
+	 * listened to.
 	 * 
 	 * @generated
 	 */
@@ -1441,7 +1470,16 @@
 		super.addSemanticListeners();
 		
 		de.uni_mannheim.informatik.swt.models.plm.PLM.Element e = (de.uni_mannheim.informatik.swt.models.plm.PLM.Element) resolveSemanticElement();
+		
+		//Register for listening to visualizer changes
 		for (de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer v : e.getVisualizer())
 			addListenerFilter(v.toString().substring(0, v.toString().indexOf(" ")), this, v);
+		
+		«IF self.editPartClassName = 'ConnectionEditPart'
+				or self.editPartClassName = 'EntityEditPart'»
+		//Register to listen for feature changes
+		for (de.uni_mannheim.informatik.swt.models.plm.PLM.Feature f : ((de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)e).getFeature())
+			addListenerFilter(f.toString().substring(0, f.toString().indexOf(" ")), this, f);
+		«ENDIF»
 	}
 «ENDDEFINE»
