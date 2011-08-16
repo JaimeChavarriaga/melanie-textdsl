@@ -152,38 +152,6 @@
               <domainInitializer
                   xsi:type="gmfmap:FeatureSeqInitializer">
                 <initializers
-                    xsi:type="gmfmap:FeatureValueSpec">
-                  <feature
-                      xsi:type="ecore:EAttribute"
-                      href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Connection/isNavigable"/>
-                  <value
-                      body="Sequence{true,true}"/>
-                </initializers>
-                <initializers
-                    xsi:type="gmfmap:FeatureValueSpec">
-                  <feature
-                      xsi:type="ecore:EAttribute"
-                      href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Connection/roleName"/>
-                  <value
-                      body="Sequence{'',''}"/>
-                </initializers>
-                <initializers
-                    xsi:type="gmfmap:FeatureValueSpec">
-                  <feature
-                      xsi:type="ecore:EAttribute"
-                      href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Connection/lower"/>
-                  <value
-                      body="Sequence{0,0}"/>
-                </initializers>
-                <initializers
-                    xsi:type="gmfmap:FeatureValueSpec">
-                  <feature
-                      xsi:type="ecore:EAttribute"
-                      href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Connection/upper"/>
-                  <value
-                      body="Sequence{-1,-1}"/>
-                </initializers>
-                <initializers
                     xsi:type="gmfmap:ReferenceNewElementSpec">
                   <feature
                       xsi:type="ecore:EReference"

@@ -18,7 +18,7 @@
         name="domainEntityNameCheck"
         description="Checks the name of elements"
         id="audits.attributes.domainEntityNameAudit.Colon"
-        rule="//@expressionProviders/@providers.0/@expressions.111"
+        rule="//@expressionProviders/@providers.0/@expressions.107"
         message="Name is not allowed to contain ':'"
         category="//@audits/@categories.0">
       <target
@@ -32,7 +32,7 @@
         name="domainEntityNameCheck"
         description="Checks the name of elements"
         id="audits.attributes.domainEntityNameAudit.GreaterThan"
-        rule="//@expressionProviders/@providers.0/@expressions.112"
+        rule="//@expressionProviders/@providers.0/@expressions.108"
         message="Name is not allowed to contain '>'"
         category="//@audits/@categories.0">
       <target
@@ -46,7 +46,7 @@
         name="domainEntityNameCheck"
         description="Checks the name of elements"
         id="audits.attributes.domainEntityNameAudit.Dot"
-        rule="//@expressionProviders/@providers.0/@expressions.113"
+        rule="//@expressionProviders/@providers.0/@expressions.109"
         message="Name is not allowed to contain '.'"
         category="//@audits/@categories.0">
       <target
@@ -284,43 +284,19 @@
         <modelElementInitializer
             xsi:type="gmfgen:GenFeatureSeqInitializer">
           <initializers
-              xsi:type="gmfgen:GenFeatureValueSpec"
-              value="//@expressionProviders/@providers.0/@expressions.6">
-            <feature
-                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Connection/isNavigable"/>
-          </initializers>
-          <initializers
-              xsi:type="gmfgen:GenFeatureValueSpec"
-              value="//@expressionProviders/@providers.0/@expressions.7">
-            <feature
-                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Connection/roleName"/>
-          </initializers>
-          <initializers
-              xsi:type="gmfgen:GenFeatureValueSpec"
-              value="//@expressionProviders/@providers.0/@expressions.8">
-            <feature
-                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Connection/lower"/>
-          </initializers>
-          <initializers
-              xsi:type="gmfgen:GenFeatureValueSpec"
-              value="//@expressionProviders/@providers.0/@expressions.9">
-            <feature
-                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Connection/upper"/>
-          </initializers>
-          <initializers
               xsi:type="gmfgen:GenReferenceNewElementSpec">
             <feature
                 href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Element/visualizer"/>
             <newElementInitializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
-                  value="//@expressionProviders/@providers.0/@expressions.10">
+                  value="//@expressionProviders/@providers.0/@expressions.6">
                 <feature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/attributes"/>
               </initializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
-                  value="//@expressionProviders/@providers.0/@expressions.11">
+                  value="//@expressionProviders/@providers.0/@expressions.7">
                 <feature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/durability"/>
               </initializers>
@@ -491,13 +467,13 @@
             <newElementInitializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
-                  value="//@expressionProviders/@providers.0/@expressions.12">
+                  value="//@expressionProviders/@providers.0/@expressions.8">
                 <feature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/attributes"/>
               </initializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
-                  value="//@expressionProviders/@providers.0/@expressions.13">
+                  value="//@expressionProviders/@providers.0/@expressions.9">
                 <feature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/durability"/>
               </initializers>
@@ -505,13 +481,13 @@
           </initializers>
           <initializers
               xsi:type="gmfgen:GenFeatureValueSpec"
-              value="//@expressionProviders/@providers.0/@expressions.14">
+              value="//@expressionProviders/@providers.0/@expressions.10">
             <feature
                 href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Feature/durability"/>
           </initializers>
           <initializers
               xsi:type="gmfgen:GenFeatureValueSpec"
-              value="//@expressionProviders/@providers.0/@expressions.15">
+              value="//@expressionProviders/@providers.0/@expressions.11">
             <feature
                 href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Attribute/mutability"/>
           </initializers>
@@ -735,13 +711,13 @@
             <newElementInitializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
-                  value="//@expressionProviders/@providers.0/@expressions.22">
+                  value="//@expressionProviders/@providers.0/@expressions.18">
                 <feature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/attributes"/>
               </initializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
-                  value="//@expressionProviders/@providers.0/@expressions.23">
+                  value="//@expressionProviders/@providers.0/@expressions.19">
                 <feature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/durability"/>
               </initializers>
@@ -749,7 +725,7 @@
           </initializers>
           <initializers
               xsi:type="gmfgen:GenFeatureValueSpec"
-              value="//@expressionProviders/@providers.0/@expressions.24">
+              value="//@expressionProviders/@providers.0/@expressions.20">
             <feature
                 href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Feature/durability"/>
           </initializers>
@@ -1027,13 +1003,13 @@
             <newElementInitializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
-                  value="//@expressionProviders/@providers.0/@expressions.37">
+                  value="//@expressionProviders/@providers.0/@expressions.33">
                 <feature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/attributes"/>
               </initializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
-                  value="//@expressionProviders/@providers.0/@expressions.38">
+                  value="//@expressionProviders/@providers.0/@expressions.34">
                 <feature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/durability"/>
               </initializers>
@@ -1178,13 +1154,13 @@
             <newElementInitializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
-                  value="//@expressionProviders/@providers.0/@expressions.41">
+                  value="//@expressionProviders/@providers.0/@expressions.37">
                 <feature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/attributes"/>
               </initializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
-                  value="//@expressionProviders/@providers.0/@expressions.42">
+                  value="//@expressionProviders/@providers.0/@expressions.38">
                 <feature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/durability"/>
               </initializers>
@@ -1334,13 +1310,13 @@
             <newElementInitializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
-                  value="//@expressionProviders/@providers.0/@expressions.45">
+                  value="//@expressionProviders/@providers.0/@expressions.41">
                 <feature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/attributes"/>
               </initializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
-                  value="//@expressionProviders/@providers.0/@expressions.46">
+                  value="//@expressionProviders/@providers.0/@expressions.42">
                 <feature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/durability"/>
               </initializers>
@@ -1485,13 +1461,13 @@
             <newElementInitializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
-                  value="//@expressionProviders/@providers.0/@expressions.49">
+                  value="//@expressionProviders/@providers.0/@expressions.45">
                 <feature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/attributes"/>
               </initializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
-                  value="//@expressionProviders/@providers.0/@expressions.50">
+                  value="//@expressionProviders/@providers.0/@expressions.46">
                 <feature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/durability"/>
               </initializers>
@@ -1682,13 +1658,13 @@
             <newElementInitializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
-                  value="//@expressionProviders/@providers.0/@expressions.54">
+                  value="//@expressionProviders/@providers.0/@expressions.50">
                 <feature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/attributes"/>
               </initializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
-                  value="//@expressionProviders/@providers.0/@expressions.55">
+                  value="//@expressionProviders/@providers.0/@expressions.51">
                 <feature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/durability"/>
               </initializers>
@@ -1879,13 +1855,13 @@
             <newElementInitializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
-                  value="//@expressionProviders/@providers.0/@expressions.59">
+                  value="//@expressionProviders/@providers.0/@expressions.55">
                 <feature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/attributes"/>
               </initializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
-                  value="//@expressionProviders/@providers.0/@expressions.60">
+                  value="//@expressionProviders/@providers.0/@expressions.56">
                 <feature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/durability"/>
               </initializers>
@@ -2053,13 +2029,13 @@
             <newElementInitializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
-                  value="//@expressionProviders/@providers.0/@expressions.63">
+                  value="//@expressionProviders/@providers.0/@expressions.59">
                 <feature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/attributes"/>
               </initializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
-                  value="//@expressionProviders/@providers.0/@expressions.64">
+                  value="//@expressionProviders/@providers.0/@expressions.60">
                 <feature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/durability"/>
               </initializers>
@@ -2228,13 +2204,13 @@
             <newElementInitializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
-                  value="//@expressionProviders/@providers.0/@expressions.65">
+                  value="//@expressionProviders/@providers.0/@expressions.61">
                 <feature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/attributes"/>
               </initializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
-                  value="//@expressionProviders/@providers.0/@expressions.66">
+                  value="//@expressionProviders/@providers.0/@expressions.62">
                 <feature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/durability"/>
               </initializers>
@@ -2242,13 +2218,13 @@
           </initializers>
           <initializers
               xsi:type="gmfgen:GenFeatureValueSpec"
-              value="//@expressionProviders/@providers.0/@expressions.67">
+              value="//@expressionProviders/@providers.0/@expressions.63">
             <feature
                 href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Feature/durability"/>
           </initializers>
           <initializers
               xsi:type="gmfgen:GenFeatureValueSpec"
-              value="//@expressionProviders/@providers.0/@expressions.68">
+              value="//@expressionProviders/@providers.0/@expressions.64">
             <feature
                 href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Attribute/mutability"/>
           </initializers>
@@ -2472,13 +2448,13 @@
             <newElementInitializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
-                  value="//@expressionProviders/@providers.0/@expressions.75">
+                  value="//@expressionProviders/@providers.0/@expressions.71">
                 <feature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/attributes"/>
               </initializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
-                  value="//@expressionProviders/@providers.0/@expressions.76">
+                  value="//@expressionProviders/@providers.0/@expressions.72">
                 <feature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/durability"/>
               </initializers>
@@ -2486,7 +2462,7 @@
           </initializers>
           <initializers
               xsi:type="gmfgen:GenFeatureValueSpec"
-              value="//@expressionProviders/@providers.0/@expressions.77">
+              value="//@expressionProviders/@providers.0/@expressions.73">
             <feature
                 href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Feature/durability"/>
           </initializers>
@@ -3055,8 +3031,8 @@
             parser="//@labelParsers/@implementations.60"/>
       </labels>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.96"
-          targetEnd="//@expressionProviders/@providers.0/@expressions.97"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.92"
+          targetEnd="//@expressionProviders/@providers.0/@expressions.93"/>
     </links>
     <links
         visualID="4013"
@@ -3108,7 +3084,7 @@
             parser="//@labelParsers/@implementations.23"/>
       </labels>
       <creationConstraints
-          targetEnd="//@expressionProviders/@providers.0/@expressions.98"/>
+          targetEnd="//@expressionProviders/@providers.0/@expressions.94"/>
     </links>
     <links
         visualID="4018"
@@ -3160,8 +3136,8 @@
             parser="//@labelParsers/@implementations.23"/>
       </labels>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.99"
-          targetEnd="//@expressionProviders/@providers.0/@expressions.100"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.95"
+          targetEnd="//@expressionProviders/@providers.0/@expressions.96"/>
     </links>
     <links
         visualID="4015"
@@ -3213,8 +3189,8 @@
             parser="//@labelParsers/@implementations.23"/>
       </labels>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.101"
-          targetEnd="//@expressionProviders/@providers.0/@expressions.102"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.97"
+          targetEnd="//@expressionProviders/@providers.0/@expressions.98"/>
     </links>
     <links
         visualID="4016"
@@ -3266,8 +3242,8 @@
             parser="//@labelParsers/@implementations.23"/>
       </labels>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.103"
-          targetEnd="//@expressionProviders/@providers.0/@expressions.104"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.99"
+          targetEnd="//@expressionProviders/@providers.0/@expressions.100"/>
     </links>
     <links
         visualID="4008"
@@ -3295,7 +3271,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleGeneralization/supertype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.105"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.101"/>
     </links>
     <links
         visualID="4009"
@@ -3323,7 +3299,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleGeneralization/subtype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.106"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.102"/>
     </links>
     <links
         visualID="4011"
@@ -3351,7 +3327,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleSpecialization/supertype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.107"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.103"/>
     </links>
     <links
         visualID="4012"
@@ -3379,7 +3355,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleSpecialization/subtype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.108"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.104"/>
     </links>
     <links
         visualID="4019"
@@ -3407,7 +3383,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/BinaryGeneralization/supertype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.109"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.105"/>
     </links>
     <links
         visualID="4020"
@@ -3435,7 +3411,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/BinaryGeneralization/subtype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.110"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.106"/>
     </links>
     <compartments
         visualID="7003"
@@ -3934,14 +3910,6 @@
       <expressions
           body="let durability:String =&#xD;&#xA;&#x9; if (self.durability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.durability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;endif&#x9;&#x9;&#xD;&#xA;endif&#xD;&#xA;in&#xD;&#xA;durability"/>
       <expressions
-          body="Sequence{true,true}"/>
-      <expressions
-          body="Sequence{'',''}"/>
-      <expressions
-          body="Sequence{0,0}"/>
-      <expressions
-          body="Sequence{-1,-1}"/>
-      <expressions
           body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))->append('collapsed= false')->append('ProximityInstantiation= 1')->append('DSLRendering= false')"/>
       <expressions
           body="0"/>
@@ -4204,7 +4172,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.4/@labels.0/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5101"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.16">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.12">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4212,7 +4180,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.4/@labels.1/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5102"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.17">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.13">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4223,7 +4191,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.3/@labels.1/@modelFacet"
         className="AttributeLabelExpressionLabelParser5154"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.18">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.14">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Attribute"/>
     </implementations>
@@ -4231,7 +4199,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.3/@labels.2/@modelFacet"
         className="AttributeLabelExpressionLabelParser5155"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.19">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.15">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Attribute"/>
     </implementations>
@@ -4239,7 +4207,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.3/@labels.3/@modelFacet"
         className="AttributeLabelExpressionLabelParser5156"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.20">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.16">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Attribute"/>
     </implementations>
@@ -4247,7 +4215,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.3/@labels.4/@modelFacet"
         className="AttributeLabelExpressionLabelParser5157"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.21">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.17">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Attribute"/>
     </implementations>
@@ -4255,7 +4223,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.6/@labels.0/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5103"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.25">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.21">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4263,7 +4231,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.6/@labels.1/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5104"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.26">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.22">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4271,7 +4239,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.5/@labels.1/@modelFacet"
         className="MethodLabelExpressionLabelParser5159"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.27">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.23">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Method"/>
     </implementations>
@@ -4279,7 +4247,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.5/@labels.2/@modelFacet"
         className="MethodLabelExpressionLabelParser5160"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.28">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.24">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Method"/>
     </implementations>
@@ -4287,7 +4255,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.5/@labels.3/@modelFacet"
         className="MethodLabelExpressionLabelParser5161"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.29">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.25">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Method"/>
     </implementations>
@@ -4295,7 +4263,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.7/@labels.0/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5105"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.30">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.26">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4303,7 +4271,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.7/@labels.1/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5106"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.31">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.27">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4311,7 +4279,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.2/@labels.0/@modelFacet"
         className="ConnectionLabelExpressionLabelParser5162"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.32">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.28">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Connection"/>
     </implementations>
@@ -4319,7 +4287,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.2/@labels.2/@modelFacet"
         className="ConnectionLabelExpressionLabelParser5164"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.33">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.29">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Connection"/>
     </implementations>
@@ -4327,7 +4295,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.2/@labels.3/@modelFacet"
         className="ConnectionLabelExpressionLabelParser5165"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.34">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.30">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Connection"/>
     </implementations>
@@ -4335,7 +4303,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.2/@labels.4/@modelFacet"
         className="ConnectionLabelExpressionLabelParser5166"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.35">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.31">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Connection"/>
     </implementations>
@@ -4343,7 +4311,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.2/@labels.5/@modelFacet"
         className="ConnectionLabelExpressionLabelParser5194"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.36">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.32">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Connection"/>
     </implementations>
@@ -4351,7 +4319,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.9/@labels.0/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5107"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.39">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.35">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4359,7 +4327,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.9/@labels.1/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5108"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.40">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.36">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4370,7 +4338,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.11/@labels.0/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5109"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.43">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.39">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4378,7 +4346,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.11/@labels.1/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5110"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.44">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.40">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4386,7 +4354,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.13/@labels.0/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5111"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.47">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.43">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4394,7 +4362,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.13/@labels.1/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5112"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.48">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.44">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4402,7 +4370,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.15/@labels.0/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5113"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.51">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.47">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4410,7 +4378,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.15/@labels.1/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5114"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.52">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.48">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4418,7 +4386,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.14/@labels.2/@modelFacet"
         className="MultipleGeneralizationLabelExpressionLabelParser5172"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.53">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.49">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleGeneralization"/>
     </implementations>
@@ -4426,7 +4394,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.17/@labels.0/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5115"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.56">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.52">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4434,7 +4402,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.17/@labels.1/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5116"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.57">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.53">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4442,7 +4410,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.16/@labels.2/@modelFacet"
         className="MultipleSpecializationLabelExpressionLabelParser5175"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.58">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.54">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleSpecialization"/>
     </implementations>
@@ -4450,7 +4418,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.19/@labels.0/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5117"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.61">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.57">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4458,7 +4426,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.19/@labels.1/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5118"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.62">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.58">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4466,7 +4434,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.22/@labels.0/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5143"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.69">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.65">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4474,7 +4442,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.22/@labels.1/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5144"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.70">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.66">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4482,7 +4450,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.21/@labels.1/@modelFacet"
         className="AttributeLabelExpressionLabelParser5179"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.71">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.67">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Attribute"/>
     </implementations>
@@ -4490,7 +4458,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.21/@labels.2/@modelFacet"
         className="AttributeLabelExpressionLabelParser5180"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.72">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.68">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Attribute"/>
     </implementations>
@@ -4498,7 +4466,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.21/@labels.3/@modelFacet"
         className="AttributeLabelExpressionLabelParser5181"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.73">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.69">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Attribute"/>
     </implementations>
@@ -4506,7 +4474,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.21/@labels.4/@modelFacet"
         className="AttributeLabelExpressionLabelParser5182"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.74">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.70">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Attribute"/>
     </implementations>
@@ -4514,7 +4482,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.24/@labels.0/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5145"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.78">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.74">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4522,7 +4490,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.24/@labels.1/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5146"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.79">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.75">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4530,7 +4498,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.23/@labels.1/@modelFacet"
         className="MethodLabelExpressionLabelParser5184"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.80">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.76">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Method"/>
     </implementations>
@@ -4538,7 +4506,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.23/@labels.2/@modelFacet"
         className="MethodLabelExpressionLabelParser5185"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.81">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.77">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Method"/>
     </implementations>
@@ -4546,7 +4514,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.23/@labels.3/@modelFacet"
         className="MethodLabelExpressionLabelParser5186"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.82">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.78">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Method"/>
     </implementations>
@@ -4554,7 +4522,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.25/@labels.0/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5147"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.83">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.79">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4562,7 +4530,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.25/@labels.1/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5148"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.84">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.80">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4570,7 +4538,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.20/@labels.0/@modelFacet"
         className="EntityLabelExpressionLabelParser5187"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.85">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.81">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Entity"/>
     </implementations>
@@ -4578,7 +4546,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.20/@labels.1/@modelFacet"
         className="EntityLabelExpressionLabelParser5188"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.86">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.82">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Entity"/>
     </implementations>
@@ -4586,7 +4554,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.20/@labels.2/@modelFacet"
         className="EntityLabelExpressionLabelParser5189"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.87">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.83">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Entity"/>
     </implementations>
@@ -4594,7 +4562,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.20/@labels.3/@modelFacet"
         className="EntityLabelExpressionLabelParser5190"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.88">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.84">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Entity"/>
     </implementations>
@@ -4602,7 +4570,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.20/@labels.4/@modelFacet"
         className="EntityLabelExpressionLabelParser5193"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.89">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.85">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Entity"/>
     </implementations>
@@ -4613,7 +4581,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.0/@labels.1/@modelFacet"
         className="ModelLabelExpressionLabelParser5192"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.90">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.86">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Model"/>
     </implementations>
@@ -4621,7 +4589,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.26/@labels.0/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5149"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.91">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.87">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4629,7 +4597,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.26/@labels.1/@modelFacet"
         className="VisualizerLabelExpressionLabelParser5150"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.92">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.88">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
     </implementations>
@@ -4637,7 +4605,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@topLevelNodes.0/@labels.1/@modelFacet"
         className="OntologyLabelExpressionLabelParser5096"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.93">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.89">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Ontology"/>
     </implementations>
@@ -4645,7 +4613,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@links.1/@labels.0/@modelFacet"
         className="InstantiationLabelExpressionLabelParser6010"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.94">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.90">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Instantiation"/>
     </implementations>
@@ -4653,7 +4621,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@links.1/@labels.1/@modelFacet"
         className="InstantiationLabelExpressionLabelParser6011"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.95">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.91">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Instantiation"/>
     </implementations>
