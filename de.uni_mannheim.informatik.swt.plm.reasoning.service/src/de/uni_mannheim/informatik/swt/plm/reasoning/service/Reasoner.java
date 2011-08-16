@@ -387,7 +387,7 @@ public class Reasoner implements IReasoningService {
 
 
 	@Override
-	public Clabject geParticipantForRoleName(Connection c, String roleName) {
+	public Clabject getParticipantForRoleName(Connection c, String roleName) {
 		if (!c.getRoleName().contains(roleName))
 			return null;
 		return c.getParticipant().get(c.getRoleName().indexOf(roleName));
@@ -455,6 +455,28 @@ public class Reasoner implements IReasoningService {
 
 
 	@Override
+	public Set<Connection> getAllModelConnections(Clabject c) {
+		Set<Connection> result = new HashSet<Connection>();
+		Queue<Clabject> queue = new ConcurrentLinkedQueue<Clabject>();
+		queue.addAll(getAllModelSupertypes(c));
+		Clabject current;
+		while (! queue.isEmpty()) {
+			current = queue.poll();
+			result.addAll(getConnections(current));			
+		}
+		return result;
+	}
+
+
+	@Override
+	public Set<Connection> getAllConnections(Clabject c) {
+		Set<Connection> result = getAllModelConnections(c);
+		result.addAll(getConnections(c));
+		return result;
+	}
+
+
+	@Override
 	public Set<Clabject> getAllAssociates(Clabject c) {
 		Set<Clabject> result = new HashSet<Clabject>();
 		for (Connection con: getConnections(c)) {
@@ -487,7 +509,7 @@ public class Reasoner implements IReasoningService {
 		Set<Clabject> result = new HashSet<Clabject>();
 		for (Connection con : getConnections(source)) {
 			if (con.getRoleName().contains(roleName) && isNavigableForRoleName(con, roleName)) {
-				result.add(geParticipantForRoleName(con, roleName));
+				result.add(getParticipantForRoleName(con, roleName));
 			}
 		}
 		return result;
@@ -672,4 +694,209 @@ public class Reasoner implements IReasoningService {
 		
 		return result;
 	}
+
+
+	@Override
+	public boolean attributeConforms(Attribute type, Attribute instance) {
+		if (type.getName() == null) {
+			throw new RuntimeException("Malformed type attribute " + type);
+		} 
+		if (!type.getName().equals(instance.getName())) {
+			System.out.println("not name");
+			return false;
+		} //TODO: proper datatype handling
+		else if(type.getDatatype() != null && (!type.getDatatype().equals(instance.getDatatype()))) {
+			System.out.println("not datatype");
+			return false;
+		} else if (type.getDurability()> -1 && !(instance.getDurability()+1 == type.getDurability())) {
+			System.out.println("not durability");
+			return false;
+		} else if (type.getMutability()> -1 && !(instance.getMutability()+1 == type.getMutability())) {
+			System.out.println("not mutability");
+			return false;
+		} else if (type.getMutability() == 0 && !(type.getValue().equals(instance.getValue()))) {
+			System.out.println("not value");
+			return false;
+		}
+		return true;
+	}
+
+
+	@Override
+	public boolean methodConforms(Method type, Method instance) {
+		if (type.getName() == null) {
+			throw new RuntimeException("Malformed type method " + type);
+		} 
+		if (!type.getName().equals(instance.getName())) {
+			System.out.println("not name");
+			return false;
+		}  else if (type.getDurability()> -1 && !(instance.getDurability()+1 == type.getDurability())) {
+			System.out.println("not durability");
+			return false;
+		}
+		return true;
+	}
+
+
+	@Override
+	public boolean featureConforms(Feature type, Feature instance) {
+		if (type instanceof Method && instance instanceof Method)
+			return methodConforms((Method) type, (Method) instance);
+		if (type instanceof Attribute && instance instanceof Attribute)
+			return attributeConforms((Attribute) type, (Attribute) instance);
+		System.out.println("Mismatching Linguistic types");
+		return false;
+	}
+
+
+	@Override
+	public boolean localConformsClabject(Clabject type, Clabject instance) {
+		if (type.getLevel() + 1 != instance.getLevel()) {
+			System.out.println("not level");
+			return false;
+		}
+		for (Feature current: getAllFeatures(type)) {
+			boolean found = false;
+			for (Feature possible : getAllFeatures(instance)) {
+				if (featureConforms(current, possible)) {
+					found = true;
+					break;
+				}
+			}
+			if (!found) {
+				System.out.println("not feature " + current.getName());
+				return false;
+			}
+		}
+		return true;
+	}
+
+
+	@Override
+	public boolean localConstructionConformsConnection(Connection type,
+			Connection instance) {
+		return localConformsClabject(type, instance);
+	}
+
+
+	@Override
+	public boolean localConformsConnection(Connection type, Connection instance) {
+		if (!localConformsClabject(type, instance)) {
+			return false;
+		} 
+		for (String rN : type.getRoleName()) {
+			boolean found = instance.getRoleName().contains(rN);
+			if (!found) {
+				System.out.println("not roleName " + rN);
+				return false;
+			} 
+			if (! (isNavigableForRoleName(instance, rN) == (isNavigableForRoleName(type, rN)))) {
+				System.out.println("not navigability match " + rN);
+				return false;
+			}
+		}
+		return false;
+	}
+
+
+	@Override
+	public boolean localConforms(Clabject type, Clabject instance) {
+		if (type instanceof Connection && instance instanceof Connection)
+			return localConformsConnection((Connection) type, (Connection) instance);
+		if (type instanceof Entity && instance instanceof Entity)
+			return localConformsClabject(type, instance);
+		System.out.println("mismatching types");
+		return false;
+	}
+
+
+	@Override
+	public boolean neighbourhoodConforms(Clabject type, Clabject instance) {
+		if (type instanceof Connection && instance instanceof Connection)
+			return neighbourhoodConformsConnection((Connection) type, (Connection) instance);
+		if (type instanceof Entity && instance instanceof Entity)
+			return neighbourhoodConformsClabject(type, instance);
+		System.out.println("mismatching types");
+		return false;
+	}
+
+
+	@Override
+	public boolean neighbourhoodConformsClabject(Clabject type,
+			Clabject instance) {
+		if (!localConforms(type, instance))
+			return false;
+		for (String rN:getAssociateRoleNames(type)) {
+			for (Clabject t :getAssociatesForRoleName(type, rN)) {
+				boolean found = false;
+				for (Clabject i:getAssociatesForRoleName(instance, rN)) {
+					if (localConforms(t, i)) {
+						found = true;
+						break;
+					}
+				}
+				if (!found) {
+					System.out.println("not local conforming associate for roleName " + rN + "||"+ t);
+				}
+			}
+		}
+		for(Connection t:getAllConnections(type)) {
+			boolean found = false;
+			for (Connection i: getAllConnections(instance)) {
+				if (localConforms(t,i)) {
+					boolean error = false;
+					for (String rN: t.getRoleName()) {
+						if (!localConforms(getParticipantForRoleName(t, rN), getParticipantForRoleName(i, rN))) {
+							error = true;
+							break;
+						}
+					}
+					if (!error) {
+						found = true;
+						break;
+					}
+				}
+			}
+			if (!found) {
+				System.out.println("not type connection or participant " + t);
+				return false;
+			}
+		}
+		return true;
+	}
+
+
+	@Override
+	public boolean neighbourhoodConformsConnection(Connection type,
+			Connection instance) {
+		if (!neighbourhoodConformsClabject(type, instance))
+			return false;
+		for (String rN: type.getRoleName()) {
+			if (!localConforms(getParticipantForRoleName(type, rN), getParticipantForRoleName(instance, rN))) {
+				System.out.println("not local conforming participant " + rN);
+				return false;
+			}
+		}
+		return true;
+	}
+
+
+	@Override
+	public boolean neighbourhoodConstructionConformsConnection(Connection type,
+			Connection instance) {
+		if (!localConformsClabject(type, instance))
+			return false;
+		for (String rN: instance.getRoleName()) {
+			Clabject destI = getParticipantForRoleName(instance, rN);
+			Clabject destT = getParticipantForRoleName(type, rN);
+			if (!localConforms(destT, destI)) {
+				System.out.println("Wrong roleName " + rN);
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	
+	
 }

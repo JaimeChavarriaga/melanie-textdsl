@@ -58,7 +58,7 @@ public interface IReasoningService {
 	
 	public Set<Instantiation> getAllModelInstantiationsAsType(Clabject t);
 	
-	public Clabject geParticipantForRoleName(Connection c, String roleName);
+	public Clabject getParticipantForRoleName(Connection c, String roleName);
 	
 	public String getRoleNameForParticipant(Connection c, Clabject p);
 	
@@ -113,5 +113,30 @@ public interface IReasoningService {
 	 */
 	Set<Clabject> getAllPossibleTypeForModel(Model m);
 
+	public boolean attributeConforms(Attribute type, Attribute instance);
+	
+	public boolean methodConforms(Method type, Method instance);
+	
+	public boolean featureConforms( Feature type, Feature instance);
+	
+	public boolean localConformsClabject( Clabject type, Clabject instance);
+	
+	public boolean localConstructionConformsConnection( Connection type, Connection instance );
+	
+	public boolean localConformsConnection( Connection type, Connection instance);
+	
+	public boolean localConforms(Clabject type, Clabject instance);
+	
+	public boolean neighbourhoodConforms(Clabject type, Clabject instance);
+	
+	public boolean neighbourhoodConformsClabject(Clabject type, Clabject instance);
+	
+	public boolean neighbourhoodConformsConnection(Connection type, Connection instance);
+	
+	public boolean neighbourhoodConstructionConformsConnection( Connection type, Connection instance );
+	
+	public Set<Connection> getAllModelConnections(Clabject c);
+	
+	public Set<Connection> getAllConnections(Clabject c);
 	
 }

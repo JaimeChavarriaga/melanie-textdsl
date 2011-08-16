@@ -23,7 +23,9 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.plm.workbench.ExtensionPointService;
 import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService;
@@ -45,13 +47,30 @@ public class ExecuteModelTests implements IObjectActionDelegate {
 		try
 		{
 			if (selectedElements.size() > 0) {
-				Clabject c = (Clabject) selectedElements.get(0);
+				Element e = (Element) selectedElements.get(0);
 				IReasoningService reasoner = ((IReasoningService )ExtensionPointService.Instance().getReasoningService(ID));
-				
-				System.out.println("Model Supertypes" + reasoner.getAllModelSupertypes(c));
-				System.out.println("Model Subtypes" + reasoner.getAllModelSubtypes(c));
-				System.out.println("Model Instances" + reasoner.getAllModelInstances(c));
-				System.out.println("Model Types" + reasoner.getAllModelTypes(c));
+				if(e instanceof Clabject) {
+					
+					if (selectedElements.size() > 1) {
+						Clabject type = (Clabject) selectedElements.get(0);
+						Clabject instance = (Clabject) selectedElements.get(1);
+						System.out.println("Local Conformance " + reasoner.localConforms(type, instance));
+						if (type instanceof Connection) {
+							System.out.println("Construction Conformance " + reasoner.localConstructionConformsConnection((Connection) type, (Connection) instance));
+						} 
+					} else {
+						Clabject c = (Clabject) e;
+						System.out.println("Model Supertypes" + reasoner.getAllModelSupertypes(c));
+						System.out.println("Model Subtypes" + reasoner.getAllModelSubtypes(c));
+						System.out.println("Model Instances" + reasoner.getAllModelInstances(c));
+						System.out.println("Model Types" + reasoner.getAllModelTypes(c));
+					}
+				} else if (e instanceof Attribute) {
+					Attribute type = (Attribute) e;
+					Attribute instance = (Attribute) selectedElements.get(1);
+					
+					System.out.println("" + instance + ".conforms("+type+")" + reasoner.attributeConforms(type, instance));
+				}
 			}
 		} catch (CoreException e) {
 			e.printStackTrace();
