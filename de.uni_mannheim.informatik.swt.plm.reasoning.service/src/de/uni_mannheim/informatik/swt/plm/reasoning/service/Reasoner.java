@@ -386,12 +386,13 @@ public class Reasoner implements IReasoningService {
 	};
 
 	
+	//In MM
 	@Override
 	public boolean isModelInstanceOf(Clabject instance, Clabject type) {
 		return getAllModelInstances(type).contains(instance);
 	}
 
-
+	//Is MM
 	@Override
 	public boolean isModelTypeOf(Clabject instance, Clabject type) {
 		return getAllModelTypes(instance).contains(type);
@@ -528,6 +529,7 @@ public class Reasoner implements IReasoningService {
 	}
 
 
+	//In MM
 	@Override
 	public Set<Feature> getAllFeatures(Clabject c) {
 		Set<Feature> result = new HashSet<Feature>();
@@ -541,7 +543,7 @@ public class Reasoner implements IReasoningService {
 		return result;
 	}
 
-
+	//In MM
 	@Override
 	public Set<Attribute> getAllAttributes(Clabject c) {
 		Set<Attribute> result = new HashSet<Attribute>();
@@ -555,6 +557,7 @@ public class Reasoner implements IReasoningService {
 	}
 
 
+	//In MM
 	@Override
 	public Set<Method> getAllMethods(Clabject c) {
 		Set<Method> result = new HashSet<Method>();
@@ -677,6 +680,7 @@ public class Reasoner implements IReasoningService {
 	}
 
 
+	//In MM
 	@Override
 	public Set<Clabject> getAllPossibleTypeForModel(Model m) {
 		OCL ocl = OCL.newInstance();
@@ -919,7 +923,4 @@ public class Reasoner implements IReasoningService {
 		}
 		return null;
 	}
-	
-	
-	
 }
