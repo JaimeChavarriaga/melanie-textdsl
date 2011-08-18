@@ -451,7 +451,8 @@ public class Reasoner implements IReasoningService {
 		return c.getUpper().get(c.getRoleName().indexOf(roleName));
 	}
 
-
+	
+	//In MM
 	@Override
 	public Set<Connection> getConnections(Clabject c) {
 		Set<Connection> result = new HashSet<Connection>();
@@ -473,6 +474,7 @@ public class Reasoner implements IReasoningService {
 	}
 
 
+	//In MM
 	@Override
 	public Set<Connection> getAllModelConnections(Clabject c) {
 		Set<Connection> result = new HashSet<Connection>();
@@ -487,6 +489,7 @@ public class Reasoner implements IReasoningService {
 	}
 
 
+	//In MM as get All Connections <> Is there realy a difference?
 	@Override
 	public Set<Connection> getAllConnections(Clabject c) {
 		Set<Connection> result = getAllModelConnections(c);
