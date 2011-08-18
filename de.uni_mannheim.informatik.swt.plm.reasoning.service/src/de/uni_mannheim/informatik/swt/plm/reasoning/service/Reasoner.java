@@ -50,6 +50,7 @@ public class Reasoner implements IReasoningService {
 	
 	  
 
+	//In MM
 	@Override
 	public Model getModel(Clabject c) {
 		OCL ocl = OCL.newInstance();
@@ -72,6 +73,7 @@ public class Reasoner implements IReasoningService {
 	}
 
 
+	//In MM
 	@Override
 	public Set<Generalization> getAllGeneralizations(Model m) 
 	{
@@ -96,6 +98,7 @@ public class Reasoner implements IReasoningService {
 	}
 
 
+	//In MM
 	@Override
 	public Set<Clabject> getAllClabjects(Model m) 
 	{
@@ -120,6 +123,7 @@ public class Reasoner implements IReasoningService {
 	}
 
 
+	//In MM
 	@Override
 	public Set<Entity> getAllEntities(Model m) 
 	{
@@ -144,6 +148,7 @@ public class Reasoner implements IReasoningService {
 	}
 
 
+	//In MM
 	@Override
 	public Set<Connection> getAllConnections(Model m) 
 	{
@@ -168,6 +173,7 @@ public class Reasoner implements IReasoningService {
 	}
 
 
+	//In MM
 	@Override
 	public Set<Instantiation> getAllInstantiations(Model m) 
 	{
@@ -244,6 +250,7 @@ public class Reasoner implements IReasoningService {
 		return result;
 	}
 
+	//In MM
 	@Override
 	public Set<Clabject> getAllModelSupertypes(Clabject c) 
 	{
