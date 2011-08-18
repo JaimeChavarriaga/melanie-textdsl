@@ -197,7 +197,7 @@ public class Reasoner implements IReasoningService {
 		return result;
 	}
 
-	
+	//In MM
 	@Override
 	public Set<Clabject> getAllModelSubtypes(Clabject c)  
 	{
@@ -303,7 +303,7 @@ public class Reasoner implements IReasoningService {
 		return result;
 	}
 
-
+	//In MM
 	@Override
 	public Set<Clabject> getAllModelTypes(Clabject c) 
 	{
@@ -323,6 +323,7 @@ public class Reasoner implements IReasoningService {
 		return result;
 	}
 	
+	//In MM
 	@Override
 	public Set<Clabject> getAllModelInstances(Clabject t) {
 		Set<Clabject> result = new HashSet<Clabject>();
@@ -341,6 +342,7 @@ public class Reasoner implements IReasoningService {
 		return result;
 	}
 	
+	//In MM
 	@Override
 	public Set<Instantiation> getAllModelInstantiationsAsInstance(Clabject i) {
 		Set<Instantiation> result = new HashSet<Instantiation>();
@@ -361,6 +363,8 @@ public class Reasoner implements IReasoningService {
 		return result;
 	};
 	
+	
+	//In MM
 	@Override
 	public Set<Instantiation> getAllModelInstantiationsAsType(Clabject t) {
 		Set<Instantiation> result = new HashSet<Instantiation>();
@@ -381,7 +385,7 @@ public class Reasoner implements IReasoningService {
 		return result;
 	};
 
-
+	
 	@Override
 	public boolean isModelInstanceOf(Clabject instance, Clabject type) {
 		return getAllModelInstances(type).contains(instance);
