@@ -399,6 +399,7 @@ public class Reasoner implements IReasoningService {
 	}
 
 
+	//In MM
 	@Override
 	public Clabject getParticipantForRoleName(Connection c, String roleName) {
 		if (!c.getRoleName().contains(roleName))
@@ -407,6 +408,7 @@ public class Reasoner implements IReasoningService {
 	}
 
 	
+	//In MM
 	@Override
 	public String getRoleNameForParticipant(Connection c, Clabject p) {
 		if (!c.getParticipant().contains(p))
@@ -415,6 +417,7 @@ public class Reasoner implements IReasoningService {
 	}
 
 
+	//In MM
 	@Override
 	public boolean isNavigableForRoleName(Connection c, String roleName) {
 		if (!c.getRoleName().contains(roleName))
@@ -422,6 +425,7 @@ public class Reasoner implements IReasoningService {
 		return c.getIsNavigable().get(c.getRoleName().indexOf(roleName));
 	}
 	
+	//In MM
 	@Override
 	public boolean isNavigableParticipant(Connection con, Clabject p) {
 		if (!con.getParticipant().contains(p))
@@ -430,6 +434,7 @@ public class Reasoner implements IReasoningService {
 	}
 
 
+	//In MM
 	@Override
 	public int getLowerForRoleName(Connection c, String roleName) {
 		if (!c.getRoleName().contains(roleName))
@@ -438,6 +443,7 @@ public class Reasoner implements IReasoningService {
 	}
 
 
+	//In MM
 	@Override
 	public int getUpperForRoleName(Connection c, String roleName) {
 		if (!c.getRoleName().contains(roleName))
