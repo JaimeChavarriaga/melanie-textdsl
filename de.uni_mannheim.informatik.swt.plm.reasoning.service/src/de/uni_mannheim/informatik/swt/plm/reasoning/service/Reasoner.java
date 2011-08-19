@@ -498,6 +498,7 @@ public class Reasoner implements IReasoningService {
 	}
 
 
+	//In MM
 	@Override
 	public Set<Clabject> getAllAssociates(Clabject c) {
 		Set<Clabject> result = new HashSet<Clabject>();
@@ -512,6 +513,7 @@ public class Reasoner implements IReasoningService {
 	}
 
 
+	//In MM
 	@Override
 	public Set<String> getAssociateRoleNames(Clabject c) {
 		Set<String> result = new HashSet<String>();
@@ -526,6 +528,7 @@ public class Reasoner implements IReasoningService {
 	}
 
 
+	//In MM
 	@Override
 	public Set<Clabject> getAssociatesForRoleName(Clabject source, String roleName) {
 		Set<Clabject> result = new HashSet<Clabject>();
