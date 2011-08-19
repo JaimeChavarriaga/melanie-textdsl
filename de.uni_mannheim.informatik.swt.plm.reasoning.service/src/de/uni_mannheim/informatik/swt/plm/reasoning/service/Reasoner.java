@@ -782,6 +782,7 @@ public class Reasoner implements IReasoningService {
 	}
 
 
+	//In MM
 	@Override
 	public boolean localConformsClabject(Clabject type, Clabject instance) {
 		if (type.getLevel() + 1 != instance.getLevel()) {
@@ -812,6 +813,7 @@ public class Reasoner implements IReasoningService {
 	}
 
 
+	//In MM
 	@Override
 	public boolean localConformsConnection(Connection type, Connection instance) {
 		if (!localConformsClabject(type, instance)) {
