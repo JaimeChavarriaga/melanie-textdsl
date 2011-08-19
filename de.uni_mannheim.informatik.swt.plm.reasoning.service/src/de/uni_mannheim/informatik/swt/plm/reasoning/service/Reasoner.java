@@ -726,7 +726,8 @@ public class Reasoner implements IReasoningService {
 		return result;
 	}
 
-
+	
+	//In MM
 	@Override
 	public boolean attributeConforms(Attribute type, Attribute instance) {
 		if (type.getName() == null) {
@@ -742,7 +743,7 @@ public class Reasoner implements IReasoningService {
 		} else if (type.getDurability()> -1 && !(instance.getDurability()+1 == type.getDurability())) {
 			System.out.println("not durability");
 			return false;
-		} else if (type.getMutability()> -1 && !(instance.getMutability()+1 == type.getMutability())) {
+		} else if (type.getMutability()> -1 && (!(instance.getMutability()+1 == type.getMutability()) || (type.getMutability() == 0 && instance.getMutability() == 0))) {
 			System.out.println("not mutability");
 			return false;
 		} else if (type.getMutability() == 0 && !(type.getValue().equals(instance.getValue()))) {
@@ -752,7 +753,7 @@ public class Reasoner implements IReasoningService {
 		return true;
 	}
 
-
+	//In MM
 	@Override
 	public boolean methodConforms(Method type, Method instance) {
 		if (type.getName() == null) {
@@ -769,6 +770,7 @@ public class Reasoner implements IReasoningService {
 	}
 
 
+	//In MM
 	@Override
 	public boolean featureConforms(Feature type, Feature instance) {
 		if (type instanceof Method && instance instanceof Method)
