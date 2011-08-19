@@ -475,8 +475,9 @@ public class Reasoner implements IReasoningService {
 
 
 	//In MM
+	//getAllModelConnections
 	@Override
-	public Set<Connection> getAllModelConnections(Clabject c) {
+	public Set<Connection> getModelConnections(Clabject c) {
 		Set<Connection> result = new HashSet<Connection>();
 		Queue<Clabject> queue = new ConcurrentLinkedQueue<Clabject>();
 		queue.addAll(getAllModelSupertypes(c));
@@ -489,10 +490,10 @@ public class Reasoner implements IReasoningService {
 	}
 
 
-	//In MM as get All Connections <> Is there realy a difference?
+	//In MM
 	@Override
 	public Set<Connection> getAllConnections(Clabject c) {
-		Set<Connection> result = getAllModelConnections(c);
+		Set<Connection> result = getModelConnections(c);
 		result.addAll(getConnections(c));
 		return result;
 	}

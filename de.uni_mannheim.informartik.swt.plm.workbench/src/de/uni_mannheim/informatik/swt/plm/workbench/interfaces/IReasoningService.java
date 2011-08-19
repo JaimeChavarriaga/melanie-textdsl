@@ -135,7 +135,7 @@ public interface IReasoningService {
 	
 	public boolean neighbourhoodConstructionConformsConnection( Connection type, Connection instance );
 	
-	public Set<Connection> getAllModelConnections(Clabject c);
+	public Set<Connection> getModelConnections(Clabject c);
 	
 	public Set<Connection> getAllConnections(Clabject c);
 	
