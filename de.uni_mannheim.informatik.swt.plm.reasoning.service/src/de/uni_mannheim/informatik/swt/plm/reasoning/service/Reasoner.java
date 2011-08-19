@@ -583,6 +583,7 @@ public class Reasoner implements IReasoningService {
 		return result;
 	}
 
+	//In EMF Factory?
 	@Override
 	public void dressInstanceFromType(Clabject type, Clabject instance) throws Exception {
 		
@@ -632,6 +633,7 @@ public class Reasoner implements IReasoningService {
 	}
 
 
+	//In EMF Factory?
 	@Override
 	public Attribute createAttribute(Attribute type) {
 		Attribute result = PLMFactoryImpl.eINSTANCE.createAttribute();
@@ -664,6 +666,7 @@ public class Reasoner implements IReasoningService {
 	}
 
 
+	//In EMF Factory?
 	@Override
 	public Method createMethod(Method type) {
 		Method result = PLMFactoryImpl.eINSTANCE.createMethod();
