@@ -856,6 +856,7 @@ public class Reasoner implements IReasoningService {
 	}
 
 
+	//In MM
 	@Override
 	public boolean neighbourhoodConformsClabject(Clabject type,
 			Clabject instance) {
