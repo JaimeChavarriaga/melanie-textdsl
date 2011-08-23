@@ -1437,6 +1437,10 @@
     <linkMetaFeature
         xsi:type="ecore:EReference"
         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Connection/participant"/>
+    <creationConstraints>
+      <targetEnd
+          body="self.level = oppositeEnd.level"/>
+    </creationConstraints>
   </links>
   <links>
     <domainMetaElement

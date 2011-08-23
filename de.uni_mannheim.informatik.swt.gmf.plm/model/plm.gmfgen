@@ -18,7 +18,7 @@
         name="domainEntityNameCheck"
         description="Checks the name of elements"
         id="audits.attributes.domainEntityNameAudit.Colon"
-        rule="//@expressionProviders/@providers.0/@expressions.107"
+        rule="//@expressionProviders/@providers.0/@expressions.108"
         message="Name is not allowed to contain ':'"
         category="//@audits/@categories.0">
       <target
@@ -32,7 +32,7 @@
         name="domainEntityNameCheck"
         description="Checks the name of elements"
         id="audits.attributes.domainEntityNameAudit.GreaterThan"
-        rule="//@expressionProviders/@providers.0/@expressions.108"
+        rule="//@expressionProviders/@providers.0/@expressions.109"
         message="Name is not allowed to contain '>'"
         category="//@audits/@categories.0">
       <target
@@ -46,7 +46,7 @@
         name="domainEntityNameCheck"
         description="Checks the name of elements"
         id="audits.attributes.domainEntityNameAudit.Dot"
-        rule="//@expressionProviders/@providers.0/@expressions.109"
+        rule="//@expressionProviders/@providers.0/@expressions.110"
         message="Name is not allowed to contain '.'"
         category="//@audits/@categories.0">
       <target
@@ -2944,6 +2944,8 @@
         <modelFacet
             parser="//@labelParsers/@implementations.23"/>
       </labels>
+      <creationConstraints
+          targetEnd="//@expressionProviders/@providers.0/@expressions.90"/>
     </links>
     <links
         visualID="4002"
@@ -3031,8 +3033,8 @@
             parser="//@labelParsers/@implementations.60"/>
       </labels>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.92"
-          targetEnd="//@expressionProviders/@providers.0/@expressions.93"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.93"
+          targetEnd="//@expressionProviders/@providers.0/@expressions.94"/>
     </links>
     <links
         visualID="4013"
@@ -3084,7 +3086,7 @@
             parser="//@labelParsers/@implementations.23"/>
       </labels>
       <creationConstraints
-          targetEnd="//@expressionProviders/@providers.0/@expressions.94"/>
+          targetEnd="//@expressionProviders/@providers.0/@expressions.95"/>
     </links>
     <links
         visualID="4018"
@@ -3136,8 +3138,8 @@
             parser="//@labelParsers/@implementations.23"/>
       </labels>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.95"
-          targetEnd="//@expressionProviders/@providers.0/@expressions.96"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.96"
+          targetEnd="//@expressionProviders/@providers.0/@expressions.97"/>
     </links>
     <links
         visualID="4015"
@@ -3189,8 +3191,8 @@
             parser="//@labelParsers/@implementations.23"/>
       </labels>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.97"
-          targetEnd="//@expressionProviders/@providers.0/@expressions.98"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.98"
+          targetEnd="//@expressionProviders/@providers.0/@expressions.99"/>
     </links>
     <links
         visualID="4016"
@@ -3242,8 +3244,8 @@
             parser="//@labelParsers/@implementations.23"/>
       </labels>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.99"
-          targetEnd="//@expressionProviders/@providers.0/@expressions.100"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.100"
+          targetEnd="//@expressionProviders/@providers.0/@expressions.101"/>
     </links>
     <links
         visualID="4008"
@@ -3271,7 +3273,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleGeneralization/supertype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.101"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.102"/>
     </links>
     <links
         visualID="4009"
@@ -3299,7 +3301,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleGeneralization/subtype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.102"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.103"/>
     </links>
     <links
         visualID="4011"
@@ -3327,7 +3329,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleSpecialization/supertype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.103"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.104"/>
     </links>
     <links
         visualID="4012"
@@ -3355,7 +3357,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleSpecialization/subtype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.104"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.105"/>
     </links>
     <links
         visualID="4019"
@@ -3383,7 +3385,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/BinaryGeneralization/supertype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.105"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.106"/>
     </links>
     <links
         visualID="4020"
@@ -3411,7 +3413,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/BinaryGeneralization/subtype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.106"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.107"/>
     </links>
     <compartments
         visualID="7003"
@@ -4091,6 +4093,9 @@
       <expressions
           body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.visualizer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let visualizer:Visualizer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.visualizer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;--**********************************&#xD;&#xA;--Check if attributes are rendered in tvs&#xD;&#xA;--**********************************&#xD;&#xA;let renderName:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('name') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('name') = 'tvs'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderExpressed:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('expressed') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('expressed') = 'tvs'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderRelevant:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('relevant') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('relevant') = 'tvs'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderCompletness:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('completness') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('completness') = 'tvs'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderOrigin:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('origin') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('origin') = 'tvs'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderVisualizersShown:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('visualizersShown') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('visualizersShown') = 'tvs'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the name&#xD;&#xA;--**********************************&#xD;&#xA;let name : String =&#xD;&#xA;&#x9;if (renderName) then&#xD;&#xA;&#x9;&#x9;'name='.concat(self.name).concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the expressed value&#xD;&#xA;--**********************************&#xD;&#xA;let expressedString:String = &#xD;&#xA;&#x9;if (expressed) then&#xD;&#xA;&#x9;&#x9;'expressed'&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'!expressed'&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let expressed: String = &#xD;&#xA;&#x9;if (renderExpressed) then&#xD;&#xA;&#x9;&#x9;expressedString.concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the relevant value&#xD;&#xA;--**********************************&#xD;&#xA;let relevantString:String = &#xD;&#xA;&#x9;if (relevant) then&#xD;&#xA;&#x9;&#x9;'relevant'&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'!relevant'&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let relevant: String = &#xD;&#xA;&#x9;if (renderRelevant) then&#xD;&#xA;&#x9;&#x9;relevantString.concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the completeness&#xD;&#xA;--**********************************&#xD;&#xA;let completness : String =&#xD;&#xA;&#x9;if (renderCompletness) then&#xD;&#xA;&#x9;&#x9;'completeness='.concat(self.completness).concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the origin&#xD;&#xA;--**********************************&#xD;&#xA;let origin : String =&#xD;&#xA;&#x9;if (renderOrigin) then&#xD;&#xA;&#x9;&#x9;'origin='.concat(self.origin).concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the visualizersShown&#xD;&#xA;--**********************************&#xD;&#xA;let visualizersShown : String =&#xD;&#xA;&#x9;if (renderVisualizersShown) then&#xD;&#xA;&#x9;&#x9;'visualizersShown='.concat(self.visualizersShown).concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let output:String = &#xD;&#xA;&#x9;'{'.concat(name).concat(expressed).concat(relevant).concat(completness).concat(origin).concat(visualizersShown).concat('}')&#xD;&#xA;in&#xD;&#xA;--**********************************&#xD;&#xA;--Write the output&#xD;&#xA;--**********************************&#xD;&#xA;if (output &lt;> '{}') then&#xD;&#xA;&#x9;output&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
       <expressions
+          xsi:type="gmfgen:GenConstraint"
+          body="self.level = oppositeEnd.level"/>
+      <expressions
           body="let renderRoleName:Boolean=&#xD;&#xA;&#x9;if (Ontology.allInstances()->asSequence()->at(1).visualizer->asSequence()->at(1).getValueForKey('showInstantiationRoleNames') = 'true') then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;if (renderRoleName and self.isonym = true and not self.instance.blueprint.oclIsUndefined()) then&#xD;&#xA;&#x9;'blueprint'&#xD;&#xA;else&#xD;&#xA;&#x9;if (renderRoleName and self.isonym = true and self.instance.blueprint.oclIsUndefined()) then&#xD;&#xA;&#x9;&#x9;'complete type'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;if (renderRoleName and self.isonym = false and self.instance.blueprint.oclIsUndefined()) then&#xD;&#xA;&#x9;&#x9;&#x9;'incomplete type'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;''&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;endif"/>
       <expressions
           body="let renderRoleName:Boolean=&#xD;&#xA;&#x9;if (Ontology.allInstances()->asSequence()->at(1).visualizer->asSequence()->at(1).getValueForKey('showInstantiationRoleNames') = 'true') then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;if (renderRoleName and self.isonym = false) then&#xD;&#xA;&#x9;'hyponym'&#xD;&#xA;else&#xD;&#xA;&#x9;if (renderRoleName and self.isonym = true and not self.instance.blueprint.oclIsUndefined()) then&#xD;&#xA;&#x9;&#x9;'offspring'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;if (renderRoleName and isonym = true) then&#xD;&#xA;&#x9;&#x9;&#x9;'isonym'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;''&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;endif"/>
@@ -4613,7 +4618,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@links.1/@labels.0/@modelFacet"
         className="InstantiationLabelExpressionLabelParser6010"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.90">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.91">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Instantiation"/>
     </implementations>
@@ -4621,7 +4626,7 @@
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@links.1/@labels.1/@modelFacet"
         className="InstantiationLabelExpressionLabelParser6011"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.91">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.92">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Instantiation"/>
     </implementations>
