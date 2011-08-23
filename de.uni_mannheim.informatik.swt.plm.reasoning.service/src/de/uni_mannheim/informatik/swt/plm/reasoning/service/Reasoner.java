@@ -11,9 +11,12 @@
  *******************************************************************************/
 package de.uni_mannheim.informatik.swt.plm.reasoning.service;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Queue;
 import java.util.Set;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -850,62 +853,62 @@ public class Reasoner implements IReasoningService {
 		if (type instanceof Connection && instance instanceof Connection)
 			return neighbourhoodConformsConnection((Connection) type, (Connection) instance);
 		if (type instanceof Entity && instance instanceof Entity)
-			return neighbourhoodConformsClabject(type, instance);
+			return instance.neighbourhoodConformsTo(type);
 		System.out.println("mismatching types");
 		return false;
 	}
 
 
 	//In MM
-	@Override
-	public boolean neighbourhoodConformsClabject(Clabject type,
-			Clabject instance) {
-		if (!localConforms(type, instance))
-			return false;
-		for (String rN:getAssociateRoleNames(type)) {
-			for (Clabject t :getAssociatesForRoleName(type, rN)) {
-				boolean found = false;
-				for (Clabject i:getAssociatesForRoleName(instance, rN)) {
-					if (localConforms(t, i)) {
-						found = true;
-						break;
-					}
-				}
-				if (!found) {
-					System.out.println("not local conforming associate for roleName " + rN + "||"+ t);
-				}
-			}
-		}
-		for(Connection t:getAllConnections(type)) {
-			boolean found = false;
-			for (Connection i: getAllConnections(instance)) {
-				if (localConforms(t,i)) {
-					boolean error = false;
-					for (String rN: t.getRoleName()) {
-						if (!localConforms(getParticipantForRoleName(t, rN), getParticipantForRoleName(i, rN))) {
-							error = true;
-							break;
-						}
-					}
-					if (!error) {
-						found = true;
-						break;
-					}
-				}
-			}
-			if (!found) {
-				System.out.println("not type connection or participant " + t);
-				return false;
-			}
-		}
-		return true;
-	}
+//	@Override
+//	public boolean neighbourhoodConformsClabject(Clabject type,
+//			Clabject instance) {
+//		if (!localConforms(type, instance))
+//			return false;
+//		for (String rN:getAssociateRoleNames(type)) {
+//			for (Clabject t :getAssociatesForRoleName(type, rN)) {
+//				boolean found = false;
+//				for (Clabject i:getAssociatesForRoleName(instance, rN)) {
+//					if (localConforms(t, i)) {
+//						found = true;
+//						break;
+//					}
+//				}
+//				if (!found) {
+//					System.out.println("not local conforming associate for roleName " + rN + "||"+ t);
+//				}
+//			}
+//		}
+//		for(Connection t:getAllConnections(type)) {
+//			boolean found = false;
+//			for (Connection i: getAllConnections(instance)) {
+//				if (localConforms(t,i)) {
+//					boolean error = false;
+//					for (String rN: t.getRoleName()) {
+//						if (!localConforms(getParticipantForRoleName(t, rN), getParticipantForRoleName(i, rN))) {
+//							error = true;
+//							break;
+//						}
+//					}
+//					if (!error) {
+//						found = true;
+//						break;
+//					}
+//				}
+//			}
+//			if (!found) {
+//				System.out.println("not type connection or participant " + t);
+//				return false;
+//			}
+//		}
+//		return true;
+//	}
 
 
 	@Override
 	public boolean neighbourhoodConformsConnection(Connection type,
 			Connection instance) {
-		if (!neighbourhoodConformsClabject(type, instance))
+		if (!(instance.neighbourhoodConformsTo(type)))
 			return false;
 		for (String rN: type.getRoleName()) {
 			if (!localConforms(getParticipantForRoleName(type, rN), getParticipantForRoleName(instance, rN))) {
@@ -944,4 +947,41 @@ public class Reasoner implements IReasoningService {
 		}
 		return null;
 	}
+
+
+	@Override
+	public boolean multiplicityConforms(Connection con) {
+		Model classifiedModel = con.getModel().getOntology().getContent().get(con.getModel().getLevel() + 1);
+		Set<Connection> domain = new HashSet<Connection>();
+		for (Connection possible:classifiedModel.getAllConnections()) {
+			if (neighbourhoodConforms(con, possible)) {
+				domain.add(possible);
+			}
+		}
+		for (String rN:con.getRoleName()) {
+			Map<Clabject,Integer> count = new HashMap<Clabject, Integer>();
+			int lower = con.getLowerForRoleName(rN);
+			int upper = con.getUpperForRoleName(rN);
+			for (Connection delta:domain) {
+				for (Clabject part:delta.getParticipant()) {
+					if (!delta.getParticipantForRoleName(rN).equals(part)) {
+						if (!count.containsKey(part)) {
+							count.put(part, 0);
+						}
+						count.put(part, count.get(part) + 1);
+					}
+				}
+			}
+			for (Entry<Clabject,Integer> entry:count.entrySet()) {
+				Integer value = entry.getValue();
+				if (value < lower || (upper != -1 && value > upper)) { 
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+	
+	
+	
 }

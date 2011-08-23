@@ -27,6 +27,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Entity;
 import de.uni_mannheim.informatik.swt.plm.workbench.ExtensionPointService;
 import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService;
 
@@ -66,7 +67,10 @@ public class ExecuteModelTests implements IObjectActionDelegate {
 						System.out.println("Model Subtypes" + reasoner.getAllModelSubtypes(c));
 						System.out.println("Model Instances" + reasoner.getAllModelInstances(c));
 						System.out.println("Model Types" + reasoner.getAllModelTypes(c));
-					}
+						if (e instanceof Connection) {
+							System.out.println("Multiplicity conformance " + reasoner.multiplicityConforms((Connection) e));
+						}
+					} 
 				} else if (e instanceof Attribute) {
 					Attribute type = (Attribute) e;
 					Attribute instance = (Attribute) selectedElements.get(1);

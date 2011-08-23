@@ -129,8 +129,6 @@ public interface IReasoningService {
 	
 	public boolean neighbourhoodConforms(Clabject type, Clabject instance);
 	
-	public boolean neighbourhoodConformsClabject(Clabject type, Clabject instance);
-	
 	public boolean neighbourhoodConformsConnection(Connection type, Connection instance);
 	
 	public boolean neighbourhoodConstructionConformsConnection( Connection type, Connection instance );
@@ -140,5 +138,7 @@ public interface IReasoningService {
 	public Set<Connection> getAllConnections(Clabject c);
 	
 	public Element getElementByXMIID(String id, Element modelElement);
+	
+	public boolean multiplicityConforms(Connection con);
 	
 }
