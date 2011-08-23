@@ -1,0 +1,21 @@
+context Clabject {
+
+	critique HalloWelt {
+	
+		check: self.name = 'Ralph'
+		
+		message: self.name + ' is not cool enough'
+		
+		fix {
+			
+			title: 'become cooler'
+			
+			do {
+              self.name := 'Ralph';
+          }
+		
+		}
+		
+	}
+
+}
