@@ -141,4 +141,10 @@ public interface IReasoningService {
 	
 	public boolean multiplicityConforms(Connection con);
 	
+	public Set<String> getPossibleRoleNamesForConnectionParticipant(Connection con, Clabject part);
+	
+	public Set<Boolean> getPossibleNavigabilityForConnectionParticipant(Connection con, Clabject part);
+	
+	public Set<Connection> getClassifyingConstructionConformanceDomain(Connection c);
+	
 }
