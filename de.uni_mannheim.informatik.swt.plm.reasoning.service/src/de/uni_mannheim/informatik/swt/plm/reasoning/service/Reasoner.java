@@ -981,7 +981,50 @@ public class Reasoner implements IReasoningService {
 		}
 		return true;
 	}
-	
+
+
+	@Override
+	public Set<String> getPossibleRoleNamesForConnectionParticipant(
+			Connection con, Clabject part) {
+		Set<String> result = new HashSet<String>();
+		Set<Connection> domain = getClassifyingConstructionConformanceDomain(con);
+		for (Connection type: domain) {
+			for (String rn: type.getRoleName()) {
+				if (part.localConformsTo(type.getParticipantForRoleName(rn))) {
+					result.add(rn);
+				}
+			}
+		}
+		return result;
+	}
+
+	@Override
+	public Set<Boolean> getPossibleNavigabilityForConnectionParticipant(Connection con,
+			Clabject part) {
+		Set<Boolean> result = new HashSet<Boolean>();
+		Set<Connection> domain = getClassifyingConstructionConformanceDomain(con);
+		for (Connection type: domain) {
+			for (String rn: type.getRoleName()) {
+				if (part.localConformsTo(type.getParticipantForRoleName(rn))) {
+					result.add(type.isNavigableForRoleName(rn));
+				}
+			}
+		}
+		return result;
+	}
+
+
+	@Override
+	public Set<Connection> getClassifyingConstructionConformanceDomain(Connection c) {
+		Model classifyingModel = c.getModel().getOntology().getContent().get(c.getModel().getLevel() - 1); 
+		Set<Connection> result = new HashSet<Connection>();
+		for (Connection possible:classifyingModel.getAllConnections()) {
+			if (neighbourhoodConstructionConformsConnection(possible, c)) {
+				result.add(possible);
+			}
+		}
+		return result;
+	}
 	
 	
 }
