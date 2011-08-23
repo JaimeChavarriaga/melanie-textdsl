@@ -48,6 +48,15 @@ context Clabject {
 		}
 	}
 	
+	constraint featureNameUnique {
+		guard: self.feature->size() > 0
+		check {
+		 var names =  self.feature->collect(f|f.name);
+		 return names->forAll(n|names.count(n) = 1);
+		}
+		message: self.name + ' defines features with duplicate names'
+	}
+	
 	constraint visualizerDurability {
 		guard: self.potency > -2
 		check: (self.potency = -1) or (self.visualizer->forAll(v|v.durability <= self.potency))
@@ -61,14 +70,154 @@ context Clabject {
 			}
 		}
 	}
+}
+
+context Feature {
+	constraint durabilityNotNegative {
+		check: self.durability > -2
+		message: self.getClabject().name + '.' + self.name + '.durability cannot be negative'
+		fix {
+			title: 'Set durability to the potency of the Clabject'
+			do{self.durability := self.getClabject().potency;}
+		} 
+	}
 	
-	constraint featureNameUnique {
-		guard: self.feature->size() > 0
-		check {
-		 var names =  self.feature->collect(f|f.name);
-		 return names->forAll(n|names.count(n) = 1);
+	constraint visualizerDurability {
+		guard: self.durability > -2
+		check: (self.durability = -1) or (self.visualizer->forAll(v|v.durability <= self.durability))
+		message: self.name + ' has a visualizer of incorrect durability'
+		fix {
+			title: 'Set all mismatching visualizer.durability to ' + self.durability
+			do {
+				for (v in self.visualizer->select(v|v.durability > self.durability)) {
+					v.durability := self.durability;
+				}
+			}
 		}
-		message: self.name + ' defines features with duplicate names'
+	}
+}
+
+context Attribute {
+	constraint mutabilityNotHigherDurability {
+		check: (self.durability = -1) or (self.mutability <= self.durability)
+		message: self.getClabject().name + '.' + self.name + '.mutability cannot be higher than the durability'
+		fix {
+			title: 'Set mutability to the durability'
+			do {self.mutability := self.durability;}
+		}
+	}
+}
+
+context Visualizer {
+	constraint durabilityNotNegative {
+		check: self.durability > -2
+		message: 'Visualizer durability cannot be negative'
+		fix {
+			--guard: self.getElement().oclIsKindOf(Feature)
+			title: 'Compute the durability from the Element'
+			do {
+				var typeName = self.getElement().oclAsType(ecore::EObject).eClass().name;
+				var el = self.getElement();
+				
+				if (typeName = 'Attribute' or typeName = 'Method') {
+					self.durability := el.durability;
+				} else if (typeName = 'Entity' or typeName = 'Connection') {
+					self.durability := el.potency;
+				} else {
+					self.durability := 0;
+				}
+			}
+		}
+	}
+}
+
+context LogicalElement {
+	constraint visualizerDurabilityZero {
+		check: self.visualizer->forAll(v|v.durability = 0)
+		message: 'The durability of a Visualizer of a ' + self.getElement().oclAsType(ecore::EObject).eClass().name + ' has to be 0'
+		fix {
+			title: 'Set the durability to 0'
+			do {
+				for (v in self.visualizer->select(v|v.durability <> 0)) {
+					v.durability := 0;
+				}
+			}
+		}
+	}
+}
+
+context Element {
+	constraint nameNotEmpty {
+		check: self.name.size() > 0
+		message: 'Element.name cannot be empty'
+	}
+}
+
+context Connection {
+	constraint roleNameUnique {
+		check{
+			var names =  self.roleName;
+		 	return names->forAll(n|names.count(n) = 1);
+		}
+		message: 'The roleNames in Connection ' + self.name + ' are not unique'
 	}
 
+	constraint connectOneLevel {
+		check :self.participant->forAll(p|p.level = self.level)
+		message {
+			var result = 'The Connection ' + self.name + ' connects a Clabject from another level';
+			for (p in self.participant) {
+				if (p.level <> self.level) {
+					result = result + " " + p.name;
+				}
+			}
+			return result;
+		}
+		--message: 'The Connection ' + self.name + ' connects a Clabject from another level' + self.participant->select(p|p.level <> self.level)->iterate(p:Clabject;result:String=''|result = result + p.name + ', ')
+	}
+	
+	constraint notConnectLowerPotency {
+		check: self.participant->forAll(p|p.potency >= self.potency)
+		message {
+			var result = 'The Connection ' + self.name + ' has participants of lower potency';
+			return result;
+		}
+		fix {
+			title: 'Adjust Connection potency to the highest participant potency'
+			do {
+				self.potency := self.participant->sortedBy(potency)->last().potency;
+			}
+		}
+		fix {
+			title: 'Adjust participant potency to the Connection potency'
+			do {
+				for (p in self.participant->select(p|p.potency < self.potency)) {
+					p.potency := self.potency;
+				}
+			}
+		}
+	}
+	
+	constraint multiplicitySanity {
+		check: self.roleName->forAll(rN|(0 <= self.getLowerForRoleName(rN) <= self.getUpperForRoleName(rN)) 
+										or (self.getUpperForRoleName(rN) = -1 and self.getLowerForRoleName(rN)>=0))
+		message: self.name + ' multiplicites are not sane'
+		fix {
+			title: 'Adjust the lower multiplicity'
+			do {
+				println('insertAt not working. Refusing to construct lists');
+				--for (rn in self.roleName) {
+				--	var index = self.roleName->indexOf(rn);
+				--	if (self.getLowerForRoleName(rn)<0) {
+				--		self.lower->removeAt(index);
+				--		self.lower->insertAt(index, 0);
+				--	}
+				--	if (self.getLowerForRoleName(rn) > self.getUpperForRoleName(rn) and self.getUpperForRoleName(rn) <> -1) {
+				--		self.lower->removeAt(index);
+				--		self.lower->insertAt(index, self.getUpperForRoleName(rn));
+				--	}
+				--}
+			}
+		}
+	}
 }
