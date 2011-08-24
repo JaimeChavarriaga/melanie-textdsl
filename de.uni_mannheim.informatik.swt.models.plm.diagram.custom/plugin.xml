@@ -146,4 +146,19 @@
          </propertySection>
       </propertySections>
    </extension>
+      <extension
+            point="org.eclipse.ui.menus">
+         <menuContribution
+               allPopups="true"
+               locationURI="popup:org.eclipse.ui.popup.any">
+            <menu
+                  id="haha.menu"
+                  label="Refactor">
+               <dynamic
+                     class="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.RefactorContributionItem"
+                     id="refContItem">
+               </dynamic>
+            </menu>
+         </menuContribution>
+      </extension>
 </plugin>

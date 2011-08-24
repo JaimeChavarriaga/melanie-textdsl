@@ -30,4 +30,6 @@ public interface IRefactoringService {
 	public boolean changeValue(EObject modelElement, EStructuralFeature feature, Object value);
 	
 	public boolean delete(EObject modelElement);
+	
+	public String[] getAvailableRefactoringCommands(EObject modelElement);
 }
