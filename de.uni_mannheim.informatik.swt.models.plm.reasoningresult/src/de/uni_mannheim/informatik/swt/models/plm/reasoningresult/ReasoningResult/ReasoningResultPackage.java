@@ -107,13 +107,22 @@ public interface ReasoningResultPackage extends EPackage {
 	int CHECK__RESULT = 0;
 
 	/**
+	 * The feature id for the '<em><b>Expression</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHECK__EXPRESSION = 1;
+
+	/**
 	 * The number of structural features of the '<em>Check</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CHECK_FEATURE_COUNT = 1;
+	int CHECK_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.CompositeCheckImpl <em>Composite Check</em>}' class.
@@ -133,6 +142,15 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPOSITE_CHECK__RESULT = CHECK__RESULT;
+
+	/**
+	 * The feature id for the '<em><b>Expression</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_CHECK__EXPRESSION = CHECK__EXPRESSION;
 
 	/**
 	 * The feature id for the '<em><b>Check</b></em>' containment reference list.
@@ -199,6 +217,15 @@ public interface ReasoningResultPackage extends EPackage {
 	int NAME_COMPARISON__RESULT = CHECK__RESULT;
 
 	/**
+	 * The feature id for the '<em><b>Expression</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAME_COMPARISON__EXPRESSION = CHECK__EXPRESSION;
+
+	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -243,6 +270,15 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @ordered
 	 */
 	int DURABILITY_COMPARISON__RESULT = CHECK__RESULT;
+
+	/**
+	 * The feature id for the '<em><b>Expression</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DURABILITY_COMPARISON__EXPRESSION = CHECK__EXPRESSION;
 
 	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference.
@@ -291,6 +327,15 @@ public interface ReasoningResultPackage extends EPackage {
 	int MUTABILITY_COMPARISON__RESULT = CHECK__RESULT;
 
 	/**
+	 * The feature id for the '<em><b>Expression</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MUTABILITY_COMPARISON__EXPRESSION = CHECK__EXPRESSION;
+
+	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -335,6 +380,15 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @ordered
 	 */
 	int DATATYPE_COMPARISON__RESULT = CHECK__RESULT;
+
+	/**
+	 * The feature id for the '<em><b>Expression</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATATYPE_COMPARISON__EXPRESSION = CHECK__EXPRESSION;
 
 	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference.
@@ -405,6 +459,17 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getCheck_Result();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.Check#getExpression <em>Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Expression</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.Check#getExpression()
+	 * @see #getCheck()
+	 * @generated
+	 */
+	EAttribute getCheck_Expression();
 
 	/**
 	 * Returns the meta object for class '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.CompositeCheck <em>Composite Check</em>}'.
@@ -645,6 +710,14 @@ public interface ReasoningResultPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CHECK__RESULT = eINSTANCE.getCheck_Result();
+
+		/**
+		 * The meta object literal for the '<em><b>Expression</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CHECK__EXPRESSION = eINSTANCE.getCheck_Expression();
 
 		/**
 		 * The meta object literal for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.CompositeCheckImpl <em>Composite Check</em>}' class.

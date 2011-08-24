@@ -186,6 +186,15 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getCheck_Expression() {
+		return (EAttribute)checkEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getCompositeCheck() {
 		return compositeCheckEClass;
 	}
@@ -367,6 +376,7 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 
 		checkEClass = createEClass(CHECK);
 		createEAttribute(checkEClass, CHECK__RESULT);
+		createEAttribute(checkEClass, CHECK__EXPRESSION);
 
 		compositeCheckEClass = createEClass(COMPOSITE_CHECK);
 		createEReference(compositeCheckEClass, COMPOSITE_CHECK__CHECK);
@@ -434,6 +444,7 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 
 		initEClass(checkEClass, Check.class, "Check", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCheck_Result(), ecorePackage.getEBoolean(), "result", null, 1, 1, Check.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCheck_Expression(), ecorePackage.getEString(), "expression", null, 0, 1, Check.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(compositeCheckEClass, CompositeCheck.class, "CompositeCheck", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCompositeCheck_Check(), this.getCheck(), null, "check", null, 0, -1, CompositeCheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
