@@ -10,6 +10,8 @@
  *******************************************************************************/
 package de.uni_mannheim.informatik.swt.plm.workbench.interfaces;
 
+import java.util.Map;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
@@ -31,5 +33,5 @@ public interface IRefactoringService {
 	
 	public boolean delete(EObject modelElement);
 	
-	public String[] getAvailableRefactoringCommands(EObject modelElement);
+	public Map<String, String> getAvailableRefactoringCommands(EObject modelElement);
 }
