@@ -18,6 +18,7 @@ import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
 
 import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService;
+import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IRefactoringService;
 import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IVisualModelToFigureTransformator;
 
 /**
@@ -29,6 +30,7 @@ public class ExtensionPointService {
 	
 	private static String VISUALIZATION_SERVICE_ID = "de.uni_mannheim.informatik.swt.visualization.service";
 	private static String REASONING_SERVICE_ID = "de.uni_mannheim.informatik.swt.reasoning.service";
+	private static String REFACTORING_SERVICE_ID = "de.uni_mannheim.informatik.swt.refactoring.service";
 	
 	private static ExtensionPointService instance = null;
 	
@@ -42,13 +44,22 @@ public class ExtensionPointService {
 	private static Map<String, IVisualModelToFigureTransformator> id2VisualizationServiceInstance;
 	
 	/**
-	 * Cache for Visualization IConfigurationElements
+	 * Cache for Reasoning IConfigurationElements
 	 */
 	private static Map<String, IConfigurationElement> id2ReasoningServiceConfigurationElement;
 	/**
-	 * Cache for Visualization Instances
+	 * Cache for Reasoning Instances
 	 */
 	private static Map<String, IReasoningService> id2ReasoningServiceInstance;
+	
+	/**
+	 * Cache for Reasoning IConfigurationElements
+	 */
+	private static Map<String, IConfigurationElement> id2RefactoringServiceConfigurationElement;
+	/**
+	 * Cache for Reasoning Instances
+	 */
+	private static Map<String, IRefactoringService> id2RefactoringServiceInstance;
 	
 	private ExtensionPointService(){
 		
@@ -77,6 +88,9 @@ public class ExtensionPointService {
 		id2ReasoningServiceConfigurationElement = new HashMap<String, IConfigurationElement>();
 		id2ReasoningServiceInstance = new HashMap<String, IReasoningService>();
 		
+		id2RefactoringServiceConfigurationElement = new HashMap<String, IConfigurationElement>();
+		id2RefactoringServiceInstance = new HashMap<String, IRefactoringService>();
+		
 		//Initialize the visualization service
 		IConfigurationElement[] configurationElements = Platform.getExtensionRegistry().getConfigurationElementsFor(VISUALIZATION_SERVICE_ID);
 		
@@ -88,6 +102,12 @@ public class ExtensionPointService {
 		
 		for (IConfigurationElement cElement : configurationElements)
 			id2ReasoningServiceConfigurationElement.put(cElement.getAttribute("id"), cElement);
+		
+		//Initialize the refactoring service
+		configurationElements = Platform.getExtensionRegistry().getConfigurationElementsFor(REFACTORING_SERVICE_ID);
+		
+		for (IConfigurationElement cElement : configurationElements)
+			id2RefactoringServiceConfigurationElement.put(cElement.getAttribute("id"), cElement);
 	}
 	
 	/**
@@ -132,5 +152,27 @@ public class ExtensionPointService {
 		}
 		
 		return reasoner;
+	}
+	
+	/**
+	 * Returns an instance of the Refactoring Service. For performance improvements two caches are used.
+	 * One to cache the IConfigurationElements and one to cache the visualization service instance.
+	 * 
+	 * @param id ID of the registered extension point
+	 * 
+	 * @return A cached instance of the reasoning service
+	 * 
+	 * @throws CoreException
+	 */
+	public IRefactoringService getRefactoringService(String id) throws CoreException{
+		IRefactoringService refactorer = id2RefactoringServiceInstance.get(id);
+		
+		if (refactorer == null)
+		{
+			refactorer = (IRefactoringService)id2RefactoringServiceConfigurationElement.get(id).createExecutableExtension("class");
+			id2RefactoringServiceInstance.put(id, refactorer);
+		}
+		
+		return refactorer;
 	}
 }
