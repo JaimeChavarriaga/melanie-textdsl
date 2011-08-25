@@ -1,16 +1,17 @@
 package de.uni_mannheim.informatik.swt.models.plm.diagram.custom;
 
-import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map.Entry;
 
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.CompoundContributionItem;
 import org.eclipse.ui.menus.CommandContributionItem;
 import org.eclipse.ui.menus.CommandContributionItemParameter;
-import org.eclipse.ui.menus.MenuUtil;
 
+import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMFactory;
 import de.uni_mannheim.informatik.swt.plm.workbench.ExtensionPointService;
 import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IRefactoringService;
 
@@ -33,17 +34,16 @@ public class RefactorContributionItem extends CompoundContributionItem {
 		if (refactorer == null)
 			return new IContributionItem[0];
 		
+		List<IContributionItem> contributionItems = new LinkedList<IContributionItem>();
 		
+		for(Entry<String, String> entry : refactorer.getAvailableRefactoringCommands(PLMFactory.eINSTANCE.createFeature()).entrySet()){
+			CommandContributionItemParameter param = 
+					new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), entry.getKey() + ".menuEntry", entry.getKey(), CommandContributionItem.STYLE_PUSH);
+			param.label = entry.getValue();
+			contributionItems.add(new CommandContributionItem(param));
+		}
+			
+		return contributionItems.toArray(new IContributionItem[] {});
 		
-		
-		IContributionItem[] result = new IContributionItem[1];
-		CommandContributionItemParameter param = 
-				new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), "id", "de.uni_mannheim.informatik.swt.plm.refactoring.service.commands.renameclabjectcommand", CommandContributionItem.STYLE_PUSH);
-		param.label = "Rename Clabject";
-		result[0] = new CommandContributionItem(param);
-	
-		//MenuUtil.ANY_POPUP
-		
-		return result;
 	}
 }

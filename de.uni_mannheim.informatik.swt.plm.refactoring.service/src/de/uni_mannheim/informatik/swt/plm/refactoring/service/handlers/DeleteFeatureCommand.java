@@ -12,11 +12,11 @@ import org.eclipse.jface.dialogs.MessageDialog;
  * @see org.eclipse.core.commands.IHandler
  * @see org.eclipse.core.commands.AbstractHandler
  */
-public class RenameClabjectCommand extends AbstractHandler {
+public class DeleteFeatureCommand extends AbstractHandler {
 	/**
 	 * The constructor.
 	 */
-	public RenameClabjectCommand() {
+	public DeleteFeatureCommand() {
 	}
 
 	/**
@@ -28,7 +28,7 @@ public class RenameClabjectCommand extends AbstractHandler {
 		MessageDialog.openInformation(
 				window.getShell(),
 				"Service",
-				"Rename Clabject!");
+				"Delete Feature!");
 		return null;
 	}
 }

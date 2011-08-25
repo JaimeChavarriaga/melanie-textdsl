@@ -2,17 +2,17 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
-         point="org.eclipse.ui.handlers">
-      <handler
-            class="de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.RenameClabjectCommand"
-            commandId="de.uni_mannheim.informatik.swt.plm.refactoring.service.commands.renameclabjectcommand">
-      </handler>
-   </extension>
-   <extension
+         id="de.uni_mannheim.informatik.swt.plm.refactoring.service.commands"
          point="org.eclipse.ui.commands">
       <command
-            id="de.uni_mannheim.informatik.swt.plm.refactoring.service.commands.renameclabjectcommand"
-            name="Rename Clabject">
+            defaultHandler="de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.DeleteClabjectCommand"
+            id="de.uni_mannheim.informatik.swt.plm.refactoring.service.commands.deleteclabjectcommand"
+            name="Delete Clabject">
+      </command>
+      <command
+            defaultHandler="de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.DeleteFeatureCommand"
+            id="de.uni_mannheim.informatik.swt.plm.refactoring.service.commands.deletefeaturecommand"
+            name="Delete Feature">
       </command>
    </extension>
    <extension
