@@ -82,18 +82,30 @@ public interface IReasoningService {
 	 * param[1] = Clabject - instance
 	 */
 	public static final String DRESS_INSTANCE_FROM_TYPE = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.dressinstancefromtype";
+	/**
+	 * 
+	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
+	 */
 	public void dressInstanceFromType(Clabject type, Clabject instance) throws Exception;
 	
 	/**
 	 * param[0] = Attribute - type <br />
 	 */
 	public static final String CREATE_ATTRIBUTE = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.createattribute";
+	/**
+	 * 
+	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
+	 */
 	public Attribute createAttribute(Attribute type);
 	
 	/**
 	 * param[0] = Method - type <br />
 	 */
 	public static final String CREATE_METHOD= "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.createmethod";
+	/**
+	 * 
+	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
+	 */
 	public Method createMethod(Method type);
 	
 	/**
@@ -106,6 +118,10 @@ public interface IReasoningService {
 	 * @return true => Connection can exist; false => else
 	 */
 	public static final String CAN_CONNECTION_EXIST = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.canconnectionexist";
+	/**
+	 * 
+	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
+	 */
 	public boolean canConnectionExist(Connection source, Clabject target);
 	
 	/**
@@ -117,6 +133,10 @@ public interface IReasoningService {
 	 * @return A list with possible types for creating instances
 	 */
 	public static final String GET_ALL_POSSIBLE_TYPES_FOR_MODEL= "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.getallpossibletypesformodel";
+	/**
+	 * 
+	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
+	 */
 	Set<Clabject> getAllPossibleTypeForModel(Model m);
 
 	/**
@@ -124,6 +144,10 @@ public interface IReasoningService {
 	 * param[1] = Attribute - instance
 	 */
 	public static final String ATTRIBUTE_CONFORMS = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.attributeconforms";
+	/**
+	 * 
+	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
+	 */
 	public boolean attributeConforms(Attribute type, Attribute instance);
 	
 	/**
@@ -131,6 +155,10 @@ public interface IReasoningService {
 	 * param[1] = Method - instance
 	 */
 	public static final String METHOD_CONFORMS = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.methodconforms";
+	/**
+	 * 
+	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
+	 */
 	public boolean methodConforms(Method type, Method instance);
 	
 	/**
@@ -138,6 +166,10 @@ public interface IReasoningService {
 	 * param[1] = Feature - instance
 	 */
 	public static final String FEATURE_CONFORMS = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.featureconforms";
+	/**
+	 * 
+	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
+	 */
 	public boolean featureConforms( Feature type, Feature instance);
 	
 	/**
@@ -145,6 +177,10 @@ public interface IReasoningService {
 	 * param[1] = Clabject - instance
 	 */
 	public static final String LOCAL_CONFORMS_CLABJECT = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.localconformsclabject";
+	/**
+	 * 
+	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
+	 */
 	public boolean localConformsClabject( Clabject type, Clabject instance);
 	
 	/**
@@ -152,6 +188,10 @@ public interface IReasoningService {
 	 * param[1] = Connection - instance
 	 */
 	public static final String LOCAL_CONSTRUCTION_CONFORMS_CONNECTION = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.localconstructionconformsconnection";
+	/**
+	 * 
+	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
+	 */
 	public boolean localConstructionConformsConnection( Connection type, Connection instance );
 	
 	/**
@@ -159,6 +199,10 @@ public interface IReasoningService {
 	 * param[1] = Connection - instance
 	 */
 	public static final String LOCAL_CONFORMS_CONNECTION = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.localconformsconnection";
+	/**
+	 * 
+	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
+	 */
 	public boolean localConformsConnection( Connection type, Connection instance);
 	
 	/**
@@ -166,6 +210,10 @@ public interface IReasoningService {
 	 * param[1] = Clabject - instance
 	 */
 	public static final String LOCAL_CONFORMS = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.localconforms";
+	/**
+	 * 
+	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
+	 */
 	public boolean localConforms(Clabject type, Clabject instance);
 	
 	/**
@@ -173,6 +221,10 @@ public interface IReasoningService {
 	 * param[1] = Clabject - instance
 	 */
 	public static final String NEIGHBOURHOOD_CONFORMS = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.neighbourhoodconforms";
+	/**
+	 * 
+	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
+	 */
 	public boolean neighbourhoodConforms(Clabject type, Clabject instance);
 	
 	/**
@@ -180,6 +232,10 @@ public interface IReasoningService {
 	 * param[1] = Connection - instance
 	 */
 	public static final String NEIGHBOURHOOD_CONFORMS_CONNECTION = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.neighbourhoodconformsconnection";
+	/**
+	 * 
+	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
+	 */
 	public boolean neighbourhoodConformsConnection(Connection type, Connection instance);
 	
 	/**
@@ -187,6 +243,10 @@ public interface IReasoningService {
 	 * param[1] = Connection - instance
 	 */
 	public static final String NEIGHBOURHOOD_CONSTRUCTION_CONFORMS_CONNECTION = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.neighbourhoodconstructionconformsconnection";
+	/**
+	 * 
+	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
+	 */
 	public boolean neighbourhoodConstructionConformsConnection( Connection type, Connection instance );
 	
 	/**
@@ -194,12 +254,20 @@ public interface IReasoningService {
 	 * param[1] = Element - modelElement
 	 */
 	public static final String GET_ELEMENT_BY_XMI_ID = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.getelementbyxmiid";
+	/**
+	 * 
+	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
+	 */
 	public Element getElementByXMIID(String id, Element modelElement);
 	
 	/**
 	 * param[0] = connection <br />
 	 */
 	public static final String MULTIPLICITY_CONFORMS = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.multiplicityconforms";
+	/**
+	 * 
+	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
+	 */
 	public boolean multiplicityConforms(Connection con);
 	
 	/**
@@ -207,6 +275,10 @@ public interface IReasoningService {
 	 * param[1] = clabject
 	 */
 	public static final String GET_POSSIBLE_ROLE_NAMES_FOR_CONNECTION_PARTICIPANT = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.getpossiblerolenamesforconnectionparticipant";
+	/**
+	 * 
+	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
+	 */
 	public Set<String> getPossibleRoleNamesForConnectionParticipant(Connection con, Clabject part);
 	
 	/**
@@ -214,11 +286,19 @@ public interface IReasoningService {
 	 * param[1] = clabject
 	 */
 	public static final String GET_POSSIBLE_NAVIGABILITY_FOR_CONNECTION_PARTICIPANT = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.getpossiblenavigabilityforconnectionparticipant";
+	/**
+	 * 
+	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
+	 */
 	public Set<Boolean> getPossibleNavigabilityForConnectionParticipant(Connection con, Clabject part);
 	
 	/**
 	 * param[0] = connection
 	 */
 	public static final String GET_CLASSIFYING_CONSTRUCTION_CONFORMANCE_DOMAIN = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.getclassifyingconstructionconformancedomain";
+	/**
+	 * 
+	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
+	 */
 	public Set<Connection> getClassifyingConstructionConformanceDomain(Connection c);
 }
