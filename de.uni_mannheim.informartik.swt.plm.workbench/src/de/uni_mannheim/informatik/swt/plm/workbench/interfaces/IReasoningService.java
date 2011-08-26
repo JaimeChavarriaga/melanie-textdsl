@@ -6,12 +6,14 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    Bastian Kennel - initial API and implementation and initial documentation
+ *    Ralph Gerbig, Bastian Kennel - initial API and implementation and initial documentation
  *******************************************************************************/ 
 package de.uni_mannheim.informatik.swt.plm.workbench.interfaces;
 
 import java.util.List;
 import java.util.Set;
+
+import org.eclipse.jface.util.IPropertyChangeListener;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
@@ -31,6 +33,22 @@ import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult
 public interface IReasoningService {
 	
 	/**
+	 * Adds a property change listener which listens to changes on reasoning
+	 * history. Mainly used to register views which are updating themselves 
+	 * automatically on changes.
+	 * 
+	 * @param listener Listener to register
+	 */
+	public void addPropertyChangeListener(IPropertyChangeListener listener);
+	
+	/**
+	 * Removes an IPropertyChangeListener.
+	 * 
+	 * @param listener Listener to remove
+	 */
+	public void removePropertyChangeListener(IPropertyChangeListener listener);
+	
+	/**
 	 * 
 	 * @return a List with all executed reasonings
 	 */
@@ -47,7 +65,7 @@ public interface IReasoningService {
 	 * 
 	 * @return
 	 */
-	public IReasoningService getInstance();
+	public IReasoningService Instance();
 	
 	/**
 	 * 

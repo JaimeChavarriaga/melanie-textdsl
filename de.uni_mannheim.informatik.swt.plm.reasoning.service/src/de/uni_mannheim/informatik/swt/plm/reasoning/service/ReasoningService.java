@@ -24,6 +24,8 @@ import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
+import org.eclipse.jface.util.IPropertyChangeListener;
+import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.ocl.ParserException;
 import org.eclipse.ocl.ecore.Constraint;
 import org.eclipse.ocl.ecore.OCL;
@@ -47,11 +49,34 @@ import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService
 public class ReasoningService implements IReasoningService {
 
 	private static IReasoningService instance = null;
+	private List<IPropertyChangeListener> listeners = new LinkedList<IPropertyChangeListener>(); 
+	
+	@Override
+	public void addPropertyChangeListener(IPropertyChangeListener listener) {
+		if (!listeners.contains(listener))
+			listeners.add(listener);
+	}
+
+	@Override
+	public void removePropertyChangeListener(IPropertyChangeListener listener) {
+		listeners.remove(listener);
+	}	
 	
 	/**
 	 * This is used to record all reasoning results
 	 */
-	private List<ReasoningResultModel> reasoningResults = new LinkedList<ReasoningResultModel>();
+	private List<ReasoningResultModel> reasoningResults = new LinkedList<ReasoningResultModel>(){
+		/**
+		 * Does additionally notify all listeners.
+		 */
+		public void addLast(ReasoningResultModel e) {
+			super.addLast(e);
+			
+			//Notify all listeners on addLast
+			for (IPropertyChangeListener listener : listeners)
+				listener.propertyChange(new PropertyChangeEvent(this, "reasoningResults", new LinkedList<ReasoningResultModel>(this).remove(e), this));
+		};
+	};
 	
 	@Override
 	public List<ReasoningResultModel> getReasoningHistory() {
@@ -65,7 +90,7 @@ public class ReasoningService implements IReasoningService {
 	}
 	
 	@Override
-	public IReasoningService getInstance() {
+	public IReasoningService Instance() {
 		
 		if (instance == null){
 			instance = new ReasoningService();
@@ -488,5 +513,5 @@ public class ReasoningService implements IReasoningService {
 			}
 		}
 		return result;
-	}	
+	}
 }
