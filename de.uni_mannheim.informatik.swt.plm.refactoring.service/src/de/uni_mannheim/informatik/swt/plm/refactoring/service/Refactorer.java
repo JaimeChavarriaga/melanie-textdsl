@@ -19,6 +19,7 @@ import org.eclipse.core.runtime.RegistryFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IRefactoringService;
 
@@ -49,7 +50,9 @@ public class Refactorer implements IRefactoringService {
 	public Map<String, String> getAvailableRefactoringCommands(EObject modelElement) {
 		Map<String, String> commands = new HashMap<String, String>();
 		
-		if (modelElement instanceof Feature)
+		if (modelElement instanceof Clabject)
+			commands.put(DELETE_CLABJECT_COMMAND_ID, getCommandName(DELETE_CLABJECT_COMMAND_ID));
+		else if (modelElement instanceof Feature)
 			commands.put(DELETE_FEATURE_COMMAND_ID, getCommandName(DELETE_FEATURE_COMMAND_ID));
 		
 		return commands;
