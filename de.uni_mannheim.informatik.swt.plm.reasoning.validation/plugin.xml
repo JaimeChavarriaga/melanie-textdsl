@@ -4,7 +4,7 @@
    <extension
          point="org.eclipse.epsilon.evl.emf.validation">
       <constraintsBinding
-            constraints="validation/plmElementWF.evl"
+            constraints="validation/wellformedness.evl"
             namespaceURI="http://swt.informatik.uni-mannheim.de/PLM">
       </constraintsBinding>
    </extension>
