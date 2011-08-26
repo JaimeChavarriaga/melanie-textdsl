@@ -17,77 +17,65 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Entity;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Generalization;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Method;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
+import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultModel;
 
 /**
- * Interface that must be implemented for all reasoing engines
+ * Use getInstance to get an instance of the reasoning service.
+ * 
+ * Interface that must be implemented for all reasoning engines.
  *
  */
 public interface IReasoningService {
 	
-	public Model getModel(Clabject c);
+	/**
+	 * 
+	 * @return a List with all executed reasonings
+	 */
+	public List<ReasoningResultModel> getReasoningHistory();
 	
-	public Set<Clabject> getAllClabjects(Model m);
+	/**
+	 * 
+	 * @return the last executed reasoning
+	 */
+	public ReasoningResultModel getLastResult();
 	
-	public Set<Entity> getAllEntities(Model m);
+	/**
+	 * Returns a global instance of the reasoning service.
+	 * 
+	 * @return
+	 */
+	public IReasoningService getInstance();
 	
-	public Set<Connection> getAllConnections(Model m);
+	/**
+	 * 
+	 * @param commandID Id defined by {@link IReasoningService}
+	 * @param parameters Parameters defined by the ids
+	 * 
+	 * @return true -> operation sucessful; false -> operation failed
+	 */
+	public boolean run(String commandID, List<?> parameters);
 	
-	public Set<Generalization> getAllGeneralizations(Model m);
 	
-	public Set<Instantiation> getAllInstantiations(Model m);
-	
-	public Set<Clabject> getAllModelSupertypes(Clabject c);
-	
-	public Set<Clabject> getAllModelSubtypes(Clabject c);
-	
-	public Set<Clabject> getAllModelTypes(Clabject c);
-	
-	public boolean isModelInstanceOf(Clabject instance, Clabject type);
-	
-	public boolean isModelTypeOf(Clabject instance, Clabject type);
-	
-	public Set<Clabject> getAllModelInstances(Clabject t);
-	
-	public Set<Instantiation> getAllModelInstantiationsAsInstance(Clabject i);
-	
-	public Set<Instantiation> getAllModelInstantiationsAsType(Clabject t);
-	
-	public Clabject getParticipantForRoleName(Connection c, String roleName);
-	
-	public String getRoleNameForParticipant(Connection c, Clabject p);
-	
-	public boolean isNavigableForRoleName(Connection c, String roleName);
-	
-	public boolean isNavigableParticipant(Connection con, Clabject p);
-	
-	public int getLowerForRoleName(Connection c, String roleName);
-	
-	public int getUpperForRoleName(Connection c, String roleName);
-	
-	public Set<Connection> getConnections(Clabject c);
-	
-	public Set<Clabject> getAllAssociates(Clabject c);
-	
-	public Set<String> getAssociateRoleNames(Clabject c);
-	
-	public Set<Clabject> getAssociatesForRoleName(Clabject source, String roleName);
-	
-	public Set<Feature> getAllFeatures(Clabject c);
-	
-	public Set<Attribute> getAllAttributes(Clabject c);
-	
-	public Set<Method> getAllMethods(Clabject c);
-	
+	/**
+	 * param[0] = Clabject - type <br />
+	 * param[1] = Clabject - instance
+	 */
+	public static final String DRESS_INSTANCE_FROM_TYPE = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.dressinstancefromtype";
 	public void dressInstanceFromType(Clabject type, Clabject instance) throws Exception;
 	
+	/**
+	 * param[0] = Attribute - type <br />
+	 */
+	public static final String CREATE_ATTRIBUTE = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.createattribute";
 	public Attribute createAttribute(Attribute type);
 	
+	/**
+	 * param[0] = Method - type <br />
+	 */
+	public static final String CREATE_METHOD= "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.createmethod";
 	public Method createMethod(Method type);
 	
 	/**
@@ -99,9 +87,8 @@ public interface IReasoningService {
 	 * 
 	 * @return true => Connection can exist; false => else
 	 */
+	public static final String CAN_CONNECTION_EXIST = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.canconnectionexist";
 	public boolean canConnectionExist(Connection source, Clabject target);
-	
-
 	
 	/**
 	 * Returns all types from which instances can be created in e. e can
@@ -111,40 +98,109 @@ public interface IReasoningService {
 	 * 
 	 * @return A list with possible types for creating instances
 	 */
+	public static final String GET_ALL_POSSIBLE_TYPES_FOR_MODEL= "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.getallpossibletypesformodel";
 	Set<Clabject> getAllPossibleTypeForModel(Model m);
 
+	/**
+	 * param[0] = Attribute - type <br />
+	 * param[1] = Attribute - instance
+	 */
+	public static final String ATTRIBUTE_CONFORMS = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.attributeconforms";
 	public boolean attributeConforms(Attribute type, Attribute instance);
 	
+	/**
+	 * param[0] = Method - type <br />
+	 * param[1] = Method - instance
+	 */
+	public static final String METHOD_CONFORMS = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.methodconforms";
 	public boolean methodConforms(Method type, Method instance);
 	
+	/**
+	 * param[0] = Feature - type <br />
+	 * param[1] = Feature - instance
+	 */
+	public static final String FEATURE_CONFORMS = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.featureconforms";
 	public boolean featureConforms( Feature type, Feature instance);
 	
+	/**
+	 * param[0] = Clabject - type <br />
+	 * param[1] = Clabject - instance
+	 */
+	public static final String LOCAL_CONFORMS_CLABJECT = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.localconformsclabject";
 	public boolean localConformsClabject( Clabject type, Clabject instance);
 	
+	/**
+	 * param[0] = Connection - type <br />
+	 * param[1] = Connection - instance
+	 */
+	public static final String LOCAL_CONSTRUCTION_CONFORMS_CONNECTION = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.localconstructionconformsconnection";
 	public boolean localConstructionConformsConnection( Connection type, Connection instance );
 	
+	/**
+	 * param[0] = Connection - type <br />
+	 * param[1] = Connection - instance
+	 */
+	public static final String LOCAL_CONFORMS_CONNECTION = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.localconformsconnection";
 	public boolean localConformsConnection( Connection type, Connection instance);
 	
+	/**
+	 * param[0] = Clabject - type <br />
+	 * param[1] = Clabject - instance
+	 */
+	public static final String LOCAL_CONFORMS = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.localconforms";
 	public boolean localConforms(Clabject type, Clabject instance);
 	
+	/**
+	 * param[0] = Clabject - type <br />
+	 * param[1] = Clabject - instance
+	 */
+	public static final String NEIGHBOURHOOD_CONFORMS = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.neighbourhoodconforms";
 	public boolean neighbourhoodConforms(Clabject type, Clabject instance);
 	
+	/**
+	 * param[0] = Connection - type <br />
+	 * param[1] = Connection - instance
+	 */
+	public static final String NEIGHBOURHOOD_CONFORMS_CONNECTION = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.neighbourhoodconformsconnection";
 	public boolean neighbourhoodConformsConnection(Connection type, Connection instance);
 	
+	/**
+	 * param[0] = Connection - type <br />
+	 * param[1] = Connection - instance
+	 */
+	public static final String NEIGHBOURHOOD_CONSTRUCTION_CONFORMS_CONNECTION = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.neighbourhoodconstructionconformsconnection";
 	public boolean neighbourhoodConstructionConformsConnection( Connection type, Connection instance );
 	
-	public Set<Connection> getModelConnections(Clabject c);
-	
-	public Set<Connection> getAllConnections(Clabject c);
-	
+	/**
+	 * param[0] = String - id <br />
+	 * param[1] = Element - modelElement
+	 */
+	public static final String GET_ELEMENT_BY_XMI_ID = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.getelementbyxmiid";
 	public Element getElementByXMIID(String id, Element modelElement);
 	
+	/**
+	 * param[0] = connection <br />
+	 */
+	public static final String MULTIPLICITY_CONFORMS = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.multiplicityconforms";
 	public boolean multiplicityConforms(Connection con);
 	
+	/**
+	 * param[0] = connection <br />
+	 * param[1] = clabject
+	 */
+	public static final String GET_POSSIBLE_ROLE_NAMES_FOR_CONNECTION_PARTICIPANT = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.getpossiblerolenamesforconnectionparticipant";
 	public Set<String> getPossibleRoleNamesForConnectionParticipant(Connection con, Clabject part);
 	
+	/**
+	 * param[0] = connection <br />
+	 * param[1] = clabject
+	 */
+	public static final String GET_POSSIBLE_NAVIGABILITY_FOR_CONNECTION_PARTICIPANT = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.getpossiblenavigabilityforconnectionparticipant";
 	public Set<Boolean> getPossibleNavigabilityForConnectionParticipant(Connection con, Clabject part);
 	
+	/**
+	 * param[0] = connection
+	 */
+	public static final String GET_CLASSIFYING_CONSTRUCTION_CONFORMANCE_DOMAIN = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.getclassifyingconstructionconformancedomain";
 	public Set<Connection> getClassifyingConstructionConformanceDomain(Connection c);
-	
 }

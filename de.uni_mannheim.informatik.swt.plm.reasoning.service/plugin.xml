@@ -4,7 +4,7 @@
    <extension
          point="de.uni_mannheim.informatik.swt.reasoning.service">
       <service
-            class="de.uni_mannheim.informatik.swt.plm.reasoning.service.Reasoner"
+            class="de.uni_mannheim.informatik.swt.plm.reasoning.service.ReasoningService"
             id="de.uni_mannheim.informatik.swt.plm.reasoning.service">
       </service>
    </extension>

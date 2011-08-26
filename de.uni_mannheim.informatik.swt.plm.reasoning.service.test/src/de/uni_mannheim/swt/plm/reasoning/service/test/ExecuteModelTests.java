@@ -63,10 +63,10 @@ public class ExecuteModelTests implements IObjectActionDelegate {
 						} 
 					} else {
 						Clabject c = (Clabject) e;
-						System.out.println("Model Supertypes" + reasoner.getAllModelSupertypes(c));
-						System.out.println("Model Subtypes" + reasoner.getAllModelSubtypes(c));
-						System.out.println("Model Instances" + reasoner.getAllModelInstances(c));
-						System.out.println("Model Types" + reasoner.getAllModelTypes(c));
+						System.out.println("Model Supertypes" + c.getModelSupertypes());
+						System.out.println("Model Subtypes" + c.getModelSubtypes());
+						System.out.println("Model Instances" + c.getModelInstances());
+						System.out.println("Model Types" + c.getModelTypes());
 						if (e instanceof Connection) {
 							System.out.println("Multiplicity conformance " + reasoner.multiplicityConforms((Connection) e));
 						}
