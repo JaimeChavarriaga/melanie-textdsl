@@ -163,7 +163,7 @@ context Connection {
 	}
 
 	constraint connectOneLevel {
-		check :self.participant->forAll(p|p.level = self.level)
+		check :self.participant->asSequence()->forAll(p|p.level = self.level).println()
 		message {
 			var result = 'The Connection ' + self.name + ' connects a Clabject from another level';
 			for (p in self.participant) {
@@ -177,7 +177,7 @@ context Connection {
 	}
 	
 	constraint notConnectLowerPotency {
-		check: self.participant->forAll(p|p.potency >= self.potency)
+		check: self.participant->asSequence()->forAll(p|(self.potency = -1 or p.potency = -1) or (p.potency >= self.potency))
 		message {
 			var result = 'The Connection ' + self.name + ' has participants of lower potency';
 			return result;
