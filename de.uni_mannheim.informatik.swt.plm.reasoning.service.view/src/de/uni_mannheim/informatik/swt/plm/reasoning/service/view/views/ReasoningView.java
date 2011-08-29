@@ -21,6 +21,8 @@ import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.util.PropertyChangeEvent;
+import org.eclipse.jface.viewers.ArrayContentProvider;
+import org.eclipse.jface.viewers.ComboViewer;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.ISelection;
@@ -30,6 +32,8 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.IActionBars;
@@ -63,9 +67,13 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 	public void propertyChange(PropertyChangeEvent event) {
 		if (event.getNewValue() instanceof List<?>){
 			//Take the last (= newest element from the list)
-			ReasoningResultModel model = (ReasoningResultModel)((List<?>)event.getNewValue()).get(((List<?>)event.getNewValue()).size() - 1);
-			viewer.setInput(model);
-			viewer.refresh();
+			List<?> modelList = ((List<?>)event.getNewValue());
+			ReasoningResultModel model = (ReasoningResultModel)modelList.get(modelList.size() - 1);
+			treeViewer.setInput(model);
+			treeViewer.refresh();
+			
+			comboViewer.setInput(modelList);
+			comboViewer.refresh();
 		}
 	}
 	
@@ -74,7 +82,8 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 	 */
 	public static final String ID = "de.uni_mannheim.informatik.swt.plm.reasoning.service.view.reasoningview";
 
-	private TreeViewer viewer;
+	private TreeViewer treeViewer;
+	ComboViewer comboViewer;
 	private DrillDownAdapter drillDownAdapter;
 	private Action action1;
 	private Action action2;
@@ -93,20 +102,49 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 	 */
 	public void createPartControl(Composite parent) {
 		
-		viewer = new TreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
+		parent.setLayout(new GridLayout(1, false));
 		
 		factory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 
+		GridData treeViewGridData = new GridData();
+		treeViewGridData.grabExcessHorizontalSpace = true;
+		treeViewGridData.horizontalAlignment = SWT.FILL;
+		treeViewGridData.grabExcessVerticalSpace = true;
+		treeViewGridData.verticalAlignment = SWT.FILL;
+		
+		GridData comboViewGridData = new GridData();
+		comboViewGridData.grabExcessHorizontalSpace = true;
+		comboViewGridData.horizontalAlignment = SWT.FILL;
+		
 		factory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
 		factory.addAdapterFactory(new ReasoningResultItemProviderAdapterFactory());
 		factory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
+				
+		comboViewer = new ComboViewer(parent, SWT.READ_ONLY);
+		comboViewer.setContentProvider(ArrayContentProvider.getInstance());
+		comboViewer.setLabelProvider(new AdapterFactoryLabelProvider(factory));
+		comboViewer.getCombo().setLayoutData(comboViewGridData);
+		
+		comboViewer.addPostSelectionChangedListener(new ISelectionChangedListener() {
+			
+			@Override
+			public void selectionChanged(SelectionChangedEvent event) {
+				if (event.getSelection() instanceof IStructuredSelection){
+					treeViewer.setInput(((IStructuredSelection)event.getSelection()).getFirstElement());
+					treeViewer.refresh();
+				}
+			}
+		});
+		
+		treeViewer = new TreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
+		treeViewer.getTree().setLayoutData(treeViewGridData);
 		
 //		drillDownAdapter = new DrillDownAdapter(viewer);
-		viewer.setContentProvider(new AdapterFactoryContentProvider(factory));
-		viewer.setLabelProvider(new AdapterFactoryLabelProvider(factory));
+		treeViewer.setContentProvider(new AdapterFactoryContentProvider(factory));
+		treeViewer.setLabelProvider(new AdapterFactoryLabelProvider(factory));
 		//viewer.setSorter(new NameSorter());
 		
-		viewer.addSelectionChangedListener(menuBuilder);
+		treeViewer.addSelectionChangedListener(menuBuilder);
 		
 		//The view needs to register for listening to changes
 		try {
@@ -117,8 +155,14 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 			CompositeCheck cc = ReasoningResultFactoryImpl.eINSTANCE.createCompositeCheck();
 			cc.setName("HUHU");
 			model.getCheck().add(cc);
-			
 			service.getReasoningHistory().add(model);
+			
+			model = ReasoningResultFactoryImpl.eINSTANCE.createReasoningResultModel();
+			cc = ReasoningResultFactoryImpl.eINSTANCE.createCompositeCheck();
+			cc.setName("HUHU2");
+			model.getCheck().add(cc);
+			service.getReasoningHistory().add(model);
+			
 		} catch (CoreException e) {
 			e.printStackTrace();
 		}
@@ -161,9 +205,9 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 				ReasoningView.this.fillContextMenu(manager);
 			}
 		});
-		Menu menu = menuMgr.createContextMenu(viewer.getControl());
-		viewer.getControl().setMenu(menu);
-		getSite().registerContextMenu(menuMgr, viewer);
+		Menu menu = menuMgr.createContextMenu(treeViewer.getControl());
+		treeViewer.getControl().setMenu(menu);
+		getSite().registerContextMenu(menuMgr, treeViewer);
 	}
 
 	private void contributeToActionBars() {
@@ -216,7 +260,7 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 				getImageDescriptor(ISharedImages.IMG_OBJS_INFO_TSK));
 		doubleClickAction = new Action() {
 			public void run() {
-				ISelection selection = viewer.getSelection();
+				ISelection selection = treeViewer.getSelection();
 				Object obj = ((IStructuredSelection)selection).getFirstElement();
 				showMessage("Double-click detected on "+obj.toString());
 			}
@@ -224,7 +268,7 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 	}
 
 	private void hookDoubleClickAction() {
-		viewer.addDoubleClickListener(new IDoubleClickListener() {
+		treeViewer.addDoubleClickListener(new IDoubleClickListener() {
 			public void doubleClick(DoubleClickEvent event) {
 				doubleClickAction.run();
 			}
@@ -232,7 +276,7 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 	}
 	private void showMessage(String message) {
 		MessageDialog.openInformation(
-			viewer.getControl().getShell(),
+			treeViewer.getControl().getShell(),
 			"Reasoning View",
 			message);
 	}
@@ -241,7 +285,7 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 	 * Passing the focus request to the viewer's control.
 	 */
 	public void setFocus() {
-		viewer.getControl().setFocus();
+		treeViewer.getControl().setFocus();
 	}
 	
 	/**
@@ -299,7 +343,7 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 	
 	@Override
 	public ISelection getSelection() {
-		return viewer.getSelection();
+		return treeViewer.getSelection();
 	}
 
 	@Override
@@ -314,7 +358,7 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 	public void setSelection(ISelection selection) {
 		
 		for (ISelectionChangedListener l : listeners)
-			l.selectionChanged(new SelectionChangedEvent(viewer, selection));
+			l.selectionChanged(new SelectionChangedEvent(treeViewer, selection));
 		
 		viewSelection = selection;
 	}
