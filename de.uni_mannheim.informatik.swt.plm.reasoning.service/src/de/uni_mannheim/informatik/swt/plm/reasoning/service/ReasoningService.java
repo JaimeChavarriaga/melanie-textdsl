@@ -76,6 +76,20 @@ public class ReasoningService implements IReasoningService {
 			for (IPropertyChangeListener listener : listeners)
 				listener.propertyChange(new PropertyChangeEvent(this, "reasoningResults", new LinkedList<ReasoningResultModel>(this).remove(e), this));
 		};
+		
+		@Override
+		public boolean add(ReasoningResultModel e) {
+			/**
+			 * Does additionally notify all listeners.
+			 */
+			boolean result = super.add(e);
+			
+			//Notify all listeners on addLast
+			for (IPropertyChangeListener listener : listeners)
+				listener.propertyChange(new PropertyChangeEvent(this, "reasoningResults", new LinkedList<ReasoningResultModel>(this).remove(e), this));
+			
+			return result;
+		}
 	};
 	
 	@Override

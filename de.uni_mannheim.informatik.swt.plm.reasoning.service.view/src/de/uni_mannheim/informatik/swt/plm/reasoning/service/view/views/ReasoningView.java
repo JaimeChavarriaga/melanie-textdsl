@@ -1,24 +1,17 @@
 package de.uni_mannheim.informatik.swt.plm.reasoning.service.view.views;
 
-import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
-import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
@@ -42,7 +35,6 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchActionConstants;
-import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IGotoMarker;
 import org.eclipse.ui.part.DrillDownAdapter;
@@ -50,7 +42,6 @@ import org.eclipse.ui.part.ViewPart;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 
-import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.CompositeCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ReasoningResultFactoryImpl;
@@ -65,13 +56,17 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 	PropertySheetPage propertySheetPage;
 	TransactionalEditingDomain domain = TransactionalEditingDomain.Factory.INSTANCE.createEditingDomain();
 	
+	/**
+	 * Called whenever the reasoning history changes
+	 */
 	@Override
 	public void propertyChange(PropertyChangeEvent event) {
-		IWorkbenchWindow window = getSite().getWorkbenchWindow();
-		MessageDialog.openInformation(
-				window.getShell(),
-				"Service",
-				"Property Changed!");
+		if (event.getNewValue() instanceof List<?>){
+			//Take the last (= newest element from the list)
+			ReasoningResultModel model = (ReasoningResultModel)((List<?>)event.getNewValue()).get(((List<?>)event.getNewValue()).size() - 1);
+			viewer.setInput(model);
+			viewer.refresh();
+		}
 	}
 	
 	/**
@@ -98,14 +93,6 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 	 */
 	public void createPartControl(Composite parent) {
 		
-		//At first the view needs to register for listening to changes
-		try {
-			IReasoningService service = ExtensionPointService.Instance().getReasoningService(REASONING_ENGINE_ID);
-			service.addPropertyChangeListener(this);
-		} catch (CoreException e) {
-			e.printStackTrace();
-		}
-		
 		viewer = new TreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
 		
 		factory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
@@ -121,13 +108,24 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 		
 		viewer.addSelectionChangedListener(menuBuilder);
 		
-		ReasoningResultModel model = ReasoningResultFactoryImpl.eINSTANCE.createReasoningResultModel();
-		CompositeCheck cc = ReasoningResultFactoryImpl.eINSTANCE.createCompositeCheck();
-		cc.setName("HUHU");
-		model.getCheck().add(cc);
+		//The view needs to register for listening to changes
+		try {
+			IReasoningService service = ExtensionPointService.Instance().getReasoningService(REASONING_ENGINE_ID);
+			service.addPropertyChangeListener(this);
+			
+			ReasoningResultModel model = ReasoningResultFactoryImpl.eINSTANCE.createReasoningResultModel();
+			CompositeCheck cc = ReasoningResultFactoryImpl.eINSTANCE.createCompositeCheck();
+			cc.setName("HUHU");
+			model.getCheck().add(cc);
+			
+			service.getReasoningHistory().add(model);
+		} catch (CoreException e) {
+			e.printStackTrace();
+		}
 		
-		viewer.setInput(model);
-		viewer.refresh();
+		
+//		viewer.setInput(model);
+//		viewer.refresh();
 		
 //		makeActions();
 //		hookContextMenu();
