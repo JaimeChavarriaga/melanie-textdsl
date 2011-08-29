@@ -99,10 +99,14 @@ public class VisualizationEditorView extends ViewPart implements INullSelectionL
 	Collection<IAction> createChildActions;
 	ComposedAdapterFactory factory;
 	EObject model = null;
-	ChangeListener modelListener = new ChangeListener();public void addPropertyListener(org.eclipse.ui.IPropertyListener listener) {};
+	ChangeListener modelListener = new ChangeListener();
+	public void addPropertyListener(org.eclipse.ui.IPropertyListener listener) {};
 	PropertySheetPage propertySheetPage;
 	
 	/**
+	 * This is need to return a property sheet page. If not implemented the 
+	 * property sheet does not get updated correctly in some cases.
+	 * 
 	 * This is how the framework determines which interfaces we implement.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

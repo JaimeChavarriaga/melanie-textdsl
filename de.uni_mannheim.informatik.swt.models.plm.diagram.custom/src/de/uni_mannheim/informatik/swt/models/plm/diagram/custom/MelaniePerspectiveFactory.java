@@ -15,14 +15,15 @@ import org.eclipse.ui.IFolderLayout;
 import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IPerspectiveFactory;
 
-import de.uni_mannheim.informatik.swt.plm.visualization.editor.views.ModelOutlineView;
+import de.uni_mannheim.informatik.swt.plm.reasoning.service.view.views.ReasoningView;
+import de.uni_mannheim.informatik.swt.plm.visualization.editor.views.VisualizationEditorView;
 
 /**
  * @author Ralph Gerbig
  *
  * This class defines the standard LML perspective.
  */
-public class LMLPerspectiveFactory implements IPerspectiveFactory {
+public class MelaniePerspectiveFactory implements IPerspectiveFactory {
 
 	@Override
 	public void createInitialLayout(IPageLayout layout) {
@@ -33,26 +34,27 @@ public class LMLPerspectiveFactory implements IPerspectiveFactory {
 	
 	private void defineLayout(IPageLayout layout)
 	{
-		// Editors are placed for free.
+		//Editors are placed for free.
         String editorArea = layout.getEditorArea();
 
-        // Place navigator and outline to left of
+        //Place navigator and outline to left of
         // editor area.
         IFolderLayout left =
         	layout.createFolder("left", IPageLayout.LEFT, 0.20f, editorArea);
         left.addView(IPageLayout.ID_PROJECT_EXPLORER);
+        left.addView(ReasoningView.ID);
         
         IFolderLayout bottomLeft =
         	layout.createFolder("leftBottom", IPageLayout.BOTTOM, 0.70f, "left");
         bottomLeft.addView(IPageLayout.ID_OUTLINE);
         
         IFolderLayout bottom = 
-        	layout.createFolder("bottom", IPageLayout.BOTTOM, 0.5f, editorArea);
+        	layout.createFolder("bottom", IPageLayout.BOTTOM, 0.7f, editorArea);
         bottom.addView(IPageLayout.ID_PROP_SHEET);
         
         IFolderLayout bottomRight = 
-        	layout.createFolder("bottomRight", IPageLayout.BOTTOM, 0.5f, "right");
-        bottomRight.addView(ModelOutlineView.ID);
+        	layout.createFolder("bottomRight", IPageLayout.BOTTOM, 0.7f, "right");
+        bottomRight.addView(VisualizationEditorView.ID);
 	}
 
 }

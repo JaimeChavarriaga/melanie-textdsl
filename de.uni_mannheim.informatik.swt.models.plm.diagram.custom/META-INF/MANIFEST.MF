@@ -11,7 +11,8 @@ Require-Bundle: org.eclipse.gmf.runtime.diagram.ui.properties,
  org.eclipse.core.databinding,
  org.eclipse.core.databinding.observable,
  org.eclipse.jface.databinding,
- de.uni_mannheim.informatik.swt.plm.workbench;bundle-version="1.0.0"
+ de.uni_mannheim.informatik.swt.plm.workbench;bundle-version="1.0.0",
+ de.uni_mannheim.informatik.swt.plm.reasoning.service.view;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: de.uni_mannheim.informatik.swt.models.plm.diagram.custom
 Bundle-ClassPath: .

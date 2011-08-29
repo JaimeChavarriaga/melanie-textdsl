@@ -59,7 +59,7 @@ public class ModelOutlineView extends ViewPart implements IMenuListener {
 	/**
 	 * The ID of the view as specified by the extension.
 	 */
-	public static final String ID = "de.uni_mannheim.informatik.swt.plm.visualization.editor.views.VisualizationEditorView";
+	//public static final String ID = "de.uni_mannheim.informatik.swt.plm.visualization.editor.views.VisualizationEditorView";
 
 	protected TreeViewer contentOutlineViewer;
 	protected ComposedAdapterFactory adapterFactory;
