@@ -57,6 +57,7 @@ public class ExecuteModelTests implements IObjectActionDelegate {
 						System.out.println("Local Conformance " + reasoner.Instance().run(IReasoningService.LOCAL_CONFORMS, new Object[]{type, instance}));
 						//System.out.println("Local Conformance " + reasoner.localConforms(type, instance));
 						System.out.println("Neighbourhood Conformance " + reasoner.neighbourhoodConforms(type, instance));
+						System.out.println("isExpressedInstanceOfExcluded " + reasoner.isExpressedInstanceOfExcluded(type, instance));
 						if (type instanceof Connection) {
 							System.out.println("Local Construction Conformance " + reasoner.localConstructionConformsConnection((Connection) type, (Connection) instance));
 							System.out.println("Neighbour Construction Conformance " + reasoner.neighbourhoodConstructionConformsConnection((Connection) type, (Connection) instance) );

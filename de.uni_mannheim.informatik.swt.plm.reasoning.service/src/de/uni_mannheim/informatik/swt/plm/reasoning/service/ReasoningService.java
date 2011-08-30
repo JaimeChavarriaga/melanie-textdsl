@@ -11,6 +11,7 @@
  *******************************************************************************/
 package de.uni_mannheim.informatik.swt.plm.reasoning.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -40,9 +41,11 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Entity;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Generalization;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Method;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.MultipleSpecialization;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMFactoryImpl;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultModel;
@@ -134,10 +137,11 @@ public class ReasoningService implements IReasoningService {
 			try {dressInstanceFromType((Clabject)parameters[0], (Clabject)parameters[1]);} 
 			catch (Exception e) {e.printStackTrace();}
 		else if (commandID == ReasoningService.FEATURE_CONFORMS){
-			ExecutionEvent event = new ExecutionEvent();
-			event.getParameters().put("type", parameters[0]);
-			event.getParameters().put("instance", parameters[1]);
+			Map<String, Object> params = new HashMap<String, Object>();
+			params.put("type", parameters[0]);
+			params.put("instance", parameters[1]);
 			FeatureConformsCommand command = new FeatureConformsCommand();
+			ExecutionEvent event = new ExecutionEvent(null, params, this, this);
 			try {
 				return (Boolean)command.execute(event);
 			} catch (ExecutionException e) {
@@ -602,4 +606,56 @@ public class ReasoningService implements IReasoningService {
 		}
 		return result;
 	}
+
+	@Override
+	public boolean isExpressedInstanceOfExcluded(Clabject type,
+			Clabject instance) {
+		System.out.println("isExpressedInstanceOfExcluded: " + instance + type);
+		List<? extends Generalization> temp = new ArrayList<Generalization>(type.getModel().getAllGeneralizations());
+		List<MultipleSpecialization> classGener = new ArrayList<MultipleSpecialization>();
+		for (Generalization current:temp) {
+			if ( (current instanceof MultipleSpecialization)) {
+				 if(((MultipleSpecialization) current).isDisjoint()) {
+					classGener.add((MultipleSpecialization) current);
+				 }
+			}
+		}
+		System.out.println("ClassGener " + classGener);
+		Set<Clabject> possibles = new HashSet<Clabject>(type.getModelSupertypes());
+		possibles.add(type);
+		List<Instantiation> temper = new ArrayList<Instantiation>(instance.getModelClassificationsAsInstance());
+		List<Instantiation> insts = new ArrayList<Instantiation>();
+		for (Instantiation current: temper) {
+			if (current.isExpressed()) {
+				insts.add(current);
+			}
+		}
+		System.out.println("Insts " + insts);
+		for(MultipleSpecialization gener: (List<MultipleSpecialization>) classGener) {
+			Set<Clabject> intersection = new HashSet<Clabject>(gener.getSubtype());
+			intersection.retainAll(possibles);
+			if (intersection.size()>0) {
+				for(Clabject excl:intersection) {
+					possibles.add(excl);
+					possibles.addAll(excl.getModelSubtypes());
+				}
+			}
+		}
+		System.out.println("Possibles " + possibles);
+		for (Instantiation inst:insts) {
+			Set<Clabject> actuals = new HashSet<Clabject>(inst.getType().getModelSupertypes());
+			actuals.add(inst.getType());
+			System.out.println("Actuals " + actuals);
+			Set<Clabject> intersection = new HashSet<Clabject>( actuals );
+			intersection.removeAll(possibles);
+			System.out.println("Intersection " + intersection);
+			if (intersection.size()>0) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	
+	
 }

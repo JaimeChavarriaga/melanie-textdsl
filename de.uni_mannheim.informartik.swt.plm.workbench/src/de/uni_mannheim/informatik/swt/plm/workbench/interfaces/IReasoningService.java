@@ -312,4 +312,18 @@ public interface IReasoningService {
 	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
 	 */
 	public Set<Connection> getClassifyingConstructionConformanceDomain(Connection c);
+	
+	/**
+	 * param[0] = instance
+	 * param[1] = type
+	 */
+	public static final String IS_EXPRESSED_INSTANCE_OF_EXCLUDED = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.isexpressedinstanceofexcluded";
+	/**
+	 * 
+	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
+	 */
+	public boolean isExpressedInstanceOfExcluded(Clabject type, Clabject instance);
+
+	
+
 }
