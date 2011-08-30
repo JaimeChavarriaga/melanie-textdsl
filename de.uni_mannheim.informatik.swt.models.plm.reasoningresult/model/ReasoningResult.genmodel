@@ -10,9 +10,11 @@
       disposableProviderFactory="true" ecorePackage="ReasoningResult.ecore#/">
     <genClasses ecoreClass="ReasoningResult.ecore#//ReasoningResultModel">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ReasoningResult.ecore#//ReasoningResultModel/check"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ReasoningResult.ecore#//ReasoningResultModel/name"/>
     </genClasses>
     <genClasses image="false" ecoreClass="ReasoningResult.ecore#//Check">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ReasoningResult.ecore#//Check/result"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ReasoningResult.ecore#//Check/expression"/>
     </genClasses>
     <genClasses ecoreClass="ReasoningResult.ecore#//CompositeCheck">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ReasoningResult.ecore#//CompositeCheck/check"/>

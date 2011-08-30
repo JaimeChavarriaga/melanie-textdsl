@@ -19,6 +19,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
@@ -47,7 +48,7 @@ import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult
 import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService;
 
 public class ReasoningService implements IReasoningService {
-
+	
 	private static IReasoningService instance = null;
 	private List<IPropertyChangeListener> listeners = new LinkedList<IPropertyChangeListener>(); 
 	
@@ -131,6 +132,12 @@ public class ReasoningService implements IReasoningService {
 			catch (Exception e) {e.printStackTrace();}
 		else if (commandID == ReasoningService.FEATURE_CONFORMS)
 			return featureConforms((Feature)parameters.get(0), (Feature)parameters.get(1));
+		//Missing Constants..
+		else if (commandID == ReasoningService.LOCAL_CONFORMS){
+			ExecutionEvent event = new ExecutionEvent();
+			event.getParameters().put("type", parameters.get(0));
+			event.getParameters().put("instance", parameters.get(1));
+		}
 		
 		
 		return true;

@@ -79,13 +79,22 @@ public interface ReasoningResultPackage extends EPackage {
 	int REASONING_RESULT_MODEL__CHECK = 0;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REASONING_RESULT_MODEL__NAME = 1;
+
+	/**
 	 * The number of structural features of the '<em>Model</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REASONING_RESULT_MODEL_FEATURE_COUNT = 1;
+	int REASONING_RESULT_MODEL_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.CheckImpl <em>Check</em>}' class.
@@ -440,6 +449,17 @@ public interface ReasoningResultPackage extends EPackage {
 	EReference getReasoningResultModel_Check();
 
 	/**
+	 * Returns the meta object for the attribute '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultModel#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultModel#getName()
+	 * @see #getReasoningResultModel()
+	 * @generated
+	 */
+	EAttribute getReasoningResultModel_Name();
+
+	/**
 	 * Returns the meta object for class '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.Check <em>Check</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -692,6 +712,14 @@ public interface ReasoningResultPackage extends EPackage {
 		 * @generated
 		 */
 		EReference REASONING_RESULT_MODEL__CHECK = eINSTANCE.getReasoningResultModel_Check();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REASONING_RESULT_MODEL__NAME = eINSTANCE.getReasoningResultModel_Name();
 
 		/**
 		 * The meta object literal for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.CheckImpl <em>Check</em>}' class.

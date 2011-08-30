@@ -1,5 +1,6 @@
 package de.uni_mannheim.informatik.swt.plm.reasoning.service.view.views;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -30,6 +31,7 @@ import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
@@ -73,6 +75,8 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 			treeViewer.refresh();
 			
 			comboViewer.setInput(modelList);
+			ISelection selection = new StructuredSelection(model);
+			comboViewer.setSelection(selection);
 			comboViewer.refresh();
 		}
 	}
@@ -152,12 +156,14 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 			service.addPropertyChangeListener(this);
 			
 			ReasoningResultModel model = ReasoningResultFactoryImpl.eINSTANCE.createReasoningResultModel();
+			model.setName("Local Conforms To - 29/08/2011 17:48:22");
 			CompositeCheck cc = ReasoningResultFactoryImpl.eINSTANCE.createCompositeCheck();
 			cc.setName("HUHU");
 			model.getCheck().add(cc);
 			service.getReasoningHistory().add(model);
 			
 			model = ReasoningResultFactoryImpl.eINSTANCE.createReasoningResultModel();
+			model.setName("Local Conforms To - 29/08/2011 17:48:46");
 			cc = ReasoningResultFactoryImpl.eINSTANCE.createCompositeCheck();
 			cc.setName("HUHU2");
 			model.getCheck().add(cc);

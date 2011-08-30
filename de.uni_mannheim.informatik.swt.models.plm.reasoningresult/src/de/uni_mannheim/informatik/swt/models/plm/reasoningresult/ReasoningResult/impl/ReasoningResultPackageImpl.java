@@ -168,6 +168,15 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getReasoningResultModel_Name() {
+		return (EAttribute)reasoningResultModelEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getCheck() {
 		return checkEClass;
 	}
@@ -373,6 +382,7 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 		// Create classes and their features
 		reasoningResultModelEClass = createEClass(REASONING_RESULT_MODEL);
 		createEReference(reasoningResultModelEClass, REASONING_RESULT_MODEL__CHECK);
+		createEAttribute(reasoningResultModelEClass, REASONING_RESULT_MODEL__NAME);
 
 		checkEClass = createEClass(CHECK);
 		createEAttribute(checkEClass, CHECK__RESULT);
@@ -441,6 +451,7 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 		// Initialize classes and features; add operations and parameters
 		initEClass(reasoningResultModelEClass, ReasoningResultModel.class, "ReasoningResultModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getReasoningResultModel_Check(), this.getCheck(), null, "check", null, 0, -1, ReasoningResultModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getReasoningResultModel_Name(), ecorePackage.getEString(), "name", null, 0, 1, ReasoningResultModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(checkEClass, Check.class, "Check", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCheck_Result(), ecorePackage.getEBoolean(), "result", null, 1, 1, Check.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

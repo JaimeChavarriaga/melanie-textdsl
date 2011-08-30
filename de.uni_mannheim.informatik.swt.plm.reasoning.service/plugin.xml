@@ -2,6 +2,14 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.LocalConformsToCommand"
+            id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.localconformstocommand"
+            name="Local conforms to">
+      </command>
+   </extension>
+   <extension
          point="de.uni_mannheim.informatik.swt.reasoning.service">
       <service
             class="de.uni_mannheim.informatik.swt.plm.reasoning.service.ReasoningService"
