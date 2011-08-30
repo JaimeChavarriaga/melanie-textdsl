@@ -74,7 +74,7 @@ public interface IReasoningService {
 	 * 
 	 * @return true -> operation sucessful; false -> operation failed
 	 */
-	public boolean run(String commandID, List<?> parameters);
+	public boolean run(String commandID, Object[] parameters);
 	
 	
 	/**

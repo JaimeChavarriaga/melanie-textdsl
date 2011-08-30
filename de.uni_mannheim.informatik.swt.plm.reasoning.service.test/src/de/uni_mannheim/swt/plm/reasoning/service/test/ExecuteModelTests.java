@@ -27,7 +27,6 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Entity;
 import de.uni_mannheim.informatik.swt.plm.workbench.ExtensionPointService;
 import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService;
 
@@ -55,7 +54,8 @@ public class ExecuteModelTests implements IObjectActionDelegate {
 					if (selectedElements.size() > 1) {
 						Clabject type = (Clabject) selectedElements.get(0);
 						Clabject instance = (Clabject) selectedElements.get(1);
-						System.out.println("Local Conformance " + reasoner.localConforms(type, instance));
+						System.out.println("Local Conformance " + reasoner.Instance().run(IReasoningService.LOCAL_CONFORMS, new Object[]{type, instance}));
+						//System.out.println("Local Conformance " + reasoner.localConforms(type, instance));
 						System.out.println("Neighbourhood Conformance " + reasoner.neighbourhoodConforms(type, instance));
 						if (type instanceof Connection) {
 							System.out.println("Local Construction Conformance " + reasoner.localConstructionConformsConnection((Connection) type, (Connection) instance));

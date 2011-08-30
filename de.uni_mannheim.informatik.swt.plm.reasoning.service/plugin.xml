@@ -4,9 +4,14 @@
    <extension
          point="org.eclipse.ui.commands">
       <command
-            defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.LocalConformsToCommand"
-            id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.localconformstocommand"
-            name="Local conforms to">
+            defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.LocalConformsCommand"
+            id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.localconformscommand"
+            name="Local conforms">
+      </command>
+      <command
+            defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.FeatureConformsCommand"
+            id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.featureconformscommand"
+            name="Feature conforms">
       </command>
    </extension>
    <extension

@@ -20,6 +20,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import org.eclipse.core.commands.ExecutionEvent;
+import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
@@ -45,6 +46,8 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMFactoryImpl;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultModel;
+import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.FeatureConformsCommand;
+import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.LocalConformsCommand;
 import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService;
 
 public class ReasoningService implements IReasoningService {
@@ -117,26 +120,46 @@ public class ReasoningService implements IReasoningService {
 
 
 	@Override
-	public boolean run(String commandID, List<?> parameters) {
+	public boolean run(String commandID, Object[] parameters) {
 		
 		if (commandID == IReasoningService.ATTRIBUTE_CONFORMS)
-			return attributeConforms((Attribute)parameters.get(0), (Attribute)parameters.get(1));
+			return attributeConforms((Attribute)parameters[0], (Attribute)parameters[1]);
 		else if (commandID == ReasoningService.CAN_CONNECTION_EXIST)
-			return canConnectionExist((Connection)parameters.get(0), (Connection)parameters.get(1));
+			return canConnectionExist((Connection)parameters[0], (Connection)parameters[1]);
 		else if (commandID == ReasoningService.CREATE_ATTRIBUTE)
-			return createAttribute((Attribute)parameters.get(0)) != null;
+			return createAttribute((Attribute)parameters[0]) != null;
 		else if (commandID == ReasoningService.CREATE_METHOD)
-			return createMethod((Method)parameters.get(0)) != null;
+			return createMethod((Method)parameters[0]) != null;
 		else if (commandID == ReasoningService.DRESS_INSTANCE_FROM_TYPE)
-			try {dressInstanceFromType((Clabject)parameters.get(0), (Clabject)parameters.get(1));} 
+			try {dressInstanceFromType((Clabject)parameters[0], (Clabject)parameters[1]);} 
 			catch (Exception e) {e.printStackTrace();}
-		else if (commandID == ReasoningService.FEATURE_CONFORMS)
-			return featureConforms((Feature)parameters.get(0), (Feature)parameters.get(1));
-		//Missing Constants..
-		else if (commandID == ReasoningService.LOCAL_CONFORMS){
+		else if (commandID == ReasoningService.FEATURE_CONFORMS){
 			ExecutionEvent event = new ExecutionEvent();
-			event.getParameters().put("type", parameters.get(0));
-			event.getParameters().put("instance", parameters.get(1));
+			event.getParameters().put("type", parameters[0]);
+			event.getParameters().put("instance", parameters[1]);
+			FeatureConformsCommand command = new FeatureConformsCommand();
+			try {
+				return (Boolean)command.execute(event);
+			} catch (ExecutionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		//*********************
+		//Missing Constants..
+		//*********************
+		else if (commandID == ReasoningService.LOCAL_CONFORMS){
+			Map<String, Object> params = new HashMap<String, Object>();
+			params.put("type", parameters[0]);
+			params.put("instance", parameters[1]);
+			LocalConformsCommand command = new LocalConformsCommand();
+			ExecutionEvent event = new ExecutionEvent(null, params, this, this);
+			try {
+				return (Boolean)command.execute(event);
+			} catch (ExecutionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 		
