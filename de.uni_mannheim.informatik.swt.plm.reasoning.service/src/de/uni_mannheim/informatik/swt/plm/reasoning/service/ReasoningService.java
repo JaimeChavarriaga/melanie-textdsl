@@ -433,15 +433,59 @@ public class ReasoningService implements IReasoningService {
 		if (type instanceof Connection && instance instanceof Connection)
 			return neighbourhoodConformsConnection((Connection) type, (Connection) instance);
 		if (type instanceof Entity && instance instanceof Entity)
-			return instance.neighbourhoodConformsTo(type);
+			return neighbourhoodConformsClabject(type, instance);
 		System.out.println("mismatching types");
 		return false;
+	}
+	
+	@Override
+	public boolean neighbourhoodConformsClabject(Clabject type,
+			Clabject instance) {
+		if (!localConforms(type, instance))
+			return false;
+		for (String rN:type.getAllAssociateRoleNames()) {
+			for (Clabject t :type.getAllAssociatesForRoleName(rN)) {
+				boolean found = false;
+				for (Clabject i:instance.getAllAssociatesForRoleName(rN)) {
+					if (localConforms(t, i)) {
+						found = true;
+						break;
+					}
+				}
+				if (!found) {
+					System.out.println("not local conforming associate for roleName " + rN + "||"+ t);
+				}
+			}
+		}
+		for(Connection t:type.getAllConnections()) {
+			boolean found = false;
+			for (Connection i: instance.getAllConnections()) {
+				if (localConforms(t,i)) {
+					boolean error = false;
+					for (String rN: t.getRoleName()) {
+						if (!localConforms(t.getParticipantForRoleName(rN), i.getParticipantForRoleName(rN))) {
+							error = true;
+							break;
+						}
+					}
+					if (!error) {
+						found = true;
+						break;
+					}
+				}
+			}
+			if (!found) {
+				System.out.println("not type connection or participant " + t);
+				return false;
+			}
+		}
+		return true;
 	}
 
 	@Override
 	public boolean neighbourhoodConformsConnection(Connection type,
 			Connection instance) {
-		if (!(instance.neighbourhoodConformsTo(type)))
+		if (!(neighbourhoodConformsClabject(type, instance)))
 			return false;
 		for (String rN: type.getRoleName()) {
 			if (!localConforms(type.getParticipantForRoleName(rN), instance.getParticipantForRoleName(rN))) {
@@ -523,7 +567,7 @@ public class ReasoningService implements IReasoningService {
 		Set<Connection> domain = getClassifyingConstructionConformanceDomain(con);
 		for (Connection type: domain) {
 			for (String rn: type.getRoleName()) {
-				if (part.localConformsTo(type.getParticipantForRoleName(rn))) {
+				if (localConforms(type.getParticipantForRoleName(rn), part)) {
 					result.add(rn);
 				}
 			}
@@ -538,7 +582,7 @@ public class ReasoningService implements IReasoningService {
 		Set<Connection> domain = getClassifyingConstructionConformanceDomain(con);
 		for (Connection type: domain) {
 			for (String rn: type.getRoleName()) {
-				if (part.localConformsTo(type.getParticipantForRoleName(rn))) {
+				if (localConforms(type.getParticipantForRoleName(rn), part)) {
 					result.add(type.isNavigableForRoleName(rn));
 				}
 			}

@@ -228,6 +228,17 @@ public interface IReasoningService {
 	public boolean neighbourhoodConforms(Clabject type, Clabject instance);
 	
 	/**
+	 * param[0] = Clabject - type <br />
+	 * param[1] = Clabject - instance
+	 */
+	public static final String NEIGHBOURHOOD_CONFORMS_CLABJECT = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.neighbourhoodconformsClabject";
+	/**
+	 * 
+	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
+	 */
+	public boolean neighbourhoodConformsClabject(Clabject type, Clabject instance);
+	
+	/**
 	 * param[0] = Connection - type <br />
 	 * param[1] = Connection - instance
 	 */
