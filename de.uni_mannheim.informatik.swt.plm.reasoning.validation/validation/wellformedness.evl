@@ -187,9 +187,11 @@ context Connection {
 	}
 	
 	constraint multiplicitySanity {
-		check: self.roleName->forAll(rN|(0 <= self.getLowerForRoleName(rN) <= self.getUpperForRoleName(rN)) 
-										or (self.getUpperForRoleName(rN) = -1 and self.getLowerForRoleName(rN)>=0))
-		message: '\'' + self.name + '\' multiplicites are not sane'
+		check: self.roleName->forAll(rN|(self.getLowerForRoleName(rN) > -2 and self.getUpperForRoleName(rN) > -2) -- We are not allowed to be negative
+											and ((self.getLowerForRoleName(rN) <= self.getUpperForRoleName(rN)) -- Not star
+												or (self.getUpperForRoleName(rN) = -1 and self.getLowerForRoleName(rN)>=0)) -- If upper -1 we do not care about lower
+									)
+		message: '\'' + self.name + '\' has wrong multiplicities. The following must be fullfiled lower <= upper.'
 		fix {
 			title: 'Adjust the lower multiplicity'
 			do {
