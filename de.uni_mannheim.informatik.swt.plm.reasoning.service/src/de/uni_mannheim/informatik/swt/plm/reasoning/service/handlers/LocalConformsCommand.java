@@ -28,6 +28,8 @@ public class LocalConformsCommand extends AbstractHandler {
 
 	public static final String ID = "de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.localconformscommand";
 	
+	IReasoningService service = new ReasoningService().Instance();
+	
 	/* (non-Javadoc)
 	 * @see org.eclipse.core.commands.IHandler#execute(org.eclipse.core.commands.ExecutionEvent)
 	 */
@@ -40,7 +42,6 @@ public class LocalConformsCommand extends AbstractHandler {
 			return localConformsConnection((Connection) type, (Connection) instance);
 		if (type instanceof Entity && instance instanceof Entity)
 			return localConformsClabject(type, instance);
-		System.out.println("mismatching types");
 		return false;
 	}
 	
@@ -51,11 +52,9 @@ public class LocalConformsCommand extends AbstractHandler {
 		for (String rN : type.getRoleName()) {
 			boolean found = instance.getRoleName().contains(rN);
 			if (!found) {
-				System.out.println("not roleName " + rN);
 				return false;
 			} 
 			if (! (instance.isNavigableForRoleName(rN) == (type.isNavigableForRoleName(rN)))) {
-				System.out.println("not navigability match " + rN);
 				return false;
 			}
 		}
@@ -64,22 +63,17 @@ public class LocalConformsCommand extends AbstractHandler {
 	
 	public boolean localConformsClabject(Clabject type, Clabject instance) {
 		if (type.getLevel() + 1 != instance.getLevel()) {
-			System.out.println("not level");
 			return false;
 		}
 		for (Feature current: type.getAllFeatures()) {
 			boolean found = false;
 			for (Feature possible : instance.getAllFeatures()) {
-				IReasoningService service = new ReasoningService();
-				service = service.Instance();
-				
 				if (service.run(IReasoningService.FEATURE_CONFORMS, new Object[]{current, possible})) {
 					found = true;
 					break;
 				}
 			}
 			if (!found) {
-				System.out.println("not feature " + current.getName());
 				return false;
 			}
 		}

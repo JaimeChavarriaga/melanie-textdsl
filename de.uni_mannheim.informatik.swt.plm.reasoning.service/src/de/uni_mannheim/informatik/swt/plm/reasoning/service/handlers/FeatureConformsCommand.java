@@ -28,20 +28,15 @@ public class FeatureConformsCommand extends AbstractHandler {
 			throw new RuntimeException("Malformed type attribute " + type);
 		} 
 		if (!type.getName().equals(instance.getName())) {
-			System.out.println("not name");
 			return false;
 		} //TODO: proper datatype handling
 		else if(type.getDatatype() != null && (!type.getDatatype().equals(instance.getDatatype()))) {
-			System.out.println("not datatype");
 			return false;
 		} else if (type.getDurability()> -1 && !(instance.getDurability()+1 == type.getDurability())) {
-			System.out.println("not durability");
 			return false;
-		} else if (type.getMutability()> -1 && (!(instance.getMutability()+1 == type.getMutability()) || (type.getMutability() == 0 && instance.getMutability() == 0))) {
-			System.out.println("not mutability");
+		} else if (type.getMutability()> -1 && !((instance.getMutability()+1 == type.getMutability()) || (type.getMutability() == 0 && instance.getMutability() == 0))) {
 			return false;
 		} else if (type.getMutability() == 0 && !(type.getValue().equals(instance.getValue()))) {
-			System.out.println("not value");
 			return false;
 		}
 		return true;
@@ -52,10 +47,8 @@ public class FeatureConformsCommand extends AbstractHandler {
 			throw new RuntimeException("Malformed type method " + type);
 		} 
 		if (!type.getName().equals(instance.getName())) {
-			System.out.println("not name");
 			return false;
 		}  else if (type.getDurability()> -1 && !(instance.getDurability()+1 == type.getDurability())) {
-			System.out.println("not durability");
 			return false;
 		}
 		return true;
