@@ -12,6 +12,7 @@
 package de.uni_mannheim.informatik.swt.plm.reasoning.service;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -51,6 +52,8 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMFactoryImpl;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.FeatureConformsCommand;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.LocalConformsCommand;
+import de.uni_mannheim.informatik.swt.plm.reasoning.service.util.Predicate;
+import de.uni_mannheim.informatik.swt.plm.reasoning.service.util.ReasoningServiceUtil;
 import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService;
 
 public class ReasoningService implements IReasoningService {
@@ -609,8 +612,57 @@ public class ReasoningService implements IReasoningService {
 
 	@Override
 	public boolean isExpressedInstanceOfExcluded(Clabject type,
-			Clabject instance) {
-		System.out.println("isExpressedInstanceOfExcluded: " + instance + type);
+			final Clabject instance) {
+		Set<Instantiation> classifications = new HashSet<Instantiation>(instance.getModel().getAllInstantiations());
+		classifications = (Set<Instantiation>) ReasoningServiceUtil.filter(classifications, new Predicate<Instantiation>() {
+			public boolean apply(Instantiation inst) {
+				if (inst.isExpressed())
+					return inst.getInstance().equals(instance);
+				return false;
+			}
+		});
+//		System.out.println("classifications " + classifications);
+		Set<Clabject> expressedTypes = new HashSet<Clabject>();
+		Set<Clabject> temp = new HashSet<Clabject>();
+		for (Instantiation inst: classifications) {
+			temp.add(inst.getType());
+		}
+		for (Clabject current: temp) {
+			expressedTypes.add(current);
+			expressedTypes.addAll(current.getModelSupertypes());
+		}
+		Set<Clabject> disjointTwins = new HashSet<Clabject>();
+		Set<Generalization> generalizationsA = new HashSet<Generalization>(type.getModel().getAllGeneralizations());
+		generalizationsA = (Set<Generalization>) ReasoningServiceUtil.filter(generalizationsA, new Predicate<Generalization>() {
+			public boolean apply(Generalization gener) {
+				if (gener instanceof MultipleSpecialization) 
+					return ((MultipleSpecialization) gener).isDisjoint();
+				return false;
+			}
+		});
+		Set<MultipleSpecialization> generalizations = new HashSet<MultipleSpecialization>((Collection<? extends MultipleSpecialization>) generalizationsA); 
+		for (MultipleSpecialization gener:generalizations) {
+			if(ReasoningServiceUtil.intersect(new HashSet<Clabject>(gener.getSubtype()), expressedTypes).size() > 0) {
+				disjointTwins.addAll(gener.getSubtype());
+			}
+		}
+		temp = new HashSet<Clabject>();
+		for (Clabject current : disjointTwins) {
+			temp.add(current);
+			temp.addAll(current.getModelSupertypes());
+		}
+		disjointTwins = new HashSet<Clabject>(temp);
+		disjointTwins.removeAll(expressedTypes);
+		Set<Clabject> conflicts = new HashSet<Clabject>();
+		conflicts.add(type);
+		conflicts.addAll(type.getModelSupertypes());
+		if (ReasoningServiceUtil.intersect(disjointTwins, conflicts).size() > 0)
+			return true;
+		return false;
+	}
+	
+	/*
+	  System.out.println("isExpressedInstanceOfExcluded: " + instance + type);
 		List<? extends Generalization> temp = new ArrayList<Generalization>(type.getModel().getAllGeneralizations());
 		List<MultipleSpecialization> classGener = new ArrayList<MultipleSpecialization>();
 		for (Generalization current:temp) {
@@ -654,8 +706,7 @@ public class ReasoningService implements IReasoningService {
 			}
 		}
 		return false;
-	}
-	
-	
+	 * 
+	 */
 	
 }
