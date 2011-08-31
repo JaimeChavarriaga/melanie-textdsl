@@ -324,6 +324,37 @@ public interface IReasoningService {
 	 */
 	public boolean isExpressedInstanceOfExcluded(Clabject type, Clabject instance);
 
+	/**
+	 * param[0] = instance
+	 * param[1] = type
+	 */
+	public static final String PROPERTY_CONFORMS_CLABJECT = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.propertyconformsclabject";
+	/**
+	 * 
+	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
+	 */
+	public boolean propertyConformsClabject(Clabject type, Clabject instance);
 	
+	/**
+	 * param[0] = instance
+	 * param[1] = type
+	 */
+	public static final String PROPERTY_CONFORMS = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.propertyconforms";
+	/**
+	 * 
+	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
+	 */
+	public boolean propertyConforms(Clabject type, Clabject instance);
+	
+	/**
+	 * param[0] = instance
+	 * param[1] = type
+	 */
+	public static final String PROPERTY_CONFORMS_CONNECTION = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.propertyconformsconnection";
+	/**
+	 * 
+	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
+	 */
+	public boolean propertyConformsConnection(Connection type, Connection instance);
 
 }
