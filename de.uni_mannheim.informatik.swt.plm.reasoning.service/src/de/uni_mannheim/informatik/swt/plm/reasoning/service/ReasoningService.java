@@ -11,7 +11,6 @@
  *******************************************************************************/
 package de.uni_mannheim.informatik.swt.plm.reasoning.service;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -320,6 +319,7 @@ public class ReasoningService implements IReasoningService {
 	//In MM
 	@Override
 	public boolean attributeConforms(Attribute type, Attribute instance) {
+		System.out.println("attributeConforms " + type + instance);
 		if (type.getName() == null) {
 			throw new RuntimeException("Malformed type attribute " + type);
 		} 
@@ -333,13 +333,14 @@ public class ReasoningService implements IReasoningService {
 		} else if (type.getDurability()> -1 && !(instance.getDurability()+1 == type.getDurability())) {
 			System.out.println("not durability");
 			return false;
-		} else if (type.getMutability()> -1 && (!(instance.getMutability()+1 == type.getMutability()) || (type.getMutability() == 0 && instance.getMutability() == 0))) {
-			System.out.println("not mutability");
+		} else if (type.getMutability()> -1 && !((instance.getMutability()+1 == type.getMutability()) || (type.getMutability() == 0 && instance.getMutability() == 0))) {
+			System.out.println("not mutability. type: " + type.getMutability() + " | instance: " + instance.getMutability());
 			return false;
 		} else if (type.getMutability() == 0 && !(type.getValue().equals(instance.getValue()))) {
 			System.out.println("not value");
 			return false;
 		}
+		System.out.println("... true!");
 		return true;
 	}
 
@@ -367,7 +368,7 @@ public class ReasoningService implements IReasoningService {
 			return methodConforms((Method) type, (Method) instance);
 		if (type instanceof Attribute && instance instanceof Attribute)
 			return attributeConforms((Attribute) type, (Attribute) instance);
-		System.out.println("Mismatching Linguistic types");
+		System.out.println("Mismatching Linguistic types " + type + instance);
 		return false;
 	}
 
@@ -621,7 +622,6 @@ public class ReasoningService implements IReasoningService {
 				return false;
 			}
 		});
-//		System.out.println("classifications " + classifications);
 		Set<Clabject> expressedTypes = new HashSet<Clabject>();
 		Set<Clabject> temp = new HashSet<Clabject>();
 		for (Instantiation inst: classifications) {
@@ -661,52 +661,51 @@ public class ReasoningService implements IReasoningService {
 		return false;
 	}
 	
-	/*
-	  System.out.println("isExpressedInstanceOfExcluded: " + instance + type);
-		List<? extends Generalization> temp = new ArrayList<Generalization>(type.getModel().getAllGeneralizations());
-		List<MultipleSpecialization> classGener = new ArrayList<MultipleSpecialization>();
-		for (Generalization current:temp) {
-			if ( (current instanceof MultipleSpecialization)) {
-				 if(((MultipleSpecialization) current).isDisjoint()) {
-					classGener.add((MultipleSpecialization) current);
-				 }
-			}
+	@Override
+	public boolean propertyConforms(Clabject type, Clabject instance) {
+		if (type instanceof Connection && instance instanceof Connection)
+			return propertyConformsConnection((Connection) type, (Connection) instance);
+		if (type instanceof Entity && instance instanceof Entity)
+			return propertyConformsClabject(type, instance);
+		System.out.println("mismatching types");
+		return false;
+	}
+
+	@Override
+	public boolean propertyConformsClabject(Clabject type, Clabject instance) {
+		if (!neighbourhoodConforms(type, instance)) {
+			return false;
 		}
-		System.out.println("ClassGener " + classGener);
-		Set<Clabject> possibles = new HashSet<Clabject>(type.getModelSupertypes());
-		possibles.add(type);
-		List<Instantiation> temper = new ArrayList<Instantiation>(instance.getModelClassificationsAsInstance());
-		List<Instantiation> insts = new ArrayList<Instantiation>();
-		for (Instantiation current: temper) {
-			if (current.isExpressed()) {
-				insts.add(current);
-			}
-		}
-		System.out.println("Insts " + insts);
-		for(MultipleSpecialization gener: (List<MultipleSpecialization>) classGener) {
-			Set<Clabject> intersection = new HashSet<Clabject>(gener.getSubtype());
-			intersection.retainAll(possibles);
-			if (intersection.size()>0) {
-				for(Clabject excl:intersection) {
-					possibles.add(excl);
-					possibles.addAll(excl.getModelSubtypes());
+		for(Connection deltaT:type.getAllConnections()) {
+			boolean found = false;
+			for (Connection deltaI: instance.getAllConnections()) {
+				if(propertyConforms(deltaT, deltaI)) {
+					found = true;
+					break;
 				}
 			}
+			if (!found)
+				return false;
 		}
-		System.out.println("Possibles " + possibles);
-		for (Instantiation inst:insts) {
-			Set<Clabject> actuals = new HashSet<Clabject>(inst.getType().getModelSupertypes());
-			actuals.add(inst.getType());
-			System.out.println("Actuals " + actuals);
-			Set<Clabject> intersection = new HashSet<Clabject>( actuals );
-			intersection.removeAll(possibles);
-			System.out.println("Intersection " + intersection);
-			if (intersection.size()>0) {
-				return true;
-			}
+		if (isExpressedInstanceOfExcluded(type, instance))
+			return false;
+		return true;
+	}
+
+	@Override
+	public boolean propertyConformsConnection(Connection type,
+			Connection instance) {
+		if (!propertyConformsClabject(type, instance))
+			return false;
+		if (!multiplicityConforms(type))
+			return false;
+		for(String rN:type.getRoleName()) {
+			if (!propertyConforms(type.getParticipantForRoleName(rN), instance.getParticipantForRoleName(rN)))
+				return false;
 		}
-		return false;
-	 * 
-	 */
+		return true;
+	}
+	
+	
 	
 }
