@@ -375,7 +375,15 @@
 					self.getIsNavigable().add(true);
 					self.getLower().add(0);
 					self.getUpper().add(-1);
-					self.getRoleName().add("");
+					
+					de.uni_mannheim.informatik.swt.models.plm.PLM.Element target = (de.uni_mannheim.informatik.swt.models.plm.PLM.Element)notification.getNewValue();
+					
+					if ("".equals(target.getName()))
+						self.getRoleName().add("anonymus");
+					else if (target.getName() != null){
+						char c = java.lang.Character.toLowerCase(target.getName().charAt(0));
+						self.getRoleName().add(c + target.getName().substring(1));
+					}
 				}
 				//Participant was removed
 				else if(notification.getOldValue() !=  null && notification.getNewValue() == null)

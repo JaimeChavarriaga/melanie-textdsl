@@ -53,7 +53,7 @@
 				}
 				java.util.Set<de.uni_mannheim.informatik.swt.models.plm.PLM.Connection> possibleTypeConnections = new java.util.HashSet<de.uni_mannheim.informatik.swt.models.plm.PLM.Connection>();
 				possibleTypeConnections.add(typeConnection);
-				for (de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject con: reasoner.getAllModelSupertypes(typeConnection))
+				for (de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject con: typeConnection.getModelSupertypes())
 					possibleTypeConnections.add((de.uni_mannheim.informatik.swt.models.plm.PLM.Connection) con);
 				java.util.Set<de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject> possibleTypes = new java.util.HashSet<de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject>();
 				for (de.uni_mannheim.informatik.swt.models.plm.PLM.Connection con: possibleTypeConnections)
