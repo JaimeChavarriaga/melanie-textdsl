@@ -13,6 +13,26 @@
             id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.featureconformscommand"
             name="Feature conforms">
       </command>
+      <command
+            defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.PropertyConformsCommand"
+            id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.propertyconformscommand"
+            name="Property conforms">
+      </command>
+      <command
+            defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.PropertyConformsCommand"
+            id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.propertyconformscommand"
+            name="Property conforms">
+      </command>
+      <command
+            defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.MultiplicityConformsCommand"
+            id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.multiplicityconformscommand"
+            name="Multiplicity conforms">
+      </command>
+      <command
+            defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.IsExpressedInstanceOfExcludedCommand"
+            id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.isexpressedinstanceofexcludedconformscommand"
+            name="Is expressed instance of excluded">
+      </command>
    </extension>
    <extension
          point="de.uni_mannheim.informatik.swt.reasoning.service">
