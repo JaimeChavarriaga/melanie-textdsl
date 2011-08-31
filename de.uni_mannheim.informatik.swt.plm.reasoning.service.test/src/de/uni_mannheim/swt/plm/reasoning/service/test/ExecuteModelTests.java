@@ -48,17 +48,13 @@ public class ExecuteModelTests implements IObjectActionDelegate {
 		{
 			if (selectedElements.size() > 0) {
 				Element e = (Element) selectedElements.get(0);
-				IReasoningService reasoner = ((IReasoningService )ExtensionPointService.Instance().getReasoningService(ID));
+				IReasoningService reasoner = ((IReasoningService )ExtensionPointService.Instance().getReasoningService(ID)).Instance();
 				if(e instanceof Clabject) {
 					
 					if (selectedElements.size() > 1) {
 						Clabject type = (Clabject) selectedElements.get(0);
 						Clabject instance = (Clabject) selectedElements.get(1);
-//						System.out.println("Local Conformance " + reasoner.Instance().run(IReasoningService.LOCAL_CONFORMS, new Object[]{type, instance}));
-//						System.out.println("Local Conformance " + reasoner.localConforms(type, instance));
-//						System.out.println("Neighbourhood Conformance " + reasoner.neighbourhoodConforms(type, instance));
-//						System.out.println("isExpressedInstanceOfExcluded " + reasoner.isExpressedInstanceOfExcluded(type, instance));
-						System.out.println("Property Conformance " + reasoner.propertyConforms(type, instance));
+						System.out.println("Property Conformance " + reasoner.run(IReasoningService.PROPERTY_CONFORMS, new Object[]{type, instance}));
 						if (type instanceof Connection) {
 							System.out.println("Local Construction Conformance " + reasoner.localConstructionConformsConnection((Connection) type, (Connection) instance));
 							System.out.println("Neighbour Construction Conformance " + reasoner.neighbourhoodConstructionConformsConnection((Connection) type, (Connection) instance) );
@@ -70,14 +66,14 @@ public class ExecuteModelTests implements IObjectActionDelegate {
 						System.out.println("Model Instances" + c.getModelInstances());
 						System.out.println("Model Types" + c.getModelTypes());
 						if (e instanceof Connection) {
-							System.out.println("Multiplicity conformance " + reasoner.multiplicityConforms((Connection) e));
+							System.out.println("Multiplicity conformance " + reasoner.run(IReasoningService.MULTIPLICITY_CONFORMS, new Object[]{e}));
 						}
 					} 
 				} else if (e instanceof Attribute) {
 					Attribute type = (Attribute) e;
 					Attribute instance = (Attribute) selectedElements.get(1);
 					
-					System.out.println("" + instance + ".conforms("+type+")" + reasoner.attributeConforms(type, instance));
+					System.out.println("" + instance + ".conforms("+type+")" + reasoner.run(IReasoningService.FEATURE_CONFORMS, new Object[]{type, instance}));
 				}
 			}
 		} catch (CoreException e) {

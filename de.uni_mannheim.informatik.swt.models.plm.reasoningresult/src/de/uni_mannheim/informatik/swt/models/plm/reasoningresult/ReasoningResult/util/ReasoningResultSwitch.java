@@ -117,6 +117,70 @@ public class ReasoningResultSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ReasoningResultPackage.ALL_CONNECTIONS_CHECK: {
+				AllConnectionsCheck allConnectionsCheck = (AllConnectionsCheck)theEObject;
+				T result = caseAllConnectionsCheck(allConnectionsCheck);
+				if (result == null) result = caseCompositeCheck(allConnectionsCheck);
+				if (result == null) result = caseCheck(allConnectionsCheck);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ReasoningResultPackage.TYPE_CONNECTION_SEARCH: {
+				TypeConnectionSearch typeConnectionSearch = (TypeConnectionSearch)theEObject;
+				T result = caseTypeConnectionSearch(typeConnectionSearch);
+				if (result == null) result = caseCompositeCheck(typeConnectionSearch);
+				if (result == null) result = caseCheck(typeConnectionSearch);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ReasoningResultPackage.EXPRESSED_INSTANCE_EXCLUDED_CHECK: {
+				ExpressedInstanceExcludedCheck expressedInstanceExcludedCheck = (ExpressedInstanceExcludedCheck)theEObject;
+				T result = caseExpressedInstanceExcludedCheck(expressedInstanceExcludedCheck);
+				if (result == null) result = caseCompositeCheck(expressedInstanceExcludedCheck);
+				if (result == null) result = caseCheck(expressedInstanceExcludedCheck);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ReasoningResultPackage.MULTIPLICITY_CHECK: {
+				MultiplicityCheck multiplicityCheck = (MultiplicityCheck)theEObject;
+				T result = caseMultiplicityCheck(multiplicityCheck);
+				if (result == null) result = caseCompositeCheck(multiplicityCheck);
+				if (result == null) result = caseCheck(multiplicityCheck);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ReasoningResultPackage.MULTIPLICITY_ROLE_NAME_CHECK: {
+				MultiplicityRoleNameCheck multiplicityRoleNameCheck = (MultiplicityRoleNameCheck)theEObject;
+				T result = caseMultiplicityRoleNameCheck(multiplicityRoleNameCheck);
+				if (result == null) result = caseCompositeCheck(multiplicityRoleNameCheck);
+				if (result == null) result = caseCheck(multiplicityRoleNameCheck);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ReasoningResultPackage.ROLE_NAME_PROPERTY_CONFORMANCE_CHECK: {
+				RoleNamePropertyConformanceCheck roleNamePropertyConformanceCheck = (RoleNamePropertyConformanceCheck)theEObject;
+				T result = caseRoleNamePropertyConformanceCheck(roleNamePropertyConformanceCheck);
+				if (result == null) result = caseCompositeCheck(roleNamePropertyConformanceCheck);
+				if (result == null) result = caseCheck(roleNamePropertyConformanceCheck);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ReasoningResultPackage.ROLE_NAME_LOCAL_CONFORMANCE_CHECK: {
+				RoleNameLocalConformanceCheck roleNameLocalConformanceCheck = (RoleNameLocalConformanceCheck)theEObject;
+				T result = caseRoleNameLocalConformanceCheck(roleNameLocalConformanceCheck);
+				if (result == null) result = caseCompositeCheck(roleNameLocalConformanceCheck);
+				if (result == null) result = caseCheck(roleNameLocalConformanceCheck);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ReasoningResultPackage.CONNECTIONS_LOCAL_CONFORMANCE_CHECK: {
+				ConnectionsLocalConformanceCheck connectionsLocalConformanceCheck = (ConnectionsLocalConformanceCheck)theEObject;
+				T result = caseConnectionsLocalConformanceCheck(connectionsLocalConformanceCheck);
+				if (result == null) result = caseCompositeCheck(connectionsLocalConformanceCheck);
+				if (result == null) result = caseCheck(connectionsLocalConformanceCheck);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -223,6 +287,126 @@ public class ReasoningResultSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseDatatypeComparison(DatatypeComparison object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>All Connections Check</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>All Connections Check</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAllConnectionsCheck(AllConnectionsCheck object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Type Connection Search</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Type Connection Search</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTypeConnectionSearch(TypeConnectionSearch object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Expressed Instance Excluded Check</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Expressed Instance Excluded Check</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseExpressedInstanceExcludedCheck(ExpressedInstanceExcludedCheck object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Multiplicity Check</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Multiplicity Check</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMultiplicityCheck(MultiplicityCheck object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Multiplicity Role Name Check</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Multiplicity Role Name Check</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMultiplicityRoleNameCheck(MultiplicityRoleNameCheck object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Role Name Property Conformance Check</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Role Name Property Conformance Check</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRoleNamePropertyConformanceCheck(RoleNamePropertyConformanceCheck object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Role Name Local Conformance Check</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Role Name Local Conformance Check</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRoleNameLocalConformanceCheck(RoleNameLocalConformanceCheck object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Connections Local Conformance Check</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Connections Local Conformance Check</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConnectionsLocalConformanceCheck(ConnectionsLocalConformanceCheck object) {
 		return null;
 	}
 

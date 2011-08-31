@@ -100,6 +100,38 @@ public class ReasoningResultAdapterFactory extends AdapterFactoryImpl {
 				return createDatatypeComparisonAdapter();
 			}
 			@Override
+			public Adapter caseAllConnectionsCheck(AllConnectionsCheck object) {
+				return createAllConnectionsCheckAdapter();
+			}
+			@Override
+			public Adapter caseTypeConnectionSearch(TypeConnectionSearch object) {
+				return createTypeConnectionSearchAdapter();
+			}
+			@Override
+			public Adapter caseExpressedInstanceExcludedCheck(ExpressedInstanceExcludedCheck object) {
+				return createExpressedInstanceExcludedCheckAdapter();
+			}
+			@Override
+			public Adapter caseMultiplicityCheck(MultiplicityCheck object) {
+				return createMultiplicityCheckAdapter();
+			}
+			@Override
+			public Adapter caseMultiplicityRoleNameCheck(MultiplicityRoleNameCheck object) {
+				return createMultiplicityRoleNameCheckAdapter();
+			}
+			@Override
+			public Adapter caseRoleNamePropertyConformanceCheck(RoleNamePropertyConformanceCheck object) {
+				return createRoleNamePropertyConformanceCheckAdapter();
+			}
+			@Override
+			public Adapter caseRoleNameLocalConformanceCheck(RoleNameLocalConformanceCheck object) {
+				return createRoleNameLocalConformanceCheckAdapter();
+			}
+			@Override
+			public Adapter caseConnectionsLocalConformanceCheck(ConnectionsLocalConformanceCheck object) {
+				return createConnectionsLocalConformanceCheckAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -214,6 +246,118 @@ public class ReasoningResultAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createDatatypeComparisonAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.AllConnectionsCheck <em>All Connections Check</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.AllConnectionsCheck
+	 * @generated
+	 */
+	public Adapter createAllConnectionsCheckAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.TypeConnectionSearch <em>Type Connection Search</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.TypeConnectionSearch
+	 * @generated
+	 */
+	public Adapter createTypeConnectionSearchAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ExpressedInstanceExcludedCheck <em>Expressed Instance Excluded Check</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ExpressedInstanceExcludedCheck
+	 * @generated
+	 */
+	public Adapter createExpressedInstanceExcludedCheckAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MultiplicityCheck <em>Multiplicity Check</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MultiplicityCheck
+	 * @generated
+	 */
+	public Adapter createMultiplicityCheckAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MultiplicityRoleNameCheck <em>Multiplicity Role Name Check</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MultiplicityRoleNameCheck
+	 * @generated
+	 */
+	public Adapter createMultiplicityRoleNameCheckAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.RoleNamePropertyConformanceCheck <em>Role Name Property Conformance Check</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.RoleNamePropertyConformanceCheck
+	 * @generated
+	 */
+	public Adapter createRoleNamePropertyConformanceCheckAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.RoleNameLocalConformanceCheck <em>Role Name Local Conformance Check</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.RoleNameLocalConformanceCheck
+	 * @generated
+	 */
+	public Adapter createRoleNameLocalConformanceCheckAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ConnectionsLocalConformanceCheck <em>Connections Local Conformance Check</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ConnectionsLocalConformanceCheck
+	 * @generated
+	 */
+	public Adapter createConnectionsLocalConformanceCheckAdapter() {
 		return null;
 	}
 

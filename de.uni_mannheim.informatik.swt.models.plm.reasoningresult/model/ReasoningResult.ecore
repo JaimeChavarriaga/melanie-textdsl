@@ -10,7 +10,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Check" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="result" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="expression" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CompositeCheck" eSuperTypes="#//Check">
@@ -23,9 +23,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NameComparison" eSuperTypes="#//Check">
     <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
-        eType="ecore:EClass ../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element"/>
+        eType="ecore:EClass ../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Feature"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
-        eType="ecore:EClass ../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element"/>
+        eType="ecore:EClass ../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Feature"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DurabilityComparison" eSuperTypes="#//Check">
     <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
@@ -44,5 +44,54 @@
         eType="ecore:EClass ../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Attribute"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
         eType="ecore:EClass ../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Attribute"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AllConnectionsCheck" eSuperTypes="#//CompositeCheck">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="noTypeConnection" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="0"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TypeConnectionSearch" eSuperTypes="#//CompositeCheck">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="typeConnection" lowerBound="1"
+        eType="ecore:EClass ../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Connection"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="noSearchedConnections"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="0"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressedInstanceExcludedCheck" eSuperTypes="#//CompositeCheck">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expressedTypes" upperBound="-1"
+        eType="ecore:EClass ../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="affectedTypes" upperBound="-1"
+        eType="ecore:EClass ../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="disjointSiblings" upperBound="-1"
+        eType="ecore:EClass ../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="affectedDisjointIntersection"
+        upperBound="-1" eType="ecore:EClass ../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MultiplicityCheck" eSuperTypes="#//CompositeCheck">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="noOfDomainConnection" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="0"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MultiplicityRoleNameCheck" eSuperTypes="#//CompositeCheck">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lower" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="upper" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="-1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="counts" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RoleNamePropertyConformanceCheck" eSuperTypes="#//CompositeCheck">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="roleName" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral="0"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="typeParticipant" lowerBound="1"
+        eType="ecore:EClass ../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="instanceParticipant" lowerBound="1"
+        eType="ecore:EClass ../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RoleNameLocalConformanceCheck" eSuperTypes="#//CompositeCheck">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="roleName" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral="0"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConnectionsLocalConformanceCheck" eSuperTypes="#//CompositeCheck">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="noTypeConnections" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="0"/>
   </eClassifiers>
 </ecore:EPackage>

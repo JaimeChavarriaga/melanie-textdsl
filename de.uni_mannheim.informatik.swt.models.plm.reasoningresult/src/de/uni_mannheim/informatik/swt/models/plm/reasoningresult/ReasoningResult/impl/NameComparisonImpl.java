@@ -6,6 +6,7 @@
  */
 package de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl;
 
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.NameComparison;
@@ -41,7 +42,7 @@ public class NameComparisonImpl extends CheckImpl implements NameComparison {
 	 * @generated
 	 * @ordered
 	 */
-	protected Element source;
+	protected Feature source;
 
 	/**
 	 * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
@@ -51,7 +52,7 @@ public class NameComparisonImpl extends CheckImpl implements NameComparison {
 	 * @generated
 	 * @ordered
 	 */
-	protected Element target;
+	protected Feature target;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -77,10 +78,10 @@ public class NameComparisonImpl extends CheckImpl implements NameComparison {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element getSource() {
+	public Feature getSource() {
 		if (source != null && source.eIsProxy()) {
 			InternalEObject oldSource = (InternalEObject)source;
-			source = (Element)eResolveProxy(oldSource);
+			source = (Feature)eResolveProxy(oldSource);
 			if (source != oldSource) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ReasoningResultPackage.NAME_COMPARISON__SOURCE, oldSource, source));
@@ -94,7 +95,7 @@ public class NameComparisonImpl extends CheckImpl implements NameComparison {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element basicGetSource() {
+	public Feature basicGetSource() {
 		return source;
 	}
 
@@ -103,8 +104,8 @@ public class NameComparisonImpl extends CheckImpl implements NameComparison {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSource(Element newSource) {
-		Element oldSource = source;
+	public void setSource(Feature newSource) {
+		Feature oldSource = source;
 		source = newSource;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ReasoningResultPackage.NAME_COMPARISON__SOURCE, oldSource, source));
@@ -115,10 +116,10 @@ public class NameComparisonImpl extends CheckImpl implements NameComparison {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element getTarget() {
+	public Feature getTarget() {
 		if (target != null && target.eIsProxy()) {
 			InternalEObject oldTarget = (InternalEObject)target;
-			target = (Element)eResolveProxy(oldTarget);
+			target = (Feature)eResolveProxy(oldTarget);
 			if (target != oldTarget) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ReasoningResultPackage.NAME_COMPARISON__TARGET, oldTarget, target));
@@ -132,7 +133,7 @@ public class NameComparisonImpl extends CheckImpl implements NameComparison {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element basicGetTarget() {
+	public Feature basicGetTarget() {
 		return target;
 	}
 
@@ -141,8 +142,8 @@ public class NameComparisonImpl extends CheckImpl implements NameComparison {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTarget(Element newTarget) {
-		Element oldTarget = target;
+	public void setTarget(Feature newTarget) {
+		Feature oldTarget = target;
 		target = newTarget;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ReasoningResultPackage.NAME_COMPARISON__TARGET, oldTarget, target));
@@ -175,10 +176,10 @@ public class NameComparisonImpl extends CheckImpl implements NameComparison {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ReasoningResultPackage.NAME_COMPARISON__SOURCE:
-				setSource((Element)newValue);
+				setSource((Feature)newValue);
 				return;
 			case ReasoningResultPackage.NAME_COMPARISON__TARGET:
-				setTarget((Element)newValue);
+				setTarget((Feature)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -193,10 +194,10 @@ public class NameComparisonImpl extends CheckImpl implements NameComparison {
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case ReasoningResultPackage.NAME_COMPARISON__SOURCE:
-				setSource((Element)null);
+				setSource((Feature)null);
 				return;
 			case ReasoningResultPackage.NAME_COMPARISON__TARGET:
-				setTarget((Element)null);
+				setTarget((Feature)null);
 				return;
 		}
 		super.eUnset(featureID);

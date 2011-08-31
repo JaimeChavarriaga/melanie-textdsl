@@ -6,6 +6,7 @@
  */
 package de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult;
 
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 
 /**
@@ -35,12 +36,12 @@ public interface NameComparison extends Check {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Source</em>' reference.
-	 * @see #setSource(Element)
+	 * @see #setSource(Feature)
 	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultPackage#getNameComparison_Source()
 	 * @model required="true"
 	 * @generated
 	 */
-	Element getSource();
+	Feature getSource();
 
 	/**
 	 * Sets the value of the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.NameComparison#getSource <em>Source</em>}' reference.
@@ -50,7 +51,7 @@ public interface NameComparison extends Check {
 	 * @see #getSource()
 	 * @generated
 	 */
-	void setSource(Element value);
+	void setSource(Feature value);
 
 	/**
 	 * Returns the value of the '<em><b>Target</b></em>' reference.
@@ -61,12 +62,12 @@ public interface NameComparison extends Check {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Target</em>' reference.
-	 * @see #setTarget(Element)
+	 * @see #setTarget(Feature)
 	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultPackage#getNameComparison_Target()
 	 * @model required="true"
 	 * @generated
 	 */
-	Element getTarget();
+	Feature getTarget();
 
 	/**
 	 * Sets the value of the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.NameComparison#getTarget <em>Target</em>}' reference.
@@ -76,6 +77,6 @@ public interface NameComparison extends Check {
 	 * @see #getTarget()
 	 * @generated
 	 */
-	void setTarget(Element value);
+	void setTarget(Feature value);
 
 } // NameComparison

@@ -80,6 +80,78 @@ public interface ReasoningResultFactory extends EFactory {
 	DatatypeComparison createDatatypeComparison();
 
 	/**
+	 * Returns a new object of class '<em>All Connections Check</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>All Connections Check</em>'.
+	 * @generated
+	 */
+	AllConnectionsCheck createAllConnectionsCheck();
+
+	/**
+	 * Returns a new object of class '<em>Type Connection Search</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Type Connection Search</em>'.
+	 * @generated
+	 */
+	TypeConnectionSearch createTypeConnectionSearch();
+
+	/**
+	 * Returns a new object of class '<em>Expressed Instance Excluded Check</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Expressed Instance Excluded Check</em>'.
+	 * @generated
+	 */
+	ExpressedInstanceExcludedCheck createExpressedInstanceExcludedCheck();
+
+	/**
+	 * Returns a new object of class '<em>Multiplicity Check</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Multiplicity Check</em>'.
+	 * @generated
+	 */
+	MultiplicityCheck createMultiplicityCheck();
+
+	/**
+	 * Returns a new object of class '<em>Multiplicity Role Name Check</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Multiplicity Role Name Check</em>'.
+	 * @generated
+	 */
+	MultiplicityRoleNameCheck createMultiplicityRoleNameCheck();
+
+	/**
+	 * Returns a new object of class '<em>Role Name Property Conformance Check</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Role Name Property Conformance Check</em>'.
+	 * @generated
+	 */
+	RoleNamePropertyConformanceCheck createRoleNamePropertyConformanceCheck();
+
+	/**
+	 * Returns a new object of class '<em>Role Name Local Conformance Check</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Role Name Local Conformance Check</em>'.
+	 * @generated
+	 */
+	RoleNameLocalConformanceCheck createRoleNameLocalConformanceCheck();
+
+	/**
+	 * Returns a new object of class '<em>Connections Local Conformance Check</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Connections Local Conformance Check</em>'.
+	 * @generated
+	 */
+	ConnectionsLocalConformanceCheck createConnectionsLocalConformanceCheck();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

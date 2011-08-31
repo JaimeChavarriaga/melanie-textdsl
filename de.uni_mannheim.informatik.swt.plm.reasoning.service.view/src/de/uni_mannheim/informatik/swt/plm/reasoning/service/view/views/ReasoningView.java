@@ -152,7 +152,7 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 		
 		//The view needs to register for listening to changes
 		try {
-			IReasoningService service = ExtensionPointService.Instance().getReasoningService(REASONING_ENGINE_ID);
+			IReasoningService service = ExtensionPointService.Instance().getReasoningService(REASONING_ENGINE_ID).Instance();
 			service.addPropertyChangeListener(this);
 			
 			ReasoningResultModel model = ReasoningResultFactoryImpl.eINSTANCE.createReasoningResultModel();

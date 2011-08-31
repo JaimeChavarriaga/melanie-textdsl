@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.EObject;
 public interface Check extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Result</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Result</em>' attribute isn't clear,
@@ -37,7 +38,7 @@ public interface Check extends EObject {
 	 * @return the value of the '<em>Result</em>' attribute.
 	 * @see #setResult(boolean)
 	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultPackage#getCheck_Result()
-	 * @model required="true"
+	 * @model default="false" required="true"
 	 * @generated
 	 */
 	boolean isResult();

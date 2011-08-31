@@ -22,6 +22,8 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Method;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
+import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.Check;
+import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.CompositeCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultModel;
 
 /**
@@ -31,6 +33,12 @@ import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult
  *
  */
 public interface IReasoningService {
+	
+	public void registerCheck(Check check);
+	
+	public void deRegisterCheck(Check check);
+	
+	public CompositeCheck createRegisterCompositeCheck(String name, Element source, Element target, String expression);
 	
 	/**
 	 * Adds a property change listener which listens to changes on reasoning
@@ -140,48 +148,10 @@ public interface IReasoningService {
 	Set<Clabject> getAllPossibleTypeForModel(Model m);
 
 	/**
-	 * param[0] = Attribute - type <br />
-	 * param[1] = Attribute - instance
-	 */
-	public static final String ATTRIBUTE_CONFORMS = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.attributeconforms";
-	/**
-	 * 
-	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
-	 */
-	public boolean attributeConforms(Attribute type, Attribute instance);
-	
-	/**
-	 * param[0] = Method - type <br />
-	 * param[1] = Method - instance
-	 */
-	public static final String METHOD_CONFORMS = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.methodconforms";
-	/**
-	 * 
-	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
-	 */
-	public boolean methodConforms(Method type, Method instance);
-	
-	/**
 	 * param[0] = Feature - type <br />
 	 * param[1] = Feature - instance
 	 */
 	public static final String FEATURE_CONFORMS = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.featureconforms";
-	/**
-	 * 
-	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
-	 */
-	public boolean featureConforms( Feature type, Feature instance);
-	
-	/**
-	 * param[0] = Clabject - type <br />
-	 * param[1] = Clabject - instance
-	 */
-	public static final String LOCAL_CONFORMS_CLABJECT = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.localconformsclabject";
-	/**
-	 * 
-	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
-	 */
-	public boolean localConformsClabject( Clabject type, Clabject instance);
 	
 	/**
 	 * param[0] = Connection - type <br />
@@ -194,60 +164,18 @@ public interface IReasoningService {
 	 */
 	public boolean localConstructionConformsConnection( Connection type, Connection instance );
 	
-	/**
-	 * param[0] = Connection - type <br />
-	 * param[1] = Connection - instance
-	 */
-	public static final String LOCAL_CONFORMS_CONNECTION = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.localconformsconnection";
-	/**
-	 * 
-	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
-	 */
-	public boolean localConformsConnection( Connection type, Connection instance);
 	
 	/**
 	 * param[0] = Clabject - type <br />
 	 * param[1] = Clabject - instance
 	 */
 	public static final String LOCAL_CONFORMS = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.localconforms";
-	/**
-	 * 
-	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
-	 */
-	public boolean localConforms(Clabject type, Clabject instance);
 	
 	/**
 	 * param[0] = Clabject - type <br />
 	 * param[1] = Clabject - instance
 	 */
 	public static final String NEIGHBOURHOOD_CONFORMS = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.neighbourhoodconforms";
-	/**
-	 * 
-	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
-	 */
-	public boolean neighbourhoodConforms(Clabject type, Clabject instance);
-	
-	/**
-	 * param[0] = Clabject - type <br />
-	 * param[1] = Clabject - instance
-	 */
-	public static final String NEIGHBOURHOOD_CONFORMS_CLABJECT = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.neighbourhoodconformsClabject";
-	/**
-	 * 
-	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
-	 */
-	public boolean neighbourhoodConformsClabject(Clabject type, Clabject instance);
-	
-	/**
-	 * param[0] = Connection - type <br />
-	 * param[1] = Connection - instance
-	 */
-	public static final String NEIGHBOURHOOD_CONFORMS_CONNECTION = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.neighbourhoodconformsconnection";
-	/**
-	 * 
-	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
-	 */
-	public boolean neighbourhoodConformsConnection(Connection type, Connection instance);
 	
 	/**
 	 * param[0] = Connection - type <br />
@@ -272,18 +200,13 @@ public interface IReasoningService {
 	public Element getElementByXMIID(String id, Element modelElement);
 	
 	/**
-	 * param[0] = connection <br />
+	 * param[0] = Connection - connection <br />
 	 */
 	public static final String MULTIPLICITY_CONFORMS = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.multiplicityconforms";
-	/**
-	 * 
-	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
-	 */
-	public boolean multiplicityConforms(Connection con);
 	
 	/**
-	 * param[0] = connection <br />
-	 * param[1] = clabject
+	 * param[0] = Connection - connection <br />
+	 * param[1] = Clabject - clabject
 	 */
 	public static final String GET_POSSIBLE_ROLE_NAMES_FOR_CONNECTION_PARTICIPANT = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.getpossiblerolenamesforconnectionparticipant";
 	/**
@@ -293,8 +216,8 @@ public interface IReasoningService {
 	public Set<String> getPossibleRoleNamesForConnectionParticipant(Connection con, Clabject part);
 	
 	/**
-	 * param[0] = connection <br />
-	 * param[1] = clabject
+	 * param[0] = Connection - connection <br />
+	 * param[1] = Clabject - clabject
 	 */
 	public static final String GET_POSSIBLE_NAVIGABILITY_FOR_CONNECTION_PARTICIPANT = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.getpossiblenavigabilityforconnectionparticipant";
 	/**
@@ -304,7 +227,7 @@ public interface IReasoningService {
 	public Set<Boolean> getPossibleNavigabilityForConnectionParticipant(Connection con, Clabject part);
 	
 	/**
-	 * param[0] = connection
+	 * param[0] = Connection - connection
 	 */
 	public static final String GET_CLASSIFYING_CONSTRUCTION_CONFORMANCE_DOMAIN = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.getclassifyingconstructionconformancedomain";
 	/**
@@ -314,47 +237,15 @@ public interface IReasoningService {
 	public Set<Connection> getClassifyingConstructionConformanceDomain(Connection c);
 	
 	/**
-	 * param[0] = instance
-	 * param[1] = type
+	 * param[0] = Clabject - instance
+	 * param[1] = Clabject - type
 	 */
 	public static final String IS_EXPRESSED_INSTANCE_OF_EXCLUDED = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.isexpressedinstanceofexcluded";
-	/**
-	 * 
-	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
-	 */
-	public boolean isExpressedInstanceOfExcluded(Clabject type, Clabject instance);
 
 	/**
-	 * param[0] = instance
-	 * param[1] = type
-	 */
-	public static final String PROPERTY_CONFORMS_CLABJECT = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.propertyconformsclabject";
-	/**
-	 * 
-	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
-	 */
-	public boolean propertyConformsClabject(Clabject type, Clabject instance);
-	
-	/**
-	 * param[0] = instance
-	 * param[1] = type
+	 * param[0] = Clabject - instance
+	 * param[1] = Clabject - type
 	 */
 	public static final String PROPERTY_CONFORMS = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.propertyconforms";
-	/**
-	 * 
-	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
-	 */
-	public boolean propertyConforms(Clabject type, Clabject instance);
 	
-	/**
-	 * param[0] = instance
-	 * param[1] = type
-	 */
-	public static final String PROPERTY_CONFORMS_CONNECTION = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.propertyconformsconnection";
-	/**
-	 * 
-	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
-	 */
-	public boolean propertyConformsConnection(Connection type, Connection instance);
-
 }

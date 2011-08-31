@@ -428,6 +428,738 @@ public interface ReasoningResultPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.AllConnectionsCheckImpl <em>All Connections Check</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.AllConnectionsCheckImpl
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ReasoningResultPackageImpl#getAllConnectionsCheck()
+	 * @generated
+	 */
+	int ALL_CONNECTIONS_CHECK = 7;
+
+	/**
+	 * The feature id for the '<em><b>Result</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALL_CONNECTIONS_CHECK__RESULT = COMPOSITE_CHECK__RESULT;
+
+	/**
+	 * The feature id for the '<em><b>Expression</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALL_CONNECTIONS_CHECK__EXPRESSION = COMPOSITE_CHECK__EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Check</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALL_CONNECTIONS_CHECK__CHECK = COMPOSITE_CHECK__CHECK;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALL_CONNECTIONS_CHECK__NAME = COMPOSITE_CHECK__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALL_CONNECTIONS_CHECK__SOURCE = COMPOSITE_CHECK__SOURCE;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALL_CONNECTIONS_CHECK__TARGET = COMPOSITE_CHECK__TARGET;
+
+	/**
+	 * The feature id for the '<em><b>No Type Connection</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALL_CONNECTIONS_CHECK__NO_TYPE_CONNECTION = COMPOSITE_CHECK_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>All Connections Check</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALL_CONNECTIONS_CHECK_FEATURE_COUNT = COMPOSITE_CHECK_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.TypeConnectionSearchImpl <em>Type Connection Search</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.TypeConnectionSearchImpl
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ReasoningResultPackageImpl#getTypeConnectionSearch()
+	 * @generated
+	 */
+	int TYPE_CONNECTION_SEARCH = 8;
+
+	/**
+	 * The feature id for the '<em><b>Result</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_CONNECTION_SEARCH__RESULT = COMPOSITE_CHECK__RESULT;
+
+	/**
+	 * The feature id for the '<em><b>Expression</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_CONNECTION_SEARCH__EXPRESSION = COMPOSITE_CHECK__EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Check</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_CONNECTION_SEARCH__CHECK = COMPOSITE_CHECK__CHECK;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_CONNECTION_SEARCH__NAME = COMPOSITE_CHECK__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_CONNECTION_SEARCH__SOURCE = COMPOSITE_CHECK__SOURCE;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_CONNECTION_SEARCH__TARGET = COMPOSITE_CHECK__TARGET;
+
+	/**
+	 * The feature id for the '<em><b>Type Connection</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_CONNECTION_SEARCH__TYPE_CONNECTION = COMPOSITE_CHECK_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>No Searched Connections</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_CONNECTION_SEARCH__NO_SEARCHED_CONNECTIONS = COMPOSITE_CHECK_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Type Connection Search</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_CONNECTION_SEARCH_FEATURE_COUNT = COMPOSITE_CHECK_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ExpressedInstanceExcludedCheckImpl <em>Expressed Instance Excluded Check</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ExpressedInstanceExcludedCheckImpl
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ReasoningResultPackageImpl#getExpressedInstanceExcludedCheck()
+	 * @generated
+	 */
+	int EXPRESSED_INSTANCE_EXCLUDED_CHECK = 9;
+
+	/**
+	 * The feature id for the '<em><b>Result</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPRESSED_INSTANCE_EXCLUDED_CHECK__RESULT = COMPOSITE_CHECK__RESULT;
+
+	/**
+	 * The feature id for the '<em><b>Expression</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPRESSED_INSTANCE_EXCLUDED_CHECK__EXPRESSION = COMPOSITE_CHECK__EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Check</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPRESSED_INSTANCE_EXCLUDED_CHECK__CHECK = COMPOSITE_CHECK__CHECK;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPRESSED_INSTANCE_EXCLUDED_CHECK__NAME = COMPOSITE_CHECK__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPRESSED_INSTANCE_EXCLUDED_CHECK__SOURCE = COMPOSITE_CHECK__SOURCE;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPRESSED_INSTANCE_EXCLUDED_CHECK__TARGET = COMPOSITE_CHECK__TARGET;
+
+	/**
+	 * The feature id for the '<em><b>Expressed Types</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPRESSED_INSTANCE_EXCLUDED_CHECK__EXPRESSED_TYPES = COMPOSITE_CHECK_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Affected Types</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPRESSED_INSTANCE_EXCLUDED_CHECK__AFFECTED_TYPES = COMPOSITE_CHECK_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Disjoint Siblings</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPRESSED_INSTANCE_EXCLUDED_CHECK__DISJOINT_SIBLINGS = COMPOSITE_CHECK_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Affected Disjoint Intersection</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPRESSED_INSTANCE_EXCLUDED_CHECK__AFFECTED_DISJOINT_INTERSECTION = COMPOSITE_CHECK_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Expressed Instance Excluded Check</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPRESSED_INSTANCE_EXCLUDED_CHECK_FEATURE_COUNT = COMPOSITE_CHECK_FEATURE_COUNT + 4;
+
+
+	/**
+	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.MultiplicityCheckImpl <em>Multiplicity Check</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.MultiplicityCheckImpl
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ReasoningResultPackageImpl#getMultiplicityCheck()
+	 * @generated
+	 */
+	int MULTIPLICITY_CHECK = 10;
+
+	/**
+	 * The feature id for the '<em><b>Result</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLICITY_CHECK__RESULT = COMPOSITE_CHECK__RESULT;
+
+	/**
+	 * The feature id for the '<em><b>Expression</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLICITY_CHECK__EXPRESSION = COMPOSITE_CHECK__EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Check</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLICITY_CHECK__CHECK = COMPOSITE_CHECK__CHECK;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLICITY_CHECK__NAME = COMPOSITE_CHECK__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLICITY_CHECK__SOURCE = COMPOSITE_CHECK__SOURCE;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLICITY_CHECK__TARGET = COMPOSITE_CHECK__TARGET;
+
+	/**
+	 * The feature id for the '<em><b>No Of Domain Connection</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLICITY_CHECK__NO_OF_DOMAIN_CONNECTION = COMPOSITE_CHECK_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Multiplicity Check</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLICITY_CHECK_FEATURE_COUNT = COMPOSITE_CHECK_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.MultiplicityRoleNameCheckImpl <em>Multiplicity Role Name Check</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.MultiplicityRoleNameCheckImpl
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ReasoningResultPackageImpl#getMultiplicityRoleNameCheck()
+	 * @generated
+	 */
+	int MULTIPLICITY_ROLE_NAME_CHECK = 11;
+
+	/**
+	 * The feature id for the '<em><b>Result</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLICITY_ROLE_NAME_CHECK__RESULT = COMPOSITE_CHECK__RESULT;
+
+	/**
+	 * The feature id for the '<em><b>Expression</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLICITY_ROLE_NAME_CHECK__EXPRESSION = COMPOSITE_CHECK__EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Check</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLICITY_ROLE_NAME_CHECK__CHECK = COMPOSITE_CHECK__CHECK;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLICITY_ROLE_NAME_CHECK__NAME = COMPOSITE_CHECK__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLICITY_ROLE_NAME_CHECK__SOURCE = COMPOSITE_CHECK__SOURCE;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLICITY_ROLE_NAME_CHECK__TARGET = COMPOSITE_CHECK__TARGET;
+
+	/**
+	 * The feature id for the '<em><b>Lower</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLICITY_ROLE_NAME_CHECK__LOWER = COMPOSITE_CHECK_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Upper</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLICITY_ROLE_NAME_CHECK__UPPER = COMPOSITE_CHECK_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Counts</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLICITY_ROLE_NAME_CHECK__COUNTS = COMPOSITE_CHECK_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Multiplicity Role Name Check</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLICITY_ROLE_NAME_CHECK_FEATURE_COUNT = COMPOSITE_CHECK_FEATURE_COUNT + 3;
+
+	/**
+	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.RoleNamePropertyConformanceCheckImpl <em>Role Name Property Conformance Check</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.RoleNamePropertyConformanceCheckImpl
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ReasoningResultPackageImpl#getRoleNamePropertyConformanceCheck()
+	 * @generated
+	 */
+	int ROLE_NAME_PROPERTY_CONFORMANCE_CHECK = 12;
+
+	/**
+	 * The feature id for the '<em><b>Result</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_NAME_PROPERTY_CONFORMANCE_CHECK__RESULT = COMPOSITE_CHECK__RESULT;
+
+	/**
+	 * The feature id for the '<em><b>Expression</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_NAME_PROPERTY_CONFORMANCE_CHECK__EXPRESSION = COMPOSITE_CHECK__EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Check</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_NAME_PROPERTY_CONFORMANCE_CHECK__CHECK = COMPOSITE_CHECK__CHECK;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_NAME_PROPERTY_CONFORMANCE_CHECK__NAME = COMPOSITE_CHECK__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_NAME_PROPERTY_CONFORMANCE_CHECK__SOURCE = COMPOSITE_CHECK__SOURCE;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_NAME_PROPERTY_CONFORMANCE_CHECK__TARGET = COMPOSITE_CHECK__TARGET;
+
+	/**
+	 * The feature id for the '<em><b>Role Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_NAME_PROPERTY_CONFORMANCE_CHECK__ROLE_NAME = COMPOSITE_CHECK_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Type Participant</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_NAME_PROPERTY_CONFORMANCE_CHECK__TYPE_PARTICIPANT = COMPOSITE_CHECK_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Instance Participant</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_NAME_PROPERTY_CONFORMANCE_CHECK__INSTANCE_PARTICIPANT = COMPOSITE_CHECK_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Role Name Property Conformance Check</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_NAME_PROPERTY_CONFORMANCE_CHECK_FEATURE_COUNT = COMPOSITE_CHECK_FEATURE_COUNT + 3;
+
+
+	/**
+	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.RoleNameLocalConformanceCheckImpl <em>Role Name Local Conformance Check</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.RoleNameLocalConformanceCheckImpl
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ReasoningResultPackageImpl#getRoleNameLocalConformanceCheck()
+	 * @generated
+	 */
+	int ROLE_NAME_LOCAL_CONFORMANCE_CHECK = 13;
+
+	/**
+	 * The feature id for the '<em><b>Result</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_NAME_LOCAL_CONFORMANCE_CHECK__RESULT = COMPOSITE_CHECK__RESULT;
+
+	/**
+	 * The feature id for the '<em><b>Expression</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_NAME_LOCAL_CONFORMANCE_CHECK__EXPRESSION = COMPOSITE_CHECK__EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Check</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_NAME_LOCAL_CONFORMANCE_CHECK__CHECK = COMPOSITE_CHECK__CHECK;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_NAME_LOCAL_CONFORMANCE_CHECK__NAME = COMPOSITE_CHECK__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_NAME_LOCAL_CONFORMANCE_CHECK__SOURCE = COMPOSITE_CHECK__SOURCE;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_NAME_LOCAL_CONFORMANCE_CHECK__TARGET = COMPOSITE_CHECK__TARGET;
+
+	/**
+	 * The feature id for the '<em><b>Role Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_NAME_LOCAL_CONFORMANCE_CHECK__ROLE_NAME = COMPOSITE_CHECK_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Role Name Local Conformance Check</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_NAME_LOCAL_CONFORMANCE_CHECK_FEATURE_COUNT = COMPOSITE_CHECK_FEATURE_COUNT + 1;
+
+
+	/**
+	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ConnectionsLocalConformanceCheckImpl <em>Connections Local Conformance Check</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ConnectionsLocalConformanceCheckImpl
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ReasoningResultPackageImpl#getConnectionsLocalConformanceCheck()
+	 * @generated
+	 */
+	int CONNECTIONS_LOCAL_CONFORMANCE_CHECK = 14;
+
+	/**
+	 * The feature id for the '<em><b>Result</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTIONS_LOCAL_CONFORMANCE_CHECK__RESULT = COMPOSITE_CHECK__RESULT;
+
+	/**
+	 * The feature id for the '<em><b>Expression</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTIONS_LOCAL_CONFORMANCE_CHECK__EXPRESSION = COMPOSITE_CHECK__EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Check</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTIONS_LOCAL_CONFORMANCE_CHECK__CHECK = COMPOSITE_CHECK__CHECK;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTIONS_LOCAL_CONFORMANCE_CHECK__NAME = COMPOSITE_CHECK__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTIONS_LOCAL_CONFORMANCE_CHECK__SOURCE = COMPOSITE_CHECK__SOURCE;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTIONS_LOCAL_CONFORMANCE_CHECK__TARGET = COMPOSITE_CHECK__TARGET;
+
+	/**
+	 * The feature id for the '<em><b>No Type Connections</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTIONS_LOCAL_CONFORMANCE_CHECK__NO_TYPE_CONNECTIONS = COMPOSITE_CHECK_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Connections Local Conformance Check</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTIONS_LOCAL_CONFORMANCE_CHECK_FEATURE_COUNT = COMPOSITE_CHECK_FEATURE_COUNT + 1;
+
+
+	/**
 	 * Returns the meta object for class '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultModel <em>Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -674,6 +1406,262 @@ public interface ReasoningResultPackage extends EPackage {
 	EReference getDatatypeComparison_Target();
 
 	/**
+	 * Returns the meta object for class '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.AllConnectionsCheck <em>All Connections Check</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>All Connections Check</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.AllConnectionsCheck
+	 * @generated
+	 */
+	EClass getAllConnectionsCheck();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.AllConnectionsCheck#getNoTypeConnection <em>No Type Connection</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>No Type Connection</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.AllConnectionsCheck#getNoTypeConnection()
+	 * @see #getAllConnectionsCheck()
+	 * @generated
+	 */
+	EAttribute getAllConnectionsCheck_NoTypeConnection();
+
+	/**
+	 * Returns the meta object for class '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.TypeConnectionSearch <em>Type Connection Search</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Type Connection Search</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.TypeConnectionSearch
+	 * @generated
+	 */
+	EClass getTypeConnectionSearch();
+
+	/**
+	 * Returns the meta object for the reference '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.TypeConnectionSearch#getTypeConnection <em>Type Connection</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Type Connection</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.TypeConnectionSearch#getTypeConnection()
+	 * @see #getTypeConnectionSearch()
+	 * @generated
+	 */
+	EReference getTypeConnectionSearch_TypeConnection();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.TypeConnectionSearch#getNoSearchedConnections <em>No Searched Connections</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>No Searched Connections</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.TypeConnectionSearch#getNoSearchedConnections()
+	 * @see #getTypeConnectionSearch()
+	 * @generated
+	 */
+	EAttribute getTypeConnectionSearch_NoSearchedConnections();
+
+	/**
+	 * Returns the meta object for class '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ExpressedInstanceExcludedCheck <em>Expressed Instance Excluded Check</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Expressed Instance Excluded Check</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ExpressedInstanceExcludedCheck
+	 * @generated
+	 */
+	EClass getExpressedInstanceExcludedCheck();
+
+	/**
+	 * Returns the meta object for the reference list '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ExpressedInstanceExcludedCheck#getExpressedTypes <em>Expressed Types</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Expressed Types</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ExpressedInstanceExcludedCheck#getExpressedTypes()
+	 * @see #getExpressedInstanceExcludedCheck()
+	 * @generated
+	 */
+	EReference getExpressedInstanceExcludedCheck_ExpressedTypes();
+
+	/**
+	 * Returns the meta object for the reference list '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ExpressedInstanceExcludedCheck#getAffectedTypes <em>Affected Types</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Affected Types</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ExpressedInstanceExcludedCheck#getAffectedTypes()
+	 * @see #getExpressedInstanceExcludedCheck()
+	 * @generated
+	 */
+	EReference getExpressedInstanceExcludedCheck_AffectedTypes();
+
+	/**
+	 * Returns the meta object for the reference list '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ExpressedInstanceExcludedCheck#getDisjointSiblings <em>Disjoint Siblings</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Disjoint Siblings</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ExpressedInstanceExcludedCheck#getDisjointSiblings()
+	 * @see #getExpressedInstanceExcludedCheck()
+	 * @generated
+	 */
+	EReference getExpressedInstanceExcludedCheck_DisjointSiblings();
+
+	/**
+	 * Returns the meta object for the reference list '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ExpressedInstanceExcludedCheck#getAffectedDisjointIntersection <em>Affected Disjoint Intersection</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Affected Disjoint Intersection</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ExpressedInstanceExcludedCheck#getAffectedDisjointIntersection()
+	 * @see #getExpressedInstanceExcludedCheck()
+	 * @generated
+	 */
+	EReference getExpressedInstanceExcludedCheck_AffectedDisjointIntersection();
+
+	/**
+	 * Returns the meta object for class '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MultiplicityCheck <em>Multiplicity Check</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Multiplicity Check</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MultiplicityCheck
+	 * @generated
+	 */
+	EClass getMultiplicityCheck();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MultiplicityCheck#getNoOfDomainConnection <em>No Of Domain Connection</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>No Of Domain Connection</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MultiplicityCheck#getNoOfDomainConnection()
+	 * @see #getMultiplicityCheck()
+	 * @generated
+	 */
+	EAttribute getMultiplicityCheck_NoOfDomainConnection();
+
+	/**
+	 * Returns the meta object for class '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MultiplicityRoleNameCheck <em>Multiplicity Role Name Check</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Multiplicity Role Name Check</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MultiplicityRoleNameCheck
+	 * @generated
+	 */
+	EClass getMultiplicityRoleNameCheck();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MultiplicityRoleNameCheck#getLower <em>Lower</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Lower</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MultiplicityRoleNameCheck#getLower()
+	 * @see #getMultiplicityRoleNameCheck()
+	 * @generated
+	 */
+	EAttribute getMultiplicityRoleNameCheck_Lower();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MultiplicityRoleNameCheck#getUpper <em>Upper</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Upper</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MultiplicityRoleNameCheck#getUpper()
+	 * @see #getMultiplicityRoleNameCheck()
+	 * @generated
+	 */
+	EAttribute getMultiplicityRoleNameCheck_Upper();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MultiplicityRoleNameCheck#getCounts <em>Counts</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Counts</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MultiplicityRoleNameCheck#getCounts()
+	 * @see #getMultiplicityRoleNameCheck()
+	 * @generated
+	 */
+	EAttribute getMultiplicityRoleNameCheck_Counts();
+
+	/**
+	 * Returns the meta object for class '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.RoleNamePropertyConformanceCheck <em>Role Name Property Conformance Check</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Role Name Property Conformance Check</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.RoleNamePropertyConformanceCheck
+	 * @generated
+	 */
+	EClass getRoleNamePropertyConformanceCheck();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.RoleNamePropertyConformanceCheck#getRoleName <em>Role Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Role Name</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.RoleNamePropertyConformanceCheck#getRoleName()
+	 * @see #getRoleNamePropertyConformanceCheck()
+	 * @generated
+	 */
+	EAttribute getRoleNamePropertyConformanceCheck_RoleName();
+
+	/**
+	 * Returns the meta object for the reference '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.RoleNamePropertyConformanceCheck#getTypeParticipant <em>Type Participant</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Type Participant</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.RoleNamePropertyConformanceCheck#getTypeParticipant()
+	 * @see #getRoleNamePropertyConformanceCheck()
+	 * @generated
+	 */
+	EReference getRoleNamePropertyConformanceCheck_TypeParticipant();
+
+	/**
+	 * Returns the meta object for the reference '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.RoleNamePropertyConformanceCheck#getInstanceParticipant <em>Instance Participant</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Instance Participant</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.RoleNamePropertyConformanceCheck#getInstanceParticipant()
+	 * @see #getRoleNamePropertyConformanceCheck()
+	 * @generated
+	 */
+	EReference getRoleNamePropertyConformanceCheck_InstanceParticipant();
+
+	/**
+	 * Returns the meta object for class '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.RoleNameLocalConformanceCheck <em>Role Name Local Conformance Check</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Role Name Local Conformance Check</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.RoleNameLocalConformanceCheck
+	 * @generated
+	 */
+	EClass getRoleNameLocalConformanceCheck();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.RoleNameLocalConformanceCheck#getRoleName <em>Role Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Role Name</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.RoleNameLocalConformanceCheck#getRoleName()
+	 * @see #getRoleNameLocalConformanceCheck()
+	 * @generated
+	 */
+	EAttribute getRoleNameLocalConformanceCheck_RoleName();
+
+	/**
+	 * Returns the meta object for class '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ConnectionsLocalConformanceCheck <em>Connections Local Conformance Check</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Connections Local Conformance Check</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ConnectionsLocalConformanceCheck
+	 * @generated
+	 */
+	EClass getConnectionsLocalConformanceCheck();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ConnectionsLocalConformanceCheck#getNoTypeConnections <em>No Type Connections</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>No Type Connections</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ConnectionsLocalConformanceCheck#getNoTypeConnections()
+	 * @see #getConnectionsLocalConformanceCheck()
+	 * @generated
+	 */
+	EAttribute getConnectionsLocalConformanceCheck_NoTypeConnections();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -892,6 +1880,214 @@ public interface ReasoningResultPackage extends EPackage {
 		 * @generated
 		 */
 		EReference DATATYPE_COMPARISON__TARGET = eINSTANCE.getDatatypeComparison_Target();
+
+		/**
+		 * The meta object literal for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.AllConnectionsCheckImpl <em>All Connections Check</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.AllConnectionsCheckImpl
+		 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ReasoningResultPackageImpl#getAllConnectionsCheck()
+		 * @generated
+		 */
+		EClass ALL_CONNECTIONS_CHECK = eINSTANCE.getAllConnectionsCheck();
+
+		/**
+		 * The meta object literal for the '<em><b>No Type Connection</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ALL_CONNECTIONS_CHECK__NO_TYPE_CONNECTION = eINSTANCE.getAllConnectionsCheck_NoTypeConnection();
+
+		/**
+		 * The meta object literal for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.TypeConnectionSearchImpl <em>Type Connection Search</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.TypeConnectionSearchImpl
+		 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ReasoningResultPackageImpl#getTypeConnectionSearch()
+		 * @generated
+		 */
+		EClass TYPE_CONNECTION_SEARCH = eINSTANCE.getTypeConnectionSearch();
+
+		/**
+		 * The meta object literal for the '<em><b>Type Connection</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TYPE_CONNECTION_SEARCH__TYPE_CONNECTION = eINSTANCE.getTypeConnectionSearch_TypeConnection();
+
+		/**
+		 * The meta object literal for the '<em><b>No Searched Connections</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TYPE_CONNECTION_SEARCH__NO_SEARCHED_CONNECTIONS = eINSTANCE.getTypeConnectionSearch_NoSearchedConnections();
+
+		/**
+		 * The meta object literal for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ExpressedInstanceExcludedCheckImpl <em>Expressed Instance Excluded Check</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ExpressedInstanceExcludedCheckImpl
+		 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ReasoningResultPackageImpl#getExpressedInstanceExcludedCheck()
+		 * @generated
+		 */
+		EClass EXPRESSED_INSTANCE_EXCLUDED_CHECK = eINSTANCE.getExpressedInstanceExcludedCheck();
+
+		/**
+		 * The meta object literal for the '<em><b>Expressed Types</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXPRESSED_INSTANCE_EXCLUDED_CHECK__EXPRESSED_TYPES = eINSTANCE.getExpressedInstanceExcludedCheck_ExpressedTypes();
+
+		/**
+		 * The meta object literal for the '<em><b>Affected Types</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXPRESSED_INSTANCE_EXCLUDED_CHECK__AFFECTED_TYPES = eINSTANCE.getExpressedInstanceExcludedCheck_AffectedTypes();
+
+		/**
+		 * The meta object literal for the '<em><b>Disjoint Siblings</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXPRESSED_INSTANCE_EXCLUDED_CHECK__DISJOINT_SIBLINGS = eINSTANCE.getExpressedInstanceExcludedCheck_DisjointSiblings();
+
+		/**
+		 * The meta object literal for the '<em><b>Affected Disjoint Intersection</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXPRESSED_INSTANCE_EXCLUDED_CHECK__AFFECTED_DISJOINT_INTERSECTION = eINSTANCE.getExpressedInstanceExcludedCheck_AffectedDisjointIntersection();
+
+		/**
+		 * The meta object literal for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.MultiplicityCheckImpl <em>Multiplicity Check</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.MultiplicityCheckImpl
+		 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ReasoningResultPackageImpl#getMultiplicityCheck()
+		 * @generated
+		 */
+		EClass MULTIPLICITY_CHECK = eINSTANCE.getMultiplicityCheck();
+
+		/**
+		 * The meta object literal for the '<em><b>No Of Domain Connection</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MULTIPLICITY_CHECK__NO_OF_DOMAIN_CONNECTION = eINSTANCE.getMultiplicityCheck_NoOfDomainConnection();
+
+		/**
+		 * The meta object literal for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.MultiplicityRoleNameCheckImpl <em>Multiplicity Role Name Check</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.MultiplicityRoleNameCheckImpl
+		 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ReasoningResultPackageImpl#getMultiplicityRoleNameCheck()
+		 * @generated
+		 */
+		EClass MULTIPLICITY_ROLE_NAME_CHECK = eINSTANCE.getMultiplicityRoleNameCheck();
+
+		/**
+		 * The meta object literal for the '<em><b>Lower</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MULTIPLICITY_ROLE_NAME_CHECK__LOWER = eINSTANCE.getMultiplicityRoleNameCheck_Lower();
+
+		/**
+		 * The meta object literal for the '<em><b>Upper</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MULTIPLICITY_ROLE_NAME_CHECK__UPPER = eINSTANCE.getMultiplicityRoleNameCheck_Upper();
+
+		/**
+		 * The meta object literal for the '<em><b>Counts</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MULTIPLICITY_ROLE_NAME_CHECK__COUNTS = eINSTANCE.getMultiplicityRoleNameCheck_Counts();
+
+		/**
+		 * The meta object literal for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.RoleNamePropertyConformanceCheckImpl <em>Role Name Property Conformance Check</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.RoleNamePropertyConformanceCheckImpl
+		 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ReasoningResultPackageImpl#getRoleNamePropertyConformanceCheck()
+		 * @generated
+		 */
+		EClass ROLE_NAME_PROPERTY_CONFORMANCE_CHECK = eINSTANCE.getRoleNamePropertyConformanceCheck();
+
+		/**
+		 * The meta object literal for the '<em><b>Role Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ROLE_NAME_PROPERTY_CONFORMANCE_CHECK__ROLE_NAME = eINSTANCE.getRoleNamePropertyConformanceCheck_RoleName();
+
+		/**
+		 * The meta object literal for the '<em><b>Type Participant</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ROLE_NAME_PROPERTY_CONFORMANCE_CHECK__TYPE_PARTICIPANT = eINSTANCE.getRoleNamePropertyConformanceCheck_TypeParticipant();
+
+		/**
+		 * The meta object literal for the '<em><b>Instance Participant</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ROLE_NAME_PROPERTY_CONFORMANCE_CHECK__INSTANCE_PARTICIPANT = eINSTANCE.getRoleNamePropertyConformanceCheck_InstanceParticipant();
+
+		/**
+		 * The meta object literal for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.RoleNameLocalConformanceCheckImpl <em>Role Name Local Conformance Check</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.RoleNameLocalConformanceCheckImpl
+		 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ReasoningResultPackageImpl#getRoleNameLocalConformanceCheck()
+		 * @generated
+		 */
+		EClass ROLE_NAME_LOCAL_CONFORMANCE_CHECK = eINSTANCE.getRoleNameLocalConformanceCheck();
+
+		/**
+		 * The meta object literal for the '<em><b>Role Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ROLE_NAME_LOCAL_CONFORMANCE_CHECK__ROLE_NAME = eINSTANCE.getRoleNameLocalConformanceCheck_RoleName();
+
+		/**
+		 * The meta object literal for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ConnectionsLocalConformanceCheckImpl <em>Connections Local Conformance Check</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ConnectionsLocalConformanceCheckImpl
+		 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ReasoningResultPackageImpl#getConnectionsLocalConformanceCheck()
+		 * @generated
+		 */
+		EClass CONNECTIONS_LOCAL_CONFORMANCE_CHECK = eINSTANCE.getConnectionsLocalConformanceCheck();
+
+		/**
+		 * The meta object literal for the '<em><b>No Type Connections</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONNECTIONS_LOCAL_CONFORMANCE_CHECK__NO_TYPE_CONNECTIONS = eINSTANCE.getConnectionsLocalConformanceCheck_NoTypeConnections();
 
 	}
 

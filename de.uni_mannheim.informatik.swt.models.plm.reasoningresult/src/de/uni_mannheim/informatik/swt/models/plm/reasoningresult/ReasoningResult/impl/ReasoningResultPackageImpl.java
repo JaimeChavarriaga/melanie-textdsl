@@ -8,16 +8,24 @@ package de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResul
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage;
 
+import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.AllConnectionsCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.Check;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.CompositeCheck;
+import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ConnectionsLocalConformanceCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.DatatypeComparison;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.DurabilityComparison;
+import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ExpressedInstanceExcludedCheck;
+import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MultiplicityCheck;
+import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MultiplicityRoleNameCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MutabilityComparison;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.NameComparison;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultFactory;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultPackage;
 
+import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.RoleNameLocalConformanceCheck;
+import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.RoleNamePropertyConformanceCheck;
+import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.TypeConnectionSearch;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -80,6 +88,62 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 	 * @generated
 	 */
 	private EClass datatypeComparisonEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass allConnectionsCheckEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass typeConnectionSearchEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass expressedInstanceExcludedCheckEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass multiplicityCheckEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass multiplicityRoleNameCheckEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass roleNamePropertyConformanceCheckEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass roleNameLocalConformanceCheckEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass connectionsLocalConformanceCheckEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -357,6 +421,222 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getAllConnectionsCheck() {
+		return allConnectionsCheckEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAllConnectionsCheck_NoTypeConnection() {
+		return (EAttribute)allConnectionsCheckEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getTypeConnectionSearch() {
+		return typeConnectionSearchEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTypeConnectionSearch_TypeConnection() {
+		return (EReference)typeConnectionSearchEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTypeConnectionSearch_NoSearchedConnections() {
+		return (EAttribute)typeConnectionSearchEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getExpressedInstanceExcludedCheck() {
+		return expressedInstanceExcludedCheckEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getExpressedInstanceExcludedCheck_ExpressedTypes() {
+		return (EReference)expressedInstanceExcludedCheckEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getExpressedInstanceExcludedCheck_AffectedTypes() {
+		return (EReference)expressedInstanceExcludedCheckEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getExpressedInstanceExcludedCheck_DisjointSiblings() {
+		return (EReference)expressedInstanceExcludedCheckEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getExpressedInstanceExcludedCheck_AffectedDisjointIntersection() {
+		return (EReference)expressedInstanceExcludedCheckEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getMultiplicityCheck() {
+		return multiplicityCheckEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMultiplicityCheck_NoOfDomainConnection() {
+		return (EAttribute)multiplicityCheckEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getMultiplicityRoleNameCheck() {
+		return multiplicityRoleNameCheckEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMultiplicityRoleNameCheck_Lower() {
+		return (EAttribute)multiplicityRoleNameCheckEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMultiplicityRoleNameCheck_Upper() {
+		return (EAttribute)multiplicityRoleNameCheckEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMultiplicityRoleNameCheck_Counts() {
+		return (EAttribute)multiplicityRoleNameCheckEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getRoleNamePropertyConformanceCheck() {
+		return roleNamePropertyConformanceCheckEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getRoleNamePropertyConformanceCheck_RoleName() {
+		return (EAttribute)roleNamePropertyConformanceCheckEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getRoleNamePropertyConformanceCheck_TypeParticipant() {
+		return (EReference)roleNamePropertyConformanceCheckEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getRoleNamePropertyConformanceCheck_InstanceParticipant() {
+		return (EReference)roleNamePropertyConformanceCheckEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getRoleNameLocalConformanceCheck() {
+		return roleNameLocalConformanceCheckEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getRoleNameLocalConformanceCheck_RoleName() {
+		return (EAttribute)roleNameLocalConformanceCheckEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getConnectionsLocalConformanceCheck() {
+		return connectionsLocalConformanceCheckEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getConnectionsLocalConformanceCheck_NoTypeConnections() {
+		return (EAttribute)connectionsLocalConformanceCheckEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ReasoningResultFactory getReasoningResultFactory() {
 		return (ReasoningResultFactory)getEFactoryInstance();
 	}
@@ -409,6 +689,38 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 		datatypeComparisonEClass = createEClass(DATATYPE_COMPARISON);
 		createEReference(datatypeComparisonEClass, DATATYPE_COMPARISON__SOURCE);
 		createEReference(datatypeComparisonEClass, DATATYPE_COMPARISON__TARGET);
+
+		allConnectionsCheckEClass = createEClass(ALL_CONNECTIONS_CHECK);
+		createEAttribute(allConnectionsCheckEClass, ALL_CONNECTIONS_CHECK__NO_TYPE_CONNECTION);
+
+		typeConnectionSearchEClass = createEClass(TYPE_CONNECTION_SEARCH);
+		createEReference(typeConnectionSearchEClass, TYPE_CONNECTION_SEARCH__TYPE_CONNECTION);
+		createEAttribute(typeConnectionSearchEClass, TYPE_CONNECTION_SEARCH__NO_SEARCHED_CONNECTIONS);
+
+		expressedInstanceExcludedCheckEClass = createEClass(EXPRESSED_INSTANCE_EXCLUDED_CHECK);
+		createEReference(expressedInstanceExcludedCheckEClass, EXPRESSED_INSTANCE_EXCLUDED_CHECK__EXPRESSED_TYPES);
+		createEReference(expressedInstanceExcludedCheckEClass, EXPRESSED_INSTANCE_EXCLUDED_CHECK__AFFECTED_TYPES);
+		createEReference(expressedInstanceExcludedCheckEClass, EXPRESSED_INSTANCE_EXCLUDED_CHECK__DISJOINT_SIBLINGS);
+		createEReference(expressedInstanceExcludedCheckEClass, EXPRESSED_INSTANCE_EXCLUDED_CHECK__AFFECTED_DISJOINT_INTERSECTION);
+
+		multiplicityCheckEClass = createEClass(MULTIPLICITY_CHECK);
+		createEAttribute(multiplicityCheckEClass, MULTIPLICITY_CHECK__NO_OF_DOMAIN_CONNECTION);
+
+		multiplicityRoleNameCheckEClass = createEClass(MULTIPLICITY_ROLE_NAME_CHECK);
+		createEAttribute(multiplicityRoleNameCheckEClass, MULTIPLICITY_ROLE_NAME_CHECK__LOWER);
+		createEAttribute(multiplicityRoleNameCheckEClass, MULTIPLICITY_ROLE_NAME_CHECK__UPPER);
+		createEAttribute(multiplicityRoleNameCheckEClass, MULTIPLICITY_ROLE_NAME_CHECK__COUNTS);
+
+		roleNamePropertyConformanceCheckEClass = createEClass(ROLE_NAME_PROPERTY_CONFORMANCE_CHECK);
+		createEAttribute(roleNamePropertyConformanceCheckEClass, ROLE_NAME_PROPERTY_CONFORMANCE_CHECK__ROLE_NAME);
+		createEReference(roleNamePropertyConformanceCheckEClass, ROLE_NAME_PROPERTY_CONFORMANCE_CHECK__TYPE_PARTICIPANT);
+		createEReference(roleNamePropertyConformanceCheckEClass, ROLE_NAME_PROPERTY_CONFORMANCE_CHECK__INSTANCE_PARTICIPANT);
+
+		roleNameLocalConformanceCheckEClass = createEClass(ROLE_NAME_LOCAL_CONFORMANCE_CHECK);
+		createEAttribute(roleNameLocalConformanceCheckEClass, ROLE_NAME_LOCAL_CONFORMANCE_CHECK__ROLE_NAME);
+
+		connectionsLocalConformanceCheckEClass = createEClass(CONNECTIONS_LOCAL_CONFORMANCE_CHECK);
+		createEAttribute(connectionsLocalConformanceCheckEClass, CONNECTIONS_LOCAL_CONFORMANCE_CHECK__NO_TYPE_CONNECTIONS);
 	}
 
 	/**
@@ -447,6 +759,14 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 		durabilityComparisonEClass.getESuperTypes().add(this.getCheck());
 		mutabilityComparisonEClass.getESuperTypes().add(this.getCheck());
 		datatypeComparisonEClass.getESuperTypes().add(this.getCheck());
+		allConnectionsCheckEClass.getESuperTypes().add(this.getCompositeCheck());
+		typeConnectionSearchEClass.getESuperTypes().add(this.getCompositeCheck());
+		expressedInstanceExcludedCheckEClass.getESuperTypes().add(this.getCompositeCheck());
+		multiplicityCheckEClass.getESuperTypes().add(this.getCompositeCheck());
+		multiplicityRoleNameCheckEClass.getESuperTypes().add(this.getCompositeCheck());
+		roleNamePropertyConformanceCheckEClass.getESuperTypes().add(this.getCompositeCheck());
+		roleNameLocalConformanceCheckEClass.getESuperTypes().add(this.getCompositeCheck());
+		connectionsLocalConformanceCheckEClass.getESuperTypes().add(this.getCompositeCheck());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(reasoningResultModelEClass, ReasoningResultModel.class, "ReasoningResultModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -454,7 +774,7 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 		initEAttribute(getReasoningResultModel_Name(), ecorePackage.getEString(), "name", null, 0, 1, ReasoningResultModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(checkEClass, Check.class, "Check", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getCheck_Result(), ecorePackage.getEBoolean(), "result", null, 1, 1, Check.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCheck_Result(), ecorePackage.getEBoolean(), "result", "false", 1, 1, Check.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCheck_Expression(), ecorePackage.getEString(), "expression", null, 0, 1, Check.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(compositeCheckEClass, CompositeCheck.class, "CompositeCheck", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -464,8 +784,8 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 		initEReference(getCompositeCheck_Target(), thePLMPackage.getElement(), null, "target", null, 0, 1, CompositeCheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(nameComparisonEClass, NameComparison.class, "NameComparison", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getNameComparison_Source(), thePLMPackage.getElement(), null, "source", null, 1, 1, NameComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getNameComparison_Target(), thePLMPackage.getElement(), null, "target", null, 1, 1, NameComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNameComparison_Source(), thePLMPackage.getFeature(), null, "source", null, 1, 1, NameComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNameComparison_Target(), thePLMPackage.getFeature(), null, "target", null, 1, 1, NameComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(durabilityComparisonEClass, DurabilityComparison.class, "DurabilityComparison", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDurabilityComparison_Source(), thePLMPackage.getFeature(), null, "source", null, 1, 1, DurabilityComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -478,6 +798,38 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 		initEClass(datatypeComparisonEClass, DatatypeComparison.class, "DatatypeComparison", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDatatypeComparison_Source(), thePLMPackage.getAttribute(), null, "source", null, 1, 1, DatatypeComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDatatypeComparison_Target(), thePLMPackage.getAttribute(), null, "target", null, 1, 1, DatatypeComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(allConnectionsCheckEClass, AllConnectionsCheck.class, "AllConnectionsCheck", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAllConnectionsCheck_NoTypeConnection(), ecorePackage.getEInt(), "noTypeConnection", "0", 1, 1, AllConnectionsCheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(typeConnectionSearchEClass, TypeConnectionSearch.class, "TypeConnectionSearch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTypeConnectionSearch_TypeConnection(), thePLMPackage.getConnection(), null, "typeConnection", null, 1, 1, TypeConnectionSearch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTypeConnectionSearch_NoSearchedConnections(), ecorePackage.getEInt(), "noSearchedConnections", "0", 1, 1, TypeConnectionSearch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(expressedInstanceExcludedCheckEClass, ExpressedInstanceExcludedCheck.class, "ExpressedInstanceExcludedCheck", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getExpressedInstanceExcludedCheck_ExpressedTypes(), thePLMPackage.getClabject(), null, "expressedTypes", null, 0, -1, ExpressedInstanceExcludedCheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getExpressedInstanceExcludedCheck_AffectedTypes(), thePLMPackage.getClabject(), null, "affectedTypes", null, 0, -1, ExpressedInstanceExcludedCheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getExpressedInstanceExcludedCheck_DisjointSiblings(), thePLMPackage.getClabject(), null, "disjointSiblings", null, 0, -1, ExpressedInstanceExcludedCheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getExpressedInstanceExcludedCheck_AffectedDisjointIntersection(), thePLMPackage.getClabject(), null, "affectedDisjointIntersection", null, 0, -1, ExpressedInstanceExcludedCheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(multiplicityCheckEClass, MultiplicityCheck.class, "MultiplicityCheck", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMultiplicityCheck_NoOfDomainConnection(), ecorePackage.getEInt(), "noOfDomainConnection", "0", 1, 1, MultiplicityCheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(multiplicityRoleNameCheckEClass, MultiplicityRoleNameCheck.class, "MultiplicityRoleNameCheck", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMultiplicityRoleNameCheck_Lower(), ecorePackage.getEInt(), "lower", "0", 1, 1, MultiplicityRoleNameCheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMultiplicityRoleNameCheck_Upper(), ecorePackage.getEInt(), "upper", "-1", 1, 1, MultiplicityRoleNameCheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMultiplicityRoleNameCheck_Counts(), ecorePackage.getEInt(), "counts", null, 0, -1, MultiplicityRoleNameCheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(roleNamePropertyConformanceCheckEClass, RoleNamePropertyConformanceCheck.class, "RoleNamePropertyConformanceCheck", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getRoleNamePropertyConformanceCheck_RoleName(), ecorePackage.getEString(), "roleName", "0", 1, 1, RoleNamePropertyConformanceCheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRoleNamePropertyConformanceCheck_TypeParticipant(), thePLMPackage.getClabject(), null, "typeParticipant", null, 1, 1, RoleNamePropertyConformanceCheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRoleNamePropertyConformanceCheck_InstanceParticipant(), thePLMPackage.getClabject(), null, "instanceParticipant", null, 1, 1, RoleNamePropertyConformanceCheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(roleNameLocalConformanceCheckEClass, RoleNameLocalConformanceCheck.class, "RoleNameLocalConformanceCheck", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getRoleNameLocalConformanceCheck_RoleName(), ecorePackage.getEString(), "roleName", "0", 1, 1, RoleNameLocalConformanceCheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(connectionsLocalConformanceCheckEClass, ConnectionsLocalConformanceCheck.class, "ConnectionsLocalConformanceCheck", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getConnectionsLocalConformanceCheck_NoTypeConnections(), ecorePackage.getEInt(), "noTypeConnections", "0", 1, 1, ConnectionsLocalConformanceCheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
