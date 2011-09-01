@@ -143,6 +143,8 @@
 		
 		de.uni_mannheim.informatik.swt.models.plm.PLM.Model higherModel = o.getContent().get(o.getContent().indexOf(container) - 1);
 		
+		
+		java.util.LinkedList<org.eclipse.gef.palette.ToolEntry> entries = new java.util.LinkedList<org.eclipse.gef.palette.ToolEntry>();
 		//Fill the palette
 		for (de.uni_mannheim.informatik.swt.models.plm.PLM.Element e : higherModel.getContent())
 		{
@@ -161,7 +163,7 @@
 				entry.setLargeIcon(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditorPlugin
 						.findImageDescriptor("/de.uni_mannheim.informatik.swt.gmf.plm/icons/clabject16.gif"));
 				
-				dslElementsGroup.add(entry);
+				entries.add(entry);
 			}
 			
 			//For connections we also need to have the connecting lines
@@ -179,7 +181,7 @@
 				entry.setLargeIcon(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditorPlugin
 						.findImageDescriptor("/de.uni_mannheim.informatik.swt.gmf.plm/icons/connection16.gif"));
 				
-				dslElementsGroup.add(entry);
+				entries.add(entry);
 			
 				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor.LinkToolEntry linkEntry = new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor.LinkToolEntry(
 						e.getName(),
@@ -192,9 +194,34 @@
 				linkEntry.setLargeIcon(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditorPlugin
 						.findImageDescriptor("/de.uni_mannheim.informatik.swt.gmf.plm/icons/connectionParticipant16.gif"));
 				
-				dslElementsGroup.add(linkEntry);
+				entries.add(linkEntry);
 			}
 		}
+		
+		java.util.Collections.sort(entries, new java.util.Comparator<org.eclipse.gef.palette.ToolEntry>() {
+
+			@Override
+			public int compare(org.eclipse.gef.palette.ToolEntry o1, org.eclipse.gef.palette.ToolEntry o2) {
+				//All Entities need to go to the top
+				if (o1 instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor.NodeToolEntry && ((de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor.NodeToolEntry) o1).elementTypes.contains(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.Entity_3069)){
+					//We compare to a connection node or link entry -> We want to be first
+					if (o2 instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor.NodeToolEntry && !((de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor.NodeToolEntry) o2).elementTypes.contains(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.Entity_3069)
+							|| o2 instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor.LinkToolEntry)
+						return -1;
+					//We are two Entities -> Sort by name
+					else if(o2 instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor.NodeToolEntry && ((de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor.NodeToolEntry) o2).elementTypes.contains(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.Entity_3069))
+						return (o1.getLabel().compareTo(o2.getLabel()));
+						
+				}
+				//All others get just sorted by their name
+				else
+					return o1.getLabel().compareTo(o2.getLabel());
+				
+				return 0;
+			}
+		});
+		
+		dslElementsGroup.addAll(entries);
 		
 		if (dslElementsGroup.getChildren().size() == 0)
 			dslElementsGroup.setVisible(false);
