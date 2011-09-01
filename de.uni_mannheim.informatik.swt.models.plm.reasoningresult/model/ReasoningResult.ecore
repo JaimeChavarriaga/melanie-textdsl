@@ -94,4 +94,20 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="noTypeConnections" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="0"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LocalConformanceCheck" eSuperTypes="#//CompositeCheck"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TypeFeatureCheck" eSuperTypes="#//CompositeCheck">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="NoFeatures" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="0"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FeatureSearchCheck" eSuperTypes="#//CompositeCheck">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="NoFeatures" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="0"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FeatureConformanceCheck" eSuperTypes="#//CompositeCheck"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LevelComparison" eSuperTypes="#//Check">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetLevel" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceLevel" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
 </ecore:EPackage>

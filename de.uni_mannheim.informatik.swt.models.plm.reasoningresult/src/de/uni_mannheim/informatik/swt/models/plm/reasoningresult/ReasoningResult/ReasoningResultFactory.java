@@ -152,6 +152,51 @@ public interface ReasoningResultFactory extends EFactory {
 	ConnectionsLocalConformanceCheck createConnectionsLocalConformanceCheck();
 
 	/**
+	 * Returns a new object of class '<em>Local Conformance Check</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Local Conformance Check</em>'.
+	 * @generated
+	 */
+	LocalConformanceCheck createLocalConformanceCheck();
+
+	/**
+	 * Returns a new object of class '<em>Type Feature Check</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Type Feature Check</em>'.
+	 * @generated
+	 */
+	TypeFeatureCheck createTypeFeatureCheck();
+
+	/**
+	 * Returns a new object of class '<em>Feature Search Check</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Feature Search Check</em>'.
+	 * @generated
+	 */
+	FeatureSearchCheck createFeatureSearchCheck();
+
+	/**
+	 * Returns a new object of class '<em>Feature Conformance Check</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Feature Conformance Check</em>'.
+	 * @generated
+	 */
+	FeatureConformanceCheck createFeatureConformanceCheck();
+
+	/**
+	 * Returns a new object of class '<em>Level Comparison</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Level Comparison</em>'.
+	 * @generated
+	 */
+	LevelComparison createLevelComparison();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

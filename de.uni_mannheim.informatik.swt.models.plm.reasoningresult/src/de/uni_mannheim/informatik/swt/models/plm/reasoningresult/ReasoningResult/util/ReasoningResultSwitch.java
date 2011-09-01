@@ -181,6 +181,45 @@ public class ReasoningResultSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ReasoningResultPackage.LOCAL_CONFORMANCE_CHECK: {
+				LocalConformanceCheck localConformanceCheck = (LocalConformanceCheck)theEObject;
+				T result = caseLocalConformanceCheck(localConformanceCheck);
+				if (result == null) result = caseCompositeCheck(localConformanceCheck);
+				if (result == null) result = caseCheck(localConformanceCheck);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ReasoningResultPackage.TYPE_FEATURE_CHECK: {
+				TypeFeatureCheck typeFeatureCheck = (TypeFeatureCheck)theEObject;
+				T result = caseTypeFeatureCheck(typeFeatureCheck);
+				if (result == null) result = caseCompositeCheck(typeFeatureCheck);
+				if (result == null) result = caseCheck(typeFeatureCheck);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ReasoningResultPackage.FEATURE_SEARCH_CHECK: {
+				FeatureSearchCheck featureSearchCheck = (FeatureSearchCheck)theEObject;
+				T result = caseFeatureSearchCheck(featureSearchCheck);
+				if (result == null) result = caseCompositeCheck(featureSearchCheck);
+				if (result == null) result = caseCheck(featureSearchCheck);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ReasoningResultPackage.FEATURE_CONFORMANCE_CHECK: {
+				FeatureConformanceCheck featureConformanceCheck = (FeatureConformanceCheck)theEObject;
+				T result = caseFeatureConformanceCheck(featureConformanceCheck);
+				if (result == null) result = caseCompositeCheck(featureConformanceCheck);
+				if (result == null) result = caseCheck(featureConformanceCheck);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ReasoningResultPackage.LEVEL_COMPARISON: {
+				LevelComparison levelComparison = (LevelComparison)theEObject;
+				T result = caseLevelComparison(levelComparison);
+				if (result == null) result = caseCheck(levelComparison);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -407,6 +446,81 @@ public class ReasoningResultSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseConnectionsLocalConformanceCheck(ConnectionsLocalConformanceCheck object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Local Conformance Check</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Local Conformance Check</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLocalConformanceCheck(LocalConformanceCheck object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Type Feature Check</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Type Feature Check</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTypeFeatureCheck(TypeFeatureCheck object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Feature Search Check</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Feature Search Check</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFeatureSearchCheck(FeatureSearchCheck object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Feature Conformance Check</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Feature Conformance Check</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFeatureConformanceCheck(FeatureConformanceCheck object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Level Comparison</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Level Comparison</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLevelComparison(LevelComparison object) {
 		return null;
 	}
 

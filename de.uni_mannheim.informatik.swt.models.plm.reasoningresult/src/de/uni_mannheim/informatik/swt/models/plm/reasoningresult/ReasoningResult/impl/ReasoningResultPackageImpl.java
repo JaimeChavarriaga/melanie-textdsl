@@ -15,6 +15,10 @@ import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.DatatypeComparison;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.DurabilityComparison;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ExpressedInstanceExcludedCheck;
+import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.FeatureConformanceCheck;
+import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.FeatureSearchCheck;
+import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.LevelComparison;
+import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.LocalConformanceCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MultiplicityCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MultiplicityRoleNameCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MutabilityComparison;
@@ -26,6 +30,7 @@ import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.RoleNameLocalConformanceCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.RoleNamePropertyConformanceCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.TypeConnectionSearch;
+import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.TypeFeatureCheck;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -144,6 +149,41 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 	 * @generated
 	 */
 	private EClass connectionsLocalConformanceCheckEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass localConformanceCheckEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass typeFeatureCheckEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass featureSearchCheckEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass featureConformanceCheckEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass levelComparisonEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -637,6 +677,87 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getLocalConformanceCheck() {
+		return localConformanceCheckEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getTypeFeatureCheck() {
+		return typeFeatureCheckEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTypeFeatureCheck_NoFeatures() {
+		return (EAttribute)typeFeatureCheckEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getFeatureSearchCheck() {
+		return featureSearchCheckEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getFeatureSearchCheck_NoFeatures() {
+		return (EAttribute)featureSearchCheckEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getFeatureConformanceCheck() {
+		return featureConformanceCheckEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLevelComparison() {
+		return levelComparisonEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLevelComparison_TargetLevel() {
+		return (EAttribute)levelComparisonEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLevelComparison_InstanceLevel() {
+		return (EAttribute)levelComparisonEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ReasoningResultFactory getReasoningResultFactory() {
 		return (ReasoningResultFactory)getEFactoryInstance();
 	}
@@ -721,6 +842,20 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 
 		connectionsLocalConformanceCheckEClass = createEClass(CONNECTIONS_LOCAL_CONFORMANCE_CHECK);
 		createEAttribute(connectionsLocalConformanceCheckEClass, CONNECTIONS_LOCAL_CONFORMANCE_CHECK__NO_TYPE_CONNECTIONS);
+
+		localConformanceCheckEClass = createEClass(LOCAL_CONFORMANCE_CHECK);
+
+		typeFeatureCheckEClass = createEClass(TYPE_FEATURE_CHECK);
+		createEAttribute(typeFeatureCheckEClass, TYPE_FEATURE_CHECK__NO_FEATURES);
+
+		featureSearchCheckEClass = createEClass(FEATURE_SEARCH_CHECK);
+		createEAttribute(featureSearchCheckEClass, FEATURE_SEARCH_CHECK__NO_FEATURES);
+
+		featureConformanceCheckEClass = createEClass(FEATURE_CONFORMANCE_CHECK);
+
+		levelComparisonEClass = createEClass(LEVEL_COMPARISON);
+		createEAttribute(levelComparisonEClass, LEVEL_COMPARISON__TARGET_LEVEL);
+		createEAttribute(levelComparisonEClass, LEVEL_COMPARISON__INSTANCE_LEVEL);
 	}
 
 	/**
@@ -767,6 +902,11 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 		roleNamePropertyConformanceCheckEClass.getESuperTypes().add(this.getCompositeCheck());
 		roleNameLocalConformanceCheckEClass.getESuperTypes().add(this.getCompositeCheck());
 		connectionsLocalConformanceCheckEClass.getESuperTypes().add(this.getCompositeCheck());
+		localConformanceCheckEClass.getESuperTypes().add(this.getCompositeCheck());
+		typeFeatureCheckEClass.getESuperTypes().add(this.getCompositeCheck());
+		featureSearchCheckEClass.getESuperTypes().add(this.getCompositeCheck());
+		featureConformanceCheckEClass.getESuperTypes().add(this.getCompositeCheck());
+		levelComparisonEClass.getESuperTypes().add(this.getCheck());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(reasoningResultModelEClass, ReasoningResultModel.class, "ReasoningResultModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -830,6 +970,20 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 
 		initEClass(connectionsLocalConformanceCheckEClass, ConnectionsLocalConformanceCheck.class, "ConnectionsLocalConformanceCheck", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getConnectionsLocalConformanceCheck_NoTypeConnections(), ecorePackage.getEInt(), "noTypeConnections", "0", 1, 1, ConnectionsLocalConformanceCheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(localConformanceCheckEClass, LocalConformanceCheck.class, "LocalConformanceCheck", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(typeFeatureCheckEClass, TypeFeatureCheck.class, "TypeFeatureCheck", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTypeFeatureCheck_NoFeatures(), ecorePackage.getEInt(), "NoFeatures", "0", 1, 1, TypeFeatureCheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(featureSearchCheckEClass, FeatureSearchCheck.class, "FeatureSearchCheck", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getFeatureSearchCheck_NoFeatures(), ecorePackage.getEInt(), "NoFeatures", "0", 1, 1, FeatureSearchCheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(featureConformanceCheckEClass, FeatureConformanceCheck.class, "FeatureConformanceCheck", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(levelComparisonEClass, LevelComparison.class, "LevelComparison", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLevelComparison_TargetLevel(), ecorePackage.getEInt(), "targetLevel", null, 1, 1, LevelComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLevelComparison_InstanceLevel(), ecorePackage.getEInt(), "instanceLevel", null, 1, 1, LevelComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

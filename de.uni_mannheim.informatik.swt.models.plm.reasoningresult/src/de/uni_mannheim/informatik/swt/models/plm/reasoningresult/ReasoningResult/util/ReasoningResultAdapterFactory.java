@@ -132,6 +132,26 @@ public class ReasoningResultAdapterFactory extends AdapterFactoryImpl {
 				return createConnectionsLocalConformanceCheckAdapter();
 			}
 			@Override
+			public Adapter caseLocalConformanceCheck(LocalConformanceCheck object) {
+				return createLocalConformanceCheckAdapter();
+			}
+			@Override
+			public Adapter caseTypeFeatureCheck(TypeFeatureCheck object) {
+				return createTypeFeatureCheckAdapter();
+			}
+			@Override
+			public Adapter caseFeatureSearchCheck(FeatureSearchCheck object) {
+				return createFeatureSearchCheckAdapter();
+			}
+			@Override
+			public Adapter caseFeatureConformanceCheck(FeatureConformanceCheck object) {
+				return createFeatureConformanceCheckAdapter();
+			}
+			@Override
+			public Adapter caseLevelComparison(LevelComparison object) {
+				return createLevelComparisonAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -358,6 +378,76 @@ public class ReasoningResultAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createConnectionsLocalConformanceCheckAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.LocalConformanceCheck <em>Local Conformance Check</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.LocalConformanceCheck
+	 * @generated
+	 */
+	public Adapter createLocalConformanceCheckAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.TypeFeatureCheck <em>Type Feature Check</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.TypeFeatureCheck
+	 * @generated
+	 */
+	public Adapter createTypeFeatureCheckAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.FeatureSearchCheck <em>Feature Search Check</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.FeatureSearchCheck
+	 * @generated
+	 */
+	public Adapter createFeatureSearchCheckAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.FeatureConformanceCheck <em>Feature Conformance Check</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.FeatureConformanceCheck
+	 * @generated
+	 */
+	public Adapter createFeatureConformanceCheckAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.LevelComparison <em>Level Comparison</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.LevelComparison
+	 * @generated
+	 */
+	public Adapter createLevelComparisonAdapter() {
 		return null;
 	}
 

@@ -1160,6 +1160,373 @@ public interface ReasoningResultPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.LocalConformanceCheckImpl <em>Local Conformance Check</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.LocalConformanceCheckImpl
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ReasoningResultPackageImpl#getLocalConformanceCheck()
+	 * @generated
+	 */
+	int LOCAL_CONFORMANCE_CHECK = 15;
+
+	/**
+	 * The feature id for the '<em><b>Result</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCAL_CONFORMANCE_CHECK__RESULT = COMPOSITE_CHECK__RESULT;
+
+	/**
+	 * The feature id for the '<em><b>Expression</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCAL_CONFORMANCE_CHECK__EXPRESSION = COMPOSITE_CHECK__EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Check</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCAL_CONFORMANCE_CHECK__CHECK = COMPOSITE_CHECK__CHECK;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCAL_CONFORMANCE_CHECK__NAME = COMPOSITE_CHECK__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCAL_CONFORMANCE_CHECK__SOURCE = COMPOSITE_CHECK__SOURCE;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCAL_CONFORMANCE_CHECK__TARGET = COMPOSITE_CHECK__TARGET;
+
+	/**
+	 * The number of structural features of the '<em>Local Conformance Check</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCAL_CONFORMANCE_CHECK_FEATURE_COUNT = COMPOSITE_CHECK_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.TypeFeatureCheckImpl <em>Type Feature Check</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.TypeFeatureCheckImpl
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ReasoningResultPackageImpl#getTypeFeatureCheck()
+	 * @generated
+	 */
+	int TYPE_FEATURE_CHECK = 16;
+
+	/**
+	 * The feature id for the '<em><b>Result</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_FEATURE_CHECK__RESULT = COMPOSITE_CHECK__RESULT;
+
+	/**
+	 * The feature id for the '<em><b>Expression</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_FEATURE_CHECK__EXPRESSION = COMPOSITE_CHECK__EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Check</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_FEATURE_CHECK__CHECK = COMPOSITE_CHECK__CHECK;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_FEATURE_CHECK__NAME = COMPOSITE_CHECK__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_FEATURE_CHECK__SOURCE = COMPOSITE_CHECK__SOURCE;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_FEATURE_CHECK__TARGET = COMPOSITE_CHECK__TARGET;
+
+	/**
+	 * The feature id for the '<em><b>No Features</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_FEATURE_CHECK__NO_FEATURES = COMPOSITE_CHECK_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Type Feature Check</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_FEATURE_CHECK_FEATURE_COUNT = COMPOSITE_CHECK_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.FeatureSearchCheckImpl <em>Feature Search Check</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.FeatureSearchCheckImpl
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ReasoningResultPackageImpl#getFeatureSearchCheck()
+	 * @generated
+	 */
+	int FEATURE_SEARCH_CHECK = 17;
+
+	/**
+	 * The feature id for the '<em><b>Result</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SEARCH_CHECK__RESULT = COMPOSITE_CHECK__RESULT;
+
+	/**
+	 * The feature id for the '<em><b>Expression</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SEARCH_CHECK__EXPRESSION = COMPOSITE_CHECK__EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Check</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SEARCH_CHECK__CHECK = COMPOSITE_CHECK__CHECK;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SEARCH_CHECK__NAME = COMPOSITE_CHECK__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SEARCH_CHECK__SOURCE = COMPOSITE_CHECK__SOURCE;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SEARCH_CHECK__TARGET = COMPOSITE_CHECK__TARGET;
+
+	/**
+	 * The feature id for the '<em><b>No Features</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SEARCH_CHECK__NO_FEATURES = COMPOSITE_CHECK_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Feature Search Check</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SEARCH_CHECK_FEATURE_COUNT = COMPOSITE_CHECK_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.FeatureConformanceCheckImpl <em>Feature Conformance Check</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.FeatureConformanceCheckImpl
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ReasoningResultPackageImpl#getFeatureConformanceCheck()
+	 * @generated
+	 */
+	int FEATURE_CONFORMANCE_CHECK = 18;
+
+	/**
+	 * The feature id for the '<em><b>Result</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_CONFORMANCE_CHECK__RESULT = COMPOSITE_CHECK__RESULT;
+
+	/**
+	 * The feature id for the '<em><b>Expression</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_CONFORMANCE_CHECK__EXPRESSION = COMPOSITE_CHECK__EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Check</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_CONFORMANCE_CHECK__CHECK = COMPOSITE_CHECK__CHECK;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_CONFORMANCE_CHECK__NAME = COMPOSITE_CHECK__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_CONFORMANCE_CHECK__SOURCE = COMPOSITE_CHECK__SOURCE;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_CONFORMANCE_CHECK__TARGET = COMPOSITE_CHECK__TARGET;
+
+	/**
+	 * The number of structural features of the '<em>Feature Conformance Check</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_CONFORMANCE_CHECK_FEATURE_COUNT = COMPOSITE_CHECK_FEATURE_COUNT + 0;
+
+
+	/**
+	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.LevelComparisonImpl <em>Level Comparison</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.LevelComparisonImpl
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ReasoningResultPackageImpl#getLevelComparison()
+	 * @generated
+	 */
+	int LEVEL_COMPARISON = 19;
+
+	/**
+	 * The feature id for the '<em><b>Result</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LEVEL_COMPARISON__RESULT = CHECK__RESULT;
+
+	/**
+	 * The feature id for the '<em><b>Expression</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LEVEL_COMPARISON__EXPRESSION = CHECK__EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Target Level</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LEVEL_COMPARISON__TARGET_LEVEL = CHECK_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Instance Level</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LEVEL_COMPARISON__INSTANCE_LEVEL = CHECK_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Level Comparison</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LEVEL_COMPARISON_FEATURE_COUNT = CHECK_FEATURE_COUNT + 2;
+
+
+	/**
 	 * Returns the meta object for class '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultModel <em>Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1662,6 +2029,100 @@ public interface ReasoningResultPackage extends EPackage {
 	EAttribute getConnectionsLocalConformanceCheck_NoTypeConnections();
 
 	/**
+	 * Returns the meta object for class '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.LocalConformanceCheck <em>Local Conformance Check</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Local Conformance Check</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.LocalConformanceCheck
+	 * @generated
+	 */
+	EClass getLocalConformanceCheck();
+
+	/**
+	 * Returns the meta object for class '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.TypeFeatureCheck <em>Type Feature Check</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Type Feature Check</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.TypeFeatureCheck
+	 * @generated
+	 */
+	EClass getTypeFeatureCheck();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.TypeFeatureCheck#getNoFeatures <em>No Features</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>No Features</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.TypeFeatureCheck#getNoFeatures()
+	 * @see #getTypeFeatureCheck()
+	 * @generated
+	 */
+	EAttribute getTypeFeatureCheck_NoFeatures();
+
+	/**
+	 * Returns the meta object for class '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.FeatureSearchCheck <em>Feature Search Check</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Feature Search Check</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.FeatureSearchCheck
+	 * @generated
+	 */
+	EClass getFeatureSearchCheck();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.FeatureSearchCheck#getNoFeatures <em>No Features</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>No Features</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.FeatureSearchCheck#getNoFeatures()
+	 * @see #getFeatureSearchCheck()
+	 * @generated
+	 */
+	EAttribute getFeatureSearchCheck_NoFeatures();
+
+	/**
+	 * Returns the meta object for class '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.FeatureConformanceCheck <em>Feature Conformance Check</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Feature Conformance Check</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.FeatureConformanceCheck
+	 * @generated
+	 */
+	EClass getFeatureConformanceCheck();
+
+	/**
+	 * Returns the meta object for class '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.LevelComparison <em>Level Comparison</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Level Comparison</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.LevelComparison
+	 * @generated
+	 */
+	EClass getLevelComparison();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.LevelComparison#getTargetLevel <em>Target Level</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Target Level</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.LevelComparison#getTargetLevel()
+	 * @see #getLevelComparison()
+	 * @generated
+	 */
+	EAttribute getLevelComparison_TargetLevel();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.LevelComparison#getInstanceLevel <em>Instance Level</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Instance Level</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.LevelComparison#getInstanceLevel()
+	 * @see #getLevelComparison()
+	 * @generated
+	 */
+	EAttribute getLevelComparison_InstanceLevel();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2088,6 +2549,88 @@ public interface ReasoningResultPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CONNECTIONS_LOCAL_CONFORMANCE_CHECK__NO_TYPE_CONNECTIONS = eINSTANCE.getConnectionsLocalConformanceCheck_NoTypeConnections();
+
+		/**
+		 * The meta object literal for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.LocalConformanceCheckImpl <em>Local Conformance Check</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.LocalConformanceCheckImpl
+		 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ReasoningResultPackageImpl#getLocalConformanceCheck()
+		 * @generated
+		 */
+		EClass LOCAL_CONFORMANCE_CHECK = eINSTANCE.getLocalConformanceCheck();
+
+		/**
+		 * The meta object literal for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.TypeFeatureCheckImpl <em>Type Feature Check</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.TypeFeatureCheckImpl
+		 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ReasoningResultPackageImpl#getTypeFeatureCheck()
+		 * @generated
+		 */
+		EClass TYPE_FEATURE_CHECK = eINSTANCE.getTypeFeatureCheck();
+
+		/**
+		 * The meta object literal for the '<em><b>No Features</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TYPE_FEATURE_CHECK__NO_FEATURES = eINSTANCE.getTypeFeatureCheck_NoFeatures();
+
+		/**
+		 * The meta object literal for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.FeatureSearchCheckImpl <em>Feature Search Check</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.FeatureSearchCheckImpl
+		 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ReasoningResultPackageImpl#getFeatureSearchCheck()
+		 * @generated
+		 */
+		EClass FEATURE_SEARCH_CHECK = eINSTANCE.getFeatureSearchCheck();
+
+		/**
+		 * The meta object literal for the '<em><b>No Features</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FEATURE_SEARCH_CHECK__NO_FEATURES = eINSTANCE.getFeatureSearchCheck_NoFeatures();
+
+		/**
+		 * The meta object literal for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.FeatureConformanceCheckImpl <em>Feature Conformance Check</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.FeatureConformanceCheckImpl
+		 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ReasoningResultPackageImpl#getFeatureConformanceCheck()
+		 * @generated
+		 */
+		EClass FEATURE_CONFORMANCE_CHECK = eINSTANCE.getFeatureConformanceCheck();
+
+		/**
+		 * The meta object literal for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.LevelComparisonImpl <em>Level Comparison</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.LevelComparisonImpl
+		 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ReasoningResultPackageImpl#getLevelComparison()
+		 * @generated
+		 */
+		EClass LEVEL_COMPARISON = eINSTANCE.getLevelComparison();
+
+		/**
+		 * The meta object literal for the '<em><b>Target Level</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LEVEL_COMPARISON__TARGET_LEVEL = eINSTANCE.getLevelComparison_TargetLevel();
+
+		/**
+		 * The meta object literal for the '<em><b>Instance Level</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LEVEL_COMPARISON__INSTANCE_LEVEL = eINSTANCE.getLevelComparison_InstanceLevel();
 
 	}
 

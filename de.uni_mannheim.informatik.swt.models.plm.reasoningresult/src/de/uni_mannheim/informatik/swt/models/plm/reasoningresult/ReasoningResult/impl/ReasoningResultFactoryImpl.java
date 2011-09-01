@@ -74,6 +74,11 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 			case ReasoningResultPackage.ROLE_NAME_PROPERTY_CONFORMANCE_CHECK: return createRoleNamePropertyConformanceCheck();
 			case ReasoningResultPackage.ROLE_NAME_LOCAL_CONFORMANCE_CHECK: return createRoleNameLocalConformanceCheck();
 			case ReasoningResultPackage.CONNECTIONS_LOCAL_CONFORMANCE_CHECK: return createConnectionsLocalConformanceCheck();
+			case ReasoningResultPackage.LOCAL_CONFORMANCE_CHECK: return createLocalConformanceCheck();
+			case ReasoningResultPackage.TYPE_FEATURE_CHECK: return createTypeFeatureCheck();
+			case ReasoningResultPackage.FEATURE_SEARCH_CHECK: return createFeatureSearchCheck();
+			case ReasoningResultPackage.FEATURE_CONFORMANCE_CHECK: return createFeatureConformanceCheck();
+			case ReasoningResultPackage.LEVEL_COMPARISON: return createLevelComparison();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -217,6 +222,56 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 	public ConnectionsLocalConformanceCheck createConnectionsLocalConformanceCheck() {
 		ConnectionsLocalConformanceCheckImpl connectionsLocalConformanceCheck = new ConnectionsLocalConformanceCheckImpl();
 		return connectionsLocalConformanceCheck;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LocalConformanceCheck createLocalConformanceCheck() {
+		LocalConformanceCheckImpl localConformanceCheck = new LocalConformanceCheckImpl();
+		return localConformanceCheck;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TypeFeatureCheck createTypeFeatureCheck() {
+		TypeFeatureCheckImpl typeFeatureCheck = new TypeFeatureCheckImpl();
+		return typeFeatureCheck;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public FeatureSearchCheck createFeatureSearchCheck() {
+		FeatureSearchCheckImpl featureSearchCheck = new FeatureSearchCheckImpl();
+		return featureSearchCheck;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public FeatureConformanceCheck createFeatureConformanceCheck() {
+		FeatureConformanceCheckImpl featureConformanceCheck = new FeatureConformanceCheckImpl();
+		return featureConformanceCheck;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LevelComparison createLevelComparison() {
+		LevelComparisonImpl levelComparison = new LevelComparisonImpl();
+		return levelComparison;
 	}
 
 	/**
