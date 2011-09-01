@@ -96,8 +96,11 @@ public class ReasoningService implements IReasoningService {
 			if (checkStack.empty()) { //the reasoning request is now finished, we have the root check
 				rrm.getCheck().add(check);
 			}
+		} else if(check instanceof CompositeCheck) {
+			System.out.println("deRegisterCheck failed. Current Top: " + checkStack.peek().getExpression() + ". Asked: " + check.getExpression());
 		} else {
-			System.out.println("deRegisterCheck failed. Current Top: " + checkStack.peek() + ". Asked: " + check);
+//			it was not a composite check, so it cannot be on the stack. very normal situation
+			System.out.println("Finished leaf check " + check.getExpression());
 		}
 	}
 	

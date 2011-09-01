@@ -74,11 +74,13 @@ public class LocalConformsCommand extends AbstractHandler {
 			boolean found = instance.getRoleName().contains(rN);
 			if (!found) {
 				reasoner.deRegisterCheck(roleNameCheck);
+				reasoner.deRegisterCheck(roleCheck);
 				reasoner.deRegisterCheck(check);
 				return false;
 			} 
 			if (! (instance.isNavigableForRoleName(rN) == (type.isNavigableForRoleName(rN)))) {
 				reasoner.deRegisterCheck(roleNameCheck);
+				reasoner.deRegisterCheck(roleCheck);
 				reasoner.deRegisterCheck(check);
 				return false;
 			}
@@ -94,9 +96,12 @@ public class LocalConformsCommand extends AbstractHandler {
 	
 	public boolean localConformsClabject(Clabject type, Clabject instance) {
 		LocalConformanceCheck check = ReasoningResultFactory.eINSTANCE.createLocalConformanceCheck();
+		reasoner.registerCheck(check);
+		check.setExpression(instance.getName() + ".localConformsClabject(" + type.getName() + ")");
 		LevelComparison levelC = ReasoningResultFactory.eINSTANCE.createLevelComparison();
 		levelC.setTargetLevel(type.getLevel());
 		levelC.setInstanceLevel(instance.getLevel());
+		levelC.setExpression(instance.getName() + ".level - 1 = " + type.getName() + ".level");
 		reasoner.registerCheck(levelC);
 		if (type.getLevel() + 1 != instance.getLevel()) {
 			reasoner.deRegisterCheck(levelC);
@@ -107,23 +112,27 @@ public class LocalConformsCommand extends AbstractHandler {
 		levelC.setResult(true);
 		TypeFeatureCheck featureC = ReasoningResultFactory.eINSTANCE.createTypeFeatureCheck();
 		reasoner.registerCheck(featureC);
+		featureC.setExpression("forall pi_t in " + type.getName() + ".getAllFeatures(): pi.durability > 0: exists pi_i in " + instance.getName()+".getAllFeatures() : pi_i.conforms(pi_t)");
 		for (Feature current: type.getAllFeatures()) {
-			featureC.setNoFeatures(featureC.getNoFeatures() + 1);
-			boolean found = false;
-			FeatureSearchCheck featSearchC = ReasoningResultFactory.eINSTANCE.createFeatureSearchCheck();
-			reasoner.registerCheck(featSearchC);
-			for (Feature possible : instance.getAllFeatures()) {
-				featSearchC.setNoFeatures(featSearchC.getNoFeatures() + 1);
-				if (reasoner.run(IReasoningService.FEATURE_CONFORMS, new Object[]{current, possible})) {
-					found = true;
-					break;
+			if (current.getDurability() > 0) {
+				featureC.setNoFeatures(featureC.getNoFeatures() + 1);
+				boolean found = false;
+				FeatureSearchCheck featSearchC = ReasoningResultFactory.eINSTANCE.createFeatureSearchCheck();
+				reasoner.registerCheck(featSearchC);
+				featSearchC.setExpression("exists pi_i in " + instance.getName()+".getAllFeatures() : pi_i.conforms("+type.getName() + "." + current.getName()+")");
+				for (Feature possible : instance.getAllFeatures()) {
+					featSearchC.setNoFeatures(featSearchC.getNoFeatures() + 1);
+					if (reasoner.run(IReasoningService.FEATURE_CONFORMS, new Object[]{current, possible})) {
+						found = true;
+						break;
+					}
 				}
-			}
-			reasoner.deRegisterCheck(featSearchC);
-			if (!found) {
-				reasoner.deRegisterCheck(featureC);
-				reasoner.deRegisterCheck(check);
-				return false;
+				reasoner.deRegisterCheck(featSearchC);
+				if (!found) {
+					reasoner.deRegisterCheck(featureC);
+					reasoner.deRegisterCheck(check);
+					return false;
+				}
 			}
 		}
 		featureC.setResult(true);
