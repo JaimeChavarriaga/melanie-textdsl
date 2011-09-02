@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
  *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.MultiplicityRoleNameCheckImpl#getLower <em>Lower</em>}</li>
  *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.MultiplicityRoleNameCheckImpl#getUpper <em>Upper</em>}</li>
  *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.MultiplicityRoleNameCheckImpl#getCounts <em>Counts</em>}</li>
+ *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.MultiplicityRoleNameCheckImpl#getRoleName <em>Role Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -86,6 +87,26 @@ public class MultiplicityRoleNameCheckImpl extends CompositeCheckImpl implements
 	 * @ordered
 	 */
 	protected EList<Integer> counts;
+
+	/**
+	 * The default value of the '{@link #getRoleName() <em>Role Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRoleName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ROLE_NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getRoleName() <em>Role Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRoleName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String roleName = ROLE_NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -165,6 +186,27 @@ public class MultiplicityRoleNameCheckImpl extends CompositeCheckImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getRoleName() {
+		return roleName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRoleName(String newRoleName) {
+		String oldRoleName = roleName;
+		roleName = newRoleName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ReasoningResultPackage.MULTIPLICITY_ROLE_NAME_CHECK__ROLE_NAME, oldRoleName, roleName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -174,6 +216,8 @@ public class MultiplicityRoleNameCheckImpl extends CompositeCheckImpl implements
 				return getUpper();
 			case ReasoningResultPackage.MULTIPLICITY_ROLE_NAME_CHECK__COUNTS:
 				return getCounts();
+			case ReasoningResultPackage.MULTIPLICITY_ROLE_NAME_CHECK__ROLE_NAME:
+				return getRoleName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -197,6 +241,9 @@ public class MultiplicityRoleNameCheckImpl extends CompositeCheckImpl implements
 				getCounts().clear();
 				getCounts().addAll((Collection<? extends Integer>)newValue);
 				return;
+			case ReasoningResultPackage.MULTIPLICITY_ROLE_NAME_CHECK__ROLE_NAME:
+				setRoleName((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -218,6 +265,9 @@ public class MultiplicityRoleNameCheckImpl extends CompositeCheckImpl implements
 			case ReasoningResultPackage.MULTIPLICITY_ROLE_NAME_CHECK__COUNTS:
 				getCounts().clear();
 				return;
+			case ReasoningResultPackage.MULTIPLICITY_ROLE_NAME_CHECK__ROLE_NAME:
+				setRoleName(ROLE_NAME_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -236,6 +286,8 @@ public class MultiplicityRoleNameCheckImpl extends CompositeCheckImpl implements
 				return upper != UPPER_EDEFAULT;
 			case ReasoningResultPackage.MULTIPLICITY_ROLE_NAME_CHECK__COUNTS:
 				return counts != null && !counts.isEmpty();
+			case ReasoningResultPackage.MULTIPLICITY_ROLE_NAME_CHECK__ROLE_NAME:
+				return ROLE_NAME_EDEFAULT == null ? roleName != null : !ROLE_NAME_EDEFAULT.equals(roleName);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -256,6 +308,8 @@ public class MultiplicityRoleNameCheckImpl extends CompositeCheckImpl implements
 		result.append(upper);
 		result.append(", counts: ");
 		result.append(counts);
+		result.append(", roleName: ");
+		result.append(roleName);
 		result.append(')');
 		return result.toString();
 	}

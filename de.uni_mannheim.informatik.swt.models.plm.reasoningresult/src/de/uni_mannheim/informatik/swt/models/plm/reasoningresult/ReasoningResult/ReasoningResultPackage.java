@@ -983,13 +983,22 @@ public interface ReasoningResultPackage extends EPackage {
 	int MULTIPLICITY_ROLE_NAME_CHECK__COUNTS = COMPOSITE_CHECK_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Role Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLICITY_ROLE_NAME_CHECK__ROLE_NAME = COMPOSITE_CHECK_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Multiplicity Role Name Check</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MULTIPLICITY_ROLE_NAME_CHECK_FEATURE_COUNT = COMPOSITE_CHECK_FEATURE_COUNT + 3;
+	int MULTIPLICITY_ROLE_NAME_CHECK_FEATURE_COUNT = COMPOSITE_CHECK_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Multiplicity Role Name Check</em>' class.
@@ -2200,6 +2209,17 @@ public interface ReasoningResultPackage extends EPackage {
 	EAttribute getMultiplicityRoleNameCheck_Counts();
 
 	/**
+	 * Returns the meta object for the attribute '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MultiplicityRoleNameCheck#getRoleName <em>Role Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Role Name</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MultiplicityRoleNameCheck#getRoleName()
+	 * @see #getMultiplicityRoleNameCheck()
+	 * @generated
+	 */
+	EAttribute getMultiplicityRoleNameCheck_RoleName();
+
+	/**
 	 * Returns the meta object for class '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.RoleNamePropertyConformanceCheck <em>Role Name Property Conformance Check</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2778,6 +2798,14 @@ public interface ReasoningResultPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute MULTIPLICITY_ROLE_NAME_CHECK__COUNTS = eINSTANCE.getMultiplicityRoleNameCheck_Counts();
+
+		/**
+		 * The meta object literal for the '<em><b>Role Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MULTIPLICITY_ROLE_NAME_CHECK__ROLE_NAME = eINSTANCE.getMultiplicityRoleNameCheck_RoleName();
 
 		/**
 		 * The meta object literal for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.RoleNamePropertyConformanceCheckImpl <em>Role Name Property Conformance Check</em>}' class.

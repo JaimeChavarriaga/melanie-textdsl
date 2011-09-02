@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MultiplicityRoleNameCheck#getLower <em>Lower</em>}</li>
  *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MultiplicityRoleNameCheck#getUpper <em>Upper</em>}</li>
  *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MultiplicityRoleNameCheck#getCounts <em>Counts</em>}</li>
+ *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MultiplicityRoleNameCheck#getRoleName <em>Role Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -96,5 +97,31 @@ public interface MultiplicityRoleNameCheck extends CompositeCheck {
 	 * @generated
 	 */
 	EList<Integer> getCounts();
+
+	/**
+	 * Returns the value of the '<em><b>Role Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Role Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Role Name</em>' attribute.
+	 * @see #setRoleName(String)
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultPackage#getMultiplicityRoleNameCheck_RoleName()
+	 * @model required="true"
+	 * @generated
+	 */
+	String getRoleName();
+
+	/**
+	 * Sets the value of the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MultiplicityRoleNameCheck#getRoleName <em>Role Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Role Name</em>' attribute.
+	 * @see #getRoleName()
+	 * @generated
+	 */
+	void setRoleName(String value);
 
 } // MultiplicityRoleNameCheck

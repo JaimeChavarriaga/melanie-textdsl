@@ -613,6 +613,15 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getMultiplicityRoleNameCheck_RoleName() {
+		return (EAttribute)multiplicityRoleNameCheckEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getRoleNamePropertyConformanceCheck() {
 		return roleNamePropertyConformanceCheckEClass;
 	}
@@ -875,6 +884,7 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 		createEAttribute(multiplicityRoleNameCheckEClass, MULTIPLICITY_ROLE_NAME_CHECK__LOWER);
 		createEAttribute(multiplicityRoleNameCheckEClass, MULTIPLICITY_ROLE_NAME_CHECK__UPPER);
 		createEAttribute(multiplicityRoleNameCheckEClass, MULTIPLICITY_ROLE_NAME_CHECK__COUNTS);
+		createEAttribute(multiplicityRoleNameCheckEClass, MULTIPLICITY_ROLE_NAME_CHECK__ROLE_NAME);
 
 		roleNamePropertyConformanceCheckEClass = createEClass(ROLE_NAME_PROPERTY_CONFORMANCE_CHECK);
 		createEAttribute(roleNamePropertyConformanceCheckEClass, ROLE_NAME_PROPERTY_CONFORMANCE_CHECK__ROLE_NAME);
@@ -1009,6 +1019,7 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 		initEAttribute(getMultiplicityRoleNameCheck_Lower(), ecorePackage.getEInt(), "lower", "0", 1, 1, MultiplicityRoleNameCheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMultiplicityRoleNameCheck_Upper(), ecorePackage.getEInt(), "upper", "-1", 1, 1, MultiplicityRoleNameCheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMultiplicityRoleNameCheck_Counts(), ecorePackage.getEInt(), "counts", null, 0, -1, MultiplicityRoleNameCheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMultiplicityRoleNameCheck_RoleName(), ecorePackage.getEString(), "roleName", null, 1, 1, MultiplicityRoleNameCheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(roleNamePropertyConformanceCheckEClass, RoleNamePropertyConformanceCheck.class, "RoleNamePropertyConformanceCheck", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRoleNamePropertyConformanceCheck_RoleName(), ecorePackage.getEString(), "roleName", "0", 1, 1, RoleNamePropertyConformanceCheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

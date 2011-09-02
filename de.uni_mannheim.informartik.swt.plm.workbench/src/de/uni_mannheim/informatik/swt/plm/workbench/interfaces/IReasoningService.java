@@ -34,11 +34,7 @@ import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult
  */
 public interface IReasoningService {
 	
-	public void registerCheck(Check check);
-	
-	public void deRegisterCheck(Check check);
-	
-	public CompositeCheck createRegisterCompositeCheck(String name, Element source, Element target, String expression);
+	public CompositeCheck createCompositeCheck(String name, Element source, Element target, String expression);
 	
 	/**
 	 * Adds a property change listener which listens to changes on reasoning

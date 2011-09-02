@@ -77,6 +77,8 @@
         defaultValueLiteral="-1"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="counts" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="roleName" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RoleNamePropertyConformanceCheck" eSuperTypes="#//CompositeCheck">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="roleName" lowerBound="1"

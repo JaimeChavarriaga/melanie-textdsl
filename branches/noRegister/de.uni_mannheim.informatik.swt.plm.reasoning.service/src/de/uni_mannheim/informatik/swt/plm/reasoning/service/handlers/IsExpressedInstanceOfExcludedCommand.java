@@ -12,8 +12,6 @@ package de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers;
 
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
 import org.eclipse.core.commands.AbstractHandler;
@@ -21,12 +19,10 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Entity;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Generalization;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.MultipleSpecialization;
+import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.CompositeCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ExpressedInstanceExcludedCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultFactory;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultModel;
@@ -48,14 +44,19 @@ public class IsExpressedInstanceOfExcludedCommand extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		Clabject type = (Clabject)event.getParameters().get("type");
 		Clabject instance = (Clabject)event.getParameters().get("instance");
+		ReasoningResultModel resultModel = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();
+		CompositeCheck check = compute(type, instance);
+		reasoner.getReasoningHistory().add(resultModel);
+		return check.isResult();
+	}
+	
+	protected CompositeCheck compute(Clabject type, Clabject instance) {
 		return isExpressedInstanceOfExcluded(type, instance);
 	}
 	
-	public boolean isExpressedInstanceOfExcluded(Clabject type,
+	private CompositeCheck isExpressedInstanceOfExcluded(Clabject type,
 			final Clabject instance) {
-		ExpressedInstanceExcludedCheck check = ReasoningResultFactory.eINSTANCE.createExpressedInstanceExcludedCheck();
-		reasoner.registerCheck(check);
-		
+		ExpressedInstanceExcludedCheck result = ReasoningResultFactory.eINSTANCE.createExpressedInstanceExcludedCheck();
 		Set<Instantiation> classifications = new HashSet<Instantiation>(instance.getModel().getAllInstantiations());
 		classifications = (Set<Instantiation>) ReasoningServiceUtil.filter(classifications, new Predicate<Instantiation>() {
 			public boolean apply(Instantiation inst) {
@@ -73,7 +74,7 @@ public class IsExpressedInstanceOfExcludedCommand extends AbstractHandler {
 			expressedTypes.add(current);
 			expressedTypes.addAll(current.getModelSupertypes());
 		}
-		check.getExpressedTypes().addAll(expressedTypes);
+		result.getExpressedTypes().addAll(expressedTypes);
 		
 		Set<Clabject> disjointTwins = new HashSet<Clabject>();
 		Set<Generalization> generalizationsA = new HashSet<Generalization>(type.getModel().getAllGeneralizations());
@@ -98,20 +99,20 @@ public class IsExpressedInstanceOfExcludedCommand extends AbstractHandler {
 		}
 		disjointTwins = new HashSet<Clabject>(temp);
 		disjointTwins.removeAll(expressedTypes);
-		check.getDisjointSiblings().addAll(disjointTwins);
+		result.getDisjointSiblings().addAll(disjointTwins);
 		
 		Set<Clabject> conflicts = new HashSet<Clabject>();
 		conflicts.add(type);
 		conflicts.addAll(type.getModelSupertypes());
-		check.getAffectedTypes().addAll(conflicts);
-		check.getAffectedDisjointIntersection().addAll(ReasoningServiceUtil.intersect(disjointTwins, conflicts));
+		result.getAffectedTypes().addAll(conflicts);
+		result.getAffectedDisjointIntersection().addAll(ReasoningServiceUtil.intersect(disjointTwins, conflicts));
 		if (ReasoningServiceUtil.intersect(disjointTwins, conflicts).size() > 0){
-			reasoner.deRegisterCheck(check);
-			check.setResult(true);
-			return true;
+			result.setResult(true);
+			return result;
 		}
 		
-		reasoner.deRegisterCheck(check);
-		return false;
+		return result;
 	}
+
+	
 }
