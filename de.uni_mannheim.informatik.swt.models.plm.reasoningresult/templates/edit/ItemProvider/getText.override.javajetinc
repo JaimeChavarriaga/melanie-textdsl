@@ -1,6 +1,7 @@
 <%@ jet 
     imports="java.util.* org.eclipse.emf.codegen.ecore.genmodel.*"%>
-<%if (genClass.isMapEntry()) {%>
+    
+    <%if (genClass.isMapEntry()) {%>
 		<%=genClass.getImportedInterfaceName()%><%if (genModel.useGenerics()) {%><?, ?><%}%> <%=genClass.getSafeUncapName()%> = (<%=genClass.getImportedInterfaceName()%><%if (genModel.useGenerics()) {%><?, ?><%}%>)object;
   <%if (!genClass.getMapEntryKeyFeature().isPropertyMultiLine() && !genClass.getMapEntryValueFeature().isPropertyMultiLine()) {%>
 		return "" + <%=genClass.getSafeUncapName()%>.getKey() + " -> " + <%=genClass.getSafeUncapName()%>.getValue();<%=genModel.getNonNLS()%><%=genModel.getNonNLS(2)%>
@@ -36,16 +37,26 @@
       <%}%>
 		String label = labelValue == null ? null : labelValue.toString();
     <%}%>
-		return label == null || label.length() == 0 ?
+    	
+    	<%if ( genClass.getEcoreClass().getName().equals("CompositeCheck")
+    			|| genClass.getEcoreClass().getName().equals("AllConnectionsCheck")
+				|| genClass.getEcoreClass().getName().equals("TypeConnectionSearch")
+				|| genClass.getEcoreClass().getName().equals("ExpressedInstanceExcludedCheck")
+				|| genClass.getEcoreClass().getName().equals("MultiplicityCheck")
+				|| genClass.getEcoreClass().getName().equals("MultiplicityRoleNameCheck")
+				|| genClass.getEcoreClass().getName().equals("RoleNamePropertyConformanceCheck")
+				|| genClass.getEcoreClass().getName().equals("RoleNameLocalConformanceCheck")
+				|| genClass.getEcoreClass().getName().equals("ConnectionsLocalConformanceCheck") 
+    		) {%>
+				return label == null || label.length() == 0 ?
 			getString("_UI_<%=genClass.getName()%>_type") :<%=genModel.getNonNLS()%>
-			//***********************************
-			//Customized Code BEGIN
-			//***********************************
-			/*getString("_UI_<%=genClass.getName()%>_type") + " " +*/ label;<%=genModel.getNonNLS()%><%=genModel.getNonNLS(2)%>
-			//***********************************
-			//Customized Code END
-			//***********************************
+			label;<%=genModel.getNonNLS()%><%=genModel.getNonNLS(2)%>
+		<%} else {%>
+			return label == null || label.length() == 0 ?
+				getString("_UI_<%=genClass.getName()%>_type") :<%=genModel.getNonNLS()%>
+				getString("_UI_<%=genClass.getName()%>_type") + " " + label;<%=genModel.getNonNLS()%><%=genModel.getNonNLS(2)%>
+		<%}%>
   <%}%>
 <%} else {%>
 		return getString("_UI_<%=genClass.getName()%>_type");<%=genModel.getNonNLS()%>
-<%}%>
+<%}%> 

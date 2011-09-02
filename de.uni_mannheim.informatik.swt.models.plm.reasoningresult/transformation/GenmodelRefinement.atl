@@ -36,6 +36,8 @@ rule RefineGenModel{
 		s : genmodel!GenModel
 	to
 		o : genmodel!GenModel(
-			operationReflection <- true
+			operationReflection <- true,
+			dynamicTemplates <- true,
+			templateDirectory <- 'de.uni_mannheim.informatik.swt.models.plm.reasoningresult/templates'
 		)
 }

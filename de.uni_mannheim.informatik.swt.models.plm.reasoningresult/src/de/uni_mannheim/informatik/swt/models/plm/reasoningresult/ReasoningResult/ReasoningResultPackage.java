@@ -97,6 +97,15 @@ public interface ReasoningResultPackage extends EPackage {
 	int REASONING_RESULT_MODEL_FEATURE_COUNT = 2;
 
 	/**
+	 * The number of operations of the '<em>Model</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REASONING_RESULT_MODEL_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.CheckImpl <em>Check</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -132,6 +141,15 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @ordered
 	 */
 	int CHECK_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Check</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHECK_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.CompositeCheckImpl <em>Composite Check</em>}' class.
@@ -207,6 +225,15 @@ public interface ReasoningResultPackage extends EPackage {
 	int COMPOSITE_CHECK_FEATURE_COUNT = CHECK_FEATURE_COUNT + 4;
 
 	/**
+	 * The number of operations of the '<em>Composite Check</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_CHECK_OPERATION_COUNT = CHECK_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.NameComparisonImpl <em>Name Comparison</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -260,6 +287,15 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @ordered
 	 */
 	int NAME_COMPARISON_FEATURE_COUNT = CHECK_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Name Comparison</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAME_COMPARISON_OPERATION_COUNT = CHECK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.DurabilityComparisonImpl <em>Durability Comparison</em>}' class.
@@ -317,6 +353,15 @@ public interface ReasoningResultPackage extends EPackage {
 	int DURABILITY_COMPARISON_FEATURE_COUNT = CHECK_FEATURE_COUNT + 2;
 
 	/**
+	 * The number of operations of the '<em>Durability Comparison</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DURABILITY_COMPARISON_OPERATION_COUNT = CHECK_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.MutabilityComparisonImpl <em>Mutability Comparison</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -370,6 +415,15 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @ordered
 	 */
 	int MUTABILITY_COMPARISON_FEATURE_COUNT = CHECK_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Mutability Comparison</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MUTABILITY_COMPARISON_OPERATION_COUNT = CHECK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.DatatypeComparisonImpl <em>Datatype Comparison</em>}' class.
@@ -426,6 +480,15 @@ public interface ReasoningResultPackage extends EPackage {
 	 */
 	int DATATYPE_COMPARISON_FEATURE_COUNT = CHECK_FEATURE_COUNT + 2;
 
+
+	/**
+	 * The number of operations of the '<em>Datatype Comparison</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATATYPE_COMPARISON_OPERATION_COUNT = CHECK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.AllConnectionsCheckImpl <em>All Connections Check</em>}' class.
@@ -508,6 +571,15 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @ordered
 	 */
 	int ALL_CONNECTIONS_CHECK_FEATURE_COUNT = COMPOSITE_CHECK_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>All Connections Check</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALL_CONNECTIONS_CHECK_OPERATION_COUNT = COMPOSITE_CHECK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.TypeConnectionSearchImpl <em>Type Connection Search</em>}' class.
@@ -599,6 +671,15 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @ordered
 	 */
 	int TYPE_CONNECTION_SEARCH_FEATURE_COUNT = COMPOSITE_CHECK_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Type Connection Search</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_CONNECTION_SEARCH_OPERATION_COUNT = COMPOSITE_CHECK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ExpressedInstanceExcludedCheckImpl <em>Expressed Instance Excluded Check</em>}' class.
@@ -711,6 +792,15 @@ public interface ReasoningResultPackage extends EPackage {
 
 
 	/**
+	 * The number of operations of the '<em>Expressed Instance Excluded Check</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPRESSED_INSTANCE_EXCLUDED_CHECK_OPERATION_COUNT = COMPOSITE_CHECK_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.MultiplicityCheckImpl <em>Multiplicity Check</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -791,6 +881,15 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @ordered
 	 */
 	int MULTIPLICITY_CHECK_FEATURE_COUNT = COMPOSITE_CHECK_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Multiplicity Check</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLICITY_CHECK_OPERATION_COUNT = COMPOSITE_CHECK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.MultiplicityRoleNameCheckImpl <em>Multiplicity Role Name Check</em>}' class.
@@ -891,6 +990,15 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @ordered
 	 */
 	int MULTIPLICITY_ROLE_NAME_CHECK_FEATURE_COUNT = COMPOSITE_CHECK_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of operations of the '<em>Multiplicity Role Name Check</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLICITY_ROLE_NAME_CHECK_OPERATION_COUNT = COMPOSITE_CHECK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.RoleNamePropertyConformanceCheckImpl <em>Role Name Property Conformance Check</em>}' class.
@@ -994,6 +1102,15 @@ public interface ReasoningResultPackage extends EPackage {
 
 
 	/**
+	 * The number of operations of the '<em>Role Name Property Conformance Check</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_NAME_PROPERTY_CONFORMANCE_CHECK_OPERATION_COUNT = COMPOSITE_CHECK_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.RoleNameLocalConformanceCheckImpl <em>Role Name Local Conformance Check</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1075,6 +1192,15 @@ public interface ReasoningResultPackage extends EPackage {
 	 */
 	int ROLE_NAME_LOCAL_CONFORMANCE_CHECK_FEATURE_COUNT = COMPOSITE_CHECK_FEATURE_COUNT + 1;
 
+
+	/**
+	 * The number of operations of the '<em>Role Name Local Conformance Check</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_NAME_LOCAL_CONFORMANCE_CHECK_OPERATION_COUNT = COMPOSITE_CHECK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ConnectionsLocalConformanceCheckImpl <em>Connections Local Conformance Check</em>}' class.
@@ -1160,7 +1286,21 @@ public interface ReasoningResultPackage extends EPackage {
 
 
 	/**
+<<<<<<< .mine
+	 * The number of operations of the '<em>Connections Local Conformance Check</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTIONS_LOCAL_CONFORMANCE_CHECK_OPERATION_COUNT = COMPOSITE_CHECK_OPERATION_COUNT + 0;
+
+
+	/**
+	 * Returns the meta object for class '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultModel <em>Model</em>}'.
+=======
 	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.LocalConformanceCheckImpl <em>Local Conformance Check</em>}' class.
+>>>>>>> .r940
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.LocalConformanceCheckImpl

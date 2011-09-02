@@ -958,7 +958,7 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 		levelComparisonEClass.getESuperTypes().add(this.getCheck());
 		valueComparisonEClass.getESuperTypes().add(this.getCheck());
 
-		// Initialize classes and features; add operations and parameters
+		// Initialize classes, features, and operations; add parameters
 		initEClass(reasoningResultModelEClass, ReasoningResultModel.class, "ReasoningResultModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getReasoningResultModel_Check(), this.getCheck(), null, "check", null, 0, -1, ReasoningResultModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getReasoningResultModel_Name(), ecorePackage.getEString(), "name", null, 0, 1, ReasoningResultModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
