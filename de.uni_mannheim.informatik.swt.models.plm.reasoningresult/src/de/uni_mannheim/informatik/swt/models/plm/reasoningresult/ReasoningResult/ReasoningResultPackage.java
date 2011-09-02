@@ -1388,13 +1388,22 @@ public interface ReasoningResultPackage extends EPackage {
 	int FEATURE_SEARCH_CHECK__NO_FEATURES = COMPOSITE_CHECK_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Type Feature</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SEARCH_CHECK__TYPE_FEATURE = COMPOSITE_CHECK_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Feature Search Check</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE_SEARCH_CHECK_FEATURE_COUNT = COMPOSITE_CHECK_FEATURE_COUNT + 1;
+	int FEATURE_SEARCH_CHECK_FEATURE_COUNT = COMPOSITE_CHECK_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.FeatureConformanceCheckImpl <em>Feature Conformance Check</em>}' class.
@@ -1524,6 +1533,62 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @ordered
 	 */
 	int LEVEL_COMPARISON_FEATURE_COUNT = CHECK_FEATURE_COUNT + 2;
+
+
+	/**
+	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ValueComparisonImpl <em>Value Comparison</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ValueComparisonImpl
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ReasoningResultPackageImpl#getValueComparison()
+	 * @generated
+	 */
+	int VALUE_COMPARISON = 20;
+
+	/**
+	 * The feature id for the '<em><b>Result</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_COMPARISON__RESULT = CHECK__RESULT;
+
+	/**
+	 * The feature id for the '<em><b>Expression</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_COMPARISON__EXPRESSION = CHECK__EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_COMPARISON__SOURCE = CHECK_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_COMPARISON__TARGET = CHECK_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Value Comparison</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_COMPARISON_FEATURE_COUNT = CHECK_FEATURE_COUNT + 2;
 
 
 	/**
@@ -2081,6 +2146,17 @@ public interface ReasoningResultPackage extends EPackage {
 	EAttribute getFeatureSearchCheck_NoFeatures();
 
 	/**
+	 * Returns the meta object for the reference '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.FeatureSearchCheck#getTypeFeature <em>Type Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Type Feature</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.FeatureSearchCheck#getTypeFeature()
+	 * @see #getFeatureSearchCheck()
+	 * @generated
+	 */
+	EReference getFeatureSearchCheck_TypeFeature();
+
+	/**
 	 * Returns the meta object for class '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.FeatureConformanceCheck <em>Feature Conformance Check</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2121,6 +2197,38 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getLevelComparison_InstanceLevel();
+
+	/**
+	 * Returns the meta object for class '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ValueComparison <em>Value Comparison</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Value Comparison</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ValueComparison
+	 * @generated
+	 */
+	EClass getValueComparison();
+
+	/**
+	 * Returns the meta object for the reference '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ValueComparison#getSource <em>Source</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Source</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ValueComparison#getSource()
+	 * @see #getValueComparison()
+	 * @generated
+	 */
+	EReference getValueComparison_Source();
+
+	/**
+	 * Returns the meta object for the reference '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ValueComparison#getTarget <em>Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ValueComparison#getTarget()
+	 * @see #getValueComparison()
+	 * @generated
+	 */
+	EReference getValueComparison_Target();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -2597,6 +2705,14 @@ public interface ReasoningResultPackage extends EPackage {
 		EAttribute FEATURE_SEARCH_CHECK__NO_FEATURES = eINSTANCE.getFeatureSearchCheck_NoFeatures();
 
 		/**
+		 * The meta object literal for the '<em><b>Type Feature</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FEATURE_SEARCH_CHECK__TYPE_FEATURE = eINSTANCE.getFeatureSearchCheck_TypeFeature();
+
+		/**
 		 * The meta object literal for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.FeatureConformanceCheckImpl <em>Feature Conformance Check</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2631,6 +2747,32 @@ public interface ReasoningResultPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute LEVEL_COMPARISON__INSTANCE_LEVEL = eINSTANCE.getLevelComparison_InstanceLevel();
+
+		/**
+		 * The meta object literal for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ValueComparisonImpl <em>Value Comparison</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ValueComparisonImpl
+		 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ReasoningResultPackageImpl#getValueComparison()
+		 * @generated
+		 */
+		EClass VALUE_COMPARISON = eINSTANCE.getValueComparison();
+
+		/**
+		 * The meta object literal for the '<em><b>Source</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference VALUE_COMPARISON__SOURCE = eINSTANCE.getValueComparison_Source();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference VALUE_COMPARISON__TARGET = eINSTANCE.getValueComparison_Target();
 
 	}
 

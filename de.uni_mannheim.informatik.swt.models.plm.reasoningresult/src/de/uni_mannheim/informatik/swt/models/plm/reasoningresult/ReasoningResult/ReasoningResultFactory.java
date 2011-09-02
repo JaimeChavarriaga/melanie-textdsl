@@ -197,6 +197,15 @@ public interface ReasoningResultFactory extends EFactory {
 	LevelComparison createLevelComparison();
 
 	/**
+	 * Returns a new object of class '<em>Value Comparison</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Value Comparison</em>'.
+	 * @generated
+	 */
+	ValueComparison createValueComparison();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

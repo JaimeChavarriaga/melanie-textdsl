@@ -79,6 +79,7 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 			case ReasoningResultPackage.FEATURE_SEARCH_CHECK: return createFeatureSearchCheck();
 			case ReasoningResultPackage.FEATURE_CONFORMANCE_CHECK: return createFeatureConformanceCheck();
 			case ReasoningResultPackage.LEVEL_COMPARISON: return createLevelComparison();
+			case ReasoningResultPackage.VALUE_COMPARISON: return createValueComparison();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -272,6 +273,16 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 	public LevelComparison createLevelComparison() {
 		LevelComparisonImpl levelComparison = new LevelComparisonImpl();
 		return levelComparison;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ValueComparison createValueComparison() {
+		ValueComparisonImpl valueComparison = new ValueComparisonImpl();
+		return valueComparison;
 	}
 
 	/**

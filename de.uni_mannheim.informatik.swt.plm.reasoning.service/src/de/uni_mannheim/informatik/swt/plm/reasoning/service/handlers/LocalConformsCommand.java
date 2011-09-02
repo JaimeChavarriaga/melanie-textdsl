@@ -46,6 +46,10 @@ public class LocalConformsCommand extends AbstractHandler {
 	
 	public boolean localConforms(Clabject type, Clabject instance) {
 		LocalConformanceCheck check = ReasoningResultFactory.eINSTANCE.createLocalConformanceCheck();
+		check.setSource(instance);
+		check.setTarget(type);
+		check.setName("LocalConformance[Delegation]");
+		check.setExpression(instance.getName() + ".localConforms("+type.getName() + ")");
 		reasoner.registerCheck(check);
 		boolean result = false;
 		if (type instanceof Connection && instance instanceof Connection) {
@@ -96,6 +100,10 @@ public class LocalConformsCommand extends AbstractHandler {
 	
 	public boolean localConformsClabject(Clabject type, Clabject instance) {
 		LocalConformanceCheck check = ReasoningResultFactory.eINSTANCE.createLocalConformanceCheck();
+		check.setSource(instance);
+		check.setTarget(type);
+		check.setName("LocalConformance[Clabject]");
+		check.setExpression(instance.getName() + ".localConformsClabject("+type.getName() + ")");
 		reasoner.registerCheck(check);
 		check.setExpression(instance.getName() + ".localConformsClabject(" + type.getName() + ")");
 		LevelComparison levelC = ReasoningResultFactory.eINSTANCE.createLevelComparison();
@@ -111,6 +119,9 @@ public class LocalConformsCommand extends AbstractHandler {
 		reasoner.deRegisterCheck(levelC);
 		levelC.setResult(true);
 		TypeFeatureCheck featureC = ReasoningResultFactory.eINSTANCE.createTypeFeatureCheck();
+		featureC.setSource(instance);
+		featureC.setTarget(type);
+		featureC.setName("AllTypeFeatures");
 		reasoner.registerCheck(featureC);
 		featureC.setExpression("forall pi_t in " + type.getName() + ".getAllFeatures(): pi.durability > 0: exists pi_i in " + instance.getName()+".getAllFeatures() : pi_i.conforms(pi_t)");
 		for (Feature current: type.getAllFeatures()) {
@@ -118,6 +129,10 @@ public class LocalConformsCommand extends AbstractHandler {
 				featureC.setNoFeatures(featureC.getNoFeatures() + 1);
 				boolean found = false;
 				FeatureSearchCheck featSearchC = ReasoningResultFactory.eINSTANCE.createFeatureSearchCheck();
+				featSearchC.setSource(instance);
+				featSearchC.setTarget(type);
+				featSearchC.setTypeFeature(current);
+				featSearchC.setName("SearchTypeFeature " + current.getName());
 				reasoner.registerCheck(featSearchC);
 				featSearchC.setExpression("exists pi_i in " + instance.getName()+".getAllFeatures() : pi_i.conforms("+type.getName() + "." + current.getName()+")");
 				for (Feature possible : instance.getAllFeatures()) {
@@ -133,6 +148,7 @@ public class LocalConformsCommand extends AbstractHandler {
 					reasoner.deRegisterCheck(check);
 					return false;
 				}
+				featSearchC.setResult(true);
 			}
 		}
 		featureC.setResult(true);

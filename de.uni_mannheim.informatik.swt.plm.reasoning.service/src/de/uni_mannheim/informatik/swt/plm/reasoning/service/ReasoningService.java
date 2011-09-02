@@ -100,7 +100,7 @@ public class ReasoningService implements IReasoningService {
 			System.out.println("deRegisterCheck failed. Current Top: " + checkStack.peek().getExpression() + ". Asked: " + check.getExpression());
 		} else {
 //			it was not a composite check, so it cannot be on the stack. very normal situation
-			System.out.println("Finished leaf check " + check.getExpression());
+			System.out.println("Finished leaf check " + check.getExpression() + " with result " + check.isResult());
 		}
 	}
 	

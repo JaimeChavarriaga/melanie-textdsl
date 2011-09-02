@@ -102,6 +102,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="FeatureSearchCheck" eSuperTypes="#//CompositeCheck">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="NoFeatures" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="0"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="typeFeature" lowerBound="1"
+        eType="ecore:EClass ../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Feature"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FeatureConformanceCheck" eSuperTypes="#//CompositeCheck"/>
   <eClassifiers xsi:type="ecore:EClass" name="LevelComparison" eSuperTypes="#//Check">
@@ -109,5 +111,11 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceLevel" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ValueComparison" eSuperTypes="#//Check">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
+        eType="ecore:EClass ../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Attribute"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="ecore:EClass ../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Attribute"/>
   </eClassifiers>
 </ecore:EPackage>

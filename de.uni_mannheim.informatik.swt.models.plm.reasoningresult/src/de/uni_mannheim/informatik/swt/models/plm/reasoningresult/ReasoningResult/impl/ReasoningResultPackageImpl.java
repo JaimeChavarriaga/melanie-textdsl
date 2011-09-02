@@ -31,6 +31,7 @@ import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.RoleNamePropertyConformanceCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.TypeConnectionSearch;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.TypeFeatureCheck;
+import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ValueComparison;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -184,6 +185,13 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 	 * @generated
 	 */
 	private EClass levelComparisonEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass valueComparisonEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -722,6 +730,15 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getFeatureSearchCheck_TypeFeature() {
+		return (EReference)featureSearchCheckEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getFeatureConformanceCheck() {
 		return featureConformanceCheckEClass;
 	}
@@ -751,6 +768,33 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 	 */
 	public EAttribute getLevelComparison_InstanceLevel() {
 		return (EAttribute)levelComparisonEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getValueComparison() {
+		return valueComparisonEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getValueComparison_Source() {
+		return (EReference)valueComparisonEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getValueComparison_Target() {
+		return (EReference)valueComparisonEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -850,12 +894,17 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 
 		featureSearchCheckEClass = createEClass(FEATURE_SEARCH_CHECK);
 		createEAttribute(featureSearchCheckEClass, FEATURE_SEARCH_CHECK__NO_FEATURES);
+		createEReference(featureSearchCheckEClass, FEATURE_SEARCH_CHECK__TYPE_FEATURE);
 
 		featureConformanceCheckEClass = createEClass(FEATURE_CONFORMANCE_CHECK);
 
 		levelComparisonEClass = createEClass(LEVEL_COMPARISON);
 		createEAttribute(levelComparisonEClass, LEVEL_COMPARISON__TARGET_LEVEL);
 		createEAttribute(levelComparisonEClass, LEVEL_COMPARISON__INSTANCE_LEVEL);
+
+		valueComparisonEClass = createEClass(VALUE_COMPARISON);
+		createEReference(valueComparisonEClass, VALUE_COMPARISON__SOURCE);
+		createEReference(valueComparisonEClass, VALUE_COMPARISON__TARGET);
 	}
 
 	/**
@@ -907,6 +956,7 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 		featureSearchCheckEClass.getESuperTypes().add(this.getCompositeCheck());
 		featureConformanceCheckEClass.getESuperTypes().add(this.getCompositeCheck());
 		levelComparisonEClass.getESuperTypes().add(this.getCheck());
+		valueComparisonEClass.getESuperTypes().add(this.getCheck());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(reasoningResultModelEClass, ReasoningResultModel.class, "ReasoningResultModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -978,12 +1028,17 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 
 		initEClass(featureSearchCheckEClass, FeatureSearchCheck.class, "FeatureSearchCheck", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFeatureSearchCheck_NoFeatures(), ecorePackage.getEInt(), "NoFeatures", "0", 1, 1, FeatureSearchCheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFeatureSearchCheck_TypeFeature(), thePLMPackage.getFeature(), null, "typeFeature", null, 1, 1, FeatureSearchCheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(featureConformanceCheckEClass, FeatureConformanceCheck.class, "FeatureConformanceCheck", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(levelComparisonEClass, LevelComparison.class, "LevelComparison", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLevelComparison_TargetLevel(), ecorePackage.getEInt(), "targetLevel", null, 1, 1, LevelComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLevelComparison_InstanceLevel(), ecorePackage.getEInt(), "instanceLevel", null, 1, 1, LevelComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(valueComparisonEClass, ValueComparison.class, "ValueComparison", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getValueComparison_Source(), thePLMPackage.getAttribute(), null, "source", null, 1, 1, ValueComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getValueComparison_Target(), thePLMPackage.getAttribute(), null, "target", null, 1, 1, ValueComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
