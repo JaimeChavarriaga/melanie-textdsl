@@ -1286,7 +1286,6 @@ public interface ReasoningResultPackage extends EPackage {
 
 
 	/**
-<<<<<<< .mine
 	 * The number of operations of the '<em>Connections Local Conformance Check</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1297,10 +1296,7 @@ public interface ReasoningResultPackage extends EPackage {
 
 
 	/**
-	 * Returns the meta object for class '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultModel <em>Model</em>}'.
-=======
 	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.LocalConformanceCheckImpl <em>Local Conformance Check</em>}' class.
->>>>>>> .r940
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.LocalConformanceCheckImpl
@@ -1371,6 +1367,15 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @ordered
 	 */
 	int LOCAL_CONFORMANCE_CHECK_FEATURE_COUNT = COMPOSITE_CHECK_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Local Conformance Check</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCAL_CONFORMANCE_CHECK_OPERATION_COUNT = COMPOSITE_CHECK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.TypeFeatureCheckImpl <em>Type Feature Check</em>}' class.
@@ -1453,6 +1458,15 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @ordered
 	 */
 	int TYPE_FEATURE_CHECK_FEATURE_COUNT = COMPOSITE_CHECK_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Type Feature Check</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_FEATURE_CHECK_OPERATION_COUNT = COMPOSITE_CHECK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.FeatureSearchCheckImpl <em>Feature Search Check</em>}' class.
@@ -1546,6 +1560,15 @@ public interface ReasoningResultPackage extends EPackage {
 	int FEATURE_SEARCH_CHECK_FEATURE_COUNT = COMPOSITE_CHECK_FEATURE_COUNT + 2;
 
 	/**
+	 * The number of operations of the '<em>Feature Search Check</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SEARCH_CHECK_OPERATION_COUNT = COMPOSITE_CHECK_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.FeatureConformanceCheckImpl <em>Feature Conformance Check</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1620,6 +1643,15 @@ public interface ReasoningResultPackage extends EPackage {
 
 
 	/**
+	 * The number of operations of the '<em>Feature Conformance Check</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_CONFORMANCE_CHECK_OPERATION_COUNT = COMPOSITE_CHECK_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.LevelComparisonImpl <em>Level Comparison</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1676,6 +1708,15 @@ public interface ReasoningResultPackage extends EPackage {
 
 
 	/**
+	 * The number of operations of the '<em>Level Comparison</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LEVEL_COMPARISON_OPERATION_COUNT = CHECK_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ValueComparisonImpl <em>Value Comparison</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1729,6 +1770,16 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @ordered
 	 */
 	int VALUE_COMPARISON_FEATURE_COUNT = CHECK_FEATURE_COUNT + 2;
+
+
+	/**
+	 * The number of operations of the '<em>Value Comparison</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_COMPARISON_OPERATION_COUNT = CHECK_OPERATION_COUNT + 0;
 
 
 	/**
