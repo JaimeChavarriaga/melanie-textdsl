@@ -38,16 +38,18 @@
 		String label = labelValue == null ? null : labelValue.toString();
     <%}%>
     	
-    	<%if ( genClass.getEcoreClass().getName().equals("CompositeCheck")
-    			|| genClass.getEcoreClass().getName().equals("AllConnectionsCheck")
-				|| genClass.getEcoreClass().getName().equals("TypeConnectionSearch")
-				|| genClass.getEcoreClass().getName().equals("ExpressedInstanceExcludedCheck")
-				|| genClass.getEcoreClass().getName().equals("MultiplicityCheck")
-				|| genClass.getEcoreClass().getName().equals("MultiplicityRoleNameCheck")
-				|| genClass.getEcoreClass().getName().equals("RoleNamePropertyConformanceCheck")
-				|| genClass.getEcoreClass().getName().equals("RoleNameLocalConformanceCheck")
-				|| genClass.getEcoreClass().getName().equals("ConnectionsLocalConformanceCheck") 
-    		) {%>
+    	
+    		<%
+    		boolean found = false;
+    		for (int i = 0; i < genClass.getEcoreClass().getEAllSuperTypes().size(); i++){
+    			if (genClass.getEcoreClass().getEAllSuperTypes().get(i).getName().equals("CompositeCheck")
+    					|| genClass.getEcoreClass().getName().equals("CompositeCheck")){
+    				found = true;
+    				break;
+    			}%>
+    		<%}%>
+    		
+    	<%if (found) {%>
 				return label == null || label.length() == 0 ?
 			getString("_UI_<%=genClass.getName()%>_type") :<%=genModel.getNonNLS()%>
 			label;<%=genModel.getNonNLS()%><%=genModel.getNonNLS(2)%>
