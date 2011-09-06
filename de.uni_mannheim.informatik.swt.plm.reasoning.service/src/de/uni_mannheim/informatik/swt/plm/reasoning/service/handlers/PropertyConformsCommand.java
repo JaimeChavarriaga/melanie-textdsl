@@ -10,6 +10,9 @@
  *******************************************************************************/
 package de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
@@ -23,6 +26,7 @@ import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.TypeConnectionSearch;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.ReasoningService;
+import de.uni_mannheim.informatik.swt.plm.reasoning.service.util.Pair;
 import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService;
 
 public class PropertyConformsCommand extends AbstractHandler {
@@ -30,6 +34,7 @@ public class PropertyConformsCommand extends AbstractHandler {
 	public static final String ID = "de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.propertyconformscommand";
 	
 	IReasoningService reasoner = (new ReasoningService()).Instance();
+	Map<Pair<Clabject,Clabject>, Boolean> marks = null;
 	
 	/* (non-Javadoc)
 	 * @see org.eclipse.core.commands.IHandler#execute(org.eclipse.core.commands.ExecutionEvent)
@@ -43,6 +48,12 @@ public class PropertyConformsCommand extends AbstractHandler {
 		resultModel.getCheck().add(check);
 		reasoner.getReasoningHistory().add(resultModel);
 		return check.isResult();
+	}
+	
+	private Map<Pair<Clabject, Clabject>, Boolean> getMarks() {
+		if (marks == null)
+			marks = new HashMap<Pair<Clabject, Clabject>, Boolean>();
+		return marks;
 	}
 	
 	protected CompositeCheck compute(Clabject type, Clabject instance) {
