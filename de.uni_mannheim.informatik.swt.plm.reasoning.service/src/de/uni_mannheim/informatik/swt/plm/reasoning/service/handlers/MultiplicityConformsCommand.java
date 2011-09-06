@@ -27,6 +27,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Entity;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
+import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.CompositeCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MultiplicityCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MultiplicityRoleNameCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultFactory;
@@ -49,20 +50,29 @@ public class MultiplicityConformsCommand extends AbstractHandler {
 		return multiplicityConforms(connection);
 	}
 	
-	public boolean multiplicityConforms(Connection con) {
-		MultiplicityCheck multCheck = ReasoningResultFactory.eINSTANCE.createMultiplicityCheck();
-		reasoner.registerCheck(multCheck);
+	protected CompositeCheck compute(Connection type) {
+		return multiplicityConforms(type);
+	}
+	
+	private MultiplicityCheck multiplicityConforms(Connection con) {
+		MultiplicityCheck result = ReasoningResultFactory.eINSTANCE.createMultiplicityCheck();
 		Model classifiedModel = con.getModel().getOntology().getContent().get(con.getModel().getLevel() + 1);
 		Set<Connection> domain = new HashSet<Connection>();
+		CompositeCheck domainSearch = reasoner.createCompositeCheck("DomainSearch", con, classifiedModel, "delta_i in Sigma_{delta.level + 1}.connection: delta_.neighbourhoodConforms(delta)");
+		result.getCheck().add(domainSearch);
 		for (Connection possible:classifiedModel.getAllConnections()) {
-			if (reasoner.run(ReasoningService.NEIGHBOURHOOD_CONFORMS, new Object[]{con, possible})) {
+			CompositeCheck possibleCon = (new NeighbourhoodConformsCommand()).compute(con, possible);
+			domainSearch.getCheck().add(possibleCon);
+			if (possibleCon.isResult()) {
 				domain.add(possible);
 			}
 		}
-		multCheck.setNoOfDomainConnection(domain.size());
+		domainSearch.setResult(true);
+		result.setNoOfDomainConnection(domain.size());
 		for (String rN:con.getRoleName()) {
 			MultiplicityRoleNameCheck roleCheck = ReasoningResultFactory.eINSTANCE.createMultiplicityRoleNameCheck();
-			reasoner.registerCheck(roleCheck);
+			roleCheck.setRoleName(rN);
+			result.getCheck().add(roleCheck);
 			Map<Clabject,Integer> count = new HashMap<Clabject, Integer>();
 			int lower = con.getLowerForRoleName(rN);
 			int upper = con.getUpperForRoleName(rN);
@@ -82,16 +92,14 @@ public class MultiplicityConformsCommand extends AbstractHandler {
 				Integer value = entry.getValue();
 				roleCheck.getCounts().add(value);
 				if (value < lower || (upper != -1 && value > upper)) {
-					reasoner.deRegisterCheck(roleCheck);
-					reasoner.deRegisterCheck(multCheck);
-					return false;
+					return result;
 				}
 			}
 			roleCheck.setResult(true);
-			reasoner.deRegisterCheck(roleCheck);
 		}
-		multCheck.setResult(true);
-		reasoner.deRegisterCheck(multCheck);
-		return true;
+		result.setResult(true);
+		return result;
 	}
+
+	
 }

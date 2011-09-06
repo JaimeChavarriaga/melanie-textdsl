@@ -19,8 +19,8 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Entity;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.AllConnectionsCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.CompositeCheck;
-import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MultiplicityCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultFactory;
+import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.TypeConnectionSearch;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.ReasoningService;
 import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService;
@@ -38,47 +38,56 @@ public class PropertyConformsCommand extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		Clabject type = (Clabject)event.getParameters().get("type");
 		Clabject instance = (Clabject)event.getParameters().get("instance");
-		boolean result = propertyConforms(type, instance);
-		return result;
+		ReasoningResultModel resultModel = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();
+		CompositeCheck check = compute(type, instance);
+		resultModel.getCheck().add(check);
+		reasoner.getReasoningHistory().add(resultModel);
+		return check.isResult();
 	}
 	
-	public boolean propertyConforms(Clabject type, Clabject instance) {
+	protected CompositeCheck compute(Clabject type, Clabject instance) {
+		return propertyConforms(type, instance);
+	}
+	
+	private CompositeCheck propertyConforms(Clabject type, Clabject instance) {
 		CompositeCheck check = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
 		check.setName("Property Conformance[Delegation]");
 		check.setSource(instance);
 		check.setTarget(type);
 		check.setExpression(instance.getName()+".propertyConforms("+type.getName()+")");
-		reasoner.registerCheck(check);
-		boolean result = false;
+		CompositeCheck child = null;
 		if (type instanceof Connection && instance instanceof Connection) {
-			result = propertyConformsConnection((Connection) type, (Connection) instance);
+			child = propertyConformsConnection((Connection) type, (Connection) instance);
 		} else if (type instanceof Entity && instance instanceof Entity) {
-			result = propertyConformsClabject(type, instance);
+			child = propertyConformsClabject(type, instance);
 		} else {
 			System.out.println("mismatching types");
 		}
-		check.setResult(result);
-		reasoner.deRegisterCheck(check);
-		return result;
+		check.getCheck().add(child);
+		check.setResult(child.isResult());
+		return check;
 	}
 	
-	public boolean propertyConformsClabject(Clabject type, Clabject instance) {
-		CompositeCheck check = reasoner.createRegisterCompositeCheck("PropertyConformance[Clabject]", instance, type, instance.getName()+".propertyConformsClabject("+type.getName()+")");
-		if (!reasoner.run(ReasoningService.NEIGHBOURHOOD_CONFORMS, new Object[]{type, instance})) {
-			reasoner.deRegisterCheck(check);
-			return false;
+	private CompositeCheck propertyConformsClabject(Clabject type, Clabject instance) {
+		CompositeCheck result = reasoner.createCompositeCheck("PropertyConformance[Clabject]", instance, type, instance.getName()+".propertyConformsClabject("+type.getName()+")");
+		CompositeCheck neighbour = (new NeighbourhoodConformsCommand()).compute(type, instance);
+		result.getCheck().add(neighbour);
+		if (!neighbour.isResult()) {
+			return result;
 		}
 		AllConnectionsCheck allCCheck = ReasoningResultFactory.eINSTANCE.createAllConnectionsCheck();
-		reasoner.registerCheck(allCCheck);
+		result.getCheck().add(allCCheck);
 		for(Connection deltaT:type.getAllConnections()) {
 			allCCheck.setNoTypeConnection(allCCheck.getNoTypeConnection() + 1);
 			boolean found = false;
 			TypeConnectionSearch typeCS = ReasoningResultFactory.eINSTANCE.createTypeConnectionSearch();
-			reasoner.registerCheck(typeCS);
+			allCCheck.getCheck().add(typeCS);
 			typeCS.setTypeConnection(deltaT);
 			for (Connection deltaI: instance.getAllConnections()) {
 				typeCS.setNoSearchedConnections(typeCS.getNoSearchedConnections() + 1);
-				if(propertyConforms(deltaT, deltaI)) {
+				CompositeCheck child = propertyConforms(deltaT, deltaI);
+				typeCS.getCheck().add(child);
+				if(child.isResult()) {
 					found = true;
 					break;
 				}
@@ -86,43 +95,44 @@ public class PropertyConformsCommand extends AbstractHandler {
 			if (found) {
 				typeCS.setResult(true);
 			}
-			reasoner.deRegisterCheck(typeCS);
 			if (!found) {
-				reasoner.deRegisterCheck(allCCheck);
-				reasoner.deRegisterCheck(check);
-				return false;
+				return result;
 			}
 		}
 		allCCheck.setResult(true);
-		reasoner.deRegisterCheck(allCCheck);
-		if (reasoner.run(ReasoningService.IS_EXPRESSED_INSTANCE_OF_EXCLUDED, new Object[]{type, instance})) {
-			reasoner.deRegisterCheck(check);
-			return false;
+		CompositeCheck isExprCheck = (new IsExpressedInstanceOfExcludedCommand()).compute(type, instance); 
+		result.getCheck().add(isExprCheck);
+		if (!isExprCheck.isResult()) {
+			return result;
 		}
-		check.setResult(true);
-		reasoner.deRegisterCheck(check);
-		return true;
+		result.setResult(true);
+		return result;
 	}
 
-	public boolean propertyConformsConnection(Connection type,
+	private CompositeCheck propertyConformsConnection(Connection type,
 			Connection instance) {
-		CompositeCheck check = reasoner.createRegisterCompositeCheck("PropertyConformance[Connection]", instance, type, instance.getName()+".propertyConformsConnection("+type.getName()+")");
-		if (!propertyConformsClabject(type, instance)) {
-			reasoner.deRegisterCheck(check);
-			return false;
+		CompositeCheck result = reasoner.createCompositeCheck("PropertyConformance[Connection]", instance, type, instance.getName()+".propertyConformsConnection("+type.getName()+")");
+		CompositeCheck clabCheck = propertyConformsClabject(type, instance);
+		if (!clabCheck.isResult()) {
+			return result;
 		}
-		if (!reasoner.run(ReasoningService.MULTIPLICITY_CONFORMS, new Object[]{type})) {
-			reasoner.deRegisterCheck(check);
-			return false;
+		CompositeCheck multCheck = (new MultiplicityConformsCommand()).compute(type); 
+		result.getCheck().add(multCheck);	
+		if (!multCheck.isResult()) {
+			return result;
 		}
+		CompositeCheck allRoles = reasoner.createCompositeCheck("allRoleNames", instance, type, "dei mudda");
+		result.getCheck().add(allRoles);
 		for(String rN:type.getRoleName()) {
-			if (!propertyConforms(type.getParticipantForRoleName(rN), instance.getParticipantForRoleName(rN))) {
-				reasoner.deRegisterCheck(check);
-				return false;
+			CompositeCheck oneRole = propertyConforms(type.getParticipantForRoleName(rN), instance.getParticipantForRoleName(rN));
+			allRoles.getCheck().add(oneRole);
+			if (!oneRole.isResult()) {
+				return result;
 			}
+			oneRole.setResult(true);
 		}
-		check.setResult(true);
-		reasoner.deRegisterCheck(check);
-		return true;
+		allRoles.setResult(true);
+		result.setResult(true);
+		return result;
 	}
 }

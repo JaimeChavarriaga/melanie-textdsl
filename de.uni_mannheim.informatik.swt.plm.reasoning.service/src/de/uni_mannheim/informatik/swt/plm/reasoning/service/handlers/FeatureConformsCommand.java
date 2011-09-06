@@ -7,6 +7,7 @@ import org.eclipse.core.commands.ExecutionException;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Method;
+import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.CompositeCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.DatatypeComparison;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.DurabilityComparison;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.FeatureConformanceCheck;
@@ -29,100 +30,108 @@ public class FeatureConformsCommand extends AbstractHandler {
 		return featureConforms(type, instance);
 	}
 	
-	public boolean featureConforms(Feature type, Feature instance) {
-		FeatureConformanceCheck check = ReasoningResultFactory.eINSTANCE.createFeatureConformanceCheck();
-		check.setSource(instance);
-		check.setTarget(type);
-		check.setName("FeatureConformance[Delegation]");
-		check.setExpression(instance.getName()+".conforms(" + type.getName() + ")");
-		reasoner.registerCheck(check);
-		boolean result = false;
+	protected CompositeCheck compute(Feature current, Feature possible) {
+		return featureConforms(current, possible);
+	}
+	
+	private CompositeCheck featureConforms(Feature type, Feature instance) {
+		FeatureConformanceCheck result = ReasoningResultFactory.eINSTANCE.createFeatureConformanceCheck();
+		result.setSource(instance);
+		result.setTarget(type);
+		result.setName("FeatureConformance[Delegation]");
+		result.setExpression(instance.getName()+".conforms(" + type.getName() + ")");
+		CompositeCheck child = null;
 		if (type instanceof Method && instance instanceof Method) {
-			result =  methodConforms((Method) type, (Method) instance);
+			child =  methodConforms((Method) type, (Method) instance);
 		} else if (type instanceof Attribute && instance instanceof Attribute) {
-			result = attributeConforms((Attribute) type, (Attribute) instance);
+			child = attributeConforms((Attribute) type, (Attribute) instance);
 		} else {
 			System.out.println("Mismatching Linguistic types");
+			return result;
 		}
-		check.setResult(result);
-		reasoner.deRegisterCheck(check);
+		result.setResult(child.isResult());
 		return result;
 	}
 	
-	public boolean attributeConforms(Attribute type, Attribute instance) {
+	private CompositeCheck attributeConforms(Attribute type, Attribute instance) {
 		if (type.getName() == null) {
 			throw new RuntimeException("Malformed type attribute " + type);
 		} 
-		FeatureConformanceCheck check = ReasoningResultFactory.eINSTANCE.createFeatureConformanceCheck();
-		check.setSource(instance);
-		check.setTarget(type);
-		check.setName("AttributeConformance");
-		check.setExpression(instance.getName()+".conforms(" + type.getName() + ")");
-		reasoner.registerCheck(check);
-		boolean result = true;
+		FeatureConformanceCheck result = ReasoningResultFactory.eINSTANCE.createFeatureConformanceCheck();
+		result.setSource(instance);
+		result.setTarget(type);
+		result.setName("AttributeConformance");
+		result.setExpression(instance.getName()+".conforms(" + type.getName() + ")");
+		result.setResult(true);
 		NameComparison nameC = ReasoningResultFactory.eINSTANCE.createNameComparison();
 		nameC.setExpression(instance.getName() + " == " + type.getName());
-		reasoner.registerCheck(nameC);
+		result.getCheck().add(nameC);
 		if (!type.getName().equals(instance.getName())) {
-			result = false;
+			result.setResult(false);
 		} else {
 			nameC.setResult(true);
 		}
-		reasoner.deRegisterCheck(nameC);
 		//TODO: proper datatype handling
 		DatatypeComparison datatypeC = ReasoningResultFactory.eINSTANCE.createDatatypeComparison();
 		datatypeC.setExpression(instance.getDatatype() + " == " + type.getDatatype());
-		reasoner.registerCheck(datatypeC);
+		result.getCheck().add(datatypeC);
 		if(type.getDatatype() != null && (!type.getDatatype().equals(instance.getDatatype()))) {
-			result = false;
+			result.setResult(false);
 		} else {
 			datatypeC.setResult(true);
 		}
-		reasoner.deRegisterCheck(datatypeC);
 		DurabilityComparison durabC = ReasoningResultFactory.eINSTANCE.createDurabilityComparison();
 		durabC.setExpression(type.getName()+".durability == * or " + instance.getName() + ".durability + 1 == " + type.getName() + ".durability");
-		reasoner.registerCheck(durabC);
+		result.getCheck().add(durabC);
 		if (type.getDurability()> -1 && !(instance.getDurability()+1 == type.getDurability())) {
-			result = false;
+			result.setResult(false);
 		} else {
 			durabC.setResult(true);
 		}
-		reasoner.deRegisterCheck(durabC);
 		MutabilityComparison mutabC = ReasoningResultFactory.eINSTANCE.createMutabilityComparison();
 		mutabC.setExpression(type.getName() + ".mutability == * or " + instance.getName() + ".mutability + 1 == " + type.getName() + ".mutability or " + instance.getName() + ".mutability == " + type.getName()+ ".mutability == 0");
-		reasoner.registerCheck(mutabC);
+		result.getCheck().add(mutabC);
 		if (type.getMutability()> -1 && !((instance.getMutability()+1 == type.getMutability()) || (type.getMutability() == 0 && instance.getMutability() == 0))) {
-			result = false;
+			result.setResult(false);
 		} else {
 			mutabC.setResult(true);
 		}
-		reasoner.deRegisterCheck(mutabC);
 		if (type.getMutability() == 0) {
 			ValueComparison valueC = ReasoningResultFactory.eINSTANCE.createValueComparison();
-			reasoner.registerCheck(valueC);
 			valueC.setExpression(type.getName() + ".value == " + instance.getName() + ".value");
+			result.getCheck().add(valueC);
 			if (!(type.getValue().equals(instance.getValue()))) {
-				result = false;
+				result.setResult(false);
 			} else {
 				valueC.setResult(true);
 			}
-			reasoner.deRegisterCheck(valueC);
 		}
-		check.setResult(result);
-		reasoner.deRegisterCheck(check);
 		return result;
 	}
 
-	public boolean methodConforms(Method type, Method instance) {
+	private CompositeCheck methodConforms(Method type, Method instance) {
 		if (type.getName() == null) {
 			throw new RuntimeException("Malformed type method " + type);
 		} 
+		CompositeCheck result = reasoner.createCompositeCheck("Conformance[Method]", instance, type, "jo");
+		result.setResult(true);
+		NameComparison nameC = ReasoningResultFactory.eINSTANCE.createNameComparison();
+		nameC.setExpression(instance.getName() + " == " + type.getName());
+		result.getCheck().add(nameC);
 		if (!type.getName().equals(instance.getName())) {
-			return false;
-		}  else if (type.getDurability()> -1 && !(instance.getDurability()+1 == type.getDurability())) {
-			return false;
+			result.setResult(false);
+		} else {
+			nameC.setResult(true);
 		}
-		return true;
+		DurabilityComparison durabC = ReasoningResultFactory.eINSTANCE.createDurabilityComparison();
+		durabC.setExpression(type.getName()+".durability == * or " + instance.getName() + ".durability + 1 == " + type.getName() + ".durability");
+		result.getCheck().add(durabC);
+		if (type.getDurability()> -1 && !(instance.getDurability()+1 == type.getDurability())) {
+			result.setResult(false);
+		} else {
+			durabC.setResult(true);
+		}
+		return result;	
 	}
 
 }

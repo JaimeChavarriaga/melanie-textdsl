@@ -11,18 +11,15 @@
  *******************************************************************************/
 package de.uni_mannheim.informatik.swt.plm.reasoning.service;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.Stack;
 
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
@@ -46,7 +43,6 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Method;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMFactoryImpl;
-import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.Check;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.CompositeCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultFactory;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultModel;
@@ -62,47 +58,19 @@ public class ReasoningService implements IReasoningService {
 	
 	private static IReasoningService instance = null;
 	private List<IPropertyChangeListener> listeners = new LinkedList<IPropertyChangeListener>(); 
-	private Stack<Check> checkStack = new Stack<Check>();
-	private ReasoningResultModel rrm = null;
-	
 	public ReasoningService() {
 		
 	}
 	
-	public CompositeCheck createRegisterCompositeCheck(String name, Element source, Element target, String expression) {
+	public CompositeCheck createCompositeCheck(String name, Element source, Element target, String expression) {
 		CompositeCheck check = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
 		check.setName(name);
 		check.setSource(source);
 		check.setTarget(target);
 		check.setExpression(expression);
-		registerCheck(check);
 		return check;
 	}
 	
-	
-	public void registerCheck(Check check) {
-		if (!checkStack.empty()) {
-			((CompositeCheck) checkStack.peek()).getCheck().add(check);
-			System.out.println(""+checkStack.peek() + check);
-		}
-		if (check instanceof CompositeCheck) {
-			checkStack.push(check);
-		}
-	}
-	
-	public void deRegisterCheck(Check check) {
-		if (checkStack.peek().equals(check)) {
-			checkStack.pop();
-			if (checkStack.empty()) { //the reasoning request is now finished, we have the root check
-				rrm.getCheck().add(check);
-			}
-		} else if(check instanceof CompositeCheck) {
-			System.out.println("deRegisterCheck failed. Current Top: " + checkStack.peek().getExpression() + ". Asked: " + check.getExpression());
-		} else {
-//			it was not a composite check, so it cannot be on the stack. very normal situation
-			System.out.println("Finished leaf check " + check.getExpression() + " with result " + check.isResult());
-		}
-	}
 	
 	@Override
 	public void addPropertyChangeListener(IPropertyChangeListener listener) {
@@ -173,10 +141,6 @@ public class ReasoningService implements IReasoningService {
 		
 		if (this != instance) 
 			throw new RuntimeException("Deine Mutter heißt Horst und zieht Lastwagen auf Sport1");
-		if (checkStack.empty()) {
-			rrm = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();
-			rrm.setName("Ralph"+new Date().getTime());
-		}
 		if (commandID == ReasoningService.CAN_CONNECTION_EXIST)
 			return canConnectionExist((Connection)parameters[0], (Connection)parameters[1]);
 		else if (commandID == ReasoningService.CREATE_ATTRIBUTE)
@@ -260,15 +224,6 @@ public class ReasoningService implements IReasoningService {
 			} catch (ExecutionException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
-		}
-		if (checkStack.empty()) { //The reasoning request is finished
-			if (rrm != null) {
-				reasoningResults.add(rrm);
-				return rrm.getCheck().get(0).isResult();
-			}
-			else {
-				System.out.println("KERNEL PANIC. ReasoningService.run()");
 			}
 		}
 		System.out.println("Command Execution successfull: " + commandID);
