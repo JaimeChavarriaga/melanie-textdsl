@@ -106,11 +106,13 @@ public class IsExpressedInstanceOfExcludedCommand extends AbstractHandler {
 		conflicts.addAll(type.getModelSupertypes());
 		result.getAffectedTypes().addAll(conflicts);
 		result.getAffectedDisjointIntersection().addAll(ReasoningServiceUtil.intersect(disjointTwins, conflicts));
-		if (ReasoningServiceUtil.intersect(disjointTwins, conflicts).size() > 0){
-			result.setResult(true);
-			return result;
+		result.setResult(true);
+		if (disjointTwins.size() > 0 && conflicts.size() > 0) {
+			//There have to be both disjoint Twins and possibly conflicting expressed types to justify the check.
+			if (ReasoningServiceUtil.intersect(disjointTwins, conflicts).size() == 0){
+				result.setResult(false);
+			}
 		}
-		
 		return result;
 	}
 
