@@ -155,20 +155,6 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 			IReasoningService service = ExtensionPointService.Instance().getReasoningService(REASONING_ENGINE_ID).Instance();
 			service.addPropertyChangeListener(this);
 			
-			ReasoningResultModel model = ReasoningResultFactoryImpl.eINSTANCE.createReasoningResultModel();
-			model.setName("Local Conforms To - 29/08/2011 17:48:22");
-			CompositeCheck cc = ReasoningResultFactoryImpl.eINSTANCE.createCompositeCheck();
-			cc.setName("HUHU");
-			model.getCheck().add(cc);
-			service.getReasoningHistory().add(model);
-			
-			model = ReasoningResultFactoryImpl.eINSTANCE.createReasoningResultModel();
-			model.setName("Local Conforms To - 29/08/2011 17:48:46");
-			cc = ReasoningResultFactoryImpl.eINSTANCE.createCompositeCheck();
-			cc.setName("HUHU2");
-			model.getCheck().add(cc);
-			service.getReasoningHistory().add(model);
-			
 		} catch (CoreException e) {
 			e.printStackTrace();
 		}
