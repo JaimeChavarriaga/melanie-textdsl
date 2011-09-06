@@ -49,6 +49,7 @@ public class FeatureConformsCommand extends AbstractHandler {
 			System.out.println("Mismatching Linguistic types");
 			return result;
 		}
+		result.getCheck().add(child);
 		result.setResult(child.isResult());
 		return result;
 	}

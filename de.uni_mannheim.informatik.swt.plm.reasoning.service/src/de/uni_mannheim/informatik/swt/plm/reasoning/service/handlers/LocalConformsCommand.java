@@ -62,6 +62,7 @@ public class LocalConformsCommand extends AbstractHandler {
 		} else {
 			System.out.println("mismatching types");
 		}
+		check.getCheck().add(child);
 		check.setResult(child.isResult());
 		return check;
 	}

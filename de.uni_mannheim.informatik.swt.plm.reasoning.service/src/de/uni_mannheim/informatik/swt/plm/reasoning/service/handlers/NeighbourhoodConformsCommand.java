@@ -55,6 +55,7 @@ public class NeighbourhoodConformsCommand extends AbstractHandler {
 		} else {
 			System.out.println("mismatching types");
 		}
+		result.getCheck().add(child);
 		result.setResult(child.isResult());
 		return result;
 	}
