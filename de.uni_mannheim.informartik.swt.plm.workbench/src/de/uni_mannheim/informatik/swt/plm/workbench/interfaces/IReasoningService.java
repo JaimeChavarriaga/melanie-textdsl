@@ -19,10 +19,8 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Method;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
-import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.Check;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.CompositeCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultModel;
 
@@ -93,7 +91,7 @@ public interface IReasoningService {
 	public void dressInstanceFromType(Clabject type, Clabject instance) throws Exception;
 	
 	/**
-	 * param[0] = Attribute - type <br />
+	 * param[0] = Attribute - type
 	 */
 	public static final String CREATE_ATTRIBUTE = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.createattribute";
 	/**
@@ -103,7 +101,7 @@ public interface IReasoningService {
 	public Attribute createAttribute(Attribute type);
 	
 	/**
-	 * param[0] = Method - type <br />
+	 * param[0] = Method - type
 	 */
 	public static final String CREATE_METHOD= "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.createmethod";
 	/**
@@ -233,13 +231,13 @@ public interface IReasoningService {
 	public Set<Connection> getClassifyingConstructionConformanceDomain(Connection c);
 	
 	/**
-	 * param[0] = Clabject - instance
+	 * param[0] = Clabject - instance <br />
 	 * param[1] = Clabject - type
 	 */
 	public static final String IS_EXPRESSED_INSTANCE_OF_EXCLUDED = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.isexpressedinstanceofexcluded";
 
 	/**
-	 * param[0] = Clabject - instance
+	 * param[0] = Clabject - instance <br />
 	 * param[1] = Clabject - type
 	 */
 	public static final String PROPERTY_CONFORMS = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.propertyconforms";
