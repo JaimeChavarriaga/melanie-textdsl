@@ -748,18 +748,22 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
 		 */
 		<%String params = "";
 			for (int i = 0; i < genClass.getEcoreClass().getEAllStructuralFeatures().size(); i++){
-			
-				String type = genClass.getEcoreClass().getEAllStructuralFeatures().get(i).getEType().getName();
-				
-				if (type.equals("EInt"))
-					type = "int";
-				else if (type.equals("EString"))
-					type = "String";
-				else if (type.equals("EBoolean"))
-					type = "boolean";
-				
-				String name = genClass.getEcoreClass().getEAllStructuralFeatures().get(i).getName();
-				params += type + " " + name + (i == genClass.getEcoreClass().getEAllStructuralFeatures().size() - 1 ? "" : ", ");
+				//We do not support lists yet
+				//We want to only have values with no default value in the signature
+				if (((genClass.getEcoreClass().getEAllStructuralFeatures().get(i).getUpperBound() == 1))
+					 &&(genClass.getEcoreClass().getEAllStructuralFeatures().get(i).getDefaultValue() == null)){
+					String type = genClass.getEcoreClass().getEAllStructuralFeatures().get(i).getEType().getName();
+					
+					if (type.equals("EInt"))
+						type = "int";
+					else if (type.equals("EString"))
+						type = "String";
+					else if (type.equals("EBoolean"))
+						type = "boolean";
+					
+					String name = genClass.getEcoreClass().getEAllStructuralFeatures().get(i).getName();
+					params += (i == 0 || params.equals("") ? "" : ", ") + type + " " + name;
+				}
 		}
 		if (!genClass.getName().equals("ReasoningResultModel"))
 			params += ", CompositeCheck parent";
@@ -779,7 +783,9 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
 	    <%for (int i = 0; i < genClass.getEcoreClass().getEAllStructuralFeatures().size(); i++){
 			
 			//We do not support lists yet
-			if (genClass.getEcoreClass().getEAllStructuralFeatures().get(i).getUpperBound() == 1){
+			//We want to only have values with no default value in the signature
+			if ( (genClass.getEcoreClass().getEAllStructuralFeatures().get(i).getUpperBound() == 1)
+					&& (genClass.getEcoreClass().getEAllStructuralFeatures().get(i).getDefaultValue() == null)){
 				
 				String name = genClass.getEcoreClass().getEAllStructuralFeatures().get(i).getName();
 				String accessorName = Character.toUpperCase(name.charAt(0)) + name.substring(1);%>
