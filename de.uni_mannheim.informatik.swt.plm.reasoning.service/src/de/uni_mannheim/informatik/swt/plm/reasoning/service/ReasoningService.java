@@ -376,15 +376,17 @@ public class ReasoningService implements IReasoningService {
 	@Override
 	public boolean localConstructionConformsConnection(Connection type,
 			Connection instance) {
-		return run(LOCAL_CONFORMS, new Object[]{type, instance});
+		System.out.println("Wir brauchen Local Conformance Clabject als Command. Hierfür...");
+		return true;
 	}
 
 
 	@Override
 	public boolean neighbourhoodConstructionConformsConnection(Connection type,
 			Connection instance) {
-		if (!run(LOCAL_CONFORMS, new Object[]{type, instance}))
+		if (!localConstructionConformsConnection(type, instance)) {
 			return false;
+		}
 		for (String rN: instance.getRoleName()) {
 			Clabject destI = instance.getParticipantForRoleName(rN);
 			Clabject destT = type.getParticipantForRoleName(rN);

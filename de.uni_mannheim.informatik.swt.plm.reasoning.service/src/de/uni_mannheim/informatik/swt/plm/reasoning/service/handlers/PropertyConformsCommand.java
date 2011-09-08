@@ -10,8 +10,9 @@
  *******************************************************************************/
 package de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers;
 
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -34,7 +35,7 @@ public class PropertyConformsCommand extends AbstractHandler {
 	public static final String ID = "de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.propertyconformscommand";
 	
 	IReasoningService reasoner = (new ReasoningService()).Instance();
-	Map<Pair<Clabject,Clabject>, Boolean> marks = null;
+	Set<Pair<Clabject,Clabject>> marks = null;
 	
 	/* (non-Javadoc)
 	 * @see org.eclipse.core.commands.IHandler#execute(org.eclipse.core.commands.ExecutionEvent)
@@ -50,14 +51,22 @@ public class PropertyConformsCommand extends AbstractHandler {
 		return check.isResult();
 	}
 	
-	private Map<Pair<Clabject, Clabject>, Boolean> getMarks() {
+	private Set<Pair<Clabject, Clabject>> getMarks() {
 		if (marks == null)
-			marks = new HashMap<Pair<Clabject, Clabject>, Boolean>();
+			marks = new HashSet<Pair<Clabject, Clabject>>();
 		return marks;
 	}
 	
 	protected CompositeCheck compute(Clabject type, Clabject instance) {
-		return propertyConforms(type, instance);
+		Set<Pair<Clabject, Clabject>> marks = getMarks();
+		Pair<Clabject, Clabject> pair = new Pair<Clabject, Clabject>(type, instance);
+		if (marks.contains(pair)) {
+			CompositeCheck cachedResult = ReasoningResultFactory.eINSTANCE.createCompositeCheck(true, "express yourself", null, "PropertyConformace[Cached]", instance, type, null);
+			return cachedResult;
+		}
+		marks.add(pair);
+		CompositeCheck result = propertyConforms(type, instance);
+		return result; 
 	}
 	
 	private CompositeCheck propertyConforms(Clabject type, Clabject instance) {

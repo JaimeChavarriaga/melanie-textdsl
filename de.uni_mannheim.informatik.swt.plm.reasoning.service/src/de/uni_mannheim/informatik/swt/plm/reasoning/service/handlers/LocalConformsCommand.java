@@ -41,7 +41,7 @@ public class LocalConformsCommand extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		Clabject type = (Clabject)event.getParameters().get("type");
 		Clabject instance = (Clabject)event.getParameters().get("instance");
-		return localConforms(type, instance);
+		return localConforms(type, instance).isResult();
 	}
 	
 	protected CompositeCheck compute(Clabject type, Clabject instance) {
