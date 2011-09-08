@@ -83,6 +83,8 @@ public class FeatureConformsCommand extends AbstractHandler {
 		}
 		DurabilityComparison durabC = ReasoningResultFactory.eINSTANCE.createDurabilityComparison();
 		durabC.setExpression(type.getName()+".durability == * or " + instance.getName() + ".durability + 1 == " + type.getName() + ".durability");
+		durabC.setInstanceDurability(instance.getDurability());
+		durabC.setTypeDurability(type.getDurability());
 		result.getCheck().add(durabC);
 		if (type.getDurability()> -1 && !(instance.getDurability()+1 == type.getDurability())) {
 			result.setResult(false);
@@ -91,6 +93,8 @@ public class FeatureConformsCommand extends AbstractHandler {
 		}
 		MutabilityComparison mutabC = ReasoningResultFactory.eINSTANCE.createMutabilityComparison();
 		mutabC.setExpression(type.getName() + ".mutability == * or " + instance.getName() + ".mutability + 1 == " + type.getName() + ".mutability or " + instance.getName() + ".mutability == " + type.getName()+ ".mutability == 0");
+		mutabC.setInstanceMutability(instance.getMutability());
+		mutabC.setTypeMutability(type.getMutability());
 		result.getCheck().add(mutabC);
 		if (type.getMutability()> -1 && !((instance.getMutability()+1 == type.getMutability()) || (type.getMutability() == 0 && instance.getMutability() == 0))) {
 			result.setResult(false);

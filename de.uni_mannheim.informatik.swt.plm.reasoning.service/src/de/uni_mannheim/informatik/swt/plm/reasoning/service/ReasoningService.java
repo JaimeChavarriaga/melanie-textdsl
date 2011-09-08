@@ -47,6 +47,7 @@ import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultFactory;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.FeatureConformsCommand;
+import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.HasAdditionalPropertiesCommand;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.IsExpressedInstanceOfExcludedCommand;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.LocalConformsCommand;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.MultiplicityConformsCommand;
@@ -223,6 +224,17 @@ public class ReasoningService implements IReasoningService {
 				result = (Boolean)command.execute(event);
 			} catch (ExecutionException e) {
 				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else if (commandID == ReasoningService.HAS_ADDITIONAL_PROPERTIES) {
+			Map<String, Object> params = new HashMap<String, Object>();
+			params.put("type", parameters[0]);
+			params.put("instance", parameters[1]);
+			HasAdditionalPropertiesCommand command = new HasAdditionalPropertiesCommand();
+			ExecutionEvent event = new ExecutionEvent(null, params, this, this);
+			try {
+				result = (Boolean) command.execute(event);
+			} catch (ExecutionException e) {
 				e.printStackTrace();
 			}
 		}

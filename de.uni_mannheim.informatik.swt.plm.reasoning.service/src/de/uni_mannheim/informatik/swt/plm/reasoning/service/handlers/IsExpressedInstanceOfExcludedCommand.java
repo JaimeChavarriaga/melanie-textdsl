@@ -56,7 +56,7 @@ public class IsExpressedInstanceOfExcludedCommand extends AbstractHandler {
 	
 	private CompositeCheck isExpressedInstanceOfExcluded(Clabject type,
 			final Clabject instance) {
-		ExpressedInstanceExcludedCheck result = ReasoningResultFactory.eINSTANCE.createExpressedInstanceExcludedCheck();
+		ExpressedInstanceExcludedCheck result = ReasoningResultFactory.eINSTANCE.createExpressedInstanceExcludedCheck(instance, type, null);
 		Set<Instantiation> classifications = new HashSet<Instantiation>(instance.getModel().getAllInstantiations());
 		classifications = (Set<Instantiation>) ReasoningServiceUtil.filter(classifications, new Predicate<Instantiation>() {
 			public boolean apply(Instantiation inst) {
@@ -109,7 +109,7 @@ public class IsExpressedInstanceOfExcludedCommand extends AbstractHandler {
 		result.setResult(true);
 		if (disjointTwins.size() > 0 && conflicts.size() > 0) {
 			//There have to be both disjoint Twins and possibly conflicting expressed types to justify the check.
-			if (ReasoningServiceUtil.intersect(disjointTwins, conflicts).size() == 0){
+			if (ReasoningServiceUtil.intersect(disjointTwins, conflicts).size() > 0){
 				result.setResult(false);
 			}
 		}

@@ -242,4 +242,10 @@ public interface IReasoningService {
 	 */
 	public static final String PROPERTY_CONFORMS = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.propertyconforms";
 	
+	/**
+	 * param[0] = Clabject - instance <br />
+	 * param[1] = Clabject - type
+	 */
+	public static final String HAS_ADDITIONAL_PROPERTIES = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.hasadditionalproperties";
+	
 }

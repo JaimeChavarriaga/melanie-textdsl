@@ -62,6 +62,8 @@ public class PropertyConformsCommand extends AbstractHandler {
 		Pair<Clabject, Clabject> pair = new Pair<Clabject, Clabject>(type, instance);
 		if (marks.contains(pair)) {
 			CompositeCheck cachedResult = ReasoningResultFactory.eINSTANCE.createCompositeCheck(instance, type, null);
+			cachedResult.setName("PropertyConformance[Cached]");
+			cachedResult.setExpression(instance.getName() + ".propertyConforms(" + type.getName() + ")");
 			cachedResult.setResult(true);
 			return cachedResult;
 		}
@@ -96,13 +98,13 @@ public class PropertyConformsCommand extends AbstractHandler {
 		if (!neighbour.isResult()) {
 			return result;
 		}
-		AllConnectionsCheck allCCheck = ReasoningResultFactory.eINSTANCE.createAllConnectionsCheck();
-		result.getCheck().add(allCCheck);
+		AllConnectionsCheck allCCheck = ReasoningResultFactory.eINSTANCE.createAllConnectionsCheck(instance, type, result);
+		allCCheck.setName(allCCheck.getExpression());
+		allCCheck.setExpression("forall delta_t in " + type.getName() + ".connections(): exists delta_i in " + instance.getName() + ".connections(): delta_i.propertyConforms(delta_t)");
 		for(Connection deltaT:type.getAllConnections()) {
 			allCCheck.setNoTypeConnection(allCCheck.getNoTypeConnection() + 1);
 			boolean found = false;
-			TypeConnectionSearch typeCS = ReasoningResultFactory.eINSTANCE.createTypeConnectionSearch();
-			allCCheck.getCheck().add(typeCS);
+			TypeConnectionSearch typeCS = ReasoningResultFactory.eINSTANCE.createTypeConnectionSearch(instance, type, deltaT, allCCheck);
 			typeCS.setTypeConnection(deltaT);
 			for (Connection deltaI: instance.getAllConnections()) {
 				typeCS.setNoSearchedConnections(typeCS.getNoSearchedConnections() + 1);

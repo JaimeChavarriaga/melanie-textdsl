@@ -55,6 +55,7 @@ public class ExecuteModelTests implements IObjectActionDelegate {
 						Clabject type = (Clabject) selectedElements.get(0);
 						Clabject instance = (Clabject) selectedElements.get(1);
 						System.out.println("Property Conformance " + reasoner.run(IReasoningService.PROPERTY_CONFORMS, new Object[]{type, instance}));
+						System.out.println("Additional Properties" + reasoner.run(IReasoningService.HAS_ADDITIONAL_PROPERTIES, new Object[]{type, instance}));
 						if (type instanceof Connection) {
 							System.out.println("Local Construction Conformance " + reasoner.localConstructionConformsConnection((Connection) type, (Connection) instance));
 							System.out.println("Neighbour Construction Conformance " + reasoner.neighbourhoodConstructionConformsConnection((Connection) type, (Connection) instance) );
