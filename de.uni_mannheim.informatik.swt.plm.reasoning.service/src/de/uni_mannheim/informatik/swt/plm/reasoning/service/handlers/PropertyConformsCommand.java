@@ -61,7 +61,8 @@ public class PropertyConformsCommand extends AbstractHandler {
 		Set<Pair<Clabject, Clabject>> marks = getMarks();
 		Pair<Clabject, Clabject> pair = new Pair<Clabject, Clabject>(type, instance);
 		if (marks.contains(pair)) {
-			CompositeCheck cachedResult = ReasoningResultFactory.eINSTANCE.createCompositeCheck(true, "express yourself", null, "PropertyConformace[Cached]", instance, type, null);
+			CompositeCheck cachedResult = ReasoningResultFactory.eINSTANCE.createCompositeCheck("express yourself", "PropertyConformace[Cached]", instance, type, null);
+			cachedResult.setResult(true);
 			return cachedResult;
 		}
 		marks.add(pair);
@@ -105,7 +106,7 @@ public class PropertyConformsCommand extends AbstractHandler {
 			typeCS.setTypeConnection(deltaT);
 			for (Connection deltaI: instance.getAllConnections()) {
 				typeCS.setNoSearchedConnections(typeCS.getNoSearchedConnections() + 1);
-				CompositeCheck child = propertyConforms(deltaT, deltaI);
+				CompositeCheck child = compute(deltaT, deltaI);
 				typeCS.getCheck().add(child);
 				if(child.isResult()) {
 					found = true;
@@ -144,7 +145,7 @@ public class PropertyConformsCommand extends AbstractHandler {
 		CompositeCheck allRoles = reasoner.createCompositeCheck("allRoleNames", instance, type, "dei mudda");
 		result.getCheck().add(allRoles);
 		for(String rN:type.getRoleName()) {
-			CompositeCheck oneRole = propertyConforms(type.getParticipantForRoleName(rN), instance.getParticipantForRoleName(rN));
+			CompositeCheck oneRole = compute(type.getParticipantForRoleName(rN), instance.getParticipantForRoleName(rN));
 			allRoles.getCheck().add(oneRole);
 			if (!oneRole.isResult()) {
 				return result;
