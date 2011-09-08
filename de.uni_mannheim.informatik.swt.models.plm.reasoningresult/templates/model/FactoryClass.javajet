@@ -779,7 +779,7 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
 			<%=genClass.getImportedClassName()%><%=genClass.getClassTypeArguments()%> <%=genClass.getSafeUncapName()%> = new <%=genClass.getImportedClassName()%><%=genClass.getClassTypeArguments()%>()<%if (genModel.isSuppressInterfaces() && !genPackage.getReflectionPackageName().equals(genPackage.getInterfacePackageName())) {%>{}<%}%>;
 	    <%}%>
 	    	
-	    	//Set the vaules
+	    	//Set the values
 	    <%for (int i = 0; i < genClass.getEcoreClass().getEAllStructuralFeatures().size(); i++){
 			
 			//We do not support lists yet
