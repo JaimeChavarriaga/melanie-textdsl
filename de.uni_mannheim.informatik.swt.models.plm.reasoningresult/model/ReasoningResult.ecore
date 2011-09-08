@@ -16,10 +16,10 @@
   <eClassifiers xsi:type="ecore:EClass" name="CompositeCheck" eSuperTypes="#//Check">
     <eStructuralFeatures xsi:type="ecore:EReference" name="check" upperBound="-1"
         eType="#//Check" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
         eType="ecore:EClass ../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="ecore:EClass ../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NameComparison" eSuperTypes="#//Check">
     <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
@@ -113,6 +113,9 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceLevel" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
+        eType="ecore:EClass ../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="ecore:EClass ../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ValueComparison" eSuperTypes="#//Check">
     <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"

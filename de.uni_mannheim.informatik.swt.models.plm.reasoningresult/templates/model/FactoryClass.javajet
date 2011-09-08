@@ -748,10 +748,14 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
 		 */
 		<%String params = "";
 			for (int i = 0; i < genClass.getEcoreClass().getEAllStructuralFeatures().size(); i++){
+				String name = genClass.getEcoreClass().getEAllStructuralFeatures().get(i).getName();
 				//We do not support lists yet
 				//We want to only have values with no default value in the signature
 				if (((genClass.getEcoreClass().getEAllStructuralFeatures().get(i).getUpperBound() == 1))
-					 &&(genClass.getEcoreClass().getEAllStructuralFeatures().get(i).getDefaultValue() == null)){
+					 &&(genClass.getEcoreClass().getEAllStructuralFeatures().get(i).getDefaultValue() == null)
+					 &&!(name.equals("expression"))
+					 &&( !(name.equals("name")) || (genClass.getName().equals("ReasoningResultModel"))) 
+					 ){
 					String type = genClass.getEcoreClass().getEAllStructuralFeatures().get(i).getEType().getName();
 					
 					if (type.equals("EInt"))
@@ -761,12 +765,11 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
 					else if (type.equals("EBoolean"))
 						type = "boolean";
 					
-					String name = genClass.getEcoreClass().getEAllStructuralFeatures().get(i).getName();
 					params += (i == 0 || params.equals("") ? "" : ", ") + type + " " + name;
 				}
 		}
 		if (!genClass.getName().equals("ReasoningResultModel"))
-			params += ", CompositeCheck parent";
+			params +=  (params.equals("") ? "" : ", ") + "CompositeCheck parent";
 		%>
 		<%if (isInterface){%>
 			<%=genClass.getTypeParameters()%><%=genClass.getImportedInterfaceName()%><%=genClass.getInterfaceTypeArguments()%> create<%=genClass.getName()%>(<%=params%>);
@@ -781,16 +784,23 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
 	    	
 	    	//Set the values
 	    <%for (int i = 0; i < genClass.getEcoreClass().getEAllStructuralFeatures().size(); i++){
-			
+			String name = genClass.getEcoreClass().getEAllStructuralFeatures().get(i).getName();
 			//We do not support lists yet
 			//We want to only have values with no default value in the signature
 			if ( (genClass.getEcoreClass().getEAllStructuralFeatures().get(i).getUpperBound() == 1)
-					&& (genClass.getEcoreClass().getEAllStructuralFeatures().get(i).getDefaultValue() == null)){
-				
-				String name = genClass.getEcoreClass().getEAllStructuralFeatures().get(i).getName();
+					&& (genClass.getEcoreClass().getEAllStructuralFeatures().get(i).getDefaultValue() == null)
+					&&!(name.equals("expression"))
+					&&( !(name.equals("name")) || (genClass.getName().equals("ReasoningResultModel"))) 
+				){
 				String accessorName = Character.toUpperCase(name.charAt(0)) + name.substring(1);%>
 			<%=genClass.getSafeUncapName()%>.set<%=accessorName%>(<%=name%>);
 			<%}//from if
+			else if(name.equals("expression")) {
+				String accessorName = Character.toUpperCase(name.charAt(0)) + name.substring(1);
+				%>
+				String exprValue = source.getName() + "." + "<%=genClass.getName()%>" + "(" + target.getName()+ ")";
+				<%=genClass.getSafeUncapName()%>.set<%=accessorName%>(exprValue);
+			<%} //from else if
 		}//from for
 		%>
 		<%if (!genClass.getName().equals("ReasoningResultModel")){%>

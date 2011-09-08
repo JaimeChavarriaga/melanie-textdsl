@@ -61,7 +61,7 @@ public class PropertyConformsCommand extends AbstractHandler {
 		Set<Pair<Clabject, Clabject>> marks = getMarks();
 		Pair<Clabject, Clabject> pair = new Pair<Clabject, Clabject>(type, instance);
 		if (marks.contains(pair)) {
-			CompositeCheck cachedResult = ReasoningResultFactory.eINSTANCE.createCompositeCheck("express yourself", "PropertyConformace[Cached]", instance, type, null);
+			CompositeCheck cachedResult = ReasoningResultFactory.eINSTANCE.createCompositeCheck(instance, type, null);
 			cachedResult.setResult(true);
 			return cachedResult;
 		}
