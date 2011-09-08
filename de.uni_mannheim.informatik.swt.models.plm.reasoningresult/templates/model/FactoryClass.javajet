@@ -801,6 +801,12 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
 				String exprValue = source.getName() + "." + "<%=genClass.getName()%>" + "(" + target.getName()+ ")";
 				<%=genClass.getSafeUncapName()%>.set<%=accessorName%>(exprValue);
 			<%} //from else if
+			else if(name.equals("name") && !(genClass.getName().equals("ReasoningResultModel"))) {
+				String accessorName = Character.toUpperCase(name.charAt(0)) + name.substring(1);
+				%>
+				exprValue ="<%=genClass.getName()%>";
+				<%=genClass.getSafeUncapName()%>.set<%=accessorName%>(exprValue);
+			<%} //from else if
 		}//from for
 		%>
 		<%if (!genClass.getName().equals("ReasoningResultModel")){%>
