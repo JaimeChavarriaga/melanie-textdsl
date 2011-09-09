@@ -203,20 +203,40 @@
 			@Override
 			public int compare(org.eclipse.gef.palette.ToolEntry o1, org.eclipse.gef.palette.ToolEntry o2) {
 				//All Entities need to go to the top
-				if (o1 instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor.NodeToolEntry && ((de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor.NodeToolEntry) o1).elementTypes.contains(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.Entity_3069)){
+				if (o1 instanceof  NodeToolEntry
+						&& ((NodeToolEntry) o1).elementTypes.contains(PLMElementTypes.Entity_3069)) {
 					//We compare to a connection node or link entry -> We want to be first
-					if (o2 instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor.NodeToolEntry && !((de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor.NodeToolEntry) o2).elementTypes.contains(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.Entity_3069)
-							|| o2 instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor.LinkToolEntry)
+					if (o2 instanceof NodeToolEntry
+							&& !((NodeToolEntry) o2).elementTypes.contains(PLMElementTypes.Entity_3069)
+							|| o2 instanceof LinkToolEntry)
 						return -1;
 					//We are two Entities -> Sort by name
-					else if(o2 instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor.NodeToolEntry && ((de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor.NodeToolEntry) o2).elementTypes.contains(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.Entity_3069))
+					else if (o2 instanceof NodeToolEntry
+							&& ((NodeToolEntry) o2).elementTypes.contains(PLMElementTypes.Entity_3069))
 						return (o1.getLabel().compareTo(o2.getLabel()));
-						
+
 				}
-				//All others get just sorted by their name
-				else
-					return o1.getLabel().compareTo(o2.getLabel());
-				
+				else if (o1 instanceof NodeToolEntry
+						&& !((NodeToolEntry) o1).elementTypes.contains(PLMElementTypes.Entity_3069)
+						|| o1 instanceof LinkToolEntry){
+					//We compare to a connection node or link entry -> We want to be first
+					if (o2 instanceof NodeToolEntry
+							&& (((NodeToolEntry) o2).elementTypes.contains(PLMElementTypes.Entity_3069)))
+						return 1;
+					//We are two Connections -> Sort by name
+					else if (o2 instanceof NodeToolEntry
+							&& !((NodeToolEntry) o2).elementTypes.contains(PLMElementTypes.Entity_3069)
+							|| o2 instanceof LinkToolEntry){
+						if (o1.getLabel() == null && o2.getLabel() != null)
+							return 1;
+						else if (o1.getLabel() == null && o2.getLabel() == null)
+							return 0;
+						else if (o1.getLabel() != null && o2.getLabel() == null)
+							return -1;
+						else
+							return o1.getLabel().compareTo(o2.getLabel());
+					}
+				}
 				return 0;
 			}
 		});
