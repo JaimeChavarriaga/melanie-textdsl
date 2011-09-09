@@ -212,14 +212,22 @@
 			//****************************************************************************
 			//Set role
 			//****************************************************************************
-			if (self.getRoleName().size() > i  - numberNonParticipantConnection) {
-				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionParticipantEditPart connection = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionParticipantEditPart) sourceConnections
-						.get(i);
-				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionParticipantEditPart.ConnectionParticipantsFigure connectionFigure = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionParticipantEditPart.ConnectionParticipantsFigure) connection
-						.getFigure();
-				connectionFigure
-						.getFigureConnectionParticipantsNameFigure()
-						.setText(self.getRoleName().get(i  - numberNonParticipantConnection));
+			if (self.getRoleName().size() > i  - numberNonParticipantConnection
+					&& self.getParticipant().size() > i - (numberNonParticipantConnection)) {
+				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionParticipantEditPart connection = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionParticipantEditPart) sourceConnections.get(i);
+				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionParticipantEditPart.ConnectionParticipantsFigure connectionFigure = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionParticipantEditPart.ConnectionParticipantsFigure) connection.getFigure();
+				
+				//We do not show roleNames which are equal to the participants name
+				String participantName = self.getParticipant().get(i - numberNonParticipantConnection).getName();
+				if (participantName.length() > 0){
+					participantName = Character.toLowerCase(participantName.charAt(0)) + participantName.substring(1);
+					String roleName = self.getRoleName().get(i - numberNonParticipantConnection);
+					if (!participantName.equals(roleName))
+						connectionFigure.getFigureConnectionParticipantsNameFigure().setText(roleName);
+					//RoleName = paticipant.getName() => hide role
+					else
+						connectionFigure.getFigureConnectionParticipantsNameFigure().setText("");
+				}
 			} else {
 				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionParticipantEditPart connection = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionParticipantEditPart) sourceConnections
 						.get(i);
