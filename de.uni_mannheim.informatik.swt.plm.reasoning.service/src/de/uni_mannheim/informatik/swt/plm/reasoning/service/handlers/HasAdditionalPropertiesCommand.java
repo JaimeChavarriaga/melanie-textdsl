@@ -37,6 +37,58 @@ public class HasAdditionalPropertiesCommand extends AbstractHandler {
 		check.setResult(false);
 		check.setName("hasAdditionalProperties");
 		check.setExpression("jo..");
+		//First search the features
+		CompositeCheck featuresCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck(instance, type, check);
+		featuresCheck.setName("Features");
+		featuresCheck.setExpression("exists pi_i in "+instance.getName()+".getAllFeatures(): nexists pi_t in "+ type.getName() +".getAllFeatures(): pi_i.conformsTo(pi_T)");
+		for (Feature i: instance.getAllFeatures()) {
+			CompositeCheck featCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck(instance, type, featuresCheck);
+			featCheck.setName(i.getName());
+			featCheck.setExpression("nexists pi_t in "+type.getName() + ".getAllFeatures(): "+i.getName() + ".conformsTo(pi_T)");
+			boolean found = false;
+			for (Feature t: type.getAllFeatures()) {
+				CompositeCheck actualFeatCheck = (new FeatureConformsCommand()).compute(t, i);
+				featCheck.getCheck().add(actualFeatCheck);
+				if (!actualFeatCheck.isResult()) {
+					found = true;
+					break;
+				}
+			}
+			if (found) {
+				featCheck.setResult(true);
+				featuresCheck.setResult(true);
+				check.setResult(true);
+				return check;
+			}
+		}
+		//Then search for the Connections
+		CompositeCheck navigationsCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck(instance, type, check);
+		navigationsCheck.setName("Navigations");
+		navigationsCheck.setExpression("exists rN in "+instance.getName()+".getAllAssociateRoleNames(): exists ... einiges");
+		for (String rN:instance.getAllAssociateRoleNames()) {
+			CompositeCheck roleNameCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck(instance, type, navigationsCheck);
+			roleNameCheck.setName(rN);
+			for (Clabject associate_i: instance.getAllAssociatesForRoleName(rN)) {
+				CompositeCheck associateCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck(instance, type, roleNameCheck);
+				associateCheck.setName(associate_i.getName());
+				boolean found = true;
+				for (Clabject associate_t:type.getAllAssociatesForRoleName(rN)) {
+					CompositeCheck actualAssociateCheck = (new PropertyConformsCommand()).compute(associate_t, associate_i);
+					associateCheck.getCheck().add(actualAssociateCheck);
+					if (actualAssociateCheck.isResult()) {
+						found = false;
+						break;
+					}
+				}
+				if (found) {
+					associateCheck.setResult(true);
+					roleNameCheck.setResult(true);
+					navigationsCheck.setResult(true);
+					check.setResult(true);
+					return check;
+				}
+			}
+		}
 		return check;
 	}
 
