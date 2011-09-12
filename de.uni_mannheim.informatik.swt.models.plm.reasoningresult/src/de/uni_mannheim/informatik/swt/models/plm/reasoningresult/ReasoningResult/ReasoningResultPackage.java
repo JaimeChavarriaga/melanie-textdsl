@@ -190,22 +190,13 @@ public interface ReasoningResultPackage extends EPackage {
 	int COMPOSITE_CHECK__CHECK = CHECK_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPOSITE_CHECK__NAME = CHECK_FEATURE_COUNT + 1;
-
-	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPOSITE_CHECK__SOURCE = CHECK_FEATURE_COUNT + 2;
+	int COMPOSITE_CHECK__SOURCE = CHECK_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -214,7 +205,16 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPOSITE_CHECK__TARGET = CHECK_FEATURE_COUNT + 3;
+	int COMPOSITE_CHECK__TARGET = CHECK_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_CHECK__NAME = CHECK_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Composite Check</em>' class.
@@ -345,13 +345,31 @@ public interface ReasoningResultPackage extends EPackage {
 	int DURABILITY_COMPARISON__TARGET = CHECK_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Type Durability</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DURABILITY_COMPARISON__TYPE_DURABILITY = CHECK_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Instance Durability</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DURABILITY_COMPARISON__INSTANCE_DURABILITY = CHECK_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Durability Comparison</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DURABILITY_COMPARISON_FEATURE_COUNT = CHECK_FEATURE_COUNT + 2;
+	int DURABILITY_COMPARISON_FEATURE_COUNT = CHECK_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Durability Comparison</em>' class.
@@ -409,13 +427,31 @@ public interface ReasoningResultPackage extends EPackage {
 	int MUTABILITY_COMPARISON__TARGET = CHECK_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Type Mutability</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MUTABILITY_COMPARISON__TYPE_MUTABILITY = CHECK_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Instance Mutability</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MUTABILITY_COMPARISON__INSTANCE_MUTABILITY = CHECK_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Mutability Comparison</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MUTABILITY_COMPARISON_FEATURE_COUNT = CHECK_FEATURE_COUNT + 2;
+	int MUTABILITY_COMPARISON_FEATURE_COUNT = CHECK_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Mutability Comparison</em>' class.
@@ -528,15 +564,6 @@ public interface ReasoningResultPackage extends EPackage {
 	int ALL_CONNECTIONS_CHECK__CHECK = COMPOSITE_CHECK__CHECK;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ALL_CONNECTIONS_CHECK__NAME = COMPOSITE_CHECK__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -553,6 +580,15 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @ordered
 	 */
 	int ALL_CONNECTIONS_CHECK__TARGET = COMPOSITE_CHECK__TARGET;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALL_CONNECTIONS_CHECK__NAME = COMPOSITE_CHECK__NAME;
 
 	/**
 	 * The feature id for the '<em><b>No Type Connection</b></em>' attribute.
@@ -619,15 +655,6 @@ public interface ReasoningResultPackage extends EPackage {
 	int TYPE_CONNECTION_SEARCH__CHECK = COMPOSITE_CHECK__CHECK;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPE_CONNECTION_SEARCH__NAME = COMPOSITE_CHECK__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -644,6 +671,15 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @ordered
 	 */
 	int TYPE_CONNECTION_SEARCH__TARGET = COMPOSITE_CHECK__TARGET;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_CONNECTION_SEARCH__NAME = COMPOSITE_CHECK__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Type Connection</b></em>' reference.
@@ -719,15 +755,6 @@ public interface ReasoningResultPackage extends EPackage {
 	int EXPRESSED_INSTANCE_EXCLUDED_CHECK__CHECK = COMPOSITE_CHECK__CHECK;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPRESSED_INSTANCE_EXCLUDED_CHECK__NAME = COMPOSITE_CHECK__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -744,6 +771,15 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXPRESSED_INSTANCE_EXCLUDED_CHECK__TARGET = COMPOSITE_CHECK__TARGET;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPRESSED_INSTANCE_EXCLUDED_CHECK__NAME = COMPOSITE_CHECK__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Expressed Types</b></em>' reference list.
@@ -837,15 +873,6 @@ public interface ReasoningResultPackage extends EPackage {
 	int MULTIPLICITY_CHECK__CHECK = COMPOSITE_CHECK__CHECK;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MULTIPLICITY_CHECK__NAME = COMPOSITE_CHECK__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -862,6 +889,15 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @ordered
 	 */
 	int MULTIPLICITY_CHECK__TARGET = COMPOSITE_CHECK__TARGET;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLICITY_CHECK__NAME = COMPOSITE_CHECK__NAME;
 
 	/**
 	 * The feature id for the '<em><b>No Of Domain Connection</b></em>' attribute.
@@ -928,15 +964,6 @@ public interface ReasoningResultPackage extends EPackage {
 	int MULTIPLICITY_ROLE_NAME_CHECK__CHECK = COMPOSITE_CHECK__CHECK;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MULTIPLICITY_ROLE_NAME_CHECK__NAME = COMPOSITE_CHECK__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -953,6 +980,15 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @ordered
 	 */
 	int MULTIPLICITY_ROLE_NAME_CHECK__TARGET = COMPOSITE_CHECK__TARGET;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLICITY_ROLE_NAME_CHECK__NAME = COMPOSITE_CHECK__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Lower</b></em>' attribute.
@@ -1046,15 +1082,6 @@ public interface ReasoningResultPackage extends EPackage {
 	int ROLE_NAME_PROPERTY_CONFORMANCE_CHECK__CHECK = COMPOSITE_CHECK__CHECK;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ROLE_NAME_PROPERTY_CONFORMANCE_CHECK__NAME = COMPOSITE_CHECK__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1071,6 +1098,15 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @ordered
 	 */
 	int ROLE_NAME_PROPERTY_CONFORMANCE_CHECK__TARGET = COMPOSITE_CHECK__TARGET;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_NAME_PROPERTY_CONFORMANCE_CHECK__NAME = COMPOSITE_CHECK__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Role Name</b></em>' attribute.
@@ -1155,15 +1191,6 @@ public interface ReasoningResultPackage extends EPackage {
 	int ROLE_NAME_LOCAL_CONFORMANCE_CHECK__CHECK = COMPOSITE_CHECK__CHECK;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ROLE_NAME_LOCAL_CONFORMANCE_CHECK__NAME = COMPOSITE_CHECK__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1180,6 +1207,15 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @ordered
 	 */
 	int ROLE_NAME_LOCAL_CONFORMANCE_CHECK__TARGET = COMPOSITE_CHECK__TARGET;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_NAME_LOCAL_CONFORMANCE_CHECK__NAME = COMPOSITE_CHECK__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Role Name</b></em>' attribute.
@@ -1246,15 +1282,6 @@ public interface ReasoningResultPackage extends EPackage {
 	int CONNECTIONS_LOCAL_CONFORMANCE_CHECK__CHECK = COMPOSITE_CHECK__CHECK;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONNECTIONS_LOCAL_CONFORMANCE_CHECK__NAME = COMPOSITE_CHECK__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1271,6 +1298,15 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONNECTIONS_LOCAL_CONFORMANCE_CHECK__TARGET = COMPOSITE_CHECK__TARGET;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTIONS_LOCAL_CONFORMANCE_CHECK__NAME = COMPOSITE_CHECK__NAME;
 
 	/**
 	 * The feature id for the '<em><b>No Type Connections</b></em>' attribute.
@@ -1337,15 +1373,6 @@ public interface ReasoningResultPackage extends EPackage {
 	int LOCAL_CONFORMANCE_CHECK__CHECK = COMPOSITE_CHECK__CHECK;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LOCAL_CONFORMANCE_CHECK__NAME = COMPOSITE_CHECK__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1362,6 +1389,15 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @ordered
 	 */
 	int LOCAL_CONFORMANCE_CHECK__TARGET = COMPOSITE_CHECK__TARGET;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCAL_CONFORMANCE_CHECK__NAME = COMPOSITE_CHECK__NAME;
 
 	/**
 	 * The number of structural features of the '<em>Local Conformance Check</em>' class.
@@ -1419,15 +1455,6 @@ public interface ReasoningResultPackage extends EPackage {
 	int TYPE_FEATURE_CHECK__CHECK = COMPOSITE_CHECK__CHECK;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPE_FEATURE_CHECK__NAME = COMPOSITE_CHECK__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1444,6 +1471,15 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @ordered
 	 */
 	int TYPE_FEATURE_CHECK__TARGET = COMPOSITE_CHECK__TARGET;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_FEATURE_CHECK__NAME = COMPOSITE_CHECK__NAME;
 
 	/**
 	 * The feature id for the '<em><b>No Features</b></em>' attribute.
@@ -1510,15 +1546,6 @@ public interface ReasoningResultPackage extends EPackage {
 	int FEATURE_SEARCH_CHECK__CHECK = COMPOSITE_CHECK__CHECK;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FEATURE_SEARCH_CHECK__NAME = COMPOSITE_CHECK__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1535,6 +1562,15 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @ordered
 	 */
 	int FEATURE_SEARCH_CHECK__TARGET = COMPOSITE_CHECK__TARGET;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SEARCH_CHECK__NAME = COMPOSITE_CHECK__NAME;
 
 	/**
 	 * The feature id for the '<em><b>No Features</b></em>' attribute.
@@ -1610,15 +1646,6 @@ public interface ReasoningResultPackage extends EPackage {
 	int FEATURE_CONFORMANCE_CHECK__CHECK = COMPOSITE_CHECK__CHECK;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FEATURE_CONFORMANCE_CHECK__NAME = COMPOSITE_CHECK__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1635,6 +1662,15 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @ordered
 	 */
 	int FEATURE_CONFORMANCE_CHECK__TARGET = COMPOSITE_CHECK__TARGET;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_CONFORMANCE_CHECK__NAME = COMPOSITE_CHECK__NAME;
 
 	/**
 	 * The number of structural features of the '<em>Feature Conformance Check</em>' class.
@@ -1701,13 +1737,31 @@ public interface ReasoningResultPackage extends EPackage {
 	int LEVEL_COMPARISON__INSTANCE_LEVEL = CHECK_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Source</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LEVEL_COMPARISON__SOURCE = CHECK_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LEVEL_COMPARISON__TARGET = CHECK_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Level Comparison</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LEVEL_COMPARISON_FEATURE_COUNT = CHECK_FEATURE_COUNT + 2;
+	int LEVEL_COMPARISON_FEATURE_COUNT = CHECK_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Level Comparison</em>' class.
@@ -1781,6 +1835,189 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @ordered
 	 */
 	int VALUE_COMPARISON_OPERATION_COUNT = CHECK_OPERATION_COUNT + 0;
+
+
+	/**
+	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.HasAdditionalPropertiesCheckImpl <em>Has Additional Properties Check</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.HasAdditionalPropertiesCheckImpl
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ReasoningResultPackageImpl#getHasAdditionalPropertiesCheck()
+	 * @generated
+	 */
+	int HAS_ADDITIONAL_PROPERTIES_CHECK = 21;
+
+	/**
+	 * The feature id for the '<em><b>Result</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HAS_ADDITIONAL_PROPERTIES_CHECK__RESULT = COMPOSITE_CHECK__RESULT;
+
+	/**
+	 * The feature id for the '<em><b>Expression</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HAS_ADDITIONAL_PROPERTIES_CHECK__EXPRESSION = COMPOSITE_CHECK__EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Check</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HAS_ADDITIONAL_PROPERTIES_CHECK__CHECK = COMPOSITE_CHECK__CHECK;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HAS_ADDITIONAL_PROPERTIES_CHECK__SOURCE = COMPOSITE_CHECK__SOURCE;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HAS_ADDITIONAL_PROPERTIES_CHECK__TARGET = COMPOSITE_CHECK__TARGET;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HAS_ADDITIONAL_PROPERTIES_CHECK__NAME = COMPOSITE_CHECK__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Common Properties</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HAS_ADDITIONAL_PROPERTIES_CHECK__COMMON_PROPERTIES = COMPOSITE_CHECK_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Additional Properties</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HAS_ADDITIONAL_PROPERTIES_CHECK__ADDITIONAL_PROPERTIES = COMPOSITE_CHECK_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Has Additional Properties Check</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HAS_ADDITIONAL_PROPERTIES_CHECK_FEATURE_COUNT = COMPOSITE_CHECK_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Has Additional Properties Check</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HAS_ADDITIONAL_PROPERTIES_CHECK_OPERATION_COUNT = COMPOSITE_CHECK_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.PotencyComparisonImpl <em>Potency Comparison</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.PotencyComparisonImpl
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ReasoningResultPackageImpl#getPotencyComparison()
+	 * @generated
+	 */
+	int POTENCY_COMPARISON = 22;
+
+	/**
+	 * The feature id for the '<em><b>Result</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int POTENCY_COMPARISON__RESULT = CHECK__RESULT;
+
+	/**
+	 * The feature id for the '<em><b>Expression</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int POTENCY_COMPARISON__EXPRESSION = CHECK__EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Target Potency</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int POTENCY_COMPARISON__TARGET_POTENCY = CHECK_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Instance Potency</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int POTENCY_COMPARISON__INSTANCE_POTENCY = CHECK_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int POTENCY_COMPARISON__SOURCE = CHECK_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int POTENCY_COMPARISON__TARGET = CHECK_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Potency Comparison</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int POTENCY_COMPARISON_FEATURE_COUNT = CHECK_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of operations of the '<em>Potency Comparison</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int POTENCY_COMPARISON_OPERATION_COUNT = CHECK_OPERATION_COUNT + 0;
 
 
 	/**
@@ -1966,6 +2203,28 @@ public interface ReasoningResultPackage extends EPackage {
 	EReference getDurabilityComparison_Target();
 
 	/**
+	 * Returns the meta object for the attribute '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.DurabilityComparison#getTypeDurability <em>Type Durability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type Durability</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.DurabilityComparison#getTypeDurability()
+	 * @see #getDurabilityComparison()
+	 * @generated
+	 */
+	EAttribute getDurabilityComparison_TypeDurability();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.DurabilityComparison#getInstanceDurability <em>Instance Durability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Instance Durability</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.DurabilityComparison#getInstanceDurability()
+	 * @see #getDurabilityComparison()
+	 * @generated
+	 */
+	EAttribute getDurabilityComparison_InstanceDurability();
+
+	/**
 	 * Returns the meta object for class '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MutabilityComparison <em>Mutability Comparison</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1996,6 +2255,28 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getMutabilityComparison_Target();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MutabilityComparison#getTypeMutability <em>Type Mutability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type Mutability</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MutabilityComparison#getTypeMutability()
+	 * @see #getMutabilityComparison()
+	 * @generated
+	 */
+	EAttribute getMutabilityComparison_TypeMutability();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MutabilityComparison#getInstanceMutability <em>Instance Mutability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Instance Mutability</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MutabilityComparison#getInstanceMutability()
+	 * @see #getMutabilityComparison()
+	 * @generated
+	 */
+	EAttribute getMutabilityComparison_InstanceMutability();
 
 	/**
 	 * Returns the meta object for class '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.DatatypeComparison <em>Datatype Comparison</em>}'.
@@ -2402,6 +2683,28 @@ public interface ReasoningResultPackage extends EPackage {
 	EAttribute getLevelComparison_InstanceLevel();
 
 	/**
+	 * Returns the meta object for the reference '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.LevelComparison#getSource <em>Source</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Source</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.LevelComparison#getSource()
+	 * @see #getLevelComparison()
+	 * @generated
+	 */
+	EReference getLevelComparison_Source();
+
+	/**
+	 * Returns the meta object for the reference '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.LevelComparison#getTarget <em>Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.LevelComparison#getTarget()
+	 * @see #getLevelComparison()
+	 * @generated
+	 */
+	EReference getLevelComparison_Target();
+
+	/**
 	 * Returns the meta object for class '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ValueComparison <em>Value Comparison</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2432,6 +2735,92 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getValueComparison_Target();
+
+	/**
+	 * Returns the meta object for class '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.HasAdditionalPropertiesCheck <em>Has Additional Properties Check</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Has Additional Properties Check</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.HasAdditionalPropertiesCheck
+	 * @generated
+	 */
+	EClass getHasAdditionalPropertiesCheck();
+
+	/**
+	 * Returns the meta object for the reference '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.HasAdditionalPropertiesCheck#getCommonProperties <em>Common Properties</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Common Properties</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.HasAdditionalPropertiesCheck#getCommonProperties()
+	 * @see #getHasAdditionalPropertiesCheck()
+	 * @generated
+	 */
+	EReference getHasAdditionalPropertiesCheck_CommonProperties();
+
+	/**
+	 * Returns the meta object for the reference '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.HasAdditionalPropertiesCheck#getAdditionalProperties <em>Additional Properties</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Additional Properties</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.HasAdditionalPropertiesCheck#getAdditionalProperties()
+	 * @see #getHasAdditionalPropertiesCheck()
+	 * @generated
+	 */
+	EReference getHasAdditionalPropertiesCheck_AdditionalProperties();
+
+	/**
+	 * Returns the meta object for class '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.PotencyComparison <em>Potency Comparison</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Potency Comparison</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.PotencyComparison
+	 * @generated
+	 */
+	EClass getPotencyComparison();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.PotencyComparison#getTargetPotency <em>Target Potency</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Target Potency</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.PotencyComparison#getTargetPotency()
+	 * @see #getPotencyComparison()
+	 * @generated
+	 */
+	EAttribute getPotencyComparison_TargetPotency();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.PotencyComparison#getInstancePotency <em>Instance Potency</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Instance Potency</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.PotencyComparison#getInstancePotency()
+	 * @see #getPotencyComparison()
+	 * @generated
+	 */
+	EAttribute getPotencyComparison_InstancePotency();
+
+	/**
+	 * Returns the meta object for the reference '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.PotencyComparison#getSource <em>Source</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Source</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.PotencyComparison#getSource()
+	 * @see #getPotencyComparison()
+	 * @generated
+	 */
+	EReference getPotencyComparison_Source();
+
+	/**
+	 * Returns the meta object for the reference '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.PotencyComparison#getTarget <em>Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.PotencyComparison#getTarget()
+	 * @see #getPotencyComparison()
+	 * @generated
+	 */
+	EReference getPotencyComparison_Target();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -2603,6 +2992,22 @@ public interface ReasoningResultPackage extends EPackage {
 		EReference DURABILITY_COMPARISON__TARGET = eINSTANCE.getDurabilityComparison_Target();
 
 		/**
+		 * The meta object literal for the '<em><b>Type Durability</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DURABILITY_COMPARISON__TYPE_DURABILITY = eINSTANCE.getDurabilityComparison_TypeDurability();
+
+		/**
+		 * The meta object literal for the '<em><b>Instance Durability</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DURABILITY_COMPARISON__INSTANCE_DURABILITY = eINSTANCE.getDurabilityComparison_InstanceDurability();
+
+		/**
 		 * The meta object literal for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.MutabilityComparisonImpl <em>Mutability Comparison</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2627,6 +3032,22 @@ public interface ReasoningResultPackage extends EPackage {
 		 * @generated
 		 */
 		EReference MUTABILITY_COMPARISON__TARGET = eINSTANCE.getMutabilityComparison_Target();
+
+		/**
+		 * The meta object literal for the '<em><b>Type Mutability</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MUTABILITY_COMPARISON__TYPE_MUTABILITY = eINSTANCE.getMutabilityComparison_TypeMutability();
+
+		/**
+		 * The meta object literal for the '<em><b>Instance Mutability</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MUTABILITY_COMPARISON__INSTANCE_MUTABILITY = eINSTANCE.getMutabilityComparison_InstanceMutability();
 
 		/**
 		 * The meta object literal for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.DatatypeComparisonImpl <em>Datatype Comparison</em>}' class.
@@ -2961,6 +3382,22 @@ public interface ReasoningResultPackage extends EPackage {
 		EAttribute LEVEL_COMPARISON__INSTANCE_LEVEL = eINSTANCE.getLevelComparison_InstanceLevel();
 
 		/**
+		 * The meta object literal for the '<em><b>Source</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LEVEL_COMPARISON__SOURCE = eINSTANCE.getLevelComparison_Source();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LEVEL_COMPARISON__TARGET = eINSTANCE.getLevelComparison_Target();
+
+		/**
 		 * The meta object literal for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ValueComparisonImpl <em>Value Comparison</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2985,6 +3422,74 @@ public interface ReasoningResultPackage extends EPackage {
 		 * @generated
 		 */
 		EReference VALUE_COMPARISON__TARGET = eINSTANCE.getValueComparison_Target();
+
+		/**
+		 * The meta object literal for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.HasAdditionalPropertiesCheckImpl <em>Has Additional Properties Check</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.HasAdditionalPropertiesCheckImpl
+		 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ReasoningResultPackageImpl#getHasAdditionalPropertiesCheck()
+		 * @generated
+		 */
+		EClass HAS_ADDITIONAL_PROPERTIES_CHECK = eINSTANCE.getHasAdditionalPropertiesCheck();
+
+		/**
+		 * The meta object literal for the '<em><b>Common Properties</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HAS_ADDITIONAL_PROPERTIES_CHECK__COMMON_PROPERTIES = eINSTANCE.getHasAdditionalPropertiesCheck_CommonProperties();
+
+		/**
+		 * The meta object literal for the '<em><b>Additional Properties</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HAS_ADDITIONAL_PROPERTIES_CHECK__ADDITIONAL_PROPERTIES = eINSTANCE.getHasAdditionalPropertiesCheck_AdditionalProperties();
+
+		/**
+		 * The meta object literal for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.PotencyComparisonImpl <em>Potency Comparison</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.PotencyComparisonImpl
+		 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ReasoningResultPackageImpl#getPotencyComparison()
+		 * @generated
+		 */
+		EClass POTENCY_COMPARISON = eINSTANCE.getPotencyComparison();
+
+		/**
+		 * The meta object literal for the '<em><b>Target Potency</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute POTENCY_COMPARISON__TARGET_POTENCY = eINSTANCE.getPotencyComparison_TargetPotency();
+
+		/**
+		 * The meta object literal for the '<em><b>Instance Potency</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute POTENCY_COMPARISON__INSTANCE_POTENCY = eINSTANCE.getPotencyComparison_InstancePotency();
+
+		/**
+		 * The meta object literal for the '<em><b>Source</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference POTENCY_COMPARISON__SOURCE = eINSTANCE.getPotencyComparison_Source();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference POTENCY_COMPARISON__TARGET = eINSTANCE.getPotencyComparison_Target();
 
 	}
 

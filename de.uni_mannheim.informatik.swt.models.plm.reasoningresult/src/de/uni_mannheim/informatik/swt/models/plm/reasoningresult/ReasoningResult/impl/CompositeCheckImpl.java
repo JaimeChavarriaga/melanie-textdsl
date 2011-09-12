@@ -35,9 +35,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.CompositeCheckImpl#getCheck <em>Check</em>}</li>
- *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.CompositeCheckImpl#getName <em>Name</em>}</li>
  *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.CompositeCheckImpl#getSource <em>Source</em>}</li>
  *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.CompositeCheckImpl#getTarget <em>Target</em>}</li>
+ *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.CompositeCheckImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -53,26 +53,6 @@ public class CompositeCheckImpl extends CheckImpl implements CompositeCheck {
 	 * @ordered
 	 */
 	protected EList<Check> check;
-
-	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
@@ -93,6 +73,26 @@ public class CompositeCheckImpl extends CheckImpl implements CompositeCheck {
 	 * @ordered
 	 */
 	protected Element target;
+
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -246,14 +246,14 @@ public class CompositeCheckImpl extends CheckImpl implements CompositeCheck {
 		switch (featureID) {
 			case ReasoningResultPackage.COMPOSITE_CHECK__CHECK:
 				return getCheck();
-			case ReasoningResultPackage.COMPOSITE_CHECK__NAME:
-				return getName();
 			case ReasoningResultPackage.COMPOSITE_CHECK__SOURCE:
 				if (resolve) return getSource();
 				return basicGetSource();
 			case ReasoningResultPackage.COMPOSITE_CHECK__TARGET:
 				if (resolve) return getTarget();
 				return basicGetTarget();
+			case ReasoningResultPackage.COMPOSITE_CHECK__NAME:
+				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -271,14 +271,14 @@ public class CompositeCheckImpl extends CheckImpl implements CompositeCheck {
 				getCheck().clear();
 				getCheck().addAll((Collection<? extends Check>)newValue);
 				return;
-			case ReasoningResultPackage.COMPOSITE_CHECK__NAME:
-				setName((String)newValue);
-				return;
 			case ReasoningResultPackage.COMPOSITE_CHECK__SOURCE:
 				setSource((Element)newValue);
 				return;
 			case ReasoningResultPackage.COMPOSITE_CHECK__TARGET:
 				setTarget((Element)newValue);
+				return;
+			case ReasoningResultPackage.COMPOSITE_CHECK__NAME:
+				setName((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -295,14 +295,14 @@ public class CompositeCheckImpl extends CheckImpl implements CompositeCheck {
 			case ReasoningResultPackage.COMPOSITE_CHECK__CHECK:
 				getCheck().clear();
 				return;
-			case ReasoningResultPackage.COMPOSITE_CHECK__NAME:
-				setName(NAME_EDEFAULT);
-				return;
 			case ReasoningResultPackage.COMPOSITE_CHECK__SOURCE:
 				setSource((Element)null);
 				return;
 			case ReasoningResultPackage.COMPOSITE_CHECK__TARGET:
 				setTarget((Element)null);
+				return;
+			case ReasoningResultPackage.COMPOSITE_CHECK__NAME:
+				setName(NAME_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -318,12 +318,12 @@ public class CompositeCheckImpl extends CheckImpl implements CompositeCheck {
 		switch (featureID) {
 			case ReasoningResultPackage.COMPOSITE_CHECK__CHECK:
 				return check != null && !check.isEmpty();
-			case ReasoningResultPackage.COMPOSITE_CHECK__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case ReasoningResultPackage.COMPOSITE_CHECK__SOURCE:
 				return source != null;
 			case ReasoningResultPackage.COMPOSITE_CHECK__TARGET:
 				return target != null;
+			case ReasoningResultPackage.COMPOSITE_CHECK__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
 	}

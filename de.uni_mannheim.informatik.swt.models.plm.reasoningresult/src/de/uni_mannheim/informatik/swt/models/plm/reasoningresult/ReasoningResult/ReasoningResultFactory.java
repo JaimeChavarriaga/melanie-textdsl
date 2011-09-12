@@ -214,6 +214,24 @@ public interface ReasoningResultFactory extends EFactory {
 	ValueComparison createValueComparison();
 
 	/**
+	 * Returns a new object of class '<em>Has Additional Properties Check</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Has Additional Properties Check</em>'.
+	 * @generated
+	 */
+	HasAdditionalPropertiesCheck createHasAdditionalPropertiesCheck();
+
+	/**
+	 * Returns a new object of class '<em>Potency Comparison</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Potency Comparison</em>'.
+	 * @generated
+	 */
+	PotencyComparison createPotencyComparison();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -245,11 +263,8 @@ public interface ReasoningResultFactory extends EFactory {
 		 */
 		
 		
-			CompositeCheck createCompositeCheck(String expression, String name, Element source, Element target, CompositeCheck parent);
-		
-	
-	
-	  
+			CompositeCheck createCompositeCheck(Element source, Element target, CompositeCheck parent);
+
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -257,11 +272,8 @@ public interface ReasoningResultFactory extends EFactory {
 		 */
 		
 		
-			NameComparison createNameComparison(String expression, Feature source, Feature target, CompositeCheck parent);
-		
-	
-	
-	  
+			NameComparison createNameComparison(Feature source, Feature target, CompositeCheck parent);
+
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -269,11 +281,8 @@ public interface ReasoningResultFactory extends EFactory {
 		 */
 		
 		
-			DurabilityComparison createDurabilityComparison(String expression, Feature source, Feature target, CompositeCheck parent);
-		
-	
-	
-	  
+			DurabilityComparison createDurabilityComparison(Feature source, Feature target, CompositeCheck parent);
+
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -281,11 +290,8 @@ public interface ReasoningResultFactory extends EFactory {
 		 */
 		
 		
-			MutabilityComparison createMutabilityComparison(String expression, Attribute source, Attribute target, CompositeCheck parent);
-		
-	
-	
-	  
+			MutabilityComparison createMutabilityComparison(Attribute source, Attribute target, CompositeCheck parent);
+
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -293,11 +299,8 @@ public interface ReasoningResultFactory extends EFactory {
 		 */
 		
 		
-			DatatypeComparison createDatatypeComparison(String expression, Attribute source, Attribute target, CompositeCheck parent);
-		
-	
-	
-	  
+			DatatypeComparison createDatatypeComparison(Attribute source, Attribute target, CompositeCheck parent);
+
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -305,11 +308,8 @@ public interface ReasoningResultFactory extends EFactory {
 		 */
 		
 		
-			AllConnectionsCheck createAllConnectionsCheck(String expression, String name, Element source, Element target, CompositeCheck parent);
-		
-	
-	
-	  
+			AllConnectionsCheck createAllConnectionsCheck(Element source, Element target, CompositeCheck parent);
+
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -317,11 +317,8 @@ public interface ReasoningResultFactory extends EFactory {
 		 */
 		
 		
-			TypeConnectionSearch createTypeConnectionSearch(String expression, String name, Element source, Element target, Connection typeConnection, CompositeCheck parent);
-		
-	
-	
-	  
+			TypeConnectionSearch createTypeConnectionSearch(Element source, Element target, Connection typeConnection, CompositeCheck parent);
+
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -329,11 +326,8 @@ public interface ReasoningResultFactory extends EFactory {
 		 */
 		
 		
-			ExpressedInstanceExcludedCheck createExpressedInstanceExcludedCheck(String expression, String name, Element source, Element target, CompositeCheck parent);
-		
-	
-	
-	  
+			ExpressedInstanceExcludedCheck createExpressedInstanceExcludedCheck(Element source, Element target, CompositeCheck parent);
+
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -341,11 +335,8 @@ public interface ReasoningResultFactory extends EFactory {
 		 */
 		
 		
-			MultiplicityCheck createMultiplicityCheck(String expression, String name, Element source, Element target, CompositeCheck parent);
-		
-	
-	
-	  
+			MultiplicityCheck createMultiplicityCheck(Element source, Element target, CompositeCheck parent);
+
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -353,11 +344,8 @@ public interface ReasoningResultFactory extends EFactory {
 		 */
 		
 		
-			MultiplicityRoleNameCheck createMultiplicityRoleNameCheck(String expression, String name, Element source, Element target, String roleName, CompositeCheck parent);
-		
-	
-	
-	  
+			MultiplicityRoleNameCheck createMultiplicityRoleNameCheck(Element source, Element target, String roleName, CompositeCheck parent);
+
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -365,11 +353,8 @@ public interface ReasoningResultFactory extends EFactory {
 		 */
 		
 		
-			RoleNamePropertyConformanceCheck createRoleNamePropertyConformanceCheck(String expression, String name, Element source, Element target, Clabject typeParticipant, Clabject instanceParticipant, CompositeCheck parent);
-		
-	
-	
-	  
+			RoleNamePropertyConformanceCheck createRoleNamePropertyConformanceCheck(Element source, Element target, Clabject typeParticipant, Clabject instanceParticipant, CompositeCheck parent);
+
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -377,11 +362,8 @@ public interface ReasoningResultFactory extends EFactory {
 		 */
 		
 		
-			RoleNameLocalConformanceCheck createRoleNameLocalConformanceCheck(String expression, String name, Element source, Element target, CompositeCheck parent);
-		
-	
-	
-	  
+			RoleNameLocalConformanceCheck createRoleNameLocalConformanceCheck(Element source, Element target, CompositeCheck parent);
+
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -389,11 +371,8 @@ public interface ReasoningResultFactory extends EFactory {
 		 */
 		
 		
-			ConnectionsLocalConformanceCheck createConnectionsLocalConformanceCheck(String expression, String name, Element source, Element target, CompositeCheck parent);
-		
-	
-	
-	  
+			ConnectionsLocalConformanceCheck createConnectionsLocalConformanceCheck(Element source, Element target, CompositeCheck parent);
+
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -401,11 +380,8 @@ public interface ReasoningResultFactory extends EFactory {
 		 */
 		
 		
-			LocalConformanceCheck createLocalConformanceCheck(String expression, String name, Element source, Element target, CompositeCheck parent);
-		
-	
-	
-	  
+			LocalConformanceCheck createLocalConformanceCheck(Element source, Element target, CompositeCheck parent);
+
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -413,11 +389,8 @@ public interface ReasoningResultFactory extends EFactory {
 		 */
 		
 		
-			TypeFeatureCheck createTypeFeatureCheck(String expression, String name, Element source, Element target, CompositeCheck parent);
-		
-	
-	
-	  
+			TypeFeatureCheck createTypeFeatureCheck(Element source, Element target, CompositeCheck parent);
+
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -425,11 +398,8 @@ public interface ReasoningResultFactory extends EFactory {
 		 */
 		
 		
-			FeatureSearchCheck createFeatureSearchCheck(String expression, String name, Element source, Element target, Feature typeFeature, CompositeCheck parent);
-		
-	
-	
-	  
+			FeatureSearchCheck createFeatureSearchCheck(Element source, Element target, Feature typeFeature, CompositeCheck parent);
+
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -437,11 +407,8 @@ public interface ReasoningResultFactory extends EFactory {
 		 */
 		
 		
-			FeatureConformanceCheck createFeatureConformanceCheck(String expression, String name, Element source, Element target, CompositeCheck parent);
-		
-	
-	
-	  
+			FeatureConformanceCheck createFeatureConformanceCheck(Element source, Element target, CompositeCheck parent);
+
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -449,11 +416,8 @@ public interface ReasoningResultFactory extends EFactory {
 		 */
 		
 		
-			LevelComparison createLevelComparison(String expression, CompositeCheck parent);
-		
-	
-	
-	  
+			LevelComparison createLevelComparison(Clabject source, Clabject target, CompositeCheck parent);
+
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -461,7 +425,25 @@ public interface ReasoningResultFactory extends EFactory {
 		 */
 		
 		
-			ValueComparison createValueComparison(String expression, Attribute source, Attribute target, CompositeCheck parent);
+			ValueComparison createValueComparison(Attribute source, Attribute target, CompositeCheck parent);
+
+		/**
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		
+		
+			HasAdditionalPropertiesCheck createHasAdditionalPropertiesCheck(Element source, Element target, Element commonProperties, Element additionalProperties, CompositeCheck parent);
+
+		/**
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		
+		
+			PotencyComparison createPotencyComparison(Clabject source, Clabject target, CompositeCheck parent);
 		
 	
 	

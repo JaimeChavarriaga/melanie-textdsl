@@ -17,12 +17,14 @@ import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ExpressedInstanceExcludedCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.FeatureConformanceCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.FeatureSearchCheck;
+import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.HasAdditionalPropertiesCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.LevelComparison;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.LocalConformanceCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MultiplicityCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MultiplicityRoleNameCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MutabilityComparison;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.NameComparison;
+import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.PotencyComparison;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultFactory;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultPackage;
@@ -194,6 +196,20 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 	private EClass valueComparisonEClass = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass hasAdditionalPropertiesCheckEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass potencyComparisonEClass = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -335,7 +351,7 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 	 * @generated
 	 */
 	public EAttribute getCompositeCheck_Name() {
-		return (EAttribute)compositeCheckEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)compositeCheckEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -344,7 +360,7 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 	 * @generated
 	 */
 	public EReference getCompositeCheck_Source() {
-		return (EReference)compositeCheckEClass.getEStructuralFeatures().get(2);
+		return (EReference)compositeCheckEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -353,7 +369,7 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 	 * @generated
 	 */
 	public EReference getCompositeCheck_Target() {
-		return (EReference)compositeCheckEClass.getEStructuralFeatures().get(3);
+		return (EReference)compositeCheckEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -415,6 +431,24 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getDurabilityComparison_TypeDurability() {
+		return (EAttribute)durabilityComparisonEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDurabilityComparison_InstanceDurability() {
+		return (EAttribute)durabilityComparisonEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getMutabilityComparison() {
 		return mutabilityComparisonEClass;
 	}
@@ -435,6 +469,24 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 	 */
 	public EReference getMutabilityComparison_Target() {
 		return (EReference)mutabilityComparisonEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMutabilityComparison_TypeMutability() {
+		return (EAttribute)mutabilityComparisonEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMutabilityComparison_InstanceMutability() {
+		return (EAttribute)mutabilityComparisonEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -784,6 +836,24 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getLevelComparison_Source() {
+		return (EReference)levelComparisonEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLevelComparison_Target() {
+		return (EReference)levelComparisonEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getValueComparison() {
 		return valueComparisonEClass;
 	}
@@ -804,6 +874,78 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 	 */
 	public EReference getValueComparison_Target() {
 		return (EReference)valueComparisonEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getHasAdditionalPropertiesCheck() {
+		return hasAdditionalPropertiesCheckEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getHasAdditionalPropertiesCheck_CommonProperties() {
+		return (EReference)hasAdditionalPropertiesCheckEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getHasAdditionalPropertiesCheck_AdditionalProperties() {
+		return (EReference)hasAdditionalPropertiesCheckEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getPotencyComparison() {
+		return potencyComparisonEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPotencyComparison_TargetPotency() {
+		return (EAttribute)potencyComparisonEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPotencyComparison_InstancePotency() {
+		return (EAttribute)potencyComparisonEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPotencyComparison_Source() {
+		return (EReference)potencyComparisonEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPotencyComparison_Target() {
+		return (EReference)potencyComparisonEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -844,9 +986,9 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 
 		compositeCheckEClass = createEClass(COMPOSITE_CHECK);
 		createEReference(compositeCheckEClass, COMPOSITE_CHECK__CHECK);
-		createEAttribute(compositeCheckEClass, COMPOSITE_CHECK__NAME);
 		createEReference(compositeCheckEClass, COMPOSITE_CHECK__SOURCE);
 		createEReference(compositeCheckEClass, COMPOSITE_CHECK__TARGET);
+		createEAttribute(compositeCheckEClass, COMPOSITE_CHECK__NAME);
 
 		nameComparisonEClass = createEClass(NAME_COMPARISON);
 		createEReference(nameComparisonEClass, NAME_COMPARISON__SOURCE);
@@ -855,10 +997,14 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 		durabilityComparisonEClass = createEClass(DURABILITY_COMPARISON);
 		createEReference(durabilityComparisonEClass, DURABILITY_COMPARISON__SOURCE);
 		createEReference(durabilityComparisonEClass, DURABILITY_COMPARISON__TARGET);
+		createEAttribute(durabilityComparisonEClass, DURABILITY_COMPARISON__TYPE_DURABILITY);
+		createEAttribute(durabilityComparisonEClass, DURABILITY_COMPARISON__INSTANCE_DURABILITY);
 
 		mutabilityComparisonEClass = createEClass(MUTABILITY_COMPARISON);
 		createEReference(mutabilityComparisonEClass, MUTABILITY_COMPARISON__SOURCE);
 		createEReference(mutabilityComparisonEClass, MUTABILITY_COMPARISON__TARGET);
+		createEAttribute(mutabilityComparisonEClass, MUTABILITY_COMPARISON__TYPE_MUTABILITY);
+		createEAttribute(mutabilityComparisonEClass, MUTABILITY_COMPARISON__INSTANCE_MUTABILITY);
 
 		datatypeComparisonEClass = createEClass(DATATYPE_COMPARISON);
 		createEReference(datatypeComparisonEClass, DATATYPE_COMPARISON__SOURCE);
@@ -911,10 +1057,22 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 		levelComparisonEClass = createEClass(LEVEL_COMPARISON);
 		createEAttribute(levelComparisonEClass, LEVEL_COMPARISON__TARGET_LEVEL);
 		createEAttribute(levelComparisonEClass, LEVEL_COMPARISON__INSTANCE_LEVEL);
+		createEReference(levelComparisonEClass, LEVEL_COMPARISON__SOURCE);
+		createEReference(levelComparisonEClass, LEVEL_COMPARISON__TARGET);
 
 		valueComparisonEClass = createEClass(VALUE_COMPARISON);
 		createEReference(valueComparisonEClass, VALUE_COMPARISON__SOURCE);
 		createEReference(valueComparisonEClass, VALUE_COMPARISON__TARGET);
+
+		hasAdditionalPropertiesCheckEClass = createEClass(HAS_ADDITIONAL_PROPERTIES_CHECK);
+		createEReference(hasAdditionalPropertiesCheckEClass, HAS_ADDITIONAL_PROPERTIES_CHECK__COMMON_PROPERTIES);
+		createEReference(hasAdditionalPropertiesCheckEClass, HAS_ADDITIONAL_PROPERTIES_CHECK__ADDITIONAL_PROPERTIES);
+
+		potencyComparisonEClass = createEClass(POTENCY_COMPARISON);
+		createEAttribute(potencyComparisonEClass, POTENCY_COMPARISON__TARGET_POTENCY);
+		createEAttribute(potencyComparisonEClass, POTENCY_COMPARISON__INSTANCE_POTENCY);
+		createEReference(potencyComparisonEClass, POTENCY_COMPARISON__SOURCE);
+		createEReference(potencyComparisonEClass, POTENCY_COMPARISON__TARGET);
 	}
 
 	/**
@@ -967,6 +1125,8 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 		featureConformanceCheckEClass.getESuperTypes().add(this.getCompositeCheck());
 		levelComparisonEClass.getESuperTypes().add(this.getCheck());
 		valueComparisonEClass.getESuperTypes().add(this.getCheck());
+		hasAdditionalPropertiesCheckEClass.getESuperTypes().add(this.getCompositeCheck());
+		potencyComparisonEClass.getESuperTypes().add(this.getCheck());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(reasoningResultModelEClass, ReasoningResultModel.class, "ReasoningResultModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -979,9 +1139,9 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 
 		initEClass(compositeCheckEClass, CompositeCheck.class, "CompositeCheck", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCompositeCheck_Check(), this.getCheck(), null, "check", null, 0, -1, CompositeCheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCompositeCheck_Name(), ecorePackage.getEString(), "name", null, 1, 1, CompositeCheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCompositeCheck_Source(), thePLMPackage.getElement(), null, "source", null, 1, 1, CompositeCheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCompositeCheck_Target(), thePLMPackage.getElement(), null, "target", null, 0, 1, CompositeCheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCompositeCheck_Name(), ecorePackage.getEString(), "name", null, 1, 1, CompositeCheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(nameComparisonEClass, NameComparison.class, "NameComparison", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getNameComparison_Source(), thePLMPackage.getFeature(), null, "source", null, 1, 1, NameComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -990,10 +1150,14 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 		initEClass(durabilityComparisonEClass, DurabilityComparison.class, "DurabilityComparison", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDurabilityComparison_Source(), thePLMPackage.getFeature(), null, "source", null, 1, 1, DurabilityComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDurabilityComparison_Target(), thePLMPackage.getFeature(), null, "target", null, 1, 1, DurabilityComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDurabilityComparison_TypeDurability(), ecorePackage.getEInt(), "typeDurability", null, 1, 1, DurabilityComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDurabilityComparison_InstanceDurability(), ecorePackage.getEInt(), "instanceDurability", null, 1, 1, DurabilityComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(mutabilityComparisonEClass, MutabilityComparison.class, "MutabilityComparison", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMutabilityComparison_Source(), thePLMPackage.getAttribute(), null, "source", null, 1, 1, MutabilityComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMutabilityComparison_Target(), thePLMPackage.getAttribute(), null, "target", null, 1, 1, MutabilityComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMutabilityComparison_TypeMutability(), ecorePackage.getEInt(), "typeMutability", null, 1, 1, MutabilityComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMutabilityComparison_InstanceMutability(), ecorePackage.getEInt(), "instanceMutability", null, 1, 1, MutabilityComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(datatypeComparisonEClass, DatatypeComparison.class, "DatatypeComparison", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDatatypeComparison_Source(), thePLMPackage.getAttribute(), null, "source", null, 1, 1, DatatypeComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1046,10 +1210,22 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 		initEClass(levelComparisonEClass, LevelComparison.class, "LevelComparison", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLevelComparison_TargetLevel(), ecorePackage.getEInt(), "targetLevel", null, 1, 1, LevelComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLevelComparison_InstanceLevel(), ecorePackage.getEInt(), "instanceLevel", null, 1, 1, LevelComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLevelComparison_Source(), thePLMPackage.getClabject(), null, "source", null, 1, 1, LevelComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLevelComparison_Target(), thePLMPackage.getClabject(), null, "target", null, 0, 1, LevelComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(valueComparisonEClass, ValueComparison.class, "ValueComparison", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getValueComparison_Source(), thePLMPackage.getAttribute(), null, "source", null, 1, 1, ValueComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getValueComparison_Target(), thePLMPackage.getAttribute(), null, "target", null, 1, 1, ValueComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(hasAdditionalPropertiesCheckEClass, HasAdditionalPropertiesCheck.class, "HasAdditionalPropertiesCheck", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getHasAdditionalPropertiesCheck_CommonProperties(), thePLMPackage.getElement(), null, "commonProperties", null, 0, 1, HasAdditionalPropertiesCheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getHasAdditionalPropertiesCheck_AdditionalProperties(), thePLMPackage.getElement(), null, "additionalProperties", null, 0, 1, HasAdditionalPropertiesCheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+
+		initEClass(potencyComparisonEClass, PotencyComparison.class, "PotencyComparison", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPotencyComparison_TargetPotency(), ecorePackage.getEInt(), "targetPotency", null, 1, 1, PotencyComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPotencyComparison_InstancePotency(), ecorePackage.getEInt(), "instancePotency", null, 1, 1, PotencyComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPotencyComparison_Source(), thePLMPackage.getClabject(), null, "source", null, 1, 1, PotencyComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPotencyComparison_Target(), thePLMPackage.getClabject(), null, "target", null, 0, 1, PotencyComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

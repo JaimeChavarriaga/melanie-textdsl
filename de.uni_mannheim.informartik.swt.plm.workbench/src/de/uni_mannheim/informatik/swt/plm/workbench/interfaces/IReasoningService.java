@@ -248,4 +248,47 @@ public interface IReasoningService {
 	 */
 	public static final String HAS_ADDITIONAL_PROPERTIES = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.hasadditionalproperties";
 	
+	/**
+	 * param[0] = Clabject - instance <br />
+	 * param[1] = Clabject - type
+	 */
+	public static final String IS_ISONYM = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.isisonym";
+	
+	/**
+	 * param[0] = Clabject - instance <br />
+	 * param[1] = Clabject - type
+	 */
+	public static final String IS_HYPONYM = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.ishyponym";
+	
+	/**
+	 * param[0] = Clabject - instance <br />
+	 * param[1] = Clabject - type
+	 */
+	public static final String IS_INSTANCE = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.isinstance";
+	
+	/**
+	 * param[0] = Model 
+	 */
+	public static final String IS_CONSISTENTLY_CLASSIFIED = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.isconsistentlyclassified";
+	
+	/**
+	 * param[0] = Element - the element to be checked for consistency. Valid are Ontology, Generalization and Classification 
+	 */
+	public static final String IS_CONSISTENT = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.isconsisten";
+	
+	/**
+	 * param[0] = Clabject - the clabject to be checked for potency completeness 
+	 */
+	public static final String IS_POTENCY_COMPLETE = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.ispotencycomplete";
+	
+	/**
+	 * param[0] = Ontology 
+	 */
+	public static final String IS_COMPLETE = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.iscomplete";
+	
+	/**
+	 * param[0] = Ontology 
+	 */
+	public static final String IS_VALID = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.isvalid";
+	
 }

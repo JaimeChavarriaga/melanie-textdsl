@@ -27,6 +27,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.MutabilityComparisonImpl#getSource <em>Source</em>}</li>
  *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.MutabilityComparisonImpl#getTarget <em>Target</em>}</li>
+ *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.MutabilityComparisonImpl#getTypeMutability <em>Type Mutability</em>}</li>
+ *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.MutabilityComparisonImpl#getInstanceMutability <em>Instance Mutability</em>}</li>
  * </ul>
  * </p>
  *
@@ -52,6 +54,46 @@ public class MutabilityComparisonImpl extends CheckImpl implements MutabilityCom
 	 * @ordered
 	 */
 	protected Attribute target;
+
+	/**
+	 * The default value of the '{@link #getTypeMutability() <em>Type Mutability</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTypeMutability()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int TYPE_MUTABILITY_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getTypeMutability() <em>Type Mutability</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTypeMutability()
+	 * @generated
+	 * @ordered
+	 */
+	protected int typeMutability = TYPE_MUTABILITY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getInstanceMutability() <em>Instance Mutability</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInstanceMutability()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int INSTANCE_MUTABILITY_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getInstanceMutability() <em>Instance Mutability</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInstanceMutability()
+	 * @generated
+	 * @ordered
+	 */
+	protected int instanceMutability = INSTANCE_MUTABILITY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -153,6 +195,48 @@ public class MutabilityComparisonImpl extends CheckImpl implements MutabilityCom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public int getTypeMutability() {
+		return typeMutability;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTypeMutability(int newTypeMutability) {
+		int oldTypeMutability = typeMutability;
+		typeMutability = newTypeMutability;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ReasoningResultPackage.MUTABILITY_COMPARISON__TYPE_MUTABILITY, oldTypeMutability, typeMutability));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getInstanceMutability() {
+		return instanceMutability;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInstanceMutability(int newInstanceMutability) {
+		int oldInstanceMutability = instanceMutability;
+		instanceMutability = newInstanceMutability;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ReasoningResultPackage.MUTABILITY_COMPARISON__INSTANCE_MUTABILITY, oldInstanceMutability, instanceMutability));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -162,6 +246,10 @@ public class MutabilityComparisonImpl extends CheckImpl implements MutabilityCom
 			case ReasoningResultPackage.MUTABILITY_COMPARISON__TARGET:
 				if (resolve) return getTarget();
 				return basicGetTarget();
+			case ReasoningResultPackage.MUTABILITY_COMPARISON__TYPE_MUTABILITY:
+				return getTypeMutability();
+			case ReasoningResultPackage.MUTABILITY_COMPARISON__INSTANCE_MUTABILITY:
+				return getInstanceMutability();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -179,6 +267,12 @@ public class MutabilityComparisonImpl extends CheckImpl implements MutabilityCom
 				return;
 			case ReasoningResultPackage.MUTABILITY_COMPARISON__TARGET:
 				setTarget((Attribute)newValue);
+				return;
+			case ReasoningResultPackage.MUTABILITY_COMPARISON__TYPE_MUTABILITY:
+				setTypeMutability((Integer)newValue);
+				return;
+			case ReasoningResultPackage.MUTABILITY_COMPARISON__INSTANCE_MUTABILITY:
+				setInstanceMutability((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -198,6 +292,12 @@ public class MutabilityComparisonImpl extends CheckImpl implements MutabilityCom
 			case ReasoningResultPackage.MUTABILITY_COMPARISON__TARGET:
 				setTarget((Attribute)null);
 				return;
+			case ReasoningResultPackage.MUTABILITY_COMPARISON__TYPE_MUTABILITY:
+				setTypeMutability(TYPE_MUTABILITY_EDEFAULT);
+				return;
+			case ReasoningResultPackage.MUTABILITY_COMPARISON__INSTANCE_MUTABILITY:
+				setInstanceMutability(INSTANCE_MUTABILITY_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -214,8 +314,30 @@ public class MutabilityComparisonImpl extends CheckImpl implements MutabilityCom
 				return source != null;
 			case ReasoningResultPackage.MUTABILITY_COMPARISON__TARGET:
 				return target != null;
+			case ReasoningResultPackage.MUTABILITY_COMPARISON__TYPE_MUTABILITY:
+				return typeMutability != TYPE_MUTABILITY_EDEFAULT;
+			case ReasoningResultPackage.MUTABILITY_COMPARISON__INSTANCE_MUTABILITY:
+				return instanceMutability != INSTANCE_MUTABILITY_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (typeMutability: ");
+		result.append(typeMutability);
+		result.append(", instanceMutability: ");
+		result.append(instanceMutability);
+		result.append(')');
+		return result.toString();
 	}
 
 } //MutabilityComparisonImpl

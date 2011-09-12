@@ -54,8 +54,7 @@ public class ExecuteModelTests implements IObjectActionDelegate {
 					if (selectedElements.size() > 1) {
 						Clabject type = (Clabject) selectedElements.get(0);
 						Clabject instance = (Clabject) selectedElements.get(1);
-						System.out.println("Property Conformance " + reasoner.run(IReasoningService.PROPERTY_CONFORMS, new Object[]{type, instance}));
-						System.out.println("Additional Properties" + reasoner.run(IReasoningService.HAS_ADDITIONAL_PROPERTIES, new Object[]{type, instance}));
+						System.out.println("isInstance " + reasoner.run(IReasoningService.IS_INSTANCE, new Object[]{type, instance}));
 						if (type instanceof Connection) {
 							System.out.println("Local Construction Conformance " + reasoner.localConstructionConformsConnection((Connection) type, (Connection) instance));
 							System.out.println("Neighbour Construction Conformance " + reasoner.neighbourhoodConstructionConformsConnection((Connection) type, (Connection) instance) );
@@ -76,6 +75,11 @@ public class ExecuteModelTests implements IObjectActionDelegate {
 					
 					System.out.println("" + instance + ".conforms("+type+")" + reasoner.run(IReasoningService.FEATURE_CONFORMS, new Object[]{type, instance}));
 				}
+			} else if (selectedElements.size() == 1) {
+				//One element
+				Element e = (Element) selectedElements.get(0);
+				IReasoningService reasoner = ((IReasoningService )ExtensionPointService.Instance().getReasoningService(ID)).Instance();
+				System.out.println("One Element selected " + e);
 			}
 		} catch (CoreException e) {
 			e.printStackTrace();

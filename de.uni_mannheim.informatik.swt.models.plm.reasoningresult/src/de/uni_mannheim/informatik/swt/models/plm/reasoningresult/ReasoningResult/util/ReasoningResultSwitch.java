@@ -227,6 +227,21 @@ public class ReasoningResultSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ReasoningResultPackage.HAS_ADDITIONAL_PROPERTIES_CHECK: {
+				HasAdditionalPropertiesCheck hasAdditionalPropertiesCheck = (HasAdditionalPropertiesCheck)theEObject;
+				T result = caseHasAdditionalPropertiesCheck(hasAdditionalPropertiesCheck);
+				if (result == null) result = caseCompositeCheck(hasAdditionalPropertiesCheck);
+				if (result == null) result = caseCheck(hasAdditionalPropertiesCheck);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ReasoningResultPackage.POTENCY_COMPARISON: {
+				PotencyComparison potencyComparison = (PotencyComparison)theEObject;
+				T result = casePotencyComparison(potencyComparison);
+				if (result == null) result = caseCheck(potencyComparison);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -543,6 +558,36 @@ public class ReasoningResultSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseValueComparison(ValueComparison object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Has Additional Properties Check</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Has Additional Properties Check</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseHasAdditionalPropertiesCheck(HasAdditionalPropertiesCheck object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Potency Comparison</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Potency Comparison</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePotencyComparison(PotencyComparison object) {
 		return null;
 	}
 

@@ -86,6 +86,8 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 			case ReasoningResultPackage.FEATURE_CONFORMANCE_CHECK: return createFeatureConformanceCheck();
 			case ReasoningResultPackage.LEVEL_COMPARISON: return createLevelComparison();
 			case ReasoningResultPackage.VALUE_COMPARISON: return createValueComparison();
+			case ReasoningResultPackage.HAS_ADDITIONAL_PROPERTIES_CHECK: return createHasAdditionalPropertiesCheck();
+			case ReasoningResultPackage.POTENCY_COMPARISON: return createPotencyComparison();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -296,6 +298,26 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public HasAdditionalPropertiesCheck createHasAdditionalPropertiesCheck() {
+		HasAdditionalPropertiesCheckImpl hasAdditionalPropertiesCheck = new HasAdditionalPropertiesCheckImpl();
+		return hasAdditionalPropertiesCheck;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PotencyComparison createPotencyComparison() {
+		PotencyComparisonImpl potencyComparison = new PotencyComparisonImpl();
+		return potencyComparison;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ReasoningResultPackage getReasoningResultPackage() {
 		return (ReasoningResultPackage)getEPackage();
 	}
@@ -325,7 +347,7 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 			ReasoningResultModelImpl reasoningResultModel = new ReasoningResultModelImpl();
 	    
 	    	
-	    	//Set the vaules
+	    	//Set the values
 	    
 			reasoningResultModel.setName(name);
 			
@@ -345,20 +367,22 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 		 */
 		
 		
-		public CompositeCheck createCompositeCheck(String expression, String name, Element source, Element target, CompositeCheck parent) {
+		public CompositeCheck createCompositeCheck(Element source, Element target, CompositeCheck parent) {
 	    
 			CompositeCheckImpl compositeCheck = new CompositeCheckImpl();
 	    
 	    	
-	    	//Set the vaules
+	    	//Set the values
 	    
-			compositeCheck.setExpression(expression);
-			
-			compositeCheck.setName(name);
+				String exprValue = source.getName() + "." + "CompositeCheck" + "(" + target.getName()+ ")";
+				compositeCheck.setExpression(exprValue);
 			
 			compositeCheck.setSource(source);
 			
 			compositeCheck.setTarget(target);
+			
+				exprValue ="CompositeCheck";
+				compositeCheck.setName(exprValue);
 			
 		
 			//Set the parent
@@ -367,10 +391,7 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 	    	
 			return compositeCheck;
 		}
-	  
-	
-	
-	  
+
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -378,14 +399,15 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 		 */
 		
 		
-		public NameComparison createNameComparison(String expression, Feature source, Feature target, CompositeCheck parent) {
+		public NameComparison createNameComparison(Feature source, Feature target, CompositeCheck parent) {
 	    
 			NameComparisonImpl nameComparison = new NameComparisonImpl();
 	    
 	    	
-	    	//Set the vaules
+	    	//Set the values
 	    
-			nameComparison.setExpression(expression);
+				String exprValue = source.getName() + "." + "NameComparison" + "(" + target.getName()+ ")";
+				nameComparison.setExpression(exprValue);
 			
 			nameComparison.setSource(source);
 			
@@ -398,10 +420,7 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 	    	
 			return nameComparison;
 		}
-	  
-	
-	
-	  
+
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -409,14 +428,15 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 		 */
 		
 		
-		public DurabilityComparison createDurabilityComparison(String expression, Feature source, Feature target, CompositeCheck parent) {
+		public DurabilityComparison createDurabilityComparison(Feature source, Feature target, CompositeCheck parent) {
 	    
 			DurabilityComparisonImpl durabilityComparison = new DurabilityComparisonImpl();
 	    
 	    	
-	    	//Set the vaules
+	    	//Set the values
 	    
-			durabilityComparison.setExpression(expression);
+				String exprValue = source.getName() + "." + "DurabilityComparison" + "(" + target.getName()+ ")";
+				durabilityComparison.setExpression(exprValue);
 			
 			durabilityComparison.setSource(source);
 			
@@ -429,10 +449,7 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 	    	
 			return durabilityComparison;
 		}
-	  
-	
-	
-	  
+
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -440,14 +457,15 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 		 */
 		
 		
-		public MutabilityComparison createMutabilityComparison(String expression, Attribute source, Attribute target, CompositeCheck parent) {
+		public MutabilityComparison createMutabilityComparison(Attribute source, Attribute target, CompositeCheck parent) {
 	    
 			MutabilityComparisonImpl mutabilityComparison = new MutabilityComparisonImpl();
 	    
 	    	
-	    	//Set the vaules
+	    	//Set the values
 	    
-			mutabilityComparison.setExpression(expression);
+				String exprValue = source.getName() + "." + "MutabilityComparison" + "(" + target.getName()+ ")";
+				mutabilityComparison.setExpression(exprValue);
 			
 			mutabilityComparison.setSource(source);
 			
@@ -460,10 +478,7 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 	    	
 			return mutabilityComparison;
 		}
-	  
-	
-	
-	  
+
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -471,14 +486,15 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 		 */
 		
 		
-		public DatatypeComparison createDatatypeComparison(String expression, Attribute source, Attribute target, CompositeCheck parent) {
+		public DatatypeComparison createDatatypeComparison(Attribute source, Attribute target, CompositeCheck parent) {
 	    
 			DatatypeComparisonImpl datatypeComparison = new DatatypeComparisonImpl();
 	    
 	    	
-	    	//Set the vaules
+	    	//Set the values
 	    
-			datatypeComparison.setExpression(expression);
+				String exprValue = source.getName() + "." + "DatatypeComparison" + "(" + target.getName()+ ")";
+				datatypeComparison.setExpression(exprValue);
 			
 			datatypeComparison.setSource(source);
 			
@@ -491,10 +507,7 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 	    	
 			return datatypeComparison;
 		}
-	  
-	
-	
-	  
+
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -502,20 +515,22 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 		 */
 		
 		
-		public AllConnectionsCheck createAllConnectionsCheck(String expression, String name, Element source, Element target, CompositeCheck parent) {
+		public AllConnectionsCheck createAllConnectionsCheck(Element source, Element target, CompositeCheck parent) {
 	    
 			AllConnectionsCheckImpl allConnectionsCheck = new AllConnectionsCheckImpl();
 	    
 	    	
-	    	//Set the vaules
+	    	//Set the values
 	    
-			allConnectionsCheck.setExpression(expression);
-			
-			allConnectionsCheck.setName(name);
+				String exprValue = source.getName() + "." + "AllConnectionsCheck" + "(" + target.getName()+ ")";
+				allConnectionsCheck.setExpression(exprValue);
 			
 			allConnectionsCheck.setSource(source);
 			
 			allConnectionsCheck.setTarget(target);
+			
+				exprValue ="AllConnectionsCheck";
+				allConnectionsCheck.setName(exprValue);
 			
 		
 			//Set the parent
@@ -524,10 +539,7 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 	    	
 			return allConnectionsCheck;
 		}
-	  
-	
-	
-	  
+
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -535,20 +547,22 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 		 */
 		
 		
-		public TypeConnectionSearch createTypeConnectionSearch(String expression, String name, Element source, Element target, Connection typeConnection, CompositeCheck parent) {
+		public TypeConnectionSearch createTypeConnectionSearch(Element source, Element target, Connection typeConnection, CompositeCheck parent) {
 	    
 			TypeConnectionSearchImpl typeConnectionSearch = new TypeConnectionSearchImpl();
 	    
 	    	
-	    	//Set the vaules
+	    	//Set the values
 	    
-			typeConnectionSearch.setExpression(expression);
-			
-			typeConnectionSearch.setName(name);
+				String exprValue = source.getName() + "." + "TypeConnectionSearch" + "(" + target.getName()+ ")";
+				typeConnectionSearch.setExpression(exprValue);
 			
 			typeConnectionSearch.setSource(source);
 			
 			typeConnectionSearch.setTarget(target);
+			
+				exprValue ="TypeConnectionSearch";
+				typeConnectionSearch.setName(exprValue);
 			
 			typeConnectionSearch.setTypeConnection(typeConnection);
 			
@@ -559,10 +573,7 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 	    	
 			return typeConnectionSearch;
 		}
-	  
-	
-	
-	  
+
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -570,20 +581,22 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 		 */
 		
 		
-		public ExpressedInstanceExcludedCheck createExpressedInstanceExcludedCheck(String expression, String name, Element source, Element target, CompositeCheck parent) {
+		public ExpressedInstanceExcludedCheck createExpressedInstanceExcludedCheck(Element source, Element target, CompositeCheck parent) {
 	    
 			ExpressedInstanceExcludedCheckImpl expressedInstanceExcludedCheck = new ExpressedInstanceExcludedCheckImpl();
 	    
 	    	
-	    	//Set the vaules
+	    	//Set the values
 	    
-			expressedInstanceExcludedCheck.setExpression(expression);
-			
-			expressedInstanceExcludedCheck.setName(name);
+				String exprValue = source.getName() + "." + "ExpressedInstanceExcludedCheck" + "(" + target.getName()+ ")";
+				expressedInstanceExcludedCheck.setExpression(exprValue);
 			
 			expressedInstanceExcludedCheck.setSource(source);
 			
 			expressedInstanceExcludedCheck.setTarget(target);
+			
+				exprValue ="ExpressedInstanceExcludedCheck";
+				expressedInstanceExcludedCheck.setName(exprValue);
 			
 		
 			//Set the parent
@@ -592,10 +605,7 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 	    	
 			return expressedInstanceExcludedCheck;
 		}
-	  
-	
-	
-	  
+
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -603,20 +613,22 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 		 */
 		
 		
-		public MultiplicityCheck createMultiplicityCheck(String expression, String name, Element source, Element target, CompositeCheck parent) {
+		public MultiplicityCheck createMultiplicityCheck(Element source, Element target, CompositeCheck parent) {
 	    
 			MultiplicityCheckImpl multiplicityCheck = new MultiplicityCheckImpl();
 	    
 	    	
-	    	//Set the vaules
+	    	//Set the values
 	    
-			multiplicityCheck.setExpression(expression);
-			
-			multiplicityCheck.setName(name);
+				String exprValue = source.getName() + "." + "MultiplicityCheck" + "(" + target.getName()+ ")";
+				multiplicityCheck.setExpression(exprValue);
 			
 			multiplicityCheck.setSource(source);
 			
 			multiplicityCheck.setTarget(target);
+			
+				exprValue ="MultiplicityCheck";
+				multiplicityCheck.setName(exprValue);
 			
 		
 			//Set the parent
@@ -625,10 +637,7 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 	    	
 			return multiplicityCheck;
 		}
-	  
-	
-	
-	  
+
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -636,20 +645,22 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 		 */
 		
 		
-		public MultiplicityRoleNameCheck createMultiplicityRoleNameCheck(String expression, String name, Element source, Element target, String roleName, CompositeCheck parent) {
+		public MultiplicityRoleNameCheck createMultiplicityRoleNameCheck(Element source, Element target, String roleName, CompositeCheck parent) {
 	    
 			MultiplicityRoleNameCheckImpl multiplicityRoleNameCheck = new MultiplicityRoleNameCheckImpl();
 	    
 	    	
-	    	//Set the vaules
+	    	//Set the values
 	    
-			multiplicityRoleNameCheck.setExpression(expression);
-			
-			multiplicityRoleNameCheck.setName(name);
+				String exprValue = source.getName() + "." + "MultiplicityRoleNameCheck" + "(" + target.getName()+ ")";
+				multiplicityRoleNameCheck.setExpression(exprValue);
 			
 			multiplicityRoleNameCheck.setSource(source);
 			
 			multiplicityRoleNameCheck.setTarget(target);
+			
+				exprValue ="MultiplicityRoleNameCheck";
+				multiplicityRoleNameCheck.setName(exprValue);
 			
 			multiplicityRoleNameCheck.setRoleName(roleName);
 			
@@ -660,10 +671,7 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 	    	
 			return multiplicityRoleNameCheck;
 		}
-	  
-	
-	
-	  
+
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -671,20 +679,22 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 		 */
 		
 		
-		public RoleNamePropertyConformanceCheck createRoleNamePropertyConformanceCheck(String expression, String name, Element source, Element target, Clabject typeParticipant, Clabject instanceParticipant, CompositeCheck parent) {
+		public RoleNamePropertyConformanceCheck createRoleNamePropertyConformanceCheck(Element source, Element target, Clabject typeParticipant, Clabject instanceParticipant, CompositeCheck parent) {
 	    
 			RoleNamePropertyConformanceCheckImpl roleNamePropertyConformanceCheck = new RoleNamePropertyConformanceCheckImpl();
 	    
 	    	
-	    	//Set the vaules
+	    	//Set the values
 	    
-			roleNamePropertyConformanceCheck.setExpression(expression);
-			
-			roleNamePropertyConformanceCheck.setName(name);
+				String exprValue = source.getName() + "." + "RoleNamePropertyConformanceCheck" + "(" + target.getName()+ ")";
+				roleNamePropertyConformanceCheck.setExpression(exprValue);
 			
 			roleNamePropertyConformanceCheck.setSource(source);
 			
 			roleNamePropertyConformanceCheck.setTarget(target);
+			
+				exprValue ="RoleNamePropertyConformanceCheck";
+				roleNamePropertyConformanceCheck.setName(exprValue);
 			
 			roleNamePropertyConformanceCheck.setTypeParticipant(typeParticipant);
 			
@@ -697,10 +707,7 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 	    	
 			return roleNamePropertyConformanceCheck;
 		}
-	  
-	
-	
-	  
+
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -708,20 +715,22 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 		 */
 		
 		
-		public RoleNameLocalConformanceCheck createRoleNameLocalConformanceCheck(String expression, String name, Element source, Element target, CompositeCheck parent) {
+		public RoleNameLocalConformanceCheck createRoleNameLocalConformanceCheck(Element source, Element target, CompositeCheck parent) {
 	    
 			RoleNameLocalConformanceCheckImpl roleNameLocalConformanceCheck = new RoleNameLocalConformanceCheckImpl();
 	    
 	    	
-	    	//Set the vaules
+	    	//Set the values
 	    
-			roleNameLocalConformanceCheck.setExpression(expression);
-			
-			roleNameLocalConformanceCheck.setName(name);
+				String exprValue = source.getName() + "." + "RoleNameLocalConformanceCheck" + "(" + target.getName()+ ")";
+				roleNameLocalConformanceCheck.setExpression(exprValue);
 			
 			roleNameLocalConformanceCheck.setSource(source);
 			
 			roleNameLocalConformanceCheck.setTarget(target);
+			
+				exprValue ="RoleNameLocalConformanceCheck";
+				roleNameLocalConformanceCheck.setName(exprValue);
 			
 		
 			//Set the parent
@@ -730,10 +739,7 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 	    	
 			return roleNameLocalConformanceCheck;
 		}
-	  
-	
-	
-	  
+
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -741,20 +747,22 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 		 */
 		
 		
-		public ConnectionsLocalConformanceCheck createConnectionsLocalConformanceCheck(String expression, String name, Element source, Element target, CompositeCheck parent) {
+		public ConnectionsLocalConformanceCheck createConnectionsLocalConformanceCheck(Element source, Element target, CompositeCheck parent) {
 	    
 			ConnectionsLocalConformanceCheckImpl connectionsLocalConformanceCheck = new ConnectionsLocalConformanceCheckImpl();
 	    
 	    	
-	    	//Set the vaules
+	    	//Set the values
 	    
-			connectionsLocalConformanceCheck.setExpression(expression);
-			
-			connectionsLocalConformanceCheck.setName(name);
+				String exprValue = source.getName() + "." + "ConnectionsLocalConformanceCheck" + "(" + target.getName()+ ")";
+				connectionsLocalConformanceCheck.setExpression(exprValue);
 			
 			connectionsLocalConformanceCheck.setSource(source);
 			
 			connectionsLocalConformanceCheck.setTarget(target);
+			
+				exprValue ="ConnectionsLocalConformanceCheck";
+				connectionsLocalConformanceCheck.setName(exprValue);
 			
 		
 			//Set the parent
@@ -763,10 +771,7 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 	    	
 			return connectionsLocalConformanceCheck;
 		}
-	  
-	
-	
-	  
+
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -774,20 +779,22 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 		 */
 		
 		
-		public LocalConformanceCheck createLocalConformanceCheck(String expression, String name, Element source, Element target, CompositeCheck parent) {
+		public LocalConformanceCheck createLocalConformanceCheck(Element source, Element target, CompositeCheck parent) {
 	    
 			LocalConformanceCheckImpl localConformanceCheck = new LocalConformanceCheckImpl();
 	    
 	    	
-	    	//Set the vaules
+	    	//Set the values
 	    
-			localConformanceCheck.setExpression(expression);
-			
-			localConformanceCheck.setName(name);
+				String exprValue = source.getName() + "." + "LocalConformanceCheck" + "(" + target.getName()+ ")";
+				localConformanceCheck.setExpression(exprValue);
 			
 			localConformanceCheck.setSource(source);
 			
 			localConformanceCheck.setTarget(target);
+			
+				exprValue ="LocalConformanceCheck";
+				localConformanceCheck.setName(exprValue);
 			
 		
 			//Set the parent
@@ -796,10 +803,7 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 	    	
 			return localConformanceCheck;
 		}
-	  
-	
-	
-	  
+
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -807,20 +811,22 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 		 */
 		
 		
-		public TypeFeatureCheck createTypeFeatureCheck(String expression, String name, Element source, Element target, CompositeCheck parent) {
+		public TypeFeatureCheck createTypeFeatureCheck(Element source, Element target, CompositeCheck parent) {
 	    
 			TypeFeatureCheckImpl typeFeatureCheck = new TypeFeatureCheckImpl();
 	    
 	    	
-	    	//Set the vaules
+	    	//Set the values
 	    
-			typeFeatureCheck.setExpression(expression);
-			
-			typeFeatureCheck.setName(name);
+				String exprValue = source.getName() + "." + "TypeFeatureCheck" + "(" + target.getName()+ ")";
+				typeFeatureCheck.setExpression(exprValue);
 			
 			typeFeatureCheck.setSource(source);
 			
 			typeFeatureCheck.setTarget(target);
+			
+				exprValue ="TypeFeatureCheck";
+				typeFeatureCheck.setName(exprValue);
 			
 		
 			//Set the parent
@@ -829,10 +835,7 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 	    	
 			return typeFeatureCheck;
 		}
-	  
-	
-	
-	  
+
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -840,20 +843,22 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 		 */
 		
 		
-		public FeatureSearchCheck createFeatureSearchCheck(String expression, String name, Element source, Element target, Feature typeFeature, CompositeCheck parent) {
+		public FeatureSearchCheck createFeatureSearchCheck(Element source, Element target, Feature typeFeature, CompositeCheck parent) {
 	    
 			FeatureSearchCheckImpl featureSearchCheck = new FeatureSearchCheckImpl();
 	    
 	    	
-	    	//Set the vaules
+	    	//Set the values
 	    
-			featureSearchCheck.setExpression(expression);
-			
-			featureSearchCheck.setName(name);
+				String exprValue = source.getName() + "." + "FeatureSearchCheck" + "(" + target.getName()+ ")";
+				featureSearchCheck.setExpression(exprValue);
 			
 			featureSearchCheck.setSource(source);
 			
 			featureSearchCheck.setTarget(target);
+			
+				exprValue ="FeatureSearchCheck";
+				featureSearchCheck.setName(exprValue);
 			
 			featureSearchCheck.setTypeFeature(typeFeature);
 			
@@ -864,10 +869,7 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 	    	
 			return featureSearchCheck;
 		}
-	  
-	
-	
-	  
+
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -875,20 +877,22 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 		 */
 		
 		
-		public FeatureConformanceCheck createFeatureConformanceCheck(String expression, String name, Element source, Element target, CompositeCheck parent) {
+		public FeatureConformanceCheck createFeatureConformanceCheck(Element source, Element target, CompositeCheck parent) {
 	    
 			FeatureConformanceCheckImpl featureConformanceCheck = new FeatureConformanceCheckImpl();
 	    
 	    	
-	    	//Set the vaules
+	    	//Set the values
 	    
-			featureConformanceCheck.setExpression(expression);
-			
-			featureConformanceCheck.setName(name);
+				String exprValue = source.getName() + "." + "FeatureConformanceCheck" + "(" + target.getName()+ ")";
+				featureConformanceCheck.setExpression(exprValue);
 			
 			featureConformanceCheck.setSource(source);
 			
 			featureConformanceCheck.setTarget(target);
+			
+				exprValue ="FeatureConformanceCheck";
+				featureConformanceCheck.setName(exprValue);
 			
 		
 			//Set the parent
@@ -897,10 +901,7 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 	    	
 			return featureConformanceCheck;
 		}
-	  
-	
-	
-	  
+
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -908,14 +909,19 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 		 */
 		
 		
-		public LevelComparison createLevelComparison(String expression, CompositeCheck parent) {
+		public LevelComparison createLevelComparison(Clabject source, Clabject target, CompositeCheck parent) {
 	    
 			LevelComparisonImpl levelComparison = new LevelComparisonImpl();
 	    
 	    	
-	    	//Set the vaules
+	    	//Set the values
 	    
-			levelComparison.setExpression(expression);
+				String exprValue = source.getName() + "." + "LevelComparison" + "(" + target.getName()+ ")";
+				levelComparison.setExpression(exprValue);
+			
+			levelComparison.setSource(source);
+			
+			levelComparison.setTarget(target);
 			
 		
 			//Set the parent
@@ -924,10 +930,7 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 	    	
 			return levelComparison;
 		}
-	  
-	
-	
-	  
+
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -935,14 +938,15 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 		 */
 		
 		
-		public ValueComparison createValueComparison(String expression, Attribute source, Attribute target, CompositeCheck parent) {
+		public ValueComparison createValueComparison(Attribute source, Attribute target, CompositeCheck parent) {
 	    
 			ValueComparisonImpl valueComparison = new ValueComparisonImpl();
 	    
 	    	
-	    	//Set the vaules
+	    	//Set the values
 	    
-			valueComparison.setExpression(expression);
+				String exprValue = source.getName() + "." + "ValueComparison" + "(" + target.getName()+ ")";
+				valueComparison.setExpression(exprValue);
 			
 			valueComparison.setSource(source);
 			
@@ -954,6 +958,71 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 				parent.getCheck().add(valueComparison);
 	    	
 			return valueComparison;
+		}
+
+		/**
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		
+		
+		public HasAdditionalPropertiesCheck createHasAdditionalPropertiesCheck(Element source, Element target, Element commonProperties, Element additionalProperties, CompositeCheck parent) {
+	    
+			HasAdditionalPropertiesCheckImpl hasAdditionalPropertiesCheck = new HasAdditionalPropertiesCheckImpl();
+	    
+	    	
+	    	//Set the values
+	    
+				String exprValue = source.getName() + "." + "HasAdditionalPropertiesCheck" + "(" + target.getName()+ ")";
+				hasAdditionalPropertiesCheck.setExpression(exprValue);
+			
+			hasAdditionalPropertiesCheck.setSource(source);
+			
+			hasAdditionalPropertiesCheck.setTarget(target);
+			
+				exprValue ="HasAdditionalPropertiesCheck";
+				hasAdditionalPropertiesCheck.setName(exprValue);
+			
+			hasAdditionalPropertiesCheck.setCommonProperties(commonProperties);
+			
+			hasAdditionalPropertiesCheck.setAdditionalProperties(additionalProperties);
+			
+		
+			//Set the parent
+			if (parent != null)
+				parent.getCheck().add(hasAdditionalPropertiesCheck);
+	    	
+			return hasAdditionalPropertiesCheck;
+		}
+
+		/**
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		
+		
+		public PotencyComparison createPotencyComparison(Clabject source, Clabject target, CompositeCheck parent) {
+	    
+			PotencyComparisonImpl potencyComparison = new PotencyComparisonImpl();
+	    
+	    	
+	    	//Set the values
+	    
+				String exprValue = source.getName() + "." + "PotencyComparison" + "(" + target.getName()+ ")";
+				potencyComparison.setExpression(exprValue);
+			
+			potencyComparison.setSource(source);
+			
+			potencyComparison.setTarget(target);
+			
+		
+			//Set the parent
+			if (parent != null)
+				parent.getCheck().add(potencyComparison);
+	    	
+			return potencyComparison;
 		}
 	  
 	
