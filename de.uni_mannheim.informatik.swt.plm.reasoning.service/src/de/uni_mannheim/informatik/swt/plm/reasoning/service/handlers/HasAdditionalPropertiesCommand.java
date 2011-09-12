@@ -15,12 +15,17 @@ import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService
 
 public class HasAdditionalPropertiesCommand extends AbstractHandler {
 	
+	public static final String ID = "de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.hasadditionalpropertiescommand";
+	
 	IReasoningService reasoner = new ReasoningService().Instance();
+	boolean complexNavigationSearch = false;
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		Clabject type = (Clabject)event.getParameters().get("type");
 		Clabject instance = (Clabject)event.getParameters().get("instance");
+		//the command is executed standalone; so we check propertyConformance and not only for the name
+		complexNavigationSearch = true;
 		ReasoningResultModel resultModel = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();
 		CompositeCheck check = compute(type, instance);
 		resultModel.getCheck().add(check);
@@ -45,16 +50,16 @@ public class HasAdditionalPropertiesCommand extends AbstractHandler {
 			CompositeCheck featCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck(instance, type, featuresCheck);
 			featCheck.setName(i.getName());
 			featCheck.setExpression("nexists pi_t in "+type.getName() + ".getAllFeatures(): "+i.getName() + ".conformsTo(pi_T)");
-			boolean found = false;
+			boolean unique = true;
 			for (Feature t: type.getAllFeatures()) {
 				CompositeCheck actualFeatCheck = (new FeatureConformsCommand()).compute(t, i);
 				featCheck.getCheck().add(actualFeatCheck);
-				if (!actualFeatCheck.isResult()) {
-					found = true;
+				if (actualFeatCheck.isResult()) {
+					unique = false;
 					break;
 				}
 			}
-			if (found) {
+			if (unique) {
 				featCheck.setResult(true);
 				featuresCheck.setResult(true);
 				check.setResult(true);
@@ -73,7 +78,13 @@ public class HasAdditionalPropertiesCommand extends AbstractHandler {
 				associateCheck.setName(associate_i.getName());
 				boolean found = true;
 				for (Clabject associate_t:type.getAllAssociatesForRoleName(rN)) {
-					CompositeCheck actualAssociateCheck = (new PropertyConformsCommand()).compute(associate_t, associate_i);
+					CompositeCheck actualAssociateCheck = null;
+					if (complexNavigationSearch) {
+						 actualAssociateCheck = (new PropertyConformsCommand()).compute(associate_t, associate_i);
+					} else {
+						actualAssociateCheck = (new NeighbourhoodConformsCommand()).compute(associate_t, associate_i);
+						
+					}
 					associateCheck.getCheck().add(actualAssociateCheck);
 					if (actualAssociateCheck.isResult()) {
 						found = false;

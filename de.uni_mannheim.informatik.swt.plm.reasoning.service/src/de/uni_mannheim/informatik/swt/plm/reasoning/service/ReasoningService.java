@@ -48,7 +48,10 @@ import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.FeatureConformsCommand;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.HasAdditionalPropertiesCommand;
+import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.HyponymCommand;
+import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.InstanceCommand;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.IsExpressedInstanceOfExcludedCommand;
+import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.IsonymCommand;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.LocalConformsCommand;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.MultiplicityConformsCommand;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.NeighbourhoodConformsCommand;
@@ -237,8 +240,43 @@ public class ReasoningService implements IReasoningService {
 			} catch (ExecutionException e) {
 				e.printStackTrace();
 			}
+		} else if (commandID == ReasoningService.IS_HYPONYM) {
+			Map<String, Object> params = new HashMap<String, Object>();
+			params.put("type", parameters[0]);
+			params.put("instance", parameters[1]);
+			HyponymCommand command = new HyponymCommand();
+			ExecutionEvent event = new ExecutionEvent(null, params, this, this);
+			try {
+				result = (Boolean) command.execute(event);
+			} catch (ExecutionException e) {
+				e.printStackTrace();
+			}
+		} else if (commandID == ReasoningService.IS_ISONYM) {
+			Map<String, Object> params = new HashMap<String, Object>();
+			params.put("type", parameters[0]);
+			params.put("instance", parameters[1]);
+			IsonymCommand command = new IsonymCommand();
+			ExecutionEvent event = new ExecutionEvent(null, params, this, this);
+			try {
+				result = (Boolean) command.execute(event);
+			} catch (ExecutionException e) {
+				e.printStackTrace();
+			}
+		} else if (commandID == ReasoningService.IS_INSTANCE) {
+			Map<String, Object> params = new HashMap<String, Object>();
+			params.put("type", parameters[0]);
+			params.put("instance", parameters[1]);
+			InstanceCommand command = new InstanceCommand();
+			ExecutionEvent event = new ExecutionEvent(null, params, this, this);
+			try {
+				result = (Boolean) command.execute(event);
+			} catch (ExecutionException e) {
+				e.printStackTrace();
+			}
+		} else {
+			System.out.println("Unrecognized (read:implemented) command " + commandID);
 		}
-		System.out.println("Command Execution successfull: " + commandID);
+		System.out.println("Command Execution finished: " + commandID);
 		return result;
 	}
 	
