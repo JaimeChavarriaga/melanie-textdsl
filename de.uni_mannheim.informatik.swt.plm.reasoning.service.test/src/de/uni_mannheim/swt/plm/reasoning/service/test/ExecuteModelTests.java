@@ -27,6 +27,8 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Generalization;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation;
 import de.uni_mannheim.informatik.swt.plm.workbench.ExtensionPointService;
 import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService;
 
@@ -74,12 +76,9 @@ public class ExecuteModelTests implements IObjectActionDelegate {
 					Attribute instance = (Attribute) selectedElements.get(1);
 					
 					System.out.println("" + instance + ".conforms("+type+")" + reasoner.run(IReasoningService.FEATURE_CONFORMS, new Object[]{type, instance}));
+				} else 	if (e instanceof Generalization || e instanceof Instantiation) {
+						System.out.println("Logical Element Consistency " + reasoner.run(IReasoningService.IS_CONSISTENT, new Object[]{e}));
 				}
-			} else if (selectedElements.size() == 1) {
-				//One element
-				Element e = (Element) selectedElements.get(0);
-				IReasoningService reasoner = ((IReasoningService )ExtensionPointService.Instance().getReasoningService(ID)).Instance();
-				System.out.println("One Element selected " + e);
 			}
 		} catch (CoreException e) {
 			e.printStackTrace();

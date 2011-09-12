@@ -81,13 +81,15 @@ public class PropertyConformsCommand extends AbstractHandler {
 		CompositeCheck child = null;
 		if (type instanceof Connection && instance instanceof Connection) {
 			child = propertyConformsConnection((Connection) type, (Connection) instance);
+			check.getCheck().add(child);
+			check.setResult(child.isResult());
 		} else if (type instanceof Entity && instance instanceof Entity) {
 			child = propertyConformsClabject(type, instance);
+			check.getCheck().add(child);
+			check.setResult(child.isResult());
 		} else {
-			System.out.println("mismatching types");
+			System.out.println("mismatching types " + type + "|" + instance);
 		}
-		check.getCheck().add(child);
-		check.setResult(child.isResult());
 		return check;
 	}
 	

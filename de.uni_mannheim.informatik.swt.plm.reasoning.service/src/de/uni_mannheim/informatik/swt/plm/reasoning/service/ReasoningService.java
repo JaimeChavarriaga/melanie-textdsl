@@ -46,6 +46,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMFactoryImpl;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.CompositeCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultFactory;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultModel;
+import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.ConsistencyCommand;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.FeatureConformsCommand;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.HasAdditionalPropertiesCommand;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.HyponymCommand;
@@ -273,7 +274,17 @@ public class ReasoningService implements IReasoningService {
 			} catch (ExecutionException e) {
 				e.printStackTrace();
 			}
-		} else {
+		} else if (commandID == ReasoningService.IS_CONSISTENT) {
+			Map<String, Object> params = new HashMap<String, Object>();
+			params.put("element", parameters[0]);
+			ConsistencyCommand command = new ConsistencyCommand();
+			ExecutionEvent event = new ExecutionEvent(null, params, this, this);
+			try {
+				result = (Boolean) command.execute(event);
+			} catch (ExecutionException e) {
+				e.printStackTrace();
+			} 
+		}else {
 			System.out.println("Unrecognized (read:implemented) command " + commandID);
 		}
 		System.out.println("Command Execution finished: " + commandID);

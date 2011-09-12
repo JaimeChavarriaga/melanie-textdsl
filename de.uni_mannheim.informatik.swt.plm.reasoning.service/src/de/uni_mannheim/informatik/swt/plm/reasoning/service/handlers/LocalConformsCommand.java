@@ -77,9 +77,9 @@ public class LocalConformsCommand extends AbstractHandler {
 		CompositeCheck roleCheck = reasoner.createCompositeCheck("LocalConformance[RoleName]", instance, type, "$ forall rN_t in delta_t.roleName: (exists rN_i in delta_i.roleName: rN_i = rN_t land delta_i.isNav(rN_t) = delta_t.isNav(rN_t)))$");
 		result.getCheck().add(roleCheck);
 		for (String rN : type.getRoleName()) {
-			RoleNameLocalConformanceCheck roleNameCheck = ReasoningResultFactory.eINSTANCE.createRoleNameLocalConformanceCheck();
+			RoleNameLocalConformanceCheck roleNameCheck = ReasoningResultFactory.eINSTANCE.createRoleNameLocalConformanceCheck(instance, type, roleCheck);
+			roleNameCheck.setName(rN);
 			roleNameCheck.setRoleName(rN);
-			roleCheck.getCheck().add(roleNameCheck);
 			boolean found = instance.getRoleName().contains(rN);
 			if (!found) {
 				return result;
