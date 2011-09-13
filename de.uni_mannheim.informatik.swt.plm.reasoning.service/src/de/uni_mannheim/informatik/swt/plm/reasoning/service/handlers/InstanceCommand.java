@@ -38,10 +38,10 @@ public class InstanceCommand extends AbstractHandler {
 	}
 	
 	protected CompositeCheck compute(Clabject type, Clabject instance) {
-		return isHyponym(type, instance);
+		return isInstance(type, instance);
 	}
 	
-	private CompositeCheck isHyponym(Clabject type, Clabject instance) {
+	private CompositeCheck isInstance(Clabject type, Clabject instance) {
 		CompositeCheck check = ReasoningResultFactory.eINSTANCE.createCompositeCheck(instance, type, null);
 		check.setName("IsInstance");
 		CompositeCheck isonym = (new IsonymCommand()).compute(type, instance);
@@ -50,7 +50,7 @@ public class InstanceCommand extends AbstractHandler {
 			check.setResult(true);
 			return check;
 		}
-		CompositeCheck hyponym = (new HasAdditionalPropertiesCommand()).compute(type, instance);
+		CompositeCheck hyponym = (new HyponymCommand()).compute(type, instance);
 		check.getCheck().add(hyponym);
 		if (hyponym.isResult()) {
 			check.setResult(true);
