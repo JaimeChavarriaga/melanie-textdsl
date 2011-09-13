@@ -1,0 +1,242 @@
+context Ontology {
+	constraint notComputedOrIrrelevant {
+		check: self.expressed and self.relevant
+		message: 'Ontologies cannot be computed or irrelevant'
+		fix {
+			title: 'Set expressed and relevant to true'
+			do {
+              self.expressed := true;
+              self.relevant := true;
+          }
+		}
+	}
+}
+
+context Clabject {
+
+	constraint potencyNotNegative {
+		check: self.potency > -2
+		message: '\'' + self.name + '\' potency cannot be negative'
+		fix {
+			title: 'Set potency to *'
+			do {self.potency := -1;}
+		}
+		fix {
+			title: 'Compute the potency based on types'
+			do {
+				--tbd
+			}
+		}
+	}
+	
+	constraint levelNotNegative {
+		check: self.level > -1
+		message: '\'' + self.name + '\' level cannot be negative'
+		fix {
+			title: 'Set the level to the level of the model.'
+			do {self.level := self.getModel().getLevel();}
+		}
+	}
+	
+	constraint levelNotModel {
+		guard: self.level > -1
+		check: self.level = self.getModel().getLevel()
+		message: '\'' + self.name + '\' level does not match level of the containing model'
+		fix {
+			title: 'Set the level to the level of the containing model'
+			do {self.level := self.getModel().getLevel();}
+		}
+	}
+	
+	constraint featureNameUnique {
+		guard: self.feature->size() > 0
+		check {
+		 var names =  self.feature->collect(f|f.name);
+		 return names->forAll(n|names.count(n) = 1);
+		}
+		message: '\''+ self.name + '\' defines features with duplicate names'
+	}
+	
+	constraint visualizerDurability {
+		guard: self.potency > -2
+		check: (self.potency = -1) or (self.visualizer->forAll(v|v.durability <= self.potency))
+		message: '\'' + self.name + '\' has a visualizer of incorrect durability'
+		fix {
+			title: 'Set all mismatching visualizer\'s durability to ' + self.potency
+			do {
+				for (v in self.visualizer->select(v|v.durability > self.potency)) {
+					v.durability := self.potency;
+				}
+			}
+		}
+	}
+}
+
+context Feature {
+	constraint durabilityNotNegative {
+		check: self.durability > -2
+		message: 'The durability of feature \'' + self.name + '\' cannot be negative'
+		fix {
+			title: 'Set durability to the potency of the Clabject'
+			do{self.durability := self.getClabject().potency;}
+		} 
+	}
+	
+	constraint visualizerDurability {
+		guard: self.durability > -2
+		check: (self.durability = -1) or (self.visualizer->forAll(v|v.durability <= self.durability))
+		message: '\'' + self.name + '\' has a visualizer of incorrect durability'
+		fix {
+			title: 'Set all mismatching visualizer\'s durability to ' + self.durability
+			do {
+				for (v in self.visualizer->select(v|v.durability > self.durability)) {
+					v.durability := self.durability;
+				}
+			}
+		}
+	}
+}
+
+context Attribute {
+	constraint mutabilityNotHigherDurability {
+		check: (self.durability = -1) or (self.mutability <= self.durability)
+		message: 'The mutability of feature \'' + self.name + '\' cannot be higher than the durability of the faeture'
+		fix {
+			title: 'Set the feature\'s mutability to its the durability'
+			do {self.mutability := self.durability;}
+		}
+	}
+}
+
+context Visualizer {
+	constraint durabilityNotNegative {
+		check: self.durability > -2
+		message: 'The durability of a visualizer cannot be negative'
+		fix {
+			--guard: self.getElement().oclIsKindOf(Feature)
+			title: 'Compute the durability from the visualizer'
+			do {
+				var typeName = self.getElement().oclAsType(ecore::EObject).eClass().name;
+				var el = self.getElement();
+				
+				if (typeName = 'Attribute' or typeName = 'Method') {
+					self.durability := el.durability;
+				} else if (typeName = 'Entity' or typeName = 'Connection') {
+					self.durability := el.potency;
+				} else {
+					self.durability := 0;
+				}
+			}
+		}
+	}
+}
+
+context LogicalElement {
+	constraint visualizerDurabilityZero {
+		check: self.visualizer->forAll(v|v.durability = 0)
+		message: 'The durability of a visualizer of a \'' + self.getElement().oclAsType(ecore::EObject).eClass().name + '\' has to be 0'
+		fix {
+			title: 'Set the ' + self.getElement().oclAsType(ecore::EObject).eClass().name + '\'s durability to 0'
+			do {
+				for (v in self.visualizer->select(v|v.durability <> 0)) {
+					v.durability := 0;
+				}
+			}
+		}
+	}
+}
+
+context Element {
+	constraint nameNotEmpty {
+		check: self.name.size() > 0
+		message: 'The name of an element cannot be empty'
+	}
+}
+
+context Connection {
+	constraint roleNameUnique {
+		check{
+			var names =  self.roleName;
+		 	return names->forAll(n|names.count(n) = 1);
+		}
+		message: 'The role names of connection \'' + self.name + '\' are not unique'
+	}
+
+	constraint connectOneLevel {
+		check :self.participant->asSequence()->forAll(p|p.level = self.level)
+		message : 'The Connection \'' + self.name + '\' connects the clabject\'s {'+ self.participant->select(p | p.level <> self.level)->collect(p | p.name)->concat(',')  +'} from another level'
+	}
+	
+	constraint notConnectLowerPotency {
+		check: self.participant->asSequence()->forAll(p|(self.potency = -1 or p.potency = -1) or (p.potency >= self.potency))
+		message: 'The Connection \'' + self.name + '\' has participants of lower a potency lower than the connection\'s potency'
+		fix {
+			title: 'Adjust the potency of the connection to the highest potency of its participants'
+			do {
+				self.potency := self.participant->sortedBy(potency)->last().potency;
+			}
+		}
+		fix {
+			title: 'Adjust the participant\'s potency to the Connection\'s potency'
+			do {
+				for (p in self.participant->select(p|p.potency < self.potency)) {
+					p.potency := self.potency;
+				}
+			}
+		}
+	}
+	
+	constraint multiplicitySanity {
+		check: self.roleName->forAll(rN|(self.getLowerForRoleName(rN) > -2 and self.getUpperForRoleName(rN) > -2) -- We are not allowed to be negative
+											and ((self.getLowerForRoleName(rN) <= self.getUpperForRoleName(rN)) -- Not star
+												or (self.getUpperForRoleName(rN) = -1 and self.getLowerForRoleName(rN)>=0)) -- If upper -1 we do not care about lower
+									)
+		message: '\'' + self.name + '\' has wrong multiplicities. The following must be fullfiled lower <= upper.'
+		fix {
+			title: 'Adjust the lower multiplicity'
+			do {
+				println('insertAt not working. Refusing to construct lists');
+				--for (rn in self.roleName) {
+				--	var index = self.roleName->indexOf(rn);
+				--	if (self.getLowerForRoleName(rn)<0) {
+				--		self.lower->removeAt(index);
+				--		self.lower->insertAt(index, 0);
+				--	}
+				--	if (self.getLowerForRoleName(rn) > self.getUpperForRoleName(rn) and self.getUpperForRoleName(rn) <> -1) {
+				--		self.lower->removeAt(index);
+				--		self.lower->insertAt(index, self.getUpperForRoleName(rn));
+				--	}
+				--}
+			}
+		}
+	}
+	
+	--We need to check that connections that are not inherited have at least two participants, lower, upper etc.
+	constraint atLeastTwoParticipants{
+		guard: MultipleGeneralization.allInstances()->forAll(g | g.subtype <> self) and MultipleSpecialization.allInstances()->forAll(g | not g.subtype->contains(self))
+				and BinaryGeneralization.allInstances()->forAll(g | g.subtype <> self)
+		check: self.participant->size() > 1
+		message: "A not inherited connection does need at least two participants."
+	}
+	
+	constraint atLeastTwoLower{
+		guard: MultipleGeneralization.allInstances()->forAll(g | g.subtype <> self) and MultipleSpecialization.allInstances()->forAll(g | not g.subtype->contains(self))
+				and BinaryGeneralization.allInstances()->forAll(g | g.subtype <> self)
+		check: self.lower->size() > 1
+		message: "A not inherited connection does need at least two lower values."
+	}
+	
+	constraint atLeastTwoUpper{
+		guard: MultipleGeneralization.allInstances()->forAll(g | g.subtype <> self) and MultipleSpecialization.allInstances()->forAll(g | not g.subtype->contains(self))
+				and BinaryGeneralization.allInstances()->forAll(g | g.subtype <> self)
+		check: self.upper->size() > 1
+		message: "A not inherited connection does need at least two upper values."
+	}
+	
+	constraint atLeastTwoRoleNames{
+		guard: MultipleGeneralization.allInstances()->forAll(g | g.subtype <> self) and MultipleSpecialization.allInstances()->forAll(g | not g.subtype->contains(self))
+				and BinaryGeneralization.allInstances()->forAll(g | g.subtype <> self)
+		check: self.roleName->size() > 1
+		message: "A not inherited connection does need at least two role names."
+	}
+}
