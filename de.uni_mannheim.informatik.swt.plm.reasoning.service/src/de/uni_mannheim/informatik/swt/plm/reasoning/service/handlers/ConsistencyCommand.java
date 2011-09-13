@@ -104,6 +104,7 @@ public class ConsistencyCommand extends AbstractHandler {
 	private CompositeCheck generalizationIsConsistent(Generalization gener) {
 		CompositeCheck check = ReasoningResultFactory.eINSTANCE.createCompositeCheck(gener, gener, null);
 		check.setName("Consistency[Generalization]");
+		check.setExpression(gener.getName());
 		check.setResult(true);
 		List<Clabject> subtype = gener.getSubtypes();
 		List<Clabject> supertype = gener.getSupertypes();
@@ -194,7 +195,7 @@ public class ConsistencyCommand extends AbstractHandler {
 						}
 					}
 					if (all) {
-						domain.add(i);
+						superInstances.add(i);
 					}
 				}
 				//Assume that the length of the subtypes is 1

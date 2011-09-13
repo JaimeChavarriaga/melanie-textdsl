@@ -47,6 +47,7 @@ import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultFactory;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.ConsistencyCommand;
+import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.ConsistentClassificationCommand;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.FeatureConformsCommand;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.HasAdditionalPropertiesCommand;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.HyponymCommand;
@@ -278,6 +279,16 @@ public class ReasoningService implements IReasoningService {
 			Map<String, Object> params = new HashMap<String, Object>();
 			params.put("element", parameters[0]);
 			ConsistencyCommand command = new ConsistencyCommand();
+			ExecutionEvent event = new ExecutionEvent(null, params, this, this);
+			try {
+				result = (Boolean) command.execute(event);
+			} catch (ExecutionException e) {
+				e.printStackTrace();
+			} 
+		}if (commandID == ReasoningService.IS_CONSISTENTLY_CLASSIFIED) {
+			Map<String, Object> params = new HashMap<String, Object>();
+			params.put("model", parameters[0]);
+			ConsistentClassificationCommand command = new ConsistentClassificationCommand();
 			ExecutionEvent event = new ExecutionEvent(null, params, this, this);
 			try {
 				result = (Boolean) command.execute(event);

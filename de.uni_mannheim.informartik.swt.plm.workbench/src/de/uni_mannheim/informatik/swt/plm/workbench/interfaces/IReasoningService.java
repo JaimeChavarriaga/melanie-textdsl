@@ -274,7 +274,7 @@ public interface IReasoningService {
 	/**
 	 * param[0] = Element - the element to be checked for consistency. Valid are Ontology, Generalization and Classification 
 	 */
-	public static final String IS_CONSISTENT = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.isconsisten";
+	public static final String IS_CONSISTENT = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.isconsistent";
 	
 	/**
 	 * param[0] = Clabject - the clabject to be checked for potency completeness 
