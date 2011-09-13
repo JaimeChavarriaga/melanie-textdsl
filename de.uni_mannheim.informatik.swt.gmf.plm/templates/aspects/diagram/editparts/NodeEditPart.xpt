@@ -219,7 +219,7 @@
 				
 				//We do not show roleNames which are equal to the participants name
 				String participantName = self.getParticipant().get(i - numberNonParticipantConnection).getName();
-				if (participantName.length() > 0){
+				if (participantName != null && participantName.length() > 0){
 					participantName = Character.toLowerCase(participantName.charAt(0)) + participantName.substring(1);
 					String roleName = self.getRoleName().get(i - numberNonParticipantConnection);
 					if (!participantName.equals(roleName))
