@@ -32,7 +32,6 @@ import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService
 
 public class PropertyConformsCommand extends AbstractHandler {
 
-	public static final String ID = "de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.propertyconformscommand";
 	
 	IReasoningService reasoner = (new ReasoningService()).Instance();
 	Set<Pair<Clabject,Clabject>> marks = null;

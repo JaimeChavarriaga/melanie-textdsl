@@ -25,8 +25,6 @@ import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService
 
 public class HasAdditionalPropertiesCommand extends AbstractHandler {
 	
-	public static final String ID = "de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.hasadditionalpropertiescommand";
-	
 	IReasoningService reasoner = new ReasoningService().Instance();
 	boolean complexNavigationSearch = false;
 

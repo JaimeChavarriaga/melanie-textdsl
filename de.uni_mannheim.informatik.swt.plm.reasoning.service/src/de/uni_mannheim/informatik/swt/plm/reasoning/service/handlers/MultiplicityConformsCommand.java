@@ -37,8 +37,6 @@ import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService
 
 public class MultiplicityConformsCommand extends AbstractHandler {
 
-	public static final String ID = "de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.multiplicityconformscommand";
-	
 	IReasoningService reasoner = (new ReasoningService()).Instance();
 	
 	/* (non-Javadoc)

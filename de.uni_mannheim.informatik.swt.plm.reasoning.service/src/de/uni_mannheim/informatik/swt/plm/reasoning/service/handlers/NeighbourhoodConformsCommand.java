@@ -26,9 +26,7 @@ import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService
 
 public class NeighbourhoodConformsCommand extends AbstractHandler {
 
-	public static final String ID = "de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.neighbourhoodconformscommand";
-
-	IReasoningService reasoner = new ReasoningService().Instance();
+		IReasoningService reasoner = new ReasoningService().Instance();
 	
 	/* (non-Javadoc)
 	 * @see org.eclipse.core.commands.IHandler#execute(org.eclipse.core.commands.ExecutionEvent)

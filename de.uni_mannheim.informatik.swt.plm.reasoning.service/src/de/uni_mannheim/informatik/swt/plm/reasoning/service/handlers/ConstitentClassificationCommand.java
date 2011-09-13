@@ -33,9 +33,8 @@ import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.ReasoningService;
 import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService;
 
-public class ConsistencyCommand extends AbstractHandler {
+public class ConstitentClassificationCommand extends AbstractHandler {
 
-	
 	IReasoningService reasoner = (new ReasoningService()).Instance();
 	
 	/* (non-Javadoc)
