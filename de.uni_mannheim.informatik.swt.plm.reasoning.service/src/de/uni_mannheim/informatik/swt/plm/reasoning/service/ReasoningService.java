@@ -310,7 +310,6 @@ public class ReasoningService implements IReasoningService {
 		else if (type.getPotency() == 0)
 			throw new Exception("Cannot create instance of type with potency 0.");
 		
-		instance.setBlueprint(type);
 		instance.setLevel(type.getLevel() + 1);
 		instance.setElided(type.isElided());
 		instance.setExpressed(type.isExpressed());

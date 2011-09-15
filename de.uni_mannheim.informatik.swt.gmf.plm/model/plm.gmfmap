@@ -1475,10 +1475,8 @@
         xsi:type="ecore:EReference"
         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Instantiation/type"/>
     <creationConstraints>
-      <sourceEnd
-          body="Instantiation.allInstances()->select(i | i.instance = self)->size() = 0"/>
       <targetEnd
-          body="self.potency &lt;> 0 and self.level &lt; oppositeEnd.level and self.instantiable"/>
+          body="self.potency &lt;> 0 and self.level &lt; oppositeEnd.level"/>
     </creationConstraints>
   </links>
   <links>

@@ -70,6 +70,11 @@ context Clabject {
 			}
 		}
 	}
+	
+	constraint onlyOneInstantiation {
+		check: self.getModelClassificationsAsInstance()->select(inst|inst.kind = ClassificationKind#instantiation)->size() <= 1
+		message: 'There can be only one instantiation per Clabject. Change kind of/remove redundant Classification(s).'
+	}
 }
 
 context Feature {
