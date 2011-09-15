@@ -32,6 +32,7 @@ public class LocalConformsCommand extends AbstractHandler {
 
 	
 	IReasoningService reasoner = new ReasoningService().Instance();
+	public boolean forceClabject = false;
 	
 	/* (non-Javadoc)
 	 * @see org.eclipse.core.commands.IHandler#execute(org.eclipse.core.commands.ExecutionEvent)
@@ -40,6 +41,7 @@ public class LocalConformsCommand extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		Clabject type = (Clabject)event.getParameters().get("type");
 		Clabject instance = (Clabject)event.getParameters().get("instance");
+		forceClabject = (Boolean)event.getParameters().get("forceClabject");
 		return localConforms(type, instance).isResult();
 	}
 	
@@ -54,7 +56,10 @@ public class LocalConformsCommand extends AbstractHandler {
 		check.setName("LocalConformance[Delegation]");
 		check.setExpression(instance.getName() + ".localConforms("+type.getName() + ")");
 		CompositeCheck child = null;
-		if (type instanceof Connection && instance instanceof Connection) {
+		if (forceClabject) {
+			check.setExpression("forced Clabject local conformance");
+			child =  localConformsClabject(type, instance);
+		} else if (type instanceof Connection && instance instanceof Connection) {
 			child =  localConformsConnection((Connection) type, (Connection) instance);
 		} else if (type instanceof Entity && instance instanceof Entity) {
 			child =  localConformsClabject(type, instance);

@@ -137,6 +137,7 @@ public class PropertyConformsCommand extends AbstractHandler {
 			Connection instance) {
 		CompositeCheck result = reasoner.createCompositeCheck("PropertyConformance[Connection]", instance, type, instance.getName()+".propertyConformsConnection("+type.getName()+")");
 		CompositeCheck clabCheck = propertyConformsClabject(type, instance);
+		result.getCheck().add(clabCheck);
 		if (!clabCheck.isResult()) {
 			return result;
 		}

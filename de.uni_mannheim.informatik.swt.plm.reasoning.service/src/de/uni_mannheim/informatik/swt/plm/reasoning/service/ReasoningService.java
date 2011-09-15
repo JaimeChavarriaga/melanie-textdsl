@@ -144,19 +144,22 @@ public class ReasoningService implements IReasoningService {
 	public boolean run(String commandID, Object[] parameters) {
 		
 		boolean result = false;
-		
-		if (this != instance) 
+		if (this != instance) { 
 			throw new RuntimeException("Deine Mutter heißt Horst und zieht Lastwagen auf Sport1");
-		if (commandID == ReasoningService.CAN_CONNECTION_EXIST)
+		}
+		if (commandID == ReasoningService.CAN_CONNECTION_EXIST) {
 			return canConnectionExist((Connection)parameters[0], (Connection)parameters[1]);
-		else if (commandID == ReasoningService.CREATE_ATTRIBUTE)
+		} else if (commandID == ReasoningService.CREATE_ATTRIBUTE) {
 			return createAttribute((Attribute)parameters[0]) != null;
-		else if (commandID == ReasoningService.CREATE_METHOD)
+		} else if (commandID == ReasoningService.CREATE_METHOD) {
 			return createMethod((Method)parameters[0]) != null;
-		else if (commandID == ReasoningService.DRESS_INSTANCE_FROM_TYPE)
-			try {dressInstanceFromType((Clabject)parameters[0], (Clabject)parameters[1]);} 
-			catch (Exception e) {e.printStackTrace();}
-		else if (commandID == ReasoningService.FEATURE_CONFORMS){
+		} else if (commandID == ReasoningService.DRESS_INSTANCE_FROM_TYPE) {
+			try {
+				dressInstanceFromType((Clabject)parameters[0], (Clabject)parameters[1]);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+		} else if (commandID == ReasoningService.FEATURE_CONFORMS) {
 			Map<String, Object> params = new HashMap<String, Object>();
 			params.put("type", parameters[0]);
 			params.put("instance", parameters[1]);
@@ -168,20 +171,16 @@ public class ReasoningService implements IReasoningService {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
-		//*********************
-		//Missing Constants..
-		//*********************
-		else if (commandID == ReasoningService.LOCAL_CONFORMS){
+		} else if (commandID.equals(ReasoningService.LOCAL_CONFORMS)){
 			Map<String, Object> params = new HashMap<String, Object>();
 			params.put("type", parameters[0]);
 			params.put("instance", parameters[1]);
+			params.put("forceClabject", parameters.length > 2 ? parameters[2] : false);
 			LocalConformsCommand command = new LocalConformsCommand();
 			ExecutionEvent event = new ExecutionEvent(null, params, this, this);
 			try {
 				result = (Boolean)command.execute(event);
 			} catch (ExecutionException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		} else if (commandID == ReasoningService.MULTIPLICITY_CONFORMS) {
@@ -285,7 +284,7 @@ public class ReasoningService implements IReasoningService {
 			} catch (ExecutionException e) {
 				e.printStackTrace();
 			} 
-		}if (commandID == ReasoningService.IS_CONSISTENTLY_CLASSIFIED) {
+		} else if (commandID == ReasoningService.IS_CONSISTENTLY_CLASSIFIED) {
 			Map<String, Object> params = new HashMap<String, Object>();
 			params.put("model", parameters[0]);
 			ConsistentClassificationCommand command = new ConsistentClassificationCommand();
@@ -448,8 +447,7 @@ public class ReasoningService implements IReasoningService {
 	@Override
 	public boolean localConstructionConformsConnection(Connection type,
 			Connection instance) {
-		System.out.println("Wir brauchen Local Conformance Clabject als Command. Hierfür...");
-		return true;
+		return run(LOCAL_CONFORMS, new Object[]{type, instance, true});
 	}
 
 
