@@ -377,21 +377,36 @@
 				de.uni_mannheim.informatik.swt.models.plm.PLM.Connection self = (de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)resolveSemanticElement();
 				
 				//Participant was added attach values at the end
-				if (notification.getOldValue() ==  null && notification.getNewValue() != null
-					&& notification.getPosition() + 1 > self.getIsNavigable().size()){
+				if (notification.getOldValue() == null
+						&& notification.getNewValue() != null
+						&& notification.getPosition() + 1 > self
+								.getIsNavigable().size()) {
 					
-					self.getIsNavigable().add(true);
-					self.getLower().add(0);
-					self.getUpper().add(-1);
+					de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject instanceParticipant = (de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject) notification.getNewValue();
+					de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject typeParticipant = instanceParticipant.getBlueprint();
+					de.uni_mannheim.informatik.swt.models.plm.PLM.Connection type = (de.uni_mannheim.informatik.swt.models.plm.PLM.Connection) self.getBlueprint();
 					
-					de.uni_mannheim.informatik.swt.models.plm.PLM.Element target = (de.uni_mannheim.informatik.swt.models.plm.PLM.Element)notification.getNewValue();
-					
-					if ("".equals(target.getName()))
-						self.getRoleName().add("anonymus");
-					else if (target.getName() != null){
-						char c = java.lang.Character.toLowerCase(target.getName().charAt(0));
-						self.getRoleName().add(c + target.getName().substring(1));
+					if (typeParticipant == null) {
+						java.util.List<de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject> completeTypes = instanceParticipant.getModelCompleteTypes();
+						if (completeTypes.size() >= 1)
+							typeParticipant = completeTypes.get(0);
 					}
+					
+					if (type == null) {
+						java.util.List<de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject> completeTypes = self.getModelCompleteTypes();
+						if (completeTypes.size() >= 1)
+							type = (de.uni_mannheim.informatik.swt.models.plm.PLM.Connection) completeTypes.get(0);
+					}
+					
+					java.util.List<String> roleNames = type.getRoleNameForParticipant(typeParticipant);
+					String roleName = null;
+					if (roleNames.size() >= 1)
+						roleName = roleNames.get(0);
+					
+					self.getIsNavigable().add(type.isNavigableForRoleName(roleName));
+					self.getLower().add(type.getLowerForRoleName(roleName));
+					self.getUpper().add(type.getUpperForRoleName(roleName));
+					self.getRoleName().add(roleName);
 				}
 				//Participant was removed
 				else if(notification.getOldValue() !=  null && notification.getNewValue() == null)
