@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <ul>
  *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.CheckImpl#isResult <em>Result</em>}</li>
  *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.CheckImpl#getExpression <em>Expression</em>}</li>
+ *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.CheckImpl#isRootCause <em>Root Cause</em>}</li>
  * </ul>
  * </p>
  *
@@ -70,6 +71,26 @@ public abstract class CheckImpl extends EObjectImpl implements Check {
 	 * @ordered
 	 */
 	protected String expression = EXPRESSION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isRootCause() <em>Root Cause</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRootCause()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean ROOT_CAUSE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isRootCause() <em>Root Cause</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRootCause()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean rootCause = ROOT_CAUSE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -137,6 +158,27 @@ public abstract class CheckImpl extends EObjectImpl implements Check {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isRootCause() {
+		return rootCause;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRootCause(boolean newRootCause) {
+		boolean oldRootCause = rootCause;
+		rootCause = newRootCause;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ReasoningResultPackage.CHECK__ROOT_CAUSE, oldRootCause, rootCause));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -144,6 +186,8 @@ public abstract class CheckImpl extends EObjectImpl implements Check {
 				return isResult();
 			case ReasoningResultPackage.CHECK__EXPRESSION:
 				return getExpression();
+			case ReasoningResultPackage.CHECK__ROOT_CAUSE:
+				return isRootCause();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -161,6 +205,9 @@ public abstract class CheckImpl extends EObjectImpl implements Check {
 				return;
 			case ReasoningResultPackage.CHECK__EXPRESSION:
 				setExpression((String)newValue);
+				return;
+			case ReasoningResultPackage.CHECK__ROOT_CAUSE:
+				setRootCause((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -180,6 +227,9 @@ public abstract class CheckImpl extends EObjectImpl implements Check {
 			case ReasoningResultPackage.CHECK__EXPRESSION:
 				setExpression(EXPRESSION_EDEFAULT);
 				return;
+			case ReasoningResultPackage.CHECK__ROOT_CAUSE:
+				setRootCause(ROOT_CAUSE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -196,6 +246,8 @@ public abstract class CheckImpl extends EObjectImpl implements Check {
 				return result != RESULT_EDEFAULT;
 			case ReasoningResultPackage.CHECK__EXPRESSION:
 				return EXPRESSION_EDEFAULT == null ? expression != null : !EXPRESSION_EDEFAULT.equals(expression);
+			case ReasoningResultPackage.CHECK__ROOT_CAUSE:
+				return rootCause != ROOT_CAUSE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -214,6 +266,8 @@ public abstract class CheckImpl extends EObjectImpl implements Check {
 		result.append(result);
 		result.append(", expression: ");
 		result.append(expression);
+		result.append(", rootCause: ");
+		result.append(rootCause);
 		result.append(')');
 		return result.toString();
 	}

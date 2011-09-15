@@ -135,13 +135,22 @@ public interface ReasoningResultPackage extends EPackage {
 	int CHECK__EXPRESSION = 1;
 
 	/**
+	 * The feature id for the '<em><b>Root Cause</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHECK__ROOT_CAUSE = 2;
+
+	/**
 	 * The number of structural features of the '<em>Check</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CHECK_FEATURE_COUNT = 2;
+	int CHECK_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Check</em>' class.
@@ -179,6 +188,15 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPOSITE_CHECK__EXPRESSION = CHECK__EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Root Cause</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_CHECK__ROOT_CAUSE = CHECK__ROOT_CAUSE;
 
 	/**
 	 * The feature id for the '<em><b>Check</b></em>' containment reference list.
@@ -263,6 +281,15 @@ public interface ReasoningResultPackage extends EPackage {
 	int NAME_COMPARISON__EXPRESSION = CHECK__EXPRESSION;
 
 	/**
+	 * The feature id for the '<em><b>Root Cause</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAME_COMPARISON__ROOT_CAUSE = CHECK__ROOT_CAUSE;
+
+	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -325,6 +352,15 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @ordered
 	 */
 	int DURABILITY_COMPARISON__EXPRESSION = CHECK__EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Root Cause</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DURABILITY_COMPARISON__ROOT_CAUSE = CHECK__ROOT_CAUSE;
 
 	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference.
@@ -409,6 +445,15 @@ public interface ReasoningResultPackage extends EPackage {
 	int MUTABILITY_COMPARISON__EXPRESSION = CHECK__EXPRESSION;
 
 	/**
+	 * The feature id for the '<em><b>Root Cause</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MUTABILITY_COMPARISON__ROOT_CAUSE = CHECK__ROOT_CAUSE;
+
+	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -491,6 +536,15 @@ public interface ReasoningResultPackage extends EPackage {
 	int DATATYPE_COMPARISON__EXPRESSION = CHECK__EXPRESSION;
 
 	/**
+	 * The feature id for the '<em><b>Root Cause</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATATYPE_COMPARISON__ROOT_CAUSE = CHECK__ROOT_CAUSE;
+
+	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -553,6 +607,15 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @ordered
 	 */
 	int ALL_CONNECTIONS_CHECK__EXPRESSION = COMPOSITE_CHECK__EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Root Cause</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALL_CONNECTIONS_CHECK__ROOT_CAUSE = COMPOSITE_CHECK__ROOT_CAUSE;
 
 	/**
 	 * The feature id for the '<em><b>Check</b></em>' containment reference list.
@@ -644,6 +707,15 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @ordered
 	 */
 	int TYPE_CONNECTION_SEARCH__EXPRESSION = COMPOSITE_CHECK__EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Root Cause</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_CONNECTION_SEARCH__ROOT_CAUSE = COMPOSITE_CHECK__ROOT_CAUSE;
 
 	/**
 	 * The feature id for the '<em><b>Check</b></em>' containment reference list.
@@ -744,6 +816,15 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXPRESSED_INSTANCE_EXCLUDED_CHECK__EXPRESSION = COMPOSITE_CHECK__EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Root Cause</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPRESSED_INSTANCE_EXCLUDED_CHECK__ROOT_CAUSE = COMPOSITE_CHECK__ROOT_CAUSE;
 
 	/**
 	 * The feature id for the '<em><b>Check</b></em>' containment reference list.
@@ -864,6 +945,15 @@ public interface ReasoningResultPackage extends EPackage {
 	int MULTIPLICITY_CHECK__EXPRESSION = COMPOSITE_CHECK__EXPRESSION;
 
 	/**
+	 * The feature id for the '<em><b>Root Cause</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLICITY_CHECK__ROOT_CAUSE = COMPOSITE_CHECK__ROOT_CAUSE;
+
+	/**
 	 * The feature id for the '<em><b>Check</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -953,6 +1043,15 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @ordered
 	 */
 	int MULTIPLICITY_ROLE_NAME_CHECK__EXPRESSION = COMPOSITE_CHECK__EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Root Cause</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLICITY_ROLE_NAME_CHECK__ROOT_CAUSE = COMPOSITE_CHECK__ROOT_CAUSE;
 
 	/**
 	 * The feature id for the '<em><b>Check</b></em>' containment reference list.
@@ -1073,6 +1172,15 @@ public interface ReasoningResultPackage extends EPackage {
 	int ROLE_NAME_PROPERTY_CONFORMANCE_CHECK__EXPRESSION = COMPOSITE_CHECK__EXPRESSION;
 
 	/**
+	 * The feature id for the '<em><b>Root Cause</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_NAME_PROPERTY_CONFORMANCE_CHECK__ROOT_CAUSE = COMPOSITE_CHECK__ROOT_CAUSE;
+
+	/**
 	 * The feature id for the '<em><b>Check</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1182,6 +1290,15 @@ public interface ReasoningResultPackage extends EPackage {
 	int ROLE_NAME_LOCAL_CONFORMANCE_CHECK__EXPRESSION = COMPOSITE_CHECK__EXPRESSION;
 
 	/**
+	 * The feature id for the '<em><b>Root Cause</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_NAME_LOCAL_CONFORMANCE_CHECK__ROOT_CAUSE = COMPOSITE_CHECK__ROOT_CAUSE;
+
+	/**
 	 * The feature id for the '<em><b>Check</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1271,6 +1388,15 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONNECTIONS_LOCAL_CONFORMANCE_CHECK__EXPRESSION = COMPOSITE_CHECK__EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Root Cause</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTIONS_LOCAL_CONFORMANCE_CHECK__ROOT_CAUSE = COMPOSITE_CHECK__ROOT_CAUSE;
 
 	/**
 	 * The feature id for the '<em><b>Check</b></em>' containment reference list.
@@ -1364,6 +1490,15 @@ public interface ReasoningResultPackage extends EPackage {
 	int LOCAL_CONFORMANCE_CHECK__EXPRESSION = COMPOSITE_CHECK__EXPRESSION;
 
 	/**
+	 * The feature id for the '<em><b>Root Cause</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCAL_CONFORMANCE_CHECK__ROOT_CAUSE = COMPOSITE_CHECK__ROOT_CAUSE;
+
+	/**
 	 * The feature id for the '<em><b>Check</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1444,6 +1579,15 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @ordered
 	 */
 	int TYPE_FEATURE_CHECK__EXPRESSION = COMPOSITE_CHECK__EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Root Cause</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_FEATURE_CHECK__ROOT_CAUSE = COMPOSITE_CHECK__ROOT_CAUSE;
 
 	/**
 	 * The feature id for the '<em><b>Check</b></em>' containment reference list.
@@ -1535,6 +1679,15 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @ordered
 	 */
 	int FEATURE_SEARCH_CHECK__EXPRESSION = COMPOSITE_CHECK__EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Root Cause</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SEARCH_CHECK__ROOT_CAUSE = COMPOSITE_CHECK__ROOT_CAUSE;
 
 	/**
 	 * The feature id for the '<em><b>Check</b></em>' containment reference list.
@@ -1637,6 +1790,15 @@ public interface ReasoningResultPackage extends EPackage {
 	int FEATURE_CONFORMANCE_CHECK__EXPRESSION = COMPOSITE_CHECK__EXPRESSION;
 
 	/**
+	 * The feature id for the '<em><b>Root Cause</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_CONFORMANCE_CHECK__ROOT_CAUSE = COMPOSITE_CHECK__ROOT_CAUSE;
+
+	/**
 	 * The feature id for the '<em><b>Check</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1717,6 +1879,15 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @ordered
 	 */
 	int LEVEL_COMPARISON__EXPRESSION = CHECK__EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Root Cause</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LEVEL_COMPARISON__ROOT_CAUSE = CHECK__ROOT_CAUSE;
 
 	/**
 	 * The feature id for the '<em><b>Target Level</b></em>' attribute.
@@ -1801,6 +1972,15 @@ public interface ReasoningResultPackage extends EPackage {
 	int VALUE_COMPARISON__EXPRESSION = CHECK__EXPRESSION;
 
 	/**
+	 * The feature id for the '<em><b>Root Cause</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_COMPARISON__ROOT_CAUSE = CHECK__ROOT_CAUSE;
+
+	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1864,6 +2044,15 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @ordered
 	 */
 	int HAS_ADDITIONAL_PROPERTIES_CHECK__EXPRESSION = COMPOSITE_CHECK__EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Root Cause</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HAS_ADDITIONAL_PROPERTIES_CHECK__ROOT_CAUSE = COMPOSITE_CHECK__ROOT_CAUSE;
 
 	/**
 	 * The feature id for the '<em><b>Check</b></em>' containment reference list.
@@ -1966,6 +2155,15 @@ public interface ReasoningResultPackage extends EPackage {
 	int POTENCY_COMPARISON__EXPRESSION = CHECK__EXPRESSION;
 
 	/**
+	 * The feature id for the '<em><b>Root Cause</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int POTENCY_COMPARISON__ROOT_CAUSE = CHECK__ROOT_CAUSE;
+
+	/**
 	 * The feature id for the '<em><b>Target Potency</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2047,6 +2245,15 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @ordered
 	 */
 	int DOMAIN_SEARCH__EXPRESSION = COMPOSITE_CHECK__EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Root Cause</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_SEARCH__ROOT_CAUSE = COMPOSITE_CHECK__ROOT_CAUSE;
 
 	/**
 	 * The feature id for the '<em><b>Check</b></em>' containment reference list.
@@ -2193,6 +2400,17 @@ public interface ReasoningResultPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getCheck_Expression();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.Check#isRootCause <em>Root Cause</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Root Cause</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.Check#isRootCause()
+	 * @see #getCheck()
+	 * @generated
+	 */
+	EAttribute getCheck_RootCause();
 
 	/**
 	 * Returns the meta object for class '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.CompositeCheck <em>Composite Check</em>}'.
@@ -3049,6 +3267,14 @@ public interface ReasoningResultPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CHECK__EXPRESSION = eINSTANCE.getCheck_Expression();
+
+		/**
+		 * The meta object literal for the '<em><b>Root Cause</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CHECK__ROOT_CAUSE = eINSTANCE.getCheck_RootCause();
 
 		/**
 		 * The meta object literal for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.CompositeCheckImpl <em>Composite Check</em>}' class.

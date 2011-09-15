@@ -36,7 +36,6 @@ public class FeatureConformsCommand extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		Feature type = (Feature)event.getParameters().get("type");
 		Feature instance = (Feature)event.getParameters().get("instance");
-		
 		return featureConforms(type, instance);
 	}
 	
@@ -121,6 +120,8 @@ public class FeatureConformsCommand extends AbstractHandler {
 				valueC.setResult(true);
 			}
 		}
+		if (!result.isResult())
+			result.setRootCause(true);
 		return result;
 	}
 
