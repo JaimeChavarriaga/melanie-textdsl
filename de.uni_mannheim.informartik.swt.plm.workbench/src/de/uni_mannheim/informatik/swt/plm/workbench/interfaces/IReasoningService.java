@@ -161,7 +161,8 @@ public interface IReasoningService {
 	
 	/**
 	 * param[0] = Clabject - type <br />
-	 * param[1] = Clabject - instance
+	 * param[1] = Clabject - instance <br />
+	 * param[2] = Boolean - Force Clabject local conformance - default false
 	 */
 	public static final String LOCAL_CONFORMS = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.localconforms";
 	
