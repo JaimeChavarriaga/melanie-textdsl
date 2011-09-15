@@ -28,6 +28,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.MultipleGeneralization;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.MultipleSpecialization;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.CompositeCheck;
+import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.DomainSearch;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultFactory;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.ReasoningService;
@@ -116,18 +117,21 @@ public class ConsistencyCommand extends AbstractHandler {
 		}
 		List<Clabject> domain = classified.getAllClabjects();
 		Set<Clabject> superInstances = new HashSet<Clabject>();
-		
+		boolean complex = false;
 		if (gener instanceof MultipleSpecialization) {
 			MultipleSpecialization msGener = (MultipleSpecialization) gener;
 			if (msGener.isComplete() || msGener.isDisjoint()) {
-				CompositeCheck domainSearch = ReasoningResultFactory.eINSTANCE.createCompositeCheck(gener, gener, check);
+				complex = true;
+				DomainSearch domainSearch = ReasoningResultFactory.eINSTANCE.createDomainSearch(gener, gener, check);
 				domainSearch.setName("domainSearch");
+				domainSearch.setResult(true);
 				for (Clabject s: supertype) {
 					for (Clabject i: domain) {
 						CompositeCheck domainC = (new IsonymCommand()).compute(s,i);
 						domainSearch.getCheck().add(domainC);
 						if (domainC.isResult()) {
 							superInstances.add(i);
+							domainSearch.getSupertypeIsonyms().add(i);
 						}
 					}
 				}
@@ -144,6 +148,7 @@ public class ConsistencyCommand extends AbstractHandler {
 								CompositeCheck actualC = (new IsonymCommand()).compute(s,i);
 								completeCheck.getCheck().add(actualC);
 								if (actualC.isResult()) {
+									domainSearch.getInterestingInstances().add(i);
 									found = true;
 									break;
 								}
@@ -168,6 +173,7 @@ public class ConsistencyCommand extends AbstractHandler {
 									if (!one) {
 										one = true;
 									} else {
+										domainSearch.getInterestingInstances().add(i);
 										disjointCheck.setResult(false);
 										check.setResult(false);
 										return check;
@@ -182,6 +188,7 @@ public class ConsistencyCommand extends AbstractHandler {
 		if (gener instanceof MultipleGeneralization) {
 			MultipleGeneralization mgGener = (MultipleGeneralization) gener;
 			if (mgGener.isIntersection()) {
+				complex = true;
 				CompositeCheck domainSearch = ReasoningResultFactory.eINSTANCE.createCompositeCheck(gener, gener, check);
 				domainSearch.setName("InstanceDomainSearch");
 				for (Clabject i: domain) {
@@ -217,6 +224,11 @@ public class ConsistencyCommand extends AbstractHandler {
 					}
 				}
 			}
+		}
+		if (!complex) {
+			CompositeCheck informational = ReasoningResultFactory.eINSTANCE.createCompositeCheck(gener, gener, check);
+			informational.setName("No complex claims.");
+			informational.setResult(true);
 		}
 		return check;
 	}

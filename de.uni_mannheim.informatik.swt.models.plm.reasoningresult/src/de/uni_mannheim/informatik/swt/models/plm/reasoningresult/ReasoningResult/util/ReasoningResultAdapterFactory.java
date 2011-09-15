@@ -164,6 +164,10 @@ public class ReasoningResultAdapterFactory extends AdapterFactoryImpl {
 				return createPotencyComparisonAdapter();
 			}
 			@Override
+			public Adapter caseDomainSearch(DomainSearch object) {
+				return createDomainSearchAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -502,6 +506,20 @@ public class ReasoningResultAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPotencyComparisonAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.DomainSearch <em>Domain Search</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.DomainSearch
+	 * @generated
+	 */
+	public Adapter createDomainSearchAdapter() {
 		return null;
 	}
 

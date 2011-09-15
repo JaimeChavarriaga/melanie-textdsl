@@ -242,6 +242,14 @@ public class ReasoningResultSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ReasoningResultPackage.DOMAIN_SEARCH: {
+				DomainSearch domainSearch = (DomainSearch)theEObject;
+				T result = caseDomainSearch(domainSearch);
+				if (result == null) result = caseCompositeCheck(domainSearch);
+				if (result == null) result = caseCheck(domainSearch);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -588,6 +596,21 @@ public class ReasoningResultSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T casePotencyComparison(PotencyComparison object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Domain Search</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Domain Search</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDomainSearch(DomainSearch object) {
 		return null;
 	}
 

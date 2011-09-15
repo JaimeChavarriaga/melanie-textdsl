@@ -2021,6 +2021,116 @@ public interface ReasoningResultPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.DomainSearchImpl <em>Domain Search</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.DomainSearchImpl
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ReasoningResultPackageImpl#getDomainSearch()
+	 * @generated
+	 */
+	int DOMAIN_SEARCH = 23;
+
+	/**
+	 * The feature id for the '<em><b>Result</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_SEARCH__RESULT = COMPOSITE_CHECK__RESULT;
+
+	/**
+	 * The feature id for the '<em><b>Expression</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_SEARCH__EXPRESSION = COMPOSITE_CHECK__EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Check</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_SEARCH__CHECK = COMPOSITE_CHECK__CHECK;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_SEARCH__SOURCE = COMPOSITE_CHECK__SOURCE;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_SEARCH__TARGET = COMPOSITE_CHECK__TARGET;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_SEARCH__NAME = COMPOSITE_CHECK__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Supertype Isonyms</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_SEARCH__SUPERTYPE_ISONYMS = COMPOSITE_CHECK_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Subtype Isonyms</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_SEARCH__SUBTYPE_ISONYMS = COMPOSITE_CHECK_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Interesting Instances</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_SEARCH__INTERESTING_INSTANCES = COMPOSITE_CHECK_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Domain Search</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_SEARCH_FEATURE_COUNT = COMPOSITE_CHECK_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of operations of the '<em>Domain Search</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_SEARCH_OPERATION_COUNT = COMPOSITE_CHECK_OPERATION_COUNT + 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultModel <em>Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2823,6 +2933,49 @@ public interface ReasoningResultPackage extends EPackage {
 	EReference getPotencyComparison_Target();
 
 	/**
+	 * Returns the meta object for class '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.DomainSearch <em>Domain Search</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Domain Search</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.DomainSearch
+	 * @generated
+	 */
+	EClass getDomainSearch();
+
+	/**
+	 * Returns the meta object for the reference list '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.DomainSearch#getSupertypeIsonyms <em>Supertype Isonyms</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Supertype Isonyms</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.DomainSearch#getSupertypeIsonyms()
+	 * @see #getDomainSearch()
+	 * @generated
+	 */
+	EReference getDomainSearch_SupertypeIsonyms();
+
+	/**
+	 * Returns the meta object for the reference list '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.DomainSearch#getSubtypeIsonyms <em>Subtype Isonyms</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Subtype Isonyms</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.DomainSearch#getSubtypeIsonyms()
+	 * @see #getDomainSearch()
+	 * @generated
+	 */
+	EReference getDomainSearch_SubtypeIsonyms();
+
+	/**
+	 * Returns the meta object for the reference list '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.DomainSearch#getInterestingInstances <em>Interesting Instances</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Interesting Instances</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.DomainSearch#getInterestingInstances()
+	 * @see #getDomainSearch()
+	 * @generated
+	 */
+	EReference getDomainSearch_InterestingInstances();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3490,6 +3643,40 @@ public interface ReasoningResultPackage extends EPackage {
 		 * @generated
 		 */
 		EReference POTENCY_COMPARISON__TARGET = eINSTANCE.getPotencyComparison_Target();
+
+		/**
+		 * The meta object literal for the '{@link de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.DomainSearchImpl <em>Domain Search</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.DomainSearchImpl
+		 * @see de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.impl.ReasoningResultPackageImpl#getDomainSearch()
+		 * @generated
+		 */
+		EClass DOMAIN_SEARCH = eINSTANCE.getDomainSearch();
+
+		/**
+		 * The meta object literal for the '<em><b>Supertype Isonyms</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOMAIN_SEARCH__SUPERTYPE_ISONYMS = eINSTANCE.getDomainSearch_SupertypeIsonyms();
+
+		/**
+		 * The meta object literal for the '<em><b>Subtype Isonyms</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOMAIN_SEARCH__SUBTYPE_ISONYMS = eINSTANCE.getDomainSearch_SubtypeIsonyms();
+
+		/**
+		 * The meta object literal for the '<em><b>Interesting Instances</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOMAIN_SEARCH__INTERESTING_INSTANCES = eINSTANCE.getDomainSearch_InterestingInstances();
 
 	}
 

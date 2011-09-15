@@ -13,6 +13,7 @@ import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.CompositeCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ConnectionsLocalConformanceCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.DatatypeComparison;
+import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.DomainSearch;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.DurabilityComparison;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ExpressedInstanceExcludedCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.FeatureConformanceCheck;
@@ -208,6 +209,13 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 	 * @generated
 	 */
 	private EClass potencyComparisonEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass domainSearchEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -953,6 +961,42 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getDomainSearch() {
+		return domainSearchEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDomainSearch_SupertypeIsonyms() {
+		return (EReference)domainSearchEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDomainSearch_SubtypeIsonyms() {
+		return (EReference)domainSearchEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDomainSearch_InterestingInstances() {
+		return (EReference)domainSearchEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ReasoningResultFactory getReasoningResultFactory() {
 		return (ReasoningResultFactory)getEFactoryInstance();
 	}
@@ -1073,6 +1117,11 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 		createEAttribute(potencyComparisonEClass, POTENCY_COMPARISON__INSTANCE_POTENCY);
 		createEReference(potencyComparisonEClass, POTENCY_COMPARISON__SOURCE);
 		createEReference(potencyComparisonEClass, POTENCY_COMPARISON__TARGET);
+
+		domainSearchEClass = createEClass(DOMAIN_SEARCH);
+		createEReference(domainSearchEClass, DOMAIN_SEARCH__SUPERTYPE_ISONYMS);
+		createEReference(domainSearchEClass, DOMAIN_SEARCH__SUBTYPE_ISONYMS);
+		createEReference(domainSearchEClass, DOMAIN_SEARCH__INTERESTING_INSTANCES);
 	}
 
 	/**
@@ -1127,6 +1176,7 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 		valueComparisonEClass.getESuperTypes().add(this.getCheck());
 		hasAdditionalPropertiesCheckEClass.getESuperTypes().add(this.getCompositeCheck());
 		potencyComparisonEClass.getESuperTypes().add(this.getCheck());
+		domainSearchEClass.getESuperTypes().add(this.getCompositeCheck());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(reasoningResultModelEClass, ReasoningResultModel.class, "ReasoningResultModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1226,6 +1276,11 @@ public class ReasoningResultPackageImpl extends EPackageImpl implements Reasonin
 		initEAttribute(getPotencyComparison_InstancePotency(), ecorePackage.getEInt(), "instancePotency", null, 1, 1, PotencyComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPotencyComparison_Source(), thePLMPackage.getClabject(), null, "source", null, 1, 1, PotencyComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPotencyComparison_Target(), thePLMPackage.getClabject(), null, "target", null, 0, 1, PotencyComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(domainSearchEClass, DomainSearch.class, "DomainSearch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDomainSearch_SupertypeIsonyms(), thePLMPackage.getClabject(), null, "supertypeIsonyms", null, 0, -1, DomainSearch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDomainSearch_SubtypeIsonyms(), thePLMPackage.getClabject(), null, "subtypeIsonyms", null, 0, -1, DomainSearch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDomainSearch_InterestingInstances(), thePLMPackage.getClabject(), null, "interestingInstances", null, 0, -1, DomainSearch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

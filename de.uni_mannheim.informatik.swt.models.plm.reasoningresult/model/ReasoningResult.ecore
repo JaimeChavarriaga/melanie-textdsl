@@ -146,4 +146,12 @@
         eType="ecore:EClass ../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="ecore:EClass ../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DomainSearch" eSuperTypes="#//CompositeCheck">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="supertypeIsonyms" upperBound="-1"
+        eType="ecore:EClass ../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subtypeIsonyms" upperBound="-1"
+        eType="ecore:EClass ../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="interestingInstances" upperBound="-1"
+        eType="ecore:EClass ../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject"/>
+  </eClassifiers>
 </ecore:EPackage>

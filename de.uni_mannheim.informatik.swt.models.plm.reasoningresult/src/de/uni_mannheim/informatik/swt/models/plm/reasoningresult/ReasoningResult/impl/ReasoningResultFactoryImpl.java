@@ -88,6 +88,7 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 			case ReasoningResultPackage.VALUE_COMPARISON: return createValueComparison();
 			case ReasoningResultPackage.HAS_ADDITIONAL_PROPERTIES_CHECK: return createHasAdditionalPropertiesCheck();
 			case ReasoningResultPackage.POTENCY_COMPARISON: return createPotencyComparison();
+			case ReasoningResultPackage.DOMAIN_SEARCH: return createDomainSearch();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -311,6 +312,16 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 	public PotencyComparison createPotencyComparison() {
 		PotencyComparisonImpl potencyComparison = new PotencyComparisonImpl();
 		return potencyComparison;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DomainSearch createDomainSearch() {
+		DomainSearchImpl domainSearch = new DomainSearchImpl();
+		return domainSearch;
 	}
 
 	/**
@@ -1023,6 +1034,38 @@ public class ReasoningResultFactoryImpl extends EFactoryImpl implements Reasonin
 				parent.getCheck().add(potencyComparison);
 	    	
 			return potencyComparison;
+		}
+
+		/**
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		
+		
+		public DomainSearch createDomainSearch(Element source, Element target, CompositeCheck parent) {
+	    
+			DomainSearchImpl domainSearch = new DomainSearchImpl();
+	    
+	    	
+	    	//Set the values
+	    
+				String exprValue = source.getName() + "." + "DomainSearch" + "(" + target.getName()+ ")";
+				domainSearch.setExpression(exprValue);
+			
+			domainSearch.setSource(source);
+			
+			domainSearch.setTarget(target);
+			
+				exprValue ="DomainSearch";
+				domainSearch.setName(exprValue);
+			
+		
+			//Set the parent
+			if (parent != null)
+				parent.getCheck().add(domainSearch);
+	    	
+			return domainSearch;
 		}
 	  
 	

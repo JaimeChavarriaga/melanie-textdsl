@@ -232,6 +232,15 @@ public interface ReasoningResultFactory extends EFactory {
 	PotencyComparison createPotencyComparison();
 
 	/**
+	 * Returns a new object of class '<em>Domain Search</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Domain Search</em>'.
+	 * @generated
+	 */
+	DomainSearch createDomainSearch();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -444,6 +453,15 @@ public interface ReasoningResultFactory extends EFactory {
 		
 		
 			PotencyComparison createPotencyComparison(Clabject source, Clabject target, CompositeCheck parent);
+
+		/**
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		
+		
+			DomainSearch createDomainSearch(Element source, Element target, CompositeCheck parent);
 		
 	
 	
