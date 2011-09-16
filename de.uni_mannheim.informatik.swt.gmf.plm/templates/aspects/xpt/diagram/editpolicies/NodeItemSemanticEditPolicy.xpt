@@ -9,6 +9,13 @@
  *    Ralph Gerbig - initial API and implementation and initial documentation
  *******************************************************************************/
 
+/*******************************************************************************
+
+This takes care that instantiations are removed from the semantic model even
+though they are not visible throug the notational model.
+
+ *******************************************************************************/
+
 «IMPORT 'http://www.eclipse.org/gmf/2009/GenModel'»
 
 «EXTENSION xpt::diagram::editpolicies::Utils»

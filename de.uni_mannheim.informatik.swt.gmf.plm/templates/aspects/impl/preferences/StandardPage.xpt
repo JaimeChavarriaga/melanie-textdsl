@@ -11,6 +11,9 @@
 
 «IMPORT 'http://www.eclipse.org/gmf/2009/GenModel'»
 
+/*******************************************************************************
+ * Changes the default routing to rectlinear.
+*******************************************************************************/
 «AROUND Main FOR gmfgen::GenStandardPreferencePage-»
 «EXPAND xpt::Common::copyright FOR getDiagram().editorGen-»
 package «getDiagram().preferencesPackageName»;

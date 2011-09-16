@@ -16,11 +16,12 @@
 «EXTENSION xpt::diagram::Utils»
 «EXTENSION xpt::GenModelUtils»
 
-«/*
+/*
   *
-  * Alow domain connections to have more than one participant
+  * Alow domain connections to have more than one participant. Workaround for BUG xxx
+  * Use the reasoning engine to determine if a DSL connection can be created.
   *
-  */»
+  */
 «AROUND canCreate FOR gmfgen::GenLink»
 	«IF getUniqueIdentifier().startsWith('ConnectionParticipant_')»
 	
@@ -30,7 +31,7 @@
 		«EXPAND xpt::Common::generatedMemberComment»
 		public boolean canCreate«getUniqueIdentifier()»(«EXPAND canCreateParameters FOR modelFacet») {
 			
-			//left out contains check to have multiple participants to the same clabject.
+			//left out contains check to have multiple participants to the same clabject. Workaround for BUG XXXX
 			
 			de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor editor = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor) org.eclipse.ui.PlatformUI
 					.getWorkbench().getActiveWorkbenchWindow().getActivePage()

@@ -12,13 +12,13 @@
 «IMPORT 'http://www.eclipse.org/gmf/2009/GenModel'»
 
 «EXTENSION xpt::StringOperations»
-
+/*
+ *
+ * Parsing for Domain Entity/Connection Label -> Needed that name can be set via label.
+ * Workaround for BUG XXX
+ *
+ */*
 «AROUND body FOR gmfgen::ExpressionLabelParser»
-	«/*
-	  *
-	  * Parsing for Domain Entity/Connection Label -> Needed that name can be set via label
-	  *
-	  */»
 	«IF self.getQualifiedClassName().xpandSplit('\\.')->last() = 'EntityLabelExpressionLabelParser5187'
 		or self.getQualifiedClassName().xpandSplit('\\.')->last() = 'ConnectionLabelExpressionLabelParser5162'»
 		«EXPAND xpt::Common::generatedMemberComment»

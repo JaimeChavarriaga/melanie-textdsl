@@ -11,6 +11,9 @@
 
 «IMPORT 'http://www.eclipse.org/gmf/2009/GenModel'»
 
+/*******************************************************************************
+ * Hide the border at the top of compartments
+*******************************************************************************/
 «AROUND createFigure FOR gmfgen::GenCompartment»
 	«IF self.editPartClassName = 'ModelDomainElementsCompartmentEditPart'
 		or self.editPartClassName = 'ConnectionVisualizersCompartmentEditPart'»
