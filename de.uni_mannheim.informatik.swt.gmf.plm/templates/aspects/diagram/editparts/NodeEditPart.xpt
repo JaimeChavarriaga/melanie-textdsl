@@ -386,17 +386,38 @@
 					de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject typeParticipant = instanceParticipant.getBlueprint();
 					de.uni_mannheim.informatik.swt.models.plm.PLM.Connection type = (de.uni_mannheim.informatik.swt.models.plm.PLM.Connection) self.getBlueprint();
 					
+					//If we do not have a participant blueprint try to find a complete type
 					if (typeParticipant == null) {
 						java.util.List<de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject> completeTypes = instanceParticipant.getModelCompleteTypes();
 						if (completeTypes.size() >= 1)
 							typeParticipant = completeTypes.get(0);
 					}
 					
+					//If we do not have a connection blueprint try to find a complete type
 					if (type == null) {
 						java.util.List<de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject> completeTypes = self.getModelCompleteTypes();
 						if (completeTypes.size() >= 1)
 							type = (de.uni_mannheim.informatik.swt.models.plm.PLM.Connection) completeTypes.get(0);
 					}
+					
+					//We have a connection that is not instance => Default rolename needs to be used
+					if (type == null){
+						String newRoleName = instanceParticipant.getName();
+						
+						//retrieve the name from the particpant if possible
+						if (newRoleName != null && newRoleName.length() > 1)
+							newRoleName = java.lang.Character.toLowerCase(newRoleName.charAt(0)) + (newRoleName.length() > 2 ? newRoleName.substring(1) : "");
+						else
+							newRoleName = "unknown";
+						
+						self.getRoleName().add(newRoleName);
+						self.getLower().add(0);
+						self.getUpper().add(-1);
+						self.getIsNavigable().add(true);
+						return;
+					}
+					
+					//Go on calculating a roleName
 					
 					java.util.List<String> roleNames = type.getRoleNameForParticipant(typeParticipant);
 					String roleName = null;
@@ -465,57 +486,6 @@
 						}
 					}
 				}
-			}
-			else if (changedFeature.getName().equals("blueprint"))
-			{
-				de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation[] instantiations = new de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation[] {};
-
-				org.eclipse.ocl.ecore.OCL ocl = org.eclipse.ocl.ecore.OCL.newInstance();
-				org.eclipse.ocl.helper.OCLHelper<org.eclipse.emf.ecore.EClassifier, ?, ?, org.eclipse.ocl.ecore.Constraint> helper = ocl.createOCLHelper();
-				helper.setContext(de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.Literals.ENTITY);
-
-				try {
-					org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper
-							.createQuery("Instantiation.allInstances()->select(i | i.instance = self)");
-					instantiations = ((java.util.HashSet<de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation>) ocl
-							.evaluate(
-									resolveSemanticElement(), q))
-							.toArray(new de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation[] {});
-				} catch (org.eclipse.ocl.ParserException e) {
-					e.printStackTrace();
-				}
-				
-				//We found Instantiation
-				if (instantiations.length > 0) {
-					org.eclipse.ui.IEditorPart editor = org.eclipse.ui.PlatformUI.getWorkbench()
-							.getActiveWorkbenchWindow().getActivePage()
-							.getActiveEditor();
-					if (!(editor instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor))
-						return;
-
-					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor plmEditor = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor) editor;
-
-					for (de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation i : instantiations) {
-						//if a instantiation is hidden via the notational model it cannot be resolved
-						java.util.List instantiationEditParts = plmEditor
-								.getDiagramGraphicalViewer()
-								.findEditPartsForElement(
-										org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getProxyID(i),
-										org.eclipse.gef.NodeEditPart.class);
-
-						if (instantiationEditParts.size() > 0) {
-							org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart instantiationEditPart = (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart) instantiationEditParts
-									.get(0);
-							
-							for (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart label : (java.util.List<org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart>)instantiationEditPart.getChildren())
-							{
-								label.performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
-								label.refresh();
-							}
-						}
-					}
-				}
-				
 			}
 			«ENDIF»
 			
