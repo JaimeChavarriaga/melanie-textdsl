@@ -18,7 +18,7 @@
         name="domainEntityNameCheck"
         description="Checks the name of elements"
         id="audits.attributes.domainEntityNameAudit.Colon"
-        rule="//@expressionProviders/@providers.0/@expressions.108"
+        rule="//@expressionProviders/@providers.0/@expressions.107"
         message="Name is not allowed to contain ':'"
         category="//@audits/@categories.0">
       <target
@@ -32,7 +32,7 @@
         name="domainEntityNameCheck"
         description="Checks the name of elements"
         id="audits.attributes.domainEntityNameAudit.GreaterThan"
-        rule="//@expressionProviders/@providers.0/@expressions.109"
+        rule="//@expressionProviders/@providers.0/@expressions.108"
         message="Name is not allowed to contain '>'"
         category="//@audits/@categories.0">
       <target
@@ -46,7 +46,7 @@
         name="domainEntityNameCheck"
         description="Checks the name of elements"
         id="audits.attributes.domainEntityNameAudit.Dot"
-        rule="//@expressionProviders/@providers.0/@expressions.110"
+        rule="//@expressionProviders/@providers.0/@expressions.109"
         message="Name is not allowed to contain '.'"
         category="//@audits/@categories.0">
       <target
@@ -3033,8 +3033,7 @@
             parser="//@labelParsers/@implementations.60"/>
       </labels>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.93"
-          targetEnd="//@expressionProviders/@providers.0/@expressions.94"/>
+          targetEnd="//@expressionProviders/@providers.0/@expressions.93"/>
     </links>
     <links
         visualID="4013"
@@ -3086,7 +3085,7 @@
             parser="//@labelParsers/@implementations.23"/>
       </labels>
       <creationConstraints
-          targetEnd="//@expressionProviders/@providers.0/@expressions.95"/>
+          targetEnd="//@expressionProviders/@providers.0/@expressions.94"/>
     </links>
     <links
         visualID="4018"
@@ -3138,8 +3137,8 @@
             parser="//@labelParsers/@implementations.23"/>
       </labels>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.96"
-          targetEnd="//@expressionProviders/@providers.0/@expressions.97"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.95"
+          targetEnd="//@expressionProviders/@providers.0/@expressions.96"/>
     </links>
     <links
         visualID="4015"
@@ -3191,8 +3190,8 @@
             parser="//@labelParsers/@implementations.23"/>
       </labels>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.98"
-          targetEnd="//@expressionProviders/@providers.0/@expressions.99"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.97"
+          targetEnd="//@expressionProviders/@providers.0/@expressions.98"/>
     </links>
     <links
         visualID="4016"
@@ -3244,8 +3243,8 @@
             parser="//@labelParsers/@implementations.23"/>
       </labels>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.100"
-          targetEnd="//@expressionProviders/@providers.0/@expressions.101"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.99"
+          targetEnd="//@expressionProviders/@providers.0/@expressions.100"/>
     </links>
     <links
         visualID="4008"
@@ -3273,7 +3272,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleGeneralization/supertype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.102"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.101"/>
     </links>
     <links
         visualID="4009"
@@ -3301,7 +3300,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleGeneralization/subtype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.103"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.102"/>
     </links>
     <links
         visualID="4011"
@@ -3329,7 +3328,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleSpecialization/supertype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.104"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.103"/>
     </links>
     <links
         visualID="4012"
@@ -3357,7 +3356,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/MultipleSpecialization/subtype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.105"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.104"/>
     </links>
     <links
         visualID="4019"
@@ -3385,7 +3384,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/BinaryGeneralization/supertype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.106"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.105"/>
     </links>
     <links
         visualID="4020"
@@ -3413,7 +3412,7 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/BinaryGeneralization/subtype"/>
       </modelFacet>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.107"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.106"/>
     </links>
     <compartments
         visualID="7003"
@@ -4101,10 +4100,7 @@
           body="let renderRoleName:Boolean=&#xD;&#xA;&#x9;if (Ontology.allInstances()->asSequence()->at(1).visualizer->asSequence()->at(1).getValueForKey('showInstantiationRoleNames') = 'true') then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;if (renderRoleName and self.kind = ClassificationKind::instantiation) then&#xD;&#xA;&#x9;'offspring'&#xD;&#xA;else&#xD;&#xA;&#x9;if (renderRoleName and self.kind = ClassificationKind::instance) then&#xD;&#xA;&#x9;&#x9;'instance'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;if (renderRoleName and self.kind = ClassificationKind::isonym) then&#xD;&#xA;&#x9;&#x9;&#x9;'isonym'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;if (renderRoleName and self.kind = ClassificationKind::hyponym) then&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;'hyponym'&#xD;&#xA;&#x9;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;''&#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;endif"/>
       <expressions
           xsi:type="gmfgen:GenConstraint"
-          body="Instantiation.allInstances()->select(i | i.instance = self)->size() = 0"/>
-      <expressions
-          xsi:type="gmfgen:GenConstraint"
-          body="self.potency &lt;> 0 and self.level &lt; oppositeEnd.level and self.instantiable"/>
+          body="self.potency &lt;> 0 and self.level &lt; oppositeEnd.level"/>
       <expressions
           xsi:type="gmfgen:GenConstraint"
           body="if (oppositeEnd.oclIsTypeOf(Inversion)) then&#xD;&#xA;&#x9;self.oclIsTypeOf(Connection) and self &lt;> oppositeEnd.oclAsType(Inversion).inverse&#xD;&#xA;--all other SetRelationships connect Entities&#xD;&#xA;else&#xD;&#xA;&#x9;if (oppositeEnd.oclIsTypeOf(Equality)) then&#xD;&#xA;&#x9;&#x9;self.oclIsTypeOf(Entity) and self &lt;> oppositeEnd.oclAsType(Equality).equal&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;self.oclIsTypeOf(Entity) and self&lt;> oppositeEnd.oclAsType(Complement).complement&#xD;&#xA;&#x9;endif&#xD;&#xA;endif"/>
