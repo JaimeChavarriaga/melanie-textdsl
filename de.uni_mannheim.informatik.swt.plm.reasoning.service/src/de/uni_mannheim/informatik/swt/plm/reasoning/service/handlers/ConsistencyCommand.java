@@ -10,6 +10,8 @@
  *******************************************************************************/
 package de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -234,8 +236,29 @@ public class ConsistencyCommand extends AbstractHandler {
 	}
 
 	private CompositeCheck ontologyIsConsistent(Ontology el) {
-		// TODO Auto-generated method stub
-		return null;
+		CompositeCheck check = ReasoningResultFactory.eINSTANCE.createCompositeCheck(el, el, null);
+		check.setResult(true);
+		List<Model> models = el.getContent(); 
+		/*Collections.sort(models, new Comparator<Model>() {
+			public int compare(Model m1, Model m2) {
+				if (m1.getLevel() < m2.getLevel()) 
+					return 1;
+				else if (m1.getLevel() < m2.getLevel())
+					return -1;
+				return 0;
+			}
+		});*/
+		int rootLevel = models.get(0).getLevel();
+		for (Model m:el.getContent()) {
+			if (m.getLevel() != rootLevel) {
+				CompositeCheck modelCheck = (new ConsistentClassificationCommand()).compute(m);
+				check.getCheck().add(modelCheck);
+				if (!modelCheck.isResult()) {
+					check.setResult(false);
+				}
+			}
+		}
+		return check;
 	}
 	
 

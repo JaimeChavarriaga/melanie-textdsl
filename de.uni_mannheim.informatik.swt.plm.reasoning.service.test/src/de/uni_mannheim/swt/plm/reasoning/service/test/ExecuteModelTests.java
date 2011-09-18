@@ -30,6 +30,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Generalization;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology;
 import de.uni_mannheim.informatik.swt.plm.workbench.ExtensionPointService;
 import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService;
 
@@ -81,6 +82,8 @@ public class ExecuteModelTests implements IObjectActionDelegate {
 						System.out.println("Logical Element Consistency " + reasoner.run(IReasoningService.IS_CONSISTENT, new Object[]{e}));
 				} else if(e instanceof Model) {
 					System.out.println("Model Consistent Classification " + reasoner.run(IReasoningService.IS_CONSISTENTLY_CLASSIFIED, new Object[]{e}));
+				} else if (e instanceof Ontology) {
+					System.out.println("Ontology Consistency " + reasoner.run(IReasoningService.IS_CONSISTENT, new Object[]{e}));
 				}
 			}
 		} catch (CoreException e) {
