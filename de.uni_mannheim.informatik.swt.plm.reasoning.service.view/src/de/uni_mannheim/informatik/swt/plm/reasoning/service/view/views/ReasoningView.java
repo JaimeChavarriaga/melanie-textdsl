@@ -70,6 +70,7 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 			ReasoningResultModel model = (ReasoningResultModel)modelList.get(modelList.size() - 1);
 			treeViewer.setInput(model);
 			treeViewer.refresh();
+			treeViewer.expandAll();
 			
 			comboViewer.setInput(modelList);
 			ISelection selection = new StructuredSelection(model);
@@ -133,6 +134,7 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 				if (event.getSelection() instanceof IStructuredSelection){
 					treeViewer.setInput(((IStructuredSelection)event.getSelection()).getFirstElement());
 					treeViewer.refresh();
+					treeViewer.expandAll();
 				}
 			}
 		});
@@ -140,7 +142,7 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 		treeViewer = new TreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
 		treeViewer.getTree().setLayoutData(treeViewGridData);
 		
-//		drillDownAdapter = new DrillDownAdapter(viewer);
+		drillDownAdapter = new DrillDownAdapter(treeViewer);
 		treeViewer.setContentProvider(new AdapterFactoryContentProvider(factory));
 		treeViewer.setLabelProvider(new AdapterFactoryLabelProvider(factory));
 		//viewer.setSorter(new NameSorter());
@@ -160,10 +162,10 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 //		viewer.setInput(model);
 //		viewer.refresh();
 		
-//		makeActions();
+		makeActions();
 //		hookContextMenu();
 //		hookDoubleClickAction();
-//		contributeToActionBars();
+		contributeToActionBars();
 		
 		getSite().setSelectionProvider(this);
 	}
@@ -201,7 +203,7 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 
 	private void contributeToActionBars() {
 		IActionBars bars = getViewSite().getActionBars();
-		fillLocalPullDown(bars.getMenuManager());
+		//fillLocalPullDown(bars.getMenuManager());
 		fillLocalToolBar(bars.getToolBarManager());
 	}
 
@@ -222,38 +224,41 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 	
 	private void fillLocalToolBar(IToolBarManager manager) {
 		manager.add(action1);
-		manager.add(action2);
-		manager.add(new Separator());
+		//manager.add(action2);
+		//manager.add(new Separator());
 		drillDownAdapter.addNavigationActions(manager);
 	}
 
 	private void makeActions() {
+		
 		action1 = new Action() {
 			public void run() {
-				showMessage("Action 1 executed");
+				treeViewer.collapseAll();
 			}
 		};
-		action1.setText("Action 1");
-		action1.setToolTipText("Action 1 tooltip");
+		action1.setText("Collapse All");
+		action1.setToolTipText("Collapse All");
 		action1.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().
-			getImageDescriptor(ISharedImages.IMG_OBJS_INFO_TSK));
+			getImageDescriptor(ISharedImages.IMG_ELCL_COLLAPSEALL));
 		
-		action2 = new Action() {
-			public void run() {
-				showMessage("Action 2 executed");
-			}
-		};
-		action2.setText("Action 2");
-		action2.setToolTipText("Action 2 tooltip");
-		action2.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().
-				getImageDescriptor(ISharedImages.IMG_OBJS_INFO_TSK));
-		doubleClickAction = new Action() {
-			public void run() {
-				ISelection selection = treeViewer.getSelection();
-				Object obj = ((IStructuredSelection)selection).getFirstElement();
-				showMessage("Double-click detected on "+obj.toString());
-			}
-		};
+//		action2 = new Action() {
+//			public void run() {
+//				treeViewer.expandAll();
+//			}
+//		};
+		
+		
+//		action2.setText("Action 2");
+//		action2.setToolTipText("Action 2 tooltip");
+//		action2.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().
+//				getImageDescriptor(ISharedImages.IMG_ELCL_COLLAPSEALL));
+//		doubleClickAction = new Action() {
+//			public void run() {
+//				ISelection selection = treeViewer.getSelection();
+//				Object obj = ((IStructuredSelection)selection).getFirstElement();
+//				showMessage("Double-click detected on "+obj.toString());
+//			}
+//		};
 	}
 
 	private void hookDoubleClickAction() {
