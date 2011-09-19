@@ -183,18 +183,21 @@
 				
 				entries.add(entry);
 			
-				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor.LinkToolEntry linkEntry = new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor.LinkToolEntry(
-						((de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)e).getHumanReadableName(),
-						"Creates a new " + ((de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)e).getHumanReadableName(),
-						java.util.Collections.singletonList(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.ConnectionParticipant_4021));
-						
-				linkEntry.setId("dsl." + org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getProxyID(e) + ".CreationTool");
-				linkEntry.setSmallIcon(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditorPlugin
-						.findImageDescriptor("/de.uni_mannheim.informatik.swt.gmf.plm/icons/connectionParticipant16.gif"));
-				linkEntry.setLargeIcon(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditorPlugin
-						.findImageDescriptor("/de.uni_mannheim.informatik.swt.gmf.plm/icons/connectionParticipant16.gif"));
-				
-				entries.add(linkEntry);
+				//An entry for each role name must be added to the palette
+				for (String roleName : ((de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)e).getRoleName()){
+					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor.LinkToolEntry linkEntry = new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor.LinkToolEntry(
+							"<<" + roleName + ">>" + ((de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)e).getHumanReadableName(),
+							"Creates a new " + "<<" + roleName + ">>" + ((de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)e).getHumanReadableName(),
+							java.util.Collections.singletonList(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.ConnectionParticipant_4021));
+							
+					linkEntry.setId("dsl." + org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getProxyID(e) + "<<" + roleName + ">>" + ".CreationTool");
+					linkEntry.setSmallIcon(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditorPlugin
+							.findImageDescriptor("/de.uni_mannheim.informatik.swt.gmf.plm/icons/connectionParticipant16.gif"));
+					linkEntry.setLargeIcon(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditorPlugin
+							.findImageDescriptor("/de.uni_mannheim.informatik.swt.gmf.plm/icons/connectionParticipant16.gif"));
+					
+					entries.add(linkEntry);
+				}
 			}
 		}
 		
@@ -231,7 +234,10 @@
 						else if ((o1.getLabel() != null || o1.getLabel().length() != 0) && (o2.getLabel() == null || o2.getLabel().length() == 0))
 							return -1;
 						else
-							return o1.getLabel().compareToIgnoreCase(o2.getLabel());
+							//In order to get the entry tools sorted next to their connection tool
+							//their leading <<.*>> must be removed for comparison
+							return o1.getLabel().replaceAll("<<.*?>>", "").compareToIgnoreCase(
+									o2.getLabel().replaceAll("<<.*?>>", ""));
 					}
 				}
 				return 0;
