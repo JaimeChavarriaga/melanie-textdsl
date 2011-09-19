@@ -417,12 +417,9 @@
 						return;
 					}
 					
-					//Go on calculating a roleName
-					
-					java.util.List<String> roleNames = type.getRoleNameForParticipant(typeParticipant);
-					String roleName = null;
-					if (roleNames.size() >= 1)
-						roleName = roleNames.get(0);
+					//Use the toolID to find the role name
+					String toolID = getEditDomain().getPaletteViewer().getActiveTool().getId();
+					String roleName = toolID.substring(toolID.indexOf("<<") + 2, toolID.indexOf(">>"));
 					
 					self.getIsNavigable().add(type.isNavigableForRoleName(roleName));
 					self.getLower().add(type.getLowerForRoleName(roleName));

@@ -46,7 +46,7 @@
 				} catch (org.eclipse.core.runtime.CoreException e) {
 					e.printStackTrace();
 				}
-				String typeID = editor.getPalette().getActiveTool().getId().replace("dsl.", "").replace(".CreationTool", "");
+				String typeID = editor.getPalette().getActiveTool().getId().replace("dsl.", "").replaceAll("<<.*?>>", "").replace(".CreationTool", "");
 				de.uni_mannheim.informatik.swt.models.plm.PLM.Connection typeConnection = (de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)reasoner.getElementByXMIID(typeID, source);
 				//Start of drawing the line. possible if the source conforms what was used to construct the participation from
 				if (source != null && target == null){
