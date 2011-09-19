@@ -4,7 +4,8 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.uni_mannheim.informatik.swt.models.plm.reasoningresult/src"
     modelPluginID="de.uni_mannheim.informatik.swt.models.plm.reasoningresult" templateDirectory="de.uni_mannheim.informatik.swt.models.plm.reasoningresult/templates"
     dynamicTemplates="true" modelName="ReasoningResult" importerID="org.eclipse.emf.importer.ecore"
-    complianceLevel="6.0" copyrightFields="false" operationReflection="true">
+    complianceLevel="6.0" copyrightFields="false" providerRootExtendsClass="de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.custom.BaseItemProvider"
+    operationReflection="true">
   <foreignModel>ReasoningResult.ecore</foreignModel>
   <genPackages prefix="ReasoningResult" basePackage="de.uni_mannheim.informatik.swt.models.plm.reasoningresult"
       disposableProviderFactory="true">
@@ -26,14 +27,14 @@
       <genFeatures createChild="false">
         <ecoreFeature xsi:type="ecore:EAttribute" href="ReasoningResult.ecore#//Check/expression"/>
       </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="ReasoningResult.ecore#//Check/rootCause"/>
+      </genFeatures>
     </genClasses>
-    <genClasses>
+    <genClasses image="false">
       <ecoreClass href="ReasoningResult.ecore#//CompositeCheck"/>
       <genFeatures property="None" children="true" createChild="true">
         <ecoreFeature xsi:type="ecore:EReference" href="ReasoningResult.ecore#//CompositeCheck/check"/>
-      </genFeatures>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="ReasoningResult.ecore#//CompositeCheck/name"/>
       </genFeatures>
       <genFeatures notify="false" createChild="false" propertySortChoices="true">
         <ecoreFeature xsi:type="ecore:EReference" href="ReasoningResult.ecore#//CompositeCheck/source"/>
@@ -41,8 +42,11 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true">
         <ecoreFeature xsi:type="ecore:EReference" href="ReasoningResult.ecore#//CompositeCheck/target"/>
       </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="ReasoningResult.ecore#//CompositeCheck/name"/>
+      </genFeatures>
     </genClasses>
-    <genClasses>
+    <genClasses image="false">
       <ecoreClass href="ReasoningResult.ecore#//NameComparison"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true">
         <ecoreFeature xsi:type="ecore:EReference" href="ReasoningResult.ecore#//NameComparison/source"/>
@@ -51,7 +55,7 @@
         <ecoreFeature xsi:type="ecore:EReference" href="ReasoningResult.ecore#//NameComparison/target"/>
       </genFeatures>
     </genClasses>
-    <genClasses>
+    <genClasses image="false">
       <ecoreClass href="ReasoningResult.ecore#//DurabilityComparison"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true">
         <ecoreFeature xsi:type="ecore:EReference" href="ReasoningResult.ecore#//DurabilityComparison/source"/>
@@ -59,8 +63,14 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true">
         <ecoreFeature xsi:type="ecore:EReference" href="ReasoningResult.ecore#//DurabilityComparison/target"/>
       </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="ReasoningResult.ecore#//DurabilityComparison/typeDurability"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="ReasoningResult.ecore#//DurabilityComparison/instanceDurability"/>
+      </genFeatures>
     </genClasses>
-    <genClasses>
+    <genClasses image="false">
       <ecoreClass href="ReasoningResult.ecore#//MutabilityComparison"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true">
         <ecoreFeature xsi:type="ecore:EReference" href="ReasoningResult.ecore#//MutabilityComparison/source"/>
@@ -68,8 +78,14 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true">
         <ecoreFeature xsi:type="ecore:EReference" href="ReasoningResult.ecore#//MutabilityComparison/target"/>
       </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="ReasoningResult.ecore#//MutabilityComparison/typeMutability"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="ReasoningResult.ecore#//MutabilityComparison/instanceMutability"/>
+      </genFeatures>
     </genClasses>
-    <genClasses>
+    <genClasses image="false">
       <ecoreClass href="ReasoningResult.ecore#//DatatypeComparison"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true">
         <ecoreFeature xsi:type="ecore:EReference" href="ReasoningResult.ecore#//DatatypeComparison/source"/>
@@ -78,13 +94,13 @@
         <ecoreFeature xsi:type="ecore:EReference" href="ReasoningResult.ecore#//DatatypeComparison/target"/>
       </genFeatures>
     </genClasses>
-    <genClasses>
+    <genClasses image="false">
       <ecoreClass href="ReasoningResult.ecore#//AllConnectionsCheck"/>
       <genFeatures createChild="false">
         <ecoreFeature xsi:type="ecore:EAttribute" href="ReasoningResult.ecore#//AllConnectionsCheck/noTypeConnection"/>
       </genFeatures>
     </genClasses>
-    <genClasses>
+    <genClasses image="false">
       <ecoreClass href="ReasoningResult.ecore#//TypeConnectionSearch"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true">
         <ecoreFeature xsi:type="ecore:EReference" href="ReasoningResult.ecore#//TypeConnectionSearch/typeConnection"/>
@@ -93,7 +109,7 @@
         <ecoreFeature xsi:type="ecore:EAttribute" href="ReasoningResult.ecore#//TypeConnectionSearch/noSearchedConnections"/>
       </genFeatures>
     </genClasses>
-    <genClasses>
+    <genClasses image="false">
       <ecoreClass href="ReasoningResult.ecore#//ExpressedInstanceExcludedCheck"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true">
         <ecoreFeature xsi:type="ecore:EReference" href="ReasoningResult.ecore#//ExpressedInstanceExcludedCheck/expressedTypes"/>
@@ -108,13 +124,13 @@
         <ecoreFeature xsi:type="ecore:EReference" href="ReasoningResult.ecore#//ExpressedInstanceExcludedCheck/affectedDisjointIntersection"/>
       </genFeatures>
     </genClasses>
-    <genClasses>
+    <genClasses image="false">
       <ecoreClass href="ReasoningResult.ecore#//MultiplicityCheck"/>
       <genFeatures createChild="false">
         <ecoreFeature xsi:type="ecore:EAttribute" href="ReasoningResult.ecore#//MultiplicityCheck/noOfDomainConnection"/>
       </genFeatures>
     </genClasses>
-    <genClasses>
+    <genClasses image="false">
       <ecoreClass href="ReasoningResult.ecore#//MultiplicityRoleNameCheck"/>
       <genFeatures createChild="false">
         <ecoreFeature xsi:type="ecore:EAttribute" href="ReasoningResult.ecore#//MultiplicityRoleNameCheck/lower"/>
@@ -125,8 +141,11 @@
       <genFeatures createChild="false">
         <ecoreFeature xsi:type="ecore:EAttribute" href="ReasoningResult.ecore#//MultiplicityRoleNameCheck/counts"/>
       </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="ReasoningResult.ecore#//MultiplicityRoleNameCheck/roleName"/>
+      </genFeatures>
     </genClasses>
-    <genClasses>
+    <genClasses image="false">
       <ecoreClass href="ReasoningResult.ecore#//RoleNamePropertyConformanceCheck"/>
       <genFeatures createChild="false">
         <ecoreFeature xsi:type="ecore:EAttribute" href="ReasoningResult.ecore#//RoleNamePropertyConformanceCheck/roleName"/>
@@ -138,16 +157,97 @@
         <ecoreFeature xsi:type="ecore:EReference" href="ReasoningResult.ecore#//RoleNamePropertyConformanceCheck/instanceParticipant"/>
       </genFeatures>
     </genClasses>
-    <genClasses>
+    <genClasses image="false">
       <ecoreClass href="ReasoningResult.ecore#//RoleNameLocalConformanceCheck"/>
       <genFeatures createChild="false">
         <ecoreFeature xsi:type="ecore:EAttribute" href="ReasoningResult.ecore#//RoleNameLocalConformanceCheck/roleName"/>
       </genFeatures>
     </genClasses>
-    <genClasses>
+    <genClasses image="false">
       <ecoreClass href="ReasoningResult.ecore#//ConnectionsLocalConformanceCheck"/>
       <genFeatures createChild="false">
         <ecoreFeature xsi:type="ecore:EAttribute" href="ReasoningResult.ecore#//ConnectionsLocalConformanceCheck/noTypeConnections"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses image="false">
+      <ecoreClass href="ReasoningResult.ecore#//LocalConformanceCheck"/>
+    </genClasses>
+    <genClasses image="false">
+      <ecoreClass href="ReasoningResult.ecore#//TypeFeatureCheck"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="ReasoningResult.ecore#//TypeFeatureCheck/NoFeatures"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses image="false">
+      <ecoreClass href="ReasoningResult.ecore#//FeatureSearchCheck"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="ReasoningResult.ecore#//FeatureSearchCheck/NoFeatures"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="ReasoningResult.ecore#//FeatureSearchCheck/typeFeature"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses image="false">
+      <ecoreClass href="ReasoningResult.ecore#//FeatureConformanceCheck"/>
+    </genClasses>
+    <genClasses image="false">
+      <ecoreClass href="ReasoningResult.ecore#//LevelComparison"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="ReasoningResult.ecore#//LevelComparison/targetLevel"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="ReasoningResult.ecore#//LevelComparison/instanceLevel"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="ReasoningResult.ecore#//LevelComparison/source"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="ReasoningResult.ecore#//LevelComparison/target"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses image="false">
+      <ecoreClass href="ReasoningResult.ecore#//ValueComparison"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="ReasoningResult.ecore#//ValueComparison/source"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="ReasoningResult.ecore#//ValueComparison/target"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses image="false">
+      <ecoreClass href="ReasoningResult.ecore#//HasAdditionalPropertiesCheck"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="ReasoningResult.ecore#//HasAdditionalPropertiesCheck/commonProperties"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="ReasoningResult.ecore#//HasAdditionalPropertiesCheck/additionalProperties"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses image="false">
+      <ecoreClass href="ReasoningResult.ecore#//PotencyComparison"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="ReasoningResult.ecore#//PotencyComparison/targetPotency"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="ReasoningResult.ecore#//PotencyComparison/instancePotency"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="ReasoningResult.ecore#//PotencyComparison/source"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="ReasoningResult.ecore#//PotencyComparison/target"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses image="false">
+      <ecoreClass href="ReasoningResult.ecore#//DomainSearch"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="ReasoningResult.ecore#//DomainSearch/supertypeIsonyms"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="ReasoningResult.ecore#//DomainSearch/subtypeIsonyms"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="ReasoningResult.ecore#//DomainSearch/interestingInstances"/>
       </genFeatures>
     </genClasses>
   </genPackages>

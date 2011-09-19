@@ -38,6 +38,20 @@ rule RefineGenModel{
 		o : genmodel!GenModel(
 			operationReflection <- true,
 			dynamicTemplates <- true,
-			templateDirectory <- 'de.uni_mannheim.informatik.swt.models.plm.reasoningresult/templates'
+			templateDirectory <- 'de.uni_mannheim.informatik.swt.models.plm.reasoningresult/templates',
+			providerRootExtendsClass <- 'de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.custom.BaseItemProvider'
+		)
+}
+
+-- Tell the genClasses which are inheriting from Check to not generate an image
+-- Tell the Check to inherit from our special ItemProvider
+rule RefineGenClass{
+	from
+		s : genmodel!GenClass(
+			s.ecoreClass.eAllSuperTypes->select(t | t.name = 'Check')->size() > 0	
+		)
+	to
+		o : genmodel!GenClass(
+			image <- false
 		)
 }
