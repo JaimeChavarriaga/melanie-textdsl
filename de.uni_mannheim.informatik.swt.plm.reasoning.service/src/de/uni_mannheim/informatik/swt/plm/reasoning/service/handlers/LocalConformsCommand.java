@@ -63,8 +63,14 @@ public class LocalConformsCommand extends AbstractHandler {
 			child =  localConformsConnection((Connection) type, (Connection) instance);
 		} else if (type instanceof Entity && instance instanceof Entity) {
 			child =  localConformsClabject(type, instance);
+		} else if ((type instanceof Entity && instance instanceof Connection) || 
+				(instance instanceof Entity && type instanceof Connection)){
+			child = ReasoningResultFactory.eINSTANCE.createCompositeCheck(instance, type, check);
+			check.setResult(false);
+			child.setName("Linguistic type");
+			return check;
 		} else {
-			System.out.println("mismatching types");
+			System.out.println("mismatching types. NPE??");
 		}
 		check.getCheck().add(child);
 		check.setResult(child.isResult());
