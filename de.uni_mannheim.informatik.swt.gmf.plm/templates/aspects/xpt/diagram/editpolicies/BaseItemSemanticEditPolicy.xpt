@@ -52,6 +52,9 @@
 				if (source != null && target == null){
 					return reasoner.neighbourhoodConstructionConformsConnection(typeConnection, source);
 				}
+				if (source.equals(target)) {
+					return false;
+				}
 				java.util.Set<de.uni_mannheim.informatik.swt.models.plm.PLM.Connection> possibleTypeConnections = new java.util.HashSet<de.uni_mannheim.informatik.swt.models.plm.PLM.Connection>();
 				possibleTypeConnections.add(typeConnection);
 				for (de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject con: typeConnection.getModelSupertypes())
