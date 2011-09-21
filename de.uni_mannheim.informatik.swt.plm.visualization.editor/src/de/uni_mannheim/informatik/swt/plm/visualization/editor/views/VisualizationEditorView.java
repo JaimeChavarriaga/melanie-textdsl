@@ -34,9 +34,13 @@ import org.eclipse.emf.edit.ui.action.EditingDomainActionBarContributor;
 import org.eclipse.emf.edit.ui.action.PasteAction;
 import org.eclipse.emf.edit.ui.action.RedoAction;
 import org.eclipse.emf.edit.ui.action.UndoAction;
+import org.eclipse.emf.edit.ui.dnd.EditingDomainViewerDropAdapter;
+import org.eclipse.emf.edit.ui.dnd.LocalTransfer;
+import org.eclipse.emf.edit.ui.dnd.ViewerDragAdapter;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IAction;
@@ -55,6 +59,8 @@ import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.swt.dnd.DND;
+import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.IActionBars;
@@ -81,6 +87,10 @@ import de.uni_mannheim.informatik.swt.models.plm.visualization.provider.Visualiz
 
 /**
  * Contains code from the EMF generated editor plug-in
+ * 
+ * BUG: getPropertySheetPage() does use the domain of the first opened diagram. Maybe here an
+ * own EditingDomain is needed so that the View is not polluting the domains of diagrams if
+ * more than one is opened.
  *
  */
 public class VisualizationEditorView extends ViewPart implements INullSelectionListener, ISelectionProvider{
@@ -102,6 +112,7 @@ public class VisualizationEditorView extends ViewPart implements INullSelectionL
 	ChangeListener modelListener = new ChangeListener();
 	public void addPropertyListener(org.eclipse.ui.IPropertyListener listener) {};
 	PropertySheetPage propertySheetPage;
+	EditingDomain domain = null;
 	
 	/**
 	 * This is need to return a property sheet page. If not implemented the 
@@ -132,7 +143,12 @@ public class VisualizationEditorView extends ViewPart implements INullSelectionL
 					! (getSite().getWorkbenchWindow().getActivePage().getActiveEditor() instanceof PLMDiagramEditor))
 				return null;
 			
-			EditingDomain domain = ((PLMDiagramEditor)getSite().getWorkbenchWindow().getActivePage().getActiveEditor()).getEditingDomain();
+			//The domain is null so we need to get on by the active editor
+			if (domain == null)
+				domain = ((PLMDiagramEditor)getSite().getWorkbenchWindow().getActivePage().getActiveEditor()).getEditingDomain();
+			
+			viewer.getSelection();
+			
 			propertySheetPage =
 				new ExtendedPropertySheetPage((AdapterFactoryEditingDomain) domain) {
 					@Override
@@ -194,6 +210,9 @@ public class VisualizationEditorView extends ViewPart implements INullSelectionL
 		viewer.setLabelProvider(new AdapterFactoryLabelProvider(factory));
 		viewer.addSelectionChangedListener(menuBuilder);
 		
+		//*************************************************************************************
+		// BEGIN Register the context menu
+		//*************************************************************************************
 		MenuManager menu = new MenuManager();
 		menu.setRemoveAllWhenShown(true);
 		menu.addMenuListener(new IMenuListener() {
@@ -205,8 +224,7 @@ public class VisualizationEditorView extends ViewPart implements INullSelectionL
 				manager.insertBefore("additions", createChildMenuManager);
 				manager.insertBefore("additions", createSiblingMenuManager);
 				
-				
-				EditingDomain domain = ((PLMDiagramEditor)getSite().getWorkbenchWindow().getActivePage().getActiveEditor()).getEditingDomain();
+				//EditingDomain domain = ((PLMDiagramEditor)getSite().getWorkbenchWindow().getActivePage().getActiveEditor()).getEditingDomain();
 				
 				ISharedImages sharedImages = PlatformUI.getWorkbench().getSharedImages();
 
@@ -244,6 +262,15 @@ public class VisualizationEditorView extends ViewPart implements INullSelectionL
 		
 		viewer.getTree().setMenu(m);
 		getSite().registerContextMenu(menu, viewer);
+		//*************************************************************************************
+		// END Register the context menu
+		//*************************************************************************************
+		
+		
+		int dndOperations = DND.DROP_COPY | DND.DROP_MOVE | DND.DROP_LINK;
+		Transfer[] transfers = new Transfer[] { LocalTransfer.getInstance() };
+		viewer.addDragSupport(dndOperations, transfers, new ViewerDragAdapter(viewer));
+		viewer.addDropSupport(dndOperations, transfers, new EditingDomainViewerDropAdapter(domain, viewer));
 		
 		//Better use this but does not work due to bug
 //		getSite().getPage().addSelectionListener(PLMDiagramEditor.ID ,this);
@@ -314,8 +341,13 @@ public class VisualizationEditorView extends ViewPart implements INullSelectionL
 			if (selection instanceof IStructuredSelection && ((IStructuredSelection)selection).size() == 1) {
 				Object object = ((IStructuredSelection)selection).getFirstElement();
 
-				EditingDomain domain = ((PLMDiagramEditor)getSite().getWorkbenchWindow().getActivePage().getActiveEditor()).getEditingDomain();
-
+				//We set the domain according to the current selection in the view
+				if (event.getSelection() instanceof IStructuredSelection && ((IStructuredSelection)event.getSelection()).getFirstElement() instanceof EObject){
+					domain = TransactionUtil.getEditingDomain(((EObject)((IStructuredSelection)event.getSelection()).getFirstElement()));
+				}
+				else
+					domain = ((PLMDiagramEditor)getSite().getWorkbenchWindow().getActivePage().getActiveEditor()).getEditingDomain();
+					
 				// If there is an adapter of the correct type...
 			    //
 			    IEditingDomainItemProvider provider = 
@@ -385,7 +417,7 @@ public class VisualizationEditorView extends ViewPart implements INullSelectionL
 			Collection<IAction> actions = new ArrayList<IAction>();
 			if (descriptors != null) {
 				for (Object descriptor : descriptors) {
-					EditingDomain domain = ((PLMDiagramEditor)getSite().getWorkbenchWindow().getActivePage().getActiveEditor()).getEditingDomain();
+					//EditingDomain domain = ((PLMDiagramEditor)getSite().getWorkbenchWindow().getActivePage().getActiveEditor()).getEditingDomain();
 					actions.add(new CreateChildAction(domain, selection, descriptor));
 				}
 			}
@@ -396,7 +428,7 @@ public class VisualizationEditorView extends ViewPart implements INullSelectionL
 			Collection<IAction> actions = new ArrayList<IAction>();
 			if (descriptors != null) {
 				for (Object descriptor : descriptors) {
-					EditingDomain domain = ((PLMDiagramEditor)getSite().getWorkbenchWindow().getActivePage().getActiveEditor()).getEditingDomain();
+					//EditingDomain domain = ((PLMDiagramEditor)getSite().getWorkbenchWindow().getActivePage().getActiveEditor()).getEditingDomain();
 					actions.add(new CreateSiblingAction(domain, selection, descriptor));
 				}
 			}
