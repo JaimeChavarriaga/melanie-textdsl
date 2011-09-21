@@ -57,7 +57,7 @@
 				anchorLocations.put("SOUTH", new org.eclipse.draw2d.geometry.PrecisionPoint(0.5d, 1d));
 				anchorLocations.put("WEST", new org.eclipse.draw2d.geometry.PrecisionPoint(0, 0.5d));
 		
-				result = new de.uni_mannheim.informatik.swt.gmf.figures.DefaultSizeNodeFixedAnchors(40, 40, anchorLocations);
+				result = new de.uni_mannheim.informatik.swt.gmf.figures.DefaultSizeNodeFixedAnchors(8, 8, anchorLocations);
 		
 				return result;
 			}
