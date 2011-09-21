@@ -11,11 +11,6 @@
 
 package de.uni_mannheim.informatik.swt.models.plm.diagram.custom;
 
-import java.util.LinkedList;
-
-import org.eclipse.emf.edit.command.SetCommand;
-import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
@@ -23,13 +18,8 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.BinaryGeneralizationEditPart;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionEditPart;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.EntityEditPart;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.MultipleGeneralizationEditPart;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.MultipleSpecializationEditPart;
 
 
 /**
@@ -63,7 +53,7 @@ public class DSLAction implements IObjectActionDelegate {
 		if (selectedElement instanceof EntityEditPart)
 			((EntityEditPart)selectedElement).updateDSL();
 		if (selectedElement instanceof ConnectionEditPart)
-			((ConnectionEditPart)selectedElement).updateView(false);
+			((ConnectionEditPart)selectedElement).updateView();
 		
 	}	
 	@Override

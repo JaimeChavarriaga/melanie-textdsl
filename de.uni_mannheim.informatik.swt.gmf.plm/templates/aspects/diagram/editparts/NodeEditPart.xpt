@@ -311,11 +311,11 @@
 		//*************************************************************************
 		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute
 				&& ((org.eclipse.emf.ecore.EStructuralFeature) notification.getFeature()).getName().equals("value"))
-			updateView(true);
+			updateView();
 		«ENDIF»
 		
 		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer) {
-			updateView(false);
+			updateView();
 			
 			«IF self.editPartClassName = 'ConnectionEditPart'
 				or self.editPartClassName = 'EntityEditPart'»
@@ -366,7 +366,7 @@
 			if (changedFeature.getName().equalsIgnoreCase("elided")|| 
 				changedFeature.getName().equalsIgnoreCase("expressed"))
 			{
-				updateView(false);
+				updateView();
 			}
 			«IF self.editPartClassName='EntityEditPart' or self.editPartClassName='ConnectionEditPart'»
 			else if (changedFeature.getName().equals("potency"))
@@ -545,7 +545,7 @@
 	/**
 	 * @generated
 	 */
-	public void updateView(boolean readOnlyContext)
+	public void updateView()
 	{
 		«IF self.editPartClassName = 'ConnectionEditPart'
 			or self.editPartClassName = 'EntityEditPart'»
@@ -557,7 +557,7 @@
 				&& self.getVisualizer().get(0).getChild() != null)
 		{
 			«IF self.editPartClassName = 'ConnectionEditPart'»  
-			toggle(readOnlyContext);
+			toggle();
 			updateConnections();
 			«ELSE»
 			updateDSL();
@@ -580,33 +580,33 @@
 		
 		//We do toggle the connection
 		if (toggleValue != null)
-			toggle(readOnlyContext);
+			toggle();
 		«ENDIF»
 		
 		«IF self.editPartClassName = 'ConnectionEditPart'»
 		//We can do elide as long as a connection is not toggled
 		if(toggleValue == null || toggleValue == false)
-			doElide(readOnlyContext);
+			doElide();
 		«ELSEIF self.editPartClassName = 'EntityEditPart'»
-		doElide(readOnlyContext);
+		doElide();
 		«ENDIF»
 		
 		«IF self.editPartClassName = 'ConnectionEditPart'»
 		//We can change expressed as long as connection is not elided and not toggled
 		if (!c.isElided() && (toggleValue == null || toggleValue == false))
-			setExpressedVisualState(readOnlyContext);
+			setExpressedVisualState();
 		«ELSEIF self.editPartClassName = 'EntityEditPart'»
 		//We can change expressed as long as connection is not elided and not toggled
 		if (!c.isElided())
-			setExpressedVisualState(readOnlyContext);
+			setExpressedVisualState();
 		«ELSEIF self.editPartClassName = 'ComplementEditPart'
 			or self.editPartClassName = 'EqualityEditPart'
 			or self.editPartClassName = 'InversionEditPart'»
-		setExpressedVisualState(readOnlyContext);
+		setExpressedVisualState();
 		«ELSE»
 		//We can change expressed as long as connection is not elided and not toggled
 		if ((toggleValue == null || toggleValue == false))
-			setExpressedVisualState(readOnlyContext);
+			setExpressedVisualState();
 		«ENDIF»
 	}
 	«IF self.editPartClassName = 'EntityEditPart'»
@@ -748,7 +748,7 @@
 	 * 
 	 * @generated
 	 */
-	private void toggle(boolean readOnlyContext) {
+	private void toggle() {
 		java.lang.Boolean collapse = getToggleValue();
 		
 		//expand element
@@ -774,7 +774,7 @@
 
 			//When we come from read only context / addNotify the size should be in the
 			//notation model
-			if (!readOnlyContext)
+			if (org.eclipse.gmf.runtime.diagram.ui.util.EditPartUtil.isWriteTransactionInProgress(this, true, true))
 			{
 				org.eclipse.gef.Request rr = new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_AUTOSIZE);
 				performRequest(rr);
@@ -848,7 +848,7 @@
 		//Entity EditParts do not have a outer BorderItemContainer in contrast
 		//to Connections etc. as those have external labels
 				
-		updateView(true);
+		updateView();
 	}
 «ENDDEFINE»
 
@@ -864,7 +864,7 @@
 	 * 
 	 * @generated
 	 */
-	private void setExpressedVisualState(boolean readOnlyTransaction) {
+	private void setExpressedVisualState() {
 		
 		org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart parent = (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)getParent();
 		de.uni_mannheim.informatik.swt.models.plm.PLM.Element self = (de.uni_mannheim.informatik.swt.models.plm.PLM.Element) resolveSemanticElement();
@@ -876,7 +876,7 @@
 			if ((container.getOrigin().equalsIgnoreCase("computed") && self.isExpressed())
 					|| (container.getOrigin().equalsIgnoreCase("expressed") && !self.isExpressed()))
 			{
-				if (!readOnlyTransaction)
+				if (org.eclipse.gmf.runtime.diagram.ui.util.EditPartUtil.isWriteTransactionInProgress(this, true, true))
 				{
 					getNotationView().setVisible(false);
 				}
@@ -884,7 +884,7 @@
 		}
 		else
 		{
-			if (!readOnlyTransaction)
+			if (org.eclipse.gmf.runtime.diagram.ui.util.EditPartUtil.isWriteTransactionInProgress(this, true, true))
 			{
 				getNotationView().setVisible(true);
 			}
@@ -1337,11 +1337,9 @@
 	/**
 	 * Elides the Entity depending on the elided attribute
 	 * 
-	 * @param readOnlyTransaction when called from addNotify
-	 * 
 	 * @generated
 	 */
-	private void doElide(boolean readOnlyTransaction) {
+	private void doElide() {
 
 		de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject clab = (de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject) resolveSemanticElement();
 
@@ -1374,7 +1372,7 @@
 			rf.setParent(defaultSizeNodeFigure);
 			
 			//On Startup the size is saved in the notational model
-			if (!readOnlyTransaction) {
+			if (org.eclipse.gmf.runtime.diagram.ui.util.EditPartUtil.isWriteTransactionInProgress(this, true, true)) {
 				//Resize the elided node
 				rect.setSize((cachedSize != null) ? cachedSize : new org.eclipse.draw2d.geometry.Dimension(
 						10, 10));
@@ -1424,7 +1422,7 @@
 			getPrimaryShape().setParent(defaultSizeNodeFigure);
 
 			//We cannot execute commands in read only context
-			if (!readOnlyTransaction)
+			if (org.eclipse.gmf.runtime.diagram.ui.util.EditPartUtil.isWriteTransactionInProgress(this, true, true))
 			{
 				org.eclipse.gef.Request rr = new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_AUTOSIZE);
 				performRequest(rr);

@@ -222,7 +222,7 @@ public class AssociatePropertySectionAbstractPropertySection extends
 				
 				
 				if (selectedElement instanceof ConnectionEditPart)
-					((ConnectionEditPart)selectedElement).updateView(false);
+					((ConnectionEditPart)selectedElement).updateView();
 				
 				
 				//We need to change the source of the viewer again as we do not change
