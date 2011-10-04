@@ -320,32 +320,32 @@
 			«IF self.editPartClassName = 'ConnectionEditPart'
 				or self.editPartClassName = 'EntityEditPart'»
 			//*************************************************************************
-			//Manage the instantiations view state according to proximity indication
+			//Manage the classifications view state according to proximity indication
 			//*************************************************************************
 			org.eclipse.gmf.runtime.notation.View v = this.getNotationView();
 			de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer visualizer = (de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer)notification.getNotifier();
 				
-			org.eclipse.gmf.runtime.notation.View[] instantiations = new org.eclipse.gmf.runtime.notation.View[]{};
+			org.eclipse.gmf.runtime.notation.View[] classifications = new org.eclipse.gmf.runtime.notation.View[]{};
 			org.eclipse.ocl.ecore.OCL ocl = org.eclipse.ocl.ecore.OCL.newInstance();
 				
 			org.eclipse.ocl.helper.OCLHelper<org.eclipse.emf.ecore.EClassifier, ?, ?, org.eclipse.ocl.ecore.Constraint> helper = ocl.createOCLHelper();
 			helper.setContext(org.eclipse.gmf.runtime.notation.NotationPackage.Literals.VIEW);
 	
 			try {
-				//Need to take care to only select instantiation
+				//Need to take care to only select classification
 				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("Edge.allInstances()->select(e | e.source = self)->select(e | e.element.oclIsUndefined() <> true)");
-				instantiations = ((java.util.HashSet<org.eclipse.gmf.runtime.notation.View>) ocl.evaluate(v ,q)).toArray(new org.eclipse.gmf.runtime.notation.View[] {});
+				classifications = ((java.util.HashSet<org.eclipse.gmf.runtime.notation.View>) ocl.evaluate(v ,q)).toArray(new org.eclipse.gmf.runtime.notation.View[] {});
 			} catch (org.eclipse.ocl.ParserException e) {
 				e.printStackTrace();
 			}
 			
-			if (instantiations.length > 0){
-				if ("1".equals(visualizer.getValueForKey("ProximityInstantiation")))
-					instantiations[0].setVisible(false);
+			if (classifications.length > 0){
+				if ("1".equals(visualizer.getValueForKey("ProximityClassification")))
+					classifications[0].setVisible(false);
 				else
-					instantiations[0].setVisible(true);
+					classifications[0].setVisible(true);
 					
-				org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart edgeEP = (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)getViewer().getEditPartRegistry().get(instantiations[0]);
+				org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart edgeEP = (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)getViewer().getEditPartRegistry().get(classifications[0]);
 				
 				if (edgeEP != null)
 					edgeEP.performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
@@ -1386,7 +1386,7 @@
 			//Dash all lines from to the elided element
 			if (targetConnections != null) {
 				for (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart link : (java.util.List<org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart>) targetConnections) {
-					if (!(link.resolveSemanticElement() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation)){
+					if (!(link.resolveSemanticElement() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Classification)){
 						((org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx) link.getFigure())
 								.setLineStyle(org.eclipse.swt.SWT.LINE_CUSTOM);
 						((org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx) link.getFigure())
@@ -1395,7 +1395,7 @@
 				}
 			} else if (sourceConnections != null) {
 				for (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart link : (java.util.List<org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart>) sourceConnections) {
-						if (!(link.resolveSemanticElement() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation)){
+						if (!(link.resolveSemanticElement() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Classification)){
 						((org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx) link.getFigure())
 								.setLineStyle(org.eclipse.swt.SWT.LINE_CUSTOM);
 						((org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx) link.getFigure())
@@ -1431,13 +1431,13 @@
 			//Make all lines from to the elided element solid
 			if (targetConnections != null) {
 				for (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart link : (java.util.List<org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart>) targetConnections) {
-					if (!(link.resolveSemanticElement() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation))
+					if (!(link.resolveSemanticElement() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Classification))
 						((org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx) link.getFigure())
 							.setLineStyle(org.eclipse.swt.SWT.LINE_SOLID);
 				}
 			} else if (sourceConnections != null) {
 				for (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart link : (java.util.List<org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart>) sourceConnections) {
-					if (!(link.resolveSemanticElement() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation))
+					if (!(link.resolveSemanticElement() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Classification))
 						((org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx) link.getFigure())
 							.setLineStyle(org.eclipse.swt.SWT.LINE_SOLID);
 				}

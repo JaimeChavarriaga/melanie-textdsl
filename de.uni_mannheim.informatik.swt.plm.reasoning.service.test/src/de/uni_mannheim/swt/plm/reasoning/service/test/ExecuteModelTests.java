@@ -28,7 +28,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Generalization;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Classification;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology;
 import de.uni_mannheim.informatik.swt.plm.workbench.ExtensionPointService;
@@ -78,7 +78,7 @@ public class ExecuteModelTests implements IObjectActionDelegate {
 					Attribute instance = (Attribute) selectedElements.get(1);
 					
 					System.out.println("" + instance + ".conforms("+type+")" + reasoner.run(IReasoningService.FEATURE_CONFORMS, new Object[]{type, instance}));
-				} else 	if (e instanceof Generalization || e instanceof Instantiation) {
+				} else 	if (e instanceof Generalization || e instanceof Classification) {
 						System.out.println("Logical Element Consistency " + reasoner.run(IReasoningService.IS_CONSISTENT, new Object[]{e}));
 				} else if(e instanceof Model) {
 					System.out.println("Model Consistent Classification " + reasoner.run(IReasoningService.IS_CONSISTENTLY_CLASSIFIED, new Object[]{e}));

@@ -20,7 +20,7 @@ import org.eclipse.core.commands.ExecutionException;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Generalization;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Classification;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.MultipleSpecialization;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.CompositeCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ExpressedInstanceExcludedCheck;
@@ -55,9 +55,9 @@ public class IsExpressedInstanceOfExcludedCommand extends AbstractHandler {
 	private CompositeCheck isExpressedInstanceOfExcluded(Clabject type,
 			final Clabject instance) {
 		ExpressedInstanceExcludedCheck result = ReasoningResultFactory.eINSTANCE.createExpressedInstanceExcludedCheck(instance, type, null);
-		Set<Instantiation> classifications = new HashSet<Instantiation>(instance.getModel().getAllInstantiations());
-		classifications = (Set<Instantiation>) ReasoningServiceUtil.filter(classifications, new Predicate<Instantiation>() {
-			public boolean apply(Instantiation inst) {
+		Set<Classification> classifications = new HashSet<Classification>(instance.getModel().getAllClassifications());
+		classifications = (Set<Classification>) ReasoningServiceUtil.filter(classifications, new Predicate<Classification>() {
+			public boolean apply(Classification inst) {
 				if (inst.isExpressed())
 					return inst.getInstance().equals(instance);
 				return false;
@@ -65,7 +65,7 @@ public class IsExpressedInstanceOfExcludedCommand extends AbstractHandler {
 		});
 		Set<Clabject> expressedTypes = new HashSet<Clabject>();
 		Set<Clabject> temp = new HashSet<Clabject>();
-		for (Instantiation inst: classifications) {
+		for (Classification inst: classifications) {
 			temp.add(inst.getType());
 		}
 		for (Clabject current: temp) {

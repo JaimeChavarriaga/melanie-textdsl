@@ -38,7 +38,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Classification;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Method;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology;
@@ -343,7 +343,7 @@ public class ReasoningService implements IReasoningService {
 		}
 		instance.getFeature().addAll(features);
 		
-		Instantiation i = PLMFactoryImpl.eINSTANCE.createInstantiation();
+		Classification i = PLMFactoryImpl.eINSTANCE.createClassification();
 		i.setType(type);
 		i.setInstance(instance);
 		((Model)instance.eContainer()).getContent().add(i);

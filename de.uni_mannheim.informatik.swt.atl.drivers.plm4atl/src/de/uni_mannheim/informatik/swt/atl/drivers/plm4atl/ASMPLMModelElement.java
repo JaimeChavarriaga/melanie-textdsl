@@ -102,7 +102,7 @@ public class ASMPLMModelElement extends ASMEMFModelElement {
 		helper.setContext(de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.Literals.CLABJECT);
 		
 		try {
-			q = helper.createQuery("Instantiation.allInstances()->select(i | i.instance = self).type->asSequence()");
+			q = helper.createQuery("Classification.allInstances()->select(i | i.instance = self).type->asSequence()");
 		
 			type = ((ArrayList<Clabject>) ocl.evaluate(object, q)).toArray(new Clabject[] {});
 			
@@ -170,7 +170,7 @@ public class ASMPLMModelElement extends ASMEMFModelElement {
 				//No attributes found -> check the connections (references)
 				if (feature.length == 0)
 				{
-					q = helper.createQuery("Connection.allInstances()->select(c | c.participant->includes(self)).participant->reject(p | p = self)->select(p | Instantiation.allInstances()->select(i | i.type.name = '" + name + "').instance->includes(p))");
+					q = helper.createQuery("Connection.allInstances()->select(c | c.participant->includes(self)).participant->reject(p | p = self)->select(p | Classification.allInstances()->select(i | i.type.name = '" + name + "').instance->includes(p))");
 					
 					feature = ((Bag<Element>) ocl.evaluate(object, q)).toArray(new Element[] {});
 				}

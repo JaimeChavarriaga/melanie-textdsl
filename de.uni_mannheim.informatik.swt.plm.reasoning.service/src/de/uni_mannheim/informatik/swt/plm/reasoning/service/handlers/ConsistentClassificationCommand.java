@@ -22,7 +22,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.ClassificationKind;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Generalization;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Classification;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.MultipleGeneralization;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.MultipleSpecialization;
@@ -69,7 +69,7 @@ public class ConsistentClassificationCommand extends AbstractHandler {
 		CompositeCheck classificationCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck(model, model, check);
 		classificationCheck.setName("Classificiations");
 		classificationCheck.setResult(true);
-		for (Instantiation inst: model.getAllInstantiations()) {
+		for (Classification inst: model.getAllClassifications()) {
 			CompositeCheck aClassificationCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck(model, model, classificationCheck);
 			aClassificationCheck.setResult(true);
 			aClassificationCheck.setName(inst.getName());

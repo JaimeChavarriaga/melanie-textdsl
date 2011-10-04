@@ -17,10 +17,10 @@
 			return etype == null ? "" : etype.getDisplayName();
 		}
 		
-		org.eclipse.emf.common.util.EList<de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation> instantiations = ((de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)semanticElement).getModelClassificationsAsInstance();
+		org.eclipse.emf.common.util.EList<de.uni_mannheim.informatik.swt.models.plm.PLM.Classification> classifications = ((de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)semanticElement).getModelClassificationsAsInstance();
 		
 		//No ontological type -> show linguistic type
-		if (instantiations.size() == 0)
+		if (classifications.size() == 0)
 		{
 			org.eclipse.gmf.runtime.emf.type.core.IElementType etype = getElementType(getView(element));
 			return etype == null ? "" : etype.getDisplayName();
@@ -28,8 +28,8 @@
 		
 		String typesAsString = "";
 		
-		for(de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation i : instantiations)
-			typesAsString += i.getType().getName() + (instantiations.indexOf(i) < instantiations.size() - 1 ? ", ":"");
+		for(de.uni_mannheim.informatik.swt.models.plm.PLM.Classification i : classifications)
+			typesAsString += i.getType().getName() + (classifications.indexOf(i) < classifications.size() - 1 ? ", ":"");
 		
 		return typesAsString;
 	}

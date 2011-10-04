@@ -356,7 +356,7 @@
   </childNodeTraces>
   <linkTraces
       visualID="4002"
-      queryText="modelFacet.oclIsKindOf(gmfgen::TypeLinkModelFacet) and (let _eClass_:ecore::EClass = modelFacet.oclAsType(gmfgen::TypeLinkModelFacet).metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Instantiation')">
+      queryText="modelFacet.oclIsKindOf(gmfgen::TypeLinkModelFacet) and (let _eClass_:ecore::EClass = modelFacet.oclAsType(gmfgen::TypeLinkModelFacet).metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://swt.informatik.uni-mannheim.de/PLM' and _eClass_.name = 'Classification')">
     <linkLabelTraces
         visualID="6010"
         queryText="true"/>

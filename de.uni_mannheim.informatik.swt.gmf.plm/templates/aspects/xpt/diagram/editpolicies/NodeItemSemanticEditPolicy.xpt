@@ -11,7 +11,7 @@
 
 /*******************************************************************************
 
-This takes care that instantiations are removed from the semantic model even
+This takes care that classifications are removed from the semantic model even
 though they are not visible throug the notational model.
 
  *******************************************************************************/
@@ -45,20 +45,20 @@ protected org.eclipse.gef.commands.Command getDestroyElementCommand(org.eclipse.
 	//BEGIN Custom Code
 	//*****************************************************************
 	
-	//We need to delete the instantiation manually when not visible
-	de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation[] instantiation = null;
+	//We need to delete the classification manually when not visible
+	de.uni_mannheim.informatik.swt.models.plm.PLM.Classification[] classification = null;
 	org.eclipse.ocl.ecore.OCL ocl = org.eclipse.ocl.ecore.OCL.newInstance();
 	org.eclipse.ocl.helper.OCLHelper<org.eclipse.emf.ecore.EClassifier, ?, ?, org.eclipse.ocl.ecore.Constraint> helper = ocl.createOCLHelper();
 	helper.setContext(de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.Literals.ONTOLOGY);
 
 	try {
-		org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("Instantiation.allInstances()->select(i| i.type = self or i.instance = self)");
-		instantiation = ((java.util.HashSet<de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation>) ocl.evaluate(view.getElement(), q)).toArray(new de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation[] {});
+		org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("Classification.allInstances()->select(i| i.type = self or i.instance = self)");
+		classification = ((java.util.HashSet<de.uni_mannheim.informatik.swt.models.plm.PLM.Classification>) ocl.evaluate(view.getElement(), q)).toArray(new de.uni_mannheim.informatik.swt.models.plm.PLM.Classification[] {});
 	} catch (org.eclipse.ocl.ParserException e) {
 		e.printStackTrace();
 	}
 		
-	for(de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation i : instantiation){
+	for(de.uni_mannheim.informatik.swt.models.plm.PLM.Classification i : classification){
 		org.eclipse.gmf.runtime.emf.type.core.requests.DestroyElementRequest r = new org.eclipse.gmf.runtime.emf.type.core.requests.DestroyElementRequest(i, false);
 		cmd.add(new org.eclipse.gmf.runtime.emf.type.core.commands.DestroyElementCommand(r));
 	}

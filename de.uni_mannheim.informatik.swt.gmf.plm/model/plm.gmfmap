@@ -25,7 +25,7 @@
                   xsi:type="ecore:EAttribute"
                   href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Visualizer/attributes"/>
               <value
-                  body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))->append('showInstantiationRoleNames = false')"/>
+                  body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))->append('showClassificationRoleNames = false')"/>
             </initializers>
             <initializers
                 xsi:type="gmfmap:FeatureValueSpec">
@@ -163,7 +163,7 @@
                           xsi:type="ecore:EAttribute"
                           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Visualizer/attributes"/>
                       <value
-                          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))->append('collapsed= false')->append('ProximityInstantiation= 1')->append('DSLRendering= false')"/>
+                          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))->append('collapsed= false')->append('ProximityClassification= 1')->append('DSLRendering= false')"/>
                     </initializers>
                     <initializers
                         xsi:type="gmfmap:FeatureValueSpec">
@@ -217,9 +217,9 @@
                   xsi:type="gmfmap:ExpressionLabelMapping"
                   readOnly="true">
                 <diagramLabel
-                    href="plm.gmfgraph#ConnectionFigureProximityInstantiationLabel"/>
+                    href="plm.gmfgraph#ConnectionFigureProximityClassificationLabel"/>
                 <viewExpression
-                    body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.visualizer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let visualizer:Visualizer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.visualizer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderInstantiation:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('ProximityInstantiation') = '1' &#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (self.elided) then&#xD;&#xA;&#x9;'...'&#xD;&#xA;else&#xD;&#xA;&#x9;if (renderInstantiation) then&#xD;&#xA;&#x9;&#x9;if (Instantiation.allInstances()->select(i | i.instance = self)->size() > 0) then&#xD;&#xA;&#x9;&#x9;&#x9;':'.concat(Instantiation.allInstances()->select(i | i.instance = self)->asOrderedSet()->first().type.name)&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;''&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;endif"/>
+                    body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.visualizer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let visualizer:Visualizer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.visualizer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderClassification:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('ProximityClassification') = '1' &#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (self.elided) then&#xD;&#xA;&#x9;'...'&#xD;&#xA;else&#xD;&#xA;&#x9;if (renderClassification) then&#xD;&#xA;&#x9;&#x9;if (Classification.allInstances()->select(i | i.instance = self)->size() > 0) then&#xD;&#xA;&#x9;&#x9;&#x9;':'.concat(Classification.allInstances()->select(i | i.instance = self)->asOrderedSet()->first().type.name)&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;''&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;endif"/>
               </labelMappings>
               <tool
                   xsi:type="gmftool:CreationTool"
@@ -1033,7 +1033,7 @@
                           xsi:type="ecore:EAttribute"
                           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Visualizer/attributes"/>
                       <value
-                          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))->append('ProximityInstantiation= 1')->append('DSLRendering= false')"/>
+                          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))->append('ProximityClassification= 1')->append('DSLRendering= false')"/>
                     </initializers>
                     <initializers
                         xsi:type="gmfmap:FeatureValueSpec">
@@ -1081,9 +1081,9 @@
                   xsi:type="gmfmap:ExpressionLabelMapping"
                   readOnly="true">
                 <diagramLabel
-                    href="plm.gmfgraph#EntityFigureProximityInstantiationLabel"/>
+                    href="plm.gmfgraph#EntityFigureProximityClassificationLabel"/>
                 <viewExpression
-                    body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.visualizer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let visualizer:Visualizer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.visualizer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderInstantiation:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('ProximityInstantiation') = '1' &#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (self.elided) then&#xD;&#xA;&#x9;'...'&#xD;&#xA;else&#xD;&#xA;&#x9;if (renderInstantiation) then&#xD;&#xA;&#x9;&#x9;if (Instantiation.allInstances()->select(i | i.instance = self)->size() > 0) then&#xD;&#xA;&#x9;&#x9;&#x9;':'.concat(Instantiation.allInstances()->select(i | i.instance = self)->asOrderedSet()->first().type.name)&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;''&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;endif"/>
+                    body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.visualizer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let visualizer:Visualizer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.visualizer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderClassification:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('ProximityClassification') = '1' &#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (self.elided) then&#xD;&#xA;&#x9;'...'&#xD;&#xA;else&#xD;&#xA;&#x9;if (renderClassification) then&#xD;&#xA;&#x9;&#x9;if (Classification.allInstances()->select(i | i.instance = self)->size() > 0) then&#xD;&#xA;&#x9;&#x9;&#x9;':'.concat(Classification.allInstances()->select(i | i.instance = self)->asOrderedSet()->first().type.name)&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;''&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;endif"/>
               </labelMappings>
               <labelMappings
                   xsi:type="gmfmap:DesignLabelMapping">
@@ -1444,22 +1444,22 @@
   </links>
   <links>
     <domainMetaElement
-        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Instantiation"/>
+        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Classification"/>
     <labelMappings
         xsi:type="gmfmap:ExpressionLabelMapping"
         readOnly="true">
       <diagramLabel
-          href="plm.gmfgraph#InstantiationBlueprintNameLabel"/>
+          href="plm.gmfgraph#ClassificationBlueprintNameLabel"/>
       <viewExpression
-          body="let renderRoleName:Boolean=&#xD;&#xA;&#x9;if (Ontology.allInstances()->asSequence()->at(1).visualizer->asSequence()->at(1).getValueForKey('showInstantiationRoleNames') = 'true') then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;if (renderRoleName and self.kind = ClassificationKind::instantiation) then&#xD;&#xA;&#x9;'blueprint'&#xD;&#xA;else&#xD;&#xA;&#x9;if (renderRoleName and self.kind = ClassificationKind::instance) then&#xD;&#xA;&#x9;&#x9;'type'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;if (renderRoleName and self.kind = ClassificationKind::isonym) then&#xD;&#xA;&#x9;&#x9;&#x9;'complete type'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;if (renderRoleName and self.kind = ClassificationKind::hyponym) then&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;'incomplete type'&#xD;&#xA;&#x9;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;''&#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;endif"/>
+          body="let renderRoleName:Boolean=&#xD;&#xA;&#x9;if (Ontology.allInstances()->asSequence()->at(1).visualizer->asSequence()->at(1).getValueForKey('showClassificationRoleNames') = 'true') then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;if (renderRoleName and self.kind = ClassificationKind::classification) then&#xD;&#xA;&#x9;'blueprint'&#xD;&#xA;else&#xD;&#xA;&#x9;if (renderRoleName and self.kind = ClassificationKind::instance) then&#xD;&#xA;&#x9;&#x9;'type'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;if (renderRoleName and self.kind = ClassificationKind::isonym) then&#xD;&#xA;&#x9;&#x9;&#x9;'complete type'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;if (renderRoleName and self.kind = ClassificationKind::hyponym) then&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;'incomplete type'&#xD;&#xA;&#x9;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;''&#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;endif"/>
     </labelMappings>
     <labelMappings
         xsi:type="gmfmap:ExpressionLabelMapping"
         readOnly="true">
       <diagramLabel
-          href="plm.gmfgraph#InstantiationTypeNameLabel"/>
+          href="plm.gmfgraph#ClassificationTypeNameLabel"/>
       <viewExpression
-          body="let renderRoleName:Boolean=&#xD;&#xA;&#x9;if (Ontology.allInstances()->asSequence()->at(1).visualizer->asSequence()->at(1).getValueForKey('showInstantiationRoleNames') = 'true') then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;if (renderRoleName and self.kind = ClassificationKind::instantiation) then&#xD;&#xA;&#x9;'offspring'&#xD;&#xA;else&#xD;&#xA;&#x9;if (renderRoleName and self.kind = ClassificationKind::instance) then&#xD;&#xA;&#x9;&#x9;'instance'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;if (renderRoleName and self.kind = ClassificationKind::isonym) then&#xD;&#xA;&#x9;&#x9;&#x9;'isonym'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;if (renderRoleName and self.kind = ClassificationKind::hyponym) then&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;'hyponym'&#xD;&#xA;&#x9;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;''&#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;endif"/>
+          body="let renderRoleName:Boolean=&#xD;&#xA;&#x9;if (Ontology.allInstances()->asSequence()->at(1).visualizer->asSequence()->at(1).getValueForKey('showClassificationRoleNames') = 'true') then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;if (renderRoleName and self.kind = ClassificationKind::classification) then&#xD;&#xA;&#x9;'offspring'&#xD;&#xA;else&#xD;&#xA;&#x9;if (renderRoleName and self.kind = ClassificationKind::instance) then&#xD;&#xA;&#x9;&#x9;'instance'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;if (renderRoleName and self.kind = ClassificationKind::isonym) then&#xD;&#xA;&#x9;&#x9;&#x9;'isonym'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;if (renderRoleName and self.kind = ClassificationKind::hyponym) then&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;'hyponym'&#xD;&#xA;&#x9;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;''&#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;endif"/>
     </labelMappings>
     <containmentFeature
         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/content"/>
@@ -1467,13 +1467,13 @@
         xsi:type="gmftool:CreationTool"
         href="plm.gmftool#//@palette/@tools.2/@tools.0"/>
     <diagramLink
-        href="plm.gmfgraph#Instantiation"/>
+        href="plm.gmfgraph#Classification"/>
     <sourceMetaFeature
         xsi:type="ecore:EReference"
-        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Instantiation/instance"/>
+        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Classification/instance"/>
     <linkMetaFeature
         xsi:type="ecore:EReference"
-        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Instantiation/type"/>
+        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Classification/type"/>
     <creationConstraints>
       <targetEnd
           body="self.potency &lt;> 0 and self.level &lt; oppositeEnd.level"/>

@@ -257,7 +257,7 @@
             </children>
             <children
                 xsi:type="gmfgraph:Label"
-                name="EntityProximityInstantiationFigure">
+                name="EntityProximityClassificationFigure">
               <layoutData
                   xsi:type="gmfgraph:GridLayoutData"
                   grabExcessHorizontalSpace="true"
@@ -601,7 +601,7 @@
             </children>
             <children
                 xsi:type="gmfgraph:Label"
-                name="ConnectionProximityInstantiationFigure"
+                name="ConnectionProximityClassificationFigure"
                 text="">
               <layoutData
                   xsi:type="gmfgraph:GridLayoutData"
@@ -725,7 +725,7 @@
           figure="//@figures.0/@descriptors.11/@actualFigure/@children.1"/>
     </descriptors>
     <descriptors
-        name="InstantiationFigure">
+        name="ClassificationFigure">
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"
           lineKind="LINE_DASH"
@@ -735,10 +735,10 @@
             value="black"/>
         <children
             xsi:type="gmfgraph:PolylineDecoration"
-            name="InstantiationTarget"/>
+            name="ClassificationTarget"/>
         <children
             xsi:type="gmfgraph:Label"
-            name="InstantiationTypeNameFigure"
+            name="ClassificationTypeNameFigure"
             text="">
           <foregroundColor
               xsi:type="gmfgraph:ConstantColor"
@@ -749,7 +749,7 @@
         </children>
         <children
             xsi:type="gmfgraph:Label"
-            name="InstantiationBlueprintNameFigure"
+            name="ClassificationBlueprintNameFigure"
             text="">
           <foregroundColor
               xsi:type="gmfgraph:ConstantColor"
@@ -1633,8 +1633,8 @@
       name="ConnectionParticipants"
       figure="ConnectionParticipantsFigure"/>
   <connections
-      name="Instantiation"
-      figure="InstantiationFigure"/>
+      name="Classification"
+      figure="ClassificationFigure"/>
   <connections
       name="SetRelationshipBaseLink"
       figure="SetRelationshipBaseLinkFigure"/>
@@ -1715,7 +1715,7 @@
       affixedParentSide="NORTH"
       elementIcon="false"/>
   <labels
-      name="EntityFigureProximityInstantiationLabel"
+      name="EntityFigureProximityClassificationLabel"
       figure="EntityFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.4/@accessors.6"/>
@@ -1800,7 +1800,7 @@
       elementIcon="false"
       accessor="//@figures.0/@descriptors.8/@accessors.2"/>
   <labels
-      name="ConnectionFigureProximityInstantiationLabel"
+      name="ConnectionFigureProximityClassificationLabel"
       figure="ConnectionFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.8/@accessors.3"/>
@@ -1954,8 +1954,8 @@
         y="10"/>
   </labels>
   <labels
-      name="InstantiationTypeNameLabel"
-      figure="InstantiationFigure"
+      name="ClassificationTypeNameLabel"
+      figure="ClassificationFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.12/@accessors.0">
     <facets
@@ -1967,8 +1967,8 @@
         y="10"/>
   </labels>
   <labels
-      name="InstantiationBlueprintNameLabel"
-      figure="InstantiationFigure"
+      name="ClassificationBlueprintNameLabel"
+      figure="ClassificationFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.12/@accessors.1">
     <facets

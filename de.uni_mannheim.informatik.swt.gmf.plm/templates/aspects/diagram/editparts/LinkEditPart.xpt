@@ -17,13 +17,13 @@
 //**************************************************************
 «AROUND additions FOR gmfgen::GenLink»
 //Sets the potency of instatiation ends
-«IF self.editPartClassName = 'InstantiationEditPart'»
+«IF self.editPartClassName = 'ClassificationEditPart'»
 	«EXPAND updateSourcePotency-»
-	«EXPAND handleNotificationEventForInstantiation-»
+	«EXPAND handleNotificationEventForClassification-»
 «ENDIF»	
 «ENDAROUND»
 
-«DEFINE handleNotificationEventForInstantiation FOR gmfgen::GenLink»
+«DEFINE handleNotificationEventForClassification FOR gmfgen::GenLink»
 	/**
 	 * updates the potency of the source element
 	 *
@@ -42,7 +42,7 @@
 		}
 		else if (((org.eclipse.emf.ecore.EStructuralFeature) notification.getFeature()).getName()
 				.equals("source")
-				&& ((de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation) resolveSemanticElement()).getType() != null)
+				&& ((de.uni_mannheim.informatik.swt.models.plm.PLM.Classification) resolveSemanticElement()).getType() != null)
 		{
 			updateSourcePotency();
 		}
@@ -56,7 +56,7 @@
 	 * @generated
 	 */
 	public void updateSourcePotency() {
-		de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation i = (de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation) resolveSemanticElement();
+		de.uni_mannheim.informatik.swt.models.plm.PLM.Classification i = (de.uni_mannheim.informatik.swt.models.plm.PLM.Classification) resolveSemanticElement();
 
 		int newPotency = 0;
 

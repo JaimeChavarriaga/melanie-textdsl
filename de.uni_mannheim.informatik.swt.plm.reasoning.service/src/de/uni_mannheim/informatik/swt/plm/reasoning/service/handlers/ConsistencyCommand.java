@@ -24,7 +24,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.ClassificationKind;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Generalization;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Instantiation;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Classification;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.MultipleGeneralization;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.MultipleSpecialization;
@@ -59,14 +59,14 @@ public class ConsistencyCommand extends AbstractHandler {
 			return ontologyIsConsistent((Ontology) el);
 		} else if (el instanceof Generalization) {
 			return generalizationIsConsistent((Generalization) el);
-		} else if (el instanceof Instantiation) {
-			return classificationIsConsistent((Instantiation) el);
+		} else if (el instanceof Classification) {
+			return classificationIsConsistent((Classification) el);
 		}
 		System.out.println("Unknown Consistency Type " + el);
 		return null;
 	}
 
-	private CompositeCheck classificationIsConsistent(Instantiation inst) {
+	private CompositeCheck classificationIsConsistent(Classification inst) {
 		CompositeCheck check = ReasoningResultFactory.eINSTANCE.createCompositeCheck(inst, inst, null);
 		check.setName("Consistency[Classification]");
 		check.setResult(true);
@@ -81,7 +81,8 @@ public class ConsistencyCommand extends AbstractHandler {
 		CompositeCheck kindCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck(inst, inst, check);
 		kindCheck.setName("Kind Instance");
 		kindCheck.setResult(true);
-		if (inst.getKind().equals(ClassificationKind.ISONYM) || inst.getKind().equals(ClassificationKind.INSTANTIATION)) {
+		//TODO: RENAMED INSTANTIATION to CLASSIFICATION is that right
+		if (inst.getKind().equals(ClassificationKind.ISONYM) || inst.getKind().equals(ClassificationKind.CLASSIFICATION)) {
 			kindCheck.setName("Kind Isonym");
 			CompositeCheck isonymCheck = (new IsonymCommand()).compute(type, instance);
 			kindCheck.getCheck().add(isonymCheck);
