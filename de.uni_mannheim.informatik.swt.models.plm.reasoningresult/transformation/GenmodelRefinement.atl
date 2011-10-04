@@ -55,3 +55,12 @@ rule RefineGenClass{
 			image <- false
 		)
 }
+
+rule GenFeature2GenFeatur{
+	from 
+		s : genmodel!GenFeature
+	to
+		t : genmodel!GenFeature(
+			property <- #Readonly
+		)
+}
