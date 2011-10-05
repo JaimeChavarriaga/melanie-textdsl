@@ -37,7 +37,12 @@ public class ExtensionPointService {
 	/**
 	 * Cache for Visualization IConfigurationElements
 	 */
-	private static Map<String, IConfigurationElement> id2VislualizationServiceConfigurationElement;
+	private static Map<String, IConfigurationElement> id2VisualizationServiceConfigurationElement;
+	public static Map<String, IConfigurationElement> getId2VisualizationServiceConfigurationElement() {
+		return id2VisualizationServiceConfigurationElement;
+	}
+
+
 	/**
 	 * Cache for Visualization Instances
 	 */
@@ -47,6 +52,10 @@ public class ExtensionPointService {
 	 * Cache for Reasoning IConfigurationElements
 	 */
 	private static Map<String, IConfigurationElement> id2ReasoningServiceConfigurationElement;
+	public static Map<String, IConfigurationElement> getId2ReasoningServiceConfigurationElement() {
+		return id2ReasoningServiceConfigurationElement;
+	}
+	
 	/**
 	 * Cache for Reasoning Instances
 	 */
@@ -56,6 +65,10 @@ public class ExtensionPointService {
 	 * Cache for Reasoning IConfigurationElements
 	 */
 	private static Map<String, IConfigurationElement> id2RefactoringServiceConfigurationElement;
+	public static Map<String, IConfigurationElement> getId2RefactoringServiceConfigurationElement() {
+		return id2RefactoringServiceConfigurationElement;
+	}
+	
 	/**
 	 * Cache for Reasoning Instances
 	 */
@@ -82,7 +95,7 @@ public class ExtensionPointService {
 	private void initialize(){
 		
 		//Initialize caches
-		id2VislualizationServiceConfigurationElement = new HashMap<String, IConfigurationElement>();
+		id2VisualizationServiceConfigurationElement = new HashMap<String, IConfigurationElement>();
 		id2VisualizationServiceInstance = new HashMap<String, IVisualModelToFigureTransformator>();
 		
 		id2ReasoningServiceConfigurationElement = new HashMap<String, IConfigurationElement>();
@@ -95,7 +108,7 @@ public class ExtensionPointService {
 		IConfigurationElement[] configurationElements = Platform.getExtensionRegistry().getConfigurationElementsFor(VISUALIZATION_SERVICE_ID);
 		
 		for (IConfigurationElement cElement : configurationElements)
-			id2VislualizationServiceConfigurationElement.put(cElement.getAttribute("id"), cElement);
+			id2VisualizationServiceConfigurationElement.put(cElement.getAttribute("id"), cElement);
 				
 		//Initialize the reasoning service
 		configurationElements = Platform.getExtensionRegistry().getConfigurationElementsFor(REASONING_SERVICE_ID);
@@ -125,7 +138,7 @@ public class ExtensionPointService {
 		
 		if (transformator == null)
 		{
-			transformator = (IVisualModelToFigureTransformator)id2VislualizationServiceConfigurationElement.get(id).createExecutableExtension("class");
+			transformator = (IVisualModelToFigureTransformator)id2VisualizationServiceConfigurationElement.get(id).createExecutableExtension("class");
 			id2VisualizationServiceInstance.put(id, transformator);
 		}
 		

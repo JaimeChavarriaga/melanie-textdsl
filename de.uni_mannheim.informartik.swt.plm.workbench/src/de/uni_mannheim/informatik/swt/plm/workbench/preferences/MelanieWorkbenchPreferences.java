@@ -1,9 +1,12 @@
 package de.uni_mannheim.informatik.swt.plm.workbench.preferences;
 
+import java.util.Set;
+
 import org.eclipse.jface.preference.*;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.eclipse.ui.IWorkbench;
 import de.uni_mannheim.informatik.swt.plm.workbench.Activator;
+import de.uni_mannheim.informatik.swt.plm.workbench.ExtensionPointService;
 
 /**
  * This class represents a preference page that
@@ -26,7 +29,7 @@ public class MelanieWorkbenchPreferences
 	public MelanieWorkbenchPreferences() {
 		super(GRID);
 		setPreferenceStore(Activator.getDefault().getPreferenceStore());
-		setDescription("A demonstration of a preference page implementation");
+		setDescription("Configuration for MelAniE's extension points");
 	}
 	
 	/**
@@ -36,23 +39,49 @@ public class MelanieWorkbenchPreferences
 	 * restore itself.
 	 */
 	public void createFieldEditors() {
-		addField(new DirectoryFieldEditor(PreferenceConstants.P_PATH, 
-				"&Directory preference:", getFieldEditorParent()));
-		addField(
-			new BooleanFieldEditor(
-				PreferenceConstants.P_BOOLEAN,
-				"&An example of a boolean preference",
-				getFieldEditorParent()));
+		
+		String[] reasoningEngineKeySet = ExtensionPointService.Instance().getId2ReasoningServiceConfigurationElement().keySet().toArray(new String[]{});
+		String[][] reasoningEngineIds = new String[reasoningEngineKeySet.length][2];
+		
+		for (int i = 0; i < reasoningEngineKeySet.length; i++)
+			reasoningEngineIds[i][0] = reasoningEngineIds[i][1] = reasoningEngineKeySet[i];
+		
+		addField(new ComboFieldEditor(
+				PreferenceConstants.P_ACTIVE_REFACTORING_ENGINE,
+					"Active Reasoning Engine",
+					reasoningEngineIds,
+					getFieldEditorParent()
+					)
+		);
 
-		addField(new RadioGroupFieldEditor(
-				PreferenceConstants.P_CHOICE,
-			"An example of a multiple-choice preference",
-			1,
-			new String[][] { { "&Choice 1", "choice1" }, {
-				"C&hoice 2", "choice2" }
-		}, getFieldEditorParent()));
-		addField(
-			new StringFieldEditor(PreferenceConstants.P_STRING, "A &text preference:", getFieldEditorParent()));
+		String[] refactoringEngineKeySet = ExtensionPointService.Instance().getId2RefactoringServiceConfigurationElement().keySet().toArray(new String[]{});
+		String[][] reafctoringEngineIds = new String[reasoningEngineKeySet.length][2];
+		
+		for (int i = 0; i < reasoningEngineKeySet.length; i++)
+			reafctoringEngineIds[i][0] = reafctoringEngineIds[i][1] = refactoringEngineKeySet[i];
+		
+		addField(new ComboFieldEditor(
+				PreferenceConstants.P_ACTIVE_REFACTORING_ENGINE,
+					"Active Refactoring Engine",
+					reafctoringEngineIds,
+					getFieldEditorParent()
+					)
+		);
+		
+		String[] visualizationEngineKeySet = ExtensionPointService.Instance().getId2VisualizationServiceConfigurationElement().keySet().toArray(new String[]{});
+		String[][] visualizationEngineIds = new String[reasoningEngineKeySet.length][2];
+		
+		for (int i = 0; i < reasoningEngineKeySet.length; i++)
+			visualizationEngineIds[i][0] = visualizationEngineIds[i][1] = visualizationEngineKeySet[i];
+		
+		addField(new ComboFieldEditor(
+				PreferenceConstants.P_ACTIVE_REFACTORING_ENGINE,
+					"Active Visualization Engine",
+					visualizationEngineIds,
+					getFieldEditorParent()
+					)
+		);
+		
 	}
 
 	/* (non-Javadoc)

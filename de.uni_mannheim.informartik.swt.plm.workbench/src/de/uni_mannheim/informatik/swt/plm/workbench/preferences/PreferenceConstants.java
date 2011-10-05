@@ -5,12 +5,9 @@ package de.uni_mannheim.informatik.swt.plm.workbench.preferences;
  */
 public class PreferenceConstants {
 
-	public static final String P_PATH = "pathPreference";
+	public static final String P_ACTIVE_REASONING_ENGINE = "reasoningEngine";
 
-	public static final String P_BOOLEAN = "booleanPreference";
+	public static final String P_ACTIVE_REFACTORING_ENGINE = "refactoringEngine";
 
-	public static final String P_CHOICE = "choicePreference";
-
-	public static final String P_STRING = "stringPreference";
-	
+	public static final String P_ACTIVE_VISUALIZATION_ENGINE = "visualizationService";
 }
