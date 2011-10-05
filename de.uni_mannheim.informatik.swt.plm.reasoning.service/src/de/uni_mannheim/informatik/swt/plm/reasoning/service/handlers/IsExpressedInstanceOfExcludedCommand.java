@@ -19,8 +19,8 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Generalization;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Classification;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Generalization;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.MultipleSpecialization;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.CompositeCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ExpressedInstanceExcludedCheck;
@@ -33,6 +33,9 @@ import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService
 
 public class IsExpressedInstanceOfExcludedCommand extends AbstractHandler {
 
+	//TODO: Register as command and fill in ID here
+	public static final String ID = "de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.isexpressedinstanceofexcludedconformscommand";
+	
 	IReasoningService reasoner = (new ReasoningService()).Instance();
 	
 	/* (non-Javadoc)

@@ -20,6 +20,8 @@ import java.util.Set;
 
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
@@ -61,6 +63,30 @@ import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.PropertyCon
 import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService;
 
 public class ReasoningService implements IReasoningService {
+	
+	@Override
+	public Map<String, String> getAvailableReasoningCommands(EObject modelElement) {
+		Map<String, String> commands = new HashMap<String, String>();
+		
+		if (modelElement instanceof Clabject)
+			commands.put(LocalConformsCommand.ID, getCommandName(LocalConformsCommand.ID));
+		else if (modelElement instanceof Feature)
+			commands.put(FeatureConformsCommand.ID, getCommandName(FeatureConformsCommand.ID));
+		
+		return commands;
+	}
+	
+	private String getCommandName(String id){
+		
+		//Initialize the visualization service
+		IConfigurationElement[] configurationElements = Platform.getExtensionRegistry().getExtension("de.uni_mannheim.informatik.swt.plm.refactoring.service.commands").getConfigurationElements();
+		
+			for (IConfigurationElement ce : configurationElements)
+				if (ce.getAttribute("id").equalsIgnoreCase(id))
+					return (String)ce.getAttribute("name");
+			
+		return null;
+	}
 	
 	private static IReasoningService instance = null;
 	private List<IPropertyChangeListener> listeners = new LinkedList<IPropertyChangeListener>(); 

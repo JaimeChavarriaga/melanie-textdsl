@@ -11,7 +11,6 @@
 package de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers;
 
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.core.commands.AbstractHandler;
@@ -32,6 +31,8 @@ import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService
 
 public class PropertyConformsCommand extends AbstractHandler {
 
+	//TODO: Register as command and fill in ID here
+	public static final String ID = null;
 	
 	IReasoningService reasoner = (new ReasoningService()).Instance();
 	Set<Pair<Clabject,Clabject>> marks = null;

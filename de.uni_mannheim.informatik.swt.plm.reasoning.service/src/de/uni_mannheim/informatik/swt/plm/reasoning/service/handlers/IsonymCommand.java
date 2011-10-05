@@ -24,7 +24,9 @@ import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService
 
 public class IsonymCommand extends AbstractHandler {
 	
-	
+	//TODO: Register as command and fill in ID here
+	public static final String ID = null;
+		
 	IReasoningService reasoner = new ReasoningService().Instance();
 
 	@Override

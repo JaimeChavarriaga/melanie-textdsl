@@ -10,8 +10,6 @@
  *******************************************************************************/
 package de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers;
 
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -21,10 +19,10 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Classification;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.ClassificationKind;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Generalization;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Classification;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.MultipleGeneralization;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.MultipleSpecialization;
@@ -38,6 +36,8 @@ import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService
 
 public class ConsistencyCommand extends AbstractHandler {
 
+	//TODO: Register as command and fill in ID here
+	public static final String ID = null;
 	
 	IReasoningService reasoner = (new ReasoningService()).Instance();
 	

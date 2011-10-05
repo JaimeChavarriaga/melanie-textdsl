@@ -12,11 +12,9 @@ package de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers;
 
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -24,19 +22,18 @@ import org.eclipse.core.commands.ExecutionException;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Entity;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.CompositeCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MultiplicityCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MultiplicityRoleNameCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultFactory;
-import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.ReasoningService;
 import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService;
 
 public class MultiplicityConformsCommand extends AbstractHandler {
 
+	public static final String ID = "de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.multiplicityconformscommand";
+	
 	IReasoningService reasoner = (new ReasoningService()).Instance();
 	
 	/* (non-Javadoc)
