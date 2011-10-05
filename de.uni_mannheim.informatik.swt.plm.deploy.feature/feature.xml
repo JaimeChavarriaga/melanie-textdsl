@@ -109,6 +109,20 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <discovery label="Epsilon" url="http://download.eclipse.org/modeling/gmt/epsilon/updates/"/>
    </url>
 
+   <includes
+         id="org.eclipse.epsilon.feature"
+         version="0.0.0"
+         search-location="self"/>
+
+   <includes
+         id="org.eclipse.gmf"
+         version="0.0.0"
+         search-location="self"/>
+
+   <includes
+         id="org.eclipse.epsilon.evl.emf.validation.feature"
+         version="0.0.0"/>
+
    <requires>
       <import plugin="org.eclipse.ui"/>
       <import plugin="org.eclipse.core.runtime"/>
