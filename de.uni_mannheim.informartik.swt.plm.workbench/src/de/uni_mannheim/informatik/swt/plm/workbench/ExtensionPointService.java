@@ -16,10 +16,12 @@ import java.util.Map;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.jface.preference.IPreferenceStore;
 
 import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService;
 import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IRefactoringService;
 import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IVisualModelToFigureTransformator;
+import de.uni_mannheim.informatik.swt.plm.workbench.preferences.PreferenceConstants;
 
 /**
  * This class manages loading extension points. Call Instance() to 
@@ -146,6 +148,21 @@ public class ExtensionPointService {
 	}
 	
 	/**
+	 * Returns the active instance of the Visualization Service. For performance improvements two caches are used.
+	 * One to cache the IConfigurationElements and one to cache the visualization service instance.
+	 *
+	 * 
+	 * @return A cached instance of the visualization service
+	 * 
+	 * @throws CoreException
+	 */
+	public IVisualModelToFigureTransformator getActiveVisualizationService() throws CoreException{
+		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
+		
+		return getVisualizationService(store.getString(PreferenceConstants.P_ACTIVE_VISUALIZATION_ENGINE));
+	}
+	
+	/**
 	 * Returns an instance of the Reasoning Service. For performance improvements two caches are used.
 	 * One to cache the IConfigurationElements and one to cache the visualization service instance.
 	 * 
@@ -168,6 +185,21 @@ public class ExtensionPointService {
 	}
 	
 	/**
+	 * Returns the active Reasoning Service. For performance improvements two caches are used.
+	 * One to cache the IConfigurationElements and one to cache the visualization service instance.
+	 * 
+	 * 
+	 * @return A cached instance of the reasoning service
+	 * 
+	 * @throws CoreException
+	 */
+	public IReasoningService getActiveReasoningService() throws CoreException{
+		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
+		
+		return getReasoningService(store.getString(PreferenceConstants.P_ACTIVE_REASONING_ENGINE));
+	}
+	
+	/**
 	 * Returns an instance of the Refactoring Service. For performance improvements two caches are used.
 	 * One to cache the IConfigurationElements and one to cache the visualization service instance.
 	 * 
@@ -187,5 +219,21 @@ public class ExtensionPointService {
 		}
 		
 		return refactorer;
+	}
+	
+	/**
+	 * Returns the active Refactoring Service. For performance improvements two caches are used.
+	 * One to cache the IConfigurationElements and one to cache the visualization service instance.
+	 * 
+	 * @param id ID of the registered extension point
+	 * 
+	 * @return A cached instance of the reasoning service
+	 * 
+	 * @throws CoreException
+	 */
+	public IRefactoringService getActiveRefactoringService() throws CoreException{
+		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
+		
+		return getRefactoringService(store.getString(PreferenceConstants.P_ACTIVE_REFACTORING_ENGINE));
 	}
 }
