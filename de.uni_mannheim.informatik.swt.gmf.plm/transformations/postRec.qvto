@@ -78,7 +78,7 @@ main() {
 	--Setup the GenPlugin
 	this.genPlugIn := gmfgenModel.objectsOfType(GenPlugin)->asOrderedSet()->first();
 	genPlugIn.provider := "University of Mannheim: Chair for Software Engineering";
-	genPlugIn.name := "Level-agnostic Modelling Language (LML) Plugin";
+	genPlugIn.name := "MelAniE - Multi-levEl modeLing And oNtology engIneering Environment Plugin";
 	genPlugIn.printingEnabled := true;
 	genPlugIn.requiredPlugins := genPlugIn.requiredPlugins->append('de.itemis.gmf.runtime.extensions');
 	genPlugIn.requiredPlugins := genPlugIn.requiredPlugins->append('de.uni_mannheim.informatik.swt.gmf.plm');
@@ -86,7 +86,7 @@ main() {
 	
 	--Set the properties for the Prefrence Page (Window -> Preferences)
 	this.genStandardPrefencePage := gmfgenModel.objectsOfType(GenStandardPreferencePage)->asOrderedSet()->first();
-	genStandardPrefencePage.name := "LML Diagram Editor";
+	genStandardPrefencePage.name := "MelAniE";
 	
 	--Setup the linguistic properties view
 	this.genPropertySheet := gmfgenModel.objectsOfType(GenPropertySheet)->asOrderedSet()->first();

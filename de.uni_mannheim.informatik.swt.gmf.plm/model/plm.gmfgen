@@ -3696,7 +3696,7 @@
     <preferencePages
         xsi:type="gmfgen:GenStandardPreferencePage"
         iD="de.uni_mannheim.informatik.swt.models.plm.diagram.general"
-        name="LML Diagram Editor">
+        name="MelAniE">
       <children
           xsi:type="gmfgen:GenStandardPreferencePage"
           iD="de.uni_mannheim.informatik.swt.models.plm.diagram.appearance"
@@ -3720,7 +3720,7 @@
     </preferencePages>
   </diagram>
   <plugin
-      name="Level-agnostic Modelling Language (LML) Plugin"
+      name="MelAniE - Multi-levEl modeLing And oNtology engIneering Environment Plugin"
       provider="University of Mannheim: Chair for Software Engineering"
       printingEnabled="true">
     <requiredPlugins>org.eclipse.draw2d</requiredPlugins>
