@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2011 University of Mannheim: Chair for Software Engineering
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Ralph Gerbig - initial API and implementation and initial documentation
+ *******************************************************************************/
 package de.uni_mannheim.informatik.swt.models.plm.diagram.custom;
 
 import java.util.LinkedList;
@@ -16,23 +26,30 @@ import org.eclipse.ui.menus.CommandContributionItemParameter;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor;
 import de.uni_mannheim.informatik.swt.plm.workbench.ExtensionPointService;
+import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService;
 import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IRefactoringService;
 
-public class RefactorContributionItem extends CompoundContributionItem {
-	
+/**
+ * @author Ralph
+ *
+ */
+public class ReasoningContributionItem extends CompoundContributionItem {
+
+	/* (non-Javadoc)
+	 * @see org.eclipse.ui.actions.CompoundContributionItem#getContributionItems()
+	 */
 	@Override
 	protected IContributionItem[] getContributionItems() {
-		
-		IRefactoringService refactorer = null;
+		IReasoningService reasoner = null;
 		
 		try {
-			refactorer = ExtensionPointService.Instance().getActiveRefactoringService();
+			reasoner = ExtensionPointService.Instance().getActiveReasoningService();
 		} catch (CoreException e) {
 			e.printStackTrace();
 		}
 		
 		//No refactoring service found -> return no refactoring options
-		if (refactorer == null)
+		if (reasoner == null)
 			return new IContributionItem[0];
 		
 		IEditorPart editPart = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
@@ -55,7 +72,7 @@ public class RefactorContributionItem extends CompoundContributionItem {
 		
 		List<IContributionItem> contributionItems = new LinkedList<IContributionItem>();
 		
-		for(Entry<String, String> entry : refactorer.getAvailableRefactoringCommands(part.resolveSemanticElement()).entrySet()){
+		for(Entry<String, String> entry : reasoner.getAvailableReasoningCommands(part.resolveSemanticElement()).entrySet()){
 			CommandContributionItemParameter param = 
 					new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), entry.getKey() + ".menuEntry", entry.getKey(), CommandContributionItem.STYLE_PUSH);
 			param.label = entry.getValue();
@@ -63,6 +80,6 @@ public class RefactorContributionItem extends CompoundContributionItem {
 		}
 			
 		return contributionItems.toArray(new IContributionItem[] {});
-		
 	}
+
 }
