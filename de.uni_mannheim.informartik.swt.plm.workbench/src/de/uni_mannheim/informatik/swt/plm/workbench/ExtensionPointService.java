@@ -38,7 +38,7 @@ public class ExtensionPointService {
 	 * Cache for Visualization IConfigurationElements
 	 */
 	private static Map<String, IConfigurationElement> id2VisualizationServiceConfigurationElement;
-	public static Map<String, IConfigurationElement> getId2VisualizationServiceConfigurationElement() {
+	public Map<String, IConfigurationElement> getId2VisualizationServiceConfigurationElement() {
 		return id2VisualizationServiceConfigurationElement;
 	}
 
@@ -52,7 +52,7 @@ public class ExtensionPointService {
 	 * Cache for Reasoning IConfigurationElements
 	 */
 	private static Map<String, IConfigurationElement> id2ReasoningServiceConfigurationElement;
-	public static Map<String, IConfigurationElement> getId2ReasoningServiceConfigurationElement() {
+	public Map<String, IConfigurationElement> getId2ReasoningServiceConfigurationElement() {
 		return id2ReasoningServiceConfigurationElement;
 	}
 	
@@ -65,7 +65,7 @@ public class ExtensionPointService {
 	 * Cache for Reasoning IConfigurationElements
 	 */
 	private static Map<String, IConfigurationElement> id2RefactoringServiceConfigurationElement;
-	public static Map<String, IConfigurationElement> getId2RefactoringServiceConfigurationElement() {
+	public Map<String, IConfigurationElement> getId2RefactoringServiceConfigurationElement() {
 		return id2RefactoringServiceConfigurationElement;
 	}
 	
