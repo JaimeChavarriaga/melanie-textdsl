@@ -11,8 +11,10 @@
 package de.uni_mannheim.informatik.swt.plm.workbench.interfaces;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.util.IPropertyChangeListener;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
@@ -55,6 +57,14 @@ public interface IReasoningService {
 	 * @return a List with all executed reasonings
 	 */
 	public List<ReasoningResultModel> getReasoningHistory();
+	
+	/**
+	 * 
+	 * @param modelElement EObject to execute reasoning on
+	 * 
+	 * @return Returns all commands that can be executed on the EObject
+	 */
+	public Map<String, String> getAvailableReasoningCommands(EObject modelElement);
 	
 	/**
 	 * 
@@ -291,5 +301,4 @@ public interface IReasoningService {
 	 * param[0] = Ontology 
 	 */
 	public static final String IS_VALID = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.isvalid";
-	
 }
