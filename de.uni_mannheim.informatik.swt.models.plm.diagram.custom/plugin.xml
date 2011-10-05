@@ -152,11 +152,23 @@
                allPopups="true"
                locationURI="popup:org.eclipse.ui.popup.any">
             <menu
-                  id="haha.menu"
+                  id="refactor.menu"
                   label="Refactor">
                <dynamic
                      class="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.RefactorContributionItem"
-                     id="refContItem">
+                     id="refactoringContributionItem">
+               </dynamic>
+            </menu>
+         </menuContribution>
+         <menuContribution
+               allPopups="true"
+               locationURI="popup:org.eclipse.ui.popup.any">
+            <menu
+                  id="reasoning.menu"
+                  label="Reasoning">
+               <dynamic
+                     class="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.ReasoningContributionItem"
+                     id="reasoningContributionItem">
                </dynamic>
             </menu>
          </menuContribution>
