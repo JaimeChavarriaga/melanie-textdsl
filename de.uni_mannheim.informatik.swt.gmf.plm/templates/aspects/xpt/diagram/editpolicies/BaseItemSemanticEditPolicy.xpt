@@ -24,10 +24,7 @@
   */
 «AROUND canCreate FOR gmfgen::GenLink»
 	«IF getUniqueIdentifier().startsWith('ConnectionParticipant_')»
-	
-		«EXPAND xpt::Common::generatedMemberComment»
-		private final String REASONING_SERVICE_ID = "de.uni_mannheim.informatik.swt.plm.reasoning.service";
-		
+			
 		«EXPAND xpt::Common::generatedMemberComment»
 		public boolean canCreate«getUniqueIdentifier()»(«EXPAND canCreateParameters FOR modelFacet») {
 			
@@ -42,7 +39,7 @@
 				de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService reasoner = null;
 				
 				try {
-					reasoner = de.uni_mannheim.informatik.swt.plm.workbench.ExtensionPointService.Instance().getReasoningService(REASONING_SERVICE_ID).Instance();
+					reasoner = de.uni_mannheim.informatik.swt.plm.workbench.ExtensionPointService.Instance().getActiveReasoningService().Instance();
 				} catch (org.eclipse.core.runtime.CoreException e) {
 					e.printStackTrace();
 				}

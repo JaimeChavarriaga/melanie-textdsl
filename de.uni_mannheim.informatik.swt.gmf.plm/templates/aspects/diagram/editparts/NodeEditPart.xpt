@@ -128,7 +128,7 @@
 				de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IVisualModelToFigureTransformator transformator = null; 
 				
 				try {
-					transformator = de.uni_mannheim.informatik.swt.plm.workbench.ExtensionPointService.Instance().getVisualizationService("de.uni_mannheim.informatik.swt.plm.visualization.service");
+					transformator = de.uni_mannheim.informatik.swt.plm.workbench.ExtensionPointService.Instance().getActiveVisualizationService();
 				} catch (org.eclipse.core.runtime.CoreException e) {
 					e.printStackTrace();
 				}
@@ -626,7 +626,7 @@
 		de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IVisualModelToFigureTransformator tranformator = null;
 		
 		try {
-			tranformator = de.uni_mannheim.informatik.swt.plm.workbench.ExtensionPointService.Instance().getVisualizationService("de.uni_mannheim.informatik.swt.plm.visualization.service");
+			tranformator = de.uni_mannheim.informatik.swt.plm.workbench.ExtensionPointService.Instance().getActiveVisualizationService();
 		} catch (org.eclipse.core.runtime.CoreException e) {
 			e.printStackTrace();
 		}

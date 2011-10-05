@@ -41,7 +41,6 @@ import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService
 public class ExecuteModelTests implements IObjectActionDelegate {
 
 	private List<Element> selectedElements = new LinkedList<Element>();
-	private static final String ID = "de.uni_mannheim.informatik.swt.plm.reasoning.service";
 	
 	/* (non-Javadoc)
 	 * @see org.eclipse.ui.IActionDelegate#run(org.eclipse.jface.action.IAction)
@@ -52,7 +51,7 @@ public class ExecuteModelTests implements IObjectActionDelegate {
 		{
 			if (selectedElements.size() > 0) {
 				Element e = (Element) selectedElements.get(0);
-				IReasoningService reasoner = ((IReasoningService )ExtensionPointService.Instance().getReasoningService(ID)).Instance();
+				IReasoningService reasoner = ((IReasoningService )ExtensionPointService.Instance().getActiveReasoningService()).Instance();
 				if(e instanceof Clabject) {
 					
 					if (selectedElements.size() > 1) {

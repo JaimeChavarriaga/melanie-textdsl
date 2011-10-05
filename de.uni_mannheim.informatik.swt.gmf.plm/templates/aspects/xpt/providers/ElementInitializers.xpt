@@ -112,8 +112,7 @@ private static final String REASONING_SERVICE_ID = "de.uni_mannheim.informatik.s
 					if (org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getProxyID(current).equals(typeName)) {
 						try {
 							de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService service = de.uni_mannheim.informatik.swt.plm.workbench.ExtensionPointService
-									.Instance().getReasoningService(
-											REASONING_SERVICE_ID);
+									.Instance().getActiveReasoningService().Instance();
 							service.dressInstanceFromType((de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject) current, instance);
 						} catch (java.lang.Exception e) {
 							e.printStackTrace();

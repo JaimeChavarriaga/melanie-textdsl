@@ -28,7 +28,7 @@ public class RefactorContributionItem extends CompoundContributionItem {
 		IRefactoringService refactorer = null;
 		
 		try {
-			refactorer = ExtensionPointService.Instance().getRefactoringService(REFACTORING_SERVICE_ID);
+			refactorer = ExtensionPointService.Instance().getActiveRefactoringService();
 		} catch (CoreException e) {
 			e.printStackTrace();
 		}
