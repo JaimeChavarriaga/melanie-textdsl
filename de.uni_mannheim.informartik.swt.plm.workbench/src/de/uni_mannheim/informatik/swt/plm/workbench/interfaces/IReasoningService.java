@@ -12,7 +12,6 @@ package de.uni_mannheim.informatik.swt.plm.workbench.interfaces;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.util.IPropertyChangeListener;
@@ -22,7 +21,6 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Method;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.CompositeCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultModel;
 

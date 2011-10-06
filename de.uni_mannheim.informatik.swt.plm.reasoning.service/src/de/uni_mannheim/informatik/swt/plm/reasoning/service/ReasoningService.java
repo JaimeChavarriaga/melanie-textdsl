@@ -12,38 +12,29 @@
 package de.uni_mannheim.informatik.swt.plm.reasoning.service;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.TreeIterator;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
 import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.util.PropertyChangeEvent;
-import org.eclipse.ocl.ParserException;
-import org.eclipse.ocl.ecore.Constraint;
-import org.eclipse.ocl.ecore.OCL;
-import org.eclipse.ocl.expressions.OCLExpression;
-import org.eclipse.ocl.helper.OCLHelper;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Classification;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Classification;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Method;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMFactoryImpl;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.CompositeCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultFactory;
