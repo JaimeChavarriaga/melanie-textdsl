@@ -438,37 +438,6 @@ public class ReasoningService implements IReasoningService {
 		return false;
 	}
 
-
-	//In MM
-	@Override
-	public Set<Clabject> getAllPossibleTypeForModel(Model m) {
-		OCL ocl = OCL.newInstance();
-		OCLHelper<EClassifier, ?, ?, Constraint> helper = ocl.createOCLHelper();
-		OCLExpression<EClassifier> q;
-		helper.setContext(de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.Literals.MODEL);
-		
-		int index = ((Ontology)m.eContainer()).getContent().indexOf(m);
-		
-		if (index <= 0)
-			new HashSet<Clabject>();
-		
-		Model typeModel = ((Ontology)m.eContainer()).getContent().get(index - 1);
-		
-		Set result = null;
-
-		try
-		{	
-			//Find the containing model
-			q = helper.createQuery("self.content->select(c | c.oclIsKindOf(Clabject) and c.oclAsType(Clabject).instantiable and (c.oclAsType(Clabject).potency > 0 or c.oclAsType(Clabject).potency = -1))");
-			result = (Set)ocl.evaluate(typeModel, q);
-		}
-		catch (ParserException e) {
-			e.printStackTrace();
-		}
-		
-		return result;
-	}
-
 	@Override
 	public boolean localConstructionConformsConnection(Connection type,
 			Connection instance) {
@@ -503,55 +472,4 @@ public class ReasoningService implements IReasoningService {
 		}
 		return null;
 	}
-
-
-	@Override
-	public Set<String> getPossibleRoleNamesForConnectionParticipant(
-			Connection con, Clabject part) {
-		Set<String> result = new HashSet<String>();
-		Set<Connection> domain = getClassifyingConstructionConformanceDomain(con);
-		for (Connection type: domain) {
-			for (String rn: type.getRoleName()) {
-				if (run(LOCAL_CONFORMS, new Object[]{type.getParticipantForRoleName(rn), part})) {
-					result.add(rn);
-				}
-			}
-		}
-		return result;
-	}
-
-	@Override
-	public Set<Boolean> getPossibleNavigabilityForConnectionParticipant(Connection con,
-			Clabject part) {
-		Set<Boolean> result = new HashSet<Boolean>();
-		Set<Connection> domain = getClassifyingConstructionConformanceDomain(con);
-		for (Connection type: domain) {
-			for (String rn: type.getRoleName()) {
-				if (run(LOCAL_CONFORMS, new Object[]{type.getParticipantForRoleName(rn), part})) {
-					result.add(type.isNavigableForRoleName(rn));
-				}
-			}
-		}
-		return result;
-	}
-
-
-	@Override
-	public Set<Connection> getClassifyingConstructionConformanceDomain(Connection c) {
-		Model classifyingModel = c.getModel().getOntology().getContent().get(c.getModel().getLevel() - 1); 
-		Set<Connection> result = new HashSet<Connection>();
-		for (Connection possible:classifyingModel.getAllConnections()) {
-			if (neighbourhoodConstructionConformsConnection(possible, c)) {
-				result.add(possible);
-			}
-		}
-		return result;
-	}
-
-	
-	
-	
-	
-	
-	
 }

@@ -145,11 +145,6 @@ public interface IReasoningService {
 	 * @return A list with possible types for creating instances
 	 */
 	public static final String GET_ALL_POSSIBLE_TYPES_FOR_MODEL= "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.getallpossibletypesformodel";
-	/**
-	 * 
-	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
-	 */
-	Set<Clabject> getAllPossibleTypeForModel(Model m);
 
 	/**
 	 * param[0] = Feature - type <br />
@@ -214,32 +209,17 @@ public interface IReasoningService {
 	 * param[1] = Clabject - clabject
 	 */
 	public static final String GET_POSSIBLE_ROLE_NAMES_FOR_CONNECTION_PARTICIPANT = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.getpossiblerolenamesforconnectionparticipant";
-	/**
-	 * 
-	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
-	 */
-	public Set<String> getPossibleRoleNamesForConnectionParticipant(Connection con, Clabject part);
 	
 	/**
 	 * param[0] = Connection - connection <br />
 	 * param[1] = Clabject - clabject
 	 */
 	public static final String GET_POSSIBLE_NAVIGABILITY_FOR_CONNECTION_PARTICIPANT = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.getpossiblenavigabilityforconnectionparticipant";
-	/**
-	 * 
-	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
-	 */
-	public Set<Boolean> getPossibleNavigabilityForConnectionParticipant(Connection con, Clabject part);
 	
 	/**
 	 * param[0] = Connection - connection
 	 */
 	public static final String GET_CLASSIFYING_CONSTRUCTION_CONFORMANCE_DOMAIN = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.getclassifyingconstructionconformancedomain";
-	/**
-	 * 
-	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
-	 */
-	public Set<Connection> getClassifyingConstructionConformanceDomain(Connection c);
 	
 	/**
 	 * param[0] = Clabject - instance <br />
