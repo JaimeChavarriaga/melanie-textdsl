@@ -320,12 +320,12 @@ public class ReasoningService implements IReasoningService {
 	
 	//In EMF Factory?
 	@Override
-	public void dressInstanceFromType(Clabject type, Clabject instance) throws Exception {
+	public void dressInstanceFromType(Clabject type, Clabject instance) {
 		
 		if (!type.isInstantiable())
-			throw new Exception("Not instantiable clabject cannot be instantiated!");
+			throw new RuntimeException("Not instantiable clabject cannot be instantiated!");
 		else if (type.getPotency() == 0)
-			throw new Exception("Cannot create instance of type with potency 0.");
+			throw new RuntimeException("Cannot create instance of type with potency 0.");
 		
 		instance.setLevel(type.getLevel() + 1);
 		instance.setElided(type.isElided());
