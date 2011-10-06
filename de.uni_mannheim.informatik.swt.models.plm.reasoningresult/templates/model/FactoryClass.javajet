@@ -738,6 +738,12 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
 	}
 
 <%}%>
+
+<%/*
+**************************************************************************************
+BEGIN CUSTOM CREATE METHODS
+**************************************************************************************
+*/%>
 <%if (isImplementation || isInterface){%>
 	<%for (GenClass genClass : genPackage.getGenClasses()) {%>
 	  <%if (!genClass.isAbstract()) {%>
@@ -822,3 +828,8 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
 <%}%>
 } //<%=isInterface ? genPackage.getFactoryInterfaceName() : genPackage.getFactoryClassName()%>
 <%genModel.emitSortedImports();%>
+<%/*
+**************************************************************************************
+END CUSTOM CREATE METHODS
+**************************************************************************************
+*/%>
