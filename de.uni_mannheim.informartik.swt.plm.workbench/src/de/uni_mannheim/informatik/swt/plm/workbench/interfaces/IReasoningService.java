@@ -61,7 +61,7 @@ public interface IReasoningService {
 	 * 
 	 * @return Returns all commands that can be executed on the EObject
 	 */
-	public List<ContributionItem> getAvailableReasoningCommands(EObject modelElement);
+	public List<ContributionItem> getAvailableReasoningCommands(EObject[] modelElements);
 	
 	/**
 	 * 

@@ -55,17 +55,17 @@ import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService
 public class ReasoningService implements IReasoningService {
 	
 	@Override
-	public List<ContributionItem> getAvailableReasoningCommands(EObject modelElement) {
+	public List<ContributionItem> getAvailableReasoningCommands(EObject[] modelElements) {
 		List<ContributionItem> items = new LinkedList<ContributionItem>();
 		
-		if (modelElement instanceof Clabject)
+		if (modelElements[0] instanceof Clabject)
 		{
 			CommandContributionItemParameter param = 
 					new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), LocalConformsCommand.ID + ".menuEntry", LocalConformsCommand.ID, CommandContributionItem.STYLE_PUSH);
 			param.label = getCommandName(LocalConformsCommand.ID);
 			items.add(new CommandContributionItem(param));
 		}
-		else if (modelElement instanceof Feature)
+		else if (modelElements[0] instanceof Feature)
 		{
 			CommandContributionItemParameter param = new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), FeatureConformsCommand.ID + ".menuEntry", FeatureConformsCommand.ID, CommandContributionItem.STYLE_PUSH);
 			param.label = getCommandName(FeatureConformsCommand.ID);

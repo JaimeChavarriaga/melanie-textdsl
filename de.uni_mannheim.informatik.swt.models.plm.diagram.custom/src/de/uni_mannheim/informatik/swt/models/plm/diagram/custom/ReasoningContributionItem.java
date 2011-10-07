@@ -11,6 +11,7 @@
 package de.uni_mannheim.informatik.swt.models.plm.diagram.custom;
 
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -61,9 +62,14 @@ public class ReasoningContributionItem extends CompoundContributionItem {
 		if (selection.size() != 1 && !(selection.getFirstElement() instanceof IGraphicalEditPart))
 			return new IContributionItem[0];
 		
-		IGraphicalEditPart part = (IGraphicalEditPart)selection.getFirstElement();
+		Object[] parts = selection.toArray();
+		EObject[] modelElements = new EObject[parts.length];
 		
-		return reasoner.getAvailableReasoningCommands(part.resolveSemanticElement()).toArray(new IContributionItem[] {});
+		for (int i = 0; i < parts.length; i++)
+			if (parts[i] instanceof IGraphicalEditPart)
+				modelElements[i] = ((IGraphicalEditPart)parts[i]).resolveSemanticElement();
+		
+		return reasoner.getAvailableReasoningCommands(modelElements).toArray(new IContributionItem[] {});
 	}
 
 }
