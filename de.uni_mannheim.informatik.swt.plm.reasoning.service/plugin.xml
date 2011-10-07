@@ -28,6 +28,41 @@
             id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.isexpressedinstanceofexcludedconformscommand"
             name="Is expressed instance of excluded">
       </command>
+      <command
+            defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.ConsistencyCommand"
+            id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.consistencycommand"
+            name="Consistency">
+      </command>
+      <command
+            defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.ConsistentClassificationCommand"
+            id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.consistentclassificationycommand"
+            name="Consistent Classification">
+      </command>
+      <command
+            defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.HyponymCommand"
+            id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.hyponymcommand"
+            name="Hyponym">
+      </command>
+      <command
+            defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.InstanceCommand"
+            id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.instancecommand"
+            name="Instance">
+      </command>
+      <command
+            defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.IsonymCommand"
+            id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.isonymcommand"
+            name="Isonym">
+      </command>
+      <command
+            defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.NeighbourhoodConformsCommand"
+            id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.neighbourhoodconformscommand"
+            name="Neighbourhood conforms">
+      </command>
+      <command
+            defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.PropertyConformsCommand"
+            id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.propertyconformscommand"
+            name="Property conforms">
+      </command>
    </extension>
    <extension
          point="de.uni_mannheim.informatik.swt.reasoning.service">

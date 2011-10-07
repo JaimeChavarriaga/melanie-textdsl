@@ -23,8 +23,7 @@ import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService
 
 public class HyponymCommand extends AbstractHandler {
 	
-	//TODO: Register as command and fill in ID here
-	public static final String ID = null;
+	public static final String ID = "de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.hyponymcommand";
 	
 	IReasoningService reasoner = new ReasoningService().Instance();
 

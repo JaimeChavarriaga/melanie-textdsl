@@ -25,8 +25,7 @@ import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService
 
 public class ConsistentClassificationCommand extends AbstractHandler {
 
-	//TODO: Register as command and fill in ID here
-	public static final String ID = null;
+	public static final String ID = "de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.consistentclassificationycommand";
 	
 	IReasoningService reasoner = (new ReasoningService()).Instance();
 	
