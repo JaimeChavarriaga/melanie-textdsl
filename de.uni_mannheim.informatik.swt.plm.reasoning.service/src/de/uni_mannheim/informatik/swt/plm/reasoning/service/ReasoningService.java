@@ -18,7 +18,6 @@ import java.util.Map;
 
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.commands.IParameter;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.TreeIterator;
@@ -31,7 +30,6 @@ import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.menus.CommandContributionItem;
 import org.eclipse.ui.menus.CommandContributionItemParameter;
-import org.omg.Dynamic.Parameter;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
@@ -114,6 +112,10 @@ public class ReasoningService implements IReasoningService {
 		
 	}
 	
+	//TODO: Replace this method by factory
+	/**
+	 * @deprecated Needs to be replaced with factory method
+	 */
 	public CompositeCheck createCompositeCheck(String name, Element source, Element target, String expression) {
 		CompositeCheck check = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
 		check.setName(name);
