@@ -151,6 +151,10 @@
          <menuContribution
                allPopups="true"
                locationURI="popup:org.eclipse.ui.popup.any">
+            <separator
+                  name="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.separator1"
+                  visible="true">
+            </separator>
             <menu
                   id="refactor.menu"
                   label="Refactor">
@@ -205,6 +209,10 @@
                   </or>
                </visibleWhen>
             </menu>
+            <separator
+                  name="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.separator2"
+                  visible="true">
+            </separator>
          </menuContribution>
       </extension>
 </plugin>
