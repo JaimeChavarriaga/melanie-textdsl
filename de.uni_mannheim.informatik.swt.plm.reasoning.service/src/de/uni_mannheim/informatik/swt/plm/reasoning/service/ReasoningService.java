@@ -65,6 +65,13 @@ public class ReasoningService implements IReasoningService {
 		return commands;
 	}
 	
+	/**
+	 * Retrieves the name of the command with id from the extension point
+	 * 
+	 * @param id id of command to retrieve name from
+	 * 
+	 * @return name of command if one is registered with this id null else
+	 */
 	private String getCommandName(String id){
 		
 		//Initialize the visualization service
@@ -173,7 +180,6 @@ public class ReasoningService implements IReasoningService {
 			try {
 				result = (Boolean)command.execute(event);
 			} catch (ExecutionException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		} else if (commandID.equals(ReasoningService.LOCAL_CONFORMS)){
@@ -196,7 +202,6 @@ public class ReasoningService implements IReasoningService {
 			try {
 				result = (Boolean)command.execute(event);
 			} catch (ExecutionException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}else if (commandID == ReasoningService.NEIGHBOURHOOD_CONFORMS) {
@@ -208,7 +213,6 @@ public class ReasoningService implements IReasoningService {
 			try {
 				result = (Boolean)command.execute(event);
 			} catch (ExecutionException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		} else if (commandID == ReasoningService.PROPERTY_CONFORMS) {
@@ -220,7 +224,6 @@ public class ReasoningService implements IReasoningService {
 			try {
 				result = (Boolean)command.execute(event);
 			} catch (ExecutionException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		} else if (commandID == ReasoningService.IS_EXPRESSED_INSTANCE_OF_EXCLUDED) {
@@ -232,7 +235,6 @@ public class ReasoningService implements IReasoningService {
 			try {
 				result = (Boolean)command.execute(event);
 			} catch (ExecutionException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		} else if (commandID == ReasoningService.HAS_ADDITIONAL_PROPERTIES) {
