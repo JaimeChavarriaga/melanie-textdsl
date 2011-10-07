@@ -125,7 +125,7 @@ public interface IReasoningService {
 	 * 
 	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
 	 */
-	public boolean localConstructionConformsConnection( Connection type, Connection instance );
+	public boolean localConstructionConformsConnection(Connection type, Connection instance);
 	
 	
 	/**
