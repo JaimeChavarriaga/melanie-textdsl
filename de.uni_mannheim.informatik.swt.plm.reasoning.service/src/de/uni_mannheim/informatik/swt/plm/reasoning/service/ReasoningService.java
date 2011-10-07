@@ -29,12 +29,10 @@ import org.eclipse.jface.util.PropertyChangeEvent;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Classification;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Method;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMFactoryImpl;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.CompositeCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultFactory;
@@ -166,16 +164,6 @@ public class ReasoningService implements IReasoningService {
 		}
 		if (commandID == ReasoningService.CAN_CONNECTION_EXIST) {
 			return canConnectionExist((Connection)parameters[0], (Connection)parameters[1]);
-		} else if (commandID == ReasoningService.CREATE_ATTRIBUTE) {
-			return createAttribute((Attribute)parameters[0]) != null;
-		} else if (commandID == ReasoningService.CREATE_METHOD) {
-			return createMethod((Method)parameters[0]) != null;
-		} else if (commandID == ReasoningService.DRESS_INSTANCE_FROM_TYPE) {
-			try {
-				dressInstanceFromType((Clabject)parameters[0], (Clabject)parameters[1]);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
 		} else if (commandID == ReasoningService.FEATURE_CONFORMS) {
 			Map<String, Object> params = new HashMap<String, Object>();
 			params.put("type", parameters[0]);
@@ -317,112 +305,6 @@ public class ReasoningService implements IReasoningService {
 		System.out.println("Command Execution finished: " + commandID);
 		return result;
 	}
-	
-	//In EMF Factory?
-	@Override
-	public void dressInstanceFromType(Clabject type, Clabject instance) {
-		
-		if (!type.isInstantiable())
-			throw new RuntimeException("Not instantiable clabject cannot be instantiated!");
-		else if (type.getPotency() == 0)
-			throw new RuntimeException("Cannot create instance of type with potency 0.");
-		
-		instance.setLevel(type.getLevel() + 1);
-		instance.setElided(type.isElided());
-		instance.setExpressed(type.isExpressed());
-		instance.setOrigin(type.getOrigin());
-		
-		//Quick hack to get a visualizer from type in
-		instance.getVisualizer().clear();
-		instance.getVisualizer().add(EcoreUtil.copy(type.getVisualizer().get(0)));
-		
-		int newPotency = -1;
-		
-		if (type.getPotency() == -1)
-			newPotency = -1;
-		else if (type.getPotency() > 0)
-			newPotency = type.getPotency() - 1;
-		
-		instance.setPotency(newPotency);
-		instance.setRelevant(type.isRelevant());
-		instance.setVisualizersShown(type.getVisualizersShown());
-		
-		List<Feature> features = new LinkedList<Feature>();
-		
-		for (Feature f : type.getAllFeatures())
-		{
-			if (f.getDurability() == 0)
-				continue;
-			
-			Feature newFeature = f instanceof Attribute? createAttribute((Attribute) f): createMethod((Method) f);
-			
-			features.add(newFeature);
-		}
-		instance.getFeature().addAll(features);
-		
-		Classification i = PLMFactoryImpl.eINSTANCE.createClassification();
-		i.setType(type);
-		i.setInstance(instance);
-		((Model)instance.eContainer()).getContent().add(i);
-	}
-
-
-	//In EMF Factory?
-	@Override
-	public Attribute createAttribute(Attribute type) {
-		Attribute result = PLMFactoryImpl.eINSTANCE.createAttribute();
-		
-		int newDurability = -1;
-		if (type.getDurability() == -1)
-			newDurability = -1;
-		else if (type.getDurability() > 0)
-			newDurability = type.getDurability() - 1;
-		
-		result.setDurability(newDurability);
-		result.setElided(type.isElided());
-		result.setExpressed(type.isExpressed());
-		result.setName(type.getName());
-		result.setRelevant(type.isRelevant());
-		
-		//Quick hack to get a visualizer from type in
-		result.getVisualizer().add(EcoreUtil.copy(type.getVisualizer().get(0)));
-		
-		result.setDatatype(type.getDatatype());
-		int newMutability = -1;
-		if (type.getMutability() == -1)
-			newMutability = -1;
-		else 
-			newMutability = java.lang.Math.max(0, (type.getMutability() - 1));
-		result.setValue(type.getValue());
-		result.setMutability(newMutability);
-		
-		return result;
-	}
-
-
-	//In EMF Factory?
-	@Override
-	public Method createMethod(Method type) {
-		Method result = PLMFactoryImpl.eINSTANCE.createMethod();
-		
-		int newDurability = -1;
-		if (type.getDurability() == -1)
-			newDurability = -1;
-		else if (type.getDurability() > 0)
-			newDurability = type.getDurability() - 1;
-		
-		result.setDurability(newDurability);
-		result.setElided(type.isElided());
-		result.setExpressed(type.isExpressed());
-		result.setName(type.getName());
-		result.setRelevant(type.isRelevant());
-		
-		//Quick hack to get a visualizer from type in
-		result.getVisualizer().add(EcoreUtil.copy(type.getVisualizer().get(0)));
-		
-		return result;
-	}
-
 
 	@Override
 	public boolean canConnectionExist(Connection source, Clabject target) {

@@ -16,11 +16,9 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.util.IPropertyChangeListener;
 
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Method;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.CompositeCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultModel;
 
@@ -84,40 +82,8 @@ public interface IReasoningService {
 	 * 
 	 * @return true -> operation sucessful; false -> operation failed
 	 */
-	public boolean run(String commandID, Object[] parameters);
-	
-	
-	/**
-	 * param[0] = Clabject - type <br />
-	 * param[1] = Clabject - instance
-	 */
-	public static final String DRESS_INSTANCE_FROM_TYPE = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.dressinstancefromtype";
-	/**
-	 * 
-	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
-	 */
-	public void dressInstanceFromType(Clabject type, Clabject instance) throws Exception;
-	
-	/**
-	 * param[0] = Attribute - type
-	 */
-	public static final String CREATE_ATTRIBUTE = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.createattribute";
-	/**
-	 * 
-	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
-	 */
-	public Attribute createAttribute(Attribute type);
-	
-	/**
-	 * param[0] = Method - type
-	 */
-	public static final String CREATE_METHOD= "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.createmethod";
-	/**
-	 * 
-	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
-	 */
-	public Method createMethod(Method type);
-	
+	public boolean run(String commandID, Object[] parameters);	
+		
 	/**
 	 * Checks whether a connection can exist between source and target
 	 * 
