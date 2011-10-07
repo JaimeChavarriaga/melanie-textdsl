@@ -158,11 +158,26 @@
                      class="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.RefactorContributionItem"
                      id="refactoringContributionItem">
                </dynamic>
+               <visibleWhen
+                     checkEnabled="true">
+                  <or>
+                     <iterate
+                           ifEmpty="false"
+                           operator="or">
+                        <instanceof
+                              value="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.EntityEditPart">
+                        </instanceof>
+                     </iterate>
+                     <iterate
+                           ifEmpty="false"
+                           operator="or">
+                        <instanceof
+                              value="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionEditPart">
+                        </instanceof>
+                     </iterate>
+                  </or>
+               </visibleWhen>
             </menu>
-         </menuContribution>
-         <menuContribution
-               allPopups="true"
-               locationURI="popup:org.eclipse.ui.popup.any">
             <menu
                   id="reasoning.menu"
                   label="Reasoning">
@@ -170,6 +185,25 @@
                      class="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.ReasoningContributionItem"
                      id="reasoningContributionItem">
                </dynamic>
+               <visibleWhen
+                     checkEnabled="true">
+                  <or>
+                     <iterate
+                           ifEmpty="false"
+                           operator="or">
+                        <instanceof
+                              value="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.EntityEditPart">
+                        </instanceof>
+                     </iterate>
+                     <iterate
+                           ifEmpty="false"
+                           operator="or">
+                        <instanceof
+                              value="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionEditPart">
+                        </instanceof>
+                     </iterate>
+                  </or>
+               </visibleWhen>
             </menu>
          </menuContribution>
       </extension>
