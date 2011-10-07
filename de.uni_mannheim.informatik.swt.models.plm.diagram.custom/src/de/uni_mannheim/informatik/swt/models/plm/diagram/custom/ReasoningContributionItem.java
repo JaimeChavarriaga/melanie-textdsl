@@ -10,10 +10,6 @@
  *******************************************************************************/
 package de.uni_mannheim.informatik.swt.models.plm.diagram.custom;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map.Entry;
-
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.jface.action.IContributionItem;
@@ -21,13 +17,10 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.CompoundContributionItem;
-import org.eclipse.ui.menus.CommandContributionItem;
-import org.eclipse.ui.menus.CommandContributionItemParameter;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor;
 import de.uni_mannheim.informatik.swt.plm.workbench.ExtensionPointService;
 import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService;
-import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IRefactoringService;
 
 /**
  * @author Ralph
@@ -70,16 +63,7 @@ public class ReasoningContributionItem extends CompoundContributionItem {
 		
 		IGraphicalEditPart part = (IGraphicalEditPart)selection.getFirstElement();
 		
-		List<IContributionItem> contributionItems = new LinkedList<IContributionItem>();
-		
-		for(Entry<String, String> entry : reasoner.getAvailableReasoningCommands(part.resolveSemanticElement()).entrySet()){
-			CommandContributionItemParameter param = 
-					new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), entry.getKey() + ".menuEntry", entry.getKey(), CommandContributionItem.STYLE_PUSH);
-			param.label = entry.getValue();
-			contributionItems.add(new CommandContributionItem(param));
-		}
-			
-		return contributionItems.toArray(new IContributionItem[] {});
+		return reasoner.getAvailableReasoningCommands(part.resolveSemanticElement()).toArray(new IContributionItem[] {});
 	}
 
 }

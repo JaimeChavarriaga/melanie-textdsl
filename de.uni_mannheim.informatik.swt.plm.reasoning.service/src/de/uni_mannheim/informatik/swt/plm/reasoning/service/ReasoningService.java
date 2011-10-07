@@ -24,16 +24,17 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
+import org.eclipse.jface.action.ContributionItem;
 import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.util.PropertyChangeEvent;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.menus.CommandContributionItem;
+import org.eclipse.ui.menus.CommandContributionItemParameter;
 
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Method;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMFactoryImpl;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.CompositeCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultFactory;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultModel;
@@ -54,15 +55,24 @@ import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService
 public class ReasoningService implements IReasoningService {
 	
 	@Override
-	public Map<String, String> getAvailableReasoningCommands(EObject modelElement) {
-		Map<String, String> commands = new HashMap<String, String>();
+	public List<ContributionItem> getAvailableReasoningCommands(EObject modelElement) {
+		List<ContributionItem> items = new LinkedList<ContributionItem>();
 		
 		if (modelElement instanceof Clabject)
-			commands.put(LocalConformsCommand.ID, getCommandName(LocalConformsCommand.ID));
+		{
+			CommandContributionItemParameter param = 
+					new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), LocalConformsCommand.ID + ".menuEntry", LocalConformsCommand.ID, CommandContributionItem.STYLE_PUSH);
+			param.label = getCommandName(LocalConformsCommand.ID);
+			items.add(new CommandContributionItem(param));
+		}
 		else if (modelElement instanceof Feature)
-			commands.put(FeatureConformsCommand.ID, getCommandName(FeatureConformsCommand.ID));
+		{
+			CommandContributionItemParameter param = new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), FeatureConformsCommand.ID + ".menuEntry", FeatureConformsCommand.ID, CommandContributionItem.STYLE_PUSH);
+			param.label = getCommandName(FeatureConformsCommand.ID);
+			items.add(new CommandContributionItem(param));
+		}
 		
-		return commands;
+		return items;
 	}
 	
 	/**
