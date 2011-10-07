@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.action.ContributionItem;
 import org.eclipse.jface.util.IPropertyChangeListener;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
@@ -60,7 +61,7 @@ public interface IReasoningService {
 	 * 
 	 * @return Returns all commands that can be executed on the EObject
 	 */
-	public Map<String, String> getAvailableReasoningCommands(EObject modelElement);
+	public List<ContributionItem> getAvailableReasoningCommands(EObject modelElement);
 	
 	/**
 	 * 
