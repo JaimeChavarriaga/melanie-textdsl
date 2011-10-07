@@ -63,6 +63,9 @@ public class ReasoningService implements IReasoningService {
 				&& modelElements[0] instanceof Clabject
 				&& modelElements[1] instanceof Clabject)
 		{
+			//***************************************************
+			// Local conforms command
+			//***************************************************
 			CommandContributionItemParameter param = 
 					new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), LocalConformsCommand.ID + ".menuEntry", LocalConformsCommand.ID, CommandContributionItem.STYLE_PUSH);
 			param.label = getCommandName(LocalConformsCommand.ID);
@@ -76,8 +79,127 @@ public class ReasoningService implements IReasoningService {
 //			param.parameters = commandParamametersMap;
 			
 			items.add(new CommandContributionItem(param));
+			
+			//***************************************************
+			// Hyponym command
+			//***************************************************
+			param = 
+					new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), HyponymCommand.ID + ".menuEntry", HyponymCommand.ID, CommandContributionItem.STYLE_PUSH);
+			param.label = getCommandName(HyponymCommand.ID);
+			
+//			commandParamametersMap = new HashMap<String, Object>();
+//			
+//			commandParamametersMap.put("type",  modelElements[0]);
+//			commandParamametersMap.put("instance", modelElements[1]);
+//			
+//			param.parameters = commandParamametersMap;
+			
+			items.add(new CommandContributionItem(param));
+			
+			//***************************************************
+			// Instance command
+			//***************************************************
+			param = 
+					new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), InstanceCommand.ID + ".menuEntry", InstanceCommand.ID, CommandContributionItem.STYLE_PUSH);
+			param.label = getCommandName(InstanceCommand.ID);
+			
+//			commandParamametersMap = new HashMap<String, Object>();
+//			
+//			commandParamametersMap.put("type",  modelElements[0]);
+//			commandParamametersMap.put("instance", modelElements[1]);
+//			
+//			param.parameters = commandParamametersMap;
+			
+			items.add(new CommandContributionItem(param));
+			
+			//***************************************************
+			// Is expressed instance of excluded command
+			//***************************************************
+			param = 
+					new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), IsExpressedInstanceOfExcludedCommand.ID + ".menuEntry", IsExpressedInstanceOfExcludedCommand.ID, CommandContributionItem.STYLE_PUSH);
+			param.label = getCommandName(IsExpressedInstanceOfExcludedCommand.ID);
+			
+//			commandParamametersMap = new HashMap<String, Object>();
+//			
+//			commandParamametersMap.put("type",  modelElements[0]);
+//			commandParamametersMap.put("instance", modelElements[1]);
+//			
+//			param.parameters = commandParamametersMap;
+			
+			items.add(new CommandContributionItem(param));
+			
+			//***************************************************
+			// Isonym command
+			//***************************************************
+			param = 
+					new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), IsonymCommand.ID + ".menuEntry", IsonymCommand.ID, CommandContributionItem.STYLE_PUSH);
+			param.label = getCommandName(IsonymCommand.ID);
+			
+//			commandParamametersMap = new HashMap<String, Object>();
+//			
+//			commandParamametersMap.put("type",  modelElements[0]);
+//			commandParamametersMap.put("instance", modelElements[1]);
+//			
+//			param.parameters = commandParamametersMap;
+			
+			items.add(new CommandContributionItem(param));
+			
+			//***************************************************
+			// Neighbourhood conforms command
+			//***************************************************
+			param = 
+					new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), NeighbourhoodConformsCommand.ID + ".menuEntry", NeighbourhoodConformsCommand.ID, CommandContributionItem.STYLE_PUSH);
+			param.label = getCommandName(NeighbourhoodConformsCommand.ID);
+			
+//			commandParamametersMap = new HashMap<String, Object>();
+//			
+//			commandParamametersMap.put("type",  modelElements[0]);
+//			commandParamametersMap.put("instance", modelElements[1]);
+//			
+//			param.parameters = commandParamametersMap;
+			
+			items.add(new CommandContributionItem(param));
+			
+			//***************************************************
+			// Neighbourhood conforms command
+			//***************************************************
+			param = 
+					new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), PropertyConformsCommand.ID + ".menuEntry", PropertyConformsCommand.ID, CommandContributionItem.STYLE_PUSH);
+			param.label = getCommandName(PropertyConformsCommand.ID);
+			
+//			commandParamametersMap = new HashMap<String, Object>();
+//			
+//			commandParamametersMap.put("type",  modelElements[0]);
+//			commandParamametersMap.put("instance", modelElements[1]);
+//			
+//			param.parameters = commandParamametersMap;
+			
+			items.add(new CommandContributionItem(param));
 		}
-		else if (modelElements[0] instanceof Feature)
+		
+		//We have two connections selected
+		if (modelElements.length == 2 
+				&& modelElements[0] instanceof Connection
+				&& modelElements[1] instanceof Connection){
+			
+			//***************************************************
+			// Multiplicity conforms command
+			//***************************************************
+			CommandContributionItemParameter param = 
+					new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), MultiplicityConformsCommand.ID + ".menuEntry", MultiplicityConformsCommand.ID, CommandContributionItem.STYLE_PUSH);
+			param.label = getCommandName(MultiplicityConformsCommand.ID);
+			
+//			Map<String, Object> commandParamametersMap = new HashMap<String, Object>();
+//			
+//			commandParamametersMap.put("type",  modelElements[0]);
+//			commandParamametersMap.put("instance", modelElements[1]);
+//			
+//			param.parameters = commandParamametersMap;
+			
+			items.add(new CommandContributionItem(param));
+		}
+		
+		if (modelElements[0] instanceof Feature)
 		{
 			CommandContributionItemParameter param = new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), FeatureConformsCommand.ID + ".menuEntry", FeatureConformsCommand.ID, CommandContributionItem.STYLE_PUSH);
 			param.label = getCommandName(FeatureConformsCommand.ID);

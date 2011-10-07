@@ -34,6 +34,7 @@ import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.ReasoningService;
 import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService;
 
+//TODO: Which kind of consistency? Ontology or model?
 public class ConsistencyCommand extends AbstractHandler {
 
 	public static final String ID = "de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.consistencycommand";
@@ -54,6 +55,7 @@ public class ConsistencyCommand extends AbstractHandler {
 	}
 	
 	protected CompositeCheck compute(Element el) {
+		//TODO: Create different commands so that they can be used in the context menu
 		if (el instanceof Ontology) {
 			return ontologyIsConsistent((Ontology) el);
 		} else if (el instanceof Generalization) {
