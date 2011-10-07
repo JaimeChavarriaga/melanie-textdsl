@@ -18,6 +18,7 @@ import java.util.Map;
 
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.commands.IParameter;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.TreeIterator;
@@ -30,6 +31,7 @@ import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.menus.CommandContributionItem;
 import org.eclipse.ui.menus.CommandContributionItemParameter;
+import org.omg.Dynamic.Parameter;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
@@ -58,11 +60,23 @@ public class ReasoningService implements IReasoningService {
 	public List<ContributionItem> getAvailableReasoningCommands(EObject[] modelElements) {
 		List<ContributionItem> items = new LinkedList<ContributionItem>();
 		
-		if (modelElements[0] instanceof Clabject)
+		//We have two clabjects selected
+		if (modelElements.length == 2 
+				&& modelElements[0] instanceof Clabject
+				&& modelElements[1] instanceof Clabject)
 		{
 			CommandContributionItemParameter param = 
 					new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), LocalConformsCommand.ID + ".menuEntry", LocalConformsCommand.ID, CommandContributionItem.STYLE_PUSH);
 			param.label = getCommandName(LocalConformsCommand.ID);
+			
+//			Map<String, Object> commandParamametersMap = new HashMap<String, Object>();
+//			
+//			commandParamametersMap.put("type",  modelElements[0]);
+//			commandParamametersMap.put("instance", modelElements[1]);
+//			commandParamametersMap.put("forceClabject", false);
+//			
+//			param.parameters = commandParamametersMap;
+			
 			items.add(new CommandContributionItem(param));
 		}
 		else if (modelElements[0] instanceof Feature)

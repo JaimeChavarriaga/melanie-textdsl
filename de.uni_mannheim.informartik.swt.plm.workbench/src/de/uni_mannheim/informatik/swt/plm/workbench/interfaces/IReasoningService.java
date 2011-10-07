@@ -134,6 +134,7 @@ public interface IReasoningService {
 	 * param[1] = Clabject - instance <br />
 	 * param[2] = Boolean - forceClabject - optional - default false
 	 */
+	//TODO: What is forceClabject doing???
 	public static final String LOCAL_CONFORMS = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.localconforms";
 	
 	/**
