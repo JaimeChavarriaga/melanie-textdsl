@@ -2,6 +2,7 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
+         id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands"
          point="org.eclipse.ui.commands">
       <command
             defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.LocalConformsCommand"
@@ -85,11 +86,23 @@
             defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.GeneralizationConsistencyCommand"
             id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.generalizationconsistencycommand"
             name="Generalization Consistency">
+         <commandParameter
+               id="generalization"
+               name="generalization"
+               optional="true"
+               typeId="de.uni_mannheim.informatik.swt.plm.reasoning.service.eobjectcommandparametertype">
+         </commandParameter>
       </command>
       <command
             defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.OntologyConsistencyCommand"
             id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.ontologyconsistencycommand"
             name="Ontology Consistency">
+         <commandParameter
+               id="ontology"
+               name="ontology"
+               optional="true"
+               typeId="de.uni_mannheim.informatik.swt.plm.reasoning.service.eobjectcommandparametertype">
+         </commandParameter>
       </command>
       <command
             defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.ConsistentClassificationCommand"

@@ -37,7 +37,7 @@ public class OntologyConsistencyCommand extends AbstractHandler {
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		ReasoningResultModel resultModel = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();
-		Element element = (Element)event.getParameters().get("element");
+		Element element = (Element)event.getObjectParameterForExecution("ontology");
 		CompositeCheck check = compute(element);
 		resultModel.getCheck().add(check);
 		reasoner.getReasoningHistory().add(resultModel);

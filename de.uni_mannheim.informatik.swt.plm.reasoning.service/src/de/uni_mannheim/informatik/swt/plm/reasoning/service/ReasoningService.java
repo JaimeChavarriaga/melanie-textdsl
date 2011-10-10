@@ -31,11 +31,16 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.menus.CommandContributionItem;
 import org.eclipse.ui.menus.CommandContributionItemParameter;
 
+import de.uni_mannheim.informatik.swt.models.plm.PLM.BinaryGeneralization;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Classification;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Generalization;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.MultipleGeneralization;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.MultipleSpecialization;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.CompositeCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultFactory;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultModel;
@@ -225,7 +230,7 @@ public class ReasoningService implements IReasoningService {
 				&& modelElements[0] instanceof Classification){
 			
 			//***************************************************
-			// Multiplicity conforms command
+			// Classification consistency command
 			//***************************************************
 			CommandContributionItemParameter param = 
 					new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), ClassificationConsistencyCommand.ID + ".menuEntry", ClassificationConsistencyCommand.ID, CommandContributionItem.STYLE_PUSH);
@@ -234,6 +239,46 @@ public class ReasoningService implements IReasoningService {
 			commandParamametersMap = new HashMap<String, Object>();
 			
 			commandParamametersMap.put("classification",  modelElements[0]);
+			
+			param.parameters = commandParamametersMap;
+			
+			items.add(new CommandContributionItem(param));
+		}
+		
+		//We have a generalization selected
+		if (modelElements.length == 1 
+				&& modelElements[0] instanceof Generalization){
+		
+			//***************************************************
+			// Generalization consistency command
+			//***************************************************
+			CommandContributionItemParameter param = 
+					new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), GeneralizationConsistencyCommand.ID + ".menuEntry", GeneralizationConsistencyCommand.ID, CommandContributionItem.STYLE_PUSH);
+			param.label = getCommandName(GeneralizationConsistencyCommand.ID);
+			
+			commandParamametersMap = new HashMap<String, Object>();
+			
+			commandParamametersMap.put("generalization",  modelElements[0]);
+			
+			param.parameters = commandParamametersMap;
+			
+			items.add(new CommandContributionItem(param));
+		}
+		
+		//We have an ontology selected
+		if (modelElements.length == 1 
+				&& modelElements[0] instanceof Ontology){
+		
+			//***************************************************
+			// Ontology consistency command
+			//***************************************************
+			CommandContributionItemParameter param = 
+					new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), OntologyConsistencyCommand.ID + ".menuEntry", OntologyConsistencyCommand.ID, CommandContributionItem.STYLE_PUSH);
+			param.label = getCommandName(OntologyConsistencyCommand.ID);
+			
+			commandParamametersMap = new HashMap<String, Object>();
+			
+			commandParamametersMap.put("ontology",  modelElements[0]);
 			
 			param.parameters = commandParamametersMap;
 			
@@ -253,7 +298,7 @@ public class ReasoningService implements IReasoningService {
 	private String getCommandName(String id){
 		
 		//Initialize the visualization service
-		IConfigurationElement[] configurationElements = Platform.getExtensionRegistry().getExtension("de.uni_mannheim.informatik.swt.plm.refactoring.service.commands").getConfigurationElements();
+		IConfigurationElement[] configurationElements = Platform.getExtensionRegistry().getExtension("de.uni_mannheim.informatik.swt.plm.reasoning.service.commands").getConfigurationElements();
 		
 			for (IConfigurationElement ce : configurationElements)
 				if (ce.getAttribute("id").equalsIgnoreCase(id))

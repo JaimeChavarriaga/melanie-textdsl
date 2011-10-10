@@ -19,7 +19,6 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Classification;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Generalization;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
@@ -32,7 +31,6 @@ import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.ReasoningService;
 import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService;
 
-//TODO: Which kind of consistency? Ontology or model?
 public class GeneralizationConsistencyCommand extends AbstractHandler {
 
 	public static final String ID = "de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.generalizationconsistencycommand";
@@ -45,7 +43,7 @@ public class GeneralizationConsistencyCommand extends AbstractHandler {
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		ReasoningResultModel resultModel = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();
-		Element element = (Element)event.getParameters().get("generalization");
+		Element element = (Element)event.getObjectParameterForExecution("generalization");
 		CompositeCheck check = compute(element);
 		resultModel.getCheck().add(check);
 		reasoner.getReasoningHistory().add(resultModel);
