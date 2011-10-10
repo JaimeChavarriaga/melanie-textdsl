@@ -77,12 +77,15 @@ public class ExecuteModelTests implements IObjectActionDelegate {
 					Attribute instance = (Attribute) selectedElements.get(1);
 					
 					System.out.println("" + instance + ".conforms("+type+")" + reasoner.run(IReasoningService.FEATURE_CONFORMS, new Object[]{type, instance}));
-				} else 	if (e instanceof Generalization || e instanceof Classification) {
-						System.out.println("Logical Element Consistency " + reasoner.run(IReasoningService.IS_CONSISTENT, new Object[]{e}));
-				} else if(e instanceof Model) {
+				} else if (e instanceof Generalization) {
+						System.out.println("Logical Element Consistency " + reasoner.run(IReasoningService.GENERALIZATION_CONSISTENCY, new Object[]{e}));
+				} else if (e instanceof Classification){
+					System.out.println("Logical Element Consistency " + reasoner.run(IReasoningService.CLASSIFICATION_CONSISTENCY, new Object[]{e}));
+				}
+				else if(e instanceof Model) {
 					System.out.println("Model Consistent Classification " + reasoner.run(IReasoningService.IS_CONSISTENTLY_CLASSIFIED, new Object[]{e}));
 				} else if (e instanceof Ontology) {
-					System.out.println("Ontology Consistency " + reasoner.run(IReasoningService.IS_CONSISTENT, new Object[]{e}));
+					System.out.println("Ontology Consistency " + reasoner.run(IReasoningService.ONTOLOGY_CONSISTENCY, new Object[]{e}));
 				}
 			}
 		} catch (CoreException e) {

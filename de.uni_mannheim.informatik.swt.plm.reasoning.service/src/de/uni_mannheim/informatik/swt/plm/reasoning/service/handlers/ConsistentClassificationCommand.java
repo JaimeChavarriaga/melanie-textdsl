@@ -69,7 +69,7 @@ public class ConsistentClassificationCommand extends AbstractHandler {
 				aClassificationCheck.setExpression(inst.getName() + " is not expressed.");
 				continue;
 			}
-			CompositeCheck actualCheck = (new ConsistencyCommand()).compute(inst);
+			CompositeCheck actualCheck = (new ClassificationConsistencyCommand()).compute(inst);
 			aClassificationCheck.getCheck().add(actualCheck);
 			aClassificationCheck.setResult(actualCheck.isResult());
 			if (!aClassificationCheck.isResult()) {
@@ -85,7 +85,7 @@ public class ConsistentClassificationCommand extends AbstractHandler {
 			CompositeCheck aGenerCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck(model, model, generalizationCheck); 
 			aGenerCheck.setName(gener.getName());
 			aGenerCheck.setResult(true);
-			CompositeCheck actualCheck = (new ConsistencyCommand()).compute(gener);
+			CompositeCheck actualCheck = (new GeneralizationConsistencyCommand()).compute(gener);
 			aGenerCheck.getCheck().add(actualCheck);
 			if (!actualCheck.isResult()) {
 				aGenerCheck.setResult(false);
@@ -96,7 +96,4 @@ public class ConsistentClassificationCommand extends AbstractHandler {
 		}
 		return check;
 	}
-
-	
-	
 }

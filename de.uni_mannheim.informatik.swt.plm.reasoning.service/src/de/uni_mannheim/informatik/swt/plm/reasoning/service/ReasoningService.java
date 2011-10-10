@@ -38,9 +38,10 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.CompositeCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultFactory;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultModel;
-import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.ConsistencyCommand;
+import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.ClassificationConsistencyCommand;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.ConsistentClassificationCommand;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.FeatureConformsCommand;
+import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.GeneralizationConsistencyCommand;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.HasAdditionalPropertiesCommand;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.HyponymCommand;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.InstanceCommand;
@@ -49,6 +50,7 @@ import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.IsonymComma
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.LocalConformsCommand;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.MultiplicityConformsCommand;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.NeighbourhoodConformsCommand;
+import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.OntologyConsistencyCommand;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.PropertyConformsCommand;
 import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService;
 
@@ -429,10 +431,30 @@ public class ReasoningService implements IReasoningService {
 			} catch (ExecutionException e) {
 				e.printStackTrace();
 			}
-		} else if (commandID == ReasoningService.IS_CONSISTENT) {
+		} else if (commandID == ReasoningService.CLASSIFICATION_CONSISTENCY) {
 			Map<String, Object> params = new HashMap<String, Object>();
 			params.put("element", parameters[0]);
-			ConsistencyCommand command = new ConsistencyCommand();
+			ClassificationConsistencyCommand command = new ClassificationConsistencyCommand();
+			ExecutionEvent event = new ExecutionEvent(null, params, this, this);
+			try {
+				result = (Boolean) command.execute(event);
+			} catch (ExecutionException e) {
+				e.printStackTrace();
+			} 
+		} else if (commandID == ReasoningService.GENERALIZATION_CONSISTENCY) {
+			Map<String, Object> params = new HashMap<String, Object>();
+			params.put("element", parameters[0]);
+			GeneralizationConsistencyCommand command = new GeneralizationConsistencyCommand();
+			ExecutionEvent event = new ExecutionEvent(null, params, this, this);
+			try {
+				result = (Boolean) command.execute(event);
+			} catch (ExecutionException e) {
+				e.printStackTrace();
+			} 
+		} else if (commandID == ReasoningService.ONTOLOGY_CONSISTENCY) {
+			Map<String, Object> params = new HashMap<String, Object>();
+			params.put("element", parameters[0]);
+			OntologyConsistencyCommand command = new OntologyConsistencyCommand();
 			ExecutionEvent event = new ExecutionEvent(null, params, this, this);
 			try {
 				result = (Boolean) command.execute(event);

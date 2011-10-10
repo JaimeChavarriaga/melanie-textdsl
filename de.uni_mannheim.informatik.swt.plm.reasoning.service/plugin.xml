@@ -29,9 +29,19 @@
             name="Is expressed instance of excluded">
       </command>
       <command
-            defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.ConsistencyCommand"
-            id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.consistencycommand"
-            name="Consistency">
+            defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.ClassificationConsistencyCommand"
+            id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.classificationconsistencycommand"
+            name="Classification Consistency">
+      </command>
+      <command
+            defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.GeneralizationConsistencyCommand"
+            id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.generalizationconsistencycommand"
+            name="Generalization Consistency">
+      </command>
+      <command
+            defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.OntologyConsistencyCommand"
+            id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.ontologyconsistencycommand"
+            name="Ontology Consistency">
       </command>
       <command
             defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.ConsistentClassificationCommand"
