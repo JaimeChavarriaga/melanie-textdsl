@@ -11,7 +11,6 @@
 package de.uni_mannheim.informatik.swt.plm.workbench.interfaces;
 
 import java.util.List;
-import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.ContributionItem;
@@ -231,7 +230,22 @@ public interface IReasoningService {
 	/**
 	 * param[0] = Element - the element to be checked for consistency. Valid are Ontology, Generalization and Classification 
 	 */
-	public static final String IS_CONSISTENT = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.isconsistent";
+	//public static final String CONSISTENCY = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.consistency";
+	
+	/**
+	 * param[0] = Ontology - the element to be checked for consistency. 
+	 */
+	public static final String ONTOLOGY_CONSISTENCY = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.ontologyconsistency";
+	
+	/**
+	 * param[0] = Generalization - the element to be checked for consistency. 
+	 */
+	public static final String GENERALIZATION_CONSISTENCY = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.generalizationconsistency";
+	
+	/**
+	 * param[0] = Classification - the element to be checked for consistency. 
+	 */
+	public static final String CLASSIFICATION_CONSISTENCY = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.classificationconsistency";
 	
 	/**
 	 * param[0] = Clabject - the clabject to be checked for potency completeness 
