@@ -7,6 +7,23 @@
             defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.LocalConformsCommand"
             id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.localconformscommand"
             name="Local conforms">
+         <commandParameter
+               id="type"
+               name="type"
+               optional="true"
+               typeId="de.uni_mannheim.informatik.swt.plm.reasoning.service.eobjectcommandparametertype">
+         </commandParameter>
+         <commandParameter
+               id="instance"
+               name="instance"
+               optional="true"
+               typeId="de.uni_mannheim.informatik.swt.plm.reasoning.service.eobjectcommandparametertype">
+         </commandParameter>
+         <commandParameter
+               id="forceClabject"
+               name="Force Clabject"
+               optional="true">
+         </commandParameter>
       </command>
       <command
             defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.FeatureConformsCommand"
@@ -27,6 +44,18 @@
             defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.IsExpressedInstanceOfExcludedCommand"
             id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.isexpressedinstanceofexcludedconformscommand"
             name="Is expressed instance of excluded">
+         <commandParameter
+               id="type"
+               name="type"
+               optional="true"
+               typeId="de.uni_mannheim.informatik.swt.plm.reasoning.service.eobjectcommandparametertype">
+         </commandParameter>
+         <commandParameter
+               id="instance"
+               name="instance"
+               optional="true"
+               typeId="de.uni_mannheim.informatik.swt.plm.reasoning.service.eobjectcommandparametertype">
+         </commandParameter>
       </command>
       <command
             defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.ClassificationConsistencyCommand"
@@ -52,27 +81,91 @@
             defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.HyponymCommand"
             id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.hyponymcommand"
             name="Hyponym">
+         <commandParameter
+               id="type"
+               name="type"
+               optional="true"
+               typeId="de.uni_mannheim.informatik.swt.plm.reasoning.service.eobjectcommandparametertype">
+         </commandParameter>
+         <commandParameter
+               id="instance"
+               name="instance"
+               optional="true"
+               typeId="de.uni_mannheim.informatik.swt.plm.reasoning.service.eobjectcommandparametertype">
+         </commandParameter>
       </command>
       <command
             defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.InstanceCommand"
             id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.instancecommand"
             name="Instance">
+         <commandParameter
+               id="type"
+               name="type"
+               optional="true"
+               typeId="de.uni_mannheim.informatik.swt.plm.reasoning.service.eobjectcommandparametertype">
+         </commandParameter>
+         <commandParameter
+               id="instance"
+               name="instance"
+               optional="true"
+               typeId="de.uni_mannheim.informatik.swt.plm.reasoning.service.eobjectcommandparametertype">
+         </commandParameter>
       </command>
       <command
             defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.IsonymCommand"
             id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.isonymcommand"
             name="Isonym">
+         <commandParameter
+               id="type"
+               name="type"
+               optional="true"
+               typeId="de.uni_mannheim.informatik.swt.plm.reasoning.service.eobjectcommandparametertype">
+         </commandParameter>
+         <commandParameter
+               id="instance"
+               name="instance"
+               optional="true"
+               typeId="de.uni_mannheim.informatik.swt.plm.reasoning.service.eobjectcommandparametertype">
+         </commandParameter>
       </command>
       <command
             defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.NeighbourhoodConformsCommand"
             id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.neighbourhoodconformscommand"
             name="Neighbourhood conforms">
+         <commandParameter
+               id="type"
+               name="type"
+               optional="true"
+               typeId="de.uni_mannheim.informatik.swt.plm.reasoning.service.eobjectcommandparametertype">
+         </commandParameter>
+         <commandParameter
+               id="instance"
+               name="instance"
+               optional="true"
+               typeId="de.uni_mannheim.informatik.swt.plm.reasoning.service.eobjectcommandparametertype">
+         </commandParameter>
       </command>
       <command
             defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.PropertyConformsCommand"
             id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.propertyconformscommand"
             name="Property conforms">
+         <commandParameter
+               id="type"
+               name="type"
+               optional="true"
+               typeId="de.uni_mannheim.informatik.swt.plm.reasoning.service.eobjectcommandparametertype">
+         </commandParameter>
+         <commandParameter
+               id="instance"
+               name="instance"
+               optional="true"
+               typeId="de.uni_mannheim.informatik.swt.plm.reasoning.service.eobjectcommandparametertype">
+         </commandParameter>
       </command>
+      <commandParameterType
+            converter="de.uni_mannheim.informatik.swt.plm.reasoning.service.commandparameterconverter.EObjectCommandParameterConverter"
+            id="de.uni_mannheim.informatik.swt.plm.reasoning.service.eobjectcommandparametertype">
+      </commandParameterType>
    </extension>
    <extension
          point="de.uni_mannheim.informatik.swt.reasoning.service">

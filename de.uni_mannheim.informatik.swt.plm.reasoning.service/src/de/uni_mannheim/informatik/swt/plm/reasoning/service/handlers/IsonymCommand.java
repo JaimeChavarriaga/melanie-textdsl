@@ -31,8 +31,8 @@ public class IsonymCommand extends AbstractHandler {
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		Clabject type = (Clabject)event.getParameters().get("type");
-		Clabject instance = (Clabject)event.getParameters().get("instance");
+		Clabject type = (Clabject)event.getObjectParameterForExecution("type");
+		Clabject instance = (Clabject)event.getObjectParameterForExecution("instance");
 		ReasoningResultModel resultModel = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();
 		CompositeCheck check = compute(type, instance);
 		resultModel.getCheck().add(check);

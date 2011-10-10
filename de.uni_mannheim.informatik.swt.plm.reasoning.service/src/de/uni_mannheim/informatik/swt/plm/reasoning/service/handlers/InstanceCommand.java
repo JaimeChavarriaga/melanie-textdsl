@@ -24,13 +24,12 @@ import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService
 public class InstanceCommand extends AbstractHandler {
 
 	public static final String ID = "de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.instancecommand";
-	
 	IReasoningService reasoner = new ReasoningService().Instance();
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		Clabject type = (Clabject)event.getParameters().get("type");
-		Clabject instance = (Clabject)event.getParameters().get("instance");
+		Clabject type = (Clabject)event.getObjectParameterForExecution("type");
+		Clabject instance = (Clabject)event.getObjectParameterForExecution("instance");
 		ReasoningResultModel resultModel = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();
 		CompositeCheck check = compute(type, instance);
 		resultModel.getCheck().add(check);

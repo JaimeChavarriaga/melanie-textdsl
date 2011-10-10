@@ -23,6 +23,7 @@ import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.LevelComparison;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.LocalConformanceCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultFactory;
+import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.RoleNameLocalConformanceCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.TypeFeatureCheck;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.ReasoningService;
@@ -40,10 +41,16 @@ public class LocalConformsCommand extends AbstractHandler {
 	 */
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		Clabject type = (Clabject)event.getParameters().get("type");
-		Clabject instance = (Clabject)event.getParameters().get("instance");
-		forceClabject = (Boolean)event.getParameters().get("forceClabject");
-		return localConforms(type, instance).isResult();
+		
+		ReasoningResultModel resultModel = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();
+		Clabject type = (Clabject)event.getObjectParameterForExecution("type");
+		Clabject instance = (Clabject)event.getObjectParameterForExecution("instance");
+		forceClabject = ((String)event.getParameters().get("forceClabject")).equals("false?") ? false:true;
+		
+		CompositeCheck check = compute(type, instance);
+		resultModel.getCheck().add(check);
+		reasoner.getReasoningHistory().add(resultModel);
+		return check.isResult();
 	}
 	
 	protected CompositeCheck compute(Clabject type, Clabject instance) {

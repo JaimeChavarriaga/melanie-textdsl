@@ -20,13 +20,13 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Entity;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.CompositeCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ConnectionsLocalConformanceCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultFactory;
+import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.RoleNameLocalConformanceCheck;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.ReasoningService;
 import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService;
 
 public class NeighbourhoodConformsCommand extends AbstractHandler {
 
-	//TODO: Register as command and fill in ID here
 	public static final String ID = "de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.neighbourhoodconformscommand";
 	
 	IReasoningService reasoner = new ReasoningService().Instance();
@@ -36,9 +36,15 @@ public class NeighbourhoodConformsCommand extends AbstractHandler {
 	 */
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		Clabject type = (Clabject)event.getParameters().get("type");
-		Clabject instance = (Clabject)event.getParameters().get("instance");
-		return neighbourhoodConforms(type, instance);
+		Clabject type = (Clabject)event.getObjectParameterForExecution("type");
+		Clabject instance = (Clabject)event.getObjectParameterForExecution("instance");
+		
+		ReasoningResultModel resultModel = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();
+		CompositeCheck check = compute(type, instance);
+		resultModel.getCheck().add(check);
+		reasoner.getReasoningHistory().add(resultModel);
+		
+		return check.isResult();
 	}
 	
 	protected CompositeCheck compute(Clabject type, Clabject instance) {
