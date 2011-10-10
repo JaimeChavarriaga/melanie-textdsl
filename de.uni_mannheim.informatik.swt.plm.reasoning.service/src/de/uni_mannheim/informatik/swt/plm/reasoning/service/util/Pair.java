@@ -1,5 +1,6 @@
 package de.uni_mannheim.informatik.swt.plm.reasoning.service.util;
 
+//TODO: Add copyright statement
 public class Pair<A, B> {
     private A first;
     private B second;

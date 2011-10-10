@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+//TODO: Add copyright statement
 public class ReasoningServiceUtil {
 	
 	public static <T> Collection<T> filter(Collection<T> target, Predicate<T> predicate) {
