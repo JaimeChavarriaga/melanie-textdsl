@@ -27,6 +27,7 @@ import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MultiplicityCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MultiplicityRoleNameCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultFactory;
+import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.ReasoningService;
 import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService;
 
@@ -41,8 +42,12 @@ public class MultiplicityConformsCommand extends AbstractHandler {
 	 */
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		Connection connection = (Connection)event.getParameters().get("connection");
-		return multiplicityConforms(connection);
+		Connection connection = (Connection)event.getObjectParameterForExecution("connection");
+		ReasoningResultModel resultModel = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();
+		CompositeCheck check = compute(connection);
+		resultModel.getCheck().add(check);
+		reasoner.getReasoningHistory().add(resultModel);
+		return check.isResult();
 	}
 	
 	protected CompositeCheck compute(Connection type) {

@@ -38,7 +38,7 @@ public class GeneralizationConsistencyCommand extends AbstractHandler {
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		ReasoningResultModel resultModel = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();
-		Element element = (Element)event.getParameters().get("element");
+		Element element = (Element)event.getParameters().get("generalization");
 		CompositeCheck check = compute(element);
 		resultModel.getCheck().add(check);
 		reasoner.getReasoningHistory().add(resultModel);

@@ -32,6 +32,7 @@ import org.eclipse.ui.menus.CommandContributionItem;
 import org.eclipse.ui.menus.CommandContributionItemParameter;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Classification;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
@@ -60,6 +61,8 @@ public class ReasoningService implements IReasoningService {
 	public List<ContributionItem> getAvailableReasoningCommands(EObject[] modelElements) {
 		List<ContributionItem> items = new LinkedList<ContributionItem>();
 		
+		Map<String, Object> commandParamametersMap;
+		
 		//We have two clabjects selected
 		if (modelElements.length == 2 
 				&& modelElements[0] instanceof Clabject
@@ -72,7 +75,7 @@ public class ReasoningService implements IReasoningService {
 					new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), LocalConformsCommand.ID + ".menuEntry", LocalConformsCommand.ID, CommandContributionItem.STYLE_PUSH);
 			param.label = getCommandName(LocalConformsCommand.ID);
 			
-			Map<String, Object> commandParamametersMap = new HashMap<String, Object>();
+			commandParamametersMap = new HashMap<String, Object>();
 			
 			commandParamametersMap.put("type",  modelElements[0]);
 			commandParamametersMap.put("instance", modelElements[1]);
@@ -179,10 +182,9 @@ public class ReasoningService implements IReasoningService {
 			items.add(new CommandContributionItem(param));
 		}
 		
-		//We have two connections selected
-		if (modelElements.length == 2 
-				&& modelElements[0] instanceof Connection
-				&& modelElements[1] instanceof Connection){
+		//We have a connection selected
+		if (modelElements.length == 1 
+				&& modelElements[0] instanceof Connection){
 			
 			//***************************************************
 			// Multiplicity conforms command
@@ -191,20 +193,50 @@ public class ReasoningService implements IReasoningService {
 					new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), MultiplicityConformsCommand.ID + ".menuEntry", MultiplicityConformsCommand.ID, CommandContributionItem.STYLE_PUSH);
 			param.label = getCommandName(MultiplicityConformsCommand.ID);
 			
-//			Map<String, Object> commandParamametersMap = new HashMap<String, Object>();
-//			
-//			commandParamametersMap.put("type",  modelElements[0]);
-//			commandParamametersMap.put("instance", modelElements[1]);
-//			
-//			param.parameters = commandParamametersMap;
+			commandParamametersMap = new HashMap<String, Object>();
+			
+			commandParamametersMap.put("connection",  modelElements[0]);
+			
+			param.parameters = commandParamametersMap;
 			
 			items.add(new CommandContributionItem(param));
 		}
 		
-		if (modelElements[0] instanceof Feature)
+		//We have two features selected
+		if (modelElements.length == 2
+				&& modelElements[0] instanceof Feature
+				&& modelElements[1] instanceof Feature)
 		{
 			CommandContributionItemParameter param = new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), FeatureConformsCommand.ID + ".menuEntry", FeatureConformsCommand.ID, CommandContributionItem.STYLE_PUSH);
 			param.label = getCommandName(FeatureConformsCommand.ID);
+			
+			commandParamametersMap = new HashMap<String, Object>();
+			
+			commandParamametersMap.put("type",  modelElements[0]);
+			commandParamametersMap.put("instance", modelElements[1]);
+			
+			param.parameters = commandParamametersMap;
+			
+			items.add(new CommandContributionItem(param));
+		}
+		
+		//We have a classification selected
+		if (modelElements.length == 1 
+				&& modelElements[0] instanceof Classification){
+			
+			//***************************************************
+			// Multiplicity conforms command
+			//***************************************************
+			CommandContributionItemParameter param = 
+					new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), ClassificationConsistencyCommand.ID + ".menuEntry", ClassificationConsistencyCommand.ID, CommandContributionItem.STYLE_PUSH);
+			param.label = getCommandName(ClassificationConsistencyCommand.ID);
+			
+			commandParamametersMap = new HashMap<String, Object>();
+			
+			commandParamametersMap.put("classification",  modelElements[0]);
+			
+			param.parameters = commandParamametersMap;
+			
 			items.add(new CommandContributionItem(param));
 		}
 		

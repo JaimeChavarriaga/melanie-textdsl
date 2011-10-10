@@ -29,11 +29,29 @@
             defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.FeatureConformsCommand"
             id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.featureconformscommand"
             name="Feature conforms">
+         <commandParameter
+               id="type"
+               name="type"
+               optional="true"
+               typeId="de.uni_mannheim.informatik.swt.plm.reasoning.service.eobjectcommandparametertype">
+         </commandParameter>
+         <commandParameter
+               id="instance"
+               name="instance"
+               optional="true"
+               typeId="de.uni_mannheim.informatik.swt.plm.reasoning.service.eobjectcommandparametertype">
+         </commandParameter>
       </command>
       <command
             defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.MultiplicityConformsCommand"
             id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.multiplicityconformscommand"
             name="Multiplicity conforms">
+         <commandParameter
+               id="connection"
+               name="connection"
+               optional="true"
+               typeId="de.uni_mannheim.informatik.swt.plm.reasoning.service.eobjectcommandparametertype">
+         </commandParameter>
       </command>
       <command
             defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.IsExpressedInstanceOfExcludedCommand"
@@ -56,6 +74,12 @@
             defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.ClassificationConsistencyCommand"
             id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.classificationconsistencycommand"
             name="Classification Consistency">
+         <commandParameter
+               id="classification"
+               name="classification"
+               optional="true"
+               typeId="de.uni_mannheim.informatik.swt.plm.reasoning.service.eobjectcommandparametertype">
+         </commandParameter>
       </command>
       <command
             defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.GeneralizationConsistencyCommand"

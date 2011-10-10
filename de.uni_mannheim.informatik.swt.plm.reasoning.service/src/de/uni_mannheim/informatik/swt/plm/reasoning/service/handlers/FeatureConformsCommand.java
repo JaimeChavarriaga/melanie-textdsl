@@ -24,6 +24,7 @@ import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MutabilityComparison;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.NameComparison;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultFactory;
+import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ValueComparison;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.ReasoningService;
 import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService;
@@ -36,9 +37,13 @@ public class FeatureConformsCommand extends AbstractHandler {
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		Feature type = (Feature)event.getParameters().get("type");
-		Feature instance = (Feature)event.getParameters().get("instance");
-		return featureConforms(type, instance);
+		Feature type = (Feature)event.getObjectParameterForExecution("type");
+		Feature instance = (Feature)event.getObjectParameterForExecution("instance");
+		ReasoningResultModel resultModel = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();
+		CompositeCheck check = compute(type, instance);
+		resultModel.getCheck().add(check);
+		reasoner.getReasoningHistory().add(resultModel);
+		return check.isResult();
 	}
 	
 	protected CompositeCheck compute(Feature current, Feature possible) {
