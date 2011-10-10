@@ -163,7 +163,7 @@ public class ReasoningService implements IReasoningService {
 			items.add(new CommandContributionItem(param));
 			
 			//***************************************************
-			// Properyty conforms command
+			// Property conforms command
 			//***************************************************
 			param = 
 					new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), PropertyConformsCommand.ID + ".menuEntry", PropertyConformsCommand.ID, CommandContributionItem.STYLE_PUSH);
