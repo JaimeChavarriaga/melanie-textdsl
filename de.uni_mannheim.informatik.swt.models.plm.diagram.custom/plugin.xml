@@ -16,27 +16,7 @@
       <objectContribution
             adaptable="false"
             id="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.togglebinarygeneralizationeditpart"
-            objectClass="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.BinaryGeneralizationEditPart">
-         <action
-               class="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.ToggleNodeAction"
-               id="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.toggledomainconnectionationaction"
-               label="Toggle">
-         </action>
-      </objectContribution>
-       <objectContribution
-            adaptable="false"
-            id="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.togglemultiplegeneralizationeditpart"
-            objectClass="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.MultipleGeneralizationEditPart">
-         <action
-               class="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.ToggleNodeAction"
-               id="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.toggledomainconnectionationaction"
-               label="Toggle">
-         </action>
-      </objectContribution>
-       <objectContribution
-            adaptable="false"
-            id="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.togglemultiplespecializationeditpart"
-            objectClass="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.MultipleSpecializationEditPart">
+            objectClass="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.GeneralizationEditPart">
          <action
                class="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.ToggleNodeAction"
                id="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.toggledomainconnectionationaction"
