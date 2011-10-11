@@ -1,0 +1,52 @@
+/*******************************************************************************
+ * Copyright (c) 2011 University of Mannheim: Chair for Software Engineering
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Ralph Gerbig - initial API and implementation and initial documentation
+ *******************************************************************************/
+
+/*
+ * Used for checking wheter a DSL entity can be added or not
+ */
+
+«AROUND canExecuteMethod FOR gmfgen::GenNode-»
+«IF self.createCommandClassName.startsWith('EntityCreate')»
+	«EXPAND xpt::Common::generatedMemberComment»
+	public boolean canExecute() {
+		de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor editor = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor)org.eclipse.ui.PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+		String typeName = editor.getPalette().getActiveTool().getLabel();
+		String typeToolId = editor.getPalette().getActiveTool().getId();
+		
+		//check if we have a dsl element -> if we have no dsl element we can create
+		if (!typeToolId.startsWith("dsl."))
+			return true;
+		
+		de.uni_mannheim.informatik.swt.models.plm.PLM.Model m = (de.uni_mannheim.informatik.swt.models.plm.PLM.Model)getElementToEdit();
+		
+		
+		de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology ont = (de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology)m.eContainer();
+		
+		//We cannot create an instance on the highest ontological layer
+		if (ont.getContent().indexOf(m) < 1)
+			return false;
+		
+		de.uni_mannheim.informatik.swt.models.plm.PLM.Model typeModel = ont.getContent().get(ont.getContent().indexOf(m) - 1);
+		
+		for (org.eclipse.emf.ecore.EObject obj : typeModel.getContent())
+			//We found the type -> allowed to create an instance here
+			if (obj instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Entity 
+					&& ((de.uni_mannheim.informatik.swt.models.plm.PLM.Entity)obj).getName() != null
+					&& ((de.uni_mannheim.informatik.swt.models.plm.PLM.Entity)obj).getName().equals(typeName))
+				return true;
+		
+		//We found no type -> not allowed to create an instance here
+		return false;
+	}
+«ELSE»
+	«targetDef.proceed()»
+«ENDIF»
+«ENDAROUND»
