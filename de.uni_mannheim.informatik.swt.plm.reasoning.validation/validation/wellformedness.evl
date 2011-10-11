@@ -243,8 +243,24 @@ context Connection {
 }
 
 context Generalization {
-		 constraint superAndSubtypesGreaterOne {
-				check : self.subtype->size() > 1 and self.supertype->size() > 1 implies self.disjoint = null and self.complete = null and self.intersection = null
-				message : 'Test'
-			}
+		 constraint superAndSubtypesGreaterOne{
+			check : (self.subtype->size() > 1 and self.supertype->size() > 1) implies (self.disjoint.isUndefined() and self.complete.isUndefined() and self.intersection.isUndefined())
+			message : 'Disjoint, complete and intersection must be null if more than one super AND sub types exist.'
+		}
+		constraint disjointCompleteMoreThanOneSubType{
+			check : (self.disjoint.isDefined() or self.complete.isDefined()) implies (self.supertype->size()  = 1 and self.subtype->size() > 1)
+			message: 'MORE than ONE sub AND ONE super type needed if disjoint or complete is set.' 
+		}
+		constraint intersectionMoreThanOneSuperType{
+			check : (self.intersection.isDefined()) implies (self.supertype->size()  > 1 and self.subtype->size() = 1)
+			message: 'MORE than ONE super AND ONE sub type needed if intersection is set.' 
+		}
+		constraint onlyDisjointCompleteSet{
+			check: (self.disjoint.isDefined() or self.complete.isDefined()) implies (self.intersection.isUndefined())
+			message: 'Complete/disjoint and intersection cannot be set at the same time.'
+		}
+		constraint onlyDisjointCompleteSet{
+			check: (self.isDefined()) implies (self.disjoint.isUndefined() or self.complete.isUndefined())
+			message: 'Complete/disjoint and intersection cannot be set at the same time.'
+		}
 	}
