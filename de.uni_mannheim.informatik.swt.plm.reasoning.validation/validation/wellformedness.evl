@@ -241,3 +241,10 @@ context Connection {
 		message: "A not inherited connection does need at least two role names."
 	}
 }
+
+context Generalization {
+		 constraint superAndSubtypesGreaterOne {
+				check : self.subtype->size() > 1 and self.supertype->size() > 1 implies self.disjoint = null and self.complete = null and self.intersection = null
+				message : 'Test'
+			}
+	}
