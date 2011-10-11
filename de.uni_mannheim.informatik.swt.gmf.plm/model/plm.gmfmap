@@ -749,7 +749,7 @@
                 href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/content"/>
             <ownedChild>
               <domainMetaElement
-                  href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//MultipleGeneralization"/>
+                  href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Generalization"/>
               <domainInitializer
                   xsi:type="gmfmap:FeatureSeqInitializer">
                 <initializers
@@ -780,206 +780,29 @@
               <labelMappings
                   xsi:type="gmfmap:FeatureLabelMapping">
                 <diagramLabel
-                    href="plm.gmfgraph#MultipleGeneralizationName"/>
+                    href="plm.gmfgraph#GeneralizationName"/>
                 <features
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/name"/>
               </labelMappings>
               <labelMappings
                   xsi:type="gmfmap:FeatureLabelMapping">
                 <diagramLabel
-                    href="plm.gmfgraph#MultipleGeneralizationNameExternal"/>
+                    href="plm.gmfgraph#GeneralizationNameExternal"/>
                 <features
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/name"/>
               </labelMappings>
               <labelMappings
                   xsi:type="gmfmap:ExpressionLabelMapping">
                 <diagramLabel
-                    href="plm.gmfgraph#MultipleGeneralizationSubtitle"/>
+                    href="plm.gmfgraph#GeneralizationSubtitle"/>
                 <viewExpression
                     body="let intersection:String = &#xD;&#xA;&#x9;if (self.intersection) then &#xD;&#xA;&#x9;&#x9;'intersection;' &#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'' &#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (intersection &lt;> '') then&#xD;&#xA;&#x9;'{'.concat(intersection).concat('}')&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
               </labelMappings>
               <tool
                   xsi:type="gmftool:CreationTool"
-                  href="plm.gmftool#//@palette/@tools.4/@tools.2"/>
-              <diagramNode
-                  href="plm.gmfgraph#MultipleGeneralisation"/>
-              <children>
-                <containmentFeature
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/visualizer"/>
-                <ownedChild>
-                  <domainMetaElement
-                      href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Visualizer"/>
-                  <labelMappings
-                      xsi:type="gmfmap:ExpressionLabelMapping"
-                      readOnly="true">
-                    <diagramLabel
-                        href="plm.gmfgraph#VisualizerAttributeValueLabel"/>
-                    <viewExpression
-                        xsi:type="gmfmap:Constraint"
-                        body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
-                  </labelMappings>
-                  <labelMappings
-                      xsi:type="gmfmap:ExpressionLabelMapping"
-                      readOnly="true">
-                    <diagramLabel
-                        href="plm.gmfgraph#VisualizerPotencyLabel"/>
-                    <viewExpression
-                        body="let durability:String =&#xD;&#xA;&#x9; if (self.durability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.durability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;endif&#x9;&#x9;&#xD;&#xA;endif&#xD;&#xA;in&#xD;&#xA;durability"/>
-                  </labelMappings>
-                  <tool
-                      xsi:type="gmftool:CreationTool"
-                      href="plm.gmftool#//@palette/@tools.1/@tools.5"/>
-                  <diagramNode
-                      href="plm.gmfgraph#VisualizerNode"/>
-                </ownedChild>
-              </children>
-            </ownedChild>
-          </children>
-          <children
-              compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@compartments.0">
-            <containmentFeature
-                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/content"/>
-            <ownedChild>
-              <domainMetaElement
-                  href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//MultipleSpecialization"/>
-              <domainInitializer
-                  xsi:type="gmfmap:FeatureSeqInitializer">
-                <initializers
-                    xsi:type="gmfmap:ReferenceNewElementSpec">
-                  <feature
-                      xsi:type="ecore:EReference"
-                      href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/visualizer"/>
-                  <newElementInitializers>
-                    <initializers
-                        xsi:type="gmfmap:FeatureValueSpec">
-                      <feature
-                          xsi:type="ecore:EAttribute"
-                          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Visualizer/attributes"/>
-                      <value
-                          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))->append('collapsed= false')"/>
-                    </initializers>
-                    <initializers
-                        xsi:type="gmfmap:FeatureValueSpec">
-                      <feature
-                          xsi:type="ecore:EAttribute"
-                          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Visualizer/durability"/>
-                      <value
-                          body="0"/>
-                    </initializers>
-                  </newElementInitializers>
-                </initializers>
-              </domainInitializer>
-              <labelMappings
-                  xsi:type="gmfmap:FeatureLabelMapping">
-                <diagramLabel
-                    href="plm.gmfgraph#MultipleSpecializationName"/>
-                <features
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/name"/>
-              </labelMappings>
-              <labelMappings
-                  xsi:type="gmfmap:FeatureLabelMapping">
-                <diagramLabel
-                    href="plm.gmfgraph#MultipleSpecializationNameExternal"/>
-                <features
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/name"/>
-              </labelMappings>
-              <labelMappings
-                  xsi:type="gmfmap:ExpressionLabelMapping">
-                <diagramLabel
-                    href="plm.gmfgraph#MultipleSpecializationSetTheoryLabel"/>
-                <viewExpression
-                    body="let disjoint:String = &#xD;&#xA;&#x9;if (self.disjoint) then &#xD;&#xA;&#x9;&#x9;'disjoint;' &#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'' &#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let complete:String = &#xD;&#xA;&#x9;if (self.complete) then &#xD;&#xA;&#x9;&#x9;'complete;' &#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (disjoint &lt;> '' or complete &lt;> '') then&#xD;&#xA;&#x9;'{'.concat(disjoint).concat(complete ).concat('}')&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
-              </labelMappings>
-              <tool
-                  xsi:type="gmftool:CreationTool"
-                  href="plm.gmftool#//@palette/@tools.4/@tools.1"/>
-              <diagramNode
-                  href="plm.gmfgraph#MultipleSpecialisation"/>
-              <children>
-                <containmentFeature
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/visualizer"/>
-                <ownedChild>
-                  <domainMetaElement
-                      href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Visualizer"/>
-                  <labelMappings
-                      xsi:type="gmfmap:ExpressionLabelMapping"
-                      readOnly="true">
-                    <diagramLabel
-                        href="plm.gmfgraph#VisualizerAttributeValueLabel"/>
-                    <viewExpression
-                        xsi:type="gmfmap:Constraint"
-                        body="'['.concat(Sequence{1..attributes->size()}->iterate(i:Integer; str:String = '' | &#xD;&#xA;&#x9;let currentAttribute:String = &#xD;&#xA;&#x9;&#x9;attributes->at(i)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default'&#xD;&#xA;&#x9;&#x9;&#x9;and i &lt;> attributes->size()) then &#xD;&#xA;&#x9;&#x9;&#x9;str.concat(currentAttribute).concat('; ') &#xD;&#xA;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;if (currentAttribute.substring(currentAttribute.size() - 6, currentAttribute.size()) &lt;> 'default') then &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str.concat(currentAttribute) &#xD;&#xA;&#x9;&#x9;&#x9;else &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;str &#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif)&#xD;&#xA;).concat(']')"/>
-                  </labelMappings>
-                  <labelMappings
-                      xsi:type="gmfmap:ExpressionLabelMapping"
-                      readOnly="true">
-                    <diagramLabel
-                        href="plm.gmfgraph#VisualizerPotencyLabel"/>
-                    <viewExpression
-                        body="let durability:String =&#xD;&#xA;&#x9; if (self.durability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.durability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;endif&#x9;&#x9;&#xD;&#xA;endif&#xD;&#xA;in&#xD;&#xA;durability"/>
-                  </labelMappings>
-                  <tool
-                      xsi:type="gmftool:CreationTool"
-                      href="plm.gmftool#//@palette/@tools.1/@tools.5"/>
-                  <diagramNode
-                      href="plm.gmfgraph#VisualizerNode"/>
-                </ownedChild>
-              </children>
-            </ownedChild>
-          </children>
-          <children
-              compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@compartments.0">
-            <containmentFeature
-                href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Model/content"/>
-            <ownedChild>
-              <domainMetaElement
-                  href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//BinaryGeneralization"/>
-              <domainInitializer
-                  xsi:type="gmfmap:FeatureSeqInitializer">
-                <initializers
-                    xsi:type="gmfmap:ReferenceNewElementSpec">
-                  <feature
-                      xsi:type="ecore:EReference"
-                      href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/visualizer"/>
-                  <newElementInitializers>
-                    <initializers
-                        xsi:type="gmfmap:FeatureValueSpec">
-                      <feature
-                          xsi:type="ecore:EAttribute"
-                          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Visualizer/attributes"/>
-                      <value
-                          body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))->append('collapsed= false')"/>
-                    </initializers>
-                    <initializers
-                        xsi:type="gmfmap:FeatureValueSpec">
-                      <feature
-                          xsi:type="ecore:EAttribute"
-                          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Visualizer/durability"/>
-                      <value
-                          body="0"/>
-                    </initializers>
-                  </newElementInitializers>
-                </initializers>
-              </domainInitializer>
-              <labelMappings
-                  xsi:type="gmfmap:FeatureLabelMapping">
-                <diagramLabel
-                    href="plm.gmfgraph#BinaryGeneralisationName"/>
-                <features
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/name"/>
-              </labelMappings>
-              <labelMappings
-                  xsi:type="gmfmap:FeatureLabelMapping">
-                <diagramLabel
-                    href="plm.gmfgraph#BinaryGeneralizationNameExternal"/>
-                <features
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/name"/>
-              </labelMappings>
-              <tool
-                  xsi:type="gmftool:CreationTool"
                   href="plm.gmftool#//@palette/@tools.4/@tools.0"/>
               <diagramNode
-                  href="plm.gmfgraph#BinaryGeneralization"/>
+                  href="plm.gmfgraph#Generalization"/>
               <children>
                 <containmentFeature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element/visualizer"/>
@@ -1096,7 +919,7 @@
               <diagramNode
                   href="plm.gmfgraph#Entity"/>
               <children
-                  compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.8/@ownedChild/@compartments.0">
+                  compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.6/@ownedChild/@compartments.0">
                 <containmentFeature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject/feature"/>
                 <ownedChild>
@@ -1223,7 +1046,7 @@
                 </ownedChild>
               </children>
               <children
-                  compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.8/@ownedChild/@compartments.1">
+                  compartment="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.6/@ownedChild/@compartments.1">
                 <containmentFeature
                     href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject/feature"/>
                 <ownedChild>
@@ -1363,19 +1186,19 @@
                 </ownedChild>
               </children>
               <compartments
-                  children="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.8/@ownedChild/@children.0">
+                  children="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.6/@ownedChild/@children.0">
                 <compartment
                     href="plm.gmfgraph#AttributesCompartment"/>
               </compartments>
               <compartments
-                  children="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.8/@ownedChild/@children.1">
+                  children="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.6/@ownedChild/@children.1">
                 <compartment
                     href="plm.gmfgraph#MethodsCompartment"/>
               </compartments>
             </ownedChild>
           </children>
           <compartments
-              children="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.1 //@nodes.0/@ownedChild/@children.0/@ownedChild/@children.2 //@nodes.0/@ownedChild/@children.0/@ownedChild/@children.3 //@nodes.0/@ownedChild/@children.0/@ownedChild/@children.4 //@nodes.0/@ownedChild/@children.0/@ownedChild/@children.5 //@nodes.0/@ownedChild/@children.0/@ownedChild/@children.6 //@nodes.0/@ownedChild/@children.0/@ownedChild/@children.7 //@nodes.0/@ownedChild/@children.0/@ownedChild/@children.8">
+              children="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.1 //@nodes.0/@ownedChild/@children.0/@ownedChild/@children.2 //@nodes.0/@ownedChild/@children.0/@ownedChild/@children.3 //@nodes.0/@ownedChild/@children.0/@ownedChild/@children.4 //@nodes.0/@ownedChild/@children.0/@ownedChild/@children.5 //@nodes.0/@ownedChild/@children.0/@ownedChild/@children.6">
             <compartment
                 href="plm.gmfgraph#DomainElementsCompartment"/>
           </compartments>
@@ -1564,86 +1387,22 @@
   <links>
     <tool
         xsi:type="gmftool:CreationTool"
-        href="plm.gmftool#//@palette/@tools.4/@tools.3"/>
+        href="plm.gmftool#//@palette/@tools.4/@tools.1"/>
     <diagramLink
         href="plm.gmfgraph#SuperTypeConnection"/>
     <linkMetaFeature
         xsi:type="ecore:EReference"
-        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//MultipleGeneralization/supertype"/>
-    <creationConstraints>
-      <sourceEnd
-          body="self.oclIsTypeOf(MultipleGeneralization)"/>
-    </creationConstraints>
+        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Generalization/supertype"/>
   </links>
   <links>
     <tool
         xsi:type="gmftool:CreationTool"
-        href="plm.gmftool#//@palette/@tools.4/@tools.4"/>
+        href="plm.gmftool#//@palette/@tools.4/@tools.2"/>
     <diagramLink
         href="plm.gmfgraph#SubTypeConnection"/>
     <linkMetaFeature
         xsi:type="ecore:EReference"
-        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//MultipleGeneralization/subtype"/>
-    <creationConstraints>
-      <sourceEnd
-          body="self.oclIsTypeOf(MultipleGeneralization)"/>
-    </creationConstraints>
-  </links>
-  <links>
-    <tool
-        xsi:type="gmftool:CreationTool"
-        href="plm.gmftool#//@palette/@tools.4/@tools.3"/>
-    <diagramLink
-        href="plm.gmfgraph#SuperTypeConnection"/>
-    <linkMetaFeature
-        xsi:type="ecore:EReference"
-        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//MultipleSpecialization/supertype"/>
-    <creationConstraints>
-      <sourceEnd
-          body="self.oclIsTypeOf(MultipleSpecialization)"/>
-    </creationConstraints>
-  </links>
-  <links>
-    <tool
-        xsi:type="gmftool:CreationTool"
-        href="plm.gmftool#//@palette/@tools.4/@tools.4"/>
-    <diagramLink
-        href="plm.gmfgraph#SubTypeConnection"/>
-    <linkMetaFeature
-        xsi:type="ecore:EReference"
-        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//MultipleSpecialization/subtype"/>
-    <creationConstraints>
-      <sourceEnd
-          body="self.oclIsTypeOf(MultipleSpecialization)"/>
-    </creationConstraints>
-  </links>
-  <links>
-    <tool
-        xsi:type="gmftool:CreationTool"
-        href="plm.gmftool#//@palette/@tools.4/@tools.3"/>
-    <diagramLink
-        href="plm.gmfgraph#SuperTypeConnection"/>
-    <linkMetaFeature
-        xsi:type="ecore:EReference"
-        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//BinaryGeneralization/supertype"/>
-    <creationConstraints>
-      <sourceEnd
-          body="self.oclIsTypeOf(BinaryGeneralization)"/>
-    </creationConstraints>
-  </links>
-  <links>
-    <tool
-        xsi:type="gmftool:CreationTool"
-        href="plm.gmftool#//@palette/@tools.4/@tools.4"/>
-    <diagramLink
-        href="plm.gmfgraph#SubTypeConnection"/>
-    <linkMetaFeature
-        xsi:type="ecore:EReference"
-        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//BinaryGeneralization/subtype"/>
-    <creationConstraints>
-      <sourceEnd
-          body="self.oclIsTypeOf(BinaryGeneralization)"/>
-    </creationConstraints>
+        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Generalization/subtype"/>
   </links>
   <diagram>
     <diagramCanvas

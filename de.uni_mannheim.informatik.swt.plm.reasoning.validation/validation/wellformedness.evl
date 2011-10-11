@@ -218,29 +218,25 @@ context Connection {
 	
 	--We need to check that connections that are not inherited have at least two participants, lower, upper etc.
 	constraint atLeastTwoParticipants{
-		guard: MultipleGeneralization.allInstances()->forAll(g | g.subtype <> self) and MultipleSpecialization.allInstances()->forAll(g | not g.subtype->contains(self))
-				and BinaryGeneralization.allInstances()->forAll(g | g.subtype <> self)
+		guard: Generalization.allInstances()->forAll(g | not g.subtype->contains(self))
 		check: self.participant->size() > 1
 		message: "A not inherited connection does need at least two participants."
 	}
 	
 	constraint atLeastTwoLower{
-		guard: MultipleGeneralization.allInstances()->forAll(g | g.subtype <> self) and MultipleSpecialization.allInstances()->forAll(g | not g.subtype->contains(self))
-				and BinaryGeneralization.allInstances()->forAll(g | g.subtype <> self)
+		guard: Generalization.allInstances()->forAll(g | not g.subtype->contains(self))
 		check: self.lower->size() > 1
 		message: "A not inherited connection does need at least two lower values."
 	}
 	
 	constraint atLeastTwoUpper{
-		guard: MultipleGeneralization.allInstances()->forAll(g | g.subtype <> self) and MultipleSpecialization.allInstances()->forAll(g | not g.subtype->contains(self))
-				and BinaryGeneralization.allInstances()->forAll(g | g.subtype <> self)
+		guard: Generalization.allInstances()->forAll(g | not g.subtype->contains(self))
 		check: self.upper->size() > 1
 		message: "A not inherited connection does need at least two upper values."
 	}
 	
 	constraint atLeastTwoRoleNames{
-		guard: MultipleGeneralization.allInstances()->forAll(g | g.subtype <> self) and MultipleSpecialization.allInstances()->forAll(g | not g.subtype->contains(self))
-				and BinaryGeneralization.allInstances()->forAll(g | g.subtype <> self)
+		guard: Generalization.allInstances()->forAll(g | not g.subtype->contains(self))
 		check: self.roleName->size() > 1
 		message: "A not inherited connection does need at least two role names."
 	}

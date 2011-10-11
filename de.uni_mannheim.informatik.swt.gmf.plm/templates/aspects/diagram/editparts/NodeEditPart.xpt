@@ -18,9 +18,7 @@
 «AROUND additions FOR gmfgen::GenNode»
 //Gives the option to diplay a Connection/Generalization/Specialization as black rectangle
 «IF self.editPartClassName = 'ConnectionEditPart' 
-	or self.editPartClassName = 'BinaryGeneralizationEditPart' 
-	or self.editPartClassName = 'MultipleSpecializationEditPart'
-	or self.editPartClassName = 'MultipleGeneralizationEditPart'»
+	or self.editPartClassName = 'GeneralizationEditPart'»
 	
 	«EXPAND getToggleValue-»
 	«EXPAND toggle-»
@@ -37,9 +35,7 @@
 «ENDIF»
 «IF self.editPartClassName = 'EntityEditPart'
 		or self.editPartClassName = 'ConnectionEditPart'
-		or self.editPartClassName = 'BinaryGeneralizationEditPart' 
-		or self.editPartClassName = 'MultipleSpecializationEditPart'
-		or self.editPartClassName = 'MultipleGeneralizationEditPart'
+		or self.editPartClassName = 'GeneralizationEditPart'
 		or self.editPartClassName = 'ComplementEditPart'
 		or self.editPartClassName = 'EqualityEditPart'
 		or self.editPartClassName = 'InversionEditPart'»
@@ -55,9 +51,7 @@
 //**************************************************************
 «AROUND handleNotificationEvent FOR gmfgen::GenNode-»
 «IF self.editPartClassName = 'ConnectionEditPart'
-	or self.editPartClassName = 'BinaryGeneralizationEditPart' 
-	or self.editPartClassName = 'MultipleSpecializationEditPart'
-	or self.editPartClassName = 'MultipleGeneralizationEditPart'
+	or self.editPartClassName = 'GeneralizationEditPart'
 	or self.editPartClassName = 'EntityEditPart'
 	or self.editPartClassName = 'ComplementEditPart'
 	or self.editPartClassName = 'EqualityEditPart'

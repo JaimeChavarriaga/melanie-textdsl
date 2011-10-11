@@ -12,7 +12,7 @@
       <tools
           xsi:type="gmftool:CreationTool"
           title="Ontology"
-          description="Create new Ontology">
+          description="Creates a new Ontology">
         <smallIcon
             xsi:type="gmftool:BundleImage"
             path="/icons/ontology16.gif"
@@ -25,7 +25,7 @@
       <tools
           xsi:type="gmftool:CreationTool"
           title="Model"
-          description="Create new Model">
+          description="Creates a new Model">
         <smallIcon
             xsi:type="gmftool:BundleImage"
             path="/icons/model16.gif"
@@ -43,7 +43,7 @@
       <tools
           xsi:type="gmftool:CreationTool"
           title="Entity"
-          description="Create new Entity">
+          description="Creates a new Entity">
         <smallIcon
             xsi:type="gmftool:BundleImage"
             path="/icons/clabject16.gif"
@@ -56,7 +56,7 @@
       <tools
           xsi:type="gmftool:CreationTool"
           title="Connection"
-          description="Create new Connection">
+          description="Creates a new Connection">
         <smallIcon
             xsi:type="gmftool:BundleImage"
             path="/icons/connection16.gif"
@@ -69,7 +69,7 @@
       <tools
           xsi:type="gmftool:CreationTool"
           title="Connection Participant"
-          description="Create new Connection Participant">
+          description="Creates a new Connection Participant">
         <smallIcon
             xsi:type="gmftool:BundleImage"
             path="/icons/connectionParticipant16.gif"
@@ -82,7 +82,7 @@
       <tools
           xsi:type="gmftool:CreationTool"
           title="Attribute"
-          description="Create new Attribute">
+          description="Creates a new Attribute">
         <smallIcon
             xsi:type="gmftool:BundleImage"
             path="/icons/field16.gif"
@@ -95,7 +95,7 @@
       <tools
           xsi:type="gmftool:CreationTool"
           title="Method"
-          description="Create new Method">
+          description="Creates a new Method">
         <smallIcon
             xsi:type="gmftool:BundleImage"
             path="/icons/method16.gif"
@@ -127,7 +127,7 @@
       <tools
           xsi:type="gmftool:CreationTool"
           title="Classification"
-          description="Create new Classification">
+          description="Creates a new Classification">
         <smallIcon
             xsi:type="gmftool:BundleImage"
             path="/icons/classification16.gif"
@@ -146,7 +146,7 @@
       <tools
           xsi:type="gmftool:CreationTool"
           title="Complement"
-          description="Create new Complement">
+          description="Creates a new Complement">
         <smallIcon
             xsi:type="gmftool:BundleImage"
             path="/icons/setRelationship16.gif"
@@ -159,7 +159,7 @@
       <tools
           xsi:type="gmftool:CreationTool"
           title="Equal"
-          description="Create new Equal">
+          description="Creates a new Equal">
         <smallIcon
             xsi:type="gmftool:BundleImage"
             path="/icons/setRelationship16.gif"
@@ -172,7 +172,7 @@
       <tools
           xsi:type="gmftool:CreationTool"
           title="Inversion"
-          description="Create new Inversion">
+          description="Creates a new Inversion">
         <smallIcon
             xsi:type="gmftool:BundleImage"
             path="/icons/setRelationship16.gif"
@@ -185,7 +185,7 @@
       <tools
           xsi:type="gmftool:CreationTool"
           title="Base"
-          description="Create new Set Relation Base">
+          description="Creates a new Set Relation Base">
         <smallIcon
             xsi:type="gmftool:BundleImage"
             path="/icons/setRelationshipEnd16.gif"
@@ -198,7 +198,7 @@
       <tools
           xsi:type="gmftool:CreationTool"
           title="Target"
-          description="Create new Set Relation Target">
+          description="Creates a new Set Relation Target">
         <smallIcon
             xsi:type="gmftool:BundleImage"
             path="/icons/setRelationshipEnd16.gif"
@@ -216,34 +216,8 @@
         stack="true">
       <tools
           xsi:type="gmftool:CreationTool"
-          title="Binary Generalization"
-          description="Create new Binary Generalization">
-        <smallIcon
-            xsi:type="gmftool:BundleImage"
-            path="/icons/inheritance16.gif"
-            bundle="de.uni_mannheim.informatik.swt.gmf.plm"/>
-        <largeIcon
-            xsi:type="gmftool:BundleImage"
-            path="/icons/inheritance16.gif"
-            bundle="de.uni_mannheim.informatik.swt.gmf.plm"/>
-      </tools>
-      <tools
-          xsi:type="gmftool:CreationTool"
-          title="Multiple Specialization"
-          description="Create new Multiple Specialication">
-        <smallIcon
-            xsi:type="gmftool:BundleImage"
-            path="/icons/inheritance16.gif"
-            bundle="de.uni_mannheim.informatik.swt.gmf.plm"/>
-        <largeIcon
-            xsi:type="gmftool:BundleImage"
-            path="/icons/inheritance16.gif"
-            bundle="de.uni_mannheim.informatik.swt.gmf.plm"/>
-      </tools>
-      <tools
-          xsi:type="gmftool:CreationTool"
-          title="Multiple Generalization"
-          description="Create new Multiple Generalisation">
+          title="Generalization"
+          description="Create new Generalisation">
         <smallIcon
             xsi:type="gmftool:BundleImage"
             path="/icons/inheritance16.gif"

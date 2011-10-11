@@ -16,9 +16,7 @@
 
 «AROUND addBorderItem FOR gmfgen::GenNode»
 	«IF self.editPartClassName = 'ConnectionEditPart' 
-		or self.editPartClassName = 'BinaryGeneralizationEditPart'
-		or self.editPartClassName = 'MultipleSpecializationEditPart'
-		or self.editPartClassName = 'MultipleGeneralizationEditPart'»
+		or self.editPartClassName = 'GeneralizationEditPart'»
 		
 		protected void addBorderItem(org.eclipse.draw2d.IFigure borderItemContainer, org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart borderItemEditPart) {
 		«IF getExternalLabels(self)->size() > 0-»
@@ -41,9 +39,7 @@
 «REM»Needed to have connections only starting in the middle of each side«ENDREM»
 «AROUND setupNodePlate FOR gmfgen::GenNode»
 		«IF self.editPartClassName = 'ConnectionEditPart' 
-		or self.editPartClassName = 'BinaryGeneralizationEditPart'
-		or self.editPartClassName = 'MultipleSpecializationEditPart'
-		or self.editPartClassName = 'MultipleGeneralizationEditPart'
+		or self.editPartClassName = 'GeneralizationEditPart'
 		or self.editPartClassName = 'InversionEditPart'
 		or self.editPartClassName = 'EqualityEditPart'
 		or self.editPartClassName = 'ComplementEditPart'

@@ -31,15 +31,12 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.menus.CommandContributionItem;
 import org.eclipse.ui.menus.CommandContributionItemParameter;
 
-import de.uni_mannheim.informatik.swt.models.plm.PLM.BinaryGeneralization;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Classification;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Generalization;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.MultipleGeneralization;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.MultipleSpecialization;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.CompositeCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultFactory;

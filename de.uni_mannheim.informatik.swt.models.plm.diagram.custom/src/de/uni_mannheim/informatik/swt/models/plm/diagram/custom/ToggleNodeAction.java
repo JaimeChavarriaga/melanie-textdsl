@@ -24,10 +24,8 @@ import org.eclipse.ui.IWorkbenchPart;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.BinaryGeneralizationEditPart;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionEditPart;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.MultipleGeneralizationEditPart;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.MultipleSpecializationEditPart;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.GeneralizationEditPart;
 
 
 /**
@@ -162,9 +160,7 @@ public class ToggleNodeAction implements IObjectActionDelegate {
 		{
 			IStructuredSelection structuredSelection = (IStructuredSelection) selection;
 			if (structuredSelection.getFirstElement() instanceof ConnectionEditPart 
-					|| structuredSelection.getFirstElement() instanceof BinaryGeneralizationEditPart
-					|| structuredSelection.getFirstElement() instanceof MultipleSpecializationEditPart
-					|| structuredSelection.getFirstElement() instanceof MultipleGeneralizationEditPart) 
+					|| structuredSelection.getFirstElement() instanceof GeneralizationEditPart) 
 			{
 				selectedElement = (AbstractBorderedShapeEditPart) structuredSelection.getFirstElement();
 			}
