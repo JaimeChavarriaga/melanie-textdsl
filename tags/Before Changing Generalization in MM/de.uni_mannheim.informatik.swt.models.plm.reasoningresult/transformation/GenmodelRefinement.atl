@@ -1,0 +1,66 @@
+-- @nsURI genmodel=http://www.eclipse.org/emf/2002/GenModel
+
+--*******************************************************************************
+--* Copyright (c) 2011 University of Mannheim: Chair for Software Engineering
+--* All rights reserved. This program and the accompanying materials
+--* are made available under the terms of the Eclipse Public License v1.0
+--* which accompanies this distribution, and is available at
+--* http://www.eclipse.org/legal/epl-v10.html
+--*
+--* Contributors:
+--*    Ralph Gerbig - initial API and implementation and initial documentation
+--*******************************************************************************/
+
+--********************************************************
+--!!IMPORTANT!!
+--plugin.properties needs to be deleted before genmodel 
+--generation in order to get updated feature descriptions
+--********************************************************
+module GenmodelRefinement;
+
+create OUT:genmodel refining IN:genmodel;
+
+-- Sets the basePackage
+rule RefineGenPackage{
+	from 
+		s : genmodel!GenPackage
+	to
+		o : genmodel!GenPackage(
+			basePackage <- 'de.uni_mannheim.informatik.swt.models.plm.reasoningresult'
+		)
+}
+
+-- Sets the basePackage operationReflection
+rule RefineGenModel{
+	from
+		s : genmodel!GenModel
+	to
+		o : genmodel!GenModel(
+			operationReflection <- true,
+			dynamicTemplates <- true,
+			templateDirectory <- 'de.uni_mannheim.informatik.swt.models.plm.reasoningresult/templates',
+			providerRootExtendsClass <- 'de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.custom.BaseItemProvider'
+		)
+}
+
+-- Tell the genClasses which are inheriting from Check to not generate an image
+-- Tell the Check to inherit from our special ItemProvider
+rule RefineGenClass{
+	from
+		s : genmodel!GenClass(
+			s.ecoreClass.eAllSuperTypes->select(t | t.name = 'Check')->size() > 0	
+		)
+	to
+		o : genmodel!GenClass(
+			image <- false
+		)
+}
+
+rule GenFeature2GenFeatur{
+	from 
+		s : genmodel!GenFeature
+	to
+		t : genmodel!GenFeature(
+			property <- #Readonly
+		)
+}
