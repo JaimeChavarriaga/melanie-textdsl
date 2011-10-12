@@ -16,8 +16,11 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.core.commands.Command;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.commands.NotHandledException;
+import org.eclipse.core.commands.ParameterizedCommand;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.TreeIterator;
@@ -28,6 +31,10 @@ import org.eclipse.jface.action.ContributionItem;
 import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.commands.ICommand;
+import org.eclipse.ui.commands.ICommandService;
+import org.eclipse.ui.handlers.IHandlerService;
+import org.eclipse.ui.internal.commands.CommandService;
 import org.eclipse.ui.menus.CommandContributionItem;
 import org.eclipse.ui.menus.CommandContributionItemParameter;
 
@@ -389,6 +396,9 @@ public class ReasoningService implements IReasoningService {
 	@Override
 	public boolean run(String commandID, Object[] parameters) {
 		
+		IHandlerService handlerService = (IHandlerService)PlatformUI.getWorkbench().getActiveWorkbenchWindow().getService(IHandlerService.class);
+		ICommandService commandService = (ICommandService)PlatformUI.getWorkbench().getActiveWorkbenchWindow().getService(ICommandService.class);
+		
 		boolean result = false;
 		if (this != instance) { 
 			throw new RuntimeException("Deine Mutter heißt Horst und zieht Lastwagen auf Sport1");
@@ -396,153 +406,167 @@ public class ReasoningService implements IReasoningService {
 		if (commandID == ReasoningService.CAN_CONNECTION_EXIST) {
 			return canConnectionExist((Connection)parameters[0], (Connection)parameters[1]);
 		} else if (commandID == ReasoningService.FEATURE_CONFORMS) {
-			Map<String, Object> params = new HashMap<String, Object>();
+			Map params = new HashMap();
 			params.put("type", parameters[0]);
 			params.put("instance", parameters[1]);
-			FeatureConformsCommand command = new FeatureConformsCommand();
-			ExecutionEvent event = new ExecutionEvent(null, params, this, this);
+			
+			Command command = commandService.getCommand(FeatureConformsCommand.ID);
+			ParameterizedCommand paramCmd = ParameterizedCommand.generateCommand(command, params);
 			try {
-				result = (Boolean)command.execute(event);
-			} catch (ExecutionException e) {
+				result = (Boolean)handlerService.executeCommand(paramCmd, null);
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		} else if (commandID.equals(ReasoningService.LOCAL_CONFORMS)){
-			Map<String, Object> params = new HashMap<String, Object>();
+			Map params = new HashMap();
 			params.put("type", parameters[0]);
 			params.put("instance", parameters[1]);
-			params.put("forceClabject", parameters.length > 2 ? parameters[2] : false);
-			LocalConformsCommand command = new LocalConformsCommand();
-			ExecutionEvent event = new ExecutionEvent(null, params, this, this);
+			params.put("forceClabject", parameters.length > 2 ? parameters[2].toString() : "false");
+			Command command = commandService.getCommand(LocalConformsCommand.ID);
+			ParameterizedCommand paramCmd = ParameterizedCommand.generateCommand(command, params);
 			try {
-				result = (Boolean)command.execute(event);
-			} catch (ExecutionException e) {
+				result = (Boolean)handlerService.executeCommand(paramCmd, null);
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
 		} else if (commandID == ReasoningService.MULTIPLICITY_CONFORMS) {
-			Map<String, Object> params = new HashMap<String, Object>();
+			Map params = new HashMap();
 			params.put("connection", parameters[0]);
-			MultiplicityConformsCommand command = new MultiplicityConformsCommand();
-			ExecutionEvent event = new ExecutionEvent(null, params, this, this);
+			Command command = commandService.getCommand(MultiplicityConformsCommand.ID);
+			ParameterizedCommand paramCmd = ParameterizedCommand.generateCommand(command, params);
 			try {
-				result = (Boolean)command.execute(event);
-			} catch (ExecutionException e) {
+				result = (Boolean)handlerService.executeCommand(paramCmd, null);
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}else if (commandID == ReasoningService.NEIGHBOURHOOD_CONFORMS) {
-			Map<String, Object> params = new HashMap<String, Object>();
+			Map params = new HashMap();
 			params.put("type", parameters[0]);
 			params.put("instance", parameters[1]);
-			NeighbourhoodConformsCommand command = new NeighbourhoodConformsCommand();
-			ExecutionEvent event = new ExecutionEvent(null, params, this, this);
+			
+			Command command = commandService.getCommand(NeighbourhoodConformsCommand.ID);
+			ParameterizedCommand paramCmd = ParameterizedCommand.generateCommand(command, params);
 			try {
-				result = (Boolean)command.execute(event);
-			} catch (ExecutionException e) {
+				result = (Boolean)handlerService.executeCommand(paramCmd, null);
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		} else if (commandID == ReasoningService.PROPERTY_CONFORMS) {
-			Map<String, Object> params = new HashMap<String, Object>();
+			Map params = new HashMap();
 			params.put("type", parameters[0]);
 			params.put("instance", parameters[1]);
-			PropertyConformsCommand command = new PropertyConformsCommand();
-			ExecutionEvent event = new ExecutionEvent(null, params, this, this);
+			
+			Command command = commandService.getCommand(PropertyConformsCommand.ID);
+			ParameterizedCommand paramCmd = ParameterizedCommand.generateCommand(command, params);
 			try {
-				result = (Boolean)command.execute(event);
-			} catch (ExecutionException e) {
+				result = (Boolean)handlerService.executeCommand(paramCmd, null);
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		} else if (commandID == ReasoningService.IS_EXPRESSED_INSTANCE_OF_EXCLUDED) {
-			Map<String, Object> params = new HashMap<String, Object>();
+			Map params = new HashMap();
 			params.put("type", parameters[0]);
 			params.put("instance", parameters[1]);
-			IsExpressedInstanceOfExcludedCommand command = new IsExpressedInstanceOfExcludedCommand();
-			ExecutionEvent event = new ExecutionEvent(null, params, this, this);
+			
+			Command command = commandService.getCommand(IsExpressedInstanceOfExcludedCommand.ID);
+			ParameterizedCommand paramCmd = ParameterizedCommand.generateCommand(command, params);
 			try {
-				result = (Boolean)command.execute(event);
-			} catch (ExecutionException e) {
+				result = (Boolean)handlerService.executeCommand(paramCmd, null);
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		} else if (commandID == ReasoningService.HAS_ADDITIONAL_PROPERTIES) {
-			Map<String, Object> params = new HashMap<String, Object>();
+			Map params = new HashMap();
 			params.put("type", parameters[0]);
 			params.put("instance", parameters[1]);
-			HasAdditionalPropertiesCommand command = new HasAdditionalPropertiesCommand();
-			ExecutionEvent event = new ExecutionEvent(null, params, this, this);
+			
+			Command command = commandService.getCommand(HasAdditionalPropertiesCommand.ID);
+			ParameterizedCommand paramCmd = ParameterizedCommand.generateCommand(command, params);
 			try {
-				result = (Boolean) command.execute(event);
-			} catch (ExecutionException e) {
+				result = (Boolean)handlerService.executeCommand(paramCmd, null);
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		} else if (commandID == ReasoningService.IS_HYPONYM) {
-			Map<String, Object> params = new HashMap<String, Object>();
+			Map params = new HashMap();
 			params.put("type", parameters[0]);
 			params.put("instance", parameters[1]);
-			HyponymCommand command = new HyponymCommand();
-			ExecutionEvent event = new ExecutionEvent(null, params, this, this);
+			
+			Command command = commandService.getCommand(HyponymCommand.ID);
+			ParameterizedCommand paramCmd = ParameterizedCommand.generateCommand(command, params);
 			try {
-				result = (Boolean) command.execute(event);
-			} catch (ExecutionException e) {
+				result = (Boolean)handlerService.executeCommand(paramCmd, null);
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		} else if (commandID == ReasoningService.IS_ISONYM) {
-			Map<String, Object> params = new HashMap<String, Object>();
+			Map params = new HashMap();
 			params.put("type", parameters[0]);
 			params.put("instance", parameters[1]);
-			IsonymCommand command = new IsonymCommand();
-			ExecutionEvent event = new ExecutionEvent(null, params, this, this);
+			
+			Command command = commandService.getCommand(IsonymCommand.ID);
+			ParameterizedCommand paramCmd = ParameterizedCommand.generateCommand(command, params);
 			try {
-				result = (Boolean) command.execute(event);
-			} catch (ExecutionException e) {
+				result = (Boolean)handlerService.executeCommand(paramCmd, null);
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		} else if (commandID == ReasoningService.IS_INSTANCE) {
-			Map<String, Object> params = new HashMap<String, Object>();
+			Map params = new HashMap();
 			params.put("type", parameters[0]);
 			params.put("instance", parameters[1]);
-			InstanceCommand command = new InstanceCommand();
-			ExecutionEvent event = new ExecutionEvent(null, params, this, this);
+			
+			Command command = commandService.getCommand(InstanceCommand.ID);
+			ParameterizedCommand paramCmd = ParameterizedCommand.generateCommand(command, params);
+			
 			try {
-				result = (Boolean) command.execute(event);
-			} catch (ExecutionException e) {
+				result = (Boolean)handlerService.executeCommand(paramCmd, null);
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		} else if (commandID == ReasoningService.CLASSIFICATION_CONSISTENCY) {
-			Map<String, Object> params = new HashMap<String, Object>();
+			Map params = new HashMap();
 			params.put("element", parameters[0]);
-			ClassificationConsistencyCommand command = new ClassificationConsistencyCommand();
-			ExecutionEvent event = new ExecutionEvent(null, params, this, this);
+			
+			Command command = commandService.getCommand(ClassificationConsistencyCommand.ID);
+			ParameterizedCommand paramCmd = ParameterizedCommand.generateCommand(command, params);
 			try {
-				result = (Boolean) command.execute(event);
-			} catch (ExecutionException e) {
+				result = (Boolean)handlerService.executeCommand(paramCmd, null);
+			} catch (Exception e) {
 				e.printStackTrace();
 			} 
 		} else if (commandID == ReasoningService.GENERALIZATION_CONSISTENCY) {
-			Map<String, Object> params = new HashMap<String, Object>();
+			Map params = new HashMap();
 			params.put("element", parameters[0]);
-			GeneralizationConsistencyCommand command = new GeneralizationConsistencyCommand();
-			ExecutionEvent event = new ExecutionEvent(null, params, this, this);
+			
+			Command command = commandService.getCommand(GeneralizationConsistencyCommand.ID);
+			ParameterizedCommand paramCmd = ParameterizedCommand.generateCommand(command, params);
 			try {
-				result = (Boolean) command.execute(event);
-			} catch (ExecutionException e) {
+				result = (Boolean)handlerService.executeCommand(paramCmd, null);
+			} catch (Exception e) {
 				e.printStackTrace();
-			} 
+			}  
 		} else if (commandID == ReasoningService.ONTOLOGY_CONSISTENCY) {
-			Map<String, Object> params = new HashMap<String, Object>();
+			Map params = new HashMap();
 			params.put("element", parameters[0]);
-			OntologyConsistencyCommand command = new OntologyConsistencyCommand();
-			ExecutionEvent event = new ExecutionEvent(null, params, this, this);
+			
+			Command command = commandService.getCommand(OntologyConsistencyCommand.ID);
+			ParameterizedCommand paramCmd = ParameterizedCommand.generateCommand(command, params);
 			try {
-				result = (Boolean) command.execute(event);
-			} catch (ExecutionException e) {
+				result = (Boolean)handlerService.executeCommand(paramCmd, null);
+			} catch (Exception e) {
 				e.printStackTrace();
-			} 
+			}
 		} else if (commandID == ReasoningService.IS_CONSISTENTLY_CLASSIFIED) {
-			Map<String, Object> params = new HashMap<String, Object>();
+			Map params = new HashMap();
 			params.put("model", parameters[0]);
-			ConsistentClassificationCommand command = new ConsistentClassificationCommand();
-			ExecutionEvent event = new ExecutionEvent(null, params, this, this);
+			
+			Command command = commandService.getCommand(ConsistentClassificationCommand.ID);
+			ParameterizedCommand paramCmd = ParameterizedCommand.generateCommand(command, params);
 			try {
-				result = (Boolean) command.execute(event);
-			} catch (ExecutionException e) {
+				result = (Boolean)handlerService.executeCommand(paramCmd, null);
+			} catch (Exception e) {
 				e.printStackTrace();
 			} 
 		}else {
