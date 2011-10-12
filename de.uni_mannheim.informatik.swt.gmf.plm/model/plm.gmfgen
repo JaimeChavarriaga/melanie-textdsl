@@ -1495,7 +1495,7 @@
             xsi:type="gmfgen:FeatureLabelModelFacet"
             parser="//@labelParsers/@implementations.4">
           <metaFeatures
-              href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Element/name"/>
+              href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Generalization/discriminant"/>
         </modelFacet>
       </labels>
       <labels
@@ -1518,7 +1518,7 @@
             xsi:type="gmfgen:FeatureLabelModelFacet"
             parser="//@labelParsers/@implementations.4">
           <metaFeatures
-              href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Element/name"/>
+              href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Generalization/discriminant"/>
         </modelFacet>
       </labels>
       <labels
@@ -3476,7 +3476,7 @@
       <expressions
           body="let durability:String =&#xD;&#xA;&#x9; if (self.durability > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.durability.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else if (self.durability = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;endif&#x9;&#x9;&#xD;&#xA;endif&#xD;&#xA;in&#xD;&#xA;durability"/>
       <expressions
-          body="let intersection:String = &#xD;&#xA;&#x9;if (self.intersection) then &#xD;&#xA;&#x9;&#x9;'intersection;' &#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'' &#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (intersection &lt;> '') then&#xD;&#xA;&#x9;'{'.concat(intersection).concat('}')&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
+          body="let intersection:String = &#xD;&#xA;&#x9;if (not self.intersection.oclIsUndefined() and self.intersection) then &#xD;&#xA;&#x9;&#x9;'intersection;' &#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'' &#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let disjoint:String = &#xD;&#xA;&#x9;if (not self.disjoint.oclIsUndefined() and self.disjoint) then &#xD;&#xA;&#x9;&#x9;'disjoint;' &#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'' &#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;let complete:String = &#xD;&#xA;&#x9;if (not self.complete.oclIsUndefined() and self.complete) then &#xD;&#xA;&#x9;&#x9;'complete;' &#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'' &#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;if (intersection &lt;> '' or disjoint &lt;> '' or complete &lt;> '') then&#xD;&#xA;&#x9;'{'.concat(intersection).concat(complete).concat(disjoint).concat('}')&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
       <expressions
           body="self.oclAsType(ecore::EObject).eContainer().eClass().eAllAttributes->collect(a | a.name.concat('= default'))->append('ProximityClassification= 1')->append('DSLRendering= false')"/>
       <expressions
