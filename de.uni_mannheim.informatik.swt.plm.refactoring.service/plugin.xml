@@ -16,6 +16,17 @@
          </commandParameter>
       </command>
       <command
+            defaultHandler="de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.AddFeatureToClabjectCommand"
+            id="de.uni_mannheim.informatik.swt.plm.refactoring.service.commands.addfearuretoclabjectcommand"
+            name="Add Feature">
+         <commandParameter
+               id="clabject"
+               name="clabject"
+               optional="true"
+               typeId="de.uni_mannheim.informatik.swt.plm.workbench.eobjectcommandparametertype">
+         </commandParameter>
+      </command>
+      <command
             defaultHandler="de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.DeleteFeatureCommand"
             id="de.uni_mannheim.informatik.swt.plm.refactoring.service.commands.deletefeaturecommand"
             name="Delete Feature">

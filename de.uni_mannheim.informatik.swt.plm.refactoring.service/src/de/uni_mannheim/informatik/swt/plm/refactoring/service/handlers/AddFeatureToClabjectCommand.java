@@ -22,8 +22,11 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.dialogs.IInputValidator;
 import org.eclipse.jface.dialogs.InputDialog;
+import org.eclipse.jface.viewers.ArrayContentProvider;
+import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.window.Window;
 import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.dialogs.ListDialog;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
@@ -37,14 +40,14 @@ import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService
  * @see org.eclipse.core.commands.IHandler
  * @see org.eclipse.core.commands.AbstractHandler
  */
-public class RenameFeatureCommand extends AbstractHandler {
-	
-	public final static String ID = "de.uni_mannheim.informatik.swt.plm.refactoring.service.commands.renamefeaturecommand";
+public class AddFeatureToClabjectCommand extends AbstractHandler {
+
+	public final static String ID = "de.uni_mannheim.informatik.swt.plm.refactoring.service.commands.addfearuretoclabjectcommand";
 	
 	/**
 	 * The constructor.
 	 */
-	public RenameFeatureCommand() {
+	public AddFeatureToClabjectCommand() {
 	}
 
 	/**
@@ -53,11 +56,10 @@ public class RenameFeatureCommand extends AbstractHandler {
 	 */
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
+		Clabject clabjectToChange = (Clabject)event.getObjectParameterForExecution("clabject");
 		
-		Feature featureToChange = (Feature)event.getObjectParameterForExecution("feature");
-				
 		InputDialog newNameDialog = new InputDialog(window.getShell(),
-				"New Feature Name", "New Feature Name", featureToChange.getName(), 
+				"New Feature Name", "New Feature Name", "name", 
 					new IInputValidator() {
 					
 						@Override
@@ -85,34 +87,44 @@ public class RenameFeatureCommand extends AbstractHandler {
 		else
 			return false;
 		
-		if (newName == null || newName.equals(featureToChange.getName()))
+		InputDialog newPotencyDialog = new InputDialog(window.getShell(),
+				"New Feature Potency", "New Feature Potency", "-1", 
+					new IInputValidator() {
+					
+						@Override
+						public String isValid(String newText) {
+							try{
+								int value = Integer.parseInt(newText);
+								
+								if (value < -1)
+									return "Must be greater than -1.";
+							}
+							catch (Exception e) {
+								return "Must be a numeric value.";
+							}
+							
+								 
+							
+							if (newText.length() == 0)
+								return "Cannot be empty.";
+							
+							//Everything OK
+							return null;
+						}
+				}
+		);
+		
+		int newPotency;
+		
+		if (newPotencyDialog.open() == Window.OK)
+			newPotency = Integer.parseInt(newPotencyDialog.getValue());
+		else
 			return false;
-		
-		
-		return runRefactoring(featureToChange, newName);
+				
+		return runRefactoring(clabjectToChange, newName, newPotency);
 	}
 	
-	private boolean runRefactoring(Feature featureToChange, String newName){
-		Clabject containingClabject = (Clabject)featureToChange.eContainer();
-		
-		List<Clabject> instances = containingClabject.getModelInstances();
-		
-		CompoundCommand refactoringCommand = new CompoundCommand("Refactoring");
-		TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(featureToChange);
-		
-		for (Clabject instance: instances)
-			for (Feature feature : instance.getAllFeatures())
-				try {
-					if (ExtensionPointService.Instance().getActiveReasoningService().run(IReasoningService.FEATURE_CONFORMS, new Object[] {featureToChange, feature})){
-						refactoringCommand.append(SetCommand.create(domain, feature, PLMPackage.eINSTANCE.getElement_Name(), newName));
-					}
-						
-				} catch (CoreException e) {
-					e.printStackTrace();
-				}
-		
-		refactoringCommand.append(SetCommand.create(domain, featureToChange, PLMPackage.eINSTANCE.getElement_Name(), newName));
-		domain.getCommandStack().execute(refactoringCommand);
+	private boolean runRefactoring(Clabject clabjectToChange, String newName, int newPotency){
 		
 		return false;
 	}
