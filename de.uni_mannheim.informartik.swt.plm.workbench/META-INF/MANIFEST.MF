@@ -8,7 +8,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  de.uni_mannheim.informatik.swt.models.plm;bundle-version="1.0.0",
  org.eclipse.draw2d;bundle-version="3.7.0",
- de.uni_mannheim.informatik.swt.models.plm.reasoningresult;bundle-version="1.0.0"
+ de.uni_mannheim.informatik.swt.models.plm.reasoningresult;bundle-version="1.0.0",
+ org.eclipse.gmf.runtime.emf.ui;bundle-version="1.2.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: de.uni_mannheim.informatik.swt.plm.workbench,

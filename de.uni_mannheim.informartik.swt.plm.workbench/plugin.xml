@@ -19,5 +19,12 @@
             class="de.uni_mannheim.informatik.swt.plm.workbench.preferences.PreferenceInitializer">
       </initializer>
    </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <commandParameterType
+            converter="de.uni_mannheim.informatik.swt.plm.workbench.commandparameterconverter.EObjectCommandParameterConverter"
+            id="de.uni_mannheim.informatik.swt.plm.workbench.eobjectcommandparametertype">
+      </commandParameterType>
+   </extension>
 
 </plugin>
