@@ -127,6 +127,7 @@
 					e.printStackTrace();
 				}
 				
+				//The index of the connection to the participant
 				int index = i - numberNonParticipantConnection;
 				
 				de.uni_mannheim.informatik.swt.models.plm.visualization.Link l = (de.uni_mannheim.informatik.swt.models.plm.visualization.Link)((de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer)self.getVisualizer().get(0)).getChild().get(0);
@@ -134,31 +135,36 @@
 				connectionFigure.setForegroundColor(transformator.colorConstant2Color(l.getForegroundColor()));
 				connectionFigure.setBackgroundColor(transformator.colorConstant2Color(l.getBackgroundColor()));
 				
-				//Decoration defined
-				if (l.getDecoration().size() > index) {
-					de.uni_mannheim.informatik.swt.models.plm.visualization.LinkDecoration decoDesc = l
-							.getDecoration().get(i);
+				//Add DSL Link decoration
+				de.uni_mannheim.informatik.swt.models.plm.visualization.LinkDecoration decoDesc = l.getLinkDecorationForRoleName(self.getRoleNameForParticipant(self.getParticipant().get(index)).get(0));
 				
+				//No decoration for link name found but decoration defined for the index
+				if (decoDesc == null && index < l.getDecoration().size()) {
+					decoDesc = l.getDecoration().get(index);
+				}
+				
+				//Neither decoration for role name found nor for the index
+				if (decoDesc == null)
+					connectionFigure.setTargetDecoration(null);
+				else {
 					//We have a special decoration
-					if (((de.uni_mannheim.informatik.swt.models.plm.visualization.DefaultLinkDecoration) decoDesc).getDecorationType() != de.uni_mannheim.informatik.swt.models.plm.visualization.DefaultLinkDecorationTypes.NO_LINE_DECORATION)
-					{
+					if (((de.uni_mannheim.informatik.swt.models.plm.visualization.DefaultLinkDecoration) decoDesc)
+							.getDecorationType() != de.uni_mannheim.informatik.swt.models.plm.visualization.DefaultLinkDecorationTypes.NO_LINE_DECORATION) {
 						org.eclipse.draw2d.RotatableDecoration decoration = ((de.uni_mannheim.informatik.swt.models.plm.visualization.DefaultLinkDecoration) decoDesc)
 								.getDecorationType() == de.uni_mannheim.informatik.swt.models.plm.visualization.DefaultLinkDecorationTypes.POLY_LINE_DECORATION ? new org.eclipse.draw2d.PolylineDecoration()
 								: new org.eclipse.draw2d.PolygonDecoration();
-						decoration
-								.setBackgroundColor(transformator.colorConstant2Color(decoDesc.getBackgroundColor()));
-						decoration
-								.setForegroundColor(transformator.colorConstant2Color(decoDesc.getForegroundColor()));
+						decoration.setBackgroundColor(transformator
+								.colorConstant2Color(decoDesc
+										.getBackgroundColor()));
+						decoration.setForegroundColor(transformator
+								.colorConstant2Color(decoDesc
+										.getForegroundColor()));
 						//set the decoration
 						connectionFigure.setTargetDecoration(decoration);
 					}
 					//We have no special decoration
 					else
 						connectionFigure.setTargetDecoration(null);
-				}
-				//No decoration defined
-				else {
-					connectionFigure.setTargetDecoration(null);
 				}
 				
 				//Add DSl labels
