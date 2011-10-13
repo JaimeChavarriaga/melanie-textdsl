@@ -196,7 +196,7 @@ public class ExtensionPointService {
 	public IReasoningService getActiveReasoningService() throws CoreException{
 		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
 		
-		return getReasoningService(store.getString(PreferenceConstants.P_ACTIVE_REASONING_ENGINE));
+		return getReasoningService(store.getString(PreferenceConstants.P_ACTIVE_REASONING_ENGINE)).Instance();
 	}
 	
 	/**
