@@ -11,27 +11,26 @@
 package de.uni_mannheim.informatik.swt.plm.refactoring.service;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.RegistryFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.jface.action.ContributionItem;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.menus.CommandContributionItem;
+import org.eclipse.ui.menus.CommandContributionItemParameter;
 
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
+import de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.DeleteFeatureCommand;
+import de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.RenameFeatureCommand;
 import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IRefactoringService;
 
 
 public class Refactorer implements IRefactoringService {
-
-	//Commands for Clabjects
-	private static String DELETE_CLABJECT_COMMAND_ID = "de.uni_mannheim.informatik.swt.plm.refactoring.service.commands.deleteclabjectcommand";
-	
-	
-	//Commands for Features
-	private static String DELETE_FEATURE_COMMAND_ID = "de.uni_mannheim.informatik.swt.plm.refactoring.service.commands.deletefeaturecommand";
 	
 	@Override
 	public boolean changeValue(EObject modelElement,
@@ -47,15 +46,43 @@ public class Refactorer implements IRefactoringService {
 	}
 
 	@Override
-	public Map<String, String> getAvailableRefactoringCommands(EObject modelElement) {
-		Map<String, String> commands = new HashMap<String, String>();
+	public List<ContributionItem> getAvailableRefactoringCommands(EObject[] modelElements){
 		
-		if (modelElement instanceof Clabject)
-			commands.put(DELETE_CLABJECT_COMMAND_ID, getCommandName(DELETE_CLABJECT_COMMAND_ID));
-		else if (modelElement instanceof Feature)
-			commands.put(DELETE_FEATURE_COMMAND_ID, getCommandName(DELETE_FEATURE_COMMAND_ID));
+		List<ContributionItem> items = new LinkedList<ContributionItem>();
+		Map<String, Object> commandParamametersMap;
 		
-		return commands;
+		//We have one feature selected
+		if (modelElements.length == 1
+				&& modelElements[0] instanceof Feature)
+		{
+			//***************************************************
+			// Delete feature command
+			//***************************************************
+			CommandContributionItemParameter param = 
+					new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), DeleteFeatureCommand.ID + ".menuEntry", DeleteFeatureCommand.ID, CommandContributionItem.STYLE_PUSH);
+			param.label = getCommandName(DeleteFeatureCommand.ID);
+			
+			commandParamametersMap = new HashMap<String, Object>();
+			commandParamametersMap.put("feature",  modelElements[0]);
+			param.parameters = commandParamametersMap;
+			
+			items.add(new CommandContributionItem(param));
+			
+			//***************************************************
+			// Rename feature command
+			//***************************************************
+			param = 
+					new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), RenameFeatureCommand.ID + ".menuEntry", RenameFeatureCommand.ID, CommandContributionItem.STYLE_PUSH);
+			param.label = getCommandName(RenameFeatureCommand.ID);
+			
+			commandParamametersMap = new HashMap<String, Object>();
+			commandParamametersMap.put("feature",  modelElements[0]);
+			param.parameters = commandParamametersMap;
+			
+			items.add(new CommandContributionItem(param));
+		}
+		
+		return items;
 	}
 	
 	private String getCommandName(String id){

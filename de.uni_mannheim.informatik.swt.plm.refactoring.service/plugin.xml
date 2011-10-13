@@ -13,6 +13,23 @@
             defaultHandler="de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.DeleteFeatureCommand"
             id="de.uni_mannheim.informatik.swt.plm.refactoring.service.commands.deletefeaturecommand"
             name="Delete Feature">
+         <commandParameter
+               id="feature"
+               name="feature"
+               optional="true"
+               typeId="de.uni_mannheim.informatik.swt.plm.workbench.eobjectcommandparametertype">
+         </commandParameter>
+      </command>
+      <command
+            defaultHandler="de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.RenameFeatureCommand"
+            id="de.uni_mannheim.informatik.swt.plm.refactoring.service.commands.renamefeaturecommand"
+            name="Rename Feature">
+         <commandParameter
+               id="feature"
+               name="feature"
+               optional="true"
+               typeId="de.uni_mannheim.informatik.swt.plm.workbench.eobjectcommandparametertype">
+         </commandParameter>
       </command>
    </extension>
    <extension

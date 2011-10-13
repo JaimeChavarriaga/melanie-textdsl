@@ -159,6 +159,34 @@
                               value="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionEditPart">
                         </instanceof>
                      </iterate>
+                     <iterate
+                           ifEmpty="false"
+                           operator="or">
+                        <instanceof
+                              value="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.AttributeEditPart">
+                        </instanceof>
+                     </iterate>
+                     <iterate
+                           ifEmpty="false"
+                           operator="or">
+                        <instanceof
+                              value="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.Attribute2EditPart">
+                        </instanceof>
+                     </iterate>
+                     <iterate
+                           ifEmpty="false"
+                           operator="or">
+                        <instanceof
+                              value="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.MethodEditPart">
+                        </instanceof>
+                     </iterate>
+                     <iterate
+                           ifEmpty="false"
+                           operator="or">
+                        <instanceof
+                              value="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.Method2EditPart">
+                        </instanceof>
+                     </iterate>
                   </or>
                </visibleWhen>
             </menu>

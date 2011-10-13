@@ -12,14 +12,14 @@ import org.eclipse.jface.dialogs.MessageDialog;
  * @see org.eclipse.core.commands.IHandler
  * @see org.eclipse.core.commands.AbstractHandler
  */
-public class DeleteClabjectCommand extends AbstractHandler {
-
-	public final static String ID = "de.uni_mannheim.informatik.swt.plm.refactoring.service.commands.deleteclabjectcommand";
+public class RenameFeatureCommand extends AbstractHandler {
+	
+	public final static String ID = "de.uni_mannheim.informatik.swt.plm.refactoring.service.commands.renamefeaturecommand";
 	
 	/**
 	 * The constructor.
 	 */
-	public DeleteClabjectCommand() {
+	public RenameFeatureCommand() {
 	}
 
 	/**
@@ -31,7 +31,7 @@ public class DeleteClabjectCommand extends AbstractHandler {
 		MessageDialog.openInformation(
 				window.getShell(),
 				"Service",
-				"Delete Clabject!");
+				"Rename Feature!");
 		return null;
 	}
 }

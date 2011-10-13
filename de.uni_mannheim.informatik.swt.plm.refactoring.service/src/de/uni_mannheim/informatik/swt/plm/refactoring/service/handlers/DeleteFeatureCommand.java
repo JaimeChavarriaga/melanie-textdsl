@@ -13,6 +13,9 @@ import org.eclipse.jface.dialogs.MessageDialog;
  * @see org.eclipse.core.commands.AbstractHandler
  */
 public class DeleteFeatureCommand extends AbstractHandler {
+	
+	public final static String ID = "de.uni_mannheim.informatik.swt.plm.refactoring.service.commands.deletefeaturecommand";
+	
 	/**
 	 * The constructor.
 	 */
