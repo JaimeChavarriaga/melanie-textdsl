@@ -24,7 +24,9 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.menus.CommandContributionItem;
 import org.eclipse.ui.menus.CommandContributionItemParameter;
 
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
+import de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.DeleteClabjectCommand;
 import de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.DeleteFeatureCommand;
 import de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.RenameFeatureCommand;
 import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IRefactoringService;
@@ -77,6 +79,23 @@ public class Refactorer implements IRefactoringService {
 			
 			commandParamametersMap = new HashMap<String, Object>();
 			commandParamametersMap.put("feature",  modelElements[0]);
+			param.parameters = commandParamametersMap;
+			
+			items.add(new CommandContributionItem(param));
+		}
+		//We have one feature selected
+		if (modelElements.length == 1
+				&& modelElements[0] instanceof Clabject)
+		{
+			//***************************************************
+			// Delete clabject command
+			//***************************************************
+			CommandContributionItemParameter param = 
+					new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), DeleteClabjectCommand.ID + ".menuEntry", DeleteClabjectCommand.ID, CommandContributionItem.STYLE_PUSH);
+			param.label = getCommandName(DeleteClabjectCommand.ID);
+			
+			commandParamametersMap = new HashMap<String, Object>();
+			commandParamametersMap.put("clabject",  modelElements[0]);
 			param.parameters = commandParamametersMap;
 			
 			items.add(new CommandContributionItem(param));
