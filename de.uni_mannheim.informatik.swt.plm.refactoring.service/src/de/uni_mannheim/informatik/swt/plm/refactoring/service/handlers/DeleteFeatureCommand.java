@@ -8,16 +8,11 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.edit.command.RemoveCommand;
-import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
-import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.handlers.HandlerUtil;
-import org.eclipse.jface.dialogs.MessageDialog;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage;
 import de.uni_mannheim.informatik.swt.plm.workbench.ExtensionPointService;
 import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService;
 
