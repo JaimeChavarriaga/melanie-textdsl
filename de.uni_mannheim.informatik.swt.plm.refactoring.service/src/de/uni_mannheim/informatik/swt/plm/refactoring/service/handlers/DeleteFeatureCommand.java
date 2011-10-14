@@ -56,7 +56,7 @@ public class DeleteFeatureCommand extends AbstractHandler {
 		TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(featureToChange);
 		
 		for (Clabject instance: instances)
-			for (Feature feature : instance.getAllFeatures())
+			for (Feature feature : instance.getFeature())
 				try {
 					if (ExtensionPointService.Instance().getActiveReasoningService().run(IReasoningService.FEATURE_CONFORMS, new Object[] {featureToChange, feature})){
 						refactoringCommand.append(RemoveCommand.create(domain, feature));
