@@ -15,6 +15,8 @@ import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.LineBorder;
 import org.eclipse.draw2d.geometry.Insets;
+import org.eclipse.swt.SWT;
+import org.eclipse.ui.PlatformUI;
 
 public class CustomBorder extends LineBorder {
 
@@ -60,6 +62,8 @@ public class CustomBorder extends LineBorder {
 		graphics.setLineStyle(getStyle());
 		if (getColor() != null)
 			graphics.setForegroundColor(getColor());
+		
+		graphics.setForegroundColor(PlatformUI.getWorkbench().getDisplay().getSystemColor(SWT.COLOR_BLACK));
 		
 		if (bottom)
 			graphics.drawLine(tempRect.getBottomLeft(), tempRect.getBottomRight());
