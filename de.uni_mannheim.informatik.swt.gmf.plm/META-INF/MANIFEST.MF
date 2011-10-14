@@ -3,8 +3,11 @@ Bundle-ManifestVersion: 2
 Bundle-Name: de.uni_mannheim.informatik.swt.gmf.plm
 Bundle-SymbolicName: de.uni_mannheim.informatik.swt.gmf.plm;singleton:=true
 Bundle-Version: 0.1.0
-Require-Bundle: org.eclipse.gmf.runtime.diagram.ui
+Require-Bundle: org.eclipse.gmf.runtime.diagram.ui,
+ de.uni_mannheim.informatik.swt.models.plm;bundle-version="1.0.0"
 Export-Package: de.uni_mannheim.informatik.swt.gmf.borders,
+ de.uni_mannheim.informatik.swt.gmf.editpolicies,
  de.uni_mannheim.informatik.swt.gmf.figures
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Activator: de.uni_mannheim.informatik.swt.gmf.Activator
