@@ -41,7 +41,7 @@ public class ToggableModelElementPopupBarEditPolicy extends PopupBarEditPolicy {
 		ImageDescriptor imageDescriptor = Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "/icons/toggle16.gif");
 		Image image = imageDescriptor.createImage();
 		
-		addPopupBarDescriptor(null, image, theTracker, "Toggle");
+		addPopupBarDescriptor(null, image, theTracker, "Expand / Collapse");
 		
 	}
 	

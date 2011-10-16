@@ -61,3 +61,51 @@
 		«targetDef.proceed()»
 		«ENDIF»
 «ENDAROUND»
+
+/******************************************************************************
+* Install the editpolicy for the toggle button in the popupbar
+* of connections and generalizations
+******************************************************************************/
+«AROUND createDefaultEditPoliciesBody FOR gmfgen::GenNode-»
+	«IF self.editPartClassName = 'ConnectionEditPart' 
+			or self.editPartClassName = 'GeneralizationEditPart'»
+		«EXPAND installCreationRolePolicy-»
+		super.createDefaultEditPolicies();
+		«EXPAND installPrimaryDragEditPolicy-»
+		«EXPAND xpt::diagram::editparts::Common::installSemanticEditPolicy-»
+		«IF needsGraphicalNodeEditPolicy(self)-»
+			installEditPolicy(org.eclipse.gef.EditPolicy.GRAPHICAL_NODE_ROLE, new «getGraphicalNodeEditPolicyQualifiedClassName()»());
+		«ENDIF-»
+		«IF not childNodes->isEmpty()-»
+			installEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.DRAG_DROP_ROLE, new org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy());
+		«ENDIF-»
+		«EXPAND xpt::diagram::editparts::Common::installCanonicalEditPolicy-»
+		installEditPolicy(org.eclipse.gef.EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
+		«EXPAND xpt::diagram::editparts::Common::behaviour FOR self-»
+		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
+		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
+	
+		«EXPAND installAdditionalEditPolicies FOR self-»
+	«ELSE»
+		«targetDef.proceed()»
+	«ENDIF»
+«ENDAROUND»
+
+«DEFINE installAdditionalEditPolicies FOR gmfgen::GenNode»
+		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
+		installEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE, new de.uni_mannheim.informatik.swt.gmf.editpolicies.ToggableModelElementPopupBarEditPolicy());
+«ENDDEFINE»
+
+«DEFINE installCreationRolePolicy FOR gmfgen::GenNode-»
+«IF self.childNodes->notEmpty() or hasChildrenInListCompartments(self)-»
+	installEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CREATION_ROLE, «EXPAND _creationEditPolicyNewInstance»);
+«ENDIF-»
+«ENDDEFINE»
+
+«DEFINE _creationEditPolicyNewInstance FOR gmfgen::GenNode»new org.eclipse.gmf.runtime.diagram.ui.editpolicies.CreationEditPolicy()«ENDDEFINE»
+
+«DEFINE installPrimaryDragEditPolicy FOR gmfgen::GenNode»«ENDDEFINE»
+
+«DEFINE installPrimaryDragEditPolicy FOR gmfgen::GenChildSideAffixedNode-»
+		installEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE, getPrimaryDragEditPolicy());
+«ENDDEFINE»
