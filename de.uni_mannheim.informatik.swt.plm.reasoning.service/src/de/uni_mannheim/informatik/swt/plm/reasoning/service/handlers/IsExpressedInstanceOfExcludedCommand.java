@@ -76,44 +76,44 @@ public class IsExpressedInstanceOfExcludedCommand extends AbstractHandler {
 		}
 		result.getExpressedTypes().addAll(expressedTypes);
 		
-		//TODO: FIXME
-//		Set<Clabject> disjointTwins = new HashSet<Clabject>();
-//		Set<Generalization> generalizationsA = new HashSet<Generalization>(type.getModel().getAllGeneralizations());
-//		generalizationsA = (Set<Generalization>) ReasoningServiceUtil.filter(generalizationsA, new Predicate<Generalization>() {
-//			public boolean apply(Generalization gener) {
-//				if (gener instanceof MultipleSpecialization) 
-//					return ((MultipleSpecialization) gener).isDisjoint();
-//				return false;
-//			}
-//		});
-//		Set<MultipleSpecialization> generalizations = new HashSet<MultipleSpecialization>((Collection<? extends MultipleSpecialization>) generalizationsA); 
-//		for (MultipleSpecialization gener:generalizations) {
-//			if(ReasoningServiceUtil.intersect(new HashSet<Clabject>(gener.getSubtype()), expressedTypes).size() > 0) {
-//				disjointTwins.addAll(gener.getSubtype());
-//			}
-//		}
-//		
-//		temp = new HashSet<Clabject>();
-//		for (Clabject current : disjointTwins) {
-//			temp.add(current);
-//			temp.addAll(current.getModelSupertypes());
-//		}
-//		disjointTwins = new HashSet<Clabject>(temp);
-//		disjointTwins.removeAll(expressedTypes);
-//		result.getDisjointSiblings().addAll(disjointTwins);
-//		
-//		Set<Clabject> conflicts = new HashSet<Clabject>();
-//		conflicts.add(type);
-//		conflicts.addAll(type.getModelSupertypes());
-//		result.getAffectedTypes().addAll(conflicts);
-//		result.getAffectedDisjointIntersection().addAll(ReasoningServiceUtil.intersect(disjointTwins, conflicts));
-//		result.setResult(true);
-//		if (disjointTwins.size() > 0 && conflicts.size() > 0) {
-//			//There have to be both disjoint Twins and possibly conflicting expressed types to justify the check.
-//			if (ReasoningServiceUtil.intersect(disjointTwins, conflicts).size() > 0){
-//				result.setResult(false);
-//			}
-//		}
+		Set<Clabject> disjointTwins = new HashSet<Clabject>();
+		Set<Generalization> generalizationsA = new HashSet<Generalization>(type.getModel().getAllGeneralizations());
+		System.out.println(generalizationsA);
+		generalizationsA = (Set<Generalization>) ReasoningServiceUtil.filter(generalizationsA, new Predicate<Generalization>() {
+			public boolean apply(Generalization gener) {
+				if (gener.getDisjoint() == null)
+					return false;
+				return gener.getDisjoint();
+			}
+		});
+		Set<Generalization> generalizations = new HashSet<Generalization>(generalizationsA); 
+		for (Generalization gener:generalizations) {
+			if(ReasoningServiceUtil.intersect(new HashSet<Clabject>(gener.getSubtype()), expressedTypes).size() > 0) {
+				disjointTwins.addAll(gener.getSubtype());
+			}
+		}
+		
+		temp = new HashSet<Clabject>();
+		for (Clabject current : disjointTwins) {
+			temp.add(current);
+			temp.addAll(current.getModelSupertypes());
+		}
+		disjointTwins = new HashSet<Clabject>(temp);
+		disjointTwins.removeAll(expressedTypes);
+		result.getDisjointSiblings().addAll(disjointTwins);
+		
+		Set<Clabject> conflicts = new HashSet<Clabject>();
+		conflicts.add(type);
+		conflicts.addAll(type.getModelSupertypes());
+		result.getAffectedTypes().addAll(conflicts);
+		result.getAffectedDisjointIntersection().addAll(ReasoningServiceUtil.intersect(disjointTwins, conflicts));
+		result.setResult(true);
+		if (disjointTwins.size() > 0 && conflicts.size() > 0) {
+			//There have to be both disjoint Twins and possibly conflicting expressed types to justify the check.
+			if (ReasoningServiceUtil.intersect(disjointTwins, conflicts).size() > 0){
+				result.setResult(false);
+			}
+		}
 		return result;
 	}
 

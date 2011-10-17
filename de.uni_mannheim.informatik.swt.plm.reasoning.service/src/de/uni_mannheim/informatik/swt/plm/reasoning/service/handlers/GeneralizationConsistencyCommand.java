@@ -72,115 +72,108 @@ public class GeneralizationConsistencyCommand extends AbstractHandler {
 		List<Clabject> domain = classified.getAllClabjects();
 		Set<Clabject> superInstances = new HashSet<Clabject>();
 		boolean complex = false;
-		
-		//TODO: FIXME
-//		if (gener instanceof MultipleSpecialization) {
-//			MultipleSpecialization msGener = (MultipleSpecialization) gener;
-//			if (msGener.isComplete() || msGener.isDisjoint()) {
-//				complex = true;
-//				DomainSearch domainSearch = ReasoningResultFactory.eINSTANCE.createDomainSearch(gener, gener, check);
-//				domainSearch.setName("domainSearch");
-//				domainSearch.setResult(true);
-//				for (Clabject s: supertype) {
-//					for (Clabject i: domain) {
-//						CompositeCheck domainC = (new IsonymCommand()).compute(s,i);
-//						domainSearch.getCheck().add(domainC);
-//						if (domainC.isResult()) {
-//							superInstances.add(i);
-//							domainSearch.getSupertypeIsonyms().add(i);
-//						}
-//					}
-//				}
-//				if (supertype.size() != 1) {
-//					throw new RuntimeException("ConsistencyCommand.generalizationIsConsistent multipleSpecialization must have one supertype");
-//				} else {
-//					if (msGener.isComplete()) {
-//						CompositeCheck completeCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck(gener, gener, check);
-//						completeCheck.setName("CompleteViolation");
-//						completeCheck.setResult(true);
-//						for (Clabject i:superInstances) {
-//							boolean found = false;
-//							for (Clabject s:subtype) {
-//								CompositeCheck actualC = (new IsonymCommand()).compute(s,i);
-//								completeCheck.getCheck().add(actualC);
-//								if (actualC.isResult()) {
-//									domainSearch.getInterestingInstances().add(i);
-//									found = true;
-//									break;
-//								}
-//							}
-//							if (!found) {
-//								completeCheck.setResult(false);
-//								check.setResult(false);
-//								return check;
-//							}
-//						}
-//					}
-//					if (msGener.isDisjoint()) {
-//						CompositeCheck disjointCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck(gener, gener, check);
-//						disjointCheck.setName("DisjointViolation");
-//						disjointCheck.setResult(true);
-//						for (Clabject i: superInstances) {
-//							boolean one = false;
-//							for (Clabject s:subtype) {
-//								CompositeCheck actualC = (new IsonymCommand()).compute(s,i);
-//								disjointCheck.getCheck().add(actualC);
-//								if (actualC.isResult()) {
-//									if (!one) {
-//										one = true;
-//									} else {
-//										domainSearch.getInterestingInstances().add(i);
-//										disjointCheck.setResult(false);
-//										check.setResult(false);
-//										return check;
-//									}
-//								}
-//							}
-//						}
-//					}
-//				}
-//			}
-//		}
-//		if (gener instanceof MultipleGeneralization) {
-//			MultipleGeneralization mgGener = (MultipleGeneralization) gener;
-//			if (mgGener.isIntersection()) {
-//				complex = true;
-//				CompositeCheck domainSearch = ReasoningResultFactory.eINSTANCE.createCompositeCheck(gener, gener, check);
-//				domainSearch.setName("InstanceDomainSearch");
-//				for (Clabject i: domain) {
-//					boolean all = true;
-//					for (Clabject s: supertype) {
-//						CompositeCheck domainC = (new IsonymCommand()).compute(s,i);
-//						domainSearch.getCheck().add(domainC);
-//						if (!domainC.isResult()) {
-//							all = false;
-//							break;
-//						}
-//					}
-//					if (all) {
-//						superInstances.add(i);
-//					}
-//				}
-//				//Assume that the length of the subtypes is 1
-//				if (subtype.size() != 1) {
-//					throw new RuntimeException("ConsistencyCommand.generalizationIsConsistent multipleGeneralization must have one subtype");
-//				} else {
-//					CompositeCheck violationCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck(gener, gener, check);
-//					violationCheck.setName("IntersectionViolation");
-//					violationCheck.setResult(true);
-//					Clabject sub = subtype.get(0);
-//					for (Clabject i: superInstances) {
-//						CompositeCheck actualC = (new IsonymCommand()).compute(sub, i);
-//						violationCheck.getCheck().add(actualC);
-//						if (!actualC.isResult()) {
-//							violationCheck.setResult(false);
-//							check.setResult(false);
-//							return check;
-//						}
-//					}
-//				}
-//			}
-//		}
+		if (gener.getDisjoint() || gener.getComplete()) {
+			//There has to be one supertype and more than one subtype
+			complex = true;
+			if ( (subtype.size()<= 1) || (supertype.size() != 1)) {
+				throw new RuntimeException("Generalization " + gener + " not well formed. So no can do consistency Check."); 
+			}
+			DomainSearch domainSearch = ReasoningResultFactory.eINSTANCE.createDomainSearch(gener, gener, check);
+			domainSearch.setName("domainSearch");
+			domainSearch.setResult(true);
+			Clabject s = supertype.get(0);
+			for (Clabject c:classified.getAllClabjects()) {
+				CompositeCheck domainC = (new IsonymCommand()).compute(s, c);
+				domainSearch.getCheck().add(domainC);
+				if (domainC.isResult()) {
+					superInstances.add(c);
+					domainSearch.getSupertypeIsonyms().add(c);
+				}
+			}
+			//Now for the actual claims
+			if (gener.getComplete()) {
+				//There can be no superinstance that is not an instance of any of the subtypes
+				CompositeCheck completeCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck(gener, gener, check);
+				completeCheck.setName("CompleteViolation");
+				completeCheck.setResult(true);
+				for (Clabject i:superInstances) {
+					boolean found = false;
+					for (Clabject su:subtype) {
+						CompositeCheck actualC = (new IsonymCommand()).compute(su,i);
+						completeCheck.getCheck().add(actualC);
+						if (actualC.isResult()) {
+							domainSearch.getInterestingInstances().add(i);
+							found = true;
+							break;
+						}
+					}
+					if (!found) {
+						completeCheck.setResult(false);
+						check.setResult(false);
+						return check;
+					}
+				}
+			}
+			if (gener.getDisjoint()) {
+				CompositeCheck disjointCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck(gener, gener, check);
+				disjointCheck.setName("DisjointViolation");
+				disjointCheck.setResult(true);
+				for (Clabject i: superInstances) {
+					boolean one = false;
+					for (Clabject su:subtype) {
+						CompositeCheck actualC = (new IsonymCommand()).compute(su,i);
+						disjointCheck.getCheck().add(actualC);
+						if (actualC.isResult()) {
+							if (!one) {
+								one = true;
+							} else {
+								domainSearch.getInterestingInstances().add(i);
+								disjointCheck.setResult(false);
+								check.setResult(false);
+								return check;
+							}
+						}
+					}
+				}
+			}
+		}
+		if (gener.getIntersection()) {
+			complex = true;
+			CompositeCheck domainSearch = ReasoningResultFactory.eINSTANCE.createCompositeCheck(gener, gener, check);
+			domainSearch.setName("InstanceDomainSearch");
+			for (Clabject i: domain) {
+				boolean all = true;
+				for (Clabject s: supertype) {
+					CompositeCheck domainC = (new IsonymCommand()).compute(s,i);
+					domainSearch.getCheck().add(domainC);
+					if (!domainC.isResult()) {
+						all = false;
+						break;
+					}
+				}
+				if (all) {
+					superInstances.add(i);
+				}
+			}
+			//Assume that the length of the subtypes is 1
+			if (subtype.size() != 1) {
+				throw new RuntimeException("ConsistencyCommand.generalizationIsConsistent multipleGeneralization must have one subtype");
+			} else {
+				CompositeCheck violationCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck(gener, gener, check);
+				violationCheck.setName("IntersectionViolation");
+				violationCheck.setResult(true);
+				Clabject sub = subtype.get(0);
+				for (Clabject i: superInstances) {
+					CompositeCheck actualC = (new IsonymCommand()).compute(sub, i);
+					violationCheck.getCheck().add(actualC);
+					if (!actualC.isResult()) {
+						violationCheck.setResult(false);
+						check.setResult(false);
+						return check;
+					}
+				}
+			}
+		}
 		if (!complex) {
 			CompositeCheck informational = ReasoningResultFactory.eINSTANCE.createCompositeCheck(gener, gener, check);
 			informational.setName("No complex claims.");
