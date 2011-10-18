@@ -93,7 +93,7 @@
 
 «DEFINE installAdditionalEditPolicies FOR gmfgen::GenNode»
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
-		installEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE, new de.uni_mannheim.informatik.swt.gmf.editpolicies.ToggableModelElementPopupBarEditPolicy());
+		installEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE, new de.uni_mannheim.informatik.swt.gmf.plm.editpolicies.PLMModelElementPopupBarEditPolicy());
 «ENDDEFINE»
 
 «DEFINE installCreationRolePolicy FOR gmfgen::GenNode-»

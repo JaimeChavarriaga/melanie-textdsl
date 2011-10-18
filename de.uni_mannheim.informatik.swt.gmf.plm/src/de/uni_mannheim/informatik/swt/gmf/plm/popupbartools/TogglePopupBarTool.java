@@ -1,4 +1,4 @@
-package de.uni_mannheim.informatik.swt.gmf.popupbartools;
+package de.uni_mannheim.informatik.swt.gmf.plm.popupbartools;
 
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.Request;
@@ -8,26 +8,25 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.requests.ChangePropertyValueRequest;
 import org.eclipse.gmf.runtime.diagram.ui.tools.AbstractPopupBarTool;
 
-import de.uni_mannheim.informatik.swt.gmf.commands.InterceptCommand;
-import de.uni_mannheim.informatik.swt.gmf.commands.ToggleCommand;
+import de.uni_mannheim.informatik.swt.gmf.plm.commands.ToggleCommand;
 
-public class InterceptPopupBarTool extends AbstractPopupBarTool{
+public class TogglePopupBarTool extends AbstractPopupBarTool{
 
 	
 	
-	public InterceptPopupBarTool(EditPart epHost, CreateRequest theRequest) {
+	public TogglePopupBarTool(EditPart epHost, CreateRequest theRequest) {
 		super(epHost, theRequest);
 	}
 
 	@Override
 	protected Request createTargetRequest() {
-		ChangePropertyValueRequest req = new ChangePropertyValueRequest("Intercept", "Intercept");
+		ChangePropertyValueRequest req = new ChangePropertyValueRequest("toggle", "toggle");
 		return req;
 	}
 
 	@Override
 	protected Command getCommand() {
-		return new InterceptCommand((IGraphicalEditPart)getHost());
+		return new ToggleCommand((IGraphicalEditPart)getHost());
 	}
 	
 }

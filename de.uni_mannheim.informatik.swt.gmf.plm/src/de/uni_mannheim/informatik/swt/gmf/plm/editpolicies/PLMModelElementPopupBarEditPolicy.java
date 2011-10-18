@@ -8,7 +8,7 @@
  * Contributors:
  *    Ralph Gerbig - initial API and implementation and initial documentation
  *******************************************************************************/
-package de.uni_mannheim.informatik.swt.gmf.editpolicies;
+package de.uni_mannheim.informatik.swt.gmf.plm.editpolicies;
 
 
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
@@ -18,9 +18,9 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 
 import de.uni_mannheim.informatik.swt.gmf.Activator;
-import de.uni_mannheim.informatik.swt.gmf.popupbartools.InterceptPopupBarTool;
-import de.uni_mannheim.informatik.swt.gmf.popupbartools.SepetatorPopupBarTool;
-import de.uni_mannheim.informatik.swt.gmf.popupbartools.TogglePopupBarTool;
+import de.uni_mannheim.informatik.swt.gmf.plm.popupbartools.InterceptPopupBarTool;
+import de.uni_mannheim.informatik.swt.gmf.plm.popupbartools.SepetatorPopupBarTool;
+import de.uni_mannheim.informatik.swt.gmf.plm.popupbartools.TogglePopupBarTool;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 
 public class PLMModelElementPopupBarEditPolicy extends PopupBarEditPolicy {

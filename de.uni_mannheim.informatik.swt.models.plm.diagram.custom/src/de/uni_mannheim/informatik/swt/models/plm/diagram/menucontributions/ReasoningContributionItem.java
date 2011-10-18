@@ -1,8 +1,14 @@
-package de.uni_mannheim.informatik.swt.models.plm.diagram.custom;
-
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map.Entry;
+/*******************************************************************************
+ * Copyright (c) 2011 University of Mannheim: Chair for Software Engineering
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Ralph Gerbig - initial API and implementation and initial documentation
+ *******************************************************************************/
+package de.uni_mannheim.informatik.swt.models.plm.diagram.menucontributions;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.ecore.EObject;
@@ -12,28 +18,32 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.CompoundContributionItem;
-import org.eclipse.ui.menus.CommandContributionItem;
-import org.eclipse.ui.menus.CommandContributionItemParameter;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor;
 import de.uni_mannheim.informatik.swt.plm.workbench.ExtensionPointService;
-import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IRefactoringService;
+import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService;
 
-public class RefactorContributionItem extends CompoundContributionItem {
-	
+/**
+ * @author Ralph
+ *
+ */
+public class ReasoningContributionItem extends CompoundContributionItem {
+
+	/* (non-Javadoc)
+	 * @see org.eclipse.ui.actions.CompoundContributionItem#getContributionItems()
+	 */
 	@Override
 	protected IContributionItem[] getContributionItems() {
-		
-		IRefactoringService refactorer = null;
+		IReasoningService reasoner = null;
 		
 		try {
-			refactorer = ExtensionPointService.Instance().getActiveRefactoringService();
+			reasoner = ExtensionPointService.Instance().getActiveReasoningService();
 		} catch (CoreException e) {
 			e.printStackTrace();
 		}
 		
 		//No refactoring service found -> return no refactoring options
-		if (refactorer == null)
+		if (reasoner == null)
 			return new IContributionItem[0];
 		
 		IEditorPart editPart = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
@@ -59,6 +69,7 @@ public class RefactorContributionItem extends CompoundContributionItem {
 			if (parts[i] instanceof IGraphicalEditPart)
 				modelElements[i] = ((IGraphicalEditPart)parts[i]).resolveSemanticElement();
 		
-		return refactorer.getAvailableRefactoringCommands(modelElements).toArray(new IContributionItem[] {});
+		return reasoner.getAvailableReasoningCommands(modelElements).toArray(new IContributionItem[] {});
 	}
+
 }

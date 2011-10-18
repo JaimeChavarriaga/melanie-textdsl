@@ -8,7 +8,7 @@
  * Contributors:
  *    Ralph Gerbig - initial API and implementation and initial documentation
  *******************************************************************************/
-package de.uni_mannheim.informatik.swt.gmf.commands;
+package de.uni_mannheim.informatik.swt.gmf.plm.commands;
 
 import java.util.LinkedList;
 

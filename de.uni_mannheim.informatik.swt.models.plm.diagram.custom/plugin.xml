@@ -8,7 +8,7 @@
             id="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.toggleconnectioneditpart"
             objectClass="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionEditPart">
          <action
-               class="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.ToggleNodeAction"
+               class="de.uni_mannheim.informatik.swt.models.plm.diagram.menucontributions.ToggleNodeAction"
                id="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.toggledomainconnectionationaction"
                label="Toggle">
          </action>
@@ -18,7 +18,7 @@
             id="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.togglebinarygeneralizationeditpart"
             objectClass="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.GeneralizationEditPart">
          <action
-               class="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.ToggleNodeAction"
+               class="de.uni_mannheim.informatik.swt.models.plm.diagram.menucontributions.ToggleNodeAction"
                id="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.toggledomainconnectionationaction"
                label="Toggle">
          </action>
@@ -28,7 +28,7 @@
              id="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.dsl"
              objectClass="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.EntityEditPart">
           <action
-                class="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.DSLAction"
+                class="de.uni_mannheim.informatik.swt.models.plm.diagram.menucontributions.DSLAction"
                 id="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.addvisualizationaction"
                 label="DSL">
           </action>
@@ -38,7 +38,7 @@
              id="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.dsl"
              objectClass="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionEditPart">
           <action
-                class="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.DSLAction"
+                class="de.uni_mannheim.informatik.swt.models.plm.diagram.menucontributions.DSLAction"
                 id="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.addvisualizationaction"
                 label="DSL">
           </action>
@@ -92,7 +92,7 @@
       <?gmfgen generated="true"?>   
       <propertySections contributorId="de.uni_mannheim.informatik.swt.models.plm.diagram">
          <propertySection
-               class="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.OntologicalPropertySectionAbstractPropertySection"
+               class="de.uni_mannheim.informatik.swt.models.plm.diagram.propertysheet.OntologicalPropertySectionAbstractPropertySection"
                id="property.section.ontological"
                tab="property.tab.ontological">
             <input
@@ -114,7 +114,7 @@
             </input>
          </propertySection>
          <propertySection
-               class="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.VisualizationPropertySectionAbstractPropertySection"
+               class="de.uni_mannheim.informatik.swt.models.plm.diagram.propertysheet.VisualizationPropertySectionAbstractPropertySection"
                id="property.section.visualization"
                tab="property.tab.visualization">
             <input
@@ -139,7 +139,7 @@
                   id="refactor.menu"
                   label="Refactor">
                <dynamic
-                     class="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.RefactorContributionItem"
+                     class="de.uni_mannheim.informatik.swt.models.plm.diagram.menucontributions.RefactorContributionItem"
                      id="refactoringContributionItem">
                </dynamic>
                <visibleWhen
@@ -285,5 +285,16 @@
                   visible="true">
             </separator>
          </menuContribution>
+      </extension>
+      <extension
+            point="org.eclipse.gmf.runtime.diagram.ui.editpolicyProviders">
+         <editpolicyProvider
+               class="de.uni_mannheim.informatik.swt.models.plm.diagram.editpolicies.PLMModelElementPopupBarEditPolicy">
+            <Priority
+                  name="Lowest">
+            </Priority>
+            <context
+                  editparts="Connection_3060, Entity_3069, Generalization_3072"></context>
+         </editpolicyProvider>
       </extension>
 </plugin>
