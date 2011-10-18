@@ -39,7 +39,8 @@ rule RefineGenModel{
 			operationReflection <- true,
 			dynamicTemplates <- true,
 			templateDirectory <- 'de.uni_mannheim.informatik.swt.models.plm.reasoningresult/templates',
-			providerRootExtendsClass <- 'de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.custom.BaseItemProvider'
+			providerRootExtendsClass <- 'de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.custom.BaseItemProvider',
+			complianceLevel <- #JDK60
 		)
 }
 
