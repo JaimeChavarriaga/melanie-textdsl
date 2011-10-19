@@ -21,11 +21,18 @@
     	    	<!--<delete includeemptydirs="true">
     	    	    <fileset dir="../de.uni_mannheim.informatik.swt.models.plm.diagram/src" includes="**/*"/>
     	    	</delete>-->
-    	
-    
+
     	<!-- ================================================
     		BEGIN PLM
     	===================================================== -->
+    	
+    	<!-- Delete PLM model code, edit and editor -->
+    	<delete includeemptydirs="true">
+    	 	 <fileset dir="../de.uni_mannheim.informatik.swt.models.plm/src" includes="**/*"/>
+    		<fileset dir="../de.uni_mannheim.informatik.swt.models.plm.edit/src" includes="**/*"/>
+    		<fileset dir="../de.uni_mannheim.informatik.swt.models.plm.editor/src" includes="**/*"/>
+    	</delete>
+    	
     	<!-- Only generate the genmodel -->
     	<emf.Ecore2Java 
 			model="../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore"
@@ -81,6 +88,13 @@
     	<!-- ================================================
     	    		BEGIN Reasoning
     	===================================================== -->
+    	
+    	<!-- Delete PLM model code, edit and editor -->
+		<delete includeemptydirs="true">
+ 	 		<fileset dir="../de.uni_mannheim.informatik.swt.models.plm.reasoningresult/src" includes="**/*"/>
+			<fileset dir="../de.uni_mannheim.informatik.swt.models.plm.reasoningresult.edit/src" includes="**/*"/>
+		</delete>
+    	
     	<!-- Only generate the genmodel -->
     	<emf.Ecore2Java 
     		model="../de.uni_mannheim.informatik.swt.models.plm.reasoningresult/model/ReasoningResult.ecore"
