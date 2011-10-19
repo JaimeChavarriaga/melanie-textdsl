@@ -9,7 +9,7 @@
  *    Ralph Gerbig - initial API and implementation and initial documentation
  *******************************************************************************/
 
-package de.uni_mannheim.informatik.swt.models.plm.diagram.menucontributions;
+package de.uni_mannheim.informatik.swt.models.plm.diagram.cutom.menucontributions;
 
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.jface.action.IAction;

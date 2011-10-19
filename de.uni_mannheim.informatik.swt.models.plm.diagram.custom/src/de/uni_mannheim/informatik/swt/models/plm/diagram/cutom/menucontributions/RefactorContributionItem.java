@@ -1,4 +1,4 @@
-package de.uni_mannheim.informatik.swt.models.plm.diagram.menucontributions;
+package de.uni_mannheim.informatik.swt.models.plm.diagram.cutom.menucontributions;
 
 import java.util.LinkedList;
 import java.util.List;

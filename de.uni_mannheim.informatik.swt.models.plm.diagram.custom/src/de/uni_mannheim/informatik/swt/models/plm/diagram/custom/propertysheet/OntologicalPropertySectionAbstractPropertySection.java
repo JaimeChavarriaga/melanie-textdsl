@@ -9,7 +9,7 @@
  *    Ralph Gerbig - initial API and implementation and initial documentation
  *******************************************************************************/
 
-package de.uni_mannheim.informatik.swt.models.plm.diagram.propertysheet;
+package de.uni_mannheim.informatik.swt.models.plm.diagram.custom.propertysheet;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -15,6 +15,6 @@ Require-Bundle: org.eclipse.gmf.runtime.diagram.ui.properties,
  de.uni_mannheim.informatik.swt.plm.reasoning.service.view;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: de.uni_mannheim.informatik.swt.models.plm.diagram.custom,
- de.uni_mannheim.informatik.swt.models.plm.diagram.menucontributions,
- de.uni_mannheim.informatik.swt.models.plm.diagram.propertysheet
+ de.uni_mannheim.informatik.swt.models.plm.diagram.custom.propertysheet,
+ de.uni_mannheim.informatik.swt.models.plm.diagram.cutom.menucontributions
 Bundle-ClassPath: .
