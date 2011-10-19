@@ -65,6 +65,7 @@
 			generatejavacode="true"
     		generatetestsproject="false"
     		reconcilegenmodel="keep"
+    		validatemodel="true"
     		jdklevel="6.0">
     			<arg line="-modelProject de.uni_mannheim.informatik.swt.models.plm src" />
     		    <arg line="-editProject de.uni_mannheim.informatik.swt.models.plm.edit src" />
@@ -81,7 +82,7 @@
     	    		BEGIN Reasoning
     	===================================================== -->
     	<!-- Only generate the genmodel -->
-    	<!-- <emf.Ecore2Java 
+    	<emf.Ecore2Java 
     		model="../de.uni_mannheim.informatik.swt.models.plm.reasoningresult/model/ReasoningResult.ecore"
     		genmodel="../de.uni_mannheim.informatik.swt.models.plm.reasoningresult/model/ReasoningResult.genmodel"
 			modelproject="de.uni_mannheim.informatik.swt.models.plm.reasoningresult"
@@ -90,34 +91,44 @@
 			generateeditproject="false"
 			generatejavacode="false"
     		generatetestsproject="false"
-    		reconcilegenmodel="overwrite">
+    		reconcilegenmodel="overwrite"
+    		validatemodel="true"
+    		jdklevel="6.0">
+    			<arg line="-modelProject de.uni_mannheim.informatik.swt.models.plm.reasoningresult src" />
+    		    <arg line="-editProject de.uni_mannheim.informatik.swt.models.plm.reasoningresult.edit src" />
+    		    <arg line="-editorProject de.uni_mannheim.informatik.swt.models.plm.reasoningresult.editor src" />
     			<arg line= "-package http://swt.informatik.uni-mannheim.de/ReasoningResult"/>
-    			<arg line= "-refGenModel ${basedir}/..//de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel http://swt.informatik.uni-mannheim.de/PLM"/>
-    	 </emf.Ecore2Java> -->
+    			<arg line= "-refGenModel ${basedir}/../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel http://swt.informatik.uni-mannheim.de/PLM"/>
+    	 </emf.Ecore2Java>
     	
     	<!-- Execute the refinement transformation for Reasoning -->
-    	<!--<atl.loadModel name="ReasoningInOutModel" metamodel="genmodel" path="../de.uni_mannheim.informatik.swt.models.plm.reasoningresult/model/ReasoningResult.genmodel"></atl.loadModel>
+    	<atl.loadModel name="ReasoningInOutModel" metamodel="genmodel" path="../de.uni_mannheim.informatik.swt.models.plm.reasoningresult/model/ReasoningResult.genmodel"></atl.loadModel>
     	
     	<atl.launch path="../de.uni_mannheim.informatik.swt.models.plm.reasoningresult/transformation/GenmodelRefinement.atl" refining="true">
     		<inoutmodel model="ReasoningInOutModel" name="IN"/>
     	</atl.launch>
     	
-    	<atl.saveModel model="ReasoningInOutModel" path="../de.uni_mannheim.informatik.swt.models.plm.reasoningresult/model/ReasoningResult.genmodel"></atl.saveModel>-->
+    	<atl.saveModel model="ReasoningInOutModel" path="../de.uni_mannheim.informatik.swt.models.plm.reasoningresult/model/ReasoningResult.genmodel"></atl.saveModel>
     	
     	<!-- Create java-source, edit and editor code for PLM -->
-    	<!--<emf.Ecore2Java 
+    	<emf.Ecore2Java 
     		model="../de.uni_mannheim.informatik.swt.models.plm.reasoningresult/model/ReasoningResult.ecore"
     		genmodel= "../de.uni_mannheim.informatik.swt.models.plm.reasoningresult/model/ReasoningResult.genmodel"
 			modelproject="de.uni_mannheim.informatik.swt.models.plm.reasoningresult"
 			modelprojectfragmentpath="src"
-			generateeditorproject="true"
+			generateeditorproject="false"
 			generateeditproject="true"
 			generatejavacode="true"
     		generatetestsproject="false"
-    		reconcilegenmodel="keep">
+    		reconcilegenmodel="keep"
+    		validatemodel="true"
+    		jdklevel="6.0">
+    			<arg line="-modelProject de.uni_mannheim.informatik.swt.models.plm.reasoningresult src" />
+    		    <arg line="-editProject de.uni_mannheim.informatik.swt.models.plm.reasoningresult.edit src" />
+    		    <arg line="-editorProject de.uni_mannheim.informatik.swt.models.plm.reasoningresutl.editor src" />
     			<arg line= "-package http://swt.informatik.uni-mannheim.de/ReasoningResult"/>
-    			<arg line= "-refGenModel ${basedir}/..//de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel http://swt.informatik.uni-mannheim.de/PLM"/>
-    	 </emf.Ecore2Java>-->
+    			<arg line= "-refGenModel ${basedir}/../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel http://swt.informatik.uni-mannheim.de/PLM"/>
+    	 </emf.Ecore2Java>
     	<!-- ================================================
 	    		END Reasoning
     	===================================================== -->
