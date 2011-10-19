@@ -7,7 +7,7 @@
                    
      Ralph                                                                
      ====================================================================== -->
-<project name="de.uni_mannheim.informatik.swt.plm.workbench" default="default">
+<project name="de.uni_mannheim.informatik.swt.plm.workbench" default="codegen">
     <description>
             Central build file.
     </description>
@@ -15,7 +15,7 @@
     <!-- ================================= 
           target: default              
          ================================= -->
-    <target name="default" depends="depends" description="Central build file.">
+    <target name="codegen" depends="depends" description="Central build file.">
     	
     	<!-- Delete the generated GMF source -->
     	    	<!--<delete includeemptydirs="true">
@@ -30,21 +30,22 @@
     	<emf.Ecore2Java 
 			model="../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore"
 			genmodel="../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel"
-			modelproject="de.uni_mannheim.informatik.swt.models.plm/"
+			modelproject="de.uni_mannheim.informatik.swt.models.plm"
 			modelprojectfragmentpath="src"
 			generateeditorproject="false"
 			generateeditproject="false"
 			generatejavacode="false"
     		generatetestsproject="false"
     		reconcilegenmodel="overwrite"
-    		validatemodel="true">
+    		validatemodel="true"
+    		jdklevel="6.0">
     			<arg line="-modelProject de.uni_mannheim.informatik.swt.models.plm src" />
     			<arg line="-editProject de.uni_mannheim.informatik.swt.models.plm.edit src" />
     			<arg line="-editorProject de.uni_mannheim.informatik.swt.models.plm.editor src" />
     	 </emf.Ecore2Java>
     	
     	<!-- Execute the refinement transformation for PLM -->
-    	<!--<atl.loadModel name="genmodel" metamodel="MOF" nsuri="http://www.eclipse.org/emf/2002/GenModel"></atl.loadModel>
+    	<atl.loadModel name="genmodel" metamodel="MOF" nsuri="http://www.eclipse.org/emf/2002/GenModel"></atl.loadModel>
     	<atl.loadModel name="PLMInOutModel" metamodel="genmodel" path="../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel"></atl.loadModel>
     	
     	<atl.launch path="../de.uni_mannheim.informatik.swt.models.plm/transformation/GenmodelRefinement.atl" refining="true">
@@ -52,19 +53,24 @@
     	</atl.launch>
     	
     	<atl.saveModel model="PLMInOutModel" path="../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel"></atl.saveModel>
-    	-->
+    	
     	<!-- Create java-source, edit and editor code for PLM -->
-    	<!--<emf.Ecore2Java 
+    	<emf.Ecore2Java 
     		model="../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore"
     		genmodel="../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel"
-			modelproject="de.uni_mannheim.informatik.swt.models.plm.reasoningresult"
+    		modelproject="de.uni_mannheim.informatik.swt.models.plm/"
 			modelprojectfragmentpath="src"
 			generateeditorproject="true"
 			generateeditproject="true"
 			generatejavacode="true"
     		generatetestsproject="false"
-    		reconcilegenmodel="keep">
-    	 </emf.Ecore2Java>-->
+    		reconcilegenmodel="keep"
+    		jdklevel="6.0">
+    			<arg line="-modelProject de.uni_mannheim.informatik.swt.models.plm src" />
+    		    <arg line="-editProject de.uni_mannheim.informatik.swt.models.plm.edit src" />
+    		    <arg line="-editorProject de.uni_mannheim.informatik.swt.models.plm.editor src" />
+    	 </emf.Ecore2Java>
+    	
     	<!-- ================================================
 			END PLM
     	===================================================== -->
