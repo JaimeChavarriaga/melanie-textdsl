@@ -437,10 +437,14 @@
 				{
 					int oldIndex = notification.getPosition();
 					
-					self.getIsNavigable().remove(oldIndex);
-					self.getLower().remove(oldIndex);
-					self.getUpper().remove(oldIndex);
-					self.getRoleName().remove(oldIndex);
+					if (self.getIsNavigable().size() < oldIndex)
+						self.getIsNavigable().remove(oldIndex);
+					if (self.getLower().size() < oldIndex)
+						self.getUpper().remove(oldIndex);
+					if (self.getIsNavigable().size() < oldIndex)
+						self.getUpper().remove(oldIndex);
+					if (self.getRoleName().size() < oldIndex)
+						self.getRoleName().remove(oldIndex);
 				}
 				
 				updateConnections();
