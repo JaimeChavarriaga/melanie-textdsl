@@ -68,7 +68,8 @@
 ******************************************************************************/
 «AROUND createDefaultEditPoliciesBody FOR gmfgen::GenNode-»
 	«IF self.editPartClassName = 'ConnectionEditPart' 
-			or self.editPartClassName = 'GeneralizationEditPart'»
+			or self.editPartClassName = 'GeneralizationEditPart'
+			or self.editPartClassName = 'EntityEditPart'»
 		«EXPAND installCreationRolePolicy-»
 		super.createDefaultEditPolicies();
 		«EXPAND installPrimaryDragEditPolicy-»

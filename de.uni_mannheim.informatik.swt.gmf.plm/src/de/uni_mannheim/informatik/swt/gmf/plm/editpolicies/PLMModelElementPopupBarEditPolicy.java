@@ -22,6 +22,7 @@ import de.uni_mannheim.informatik.swt.gmf.plm.popupbartools.IntrospectPopupBarTo
 import de.uni_mannheim.informatik.swt.gmf.plm.popupbartools.SepetatorPopupBarTool;
 import de.uni_mannheim.informatik.swt.gmf.plm.popupbartools.TogglePopupBarTool;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Entity;
 
 public class PLMModelElementPopupBarEditPolicy extends PopupBarEditPolicy {
 
@@ -49,6 +50,7 @@ public class PLMModelElementPopupBarEditPolicy extends PopupBarEditPolicy {
 		/***********************************************************
 		 * Expand/Collapse button
 		 ***********************************************************/
+		if (!(((IGraphicalEditPart)getHost()).resolveSemanticElement() instanceof Entity)){
 		expandCollapseTool =
 				new TogglePopupBarTool(getHost(), null);
 
@@ -56,7 +58,7 @@ public class PLMModelElementPopupBarEditPolicy extends PopupBarEditPolicy {
 		image = imageDescriptor.createImage();
 		
 		addPopupBarDescriptor(null, image, expandCollapseTool, "Expand / Collapse");
-		
+		}
 		/***********************************************************
 		 * Seperator
 		 ***********************************************************/
