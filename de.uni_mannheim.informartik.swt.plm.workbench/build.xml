@@ -11,11 +11,32 @@
     <description>
             Central build file.
     </description>
-
+	
+	
+	
     <!-- ================================= 
           target: default              
          ================================= -->
     <target name="codegen" depends="depends" description="Central build file.">
+    
+    	<path id="path.svnant">
+	      	<pathelement location="${basedir}/lib/svnant.jar"/>
+	      	<pathelement location="${basedir}/lib/svnClientAdapter.jar"/>
+    		<pathelement location="${basedir}/lib/ganymed.jar"/>
+			<pathelement location="${basedir}/lib/svnkit.jar"/>
+			<pathelement location="${basedir}/lib/jna.jar"/>
+    		<pathelement location="${basedir}/lib/svnjavahl.jar"/>
+	    </path>
+    	
+		<typedef resource="org/tigris/subversion/svnant/svnantlib.xml" classpathref="path.svnant" />
+    	
+    	<svnSetting svnkit="true" javahl="false" id="my.setting"/>
+    	
+    	<svn refid="my.setting">
+    		<update revision="HEAD">
+    			<fileset dir="${basedir}/.." includes="/*" excludes=".metadata,.JETEmitters"/>
+    		</update>
+    	</svn>
     	
     	<!-- Delete the generated GMF source -->
     	    	<!--<delete includeemptydirs="true">
@@ -28,7 +49,7 @@
     	
     	<!-- Delete PLM model code, edit and editor -->
     	<delete includeemptydirs="true">
-    	 	 <fileset dir="../de.uni_mannheim.informatik.swt.models.plm/src" includes="**/*"/>
+	 	 	<fileset dir="../de.uni_mannheim.informatik.swt.models.plm/src" includes="**/*"/>
     		<fileset dir="../de.uni_mannheim.informatik.swt.models.plm.edit/src" includes="**/*"/>
     		<fileset dir="../de.uni_mannheim.informatik.swt.models.plm.editor/src" includes="**/*"/>
     	</delete>
