@@ -18,7 +18,7 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 
 import de.uni_mannheim.informatik.swt.gmf.Activator;
-import de.uni_mannheim.informatik.swt.gmf.plm.popupbartools.InterceptPopupBarTool;
+import de.uni_mannheim.informatik.swt.gmf.plm.popupbartools.IntrospectPopupBarTool;
 import de.uni_mannheim.informatik.swt.gmf.plm.popupbartools.SepetatorPopupBarTool;
 import de.uni_mannheim.informatik.swt.gmf.plm.popupbartools.TogglePopupBarTool;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
@@ -35,16 +35,16 @@ public class PLMModelElementPopupBarEditPolicy extends PopupBarEditPolicy {
 		Image image = null;
 		
 		/***********************************************************
-		 * Intercept button
+		 * Introspect button
 		 ***********************************************************/
 		if (((IGraphicalEditPart)getHost()).resolveSemanticElement() instanceof Clabject){
 			expandCollapseTool =
-					new InterceptPopupBarTool(getHost(), null);
+					new IntrospectPopupBarTool(getHost(), null);
 	
-			imageDescriptor = Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "/icons/intercept16.gif");
+			imageDescriptor = Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "/icons/introspect16.gif");
 			image = imageDescriptor.createImage();
 			
-			addPopupBarDescriptor(null, image, expandCollapseTool, "Intercept");
+			addPopupBarDescriptor(null, image, expandCollapseTool, "Introspect");
 		}
 		/***********************************************************
 		 * Expand/Collapse button

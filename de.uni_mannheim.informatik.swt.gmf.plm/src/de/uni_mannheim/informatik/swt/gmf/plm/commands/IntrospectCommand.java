@@ -16,15 +16,15 @@ import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 
-public class InterceptCommand extends Command{
+public class IntrospectCommand extends Command{
 	
 	private IGraphicalEditPart host = null;
 	
 	/**
 	 * 
-	 * @param host Element which shall be toggled
+	 * @param host Element to introspect
 	 */
-	public InterceptCommand(IGraphicalEditPart host){
+	public IntrospectCommand(IGraphicalEditPart host){
 		this.host = host;
 	}
 	
@@ -34,7 +34,7 @@ public class InterceptCommand extends Command{
 		
 		Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
 		MessageBox m = new MessageBox(shell);
-		m.setMessage("Interception Command");
+		m.setMessage("Introspect Command");
 		m.open();
 	}
 }

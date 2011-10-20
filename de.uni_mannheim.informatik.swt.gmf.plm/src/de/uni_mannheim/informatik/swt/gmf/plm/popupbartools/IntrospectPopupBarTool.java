@@ -8,14 +8,13 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.requests.ChangePropertyValueRequest;
 import org.eclipse.gmf.runtime.diagram.ui.tools.AbstractPopupBarTool;
 
-import de.uni_mannheim.informatik.swt.gmf.plm.commands.InterceptCommand;
-import de.uni_mannheim.informatik.swt.gmf.plm.commands.ToggleCommand;
+import de.uni_mannheim.informatik.swt.gmf.plm.commands.IntrospectCommand;
 
-public class InterceptPopupBarTool extends AbstractPopupBarTool{
+public class IntrospectPopupBarTool extends AbstractPopupBarTool{
 
 	
 	
-	public InterceptPopupBarTool(EditPart epHost, CreateRequest theRequest) {
+	public IntrospectPopupBarTool(EditPart epHost, CreateRequest theRequest) {
 		super(epHost, theRequest);
 	}
 
@@ -27,7 +26,7 @@ public class InterceptPopupBarTool extends AbstractPopupBarTool{
 
 	@Override
 	protected Command getCommand() {
-		return new InterceptCommand((IGraphicalEditPart)getHost());
+		return new IntrospectCommand((IGraphicalEditPart)getHost());
 	}
 	
 }
