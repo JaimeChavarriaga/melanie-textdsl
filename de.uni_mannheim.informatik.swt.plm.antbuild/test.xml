@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     18.10.2011 11:13:42                                                        
+
+     de.uni_mannheim.informatik.swt.plm.workbench    
+     Central build file.
+                   
+     Ralph                                                                
+     ====================================================================== -->
+<project name="de.uni_mannheim.informatik.swt.plm.workbench" default="codegen">
+    <description>
+            Central build file.
+    </description>
+	
+	
+	
+    <!-- ================================= 
+          target: default              
+         ================================= -->
+    <target name="codegen" depends="depends" description="Central build file.">
+		
+    	<!-- Delete the generated GMF source -->
+		<delete includeemptydirs="true">
+	    	<fileset dir="../de.uni_mannheim.informatik.swt.models.plm.diagram/src" includes="**/*"/>
+		</delete>
+    	
+    	<ant antfile="org.eclipse.gmf.xpand.ant/examples/gmfgen-run.xml" target="main">
+			<property name="input-gmfgen-model-uri" value="../de.uni_mannheim.informatik.swt.gmf.plm/model/plm.gmfgen"></property>
+		</ant>
+    	
+    </target>
+
+    <!-- - - - - - - - - - - - - - - - - - 
+          target: depends                      
+         - - - - - - - - - - - - - - - - - -->
+    <target name="depends">
+    	
+    </target>
+
+</project>
