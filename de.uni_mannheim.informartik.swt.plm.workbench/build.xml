@@ -32,11 +32,13 @@
     	
     	<svnSetting svnkit="true" javahl="false" id="my.setting"/>
     	
+    	<echo>Update to latest version from repository</echo>
     	<svn refid="my.setting">
     		<update revision="HEAD">
     			<fileset dir="${basedir}/.." includes="/*" excludes=".metadata,.JETEmitters"/>
     		</update>
     	</svn>
+    	<echo>Finished update to latest version from repository</echo>
     	
     	<!-- Delete the generated GMF source -->
     	    	<!--<delete includeemptydirs="true">
