@@ -68,6 +68,7 @@
     		generatetestsproject="false"
     		reconcilegenmodel="overwrite"
     		validatemodel="true"
+    		templatepath="../de.uni_mannheim.informatik.swt.models.plm/templates"
     		jdklevel="6.0">
     			<arg line="-modelProject de.uni_mannheim.informatik.swt.models.plm src" />
     			<arg line="-editProject de.uni_mannheim.informatik.swt.models.plm.edit src" />
@@ -96,6 +97,7 @@
     		generatetestsproject="false"
     		reconcilegenmodel="keep"
     		validatemodel="true"
+    		templatepath="../de.uni_mannheim.informatik.swt.models.plm/templates"
     		jdklevel="6.0">
     			<arg line="-modelProject de.uni_mannheim.informatik.swt.models.plm src" />
     		    <arg line="-editProject de.uni_mannheim.informatik.swt.models.plm.edit src" />
@@ -130,6 +132,7 @@
     		generatetestsproject="false"
     		reconcilegenmodel="overwrite"
     		validatemodel="true"
+    		templatepath="../de.uni_mannheim.informatik.swt.models.plm.reasoningresult/templates"
     		jdklevel="6.0">
     			<arg line="-modelProject de.uni_mannheim.informatik.swt.models.plm.reasoningresult src" />
     		    <arg line="-editProject de.uni_mannheim.informatik.swt.models.plm.reasoningresult.edit src" />
@@ -159,6 +162,7 @@
     		generatetestsproject="false"
     		reconcilegenmodel="keep"
     		validatemodel="true"
+    		templatepath="../de.uni_mannheim.informatik.swt.models.plm.reasoningresult/templates"
     		jdklevel="6.0">
     			<arg line="-modelProject de.uni_mannheim.informatik.swt.models.plm.reasoningresult src" />
     		    <arg line="-editProject de.uni_mannheim.informatik.swt.models.plm.reasoningresult.edit src" />
