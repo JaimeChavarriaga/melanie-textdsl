@@ -33,6 +33,9 @@ import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.CTabFolder;
+import org.eclipse.swt.custom.CTabItem;
+import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -104,7 +107,18 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 	 */
 	public void createPartControl(Composite parent) {
 		
-		parent.setLayout(new GridLayout(1, false));
+		//parent.setLayout(new GridLayout(1, false));
+		
+		parent.setLayout(new FillLayout());
+		
+		CTabFolder tabFolder = new CTabFolder(parent, SWT.BOTTOM);
+		tabFolder.setSimple(false);
+		
+		CTabItem reasoningResultPage = new CTabItem(tabFolder, SWT.NONE);
+		reasoningResultPage.setText("Reasoning Results");
+		Composite reasoningResultComposite = new Composite(tabFolder, SWT.NONE);
+		reasoningResultComposite.setLayout(new GridLayout(1, false));
+		reasoningResultPage.setControl(reasoningResultComposite);
 		
 		factory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 
@@ -122,7 +136,7 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 		factory.addAdapterFactory(new ReasoningResultItemProviderAdapterFactory());
 		factory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 				
-		comboViewer = new ComboViewer(parent, SWT.READ_ONLY);
+		comboViewer = new ComboViewer(reasoningResultComposite, SWT.READ_ONLY);
 		comboViewer.setContentProvider(ArrayContentProvider.getInstance());
 		comboViewer.setLabelProvider(new AdapterFactoryLabelProvider(factory));
 		comboViewer.getCombo().setLayoutData(comboViewGridData);
@@ -139,7 +153,7 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 			}
 		});
 		
-		treeViewer = new TreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
+		treeViewer = new TreeViewer(reasoningResultComposite, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
 		treeViewer.getTree().setLayoutData(treeViewGridData);
 		
 		drillDownAdapter = new DrillDownAdapter(treeViewer);
@@ -168,6 +182,15 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 		contributeToActionBars();
 		
 		getSite().setSelectionProvider(this);
+		//This is needed to have the first tab visible
+		
+		CTabItem introspectPage = new CTabItem(tabFolder, SWT.NONE);
+		introspectPage.setText("Introspection");
+		Composite introspectResultComposite = new Composite(tabFolder, SWT.NONE);
+		introspectResultComposite.setLayout(new GridLayout(1, false));
+		introspectPage.setControl(introspectResultComposite); 
+		
+		tabFolder.setSelection(0);
 	}
 
 	ISelectionChangedListener menuBuilder = new ISelectionChangedListener() {
