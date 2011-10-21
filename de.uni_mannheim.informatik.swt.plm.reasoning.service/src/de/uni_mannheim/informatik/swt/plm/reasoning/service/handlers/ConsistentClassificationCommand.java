@@ -39,8 +39,12 @@ public class ConsistentClassificationCommand extends AbstractHandler {
 		Model model = (Model)event.getParameters().get("model");
 		CompositeCheck check = compute(model);
 		resultModel.getCheck().add(check);
-		if ((Boolean)event.getObjectParameterForExecution("silent"))
+		
+		Boolean silent = event.getParameters().get("silent") == null?
+				false: (Boolean)event.getObjectParameterForExecution("silent");
+		if (!silent)
 			reasoner.getReasoningHistory().add(resultModel);
+		
 		return check.isResult();
 	}
 	

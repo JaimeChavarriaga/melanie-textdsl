@@ -50,8 +50,12 @@ public class LocalConformsCommand extends AbstractHandler {
 		
 		CompositeCheck check = compute(type, instance);
 		resultModel.getCheck().add(check);
-		if ((Boolean)event.getObjectParameterForExecution("silent"))
+
+		Boolean silent = event.getParameters().get("silent") == null?
+				false: (Boolean)event.getObjectParameterForExecution("silent");
+		if (!silent)
 			reasoner.getReasoningHistory().add(resultModel);
+		
 		return check.isResult();
 	}
 	

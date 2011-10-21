@@ -41,8 +41,12 @@ public class OntologyConsistencyCommand extends AbstractHandler {
 		Element element = (Element)event.getObjectParameterForExecution("ontology");
 		CompositeCheck check = compute(element);
 		resultModel.getCheck().add(check);
-		if ((Boolean)event.getObjectParameterForExecution("silent"))
+
+		Boolean silent = event.getParameters().get("silent") == null?
+				false: (Boolean)event.getObjectParameterForExecution("silent");
+		if (!silent)
 			reasoner.getReasoningHistory().add(resultModel);
+		
 		return check.isResult();
 	}
 	
