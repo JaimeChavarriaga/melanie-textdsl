@@ -60,7 +60,7 @@
 				for (de.uni_mannheim.informatik.swt.models.plm.PLM.Connection con: possibleTypeConnections)
 					possibleTypes.addAll(con.getParticipant());
 				for (de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject possible: possibleTypes)
-					if (reasoner.run(de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService.LOCAL_CONFORMS, new Object[]{possible, target}))
+					if (reasoner.run(de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService.LOCAL_CONFORMS, new Object[]{possible, target}, true))
 						return true;
 				return false;
 			}

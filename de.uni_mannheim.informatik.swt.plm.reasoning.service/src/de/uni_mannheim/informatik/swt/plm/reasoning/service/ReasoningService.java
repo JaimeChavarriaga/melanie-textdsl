@@ -408,7 +408,7 @@ public class ReasoningService implements IReasoningService {
 			Map params = new HashMap();
 			params.put("type", parameters[0]);
 			params.put("instance", parameters[1]);
-			params.put("silent", silent);
+			params.put("silent", Boolean.toString(silent));
 			
 			Command command = commandService.getCommand(FeatureConformsCommand.ID);
 			ParameterizedCommand paramCmd = ParameterizedCommand.generateCommand(command, params);
@@ -422,7 +422,7 @@ public class ReasoningService implements IReasoningService {
 			params.put("type", parameters[0]);
 			params.put("instance", parameters[1]);
 			params.put("forceClabject", parameters.length > 2 ? parameters[2].toString() : "false");
-			params.put("silent", silent);
+			params.put("silent", Boolean.toString(silent));
 			Command command = commandService.getCommand(LocalConformsCommand.ID);
 			ParameterizedCommand paramCmd = ParameterizedCommand.generateCommand(command, params);
 			try {
@@ -434,7 +434,7 @@ public class ReasoningService implements IReasoningService {
 		} else if (commandID == ReasoningService.MULTIPLICITY_CONFORMS) {
 			Map params = new HashMap();
 			params.put("connection", parameters[0]);
-			params.put("silent", silent);
+			params.put("silent", Boolean.toString(silent));
 			Command command = commandService.getCommand(MultiplicityConformsCommand.ID);
 			ParameterizedCommand paramCmd = ParameterizedCommand.generateCommand(command, params);
 			try {
@@ -446,7 +446,7 @@ public class ReasoningService implements IReasoningService {
 			Map params = new HashMap();
 			params.put("type", parameters[0]);
 			params.put("instance", parameters[1]);
-			params.put("silent", silent);
+			params.put("silent", Boolean.toString(silent));
 			
 			Command command = commandService.getCommand(NeighbourhoodConformsCommand.ID);
 			ParameterizedCommand paramCmd = ParameterizedCommand.generateCommand(command, params);
@@ -459,7 +459,7 @@ public class ReasoningService implements IReasoningService {
 			Map params = new HashMap();
 			params.put("type", parameters[0]);
 			params.put("instance", parameters[1]);
-			params.put("silent", silent);
+			params.put("silent", Boolean.toString(silent));
 			
 			Command command = commandService.getCommand(PropertyConformsCommand.ID);
 			ParameterizedCommand paramCmd = ParameterizedCommand.generateCommand(command, params);
@@ -472,7 +472,7 @@ public class ReasoningService implements IReasoningService {
 			Map params = new HashMap();
 			params.put("type", parameters[0]);
 			params.put("instance", parameters[1]);
-			params.put("silent", silent);
+			params.put("silent", Boolean.toString(silent));
 			
 			Command command = commandService.getCommand(IsExpressedInstanceOfExcludedCommand.ID);
 			ParameterizedCommand paramCmd = ParameterizedCommand.generateCommand(command, params);
@@ -485,7 +485,7 @@ public class ReasoningService implements IReasoningService {
 			Map params = new HashMap();
 			params.put("type", parameters[0]);
 			params.put("instance", parameters[1]);
-			params.put("silent", silent);
+			params.put("silent", Boolean.toString(silent));
 			
 			Command command = commandService.getCommand(HasAdditionalPropertiesCommand.ID);
 			ParameterizedCommand paramCmd = ParameterizedCommand.generateCommand(command, params);
@@ -498,7 +498,7 @@ public class ReasoningService implements IReasoningService {
 			Map params = new HashMap();
 			params.put("type", parameters[0]);
 			params.put("instance", parameters[1]);
-			params.put("silent", silent);
+			params.put("silent", Boolean.toString(silent));
 			
 			Command command = commandService.getCommand(HyponymCommand.ID);
 			ParameterizedCommand paramCmd = ParameterizedCommand.generateCommand(command, params);
@@ -511,7 +511,7 @@ public class ReasoningService implements IReasoningService {
 			Map params = new HashMap();
 			params.put("type", parameters[0]);
 			params.put("instance", parameters[1]);
-			params.put("silent", silent);
+			params.put("silent", Boolean.toString(silent));
 			
 			Command command = commandService.getCommand(IsonymCommand.ID);
 			ParameterizedCommand paramCmd = ParameterizedCommand.generateCommand(command, params);
@@ -524,7 +524,7 @@ public class ReasoningService implements IReasoningService {
 			Map params = new HashMap();
 			params.put("type", parameters[0]);
 			params.put("instance", parameters[1]);
-			params.put("silent", silent);
+			params.put("silent", Boolean.toString(silent));
 			
 			Command command = commandService.getCommand(InstanceCommand.ID);
 			ParameterizedCommand paramCmd = ParameterizedCommand.generateCommand(command, params);
@@ -537,7 +537,7 @@ public class ReasoningService implements IReasoningService {
 		} else if (commandID == ReasoningService.CLASSIFICATION_CONSISTENCY) {
 			Map params = new HashMap();
 			params.put("element", parameters[0]);
-			params.put("silent", silent);
+			params.put("silent", Boolean.toString(silent));
 			
 			Command command = commandService.getCommand(ClassificationConsistencyCommand.ID);
 			ParameterizedCommand paramCmd = ParameterizedCommand.generateCommand(command, params);
@@ -549,7 +549,7 @@ public class ReasoningService implements IReasoningService {
 		} else if (commandID == ReasoningService.GENERALIZATION_CONSISTENCY) {
 			Map params = new HashMap();
 			params.put("element", parameters[0]);
-			params.put("silent", silent);
+			params.put("silent", Boolean.toString(silent));
 			
 			Command command = commandService.getCommand(GeneralizationConsistencyCommand.ID);
 			ParameterizedCommand paramCmd = ParameterizedCommand.generateCommand(command, params);
@@ -561,7 +561,7 @@ public class ReasoningService implements IReasoningService {
 		} else if (commandID == ReasoningService.ONTOLOGY_CONSISTENCY) {
 			Map params = new HashMap();
 			params.put("element", parameters[0]);
-			params.put("silent", silent);
+			params.put("silent", Boolean.toString(silent));
 			
 			Command command = commandService.getCommand(OntologyConsistencyCommand.ID);
 			ParameterizedCommand paramCmd = ParameterizedCommand.generateCommand(command, params);
@@ -573,7 +573,7 @@ public class ReasoningService implements IReasoningService {
 		} else if (commandID == ReasoningService.IS_CONSISTENTLY_CLASSIFIED) {
 			Map params = new HashMap();
 			params.put("model", parameters[0]);
-			params.put("silent", silent);
+			params.put("silent", Boolean.toString(silent));
 			
 			Command command = commandService.getCommand(ConsistentClassificationCommand.ID);
 			ParameterizedCommand paramCmd = ParameterizedCommand.generateCommand(command, params);
@@ -597,7 +597,7 @@ public class ReasoningService implements IReasoningService {
 	@Override
 	public boolean localConstructionConformsConnection(Connection type,
 			Connection instance) {
-		return run(LOCAL_CONFORMS, new Object[]{type, instance, true});
+		return run(LOCAL_CONFORMS, new Object[]{type, instance, true}, true);
 	}
 
 

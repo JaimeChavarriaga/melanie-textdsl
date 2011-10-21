@@ -37,7 +37,7 @@ public class HyponymCommand extends AbstractHandler {
 		resultModel.getCheck().add(check);
 
 		Boolean silent = event.getParameters().get("silent") == null?
-				false: (Boolean)event.getObjectParameterForExecution("silent");
+				false: Boolean.parseBoolean(event.getParameters().get("silent").toString());
 		if (!silent)
 			reasoner.getReasoningHistory().add(resultModel);
 		

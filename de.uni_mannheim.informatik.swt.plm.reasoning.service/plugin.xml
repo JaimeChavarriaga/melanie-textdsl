@@ -25,6 +25,11 @@
                name="Force Clabject"
                optional="true">
          </commandParameter>
+         <commandParameter
+               id="silent"
+               name="silent"
+               optional="true">
+         </commandParameter>
       </command>
       <command
             defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.FeatureConformsCommand"
