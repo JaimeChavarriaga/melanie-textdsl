@@ -5,7 +5,11 @@
      de.uni_mannheim.informatik.swt.plm.workbench    
      Central build file.
                    
-     Ralph                                                                
+     Ralph             
+     
+     http://www.eclipse.org/gmt/epsilon/doc/articles/eugenia-ant/
+	 http://cubussapiens.hu/2010/12/generating-java-code-from-emf-models-automatically
+	 http://help.eclipse.org/indigo/index.jsp?topic=%2Forg.eclipse.platform.doc.isv%2Fguide%2Fant_eclipse_tasks.htm                                                   
      ====================================================================== -->
 <project name="ant-build" default="codegen">
     <description>
