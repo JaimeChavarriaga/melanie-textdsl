@@ -155,7 +155,7 @@ public class DeleteClabjectCommand extends AbstractHandler {
 			for(Feature instanceFeature : i.getFeature())
 				for (Feature typeFeature : clabjectToBeDeleted.getFeature())
 					try {
-						if (ExtensionPointService.Instance().getActiveReasoningService().run(IReasoningService.FEATURE_CONFORMS, new Object[] {typeFeature, instanceFeature}))
+						if (ExtensionPointService.Instance().getActiveReasoningService().run(IReasoningService.FEATURE_CONFORMS, new Object[] {typeFeature, instanceFeature}, true))
 							refactoringCommand.append(RemoveCommand.create(domain, instanceFeature));
 					} catch (CoreException e) {
 						e.printStackTrace();

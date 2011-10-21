@@ -58,7 +58,7 @@ public class DeleteFeatureCommand extends AbstractHandler {
 		for (Clabject instance: instances)
 			for (Feature feature : instance.getFeature())
 				try {
-					if (ExtensionPointService.Instance().getActiveReasoningService().run(IReasoningService.FEATURE_CONFORMS, new Object[] {featureToChange, feature})){
+					if (ExtensionPointService.Instance().getActiveReasoningService().run(IReasoningService.FEATURE_CONFORMS, new Object[] {featureToChange, feature}, true)){
 						refactoringCommand.append(RemoveCommand.create(domain, feature));
 					}
 						

@@ -7,6 +7,7 @@
  *
  * Contributors:
  *    Bastian Kennel - initial API and implementation and initial documentation
+ *    Ralph Gerbig - non reasoning related programming
  *******************************************************************************/
 package de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers;
 
@@ -49,7 +50,8 @@ public class LocalConformsCommand extends AbstractHandler {
 		
 		CompositeCheck check = compute(type, instance);
 		resultModel.getCheck().add(check);
-		reasoner.getReasoningHistory().add(resultModel);
+		if ((Boolean)event.getObjectParameterForExecution("silent"))
+			reasoner.getReasoningHistory().add(resultModel);
 		return check.isResult();
 	}
 	

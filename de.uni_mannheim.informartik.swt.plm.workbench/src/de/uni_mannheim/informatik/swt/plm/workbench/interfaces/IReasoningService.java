@@ -74,15 +74,28 @@ public interface IReasoningService {
 	 * @return
 	 */
 	public IReasoningService Instance();
-	
+
 	/**
+	 * Runs a command in verbose mode. Should call 
+	 * run(String commandID, Object[] parameters, boolean silent)
+	 * with silent = false in standard implementations.
 	 * 
 	 * @param commandID Id defined by {@link IReasoningService}
 	 * @param parameters Parameters defined by the ids
 	 * 
 	 * @return true -> operation sucessful; false -> operation failed
 	 */
-	public boolean run(String commandID, Object[] parameters);	
+	public boolean run(String commandID, Object[] parameters);
+	
+	/**
+	 * 
+	 * @param commandID Id defined by {@link IReasoningService}
+	 * @param parameters Parameters defined by the ids
+	 * @param run this one command in silent mode, all others will be verbose again
+	 * 
+	 * @return true -> operation sucessful; false -> operation failed
+	 */
+	public boolean run(String commandID, Object[] parameters, boolean silent);	
 		
 	/**
 	 * Checks whether a connection can exist between source and target

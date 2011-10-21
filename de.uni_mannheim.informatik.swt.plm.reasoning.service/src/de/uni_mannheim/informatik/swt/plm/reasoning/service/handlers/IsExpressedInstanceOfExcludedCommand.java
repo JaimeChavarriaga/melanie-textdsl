@@ -7,10 +7,10 @@
  *
  * Contributors:
  *    Bastian Kennel - initial API and implementation and initial documentation
+ *    Ralph Gerbig - non reasoning related programming
  *******************************************************************************/
 package de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers;
 
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -46,7 +46,8 @@ public class IsExpressedInstanceOfExcludedCommand extends AbstractHandler {
 		Clabject instance = (Clabject)event.getObjectParameterForExecution("instance");
 		ReasoningResultModel resultModel = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();
 		CompositeCheck check = compute(type, instance);
-		reasoner.getReasoningHistory().add(resultModel);
+		if ((Boolean)event.getObjectParameterForExecution("silent"))
+			reasoner.getReasoningHistory().add(resultModel);
 		return check.isResult();
 	}
 	

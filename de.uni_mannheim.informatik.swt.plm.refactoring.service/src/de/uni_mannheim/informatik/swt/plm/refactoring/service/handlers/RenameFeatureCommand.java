@@ -103,7 +103,7 @@ public class RenameFeatureCommand extends AbstractHandler {
 		for (Clabject instance: instances)
 			for (Feature feature : instance.getAllFeatures())
 				try {
-					if (ExtensionPointService.Instance().getActiveReasoningService().run(IReasoningService.FEATURE_CONFORMS, new Object[] {featureToChange, feature})){
+					if (ExtensionPointService.Instance().getActiveReasoningService().run(IReasoningService.FEATURE_CONFORMS, new Object[] {featureToChange, feature}, true)){
 						refactoringCommand.append(SetCommand.create(domain, feature, PLMPackage.eINSTANCE.getElement_Name(), newName));
 					}
 						
