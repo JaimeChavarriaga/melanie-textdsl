@@ -779,7 +779,13 @@
 			//When we come from read only context / addNotify the size should be in the
 			//notation model
 			if (getEditingDomain() instanceof org.eclipse.emf.transaction.impl.InternalTransactionalEditingDomain
-					&& ! ((org.eclipse.emf.transaction.impl.InternalTransactionalEditingDomain)getEditingDomain()).getActiveTransaction().isReadOnly())
+					&& 
+					//No transaction is running or no readonly transaction is running
+					(
+						((org.eclipse.emf.transaction.impl.InternalTransactionalEditingDomain) getEditingDomain()).getActiveTransaction() == null
+						|| !((org.eclipse.emf.transaction.impl.InternalTransactionalEditingDomain) getEditingDomain()).getActiveTransaction().isReadOnly()
+					)
+				)
 			{
 				org.eclipse.gef.Request rr = new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_AUTOSIZE);
 				performRequest(rr);
