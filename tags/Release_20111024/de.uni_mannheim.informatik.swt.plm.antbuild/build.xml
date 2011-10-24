@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     18.10.2011 11:13:42                                                        
+
+     de.uni_mannheim.informatik.swt.plm.workbench    
+     Central build file.
+                   
+     Ralph             
+     
+     http://www.eclipse.org/gmt/epsilon/doc/articles/eugenia-ant/
+	 http://cubussapiens.hu/2010/12/generating-java-code-from-emf-models-automatically
+	 http://help.eclipse.org/indigo/index.jsp?topic=%2Forg.eclipse.platform.doc.isv%2Fguide%2Fant_eclipse_tasks.htm                                                   
+     ====================================================================== -->
+<project name="ant-build" default="codegen">
+    <description>
+            Central build file.
+    </description>
+	
+	
+	
+    <!-- ================================= 
+          target: default              
+         ================================= -->
+    <target name="codegen" depends="depends" description="Central build file.">
+    
+    	<path id="path.svnant">
+	      	<pathelement location="${basedir}/lib/svnant.jar"/>
+	      	<pathelement location="${basedir}/lib/svnClientAdapter.jar"/>
+    		<pathelement location="${basedir}/lib/ganymed.jar"/>
+			<pathelement location="${basedir}/lib/svnkit.jar"/>
+			<pathelement location="${basedir}/lib/jna.jar"/>
+    		<pathelement location="${basedir}/lib/svnjavahl.jar"/>
+	    </path>
+    	
+		<typedef resource="org/tigris/subversion/svnant/svnantlib.xml" classpathref="path.svnant" />
+    	
+    	<svnSetting svnkit="true" javahl="false" id="my.setting"/>
+    	
+    	<echo>Update to latest version from repository</echo>
+    	<svn refid="my.setting">
+    		<update revision="HEAD">
+    			<fileset dir="${basedir}/.." includes="/*" excludes=".metadata,.JETEmitters"/>
+    		</update>
+    	</svn>
+    	<echo>Finished update to latest version from repository</echo>
+    	
+    	<!-- Delete the generated GMF source -->
+    	    	<!--<delete includeemptydirs="true">
+    	    	    <fileset dir="../de.uni_mannheim.informatik.swt.models.plm.diagram/src" includes="**/*"/>
+    	    	</delete>-->
+
+    	<!-- ================================================
+    		BEGIN PLM
+    	===================================================== -->
+    	
+    	<!-- Delete PLM model code, edit and editor -->
+    	<delete includeemptydirs="true">
+	 	 	<fileset dir="../de.uni_mannheim.informatik.swt.models.plm/src" includes="**/*"/>
+    		<fileset dir="../de.uni_mannheim.informatik.swt.models.plm.edit/src" includes="**/*"/>
+    		<fileset dir="../de.uni_mannheim.informatik.swt.models.plm.editor/src" includes="**/*"/>
+    	</delete>
+    	
+    	<!-- Only generate the genmodel -->
+    	<emf.Ecore2Java 
+			model="../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore"
+			genmodel="../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel"
+			modelproject="de.uni_mannheim.informatik.swt.models.plm"
+			modelprojectfragmentpath="src"
+			generateeditorproject="false"
+			generateeditproject="false"
+			generatejavacode="false"
+    		generatetestsproject="false"
+    		reconcilegenmodel="overwrite"
+    		validatemodel="true"
+    		templatepath="../de.uni_mannheim.informatik.swt.models.plm/templates"
+    		jdklevel="6.0">
+    			<arg line="-modelProject de.uni_mannheim.informatik.swt.models.plm src" />
+    			<arg line="-editProject de.uni_mannheim.informatik.swt.models.plm.edit src" />
+    			<arg line="-editorProject de.uni_mannheim.informatik.swt.models.plm.editor src" />
+    	 </emf.Ecore2Java>
+    	
+    	<!-- Execute the refinement transformation for PLM -->
+    	<atl.loadModel name="genmodel" metamodel="MOF" nsuri="http://www.eclipse.org/emf/2002/GenModel"></atl.loadModel>
+    	<atl.loadModel name="PLMInOutModel" metamodel="genmodel" path="../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel"></atl.loadModel>
+    	
+    	<atl.launch path="../de.uni_mannheim.informatik.swt.models.plm/transformation/GenmodelRefinement.atl" refining="true">
+    		<inoutmodel model="PLMInOutModel" name="IN"/>
+    	</atl.launch>
+    	
+    	<atl.saveModel model="PLMInOutModel" path="../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel"></atl.saveModel>
+    	
+    	<!-- Create java-source, edit and editor code for PLM -->
+    	<emf.Ecore2Java 
+    		model="../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore"
+    		genmodel="../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel"
+    		modelproject="de.uni_mannheim.informatik.swt.models.plm/"
+			modelprojectfragmentpath="src"
+			generateeditorproject="true"
+			generateeditproject="true"
+			generatejavacode="true"
+    		generatetestsproject="false"
+    		reconcilegenmodel="keep"
+    		validatemodel="true"
+    		templatepath="../de.uni_mannheim.informatik.swt.models.plm/templates"
+    		jdklevel="6.0">
+    			<arg line="-modelProject de.uni_mannheim.informatik.swt.models.plm src" />
+    		    <arg line="-editProject de.uni_mannheim.informatik.swt.models.plm.edit src" />
+    		    <arg line="-editorProject de.uni_mannheim.informatik.swt.models.plm.editor src" />
+    	 </emf.Ecore2Java>
+    	
+    	<!-- ================================================
+			END PLM
+    	===================================================== -->
+  
+    	
+    	
+    	<!-- ================================================
+    	    		BEGIN Reasoning
+    	===================================================== -->
+    	
+    	<!-- Delete PLM model code, edit and editor -->
+		<delete includeemptydirs="true">
+ 	 		<fileset dir="../de.uni_mannheim.informatik.swt.models.plm.reasoningresult/src" includes="**/*"/>
+			<fileset dir="../de.uni_mannheim.informatik.swt.models.plm.reasoningresult.edit/src" includes="**/*"/>
+		</delete>
+    	
+    	<!-- Only generate the genmodel -->
+    	<emf.Ecore2Java 
+    		model="../de.uni_mannheim.informatik.swt.models.plm.reasoningresult/model/ReasoningResult.ecore"
+    		genmodel="../de.uni_mannheim.informatik.swt.models.plm.reasoningresult/model/ReasoningResult.genmodel"
+			modelproject="de.uni_mannheim.informatik.swt.models.plm.reasoningresult"
+			modelprojectfragmentpath="src"
+			generateeditorproject="false"
+			generateeditproject="false"
+			generatejavacode="false"
+    		generatetestsproject="false"
+    		reconcilegenmodel="overwrite"
+    		validatemodel="true"
+    		templatepath="../de.uni_mannheim.informatik.swt.models.plm.reasoningresult/templates"
+    		jdklevel="6.0">
+    			<arg line="-modelProject de.uni_mannheim.informatik.swt.models.plm.reasoningresult src" />
+    		    <arg line="-editProject de.uni_mannheim.informatik.swt.models.plm.reasoningresult.edit src" />
+    		    <arg line="-editorProject de.uni_mannheim.informatik.swt.models.plm.reasoningresult.editor src" />
+    			<arg line= "-package http://swt.informatik.uni-mannheim.de/ReasoningResult"/>
+    			<arg line= "-refGenModel ${basedir}/../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel http://swt.informatik.uni-mannheim.de/PLM"/>
+    	 </emf.Ecore2Java>
+    	
+    	<!-- Execute the refinement transformation for Reasoning -->
+    	<atl.loadModel name="ReasoningInOutModel" metamodel="genmodel" path="../de.uni_mannheim.informatik.swt.models.plm.reasoningresult/model/ReasoningResult.genmodel"></atl.loadModel>
+    	
+    	<atl.launch path="../de.uni_mannheim.informatik.swt.models.plm.reasoningresult/transformation/GenmodelRefinement.atl" refining="true">
+    		<inoutmodel model="ReasoningInOutModel" name="IN"/>
+    	</atl.launch>
+    	
+    	<atl.saveModel model="ReasoningInOutModel" path="../de.uni_mannheim.informatik.swt.models.plm.reasoningresult/model/ReasoningResult.genmodel"></atl.saveModel>
+    	
+    	<!-- Create java-source, edit and editor code for PLM -->
+    	<emf.Ecore2Java 
+    		model="../de.uni_mannheim.informatik.swt.models.plm.reasoningresult/model/ReasoningResult.ecore"
+    		genmodel= "../de.uni_mannheim.informatik.swt.models.plm.reasoningresult/model/ReasoningResult.genmodel"
+			modelproject="de.uni_mannheim.informatik.swt.models.plm.reasoningresult"
+			modelprojectfragmentpath="src"
+			generateeditorproject="false"
+			generateeditproject="true"
+			generatejavacode="true"
+    		generatetestsproject="false"
+    		reconcilegenmodel="keep"
+    		validatemodel="true"
+    		templatepath="../de.uni_mannheim.informatik.swt.models.plm.reasoningresult/templates"
+    		jdklevel="6.0">
+    			<arg line="-modelProject de.uni_mannheim.informatik.swt.models.plm.reasoningresult src" />
+    		    <arg line="-editProject de.uni_mannheim.informatik.swt.models.plm.reasoningresult.edit src" />
+    		    <arg line="-editorProject de.uni_mannheim.informatik.swt.models.plm.reasoningresutl.editor src" />
+    			<arg line= "-package http://swt.informatik.uni-mannheim.de/ReasoningResult"/>
+    			<arg line= "-refGenModel ${basedir}/../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel http://swt.informatik.uni-mannheim.de/PLM"/>
+    	 </emf.Ecore2Java>
+    	<!-- ================================================
+	    		END Reasoning
+    	===================================================== -->
+    </target>
+
+    <!-- - - - - - - - - - - - - - - - - - 
+          target: depends                      
+         - - - - - - - - - - - - - - - - - -->
+    <target name="depends">
+    	
+    </target>
+
+</project>

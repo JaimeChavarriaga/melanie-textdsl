@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     18.10.2011 11:13:42                                                        
+
+     de.uni_mannheim.informatik.swt.plm.workbench    
+     Central build file.
+                   
+     Ralph                                                                
+     ====================================================================== -->
+<project name="gmfgen-integration" default="gmfgen">
+	
+	<description>
+		Central build file.
+    </description>
+	
+	
+	
+    <!-- ================================= 
+          target: default              
+         ================================= -->
+    <target name="codegen" depends="depends" description="Central build file.">
+    	<atl.loadModel name="genmodel" metamodel="MOF" nsuri="http://www.eclipse.org/emf/2002/GenModel"></atl.loadModel>
+    	<atl.loadModel name="PLMInOutModel" metamodel="genmodel" path="../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel"></atl.loadModel>
+    	
+    	<atl.launch path="../de.uni_mannheim.informatik.swt.models.plm/transformation/GenmodelRefinement.atl" refining="true">
+    		<inoutmodel name="IN" model="PLMInOutModel"/>
+    	</atl.launch>
+    	
+    	<atl.saveModel model="PLMInOutModel" path="../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel"></atl.saveModel>
+    	
+    </target>
+
+    <!-- - - - - - - - - - - - - - - - - - 
+          target: depends                      
+         - - - - - - - - - - - - - - - - - -->
+    <target name="depends">
+    	
+    </target>
+	
+	<target name="gmfgen">
+		<!-- Delete the generated GMF source -->
+		<delete includeemptydirs="true">
+	    	<fileset dir="../de.uni_mannheim.informatik.swt.models.plm.diagram/src" includes="**/*"/>
+		</delete>
+		
+    	<ant antfile="../org.eclipse.gmf.xpand.ant/examples/gmfgen-run.xml" target="main">
+			<property name="input-gmfgen-model-uri" value="C:/eclipse/plugins/de.uni_mannheim.informatik.swt.gmf.plm/model/plm.gmfgen"></property>
+		</ant>
+	</target>
+
+</project>
