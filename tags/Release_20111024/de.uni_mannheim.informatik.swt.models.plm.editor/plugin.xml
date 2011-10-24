@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="de.uni_mannheim.informatik.swt.models.plm.PLM.presentation.PLMModelWizardID"
+            name="%_UI_PLMModelWizard_label"
+            class="de.uni_mannheim.informatik.swt.models.plm.PLM.presentation.PLMModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/PLMModelFile.gif">
+         <description>%_UI_PLMModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="de.uni_mannheim.informatik.swt.models.plm.PLM.presentation.PLMEditorID"
+            name="%_UI_PLMEditor_label"
+            icon="icons/full/obj16/PLMModelFile.gif"
+            extensions="plm"
+            class="de.uni_mannheim.informatik.swt.models.plm.PLM.presentation.PLMEditor"
+            contributorClass="de.uni_mannheim.informatik.swt.models.plm.PLM.presentation.PLMActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="de.uni_mannheim.informatik.swt.models.plm.visualization.presentation.VisualizationModelWizardID"
+            name="%_UI_VisualizationModelWizard_label"
+            class="de.uni_mannheim.informatik.swt.models.plm.visualization.presentation.VisualizationModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/VisualizationModelFile.gif">
+         <description>%_UI_VisualizationModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="de.uni_mannheim.informatik.swt.models.plm.visualization.presentation.VisualizationEditorID"
+            name="%_UI_VisualizationEditor_label"
+            icon="icons/full/obj16/VisualizationModelFile.gif"
+            extensions="visualization"
+            class="de.uni_mannheim.informatik.swt.models.plm.visualization.presentation.VisualizationEditor"
+            contributorClass="de.uni_mannheim.informatik.swt.models.plm.visualization.presentation.VisualizationActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
