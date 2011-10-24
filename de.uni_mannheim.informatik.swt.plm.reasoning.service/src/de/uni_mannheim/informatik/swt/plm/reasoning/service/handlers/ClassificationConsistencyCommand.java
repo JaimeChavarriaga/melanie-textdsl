@@ -72,8 +72,7 @@ public class ClassificationConsistencyCommand extends AbstractHandler {
 		CompositeCheck kindCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck(inst, inst, check);
 		kindCheck.setName("Kind Instance");
 		kindCheck.setResult(true);
-		//TODO: RENAMED INSTANTIATION to CLASSIFICATION is that right
-		if (inst.getKind().equals(ClassificationKind.ISONYM) || inst.getKind().equals(ClassificationKind.CLASSIFICATION)) {
+		if (inst.getKind().equals(ClassificationKind.ISONYM) || inst.getKind().equals(ClassificationKind.INSTANTIATION)) {
 			kindCheck.setName("Kind Isonym");
 			CompositeCheck isonymCheck = (new IsonymCommand()).compute(type, instance);
 			kindCheck.getCheck().add(isonymCheck);
