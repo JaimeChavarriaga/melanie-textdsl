@@ -72,8 +72,15 @@ context Clabject {
 	}
 	
 	constraint onlyOneClassification {
-		check: self.getModelClassificationsAsInstance()->select(inst|inst.kind = ClassificationKind#classification)->size() <= 1
+		check: self.getModelClassificationsAsInstance()->select(inst|inst.kind = ClassificationKind#instantiation)->size() <= 1
 		message: 'There can be only one classification per Clabject. Change kind of/remove redundant Classification(s).'
+	}
+}
+
+context Entity{
+	critique noNameButPotencyGreaterZero{
+		check: (self.name.isUndefined() or self.name = '') implies (self.potency = 0)
+		message: 'Anonymus types can cause problems with the "DSL Element"" palete'
 	}
 }
 
