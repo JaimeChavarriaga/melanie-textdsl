@@ -7,7 +7,7 @@
                    
      Ralph                                                                
      ====================================================================== -->
-<project name="gmfgen-integration" default="codegen">
+<project name="gmfgen-integration" default="gmfgen">
 	
 	<description>
 		Central build file.
@@ -36,5 +36,16 @@
     <target name="depends">
     	
     </target>
+	
+	<target name="gmfgen">
+		<!-- Delete the generated GMF source -->
+		<delete includeemptydirs="true">
+	    	<fileset dir="../de.uni_mannheim.informatik.swt.models.plm.diagram/src" includes="**/*"/>
+		</delete>
+		
+    	<ant antfile="../org.eclipse.gmf.xpand.ant/examples/gmfgen-run.xml" target="main">
+			<property name="input-gmfgen-model-uri" value="C:/eclipse/plugins/de.uni_mannheim.informatik.swt.gmf.plm/model/plm.gmfgen"></property>
+		</ant>
+	</target>
 
 </project>
