@@ -2931,6 +2931,39 @@
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Generalization/subtype"/>
       </modelFacet>
     </links>
+    <links
+        visualID="4024"
+        editPartClassName="RoleEditPart"
+        itemSemanticEditPolicyClassName="RoleItemSemanticEditPolicy"
+        createCommandClassName="RoleCreateCommand"
+        reorientCommandClassName="RoleReorientCommand">
+      <diagramRunTimeClass
+          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Edge"/>
+      <elementType
+          xsi:type="gmfgen:MetamodelType"
+          editHelperClassName="RoleEditHelper"/>
+      <viewmap
+          xsi:type="gmfgen:InnerClassViewmap"
+          className="ConnectionParticipantsFigure"
+          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class ConnectionParticipantsFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureConnectionParticipantsNameFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureConnectionParticipantsMultiplicityFigure; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public ConnectionParticipantsFigure() {&#xA;&#x9;&#x9;&#x9;this.setForegroundColor(org.eclipse.draw2d.ColorConstants.black);&#xA;&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureConnectionParticipantsNameFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureConnectionParticipantsNameFigure.setText(&quot;&quot;);&#xA;&#x9;fFigureConnectionParticipantsNameFigure.setForegroundColor(org.eclipse.draw2d.ColorConstants.black);&#xA;&#xA;fFigureConnectionParticipantsNameFigure.setFont(FFIGURECONNECTIONPARTICIPANTSNAMEFIGURE_FONT);&#xA;&#xA;&#xA;&#xA;this.add(fFigureConnectionParticipantsNameFigure);&#xA;&#xA;&#xA;&#xA;fFigureConnectionParticipantsMultiplicityFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureConnectionParticipantsMultiplicityFigure.setText(&quot;0..*&quot;);&#xA;&#xA;fFigureConnectionParticipantsMultiplicityFigure.setFont(FFIGURECONNECTIONPARTICIPANTSMULTIPLICITYFIGURE_FONT);&#xA;&#xA;&#xA;&#xA;this.add(fFigureConnectionParticipantsMultiplicityFigure);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureConnectionParticipantsNameFigure() {&#xA;&#x9;&#x9;return fFigureConnectionParticipantsNameFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureConnectionParticipantsMultiplicityFigure() {&#xA;&#x9;&#x9;return fFigureConnectionParticipantsMultiplicityFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGURECONNECTIONPARTICIPANTSNAMEFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 8, org.eclipse.swt.SWT.NORMAL);&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGURECONNECTIONPARTICIPANTSMULTIPLICITYFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 8, org.eclipse.swt.SWT.NORMAL);&#xA;&#xA;">
+        <attributes
+            xsi:type="gmfgen:StyleAttributes"
+            fixedForeground="true"/>
+      </viewmap>
+      <modelFacet
+          xsi:type="gmfgen:TypeLinkModelFacet">
+        <metaClass
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Role"/>
+        <containmentMetaFeature
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Connection/role"/>
+        <childMetaFeature
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Connection/role"/>
+        <sourceMetaFeature
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Role/source"/>
+        <targetMetaFeature
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Role/target"/>
+      </modelFacet>
+    </links>
     <compartments
         visualID="7003"
         editPartClassName="OntologyModelCompartmentEditPart"
@@ -3116,6 +3149,13 @@
             largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/visualizer16.gif"
             smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/visualizer16.gif"
             genNodes="//@diagram/@childNodes.1 //@diagram/@childNodes.4 //@diagram/@childNodes.6 //@diagram/@childNodes.7 //@diagram/@childNodes.9 //@diagram/@childNodes.11 //@diagram/@childNodes.13 //@diagram/@childNodes.15 //@diagram/@childNodes.18 //@diagram/@childNodes.20 //@diagram/@childNodes.21 //@diagram/@childNodes.22"/>
+        <entries
+            xsi:type="gmfgen:ToolEntry"
+            title="Connection Role"
+            description="Creates a new Connection Role"
+            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/connectionParticipant16.gif"
+            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/connectionParticipant16.gif"
+            genLinks="//@diagram/@links.8"/>
       </groups>
       <groups
           title="Connections"
