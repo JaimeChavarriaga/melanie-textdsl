@@ -1412,6 +1412,23 @@
         xsi:type="ecore:EReference"
         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Generalization/subtype"/>
   </links>
+  <links>
+    <domainMetaElement
+        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Role"/>
+    <containmentFeature
+        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Connection/role"/>
+    <tool
+        xsi:type="gmftool:CreationTool"
+        href="plm.gmftool#//@palette/@tools.1/@tools.6"/>
+    <diagramLink
+        href="plm.gmfgraph#ConnectionParticipants"/>
+    <sourceMetaFeature
+        xsi:type="ecore:EReference"
+        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Role/source"/>
+    <linkMetaFeature
+        xsi:type="ecore:EReference"
+        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Role/destination"/>
+  </links>
   <diagram>
     <diagramCanvas
         href="plm.gmfgraph#PLM"/>
