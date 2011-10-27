@@ -223,30 +223,36 @@ context Connection {
 		}
 	}
 	
+	constraint atLeastTwoRoles{
+		guard: Generalization.allInstances()->forAll(g | not g.subtype->contains(self))
+		check: self.role->size() > 1
+		message: "A not inherited connection does need at least two roles."
+	}
+	
 	--We need to check that connections that are not inherited have at least two participants, lower, upper etc.
-	constraint atLeastTwoParticipants{
-		guard: Generalization.allInstances()->forAll(g | not g.subtype->contains(self))
-		check: self.participant->size() > 1
-		message: "A not inherited connection does need at least two participants."
-	}
+	--constraint atLeastTwoParticipants{
+	--	guard: Generalization.allInstances()->forAll(g | not g.subtype->contains(self))
+	--	check: self.participant->size() > 1
+	--	message: "A not inherited connection does need at least two participants."
+	--}
 	
-	constraint atLeastTwoLower{
-		guard: Generalization.allInstances()->forAll(g | not g.subtype->contains(self))
-		check: self.lower->size() > 1
-		message: "A not inherited connection does need at least two lower values."
-	}
+	--constraint atLeastTwoLower{
+	--	guard: Generalization.allInstances()->forAll(g | not g.subtype->contains(self))
+	--	check: self.lower->size() > 1
+	--	message: "A not inherited connection does need at least two lower values."
+	--}
 	
-	constraint atLeastTwoUpper{
-		guard: Generalization.allInstances()->forAll(g | not g.subtype->contains(self))
-		check: self.upper->size() > 1
-		message: "A not inherited connection does need at least two upper values."
-	}
+	--constraint atLeastTwoUpper{
+	--	guard: Generalization.allInstances()->forAll(g | not g.subtype->contains(self))
+	--	check: self.upper->size() > 1
+	--	message: "A not inherited connection does need at least two upper values."
+	--}
 	
-	constraint atLeastTwoRoleNames{
-		guard: Generalization.allInstances()->forAll(g | not g.subtype->contains(self))
-		check: self.roleName->size() > 1
-		message: "A not inherited connection does need at least two role names."
-	}
+	--constraint atLeastTwoRoleNames{
+	--	guard: Generalization.allInstances()->forAll(g | not g.subtype->contains(self))
+	--	check: self.roleName->size() > 1
+	--	message: "A not inherited connection does need at least two role names."
+	--}
 }
 
 context Generalization {

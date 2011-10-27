@@ -18,7 +18,7 @@
         name="domainEntityNameCheck"
         description="Checks the name of elements"
         id="audits.attributes.domainEntityNameAudit.Colon"
-        rule="//@expressionProviders/@providers.0/@expressions.93"
+        rule="//@expressionProviders/@providers.0/@expressions.96"
         message="Name is not allowed to contain ':'"
         category="//@audits/@categories.0">
       <target
@@ -32,7 +32,7 @@
         name="domainEntityNameCheck"
         description="Checks the name of elements"
         id="audits.attributes.domainEntityNameAudit.GreaterThan"
-        rule="//@expressionProviders/@providers.0/@expressions.94"
+        rule="//@expressionProviders/@providers.0/@expressions.97"
         message="Name is not allowed to contain '>'"
         category="//@audits/@categories.0">
       <target
@@ -46,7 +46,7 @@
         name="domainEntityNameCheck"
         description="Checks the name of elements"
         id="audits.attributes.domainEntityNameAudit.Dot"
-        rule="//@expressionProviders/@providers.0/@expressions.95"
+        rule="//@expressionProviders/@providers.0/@expressions.98"
         message="Name is not allowed to contain '.'"
         category="//@audits/@categories.0">
       <target
@@ -2935,6 +2935,7 @@
         visualID="4024"
         editPartClassName="RoleEditPart"
         itemSemanticEditPolicyClassName="RoleItemSemanticEditPolicy"
+        notationViewFactoryClassName="RoleViewFactory"
         createCommandClassName="RoleCreateCommand"
         reorientCommandClassName="RoleReorientCommand">
       <diagramRunTimeClass
@@ -2963,6 +2964,57 @@
         <targetMetaFeature
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Role/target"/>
       </modelFacet>
+      <labels
+          visualID="6012"
+          editPartClassName="WrappingLabel62EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel62ItemSemanticEditPolicy"
+          notationViewFactoryClassName="RoleLabelViewFactory"
+          alignment="SOURCE">
+        <diagramRunTimeClass
+            href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap
+            xsi:type="gmfgen:ParentAssignedViewmap"
+            getterName="getFigureConnectionParticipantsNameFigure"
+            figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel">
+          <attributes
+              xsi:type="gmfgen:StyleAttributes"
+              fixedFont="true"
+              fixedForeground="true"/>
+          <attributes
+              xsi:type="gmfgen:LabelOffsetAttributes"
+              x="-10"
+              y="-10"/>
+        </viewmap>
+        <modelFacet
+            xsi:type="gmfgen:ExpressionLabelModelFacet"
+            parser="//@labelParsers/@implementations.56"/>
+      </labels>
+      <labels
+          visualID="6013"
+          editPartClassName="WrappingLabel63EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel63ItemSemanticEditPolicy"
+          notationViewFactoryClassName="RoleLabelViewFactory"
+          alignment="SOURCE">
+        <diagramRunTimeClass
+            href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap
+            xsi:type="gmfgen:ParentAssignedViewmap"
+            getterName="getFigureConnectionParticipantsMultiplicityFigure"
+            figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel">
+          <attributes
+              xsi:type="gmfgen:StyleAttributes"
+              fixedFont="true"/>
+          <attributes
+              xsi:type="gmfgen:LabelOffsetAttributes"
+              x="10"
+              y="10"/>
+        </viewmap>
+        <modelFacet
+            xsi:type="gmfgen:ExpressionLabelModelFacet"
+            parser="//@labelParsers/@implementations.57"/>
+      </labels>
+      <creationConstraints
+          targetEnd="//@expressionProviders/@providers.0/@expressions.95"/>
     </links>
     <compartments
         visualID="7003"
@@ -3624,6 +3676,13 @@
           xsi:type="gmfgen:GenConstraint"
           body="self.oclIsTypeOf(Entity) and self &lt;> oppositeEnd.base"/>
       <expressions
+          body="self.name"/>
+      <expressions
+          body="--A role has no visualizer yet&#xD;&#xA;--let renderingInformationAvailable:Boolean = &#xD;&#xA;--&#x9;if (self.visualizer->size() > 0) then&#xD;&#xA;--&#x9;&#x9;true&#xD;&#xA;--&#x9;else&#xD;&#xA;--&#x9;&#x9;false&#xD;&#xA;--&#x9;endif&#xD;&#xA;--in&#xD;&#xA;&#xD;&#xA;--is a visualizer present?&#xD;&#xA;--let visualizer:Visualizer =&#xD;&#xA;--&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;--&#x9;&#x9;self.visualizer->first()&#xD;&#xA;--&#x9;else&#xD;&#xA;--&#x9;&#x9;null&#xD;&#xA;--&#x9;endif&#xD;&#xA;--in&#xD;&#xA;&#xD;&#xA;--here for the DSL mode needs to be checked&#xD;&#xA;let multiplicityPotency:Boolean = true&#xD;&#xA;--&#x9;if (renderingInformationAvailable) then&#xD;&#xA;--&#x9;&#x9;visualizer.getValueForKey('potency') = 'max' &#xD;&#xA;--&#x9;&#x9;&#x9;or &#xD;&#xA;--&#x9;&#x9;(visualizer.getValueForKey('potency') = 'default') and (self.potency &lt;> 1)&#xD;&#xA;--&#x9;else&#xD;&#xA;--&#x9;&#x9;true&#xD;&#xA;--&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let lower:String = if (self.lower > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.lower.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.lower = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let upper:String = if (self.upper > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(&#xD;&#xA;            denominator : Integer;&#xD;&#xA;            s : String = ''|&#xD;&#xA;            let numberAsString : String = OrderedSet{&#xD;&#xA;                    '0','1','2','3','4','5','6','7','8','9'&#xD;&#xA;                }->at(self.upper.div(denominator).mod(10) + 1)&#xD;&#xA;            in&#xD;&#xA;                if s='' and numberAsString = '0' then&#xD;&#xA;                    s&#xD;&#xA;                else&#xD;&#xA;                    s.concat(numberAsString)&#xD;&#xA;                endif&#xD;&#xA;        )&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;if (self.upper = 0) then&#xD;&#xA;&#x9;&#x9;&#x9;'0'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;'*'&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;if (self.lower = 0 and self.upper = -1) then&#xD;&#xA;&#x9;''&#xD;&#xA;else&#xD;&#xA;&#x9;lower.concat('..').concat(upper)&#xD;&#xA;endif"/>
+      <expressions
+          xsi:type="gmfgen:GenConstraint"
+          body="self.level = oppositeEnd.level"/>
+      <expressions
           xsi:type="gmfgen:GenConstraint"
           body="if self.name.oclIsUndefined() or self.name.size() = 0 then&#xD;&#xA;&#x9;true&#xD;&#xA;else&#xD;&#xA;&#x9;Sequence{1..self.name.size()}->iterate(i:Integer; res:Boolean =true | if(res = true and self.name.substring(i,i) = ':') then false else res endif )&#xD;&#xA;endif"/>
       <expressions
@@ -4068,6 +4127,22 @@
         viewExpression="//@expressionProviders/@providers.0/@expressions.84">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Classification"/>
+    </implementations>
+    <implementations
+        xsi:type="gmfgen:ExpressionLabelParser"
+        uses="//@diagram/@links.8/@labels.0/@modelFacet"
+        className="RoleLabelExpressionLabelParser6012"
+        viewExpression="//@expressionProviders/@providers.0/@expressions.93">
+      <expressionContext
+          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Role"/>
+    </implementations>
+    <implementations
+        xsi:type="gmfgen:ExpressionLabelParser"
+        uses="//@diagram/@links.8/@labels.1/@modelFacet"
+        className="RoleLabelExpressionLabelParser6013"
+        viewExpression="//@expressionProviders/@providers.0/@expressions.94">
+      <expressionContext
+          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Role"/>
     </implementations>
   </labelParsers>
   <contextMenus
