@@ -20,6 +20,10 @@
 «IF self.editPartClassName = 'ClassificationEditPart'»
 	«EXPAND updateSourcePotency-»
 	«EXPAND handleNotificationEventForClassification-»
+«ENDIF»
+«IF self.editPartClassName = 'RoleEditPart'»
+	«EXPAND addNotify-»
+	«EXPAND updateViewRole-»
 «ENDIF»	
 «ENDAROUND»
 
@@ -70,5 +74,51 @@
 		org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand command = new org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand(request);
 		this.getViewer().getEditDomain().getCommandStack()
 				.execute(new org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy(command));
+	}
+«ENDDEFINE»
+
+«DEFINE updateViewRole FOR gmfgen::GenLink»
+	/**
+	 * @generated
+	 */
+	@Override
+	protected void handleNotificationEvent(org.eclipse.emf.common.notify.Notification notification) {
+		super.handleNotificationEvent(notification);
+		
+		updateView();
+	}
+
+	/**
+	 * @generated
+	 */
+	private void updateView() {
+		updateLMLRenderingView();
+	}
+	
+	/**
+	 * @generated
+	 */
+	private void updateLMLRenderingView(){
+		de.uni_mannheim.informatik.swt.models.plm.PLM.Role self = (de.uni_mannheim.informatik.swt.models.plm.PLM.Role)resolveSemanticElement();
+		
+		//*****************************************************************
+		//Is navigable
+		//*****************************************************************
+		if (self.isNavigable())
+			((org.eclipse.draw2d.PolylineConnection)getFigure()).setTargetDecoration(new org.eclipse.draw2d.PolylineDecoration());
+		else
+			((org.eclipse.draw2d.PolylineConnection)getFigure()).setTargetDecoration(null);
+	}
+«ENDDEFINE»
+
+«DEFINE addNotify FOR gmfgen::GenLink»
+	/**
+	 * @generated
+	 */
+	@Override
+	public void addNotify() {
+		super.addNotify();
+
+		updateView();
 	}
 «ENDDEFINE»
