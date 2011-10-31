@@ -146,8 +146,10 @@
 		connectionFigure.setForegroundColor(transformator.colorConstant2Color(l.getForegroundColor()));
 		connectionFigure.setBackgroundColor(transformator.colorConstant2Color(l.getBackgroundColor()));
 
+		//**********************************************
 		//Add DSL Link decoration
-		de.uni_mannheim.informatik.swt.models.plm.visualization.LinkDecoration decoDesc = l.getLinkDecorationForRoleName(self.getRoleName());
+		//**********************************************
+		de.uni_mannheim.informatik.swt.models.plm.visualization.LinkDecoration decoDesc = l.getLinkDecorationForRole(self);
 
 		//Neither decoration for role name found nor for the index
 		if (decoDesc == null)
@@ -173,35 +175,37 @@
 				connectionFigure.setTargetDecoration(null);
 		}
 
-		//Add DSl labels
-		for (de.uni_mannheim.informatik.swt.models.plm.visualization.LabelDescriptor labelDesc : l.getLabel()) {
-
+		//*********************************************
+		//Add DSl label
+		//*********************************************
+		
+		de.uni_mannheim.informatik.swt.models.plm.visualization.LabelDescriptor labelDesc = l.getLabelDescriptorForRole(self);
+		if (! (labelDesc == null)){
+		
 			//Execute the OCL expression to get the value
 			java.util.Set feature = null;
-
+	
 			org.eclipse.ocl.ecore.OCL ocl = org.eclipse.ocl.ecore.OCL.newInstance();
 			org.eclipse.ocl.helper.OCLHelper<org.eclipse.emf.ecore.EClassifier, ?, ?, org.eclipse.ocl.ecore.Constraint> helper = ocl.createOCLHelper();
 			helper.setContext(de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.Literals.CONNECTION);
-
+	
 			try {
 				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.feature->select(f | f.oclIsKindOf(Attribute) and f.name = '"
-								+ ((de.uni_mannheim.informatik.swt.models.plm.visualization.ExpressionLabel) labelDesc).getExpression() + "')");
-				feature = (java.util.Set) ocl.evaluate(resolveSemanticElement(),
-						q);
+								+ ((de.uni_mannheim.informatik.swt.models.plm.visualization.ExpressionLabel) l.getLabelDescriptorForRole(self)).getExpression() + "')");
+				feature = (java.util.Set) ocl.evaluate(self.getSource(),q);
 			} catch (org.eclipse.ocl.ParserException e) {
 				e.printStackTrace();
 			}
 
-			if (feature.isEmpty())
-				continue;
-
-			org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel label = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel(
-					((de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute) feature
-							.iterator().next()).getValue());
-			label.setParent(connectionFigure);
-			connectionFigure.getChildren().clear();
-			connectionFigure.add(label, new org.eclipse.gmf.runtime.diagram.ui.figures.LabelLocator(connectionFigure, new org.eclipse.draw2d.geometry.Point(-10, -10),
-					org.eclipse.draw2d.ConnectionLocator.SOURCE));
+			if (! feature.isEmpty()){
+				org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel label = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel(
+						((de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute) feature
+								.iterator().next()).getValue());
+				label.setParent(connectionFigure);
+				connectionFigure.getChildren().clear();
+				connectionFigure.add(label, new org.eclipse.gmf.runtime.diagram.ui.figures.LabelLocator(connectionFigure, new org.eclipse.draw2d.geometry.Point(-10, -10),
+						org.eclipse.draw2d.ConnectionLocator.SOURCE));
+			}
 		}
 	}
 	
