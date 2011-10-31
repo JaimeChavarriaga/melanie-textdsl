@@ -92,7 +92,10 @@
 	 * @generated
 	 */
 	private void updateView() {
-		updateLMLRenderingView();
+		if (getDSLRenderingValue())
+			updateDSLRenderingView();
+		else
+			updateLMLRenderingView();
 	}
 	
 	/**
@@ -108,6 +111,124 @@
 			((org.eclipse.draw2d.PolylineConnection)getFigure()).setTargetDecoration(new org.eclipse.draw2d.PolylineDecoration());
 		else
 			((org.eclipse.draw2d.PolylineConnection)getFigure()).setTargetDecoration(null);
+	}
+	
+	/**
+	 * @generated
+	 */
+	private void updateDSLRenderingView() {
+		de.uni_mannheim.informatik.swt.models.plm.PLM.Role self = (de.uni_mannheim.informatik.swt.models.plm.PLM.Role) resolveSemanticElement();
+		
+		//Do the DSL rendering -> Set decoration independent of isNavigable
+		//Set labels independent of DSL rendering
+		de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.RoleEditPart.ConnectionParticipantsFigure connectionFigure = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.RoleEditPart.ConnectionParticipantsFigure)getFigure();
+		connectionFigure.getFigureConnectionParticipantsNameFigure().setText("");
+		connectionFigure.getFigureConnectionParticipantsMultiplicityFigure().setText("");
+
+		de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IVisualModelToFigureTransformator transformator = null;
+
+		try {
+			transformator = de.uni_mannheim.informatik.swt.plm.workbench.ExtensionPointService
+					.Instance().getActiveVisualizationService();
+		} catch (org.eclipse.core.runtime.CoreException e) {
+			e.printStackTrace();
+		}
+
+		de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer v = getConnectionVisualizer();
+		
+		//We did not find any visualizer or the visualizer is not
+		//containing link rendering information thus exit
+		if (v == null || !(v.getChild().get(0) instanceof de.uni_mannheim.informatik.swt.models.plm.visualization.Link))
+			return;
+		
+		de.uni_mannheim.informatik.swt.models.plm.visualization.Link l = (de.uni_mannheim.informatik.swt.models.plm.visualization.Link) v.getChild().get(0);
+
+		connectionFigure.setForegroundColor(transformator.colorConstant2Color(l.getForegroundColor()));
+		connectionFigure.setBackgroundColor(transformator.colorConstant2Color(l.getBackgroundColor()));
+
+		//Add DSL Link decoration
+		de.uni_mannheim.informatik.swt.models.plm.visualization.LinkDecoration decoDesc = l.getLinkDecorationForRoleName(self.getRoleName());
+
+		//Neither decoration for role name found nor for the index
+		if (decoDesc == null)
+			connectionFigure.setTargetDecoration(null);
+		else {
+			//We have a special decoration
+			if (((de.uni_mannheim.informatik.swt.models.plm.visualization.DefaultLinkDecoration) decoDesc)
+					.getDecorationType() != de.uni_mannheim.informatik.swt.models.plm.visualization.DefaultLinkDecorationTypes.NO_LINE_DECORATION) {
+				org.eclipse.draw2d.RotatableDecoration decoration = ((de.uni_mannheim.informatik.swt.models.plm.visualization.DefaultLinkDecoration) decoDesc)
+						.getDecorationType() == de.uni_mannheim.informatik.swt.models.plm.visualization.DefaultLinkDecorationTypes.POLY_LINE_DECORATION ? new org.eclipse.draw2d.PolylineDecoration()
+						: new org.eclipse.draw2d.PolygonDecoration();
+				decoration.setBackgroundColor(transformator
+						.colorConstant2Color(decoDesc
+								.getBackgroundColor()));
+				decoration.setForegroundColor(transformator
+						.colorConstant2Color(decoDesc
+								.getForegroundColor()));
+				//set the decoration
+				connectionFigure.setTargetDecoration(decoration);
+			}
+			//We have no special decoration
+			else
+				connectionFigure.setTargetDecoration(null);
+		}
+
+		//Add DSl labels
+		for (de.uni_mannheim.informatik.swt.models.plm.visualization.LabelDescriptor labelDesc : l.getLabel()) {
+
+			//Execute the OCL expression to get the value
+			java.util.Set feature = null;
+
+			org.eclipse.ocl.ecore.OCL ocl = org.eclipse.ocl.ecore.OCL.newInstance();
+			org.eclipse.ocl.helper.OCLHelper<org.eclipse.emf.ecore.EClassifier, ?, ?, org.eclipse.ocl.ecore.Constraint> helper = ocl.createOCLHelper();
+			helper.setContext(de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.Literals.CONNECTION);
+
+			try {
+				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.feature->select(f | f.oclIsKindOf(Attribute) and f.name = '"
+								+ ((de.uni_mannheim.informatik.swt.models.plm.visualization.ExpressionLabel) labelDesc).getExpression() + "')");
+				feature = (java.util.Set) ocl.evaluate(resolveSemanticElement(),
+						q);
+			} catch (org.eclipse.ocl.ParserException e) {
+				e.printStackTrace();
+			}
+
+			if (feature.isEmpty())
+				continue;
+
+			org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel label = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel(
+					((de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute) feature
+							.iterator().next()).getValue());
+			label.setParent(connectionFigure);
+			connectionFigure.getChildren().clear();
+			connectionFigure.add(label, new org.eclipse.gmf.runtime.diagram.ui.figures.LabelLocator(connectionFigure, new org.eclipse.draw2d.geometry.Point(-10, -10),
+					org.eclipse.draw2d.ConnectionLocator.SOURCE));
+		}
+	}
+	
+	/**
+	 * @generated
+	 */
+	public boolean getDSLRenderingValue(){
+		de.uni_mannheim.informatik.swt.models.plm.PLM.Role self = (de.uni_mannheim.informatik.swt.models.plm.PLM.Role) resolveSemanticElement();
+		de.uni_mannheim.informatik.swt.models.plm.PLM.Connection c = (de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)self.eContainer();
+		
+		de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer r = c.getVisualizer().get(0);
+		String dslRenderingString = r.getValueForKey("DSLRendering");
+
+		if ("".equals(dslRenderingString))
+			return false;
+
+		return java.lang.Boolean.parseBoolean(dslRenderingString);
+	}
+	
+	/**
+	 * @generated
+	 */
+	private de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer getConnectionVisualizer(){
+		de.uni_mannheim.informatik.swt.models.plm.PLM.Connection containingConnection = (de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)resolveSemanticElement().eContainer();
+		
+		//No Visualizer for connection available
+		return containingConnection.getVisualizer().size() > 0 ? containingConnection.getVisualizer().get(0) : null;
 	}
 «ENDDEFINE»
 
