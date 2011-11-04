@@ -2962,7 +2962,7 @@
         <sourceMetaFeature
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Role/source"/>
         <targetMetaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Role/target"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Role/destination"/>
       </modelFacet>
       <labels
           visualID="6012"
@@ -3205,8 +3205,8 @@
             xsi:type="gmfgen:ToolEntry"
             title="Connection Role"
             description="Creates a new Connection Role"
-            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/connectionParticipant16.gif"
-            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/connectionParticipant16.gif"
+            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/role16.gif"
+            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/role16.gif"
             genLinks="//@diagram/@links.8"/>
       </groups>
       <groups

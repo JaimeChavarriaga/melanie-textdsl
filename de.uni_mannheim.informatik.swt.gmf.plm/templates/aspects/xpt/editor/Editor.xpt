@@ -188,13 +188,13 @@
 					de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor.LinkToolEntry linkEntry = new de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor.LinkToolEntry(
 							"<<" + roleName + ">>" + ((de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)e).getHumanReadableName(),
 							"Creates a new " + "<<" + roleName + ">>" + ((de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)e).getHumanReadableName(),
-							java.util.Collections.singletonList(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.ConnectionParticipant_4021));
+							java.util.Collections.singletonList(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.Role_4024));
 							
 					linkEntry.setId("dsl." + org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getProxyID(e) + "<<" + roleName + ">>" + ".CreationTool");
 					linkEntry.setSmallIcon(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditorPlugin
-							.findImageDescriptor("/de.uni_mannheim.informatik.swt.gmf.plm/icons/connectionParticipant16.gif"));
+							.findImageDescriptor("/de.uni_mannheim.informatik.swt.gmf.plm/icons/role16.gif"));
 					linkEntry.setLargeIcon(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditorPlugin
-							.findImageDescriptor("/de.uni_mannheim.informatik.swt.gmf.plm/icons/connectionParticipant16.gif"));
+							.findImageDescriptor("/de.uni_mannheim.informatik.swt.gmf.plm/icons/role16.gif"));
 					
 					entries.add(linkEntry);
 				}

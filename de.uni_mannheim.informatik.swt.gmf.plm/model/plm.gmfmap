@@ -1441,7 +1441,7 @@
         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Role/source"/>
     <linkMetaFeature
         xsi:type="ecore:EReference"
-        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Role/target"/>
+        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Role/destination"/>
     <creationConstraints>
       <targetEnd
           body="self.level = oppositeEnd.level"/>
