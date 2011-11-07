@@ -608,8 +608,9 @@ public class ReasoningService implements IReasoningService {
 			return false;
 		}
 		for (String rN: instance.getRoleName()) {
-			Clabject destI = instance.getParticipantForRoleName(rN);
-			Clabject destT = type.getParticipantForRoleName(rN);
+			//FIXME: change to roles
+			Clabject destI = null; //instance.getParticipantForRoleName(rN);
+			Clabject destT = null; //type.getParticipantForRoleName(rN);
 			if (!run(LOCAL_CONFORMS, new Object[]{destT, destI}, true)) {
 				System.out.println("Wrong roleName " + rN);
 				return false;

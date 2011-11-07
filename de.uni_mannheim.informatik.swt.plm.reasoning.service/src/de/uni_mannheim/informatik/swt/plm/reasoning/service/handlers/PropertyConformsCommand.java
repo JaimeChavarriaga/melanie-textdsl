@@ -155,7 +155,8 @@ public class PropertyConformsCommand extends AbstractHandler {
 		CompositeCheck allRoles = reasoner.createCompositeCheck("allRoleNames", instance, type, "dei mudda");
 		result.getCheck().add(allRoles);
 		for(String rN:type.getRoleName()) {
-			CompositeCheck oneRole = compute(type.getParticipantForRoleName(rN), instance.getParticipantForRoleName(rN));
+			//FIXME: 
+			CompositeCheck oneRole = ReasoningResultFactory.eINSTANCE.createCompositeCheck();//compute(type.getParticipantForRoleName(rN), instance.getParticipantForRoleName(rN));
 			allRoles.getCheck().add(oneRole);
 			if (!oneRole.isResult()) {
 				return result;

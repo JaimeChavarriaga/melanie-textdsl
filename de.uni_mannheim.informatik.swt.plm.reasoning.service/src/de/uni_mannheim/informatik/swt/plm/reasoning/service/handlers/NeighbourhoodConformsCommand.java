@@ -116,14 +116,15 @@ public class NeighbourhoodConformsCommand extends AbstractHandler {
 				iCheck.getCheck().add(innerstLocal);
 				if (innerstLocal.isResult()) {
 					boolean error = false;
-					for (String rN: t.getRoleName()) {
+					//FIXME: Change to roles
+					/*for (String rN: t.getRoleName()) {
 						CompositeCheck partLocal = (new LocalConformsCommand()).compute(t.getParticipantForRoleName(rN), i.getParticipantForRoleName(rN));
 						iCheck.getCheck().add(partLocal);
 						if (!partLocal.isResult()) {
 							error = true;
 							break;
 						}
-					}
+					}*/
 					if (!error) {
 						found = true;
 						iCheck.setResult(true);
@@ -155,7 +156,8 @@ public class NeighbourhoodConformsCommand extends AbstractHandler {
 			RoleNameLocalConformanceCheck roleCheck = ReasoningResultFactory.eINSTANCE.createRoleNameLocalConformanceCheck();
 			roleNames.getCheck().add(roleCheck);
 			roleCheck.setRoleName(rN);
-			CompositeCheck parts = (new LocalConformsCommand()).compute(type.getParticipantForRoleName(rN), instance.getParticipantForRoleName(rN));
+			//FIXME: Change to roles
+			CompositeCheck parts = ReasoningResultFactory.eINSTANCE.createCompositeCheck();//(new LocalConformsCommand()).compute(type.getParticipantForRoleName(rN), instance.getParticipantForRoleName(rN));
 			roleCheck.getCheck().add(parts);
 			if (!parts.isResult()) {
 				return result;

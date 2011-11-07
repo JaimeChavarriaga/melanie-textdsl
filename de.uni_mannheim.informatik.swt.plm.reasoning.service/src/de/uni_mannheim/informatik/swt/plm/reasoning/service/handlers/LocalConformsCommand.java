@@ -108,9 +108,10 @@ public class LocalConformsCommand extends AbstractHandler {
 			if (!found) {
 				return result;
 			} 
-			if (! (instance.isNavigableForRoleName(rN) == (type.isNavigableForRoleName(rN)))) {
-				return result;
-			}
+			//FIXME: Change to roles
+			//if (! (instance.isNavigableForRoleName(rN) == (type.isNavigableForRoleName(rN)))) {
+			//	return result;
+			//}
 			roleNameCheck.setResult(true);
 		}
 		roleCheck.setResult(true);
