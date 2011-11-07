@@ -2892,6 +2892,7 @@
           editPartClassName="WrappingLabel60EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel60ItemSemanticEditPolicy"
           notationViewFactoryClassName="RoleLabelViewFactory"
+          readOnly="true"
           alignment="SOURCE">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -2917,6 +2918,7 @@
           editPartClassName="WrappingLabel61EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel61ItemSemanticEditPolicy"
           notationViewFactoryClassName="RoleLabelViewFactory"
+          readOnly="true"
           alignment="SOURCE">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -3098,10 +3100,11 @@
             genNodes="//@diagram/@childNodes.2"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
-            title="Connection Participant"
-            description="Creates a new Connection Participant"
-            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/connectionParticipant16.gif"
-            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/connectionParticipant16.gif"/>
+            title="Connection Role"
+            description="Creates a new Connection Role"
+            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/role16.gif"
+            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/role16.gif"
+            genLinks="//@diagram/@links.7"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Attribute"
@@ -3123,13 +3126,6 @@
             largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/visualizer16.gif"
             smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/visualizer16.gif"
             genNodes="//@diagram/@childNodes.1 //@diagram/@childNodes.4 //@diagram/@childNodes.6 //@diagram/@childNodes.7 //@diagram/@childNodes.9 //@diagram/@childNodes.11 //@diagram/@childNodes.13 //@diagram/@childNodes.15 //@diagram/@childNodes.18 //@diagram/@childNodes.20 //@diagram/@childNodes.21 //@diagram/@childNodes.22"/>
-        <entries
-            xsi:type="gmfgen:ToolEntry"
-            title="Connection Role"
-            description="Creates a new Connection Role"
-            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/role16.gif"
-            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/role16.gif"
-            genLinks="//@diagram/@links.7"/>
       </groups>
       <groups
           title="Connections"

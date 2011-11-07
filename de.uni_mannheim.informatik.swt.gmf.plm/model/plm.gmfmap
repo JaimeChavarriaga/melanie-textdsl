@@ -1392,14 +1392,16 @@
     <domainMetaElement
         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Role"/>
     <labelMappings
-        xsi:type="gmfmap:ExpressionLabelMapping">
+        xsi:type="gmfmap:ExpressionLabelMapping"
+        readOnly="true">
       <diagramLabel
           href="plm.gmfgraph#ConnectionParticipantFigureName"/>
       <viewExpression
           body="if (self.roleName.oclIsUndefined()) then&#xD;&#xA;&#x9;''&#xD;&#xA;else&#xD;&#xA;&#x9;self.roleName&#xD;&#xA;endif"/>
     </labelMappings>
     <labelMappings
-        xsi:type="gmfmap:ExpressionLabelMapping">
+        xsi:type="gmfmap:ExpressionLabelMapping"
+        readOnly="true">
       <diagramLabel
           href="plm.gmfgraph#ConnectionParticipantMultiplicity"/>
       <viewExpression
@@ -1409,7 +1411,7 @@
         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Connection/role"/>
     <tool
         xsi:type="gmftool:CreationTool"
-        href="plm.gmftool#//@palette/@tools.1/@tools.6"/>
+        href="plm.gmftool#//@palette/@tools.1/@tools.2"/>
     <diagramLink
         href="plm.gmfgraph#ConnectionParticipants"/>
     <sourceMetaFeature

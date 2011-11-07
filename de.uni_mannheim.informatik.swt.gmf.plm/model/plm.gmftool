@@ -68,15 +68,15 @@
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
-          title="Connection Participant"
-          description="Creates a new Connection Participant">
+          title="Connection Role"
+          description="Creates a new Connection Role">
         <smallIcon
             xsi:type="gmftool:BundleImage"
-            path="/icons/connectionParticipant16.gif"
+            path="/icons/role16.gif"
             bundle="de.uni_mannheim.informatik.swt.gmf.plm"/>
         <largeIcon
             xsi:type="gmftool:BundleImage"
-            path="/icons/connectionParticipant16.gif"
+            path="/icons/role16.gif"
             bundle="de.uni_mannheim.informatik.swt.gmf.plm"/>
       </tools>
       <tools
@@ -116,19 +116,6 @@
         <largeIcon
             xsi:type="gmftool:BundleImage"
             path="/icons/visualizer16.gif"
-            bundle="de.uni_mannheim.informatik.swt.gmf.plm"/>
-      </tools>
-      <tools
-          xsi:type="gmftool:CreationTool"
-          title="Connection Role"
-          description="Creates a new Connection Role">
-        <smallIcon
-            xsi:type="gmftool:BundleImage"
-            path="/icons/role16.gif"
-            bundle="de.uni_mannheim.informatik.swt.gmf.plm"/>
-        <largeIcon
-            xsi:type="gmftool:BundleImage"
-            path="/icons/role16.gif"
             bundle="de.uni_mannheim.informatik.swt.gmf.plm"/>
       </tools>
     </tools>
