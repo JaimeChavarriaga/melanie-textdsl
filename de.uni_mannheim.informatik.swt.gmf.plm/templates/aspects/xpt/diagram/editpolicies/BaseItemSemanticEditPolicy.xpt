@@ -15,6 +15,7 @@
 «EXTENSION xpt::diagram::editpolicies::Utils»
 «EXTENSION xpt::diagram::Utils»
 «EXTENSION xpt::GenModelUtils»
+«EXTENSION xpt::OclMigrationProblems»
 
 /*
   *
@@ -67,10 +68,97 @@
 			
 			return canExist«getUniqueIdentifier()»(«EXPAND canCreateValues FOR modelFacet»);
 		}
+	«ELSEIF getUniqueIdentifier().startsWith('Role_')»
+		«EXPAND xpt::Common::generatedMemberComment»
+		public boolean canCreate«getUniqueIdentifier()»(«EXPAND canCreateParameters FOR modelFacet») {
+		
+			//Can cause BUG XXX (Cannot add two particpants to one connection due to unique lists)
+			«EXPAND checkEMFConstraints FOR modelFacet-»
+		
+			//*************************************************************
+			// BEGIN CUSTOM CODE
+			//*************************************************************
+			de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor editor = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor) org.eclipse.ui.PlatformUI
+					.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+					.getActiveEditor();
+	
+			//In DSL mode?
+			if (editor.getPalette().getActiveTool().getId().startsWith("dsl."))
+			{
+				String typeRoleID = editor.getPalette().getActiveTool().getId()
+						.replace("dsl.", "").replaceAll("<<.*?>>", "")
+						.replace(".CreationTool", "");
+				de.uni_mannheim.informatik.swt.models.plm.PLM.Role typeRole = null;
+				
+				org.eclipse.emf.common.util.TreeIterator<org.eclipse.emf.ecore.EObject> iter = org.eclipse.emf.ecore.util.EcoreUtil.getRootContainer(source)
+						.eAllContents();
+				while (iter.hasNext()) 
+				{
+					org.eclipse.emf.ecore.EObject current = iter.next();
+					if (org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getProxyID(current).equals(typeRoleID))
+						typeRole = (de.uni_mannheim.informatik.swt.models.plm.PLM.Role) current;
+				}
+					
+				//Check for the source -> Connection can be started
+				if (source != null && target == null) 
+				{
+					if (typeRole != null){
+						de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject sourceType = typeRole.getSource();
+						java.util.LinkedList<de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject> possibleSourceTypes = new java.util.LinkedList<de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject>();
+						possibleSourceTypes.addAll(sourceType.getModelSubtypes());
+						possibleSourceTypes.addAll(sourceType.getModelSupertypes());
+						possibleSourceTypes.add(sourceType);
+							
+						for (de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject c : source.getModelTypes())
+							if(possibleSourceTypes.contains(c))
+								return true;
+							
+						return false;
+					}
+				}
+					
+				//Check for the target ->Connection can be finished
+				if (target != null && editor.getPalette().getActiveTool().getId().startsWith("dsl.")) 
+				{
+					if (typeRole != null)
+					{
+						de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject targetType = typeRole.getDestination();
+						java.util.LinkedList<de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject> possibleTargetTypes = new java.util.LinkedList<de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject>();
+						possibleTargetTypes.addAll(targetType.getModelSubtypes());
+						possibleTargetTypes.addAll(targetType.getModelSupertypes());
+						possibleTargetTypes.add(targetType);
+						
+						for (de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject c : target.getModelTypes())
+							if(possibleTargetTypes.contains(c))
+								return true;
+							
+						return false;
+					}
+				}
+			}
+			//*************************************************************
+			// BEGIN CUSTOM CODE
+			//*************************************************************
+			
+			return canExist«getUniqueIdentifier()»(«EXPAND canCreateValues FOR modelFacet»);
+		}
 	«ELSE»
 		«targetDef.proceed()»
 	«ENDIF»
 «ENDAROUND»
+
+«DEFINE checkEMFConstraints FOR gmfgen::TypeLinkModelFacet-»
+	«LET childMetaFeature <> containmentMetaFeature and not isUnbounded(childMetaFeature.ecoreFeature) AS checkChildFeatureBounds-»
+		«IF not isUnbounded(containmentMetaFeature.ecoreFeature) or checkChildFeatureBounds-»
+if («getContainerVariable(self)» != null) {
+			«EXPAND checkEMFConstraints(self) FOR containmentMetaFeature-»
+			«IF checkChildFeatureBounds-»
+				«EXPAND checkEMFConstraints(self) FOR childMetaFeature-»
+			«ENDIF-»
+}
+		«ENDIF-»
+	«ENDLET-»
+«ENDDEFINE»
 
 // FIXME mark as private (_) and move to impl::<find proper place>::LinkConstraints.xpt
 «DEFINE canCreateParameters FOR gmfgen::LinkModelFacet»«EXPAND sourceTargetParameters»«ENDDEFINE»// source and target are reasonable defaults
