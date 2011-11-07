@@ -18,7 +18,7 @@
         name="domainEntityNameCheck"
         description="Checks the name of elements"
         id="audits.attributes.domainEntityNameAudit.Colon"
-        rule="//@expressionProviders/@providers.0/@expressions.96"
+        rule="//@expressionProviders/@providers.0/@expressions.95"
         message="Name is not allowed to contain ':'"
         category="//@audits/@categories.0">
       <target
@@ -32,7 +32,7 @@
         name="domainEntityNameCheck"
         description="Checks the name of elements"
         id="audits.attributes.domainEntityNameAudit.GreaterThan"
-        rule="//@expressionProviders/@providers.0/@expressions.97"
+        rule="//@expressionProviders/@providers.0/@expressions.96"
         message="Name is not allowed to contain '>'"
         category="//@audits/@categories.0">
       <target
@@ -46,7 +46,7 @@
         name="domainEntityNameCheck"
         description="Checks the name of elements"
         id="audits.attributes.domainEntityNameAudit.Dot"
-        rule="//@expressionProviders/@providers.0/@expressions.98"
+        rule="//@expressionProviders/@providers.0/@expressions.97"
         message="Name is not allowed to contain '.'"
         category="//@audits/@categories.0">
       <target
@@ -2504,83 +2504,6 @@
       </labels>
     </topLevelNodes>
     <links
-        visualID="4021"
-        editPartClassName="ConnectionParticipantEditPart"
-        itemSemanticEditPolicyClassName="ConnectionParticipantItemSemanticEditPolicy"
-        notationViewFactoryClassName="ConnectionParticipantViewFactory"
-        createCommandClassName="ConnectionParticipantCreateCommand"
-        reorientCommandClassName="ConnectionParticipantReorientCommand">
-      <diagramRunTimeClass
-          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Edge"/>
-      <elementType
-          xsi:type="gmfgen:SpecializationType"
-          displayName="Participant"/>
-      <viewmap
-          xsi:type="gmfgen:InnerClassViewmap"
-          className="ConnectionParticipantsFigure"
-          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class ConnectionParticipantsFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureConnectionParticipantsNameFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureConnectionParticipantsMultiplicityFigure; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public ConnectionParticipantsFigure() {&#xA;&#x9;&#x9;&#x9;this.setForegroundColor(org.eclipse.draw2d.ColorConstants.black);&#xA;&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureConnectionParticipantsNameFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureConnectionParticipantsNameFigure.setText(&quot;&quot;);&#xA;&#x9;fFigureConnectionParticipantsNameFigure.setForegroundColor(org.eclipse.draw2d.ColorConstants.black);&#xA;&#xA;fFigureConnectionParticipantsNameFigure.setFont(FFIGURECONNECTIONPARTICIPANTSNAMEFIGURE_FONT);&#xA;&#xA;&#xA;&#xA;this.add(fFigureConnectionParticipantsNameFigure);&#xA;&#xA;&#xA;&#xA;fFigureConnectionParticipantsMultiplicityFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureConnectionParticipantsMultiplicityFigure.setText(&quot;&quot;);&#xA;&#xA;fFigureConnectionParticipantsMultiplicityFigure.setFont(FFIGURECONNECTIONPARTICIPANTSMULTIPLICITYFIGURE_FONT);&#xA;&#xA;&#xA;&#xA;this.add(fFigureConnectionParticipantsMultiplicityFigure);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureConnectionParticipantsNameFigure() {&#xA;&#x9;&#x9;return fFigureConnectionParticipantsNameFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureConnectionParticipantsMultiplicityFigure() {&#xA;&#x9;&#x9;return fFigureConnectionParticipantsMultiplicityFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGURECONNECTIONPARTICIPANTSNAMEFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 8, org.eclipse.swt.SWT.NORMAL);&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGURECONNECTIONPARTICIPANTSMULTIPLICITYFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 8, org.eclipse.swt.SWT.NORMAL);&#xA;&#xA;">
-        <attributes
-            xsi:type="gmfgen:StyleAttributes"
-            fixedForeground="true"/>
-      </viewmap>
-      <modelFacet
-          xsi:type="gmfgen:FeatureLinkModelFacet">
-        <metaFeature
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Connection/participant"/>
-      </modelFacet>
-      <labels
-          visualID="6004"
-          editPartClassName="WrappingLabel54EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel54ItemSemanticEditPolicy"
-          notationViewFactoryClassName="ConnectionParticipantLabelViewFactory"
-          readOnly="true"
-          alignment="SOURCE">
-        <diagramRunTimeClass
-            href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
-        <viewmap
-            xsi:type="gmfgen:ParentAssignedViewmap"
-            getterName="getFigureConnectionParticipantsNameFigure"
-            figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel">
-          <attributes
-              xsi:type="gmfgen:StyleAttributes"
-              fixedFont="true"
-              fixedForeground="true"/>
-          <attributes
-              xsi:type="gmfgen:LabelOffsetAttributes"
-              x="-10"
-              y="-10"/>
-        </viewmap>
-        <modelFacet
-            parser="//@labelParsers/@implementations.23"/>
-      </labels>
-      <labels
-          visualID="6005"
-          editPartClassName="WrappingLabel55EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel55ItemSemanticEditPolicy"
-          notationViewFactoryClassName="ConnectionParticipantLabelViewFactory"
-          readOnly="true"
-          alignment="SOURCE">
-        <diagramRunTimeClass
-            href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
-        <viewmap
-            xsi:type="gmfgen:ParentAssignedViewmap"
-            getterName="getFigureConnectionParticipantsMultiplicityFigure"
-            figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel">
-          <attributes
-              xsi:type="gmfgen:StyleAttributes"
-              fixedFont="true"/>
-          <attributes
-              xsi:type="gmfgen:LabelOffsetAttributes"
-              x="10"
-              y="10"/>
-        </viewmap>
-        <modelFacet
-            parser="//@labelParsers/@implementations.23"/>
-      </labels>
-      <creationConstraints
-          targetEnd="//@expressionProviders/@providers.0/@expressions.82"/>
-    </links>
-    <links
         visualID="4002"
         editPartClassName="ClassificationEditPart"
         itemSemanticEditPolicyClassName="ClassificationItemSemanticEditPolicy"
@@ -2615,8 +2538,8 @@
       </modelFacet>
       <labels
           visualID="6010"
-          editPartClassName="WrappingLabel56EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel56ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel54EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel54ItemSemanticEditPolicy"
           notationViewFactoryClassName="ClassificationLabelViewFactory"
           readOnly="true"
           alignment="SOURCE">
@@ -2641,8 +2564,8 @@
       </labels>
       <labels
           visualID="6011"
-          editPartClassName="WrappingLabel57EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel57ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel55EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel55ItemSemanticEditPolicy"
           notationViewFactoryClassName="ClassificationLabelViewFactory"
           readOnly="true"
           alignment="TARGET">
@@ -2666,7 +2589,7 @@
             parser="//@labelParsers/@implementations.55"/>
       </labels>
       <creationConstraints
-          targetEnd="//@expressionProviders/@providers.0/@expressions.85"/>
+          targetEnd="//@expressionProviders/@providers.0/@expressions.84"/>
     </links>
     <links
         visualID="4013"
@@ -2695,8 +2618,8 @@
       </modelFacet>
       <labels
           visualID="6006"
-          editPartClassName="WrappingLabel58EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel58ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel56EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel56ItemSemanticEditPolicy"
           notationViewFactoryClassName="SetRelationshipBaseLabelViewFactory"
           readOnly="true"
           alignment="SOURCE">
@@ -2718,7 +2641,7 @@
             parser="//@labelParsers/@implementations.23"/>
       </labels>
       <creationConstraints
-          targetEnd="//@expressionProviders/@providers.0/@expressions.86"/>
+          targetEnd="//@expressionProviders/@providers.0/@expressions.85"/>
     </links>
     <links
         visualID="4018"
@@ -2747,8 +2670,8 @@
       </modelFacet>
       <labels
           visualID="6007"
-          editPartClassName="WrappingLabel59EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel59ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel57EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel57ItemSemanticEditPolicy"
           notationViewFactoryClassName="EqualityEqualLabelViewFactory"
           readOnly="true"
           alignment="SOURCE">
@@ -2770,8 +2693,8 @@
             parser="//@labelParsers/@implementations.23"/>
       </labels>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.87"
-          targetEnd="//@expressionProviders/@providers.0/@expressions.88"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.86"
+          targetEnd="//@expressionProviders/@providers.0/@expressions.87"/>
     </links>
     <links
         visualID="4015"
@@ -2800,8 +2723,8 @@
       </modelFacet>
       <labels
           visualID="6008"
-          editPartClassName="WrappingLabel60EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel60ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel58EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel58ItemSemanticEditPolicy"
           notationViewFactoryClassName="InversionInverseLabelViewFactory"
           readOnly="true"
           alignment="SOURCE">
@@ -2823,8 +2746,8 @@
             parser="//@labelParsers/@implementations.23"/>
       </labels>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.89"
-          targetEnd="//@expressionProviders/@providers.0/@expressions.90"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.88"
+          targetEnd="//@expressionProviders/@providers.0/@expressions.89"/>
     </links>
     <links
         visualID="4016"
@@ -2853,8 +2776,8 @@
       </modelFacet>
       <labels
           visualID="6009"
-          editPartClassName="WrappingLabel61EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel61ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel59EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel59ItemSemanticEditPolicy"
           notationViewFactoryClassName="ComplementComplementLabelViewFactory"
           readOnly="true"
           alignment="SOURCE">
@@ -2876,8 +2799,8 @@
             parser="//@labelParsers/@implementations.23"/>
       </labels>
       <creationConstraints
-          sourceEnd="//@expressionProviders/@providers.0/@expressions.91"
-          targetEnd="//@expressionProviders/@providers.0/@expressions.92"/>
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.90"
+          targetEnd="//@expressionProviders/@providers.0/@expressions.91"/>
     </links>
     <links
         visualID="4022"
@@ -2966,8 +2889,8 @@
       </modelFacet>
       <labels
           visualID="6012"
-          editPartClassName="WrappingLabel62EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel62ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel60EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel60ItemSemanticEditPolicy"
           notationViewFactoryClassName="RoleLabelViewFactory"
           alignment="SOURCE">
         <diagramRunTimeClass
@@ -2991,8 +2914,8 @@
       </labels>
       <labels
           visualID="6013"
-          editPartClassName="WrappingLabel63EditPart"
-          itemSemanticEditPolicyClassName="WrappingLabel63ItemSemanticEditPolicy"
+          editPartClassName="WrappingLabel61EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel61ItemSemanticEditPolicy"
           notationViewFactoryClassName="RoleLabelViewFactory"
           alignment="SOURCE">
         <diagramRunTimeClass
@@ -3014,7 +2937,7 @@
             parser="//@labelParsers/@implementations.57"/>
       </labels>
       <creationConstraints
-          targetEnd="//@expressionProviders/@providers.0/@expressions.95"/>
+          targetEnd="//@expressionProviders/@providers.0/@expressions.94"/>
     </links>
     <compartments
         visualID="7003"
@@ -3178,8 +3101,7 @@
             title="Connection Participant"
             description="Creates a new Connection Participant"
             largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/connectionParticipant16.gif"
-            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/connectionParticipant16.gif"
-            genLinks="//@diagram/@links.0"/>
+            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/connectionParticipant16.gif"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Attribute"
@@ -3207,7 +3129,7 @@
             description="Creates a new Connection Role"
             largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/role16.gif"
             smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/role16.gif"
-            genLinks="//@diagram/@links.8"/>
+            genLinks="//@diagram/@links.7"/>
       </groups>
       <groups
           title="Connections"
@@ -3219,7 +3141,7 @@
             description="Creates a new Classification"
             largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/classification16.gif"
             smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/classification16.gif"
-            genLinks="//@diagram/@links.1"/>
+            genLinks="//@diagram/@links.0"/>
       </groups>
       <groups
           title="Set Relationships"
@@ -3252,14 +3174,14 @@
             description="Creates a new Set Relation Base"
             largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/setRelationshipEnd16.gif"
             smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/setRelationshipEnd16.gif"
-            genLinks="//@diagram/@links.2"/>
+            genLinks="//@diagram/@links.1"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Target"
             description="Creates a new Set Relation Target"
             largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/setRelationshipEnd16.gif"
             smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/setRelationshipEnd16.gif"
-            genLinks="//@diagram/@links.3 //@diagram/@links.4 //@diagram/@links.5"/>
+            genLinks="//@diagram/@links.2 //@diagram/@links.3 //@diagram/@links.4"/>
       </groups>
       <groups
           title="Generalisations"
@@ -3278,14 +3200,14 @@
             description="Create new Supertype"
             largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/superType16.gif"
             smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/superType16.gif"
-            genLinks="//@diagram/@links.6"/>
+            genLinks="//@diagram/@links.5"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Subtype"
             description="Create new Subtype"
             largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/subType16.gif"
             smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/subType16.gif"
-            genLinks="//@diagram/@links.7"/>
+            genLinks="//@diagram/@links.6"/>
       </groups>
     </palette>
     <preferencePages
@@ -3645,9 +3567,6 @@
       <expressions
           body="let renderingInformationAvailable:Boolean = &#xD;&#xA;&#x9;if (self.visualizer->size() > 0) then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let visualizer:Visualizer =&#xD;&#xA;&#x9;if (renderingInformationAvailable)&#x9;then&#xD;&#xA;&#x9;&#x9;self.visualizer->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;--**********************************&#xD;&#xA;--Check if attributes are rendered in tvs&#xD;&#xA;--**********************************&#xD;&#xA;let renderName:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('name') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('name') = 'tvs'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderExpressed:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('expressed') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('expressed') = 'tvs'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderRelevant:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('relevant') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('relevant') = 'tvs'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderCompletness:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('completness') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('completness') = 'tvs'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderOrigin:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('origin') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('origin') = 'tvs'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let renderVisualizersShown:Boolean =&#xD;&#xA;&#x9;if (renderingInformationAvailable) then&#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('visualizersShown') = 'max' &#xD;&#xA;&#x9;&#x9;or &#xD;&#xA;&#x9;&#x9;visualizer.getValueForKey('visualizersShown') = 'tvs'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the name&#xD;&#xA;--**********************************&#xD;&#xA;let name : String =&#xD;&#xA;&#x9;if (renderName) then&#xD;&#xA;&#x9;&#x9;'name='.concat(self.name).concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the expressed value&#xD;&#xA;--**********************************&#xD;&#xA;let expressedString:String = &#xD;&#xA;&#x9;if (expressed) then&#xD;&#xA;&#x9;&#x9;'expressed'&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'!expressed'&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let expressed: String = &#xD;&#xA;&#x9;if (renderExpressed) then&#xD;&#xA;&#x9;&#x9;expressedString.concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the relevant value&#xD;&#xA;--**********************************&#xD;&#xA;let relevantString:String = &#xD;&#xA;&#x9;if (relevant) then&#xD;&#xA;&#x9;&#x9;'relevant'&#xD;&#xA;&#x9;else &#xD;&#xA;&#x9;&#x9;'!relevant'&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let relevant: String = &#xD;&#xA;&#x9;if (renderRelevant) then&#xD;&#xA;&#x9;&#x9;relevantString.concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the completeness&#xD;&#xA;--**********************************&#xD;&#xA;let completness : String =&#xD;&#xA;&#x9;if (renderCompletness) then&#xD;&#xA;&#x9;&#x9;'completeness='.concat(self.completness).concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the origin&#xD;&#xA;--**********************************&#xD;&#xA;let origin : String =&#xD;&#xA;&#x9;if (renderOrigin) then&#xD;&#xA;&#x9;&#x9;'origin='.concat(self.origin).concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;--**********************************&#xD;&#xA;--Get the visualizersShown&#xD;&#xA;--**********************************&#xD;&#xA;let visualizersShown : String =&#xD;&#xA;&#x9;if (renderVisualizersShown) then&#xD;&#xA;&#x9;&#x9;'visualizersShown='.concat(self.visualizersShown).concat('; ')&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;let output:String = &#xD;&#xA;&#x9;'{'.concat(name).concat(expressed).concat(relevant).concat(completness).concat(origin).concat(visualizersShown).concat('}')&#xD;&#xA;in&#xD;&#xA;--**********************************&#xD;&#xA;--Write the output&#xD;&#xA;--**********************************&#xD;&#xA;if (output &lt;> '{}') then&#xD;&#xA;&#x9;output&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
       <expressions
-          xsi:type="gmfgen:GenConstraint"
-          body="self.level = oppositeEnd.level"/>
-      <expressions
           body="let renderRoleName:Boolean=&#xD;&#xA;&#x9;if (Ontology.allInstances()->asSequence()->at(1).visualizer->asSequence()->at(1).getValueForKey('showClassificationRoleNames') = 'true') then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;if (renderRoleName and self.kind = ClassificationKind::classification) then&#xD;&#xA;&#x9;'blueprint'&#xD;&#xA;else&#xD;&#xA;&#x9;if (renderRoleName and self.kind = ClassificationKind::instance) then&#xD;&#xA;&#x9;&#x9;'type'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;if (renderRoleName and self.kind = ClassificationKind::isonym) then&#xD;&#xA;&#x9;&#x9;&#x9;'complete type'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;if (renderRoleName and self.kind = ClassificationKind::hyponym) then&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;'incomplete type'&#xD;&#xA;&#x9;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;''&#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;endif"/>
       <expressions
           body="let renderRoleName:Boolean=&#xD;&#xA;&#x9;if (Ontology.allInstances()->asSequence()->at(1).visualizer->asSequence()->at(1).getValueForKey('showClassificationRoleNames') = 'true') then&#xD;&#xA;&#x9;&#x9;true&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;false&#xD;&#xA;&#x9;endif&#xD;&#xA;in&#xD;&#xA;&#xD;&#xA;if (renderRoleName and self.kind = ClassificationKind::classification) then&#xD;&#xA;&#x9;'offspring'&#xD;&#xA;else&#xD;&#xA;&#x9;if (renderRoleName and self.kind = ClassificationKind::instance) then&#xD;&#xA;&#x9;&#x9;'instance'&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;if (renderRoleName and self.kind = ClassificationKind::isonym) then&#xD;&#xA;&#x9;&#x9;&#x9;'isonym'&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;if (renderRoleName and self.kind = ClassificationKind::hyponym) then&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;'hyponym'&#xD;&#xA;&#x9;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;''&#xD;&#xA;&#x9;&#x9;&#x9;endif&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif&#xD;&#xA;endif"/>
@@ -3876,7 +3795,7 @@
     </implementations>
     <implementations
         xsi:type="gmfgen:ExternalParser"
-        uses="//@diagram/@childNodes.8/@labels.0/@modelFacet //@diagram/@childNodes.12/@labels.0/@modelFacet //@diagram/@links.0/@labels.0/@modelFacet //@diagram/@links.0/@labels.1/@modelFacet //@diagram/@links.2/@labels.0/@modelFacet //@diagram/@links.3/@labels.0/@modelFacet //@diagram/@links.4/@labels.0/@modelFacet //@diagram/@links.5/@labels.0/@modelFacet"/>
+        uses="//@diagram/@childNodes.8/@labels.0/@modelFacet //@diagram/@childNodes.12/@labels.0/@modelFacet //@diagram/@links.1/@labels.0/@modelFacet //@diagram/@links.2/@labels.0/@modelFacet //@diagram/@links.3/@labels.0/@modelFacet //@diagram/@links.4/@labels.0/@modelFacet"/>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.11/@labels.0/@modelFacet"
@@ -4114,33 +4033,33 @@
     </implementations>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
-        uses="//@diagram/@links.1/@labels.0/@modelFacet"
+        uses="//@diagram/@links.0/@labels.0/@modelFacet"
         className="ClassificationLabelExpressionLabelParser6010"
+        viewExpression="//@expressionProviders/@providers.0/@expressions.82">
+      <expressionContext
+          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Classification"/>
+    </implementations>
+    <implementations
+        xsi:type="gmfgen:ExpressionLabelParser"
+        uses="//@diagram/@links.0/@labels.1/@modelFacet"
+        className="ClassificationLabelExpressionLabelParser6011"
         viewExpression="//@expressionProviders/@providers.0/@expressions.83">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Classification"/>
     </implementations>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
-        uses="//@diagram/@links.1/@labels.1/@modelFacet"
-        className="ClassificationLabelExpressionLabelParser6011"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.84">
-      <expressionContext
-          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Classification"/>
-    </implementations>
-    <implementations
-        xsi:type="gmfgen:ExpressionLabelParser"
-        uses="//@diagram/@links.8/@labels.0/@modelFacet"
+        uses="//@diagram/@links.7/@labels.0/@modelFacet"
         className="RoleLabelExpressionLabelParser6012"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.93">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.92">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Role"/>
     </implementations>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
-        uses="//@diagram/@links.8/@labels.1/@modelFacet"
+        uses="//@diagram/@links.7/@labels.1/@modelFacet"
         className="RoleLabelExpressionLabelParser6013"
-        viewExpression="//@expressionProviders/@providers.0/@expressions.94">
+        viewExpression="//@expressionProviders/@providers.0/@expressions.93">
       <expressionContext
           href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Role"/>
     </implementations>

@@ -1250,30 +1250,6 @@
     </ownedChild>
   </nodes>
   <links>
-    <labelMappings
-        readOnly="true">
-      <diagramLabel
-          href="plm.gmfgraph#ConnectionParticipantFigureName"/>
-    </labelMappings>
-    <labelMappings
-        readOnly="true">
-      <diagramLabel
-          href="plm.gmfgraph#ConnectionParticipantMultiplicity"/>
-    </labelMappings>
-    <tool
-        xsi:type="gmftool:CreationTool"
-        href="plm.gmftool#//@palette/@tools.1/@tools.2"/>
-    <diagramLink
-        href="plm.gmfgraph#ConnectionParticipants"/>
-    <linkMetaFeature
-        xsi:type="ecore:EReference"
-        href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Connection/participant"/>
-    <creationConstraints>
-      <targetEnd
-          body="self.level = oppositeEnd.level"/>
-    </creationConstraints>
-  </links>
-  <links>
     <domainMetaElement
         href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Classification"/>
     <labelMappings

@@ -23,14 +23,8 @@
 	«EXPAND getToggleValue-»
 	«EXPAND toggle-»
 «ENDIF»
-//Responsible for the multiplicity, role, navigation ends and elision
-«IF self.editPartClassName = 'ConnectionEditPart'»
-	«EXPAND updateConnections-»
-	«EXPAND refreshSourceConnections-»
-«ENDIF»
 «IF self.editPartClassName = 'EntityEditPart'
 		or self.editPartClassName = 'ConnectionEditPart'»
-
 	«EXPAND doElide-»
 «ENDIF»
 «IF self.editPartClassName = 'EntityEditPart'
@@ -68,231 +62,6 @@
 	«EXPAND handleNotificationEventForOntology»
 «ENDIF»
 «ENDAROUND»
-
-//**************************************************************
-//DEFINITIONS
-//**************************************************************
-«DEFINE updateConnections FOR gmfgen::GenNode»
-	/**
-	 * @generated
-	 */
-	private void updateConnections() {
-		if (this.sourceConnections == null)
-			return;
-
-		de.uni_mannheim.informatik.swt.models.plm.PLM.Connection self = (de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)resolveSemanticElement();
-		
-		java.lang.Boolean dslRendering = getDSLRenderingValue();
-		
-		//Is visualization information available? Is link visualization available?
-		if (dslRendering != null && dslRendering == true
-				&& self.getVisualizer().size() > 0 
-				&& (self.getVisualizer().get(0).getChild().get(0) instanceof de.uni_mannheim.informatik.swt.models.plm.visualization.Link))
-			dslRendering = true;
-		else
-			dslRendering = false;
-
-		java.util.List<ConnectionParticipantEditPart> sourceConnections = this.sourceConnections;
-
-		//needs to be used as source connections can have non participant connections
-		int numberNonParticipantConnection = 0;
-
-		for (int i = 0; i < sourceConnections.size(); i++) {
-
-			//Take care that no visualizer link is used here
-			if (! (sourceConnections.get(i) instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionParticipantEditPart))
-			{
-				numberNonParticipantConnection++;
-				continue;
-			}
-
-			//****************************************************************************
-			//DSL Rendering
-			//****************************************************************************
-			//Do the DSL rendering -> Set decoration independent of isNavigable
-			//Set labels independent of DSL rendering
-			if (dslRendering != null && dslRendering)
-			{
-				org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart connection = sourceConnections.get(i);
-				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionParticipantEditPart.ConnectionParticipantsFigure connectionFigure = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionParticipantEditPart.ConnectionParticipantsFigure) connection.getFigure();
-			
-				connectionFigure.getFigureConnectionParticipantsNameFigure().setText("");
-				connectionFigure.getFigureConnectionParticipantsMultiplicityFigure().setText("");
-			
-				de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IVisualModelToFigureTransformator transformator = null; 
-				
-				try {
-					transformator = de.uni_mannheim.informatik.swt.plm.workbench.ExtensionPointService.Instance().getActiveVisualizationService();
-				} catch (org.eclipse.core.runtime.CoreException e) {
-					e.printStackTrace();
-				}
-				
-				//The index of the connection to the participant
-				int index = i - numberNonParticipantConnection;
-				
-				de.uni_mannheim.informatik.swt.models.plm.visualization.Link l = (de.uni_mannheim.informatik.swt.models.plm.visualization.Link)((de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer)self.getVisualizer().get(0)).getChild().get(0);
-				
-				connectionFigure.setForegroundColor(transformator.colorConstant2Color(l.getForegroundColor()));
-				connectionFigure.setBackgroundColor(transformator.colorConstant2Color(l.getBackgroundColor()));
-				
-				//Add DSL Link decoration
-				de.uni_mannheim.informatik.swt.models.plm.visualization.LinkDecoration decoDesc = l.getLinkDecorationForRoleName(self.getRoleNameForParticipant(self.getParticipant().get(index)).get(0));
-				
-				//No decoration for link name found but decoration defined for the index
-				if (decoDesc == null && index < l.getDecoration().size()) {
-					decoDesc = l.getDecoration().get(index);
-				}
-				
-				//Neither decoration for role name found nor for the index
-				if (decoDesc == null)
-					connectionFigure.setTargetDecoration(null);
-				else {
-					//We have a special decoration
-					if (((de.uni_mannheim.informatik.swt.models.plm.visualization.DefaultLinkDecoration) decoDesc)
-							.getDecorationType() != de.uni_mannheim.informatik.swt.models.plm.visualization.DefaultLinkDecorationTypes.NO_LINE_DECORATION) {
-						org.eclipse.draw2d.RotatableDecoration decoration = ((de.uni_mannheim.informatik.swt.models.plm.visualization.DefaultLinkDecoration) decoDesc)
-								.getDecorationType() == de.uni_mannheim.informatik.swt.models.plm.visualization.DefaultLinkDecorationTypes.POLY_LINE_DECORATION ? new org.eclipse.draw2d.PolylineDecoration()
-								: new org.eclipse.draw2d.PolygonDecoration();
-						decoration.setBackgroundColor(transformator
-								.colorConstant2Color(decoDesc
-										.getBackgroundColor()));
-						decoration.setForegroundColor(transformator
-								.colorConstant2Color(decoDesc
-										.getForegroundColor()));
-						//set the decoration
-						connectionFigure.setTargetDecoration(decoration);
-					}
-					//We have no special decoration
-					else
-						connectionFigure.setTargetDecoration(null);
-				}
-				
-				//Add DSl labels
-				for (de.uni_mannheim.informatik.swt.models.plm.visualization.LabelDescriptor labelDesc : l.getLabel()){
-					org.eclipse.draw2d.IFigure fig = ((de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionParticipantEditPart)connection).getFigure();
-					
-					//Execute the OCL expression to get the value
-					java.util.Set feature = null;
-
-					org.eclipse.ocl.ecore.OCL ocl = org.eclipse.ocl.ecore.OCL
-							.newInstance();
-					org.eclipse.ocl.helper.OCLHelper<org.eclipse.emf.ecore.EClassifier, ?, ?, org.eclipse.ocl.ecore.Constraint> helper = ocl
-							.createOCLHelper();
-					helper.setContext(de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.Literals.CONNECTION);
-
-					try {
-						org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.feature->select(f | f.oclIsKindOf(Attribute) and f.name = '"+ ((de.uni_mannheim.informatik.swt.models.plm.visualization.ExpressionLabel)labelDesc).getExpression() +"')");
-						feature = (java.util.Set)ocl.evaluate(resolveSemanticElement(),q);
-					} catch (org.eclipse.ocl.ParserException e) {
-						e.printStackTrace();
-					}
-					
-					if (feature.isEmpty())
-						continue;
-					
-					org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel label = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel(((de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute)feature.iterator().next()).getValue());
-					label.setParent(fig);
-					fig.getChildren().clear();
-					fig.add(label, new org.eclipse.gmf.runtime.diagram.ui.figures.LabelLocator(fig, new org.eclipse.draw2d.geometry.Point(-10,-10), org.eclipse.draw2d.ConnectionLocator.SOURCE));
-				}
-				
-				continue;
-			}
-
-			//****************************************************************************
-			//Set navigable
-			//****************************************************************************
-			if (self.getIsNavigable().size() > i  - numberNonParticipantConnection
-					&&self.getIsNavigable().get(i  - numberNonParticipantConnection) == false) {
-				org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart connection = sourceConnections.get(i);
-				org.eclipse.draw2d.PolylineConnection connectionFigure = (org.eclipse.draw2d.PolylineConnection) connection
-						.getFigure();
-				connectionFigure.setTargetDecoration(null);
-			} else {
-				org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart connection = sourceConnections.get(i);
-				org.eclipse.draw2d.PolylineConnection connectionFigure = (org.eclipse.draw2d.PolylineConnection) connection
-						.getFigure();
-				connectionFigure.setTargetDecoration(new org.eclipse.draw2d.PolylineDecoration());
-			}
-
-			//****************************************************************************
-			//Set role
-			//****************************************************************************
-			if (self.getRoleName().size() > i  - numberNonParticipantConnection
-					&& self.getParticipant().size() > i - (numberNonParticipantConnection)) {
-				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionParticipantEditPart connection = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionParticipantEditPart) sourceConnections.get(i);
-				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionParticipantEditPart.ConnectionParticipantsFigure connectionFigure = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionParticipantEditPart.ConnectionParticipantsFigure) connection.getFigure();
-				
-				//We do not show roleNames which are equal to the participants name
-				String participantName = self.getParticipant().get(i - numberNonParticipantConnection).getName();
-				if (participantName != null && participantName.length() > 0){
-					participantName = Character.toLowerCase(participantName.charAt(0)) + participantName.substring(1);
-					String roleName = self.getRoleName().get(i - numberNonParticipantConnection);
-					if (!participantName.equals(roleName))
-						connectionFigure.getFigureConnectionParticipantsNameFigure().setText(roleName);
-					//RoleName = paticipant.getName() => hide role
-					else
-						connectionFigure.getFigureConnectionParticipantsNameFigure().setText("");
-				}
-			} else {
-				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionParticipantEditPart connection = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionParticipantEditPart) sourceConnections
-						.get(i);
-				de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionParticipantEditPart.ConnectionParticipantsFigure connectionFigure = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionParticipantEditPart.ConnectionParticipantsFigure) connection
-						.getFigure();
-				connectionFigure
-						.getFigureConnectionParticipantsNameFigure()
-						.setText("");
-			}
-
-			//****************************************************************************
-			//Set multiplicity
-			//****************************************************************************
-			//can we assume default lower = 0 and default upper = -1
-			int lower = 0, upper = -1;
-
-			if (self.getLower().size() > i - numberNonParticipantConnection)
-				lower = self.getLower().get(i - numberNonParticipantConnection);
-			if (self.getUpper().size() > i - numberNonParticipantConnection)
-				upper = self.getUpper().get(i - numberNonParticipantConnection);
-
-			//now set the string
-			String multiplicity = "";
-			if (lower == upper)
-				multiplicity = "" + upper;
-			else if (lower != upper && upper > 0)
-				multiplicity = lower + ".." + upper;
-			else if (lower == 0 && upper == -1)
-				multiplicity = "";
-			else if (upper == -1)
-				multiplicity = lower + "..*";
-			
-			//get the label to set
-			ConnectionParticipantEditPart connection = (ConnectionParticipantEditPart) sourceConnections
-					.get(i);
-			de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionParticipantEditPart.ConnectionParticipantsFigure connectionFigure = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionParticipantEditPart.ConnectionParticipantsFigure) connection
-					.getFigure();
-			connectionFigure
-					.getFigureConnectionParticipantsMultiplicityFigure()
-					.setText(multiplicity);
-		}
-	}
-«ENDDEFINE»
-
-«DEFINE refreshSourceConnections FOR gmfgen::GenNode»
-	/**
-	 * Updates the connections after one is added. Needed for setting up connection
-	 * participants when diagram is loaded.
-	 *
-	 * @generated
-	 */
-	@Override
-	protected void refreshSourceConnections() {
-		super.refreshSourceConnections();
-		
-		if (this.sourceConnections != null)
-			updateConnections();
-	}
-«ENDDEFINE»
 
 «DEFINE handleNotificationEventForClabjectLogicElement FOR gmfgen::GenNode»
 	/**
@@ -353,12 +122,6 @@
 			«ENDIF»
 		}
 		
-		«IF self.editPartClassName = 'ConnectionEditPart'»
-		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Connection) {
-			updateConnections();
-		}
-		«ENDIF»
-		
 		org.eclipse.emf.ecore.EStructuralFeature changedFeature = (org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature();
 		
 		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Element)
@@ -375,79 +138,6 @@
 				{
 					findEditPart(this, eObj).performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
 				}
-			}
-			«ENDIF»
-			«IF self.editPartClassName='ConnectionEditPart'»
-			else if (changedFeature.getName().equalsIgnoreCase("participant"))
-			{
-				de.uni_mannheim.informatik.swt.models.plm.PLM.Connection self = (de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)resolveSemanticElement();
-				
-				//Participant was added attach values at the end
-				if (notification.getOldValue() == null
-						&& notification.getNewValue() != null
-						&& notification.getPosition() + 1 > self
-								.getIsNavigable().size()) {
-					
-					de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject instanceParticipant = (de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject) notification.getNewValue();
-					de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject typeParticipant = instanceParticipant.getBlueprint();
-					de.uni_mannheim.informatik.swt.models.plm.PLM.Connection type = (de.uni_mannheim.informatik.swt.models.plm.PLM.Connection) self.getBlueprint();
-					
-					//If we do not have a participant blueprint try to find a complete type
-					if (typeParticipant == null) {
-						java.util.List<de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject> completeTypes = instanceParticipant.getModelCompleteTypes();
-						if (completeTypes.size() >= 1)
-							typeParticipant = completeTypes.get(0);
-					}
-					
-					//If we do not have a connection blueprint try to find a complete type
-					if (type == null) {
-						java.util.List<de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject> completeTypes = self.getModelCompleteTypes();
-						if (completeTypes.size() >= 1)
-							type = (de.uni_mannheim.informatik.swt.models.plm.PLM.Connection) completeTypes.get(0);
-					}
-					
-					//We have a connection that is not instance => Default rolename needs to be used
-					if (type == null){
-						String newRoleName = instanceParticipant.getName();
-						
-						//retrieve the name from the particpant if possible
-						if (newRoleName != null && newRoleName.length() > 1)
-							newRoleName = java.lang.Character.toLowerCase(newRoleName.charAt(0)) + (newRoleName.length() > 2 ? newRoleName.substring(1) : "");
-						else
-							newRoleName = "unknown";
-						
-						self.getRoleName().add(newRoleName);
-						self.getLower().add(0);
-						self.getUpper().add(-1);
-						self.getIsNavigable().add(true);
-						return;
-					}
-					
-					//Use the toolID to find the role name
-					String toolID = getEditDomain().getPaletteViewer().getActiveTool().getId();
-					String roleName = toolID.substring(toolID.indexOf("<<") + 2, toolID.indexOf(">>"));
-					
-					self.getIsNavigable().add(type.isNavigableForRoleName(roleName));
-					self.getLower().add(type.getLowerForRoleName(roleName));
-					self.getUpper().add(type.getUpperForRoleName(roleName));
-					self.getRoleName().add(roleName);
-				}
-				//Participant was removed
-				else if(notification.getOldValue() !=  null && notification.getNewValue() == null)
-				{
-					int oldIndex = notification.getPosition();
-					
-					if (self.getIsNavigable().size() < oldIndex)
-						self.getIsNavigable().remove(oldIndex);
-					if (self.getLower().size() < oldIndex)
-						self.getUpper().remove(oldIndex);
-					if (self.getIsNavigable().size() < oldIndex)
-						self.getUpper().remove(oldIndex);
-					if (self.getRoleName().size() < oldIndex)
-						self.getRoleName().remove(oldIndex);
-				}
-				
-				updateConnections();
 			}
 			«ENDIF»
 			«IF self.editPartClassName='EntityEditPart'»
@@ -562,7 +252,6 @@
 		{
 			«IF self.editPartClassName = 'ConnectionEditPart'»  
 			toggle();
-			updateConnections();
 			«ELSE»
 			updateDSL();
 			«ENDIF»

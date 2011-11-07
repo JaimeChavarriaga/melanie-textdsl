@@ -24,51 +24,7 @@
   *
   */
 «AROUND canCreate FOR gmfgen::GenLink»
-	«IF getUniqueIdentifier().startsWith('ConnectionParticipant_')»
-			
-		«EXPAND xpt::Common::generatedMemberComment»
-		public boolean canCreate«getUniqueIdentifier()»(«EXPAND canCreateParameters FOR modelFacet») {
-			
-			//left out contains check to have multiple participants to the same clabject. Workaround for BUG XXXX
-			
-			de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor editor = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor) org.eclipse.ui.PlatformUI
-					.getWorkbench().getActiveWorkbenchWindow().getActivePage()
-					.getActiveEditor();
-
-			if (editor.getPalette().getActiveTool().getId().startsWith("dsl.")) {
-
-				de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService reasoner = null;
-				
-				try {
-					reasoner = de.uni_mannheim.informatik.swt.plm.workbench.ExtensionPointService.Instance().getActiveReasoningService().Instance();
-				} catch (org.eclipse.core.runtime.CoreException e) {
-					e.printStackTrace();
-				}
-				String typeID = editor.getPalette().getActiveTool().getId().replace("dsl.", "").replaceAll("<<.*?>>", "").replace(".CreationTool", "");
-				de.uni_mannheim.informatik.swt.models.plm.PLM.Connection typeConnection = (de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)reasoner.getElementByXMIID(typeID, source);
-				//Start of drawing the line. possible if the source conforms what was used to construct the participation from
-				if (source != null && target == null){
-					return reasoner.neighbourhoodConstructionConformsConnection(typeConnection, source);
-				}
-				if (source.equals(target)) {
-					return false;
-				}
-				java.util.Set<de.uni_mannheim.informatik.swt.models.plm.PLM.Connection> possibleTypeConnections = new java.util.HashSet<de.uni_mannheim.informatik.swt.models.plm.PLM.Connection>();
-				possibleTypeConnections.add(typeConnection);
-				for (de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject con: typeConnection.getModelSupertypes())
-					possibleTypeConnections.add((de.uni_mannheim.informatik.swt.models.plm.PLM.Connection) con);
-				java.util.Set<de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject> possibleTypes = new java.util.HashSet<de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject>();
-				for (de.uni_mannheim.informatik.swt.models.plm.PLM.Connection con: possibleTypeConnections)
-					possibleTypes.addAll(con.getParticipant());
-				for (de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject possible: possibleTypes)
-					if (reasoner.run(de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService.LOCAL_CONFORMS, new Object[]{possible, target}, true))
-						return true;
-				return false;
-			}
-			
-			return canExist«getUniqueIdentifier()»(«EXPAND canCreateValues FOR modelFacet»);
-		}
-	«ELSEIF getUniqueIdentifier().startsWith('Role_')»
+	«IF getUniqueIdentifier().startsWith('Role_')»
 		«EXPAND xpt::Common::generatedMemberComment»
 		public boolean canCreate«getUniqueIdentifier()»(«EXPAND canCreateParameters FOR modelFacet») {
 		

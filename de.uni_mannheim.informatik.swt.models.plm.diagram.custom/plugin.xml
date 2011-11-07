@@ -74,14 +74,14 @@
                 id="property.tab.ontological"
                 label="Ontological">
           </propertyTab>
-          <propertyTab
+          <!--<propertyTab
                 afterTab="property.tab.ontological"
                 category="domain"
                 id="property.tab.associate"
                 label="Participants">
-          </propertyTab>
+          </propertyTab>-->
           <propertyTab
-                afterTab="property.tab.associate"
+                afterTab="property.tab.ontological"
                 category="domain"
                 id="property.tab.visualization"
                 label="Visualization">
@@ -102,7 +102,7 @@
                   type="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMAbstractNavigatorItem">
             </input>
          </propertySection>
-         <propertySection
+         <!--<propertySection
                class="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.propertysheet.AssociatePropertySectionAbstractPropertySection"
                id="property.section.associate"
                tab="property.tab.associate">
@@ -112,7 +112,7 @@
             <input
                   type="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMAbstractNavigatorItem">
             </input>
-         </propertySection>
+         </propertySection>-->
          <propertySection
                class="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.propertysheet.VisualizationPropertySectionAbstractPropertySection"
                id="property.section.visualization"
