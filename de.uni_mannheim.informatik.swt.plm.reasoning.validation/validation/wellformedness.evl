@@ -175,24 +175,24 @@ context Connection {
 	}
 
 	constraint connectOneLevel {
-		check :self.participant->asSequence()->forAll(p|p.level = self.level)
-		message : 'The Connection \'' + self.name + '\' connects the clabject\'s {'+ self.participant->select(p | p.level <> self.level)->collect(p | p.name)->concat(',')  +'} from another level'
+		check :self.role->asSequence()->forAll(r|r.destination.level = self.level)
+		message : 'The Connection \'' + self.name + '\' connects the clabject\'s {'+ self.role->select(r | r.destination.level <> self.level)->collect(r | r.destination.name)->concat(',')  +'} from another level'
 	}
 	
 	constraint notConnectLowerPotency {
-		check: self.participant->asSequence()->forAll(p|(self.potency = -1 or p.potency = -1) or (p.potency >= self.potency))
+		check: self.role->asSequence()->forAll(r|(self.potency = -1 or r.destination.potency = -1) or (r.destination.potency >= self.potency))
 		message: 'The Connection \'' + self.name + '\' has participants of lower a potency lower than the connection\'s potency'
 		fix {
 			title: 'Adjust the potency of the connection to the highest potency of its participants'
 			do {
-				self.potency := self.participant->sortedBy(potency)->last().potency;
+				self.potency := self.role->collect(r | r.destination)->sortedBy(potency)->last().potency;
 			}
 		}
 		fix {
 			title: 'Adjust the participant\'s potency to the Connection\'s potency'
 			do {
-				for (p in self.participant->select(p|p.potency < self.potency)) {
-					p.potency := self.potency;
+				for (r in self.role->select(r|r.destination.potency < self.potency)) {
+					r.destination.potency := self.potency;
 				}
 			}
 		}
@@ -225,33 +225,8 @@ context Connection {
 	
 	constraint atLeastTwoRoles{
 		guard: Generalization.allInstances()->forAll(g | not g.subtype->contains(self))
-		check: self.role->size() > 1 or self.participant->size() > 1 --Participants need to be removed later
+		check: self.role->size() > 1
 		message: "A not inherited connection does need at least two roles."
-	}
-	
-	--We need to check that connections that are not inherited have at least two participants, lower, upper etc.
-	constraint atLeastTwoParticipants{
-		guard: Generalization.allInstances()->forAll(g | not g.subtype->contains(self))
-		check: self.participant->size() > 1
-		message: "A not inherited connection does need at least two participants."
-	}
-	
-	constraint atLeastTwoLower{
-		guard: Generalization.allInstances()->forAll(g | not g.subtype->contains(self))
-		check: self.lower->size() > 1
-		message: "A not inherited connection does need at least two lower values."
-	}	
-	
-	constraint atLeastTwoUpper{
-		guard: Generalization.allInstances()->forAll(g | not g.subtype->contains(self))
-		check: self.upper->size() > 1
-		message: "A not inherited connection does need at least two upper values."
-	}
-	
-	constraint atLeastTwoRoleNames{
-		guard: Generalization.allInstances()->forAll(g | not g.subtype->contains(self))
-		check: self.roleName->size() > 1
-		message: "A not inherited connection does need at least two role names."
 	}
 }
 
