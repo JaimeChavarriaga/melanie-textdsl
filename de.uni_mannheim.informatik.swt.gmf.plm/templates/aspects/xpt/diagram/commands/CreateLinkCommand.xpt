@@ -1,0 +1,80 @@
+/*******************************************************************************
+ * Copyright (c) 2011 University of Mannheim: Chair for Software Engineering
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Ralph Gerbig - initial API and implementation and initial documentation
+ *******************************************************************************/
+ 
+«IMPORT 'http://www.eclipse.org/gmf/2009/GenModel'»
+
+«EXTENSION xpt::diagram::Utils»
+
+/*******************************************************************************
+ * This is used for setting up connections after createing them from the palette
+ *******************************************************************************/
+«AROUND execute(link : gmfgen::GenLink) FOR gmfgen::TypeLinkModelFacet»
+«IF self.metaClass.ecoreClass.name.startsWith('Role')-»
+«IF (if sourceMetaFeature = null then containmentMetaFeature.ecoreFeature.changeable else sourceMetaFeature.ecoreFeature.changeable endif) and targetMetaFeature.ecoreFeature.changeable-»
+		«EXPAND MetaModel::NewInstance('newElement') FOR metaClass-»
+		«EXPAND MetaModel::modifyFeature((if hasContainerOtherThanSource(self) then 'getContainer()' else 'getSource()' endif), containmentMetaFeature.genClass, 'newElement') FOR containmentMetaFeature-»
+		«IF sourceMetaFeature <> null-»
+			«EXPAND MetaModel::modifyFeature('newElement', metaClass, 'getSource()') FOR sourceMetaFeature-»
+		«ENDIF-»
+		«EXPAND MetaModel::modifyFeature('newElement', metaClass, 'getTarget()') FOR targetMetaFeature-»
+		«IF hasExplicitChildFeature(self)-»
+			«IF sourceMetaFeature <> null-»
+				«EXPAND MetaModel::modifyFeature('getContainer()', containmentMetaFeature.genClass, 'newElement') FOR childMetaFeature-»
+			«ELSE-»
+				«EXPAND MetaModel::modifyFeature('getSource()', getSourceType(), 'newElement') FOR childMetaFeature-»
+			«ENDIF-»
+		«ENDIF-»
+		«EXPAND initialize(link, 'newElement')-»
+		
+		//*************************************************************
+		// BEGIN CUSTOM CODE
+		//*************************************************************
+		de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor editor = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor) org.eclipse.ui.PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+				.getActiveEditor();
+		
+		//Is the role created by a DSL tool? -> Initialize values
+		if (editor.getPalette().getActiveTool().getId().startsWith("dsl."))
+		{
+			String typeRoleID = editor.getPalette().getActiveTool().getId().replace("dsl.", "").replaceAll("<<.*?>>", "").replace(".CreationTool", "");			
+			de.uni_mannheim.informatik.swt.models.plm.PLM.Role typeRole = null;
+			
+			org.eclipse.emf.common.util.TreeIterator<org.eclipse.emf.ecore.EObject> iter = org.eclipse.emf.ecore.util.EcoreUtil.getRootContainer(source).eAllContents();
+			while (iter.hasNext()) {
+				org.eclipse.emf.ecore.EObject current = iter.next();
+				if (org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getProxyID(current).equals(typeRoleID)) 
+					typeRole = (de.uni_mannheim.informatik.swt.models.plm.PLM.Role)current;
+			}
+			
+			if (typeRole != null){
+				newElement.setNavigable(typeRole.isNavigable());
+				newElement.setRoleName(typeRole.getRoleName());
+				newElement.setLower(typeRole.getLower());
+				newElement.setUpper(typeRole.getUpper());
+			}
+		}
+		//*************************************************************
+		// END CUSTOM CODE
+		//*************************************************************
+		
+		doConfigure(newElement, monitor, info);
+		((org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest) getRequest()).setNewElement(«EXPAND MetaModel::DowncastToEObject('newElement') FOR metaClass»);
+		return org.eclipse.gmf.runtime.common.core.command.CommandResult.newOKCommandResult(newElement);
+«ELSE-»
+		throw new UnsupportedOperationException();
+«ENDIF-»
+«ELSE»
+	«targetDef.proceed()»
+«ENDIF»
+«ENDAROUND»
+
+«DEFINE initialize(gmfgen::GenLink link, String newElementVar) FOR gmfgen::TypeModelFacet»
+	«EXPAND xpt::providers::ElementInitializers::initMethodCall(self, newElementVar) FOR link»
+«ENDDEFINE»
