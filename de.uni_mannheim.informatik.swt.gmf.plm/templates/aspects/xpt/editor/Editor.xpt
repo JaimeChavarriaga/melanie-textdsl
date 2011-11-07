@@ -190,7 +190,7 @@
 							"Creates a new " + "<<" + role.getHumanReadableRoleName() + ">>" + ((de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)e).getHumanReadableName(),
 							java.util.Collections.singletonList(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.Role_4024));
 							
-					linkEntry.setId("dsl." + org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getProxyID(e) + "<<" + role.getHumanReadableRoleName() + ">>" + ".CreationTool");
+					linkEntry.setId("dsl." + org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getProxyID(role) + "<<" + role.getHumanReadableRoleName() + ">>" + ".CreationTool");
 					linkEntry.setSmallIcon(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditorPlugin
 							.findImageDescriptor("/de.uni_mannheim.informatik.swt.gmf.plm/icons/role16.gif"));
 					linkEntry.setLargeIcon(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditorPlugin
