@@ -91,11 +91,13 @@
 	/**
 	 * @generated
 	 */
-	private void updateView() {
+	public void updateView() {
 		if (getDSLRenderingValue())
 			updateDSLRenderingView();
 		else
 			updateLMLRenderingView();
+			
+		performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
 	}
 	
 	/**
