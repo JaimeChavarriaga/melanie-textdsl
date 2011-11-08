@@ -80,26 +80,27 @@ public class NeighbourhoodConformsCommand extends AbstractHandler {
 		if (!localC.isResult()) {
 			return result;
 		}
-		for (String rN:type.getAllAssociateRoleNames()) {
-			RoleNameLocalConformanceCheck rCheck = ReasoningResultFactory.eINSTANCE.createRoleNameLocalConformanceCheck();
-			result.getCheck().add(rCheck);
-			rCheck.setRoleName(rN);
-			rCheck.setResult(true);
-			for (Clabject t :type.getAllAssociatesForRoleName(rN)) {
-				boolean found = false;
-				for (Clabject i:instance.getAllAssociatesForRoleName(rN)) {
-					CompositeCheck innerLocal = (new LocalConformsCommand()).compute(t,i);
-					rCheck.getCheck().add(innerLocal);
-					if (innerLocal.isResult()) {
-						found = true;
-						break;
-					}
-				}
-				if (!found) {
-					rCheck.setResult(false);
-				}
-			}
-		}
+		//FIXME: Change to roles
+//		for (String rN:type.getAllAssociateRoleNames()) {
+//			RoleNameLocalConformanceCheck rCheck = ReasoningResultFactory.eINSTANCE.createRoleNameLocalConformanceCheck();
+//			result.getCheck().add(rCheck);
+//			rCheck.setRoleName(rN);
+//			rCheck.setResult(true);
+//			for (Clabject t :type.getAllAssociatesForRoleName(rN)) {
+//				boolean found = false;
+//				for (Clabject i:instance.getAllAssociatesForRoleName(rN)) {
+//					CompositeCheck innerLocal = (new LocalConformsCommand()).compute(t,i);
+//					rCheck.getCheck().add(innerLocal);
+//					if (innerLocal.isResult()) {
+//						found = true;
+//						break;
+//					}
+//				}
+//				if (!found) {
+//					rCheck.setResult(false);
+//				}
+//			}
+//		}
 		ConnectionsLocalConformanceCheck conCheck = ReasoningResultFactory.eINSTANCE.createConnectionsLocalConformanceCheck();
 		conCheck.setResult(true);
 		result.getCheck().add(conCheck);
