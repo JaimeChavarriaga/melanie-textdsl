@@ -92,32 +92,47 @@
 			//Manage the classifications view state according to proximity indication
 			//*************************************************************************
 			org.eclipse.gmf.runtime.notation.View v = this.getNotationView();
-			de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer visualizer = (de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer)notification.getNotifier();
-				
-			org.eclipse.gmf.runtime.notation.View[] classifications = new org.eclipse.gmf.runtime.notation.View[]{};
-			org.eclipse.ocl.ecore.OCL ocl = org.eclipse.ocl.ecore.OCL.newInstance();
-				
-			org.eclipse.ocl.helper.OCLHelper<org.eclipse.emf.ecore.EClassifier, ?, ?, org.eclipse.ocl.ecore.Constraint> helper = ocl.createOCLHelper();
+			de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer visualizer = (de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer) notification
+					.getNotifier();
+
+			java.util.HashSet<org.eclipse.gmf.runtime.notation.View> outgoingEdges = new java.util.HashSet<org.eclipse.gmf.runtime.notation.View>();
+			org.eclipse.ocl.ecore.OCL ocl = org.eclipse.ocl.ecore.OCL
+					.newInstance();
+
+			org.eclipse.ocl.helper.OCLHelper<org.eclipse.emf.ecore.EClassifier, ?, ?, org.eclipse.ocl.ecore.Constraint> helper = ocl
+					.createOCLHelper();
 			helper.setContext(org.eclipse.gmf.runtime.notation.NotationPackage.Literals.VIEW);
-	
+
 			try {
-				//Need to take care to only select classification
-				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("Edge.allInstances()->select(e | e.source = self)->select(e | e.element.oclIsUndefined() <> true)");
-				classifications = ((java.util.HashSet<org.eclipse.gmf.runtime.notation.View>) ocl.evaluate(v ,q)).toArray(new org.eclipse.gmf.runtime.notation.View[] {});
+				//Need to take care to only select classification - plm::Classification is not known here..
+				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper
+						.createQuery("Edge.allInstances()->select(e | e.source = self)->select(e | e.element.oclIsUndefined() <> true)");
+				outgoingEdges = ((java.util.HashSet<org.eclipse.gmf.runtime.notation.View>) ocl.evaluate(v, q));
 			} catch (org.eclipse.ocl.ParserException e) {
 				e.printStackTrace();
 			}
 			
-			if (classifications.length > 0){
-				if ("1".equals(visualizer.getValueForKey("ProximityClassification")))
-					classifications[0].setVisible(false);
+			java.util.LinkedList<org.eclipse.gmf.runtime.notation.View> outgoingClassificationEdges = new java.util.LinkedList<org.eclipse.gmf.runtime.notation.View>();
+			
+			//Only take views of Classifications
+			for (org.eclipse.gmf.runtime.notation.View c : outgoingEdges)
+				if (c.getElement() instanceof  de.uni_mannheim.informatik.swt.models.plm.PLM.Classification)
+					outgoingClassificationEdges.add(c);
+			
+			//This has currently no support for multiple classifications
+			if (outgoingClassificationEdges.size() > 0) {
+				if ("1".equals(visualizer
+						.getValueForKey("ProximityClassification")))
+					outgoingClassificationEdges.get(0).setVisible(false);
 				else
-					classifications[0].setVisible(true);
-					
-				org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart edgeEP = (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)getViewer().getEditPartRegistry().get(classifications[0]);
-				
+					outgoingClassificationEdges.get(0).setVisible(true);
+
+				org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart edgeEP = (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart) getViewer()
+						.getEditPartRegistry().get(outgoingClassificationEdges.get(0));
+
 				if (edgeEP != null)
-					edgeEP.performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
+					edgeEP.performRequest(new org.eclipse.gef.Request(
+							org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
 			}
 			«ENDIF»
 		}
