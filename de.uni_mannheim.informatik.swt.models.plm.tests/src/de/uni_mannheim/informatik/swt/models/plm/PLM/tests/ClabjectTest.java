@@ -8,6 +8,7 @@ package de.uni_mannheim.informatik.swt.models.plm.PLM.tests;
 
 import junit.textui.TestRunner;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Generalization;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMFactory;
@@ -536,9 +537,23 @@ public class ClabjectTest extends DomainElementTest {
 	 * @generated
 	 */
 	public void testGetModelDirectSuperTypes() {
-		// TODO: implement this operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
+		Ontology ontology = PLMFactory.eINSTANCE.createOntology();
+		
+		Model o0 = PLMFactory.eINSTANCE.createModel();
+		ontology.getContent().add(o0);
+		
+		Clabject superClass = PLMFactory.eINSTANCE.createClabject();
+		o0.getContent().add(superClass);
+		
+		Clabject subClass = PLMFactory.eINSTANCE.createClabject();
+		o0.getContent().add(subClass);
+		
+		Generalization generalization = PLMFactory.eINSTANCE.createGeneralization();
+		generalization.getSubtype().add(subClass);
+		generalization.getSupertype().add(superClass);
+		o0.getContent().add(generalization);
+		
+		assertEquals(superClass, subClass.getModelDirectSuperTypes().get(0));
 	}
 
 	/**
