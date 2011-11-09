@@ -543,9 +543,11 @@ public class ClabjectTest extends DomainElementTest {
 		ontology.getContent().add(o0);
 		
 		Clabject superClass = PLMFactory.eINSTANCE.createClabject();
+		superClass.setName("superClass");
 		o0.getContent().add(superClass);
 		
 		Clabject subClass = PLMFactory.eINSTANCE.createClabject();
+		subClass.setName("subClass");
 		o0.getContent().add(subClass);
 		
 		Generalization generalization = PLMFactory.eINSTANCE.createGeneralization();
@@ -553,7 +555,29 @@ public class ClabjectTest extends DomainElementTest {
 		generalization.getSupertype().add(superClass);
 		o0.getContent().add(generalization);
 		
+		//Here we do have only one direct supertype
 		assertEquals(superClass, subClass.getModelDirectSuperTypes().get(0));
+		
+		//Here we have two direct supertypes
+		Clabject superClass2 = PLMFactory.eINSTANCE.createClabject();
+		superClass2.setName("superClass2");
+		generalization.getSupertype().add(superClass2);
+		
+		assertTrue(subClass.getModelDirectSuperTypes().contains(superClass) 
+						&& subClass.getModelDirectSuperTypes().contains(superClass2));
+		
+		//Here we have a second generalization
+		Generalization generalization2 = PLMFactory.eINSTANCE.createGeneralization();
+		generalization2.getSubtype().add(subClass);
+		o0.getContent().add(generalization2);
+		
+		Clabject superClass3 = PLMFactory.eINSTANCE.createClabject();
+		superClass3.setName("superClass3");
+		generalization2.getSupertype().add(superClass3);
+
+		assertTrue(subClass.getModelDirectSuperTypes().contains(superClass) 
+					&& subClass.getModelDirectSuperTypes().contains(superClass2)
+					&& subClass.getModelDirectSuperTypes().contains(superClass3));
 	}
 
 	/**
