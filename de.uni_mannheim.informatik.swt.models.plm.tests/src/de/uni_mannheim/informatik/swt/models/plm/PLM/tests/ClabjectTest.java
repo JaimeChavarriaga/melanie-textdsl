@@ -6,6 +6,8 @@
  */
 package de.uni_mannheim.informatik.swt.models.plm.PLM.tests;
 
+import javax.swing.event.PopupMenuListener;
+
 import junit.textui.TestRunner;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Generalization;
@@ -602,11 +604,25 @@ public class ClabjectTest extends DomainElementTest {
 		Generalization generalization = PLMFactory.eINSTANCE.createGeneralization();
 		generalization.getSubtype().add(subClass);
 		generalization.getSupertype().add(superClass);
+		generalization.setName("generalization");
 		o0.getContent().add(generalization);
 		
+		//single superClass, single subClass, single generalization
 		assertEquals(generalization, subClass.getModelGeneralizationsAsSubType().get(0));
 			
-	
+		//two superClass, single subClasses, two generalizations
+		Clabject superClass2 = PLMFactory.eINSTANCE.createClabject();
+		o0.getContent().add(superClass2);
+		
+		Generalization generalization2 = PLMFactory.eINSTANCE.createGeneralization();
+		generalization2.getSupertype().add(superClass2);
+		generalization2.getSubtype().add(subClass);
+		generalization2.setName("generalization2");
+		o0.getContent().add(generalization2);
+		
+		assertTrue(subClass.getModelGeneralizationsAsSubType().contains(generalization2)
+				     	&& subClass.getModelGeneralizationsAsSubType().contains(generalization));
+		
 	}
 
 	/**
