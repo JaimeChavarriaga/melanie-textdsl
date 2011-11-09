@@ -564,9 +564,25 @@ public class ClabjectTest extends DomainElementTest {
 	 * @generated
 	 */
 	public void testGetModelGeneralizationsAsSubType() {
-		// TODO: implement this operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
+		Ontology ontology = PLMFactory.eINSTANCE.createOntology();
+		
+		Model o0 = PLMFactory.eINSTANCE.createModel();
+		ontology.getContent().add(o0);
+		
+		Clabject subClass = PLMFactory.eINSTANCE.createClabject();
+		o0.getContent().add(subClass);
+		
+		Clabject superClass = PLMFactory.eINSTANCE.createClabject();
+		o0.getContent().add(superClass);
+		
+		Generalization generalization = PLMFactory.eINSTANCE.createGeneralization();
+		generalization.getSubtype().add(subClass);
+		generalization.getSupertype().add(superClass);
+		o0.getContent().add(generalization);
+		
+		assertEquals(generalization, subClass.getModelGeneralizationsAsSubType().get(0));
+			
+	
 	}
 
 	/**
