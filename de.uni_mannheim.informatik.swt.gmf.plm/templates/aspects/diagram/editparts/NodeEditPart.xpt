@@ -262,10 +262,12 @@
 		de.uni_mannheim.informatik.swt.models.plm.PLM.Element self = (de.uni_mannheim.informatik.swt.models.plm.PLM.Element)resolveSemanticElement();
 		
 		«IF self.editPartClassName = 'ConnectionEditPart'»
-		//Roles need to be updated
-		for (java.lang.Object ep : sourceConnections)
-			if (ep instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.RoleEditPart)
-				((de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.RoleEditPart)ep).updateView();
+		if (sourceConnections != null){
+			//Roles need to be updated
+			for (java.lang.Object ep : sourceConnections)
+				if (ep instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.RoleEditPart)
+					((de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.RoleEditPart)ep).updateView();
+		}
 		«ENDIF»
 		
 		if (dslRendering != null && dslRendering == true
