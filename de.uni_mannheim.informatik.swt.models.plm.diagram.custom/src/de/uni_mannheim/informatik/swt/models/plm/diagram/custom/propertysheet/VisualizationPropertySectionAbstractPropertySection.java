@@ -24,7 +24,6 @@ import org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.CellLabelProvider;
-import org.eclipse.jface.viewers.ComboBoxCellEditor;
 import org.eclipse.jface.viewers.ComboBoxViewerCellEditor;
 import org.eclipse.jface.viewers.EditingSupport;
 import org.eclipse.jface.viewers.ISelection;
@@ -48,7 +47,7 @@ import org.eclipse.ui.views.properties.tabbed.AbstractPropertySection;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.LMLVisualizer;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMPackageImpl;
 
 public class VisualizationPropertySectionAbstractPropertySection extends
@@ -62,7 +61,7 @@ public class VisualizationPropertySectionAbstractPropertySection extends
 	
 	
 	CCombo visualizerSelectionCombo = null;
-	List<Visualizer> visualizers = null;
+	List<LMLVisualizer> visualizers = null;
 	TableViewer viewer;
 
 	private ISelection selection;
@@ -88,7 +87,7 @@ public class VisualizationPropertySectionAbstractPropertySection extends
 		
 		Element e = (Element)selectedElement.resolveSemanticElement();
 		
-		for (Visualizer v : e.getVisualizer())
+		for (LMLVisualizer v : e.getVisualizer())
 			visualizerSelectionCombo.add("Visualizer^" + v.getDurability());
 		
 		visualizers = e.getVisualizer();
@@ -184,7 +183,7 @@ public class VisualizationPropertySectionAbstractPropertySection extends
 			@Override
 			protected void setValue(Object element, Object value) {
 			
-				Visualizer visualizer = visualizers.get(visualizerSelectionCombo.getSelectionIndex());
+				LMLVisualizer visualizer = visualizers.get(visualizerSelectionCombo.getSelectionIndex());
 				
 				String keyValuePair = (String)element;
 				String key = keyValuePair.substring(0, keyValuePair.indexOf("=")).trim();
@@ -192,7 +191,7 @@ public class VisualizationPropertySectionAbstractPropertySection extends
 				CommandParameter parameters = null;
 				//The durability is a special case
 				if ("durability".equals(key)){
-					parameters = new CommandParameter(visualizer, PLMPackageImpl.eINSTANCE.getVisualizer_Durability(), Integer.parseInt((String) value));
+					parameters = new CommandParameter(visualizer, PLMPackageImpl.eINSTANCE.getLMLVisualizer_Durability(), Integer.parseInt((String) value));
 				}
 				else
 				{
@@ -204,7 +203,7 @@ public class VisualizationPropertySectionAbstractPropertySection extends
 							break;
 						}
 					
-					parameters = new CommandParameter(visualizer, PLMPackageImpl.eINSTANCE.getVisualizer_Attributes(), key + "= " + value, oldIndex);
+					parameters = new CommandParameter(visualizer, PLMPackageImpl.eINSTANCE.getLMLVisualizer_Attributes(), key + "= " + value, oldIndex);
 				}
 				
 				Command cmd = selectedElement.getEditingDomain().createCommand(SetCommand.class, parameters);
@@ -261,7 +260,7 @@ public class VisualizationPropertySectionAbstractPropertySection extends
 			
 			//Durability needs to be added
 			LinkedList<Object> elementsPlusTraits = new LinkedList<Object>();
-			Visualizer v = visualizers.get(visualizerSelectionCombo.getSelectionIndex());
+			LMLVisualizer v = visualizers.get(visualizerSelectionCombo.getSelectionIndex());
 			elementsPlusTraits.add("durability= " + v.getDurability());
 			
 			//Append the attributes list

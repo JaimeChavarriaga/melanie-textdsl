@@ -6,8 +6,8 @@
  */
 package de.uni_mannheim.informatik.swt.models.plm.PLM.tests;
 
+import de.uni_mannheim.informatik.swt.models.plm.PLM.LMLVisualizer;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMFactory;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer;
 
 import junit.framework.TestCase;
 
@@ -15,26 +15,26 @@ import junit.textui.TestRunner;
 
 /**
  * <!-- begin-user-doc -->
- * A test case for the model object '<em><b>Visualizer</b></em>'.
+ * A test case for the model object '<em><b>LML Visualizer</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer#getValueForKey(java.lang.String) <em>Get Value For Key</em>}</li>
- *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer#getElement() <em>Get Element</em>}</li>
+ *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.PLM.LMLVisualizer#getValueForKey(java.lang.String) <em>Get Value For Key</em>}</li>
+ *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.PLM.LMLVisualizer#getElement() <em>Get Element</em>}</li>
  * </ul>
  * </p>
  * @generated
  */
-public class VisualizerTest extends TestCase {
+public class LMLVisualizerTest extends TestCase {
 
 	/**
-	 * The fixture for this Visualizer test case.
+	 * The fixture for this LML Visualizer test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Visualizer fixture = null;
+	protected LMLVisualizer fixture = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -42,36 +42,36 @@ public class VisualizerTest extends TestCase {
 	 * @generated
 	 */
 	public static void main(String[] args) {
-		TestRunner.run(VisualizerTest.class);
+		TestRunner.run(LMLVisualizerTest.class);
 	}
 
 	/**
-	 * Constructs a new Visualizer test case with the given name.
+	 * Constructs a new LML Visualizer test case with the given name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public VisualizerTest(String name) {
+	public LMLVisualizerTest(String name) {
 		super(name);
 	}
 
 	/**
-	 * Sets the fixture for this Visualizer test case.
+	 * Sets the fixture for this LML Visualizer test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void setFixture(Visualizer fixture) {
+	protected void setFixture(LMLVisualizer fixture) {
 		this.fixture = fixture;
 	}
 
 	/**
-	 * Returns the fixture for this Visualizer test case.
+	 * Returns the fixture for this LML Visualizer test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Visualizer getFixture() {
+	protected LMLVisualizer getFixture() {
 		return fixture;
 	}
 
@@ -83,7 +83,7 @@ public class VisualizerTest extends TestCase {
 	 */
 	@Override
 	protected void setUp() throws Exception {
-		setFixture(PLMFactory.eINSTANCE.createVisualizer());
+		setFixture(PLMFactory.eINSTANCE.createLMLVisualizer());
 	}
 
 	/**
@@ -98,10 +98,10 @@ public class VisualizerTest extends TestCase {
 	}
 
 	/**
-	 * Tests the '{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer#getValueForKey(java.lang.String) <em>Get Value For Key</em>}' operation.
+	 * Tests the '{@link de.uni_mannheim.informatik.swt.models.plm.PLM.LMLVisualizer#getValueForKey(java.lang.String) <em>Get Value For Key</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer#getValueForKey(java.lang.String)
+	 * @see de.uni_mannheim.informatik.swt.models.plm.PLM.LMLVisualizer#getValueForKey(java.lang.String)
 	 * @generated
 	 */
 	public void testGetValueForKey__String() {
@@ -111,10 +111,10 @@ public class VisualizerTest extends TestCase {
 	}
 
 	/**
-	 * Tests the '{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer#getElement() <em>Get Element</em>}' operation.
+	 * Tests the '{@link de.uni_mannheim.informatik.swt.models.plm.PLM.LMLVisualizer#getElement() <em>Get Element</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer#getElement()
+	 * @see de.uni_mannheim.informatik.swt.models.plm.PLM.LMLVisualizer#getElement()
 	 * @generated
 	 */
 	public void testGetElement() {
@@ -123,4 +123,4 @@ public class VisualizerTest extends TestCase {
 		fail();
 	}
 
-} //VisualizerTest
+} //LMLVisualizerTest

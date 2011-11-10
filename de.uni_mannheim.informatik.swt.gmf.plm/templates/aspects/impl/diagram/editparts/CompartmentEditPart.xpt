@@ -16,7 +16,7 @@
 *******************************************************************************/
 «AROUND createFigure FOR gmfgen::GenCompartment»
 	«IF self.editPartClassName = 'ModelDomainElementsCompartmentEditPart'
-		or self.editPartClassName = 'ConnectionVisualizersCompartmentEditPart'»
+		or self.editPartClassName = 'ConnectionLMLVisualizersCompartmentEditPart'»
 		«REM»By default titles are shown even if there are no TitleStyle, we need to switch it off«ENDREM»«-»
 		«EXPAND xpt::Common::generatedMemberComment»
 		public org.eclipse.draw2d.IFigure createFigure() {

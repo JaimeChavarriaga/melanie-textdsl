@@ -123,13 +123,13 @@
                   xsi:type="gmfgen:GenFeatureValueSpec"
                   value="//@expressionProviders/@providers.0/@expressions.2">
                 <feature
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/attributes"/>
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer/attributes"/>
               </initializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
                   value="//@expressionProviders/@providers.0/@expressions.3">
                 <feature
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/durability"/>
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer/durability"/>
               </initializers>
             </newElementInitializers>
           </initializers>
@@ -185,19 +185,19 @@
       </labels>
     </childNodes>
     <childNodes
-        visualID="3040"
-        editPartClassName="VisualizerEditPart"
-        itemSemanticEditPolicyClassName="VisualizerItemSemanticEditPolicy"
-        notationViewFactoryClassName="VisualizerViewFactory"
-        canonicalEditPolicyClassName="VisualizerCanonicalEditPolicy"
-        graphicalNodeEditPolicyClassName="VisualizerGraphicalNodeEditPolicy"
-        createCommandClassName="VisualizerCreateCommand"
+        visualID="3073"
+        editPartClassName="LMLVisualizerEditPart"
+        itemSemanticEditPolicyClassName="LMLVisualizerItemSemanticEditPolicy"
+        notationViewFactoryClassName="LMLVisualizerViewFactory"
+        canonicalEditPolicyClassName="LMLVisualizerCanonicalEditPolicy"
+        graphicalNodeEditPolicyClassName="LMLVisualizerGraphicalNodeEditPolicy"
+        createCommandClassName="LMLVisualizerCreateCommand"
         containers="//@diagram/@childNodes.0">
       <diagramRunTimeClass
           href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
       <elementType
           xsi:type="gmfgen:MetamodelType"
-          editHelperClassName="VisualizerEditHelper"/>
+          editHelperClassName="LMLVisualizerEditHelper"/>
       <viewmap
           xsi:type="gmfgen:InnerClassViewmap"
           layoutType="TOOLBAR_LAYOUT"
@@ -210,17 +210,17 @@
       </viewmap>
       <modelFacet>
         <metaClass
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer"/>
         <containmentMetaFeature
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Element/visualizer"/>
         <childMetaFeature
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Element/visualizer"/>
       </modelFacet>
       <labels
-          visualID="5099"
+          visualID="5199"
           editPartClassName="WrappingLabel3EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel3ItemSemanticEditPolicy"
-          notationViewFactoryClassName="VisualizerLabelViewFactory"
+          notationViewFactoryClassName="LMLVisualizerLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -237,10 +237,10 @@
             parser="//@labelParsers/@implementations.0"/>
       </labels>
       <labels
-          visualID="5100"
+          visualID="5200"
           editPartClassName="WrappingLabel4EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel4ItemSemanticEditPolicy"
-          notationViewFactoryClassName="VisualizerLabelViewFactory"
+          notationViewFactoryClassName="LMLVisualizerLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -299,13 +299,13 @@
                   xsi:type="gmfgen:GenFeatureValueSpec"
                   value="//@expressionProviders/@providers.0/@expressions.7">
                 <feature
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/attributes"/>
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer/attributes"/>
               </initializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
                   value="//@expressionProviders/@providers.0/@expressions.8">
                 <feature
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/durability"/>
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer/durability"/>
               </initializers>
             </newElementInitializers>
           </initializers>
@@ -476,13 +476,13 @@
                   xsi:type="gmfgen:GenFeatureValueSpec"
                   value="//@expressionProviders/@providers.0/@expressions.9">
                 <feature
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/attributes"/>
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer/attributes"/>
               </initializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
                   value="//@expressionProviders/@providers.0/@expressions.10">
                 <feature
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/durability"/>
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer/durability"/>
               </initializers>
             </newElementInitializers>
           </initializers>
@@ -605,13 +605,13 @@
       </labels>
     </childNodes>
     <childNodes
-        visualID="3041"
-        editPartClassName="Visualizer2EditPart"
-        itemSemanticEditPolicyClassName="Visualizer2ItemSemanticEditPolicy"
-        notationViewFactoryClassName="VisualizerViewFactory"
-        canonicalEditPolicyClassName="Visualizer2CanonicalEditPolicy"
-        graphicalNodeEditPolicyClassName="Visualizer2GraphicalNodeEditPolicy"
-        createCommandClassName="Visualizer2CreateCommand"
+        visualID="3074"
+        editPartClassName="LMLVisualizer2EditPart"
+        itemSemanticEditPolicyClassName="LMLVisualizer2ItemSemanticEditPolicy"
+        notationViewFactoryClassName="LMLVisualizerViewFactory"
+        canonicalEditPolicyClassName="LMLVisualizer2CanonicalEditPolicy"
+        graphicalNodeEditPolicyClassName="LMLVisualizer2GraphicalNodeEditPolicy"
+        createCommandClassName="LMLVisualizer2CreateCommand"
         containers="//@diagram/@childNodes.3">
       <diagramRunTimeClass
           href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -630,17 +630,17 @@
       </viewmap>
       <modelFacet>
         <metaClass
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer"/>
         <containmentMetaFeature
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Element/visualizer"/>
         <childMetaFeature
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Element/visualizer"/>
       </modelFacet>
       <labels
-          visualID="5101"
+          visualID="5201"
           editPartClassName="WrappingLabel14EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel14ItemSemanticEditPolicy"
-          notationViewFactoryClassName="VisualizerLabelViewFactory"
+          notationViewFactoryClassName="LMLVisualizerLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -657,10 +657,10 @@
             parser="//@labelParsers/@implementations.2"/>
       </labels>
       <labels
-          visualID="5102"
+          visualID="5202"
           editPartClassName="WrappingLabel15EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel15ItemSemanticEditPolicy"
-          notationViewFactoryClassName="VisualizerLabelViewFactory"
+          notationViewFactoryClassName="LMLVisualizerLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -720,13 +720,13 @@
                   xsi:type="gmfgen:GenFeatureValueSpec"
                   value="//@expressionProviders/@providers.0/@expressions.19">
                 <feature
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/attributes"/>
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer/attributes"/>
               </initializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
                   value="//@expressionProviders/@providers.0/@expressions.20">
                 <feature
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/durability"/>
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer/durability"/>
               </initializers>
             </newElementInitializers>
           </initializers>
@@ -822,13 +822,13 @@
       </labels>
     </childNodes>
     <childNodes
-        visualID="3042"
-        editPartClassName="Visualizer3EditPart"
-        itemSemanticEditPolicyClassName="Visualizer3ItemSemanticEditPolicy"
-        notationViewFactoryClassName="VisualizerViewFactory"
-        canonicalEditPolicyClassName="Visualizer3CanonicalEditPolicy"
-        graphicalNodeEditPolicyClassName="Visualizer3GraphicalNodeEditPolicy"
-        createCommandClassName="Visualizer3CreateCommand"
+        visualID="3075"
+        editPartClassName="LMLVisualizer3EditPart"
+        itemSemanticEditPolicyClassName="LMLVisualizer3ItemSemanticEditPolicy"
+        notationViewFactoryClassName="LMLVisualizerViewFactory"
+        canonicalEditPolicyClassName="LMLVisualizer3CanonicalEditPolicy"
+        graphicalNodeEditPolicyClassName="LMLVisualizer3GraphicalNodeEditPolicy"
+        createCommandClassName="LMLVisualizer3CreateCommand"
         containers="//@diagram/@childNodes.5">
       <diagramRunTimeClass
           href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -847,17 +847,17 @@
       </viewmap>
       <modelFacet>
         <metaClass
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer"/>
         <containmentMetaFeature
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Element/visualizer"/>
         <childMetaFeature
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Element/visualizer"/>
       </modelFacet>
       <labels
-          visualID="5103"
+          visualID="5203"
           editPartClassName="WrappingLabel19EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel19ItemSemanticEditPolicy"
-          notationViewFactoryClassName="VisualizerLabelViewFactory"
+          notationViewFactoryClassName="LMLVisualizerLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -874,10 +874,10 @@
             parser="//@labelParsers/@implementations.9"/>
       </labels>
       <labels
-          visualID="5104"
+          visualID="5204"
           editPartClassName="WrappingLabel20EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel20ItemSemanticEditPolicy"
-          notationViewFactoryClassName="VisualizerLabelViewFactory"
+          notationViewFactoryClassName="LMLVisualizerLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -895,13 +895,13 @@
       </labels>
     </childNodes>
     <childNodes
-        visualID="3043"
-        editPartClassName="Visualizer4EditPart"
-        itemSemanticEditPolicyClassName="Visualizer4ItemSemanticEditPolicy"
-        notationViewFactoryClassName="VisualizerViewFactory"
-        canonicalEditPolicyClassName="Visualizer4CanonicalEditPolicy"
-        graphicalNodeEditPolicyClassName="Visualizer4GraphicalNodeEditPolicy"
-        createCommandClassName="Visualizer4CreateCommand"
+        visualID="3076"
+        editPartClassName="LMLVisualizer4EditPart"
+        itemSemanticEditPolicyClassName="LMLVisualizer4ItemSemanticEditPolicy"
+        notationViewFactoryClassName="LMLVisualizerViewFactory"
+        canonicalEditPolicyClassName="LMLVisualizer4CanonicalEditPolicy"
+        graphicalNodeEditPolicyClassName="LMLVisualizer4GraphicalNodeEditPolicy"
+        createCommandClassName="LMLVisualizer4CreateCommand"
         containers="//@diagram/@compartments.4">
       <diagramRunTimeClass
           href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -920,17 +920,17 @@
       </viewmap>
       <modelFacet>
         <metaClass
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer"/>
         <containmentMetaFeature
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Element/visualizer"/>
         <childMetaFeature
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Element/visualizer"/>
       </modelFacet>
       <labels
-          visualID="5105"
+          visualID="5205"
           editPartClassName="WrappingLabel21EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel21ItemSemanticEditPolicy"
-          notationViewFactoryClassName="VisualizerLabelViewFactory"
+          notationViewFactoryClassName="LMLVisualizerLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -947,10 +947,10 @@
             parser="//@labelParsers/@implementations.14"/>
       </labels>
       <labels
-          visualID="5106"
+          visualID="5206"
           editPartClassName="WrappingLabel22EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel22ItemSemanticEditPolicy"
-          notationViewFactoryClassName="VisualizerLabelViewFactory"
+          notationViewFactoryClassName="LMLVisualizerLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -1012,13 +1012,13 @@
                   xsi:type="gmfgen:GenFeatureValueSpec"
                   value="//@expressionProviders/@providers.0/@expressions.34">
                 <feature
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/attributes"/>
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer/attributes"/>
               </initializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
                   value="//@expressionProviders/@providers.0/@expressions.35">
                 <feature
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/durability"/>
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer/durability"/>
               </initializers>
             </newElementInitializers>
           </initializers>
@@ -1046,13 +1046,13 @@
       </labels>
     </childNodes>
     <childNodes
-        visualID="3044"
-        editPartClassName="Visualizer5EditPart"
-        itemSemanticEditPolicyClassName="Visualizer5ItemSemanticEditPolicy"
-        notationViewFactoryClassName="VisualizerViewFactory"
-        canonicalEditPolicyClassName="Visualizer5CanonicalEditPolicy"
-        graphicalNodeEditPolicyClassName="Visualizer5GraphicalNodeEditPolicy"
-        createCommandClassName="Visualizer5CreateCommand"
+        visualID="3077"
+        editPartClassName="LMLVisualizer5EditPart"
+        itemSemanticEditPolicyClassName="LMLVisualizer5ItemSemanticEditPolicy"
+        notationViewFactoryClassName="LMLVisualizerViewFactory"
+        canonicalEditPolicyClassName="LMLVisualizer5CanonicalEditPolicy"
+        graphicalNodeEditPolicyClassName="LMLVisualizer5GraphicalNodeEditPolicy"
+        createCommandClassName="LMLVisualizer5CreateCommand"
         containers="//@diagram/@childNodes.8">
       <diagramRunTimeClass
           href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -1071,17 +1071,17 @@
       </viewmap>
       <modelFacet>
         <metaClass
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer"/>
         <containmentMetaFeature
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Element/visualizer"/>
         <childMetaFeature
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Element/visualizer"/>
       </modelFacet>
       <labels
-          visualID="5107"
+          visualID="5207"
           editPartClassName="WrappingLabel24EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel24ItemSemanticEditPolicy"
-          notationViewFactoryClassName="VisualizerLabelViewFactory"
+          notationViewFactoryClassName="LMLVisualizerLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -1098,10 +1098,10 @@
             parser="//@labelParsers/@implementations.21"/>
       </labels>
       <labels
-          visualID="5108"
+          visualID="5208"
           editPartClassName="WrappingLabel25EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel25ItemSemanticEditPolicy"
-          notationViewFactoryClassName="VisualizerLabelViewFactory"
+          notationViewFactoryClassName="LMLVisualizerLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -1163,13 +1163,13 @@
                   xsi:type="gmfgen:GenFeatureValueSpec"
                   value="//@expressionProviders/@providers.0/@expressions.38">
                 <feature
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/attributes"/>
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer/attributes"/>
               </initializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
                   value="//@expressionProviders/@providers.0/@expressions.39">
                 <feature
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/durability"/>
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer/durability"/>
               </initializers>
             </newElementInitializers>
           </initializers>
@@ -1202,13 +1202,13 @@
       </labels>
     </childNodes>
     <childNodes
-        visualID="3045"
-        editPartClassName="Visualizer6EditPart"
-        itemSemanticEditPolicyClassName="Visualizer6ItemSemanticEditPolicy"
-        notationViewFactoryClassName="VisualizerViewFactory"
-        canonicalEditPolicyClassName="Visualizer6CanonicalEditPolicy"
-        graphicalNodeEditPolicyClassName="Visualizer6GraphicalNodeEditPolicy"
-        createCommandClassName="Visualizer6CreateCommand"
+        visualID="3078"
+        editPartClassName="LMLVisualizer6EditPart"
+        itemSemanticEditPolicyClassName="LMLVisualizer6ItemSemanticEditPolicy"
+        notationViewFactoryClassName="LMLVisualizerViewFactory"
+        canonicalEditPolicyClassName="LMLVisualizer6CanonicalEditPolicy"
+        graphicalNodeEditPolicyClassName="LMLVisualizer6GraphicalNodeEditPolicy"
+        createCommandClassName="LMLVisualizer6CreateCommand"
         containers="//@diagram/@childNodes.10">
       <diagramRunTimeClass
           href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -1227,17 +1227,17 @@
       </viewmap>
       <modelFacet>
         <metaClass
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer"/>
         <containmentMetaFeature
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Element/visualizer"/>
         <childMetaFeature
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Element/visualizer"/>
       </modelFacet>
       <labels
-          visualID="5109"
+          visualID="5209"
           editPartClassName="WrappingLabel26EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel26ItemSemanticEditPolicy"
-          notationViewFactoryClassName="VisualizerLabelViewFactory"
+          notationViewFactoryClassName="LMLVisualizerLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -1254,10 +1254,10 @@
             parser="//@labelParsers/@implementations.24"/>
       </labels>
       <labels
-          visualID="5110"
+          visualID="5210"
           editPartClassName="WrappingLabel27EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel27ItemSemanticEditPolicy"
-          notationViewFactoryClassName="VisualizerLabelViewFactory"
+          notationViewFactoryClassName="LMLVisualizerLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -1319,13 +1319,13 @@
                   xsi:type="gmfgen:GenFeatureValueSpec"
                   value="//@expressionProviders/@providers.0/@expressions.42">
                 <feature
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/attributes"/>
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer/attributes"/>
               </initializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
                   value="//@expressionProviders/@providers.0/@expressions.43">
                 <feature
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/durability"/>
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer/durability"/>
               </initializers>
             </newElementInitializers>
           </initializers>
@@ -1353,13 +1353,13 @@
       </labels>
     </childNodes>
     <childNodes
-        visualID="3046"
-        editPartClassName="Visualizer7EditPart"
-        itemSemanticEditPolicyClassName="Visualizer7ItemSemanticEditPolicy"
-        notationViewFactoryClassName="VisualizerViewFactory"
-        canonicalEditPolicyClassName="Visualizer7CanonicalEditPolicy"
-        graphicalNodeEditPolicyClassName="Visualizer7GraphicalNodeEditPolicy"
-        createCommandClassName="Visualizer7CreateCommand"
+        visualID="3079"
+        editPartClassName="LMLVisualizer7EditPart"
+        itemSemanticEditPolicyClassName="LMLVisualizer7ItemSemanticEditPolicy"
+        notationViewFactoryClassName="LMLVisualizerViewFactory"
+        canonicalEditPolicyClassName="LMLVisualizer7CanonicalEditPolicy"
+        graphicalNodeEditPolicyClassName="LMLVisualizer7GraphicalNodeEditPolicy"
+        createCommandClassName="LMLVisualizer7CreateCommand"
         containers="//@diagram/@childNodes.12">
       <diagramRunTimeClass
           href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -1378,17 +1378,17 @@
       </viewmap>
       <modelFacet>
         <metaClass
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer"/>
         <containmentMetaFeature
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Element/visualizer"/>
         <childMetaFeature
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Element/visualizer"/>
       </modelFacet>
       <labels
-          visualID="5111"
+          visualID="5211"
           editPartClassName="WrappingLabel29EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel29ItemSemanticEditPolicy"
-          notationViewFactoryClassName="VisualizerLabelViewFactory"
+          notationViewFactoryClassName="LMLVisualizerLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -1405,10 +1405,10 @@
             parser="//@labelParsers/@implementations.26"/>
       </labels>
       <labels
-          visualID="5112"
+          visualID="5212"
           editPartClassName="WrappingLabel30EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel30ItemSemanticEditPolicy"
-          notationViewFactoryClassName="VisualizerLabelViewFactory"
+          notationViewFactoryClassName="LMLVisualizerLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -1470,13 +1470,13 @@
                   xsi:type="gmfgen:GenFeatureValueSpec"
                   value="//@expressionProviders/@providers.0/@expressions.46">
                 <feature
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/attributes"/>
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer/attributes"/>
               </initializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
                   value="//@expressionProviders/@providers.0/@expressions.47">
                 <feature
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/durability"/>
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer/durability"/>
               </initializers>
             </newElementInitializers>
           </initializers>
@@ -1550,13 +1550,13 @@
       </labels>
     </childNodes>
     <childNodes
-        visualID="3047"
-        editPartClassName="Visualizer8EditPart"
-        itemSemanticEditPolicyClassName="Visualizer8ItemSemanticEditPolicy"
-        notationViewFactoryClassName="VisualizerViewFactory"
-        canonicalEditPolicyClassName="Visualizer8CanonicalEditPolicy"
-        graphicalNodeEditPolicyClassName="Visualizer8GraphicalNodeEditPolicy"
-        createCommandClassName="Visualizer8CreateCommand"
+        visualID="3080"
+        editPartClassName="LMLVisualizer8EditPart"
+        itemSemanticEditPolicyClassName="LMLVisualizer8ItemSemanticEditPolicy"
+        notationViewFactoryClassName="LMLVisualizerViewFactory"
+        canonicalEditPolicyClassName="LMLVisualizer8CanonicalEditPolicy"
+        graphicalNodeEditPolicyClassName="LMLVisualizer8GraphicalNodeEditPolicy"
+        createCommandClassName="LMLVisualizer8CreateCommand"
         containers="//@diagram/@childNodes.14">
       <diagramRunTimeClass
           href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -1575,17 +1575,17 @@
       </viewmap>
       <modelFacet>
         <metaClass
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer"/>
         <containmentMetaFeature
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Element/visualizer"/>
         <childMetaFeature
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Element/visualizer"/>
       </modelFacet>
       <labels
-          visualID="5113"
+          visualID="5213"
           editPartClassName="WrappingLabel32EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel32ItemSemanticEditPolicy"
-          notationViewFactoryClassName="VisualizerLabelViewFactory"
+          notationViewFactoryClassName="LMLVisualizerLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -1602,10 +1602,10 @@
             parser="//@labelParsers/@implementations.28"/>
       </labels>
       <labels
-          visualID="5114"
+          visualID="5214"
           editPartClassName="WrappingLabel33EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel33ItemSemanticEditPolicy"
-          notationViewFactoryClassName="VisualizerLabelViewFactory"
+          notationViewFactoryClassName="LMLVisualizerLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -1664,13 +1664,13 @@
                   xsi:type="gmfgen:GenFeatureValueSpec"
                   value="//@expressionProviders/@providers.0/@expressions.51">
                 <feature
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/attributes"/>
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer/attributes"/>
               </initializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
                   value="//@expressionProviders/@providers.0/@expressions.52">
                 <feature
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/durability"/>
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer/durability"/>
               </initializers>
             </newElementInitializers>
           </initializers>
@@ -1839,13 +1839,13 @@
                   xsi:type="gmfgen:GenFeatureValueSpec"
                   value="//@expressionProviders/@providers.0/@expressions.53">
                 <feature
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/attributes"/>
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer/attributes"/>
               </initializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
                   value="//@expressionProviders/@providers.0/@expressions.54">
                 <feature
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/durability"/>
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer/durability"/>
               </initializers>
             </newElementInitializers>
           </initializers>
@@ -1968,13 +1968,13 @@
       </labels>
     </childNodes>
     <childNodes
-        visualID="3048"
-        editPartClassName="Visualizer9EditPart"
-        itemSemanticEditPolicyClassName="Visualizer9ItemSemanticEditPolicy"
-        notationViewFactoryClassName="VisualizerViewFactory"
-        canonicalEditPolicyClassName="Visualizer9CanonicalEditPolicy"
-        graphicalNodeEditPolicyClassName="Visualizer9GraphicalNodeEditPolicy"
-        createCommandClassName="Visualizer9CreateCommand"
+        visualID="3081"
+        editPartClassName="LMLVisualizer9EditPart"
+        itemSemanticEditPolicyClassName="LMLVisualizer9ItemSemanticEditPolicy"
+        notationViewFactoryClassName="LMLVisualizerViewFactory"
+        canonicalEditPolicyClassName="LMLVisualizer9CanonicalEditPolicy"
+        graphicalNodeEditPolicyClassName="LMLVisualizer9GraphicalNodeEditPolicy"
+        createCommandClassName="LMLVisualizer9CreateCommand"
         containers="//@diagram/@childNodes.17">
       <diagramRunTimeClass
           href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -1993,17 +1993,17 @@
       </viewmap>
       <modelFacet>
         <metaClass
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer"/>
         <containmentMetaFeature
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Element/visualizer"/>
         <childMetaFeature
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Element/visualizer"/>
       </modelFacet>
       <labels
-          visualID="5115"
+          visualID="5215"
           editPartClassName="WrappingLabel43EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel43ItemSemanticEditPolicy"
-          notationViewFactoryClassName="VisualizerLabelViewFactory"
+          notationViewFactoryClassName="LMLVisualizerLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -2020,10 +2020,10 @@
             parser="//@labelParsers/@implementations.31"/>
       </labels>
       <labels
-          visualID="5116"
+          visualID="5216"
           editPartClassName="WrappingLabel44EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel44ItemSemanticEditPolicy"
-          notationViewFactoryClassName="VisualizerLabelViewFactory"
+          notationViewFactoryClassName="LMLVisualizerLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -2083,13 +2083,13 @@
                   xsi:type="gmfgen:GenFeatureValueSpec"
                   value="//@expressionProviders/@providers.0/@expressions.63">
                 <feature
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/attributes"/>
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer/attributes"/>
               </initializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
                   value="//@expressionProviders/@providers.0/@expressions.64">
                 <feature
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/durability"/>
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer/durability"/>
               </initializers>
             </newElementInitializers>
           </initializers>
@@ -2185,13 +2185,13 @@
       </labels>
     </childNodes>
     <childNodes
-        visualID="3049"
-        editPartClassName="Visualizer10EditPart"
-        itemSemanticEditPolicyClassName="Visualizer10ItemSemanticEditPolicy"
-        notationViewFactoryClassName="VisualizerViewFactory"
-        canonicalEditPolicyClassName="Visualizer10CanonicalEditPolicy"
-        graphicalNodeEditPolicyClassName="Visualizer10GraphicalNodeEditPolicy"
-        createCommandClassName="Visualizer10CreateCommand"
+        visualID="3082"
+        editPartClassName="LMLVisualizer10EditPart"
+        itemSemanticEditPolicyClassName="LMLVisualizer10ItemSemanticEditPolicy"
+        notationViewFactoryClassName="LMLVisualizerViewFactory"
+        canonicalEditPolicyClassName="LMLVisualizer10CanonicalEditPolicy"
+        graphicalNodeEditPolicyClassName="LMLVisualizer10GraphicalNodeEditPolicy"
+        createCommandClassName="LMLVisualizer10CreateCommand"
         containers="//@diagram/@childNodes.19">
       <diagramRunTimeClass
           href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -2210,17 +2210,17 @@
       </viewmap>
       <modelFacet>
         <metaClass
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer"/>
         <containmentMetaFeature
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Element/visualizer"/>
         <childMetaFeature
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Element/visualizer"/>
       </modelFacet>
       <labels
-          visualID="5117"
+          visualID="5217"
           editPartClassName="WrappingLabel48EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel48ItemSemanticEditPolicy"
-          notationViewFactoryClassName="VisualizerLabelViewFactory"
+          notationViewFactoryClassName="LMLVisualizerLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -2237,10 +2237,10 @@
             parser="//@labelParsers/@implementations.37"/>
       </labels>
       <labels
-          visualID="5118"
+          visualID="5218"
           editPartClassName="WrappingLabel49EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel49ItemSemanticEditPolicy"
-          notationViewFactoryClassName="VisualizerLabelViewFactory"
+          notationViewFactoryClassName="LMLVisualizerLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -2258,13 +2258,13 @@
       </labels>
     </childNodes>
     <childNodes
-        visualID="3055"
-        editPartClassName="Visualizer11EditPart"
-        itemSemanticEditPolicyClassName="Visualizer11ItemSemanticEditPolicy"
-        notationViewFactoryClassName="VisualizerViewFactory"
-        canonicalEditPolicyClassName="Visualizer11CanonicalEditPolicy"
-        graphicalNodeEditPolicyClassName="Visualizer11GraphicalNodeEditPolicy"
-        createCommandClassName="Visualizer11CreateCommand"
+        visualID="3083"
+        editPartClassName="LMLVisualizer11EditPart"
+        itemSemanticEditPolicyClassName="LMLVisualizer11ItemSemanticEditPolicy"
+        notationViewFactoryClassName="LMLVisualizerViewFactory"
+        canonicalEditPolicyClassName="LMLVisualizer11CanonicalEditPolicy"
+        graphicalNodeEditPolicyClassName="LMLVisualizer11GraphicalNodeEditPolicy"
+        createCommandClassName="LMLVisualizer11CreateCommand"
         containers="//@diagram/@childNodes.16">
       <diagramRunTimeClass
           href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -2283,17 +2283,17 @@
       </viewmap>
       <modelFacet>
         <metaClass
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer"/>
         <containmentMetaFeature
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Element/visualizer"/>
         <childMetaFeature
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Element/visualizer"/>
       </modelFacet>
       <labels
-          visualID="5143"
+          visualID="5219"
           editPartClassName="WrappingLabel50EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel50ItemSemanticEditPolicy"
-          notationViewFactoryClassName="VisualizerLabelViewFactory"
+          notationViewFactoryClassName="LMLVisualizerLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -2310,10 +2310,10 @@
             parser="//@labelParsers/@implementations.42"/>
       </labels>
       <labels
-          visualID="5144"
+          visualID="5220"
           editPartClassName="WrappingLabel51EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel51ItemSemanticEditPolicy"
-          notationViewFactoryClassName="VisualizerLabelViewFactory"
+          notationViewFactoryClassName="LMLVisualizerLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -2331,13 +2331,13 @@
       </labels>
     </childNodes>
     <childNodes
-        visualID="3056"
-        editPartClassName="Visualizer12EditPart"
-        itemSemanticEditPolicyClassName="Visualizer12ItemSemanticEditPolicy"
-        notationViewFactoryClassName="VisualizerViewFactory"
-        canonicalEditPolicyClassName="Visualizer12CanonicalEditPolicy"
-        graphicalNodeEditPolicyClassName="Visualizer12GraphicalNodeEditPolicy"
-        createCommandClassName="Visualizer12CreateCommand"
+        visualID="3084"
+        editPartClassName="LMLVisualizer12EditPart"
+        itemSemanticEditPolicyClassName="LMLVisualizer12ItemSemanticEditPolicy"
+        notationViewFactoryClassName="LMLVisualizerViewFactory"
+        canonicalEditPolicyClassName="LMLVisualizer12CanonicalEditPolicy"
+        graphicalNodeEditPolicyClassName="LMLVisualizer12GraphicalNodeEditPolicy"
+        createCommandClassName="LMLVisualizer12CreateCommand"
         containers="//@diagram/@topLevelNodes.0">
       <diagramRunTimeClass
           href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -2356,17 +2356,17 @@
       </viewmap>
       <modelFacet>
         <metaClass
-            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
+            href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer"/>
         <containmentMetaFeature
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Element/visualizer"/>
         <childMetaFeature
             href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Element/visualizer"/>
       </modelFacet>
       <labels
-          visualID="5145"
+          visualID="5221"
           editPartClassName="WrappingLabel52EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel52ItemSemanticEditPolicy"
-          notationViewFactoryClassName="VisualizerLabelViewFactory"
+          notationViewFactoryClassName="LMLVisualizerLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -2383,10 +2383,10 @@
             parser="//@labelParsers/@implementations.51"/>
       </labels>
       <labels
-          visualID="5146"
+          visualID="5222"
           editPartClassName="WrappingLabel53EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel53ItemSemanticEditPolicy"
-          notationViewFactoryClassName="VisualizerLabelViewFactory"
+          notationViewFactoryClassName="LMLVisualizerLabelViewFactory"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -2448,13 +2448,13 @@
                   xsi:type="gmfgen:GenFeatureValueSpec"
                   value="//@expressionProviders/@providers.0/@expressions.0">
                 <feature
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/attributes"/>
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer/attributes"/>
               </initializers>
               <initializers
                   xsi:type="gmfgen:GenFeatureValueSpec"
                   value="//@expressionProviders/@providers.0/@expressions.1">
                 <feature
-                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer/durability"/>
+                    href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer/durability"/>
               </initializers>
             </newElementInitializers>
           </initializers>
@@ -3255,8 +3255,8 @@
     <childReferences
         parent="//@diagram/@topLevelNodes.0"
         child="//@diagram/@childNodes.20"
-        groupName="Visualizers"
-        groupIcon="icons/visualizer16.gif"
+        groupName="LMLVisualizers"
+        groupIcon="icons/LMLVisualizer16.gif"
         hideIfEmpty="false"/>
     <childReferences
         parent="//@diagram/@topLevelNodes.0"
@@ -3267,8 +3267,8 @@
     <childReferences
         parent="//@diagram/@childNodes.0"
         child="//@diagram/@childNodes.4"
-        groupName="Visualizers"
-        groupIcon="icons/visualizer16.gif"
+        groupName="LMLVisualizers"
+        groupIcon="icons/LMLVisualizer16.gif"
         hideIfEmpty="false"/>
     <childReferences
         parent="//@diagram/@childNodes.0"
@@ -3279,8 +3279,8 @@
     <childReferences
         parent="//@diagram/@childNodes.16"
         child="//@diagram/@childNodes.18"
-        groupName="Visualizers"
-        groupIcon="icons/visualizer16.gif"
+        groupName="LMLVisualizers"
+        groupIcon="icons/LMLVisualizer16.gif"
         hideIfEmpty="false"/>
     <childReferences
         parent="//@diagram/@childNodes.16"
@@ -3303,8 +3303,8 @@
     <childReferences
         parent="//@diagram/@childNodes.2"
         child="//@diagram/@childNodes.1"
-        groupName="Visualizers"
-        groupIcon="icons/visualizer16.gif"
+        groupName="LMLVisualizers"
+        groupIcon="icons/LMLVisualizer16.gif"
         hideIfEmpty="false"/>
     <childReferences
         parent="//@diagram/@childNodes.2"
@@ -3321,8 +3321,8 @@
     <childReferences
         parent="//@diagram/@childNodes.14"
         child="//@diagram/@childNodes.15"
-        groupName="Visualizers"
-        groupIcon="icons/visualizer16.gif"
+        groupName="LMLVisualizers"
+        groupIcon="icons/LMLVisualizer16.gif"
         hideIfEmpty="false"/>
     <childReferences
         parent="//@diagram/@childNodes.0"
@@ -3333,8 +3333,8 @@
     <childReferences
         parent="//@diagram/@childNodes.8"
         child="//@diagram/@childNodes.6"
-        groupName="Visualizers"
-        groupIcon="icons/visualizer16.gif"
+        groupName="LMLVisualizers"
+        groupIcon="icons/LMLVisualizer16.gif"
         hideIfEmpty="false"/>
     <childReferences
         parent="//@diagram/@childNodes.0"
@@ -3345,8 +3345,8 @@
     <childReferences
         parent="//@diagram/@childNodes.10"
         child="//@diagram/@childNodes.7"
-        groupName="Visualizers"
-        groupIcon="icons/visualizer16.gif"
+        groupName="LMLVisualizers"
+        groupIcon="icons/LMLVisualizer16.gif"
         hideIfEmpty="false"/>
     <childReferences
         parent="//@diagram/@childNodes.0"
@@ -3357,8 +3357,8 @@
     <childReferences
         parent="//@diagram/@childNodes.12"
         child="//@diagram/@childNodes.9"
-        groupName="Visualizers"
-        groupIcon="icons/visualizer16.gif"
+        groupName="LMLVisualizers"
+        groupIcon="icons/LMLVisualizer16.gif"
         hideIfEmpty="false"/>
   </navigator>
   <diagramUpdater/>
@@ -3613,34 +3613,34 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.1/@labels.0/@modelFacet"
-        className="VisualizerLabelExpressionLabelParser5099"
+        className="LMLVisualizerLabelExpressionLabelParser5199"
         viewExpression="//@expressionProviders/@providers.0/@expressions.5">
       <expressionContext
-          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
+          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer"/>
     </implementations>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.1/@labels.1/@modelFacet"
-        className="VisualizerLabelExpressionLabelParser5100"
+        className="LMLVisualizerLabelExpressionLabelParser5200"
         viewExpression="//@expressionProviders/@providers.0/@expressions.6">
       <expressionContext
-          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
+          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer"/>
     </implementations>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.4/@labels.0/@modelFacet"
-        className="VisualizerLabelExpressionLabelParser5101"
+        className="LMLVisualizerLabelExpressionLabelParser5201"
         viewExpression="//@expressionProviders/@providers.0/@expressions.13">
       <expressionContext
-          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
+          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer"/>
     </implementations>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.4/@labels.1/@modelFacet"
-        className="VisualizerLabelExpressionLabelParser5102"
+        className="LMLVisualizerLabelExpressionLabelParser5202"
         viewExpression="//@expressionProviders/@providers.0/@expressions.14">
       <expressionContext
-          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
+          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer"/>
     </implementations>
     <implementations
         xsi:type="gmfgen:PredefinedParser"
@@ -3680,18 +3680,18 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.6/@labels.0/@modelFacet"
-        className="VisualizerLabelExpressionLabelParser5103"
+        className="LMLVisualizerLabelExpressionLabelParser5203"
         viewExpression="//@expressionProviders/@providers.0/@expressions.22">
       <expressionContext
-          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
+          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer"/>
     </implementations>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.6/@labels.1/@modelFacet"
-        className="VisualizerLabelExpressionLabelParser5104"
+        className="LMLVisualizerLabelExpressionLabelParser5204"
         viewExpression="//@expressionProviders/@providers.0/@expressions.23">
       <expressionContext
-          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
+          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer"/>
     </implementations>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
@@ -3720,18 +3720,18 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.7/@labels.0/@modelFacet"
-        className="VisualizerLabelExpressionLabelParser5105"
+        className="LMLVisualizerLabelExpressionLabelParser5205"
         viewExpression="//@expressionProviders/@providers.0/@expressions.27">
       <expressionContext
-          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
+          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer"/>
     </implementations>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.7/@labels.1/@modelFacet"
-        className="VisualizerLabelExpressionLabelParser5106"
+        className="LMLVisualizerLabelExpressionLabelParser5206"
         viewExpression="//@expressionProviders/@providers.0/@expressions.28">
       <expressionContext
-          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
+          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer"/>
     </implementations>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
@@ -3776,18 +3776,18 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.9/@labels.0/@modelFacet"
-        className="VisualizerLabelExpressionLabelParser5107"
+        className="LMLVisualizerLabelExpressionLabelParser5207"
         viewExpression="//@expressionProviders/@providers.0/@expressions.36">
       <expressionContext
-          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
+          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer"/>
     </implementations>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.9/@labels.1/@modelFacet"
-        className="VisualizerLabelExpressionLabelParser5108"
+        className="LMLVisualizerLabelExpressionLabelParser5208"
         viewExpression="//@expressionProviders/@providers.0/@expressions.37">
       <expressionContext
-          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
+          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer"/>
     </implementations>
     <implementations
         xsi:type="gmfgen:ExternalParser"
@@ -3795,50 +3795,50 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.11/@labels.0/@modelFacet"
-        className="VisualizerLabelExpressionLabelParser5109"
+        className="LMLVisualizerLabelExpressionLabelParser5209"
         viewExpression="//@expressionProviders/@providers.0/@expressions.40">
       <expressionContext
-          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
+          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer"/>
     </implementations>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.11/@labels.1/@modelFacet"
-        className="VisualizerLabelExpressionLabelParser5110"
+        className="LMLVisualizerLabelExpressionLabelParser5210"
         viewExpression="//@expressionProviders/@providers.0/@expressions.41">
       <expressionContext
-          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
+          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer"/>
     </implementations>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.13/@labels.0/@modelFacet"
-        className="VisualizerLabelExpressionLabelParser5111"
+        className="LMLVisualizerLabelExpressionLabelParser5211"
         viewExpression="//@expressionProviders/@providers.0/@expressions.44">
       <expressionContext
-          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
+          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer"/>
     </implementations>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.13/@labels.1/@modelFacet"
-        className="VisualizerLabelExpressionLabelParser5112"
+        className="LMLVisualizerLabelExpressionLabelParser5212"
         viewExpression="//@expressionProviders/@providers.0/@expressions.45">
       <expressionContext
-          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
+          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer"/>
     </implementations>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.15/@labels.0/@modelFacet"
-        className="VisualizerLabelExpressionLabelParser5113"
+        className="LMLVisualizerLabelExpressionLabelParser5213"
         viewExpression="//@expressionProviders/@providers.0/@expressions.48">
       <expressionContext
-          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
+          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer"/>
     </implementations>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.15/@labels.1/@modelFacet"
-        className="VisualizerLabelExpressionLabelParser5114"
+        className="LMLVisualizerLabelExpressionLabelParser5214"
         viewExpression="//@expressionProviders/@providers.0/@expressions.49">
       <expressionContext
-          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
+          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer"/>
     </implementations>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
@@ -3851,18 +3851,18 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.18/@labels.0/@modelFacet"
-        className="VisualizerLabelExpressionLabelParser5115"
+        className="LMLVisualizerLabelExpressionLabelParser5215"
         viewExpression="//@expressionProviders/@providers.0/@expressions.57">
       <expressionContext
-          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
+          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer"/>
     </implementations>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.18/@labels.1/@modelFacet"
-        className="VisualizerLabelExpressionLabelParser5116"
+        className="LMLVisualizerLabelExpressionLabelParser5216"
         viewExpression="//@expressionProviders/@providers.0/@expressions.58">
       <expressionContext
-          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
+          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer"/>
     </implementations>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
@@ -3899,18 +3899,18 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.20/@labels.0/@modelFacet"
-        className="VisualizerLabelExpressionLabelParser5117"
+        className="LMLVisualizerLabelExpressionLabelParser5217"
         viewExpression="//@expressionProviders/@providers.0/@expressions.66">
       <expressionContext
-          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
+          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer"/>
     </implementations>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.20/@labels.1/@modelFacet"
-        className="VisualizerLabelExpressionLabelParser5118"
+        className="LMLVisualizerLabelExpressionLabelParser5218"
         viewExpression="//@expressionProviders/@providers.0/@expressions.67">
       <expressionContext
-          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
+          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer"/>
     </implementations>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
@@ -3939,18 +3939,18 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.21/@labels.0/@modelFacet"
-        className="VisualizerLabelExpressionLabelParser5143"
+        className="LMLVisualizerLabelExpressionLabelParser5219"
         viewExpression="//@expressionProviders/@providers.0/@expressions.71">
       <expressionContext
-          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
+          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer"/>
     </implementations>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.21/@labels.1/@modelFacet"
-        className="VisualizerLabelExpressionLabelParser5144"
+        className="LMLVisualizerLabelExpressionLabelParser5220"
         viewExpression="//@expressionProviders/@providers.0/@expressions.72">
       <expressionContext
-          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
+          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer"/>
     </implementations>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
@@ -4006,18 +4006,18 @@
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.22/@labels.0/@modelFacet"
-        className="VisualizerLabelExpressionLabelParser5145"
+        className="LMLVisualizerLabelExpressionLabelParser5221"
         viewExpression="//@expressionProviders/@providers.0/@expressions.79">
       <expressionContext
-          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
+          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer"/>
     </implementations>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"
         uses="//@diagram/@childNodes.22/@labels.1/@modelFacet"
-        className="VisualizerLabelExpressionLabelParser5146"
+        className="LMLVisualizerLabelExpressionLabelParser5222"
         viewExpression="//@expressionProviders/@providers.0/@expressions.80">
       <expressionContext
-          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/Visualizer"/>
+          href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM/LMLVisualizer"/>
     </implementations>
     <implementations
         xsi:type="gmfgen:ExpressionLabelParser"

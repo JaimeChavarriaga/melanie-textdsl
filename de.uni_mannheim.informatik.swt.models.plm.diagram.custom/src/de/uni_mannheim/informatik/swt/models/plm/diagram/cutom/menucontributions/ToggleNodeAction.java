@@ -83,7 +83,7 @@ public class ToggleNodeAction implements IObjectActionDelegate {
 		}
 		
 		EditingDomain domain = selectedElement.getEditingDomain();
-		domain.getCommandStack().execute(SetCommand.create(domain, self.getVisualizer().get(0), PLMPackage.eINSTANCE.getVisualizer_Attributes(), attributes));
+		domain.getCommandStack().execute(SetCommand.create(domain, self.getVisualizer().get(0), PLMPackage.eINSTANCE.getLMLVisualizer_Attributes(), attributes));
 		
 		//We are not toggeling elided nodes
 		/*if (self instanceof Clabject && ((Clabject)self).isElided())

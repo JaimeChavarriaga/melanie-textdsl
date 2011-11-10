@@ -23,7 +23,7 @@ property genPropertySheet : GenPropertySheet = null;
  
 main() {
 	
-	--Needed for Attribute/Method Resize when visualizers are shown/hidden Bug 344104
+	--Needed for Attribute/Method Resize when LMLVisualizers are shown/hidden Bug 344104
 	gmfgenModel.objectsOfType(GenChildNode)->asOrderedSet()
 		->select(c | c.editPartClassName.startsWith("Attribute") 
 			or c.editPartClassName.startsWith("Method"))->forEach(node)
@@ -118,16 +118,16 @@ main() {
 		:= xmap createChildReference("OntologyEditPart", "LMLModelEditPart", "Ontologies", "icons/ontology16.gif");
 	ontologyChildReference.parent 
 		:= gmfgenModel.objectsOfType(GenDiagram)->asOrderedSet()->select(n | n.editPartClassName = "LMLModelEditPart")->first();
-	--Group for the visualizers of the ontology
-	var ontVisualizerChildReference 
-		:= xmap createChildReference("Visualizer10EditPart", "OntologyEditPart", "Visualizers", "icons/visualizer16.gif");
+	--Group for the LMLVisualizers of the ontology
+	var ontLMLVisualizerChildReference 
+		:= xmap createChildReference("LMLVisualizer10EditPart", "OntologyEditPart", "LMLVisualizers", "icons/LMLVisualizer16.gif");
 	
 	--Group for all Models
 	var modelChildReference 
 		:= xmap createChildReference("ModelEditPart", "OntologyEditPart", "Models", "icons/model16.gif");
-	--Group for all ModelVisualizers
-	var modelVisualizerChildReference 
-		:= xmap createChildReference("Visualizer2EditPart", "ModelEditPart", "Visualizers", "icons/visualizer16.gif");
+	--Group for all ModelLMLVisualizers
+	var modelLMLVisualizerChildReference 
+		:= xmap createChildReference("LMLVisualizer2EditPart", "ModelEditPart", "LMLVisualizers", "icons/LMLVisualizer16.gif");
 	
 	--Group for all Entities
 	var entityChildReference 
@@ -138,8 +138,8 @@ main() {
 	--Methods for Entities that describe rendering of ontologies
 	var entityMethodChildReference
 		:= xmap createChildReference("MethodEditPart", "EntityEditPart", "Methods", "icons/method16.gif");
-	var entityVisualizerChildReference
-		:= xmap createChildReference("Visualizer9EditPart", "EntityEditPart", "Visualizers", "icons/visualizer16.gif");
+	var entityLMLVisualizerChildReference
+		:= xmap createChildReference("LMLVisualizer9EditPart", "EntityEditPart", "LMLVisualizers", "icons/LMLVisualizer16.gif");
 	
 	--Group for all Connections
 	var connectionChildReference 
@@ -147,48 +147,48 @@ main() {
 	--Group for all ConnectionAttributes
 	var connectionAttributeChildReference 
 		:= xmap createChildReference("AttributeEditPart", "ConnectionEditPart", "Attributes", "icons/field16.gif");
-	--Group for all ConnectionVisualizers
-	var connectionVisualizerChildReference 
-		:= xmap createChildReference("VisualizerEditPart", "ConnectionEditPart", "Visualizers", "icons/visualizer16.gif");
+	--Group for all ConnectionLMLVisualizers
+	var connectionLMLVisualizerChildReference 
+		:= xmap createChildReference("LMLVisualizerEditPart", "ConnectionEditPart", "LMLVisualizers", "icons/LMLVisualizer16.gif");
 	
 	--Group for all Generalizations
 	var generalizationChildReference 
 		:= xmap createChildReference("GeneralizationEditPart", "ModelEditPart", "Generalizations", "icons/inheritance16.gif");
-	--Group for all GeneralizationVisualizers
-	var generalizationVisualizerChildReference
-		:= xmap createChildReference("Visualizer8EditPart", "GeneralizationEditPart", "Visualizers", "icons/visualizer16.gif");
+	--Group for all GeneralizationLMLVisualizers
+	var generalizationLMLVisualizerChildReference
+		:= xmap createChildReference("LMLVisualizer8EditPart", "GeneralizationEditPart", "LMLVisualizers", "icons/LMLVisualizer16.gif");
 	
 	--Group for all ComplementSetRelationships
 	var complementChildReference 
 		:= xmap createChildReference("ComplementEditPart", "ModelEditPart", "Set Relationships", "icons/setRelationship16.gif");
-	--Group for all ComplementSetRelationshipVisualizers
-	var complementVisualizerChildReference 
-		:= xmap createChildReference("Visualizer3EditPart", "ComplementEditPart", "Visualizers", "icons/visualizer16.gif");
+	--Group for all ComplementSetRelationshipLMLVisualizers
+	var complementLMLVisualizerChildReference 
+		:= xmap createChildReference("LMLVisualizer3EditPart", "ComplementEditPart", "LMLVisualizers", "icons/LMLVisualizer16.gif");
 		
 	--Group for all EqualSetRelationships
 	var equalChildReference 
 		:= xmap createChildReference("EqualityEditPart", "ModelEditPart", "Set Relationships", "icons/setRelationship16.gif");
 	--Group for all EqualSetRelationships
-	var equalVisualizerChildReference 
-		:= xmap createChildReference("Visualizer4EditPart", "EqualityEditPart", "Visualizers", "icons/visualizer16.gif");		
+	var equalLMLVisualizerChildReference 
+		:= xmap createChildReference("LMLVisualizer4EditPart", "EqualityEditPart", "LMLVisualizers", "icons/LMLVisualizer16.gif");		
 	
 	--Group for all InversionSetRelationships
 	var inversionChildReference 
 		:= xmap createChildReference("InversionEditPart", "ModelEditPart", "Set Relationships", "icons/setRelationship16.gif");
-	--Group for all InversionSetRelationshipVisualizers
-	var inversionVisualizerChildReference 
-		:= xmap createChildReference("Visualizer5EditPart", "InversionEditPart", "Visualizers", "icons/visualizer16.gif");
+	--Group for all InversionSetRelationshipLMLVisualizers
+	var inversionLMLVisualizerChildReference 
+		:= xmap createChildReference("LMLVisualizer5EditPart", "InversionEditPart", "LMLVisualizers", "icons/LMLVisualizer16.gif");
 	
 	this.genNavigator.childReferences += 
 		OrderedSet{LMLModelChildReference, --rootEnitiyChildReference, rootChildReference, rootMethodChildReference,
-					 ontologyChildReference, ontVisualizerChildReference, modelChildReference, modelVisualizerChildReference,
-					entityChildReference, entityVisualizerChildReference, entityAttributeChildReference, 
-					entityMethodChildReference, connectionChildReference, connectionVisualizerChildReference, 
+					 ontologyChildReference, ontLMLVisualizerChildReference, modelChildReference, modelLMLVisualizerChildReference,
+					entityChildReference, entityLMLVisualizerChildReference, entityAttributeChildReference, 
+					entityMethodChildReference, connectionChildReference, connectionLMLVisualizerChildReference, 
 					connectionAttributeChildReference, --connectionFieldMethodChildReference
-					generalizationChildReference, generalizationVisualizerChildReference,
-					complementChildReference, complementVisualizerChildReference, 
-					equalChildReference, equalVisualizerChildReference,
-					inversionChildReference, inversionVisualizerChildReference};
+					generalizationChildReference, generalizationLMLVisualizerChildReference,
+					complementChildReference, complementLMLVisualizerChildReference, 
+					equalChildReference, equalLMLVisualizerChildReference,
+					inversionChildReference, inversionLMLVisualizerChildReference};
 	
 	--fix BUG 331875
 	gmfgenModel.objectsOfType(ExpressionLabelParser)->forEach(parser)

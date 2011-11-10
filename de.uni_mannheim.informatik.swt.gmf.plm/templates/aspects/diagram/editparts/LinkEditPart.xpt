@@ -136,14 +136,14 @@
 			e.printStackTrace();
 		}
 
-		de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer v = getConnectionVisualizer();
+		de.uni_mannheim.informatik.swt.models.plm.PLM.LMLVisualizer v = getConnectionLMLVisualizer();
 		
-		//We did not find any visualizer or the visualizer is not
+		//We did not find any LMLVisualizer or the LMLVisualizer is not
 		//containing link rendering information thus exit
-		if (v == null || !(v.getChild().get(0) instanceof de.uni_mannheim.informatik.swt.models.plm.visualization.Link))
+		if (v == null || !(v.getDslVisualizer().get(0) instanceof de.uni_mannheim.informatik.swt.models.plm.visualization.Link))
 			return;
 		
-		de.uni_mannheim.informatik.swt.models.plm.visualization.Link l = (de.uni_mannheim.informatik.swt.models.plm.visualization.Link) v.getChild().get(0);
+		de.uni_mannheim.informatik.swt.models.plm.visualization.Link l = (de.uni_mannheim.informatik.swt.models.plm.visualization.Link) v.getDslVisualizer().get(0);
 
 		connectionFigure.setForegroundColor(transformator.colorConstant2Color(l.getForegroundColor()));
 		connectionFigure.setBackgroundColor(transformator.colorConstant2Color(l.getBackgroundColor()));
@@ -218,7 +218,7 @@
 		de.uni_mannheim.informatik.swt.models.plm.PLM.Role self = (de.uni_mannheim.informatik.swt.models.plm.PLM.Role) resolveSemanticElement();
 		de.uni_mannheim.informatik.swt.models.plm.PLM.Connection c = (de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)self.eContainer();
 		
-		de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer r = c.getVisualizer().get(0);
+		de.uni_mannheim.informatik.swt.models.plm.PLM.LMLVisualizer r = c.getVisualizer().get(0);
 		String dslRenderingString = r.getValueForKey("DSLRendering");
 
 		if ("".equals(dslRenderingString))
@@ -230,10 +230,10 @@
 	/**
 	 * @generated
 	 */
-	private de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer getConnectionVisualizer(){
+	private de.uni_mannheim.informatik.swt.models.plm.PLM.LMLVisualizer getConnectionLMLVisualizer(){
 		de.uni_mannheim.informatik.swt.models.plm.PLM.Connection containingConnection = (de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)resolveSemanticElement().eContainer();
 		
-		//No Visualizer for connection available
+		//No LMLVisualizer for connection available
 		return containingConnection.getVisualizer().size() > 0 ? containingConnection.getVisualizer().get(0) : null;
 	}
 «ENDDEFINE»

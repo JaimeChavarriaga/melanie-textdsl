@@ -30,7 +30,6 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator;
 import org.eclipse.gmf.runtime.diagram.ui.figures.BorderedNodeFigure;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
@@ -45,10 +44,10 @@ import org.eclipse.ui.PlatformUI;
 
 import de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.Alignment;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.BorderLayoutInformationDescriptor;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.ColorConstant;
+import de.uni_mannheim.informatik.swt.models.plm.visualization.DSLVisualizer;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.ExpressionLabel;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.FlowLayout;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.FontDescriptor;
@@ -82,11 +81,11 @@ import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IVisualModelToFig
 public class VisualModelToFigureTransfomator implements IVisualModelToFigureTransformator {
 	
 	private Map<VisualizationDescriptor, IFigure> descriptor2figure = new HashMap<VisualizationDescriptor, IFigure>();
-	private Visualizer visualizer = null;
+	private DSLVisualizer visualizer = null;
 	
 	
 	@Override
-	public IFigure run(Visualizer v){
+	public IFigure run(DSLVisualizer v){
 		
 		visualizer = v;
 		
@@ -94,9 +93,10 @@ public class VisualModelToFigureTransfomator implements IVisualModelToFigureTran
 		//If we have border items we need a BorderNodeFigure as outermost container
 		BorderedNodeFigure borderNode = null;
 		
-		if (v.getChild().size() > 1){
+		//FIXME
+		//if (v.getContent().size() > 1){
 			borderNode = new BorderedNodeFigure(defaultSizeNodeFigure);
-		}
+		//}
 		TreeIterator<EObject> iterator = v.eAllContents();
 		
 		while(iterator.hasNext())
@@ -123,20 +123,21 @@ public class VisualModelToFigureTransfomator implements IVisualModelToFigureTran
 					newFigure.setParent(parentFigure);
 				}
 			}
-			else if (v.getChild().indexOf(eObj) == 0)
-				defaultSizeNodeFigure.add(newFigure);
-			else if (v.getChild().indexOf(eObj) > 0)
-				if (((LayoutContentDescriptor)eObj).getLayoutInformation() != null)
-					borderNode.getBorderItemContainer().add(newFigure, createLayoutInformation(((LayoutContentDescriptor)eObj).getLayoutInformation()));
-				else
-					borderNode.getBorderItemContainer().add(newFigure);
+			//FIXME
+//			else if (v.getChild().indexOf(eObj) == 0)
+//				defaultSizeNodeFigure.add(newFigure);
+//			else if (v.getChild().indexOf(eObj) > 0)
+//				if (((LayoutContentDescriptor)eObj).getLayoutInformation() != null)
+//					borderNode.getBorderItemContainer().add(newFigure, createLayoutInformation(((LayoutContentDescriptor)eObj).getLayoutInformation()));
+//				else
+//					borderNode.getBorderItemContainer().add(newFigure);
 		}
 	
 		return borderNode != null ? borderNode : defaultSizeNodeFigure;
 	}
 
 	private ShapeDescriptor getParentVisualizationDescriptor(LayoutContentDescriptor desc){
-		return desc.eContainer() instanceof Visualizer ? null : desc.eContainer() instanceof ShapeDescriptor ? (ShapeDescriptor)desc.eContainer() : (ShapeDescriptor)desc.eContainer().eContainer();
+		return desc.eContainer() instanceof DSLVisualizer ? null : desc.eContainer() instanceof ShapeDescriptor ? (ShapeDescriptor)desc.eContainer() : (ShapeDescriptor)desc.eContainer().eContainer();
 	}
 	
 	/**

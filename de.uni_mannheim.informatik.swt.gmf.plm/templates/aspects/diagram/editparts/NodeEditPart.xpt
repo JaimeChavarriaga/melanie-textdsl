@@ -83,7 +83,7 @@
 			updateView();
 		«ENDIF»
 		
-		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer) {
+		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.LMLVisualizer) {
 			updateView();
 			
 			«IF self.editPartClassName = 'ConnectionEditPart'
@@ -92,7 +92,7 @@
 			//Manage the classifications view state according to proximity indication
 			//*************************************************************************
 			org.eclipse.gmf.runtime.notation.View v = this.getNotationView();
-			de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer visualizer = (de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer) notification
+			de.uni_mannheim.informatik.swt.models.plm.PLM.LMLVisualizer LMLVisualizer = (de.uni_mannheim.informatik.swt.models.plm.PLM.LMLVisualizer) notification
 					.getNotifier();
 
 			java.util.HashSet<org.eclipse.gmf.runtime.notation.View> outgoingEdges = new java.util.HashSet<org.eclipse.gmf.runtime.notation.View>();
@@ -121,7 +121,7 @@
 			
 			//This has currently no support for multiple classifications
 			if (outgoingClassificationEdges.size() > 0) {
-				if ("1".equals(visualizer
+				if ("1".equals(LMLVisualizer
 						.getValueForKey("ProximityClassification")))
 					outgoingClassificationEdges.get(0).setVisible(false);
 				else
@@ -203,9 +203,9 @@
 			
 			«IF self.editPartClassName = 'EntityEditPart' or self.editPartClassName = 'ConnectionEditPart'»
 			if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.VisualizationContainer && 
-				((org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature()).getName().equals("visualizersShown"))
+				((org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature()).getName().equals("LMLVisualizersShown"))
 			{
-				«EXPAND showHideVisualizers FOR self»
+				«EXPAND showHideLMLVisualizers FOR self»
 			}
 			else if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.VisualizationContainer && 
 				((org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature()).getName().equals("origin")) 
@@ -226,7 +226,7 @@
 		//boolean collapse = false;
 
 		//********************************************************
-		//Find the visualizer attached to this element 
+		//Find the LMLVisualizer attached to this element 
 		//********************************************************
 		de.uni_mannheim.informatik.swt.models.plm.PLM.Element self = (de.uni_mannheim.informatik.swt.models.plm.PLM.Element) this
 				.resolveSemanticElement();
@@ -241,7 +241,7 @@
 			return null;
 		}
 
-		de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer r = self
+		de.uni_mannheim.informatik.swt.models.plm.PLM.LMLVisualizer r = self
 				.getVisualizer().get(0);
 		String dslRenderingString = r.getValueForKey("DSLRendering");
 
@@ -272,7 +272,7 @@
 		
 		if (dslRendering != null && dslRendering == true
 				&& self.getVisualizer().size() > 0 
-				&& self.getVisualizer().get(0).getChild() != null)
+				&& self.getVisualizer().get(0).getDslVisualizer() != null)
 		{
 			«IF self.editPartClassName = 'ConnectionEditPart'»  
 			toggle();
@@ -335,9 +335,9 @@
 		if (((de.uni_mannheim.informatik.swt.models.plm.PLM.Element)resolveSemanticElement()).getVisualizer().size() == 0)
 			return;
 		
-		de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer v = ((de.uni_mannheim.informatik.swt.models.plm.PLM.Element)resolveSemanticElement()).getVisualizer().get(0);
+		de.uni_mannheim.informatik.swt.models.plm.PLM.LMLVisualizer v = ((de.uni_mannheim.informatik.swt.models.plm.PLM.Element)resolveSemanticElement()).getVisualizer().get(0);
 		
-		if (v.getChild() == null)
+		if (v.getDslVisualizer() == null)
 			return;
 		
 		de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IVisualModelToFigureTransformator tranformator = null;
@@ -348,7 +348,7 @@
 			e.printStackTrace();
 		}
 		
-		org.eclipse.draw2d.IFigure customFigure = tranformator.run(v);
+		org.eclipse.draw2d.IFigure customFigure = tranformator.run(v.getDslVisualizer().get(0));
 		
 		//It is important to only take the content of the DefaultSizeNode and 
 		//BorderItemContainer. Everything else will break the diagram
@@ -393,7 +393,7 @@
 				
 				de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator newLocator = null;
 				
-				//We need to do this as the main figure is not right when build up in visualizer
+				//We need to do this as the main figure is not right when build up in LMLVisualizer
 				if (oldLocator != null
 						&& oldLocator instanceof de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator)
 				{
@@ -425,7 +425,7 @@
 		//boolean collapse = false;
 		
 		//********************************************************
-		//Find the visualizer attached to this element 
+		//Find the LMLVisualizer attached to this element 
 		//********************************************************
 		de.uni_mannheim.informatik.swt.models.plm.PLM.Element self = (de.uni_mannheim.informatik.swt.models.plm.PLM.Element) this
 				.resolveSemanticElement();
@@ -440,7 +440,7 @@
 			return null;
 		}
 		
-		de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer r = self.getVisualizer().get(0);
+		de.uni_mannheim.informatik.swt.models.plm.PLM.LMLVisualizer r = self.getVisualizer().get(0);
 		String collapsedString = r.getValueForKey("collapsed");
 		
 		return java.lang.Boolean.parseBoolean(collapsedString);
@@ -718,15 +718,15 @@
 //			org.eclipse.emf.ecore.EObject container = field.eContainer();
 
 			//Only Entyties are used to store rendering information
-//			if (container instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer) {
-				//Get all Entities that reference this Entity as visualizer
-//				java.util.Collection<org.eclipse.emf.ecore.EObject> visualizerReferencere = org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil
+//			if (container instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.LMLVisualizer) {
+				//Get all Entities that reference this Entity as LMLVisualizer
+//				java.util.Collection<org.eclipse.emf.ecore.EObject> LMLVisualizerReferencere = org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil
 //						.getReferencers(
 //								container,
 //								new org.eclipse.emf.ecore.EReference[] { de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage.eINSTANCE
-//										.getElement_Visualizer() });
+//										.getElement_LMLVisualizer() });
 
-//				for (org.eclipse.emf.ecore.EObject obj : visualizerReferencere) {
+//				for (org.eclipse.emf.ecore.EObject obj : LMLVisualizerReferencere) {
 //					org.eclipse.ui.IEditorPart editorPart = org.eclipse.ui.PlatformUI.getWorkbench()
 //							.getActiveWorkbenchWindow().getActivePage()
 //							.getActiveEditor();
@@ -836,9 +836,9 @@
 			}
 		}
 		else if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Model && 
-				((org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature()).getName().equals("visualizersShown"))
+				((org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature()).getName().equals("LMLVisualizersShown"))
 		{
-		 	«EXPAND showHideVisualizers FOR self»
+		 	«EXPAND showHideLMLVisualizers FOR self»
 		}
 		else if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Model
 			&& ((org.eclipse.emf.ecore.EStructuralFeature) notification.getFeature()).getName()
@@ -852,7 +852,7 @@
 			de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject[] clabjects = new de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject[] {};
 			de.uni_mannheim.informatik.swt.models.plm.PLM.Model model = (de.uni_mannheim.informatik.swt.models.plm.PLM.Model) resolveSemanticElement();
 
-			//find all visualizers in the model
+			//find all LMLVisualizers in the model
 			org.eclipse.ocl.ecore.OCL ocl = org.eclipse.ocl.ecore.OCL
 					.newInstance();
 			org.eclipse.ocl.helper.OCLHelper<org.eclipse.emf.ecore.EClassifier, ?, ?, org.eclipse.ocl.ecore.Constraint> helper = ocl
@@ -870,7 +870,7 @@
 				e.printStackTrace();
 			}
 
-			//find the notational elements for the visualizers
+			//find the notational elements for the LMLVisualizers
 			for (de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject c : clabjects) {
 				org.eclipse.emf.common.util.TreeIterator<org.eclipse.emf.ecore.EObject> iter = (getNotationView().eAllContents());
 
@@ -899,13 +899,13 @@
 	}
 «ENDDEFINE»
 
-«/* Manages to show hide visualizers when setting visualizersShown trait */»
-«DEFINE showHideVisualizers FOR gmfgen::GenNode»
+«/* Manages to show hide LMLVisualizers when setting LMLVisualizersShown trait */»
+«DEFINE showHideLMLVisualizers FOR gmfgen::GenNode»
 			de.uni_mannheim.informatik.swt.models.plm.PLM.VisualizationContainer container = (de.uni_mannheim.informatik.swt.models.plm.PLM.VisualizationContainer) notification.getNotifier();
 
-			de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer[] visualizers = new de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer[] {};
+			de.uni_mannheim.informatik.swt.models.plm.PLM.LMLVisualizer[] LMLVisualizers = new de.uni_mannheim.informatik.swt.models.plm.PLM.LMLVisualizer[] {};
 
-			//find all visualizers in the model
+			//find all LMLVisualizers in the model
 			org.eclipse.ocl.ecore.OCL ocl = org.eclipse.ocl.ecore.OCL.newInstance();
 			org.eclipse.ocl.helper.OCLHelper<org.eclipse.emf.ecore.EClassifier, ?, ?, org.eclipse.ocl.ecore.Constraint> helper = ocl.createOCLHelper();
 			
@@ -922,24 +922,24 @@
 			try 
 			{
 			    «IF self.editPartClassName = 'ModelEditPart'»
-				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.content->collect(c | c.visualizer)");
+				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.content->collect(c | c.LMLVisualizer)");
 				«ELSEIF self.editPartClassName = 'OntologyEditPart'»
-				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.content->collect(c | c.visualizer)->union(self.visualizer->collect(r|r))");
+				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.content->collect(c | c.LMLVisualizer)->union(self.LMLVisualizer->collect(r|r))");
 				«ELSEIF self.editPartClassName = 'EntityEditPart'»
-				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.feature->collect(f | f.visualizer)");
+				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.feature->collect(f | f.LMLVisualizer)");
 				«ELSEIF self.editPartClassName = 'ConnectionEditPart'»
-				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.feature->collect(f | f.visualizer)");
+				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.feature->collect(f | f.LMLVisualizer)");
 				«ENDIF»
 				
-				visualizers = ((java.util.ArrayList<de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer>) ocl.evaluate(resolveSemanticElement(), q)).toArray(new de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer[] {});
+				LMLVisualizers = ((java.util.ArrayList<de.uni_mannheim.informatik.swt.models.plm.PLM.LMLVisualizer>) ocl.evaluate(resolveSemanticElement(), q)).toArray(new de.uni_mannheim.informatik.swt.models.plm.PLM.LMLVisualizer[] {});
 			}
 			catch (org.eclipse.ocl.ParserException e) 
 			{
 				e.printStackTrace();
 			}
 			
-			//find the notational elements for the visualizers
-			for(de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer r : visualizers)
+			//find the notational elements for the LMLVisualizers
+			for(de.uni_mannheim.informatik.swt.models.plm.PLM.LMLVisualizer r : LMLVisualizers)
 			{
 				org.eclipse.emf.common.util.TreeIterator<org.eclipse.emf.ecore.EObject> iter = (getNotationView().eAllContents());
 				
@@ -973,7 +973,7 @@
 	de.uni_mannheim.informatik.swt.models.plm.PLM.Element[] elements = new de.uni_mannheim.informatik.swt.models.plm.PLM.Element[] {};
 	de.uni_mannheim.informatik.swt.models.plm.PLM.VisualizationContainer container = (de.uni_mannheim.informatik.swt.models.plm.PLM.VisualizationContainer) resolveSemanticElement();
 	
-	//find all visualizers in the model
+	//find all LMLVisualizers in the model
 	org.eclipse.ocl.ecore.OCL ocl = org.eclipse.ocl.ecore.OCL
 			.newInstance();
 	org.eclipse.ocl.helper.OCLHelper<org.eclipse.emf.ecore.EClassifier, ?, ?, org.eclipse.ocl.ecore.Constraint> helper = ocl
@@ -1007,7 +1007,7 @@
 		e.printStackTrace();
 	}
 
-	//find the notational elements for the visualizers
+	//find the notational elements for the LMLVisualizers
 	for (de.uni_mannheim.informatik.swt.models.plm.PLM.Element e : elements) {
 		org.eclipse.emf.common.util.TreeIterator<org.eclipse.emf.ecore.EObject> iter = (getNotationView().eAllContents());
 
@@ -1036,7 +1036,7 @@
 
 «DEFINE handleNotificationEventForOntology FOR gmfgen::GenNode»
 	/**
-	 * Inform all visualizers to set their view state
+	 * Inform all LMLVisualizers to set their view state
 	 * 
 	 * @generated
 	 */
@@ -1045,9 +1045,9 @@
 		super.handleNotificationEvent(notification);
 		
 		if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.VisualizationContainer && 
-				((org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature()).getName().equals("visualizersShown"))
+				((org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature()).getName().equals("LMLVisualizersShown"))
 		{
-			«EXPAND showHideVisualizers FOR self»
+			«EXPAND showHideLMLVisualizers FOR self»
 		}
 		else if (notification.getNotifier() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.VisualizationContainer && 
 				((org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature()).getName().equals("origin")) 
@@ -1184,7 +1184,7 @@
 «DEFINE registerToHandleNotificationForChildren FOR gmfgen::GenNode»
 	/**
 	 * Registers the Edipart to fire handleNotification on changes
-	 * in visualizer.
+	 * in LMLVisualizer.
 	 *
 	 * BUG: Only runs on EditPartCrearion. Items which are added Afterwards are not
 	 * listened to.
@@ -1197,8 +1197,8 @@
 		
 		de.uni_mannheim.informatik.swt.models.plm.PLM.Element e = (de.uni_mannheim.informatik.swt.models.plm.PLM.Element) resolveSemanticElement();
 		
-		//Register for listening to visualizer changes
-		for (de.uni_mannheim.informatik.swt.models.plm.PLM.Visualizer v : e.getVisualizer())
+		//Register for listening to LMLVisualizer changes
+		for (de.uni_mannheim.informatik.swt.models.plm.PLM.LMLVisualizer v : e.getVisualizer())
 			addListenerFilter(v.toString().substring(0, v.toString().indexOf(" ")), this, v);
 		
 		«IF self.editPartClassName = 'ConnectionEditPart'

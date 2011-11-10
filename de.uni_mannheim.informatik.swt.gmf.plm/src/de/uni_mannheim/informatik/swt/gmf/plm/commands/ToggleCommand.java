@@ -59,6 +59,6 @@ public class ToggleCommand extends Command{
 		}
 		
 		EditingDomain domain = host.getEditingDomain();
-		domain.getCommandStack().execute(SetCommand.create(domain, self.getVisualizer().get(0), PLMPackage.eINSTANCE.getVisualizer_Attributes(), attributes));
+		domain.getCommandStack().execute(SetCommand.create(domain, self.getVisualizer().get(0), PLMPackage.eINSTANCE.getLMLVisualizer_Attributes(), attributes));
 	}
 }

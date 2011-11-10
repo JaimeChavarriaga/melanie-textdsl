@@ -47,7 +47,7 @@ public class PLMTests extends TestSuite {
 		suite.addTestSuite(EntityTest.class);
 		suite.addTestSuite(ConnectionTest.class);
 		suite.addTestSuite(RoleTest.class);
-		suite.addTestSuite(VisualizerTest.class);
+		suite.addTestSuite(LMLVisualizerTest.class);
 		suite.addTestSuite(AttributeTest.class);
 		suite.addTestSuite(MethodTest.class);
 		return suite;
