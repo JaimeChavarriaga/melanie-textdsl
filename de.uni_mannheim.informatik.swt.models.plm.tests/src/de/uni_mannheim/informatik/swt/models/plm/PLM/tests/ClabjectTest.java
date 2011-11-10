@@ -536,7 +536,7 @@ public class ClabjectTest extends DomainElementTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getModelDirectSuperTypes()
-	 * @generated
+	 * @generated NOT
 	 */
 	public void testGetModelDirectSuperTypes() {
 		Ontology ontology = PLMFactory.eINSTANCE.createOntology();
@@ -587,7 +587,7 @@ public class ClabjectTest extends DomainElementTest {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getModelGeneralizationsAsSubType()
-	 * @generated
+	 * @generated NOT
 	 */
 	public void testGetModelGeneralizationsAsSubType() {
 		Ontology ontology = PLMFactory.eINSTANCE.createOntology();
