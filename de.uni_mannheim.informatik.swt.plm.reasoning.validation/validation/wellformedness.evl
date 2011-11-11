@@ -169,7 +169,7 @@ context Element {
 context Connection {
 	constraint roleNameUnique {
 		check{
-			var names =  self.roleName;
+			var names = self.role->collect(r | r.roleName);
 		 	return names->forAll(n|names.count(n) = 1);
 		}
 		message: 'The role names of connection \'' + self.name + '\' are not unique'
@@ -200,9 +200,9 @@ context Connection {
 	}
 	
 	constraint multiplicitySanity {
-		check: self.roleName->forAll(rN|(self.getLowerForRoleName(rN) > -2 and self.getUpperForRoleName(rN) > -2) -- We are not allowed to be negative
-											and ((self.getLowerForRoleName(rN) <= self.getUpperForRoleName(rN)) -- Not star
-												or (self.getUpperForRoleName(rN) = -1 and self.getLowerForRoleName(rN)>=0)) -- If upper -1 we do not care about lower
+		check: self.role->forAll(r|(r.lower > -2 and r.upper > -2) -- We are not allowed to be negative
+											and ((r.lower <= r.upper) -- Not star
+													or(r.upper = -1 and r.lower >= 0 )) -- If upper -1 we do not care about lower
 									)
 		message: '\'' + self.name + '\' has wrong multiplicities. The following must be fullfiled lower <= upper.'
 		fix {
