@@ -57,6 +57,7 @@ context Clabject {
 		message: '\''+ self.name + '\' defines features with duplicate names'
 	}
 	
+	
 	constraint visualizerDurability {
 		guard: self.potency > -2
 		check: (self.potency = -1) or (self.visualizer->forAll(v|v.durability <= self.potency))
@@ -120,28 +121,29 @@ context Attribute {
 	}
 }
 
-context Visualizer {
-	constraint durabilityNotNegative {
-		check: self.durability > -2
-		message: 'The durability of a visualizer cannot be negative'
-		fix {
+//FIXME Visualizer geht net..
+--context Visualizer {
+	--constraint durabilityNotNegative {
+		--check: self.durability > -2
+		--message: 'The durability of a visualizer cannot be negative'
+		--fix {
 			--guard: self.getElement().oclIsKindOf(Feature)
-			title: 'Compute the durability from the visualizer'
-			do {
-				var typeName = self.getElement().oclAsType(ecore::EObject).eClass().name;
-				var el = self.getElement();
+			--title: 'Compute the durability from the visualizer'
+			--do {
+				--var typeName = self.getElement().oclAsType(ecore::EObject).eClass().name;
+				--var el = self.getElement();
 				
-				if (typeName = 'Attribute' or typeName = 'Method') {
-					self.durability := el.durability;
-				} else if (typeName = 'Entity' or typeName = 'Connection') {
-					self.durability := el.potency;
-				} else {
-					self.durability := 0;
-				}
-			}
-		}
-	}
-}
+				--if (typeName = 'Attribute' or typeName = 'Method') {
+				--	self.durability := el.durability;
+				--} else if (typeName = 'Entity' or typeName = 'Connection') {
+					--self.durability := el.potency;
+				--} else {
+					--self.durability := 0;
+				--}
+			--}
+		--}
+	--}
+--}
 
 context LogicalElement {
 	constraint visualizerDurabilityZero {
