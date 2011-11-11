@@ -272,7 +272,7 @@
 		
 		if (dslRendering != null && dslRendering == true
 				&& self.getVisualizer().size() > 0 
-				&& self.getVisualizer().get(0).getDslVisualizer() != null)
+				&& self.getVisualizer().get(0).getDslVisualizer().size() > 0)
 		{
 			«IF self.editPartClassName = 'ConnectionEditPart'»  
 			toggle();
