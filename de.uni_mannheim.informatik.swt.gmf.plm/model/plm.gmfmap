@@ -314,7 +314,7 @@
                     <diagramLabel
                         href="plm.gmfgraph#AttributeFigureDataTypeLabel"/>
                     <viewExpression
-                        body="if (not self.datatype.oclIsUndefined()) then&#xD;&#xA;&#x9;':'.concat(self.datatype.name)&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
+                        body="if (not self.datatype.oclIsUndefined() and self.datatype &lt;> '') then&#xD;&#xA;&#x9;':'.concat(self.datatype)&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
                   </labelMappings>
                   <labelMappings
                       xsi:type="gmfmap:ExpressionLabelMapping"
@@ -1006,7 +1006,7 @@
                     <diagramLabel
                         href="plm.gmfgraph#AttributeFigureDataTypeLabel"/>
                     <viewExpression
-                        body="if (not self.datatype.oclIsUndefined()) then&#xD;&#xA;&#x9;':'.concat(self.datatype.name)&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
+                        body="if (not self.datatype.oclIsUndefined() and self.datatype &lt;> '') then&#xD;&#xA;&#x9;':'.concat(self.datatype)&#xD;&#xA;else&#xD;&#xA;&#x9;''&#xD;&#xA;endif"/>
                   </labelMappings>
                   <labelMappings
                       xsi:type="gmfmap:ExpressionLabelMapping"
