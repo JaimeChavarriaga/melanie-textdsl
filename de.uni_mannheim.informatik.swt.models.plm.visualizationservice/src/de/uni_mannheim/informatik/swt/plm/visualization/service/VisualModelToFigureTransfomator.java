@@ -276,7 +276,7 @@ public class VisualModelToFigureTransfomator implements IVisualModelToFigureTran
 		try {
 			OCLExpression<EClassifier> q = helper.createQuery("self.feature->select(f | f.oclIsKindOf(Attribute))->select(f | f.name = '"+desc.getExpression()+"')");
 			feature = ((HashSet<de.uni_mannheim.informatik.swt.models.plm.PLM.Feature>) ocl
-					.evaluate(visualizer.eContainer(),q))
+					.evaluate(visualizer.getElement(),q))
 					.toArray(new de.uni_mannheim.informatik.swt.models.plm.PLM.Feature[] {});
 		} catch (ParserException e) {
 			e.printStackTrace();
