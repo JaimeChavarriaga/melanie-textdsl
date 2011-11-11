@@ -74,6 +74,7 @@ import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.LMLVisualizer;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.presentation.PLMEditorPlugin;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.provider.PLMItemProviderAdapterFactory;
@@ -193,9 +194,10 @@ public class VisualizationEditorView extends ViewPart implements INullSelectionL
 			
 			@Override
 			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof DSLVisualizer) || (element instanceof VisualizationDescriptor) 
-					|| (element instanceof Point) || (element instanceof LayoutInformationDescriptor)
-					|| (element instanceof FontDescriptor) || (element instanceof LinkDecoration);
+				return (element instanceof DSLVisualizer) || (element instanceof LMLVisualizer)  
+					|| (element instanceof VisualizationDescriptor) || (element instanceof Point) 
+					|| (element instanceof LayoutInformationDescriptor) || (element instanceof FontDescriptor)
+					|| (element instanceof LinkDecoration);
 			}
 		});
 		
