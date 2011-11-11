@@ -93,10 +93,9 @@ public class VisualModelToFigureTransfomator implements IVisualModelToFigureTran
 		//If we have border items we need a BorderNodeFigure as outermost container
 		BorderedNodeFigure borderNode = null;
 		
-		//FIXME
-		//if (v.getContent().size() > 1){
+		if (v.getContent().size() > 1){
 			borderNode = new BorderedNodeFigure(defaultSizeNodeFigure);
-		//}
+		}
 		TreeIterator<EObject> iterator = v.eAllContents();
 		
 		while(iterator.hasNext())
@@ -123,14 +122,13 @@ public class VisualModelToFigureTransfomator implements IVisualModelToFigureTran
 					newFigure.setParent(parentFigure);
 				}
 			}
-			//FIXME
-//			else if (v.getChild().indexOf(eObj) == 0)
-//				defaultSizeNodeFigure.add(newFigure);
-//			else if (v.getChild().indexOf(eObj) > 0)
-//				if (((LayoutContentDescriptor)eObj).getLayoutInformation() != null)
-//					borderNode.getBorderItemContainer().add(newFigure, createLayoutInformation(((LayoutContentDescriptor)eObj).getLayoutInformation()));
-//				else
-//					borderNode.getBorderItemContainer().add(newFigure);
+			else if (v.getContent().indexOf(eObj) == 0)
+				defaultSizeNodeFigure.add(newFigure);
+			else if (v.getContent().indexOf(eObj) > 0)
+				if (((LayoutContentDescriptor)eObj).getLayoutInformation() != null)
+					borderNode.getBorderItemContainer().add(newFigure, createLayoutInformation(((LayoutContentDescriptor)eObj).getLayoutInformation()));
+				else
+					borderNode.getBorderItemContainer().add(newFigure);
 		}
 	
 		return borderNode != null ? borderNode : defaultSizeNodeFigure;
