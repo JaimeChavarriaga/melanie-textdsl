@@ -92,7 +92,7 @@ public class DeleteClabjectCommand extends AbstractHandler {
 	private boolean doMoveFeaturesToSupertype(Clabject clabjectToBeDeleted){
 		
 		List<Feature> featuresToBeMoved =  clabjectToBeDeleted.getFeature();
-		List<Clabject> directSupertypes = clabjectToBeDeleted.getModelDirectSuperTypes();
+		List<Clabject> directSupertypes = clabjectToBeDeleted.getModelDirectSupertypes();
 		
 		Clabject targetSuperType = null;
 		
@@ -125,7 +125,7 @@ public class DeleteClabjectCommand extends AbstractHandler {
 			refactoringCommand.append(SetCommand.create(domain, c, PLMPackage.eINSTANCE.getClassification_Type(), targetSuperType));
 		
 		//Remove the generalization if necessary (has no subtypes afterwards)
-		List<Generalization> generalizationsAsSubtype = clabjectToBeDeleted.getModelGeneralizationsAsSubType();
+		List<Generalization> generalizationsAsSubtype = clabjectToBeDeleted.getModelGeneralizationsAsSubtype();
 		for (Generalization g : generalizationsAsSubtype)
 			if (g.getSubtype().size() ==  1)
 				refactoringCommand.append(RemoveCommand.create(domain, g));
@@ -140,7 +140,7 @@ public class DeleteClabjectCommand extends AbstractHandler {
 		CompoundCommand refactoringCommand = new CompoundCommand("Refactoring");
 		TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(clabjectToBeDeleted);
 		
-		List<Clabject> directSupertypes = clabjectToBeDeleted.getModelDirectSuperTypes();
+		List<Clabject> directSupertypes = clabjectToBeDeleted.getModelDirectSupertypes();
 		Clabject targetSuperType = null;
 		
 		if (directSupertypes.size() > 1);
@@ -169,7 +169,7 @@ public class DeleteClabjectCommand extends AbstractHandler {
 			refactoringCommand.append(SetCommand.create(domain, c, PLMPackage.eINSTANCE.getClassification_Type(), targetSuperType));
 		
 		//Remove the generalization if necessary (has no subtypes afterwards)
-				List<Generalization> generalizationsAsSubtype = clabjectToBeDeleted.getModelGeneralizationsAsSubType();
+				List<Generalization> generalizationsAsSubtype = clabjectToBeDeleted.getModelGeneralizationsAsSubtype();
 				for (Generalization g : generalizationsAsSubtype)
 					if (g.getSubtype().size() ==  1)
 						refactoringCommand.append(RemoveCommand.create(domain, g));

@@ -558,15 +558,15 @@ public class ClabjectTest extends DomainElementTest {
 		o0.getContent().add(generalization);
 		
 		//Here we do have only one direct supertype
-		assertEquals(superClass, subClass.getModelDirectSuperTypes().get(0));
+		assertEquals(superClass, subClass.getModelDirectSupertypes().get(0));
 		
 		//Here we have two direct supertypes
 		Clabject superClass2 = PLMFactory.eINSTANCE.createClabject();
 		superClass2.setName("superClass2");
 		generalization.getSupertype().add(superClass2);
 		
-		assertTrue(subClass.getModelDirectSuperTypes().contains(superClass) 
-						&& subClass.getModelDirectSuperTypes().contains(superClass2));
+		assertTrue(subClass.getModelDirectSupertypes().contains(superClass) 
+						&& subClass.getModelDirectSupertypes().contains(superClass2));
 		
 		//Here we have a second generalization
 		Generalization generalization2 = PLMFactory.eINSTANCE.createGeneralization();
@@ -577,9 +577,9 @@ public class ClabjectTest extends DomainElementTest {
 		superClass3.setName("superClass3");
 		generalization2.getSupertype().add(superClass3);
 
-		assertTrue(subClass.getModelDirectSuperTypes().contains(superClass) 
-					&& subClass.getModelDirectSuperTypes().contains(superClass2)
-					&& subClass.getModelDirectSuperTypes().contains(superClass3));
+		assertTrue(subClass.getModelDirectSupertypes().contains(superClass) 
+					&& subClass.getModelDirectSupertypes().contains(superClass2)
+					&& subClass.getModelDirectSupertypes().contains(superClass3));
 	}
 
 	/**
@@ -608,7 +608,7 @@ public class ClabjectTest extends DomainElementTest {
 		o0.getContent().add(generalization);
 		
 		//single superClass, single subClass, single generalization
-		assertEquals(generalization, subClass.getModelGeneralizationsAsSubType().get(0));
+		assertEquals(generalization, subClass.getModelGeneralizationsAsSubtype().get(0));
 			
 		//two superClass, single subClasses, two generalizations
 		Clabject superClass2 = PLMFactory.eINSTANCE.createClabject();
@@ -620,8 +620,8 @@ public class ClabjectTest extends DomainElementTest {
 		generalization2.setName("generalization2");
 		o0.getContent().add(generalization2);
 		
-		assertTrue(subClass.getModelGeneralizationsAsSubType().contains(generalization2)
-				     	&& subClass.getModelGeneralizationsAsSubType().contains(generalization));
+		assertTrue(subClass.getModelGeneralizationsAsSubtype().contains(generalization2)
+				     	&& subClass.getModelGeneralizationsAsSubtype().contains(generalization));
 		
 	}
 
