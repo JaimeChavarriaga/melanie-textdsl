@@ -332,13 +332,7 @@
 	 */
 	public void updateDSL() {
 		
-		if (((de.uni_mannheim.informatik.swt.models.plm.PLM.Element)resolveSemanticElement()).getVisualizer().size() == 0)
-			return;
-		
-		de.uni_mannheim.informatik.swt.models.plm.PLM.LMLVisualizer v = ((de.uni_mannheim.informatik.swt.models.plm.PLM.Element)resolveSemanticElement()).getVisualizer().get(0);
-		
-		if (v.getDslVisualizer() == null)
-			return;
+		de.uni_mannheim.informatik.swt.models.plm.PLM.Element self = (de.uni_mannheim.informatik.swt.models.plm.PLM.Element)resolveSemanticElement();
 		
 		de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IVisualModelToFigureTransformator tranformator = null;
 		
@@ -348,7 +342,12 @@
 			e.printStackTrace();
 		}
 		
-		org.eclipse.draw2d.IFigure customFigure = tranformator.run(v.getDslVisualizer().get(0));
+		de.uni_mannheim.informatik.swt.models.plm.visualization.DSLVisualizer dslVisualizer = tranformator.findDSLVisualizerForElement(self);
+		
+		if (dslVisualizer == null)
+			return;
+		
+		org.eclipse.draw2d.IFigure customFigure = tranformator.run(dslVisualizer);
 		
 		//It is important to only take the content of the DefaultSizeNode and 
 		//BorderItemContainer. Everything else will break the diagram
