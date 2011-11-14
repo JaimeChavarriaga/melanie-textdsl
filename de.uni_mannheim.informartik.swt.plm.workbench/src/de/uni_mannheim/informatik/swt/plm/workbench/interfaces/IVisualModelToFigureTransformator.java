@@ -13,6 +13,7 @@ package de.uni_mannheim.informatik.swt.plm.workbench.interfaces;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.swt.graphics.Color;
 
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.ColorConstant;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.DSLVisualizer;
 
@@ -40,4 +41,20 @@ public interface IVisualModelToFigureTransformator {
 	 * @return SWT Color
 	 */
 	public Color colorConstant2Color(ColorConstant constant);
+	
+	/**
+	 * <p>Looks up the DSLVisualizer for an Element by the following rules:</p>
+	 * 
+	 * <ol> 
+	 * 		<li>Check the supertypes for a visualizer and take the closest
+	 * 		with lowest potency.</li>
+	 * 		<li>Check the types for a visualizer and take the closest
+	 * 		with lowest potency.</li>
+	 * 		<li>Return the default LMLVisualization (null)</li>
+	 * </ol>
+	 * 
+	 * @param e The element to search the DSLVisualizer for.
+	 * @return A DSLVisualizer or  null if none is found.
+	 */
+	public DSLVisualizer findDSLVisualizerForElement(Element e);
 }

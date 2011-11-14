@@ -12,6 +12,7 @@ package de.uni_mannheim.informatik.swt.plm.visualization.service;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
@@ -44,6 +45,9 @@ import org.eclipse.ui.PlatformUI;
 
 import de.uni_mannheim.informatik.swt.gmf.borders.CenteredBorderItemLocator;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.LMLVisualizer;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.Alignment;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.BorderLayoutInformationDescriptor;
 import de.uni_mannheim.informatik.swt.models.plm.visualization.ColorConstant;
@@ -415,5 +419,50 @@ public class VisualModelToFigureTransfomator implements IVisualModelToFigureTran
 		default:
 			return null;
 		}
+	}
+
+	@Override
+	public DSLVisualizer findDSLVisualizerForElement(Element e) {
+
+		//There is currently only DSL visualization for connections and clabjects available
+		if (! (e instanceof Clabject))
+			return null;
+		
+		Clabject elementToVisualize = (Clabject)e;
+
+		//Does the element itself have a DSL visualizer
+		for (LMLVisualizer lmlVisualizer : elementToVisualize.getVisualizer()){
+			if (lmlVisualizer.getDslVisualizer().size() > 0)
+				return lmlVisualizer.getDslVisualizer().get(0);
+		}
+		
+		LinkedList<Clabject> superTypesToSearch = new LinkedList<Clabject>();
+		LinkedList<Clabject> typesToSearch = new LinkedList<Clabject>();
+		typesToSearch.add(elementToVisualize);
+		
+		Clabject currentClabject = null;
+		Clabject currentType = null;
+		
+		//Go through the type hierarchy
+		while ((currentType = typesToSearch.poll()) != null){
+
+			//We need to have the type of the current type at the beginning
+			typesToSearch.addAll(currentType.getModelDirectTypes());
+			
+			superTypesToSearch = new LinkedList<Clabject>(currentType.getModelDirectSupertypes());
+			superTypesToSearch.add(0, currentType);
+			
+			//Go through the inheritance hierarchy
+			while ((currentClabject = superTypesToSearch.poll()) != null){
+				for (LMLVisualizer lmlVisualizer : currentClabject.getVisualizer())
+					if (lmlVisualizer.getDslVisualizer().size() > 0)
+						return lmlVisualizer.getDslVisualizer().get(0);
+					
+				superTypesToSearch.addAll(currentClabject.getModelSupertypes());
+				typesToSearch.addAll(currentClabject.getModelDirectTypes());
+			}
+		}
+		
+		return null;
 	}
 }
