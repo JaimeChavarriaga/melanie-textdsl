@@ -111,12 +111,23 @@ context Feature {
 }
 
 context Attribute {
+	
 	constraint mutabilityNotHigherDurability {
 		check: (self.durability = -1) or (self.mutability <= self.durability)
 		message: 'The mutability of feature \'' + self.name + '\' cannot be higher than the durability of the faeture'
 		fix {
 			title: 'Set the feature\'s mutability to its the durability'
 			do {self.mutability := self.durability;}
+		}
+	}
+	
+	constraint datatypeValueMismatch {
+	-- don't know how to parse the value string or to do something and check for an exception
+		check: (self.datatype = 'String' or self.datatype = "string") implies true 
+		message: self.name + '.datatype does not match to the value ' + self.datatype + " <> " + self.value
+		fix {
+			title: 'Adjust the type.'
+			do {}
 		}
 	}
 }

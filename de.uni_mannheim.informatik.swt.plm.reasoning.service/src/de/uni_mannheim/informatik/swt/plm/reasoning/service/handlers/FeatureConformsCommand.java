@@ -98,7 +98,16 @@ public class FeatureConformsCommand extends AbstractHandler {
 		DatatypeComparison datatypeC = ReasoningResultFactory.eINSTANCE.createDatatypeComparison();
 		datatypeC.setExpression(instance.getDatatype() + " == " + type.getDatatype());
 		result.getCheck().add(datatypeC);
-		if(type.getDatatype() != null && (!type.getDatatype().equals(instance.getDatatype()))) {
+		Object typeDatatype, instanceDatatype;
+		typeDatatype = type.getDatatype();
+		instanceDatatype = instance.getDatatype();
+		if (typeDatatype == null) {
+			if (instanceDatatype == null) {
+				datatypeC.setResult(true);
+			} else {
+				result.setResult(false);
+			}
+		} else if(!typeDatatype.equals(instanceDatatype)) {
 			result.setResult(false);
 		} else {
 			datatypeC.setResult(true);
@@ -127,7 +136,17 @@ public class FeatureConformsCommand extends AbstractHandler {
 			ValueComparison valueC = ReasoningResultFactory.eINSTANCE.createValueComparison();
 			valueC.setExpression(type.getName() + ".value == " + instance.getName() + ".value");
 			result.getCheck().add(valueC);
-			if (!(type.getValue().equals(instance.getValue()))) {
+			Object typeValue, instanceValue;
+			typeValue = type.getValue();
+			instanceValue = instance.getValue();
+			//System.out.println(""+typeValue+ instanceValue);
+			if (typeValue == null) {
+				if (instanceValue == null) {
+					valueC.setResult(true);
+				} else {
+					result.setResult(false);
+				}
+			} else if (!(type.getValue().equals(instance.getValue()))) {
 				result.setResult(false);
 			} else {
 				valueC.setResult(true);
