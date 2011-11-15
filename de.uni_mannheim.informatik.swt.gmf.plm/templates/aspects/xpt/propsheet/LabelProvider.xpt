@@ -29,7 +29,10 @@
 		String typesAsString = "";
 		
 		for(de.uni_mannheim.informatik.swt.models.plm.PLM.Classification i : classifications)
-			typesAsString += i.getType().getName() + (classifications.indexOf(i) < classifications.size() - 1 ? ", ":"");
+			if (i.getType() instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Entity)
+				typesAsString += i.getType().getName() + (classifications.indexOf(i) < classifications.size() - 1 ? ", " : "");
+			else
+				typesAsString += ((de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)i.getType()).getHumanReadableName() + (classifications.indexOf(i) < classifications.size() - 1 ? ", " : "");
 		
 		return typesAsString;
 	}
