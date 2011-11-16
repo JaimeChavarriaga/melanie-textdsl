@@ -270,9 +270,7 @@
 		}
 		«ENDIF»
 		
-		if (dslRendering != null && dslRendering == true
-				&& self.getVisualizer().size() > 0 
-				&& self.getVisualizer().get(0).getDslVisualizer().size() > 0)
+		if (dslRendering != null && dslRendering == true)
 		{
 			«IF self.editPartClassName = 'ConnectionEditPart'»  
 			toggle();
