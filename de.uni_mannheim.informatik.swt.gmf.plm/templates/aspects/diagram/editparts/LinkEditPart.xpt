@@ -92,12 +92,16 @@
 	 * @generated
 	 */
 	public void updateView() {
+	
+		for (org.eclipse.gef.editparts.AbstractEditPart part : (java.util.List<org.eclipse.gef.editparts.AbstractEditPart>)getChildren())
+			part.refresh();
+		
 		if (getDSLRenderingValue())
 			updateDSLRenderingView();
 		else
 			updateLMLRenderingView();
 			
-		performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
+		//performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
 	}
 	
 	/**
