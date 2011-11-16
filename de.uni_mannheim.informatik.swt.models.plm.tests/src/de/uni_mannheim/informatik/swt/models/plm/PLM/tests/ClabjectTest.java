@@ -38,12 +38,6 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMFactory;
  *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getEigenConnections() <em>Get Eigen Connections</em>}</li>
  *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getAllConnections() <em>Get All Connections</em>}</li>
  *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getInheritedConnections() <em>Get Inherited Connections</em>}</li>
- *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getEigenAssociates() <em>Get Eigen Associates</em>}</li>
- *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getInheritedAssociates() <em>Get Inherited Associates</em>}</li>
- *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getAllAssociates() <em>Get All Associates</em>}</li>
- *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getEigenAssociatesRoles() <em>Get Eigen Associates Roles</em>}</li>
- *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getAllAssociatesRoles() <em>Get All Associates Roles</em>}</li>
- *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getInheritedAssociatesRoles() <em>Get Inherited Associates Roles</em>}</li>
  *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getModelCompleteTypes() <em>Get Model Complete Types</em>}</li>
  *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getModelIncompleteTypes() <em>Get Model Incomplete Types</em>}</li>
  *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getBlueprint() <em>Get Blueprint</em>}</li>
@@ -52,12 +46,14 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMFactory;
  *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getModelHyponyms() <em>Get Model Hyponyms</em>}</li>
  *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getDomainForConnection(de.uni_mannheim.informatik.swt.models.plm.PLM.Connection) <em>Get Domain For Connection</em>}</li>
  *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getPossibleDomainSpecificVisualizers() <em>Get Possible Domain Specific Visualizers</em>}</li>
- *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getModelDirectSuperTypes() <em>Get Model Direct Super Types</em>}</li>
- *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getModelGeneralizationsAsSubType() <em>Get Model Generalizations As Sub Type</em>}</li>
- *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getModelGeneralizationsAsSuperType() <em>Get Model Generalizations As Super Type</em>}</li>
- *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getEigenRoles() <em>Get Eigen Roles</em>}</li>
- *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getInheritedRoles() <em>Get Inherited Roles</em>}</li>
- *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getAllRoles() <em>Get All Roles</em>}</li>
+ *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getModelDirectSupertypes() <em>Get Model Direct Supertypes</em>}</li>
+ *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getModelGeneralizationsAsSubtype() <em>Get Model Generalizations As Subtype</em>}</li>
+ *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getModelGeneralizationsAsSupertype() <em>Get Model Generalizations As Supertype</em>}</li>
+ *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getEigenNavigations() <em>Get Eigen Navigations</em>}</li>
+ *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getInheritedNavigations() <em>Get Inherited Navigations</em>}</li>
+ *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getAllNavigations() <em>Get All Navigations</em>}</li>
+ *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getModelDirectTypes() <em>Get Model Direct Types</em>}</li>
+ *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getModelClassificationTree() <em>Get Model Classification Tree</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -350,84 +346,6 @@ public class ClabjectTest extends DomainElementTest {
 	}
 
 	/**
-	 * Tests the '{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getEigenAssociates() <em>Get Eigen Associates</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getEigenAssociates()
-	 * @generated
-	 */
-	public void testGetEigenAssociates() {
-		// TODO: implement this operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
-	}
-
-	/**
-	 * Tests the '{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getInheritedAssociates() <em>Get Inherited Associates</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getInheritedAssociates()
-	 * @generated
-	 */
-	public void testGetInheritedAssociates() {
-		// TODO: implement this operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
-	}
-
-	/**
-	 * Tests the '{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getAllAssociates() <em>Get All Associates</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getAllAssociates()
-	 * @generated
-	 */
-	public void testGetAllAssociates() {
-		// TODO: implement this operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
-	}
-
-	/**
-	 * Tests the '{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getEigenAssociatesRoles() <em>Get Eigen Associates Roles</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getEigenAssociatesRoles()
-	 * @generated
-	 */
-	public void testGetEigenAssociatesRoles() {
-		// TODO: implement this operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
-	}
-
-	/**
-	 * Tests the '{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getAllAssociatesRoles() <em>Get All Associates Roles</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getAllAssociatesRoles()
-	 * @generated
-	 */
-	public void testGetAllAssociatesRoles() {
-		// TODO: implement this operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
-	}
-
-	/**
-	 * Tests the '{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getInheritedAssociatesRoles() <em>Get Inherited Associates Roles</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getInheritedAssociatesRoles()
-	 * @generated
-	 */
-	public void testGetInheritedAssociatesRoles() {
-		// TODO: implement this operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
-	}
-
-	/**
 	 * Tests the '{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getModelCompleteTypes() <em>Get Model Complete Types</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -532,6 +450,110 @@ public class ClabjectTest extends DomainElementTest {
 	}
 
 	/**
+	 * Tests the '{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getModelDirectSupertypes() <em>Get Model Direct Supertypes</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getModelDirectSupertypes()
+	 * @generated
+	 */
+	public void testGetModelDirectSupertypes() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getModelGeneralizationsAsSubtype() <em>Get Model Generalizations As Subtype</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getModelGeneralizationsAsSubtype()
+	 * @generated
+	 */
+	public void testGetModelGeneralizationsAsSubtype() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getModelGeneralizationsAsSupertype() <em>Get Model Generalizations As Supertype</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getModelGeneralizationsAsSupertype()
+	 * @generated
+	 */
+	public void testGetModelGeneralizationsAsSupertype() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getEigenNavigations() <em>Get Eigen Navigations</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getEigenNavigations()
+	 * @generated
+	 */
+	public void testGetEigenNavigations() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getInheritedNavigations() <em>Get Inherited Navigations</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getInheritedNavigations()
+	 * @generated
+	 */
+	public void testGetInheritedNavigations() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getAllNavigations() <em>Get All Navigations</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getAllNavigations()
+	 * @generated
+	 */
+	public void testGetAllNavigations() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getModelDirectTypes() <em>Get Model Direct Types</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getModelDirectTypes()
+	 * @generated
+	 */
+	public void testGetModelDirectTypes() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getModelClassificationTree() <em>Get Model Classification Tree</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getModelClassificationTree()
+	 * @generated
+	 */
+	public void testGetModelClassificationTree() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
 	 * Tests the '{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getModelDirectSuperTypes() <em>Get Model Direct Super Types</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -623,58 +645,6 @@ public class ClabjectTest extends DomainElementTest {
 		assertTrue(subClass.getModelGeneralizationsAsSubtype().contains(generalization2)
 				     	&& subClass.getModelGeneralizationsAsSubtype().contains(generalization));
 		
-	}
-
-	/**
-	 * Tests the '{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getModelGeneralizationsAsSuperType() <em>Get Model Generalizations As Super Type</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getModelGeneralizationsAsSuperType()
-	 * @generated
-	 */
-	public void testGetModelGeneralizationsAsSuperType() {
-		// TODO: implement this operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
-	}
-
-	/**
-	 * Tests the '{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getEigenRoles() <em>Get Eigen Roles</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getEigenRoles()
-	 * @generated
-	 */
-	public void testGetEigenRoles() {
-		// TODO: implement this operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
-	}
-
-	/**
-	 * Tests the '{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getInheritedRoles() <em>Get Inherited Roles</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getInheritedRoles()
-	 * @generated
-	 */
-	public void testGetInheritedRoles() {
-		// TODO: implement this operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
-	}
-
-	/**
-	 * Tests the '{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getAllRoles() <em>Get All Roles</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getAllRoles()
-	 * @generated
-	 */
-	public void testGetAllRoles() {
-		// TODO: implement this operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
 	}
 
 } //ClabjectTest

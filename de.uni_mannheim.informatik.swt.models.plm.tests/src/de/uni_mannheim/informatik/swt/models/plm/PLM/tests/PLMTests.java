@@ -43,7 +43,6 @@ public class PLMTests extends TestSuite {
 		suite.addTestSuite(GeneralizationTest.class);
 		suite.addTestSuite(ClassificationTest.class);
 		suite.addTestSuite(ClabjectTest.class);
-		suite.addTestSuite(FeatureTest.class);
 		suite.addTestSuite(EntityTest.class);
 		suite.addTestSuite(ConnectionTest.class);
 		suite.addTestSuite(RoleTest.class);

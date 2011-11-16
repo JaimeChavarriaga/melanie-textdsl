@@ -18,8 +18,6 @@ import junit.textui.TestRunner;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.visualization.Link#getLinkDecorationForRoleName(java.lang.String) <em>Get Link Decoration For Role Name</em>}</li>
- *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.visualization.Link#getLabelDescriptorForRoleName(java.lang.String) <em>Get Label Descriptor For Role Name</em>}</li>
  *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.visualization.Link#getLinkDecorationForRole(de.uni_mannheim.informatik.swt.models.plm.PLM.Role) <em>Get Link Decoration For Role</em>}</li>
  *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.visualization.Link#getLabelDescriptorForRole(de.uni_mannheim.informatik.swt.models.plm.PLM.Role) <em>Get Label Descriptor For Role</em>}</li>
  * </ul>
@@ -78,32 +76,6 @@ public class LinkTest extends ShapeDescriptorTest {
 	@Override
 	protected void tearDown() throws Exception {
 		setFixture(null);
-	}
-
-	/**
-	 * Tests the '{@link de.uni_mannheim.informatik.swt.models.plm.visualization.Link#getLinkDecorationForRoleName(java.lang.String) <em>Get Link Decoration For Role Name</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.uni_mannheim.informatik.swt.models.plm.visualization.Link#getLinkDecorationForRoleName(java.lang.String)
-	 * @generated
-	 */
-	public void testGetLinkDecorationForRoleName__String() {
-		// TODO: implement this operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
-	}
-
-	/**
-	 * Tests the '{@link de.uni_mannheim.informatik.swt.models.plm.visualization.Link#getLabelDescriptorForRoleName(java.lang.String) <em>Get Label Descriptor For Role Name</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.uni_mannheim.informatik.swt.models.plm.visualization.Link#getLabelDescriptorForRoleName(java.lang.String)
-	 * @generated
-	 */
-	public void testGetLabelDescriptorForRoleName__String() {
-		// TODO: implement this operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
 	}
 
 	/**

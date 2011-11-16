@@ -17,6 +17,12 @@ import junit.textui.TestRunner;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>DSL Visualizer</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following operations are tested:
+ * <ul>
+ *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.visualization.DSLVisualizer#getElement() <em>Get Element</em>}</li>
+ * </ul>
+ * </p>
  * @generated
  */
 public class DSLVisualizerTest extends TestCase {
@@ -88,6 +94,19 @@ public class DSLVisualizerTest extends TestCase {
 	@Override
 	protected void tearDown() throws Exception {
 		setFixture(null);
+	}
+
+	/**
+	 * Tests the '{@link de.uni_mannheim.informatik.swt.models.plm.visualization.DSLVisualizer#getElement() <em>Get Element</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.uni_mannheim.informatik.swt.models.plm.visualization.DSLVisualizer#getElement()
+	 * @generated
+	 */
+	public void testGetElement() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
 	}
 
 } //DSLVisualizerTest

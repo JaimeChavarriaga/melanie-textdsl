@@ -36,6 +36,7 @@ public class VisualizationTests extends TestSuite {
 	public static Test suite() {
 		TestSuite suite = new VisualizationTests("visualization Tests");
 		suite.addTestSuite(LinkTest.class);
+		suite.addTestSuite(DSLVisualizerTest.class);
 		return suite;
 	}
 
