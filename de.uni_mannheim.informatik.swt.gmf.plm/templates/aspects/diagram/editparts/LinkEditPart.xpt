@@ -93,6 +93,9 @@
 	 */
 	public void updateView() {
 	
+		ConnectionParticipantsFigure connectionFigure = (ConnectionParticipantsFigure)getFigure();
+		connectionFigure.getChildren().retainAll(java.util.Arrays.asList(new Object[]{connectionFigure.getFigureConnectionParticipantsMultiplicityFigure(), connectionFigure.getFigureConnectionParticipantsNameFigure()}));
+		
 		for (org.eclipse.gef.editparts.AbstractEditPart part : (java.util.List<org.eclipse.gef.editparts.AbstractEditPart>)getChildren())
 			part.refresh();
 		
@@ -208,7 +211,6 @@
 						((de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute) feature
 								.iterator().next()).getValue());
 				label.setParent(connectionFigure);
-				connectionFigure.getChildren().clear();
 				connectionFigure.add(label, new org.eclipse.gmf.runtime.diagram.ui.figures.LabelLocator(connectionFigure, new org.eclipse.draw2d.geometry.Point(-10, -10),
 						org.eclipse.draw2d.ConnectionLocator.SOURCE));
 			}
