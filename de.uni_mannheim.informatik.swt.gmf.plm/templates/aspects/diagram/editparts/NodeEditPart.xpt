@@ -330,7 +330,7 @@
 	 */
 	public void updateDSL() {
 		
-		de.uni_mannheim.informatik.swt.models.plm.PLM.Element self = (de.uni_mannheim.informatik.swt.models.plm.PLM.Element)resolveSemanticElement();
+		de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject self = (de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)resolveSemanticElement();
 		
 		de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IVisualModelToFigureTransformator tranformator = null;
 		
@@ -345,7 +345,7 @@
 		if (dslVisualizer == null)
 			return;
 		
-		org.eclipse.draw2d.IFigure customFigure = tranformator.run(dslVisualizer);
+		org.eclipse.draw2d.IFigure customFigure = tranformator.run(dslVisualizer, self);
 		
 		//It is important to only take the content of the DefaultSizeNode and 
 		//BorderItemContainer. Everything else will break the diagram

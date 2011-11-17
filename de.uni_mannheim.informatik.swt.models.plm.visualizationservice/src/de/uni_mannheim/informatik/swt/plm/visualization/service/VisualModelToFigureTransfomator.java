@@ -86,12 +86,13 @@ public class VisualModelToFigureTransfomator implements IVisualModelToFigureTran
 	
 	private Map<VisualizationDescriptor, IFigure> descriptor2figure = new HashMap<VisualizationDescriptor, IFigure>();
 	private DSLVisualizer visualizer = null;
-	
+	private Clabject clabject = null;
 	
 	@Override
-	public IFigure run(DSLVisualizer v){
+	public IFigure run(DSLVisualizer v, Clabject c){
 		
 		visualizer = v;
+		clabject = c;
 		
 		DefaultSizeNodeFigure defaultSizeNodeFigure = new DefaultSizeNodeFigure(40,40);
 		//If we have border items we need a BorderNodeFigure as outermost container
@@ -280,7 +281,7 @@ public class VisualModelToFigureTransfomator implements IVisualModelToFigureTran
 		try {
 			OCLExpression<EClassifier> q = helper.createQuery("self.feature->select(f | f.oclIsKindOf(Attribute))->select(f | f.name = '"+desc.getExpression()+"')");
 			feature = ((HashSet<de.uni_mannheim.informatik.swt.models.plm.PLM.Feature>) ocl
-					.evaluate(visualizer.getElement(),q))
+					.evaluate(clabject,q))
 					.toArray(new de.uni_mannheim.informatik.swt.models.plm.PLM.Feature[] {});
 		} catch (ParserException e) {
 			e.printStackTrace();
