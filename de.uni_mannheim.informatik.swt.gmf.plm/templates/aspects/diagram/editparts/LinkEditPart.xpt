@@ -93,8 +93,8 @@
 	 */
 	public void updateView() {
 	
-		ConnectionParticipantsFigure connectionFigure = (ConnectionParticipantsFigure)getFigure();
-		connectionFigure.getChildren().retainAll(java.util.Arrays.asList(new Object[]{connectionFigure.getFigureConnectionParticipantsMultiplicityFigure(), connectionFigure.getFigureConnectionParticipantsNameFigure()}));
+		de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.RoleEditPart.ConnectionRoleFigure connectionFigure = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.RoleEditPart.ConnectionRoleFigure)getFigure();
+		connectionFigure.getChildren().retainAll(java.util.Arrays.asList(new Object[]{connectionFigure.getFigureConnectionRoleMultiplicityFigure(), connectionFigure.getFigureConnectionRoleNameFigure()}));
 		
 		for (org.eclipse.gef.editparts.AbstractEditPart part : (java.util.List<org.eclipse.gef.editparts.AbstractEditPart>)getChildren())
 			part.refresh();
@@ -130,9 +130,9 @@
 		
 		//Do the DSL rendering -> Set decoration independent of isNavigable
 		//Set labels independent of DSL rendering
-		de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.RoleEditPart.ConnectionParticipantsFigure connectionFigure = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.RoleEditPart.ConnectionParticipantsFigure)getFigure();
-		connectionFigure.getFigureConnectionParticipantsNameFigure().setText("");
-		connectionFigure.getFigureConnectionParticipantsMultiplicityFigure().setText("");
+		de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.RoleEditPart.ConnectionRoleFigure connectionFigure = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.RoleEditPart.ConnectionRoleFigure)getFigure();
+		connectionFigure.getFigureConnectionRoleNameFigure().setText("");
+		connectionFigure.getFigureConnectionRoleMultiplicityFigure().setText("");
 
 		de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IVisualModelToFigureTransformator transformator = null;
 

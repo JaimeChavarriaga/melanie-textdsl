@@ -689,16 +689,16 @@
           figure="//@figures.0/@descriptors.10/@actualFigure"/>
     </descriptors>
     <descriptors
-        name="ConnectionParticipantsFigure">
+        name="ConnectionRoleFigure">
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"
-          name="ConnectionParticipantsFigure">
+          name="ConnectionRoleFigure">
         <foregroundColor
             xsi:type="gmfgraph:ConstantColor"
             value="black"/>
         <children
             xsi:type="gmfgraph:Label"
-            name="ConnectionParticipantsNameFigure"
+            name="ConnectionRoleNameFigure"
             text="">
           <foregroundColor
               xsi:type="gmfgraph:ConstantColor"
@@ -709,7 +709,7 @@
         </children>
         <children
             xsi:type="gmfgraph:Label"
-            name="ConnectionParticipantsMultiplicityFigure"
+            name="ConnectionRoleMultiplicityFigure"
             text="">
           <font
               xsi:type="gmfgraph:BasicFont"
@@ -1247,36 +1247,10 @@
           figure="//@figures.0/@descriptors.21/@actualFigure/@children.0"/>
     </descriptors>
     <descriptors
-        name="RenderedByLinkFigure">
-      <actualFigure
-          xsi:type="gmfgraph:PolylineConnection"
-          name="RenderedByLinkFigure"
-          lineKind="LINE_DASH"
-          targetDecoration="//@figures.0/@descriptors.22/@actualFigure/@children.0">
-        <foregroundColor
-            xsi:type="gmfgraph:ConstantColor"
-            value="black"/>
-        <children
-            xsi:type="gmfgraph:PolylineDecoration"
-            name="RenderedByLinkFigureTargetDecoration"
-            lineKind="LINE_DASH"/>
-        <children
-            xsi:type="gmfgraph:Label"
-            name="RenderedByNameFigure"
-            text="&lt;&lt;renderedBy>>">
-          <font
-              xsi:type="gmfgraph:BasicFont"
-              height="8"/>
-        </children>
-      </actualFigure>
-      <accessors
-          figure="//@figures.0/@descriptors.22/@actualFigure/@children.1"/>
-    </descriptors>
-    <descriptors
         name="SuperTypeConnectionFigure">
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"
-          targetDecoration="//@figures.0/@descriptors.23/@actualFigure/@children.0">
+          targetDecoration="//@figures.0/@descriptors.22/@actualFigure/@children.0">
         <foregroundColor
             xsi:type="gmfgraph:ConstantColor"
             value="black"/>
@@ -1362,9 +1336,9 @@
         </children>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.25/@actualFigure/@children.0/@children.0"/>
+          figure="//@figures.0/@descriptors.24/@actualFigure/@children.0/@children.0"/>
       <accessors
-          figure="//@figures.0/@descriptors.25/@actualFigure/@children.0/@children.1"/>
+          figure="//@figures.0/@descriptors.24/@actualFigure/@children.0/@children.1"/>
     </descriptors>
   </figures>
   <nodes
@@ -1404,8 +1378,8 @@
       name="VisualizerNode"
       figure="VisualizerFigure"/>
   <connections
-      name="ConnectionParticipants"
-      figure="ConnectionParticipantsFigure"/>
+      name="ConnectionRole"
+      figure="ConnectionRoleFigure"/>
   <connections
       name="Classification"
       figure="ClassificationFigure"/>
@@ -1424,9 +1398,6 @@
   <connections
       name="SubTypeConnection"
       figure="SubTypeConnectionFigure"/>
-  <connections
-      name="RenderedByLink"
-      figure="RenderedByLinkFigure"/>
   <connections
       name="SetRelationshipComplementLink"
       figure="SetRelationshipComplementLinkFigure"/>
@@ -1609,12 +1580,10 @@
       elementIcon="false"
       accessor="//@figures.0/@descriptors.17/@accessors.0"/>
   <labels
-      name="RenderedByFigureName"
-      figure="RenderedByLinkFigure"
-      accessor="//@figures.0/@descriptors.22/@accessors.0"/>
+      name="RenderedByFigureName"/>
   <labels
       name="ConnectionParticipantFigureName"
-      figure="ConnectionParticipantsFigure"
+      figure="ConnectionRoleFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.11/@accessors.0">
     <facets
@@ -1626,7 +1595,7 @@
   </labels>
   <labels
       name="ConnectionParticipantMultiplicity"
-      figure="ConnectionParticipantsFigure"
+      figure="ConnectionRoleFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.11/@accessors.1">
     <facets
@@ -1654,12 +1623,12 @@
       name="VisualizerAttributeValueLabel"
       figure="VisualizerFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.25/@accessors.0"/>
+      accessor="//@figures.0/@descriptors.24/@accessors.0"/>
   <labels
       name="VisualizerPotencyLabel"
       figure="VisualizerFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.25/@accessors.1"/>
+      accessor="//@figures.0/@descriptors.24/@accessors.1"/>
   <labels
       name="SetRelationShipBaseLinkRoleNameLabel"
       figure="SetRelationshipBaseLinkFigure"

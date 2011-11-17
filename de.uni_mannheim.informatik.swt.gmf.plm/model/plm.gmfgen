@@ -1484,9 +1484,9 @@
       </modelFacet>
       <labels
           visualID="5196"
-          editPartClassName="GeneralizationDiscriminantEditPart"
-          itemSemanticEditPolicyClassName="GeneralizationDiscriminantItemSemanticEditPolicy"
-          notationViewFactoryClassName="GeneralizationDiscriminantViewFactory">
+          editPartClassName="GeneralizationNameEditPart"
+          itemSemanticEditPolicyClassName="GeneralizationNameItemSemanticEditPolicy"
+          notationViewFactoryClassName="GeneralizationNameViewFactory">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap
@@ -1508,9 +1508,9 @@
       <labels
           xsi:type="gmfgen:GenExternalNodeLabel"
           visualID="5197"
-          editPartClassName="GeneralizationDiscriminant2EditPart"
-          itemSemanticEditPolicyClassName="GeneralizationDiscriminant2ItemSemanticEditPolicy"
-          notationViewFactoryClassName="GeneralizationDiscriminantViewFactory">
+          editPartClassName="GeneralizationName2EditPart"
+          itemSemanticEditPolicyClassName="GeneralizationName2ItemSemanticEditPolicy"
+          notationViewFactoryClassName="GeneralizationNameViewFactory">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap
@@ -2868,8 +2868,8 @@
           editHelperClassName="RoleEditHelper"/>
       <viewmap
           xsi:type="gmfgen:InnerClassViewmap"
-          className="ConnectionParticipantsFigure"
-          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class ConnectionParticipantsFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureConnectionParticipantsNameFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureConnectionParticipantsMultiplicityFigure; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public ConnectionParticipantsFigure() {&#xA;&#x9;&#x9;&#x9;this.setForegroundColor(org.eclipse.draw2d.ColorConstants.black);&#xA;&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureConnectionParticipantsNameFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureConnectionParticipantsNameFigure.setText(&quot;&quot;);&#xA;&#x9;fFigureConnectionParticipantsNameFigure.setForegroundColor(org.eclipse.draw2d.ColorConstants.black);&#xA;&#xA;fFigureConnectionParticipantsNameFigure.setFont(FFIGURECONNECTIONPARTICIPANTSNAMEFIGURE_FONT);&#xA;&#xA;&#xA;&#xA;this.add(fFigureConnectionParticipantsNameFigure);&#xA;&#xA;&#xA;&#xA;fFigureConnectionParticipantsMultiplicityFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureConnectionParticipantsMultiplicityFigure.setText(&quot;&quot;);&#xA;&#xA;fFigureConnectionParticipantsMultiplicityFigure.setFont(FFIGURECONNECTIONPARTICIPANTSMULTIPLICITYFIGURE_FONT);&#xA;&#xA;&#xA;&#xA;this.add(fFigureConnectionParticipantsMultiplicityFigure);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureConnectionParticipantsNameFigure() {&#xA;&#x9;&#x9;return fFigureConnectionParticipantsNameFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureConnectionParticipantsMultiplicityFigure() {&#xA;&#x9;&#x9;return fFigureConnectionParticipantsMultiplicityFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGURECONNECTIONPARTICIPANTSNAMEFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 8, org.eclipse.swt.SWT.NORMAL);&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGURECONNECTIONPARTICIPANTSMULTIPLICITYFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 8, org.eclipse.swt.SWT.NORMAL);&#xA;&#xA;">
+          className="ConnectionRoleFigure"
+          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class ConnectionRoleFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureConnectionRoleNameFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureConnectionRoleMultiplicityFigure; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public ConnectionRoleFigure() {&#xA;&#x9;&#x9;&#x9;this.setForegroundColor(org.eclipse.draw2d.ColorConstants.black);&#xA;&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureConnectionRoleNameFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureConnectionRoleNameFigure.setText(&quot;&quot;);&#xA;&#x9;fFigureConnectionRoleNameFigure.setForegroundColor(org.eclipse.draw2d.ColorConstants.black);&#xA;&#xA;fFigureConnectionRoleNameFigure.setFont(FFIGURECONNECTIONROLENAMEFIGURE_FONT);&#xA;&#xA;&#xA;&#xA;this.add(fFigureConnectionRoleNameFigure);&#xA;&#xA;&#xA;&#xA;fFigureConnectionRoleMultiplicityFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureConnectionRoleMultiplicityFigure.setText(&quot;&quot;);&#xA;&#xA;fFigureConnectionRoleMultiplicityFigure.setFont(FFIGURECONNECTIONROLEMULTIPLICITYFIGURE_FONT);&#xA;&#xA;&#xA;&#xA;this.add(fFigureConnectionRoleMultiplicityFigure);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureConnectionRoleNameFigure() {&#xA;&#x9;&#x9;return fFigureConnectionRoleNameFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureConnectionRoleMultiplicityFigure() {&#xA;&#x9;&#x9;return fFigureConnectionRoleMultiplicityFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGURECONNECTIONROLENAMEFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 8, org.eclipse.swt.SWT.NORMAL);&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGURECONNECTIONROLEMULTIPLICITYFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 8, org.eclipse.swt.SWT.NORMAL);&#xA;&#xA;">
         <attributes
             xsi:type="gmfgen:StyleAttributes"
             fixedForeground="true"/>
@@ -2898,7 +2898,7 @@
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap
             xsi:type="gmfgen:ParentAssignedViewmap"
-            getterName="getFigureConnectionParticipantsNameFigure"
+            getterName="getFigureConnectionRoleNameFigure"
             figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel">
           <attributes
               xsi:type="gmfgen:StyleAttributes"
@@ -2924,7 +2924,7 @@
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap
             xsi:type="gmfgen:ParentAssignedViewmap"
-            getterName="getFigureConnectionParticipantsMultiplicityFigure"
+            getterName="getFigureConnectionRoleMultiplicityFigure"
             figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel">
           <attributes
               xsi:type="gmfgen:StyleAttributes"
