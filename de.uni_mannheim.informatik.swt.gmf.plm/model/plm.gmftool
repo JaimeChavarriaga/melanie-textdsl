@@ -66,58 +66,6 @@
             path="/icons/connection16.gif"
             bundle="de.uni_mannheim.informatik.swt.gmf.plm"/>
       </tools>
-      <tools
-          xsi:type="gmftool:CreationTool"
-          title="Connection Role"
-          description="Creates a new Connection Role">
-        <smallIcon
-            xsi:type="gmftool:BundleImage"
-            path="/icons/role16.gif"
-            bundle="de.uni_mannheim.informatik.swt.gmf.plm"/>
-        <largeIcon
-            xsi:type="gmftool:BundleImage"
-            path="/icons/role16.gif"
-            bundle="de.uni_mannheim.informatik.swt.gmf.plm"/>
-      </tools>
-      <tools
-          xsi:type="gmftool:CreationTool"
-          title="Attribute"
-          description="Creates a new Attribute">
-        <smallIcon
-            xsi:type="gmftool:BundleImage"
-            path="/icons/field16.gif"
-            bundle="de.uni_mannheim.informatik.swt.gmf.plm"/>
-        <largeIcon
-            xsi:type="gmftool:BundleImage"
-            path="/icons/field16.gif"
-            bundle="de.uni_mannheim.informatik.swt.gmf.plm"/>
-      </tools>
-      <tools
-          xsi:type="gmftool:CreationTool"
-          title="Method"
-          description="Creates a new Method">
-        <smallIcon
-            xsi:type="gmftool:BundleImage"
-            path="/icons/method16.gif"
-            bundle="de.uni_mannheim.informatik.swt.gmf.plm"/>
-        <largeIcon
-            xsi:type="gmftool:BundleImage"
-            path="/icons/method16.gif"
-            bundle="de.uni_mannheim.informatik.swt.gmf.plm"/>
-      </tools>
-      <tools
-          xsi:type="gmftool:CreationTool"
-          title="LML Visualizer"
-          description="Creates a new LML Visualizer">
-        <smallIcon
-            xsi:type="gmftool:BundleImage"
-            path="/icons/lmlVisualizer16.gif"
-            bundle="de.uni_mannheim.informatik.swt.gmf.plm"/>
-        <largeIcon
-            xsi:type="gmftool:BundleImage"
-            path="/icons/lmlVisualizer16.gif"
-            bundle="de.uni_mannheim.informatik.swt.gmf.plm"/>
-      </tools>
     </tools>
     <tools
         xsi:type="gmftool:ToolGroup"
@@ -182,32 +130,6 @@
             path="/icons/setRelationship16.gif"
             bundle="de.uni_mannheim.informatik.swt.gmf.plm"/>
       </tools>
-      <tools
-          xsi:type="gmftool:CreationTool"
-          title="Base"
-          description="Creates a new Set Relation Base">
-        <smallIcon
-            xsi:type="gmftool:BundleImage"
-            path="/icons/setRelationshipEnd16.gif"
-            bundle="de.uni_mannheim.informatik.swt.gmf.plm"/>
-        <largeIcon
-            xsi:type="gmftool:BundleImage"
-            path="/icons/setRelationshipEnd16.gif"
-            bundle="de.uni_mannheim.informatik.swt.gmf.plm"/>
-      </tools>
-      <tools
-          xsi:type="gmftool:CreationTool"
-          title="Target"
-          description="Creates a new Set Relation Target">
-        <smallIcon
-            xsi:type="gmftool:BundleImage"
-            path="/icons/setRelationshipEnd16.gif"
-            bundle="de.uni_mannheim.informatik.swt.gmf.plm"/>
-        <largeIcon
-            xsi:type="gmftool:BundleImage"
-            path="/icons/setRelationshipEnd16.gif"
-            bundle="de.uni_mannheim.informatik.swt.gmf.plm"/>
-      </tools>
     </tools>
     <tools
         xsi:type="gmftool:ToolGroup"
@@ -225,32 +147,6 @@
         <largeIcon
             xsi:type="gmftool:BundleImage"
             path="/icons/inheritance16.gif"
-            bundle="de.uni_mannheim.informatik.swt.gmf.plm"/>
-      </tools>
-      <tools
-          xsi:type="gmftool:CreationTool"
-          title="Supertype"
-          description="Create new Supertype">
-        <smallIcon
-            xsi:type="gmftool:BundleImage"
-            path="/icons/superType16.gif"
-            bundle="de.uni_mannheim.informatik.swt.gmf.plm"/>
-        <largeIcon
-            xsi:type="gmftool:BundleImage"
-            path="/icons/superType16.gif"
-            bundle="de.uni_mannheim.informatik.swt.gmf.plm"/>
-      </tools>
-      <tools
-          xsi:type="gmftool:CreationTool"
-          title="Subtype"
-          description="Create new Subtype">
-        <smallIcon
-            xsi:type="gmftool:BundleImage"
-            path="/icons/subType16.gif"
-            bundle="de.uni_mannheim.informatik.swt.gmf.plm"/>
-        <largeIcon
-            xsi:type="gmftool:BundleImage"
-            path="/icons/subType16.gif"
             bundle="de.uni_mannheim.informatik.swt.gmf.plm"/>
       </tools>
     </tools>
