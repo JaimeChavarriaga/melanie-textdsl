@@ -24,6 +24,7 @@ import org.eclipse.core.commands.ExecutionException;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Role;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.CompositeCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MultiplicityCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.MultiplicityRoleNameCheck;
@@ -75,37 +76,34 @@ public class MultiplicityConformsCommand extends AbstractHandler {
 		}
 		domainSearch.setResult(true);
 		result.setNoOfDomainConnection(domain.size());
-		//FIXME: change to roles
-//		for (String rN:con.getRoleName()) {
-//			MultiplicityRoleNameCheck roleCheck = ReasoningResultFactory.eINSTANCE.createMultiplicityRoleNameCheck();
-//			roleCheck.setRoleName(rN);
-//			result.getCheck().add(roleCheck);
-//			Map<Clabject,Integer> count = new HashMap<Clabject, Integer>();
-//			
-//			int lower = 0; //con.getLowerForRoleName(rN);
-//			int upper = 0; //con.getUpperForRoleName(rN);
-//			roleCheck.setLower(lower);
-//			roleCheck.setUpper(upper);
-//			for (Connection delta:domain) {
-//				//FIXME: change to roles
-//				/*for (Clabject part:delta.getParticipant()) {
-//					if (!delta.getParticipantForRoleName(rN).equals(part)) {
-//						if (!count.containsKey(part)) {
-//							count.put(part, 0);
-//						}
-//						count.put(part, count.get(part) + 1);
-//					}
-//				}*/
-//			}
-//			for (Entry<Clabject,Integer> entry:count.entrySet()) {
-//				Integer value = entry.getValue();
-//				roleCheck.getCounts().add(value);
-//				if (value < lower || (upper != -1 && value > upper)) {
-//					return result;
-//				}
-//			}
-//			roleCheck.setResult(true);
-//		}
+		for (Role r:con.getAllRoles()) {
+			MultiplicityRoleNameCheck roleCheck = ReasoningResultFactory.eINSTANCE.createMultiplicityRoleNameCheck();
+			roleCheck.setRoleName(r.getRoleName());
+			result.getCheck().add(roleCheck);
+			Map<Clabject,Integer> count = new HashMap<Clabject, Integer>();
+			int lower = r.getLower();
+			int upper = r.getUpper();
+			roleCheck.setLower(lower);
+			roleCheck.setUpper(upper);
+			for (Connection domCon: domain) {
+				for (Clabject part:domCon.getParticipants()) {
+					if (!domCon.getParticipantForRoleName(r.getRoleName()).equals(part)) {
+						if (!count.containsKey(part)) {
+							count.put(part, 0);
+						}
+						count.put(part, count.get(part) + 1);
+					}
+				}
+			}
+			for (Entry<Clabject,Integer> entry:count.entrySet()) {
+				Integer value = entry.getValue();
+				roleCheck.getCounts().add(value);
+				if (value < lower || (upper != -1 && value > upper)) {
+					return result;
+				}
+			}
+			roleCheck.setResult(true);
+		}
 		result.setResult(true);
 		return result;
 	}

@@ -40,6 +40,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Generalization;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Role;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.CompositeCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultFactory;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultModel;
@@ -607,16 +608,15 @@ public class ReasoningService implements IReasoningService {
 		if (!localConstructionConformsConnection(type, instance)) {
 			return false;
 		}
-		//FIXME: change to roles
-		//for (String rN: instance.getRoleName()) {
-//			Clabject destI = null; //instance.getParticipantForRoleName(rN);
-//			Clabject destT = null; //type.getParticipantForRoleName(rN);
-//			if (!run(LOCAL_CONFORMS, new Object[]{destT, destI}, true)) {
-//				System.out.println("Wrong roleName " + rN);
-//				return false;
-			//}
-		//}
-		return true;
+		for (Role r:instance.getAllRoles()) {
+			Clabject destI = instance.getParticipantForRoleName(r.getRoleName());
+			Clabject destT = type.getParticipantForRoleName(r.getRoleName());
+			if (!run(LOCAL_CONFORMS, new Object[]{destT, destI}, true)) {
+				System.out.println("Wrong roleName " + r.getRoleName());
+				return false;
+			}
+		}
+		return true; 
 	}
 
 	@Override

@@ -19,6 +19,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Entity;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Role;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.CompositeCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.FeatureSearchCheck;
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.LevelComparison;
@@ -100,21 +101,19 @@ public class LocalConformsCommand extends AbstractHandler {
 		} 
 		CompositeCheck roleCheck = reasoner.createCompositeCheck("LocalConformance[RoleName]", instance, type, "$ forall rN_t in delta_t.roleName: (exists rN_i in delta_i.roleName: rN_i = rN_t land delta_i.isNav(rN_t) = delta_t.isNav(rN_t)))$");
 		result.getCheck().add(roleCheck);
-		//FIXME: Change to roles
-//		for (String rN : type.getRoleName()) {
-//			RoleNameLocalConformanceCheck roleNameCheck = ReasoningResultFactory.eINSTANCE.createRoleNameLocalConformanceCheck(instance, type, roleCheck);
-//			roleNameCheck.setName(rN);
-//			roleNameCheck.setRoleName(rN);
-//			boolean found = instance.getRoleName().contains(rN);
-//			if (!found) {
-//				return result;
-//			} 
-			//FIXME: Change to roles
-			//if (! (instance.isNavigableForRoleName(rN) == (type.isNavigableForRoleName(rN)))) {
-			//	return result;
-			//}
-//			roleNameCheck.setResult(true);
-//		}
+		for (Role r: type.getRole()) {
+			RoleNameLocalConformanceCheck roleNameCheck = ReasoningResultFactory.eINSTANCE.createRoleNameLocalConformanceCheck(instance, type, roleCheck);
+			roleNameCheck.setName(r.getRoleName());
+			roleNameCheck.setRoleName(r.getRoleName());
+			boolean found = instance.getRoleNames().contains(r.getRoleName());
+			if (!found) {
+				return result;
+			} 
+			if (! (instance.isNavigableForRoleName(r.getRoleName()) == (type.isNavigableForRoleName(r.getRoleName())))) {
+				return result;
+			}
+			roleNameCheck.setResult(true);
+		}
 		roleCheck.setResult(true);
 		result.setResult(true);
 		return result;

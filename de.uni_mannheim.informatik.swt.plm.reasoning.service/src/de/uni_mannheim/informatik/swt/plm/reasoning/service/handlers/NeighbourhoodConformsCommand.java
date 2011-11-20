@@ -80,27 +80,26 @@ public class NeighbourhoodConformsCommand extends AbstractHandler {
 		if (!localC.isResult()) {
 			return result;
 		}
-		//FIXME: Change to roles
-//		for (String rN:type.getAllAssociateRoleNames()) {
-//			RoleNameLocalConformanceCheck rCheck = ReasoningResultFactory.eINSTANCE.createRoleNameLocalConformanceCheck();
-//			result.getCheck().add(rCheck);
-//			rCheck.setRoleName(rN);
-//			rCheck.setResult(true);
-//			for (Clabject t :type.getAllAssociatesForRoleName(rN)) {
-//				boolean found = false;
-//				for (Clabject i:instance.getAllAssociatesForRoleName(rN)) {
-//					CompositeCheck innerLocal = (new LocalConformsCommand()).compute(t,i);
-//					rCheck.getCheck().add(innerLocal);
-//					if (innerLocal.isResult()) {
-//						found = true;
-//						break;
-//					}
-//				}
-//				if (!found) {
-//					rCheck.setResult(false);
-//				}
-//			}
-//		}
+		for (String rN: type.getDomainRoleNames()) {
+			RoleNameLocalConformanceCheck rCheck = ReasoningResultFactory.eINSTANCE.createRoleNameLocalConformanceCheck();
+			result.getCheck().add(rCheck);
+			rCheck.setRoleName(rN);
+			rCheck.setResult(true);
+			for (Clabject t :type.getDomainForRoleName(rN)) {
+				boolean found = false;
+				for (Clabject i:instance.getDomainForRoleName(rN)) {
+					CompositeCheck innerLocal = (new LocalConformsCommand()).compute(t,i);
+					rCheck.getCheck().add(innerLocal);
+					if (innerLocal.isResult()) {
+						found = true;
+						break;
+					}
+				}
+				if (!found) {
+					rCheck.setResult(false);
+				}
+			}
+		}
 		ConnectionsLocalConformanceCheck conCheck = ReasoningResultFactory.eINSTANCE.createConnectionsLocalConformanceCheck();
 		conCheck.setResult(true);
 		result.getCheck().add(conCheck);
@@ -117,15 +116,14 @@ public class NeighbourhoodConformsCommand extends AbstractHandler {
 				iCheck.getCheck().add(innerstLocal);
 				if (innerstLocal.isResult()) {
 					boolean error = false;
-					//FIXME: Change to roles
-					/*for (String rN: t.getRoleName()) {
+					for (String rN: t.getRoleNames()) {
 						CompositeCheck partLocal = (new LocalConformsCommand()).compute(t.getParticipantForRoleName(rN), i.getParticipantForRoleName(rN));
 						iCheck.getCheck().add(partLocal);
 						if (!partLocal.isResult()) {
 							error = true;
 							break;
 						}
-					}*/
+					} 
 					if (!error) {
 						found = true;
 						iCheck.setResult(true);
@@ -153,18 +151,17 @@ public class NeighbourhoodConformsCommand extends AbstractHandler {
 		}
 		CompositeCheck roleNames = reasoner.createCompositeCheck("RoleNamesLocalConform", instance, type, "blah");
 		result.getCheck().add(roleNames);
-//		for (String rN: type.getRoleName()) {
-//			RoleNameLocalConformanceCheck roleCheck = ReasoningResultFactory.eINSTANCE.createRoleNameLocalConformanceCheck();
-//			roleNames.getCheck().add(roleCheck);
-//			roleCheck.setRoleName(rN);
-//			//FIXME: Change to roles
-//			CompositeCheck parts = ReasoningResultFactory.eINSTANCE.createCompositeCheck();//(new LocalConformsCommand()).compute(type.getParticipantForRoleName(rN), instance.getParticipantForRoleName(rN));
-//			roleCheck.getCheck().add(parts);
-//			if (!parts.isResult()) {
-//				return result;
-//			}
-//			roleCheck.setResult(true);
-//		}
+		for (String rN: type.getRoleNames()) {
+			RoleNameLocalConformanceCheck roleCheck = ReasoningResultFactory.eINSTANCE.createRoleNameLocalConformanceCheck();
+			roleNames.getCheck().add(roleCheck);
+			roleCheck.setRoleName(rN);
+			CompositeCheck parts = (new LocalConformsCommand()).compute(type.getParticipantForRoleName(rN), instance.getParticipantForRoleName(rN));
+			roleCheck.getCheck().add(parts);
+			if (!parts.isResult()) {
+				return result;
+			}
+			roleCheck.setResult(true);
+		}
 		roleNames.setResult(true);
 		result.setResult(true);
 		return result;
