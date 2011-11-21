@@ -259,8 +259,8 @@ context Generalization {
 			check: (self.disjoint.isDefined() or self.complete.isDefined()) implies (self.intersection.isUndefined())
 			message: 'Complete/disjoint and intersection cannot be set at the same time.'
 		}
-		constraint onlyDisjointCompleteSet{
-			check: (self.isDefined()) implies (self.disjoint.isUndefined() or self.complete.isUndefined())
+		constraint onlyIntersectionSet{
+			check: (self.intersection.isDefined()) implies (self.disjoint.isUndefined() or self.complete.isUndefined())
 			message: 'Complete/disjoint and intersection cannot be set at the same time.'
 		}
 	}
