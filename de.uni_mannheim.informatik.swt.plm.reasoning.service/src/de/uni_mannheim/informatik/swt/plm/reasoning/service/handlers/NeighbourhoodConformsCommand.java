@@ -82,10 +82,13 @@ public class NeighbourhoodConformsCommand extends AbstractHandler {
 		}
 		for (String rN: type.getDomainRoleNames()) {
 			RoleNameLocalConformanceCheck rCheck = ReasoningResultFactory.eINSTANCE.createRoleNameLocalConformanceCheck();
+			rCheck.setName("RoleName localConformance: " + rN);
+			rCheck.setExpression(type.getName() + ".getDomainRoleNames()->forAll(rn| "+type.getName() + ".getDomainForRoleName(rn)->forAll(t | "+instance.getName()+".getDomainForRoleName(rn)->exists(i|i.localConforms(t)))");
 			result.getCheck().add(rCheck);
 			rCheck.setRoleName(rN);
 			rCheck.setResult(true);
 			for (Clabject t :type.getDomainForRoleName(rN)) {
+//				System.out.println(t);
 				boolean found = false;
 				for (Clabject i:instance.getDomainForRoleName(rN)) {
 					CompositeCheck innerLocal = (new LocalConformsCommand()).compute(t,i);
@@ -104,31 +107,17 @@ public class NeighbourhoodConformsCommand extends AbstractHandler {
 		conCheck.setResult(true);
 		result.getCheck().add(conCheck);
 		for(Connection t:type.getAllConnections()) {
-			CompositeCheck tCheck = reasoner.createCompositeCheck(t.getName(), instance, t, "keine ahnung");
+			CompositeCheck tCheck = reasoner.createCompositeCheck(t.getName(), instance, t, instance.getName() + ".connections()->exists(c|c.localConforms("+ t.getName() + "))");
 			tCheck.setResult(true);
 			conCheck.getCheck().add(tCheck);
 			conCheck.setNoTypeConnections(conCheck.getNoTypeConnections() + 1);
 			boolean found = false;
 			for (Connection i: instance.getAllConnections()) {
-				CompositeCheck iCheck = reasoner.createCompositeCheck(i.getName(), t, i, "immernoch keine ahnung");
-				tCheck.getCheck().add(iCheck);
 				CompositeCheck innerstLocal = (new LocalConformsCommand()).compute(t, i);
-				iCheck.getCheck().add(innerstLocal);
+				tCheck.getCheck().add(innerstLocal);
 				if (innerstLocal.isResult()) {
-					boolean error = false;
-					for (String rN: t.getRoleNames()) {
-						CompositeCheck partLocal = (new LocalConformsCommand()).compute(t.getParticipantForRoleName(rN), i.getParticipantForRoleName(rN));
-						iCheck.getCheck().add(partLocal);
-						if (!partLocal.isResult()) {
-							error = true;
-							break;
-						}
-					} 
-					if (!error) {
-						found = true;
-						iCheck.setResult(true);
-						break;
-					}
+					found = true;
+					break;
 				}
 			}
 			if (!found) {
@@ -155,6 +144,7 @@ public class NeighbourhoodConformsCommand extends AbstractHandler {
 			RoleNameLocalConformanceCheck roleCheck = ReasoningResultFactory.eINSTANCE.createRoleNameLocalConformanceCheck();
 			roleNames.getCheck().add(roleCheck);
 			roleCheck.setRoleName(rN);
+			roleCheck.setExpression(instance.getName()+ ".getParticipantForRoleName("+ rN + ").localConforms(" +type.getName() + ".getParticipantForRoleName(" + rN + "))");
 			CompositeCheck parts = (new LocalConformsCommand()).compute(type.getParticipantForRoleName(rN), instance.getParticipantForRoleName(rN));
 			roleCheck.getCheck().add(parts);
 			if (!parts.isResult()) {
