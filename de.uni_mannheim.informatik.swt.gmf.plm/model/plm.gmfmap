@@ -1331,7 +1331,7 @@
       <diagramLabel
           href="plm.gmfgraph#ConnectionParticipantFigureName"/>
       <viewExpression
-          body="if (self.roleName.oclIsUndefined()) then&#xD;&#xA;&#x9;''&#xD;&#xA;else&#xD;&#xA;&#x9;self.roleName&#xD;&#xA;endif"/>
+          body="if (self.expressedRoleName.oclIsUndefined()) then&#xD;&#xA;&#x9;''&#xD;&#xA;else&#xD;&#xA;&#x9;self.expressedRoleName&#xD;&#xA;endif"/>
     </labelMappings>
     <labelMappings
         xsi:type="gmfmap:ExpressionLabelMapping"

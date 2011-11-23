@@ -55,7 +55,7 @@
 			
 			if (typeRole != null){
 				newElement.setNavigable(typeRole.isNavigable());
-				newElement.setRoleName(typeRole.getRoleName());
+				newElement.setExpressedRoleName(typeRole.getExpressedRoleName());
 				newElement.setLower(typeRole.getLower());
 				newElement.setUpper(typeRole.getUpper());
 			}

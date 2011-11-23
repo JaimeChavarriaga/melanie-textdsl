@@ -180,7 +180,7 @@ context Element {
 context Connection {
 	constraint roleNameUnique {
 		check{
-			var names = self.role->select(r | not r.hasDefaultRoleName())->collect(r | r.roleName);
+			var names = self.role->select(r | not r.hasDefaultRoleName())->collect(r | r.roleName());
 		 	return names->forAll(n|names.count(n) = 1);
 		}
 		message: 'The role names of connection \'' + self.name + '\' are not unique'
