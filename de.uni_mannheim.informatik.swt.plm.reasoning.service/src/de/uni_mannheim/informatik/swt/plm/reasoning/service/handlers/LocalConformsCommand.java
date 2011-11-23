@@ -105,13 +105,13 @@ public class LocalConformsCommand extends AbstractHandler {
 		result.getCheck().add(roleCheck);
 		for (Role r: type.getRole()) {
 			RoleNameLocalConformanceCheck roleNameCheck = ReasoningResultFactory.eINSTANCE.createRoleNameLocalConformanceCheck(instance, type, roleCheck);
-			roleNameCheck.setName(r.getRoleName());
-			roleNameCheck.setRoleName(r.getRoleName());
-			boolean found = instance.getRoleNames().contains(r.getRoleName());
+			roleNameCheck.setName(r.roleName());
+			roleNameCheck.setRoleName(r.roleName());
+			boolean found = instance.getRoleNames().contains(r.roleName());
 			if (!found) {
 				return result;
 			} 
-			if (! (instance.isNavigableForRoleName(r.getRoleName()) == (type.isNavigableForRoleName(r.getRoleName())))) {
+			if (! (instance.isNavigableForRoleName(r.roleName()) == (type.isNavigableForRoleName(r.roleName())))) {
 				return result;
 			}
 			roleNameCheck.setResult(true);

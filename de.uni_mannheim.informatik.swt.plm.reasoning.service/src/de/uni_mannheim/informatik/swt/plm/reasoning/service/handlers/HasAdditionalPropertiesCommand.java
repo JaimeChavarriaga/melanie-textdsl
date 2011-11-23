@@ -90,11 +90,11 @@ public class HasAdditionalPropertiesCommand extends AbstractHandler {
 		for (Role r: instance.getAllNavigations()) {
 			CompositeCheck roleCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck(instance, type, navigationsCheck);
 			roleCheck.setName(r.represent());
-			for(Clabject associate_i: instance.getDomainForRoleName(r.getRoleName())) {
+			for(Clabject associate_i: instance.getDomainForRoleName(r.roleName())) {
 				CompositeCheck associateCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck(instance, type, roleCheck);
 				associateCheck.setName(associate_i.getName());
 				boolean found = true;
-				for (Clabject associate_t:type.getDomainForRoleName(r.getRoleName())) {
+				for (Clabject associate_t:type.getDomainForRoleName(r.roleName())) {
 					CompositeCheck actualAssociateCheck = null;
 					if (complexNavigationSearch) {
 						 actualAssociateCheck = (new PropertyConformsCommand()).compute(associate_t, associate_i);

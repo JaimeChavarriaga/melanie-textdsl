@@ -78,7 +78,7 @@ public class MultiplicityConformsCommand extends AbstractHandler {
 		result.setNoOfDomainConnection(domain.size());
 		for (Role r:con.getAllRoles()) {
 			MultiplicityRoleNameCheck roleCheck = ReasoningResultFactory.eINSTANCE.createMultiplicityRoleNameCheck();
-			roleCheck.setRoleName(r.getRoleName());
+			roleCheck.setRoleName(r.roleName());
 			result.getCheck().add(roleCheck);
 			Map<Clabject,Integer> count = new HashMap<Clabject, Integer>();
 			int lower = r.getLower();
@@ -87,7 +87,7 @@ public class MultiplicityConformsCommand extends AbstractHandler {
 			roleCheck.setUpper(upper);
 			for (Connection domCon: domain) {
 				for (Clabject part:domCon.getParticipants()) {
-					if (!domCon.getParticipantForRoleName(r.getRoleName()).equals(part)) {
+					if (!domCon.getParticipantForRoleName(r.roleName()).equals(part)) {
 						if (!count.containsKey(part)) {
 							count.put(part, 0);
 						}
