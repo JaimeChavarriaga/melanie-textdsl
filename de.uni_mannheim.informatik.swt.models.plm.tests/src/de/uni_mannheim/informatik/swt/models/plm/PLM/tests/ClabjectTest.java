@@ -128,6 +128,20 @@ public class ClabjectTest extends DomainElementTest {
 	/**
 	 * Tests the '{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getModel() <em>Get Model</em>}' operation.
 	 * <!-- begin-user-doc -->
+	 * <p>
+	 * 
+	 * <table>
+	 * 	<tr>
+	 * 		<th>Case1</th>
+	 * 		<th>Case2</th>
+	 * 		<th>Case3</th>
+	 * 	</tr>
+	 * 	<tr>
+	 * 		<td><img src="doc-files/Clabject/GetModel/case1.png" /></td>
+	 *      <td><img src="doc-files/Clabject/GetModel/case2.png" /></td>
+	 *      <td><img src="doc-files/Clabject/GetModel/case3.png" /></td>
+	 *  </tr>
+	 * </table>
 	 * <!-- end-user-doc -->
 	 * @see de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getModel()
 	 * 
@@ -147,18 +161,18 @@ public class ClabjectTest extends DomainElementTest {
 		ontology.getContent().add(o0);
 		ontology.getContent().add(o1);
 
-		//Clabject directly contained in model
+		//Clabject directly contained in model - Case 1
 		Clabject clabjectContainedInO0 = PLMFactory.eINSTANCE.createClabject();
 		o0.getContent().add(clabjectContainedInO0);
 		
 		assertEquals(o0, clabjectContainedInO0.getModel());
 		
-		//Clabject contained in clabject
+		//Clabject contained in clabject - Case 2
 		Clabject clabjectContainedInClabjectContainedInO0 = PLMFactory.eINSTANCE.createClabject();
 		clabjectContainedInO0.getContent().add(clabjectContainedInClabjectContainedInO0);
 		assertEquals(o0, clabjectContainedInClabjectContainedInO0.getModel());
 		
-		//Clabject neither contained in model nor clabject
+		//Clabject neither contained in model nor clabject - Case 3
 		Clabject clabjectNotContained = PLMFactory.eINSTANCE.createClabject();
 		assertEquals(null, clabjectNotContained.getModel());
 	}
@@ -166,14 +180,89 @@ public class ClabjectTest extends DomainElementTest {
 	/**
 	 * Tests the '{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getModelSupertypes() <em>Get Model Supertypes</em>}' operation.
 	 * <!-- begin-user-doc -->
+	 * <p>
+	 * 
+	 * <table>
+	 * 	<tr>
+	 * 		<th>Case1</th>
+	 * 		<th>Case2</th>
+	 * 		<th>Case3</th>
+	 * 	</tr>
+	 * 	<tr>
+	 * 		<td><img src="doc-files/Clabject/GetModelSupertypes/case1.png" /></td>
+	 *		<td><img src="doc-files/Clabject/GetModelSupertypes/case2.png" /></td>
+	 *		<td><img src="doc-files/Clabject/GetModelSupertypes/case3.png" /></td>
+	 *  </tr>
+	 * </table>
 	 * <!-- end-user-doc -->
 	 * @see de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getModelSupertypes()
 	 * @generated
 	 */
 	public void testGetModelSupertypes() {
-		// TODO: implement this operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
+		Ontology ontology = PLMFactory.eINSTANCE.createOntology();
+		ontology.setName("Containing Ontology");
+		
+		Model o0 =  PLMFactory.eINSTANCE.createModel();
+		o0.setName("O_0");
+		
+		// here we have one subClass, one superClass and one supSupClass - case 1
+		Clabject subClass = PLMFactory.eINSTANCE.createClabject();
+		o0.getContent().add(subClass);
+		subClass.setName("subClass");
+		
+		Clabject superClass = PLMFactory.eINSTANCE.createClabject();
+		o0.getContent().add(superClass);
+		superClass.setName("superClass");
+		
+		Generalization generalization = PLMFactory.eINSTANCE.createGeneralization();
+		o0.getContent().add(generalization);
+		generalization.setName("generalization");
+		generalization.getSubtype().add(subClass);
+		generalization.getSupertype().add(superClass);
+		
+		Clabject superSuperClass = PLMFactory.eINSTANCE.createClabject();
+		o0.getContent().add(superSuperClass);
+		superSuperClass.setName("superSuperClass");
+		
+		Generalization generalization2 = PLMFactory.eINSTANCE.createGeneralization();
+		o0.getContent().add(generalization2);
+		generalization2.setName("generalization2");
+		generalization2.getSubtype().add(superClass);
+		generalization2.getSupertype().add(superSuperClass);
+		
+		assertTrue(subClass.getModelSupertypes().contains(superClass));
+		assertTrue(subClass.getModelSupertypes().contains(superSuperClass));
+		
+		// one superClass has two superSuperClasses - case 2
+		Clabject superSuperClass2 = PLMFactory.eINSTANCE.createClabject();
+		o0.getContent().add(superSuperClass2);
+		generalization2.getSupertype().add(superSuperClass2);
+		
+		assertTrue(subClass.getModelSupertypes().contains(superSuperClass)
+					&& subClass.getModelSupertypes().contains(superSuperClass2));
+		
+		// case 3
+		Clabject superClass2 = PLMFactory.eINSTANCE.createClabject();
+		o0.getContent().add(superClass2);
+		
+		Clabject superSuperClass3 = PLMFactory.eINSTANCE.createClabject();
+		o0.getContent().add(superSuperClass3);
+		
+		Generalization generalization3 = PLMFactory.eINSTANCE.createGeneralization();
+		o0.getContent().add(generalization3);
+		generalization3.getSubtype().add(superClass2);
+		generalization3.getSupertype().add(superSuperClass3);
+		
+		Generalization generalization4 = PLMFactory.eINSTANCE.createGeneralization();
+		o0.getContent().add(generalization4);
+		generalization4.getSubtype().add(subClass);
+		generalization4.getSupertype().add(superClass2);
+		
+		assertTrue(subClass.getModelSupertypes().contains(superClass)
+					&& subClass.getModelSupertypes().contains(superClass2)
+					&& subClass.getModelSupertypes().contains(superSuperClass2)
+					&& subClass.getModelSupertypes().contains(superSuperClass3));
+		
 	}
 
 	/**
@@ -252,6 +341,7 @@ public class ClabjectTest extends DomainElementTest {
 		// TODO: implement this operation test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();
+		
 	}
 
 	/**
@@ -557,6 +647,22 @@ public class ClabjectTest extends DomainElementTest {
 	 * Tests the '{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getModelDirectSuperTypes() <em>Get Model Direct Super Types</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
+	 * <p>
+	 * 
+	 * <table>
+	 * 	<tr>
+	 * 		<th>Case1</th>
+	 * 		<th>Case2</th>
+	 * 		<th>Case3</th>
+	 * 	</tr>
+	 * 	<tr>
+	 * 		<td><img src="doc-files/Clabject/GetModelDirectSuperTypes/case1.png" /></td>
+	 *      <td><img src="doc-files/Clabject/GetModelDirectSuperTypes/case2.png" /></td>
+	 *      <td><img src="doc-files/Clabject/GetModelDirectSuperTypes/case3.png" /></td>
+	 *  </tr>
+	 * </table>
+	 * 
 	 * @see de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getModelDirectSuperTypes()
 	 * @generated NOT
 	 */
@@ -579,10 +685,10 @@ public class ClabjectTest extends DomainElementTest {
 		generalization.getSupertype().add(superClass);
 		o0.getContent().add(generalization);
 		
-		//Here we do have only one direct supertype
+		//Here we do have only one direct supertype - Case 1
 		assertEquals(superClass, subClass.getModelDirectSupertypes().get(0));
 		
-		//Here we have two direct supertypes
+		//Here we have two direct supertypes - Case 2
 		Clabject superClass2 = PLMFactory.eINSTANCE.createClabject();
 		superClass2.setName("superClass2");
 		generalization.getSupertype().add(superClass2);
@@ -590,7 +696,7 @@ public class ClabjectTest extends DomainElementTest {
 		assertTrue(subClass.getModelDirectSupertypes().contains(superClass) 
 						&& subClass.getModelDirectSupertypes().contains(superClass2));
 		
-		//Here we have a second generalization
+		//Here we have a second generalization - Case 3
 		Generalization generalization2 = PLMFactory.eINSTANCE.createGeneralization();
 		generalization2.getSubtype().add(subClass);
 		o0.getContent().add(generalization2);
@@ -607,6 +713,17 @@ public class ClabjectTest extends DomainElementTest {
 	/**
 	 * Tests the '{@link de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getModelGeneralizationsAsSubType() <em>Get Model Generalizations As Sub Type</em>}' operation.
 	 * <!-- begin-user-doc -->
+	 *  <p>
+	 * <table>
+	 * 	<tr>
+	 * 		<th>Case1</th>
+	 * 		<th>Case2</th>
+	 * 	</tr>
+	 * 	<tr>
+	 * 		<td><img src="doc-files/Clabject/GetModelGeneralizationsAsSubType/case1.png" /></td>
+	 *      <td><img src="doc-files/Clabject/GetModelGeneralizationsAsSubType/case2.png" /></td>
+	 *  </tr>
+	 * </table>
 	 * <!-- end-user-doc -->
 	 * @see de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject#getModelGeneralizationsAsSubType()
 	 * @generated NOT
@@ -629,10 +746,10 @@ public class ClabjectTest extends DomainElementTest {
 		generalization.setName("generalization");
 		o0.getContent().add(generalization);
 		
-		//single superClass, single subClass, single generalization
+		//Here we have single superClass, single subClass, single generalization - Case 1
 		assertEquals(generalization, subClass.getModelGeneralizationsAsSubtype().get(0));
 			
-		//two superClass, single subClasses, two generalizations
+		//Here we have two superClass, single subClasses, two generalizations - Case 2
 		Clabject superClass2 = PLMFactory.eINSTANCE.createClabject();
 		o0.getContent().add(superClass2);
 		
