@@ -12,6 +12,13 @@
           name="OntologyFigure"
           cornerWidth="20"
           cornerHeight="20">
+        <layout
+            xsi:type="gmfgraph:FlowLayout"
+            vertical="true"
+            matchMinorSize="true"
+            forceSingleLine="true"
+            majorSpacing="0"
+            minorSpacing="0"/>
         <foregroundColor
             xsi:type="gmfgraph:ConstantColor"
             value="black"/>
@@ -20,66 +27,53 @@
             dy="350"/>
         <children
             xsi:type="gmfgraph:Rectangle"
-            name="InnerRectangel"
+            name="NameArea"
             outline="false"
             fill="false">
           <layout
-              xsi:type="gmfgraph:FlowLayout"
-              vertical="true"
-              matchMinorSize="true"
-              forceSingleLine="true"
-              majorAlignment="CENTER"
-              minorAlignment="CENTER"
-              majorSpacing="0"
-              minorSpacing="0"/>
-          <maximumSize
-              dy="50"/>
+              xsi:type="gmfgraph:GridLayout">
+            <margins
+                dx="3"/>
+            <spacing/>
+          </layout>
+          <preferredSize
+              dy="25"/>
           <children
-              xsi:type="gmfgraph:Rectangle"
-              name="NameArea"
-              outline="false"
-              fill="false">
-            <layout
-                xsi:type="gmfgraph:GridLayout">
-              <margins
-                  dx="3"/>
-              <spacing/>
-            </layout>
-            <children
-                xsi:type="gmfgraph:Label"
-                name="OntologyNameFigure"
-                text="">
-              <layoutData
-                  xsi:type="gmfgraph:GridLayoutData"
-                  grabExcessHorizontalSpace="true"
-                  grabExcessVerticalSpace="true"/>
-              <font
-                  xsi:type="gmfgraph:BasicFont"
-                  height="10"/>
-            </children>
-            <children
-                xsi:type="gmfgraph:Label"
-                name="OntologyAVSFigure">
-              <layoutData
-                  xsi:type="gmfgraph:GridLayoutData"
-                  grabExcessHorizontalSpace="true"
-                  grabExcessVerticalSpace="true"/>
-              <font
-                  xsi:type="gmfgraph:BasicFont"
-                  height="8"/>
-            </children>
+              xsi:type="gmfgraph:Label"
+              name="OntologyNameFigure"
+              text="">
+            <layoutData
+                xsi:type="gmfgraph:GridLayoutData"
+                grabExcessHorizontalSpace="true"
+                grabExcessVerticalSpace="true"/>
+            <font
+                xsi:type="gmfgraph:BasicFont"
+                height="10"/>
+          </children>
+          <children
+              xsi:type="gmfgraph:Label"
+              name="OntologyAVSFigure">
+            <layoutData
+                xsi:type="gmfgraph:GridLayoutData"
+                grabExcessHorizontalSpace="true"
+                grabExcessVerticalSpace="true"/>
+            <font
+                xsi:type="gmfgraph:BasicFont"
+                height="8"/>
           </children>
         </children>
+        <children
+            xsi:type="gmfgraph:Rectangle"
+            name="ModelContainer"
+            outline="false"
+            fill="false"/>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.0/@actualFigure/@children.0/@children.0/@children.0"/>
+          figure="//@figures.0/@descriptors.0/@actualFigure/@children.0/@children.0"/>
       <accessors
-          figure="//@figures.0/@descriptors.0/@actualFigure/@children.0/@children.0/@children.1"/>
-    </descriptors>
-    <descriptors
-        name="ModellCompartmentFigure">
-      <actualFigure
-          xsi:type="gmfgraph:Rectangle"/>
+          figure="//@figures.0/@descriptors.0/@actualFigure/@children.0/@children.1"/>
+      <accessors
+          figure="//@figures.0/@descriptors.0/@actualFigure/@children.1"/>
     </descriptors>
     <descriptors
         name="ModelFigure">
@@ -88,6 +82,11 @@
           name="ModelFigure"
           outline="false"
           fill="false">
+        <layout
+            xsi:type="gmfgraph:GridLayout">
+          <margins/>
+          <spacing/>
+        </layout>
         <foregroundColor
             xsi:type="gmfgraph:ConstantColor"
             value="black"/>
@@ -100,73 +99,70 @@
         </border>
         <children
             xsi:type="gmfgraph:Rectangle"
-            name="InnerRectangle"
+            name="NameRectangle"
             outline="false"
             fill="false">
+          <layoutData
+              xsi:type="gmfgraph:GridLayoutData"
+              grabExcessHorizontalSpace="true"
+              verticalAlignment="BEGINNING"
+              horizontalAlignment="FILL"/>
           <layout
-              xsi:type="gmfgraph:FlowLayout"
-              vertical="true"
-              matchMinorSize="true"
-              forceSingleLine="true"
-              majorAlignment="END"
-              minorAlignment="CENTER"
-              majorSpacing="0"
-              minorSpacing="0"/>
+              xsi:type="gmfgraph:GridLayout"
+              numColumns="2"
+              equalWidth="false">
+            <margins
+                dy="3"/>
+            <spacing/>
+          </layout>
           <maximumSize
               dy="25"/>
           <children
-              xsi:type="gmfgraph:Rectangle"
-              name="NameRectangle"
-              outline="false"
-              fill="false">
-            <layout
-                xsi:type="gmfgraph:GridLayout"
-                numColumns="2"
-                equalWidth="false">
-              <margins
-                  dy="3"/>
-              <spacing/>
-            </layout>
-            <children
-                xsi:type="gmfgraph:Label"
-                name="OntologyLevelNameFigure">
-              <layoutData
-                  xsi:type="gmfgraph:GridLayoutData"
-                  horizontalAlignment="BEGINNING"/>
-              <maximumSize
-                  dy="20"/>
-              <font
-                  xsi:type="gmfgraph:BasicFont"
-                  height="10"/>
-            </children>
-            <children
-                xsi:type="gmfgraph:Label"
-                name="OntologyLevelAVSFigure">
-              <layoutData
-                  xsi:type="gmfgraph:GridLayoutData"
-                  grabExcessHorizontalSpace="true"
-                  grabExcessVerticalSpace="true"
-                  horizontalAlignment="BEGINNING"/>
-              <maximumSize
-                  dy="20"/>
-              <font
-                  xsi:type="gmfgraph:BasicFont"
-                  height="8"/>
-            </children>
+              xsi:type="gmfgraph:Label"
+              name="OntologyLevelNameFigure">
+            <layoutData
+                xsi:type="gmfgraph:GridLayoutData"
+                horizontalAlignment="BEGINNING"/>
+            <maximumSize
+                dy="20"/>
+            <font
+                xsi:type="gmfgraph:BasicFont"
+                height="10"/>
           </children>
+          <children
+              xsi:type="gmfgraph:Label"
+              name="OntologyLevelAVSFigure">
+            <layoutData
+                xsi:type="gmfgraph:GridLayoutData"
+                grabExcessHorizontalSpace="true"
+                grabExcessVerticalSpace="true"
+                horizontalAlignment="BEGINNING"/>
+            <maximumSize
+                dy="20"/>
+            <font
+                xsi:type="gmfgraph:BasicFont"
+                height="8"/>
+          </children>
+        </children>
+        <children
+            xsi:type="gmfgraph:Rectangle"
+            name="DomainElementsContainer"
+            outline="false"
+            fill="false">
+          <layoutData
+              xsi:type="gmfgraph:GridLayoutData"
+              grabExcessHorizontalSpace="true"
+              grabExcessVerticalSpace="true"
+              verticalAlignment="FILL"
+              horizontalAlignment="FILL"/>
         </children>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.2/@actualFigure/@children.0/@children.0/@children.0"/>
+          figure="//@figures.0/@descriptors.1/@actualFigure/@children.0/@children.0"/>
       <accessors
-          figure="//@figures.0/@descriptors.2/@actualFigure/@children.0/@children.0/@children.1"/>
-    </descriptors>
-    <descriptors
-        name="DomainElementsCompartmentFigure">
-      <actualFigure
-          xsi:type="gmfgraph:Rectangle"
-          outline="false"
-          fill="false"/>
+          figure="//@figures.0/@descriptors.1/@actualFigure/@children.0/@children.1"/>
+      <accessors
+          figure="//@figures.0/@descriptors.1/@actualFigure/@children.1"/>
     </descriptors>
     <descriptors
         name="EntityFigure">
@@ -293,19 +289,19 @@
         </children>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.0/@children.2"/>
+          figure="//@figures.0/@descriptors.2/@actualFigure/@children.0/@children.0/@children.2"/>
       <accessors
-          figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.0/@children.6"/>
+          figure="//@figures.0/@descriptors.2/@actualFigure/@children.0/@children.0/@children.6"/>
       <accessors
-          figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.0/@children.3"/>
+          figure="//@figures.0/@descriptors.2/@actualFigure/@children.0/@children.0/@children.3"/>
       <accessors
-          figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.0/@children.5"/>
+          figure="//@figures.0/@descriptors.2/@actualFigure/@children.0/@children.0/@children.5"/>
       <accessors
-          figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.0/@children.0"/>
+          figure="//@figures.0/@descriptors.2/@actualFigure/@children.0/@children.0/@children.0"/>
       <accessors
-          figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.0/@children.1"/>
+          figure="//@figures.0/@descriptors.2/@actualFigure/@children.0/@children.0/@children.1"/>
       <accessors
-          figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.0/@children.4"/>
+          figure="//@figures.0/@descriptors.2/@actualFigure/@children.0/@children.0/@children.4"/>
     </descriptors>
     <descriptors
         name="EntityCompartmentFigure">
@@ -407,15 +403,15 @@
         </children>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.6/@actualFigure/@children.0/@children.0"/>
+          figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.0"/>
       <accessors
-          figure="//@figures.0/@descriptors.6/@actualFigure/@children.0/@children.1"/>
+          figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.1"/>
       <accessors
-          figure="//@figures.0/@descriptors.6/@actualFigure/@children.0/@children.4"/>
+          figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.4"/>
       <accessors
-          figure="//@figures.0/@descriptors.6/@actualFigure/@children.0/@children.2"/>
+          figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.2"/>
       <accessors
-          figure="//@figures.0/@descriptors.6/@actualFigure/@children.0/@children.3"/>
+          figure="//@figures.0/@descriptors.4/@actualFigure/@children.0/@children.3"/>
     </descriptors>
     <descriptors
         name="MethodFigure">
@@ -492,13 +488,13 @@
         </children>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.7/@actualFigure/@children.0/@children.0"/>
+          figure="//@figures.0/@descriptors.5/@actualFigure/@children.0/@children.0"/>
       <accessors
-          figure="//@figures.0/@descriptors.7/@actualFigure/@children.0/@children.1"/>
+          figure="//@figures.0/@descriptors.5/@actualFigure/@children.0/@children.1"/>
       <accessors
-          figure="//@figures.0/@descriptors.7/@actualFigure/@children.0/@children.3"/>
+          figure="//@figures.0/@descriptors.5/@actualFigure/@children.0/@children.3"/>
       <accessors
-          figure="//@figures.0/@descriptors.7/@actualFigure/@children.0/@children.2"/>
+          figure="//@figures.0/@descriptors.5/@actualFigure/@children.0/@children.2"/>
     </descriptors>
     <descriptors
         name="ConnectionFigure">
@@ -655,19 +651,19 @@
             x="20"/>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.8/@actualFigure/@children.0/@children.0/@children.0"/>
+          figure="//@figures.0/@descriptors.6/@actualFigure/@children.0/@children.0/@children.0"/>
       <accessors
-          figure="//@figures.0/@descriptors.8/@actualFigure/@children.0/@children.0/@children.1"/>
+          figure="//@figures.0/@descriptors.6/@actualFigure/@children.0/@children.0/@children.1"/>
       <accessors
-          figure="//@figures.0/@descriptors.8/@actualFigure/@children.0/@children.0/@children.2"/>
+          figure="//@figures.0/@descriptors.6/@actualFigure/@children.0/@children.0/@children.2"/>
       <accessors
-          figure="//@figures.0/@descriptors.8/@actualFigure/@children.0/@children.0/@children.4"/>
+          figure="//@figures.0/@descriptors.6/@actualFigure/@children.0/@children.0/@children.4"/>
       <accessors
-          figure="//@figures.0/@descriptors.8/@actualFigure/@children.0/@children.0/@children.3"/>
+          figure="//@figures.0/@descriptors.6/@actualFigure/@children.0/@children.0/@children.3"/>
       <accessors
-          figure="//@figures.0/@descriptors.8/@actualFigure/@children.0/@children.0/@children.5"/>
+          figure="//@figures.0/@descriptors.6/@actualFigure/@children.0/@children.0/@children.5"/>
       <accessors
-          figure="//@figures.0/@descriptors.8/@actualFigure/@children.0/@children.0/@children.6"/>
+          figure="//@figures.0/@descriptors.6/@actualFigure/@children.0/@children.0/@children.6"/>
     </descriptors>
     <descriptors
         name="VisualizerCompartmentFigure">
@@ -686,7 +682,7 @@
             height="8"/>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.10/@actualFigure"/>
+          figure="//@figures.0/@descriptors.8/@actualFigure"/>
     </descriptors>
     <descriptors
         name="ConnectionRoleFigure">
@@ -717,16 +713,16 @@
         </children>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.11/@actualFigure/@children.0"/>
+          figure="//@figures.0/@descriptors.9/@actualFigure/@children.0"/>
       <accessors
-          figure="//@figures.0/@descriptors.11/@actualFigure/@children.1"/>
+          figure="//@figures.0/@descriptors.9/@actualFigure/@children.1"/>
     </descriptors>
     <descriptors
         name="ClassificationFigure">
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"
           lineKind="LINE_DASH"
-          targetDecoration="//@figures.0/@descriptors.12/@actualFigure/@children.0">
+          targetDecoration="//@figures.0/@descriptors.10/@actualFigure/@children.0">
         <foregroundColor
             xsi:type="gmfgraph:ConstantColor"
             value="black"/>
@@ -757,9 +753,9 @@
         </children>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.12/@actualFigure/@children.1"/>
+          figure="//@figures.0/@descriptors.10/@actualFigure/@children.1"/>
       <accessors
-          figure="//@figures.0/@descriptors.12/@actualFigure/@children.2"/>
+          figure="//@figures.0/@descriptors.10/@actualFigure/@children.2"/>
     </descriptors>
     <descriptors
         name="GeneralizationFigure">
@@ -861,9 +857,9 @@
             y="50"/>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.13/@actualFigure/@children.0/@children.0"/>
+          figure="//@figures.0/@descriptors.11/@actualFigure/@children.0/@children.0"/>
       <accessors
-          figure="//@figures.0/@descriptors.13/@actualFigure/@children.0/@children.1"/>
+          figure="//@figures.0/@descriptors.11/@actualFigure/@children.0/@children.1"/>
     </descriptors>
     <descriptors
         name="GeneralizationExternalLabelFigure">
@@ -875,7 +871,7 @@
             height="8"/>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.14/@actualFigure"/>
+          figure="//@figures.0/@descriptors.12/@actualFigure"/>
     </descriptors>
     <descriptors
         name="ComplementFigure">
@@ -963,7 +959,7 @@
             y="50"/>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.15/@actualFigure/@children.0/@children.0"/>
+          figure="//@figures.0/@descriptors.13/@actualFigure/@children.0/@children.0"/>
     </descriptors>
     <descriptors
         name="EqualsFigure">
@@ -1064,7 +1060,7 @@
             y="50"/>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.16/@actualFigure/@children.0/@children.0/@children.0"/>
+          figure="//@figures.0/@descriptors.14/@actualFigure/@children.0/@children.0/@children.0"/>
     </descriptors>
     <descriptors
         name="InversionFigure">
@@ -1152,7 +1148,7 @@
             y="50"/>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.17/@actualFigure/@children.0/@children.0"/>
+          figure="//@figures.0/@descriptors.15/@actualFigure/@children.0/@children.0"/>
     </descriptors>
     <descriptors
         name="SetRelationshipBaseLinkFigure">
@@ -1175,7 +1171,7 @@
         </children>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.18/@actualFigure/@children.0"/>
+          figure="//@figures.0/@descriptors.16/@actualFigure/@children.0"/>
     </descriptors>
     <descriptors
         name="SetRelationshipEqualLinkFigure">
@@ -1198,7 +1194,7 @@
         </children>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.19/@actualFigure/@children.0"/>
+          figure="//@figures.0/@descriptors.17/@actualFigure/@children.0"/>
     </descriptors>
     <descriptors
         name="SetRelationshipInverseLinkFigure">
@@ -1221,7 +1217,7 @@
         </children>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.20/@actualFigure/@children.0"/>
+          figure="//@figures.0/@descriptors.18/@actualFigure/@children.0"/>
     </descriptors>
     <descriptors
         name="SetRelationshipComplementLinkFigure">
@@ -1244,13 +1240,13 @@
         </children>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.21/@actualFigure/@children.0"/>
+          figure="//@figures.0/@descriptors.19/@actualFigure/@children.0"/>
     </descriptors>
     <descriptors
         name="SuperTypeConnectionFigure">
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"
-          targetDecoration="//@figures.0/@descriptors.22/@actualFigure/@children.0">
+          targetDecoration="//@figures.0/@descriptors.20/@actualFigure/@children.0">
         <foregroundColor
             xsi:type="gmfgraph:ConstantColor"
             value="black"/>
@@ -1336,9 +1332,9 @@
         </children>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.24/@actualFigure/@children.0/@children.0"/>
+          figure="//@figures.0/@descriptors.22/@actualFigure/@children.0/@children.0"/>
       <accessors
-          figure="//@figures.0/@descriptors.24/@actualFigure/@children.0/@children.1"/>
+          figure="//@figures.0/@descriptors.22/@actualFigure/@children.0/@children.1"/>
     </descriptors>
   </figures>
   <nodes
@@ -1403,10 +1399,12 @@
       figure="SetRelationshipComplementLinkFigure"/>
   <compartments
       name="ModelCompartment"
-      figure="ModellCompartmentFigure"/>
+      figure="OntologyFigure"
+      accessor="//@figures.0/@descriptors.0/@accessors.2"/>
   <compartments
       name="DomainElementsCompartment"
-      figure="DomainElementsCompartmentFigure"/>
+      figure="ModelFigure"
+      accessor="//@figures.0/@descriptors.1/@accessors.2"/>
   <compartments
       name="AttributesCompartment"
       figure="EntityCompartmentFigure"
@@ -1433,27 +1431,27 @@
       name="ModelFigureNameLabel"
       figure="ModelFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.2/@accessors.0"/>
+      accessor="//@figures.0/@descriptors.1/@accessors.0"/>
   <labels
       name="ModelFigureAVSLabel"
       figure="ModelFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.2/@accessors.1"/>
+      accessor="//@figures.0/@descriptors.1/@accessors.1"/>
   <labels
       name="EntityFigureProximityInheritanceLabel"
       figure="EntityFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.4/@accessors.4"/>
+      accessor="//@figures.0/@descriptors.2/@accessors.4"/>
   <labels
       name="EntityFigureProximityContainmentLabel"
       figure="EntityFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.4/@accessors.5"/>
+      accessor="//@figures.0/@descriptors.2/@accessors.5"/>
   <labels
       name="EntityFigureNameLabel"
       figure="EntityFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.4/@accessors.0"/>
+      accessor="//@figures.0/@descriptors.2/@accessors.0"/>
   <labels
       name="EntityFigureNameExternal"
       figure="ConnectionNameExternalLabelFigure"
@@ -1463,92 +1461,92 @@
       name="EntityFigureProximityClassificationLabel"
       figure="EntityFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.4/@accessors.6"/>
+      accessor="//@figures.0/@descriptors.2/@accessors.6"/>
   <labels
       name="EntityFigurePotencyLabel"
       figure="EntityFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.4/@accessors.2"/>
+      accessor="//@figures.0/@descriptors.2/@accessors.2"/>
   <labels
       name="EntityFigureLevelLabel"
       figure="EntityFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.4/@accessors.3"/>
+      accessor="//@figures.0/@descriptors.2/@accessors.3"/>
   <labels
       name="EntityFigureAVSLabel"
       figure="EntityFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.4/@accessors.1"/>
+      accessor="//@figures.0/@descriptors.2/@accessors.1"/>
   <labels
       name="AttributeFigureNameLabel"
       figure="AttributeFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.6/@accessors.0"/>
+      accessor="//@figures.0/@descriptors.4/@accessors.0"/>
   <labels
       name="AttributeFigureValueVariabilityLabel"
       figure="AttributeFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.6/@accessors.2"/>
+      accessor="//@figures.0/@descriptors.4/@accessors.2"/>
   <labels
       name="AttributeFigureDurabilityLabel"
       figure="AttributeFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.6/@accessors.1"/>
+      accessor="//@figures.0/@descriptors.4/@accessors.1"/>
   <labels
       name="AttributeFigureDataTypeLabel"
       figure="AttributeFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.6/@accessors.3"/>
+      accessor="//@figures.0/@descriptors.4/@accessors.3"/>
   <labels
       name="AttributeFigureDefaultValueLabel"
       figure="AttributeFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.6/@accessors.4"/>
+      accessor="//@figures.0/@descriptors.4/@accessors.4"/>
   <labels
       name="EntityMethodFigureNameLabel"
       figure="MethodFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.7/@accessors.0"/>
+      accessor="//@figures.0/@descriptors.5/@accessors.0"/>
   <labels
       name="EntityMethodFigurePotencyLabel"
       figure="MethodFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.7/@accessors.1"/>
+      accessor="//@figures.0/@descriptors.5/@accessors.1"/>
   <labels
       name="EntityMethodFigureInputLabel"
       figure="MethodFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.7/@accessors.3"/>
+      accessor="//@figures.0/@descriptors.5/@accessors.3"/>
   <labels
       name="EntityMethodFigureOutputLabel"
       figure="MethodFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.7/@accessors.2"/>
+      accessor="//@figures.0/@descriptors.5/@accessors.2"/>
   <labels
       name="ConnectionAVSLabel"
       figure="ConnectionFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.8/@accessors.6"/>
+      accessor="//@figures.0/@descriptors.6/@accessors.6"/>
   <labels
       name="ConnectionFigureProximityInheritanceLabel"
       figure="ConnectionFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.8/@accessors.0"/>
+      accessor="//@figures.0/@descriptors.6/@accessors.0"/>
   <labels
       name="ConnectionFigureProximityContainmentLabel"
       figure="ConnectionFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.8/@accessors.1"/>
+      accessor="//@figures.0/@descriptors.6/@accessors.1"/>
   <labels
       name="ConnectionFigureName"
       figure="ConnectionFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.8/@accessors.2"/>
+      accessor="//@figures.0/@descriptors.6/@accessors.2"/>
   <labels
       name="ConnectionFigureProximityClassificationLabel"
       figure="ConnectionFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.8/@accessors.3"/>
+      accessor="//@figures.0/@descriptors.6/@accessors.3"/>
   <labels
       name="ConnectionFigureNameExternal"
       figure="ConnectionNameExternalLabelFigure"
@@ -1558,34 +1556,34 @@
       name="ConnectionFigurePotency"
       figure="ConnectionFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.8/@accessors.4"/>
+      accessor="//@figures.0/@descriptors.6/@accessors.4"/>
   <labels
       name="ConnectionFigureLevelLabel"
       figure="ConnectionFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.8/@accessors.5"/>
+      accessor="//@figures.0/@descriptors.6/@accessors.5"/>
   <labels
       name="ComplementFigureName"
       figure="ComplementFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.15/@accessors.0"/>
+      accessor="//@figures.0/@descriptors.13/@accessors.0"/>
   <labels
       name="EqualsFigureName"
       figure="EqualsFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.16/@accessors.0"/>
+      accessor="//@figures.0/@descriptors.14/@accessors.0"/>
   <labels
       name="InversionFigureName"
       figure="InversionFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.17/@accessors.0"/>
+      accessor="//@figures.0/@descriptors.15/@accessors.0"/>
   <labels
       name="RenderedByFigureName"/>
   <labels
       name="ConnectionParticipantFigureName"
       figure="ConnectionRoleFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.11/@accessors.0">
+      accessor="//@figures.0/@descriptors.9/@accessors.0">
     <facets
         xsi:type="gmfgraph:AlignmentFacet"/>
     <facets
@@ -1597,7 +1595,7 @@
       name="ConnectionParticipantMultiplicity"
       figure="ConnectionRoleFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.11/@accessors.1">
+      accessor="//@figures.0/@descriptors.9/@accessors.1">
     <facets
         xsi:type="gmfgraph:AlignmentFacet"/>
     <facets
@@ -1609,12 +1607,12 @@
       name="GeneralizationName"
       figure="GeneralizationFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.13/@accessors.0"/>
+      accessor="//@figures.0/@descriptors.11/@accessors.0"/>
   <labels
       name="GeneralizationSubtitle"
       figure="GeneralizationFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.13/@accessors.1"/>
+      accessor="//@figures.0/@descriptors.11/@accessors.1"/>
   <labels
       name="GeneralizationNameExternal"
       figure="GeneralizationExternalLabelFigure"
@@ -1623,17 +1621,17 @@
       name="VisualizerAttributeValueLabel"
       figure="VisualizerFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.24/@accessors.0"/>
+      accessor="//@figures.0/@descriptors.22/@accessors.0"/>
   <labels
       name="VisualizerPotencyLabel"
       figure="VisualizerFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.24/@accessors.1"/>
+      accessor="//@figures.0/@descriptors.22/@accessors.1"/>
   <labels
       name="SetRelationShipBaseLinkRoleNameLabel"
       figure="SetRelationshipBaseLinkFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.18/@accessors.0">
+      accessor="//@figures.0/@descriptors.16/@accessors.0">
     <facets
         xsi:type="gmfgraph:AlignmentFacet"/>
     <facets
@@ -1644,7 +1642,7 @@
       name="SetRelationShipEqualLinkRoleNameLabel"
       figure="SetRelationshipEqualLinkFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.19/@accessors.0">
+      accessor="//@figures.0/@descriptors.17/@accessors.0">
     <facets
         xsi:type="gmfgraph:AlignmentFacet"/>
     <facets
@@ -1655,7 +1653,7 @@
       name="SetRelationShipInverseLinkRoleNameLabel"
       figure="SetRelationshipInverseLinkFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.20/@accessors.0">
+      accessor="//@figures.0/@descriptors.18/@accessors.0">
     <facets
         xsi:type="gmfgraph:AlignmentFacet"/>
     <facets
@@ -1666,7 +1664,7 @@
       name="SetRelationShipComplementLinkRoleNameLabel"
       figure="SetRelationshipComplementLinkFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.21/@accessors.0">
+      accessor="//@figures.0/@descriptors.19/@accessors.0">
     <facets
         xsi:type="gmfgraph:AlignmentFacet"/>
     <facets
@@ -1677,7 +1675,7 @@
       name="ClassificationTypeNameLabel"
       figure="ClassificationFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.12/@accessors.0">
+      accessor="//@figures.0/@descriptors.10/@accessors.0">
     <facets
         xsi:type="gmfgraph:AlignmentFacet"
         alignment="END"/>
@@ -1690,7 +1688,7 @@
       name="ClassificationBlueprintNameLabel"
       figure="ClassificationFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.12/@accessors.1">
+      accessor="//@figures.0/@descriptors.10/@accessors.1">
     <facets
         xsi:type="gmfgraph:AlignmentFacet"/>
     <facets
