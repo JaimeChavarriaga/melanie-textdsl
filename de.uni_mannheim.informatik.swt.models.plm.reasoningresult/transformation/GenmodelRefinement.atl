@@ -62,6 +62,10 @@ rule GenFeature2GenFeatur{
 		s : genmodel!GenFeature
 	to
 		t : genmodel!GenFeature(
-			property <- #Readonly
+			property <- if (s.ecoreFeature.name = 'check' and s.ecoreFeature.eContainingClass.name = 'CompositeCheck') then
+							#None
+						else
+							#Readonly
+						endif
 		)
 }
