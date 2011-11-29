@@ -11,9 +11,11 @@
 package de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.custom;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 
 import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.Check;
+import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.CompositeCheck;
 
 
 /**
@@ -36,5 +38,13 @@ public class BaseItemProvider extends ItemProviderAdapter {
 							: getResourceLocator().getImage("icon_false.png");
 					
 		return super.getImage(object);
+	}
+	
+	@Override
+	public String getText(Object object) {
+		if (object instanceof CompositeCheck)
+			return ((CompositeCheck) object).getName();
+		
+		return getString("_UI_" + ((EObject)object).eClass().getName() + "_type");
 	}
 }
