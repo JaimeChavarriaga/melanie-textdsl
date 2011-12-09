@@ -2860,6 +2860,7 @@
         editPartClassName="RoleEditPart"
         itemSemanticEditPolicyClassName="RoleItemSemanticEditPolicy"
         notationViewFactoryClassName="RoleViewFactory"
+        incomingCreationAllowed="true"
         createCommandClassName="RoleCreateCommand"
         reorientCommandClassName="RoleReorientCommand">
       <diagramRunTimeClass
