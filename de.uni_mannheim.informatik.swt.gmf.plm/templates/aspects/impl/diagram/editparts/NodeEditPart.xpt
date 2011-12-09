@@ -45,7 +45,7 @@
 		or self.editPartClassName = 'ComplementEditPart'
 		»
 		
-			if (true){
+			«REM»if (true){
 				java.util.HashMap<String, org.eclipse.draw2d.geometry.PrecisionPoint> anchorLocations = new java.util.HashMap<String, org.eclipse.draw2d.geometry.PrecisionPoint>();
 				
 				anchorLocations.put("NORTH", new org.eclipse.draw2d.geometry.PrecisionPoint(0.5d, 0));
@@ -56,16 +56,18 @@
 				result = new de.uni_mannheim.informatik.swt.gmf.figures.DefaultSizeNodeFixedAnchors(8, 8, anchorLocations);
 		
 				return result;
-			}
+			}«ENDREM»
 		«ELSE»
 		«targetDef.proceed()»
 		«ENDIF»
 «ENDAROUND»
 
-/******************************************************************************
+«REM»
+******************************************************************************
 * Install the editpolicy for the toggle button in the popupbar
 * of connections and generalizations
-******************************************************************************/
+******************************************************************************
+«ENDREM»
 «AROUND createDefaultEditPoliciesBody FOR gmfgen::GenNode-»
 	«IF self.editPartClassName = 'ConnectionEditPart' 
 			or self.editPartClassName = 'GeneralizationEditPart'
@@ -85,16 +87,21 @@
 		«EXPAND xpt::diagram::editparts::Common::behaviour FOR self-»
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
-	
+		
 		«EXPAND installAdditionalEditPolicies FOR self-»
 	«ELSE»
 		«targetDef.proceed()»
 	«ENDIF»
 «ENDAROUND»
-
 «DEFINE installAdditionalEditPolicies FOR gmfgen::GenNode»
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
 		installEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE, new de.uni_mannheim.informatik.swt.gmf.plm.editpolicies.PLMModelElementPopupBarEditPolicy());
+		
+		«REM»Edit policy for advanced connection creation«ENDREM»
+		«IF self.editPartClassName = 'EntityEditPart'» 
+		removeEditPolicy(org.eclipse.gef.EditPolicy.GRAPHICAL_NODE_ROLE);
+		installEditPolicy(org.eclipse.gef.EditPolicy.GRAPHICAL_NODE_ROLE, new com.borlander.gmftools.samples.inthemiddle.gmf.gnep.ITMGraphicalNodeEditPolicy());
+		«ENDIF»
 «ENDDEFINE»
 
 «DEFINE installCreationRolePolicy FOR gmfgen::GenNode-»
@@ -110,3 +117,68 @@
 «DEFINE installPrimaryDragEditPolicy FOR gmfgen::GenChildSideAffixedNode-»
 		installEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE, getPrimaryDragEditPolicy());
 «ENDDEFINE»
+«REM»
+******************************************************************************
+* END
+******************************************************************************
+«ENDREM»
+
+«REM»
+*******************************************************************************
+* Code to allow Connections to be drawn from the hande of an entity to another
+* entity
+*******************************************************************************
+«ENDREM»
+
+«DEFINE getMARelTypesOnSourceAndTarget FOR gmfgen::GenNode-»
+	«EXPAND xpt::Common::generatedMemberComment»
+	public «EXPAND CodeStyle::G('java.util.List', 'org.eclipse.gmf.runtime.emf.type.core.IElementType')» getMARelTypesOnSourceAndTarget(org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart targetEditPart) {
+		«EXPAND CodeStyle::newGenericInstance('types', 'java.util.LinkedList', 'org.eclipse.gmf.runtime.emf.type.core.IElementType')»();
+		«FOREACH getAssistantOutgoingLinks(self) AS link-»
+			«FOREACH selectGenNodes(link.targets) AS target-»
+		if (targetEditPart instanceof «target.getEditPartQualifiedClassName()») {
+			types.add(«EXPAND xpt::providers::ElementTypes::accessElementType FOR link»);
+			//CUSTOM CODE - Maybe removed when Connection Incoming links == true in genmodel?
+			types.add(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.Role_4024);
+		}
+			«ENDFOREACH-»
+		«ENDFOREACH-»
+		return types;
+	}
+«ENDDEFINE»
+
+«DEFINE getMATypesForTarget FOR gmfgen::GenNode-»
+	«EXPAND xpt::Common::generatedMemberComment»
+	public «EXPAND CodeStyle::G('java.util.List', 'org.eclipse.gmf.runtime.emf.type.core.IElementType')» getMATypesForTarget(org.eclipse.gmf.runtime.emf.type.core.IElementType relationshipType) {
+		«EXPAND CodeStyle::newGenericInstance('types', 'java.util.LinkedList', 'org.eclipse.gmf.runtime.emf.type.core.IElementType')»();
+		«FOREACH getAssistantOutgoingLinks(self) AS link SEPARATOR ' else '-»
+		if (relationshipType == «EXPAND xpt::providers::ElementTypes::accessElementType FOR link»
+				|| relationshipType == de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.Role_4024) {
+			«FOREACH selectGenNodes(link.targets) AS target-»
+			types.add(«EXPAND xpt::providers::ElementTypes::accessElementType FOR target»);
+			«ENDFOREACH-»
+		}
+		«ENDFOREACH-»
+				
+		return types;
+	}
+«ENDDEFINE»
+
+// pre: getAssistantOutgoingLinks(this).size() > 0
+«DEFINE getMARelTypesOnSource FOR gmfgen::GenNode-»
+	«EXPAND xpt::Common::generatedMemberComment»
+	public «EXPAND CodeStyle::G('java.util.List', 'org.eclipse.gmf.runtime.emf.type.core.IElementType')» getMARelTypesOnSource() {
+		«EXPAND CodeStyle::newGenericInstance('types', 'java.util.ArrayList', 'org.eclipse.gmf.runtime.emf.type.core.IElementType')»(«getAssistantOutgoingLinks(self)->size() + 1»);
+		«FOREACH getAssistantOutgoingLinks(self) AS link-»
+		types.add(«EXPAND xpt::providers::ElementTypes::accessElementType FOR link»);
+		«ENDFOREACH-»
+		types.add(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.Role_4024);
+		
+		return types;
+	}
+«ENDDEFINE»
+«REM»
+*******************************************************************************
+* END
+*******************************************************************************
+«ENDREM»
