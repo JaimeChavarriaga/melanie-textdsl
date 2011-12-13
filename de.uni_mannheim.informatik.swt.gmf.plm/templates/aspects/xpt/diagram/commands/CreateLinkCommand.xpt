@@ -35,11 +35,17 @@ public class RoleCreateCommand extends com.borlander.gmftools.samples.inthemiddl
 	/**
 	 * @generated
 	 */
+	private org.eclipse.emf.ecore.EObject target;
+	
+	/**
+	 * @generated
+	 */
 	public RoleCreateCommand(org.eclipse.gmf.runtime.emf.type.core.requests.CreateRelationshipRequest request, org.eclipse.emf.ecore.EObject source,
 			org.eclipse.emf.ecore.EObject target) {
 		super(request, source, target);
 		
 		this.source = source;
+		this.target = target;
 	}
 
 	/**
@@ -57,12 +63,33 @@ public class RoleCreateCommand extends com.borlander.gmftools.samples.inthemiddl
 	protected boolean checkTarget(org.eclipse.emf.ecore.EObject target) {
 		return true;
 	}
-
+	
 	/**
+	 * 
 	 * @generated
 	 */
 	@Override
 	protected org.eclipse.gmf.runtime.common.core.command.CommandResult doExecuteWithResult(org.eclipse.core.runtime.IProgressMonitor monitor,
+			org.eclipse.core.runtime.IAdaptable info) throws ExecutionException{
+		
+		if (source instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Entity && target instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Entity)
+			return doExecuteWithResultImplicitMiddle(monitor, info);
+		
+		de.uni_mannheim.informatik.swt.models.plm.PLM.Role newElement = de.uni_mannheim.informatik.swt.models.plm.PLM.PLMFactory.eINSTANCE
+				.createRole();
+		((de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)source).getRole().add(newElement);
+		newElement.setSource((de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)source);
+		newElement.setDestination((de.uni_mannheim.informatik.swt.models.plm.PLM.Entity)target);
+		doConfigure(newElement, monitor, info);
+		((org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest) getRequest()).setNewElement(newElement);
+		return org.eclipse.gmf.runtime.common.core.command.CommandResult.newOKCommandResult(newElement);
+		
+	}
+
+	/**
+	 * @generated
+	 */
+	protected org.eclipse.gmf.runtime.common.core.command.CommandResult doExecuteWithResultImplicitMiddle(org.eclipse.core.runtime.IProgressMonitor monitor,
 			org.eclipse.core.runtime.IAdaptable info) throws org.eclipse.core.commands.ExecutionException {
 		super.doExecuteWithResult(monitor, info);
 		
@@ -124,6 +151,31 @@ public class RoleCreateCommand extends com.borlander.gmftools.samples.inthemiddl
 		
 		if (connection.eContainer() == null)
 			((de.uni_mannheim.informatik.swt.models.plm.PLM.Model)source.eContainer()).getContent().add(connection);	
+	}
+	
+	/**
+	 * @generated
+	 */
+	protected void doConfigure(
+			de.uni_mannheim.informatik.swt.models.plm.PLM.Role newElement,
+			org.eclipse.core.runtime.IProgressMonitor monitor, org.eclipse.core.runtime.IAdaptable info)
+			throws org.eclipse.core.commands.ExecutionException {
+		org.eclipse.gmf.runtime.emf.type.core.IElementType elementType = ((org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest) getRequest())
+				.getElementType();
+		org.eclipse.gmf.runtime.emf.type.core.requests.ConfigureRequest configureRequest = new org.eclipse.gmf.runtime.emf.type.core.requests.ConfigureRequest(
+				getEditingDomain(), newElement, elementType);
+		configureRequest.setClientContext(((org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest) getRequest())
+				.getClientContext());
+		configureRequest.addParameters(getRequest().getParameters());
+		configureRequest.setParameter(org.eclipse.gmf.runtime.emf.type.core.requests.CreateRelationshipRequest.SOURCE,
+				source);
+		configureRequest.setParameter(org.eclipse.gmf.runtime.emf.type.core.requests.CreateRelationshipRequest.TARGET,
+				target);
+		org.eclipse.gmf.runtime.common.core.command.ICommand configureCommand = elementType
+				.getEditCommand(configureRequest);
+		if (configureCommand != null && configureCommand.canExecute()) {
+			configureCommand.execute(monitor, info);
+		}
 	}
 }
 «ELSE»
