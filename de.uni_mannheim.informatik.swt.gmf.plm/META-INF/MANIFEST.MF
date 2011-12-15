@@ -5,7 +5,8 @@ Bundle-SymbolicName: de.uni_mannheim.informatik.swt.gmf.plm;singleton:=true
 Bundle-Version: 0.1.0
 Require-Bundle: org.eclipse.gmf.runtime.diagram.ui,
  de.uni_mannheim.informatik.swt.models.plm;bundle-version="1.0.0"
-Export-Package: de.uni_mannheim.informatik.swt.gmf.borders,
+Export-Package: de.uni_mannheim.informatik.swt.gmf,
+ de.uni_mannheim.informatik.swt.gmf.borders,
  de.uni_mannheim.informatik.swt.gmf.figures,
  de.uni_mannheim.informatik.swt.gmf.plm.commands,
  de.uni_mannheim.informatik.swt.gmf.plm.editpolicies,

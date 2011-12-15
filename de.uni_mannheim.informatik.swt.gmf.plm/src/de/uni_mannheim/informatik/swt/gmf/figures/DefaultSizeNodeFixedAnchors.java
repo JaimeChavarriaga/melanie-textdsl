@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 University of Mannheim: Chair for Software Engineering ??
+ * Copyright (c) 2011 University of Mannheim: Chair for Software Engineering
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,6 +27,11 @@ import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 
 public class DefaultSizeNodeFixedAnchors extends DefaultSizeNodeFigure {
 
+	public final static String ANCHOR_WEST = "WEST";
+	public final static String ANCHOR_EAST = "EAST";
+	public final static String ANCHOR_NORTH = "NORTH";
+	public final static String ANCHOR_SOUTH = "SOUTH";
+	
 	private HashMap<String, FixedConnectionAnchor> anchors = new HashMap<String, FixedConnectionAnchor>();
 	
 	public DefaultSizeNodeFixedAnchors(Dimension defSize, HashMap<String, PrecisionPoint> anchorLocations) {
