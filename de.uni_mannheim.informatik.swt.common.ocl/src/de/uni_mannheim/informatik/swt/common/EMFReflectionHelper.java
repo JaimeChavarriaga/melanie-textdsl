@@ -10,7 +10,7 @@ import org.eclipse.ocl.ParserException;
 public class EMFReflectionHelper {
 	
 	public static Object executeOperation(EObject context, String name) throws InvocationTargetException, ParserException{
-		EOperation opration = (EOperation)OCLHelper.execute(context.eClass(), "self.eAllOperations->select(o | o.name = 'getAllConnections')->first()");
+		EOperation opration = (EOperation)OCLHelper.execute(context.eClass(), "self.eAllOperations->select(o | o.name = '" + name + "')->first()");
 		return context.eInvoke(opration, new BasicEList<>());
 	}
 	
