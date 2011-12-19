@@ -1,4 +1,4 @@
-package de.uni_mannheim.informatik.swt.common.ocl;
+package de.uni_mannheim.informatik.swt.common;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
