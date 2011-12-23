@@ -14,8 +14,8 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 
-import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.Check;
-import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.CompositeCheck;
+import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Check;
+import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.CompositeCheck;
 
 
 /**

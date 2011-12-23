@@ -19,8 +19,8 @@ import org.eclipse.jface.util.IPropertyChangeListener;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
-import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.CompositeCheck;
-import de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.ReasoningResultModel;
+import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.CompositeCheck;
+import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultModel;
 
 /**
  * Use getInstance to get an instance of the reasoning service.

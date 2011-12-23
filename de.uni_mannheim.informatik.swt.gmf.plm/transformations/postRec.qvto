@@ -71,7 +71,7 @@ main() {
 	this.genEditorGenerator := gmfgenModel.objectsOfType(GenEditorGenerator)->asOrderedSet()->first();
 	genEditorGenerator.sameFileForDiagramAndModel := true;
 	genEditorGenerator.dynamicTemplates := true;
-	genEditorGenerator.templateDirectory := "/de.uni_mannheim.informatik.swt.gmf.plm/templates";
+	genEditorGenerator.templateDirectory := "/de.uni_mannheim.informatik.swt.models.gmf/templates";
 	genEditorGenerator.diagramFileExtension := "lml";
 	genEditorGenerator.modelID := "LML";
 	
@@ -90,8 +90,8 @@ main() {
 	genPlugIn.name := "MelAniE - Multi-levEl modeLing And oNtology engIneering Environment Plugin";
 	genPlugIn.printingEnabled := true;
 	genPlugIn.requiredPlugins := genPlugIn.requiredPlugins->append('de.itemis.gmf.runtime.extensions');
-	genPlugIn.requiredPlugins := genPlugIn.requiredPlugins->append('de.uni_mannheim.informatik.swt.gmf.plm');
-	genPlugIn.requiredPlugins := genPlugIn.requiredPlugins->append('de.uni_mannheim.informatik.swt.plm.visualization.service');
+	genPlugIn.requiredPlugins := genPlugIn.requiredPlugins->append('de.uni_mannheim.informatik.swt.models.gmf');
+	genPlugIn.requiredPlugins := genPlugIn.requiredPlugins->append('de.uni_mannheim.informatik.swt.mlm.visualization.service');
 	
 	--Set the properties for the Prefrence Page (Window -> Preferences)
 	this.genStandardPrefencePage := gmfgenModel.objectsOfType(GenStandardPreferencePage)->asOrderedSet()->first();

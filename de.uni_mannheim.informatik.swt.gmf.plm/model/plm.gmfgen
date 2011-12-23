@@ -6,7 +6,7 @@
     sameFileForDiagramAndModel="true"
     diagramFileExtension="lml"
     dynamicTemplates="true"
-    templateDirectory="/de.uni_mannheim.informatik.swt.gmf.plm/templates">
+    templateDirectory="/de.uni_mannheim.informatik.swt.models.gmf/templates">
   <audits>
     <categories
         id="audits.attributes"
@@ -3178,8 +3178,8 @@
     <requiredPlugins>org.eclipse.draw2d</requiredPlugins>
     <requiredPlugins>org.eclipse.gmf.runtime.draw2d.ui</requiredPlugins>
     <requiredPlugins>de.itemis.gmf.runtime.extensions</requiredPlugins>
-    <requiredPlugins>de.uni_mannheim.informatik.swt.gmf.plm</requiredPlugins>
-    <requiredPlugins>de.uni_mannheim.informatik.swt.plm.visualization.service</requiredPlugins>
+    <requiredPlugins>de.uni_mannheim.informatik.swt.models.gmf</requiredPlugins>
+    <requiredPlugins>de.uni_mannheim.informatik.swt.mlm.visualization.service</requiredPlugins>
   </plugin>
   <editor/>
   <navigator>
