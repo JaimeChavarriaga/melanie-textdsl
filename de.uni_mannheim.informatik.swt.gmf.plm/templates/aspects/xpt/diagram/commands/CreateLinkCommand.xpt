@@ -83,37 +83,6 @@ public class RoleCreateCommand extends com.borlander.gmftools.samples.inthemiddl
 		doConfigure(newElement, monitor, info);
 		((org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest) getRequest()).setNewElement(newElement);
 		
-		//*************************************************************
-		// BEGIN DSL Setup
-		//*************************************************************
-		de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor editor = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor) org.eclipse.ui.PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
-				.getActiveEditor();
-		
-		//Is the role created by a DSL tool? -> Initialize values
-		//Works with pop-up bar link creation because there is the select tool selected
-		if (editor.getPalette().getActiveTool().getId().startsWith("dsl."))
-		{
-			String typeRoleID = editor.getPalette().getActiveTool().getId().replace("dsl.", "").replaceAll("<<.*?>>", "").replace(".CreationTool", "");			
-			de.uni_mannheim.informatik.swt.models.plm.PLM.Role typeRole = null;
-			
-			org.eclipse.emf.common.util.TreeIterator<org.eclipse.emf.ecore.EObject> iter = org.eclipse.emf.ecore.util.EcoreUtil.getRootContainer(source).eAllContents();
-			while (iter.hasNext()) {
-				org.eclipse.emf.ecore.EObject current = iter.next();
-				if (org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getProxyID(current).equals(typeRoleID)) 
-					typeRole = (de.uni_mannheim.informatik.swt.models.plm.PLM.Role)current;
-			}
-			
-			if (typeRole != null){
-				newElement.setNavigable(typeRole.isNavigable());
-				newElement.setExpressedRoleName(typeRole.getExpressedRoleName());
-				newElement.setLower(typeRole.getLower());
-				newElement.setUpper(typeRole.getUpper());
-			}
-		}
-		//*************************************************************
-		// END DSL Setup
-		//*************************************************************
-		
 		return org.eclipse.gmf.runtime.common.core.command.CommandResult.newOKCommandResult(newElement);
 	}
 
@@ -137,7 +106,34 @@ public class RoleCreateCommand extends com.borlander.gmftools.samples.inthemiddl
 		
 		((org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest) getRequest()).setNewElement(newElement);
 		
+		if (getRequest().getParameter(com.borlander.gmftools.samples.inthemiddle.gmf.gnep.ITMGraphicalNodeEditPolicy.DSL_TYPE) != null)
+			instantiateDSLValues((de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)getRequest().getParameter(com.borlander.gmftools.samples.inthemiddle.gmf.gnep.ITMGraphicalNodeEditPolicy.DSL_TYPE),(de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)middle);
+		
 		return org.eclipse.gmf.runtime.common.core.command.CommandResult.newOKCommandResult(newElement);
+	}
+	
+	/**
+	 * @generated
+	 */
+	private void instantiateDSLValues(de.uni_mannheim.informatik.swt.models.plm.PLM.Connection typeConnection, de.uni_mannheim.informatik.swt.models.plm.PLM.Connection instanceConnection) {
+		//At first set up the instance connection
+		de.uni_mannheim.informatik.swt.models.plm.PLM.PLMFactory.eINSTANCE.dressInstanceFromType(typeConnection, instanceConnection);
+		
+		org.eclipse.emf.common.util.BasicEList<org.eclipse.emf.ecore.EObject> typeRoles = new org.eclipse.emf.common.util.BasicEList<org.eclipse.emf.ecore.EObject>(typeConnection.getRole());
+		
+		//Setup roles
+		for(de.uni_mannheim.informatik.swt.models.plm.PLM.Role instanceRole : instanceConnection.getRole())
+			for(int i = 0; i < typeRoles.size(); i++){
+				de.uni_mannheim.informatik.swt.models.plm.PLM.Role typeRole = (de.uni_mannheim.informatik.swt.models.plm.PLM.Role)typeRoles.get(i);
+				if (instanceRole.getDestination().isModelInstanceOf(typeRole.getDestination()))
+				{
+					typeRoles.remove(i);
+					instanceRole.setExpressedRoleName(typeRole.getExpressedRoleName());
+					instanceRole.setLower(typeRole.getLower());
+					instanceRole.setNavigable(typeRole.isNavigable());
+					instanceRole.setUpper(typeRole.getUpper());
+				}
+			}
 	}
 	
 	/**
