@@ -3072,15 +3072,15 @@
             xsi:type="gmfgen:ToolEntry"
             title="Ontology"
             description="Creates a new Ontology"
-            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/ontology16.gif"
-            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/ontology16.gif"
+            largeIconPath="/de.uni_mannheim.informatik.swt.models.gmf/icons/ontology16.gif"
+            smallIconPath="/de.uni_mannheim.informatik.swt.models.gmf/icons/ontology16.gif"
             genNodes="//@diagram/@topLevelNodes.0"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Model"
             description="Creates a new Model"
-            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/model16.gif"
-            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/model16.gif"
+            largeIconPath="/de.uni_mannheim.informatik.swt.models.gmf/icons/model16.gif"
+            smallIconPath="/de.uni_mannheim.informatik.swt.models.gmf/icons/model16.gif"
             genNodes="//@diagram/@childNodes.0"/>
       </groups>
       <groups
@@ -3090,8 +3090,8 @@
             xsi:type="gmfgen:ToolEntry"
             title="Entity"
             description="Creates a new Entity"
-            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/clabject16.gif"
-            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/clabject16.gif"
+            largeIconPath="/de.uni_mannheim.informatik.swt.models.gmf/icons/clabject16.gif"
+            smallIconPath="/de.uni_mannheim.informatik.swt.models.gmf/icons/clabject16.gif"
             genNodes="//@diagram/@childNodes.16"/>
       </groups>
       <groups
@@ -3102,8 +3102,8 @@
             xsi:type="gmfgen:ToolEntry"
             title="Classification"
             description="Creates a new Classification"
-            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/classification16.gif"
-            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/classification16.gif"
+            largeIconPath="/de.uni_mannheim.informatik.swt.models.gmf/icons/classification16.gif"
+            smallIconPath="/de.uni_mannheim.informatik.swt.models.gmf/icons/classification16.gif"
             genLinks="//@diagram/@links.0"/>
       </groups>
       <groups
@@ -3114,22 +3114,22 @@
             xsi:type="gmfgen:ToolEntry"
             title="Complement"
             description="Creates a new Complement"
-            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/setRelationship16.gif"
-            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/setRelationship16.gif"
+            largeIconPath="/de.uni_mannheim.informatik.swt.models.gmf/icons/setRelationship16.gif"
+            smallIconPath="/de.uni_mannheim.informatik.swt.models.gmf/icons/setRelationship16.gif"
             genNodes="//@diagram/@childNodes.8"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Equal"
             description="Creates a new Equal"
-            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/setRelationship16.gif"
-            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/setRelationship16.gif"
+            largeIconPath="/de.uni_mannheim.informatik.swt.models.gmf/icons/setRelationship16.gif"
+            smallIconPath="/de.uni_mannheim.informatik.swt.models.gmf/icons/setRelationship16.gif"
             genNodes="//@diagram/@childNodes.10"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Inversion"
             description="Creates a new Inversion"
-            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/setRelationship16.gif"
-            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/setRelationship16.gif"
+            largeIconPath="/de.uni_mannheim.informatik.swt.models.gmf/icons/setRelationship16.gif"
+            smallIconPath="/de.uni_mannheim.informatik.swt.models.gmf/icons/setRelationship16.gif"
             genNodes="//@diagram/@childNodes.12"/>
       </groups>
       <groups
@@ -3140,8 +3140,8 @@
             xsi:type="gmfgen:ToolEntry"
             title="Generalization"
             description="Create new Generalisation"
-            largeIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/inheritance16.gif"
-            smallIconPath="/de.uni_mannheim.informatik.swt.gmf.plm/icons/inheritance16.gif"
+            largeIconPath="/de.uni_mannheim.informatik.swt.models.gmf/icons/inheritance16.gif"
+            smallIconPath="/de.uni_mannheim.informatik.swt.models.gmf/icons/inheritance16.gif"
             genNodes="//@diagram/@childNodes.14"/>
       </groups>
     </palette>

@@ -159,9 +159,9 @@
 				
 				entry.setId("dsl." + org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getProxyID(e) + ".CreationTool");
 				entry.setSmallIcon(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditorPlugin
-						.findImageDescriptor("/de.uni_mannheim.informatik.swt.gmf.plm/icons/clabject16.gif")); //$NON-NLS-1$
+						.findImageDescriptor("/de.uni_mannheim.informatik.swt.models.gmf/icons/clabject16.gif")); //$NON-NLS-1$
 				entry.setLargeIcon(de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditorPlugin
-						.findImageDescriptor("/de.uni_mannheim.informatik.swt.gmf.plm/icons/clabject16.gif"));
+						.findImageDescriptor("/de.uni_mannheim.informatik.swt.models.gmf/icons/clabject16.gif"));
 				
 				entries.add(entry);
 			}
