@@ -13,7 +13,7 @@
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
             uri="http://swt.informatik.uni-mannheim.de/ReasoningResult"
-            class="de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.provider.ReasoningResultItemProviderAdapterFactory"
+            class="de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.provider.ReasoningResultItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider
