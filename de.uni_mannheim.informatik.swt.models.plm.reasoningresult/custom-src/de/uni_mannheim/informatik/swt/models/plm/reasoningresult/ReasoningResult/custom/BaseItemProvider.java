@@ -34,7 +34,7 @@ public class BaseItemProvider extends ItemProviderAdapter {
 	public Object getImage(Object object) {
 		if (object instanceof Check)
 			return ((Check) object).isRootCause() ? getResourceLocator().getImage("icon_lightning.png")
-					: ((Check) object).isResult() ?  getResourceLocator().getImage("icon_ok.png")
+					: ((((Check) object).isResult() && ((Check) object).isPassedIconResult())  || (!((Check) object).isResult() && !((Check) object).isPassedIconResult())) ?  getResourceLocator().getImage("icon_ok.png")
 							: getResourceLocator().getImage("icon_false.png");
 					
 		return super.getImage(object);

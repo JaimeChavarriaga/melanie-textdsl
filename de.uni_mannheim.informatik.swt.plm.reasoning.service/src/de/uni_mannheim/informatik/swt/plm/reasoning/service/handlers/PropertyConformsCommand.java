@@ -21,11 +21,12 @@ import org.eclipse.core.commands.ExecutionException;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Entity;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Role;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.AllConnectionsCheck;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.CompositeCheck;
+import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.NavigableCheck;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultFactory;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultModel;
-import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.TypeConnectionSearch;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.ReasoningService;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.util.Pair;
 import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService;
@@ -106,30 +107,64 @@ public class PropertyConformsCommand extends AbstractHandler {
 			return result;
 		}
 		AllConnectionsCheck allCCheck = ReasoningResultFactory.eINSTANCE.createAllConnectionsCheck(instance, type, result);
-		allCCheck.setName(allCCheck.getExpression());
-		allCCheck.setExpression("forall delta_t in " + type.getName() + ".connections(): exists delta_i in " + instance.getName() + ".connections(): delta_i.propertyConforms(delta_t)");
-		for(Connection deltaT:type.getAllConnections()) {
-			allCCheck.setNoTypeConnection(allCCheck.getNoTypeConnection() + 1);
-			boolean found = false;
-			TypeConnectionSearch typeCS = ReasoningResultFactory.eINSTANCE.createTypeConnectionSearch(instance, type, deltaT, allCCheck);
-			typeCS.setTypeConnection(deltaT);
-			for (Connection deltaI: instance.getAllConnections()) {
-				typeCS.setNoSearchedConnections(typeCS.getNoSearchedConnections() + 1);
-				CompositeCheck child = compute(deltaT, deltaI);
-				typeCS.getCheck().add(child);
-				if(child.isResult()) {
-					found = true;
-					break;
+		allCCheck.setExpression("HÜLP"); //TODO: expression for check with roles
+		allCCheck.setName("Relationships");
+		allCCheck.setResult(true);
+		for (Role rT: type.getAllNavigationsAsDestination()) {
+			CompositeCheck roleCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
+			roleCheck.setName(rT.represent());
+			roleCheck.setExpression("TODO");//TODO: expression
+			roleCheck.setResult(true);
+			if (rT.getLower() > 0) {
+				boolean found = false;
+				for (Role rI: instance.getAllNavigationsAsDestination()) {
+					if (rI.roleName().equals(rT.roleName())) {
+						CompositeCheck actualCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
+						actualCheck.setName(rI.represent());
+						actualCheck.setExpression("TODO");//TODO: expression
+						NavigableCheck navCheck = ReasoningResultFactory.eINSTANCE.createNavigableCheck(rT, rI, actualCheck);
+						navCheck.setResult(true);
+						if (rT.isNavigable() != rI.isNavigable()) {
+							navCheck.setResult(false);
+							continue;
+						}
+						CompositeCheck connectionCheck = compute(rT.getSource(), rI.getSource());
+						if (connectionCheck.isResult()) {
+							found = true;
+							actualCheck.setResult(true);
+							break;
+						}
+					}
+				}
+				if (!found) {
+					roleCheck.setResult(false);
+					allCCheck.setResult(false);
 				}
 			}
-			if (found) {
-				typeCS.setResult(true);
-			}
-			if (!found) {
-				return result;
-			}
 		}
-		allCCheck.setResult(true);
+		
+		//		for(Connection deltaT:type.getAllConnections()) {
+//			allCCheck.setNoTypeConnection(allCCheck.getNoTypeConnection() + 1);
+//			boolean found = false;
+//			TypeConnectionSearch typeCS = ReasoningResultFactory.eINSTANCE.createTypeConnectionSearch(instance, type, deltaT, allCCheck);
+//			typeCS.setTypeConnection(deltaT);
+//			for (Connection deltaI: instance.getAllConnections()) {
+//				typeCS.setNoSearchedConnections(typeCS.getNoSearchedConnections() + 1);
+//				CompositeCheck child = compute(deltaT, deltaI);
+//				typeCS.getCheck().add(child);
+//				if(child.isResult()) {
+//					found = true;
+//					break;
+//				}
+//			}
+//			if (found) {
+//				typeCS.setResult(true);
+//			}
+//			if (!found) {
+//				return result;
+//			}
+//		}
+//		allCCheck.setResult(true);
 		CompositeCheck isExprCheck = (new IsExpressedInstanceOfExcludedCommand()).compute(type, instance); 
 		result.getCheck().add(isExprCheck);
 		if (!isExprCheck.isResult()) {

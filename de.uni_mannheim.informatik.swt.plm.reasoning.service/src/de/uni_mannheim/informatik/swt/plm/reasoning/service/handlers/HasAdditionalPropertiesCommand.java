@@ -87,35 +87,50 @@ public class HasAdditionalPropertiesCommand extends AbstractHandler {
 		CompositeCheck navigationsCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck(instance, type, check);
 		navigationsCheck.setName("Navigations");
 		navigationsCheck.setExpression("exists rN in "+instance.getName()+".getAllAssociateRoleNames(): exists ... einiges");
-		for (Role r: instance.getAllNavigations()) {
+		for (Role rI: instance.getAllNavigations()) {
 			CompositeCheck roleCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck(instance, type, navigationsCheck);
-			roleCheck.setName(r.represent());
-			for(Clabject associate_i: instance.getDomainForRoleName(r.roleName())) {
-				CompositeCheck associateCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck(instance, type, roleCheck);
-				associateCheck.setName(associate_i.getName());
-				boolean found = true;
-				for (Clabject associate_t:type.getDomainForRoleName(r.roleName())) {
-					CompositeCheck actualAssociateCheck = null;
-					if (complexNavigationSearch) {
-						 actualAssociateCheck = (new PropertyConformsCommand()).compute(associate_t, associate_i);
-					} else {
-						actualAssociateCheck = (new NeighbourhoodConformsCommand()).compute(associate_t, associate_i);
-						
-					}
-					associateCheck.getCheck().add(actualAssociateCheck);
-					if (actualAssociateCheck.isResult()) {
-						found = false;
+			roleCheck.setName(rI.represent());
+			boolean found = false;
+			for (Role rT: type.getAllNavigations()) {
+				if (rT.roleName().equals(rI.roleName())) {
+					if (rT.isNavigable() == rI.isNavigable()) {
+						found = true;
 						break;
 					}
 				}
-				if (found) {
-					associateCheck.setResult(true);
-					roleCheck.setResult(true);
-					navigationsCheck.setResult(true);
-					check.setResult(true);
-					return check;
-				}
 			}
+			if (!found) {
+				roleCheck.setResult(true);
+				navigationsCheck.setResult(true);
+				check.setResult(true);
+				return check;
+			}
+//			for(Clabject associate_i: instance.getDomainForRoleName(r.roleName())) {
+//				CompositeCheck associateCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck(instance, type, roleCheck);
+//				associateCheck.setName(associate_i.getName());
+//				boolean found = true;
+//				for (Clabject associate_t:type.getDomainForRoleName(r.roleName())) {
+//					CompositeCheck actualAssociateCheck = null;
+//					if (complexNavigationSearch) {
+//						 actualAssociateCheck = (new PropertyConformsCommand()).compute(associate_t, associate_i);
+//					} else {
+//						actualAssociateCheck = (new NeighbourhoodConformsCommand()).compute(associate_t, associate_i);
+//						
+//					}
+//					associateCheck.getCheck().add(actualAssociateCheck);
+//					if (actualAssociateCheck.isResult()) {
+//						found = false;
+//						break;
+//					}
+//				}
+//				if (found) {
+//					associateCheck.setResult(true);
+//					roleCheck.setResult(true);
+//					navigationsCheck.setResult(true);
+//					check.setResult(true);
+//					return check;
+//				}
+//			}
 		}
 		return check;
 	}

@@ -18,6 +18,7 @@ import org.eclipse.core.commands.ExecutionException;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Entity;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Role;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.CompositeCheck;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ConnectionsLocalConformanceCheck;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultFactory;
@@ -80,52 +81,45 @@ public class NeighbourhoodConformsCommand extends AbstractHandler {
 		if (!localC.isResult()) {
 			return result;
 		}
-		for (String rN: type.getDomainRoleNames()) {
-			RoleNameLocalConformanceCheck rCheck = ReasoningResultFactory.eINSTANCE.createRoleNameLocalConformanceCheck();
-			rCheck.setName("RoleName localConformance: " + rN);
-			rCheck.setExpression(type.getName() + ".getDomainRoleNames()->forAll(rn| "+type.getName() + ".getDomainForRoleName(rn)->forAll(t | "+instance.getName()+".getDomainForRoleName(rn)->exists(i|i.localConforms(t)))");
-			result.getCheck().add(rCheck);
+		for (Role r: type.getAllNavigations()) {
+			String rN = r.roleName();
+			RoleNameLocalConformanceCheck rCheck = ReasoningResultFactory.eINSTANCE.createRoleNameLocalConformanceCheck(instance, type, result);
+			rCheck.setName(rN + " local conformance");
+			rCheck.setExpression("HELP!"); //TODO: intelligent copy expression from thesis
 			rCheck.setRoleName(rN);
 			rCheck.setResult(true);
-			for (Clabject t :type.getDomainForRoleName(rN)) {
-//				System.out.println(t);
-				boolean found = false;
-				for (Clabject i:instance.getDomainForRoleName(rN)) {
-					CompositeCheck innerLocal = (new LocalConformsCommand()).compute(t,i);
-					rCheck.getCheck().add(innerLocal);
-					if (innerLocal.isResult()) {
-						found = true;
-						break;
-					}
-				}
-				if (!found) {
+			for (Role rI: instance.getAllNavigationsForRoleName(rN)) {
+				CompositeCheck roleCheck = (new LocalConformsCommand()).compute(r, rI);
+				result.getCheck().add(roleCheck);
+				if (!roleCheck.isResult()) {
 					rCheck.setResult(false);
+					return result;
 				}
 			}
 		}
-		ConnectionsLocalConformanceCheck conCheck = ReasoningResultFactory.eINSTANCE.createConnectionsLocalConformanceCheck();
-		conCheck.setResult(true);
-		result.getCheck().add(conCheck);
-		for(Connection t:type.getAllConnections()) {
-			CompositeCheck tCheck = reasoner.createCompositeCheck(t.getName(), instance, t, instance.getName() + ".connections()->exists(c|c.localConforms("+ t.getName() + "))");
-			tCheck.setResult(true);
-			conCheck.getCheck().add(tCheck);
-			conCheck.setNoTypeConnections(conCheck.getNoTypeConnections() + 1);
-			boolean found = false;
-			for (Connection i: instance.getAllConnections()) {
-				CompositeCheck innerstLocal = (new LocalConformsCommand()).compute(t, i);
-				tCheck.getCheck().add(innerstLocal);
-				if (innerstLocal.isResult()) {
-					found = true;
-					break;
-				}
-			}
-			if (!found) {
-				tCheck.setResult(false);
-				conCheck.setResult(false);
-				return result;
-			}
-		}
+//		ConnectionsLocalConformanceCheck conCheck = ReasoningResultFactory.eINSTANCE.createConnectionsLocalConformanceCheck();
+//		conCheck.setResult(true);
+//		result.getCheck().add(conCheck);
+//		for(Connection t:type.getAllConnections()) {
+//			CompositeCheck tCheck = reasoner.createCompositeCheck(t.getName(), instance, t, instance.getName() + ".connections()->exists(c|c.localConforms("+ t.getName() + "))");
+//			tCheck.setResult(true);
+//			conCheck.getCheck().add(tCheck);
+//			conCheck.setNoTypeConnections(conCheck.getNoTypeConnections() + 1);
+//			boolean found = false;
+//			for (Connection i: instance.getAllConnections()) {
+//				CompositeCheck innerstLocal = (new LocalConformsCommand()).compute(t, i);
+//				tCheck.getCheck().add(innerstLocal);
+//				if (innerstLocal.isResult()) {
+//					found = true;
+//					break;
+//				}
+//			}
+//			if (!found) {
+//				tCheck.setResult(false);
+//				conCheck.setResult(false);
+//				return result;
+//			}
+//		}
 		result.setResult(true);
 		return result;
 	}

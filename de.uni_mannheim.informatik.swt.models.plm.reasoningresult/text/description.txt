@@ -15,6 +15,7 @@ Package ReasoningResult <http://swt.informatik.uni-mannheim.de/ReasoningResult>
     Attribute result : EBoolean<<1..1>>
     Attribute expression : EString
     Attribute rootCause : EBoolean<<1..1>>
+    Attribute passedIconResult : EBoolean
 
   Class CompositeCheck -> Check
     Reference check : Check<<0..*>>
@@ -110,3 +111,7 @@ Package ReasoningResult <http://swt.informatik.uni-mannheim.de/ReasoningResult>
     Reference supertypeIsonyms : Clabject<<0..*>>
     Reference subtypeIsonyms : Clabject<<0..*>>
     Reference interestingInstances : Clabject<<0..*>>
+
+  Class NavigableCheck -> Check
+    Reference target : Role<<1..1>>
+    Reference source : Role<<1..1>>

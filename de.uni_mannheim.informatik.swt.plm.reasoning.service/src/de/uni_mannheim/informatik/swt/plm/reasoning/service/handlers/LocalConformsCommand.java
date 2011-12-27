@@ -20,10 +20,12 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Entity;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Role;
+import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Check;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.CompositeCheck;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.FeatureSearchCheck;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.LevelComparison;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.LocalConformanceCheck;
+import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.NavigableCheck;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultFactory;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.RoleNameLocalConformanceCheck;
@@ -64,6 +66,31 @@ public class LocalConformsCommand extends AbstractHandler {
 		return localConforms(type, instance);
 	}
 	
+	protected CompositeCheck compute(Role r, Role rI) {
+		return localConforms(r, rI);
+	}
+	
+	private CompositeCheck localConforms(Role r, Role rI) {
+		LocalConformanceCheck check = ReasoningResultFactory.eINSTANCE.createLocalConformanceCheck();
+//		TODO: Handle roles as check sources/instances
+//		check.setSource(rI);
+//		check.setTarget(r);
+		check.setName("Role Local Conformance");
+		check.setExpression(rI.represent() + ".localConforms(" + r.represent() + ")");
+		NavigableCheck navCheck = ReasoningResultFactory.eINSTANCE.createNavigableCheck(r, rI, check);
+		if (!r.isNavigable() == rI.isNavigable()) {
+			return check;
+		} else {
+			navCheck.setResult(true);
+		}
+		Check localCheck = localConforms(r.getDestination(), rI.getDestination());
+		if (localCheck.isResult()) {
+			check.setResult(true);
+		}
+		check.getCheck().add(localCheck);
+		return check;
+	}
+
 	private CompositeCheck localConforms(Clabject type, Clabject instance) {
 		LocalConformanceCheck check = ReasoningResultFactory.eINSTANCE.createLocalConformanceCheck();
 		check.setSource(instance);
@@ -173,6 +200,8 @@ public class LocalConformsCommand extends AbstractHandler {
 		result.setResult(true);
 		return result;
 	}
+
+
 
 	
 }

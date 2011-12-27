@@ -60,6 +60,8 @@ public class IsonymCommand extends AbstractHandler {
 			result = false;
 		}
 		CompositeCheck additionalFeatures = (new HasAdditionalPropertiesCommand()).compute(type, instance);
+		additionalFeatures.setPassedIconResult(false);
+		additionalFeatures.setName("does NOT have additional properties");
 		check.getCheck().add(additionalFeatures);
 		if (additionalFeatures.isResult()) {
 			result = false;
@@ -67,11 +69,14 @@ public class IsonymCommand extends AbstractHandler {
 		PotencyComparison potencyCheck = ReasoningResultFactory.eINSTANCE.createPotencyComparison(instance, type, check);
 		potencyCheck.setInstancePotency(instance.getPotency());
 		potencyCheck.setTargetPotency(type.getPotency());
+		potencyCheck.setResult(true);
 		if (type.getPotency() != -1) {
 			if (instance.getPotency() == -1) {
 				result = false;
+				potencyCheck.setResult(false);
 			} else if (instance.getPotency() + 1 != type.getPotency()){
 				result = false;
+				potencyCheck.setResult(false);
 			}
 		}
 		check.setResult(result);
