@@ -80,6 +80,39 @@ public class RoleCreateCommand extends com.borlander.gmftools.samples.inthemiddl
 		((de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)source).getRole().add(newElement);
 		newElement.setSource((de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)source);
 		newElement.setDestination((de.uni_mannheim.informatik.swt.models.plm.PLM.Entity)target);
+		
+		//*************************************************************
+		// BEGIN CUSTOM CODE
+		// This code is only needed as long as the Pallette is used
+		// for DSL element (Role) creation
+		//*************************************************************
+		de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor editor = (de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor) org.eclipse.ui.PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+				.getActiveEditor();
+		
+		//Is the role created by a DSL tool? -> Initialize values
+		if (editor.getPalette().getActiveTool().getId().startsWith("dsl."))
+		{
+			String typeRoleID = editor.getPalette().getActiveTool().getId().replace("dsl.", "").replaceAll("<<.*?>>", "").replace(".CreationTool", "");			
+			de.uni_mannheim.informatik.swt.models.plm.PLM.Role typeRole = null;
+			
+			org.eclipse.emf.common.util.TreeIterator<org.eclipse.emf.ecore.EObject> iter = org.eclipse.emf.ecore.util.EcoreUtil.getRootContainer(source).eAllContents();
+			while (iter.hasNext()) {
+				org.eclipse.emf.ecore.EObject current = iter.next();
+				if (org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getProxyID(current).equals(typeRoleID)) 
+					typeRole = (de.uni_mannheim.informatik.swt.models.plm.PLM.Role)current;
+			}
+			
+			if (typeRole != null){
+				newElement.setNavigable(typeRole.isNavigable());
+				newElement.setExpressedRoleName(typeRole.getExpressedRoleName());
+				newElement.setLower(typeRole.getLower());
+				newElement.setUpper(typeRole.getUpper());
+			}
+		}
+		//*************************************************************
+		// END CUSTOM CODE
+		//*************************************************************
+		
 		doConfigure(newElement, monitor, info);
 		((org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest) getRequest()).setNewElement(newElement);
 		
