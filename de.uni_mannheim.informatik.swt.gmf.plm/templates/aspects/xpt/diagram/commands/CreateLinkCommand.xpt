@@ -78,7 +78,7 @@ public class RoleCreateCommand extends com.borlander.gmftools.samples.inthemiddl
 		de.uni_mannheim.informatik.swt.models.plm.PLM.Role newElement = de.uni_mannheim.informatik.swt.models.plm.PLM.PLMFactory.eINSTANCE
 				.createRole();
 		((de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)source).getRole().add(newElement);
-		newElement.setSource((de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)source);
+		newElement.setConnection((de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)source);
 		newElement.setDestination((de.uni_mannheim.informatik.swt.models.plm.PLM.Entity)target);
 		
 		//*************************************************************
@@ -135,7 +135,7 @@ public class RoleCreateCommand extends com.borlander.gmftools.samples.inthemiddl
 
 		newElement.setDestination((de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)source);
 		((de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)middle).getRole().add(newElement);
-		newElement.setSource((de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)middle);
+		newElement.setConnection((de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)middle);
 		
 		((org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest) getRequest()).setNewElement(newElement);
 		
@@ -207,7 +207,7 @@ public class RoleCreateCommand extends com.borlander.gmftools.samples.inthemiddl
 		
 		implicitRole.setDestination((de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)target);
 		connection.getRole().add(implicitRole);
-		implicitRole.setSource(connection);
+		implicitRole.setConnection(connection);
 		
 		if (connection.eContainer() == null)
 			((de.uni_mannheim.informatik.swt.models.plm.PLM.Model)source.eContainer()).getContent().add(connection);	

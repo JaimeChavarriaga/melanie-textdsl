@@ -201,7 +201,7 @@
 			try {
 				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.feature->select(f | f.oclIsKindOf(Attribute) and f.name = '"
 								+ ((de.uni_mannheim.informatik.swt.models.plm.visualization.ExpressionLabel) l.getLabelDescriptorForRole(self)).getExpression() + "')");
-				feature = (java.util.Set) ocl.evaluate(self.getSource(),q);
+				feature = (java.util.Set) ocl.evaluate(self.getConnection(),q);
 			} catch (org.eclipse.ocl.ParserException e) {
 				e.printStackTrace();
 			}

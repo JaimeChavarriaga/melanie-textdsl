@@ -59,7 +59,7 @@
 				if (source != null && target == null) 
 				{
 					if (typeRole != null){
-						de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject sourceType = typeRole.getSource();
+						de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject sourceType = typeRole.getConnection();
 						java.util.LinkedList<de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject> possibleSourceTypes = new java.util.LinkedList<de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject>();
 						possibleSourceTypes.addAll(sourceType.getModelSubtypes());
 						possibleSourceTypes.addAll(sourceType.getModelSupertypes());

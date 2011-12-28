@@ -128,7 +128,7 @@ public class PropertyConformsCommand extends AbstractHandler {
 							navCheck.setResult(false);
 							continue;
 						}
-						CompositeCheck connectionCheck = compute(rT.getSource(), rI.getSource());
+						CompositeCheck connectionCheck = compute(rT.getConnection(), rI.getConnection());
 						if (connectionCheck.isResult()) {
 							found = true;
 							actualCheck.setResult(true);
