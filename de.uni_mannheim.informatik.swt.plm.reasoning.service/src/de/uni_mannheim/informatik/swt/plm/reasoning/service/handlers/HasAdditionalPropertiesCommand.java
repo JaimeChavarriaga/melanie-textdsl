@@ -18,6 +18,7 @@ import org.eclipse.core.commands.ExecutionException;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Role;
+import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Check;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.CompositeCheck;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.HasAdditionalPropertiesCheck;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultFactory;
@@ -92,7 +93,19 @@ public class HasAdditionalPropertiesCommand extends AbstractHandler {
 			roleCheck.setName(rI.represent());
 			boolean found = false;
 			for (Role rT: type.getAllNavigations()) {
+				boolean roleNameSufficient = false;
+				// RoleName sufficiency is given if the roleNames are equal or if the destinations property conform and both roleNames are default
 				if (rT.roleName().equals(rI.roleName())) {
+					roleNameSufficient = true;
+				} else if(rT.hasDefaultRoleName() && rI.hasDefaultRoleName()){
+					Check destinationCheck = (new PropertyConformsCommand()).compute(rT.getDestination(), rI.getDestination());
+					roleCheck.getCheck().add(destinationCheck);
+					//TODO: include in result model
+					if (destinationCheck.isResult()) {
+						roleNameSufficient = true;
+					}
+				}
+				if (roleNameSufficient) {
 					if (rT.isNavigable() == rI.isNavigable()) {
 						found = true;
 						break;
@@ -105,32 +118,6 @@ public class HasAdditionalPropertiesCommand extends AbstractHandler {
 				check.setResult(true);
 				return check;
 			}
-//			for(Clabject associate_i: instance.getDomainForRoleName(r.roleName())) {
-//				CompositeCheck associateCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck(instance, type, roleCheck);
-//				associateCheck.setName(associate_i.getName());
-//				boolean found = true;
-//				for (Clabject associate_t:type.getDomainForRoleName(r.roleName())) {
-//					CompositeCheck actualAssociateCheck = null;
-//					if (complexNavigationSearch) {
-//						 actualAssociateCheck = (new PropertyConformsCommand()).compute(associate_t, associate_i);
-//					} else {
-//						actualAssociateCheck = (new NeighbourhoodConformsCommand()).compute(associate_t, associate_i);
-//						
-//					}
-//					associateCheck.getCheck().add(actualAssociateCheck);
-//					if (actualAssociateCheck.isResult()) {
-//						found = false;
-//						break;
-//					}
-//				}
-//				if (found) {
-//					associateCheck.setResult(true);
-//					roleCheck.setResult(true);
-//					navigationsCheck.setResult(true);
-//					check.setResult(true);
-//					return check;
-//				}
-//			}
 		}
 		return check;
 	}

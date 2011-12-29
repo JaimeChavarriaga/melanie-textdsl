@@ -80,7 +80,7 @@ public class PropertyConformsCommand extends AbstractHandler {
 	
 	private CompositeCheck propertyConforms(Clabject type, Clabject instance) {
 		CompositeCheck check = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
-		check.setName("Property Conformance[Delegation]");
+		check.setName(instance.getName()+".propertyConforms("+type.getName()+")");
 		check.setSource(instance);
 		check.setTarget(type);
 		check.setExpression(instance.getName()+".propertyConforms("+type.getName()+")");
