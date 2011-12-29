@@ -92,14 +92,14 @@ public class LocalConformsCommand extends AbstractHandler {
 	}
 
 	private CompositeCheck localConforms(Clabject type, Clabject instance) {
-		LocalConformanceCheck check = ReasoningResultFactory.eINSTANCE.createLocalConformanceCheck();
-		check.setSource(instance);
-		check.setTarget(type);
-		check.setName("LocalConformance[Delegation]");
-		check.setExpression(instance.getName() + ".localConforms("+type.getName() + ")");
+//		LocalConformanceCheck check = ReasoningResultFactory.eINSTANCE.createLocalConformanceCheck();
+//		check.setSource(instance);
+//		check.setTarget(type);
+//		check.setName("LocalConformance[Delegation]");
+//		check.setExpression(instance.getName() + ".localConforms("+type.getName() + ")");
 		CompositeCheck child = null;
 		if (forceClabject) {
-			check.setExpression("forced Clabject local conformance");
+//			check.setExpression("forced Clabject local conformance");
 			child =  localConformsClabject(type, instance);
 		} else if (type instanceof Connection && instance instanceof Connection) {
 			child =  localConformsConnection((Connection) type, (Connection) instance);
@@ -107,16 +107,20 @@ public class LocalConformsCommand extends AbstractHandler {
 			child =  localConformsClabject(type, instance);
 		} else if ((type instanceof Entity && instance instanceof Connection) || 
 				(instance instanceof Entity && type instanceof Connection)){
-			child = ReasoningResultFactory.eINSTANCE.createCompositeCheck(instance, type, check);
-			check.setResult(false);
+//			child = ReasoningResultFactory.eINSTANCE.createCompositeCheck(instance, type, check);
+			child = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
+			child.setTarget(type);
+			child.setSource(instance);
+//			check.setResult(false);
 			child.setName("Linguistic type");
-			return check;
+//			return check;
 		} else {
 			System.out.println("mismatching types. NPE??");
 		}
-		check.getCheck().add(child);
-		check.setResult(child.isResult());
-		return check;
+//		check.getCheck().add(child);
+//		check.setResult(child.isResult());
+//		return check;
+		return child;
 	}
 	
 	private CompositeCheck localConformsConnection(Connection type, Connection instance) {
@@ -134,12 +138,16 @@ public class LocalConformsCommand extends AbstractHandler {
 			RoleNameLocalConformanceCheck roleNameCheck = ReasoningResultFactory.eINSTANCE.createRoleNameLocalConformanceCheck(instance, type, roleCheck);
 			roleNameCheck.setName(r.roleName());
 			roleNameCheck.setRoleName(r.roleName());
-			boolean found = instance.getRoleNames().contains(r.roleName());
-			if (!found) {
-				return result;
-			} 
-			if (! (instance.isNavigableForRoleName(r.roleName()) == (type.isNavigableForRoleName(r.roleName())))) {
-				return result;
+			for (Role rI: instance.getRole()) {
+				boolean roleNameSufficient = false;
+				if (r.roleName().equals(rI.roleName()) || (r.hasDefaultRoleName() && rI.hasDefaultRoleName())) {
+					roleNameSufficient = true;
+				}
+				if (roleNameSufficient) {
+					if (r.isNavigable() != rI.isNavigable()) {
+						return result;
+					}
+				}
 			}
 			roleNameCheck.setResult(true);
 		}

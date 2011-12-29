@@ -59,7 +59,7 @@ public class NeighbourhoodConformsCommand extends AbstractHandler {
 	
 	private CompositeCheck neighbourhoodConforms(Clabject type,
 			Clabject instance) {
-		CompositeCheck result = reasoner.createCompositeCheck("NeighbourhoodConformance[Delegation]", instance, type, instance.getName()+".neighbourhoodConforms("+type.getName() + ")");
+//		CompositeCheck result = reasoner.createCompositeCheck("NeighbourhoodConformance[Delegation]", instance, type, instance.getName()+".neighbourhoodConforms("+type.getName() + ")");
 		CompositeCheck child = null;
 		if (type instanceof Connection && instance instanceof Connection) {
 			child = neighbourhoodConformsConnection((Connection) type, (Connection) instance);
@@ -68,9 +68,10 @@ public class NeighbourhoodConformsCommand extends AbstractHandler {
 		} else {
 			System.out.println("mismatching types");
 		}
-		result.getCheck().add(child);
-		result.setResult(child.isResult());
-		return result;
+//		result.getCheck().add(child);
+//		result.setResult(child.isResult());
+//		return result;
+		return child;
 	}
 
 	private CompositeCheck neighbourhoodConformsClabject(Clabject type,
@@ -132,21 +133,30 @@ public class NeighbourhoodConformsCommand extends AbstractHandler {
 		if (!clabCheck.isResult()) {
 			return result;
 		}
-		CompositeCheck roleNames = reasoner.createCompositeCheck("RoleNamesLocalConform", instance, type, "blah");
-		result.getCheck().add(roleNames);
-		for (String rN: type.getRoleNames()) {
-			RoleNameLocalConformanceCheck roleCheck = ReasoningResultFactory.eINSTANCE.createRoleNameLocalConformanceCheck();
-			roleNames.getCheck().add(roleCheck);
-			roleCheck.setRoleName(rN);
-			roleCheck.setExpression(instance.getName()+ ".getParticipantForRoleName("+ rN + ").localConforms(" +type.getName() + ".getParticipantForRoleName(" + rN + "))");
-			CompositeCheck parts = (new LocalConformsCommand()).compute(type.getParticipantForRoleName(rN), instance.getParticipantForRoleName(rN));
-			roleCheck.getCheck().add(parts);
-			if (!parts.isResult()) {
+		CompositeCheck roles = reasoner.createCompositeCheck("RolesLocalConform", instance, type, "blah");
+		result.getCheck().add(roles);
+		for (Role rT: type.getRole()) {
+			CompositeCheck role = reasoner.createCompositeCheck(rT.represent(), instance, type, "blah");
+			roles.getCheck().add(role);
+			for (Role rI: instance.getRole()) {
+				boolean roleNameSufficient = false;
+				if (rT.roleName().equals(rI.roleName()) || (rT.hasDefaultRoleName() && rI.hasDefaultRoleName())) {
+					roleNameSufficient = true;
+				}
+				if (roleNameSufficient) {
+					CompositeCheck roleCheck = (new LocalConformsCommand()).compute(rT.getDestination(), rI.getDestination());
+					role.getCheck().add(roleCheck);
+					if (roleCheck.isResult()) {
+						role.setResult(true);
+						break;
+					}
+				}
+			}
+			if (!role.isResult()) {
 				return result;
 			}
-			roleCheck.setResult(true);
 		}
-		roleNames.setResult(true);
+		roles.setResult(true);
 		result.setResult(true);
 		return result;
 	}

@@ -277,6 +277,13 @@
                               value="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.OntologyEditPart">
                         </instanceof>
                      </iterate>
+                     <iterate
+                           ifEmpty="false"
+                           operator="or">
+                        <instanceof
+                              value="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ModelEditPart">
+                        </instanceof>
+                     </iterate>
                   </or>
                </visibleWhen>
             </menu>

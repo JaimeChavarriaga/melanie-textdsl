@@ -24,9 +24,9 @@ import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Rea
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.ReasoningService;
 import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService;
 
-public class ConsistentClassificationCommand extends AbstractHandler {
+public class ModelConsistentClassificationCommand extends AbstractHandler {
 
-	public static final String ID = "de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.consistentclassificationycommand";
+	public static final String ID = "de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.modelconsistentclassificationcommand";
 	
 	IReasoningService reasoner = (new ReasoningService()).Instance();
 	
@@ -36,7 +36,7 @@ public class ConsistentClassificationCommand extends AbstractHandler {
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		ReasoningResultModel resultModel = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();
-		Model model = (Model)event.getParameters().get("model");
+		Model model = (Model)event.getObjectParameterForExecution("model");
 		CompositeCheck check = compute(model);
 		resultModel.getCheck().add(check);
 		
@@ -53,9 +53,9 @@ public class ConsistentClassificationCommand extends AbstractHandler {
 	}
 
 	private CompositeCheck isConsistentlyClassified(Model model) {
-		CompositeCheck check = ReasoningResultFactory.eINSTANCE.createCompositeCheck(model, model, null);
-		check.setResult(true);
 		Model classifyingModel = model.getClassifyingModel();
+		CompositeCheck check = ReasoningResultFactory.eINSTANCE.createCompositeCheck(model, classifyingModel, null);
+		check.setResult(true);
 		check.setName("ConsistentClassification");
 		if (classifyingModel == null) {
 			//There is no classifying model, so model is the rootmodel or there has been an error. 
@@ -64,13 +64,14 @@ public class ConsistentClassificationCommand extends AbstractHandler {
 			check.setResult(false);
 			return check;
 		}
-		CompositeCheck classificationCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck(model, model, check);
+		CompositeCheck classificationCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck(model, classifyingModel, check);
 		classificationCheck.setName("Classificiations");
 		classificationCheck.setResult(true);
 		for (Classification inst: model.getAllClassifications()) {
-			CompositeCheck aClassificationCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck(model, model, classificationCheck);
+			CompositeCheck aClassificationCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck(model, classifyingModel, classificationCheck);
 			aClassificationCheck.setResult(true);
-			aClassificationCheck.setName(inst.getName());
+			aClassificationCheck.setName(inst.represent());
+			aClassificationCheck.setExpression(inst.represent()+ ".isConsistent()");
 			if (!inst.isExpressed()) {
 				aClassificationCheck.setExpression(inst.getName() + " is not expressed.");
 				continue;
@@ -88,7 +89,7 @@ public class ConsistentClassificationCommand extends AbstractHandler {
 		generalizationCheck.setName("Generalizations");
 		generalizationCheck.setResult(true);
 		for (Generalization gener:classifyingModel.getAllGeneralizations()) {
-			CompositeCheck aGenerCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck(model, model, generalizationCheck); 
+			CompositeCheck aGenerCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck(model, classifyingModel, generalizationCheck); 
 			aGenerCheck.setName(gener.getName());
 			aGenerCheck.setResult(true);
 			CompositeCheck actualCheck = (new GeneralizationConsistencyCommand()).compute(gener);

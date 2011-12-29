@@ -110,9 +110,15 @@
          </commandParameter>
       </command>
       <command
-            defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.ConsistentClassificationCommand"
-            id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.consistentclassificationycommand"
+            defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.ModelConsistentClassificationCommand"
+            id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.modelconsistentclassificationcommand"
             name="Consistent Classification">
+         <commandParameter
+               id="model"
+               name="model"
+               optional="true"
+               typeId="de.uni_mannheim.informatik.swt.plm.workbench.eobjectcommandparametertype">
+         </commandParameter>
       </command>
       <command
             defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.HyponymCommand"

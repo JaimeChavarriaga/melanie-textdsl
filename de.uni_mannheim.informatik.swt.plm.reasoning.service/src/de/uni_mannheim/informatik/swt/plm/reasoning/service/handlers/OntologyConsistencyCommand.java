@@ -73,7 +73,7 @@ public class OntologyConsistencyCommand extends AbstractHandler {
 		int rootLevel = models.get(0).getLevel();
 		for (Model m:el.getContent()) {
 			if (m.getLevel() != rootLevel) {
-				CompositeCheck modelCheck = (new ConsistentClassificationCommand()).compute(m);
+				CompositeCheck modelCheck = (new ModelConsistentClassificationCommand()).compute(m);
 				check.getCheck().add(modelCheck);
 				if (!modelCheck.isResult()) {
 					check.setResult(false);

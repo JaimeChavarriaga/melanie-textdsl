@@ -11,6 +11,7 @@
  *******************************************************************************/
 package de.uni_mannheim.informatik.swt.plm.reasoning.service;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -39,13 +40,13 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Generalization;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Role;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.CompositeCheck;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultFactory;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.ClassificationConsistencyCommand;
-import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.ConsistentClassificationCommand;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.FeatureConformsCommand;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.GeneralizationConsistencyCommand;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.HasAdditionalPropertiesCommand;
@@ -54,6 +55,7 @@ import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.InstanceCom
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.IsExpressedInstanceOfExcludedCommand;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.IsonymCommand;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.LocalConformsCommand;
+import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.ModelConsistentClassificationCommand;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.MultiplicityConformsCommand;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.NeighbourhoodConformsCommand;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.OntologyConsistencyCommand;
@@ -259,6 +261,26 @@ public class ReasoningService implements IReasoningService {
 			commandParamametersMap = new HashMap<String, Object>();
 			
 			commandParamametersMap.put("generalization",  modelElements[0]);
+			
+			param.parameters = commandParamametersMap;
+			
+			items.add(new CommandContributionItem(param));
+		}
+
+		//We have a model selected
+		if (modelElements.length == 1 
+				&& modelElements[0] instanceof Model){
+		
+			//***************************************************
+			// Model consistent classification
+			//***************************************************
+			CommandContributionItemParameter param = 
+					new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), ModelConsistentClassificationCommand.ID + ".menuEntry", ModelConsistentClassificationCommand.ID, CommandContributionItem.STYLE_PUSH);
+			param.label = getCommandName(ModelConsistentClassificationCommand.ID);
+			
+			commandParamametersMap = new HashMap<String, Object>();
+			
+			commandParamametersMap.put("model",  modelElements[0]);
 			
 			param.parameters = commandParamametersMap;
 			
@@ -576,7 +598,7 @@ public class ReasoningService implements IReasoningService {
 			params.put("model", parameters[0]);
 			params.put("silent", Boolean.toString(silent));
 			
-			Command command = commandService.getCommand(ConsistentClassificationCommand.ID);
+			Command command = commandService.getCommand(ModelConsistentClassificationCommand.ID);
 			ParameterizedCommand paramCmd = ParameterizedCommand.generateCommand(command, params);
 			try {
 				result = (Boolean)handlerService.executeCommand(paramCmd, null);

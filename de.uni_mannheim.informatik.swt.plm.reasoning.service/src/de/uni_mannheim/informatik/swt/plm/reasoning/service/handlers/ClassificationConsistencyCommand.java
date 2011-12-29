@@ -59,7 +59,8 @@ public class ClassificationConsistencyCommand extends AbstractHandler {
 
 	private CompositeCheck classificationIsConsistent(Classification inst) {
 		CompositeCheck check = ReasoningResultFactory.eINSTANCE.createCompositeCheck(inst, inst, null);
-		check.setName("Consistency[Classification]");
+		check.setName("Classification Consistency");
+		check.setExpression("TODO");//TODO Expression
 		check.setResult(true);
 		Clabject instance = inst.getInstance();
 		Clabject type = inst.getType();
