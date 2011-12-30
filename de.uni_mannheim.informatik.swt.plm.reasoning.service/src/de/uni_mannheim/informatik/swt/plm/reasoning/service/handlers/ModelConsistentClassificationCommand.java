@@ -90,7 +90,7 @@ public class ModelConsistentClassificationCommand extends AbstractHandler {
 		generalizationCheck.setResult(true);
 		for (Generalization gener:classifyingModel.getAllGeneralizations()) {
 			CompositeCheck aGenerCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck(model, classifyingModel, generalizationCheck); 
-			aGenerCheck.setName(gener.getName());
+			aGenerCheck.setName(gener.represent());
 			aGenerCheck.setResult(true);
 			CompositeCheck actualCheck = (new GeneralizationConsistencyCommand()).compute(gener);
 			aGenerCheck.getCheck().add(actualCheck);

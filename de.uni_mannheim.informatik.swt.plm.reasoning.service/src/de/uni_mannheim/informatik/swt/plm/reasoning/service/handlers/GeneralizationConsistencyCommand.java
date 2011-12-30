@@ -78,7 +78,7 @@ public class GeneralizationConsistencyCommand extends AbstractHandler {
 		List<Clabject> domain = classified.getAllClabjects();
 		Set<Clabject> superInstances = new HashSet<Clabject>();
 		boolean complex = false;
-		if (gener.getDisjoint() || gener.getComplete()) {
+		if (gener.isDisjoint() || gener.isComplete()) { 
 			//There has to be one supertype and more than one subtype
 			complex = true;
 			if ( (subtype.size()<= 1) || (supertype.size() != 1)) {
@@ -97,7 +97,7 @@ public class GeneralizationConsistencyCommand extends AbstractHandler {
 				}
 			}
 			//Now for the actual claims
-			if (gener.getComplete()) {
+			if (gener.isComplete()) {
 				//There can be no superinstance that is not an instance of any of the subtypes
 				CompositeCheck completeCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck(gener, gener, check);
 				completeCheck.setName("CompleteViolation");
@@ -120,7 +120,7 @@ public class GeneralizationConsistencyCommand extends AbstractHandler {
 					}
 				}
 			}
-			if (gener.getDisjoint()) {
+			if (gener.isDisjoint()) {
 				CompositeCheck disjointCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck(gener, gener, check);
 				disjointCheck.setName("DisjointViolation");
 				disjointCheck.setResult(true);
@@ -143,7 +143,7 @@ public class GeneralizationConsistencyCommand extends AbstractHandler {
 				}
 			}
 		}
-		if (gener.getIntersection()) {
+		if (gener.isIntersection()) {
 			complex = true;
 			CompositeCheck domainSearch = ReasoningResultFactory.eINSTANCE.createCompositeCheck(gener, gener, check);
 			domainSearch.setName("InstanceDomainSearch");

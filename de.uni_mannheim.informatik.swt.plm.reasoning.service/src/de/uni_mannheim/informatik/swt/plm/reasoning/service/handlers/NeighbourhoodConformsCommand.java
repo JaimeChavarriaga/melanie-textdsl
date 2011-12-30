@@ -90,9 +90,7 @@ public class NeighbourhoodConformsCommand extends AbstractHandler {
 			rCheck.setRoleName(rN);
 			rCheck.setResult(true);
 			for (Role rI: instance.getAllNavigationsForRoleName(rN)) {
-				CompositeCheck roleCheck = (new LocalConformsCommand()).compute(r, rI);
-				result.getCheck().add(roleCheck);
-				if (!roleCheck.isResult()) {
+				if (!rI.conforms(r)) {
 					rCheck.setResult(false);
 					return result;
 				}
@@ -139,11 +137,7 @@ public class NeighbourhoodConformsCommand extends AbstractHandler {
 			CompositeCheck role = reasoner.createCompositeCheck(rT.represent(), instance, type, "blah");
 			roles.getCheck().add(role);
 			for (Role rI: instance.getRole()) {
-				boolean roleNameSufficient = false;
-				if (rT.roleName().equals(rI.roleName()) || (rT.hasDefaultRoleName() && rI.hasDefaultRoleName())) {
-					roleNameSufficient = true;
-				}
-				if (roleNameSufficient) {
+				if (rI.conforms(rT)) {
 					CompositeCheck roleCheck = (new LocalConformsCommand()).compute(rT.getDestination(), rI.getDestination());
 					role.getCheck().add(roleCheck);
 					if (roleCheck.isResult()) {

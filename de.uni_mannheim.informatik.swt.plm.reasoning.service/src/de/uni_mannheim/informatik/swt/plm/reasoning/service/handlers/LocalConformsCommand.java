@@ -66,30 +66,30 @@ public class LocalConformsCommand extends AbstractHandler {
 		return localConforms(type, instance);
 	}
 	
-	protected CompositeCheck compute(Role r, Role rI) {
-		return localConforms(r, rI);
-	}
+//	protected CompositeCheck compute(Role r, Role rI) {
+//		return localConforms(r, rI);
+//	}
 	
-	private CompositeCheck localConforms(Role r, Role rI) {
-		LocalConformanceCheck check = ReasoningResultFactory.eINSTANCE.createLocalConformanceCheck();
-//		TODO: Handle roles as check sources/instances
-//		check.setSource(rI);
-//		check.setTarget(r);
-		check.setName("Role Local Conformance");
-		check.setExpression(rI.represent() + ".localConforms(" + r.represent() + ")");
-		NavigableCheck navCheck = ReasoningResultFactory.eINSTANCE.createNavigableCheck(r, rI, check);
-		if (!r.isNavigable() == rI.isNavigable()) {
-			return check;
-		} else {
-			navCheck.setResult(true);
-		}
-		Check localCheck = localConforms(r.getDestination(), rI.getDestination());
-		if (localCheck.isResult()) {
-			check.setResult(true);
-		}
-		check.getCheck().add(localCheck);
-		return check;
-	}
+//	private CompositeCheck localConforms(Role r, Role rI) {
+//		LocalConformanceCheck check = ReasoningResultFactory.eINSTANCE.createLocalConformanceCheck();
+////		TODO: Handle roles as check sources/instances
+////		check.setSource(rI);
+////		check.setTarget(r);
+//		check.setName("Role Local Conformance");
+//		check.setExpression(rI.represent() + ".localConforms(" + r.represent() + ")");
+//		NavigableCheck navCheck = ReasoningResultFactory.eINSTANCE.createNavigableCheck(r, rI, check);
+//		if (!r.isNavigable() == rI.isNavigable()) {
+//			return check;
+//		} else {
+//			navCheck.setResult(true);
+//		}
+//		Check localCheck = localConforms(r.getDestination(), rI.getDestination());
+//		if (localCheck.isResult()) {
+//			check.setResult(true);
+//		}
+//		check.getCheck().add(localCheck);
+//		return check;
+//	}
 
 	private CompositeCheck localConforms(Clabject type, Clabject instance) {
 //		LocalConformanceCheck check = ReasoningResultFactory.eINSTANCE.createLocalConformanceCheck();
@@ -138,16 +138,14 @@ public class LocalConformsCommand extends AbstractHandler {
 			RoleNameLocalConformanceCheck roleNameCheck = ReasoningResultFactory.eINSTANCE.createRoleNameLocalConformanceCheck(instance, type, roleCheck);
 			roleNameCheck.setName(r.roleName());
 			roleNameCheck.setRoleName(r.roleName());
+			boolean found = false;
 			for (Role rI: instance.getRole()) {
-				boolean roleNameSufficient = false;
-				if (r.roleName().equals(rI.roleName()) || (r.hasDefaultRoleName() && rI.hasDefaultRoleName())) {
-					roleNameSufficient = true;
+				if (rI.conforms(r)) {
+					found = true;
 				}
-				if (roleNameSufficient) {
-					if (r.isNavigable() != rI.isNavigable()) {
-						return result;
-					}
-				}
+			}
+			if (!found) {
+				return result;
 			}
 			roleNameCheck.setResult(true);
 		}

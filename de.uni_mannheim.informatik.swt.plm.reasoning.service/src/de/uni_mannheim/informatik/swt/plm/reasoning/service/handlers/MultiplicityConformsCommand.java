@@ -89,8 +89,6 @@ public class MultiplicityConformsCommand extends AbstractHandler {
 				for (Role role: domCon.getRole()) {
 					if (!role.getDestination().equals(r.getDestination())) {
 						Clabject part = role.getDestination();
-//				for (Clabject part:domCon.getParticipants()) {
-//					if (!domCon.getParticipantForRoleName(r.roleName()).equals(part)) {
 						if (!count.containsKey(part)) {
 							count.put(part, 0);
 						}
