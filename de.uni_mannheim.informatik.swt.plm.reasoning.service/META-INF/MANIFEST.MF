@@ -11,3 +11,7 @@ Require-Bundle: de.uni_mannheim.informatik.swt.models.plm;bundle-version="1.0.0"
  de.uni_mannheim.informatik.swt.models.reasoningresult;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: de.uni_mannheim.informatik.swt.mlm.reasoning.service.proximity,
+ de.uni_mannheim.informatik.swt.plm.reasoning.service,
+ de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers,
+ de.uni_mannheim.informatik.swt.plm.reasoning.service.util
