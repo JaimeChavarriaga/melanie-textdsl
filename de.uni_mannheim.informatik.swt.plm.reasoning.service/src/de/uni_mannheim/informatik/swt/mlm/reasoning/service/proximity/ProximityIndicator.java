@@ -28,60 +28,68 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.LMLModel;
  */
 public class ProximityIndicator {
 	
+	/**
+	 * 
+	 * @author bastian
+	 *
+	 * @param <T> Either Clabject or Element in case of containment
+	 * 
+	 * Helper to parametrize the three proximity types.
+	 * 
+	 */
 	private interface ProximityHelper<T> {
 		
+		/**
+		 * 
+		 * @param currentResult
+		 * @param newAddition
+		 * @return The new Result with the two combined
+		 */
 		public String appendResult(String currentResult, String newAddition);
 		
+		/**
+		 * 
+		 * @param current
+		 * @return the next level of proximity from current
+		 */
 		public List<T> getNextProximityLevel(T current);
 		
+		/**
+		 * 
+		 * @return the separation string for the current type of proximity
+		 */
 		public String getSeparator();
 		
 	}
 	
+	// The queues containing the parsed input of the proximity indication strings
 	private LinkedList<Integer> generQueue = new LinkedList<Integer>();
 	private LinkedList<Integer> contQueue = new LinkedList<Integer>();
 	private LinkedList<Integer> classQueue = new LinkedList<Integer>();
 	
+	// Star proximity flushes everything 
 	private final int STAR = -1;
 
+	/**
+	 * 
+	 * @param c the clabject to evaluate the proximity string from
+	 * @param expression
+	 * @return the string replacing the name in the header compartment
+	 */
 	public String run(Clabject c, String expression) {
+		// Parse the input expression
 		parseInput(expression);
-		String generalizationProximityString = createProximityString(c, generQueue, new ProximityHelper<Clabject>(){
+		// Create the three proximity strings with helpers
+		String generalizationProximityString = createGeneralizationProximityString(c);
+		String classificationProximityString = createClassificationProximityString(c);
+		String containmentProximityString = createContainmentProximityString(c);
+		// Put them together
+		String result = generalizationProximityString + containmentProximityString + c.getName() + classificationProximityString;  
+		return  result;
+	}
 
-			@Override
-			public String appendResult(String currentResult, String newAddition) {
-				return newAddition + currentResult;
-			}
 
-			@Override
-			public List<Clabject> getNextProximityLevel(Clabject current) {
-				return current.getModelDirectSupertypes();
-			}
-
-			@Override
-			public String getSeparator() {
-				return "<";
-			}
-			
-		});
-		String classificationProximityString = createProximityString(c, classQueue, new ProximityHelper<Clabject>() {
-
-			@Override
-			public String appendResult(String currentResult, String newAddition) {
-				return currentResult + newAddition;
-			}
-
-			@Override
-			public List<Clabject> getNextProximityLevel(Clabject current) {
-				return current.getModelDirectTypes();
-			}
-
-			@Override
-			public String getSeparator() {
-				return ":";
-			}
-			
-		});
+	public String createContainmentProximityString(Clabject c) {
 		String containmentProximityString = createProximityString(c, contQueue, new ProximityHelper<Element>() {
 
 			@Override
@@ -104,36 +112,97 @@ public class ProximityIndicator {
 			}
 			
 		});
-		String result = generalizationProximityString + containmentProximityString + c.getName() + classificationProximityString;  
-		return  result;
+		return containmentProximityString;
+	}
+
+
+	public String createClassificationProximityString(Clabject c) {
+		String classificationProximityString = createProximityString(c, classQueue, new ProximityHelper<Clabject>() {
+
+			@Override
+			public String appendResult(String currentResult, String newAddition) {
+				return currentResult + newAddition;
+			}
+
+			@Override
+			public List<Clabject> getNextProximityLevel(Clabject current) {
+				return current.getModelDirectTypes();
+			}
+
+			@Override
+			public String getSeparator() {
+				return ":";
+			}
+			
+		});
+		return classificationProximityString;
+	}
+
+
+	public String createGeneralizationProximityString(Clabject c) {
+		String generalizationProximityString = createProximityString(c, generQueue, new ProximityHelper<Clabject>(){
+
+			@Override
+			public String appendResult(String currentResult, String newAddition) {
+				return newAddition + currentResult;
+			}
+
+			@Override
+			public List<Clabject> getNextProximityLevel(Clabject current) {
+				return current.getModelDirectSupertypes();
+			}
+
+			@Override
+			public String getSeparator() {
+				return "<";
+			}
+			
+		});
+		return generalizationProximityString;
 	}
 
 
 	private String createProximityString(Clabject c, LinkedList<Integer> queue, ProximityHelper helper) {
 		String result = "";
+		//When there is no queue there is no string
 		if (queue.isEmpty()) {
 			return result;
 		}
+		// The current string request level
 		int currentRequest = queue.poll();
+		// helper to collect the possible name givers
 		int currentLevel = 0;
+		// the last request level to determine if we skip levels
 		int lastRequest = -1;
+		// all the possible elements to contribute to the proximity, each entry is one level of them
 		List<List<? extends Element>> allLevels = new ArrayList<List<? extends Element>>();
+		// initialize with the first level from the input
 		allLevels.add(helper.getNextProximityLevel(c));
+		// local flag to store if there is a next level
 		boolean nextLevelPresent = true;
 		while (nextLevelPresent) {
 			List<? extends Element> nextLevel = new ArrayList<Element>();
+			// Collect the next level from all elements on the current level
 			for (Element t: allLevels.get(currentLevel)) {
 				nextLevel.addAll(helper.getNextProximityLevel(t));
 			}
+			// Determine if there is a next level
 			nextLevelPresent = nextLevel.size() > 0;
-			if (nextLevelPresent)	allLevels.add(nextLevel);
+			// Prevent empty lists in allLevels
+			if (nextLevelPresent) allLevels.add(nextLevel);
 			currentLevel++;
 		}
-		for (List<? extends Element> currentLevelClabjects: allLevels) {
-			if (currentRequest == allLevels.indexOf(currentLevelClabjects) || currentRequest == STAR) { 
+		//Loop through all the possible elements on all the levels and see if there is a request for it
+		for (List<? extends Element> currentLevelElements: allLevels) {
+			// Only act if the current level is of interest 
+			// Interest can be either a request or STAR
+			if (currentRequest == allLevels.indexOf(currentLevelElements) || currentRequest == STAR) {
 				String temp = "";
-				if (currentLevelClabjects.size()>1) temp += "(";
-				for (Element t: currentLevelClabjects) {
+				// If there is more than one element in the current level, we have to bracket them
+				if (currentLevelElements.size()>1) temp += "(";
+				// Parse the current level string from the names of the current level Elements
+				for (Element t: currentLevelElements) {
+					// If there is no name or its empty, use a underscore
 					if (t.getName() != null && t.getName().length()>0) {
 						temp += t.getName();
 					} else {
@@ -141,11 +210,19 @@ public class ProximityIndicator {
 					}
 					temp += ",";
 				}
+				// If there was any, there is a trailing comma too much
 				if (temp.length() > 0) temp = temp.substring(0,temp.length()-1);
-				if (currentLevelClabjects.size()>1) temp += ")";
+				// If there was more than one, we have to close the bracket
+				if (currentLevelElements.size()>1) temp += ")";
+				// add the proximity separator
 				temp += helper.getSeparator();
+				// If we skipped a level, add a second separator
 				if (currentRequest != STAR && currentRequest - lastRequest >= 2) temp += helper.getSeparator();
+				// Let the helper build the result 
 				result = helper.appendResult(result, temp);
+				// if the queue is not empty, go to the next request
+				// the loop will still do all elements even if there are no more requests because a 
+				// star request will be relevant for all levels
 				if (!queue.isEmpty()) {
 					lastRequest = currentRequest;
 					currentRequest = queue.poll();
@@ -157,6 +234,7 @@ public class ProximityIndicator {
 	
 
 	private void parseInput(String expression) {
+		// Parse the input integer queues of the requested levels from the expression string
 		Pattern pattern = Pattern.compile("\\[(.*?)\\]\\((.*?)\\)\\{(.*?)\\}");
 		Matcher matcher = pattern.matcher(expression);
 		matcher.matches();
