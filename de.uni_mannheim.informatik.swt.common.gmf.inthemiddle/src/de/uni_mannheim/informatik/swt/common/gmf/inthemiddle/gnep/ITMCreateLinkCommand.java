@@ -218,15 +218,29 @@ public class ITMCreateLinkCommand extends CompositeCommand {
 		return (ITMCreateLinkCommand) request.getParameter(REQUEST_PARAMETER_KEY);
 	}
 	
+	
+	//TODO: implement undo
+//	@Override
+//	public boolean canUndo() {
+//		return true;
+//	}
+//	
+//	@Override
+//	public boolean canRedo(){
+//		return true;
+//	}
+	
+	
+	//TODO: implement undo
 	/**
 	 * Needs to be overriden because the defaul GraphicalNodeEditPolicy goes through the commands
 	 * by using an interator instead of get/set. Just filling the array will break the 
 	 * one-click connection + 2 roles creation
 	 */
-	@Override
-	public Iterator iterator() {
-		return new ITMIterator();
-	}
+//	@Override
+//	public Iterator iterator() {
+//		return new ITMIterator();
+//	}
 	
 	private class ITMIterator implements ListIterator{
 
@@ -285,7 +299,7 @@ public class ITMCreateLinkCommand extends CompositeCommand {
 			throw new UnsupportedOperationException("Removal of Commands from this Command is not supported. Use getters and setters instead.");
 			
 		}
-
+		
 		@Override
 		public void set(Object e) {
 			// TODO Auto-generated method stub
