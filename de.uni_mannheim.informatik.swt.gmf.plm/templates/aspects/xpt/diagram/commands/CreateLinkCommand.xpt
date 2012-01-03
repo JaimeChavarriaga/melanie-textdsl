@@ -20,7 +20,7 @@
 package «diagram.editCommandsPackageName»;
 
 «EXPAND xpt::Common::generatedClassComment»
-public class RoleCreateCommand extends com.borlander.gmftools.samples.inthemiddle.gmf.commands.AbstractImplicitMiddleElementLinkCreateCommand {
+public class RoleCreateCommand extends de.uni_mannheim.informatik.swt.common.gmf.inthemiddle.commands.AbstractImplicitMiddleElementLinkCreateCommand {
 	
 	/**
 	 * @generated
@@ -53,7 +53,7 @@ public class RoleCreateCommand extends com.borlander.gmftools.samples.inthemiddl
 	 */
 	@Override
 	protected boolean checkSource(org.eclipse.emf.ecore.EObject source) {
-		return true;
+		return source instanceof de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 	}
 
 	/**
@@ -61,6 +61,7 @@ public class RoleCreateCommand extends com.borlander.gmftools.samples.inthemiddl
 	 */
 	@Override
 	protected boolean checkTarget(org.eclipse.emf.ecore.EObject target) {
+		//This is null when drawing from connection to entity..
 		return true;
 	}
 	
@@ -79,7 +80,7 @@ public class RoleCreateCommand extends com.borlander.gmftools.samples.inthemiddl
 				.createRole();
 		((de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)source).getRole().add(newElement);
 		newElement.setConnection((de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)source);
-		newElement.setDestination((de.uni_mannheim.informatik.swt.models.plm.PLM.Entity)target);
+		newElement.setDestination((de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)target);
 		
 		//*************************************************************
 		// BEGIN CUSTOM CODE
@@ -139,8 +140,8 @@ public class RoleCreateCommand extends com.borlander.gmftools.samples.inthemiddl
 		
 		((org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest) getRequest()).setNewElement(newElement);
 		
-		if (getRequest().getParameter(com.borlander.gmftools.samples.inthemiddle.gmf.gnep.ITMGraphicalNodeEditPolicy.DSL_TYPE) != null)
-			instantiateDSLValues((de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)getRequest().getParameter(com.borlander.gmftools.samples.inthemiddle.gmf.gnep.ITMGraphicalNodeEditPolicy.DSL_TYPE),(de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)middle);
+		if (getRequest().getParameter(de.uni_mannheim.informatik.swt.common.gmf.inthemiddle.gnep.ITMGraphicalNodeEditPolicy.DSL_TYPE) != null)
+			instantiateDSLValues((de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)getRequest().getParameter(de.uni_mannheim.informatik.swt.common.gmf.inthemiddle.gnep.ITMGraphicalNodeEditPolicy.DSL_TYPE),(de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)middle);
 		
 		return org.eclipse.gmf.runtime.common.core.command.CommandResult.newOKCommandResult(newElement);
 	}
@@ -173,12 +174,12 @@ public class RoleCreateCommand extends com.borlander.gmftools.samples.inthemiddl
 	 * @generated
 	 */
 	@Override
-	protected com.borlander.gmftools.samples.inthemiddle.gmf.commands.IElementTypeAwareAdapter createSemanticMiddle(
+	protected de.uni_mannheim.informatik.swt.common.gmf.inthemiddle.commands.IElementTypeAwareAdapter createSemanticMiddle(
 			org.eclipse.core.runtime.IProgressMonitor monitor, org.eclipse.core.runtime.IAdaptable info)
 			throws org.eclipse.core.commands.ExecutionException {
 		
 		de.uni_mannheim.informatik.swt.models.plm.PLM.Connection c  = de.uni_mannheim.informatik.swt.models.plm.PLM.PLMFactory.eINSTANCE.createConnection();
-		com.borlander.gmftools.samples.inthemiddle.gmf.commands.IElementTypeAwareAdapter result = new com.borlander.gmftools.samples.inthemiddle.gmf.commands.EObjectAndElementTypeAdapter(c, de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.Connection_3060, de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionEditPart.VISUAL_ID);
+		de.uni_mannheim.informatik.swt.common.gmf.inthemiddle.commands.IElementTypeAwareAdapter result = new de.uni_mannheim.informatik.swt.common.gmf.inthemiddle.commands.EObjectAndElementTypeAdapter(c, de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.Connection_3060, de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionEditPart.VISUAL_ID);
 		invokeDefaultElementTypeConfiguration(result, monitor, info);
 		de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.ElementInitializers.getInstance().init_Connection_3060(c);
 		return result;
@@ -188,12 +189,12 @@ public class RoleCreateCommand extends com.borlander.gmftools.samples.inthemiddl
 	 * @generated
 	 */
 	@Override
-	protected com.borlander.gmftools.samples.inthemiddle.gmf.commands.IElementTypeAwareAdapter createImplicitTargetLink(
+	protected de.uni_mannheim.informatik.swt.common.gmf.inthemiddle.commands.IElementTypeAwareAdapter createImplicitTargetLink(
 			org.eclipse.core.runtime.IProgressMonitor monitor, org.eclipse.core.runtime.IAdaptable info)
 			throws org.eclipse.core.commands.ExecutionException {
 
 		implicitRole = de.uni_mannheim.informatik.swt.models.plm.PLM.PLMFactory.eINSTANCE.createRole();
-		return new com.borlander.gmftools.samples.inthemiddle.gmf.commands.EObjectAndElementTypeAdapter(implicitRole, de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.Role_4024, de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.RoleEditPart.VISUAL_ID);
+		return new de.uni_mannheim.informatik.swt.common.gmf.inthemiddle.commands.EObjectAndElementTypeAdapter(implicitRole, de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.providers.PLMElementTypes.Role_4024, de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.RoleEditPart.VISUAL_ID);
 	}
 
 	/**
@@ -201,7 +202,7 @@ public class RoleCreateCommand extends com.borlander.gmftools.samples.inthemiddl
 	 */
 	@Override
 	protected void setupSemanticConnections(org.eclipse.emf.ecore.EObject source,
-			com.borlander.gmftools.samples.inthemiddle.gmf.commands.IElementTypeAwareAdapter middle, org.eclipse.emf.ecore.EObject target) {
+			de.uni_mannheim.informatik.swt.common.gmf.inthemiddle.commands.IElementTypeAwareAdapter middle, org.eclipse.emf.ecore.EObject target) {
 		
 		de.uni_mannheim.informatik.swt.models.plm.PLM.Connection connection = (de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)middle.getAdapter(org.eclipse.emf.ecore.EObject.class);
 		

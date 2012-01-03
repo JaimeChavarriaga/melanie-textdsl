@@ -100,7 +100,7 @@
 		«REM»Edit policy for advanced connection creation«ENDREM»
 		«IF self.editPartClassName = 'EntityEditPart'» 
 		removeEditPolicy(org.eclipse.gef.EditPolicy.GRAPHICAL_NODE_ROLE);
-		installEditPolicy(org.eclipse.gef.EditPolicy.GRAPHICAL_NODE_ROLE, new com.borlander.gmftools.samples.inthemiddle.gmf.gnep.ITMGraphicalNodeEditPolicy());
+		installEditPolicy(org.eclipse.gef.EditPolicy.GRAPHICAL_NODE_ROLE, new de.uni_mannheim.informatik.swt.common.gmf.inthemiddle.gnep.ITMGraphicalNodeEditPolicy());
 		«ENDIF»
 «ENDDEFINE»
 

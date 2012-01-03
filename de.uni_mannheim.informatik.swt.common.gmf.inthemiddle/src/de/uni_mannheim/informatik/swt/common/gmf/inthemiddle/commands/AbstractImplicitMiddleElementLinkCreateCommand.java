@@ -39,7 +39,6 @@ import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.gmf.runtime.notation.View;
 
-
 import de.uni_mannheim.informatik.swt.common.gmf.inthemiddle.gnep.ITMCreateLinkCommand;
 import de.uni_mannheim.informatik.swt.gmf.figures.DefaultSizeNodeFixedAnchors;
 
