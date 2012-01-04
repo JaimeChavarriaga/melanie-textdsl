@@ -312,8 +312,11 @@
 			setExpressedVisualState();
 		«ELSEIF self.editPartClassName = 'EntityEditPart'»
 		//We can change expressed as long as connection is not elided and not toggled
-		if (!c.isElided())
+		if (!c.isElided()){
 			setExpressedVisualState();
+			//If not Elided and not in DSL mode it makes sense to update the name compartment
+			updateNameCompartment();
+		}
 		«ELSEIF self.editPartClassName = 'ComplementEditPart'
 			or self.editPartClassName = 'EqualityEditPart'
 			or self.editPartClassName = 'InversionEditPart'»
@@ -324,6 +327,26 @@
 			setExpressedVisualState();
 		«ENDIF»
 	}
+	«IF self.editPartClassName = 'EntityEditPart'
+		or self.editPartClassName = 'ConnectionEditPart'»
+	/**
+	 * @generated
+	 */
+	private void updateNameCompartment(){
+		try {
+			de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IProximityIndicationService proximityService = de.uni_mannheim.informatik.swt.plm.workbench.ExtensionPointService.Instance().getActiveProximityIndicationService();
+			org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel wl = 
+				«IF self.editPartClassName = 'EntityEditPart'»
+				((de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.EntityEditPart.EntityFigure)getPrimaryShape()).getFigureEntityProximityClassificationFigure();
+				«ELSE»
+				((de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionEditPart.ConnectionFigure) getPrimaryShape()).getFigureConnectionProximityClassificationFigure();
+				«ENDIF»
+			wl.setText(proximityService.createClassificationProximityString((de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)resolveSemanticElement(), "[](){0}"));
+		} catch (org.eclipse.core.runtime.CoreException e) {
+			e.printStackTrace();
+		}
+	}
+	«ENDIF»
 	«IF self.editPartClassName = 'EntityEditPart'»
 	/**
 	 * @generated
