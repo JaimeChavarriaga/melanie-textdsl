@@ -19,9 +19,9 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
  */
 public interface IProximityIndicationService {
 
-	public String createContainmentProximityString(Clabject c);
+	public String createContainmentProximityString(Clabject c, String expression);
 	
-	public String createClassificationProximityString(Clabject c);
+	public String createClassificationProximityString(Clabject c, String expression);
 	
-	public String createGeneralizationProximityString(Clabject c);
+	public String createGeneralizationProximityString(Clabject c, String expression);
 }
