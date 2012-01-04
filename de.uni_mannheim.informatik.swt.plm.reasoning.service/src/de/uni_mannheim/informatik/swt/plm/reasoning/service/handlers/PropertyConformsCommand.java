@@ -43,6 +43,7 @@ public class PropertyConformsCommand extends AbstractHandler {
 	 */
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
+		marks = null;
 		Clabject type = (Clabject)event.getObjectParameterForExecution("type");
 		Clabject instance = (Clabject)event.getObjectParameterForExecution("instance");
 		ReasoningResultModel resultModel = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();

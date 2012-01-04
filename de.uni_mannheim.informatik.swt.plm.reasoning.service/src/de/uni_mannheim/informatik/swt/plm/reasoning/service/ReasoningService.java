@@ -59,6 +59,7 @@ import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.Multiplicit
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.NeighbourhoodConformsCommand;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.OntologyConsistencyCommand;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.PropertyConformsCommand;
+import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.SubsumptionCommand;
 import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService;
 
 public class ReasoningService implements IReasoningService {
@@ -186,6 +187,23 @@ public class ReasoningService implements IReasoningService {
 			param.parameters = commandParamametersMap;
 			
 			items.add(new CommandContributionItem(param));
+			
+			//***************************************************
+			// Subsumption command
+			//***************************************************
+			param = 
+					new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), SubsumptionCommand.ID + ".menuEntry", SubsumptionCommand.ID, CommandContributionItem.STYLE_PUSH);
+			param.label = getCommandName(SubsumptionCommand.ID);
+			
+			commandParamametersMap = new HashMap<String, Object>();
+			
+			commandParamametersMap.put("supertype",  modelElements[0]);
+			commandParamametersMap.put("subtype", modelElements[1]);
+			
+			param.parameters = commandParamametersMap;
+			
+			items.add(new CommandContributionItem(param));
+			
 		}
 		
 		//We have a connection selected
