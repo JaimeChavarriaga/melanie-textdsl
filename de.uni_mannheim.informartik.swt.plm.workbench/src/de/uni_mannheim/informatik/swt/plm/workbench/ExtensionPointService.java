@@ -18,6 +18,7 @@ import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.preference.IPreferenceStore;
 
+import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IProximityIndicationService;
 import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService;
 import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IRefactoringService;
 import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IVisualModelToFigureTransformator;
@@ -33,6 +34,7 @@ public class ExtensionPointService {
 	private static String VISUALIZATION_SERVICE_ID = "de.uni_mannheim.informatik.swt.visualization.service";
 	private static String REASONING_SERVICE_ID = "de.uni_mannheim.informatik.swt.reasoning.service";
 	private static String REFACTORING_SERVICE_ID = "de.uni_mannheim.informatik.swt.refactoring.service";
+	private static String PROXIMITY_INDICATION_SERVICE_ID = "de.uni_mannheim.informatik.swt.proximityindication.service";
 	
 	private static ExtensionPointService instance = null;
 	
@@ -43,12 +45,12 @@ public class ExtensionPointService {
 	public Map<String, IConfigurationElement> getId2VisualizationServiceConfigurationElement() {
 		return id2VisualizationServiceConfigurationElement;
 	}
-
-
 	/**
 	 * Cache for Visualization Instances
 	 */
 	private static Map<String, IVisualModelToFigureTransformator> id2VisualizationServiceInstance;
+
+	
 	
 	/**
 	 * Cache for Reasoning IConfigurationElements
@@ -57,24 +59,41 @@ public class ExtensionPointService {
 	public Map<String, IConfigurationElement> getId2ReasoningServiceConfigurationElement() {
 		return id2ReasoningServiceConfigurationElement;
 	}
-	
 	/**
 	 * Cache for Reasoning Instances
 	 */
 	private static Map<String, IReasoningService> id2ReasoningServiceInstance;
 	
+	
+	
 	/**
-	 * Cache for Reasoning IConfigurationElements
+	 * Cache for Refactoring IConfigurationElements
 	 */
 	private static Map<String, IConfigurationElement> id2RefactoringServiceConfigurationElement;
 	public Map<String, IConfigurationElement> getId2RefactoringServiceConfigurationElement() {
 		return id2RefactoringServiceConfigurationElement;
 	}
-	
 	/**
-	 * Cache for Reasoning Instances
+	 * Cache for Refactoring Instances
 	 */
 	private static Map<String, IRefactoringService> id2RefactoringServiceInstance;
+	
+	
+	
+	/**
+	 * Cache for Proximity Indication IConfigurationElements
+	 */
+	private static Map<String, IConfigurationElement> id2ProximityIndicationServiceConfigurationElement;
+	public Map<String, IConfigurationElement> getId2ProximityIndicationServiceConfigurationElement() {
+		return id2ProximityIndicationServiceConfigurationElement;
+	}
+	/**
+	 * Cache for Proximity Indication Instances
+	 */
+	private static Map<String, IProximityIndicationService> id2ProximityIndicationServiceInstance;
+	
+	
+	
 	
 	private ExtensionPointService(){
 		
@@ -106,6 +125,9 @@ public class ExtensionPointService {
 		id2RefactoringServiceConfigurationElement = new HashMap<String, IConfigurationElement>();
 		id2RefactoringServiceInstance = new HashMap<String, IRefactoringService>();
 		
+		id2ProximityIndicationServiceConfigurationElement = new HashMap<String, IConfigurationElement>();
+		id2ProximityIndicationServiceInstance = new HashMap<String, IProximityIndicationService>();
+		
 		//Initialize the visualization service
 		IConfigurationElement[] configurationElements = Platform.getExtensionRegistry().getConfigurationElementsFor(VISUALIZATION_SERVICE_ID);
 		
@@ -123,6 +145,12 @@ public class ExtensionPointService {
 		
 		for (IConfigurationElement cElement : configurationElements)
 			id2RefactoringServiceConfigurationElement.put(cElement.getAttribute("id"), cElement);
+		
+		//Initialize the proximity indication service
+		configurationElements = Platform.getExtensionRegistry().getConfigurationElementsFor(PROXIMITY_INDICATION_SERVICE_ID);
+		
+		for (IConfigurationElement cElement : configurationElements)
+			id2ProximityIndicationServiceConfigurationElement.put(cElement.getAttribute("id"), cElement);
 	}
 	
 	/**
@@ -236,4 +264,43 @@ public class ExtensionPointService {
 		
 		return getRefactoringService(store.getString(PreferenceConstants.P_ACTIVE_REFACTORING_ENGINE));
 	}
+	
+	/**
+	 * Returns an instance of the Proximity Indicarion Service. For performance improvements two caches are used.
+	 * One to cache the IConfigurationElements and one to cache the visualization service instance.
+	 * 
+	 * @param id ID of the registered extension point
+	 * 
+	 * @return A cached instance of the reasoning service
+	 * 
+	 * @throws CoreException
+	 */
+	public IProximityIndicationService getProximityIndicationService(String id) throws CoreException{
+		IProximityIndicationService proximityIndicator = id2ProximityIndicationServiceInstance.get(id);
+		
+		if (proximityIndicator == null)
+		{
+			proximityIndicator = (IProximityIndicationService)id2ProximityIndicationServiceConfigurationElement.get(id).createExecutableExtension("class");
+			id2ProximityIndicationServiceInstance.put(id, proximityIndicator);
+		}
+		
+		return proximityIndicator;
+	}
+	
+	/**
+	 * Returns the active Proximity Indication Service. For performance improvements two caches are used.
+	 * One to cache the IConfigurationElements and one to cache the visualization service instance.
+	 * 
+	 * @param id ID of the registered extension point
+	 * 
+	 * @return A cached instance of the reasoning service
+	 * 
+	 * @throws CoreException
+	 */
+	public IProximityIndicationService getActiveProximityIndicationService() throws CoreException{
+		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
+		
+		return getProximityIndicationService(store.getString(PreferenceConstants.P_ACTIVE_PROXIMITY_INDICATION_ENGINE));
+	}
+	
 }
