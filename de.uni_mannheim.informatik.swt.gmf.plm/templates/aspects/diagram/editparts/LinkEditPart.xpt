@@ -134,10 +134,10 @@
 		connectionFigure.getFigureConnectionRoleNameFigure().setText("");
 		connectionFigure.getFigureConnectionRoleMultiplicityFigure().setText("");
 
-		de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IVisualModelToFigureTransformator transformator = null;
+		de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IVisualModelToFigureTransformator transformator = null;
 
 		try {
-			transformator = de.uni_mannheim.informatik.swt.plm.workbench.ExtensionPointService
+			transformator = de.uni_mannheim.informatik.swt.mlm.workbench.ExtensionPointService
 					.Instance().getActiveVisualizationService();
 		} catch (org.eclipse.core.runtime.CoreException e) {
 			e.printStackTrace();
@@ -237,7 +237,7 @@
 	/**
 	 * @generated
 	 */
-	private de.uni_mannheim.informatik.swt.models.plm.visualization.DSLVisualizer getConnectionDSLVisualizer(de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IVisualModelToFigureTransformator transformator)
+	private de.uni_mannheim.informatik.swt.models.plm.visualization.DSLVisualizer getConnectionDSLVisualizer(de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IVisualModelToFigureTransformator transformator)
 	{
 		de.uni_mannheim.informatik.swt.models.plm.PLM.Connection containingConnection = (de.uni_mannheim.informatik.swt.models.plm.PLM.Connection)resolveSemanticElement().eContainer();
 		

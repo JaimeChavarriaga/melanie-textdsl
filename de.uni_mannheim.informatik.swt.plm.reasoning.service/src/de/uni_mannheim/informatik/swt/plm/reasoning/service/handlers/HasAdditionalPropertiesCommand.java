@@ -15,6 +15,7 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 
+import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IReasoningService;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Role;
@@ -24,7 +25,6 @@ import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Has
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultFactory;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.ReasoningService;
-import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService;
 
 public class HasAdditionalPropertiesCommand extends AbstractHandler {
 	

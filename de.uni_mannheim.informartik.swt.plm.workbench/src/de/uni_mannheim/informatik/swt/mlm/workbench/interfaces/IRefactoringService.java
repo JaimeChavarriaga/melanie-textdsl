@@ -8,7 +8,7 @@
  * Contributors:
  *    Ralph Gerbig - initial API and implementation and initial documentation
  *******************************************************************************/
-package de.uni_mannheim.informatik.swt.plm.workbench.interfaces;
+package de.uni_mannheim.informatik.swt.mlm.workbench.interfaces;
 
 import java.util.List;
 import java.util.Map;

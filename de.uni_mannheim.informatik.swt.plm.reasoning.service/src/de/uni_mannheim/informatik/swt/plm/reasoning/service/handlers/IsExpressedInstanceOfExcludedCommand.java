@@ -18,6 +18,7 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 
+import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IReasoningService;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Classification;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Generalization;
@@ -28,7 +29,6 @@ import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Rea
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.ReasoningService;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.util.Predicate;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.util.ReasoningServiceUtil;
-import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService;
 
 public class IsExpressedInstanceOfExcludedCommand extends AbstractHandler {
 

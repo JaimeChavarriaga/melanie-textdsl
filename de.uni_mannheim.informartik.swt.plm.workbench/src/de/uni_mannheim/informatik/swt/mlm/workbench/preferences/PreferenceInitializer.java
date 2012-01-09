@@ -1,9 +1,9 @@
-package de.uni_mannheim.informatik.swt.plm.workbench.preferences;
+package de.uni_mannheim.informatik.swt.mlm.workbench.preferences;
 
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.jface.preference.IPreferenceStore;
 
-import de.uni_mannheim.informatik.swt.plm.workbench.Activator;
+import de.uni_mannheim.informatik.swt.mlm.workbench.Activator;
 
 /**
  * Class used to initialize default preference values.

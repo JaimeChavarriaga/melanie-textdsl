@@ -24,13 +24,13 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.menus.CommandContributionItem;
 import org.eclipse.ui.menus.CommandContributionItemParameter;
 
+import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IRefactoringService;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.AddFeatureToClabjectCommand;
 import de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.DeleteClabjectCommand;
 import de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.DeleteFeatureCommand;
 import de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.RenameFeatureCommand;
-import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IRefactoringService;
 
 
 public class Refactorer implements IRefactoringService {

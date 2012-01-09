@@ -1,4 +1,4 @@
-package de.uni_mannheim.informatik.swt.plm.workbench.preferences;
+package de.uni_mannheim.informatik.swt.mlm.workbench.preferences;
 
 /**
  * Constant definitions for plug-in preferences

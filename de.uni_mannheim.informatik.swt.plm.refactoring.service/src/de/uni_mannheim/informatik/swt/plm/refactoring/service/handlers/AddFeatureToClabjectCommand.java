@@ -29,11 +29,11 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.dialogs.ListDialog;
 import org.eclipse.ui.handlers.HandlerUtil;
 
+import de.uni_mannheim.informatik.swt.mlm.workbench.ExtensionPointService;
+import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IReasoningService;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage;
-import de.uni_mannheim.informatik.swt.plm.workbench.ExtensionPointService;
-import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService;
 
 /**
  * Our sample handler extends AbstractHandler, an IHandler base class.

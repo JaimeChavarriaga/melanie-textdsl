@@ -15,6 +15,7 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 
+import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IReasoningService;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Method;
@@ -28,7 +29,6 @@ import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Rea
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ValueComparison;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.ReasoningService;
-import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService;
 
 public class FeatureConformsCommand extends AbstractHandler {
 	

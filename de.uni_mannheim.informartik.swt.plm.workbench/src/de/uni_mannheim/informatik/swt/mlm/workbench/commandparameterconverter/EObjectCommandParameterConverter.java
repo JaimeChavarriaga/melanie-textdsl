@@ -8,7 +8,7 @@
  * Contributors:
  *    Ralph Gerbig - initial API and implementation and initial documentation
  *******************************************************************************/
-package de.uni_mannheim.informatik.swt.plm.workbench.commandparameterconverter;
+package de.uni_mannheim.informatik.swt.mlm.workbench.commandparameterconverter;
 
 import java.util.HashMap;
 import java.util.Map;

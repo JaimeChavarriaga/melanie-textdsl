@@ -19,9 +19,9 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.CompoundContributionItem;
 
+import de.uni_mannheim.informatik.swt.mlm.workbench.ExtensionPointService;
+import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IReasoningService;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor;
-import de.uni_mannheim.informatik.swt.plm.workbench.ExtensionPointService;
-import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService;
 
 /**
  * @author Ralph

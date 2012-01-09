@@ -341,7 +341,7 @@
 			if (self.getVisualizer().size() == 0)
 				return;
 				
-			de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IProximityIndicationService proximityService = de.uni_mannheim.informatik.swt.plm.workbench.ExtensionPointService.Instance().getActiveProximityIndicationService();
+			de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IProximityIndicationService proximityService = de.uni_mannheim.informatik.swt.mlm.workbench.ExtensionPointService.Instance().getActiveProximityIndicationService();
 			
 			org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel classificationProximityWrappingLabel = 
 				«IF self.editPartClassName = 'EntityEditPart'»
@@ -379,10 +379,10 @@
 		
 		de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject self = (de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)resolveSemanticElement();
 		
-		de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IVisualModelToFigureTransformator tranformator = null;
+		de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IVisualModelToFigureTransformator tranformator = null;
 		
 		try {
-			tranformator = de.uni_mannheim.informatik.swt.plm.workbench.ExtensionPointService.Instance().getActiveVisualizationService();
+			tranformator = de.uni_mannheim.informatik.swt.mlm.workbench.ExtensionPointService.Instance().getActiveVisualizationService();
 		} catch (org.eclipse.core.runtime.CoreException e) {
 			e.printStackTrace();
 		}

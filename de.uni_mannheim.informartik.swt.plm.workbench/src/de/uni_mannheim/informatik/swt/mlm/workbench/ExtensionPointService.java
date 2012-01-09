@@ -8,7 +8,7 @@
  * Contributors:
  *    Ralph Gerbig - initial API and implementation and initial documentation
  *******************************************************************************/ 
-package de.uni_mannheim.informatik.swt.plm.workbench;
+package de.uni_mannheim.informatik.swt.mlm.workbench;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,11 +18,11 @@ import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.preference.IPreferenceStore;
 
-import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IProximityIndicationService;
-import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService;
-import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IRefactoringService;
-import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IVisualModelToFigureTransformator;
-import de.uni_mannheim.informatik.swt.plm.workbench.preferences.PreferenceConstants;
+import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IProximityIndicationService;
+import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IReasoningService;
+import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IRefactoringService;
+import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IVisualModelToFigureTransformator;
+import de.uni_mannheim.informatik.swt.mlm.workbench.preferences.PreferenceConstants;
 
 /**
  * This class manages loading extension points. Call Instance() to 

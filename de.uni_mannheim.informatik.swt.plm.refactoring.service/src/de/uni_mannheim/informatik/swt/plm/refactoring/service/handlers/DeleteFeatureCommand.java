@@ -21,10 +21,10 @@ import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 
+import de.uni_mannheim.informatik.swt.mlm.workbench.ExtensionPointService;
+import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IReasoningService;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
-import de.uni_mannheim.informatik.swt.plm.workbench.ExtensionPointService;
-import de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService;
 
 /**
  * Our sample handler extends AbstractHandler, an IHandler base class.

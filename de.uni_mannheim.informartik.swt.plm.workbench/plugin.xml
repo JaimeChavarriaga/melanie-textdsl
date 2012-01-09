@@ -9,7 +9,7 @@
          point="org.eclipse.ui.preferencePages">
       <page
             category="de.uni_mannheim.informatik.swt.models.plm.diagram.general"
-            class="de.uni_mannheim.informatik.swt.plm.workbench.preferences.MelanieWorkbenchPreferences"
+            class="de.uni_mannheim.informatik.swt.mlm.workbench.preferences.MelanieWorkbenchPreferences"
             id="de.uni_mannheim.informatik.swt.plm.workbench.preferences.MelanieWorkbenchPreferences"
             name="Workbench">
       </page>
@@ -17,13 +17,13 @@
    <extension
          point="org.eclipse.core.runtime.preferences">
       <initializer
-            class="de.uni_mannheim.informatik.swt.plm.workbench.preferences.PreferenceInitializer">
+            class="de.uni_mannheim.informatik.swt.mlm.workbench.preferences.PreferenceInitializer">
       </initializer>
    </extension>
    <extension
          point="org.eclipse.ui.commands">
       <commandParameterType
-            converter="de.uni_mannheim.informatik.swt.plm.workbench.commandparameterconverter.EObjectCommandParameterConverter"
+            converter="de.uni_mannheim.informatik.swt.mlm.workbench.commandparameterconverter.EObjectCommandParameterConverter"
             id="de.uni_mannheim.informatik.swt.plm.workbench.eobjectcommandparametertype">
       </commandParameterType>
    </extension>

@@ -92,6 +92,8 @@ main() {
 	genPlugIn.requiredPlugins := genPlugIn.requiredPlugins->append('de.itemis.gmf.runtime.extensions');
 	genPlugIn.requiredPlugins := genPlugIn.requiredPlugins->append('de.uni_mannheim.informatik.swt.models.gmf');
 	genPlugIn.requiredPlugins := genPlugIn.requiredPlugins->append('de.uni_mannheim.informatik.swt.mlm.visualization.service');
+	genPlugIn.requiredPlugins := genPlugIn.requiredPlugins->append('de.uni_mannheim.informatik.swt.common.gmf.inthemiddle');
+	genPlugIn.requiredPlugins := genPlugIn.requiredPlugins->append('de.uni_mannheim.informatik.swt.mlm.workbench');
 	
 	--Set the properties for the Prefrence Page (Window -> Preferences)
 	this.genStandardPrefencePage := gmfgenModel.objectsOfType(GenStandardPreferencePage)->asOrderedSet()->first();

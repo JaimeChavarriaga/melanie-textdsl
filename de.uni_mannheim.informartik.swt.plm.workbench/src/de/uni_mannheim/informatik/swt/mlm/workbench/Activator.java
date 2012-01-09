@@ -1,4 +1,4 @@
-package de.uni_mannheim.informatik.swt.plm.workbench;
+package de.uni_mannheim.informatik.swt.mlm.workbench;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;

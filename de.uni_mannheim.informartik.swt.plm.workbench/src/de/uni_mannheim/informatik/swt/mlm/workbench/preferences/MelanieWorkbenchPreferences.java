@@ -1,12 +1,12 @@
-package de.uni_mannheim.informatik.swt.plm.workbench.preferences;
+package de.uni_mannheim.informatik.swt.mlm.workbench.preferences;
 
 import org.eclipse.jface.preference.ComboFieldEditor;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 
-import de.uni_mannheim.informatik.swt.plm.workbench.Activator;
-import de.uni_mannheim.informatik.swt.plm.workbench.ExtensionPointService;
+import de.uni_mannheim.informatik.swt.mlm.workbench.Activator;
+import de.uni_mannheim.informatik.swt.mlm.workbench.ExtensionPointService;
 
 /**
  * This class represents a preference page that
