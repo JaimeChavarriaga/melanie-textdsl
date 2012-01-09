@@ -334,14 +334,38 @@
 	 */
 	private void updateNameCompartment(){
 		try {
+		
+			de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject self = (de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)resolveSemanticElement();
+			
+			//No visualization information available
+			if (self.getVisualizer().size() == 0)
+				return;
+				
 			de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IProximityIndicationService proximityService = de.uni_mannheim.informatik.swt.plm.workbench.ExtensionPointService.Instance().getActiveProximityIndicationService();
-			org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel wl = 
+			
+			org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel classificationProximityWrappingLabel = 
 				«IF self.editPartClassName = 'EntityEditPart'»
 				((de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.EntityEditPart.EntityFigure)getPrimaryShape()).getFigureEntityProximityClassificationFigure();
 				«ELSE»
 				((de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionEditPart.ConnectionFigure) getPrimaryShape()).getFigureConnectionProximityClassificationFigure();
 				«ENDIF»
-			wl.setText(proximityService.createClassificationProximityString((de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)resolveSemanticElement(), "[](){0}"));
+			org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel inheritanceProximityWrappingLabel = 
+				«IF self.editPartClassName = 'EntityEditPart'»
+				((de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.EntityEditPart.EntityFigure)getPrimaryShape()).getFigureEntityProximityInheritanceFigure();
+				«ELSE»
+				((de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionEditPart.ConnectionFigure) getPrimaryShape()).getFigureConnectionProximityInheritanceFigure();
+				«ENDIF»
+			org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel containmentProximityWrappingLabel = 
+				«IF self.editPartClassName = 'EntityEditPart'»
+				((de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.EntityEditPart.EntityFigure)getPrimaryShape()).getFigureEntityProximityContainmentFigure();
+				«ELSE»
+				((de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionEditPart.ConnectionFigure) getPrimaryShape()).getFigureConnectionProximityContainmentFigure();
+				«ENDIF»	
+				
+			String proximityIndicationRequest = self.getVisualizer().get(0).getValueForKey("ProximityIndication");
+			classificationProximityWrappingLabel.setText(proximityService.createClassificationProximityString((de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject)resolveSemanticElement(), proximityIndicationRequest));
+			inheritanceProximityWrappingLabel.setText(proximityService.createGeneralizationProximityString((de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject) resolveSemanticElement(), proximityIndicationRequest));
+			containmentProximityWrappingLabel.setText(proximityService.createContainmentProximityString((de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject) resolveSemanticElement(), proximityIndicationRequest));
 		} catch (org.eclipse.core.runtime.CoreException e) {
 			e.printStackTrace();
 		}
