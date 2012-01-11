@@ -24,7 +24,7 @@ import de.uni_mannheim.informatik.swt.models.plm.visualization.DSLVisualizer;
  * a renderable figure as output (e.g. a draw2d figure).
  *
  */
-public interface IVisualModelToFigureTransformator {
+public interface IGraphicalVisualizationService {
 	
 	/**
 	 * Runs the transformation

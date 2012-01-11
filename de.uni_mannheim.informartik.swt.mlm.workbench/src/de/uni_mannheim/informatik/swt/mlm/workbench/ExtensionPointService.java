@@ -21,7 +21,7 @@ import org.eclipse.jface.preference.IPreferenceStore;
 import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IProximityIndicationService;
 import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IReasoningService;
 import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IRefactoringService;
-import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IVisualModelToFigureTransformator;
+import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IGraphicalVisualizationService;
 import de.uni_mannheim.informatik.swt.mlm.workbench.preferences.PreferenceConstants;
 
 /**
@@ -48,7 +48,7 @@ public class ExtensionPointService {
 	/**
 	 * Cache for Visualization Instances
 	 */
-	private static Map<String, IVisualModelToFigureTransformator> id2VisualizationServiceInstance;
+	private static Map<String, IGraphicalVisualizationService> id2VisualizationServiceInstance;
 
 	
 	
@@ -117,7 +117,7 @@ public class ExtensionPointService {
 		
 		//Initialize caches
 		id2VisualizationServiceConfigurationElement = new HashMap<String, IConfigurationElement>();
-		id2VisualizationServiceInstance = new HashMap<String, IVisualModelToFigureTransformator>();
+		id2VisualizationServiceInstance = new HashMap<String, IGraphicalVisualizationService>();
 		
 		id2ReasoningServiceConfigurationElement = new HashMap<String, IConfigurationElement>();
 		id2ReasoningServiceInstance = new HashMap<String, IReasoningService>();
@@ -163,12 +163,12 @@ public class ExtensionPointService {
 	 * 
 	 * @throws CoreException
 	 */
-	public IVisualModelToFigureTransformator getVisualizationService(String id) throws CoreException{
-		IVisualModelToFigureTransformator transformator = id2VisualizationServiceInstance.get(id);
+	public IGraphicalVisualizationService getVisualizationService(String id) throws CoreException{
+		IGraphicalVisualizationService transformator = id2VisualizationServiceInstance.get(id);
 		
 		if (transformator == null)
 		{
-			transformator = (IVisualModelToFigureTransformator)id2VisualizationServiceConfigurationElement.get(id).createExecutableExtension("class");
+			transformator = (IGraphicalVisualizationService)id2VisualizationServiceConfigurationElement.get(id).createExecutableExtension("class");
 			id2VisualizationServiceInstance.put(id, transformator);
 		}
 		
@@ -184,7 +184,7 @@ public class ExtensionPointService {
 	 * 
 	 * @throws CoreException
 	 */
-	public IVisualModelToFigureTransformator getActiveVisualizationService() throws CoreException{
+	public IGraphicalVisualizationService getActiveVisualizationService() throws CoreException{
 		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
 		
 		return getVisualizationService(store.getString(PreferenceConstants.P_ACTIVE_VISUALIZATION_ENGINE));
