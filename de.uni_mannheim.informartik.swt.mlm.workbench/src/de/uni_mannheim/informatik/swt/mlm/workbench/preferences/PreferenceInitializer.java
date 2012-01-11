@@ -19,8 +19,9 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
 		store.setDefault(PreferenceConstants.P_ACTIVE_REASONING_ENGINE, "de.uni_mannheim.informatik.swt.mlm.reasoning.service");
 		store.setDefault(PreferenceConstants.P_ACTIVE_REFACTORING_ENGINE, "de.uni_mannheim.informatik.swt.mlm.refactoring.service");
-		store.setDefault(PreferenceConstants.P_ACTIVE_VISUALIZATION_ENGINE, "de.uni_mannheim.informatik.swt.mlm.refactoring.service");
-		store.setDefault(PreferenceConstants.P_ACTIVE_VISUALIZATION_ENGINE, "de.uni_mannheim.informatik.swt.mlm.proximityindication.service");
+		store.setDefault(PreferenceConstants.P_ACTIVE_VISUALIZATION_ENGINE, "de.uni_mannheim.informatik.swt.mlm.visualization.service");
+		store.setDefault(PreferenceConstants.P_ACTIVE_PROXIMITY_INDICATION_ENGINE, "de.uni_mannheim.informatik.swt.mlm.proximityindication.service");
+		store.setDefault(PreferenceConstants.P_ACTIVE_DSL_ENGINE, "de.uni_mannheim.informatik.swt.mlm.dsl.service");
 	}
 
 }

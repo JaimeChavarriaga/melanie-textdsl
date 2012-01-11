@@ -71,6 +71,20 @@ public class MelanieWorkbenchPreferences
 					)
 		);
 		
+		//DSL Service
+		String[] dslEngineKeySet = ExtensionPointService.Instance().getId2DSLServiceConfigurationElement().keySet().toArray(new String[]{});
+		String[][] dslEngineIds = new String[dslEngineKeySet.length][2];
+		
+		for (int i = 0; i < reasoningEngineKeySet.length; i++)
+			dslEngineIds[i][0] = dslEngineIds[i][1] = dslEngineKeySet[i];
+		
+		addField(new ComboFieldEditor(
+				PreferenceConstants.P_ACTIVE_DSL_ENGINE,
+					"Active DSL Engine",
+					dslEngineIds,
+					getFieldEditorParent()
+					)
+		);
 		
 		//Visualization Service
 		String[] visualizationEngineKeySet = ExtensionPointService.Instance().getId2VisualizationServiceConfigurationElement().keySet().toArray(new String[]{});

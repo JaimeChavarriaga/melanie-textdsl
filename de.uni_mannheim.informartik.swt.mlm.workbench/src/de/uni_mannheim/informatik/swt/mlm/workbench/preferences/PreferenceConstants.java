@@ -12,4 +12,6 @@ public class PreferenceConstants {
 	public static final String P_ACTIVE_VISUALIZATION_ENGINE = "visualizationService";
 	
 	public static final String P_ACTIVE_PROXIMITY_INDICATION_ENGINE = "proximityIndicationService";
+
+	public static final String P_ACTIVE_DSL_ENGINE = "dslService";
 }

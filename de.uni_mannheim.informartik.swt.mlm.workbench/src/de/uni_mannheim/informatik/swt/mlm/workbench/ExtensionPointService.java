@@ -18,6 +18,7 @@ import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.preference.IPreferenceStore;
 
+import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IDSLService;
 import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IProximityIndicationService;
 import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IReasoningService;
 import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IRefactoringService;
@@ -35,6 +36,7 @@ public class ExtensionPointService {
 	private static String REASONING_SERVICE_ID = "de.uni_mannheim.informatik.swt.reasoning.service";
 	private static String REFACTORING_SERVICE_ID = "de.uni_mannheim.informatik.swt.refactoring.service";
 	private static String PROXIMITY_INDICATION_SERVICE_ID = "de.uni_mannheim.informatik.swt.proximityindication.service";
+	private static String DSL_SERVICE_ID = "de.uni_mannheim.informatik.swt.dsl.service";
 	
 	private static ExtensionPointService instance = null;
 	
@@ -94,6 +96,17 @@ public class ExtensionPointService {
 	
 	
 	
+	/**
+	 * Cache for DSL IConfigurationElements
+	 */
+	private static Map<String, IConfigurationElement> id2DSLServiceConfigurationElement;
+	public Map<String, IConfigurationElement> getId2DSLServiceConfigurationElement() {
+		return id2DSLServiceConfigurationElement;
+	}
+	/**
+	 * Cache for DSL Instances
+	 */
+	private static Map<String, IDSLService> id2DSLServiceInstance;
 	
 	private ExtensionPointService(){
 		
@@ -128,6 +141,9 @@ public class ExtensionPointService {
 		id2ProximityIndicationServiceConfigurationElement = new HashMap<String, IConfigurationElement>();
 		id2ProximityIndicationServiceInstance = new HashMap<String, IProximityIndicationService>();
 		
+		id2DSLServiceConfigurationElement = new HashMap<String, IConfigurationElement>();
+		id2DSLServiceInstance = new HashMap<String, IDSLService>();
+		
 		//Initialize the visualization service
 		IConfigurationElement[] configurationElements = Platform.getExtensionRegistry().getConfigurationElementsFor(VISUALIZATION_SERVICE_ID);
 		
@@ -151,6 +167,12 @@ public class ExtensionPointService {
 		
 		for (IConfigurationElement cElement : configurationElements)
 			id2ProximityIndicationServiceConfigurationElement.put(cElement.getAttribute("id"), cElement);
+		
+		//Initialize the proximity indication service
+		configurationElements = Platform.getExtensionRegistry().getConfigurationElementsFor(DSL_SERVICE_ID);
+		
+		for (IConfigurationElement cElement : configurationElements)
+			id2DSLServiceConfigurationElement.put(cElement.getAttribute("id"), cElement);
 	}
 	
 	/**
@@ -303,4 +325,41 @@ public class ExtensionPointService {
 		return getProximityIndicationService(store.getString(PreferenceConstants.P_ACTIVE_PROXIMITY_INDICATION_ENGINE));
 	}
 	
+	/**
+	 * Returns an instance of the Proximity Indicarion Service. For performance improvements two caches are used.
+	 * One to cache the IConfigurationElements and one to cache the visualization service instance.
+	 * 
+	 * @param id ID of the registered extension point
+	 * 
+	 * @return A cached instance of the reasoning service
+	 * 
+	 * @throws CoreException
+	 */
+	public IDSLService getDSLService(String id) throws CoreException{
+		IDSLService dslService = id2DSLServiceInstance.get(id);
+		
+		if (dslService == null)
+		{
+			dslService = (IDSLService)id2DSLServiceConfigurationElement.get(id).createExecutableExtension("class");
+			id2DSLServiceInstance.put(id, dslService);
+		}
+		
+		return dslService;
+	}
+	
+	/**
+	 * Returns the active Proximity Indication Service. For performance improvements two caches are used.
+	 * One to cache the IConfigurationElements and one to cache the visualization service instance.
+	 * 
+	 * @param id ID of the registered extension point
+	 * 
+	 * @return A cached instance of the reasoning service
+	 * 
+	 * @throws CoreException
+	 */
+	public IDSLService getActiveDSLService() throws CoreException{
+		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
+		
+		return getDSLService(store.getString(PreferenceConstants.P_ACTIVE_DSL_ENGINE));
+	}
 }
