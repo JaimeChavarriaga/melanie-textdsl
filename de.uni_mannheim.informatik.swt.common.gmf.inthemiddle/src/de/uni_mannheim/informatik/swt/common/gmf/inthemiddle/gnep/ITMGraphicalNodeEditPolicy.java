@@ -12,7 +12,6 @@
 package de.uni_mannheim.informatik.swt.common.gmf.inthemiddle.gnep;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -26,8 +25,6 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.XYLayout;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
-import org.eclipse.emf.common.util.BasicEList;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.Request;
@@ -451,6 +448,8 @@ public class ITMGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
 		//This is specialized for Roles
 		if (request instanceof CreateUnspecifiedTypeConnectionRequest)
 		{
+			List result = super.getConnectionMenuContent(request);
+			
 			try {
 				EObject source = ((IGraphicalEditPart)request.getSourceEditPart()).resolveSemanticElement();
 				EObject target = ((IGraphicalEditPart)request.getTargetEditPart()).resolveSemanticElement();
@@ -460,98 +459,66 @@ public class ITMGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
 						! (Boolean)OCLHelper.execute(target, "self.oclIsKindOf(Clabject)"))
 						return super.getConnectionMenuContent(request);
 				
+				List<Connection> connections = new LinkedList<Connection>();
+				List<Role> roles = new LinkedList<Role>();
+				
 				if (source instanceof Entity && target instanceof Entity)
-					return getMenuContentForEntityEntity(request, (Entity)source, (Entity)target);
+					connections = ExtensionPointService.Instance().getActiveDSLService().getInstantiableConnectionsBetween((Entity)source, (Entity)target);
+					//return getMenuContentFromDSLService(request, (Entity)source, (Entity)target);
 				else if (source instanceof Connection && target instanceof Entity)
-					return getMenuContentForEntityEntity(request, (Connection)source, (Entity)target);
+					roles = ExtensionPointService.Instance().getActiveDSLService().getInstantiableRolesBetween((Connection)source, (Entity)target);
+					//return getMenuContentFromDSLService(request, (Connection)source, (Entity)target);
 				else
 					return super.getConnectionMenuContent(request);
 				
-			} catch (InvocationTargetException e) {
-				e.printStackTrace();
+				//Go for the connections
+				if (connections.size() > 0){
+					IElementType elementType = null;
+					for (IElementType type: (List<IElementType>)((CreateUnspecifiedTypeConnectionRequest)request).getElementTypes())
+						if (type.toString().contains("Role"))
+							elementType = type;
+					
+					for (Connection connection : connections){
+						//Here we do only create the captions
+						Request clone = cloneRequest((CreateUnspecifiedTypeConnectionRequest)request);
+						
+						clone.getExtendedData().put(DISPLAY_NAME, connection.getHumanReadableName());
+						
+						clone.getExtendedData().put(DSL_TYPE, connection);
+						clone.getExtendedData().put(ELEMENT_TYPE, elementType);
+						result.add(clone);
+					}
+				}
+				
+				//Go for the roles
+				if (roles.size() > 0){
+					IElementType elementType = null;
+					for (IElementType type: (List<IElementType>)((CreateUnspecifiedTypeConnectionRequest)request).getElementTypes())
+						if (type.toString().contains("Role"))
+							elementType = type;
+					
+					for (Role r : roles){
+						//Here we do only create the captions
+						Request clone = cloneRequest((CreateUnspecifiedTypeConnectionRequest)request);
+						clone.getExtendedData().put(DISPLAY_NAME, r.getHumanReadableRoleName());
+						clone.getExtendedData().put(DSL_TYPE, r);
+						clone.getExtendedData().put(ELEMENT_TYPE, elementType);
+						result.add(clone);
+					}
+				}
+				
+				return result;
+				
 			} catch (ParserException e) {
+				e.printStackTrace();
+			} catch (CoreException e) {
 				e.printStackTrace();
 			}
 		}
 	
 		return super.getConnectionMenuContent(request);
 	}
-	
-	/**
-	 * Returns connections that can be instantiated between two entities 
-	 * 
-	 * @param request Request used to create connection + roles
-	 * @param source The source of the connection + roles
-	 * @param target The target of the connection + roles
-	 * @return a list with requests for instantiating between two entities
-	 * @throws InvocationTargetException
-	 * @throws ParserException
-	 * @throws CoreException 
-	 */
-	private List getMenuContentForEntityEntity(CreateConnectionRequest request, Entity source, Entity target) {
-		List result = super.getConnectionMenuContent(request);
 		
-		List<Connection> connections = new LinkedList<Connection>();
-		
-		try {
-			connections = ExtensionPointService.Instance().getActiveDSLService().getInstantiableConnectionsBetween(source, target);
-		} catch (CoreException e) {
-			e.printStackTrace();
-		}
-
-		IElementType elementType = null;
-		for (IElementType type: (List<IElementType>)((CreateUnspecifiedTypeConnectionRequest)request).getElementTypes())
-			if (type.toString().contains("Role"))
-				elementType = type;
-				
-		
-		for (EObject connection : connections){
-			//Here we do only create the captions
-			Request clone = cloneRequest((CreateUnspecifiedTypeConnectionRequest)request);
-			try {
-				clone.getExtendedData().put(DISPLAY_NAME, EMFReflectionHelper.executeOperation(connection, "getHumanReadableName").toString());
-			} catch (InvocationTargetException e) {
-				e.printStackTrace();
-			} catch (ParserException e) {
-				e.printStackTrace();
-			}
-			clone.getExtendedData().put(DSL_TYPE, connection);
-			clone.getExtendedData().put(ELEMENT_TYPE, elementType);
-			result.add(clone);
-		}
-		
-		return result;
-	}
-	
-	private List getMenuContentForEntityEntity(CreateConnectionRequest request, Connection source, Entity target) throws InvocationTargetException, ParserException{
-		List result = super.getConnectionMenuContent(request);
-		
-		List<Role> roles = new LinkedList<Role>();
-		try {
-			roles = ExtensionPointService.Instance().getActiveDSLService().getInstantiableRolesBetween(source, target);
-		} catch (CoreException e) {
-			e.printStackTrace();
-		}
-		
-		
-		IElementType elementType = null;
-		for (IElementType type: (List<IElementType>)((CreateUnspecifiedTypeConnectionRequest)request).getElementTypes())
-			if (type.toString().contains("Role"))
-				elementType = type;
-				
-		
-		for (EObject r : roles){
-			//Here we do only create the captions
-			Request clone = cloneRequest((CreateUnspecifiedTypeConnectionRequest)request);
-			clone.getExtendedData().put(DISPLAY_NAME, EMFReflectionHelper.executeOperation(r, "getHumanReadableRoleName").toString());
-			clone.getExtendedData().put(DSL_TYPE, r);
-			clone.getExtendedData().put(ELEMENT_TYPE, elementType);
-			result.add(clone);
-		}
-		
-		return result;
-	}
-	
 	private CreateUnspecifiedTypeConnectionRequest cloneRequest(CreateUnspecifiedTypeConnectionRequest request){
 		CreateUnspecifiedTypeConnectionRequest result = new CreateUnspecifiedTypeConnectionRequest(request.getElementTypes(), request.useModelingAssistantService(), getHostImpl().getDiagramPreferencesHint());
 		result.setTargetEditPart(request.getTargetEditPart());
@@ -561,7 +528,8 @@ public class ITMGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
 		return result;
 	}
 	
-	//This needs to be overriden to provide the right text for the content
+	//This needs to be overridden to provide the right text for the content
+	@Override
 	protected ICommand getPromptAndCreateConnectionCommand(List content,
 			CreateConnectionRequest request) {
 		
