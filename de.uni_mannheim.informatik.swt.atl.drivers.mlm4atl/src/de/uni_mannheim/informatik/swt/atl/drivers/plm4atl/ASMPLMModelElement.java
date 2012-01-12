@@ -170,7 +170,7 @@ public class ASMPLMModelElement extends ASMEMFModelElement {
 				//No attributes found -> check the connections (references)
 				if (feature.length == 0)
 				{
-					q = helper.createQuery("Connection.allInstances()->select(c | c.participant->includes(self)).participant->reject(p | p = self)->select(p | Classification.allInstances()->select(i | i.type.name = '" + name + "').instance->includes(p))");
+					q = helper.createQuery("Role.allInstances()->select(r | r.destination = self).connection.role->select(r | r.getHumanReadableRoleName() = '" + name + "').destination");
 					
 					feature = ((Bag<Element>) ocl.evaluate(object, q)).toArray(new Element[] {});
 				}
