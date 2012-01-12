@@ -13,10 +13,12 @@ package de.uni_mannheim.informatik.swt.common.gmf.inthemiddle.gnep;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.Assert;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.draw2d.ConnectionAnchor;
@@ -62,6 +64,7 @@ import org.eclipse.swt.widgets.Display;
 
 import de.uni_mannheim.informatik.swt.common.EMFReflectionHelper;
 import de.uni_mannheim.informatik.swt.common.OCLHelper;
+import de.uni_mannheim.informatik.swt.mlm.workbench.ExtensionPointService;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Entity;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Role;
@@ -483,54 +486,19 @@ public class ITMGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
 	 * @return a list with requests for instantiating between two entities
 	 * @throws InvocationTargetException
 	 * @throws ParserException
+	 * @throws CoreException 
 	 */
-	private List getMenuContentForEntityEntity(CreateConnectionRequest request, Entity source, Entity target) throws InvocationTargetException, ParserException{
+	private List getMenuContentForEntityEntity(CreateConnectionRequest request, Entity source, Entity target) {
 		List result = super.getConnectionMenuContent(request);
 		
-		EList<EObject> sourceTypes = (EList<EObject>)EMFReflectionHelper.executeOperation(source, "getModelTypes");
-		EList<EObject> targetTypes = (EList<EObject>)EMFReflectionHelper.executeOperation(target, "getModelTypes");
+		List<Connection> connections = new LinkedList<Connection>();
 		
-		//Only applied if both are instances
-		if (sourceTypes.size() < 1 || targetTypes.size() < 1)
-			return result;
-		
-		EList<EObject> sourceConnections = new BasicEList<EObject>((HashSet<EObject>)OCLHelper.execute(source, "self.getModelTypes().getAllConnections()->asSet()"));
-		
-		EList<EObject> connections = new BasicEList<EObject>();
-		
-		//Look for all connections that contain a type of the target instance
-		for (EObject obj : sourceConnections){
-			//OCL here because getParticipants does not return duplicates
-			EList<EObject> participants = new BasicEList<EObject>((List<EObject>)OCLHelper.execute(obj, "self.role.destination->asSequence()"));
-			
-			boolean found = false;
-			
-			//Delete the source only once
-			for (EObject sourceType : sourceTypes)
-			{
-				for (int i = 0; i < participants.size(); i++)
-					if (participants.get(i).equals(sourceType))
-					{
-						participants.remove(i);
-						break;
-					}
-				if (found)
-					break;
-			}
-			
-			found = false;
-			for (EObject participant : participants)
-				//participant is in targetType => suitable connection found
-				if (targetTypes.contains(participant))
-				{
-					found = true;
-					break;
-				}
-			
-			if (found)
-				connections.add(obj);
+		try {
+			connections = ExtensionPointService.Instance().getActiveDSLService().getInstantiableConnectionsBetween(source, target);
+		} catch (CoreException e) {
+			e.printStackTrace();
 		}
-		
+
 		IElementType elementType = null;
 		for (IElementType type: (List<IElementType>)((CreateUnspecifiedTypeConnectionRequest)request).getElementTypes())
 			if (type.toString().contains("Role"))
@@ -540,7 +508,13 @@ public class ITMGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
 		for (EObject connection : connections){
 			//Here we do only create the captions
 			Request clone = cloneRequest((CreateUnspecifiedTypeConnectionRequest)request);
-			clone.getExtendedData().put(DISPLAY_NAME, EMFReflectionHelper.executeOperation(connection, "getHumanReadableName").toString());
+			try {
+				clone.getExtendedData().put(DISPLAY_NAME, EMFReflectionHelper.executeOperation(connection, "getHumanReadableName").toString());
+			} catch (InvocationTargetException e) {
+				e.printStackTrace();
+			} catch (ParserException e) {
+				e.printStackTrace();
+			}
 			clone.getExtendedData().put(DSL_TYPE, connection);
 			clone.getExtendedData().put(ELEMENT_TYPE, elementType);
 			result.add(clone);
@@ -550,57 +524,15 @@ public class ITMGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
 	}
 	
 	private List getMenuContentForEntityEntity(CreateConnectionRequest request, Connection source, Entity target) throws InvocationTargetException, ParserException{
-List result = super.getConnectionMenuContent(request);
+		List result = super.getConnectionMenuContent(request);
 		
-		EList<Connection> sourceConnectionTypes = (EList<Connection>)EMFReflectionHelper.executeOperation(source, "getModelTypes");
-		EList<EObject> targetTypes = (EList<EObject>)EMFReflectionHelper.executeOperation(target, "getModelTypes");
-		
-		//Only applied if both are instances
-		if (sourceConnectionTypes.size() < 1 || targetTypes.size() < 1)
-			return result;
-		
-		EList<Role> roles = new BasicEList<Role>();
-		
-		for (Connection connectionType : sourceConnectionTypes){
-			for (Role r : connectionType.getRole())
-				if (targetTypes.contains(r.getDestination()))
-					roles.add(r);
+		List<Role> roles = new LinkedList<Role>();
+		try {
+			roles = ExtensionPointService.Instance().getActiveDSLService().getInstantiableRolesBetween(source, target);
+		} catch (CoreException e) {
+			e.printStackTrace();
 		}
-				
-		//EList<EObject> sourceConnections = new BasicEList<EObject>((HashSet<EObject>)OCLHelper.execute(source, "self.getModelTypes().getAllConnections()->asSet()"));
 		
-		//Look for all connections that contain a type of the target instance
-//		for (EObject obj : sourceConnections){
-			//OCL here because getParticipants does not return duplicates
-//			EList<EObject> participants = new BasicEList<EObject>((List<EObject>)OCLHelper.execute(obj, "self.role.destination->asSequence()"));
-			
-//			boolean found = false;
-			
-			//Delete the source only once
-//			for (EObject sourceType : sourceTypes)
-//			{
-//				for (int i = 0; i < participants.size(); i++)
-//					if (participants.get(i).equals(sourceType))
-//					{
-//						participants.remove(i);
-//						break;
-//					}
-//				if (found)
-//					break;
-//			}
-			
-//			found = false;
-//			for (EObject participant : participants)
-				//participant is in targetType => suitable connection found
-//				if (targetTypes.contains(participant))
-//				{
-//					found = true;
-//					break;
-//				}
-			
-//			if (found)
-//				roles.add(obj);
-//		}
 		
 		IElementType elementType = null;
 		for (IElementType type: (List<IElementType>)((CreateUnspecifiedTypeConnectionRequest)request).getElementTypes())

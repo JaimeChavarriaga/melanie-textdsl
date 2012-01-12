@@ -73,6 +73,6 @@ public interface IDSLService {
 	 * 
 	 * @return A list of all instantiable roles
 	 */
-	public List<Role> getInstantiableRoleBsetween(Connection sourceInstance, Entity targetInstance);
+	public List<Role> getInstantiableRolesBetween(Connection sourceInstance, Entity targetInstance);
 
 }
