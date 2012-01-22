@@ -464,12 +464,12 @@ public class ITMGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
 				
 				if (source instanceof Entity && target instanceof Entity)
 					connections = ExtensionPointService.Instance().getActiveDSLService().getInstantiableConnectionsBetween((Entity)source, (Entity)target);
-					//return getMenuContentFromDSLService(request, (Entity)source, (Entity)target);
-				else if (source instanceof Connection && target instanceof Entity)
+				else if (source instanceof Connection && target instanceof Entity){
 					roles = ExtensionPointService.Instance().getActiveDSLService().getInstantiableRolesBetween((Connection)source, (Entity)target);
-					//return getMenuContentFromDSLService(request, (Connection)source, (Entity)target);
-				else
-					return super.getConnectionMenuContent(request);
+					connections = ExtensionPointService.Instance().getActiveDSLService().getInstantiableConnectionsBetween((Connection)source, (Entity)target);
+				}
+//				else
+//					return super.getConnectionMenuContent(request);
 				
 				//Go for the connections
 				if (connections.size() > 0){
@@ -506,6 +506,20 @@ public class ITMGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
 						result.add(clone);
 					}
 				}
+				
+				//We should also over to create a connection between two connections
+				if (source instanceof Connection && target instanceof Connection){
+					IElementType elementType = null;
+					for (IElementType type: (List<IElementType>)((CreateUnspecifiedTypeConnectionRequest)request).getElementTypes())
+						if (type.toString().contains("Role"))
+							elementType = type;
+					
+					Request clone = cloneRequest((CreateUnspecifiedTypeConnectionRequest)request);
+					clone.getExtendedData().put(DISPLAY_NAME, "Create Connection");
+					clone.getExtendedData().put(ELEMENT_TYPE, elementType);
+					result.add(clone);
+				}
+					
 				
 				return result;
 				
