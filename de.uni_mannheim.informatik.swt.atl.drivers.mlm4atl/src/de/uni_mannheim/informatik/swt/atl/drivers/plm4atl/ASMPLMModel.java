@@ -15,21 +15,36 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.m2m.atl.common.ATLLogger;
 import org.eclipse.m2m.atl.drivers.emf4atl.ASMEMFModel;
+import org.eclipse.m2m.atl.drivers.emf4atl.ASMEMFModelElement;
 import org.eclipse.m2m.atl.engine.vm.ModelLoader;
+import org.eclipse.m2m.atl.engine.vm.StackFrame;
 import org.eclipse.m2m.atl.engine.vm.nativelib.ASMModelElement;
+import org.eclipse.ui.internal.ReopenEditorMenu;
 
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.DomainElement;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Entity;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMFactory;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMFactoryImpl;
 
 public class ASMPLMModel extends ASMEMFModel {
 
 	private Map classifiers;
+	
+	public void setExtent(Resource r){
+		extent = r;
+	}
 	
 	protected ASMPLMModel(String name, Resource extent, ASMEMFModel metamodel,
 			boolean isTarget, ModelLoader ml) {
@@ -97,6 +112,14 @@ public class ASMPLMModel extends ASMEMFModel {
 		//Additionally to the linguistic type we need to register the ontological ones
 		//*******************************************************************************
 		initClassifiers(in.getExtent().getContents().iterator(), allClassifiers, null);
+		//This part is needed as 
+		if (in.getExtent().getContents().size() == 0)
+		{
+			URI resourceURI = in.getExtent().getURI();
+			ResourceSet resSet = new ResourceSetImpl();
+			in.setExtent(resSet.getResource(URI.createURI("platform:/resource/sum2uml/sum_target.lml"),true));
+			initClassifiers(in.getExtent().getContents().iterator(), allClassifiers, null);
+		}
 		//*******************************************************************************
 		//END
 		//*******************************************************************************
@@ -169,6 +192,52 @@ public class ASMPLMModel extends ASMEMFModel {
 			else
 				ret = super.getASMModelElement(object);
 		}
+		return ret;
+	}
+	
+//	@Override
+//	public ASMModelElement newModelElement(StackFrame frame, String typeName) {
+//		ASMModelElement type = getMetamodel().findModelElement(typeName);
+//		if(type == null) {
+//			String msg = "No type named '" + typeName + "' in metamodel '" + metamodel.name + "'";
+//			if(frame == null) {
+//				ATLLogger.severe(msg);
+//			} else {
+//				frame.printStackTrace(msg);
+//			}
+//		}
+//		return newModelElement(type);
+//	}
+	
+	@Override
+	public ASMModelElement newModelElement(ASMModelElement type) {
+		ASMModelElement ret = null;
+
+		EObject eObjectType = ((ASMEMFModelElement)type).getObject();
+		
+		//This is the standard code from ASMEMFModel to create a type instance
+		if (eObjectType instanceof EClass){
+			EClass t = (EClass)((ASMEMFModelElement)type).getObject();
+			EObject eo = t.getEPackage().getEFactoryInstance().create(t);
+			ret = getASMModelElement(eo);
+			getExtent().getContents().add(eo);
+		}
+		else if (eObjectType instanceof Entity){
+			Entity instance = PLMFactory.eINSTANCE.createEntity();
+			Model classifiedModel = ((Clabject) eObjectType).getModel().getClassifiedModel();
+			
+			//Happens if no level below existed before
+			if (classifiedModel == null){
+				classifiedModel = PLMFactory.eINSTANCE.createModel();
+				((Clabject) eObjectType).getModel().getOntology().getContent().add(classifiedModel);
+				classifiedModel.setName("O?");
+			}
+			
+			classifiedModel.getContent().add(instance);
+			PLMFactory.eINSTANCE.dressInstanceFromType((Clabject)eObjectType, instance);
+			ret = getASMModelElement(instance);
+		}
+		
 		return ret;
 	}
 }
