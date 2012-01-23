@@ -195,20 +195,6 @@ public class ASMPLMModel extends ASMEMFModel {
 		return ret;
 	}
 	
-//	@Override
-//	public ASMModelElement newModelElement(StackFrame frame, String typeName) {
-//		ASMModelElement type = getMetamodel().findModelElement(typeName);
-//		if(type == null) {
-//			String msg = "No type named '" + typeName + "' in metamodel '" + metamodel.name + "'";
-//			if(frame == null) {
-//				ATLLogger.severe(msg);
-//			} else {
-//				frame.printStackTrace(msg);
-//			}
-//		}
-//		return newModelElement(type);
-//	}
-	
 	@Override
 	public ASMModelElement newModelElement(ASMModelElement type) {
 		ASMModelElement ret = null;
