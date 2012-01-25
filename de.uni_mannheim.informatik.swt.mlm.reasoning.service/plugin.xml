@@ -227,6 +227,22 @@
                optional="true">
          </commandParameter>
       </command>
+      <command
+            defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.SubsumptionCommand"
+            id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.subsumptioncommand"
+            name="Subsumption">
+         <commandParameter
+               id="silent"
+               name="silent"
+               optional="true">
+         </commandParameter>
+         <commandParameter
+               id="model"
+               name="model"
+               optional="true"
+               typeId="de.uni_mannheim.informatik.swt.plm.workbench.eobjectcommandparametertype">
+         </commandParameter>
+      </command>
    </extension>
    <extension
          point="de.uni_mannheim.informatik.swt.reasoning.service">

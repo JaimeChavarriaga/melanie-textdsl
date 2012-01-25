@@ -302,6 +302,20 @@ public class ReasoningService implements IReasoningService {
 			param.parameters = commandParamametersMap;
 			
 			items.add(new CommandContributionItem(param));
+			
+			//***************************************************
+			// Subsumption
+			//***************************************************
+			param =	new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), SubsumptionCommand.ID + ".menuEntry", SubsumptionCommand.ID, CommandContributionItem.STYLE_PUSH);
+			param.label = getCommandName(SubsumptionCommand.ID);
+			
+			commandParamametersMap = new HashMap<String, Object>();
+			
+			commandParamametersMap.put("model",  modelElements[0]);
+			
+			param.parameters = commandParamametersMap;
+			
+			items.add(new CommandContributionItem(param));
 		}
 		
 		//We have an ontology selected

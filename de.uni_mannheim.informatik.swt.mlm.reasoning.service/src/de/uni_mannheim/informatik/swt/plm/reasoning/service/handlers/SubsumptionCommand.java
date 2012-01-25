@@ -12,6 +12,7 @@
 package de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.eclipse.core.commands.AbstractHandler;
@@ -23,6 +24,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Entity;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Role;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Check;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.CompositeCheck;
@@ -45,10 +47,17 @@ public class SubsumptionCommand extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		marks = null;
 		ReasoningResultModel resultModel = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();
-		Clabject supertype = (Clabject)event.getObjectParameterForExecution("supertype");
-		Clabject subtype = (Clabject)event.getObjectParameterForExecution("subtype");
-		CompositeCheck check = compute(supertype,subtype);
-		resultModel.getCheck().add(check);
+		CompositeCheck check = null;
+		
+		Model model = (Model) event.getObjectParameterForExecution("model");
+		if (model == null) {
+			Clabject supertype = (Clabject)event.getObjectParameterForExecution("supertype");
+			Clabject subtype = (Clabject)event.getObjectParameterForExecution("subtype");
+			check = compute(supertype,subtype);
+		} else {
+			check = compute(model);
+		}
+		resultModel.getCheck().add(check);		
 		
 		Boolean silent = event.getParameters().get("silent") == null?
 				false: Boolean.parseBoolean(event.getParameters().get("silent").toString());
@@ -58,6 +67,19 @@ public class SubsumptionCommand extends AbstractHandler {
 		return check.isResult();
 	}
 	
+	private CompositeCheck compute(Model model) {
+		List<Clabject> clabjects = model.getAllClabjects();
+		CompositeCheck result = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
+		result.setName("Model Subsumption");
+		for (Clabject one: clabjects) {
+			for (Clabject other : clabjects) {
+				result.getCheck().add(compute(one, other));
+			}
+		}
+		result.setResult(true);
+		return result;
+	}
+
 	private Set<Pair<Clabject, Clabject>> getMarks() {
 		if (marks == null)
 			marks = new HashSet<Pair<Clabject, Clabject>>();
