@@ -41,6 +41,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMFactory;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Role;
 
 public class ASMPLMModelElement extends ASMEMFModelElement {
 
@@ -254,7 +255,22 @@ public class ASMPLMModelElement extends ASMEMFModelElement {
 						Connection instanceConnection = PLMFactory.eINSTANCE.createConnection();
 						((Clabject)object).getModel().getContent().add(instanceConnection);
 						PLMFactory.eINSTANCE.dressInstanceFromType((Connection)feature[0], instanceConnection);
-						System.out.println(instanceConnection.getRole());
+						for (Role typeRole : ((Connection)feature[0]).getRole()){
+							Role instanceRole = PLMFactory.eINSTANCE.createRole();
+							instanceRole.setConnection(instanceConnection);
+							instanceRole.setExpressedRoleName(typeRole.getExpressedRoleName());
+							instanceRole.setLower(typeRole.getLower());
+							instanceRole.setNavigable(typeRole.isNavigable());
+							instanceRole.setUpper(typeRole.getUpper());
+							
+							//Set the destination of the role
+							if (types.contains(typeRole.getDestination())){
+								instanceRole.setDestination((Clabject)object);
+							}
+							else{
+								instanceRole.setDestination((Clabject)((ASMEMFModelElement)value).getObject());
+							}
+						}
 					}
 					
 				}
