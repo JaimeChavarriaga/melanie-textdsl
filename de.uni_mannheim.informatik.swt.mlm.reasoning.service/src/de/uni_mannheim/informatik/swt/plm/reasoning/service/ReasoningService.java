@@ -192,8 +192,8 @@ public class ReasoningService implements IReasoningService {
 			// Subsumption command
 			//***************************************************
 			param = 
-					new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), SubsumptionCommand.ID + ".menuEntry", SubsumptionCommand.ID, CommandContributionItem.STYLE_PUSH);
-			param.label = getCommandName(SubsumptionCommand.ID);
+					new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), SubsumptionCommand.ID_ISSUBTYPE + ".menuEntry", SubsumptionCommand.ID_ISSUBTYPE, CommandContributionItem.STYLE_PUSH);
+			param.label = getCommandName(SubsumptionCommand.ID_ISSUBTYPE);
 			
 			commandParamametersMap = new HashMap<String, Object>();
 			
@@ -306,8 +306,8 @@ public class ReasoningService implements IReasoningService {
 			//***************************************************
 			// Subsumption
 			//***************************************************
-			param =	new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), SubsumptionCommand.ID + ".menuEntry", SubsumptionCommand.ID, CommandContributionItem.STYLE_PUSH);
-			param.label = getCommandName(SubsumptionCommand.ID);
+			param =	new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), SubsumptionCommand.ID_SUBSUMPTION + ".menuEntry", SubsumptionCommand.ID_SUBSUMPTION, CommandContributionItem.STYLE_PUSH);
+			param.label = getCommandName(SubsumptionCommand.ID_SUBSUMPTION);
 			
 			commandParamametersMap = new HashMap<String, Object>();
 			

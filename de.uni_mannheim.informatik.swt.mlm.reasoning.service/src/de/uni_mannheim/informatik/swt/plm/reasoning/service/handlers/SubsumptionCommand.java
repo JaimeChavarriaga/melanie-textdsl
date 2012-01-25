@@ -35,7 +35,8 @@ import de.uni_mannheim.informatik.swt.plm.reasoning.service.util.Pair;
 
 public class SubsumptionCommand extends AbstractHandler {
 
-	public static final String ID = "de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.subsumptioncommand";
+	public static final String ID_SUBSUMPTION = "de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.subsumptioncommand";
+	public static final String ID_ISSUBTYPE = "de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.isSubtype";
 	
 	IReasoningService reasoner = (new ReasoningService()).Instance();
 	Set<Pair<Clabject,Clabject>> marks = null;
