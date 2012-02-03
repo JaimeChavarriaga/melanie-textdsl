@@ -11,6 +11,8 @@
  *******************************************************************************/
 package de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers;
 
+import java.util.List;
+
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
@@ -66,8 +68,8 @@ public class PotencyCompletenessCommand extends AbstractHandler {
 		if (c.getPotency() < 0) {//* potency
 			return check;
 		} else { 
-			Model classifyiedModel = c.getModel().getClassifiedModel();	
-			if (classifyiedModel == null) { //we are on the leaf model
+			Model classifiedModel = c.getModel().getClassifiedModel();	
+			if (classifiedModel == null) { //we are on the leaf model
 				if (c.getPotency() == 0) { // Potency 0 on the leafmodel is nice
 					ReasoningResultFactory.eINSTANCE.createInformation(c, "Leaf Model", check);
 					return check;
@@ -78,12 +80,33 @@ public class PotencyCompletenessCommand extends AbstractHandler {
 				}
 			}
 			// we have a classified model
-			Information classifiedModelInformation = ReasoningResultFactory.eINSTANCE.createInformation(c, "Classified Model: " + classifyiedModel.getName(), check);
+			ReasoningResultFactory.eINSTANCE.createInformation(c, "Classified Model: " + classifiedModel.getName(), check);
+			Information possibleIsonymsInformation = ReasoningResultFactory.eINSTANCE.createInformation(classifiedModel, "Possible Isonyms",check);
+			List<Clabject> clabjects = classifiedModel.getAllClabjects();
+			for (Clabject temp: clabjects) {
+				Information temper = ReasoningResultFactory.eINSTANCE.createInformation();
+				temper.setMessage(temp.represent());
+				temper.setSubject(temp);
+				possibleIsonymsInformation.getChildren().add(temper);
+			}
 			if (c.getPotency() == 0) {// There must not be any isonym
 				CompositeCheck noIsonymsCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
 				noIsonymsCheck.setName("No Isonyms");
 				check.getChildren().add(noIsonymsCheck);
 				noIsonymsCheck.setResult(true); // Innocent until proven guilty
+				Information actualIsonymsInfo = ReasoningResultFactory.eINSTANCE.createInformation(classifiedModel, "Actual Isonyms",noIsonymsCheck);
+				for (Clabject possible: clabjects) {
+					CompositeCheck cCheck = new IsonymCommand().compute(c, possible);
+					noIsonymsCheck.getChildren().add(cCheck);
+					if (cCheck.isResult()) { // found one, there should be none
+						noIsonymsCheck.setResult(false);
+						check.setResult(false);
+						Information temper = ReasoningResultFactory.eINSTANCE.createInformation();
+						temper.setMessage(possible.represent());
+						temper.setSubject(possible);
+						actualIsonymsInfo.getChildren().add(temper);
+					}
+				}
 			} else { // There has to be an isonym and all isonyms have to be potency complete
 				CompositeCheck isonymExists = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
 				isonymExists.setName("Isonym Exists");
