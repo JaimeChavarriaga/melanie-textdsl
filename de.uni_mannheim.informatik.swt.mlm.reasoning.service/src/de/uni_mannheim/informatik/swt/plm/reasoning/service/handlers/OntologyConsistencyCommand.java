@@ -25,6 +25,7 @@ import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Com
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultFactory;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.ReasoningService;
+import de.uni_mannheim.informatik.swt.plm.reasoning.service.util.ReasoningServiceUtil;
 
 public class OntologyConsistencyCommand extends AbstractHandler {
 
@@ -38,6 +39,7 @@ public class OntologyConsistencyCommand extends AbstractHandler {
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		ReasoningResultModel resultModel = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();
+		resultModel.setName("Ontology Consistency " + ReasoningServiceUtil.getDateString());
 		Element element = (Element)event.getObjectParameterForExecution("ontology");
 		CompositeCheck check = compute(element);
 		resultModel.getCheck().add(check);

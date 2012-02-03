@@ -45,6 +45,7 @@ public class IsExpressedInstanceOfExcludedCommand extends AbstractHandler {
 		Clabject type = (Clabject)event.getObjectParameterForExecution("type");
 		Clabject instance = (Clabject)event.getObjectParameterForExecution("instance");
 		ReasoningResultModel resultModel = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();
+		resultModel.setName("Expressed Instance of Excluded " + ReasoningServiceUtil.getDateString());
 		CompositeCheck check = compute(type, instance);
 
 		Boolean silent = event.getParameters().get("silent") == null?

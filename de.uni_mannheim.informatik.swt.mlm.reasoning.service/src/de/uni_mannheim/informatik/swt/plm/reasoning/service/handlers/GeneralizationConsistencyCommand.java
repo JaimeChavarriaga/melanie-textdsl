@@ -29,6 +29,7 @@ import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Dom
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultFactory;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.ReasoningService;
+import de.uni_mannheim.informatik.swt.plm.reasoning.service.util.ReasoningServiceUtil;
 
 public class GeneralizationConsistencyCommand extends AbstractHandler {
 
@@ -42,6 +43,7 @@ public class GeneralizationConsistencyCommand extends AbstractHandler {
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		ReasoningResultModel resultModel = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();
+		resultModel.setName("Generalization Consistency" + ReasoningServiceUtil.getDateString());
 		Element element = (Element)event.getObjectParameterForExecution("generalization");
 		CompositeCheck check = compute(element);
 		resultModel.getCheck().add(check);

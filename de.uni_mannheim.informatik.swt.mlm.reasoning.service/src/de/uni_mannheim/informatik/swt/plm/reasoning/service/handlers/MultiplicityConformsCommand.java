@@ -32,6 +32,7 @@ import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Mul
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultFactory;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.ReasoningService;
+import de.uni_mannheim.informatik.swt.plm.reasoning.service.util.ReasoningServiceUtil;
 
 public class MultiplicityConformsCommand extends AbstractHandler {
 
@@ -46,6 +47,7 @@ public class MultiplicityConformsCommand extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		Connection connection = (Connection)event.getObjectParameterForExecution("connection");
 		ReasoningResultModel resultModel = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();
+		resultModel.setName("Multiplicity " + ReasoningServiceUtil.getDateString());
 		CompositeCheck check = compute(connection);
 		resultModel.getCheck().add(check);
 

@@ -32,6 +32,7 @@ import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Rea
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.ReasoningService;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.util.Pair;
+import de.uni_mannheim.informatik.swt.plm.reasoning.service.util.ReasoningServiceUtil;
 
 public class SubsumptionCommand extends AbstractHandler {
 
@@ -48,6 +49,7 @@ public class SubsumptionCommand extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		marks = null;
 		ReasoningResultModel resultModel = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();
+		resultModel.setName("Subsumtion " + ReasoningServiceUtil.getDateString());
 		CompositeCheck check = null;
 		
 		Model model = (Model) event.getObjectParameterForExecution("model");

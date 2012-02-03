@@ -29,6 +29,7 @@ import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Rea
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ValueComparison;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.ReasoningService;
+import de.uni_mannheim.informatik.swt.plm.reasoning.service.util.ReasoningServiceUtil;
 
 public class FeatureConformsCommand extends AbstractHandler {
 	
@@ -41,6 +42,7 @@ public class FeatureConformsCommand extends AbstractHandler {
 		Feature type = (Feature)event.getObjectParameterForExecution("type");
 		Feature instance = (Feature)event.getObjectParameterForExecution("instance");
 		ReasoningResultModel resultModel = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();
+		resultModel.setName("Feature Conformance " + ReasoningServiceUtil.getDateString());
 		CompositeCheck check = compute(type, instance);
 		resultModel.getCheck().add(check);
 

@@ -25,6 +25,7 @@ import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Has
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultFactory;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.ReasoningService;
+import de.uni_mannheim.informatik.swt.plm.reasoning.service.util.ReasoningServiceUtil;
 
 public class HasAdditionalPropertiesCommand extends AbstractHandler {
 	
@@ -40,6 +41,7 @@ public class HasAdditionalPropertiesCommand extends AbstractHandler {
 		//the command is executed standalone; so we check propertyConformance and not only for the name
 		complexNavigationSearch = true;
 		ReasoningResultModel resultModel = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();
+		resultModel.setName("Additional Properties " + ReasoningServiceUtil.getDateString());
 		CompositeCheck check = compute(type, instance);
 		resultModel.getCheck().add(check);
 		

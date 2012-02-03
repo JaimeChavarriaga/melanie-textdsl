@@ -1,6 +1,8 @@
 package de.uni_mannheim.informatik.swt.plm.reasoning.service.util;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
@@ -28,6 +30,12 @@ public class ReasoningServiceUtil {
 		Set<T> result = new HashSet<T>(one);
 		result.retainAll(other);
 		return result;
+	}
+	
+	public static String getDateString() {
+		 Calendar cal = Calendar.getInstance();
+		 SimpleDateFormat sdf = new SimpleDateFormat("H:mm:ss");
+		 return sdf.format(cal.getTime());
 	}
 
 }

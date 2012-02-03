@@ -23,6 +23,7 @@ import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Com
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultFactory;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.ReasoningService;
+import de.uni_mannheim.informatik.swt.plm.reasoning.service.util.ReasoningServiceUtil;
 
 public class ModelConsistentClassificationCommand extends AbstractHandler {
 
@@ -36,6 +37,7 @@ public class ModelConsistentClassificationCommand extends AbstractHandler {
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		ReasoningResultModel resultModel = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();
+		resultModel.setName("Consistent Classification " + ReasoningServiceUtil.getDateString());
 		Model model = (Model)event.getObjectParameterForExecution("model");
 		CompositeCheck check = compute(model);
 		resultModel.getCheck().add(check);

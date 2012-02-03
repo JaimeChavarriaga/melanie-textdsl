@@ -32,6 +32,7 @@ import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Rea
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.RoleNameLocalConformanceCheck;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.TypeFeatureCheck;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.ReasoningService;
+import de.uni_mannheim.informatik.swt.plm.reasoning.service.util.ReasoningServiceUtil;
 
 public class LocalConformsCommand extends AbstractHandler {
 
@@ -47,6 +48,7 @@ public class LocalConformsCommand extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		
 		ReasoningResultModel resultModel = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();
+		resultModel.setName("Local Conformance " + ReasoningServiceUtil.getDateString());
 		Clabject type = (Clabject)event.getObjectParameterForExecution("type");
 		Clabject instance = (Clabject)event.getObjectParameterForExecution("instance");
 		forceClabject = ((String)event.getParameters().get("forceClabject")).equals("false?") ? false:true;

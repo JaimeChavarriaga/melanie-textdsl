@@ -21,6 +21,7 @@ import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Com
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultFactory;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.ReasoningService;
+import de.uni_mannheim.informatik.swt.plm.reasoning.service.util.ReasoningServiceUtil;
 
 public class InstanceCommand extends AbstractHandler {
 
@@ -32,6 +33,7 @@ public class InstanceCommand extends AbstractHandler {
 		Clabject type = (Clabject)event.getObjectParameterForExecution("type");
 		Clabject instance = (Clabject)event.getObjectParameterForExecution("instance");
 		ReasoningResultModel resultModel = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();
+		resultModel.setName("Instance " + ReasoningServiceUtil.getDateString());
 		CompositeCheck check = compute(type, instance);
 		resultModel.getCheck().add(check);
 
