@@ -49,7 +49,7 @@ rule RefineGenModel{
 rule RefineGenClass{
 	from
 		s : genmodel!GenClass(
-			s.ecoreClass.eAllSuperTypes->select(t | t.name = 'Check')->size() > 0	
+			s.ecoreClass.eAllSuperTypes->select(t | t.name = 'ReasoningArtefact')->size() > 0	
 		)
 	to
 		o : genmodel!GenClass(
