@@ -49,7 +49,7 @@ public class MultiplicityConformsCommand extends AbstractHandler {
 		ReasoningResultModel resultModel = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();
 		resultModel.setName("Multiplicity " + ReasoningServiceUtil.getDateString());
 		CompositeCheck check = compute(connection);
-		resultModel.getCheck().add(check);
+		resultModel.getChildren().add(check);
 
 		Boolean silent = event.getParameters().get("silent") == null?
 				false: Boolean.parseBoolean(event.getParameters().get("silent").toString());
@@ -68,10 +68,10 @@ public class MultiplicityConformsCommand extends AbstractHandler {
 		Model classifiedModel = con.getModel().getOntology().getContent().get(con.getModel().getLevel() + 1);
 		Set<Connection> domain = new HashSet<Connection>();
 		CompositeCheck domainSearch = reasoner.createCompositeCheck("DomainSearch", con, classifiedModel, "delta_i in Sigma_{delta.level + 1}.connection: delta_.neighbourhoodConforms(delta)");
-		result.getCheck().add(domainSearch);
+		result.getChildren().add(domainSearch);
 		for (Connection possible:classifiedModel.getAllConnections()) {
 			CompositeCheck possibleCon = (new NeighbourhoodConformsCommand()).compute(con, possible);
-			domainSearch.getCheck().add(possibleCon);
+			domainSearch.getChildren().add(possibleCon);
 			if (possibleCon.isResult()) {
 				domain.add(possible);
 			}
@@ -81,7 +81,7 @@ public class MultiplicityConformsCommand extends AbstractHandler {
 		for (Role r:con.getAllRoles()) {
 			MultiplicityRoleNameCheck roleCheck = ReasoningResultFactory.eINSTANCE.createMultiplicityRoleNameCheck();
 			roleCheck.setRoleName(r.roleName());
-			result.getCheck().add(roleCheck);
+			result.getChildren().add(roleCheck);
 			Map<Clabject,Integer> count = new HashMap<Clabject, Integer>();
 			int lower = r.getLower();
 			int upper = r.getUpper();

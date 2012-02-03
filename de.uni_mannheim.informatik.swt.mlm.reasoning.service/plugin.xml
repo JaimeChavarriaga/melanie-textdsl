@@ -243,6 +243,22 @@
                typeId="de.uni_mannheim.informatik.swt.plm.workbench.eobjectcommandparametertype">
          </commandParameter>
       </command>
+      <command
+            defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.PotencyCompletenessCommand"
+            id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.potencycompletenesscommand"
+            name="Potency Completeness">
+         <commandParameter
+               id="silent"
+               name="silent"
+               optional="true">
+         </commandParameter>
+         <commandParameter
+               id="clabject"
+               name="clabject"
+               optional="true"
+               typeId="de.uni_mannheim.informatik.swt.plm.workbench.eobjectcommandparametertype">
+         </commandParameter>
+      </command>
    </extension>
    <extension
          point="de.uni_mannheim.informatik.swt.reasoning.service">

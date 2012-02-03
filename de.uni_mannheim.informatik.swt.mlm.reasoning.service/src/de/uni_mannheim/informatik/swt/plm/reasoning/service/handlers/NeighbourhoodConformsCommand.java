@@ -45,7 +45,7 @@ public class NeighbourhoodConformsCommand extends AbstractHandler {
 		ReasoningResultModel resultModel = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();
 		resultModel.setName("Neighbourhood Conformance " + ReasoningServiceUtil.getDateString());
 		CompositeCheck check = compute(type, instance);
-		resultModel.getCheck().add(check);
+		resultModel.getChildren().add(check);
 
 		Boolean silent = event.getParameters().get("silent") == null?
 				false: Boolean.parseBoolean(event.getParameters().get("silent").toString());
@@ -80,7 +80,7 @@ public class NeighbourhoodConformsCommand extends AbstractHandler {
 			Clabject instance) {
 		CompositeCheck result = reasoner.createCompositeCheck("NeighbourhoodConformance[Clabject]", instance, type, instance.getName()+".neighbourhoodConformsClabject("+type.getName() + ")");
 		CompositeCheck localC = (new LocalConformsCommand()).compute(type, instance);
-		result.getCheck().add(localC);
+		result.getChildren().add(localC);
 		if (!localC.isResult()) {
 			return result;
 		}
@@ -129,19 +129,19 @@ public class NeighbourhoodConformsCommand extends AbstractHandler {
 			Connection instance) {
 		CompositeCheck result = reasoner.createCompositeCheck("NeighbourhoodConformance[Connection]", instance, type, instance.getName()+".neighbourhoodConformsConnection("+type.getName() + ")");
 		CompositeCheck clabCheck = neighbourhoodConformsClabject(type, instance);
-		result.getCheck().add(clabCheck);
+		result.getChildren().add(clabCheck);
 		if (!clabCheck.isResult()) {
 			return result;
 		}
 		CompositeCheck roles = reasoner.createCompositeCheck("RolesLocalConform", instance, type, "blah");
-		result.getCheck().add(roles);
+		result.getChildren().add(roles);
 		for (Role rT: type.getRole()) {
 			CompositeCheck role = reasoner.createCompositeCheck(rT.represent(), instance, type, "blah");
-			roles.getCheck().add(role);
+			roles.getChildren().add(role);
 			for (Role rI: instance.getRole()) {
 				if (rI.conforms(rT)) {
 					CompositeCheck roleCheck = (new LocalConformsCommand()).compute(rT.getDestination(), rI.getDestination());
-					role.getCheck().add(roleCheck);
+					role.getChildren().add(roleCheck);
 					if (roleCheck.isResult()) {
 						role.setResult(true);
 						break;

@@ -59,6 +59,7 @@ import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.ModelConsis
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.MultiplicityConformsCommand;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.NeighbourhoodConformsCommand;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.OntologyConsistencyCommand;
+import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.PotencyCompletenessCommand;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.PropertyConformsCommand;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.SubsumptionCommand;
 
@@ -204,6 +205,24 @@ public class ReasoningService implements IReasoningService {
 			
 			items.add(new CommandContributionItem(param));
 			
+		}
+//		 We have a clabject selected
+		if (modelElements.length == 1 
+				&& modelElements[0] instanceof Clabject){
+			//***************************************************
+			// Potency Completeness Command
+			//***************************************************
+			CommandContributionItemParameter param = 
+					new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), PotencyCompletenessCommand.ID + ".menuEntry", PotencyCompletenessCommand.ID, CommandContributionItem.STYLE_PUSH);
+			param.label = getCommandName(PotencyCompletenessCommand.ID);
+			
+			commandParamametersMap = new HashMap<String, Object>();
+			
+			commandParamametersMap.put("clabject",  modelElements[0]);
+			
+			param.parameters = commandParamametersMap;
+			
+			items.add(new CommandContributionItem(param));
 		}
 		
 		//We have a connection selected

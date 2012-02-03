@@ -42,7 +42,7 @@ public class OntologyConsistencyCommand extends AbstractHandler {
 		resultModel.setName("Ontology Consistency " + ReasoningServiceUtil.getDateString());
 		Element element = (Element)event.getObjectParameterForExecution("ontology");
 		CompositeCheck check = compute(element);
-		resultModel.getCheck().add(check);
+		resultModel.getChildren().add(check);
 
 		Boolean silent = event.getParameters().get("silent") == null?
 				false: Boolean.parseBoolean(event.getParameters().get("silent").toString());
@@ -76,7 +76,7 @@ public class OntologyConsistencyCommand extends AbstractHandler {
 		for (Model m:el.getContent()) {
 			if (m.getLevel() != rootLevel) {
 				CompositeCheck modelCheck = (new ModelConsistentClassificationCommand()).compute(m);
-				check.getCheck().add(modelCheck);
+				check.getChildren().add(modelCheck);
 				if (!modelCheck.isResult()) {
 					check.setResult(false);
 				}

@@ -35,7 +35,7 @@ public class InstanceCommand extends AbstractHandler {
 		ReasoningResultModel resultModel = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();
 		resultModel.setName("Instance " + ReasoningServiceUtil.getDateString());
 		CompositeCheck check = compute(type, instance);
-		resultModel.getCheck().add(check);
+		resultModel.getChildren().add(check);
 
 		Boolean silent = event.getParameters().get("silent") == null?
 				false: Boolean.parseBoolean(event.getParameters().get("silent").toString());
@@ -53,13 +53,13 @@ public class InstanceCommand extends AbstractHandler {
 		CompositeCheck check = ReasoningResultFactory.eINSTANCE.createCompositeCheck(instance, type, null);
 		check.setName("IsInstance");
 		CompositeCheck isonym = (new IsonymCommand()).compute(type, instance);
-		check.getCheck().add(isonym);
+		check.getChildren().add(isonym);
 		if (isonym.isResult()) {
 			check.setResult(true);
 			return check;
 		}
 		CompositeCheck hyponym = (new HyponymCommand()).compute(type, instance);
-		check.getCheck().add(hyponym);
+		check.getChildren().add(hyponym);
 		if (hyponym.isResult()) {
 			check.setResult(true);
 			return check;

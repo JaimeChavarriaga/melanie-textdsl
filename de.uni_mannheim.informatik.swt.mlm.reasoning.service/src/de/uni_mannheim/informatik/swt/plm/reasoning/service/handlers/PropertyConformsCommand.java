@@ -50,7 +50,7 @@ public class PropertyConformsCommand extends AbstractHandler {
 		ReasoningResultModel resultModel = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();
 		resultModel.setName("Property Conformance " + ReasoningServiceUtil.getDateString());
 		CompositeCheck check = compute(type, instance);
-		resultModel.getCheck().add(check);
+		resultModel.getChildren().add(check);
 
 		Boolean silent = event.getParameters().get("silent") == null?
 				false: Boolean.parseBoolean(event.getParameters().get("silent").toString());
@@ -98,7 +98,7 @@ public class PropertyConformsCommand extends AbstractHandler {
 	private CompositeCheck propertyConformsClabject(Clabject type, Clabject instance) {
 		CompositeCheck result = reasoner.createCompositeCheck("PropertyConformance[Clabject]", instance, type, instance.represent()+".propertyConformsClabject("+type.represent()+")");
 		CompositeCheck neighbour = (new NeighbourhoodConformsCommand()).compute(type, instance);
-		result.getCheck().add(neighbour);
+		result.getChildren().add(neighbour);
 		if (!neighbour.isResult()) {
 			return result;
 		}
@@ -134,7 +134,7 @@ public class PropertyConformsCommand extends AbstractHandler {
 		}
 
 		CompositeCheck isExprCheck = (new IsExpressedInstanceOfExcludedCommand()).compute(type, instance); 
-		result.getCheck().add(isExprCheck);
+		result.getChildren().add(isExprCheck);
 		if (!isExprCheck.isResult()) {
 			return result;
 		}
@@ -146,25 +146,25 @@ public class PropertyConformsCommand extends AbstractHandler {
 			Connection instance) {
 		CompositeCheck result = reasoner.createCompositeCheck("PropertyConformance[Connection]", instance, type, instance.represent()+".propertyConformsConnection("+type.represent()+")");
 		CompositeCheck clabCheck = propertyConformsClabject(type, instance);
-		result.getCheck().add(clabCheck);
+		result.getChildren().add(clabCheck);
 		if (!clabCheck.isResult()) {
 			return result;
 		}
 		CompositeCheck multCheck = (new MultiplicityConformsCommand()).compute(type); 
-		result.getCheck().add(multCheck);	
+		result.getChildren().add(multCheck);	
 		if (!multCheck.isResult()) {
 			return result;
 		}
 		CompositeCheck allRoles = reasoner.createCompositeCheck("Type Roles", instance, type, "dei mudda");
-		result.getCheck().add(allRoles);
+		result.getChildren().add(allRoles);
 		for (Role rT: type.getRole()) {
 			CompositeCheck oneRole = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
 			oneRole.setName(rT.represent());
-			allRoles.getCheck().add(oneRole);
+			allRoles.getChildren().add(oneRole);
 			for (Role rI : instance.getRole()) {
 				if (rI.conforms(rT)) {
 					CompositeCheck actualCheck = compute(rT.getDestination(), rI.getDestination());
-					oneRole.getCheck().add(actualCheck);
+					oneRole.getChildren().add(actualCheck);
 					if (actualCheck.isResult()) {
 						oneRole.setResult(true);
 					}

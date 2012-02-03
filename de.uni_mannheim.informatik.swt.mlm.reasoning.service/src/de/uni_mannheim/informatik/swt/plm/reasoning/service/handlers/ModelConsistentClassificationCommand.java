@@ -40,7 +40,7 @@ public class ModelConsistentClassificationCommand extends AbstractHandler {
 		resultModel.setName("Consistent Classification " + ReasoningServiceUtil.getDateString());
 		Model model = (Model)event.getObjectParameterForExecution("model");
 		CompositeCheck check = compute(model);
-		resultModel.getCheck().add(check);
+		resultModel.getChildren().add(check);
 		
 		Boolean silent = event.getParameters().get("silent") == null?
 				false: Boolean.parseBoolean(event.getParameters().get("silent").toString());
@@ -79,7 +79,7 @@ public class ModelConsistentClassificationCommand extends AbstractHandler {
 				continue;
 			}
 			CompositeCheck actualCheck = (new ClassificationConsistencyCommand()).compute(inst);
-			aClassificationCheck.getCheck().add(actualCheck);
+			aClassificationCheck.getChildren().add(actualCheck);
 			aClassificationCheck.setResult(actualCheck.isResult());
 			if (!aClassificationCheck.isResult()) {
 				classificationCheck.setResult(false);
@@ -95,7 +95,7 @@ public class ModelConsistentClassificationCommand extends AbstractHandler {
 			aGenerCheck.setName(gener.represent());
 			aGenerCheck.setResult(true);
 			CompositeCheck actualCheck = (new GeneralizationConsistencyCommand()).compute(gener);
-			aGenerCheck.getCheck().add(actualCheck);
+			aGenerCheck.getChildren().add(actualCheck);
 			if (!actualCheck.isResult()) {
 				aGenerCheck.setResult(false);
 				generalizationCheck.setResult(false);

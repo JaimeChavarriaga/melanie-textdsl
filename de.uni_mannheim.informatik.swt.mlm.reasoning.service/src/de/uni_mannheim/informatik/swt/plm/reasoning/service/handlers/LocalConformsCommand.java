@@ -54,7 +54,7 @@ public class LocalConformsCommand extends AbstractHandler {
 		forceClabject = ((String)event.getParameters().get("forceClabject")).equals("false?") ? false:true;
 		
 		CompositeCheck check = compute(type, instance);
-		resultModel.getCheck().add(check);
+		resultModel.getChildren().add(check);
 
 		Boolean silent = event.getParameters().get("silent") == null?
 				false: Boolean.parseBoolean(event.getParameters().get("silent").toString());
@@ -128,14 +128,14 @@ public class LocalConformsCommand extends AbstractHandler {
 	private CompositeCheck localConformsConnection(Connection type, Connection instance) {
 		CompositeCheck result = reasoner.createCompositeCheck("LocalConformance[Connection]", instance, type, instance.getName() + ".localConforms("+type.getName()+")");
 		CompositeCheck clabCheck = localConformsClabject(type, instance);
-		result.getCheck().add(clabCheck);
+		result.getChildren().add(clabCheck);
 		if (!clabCheck.isResult()) {
 			return result;
 		} 
 		CompositeCheck roleCheck = reasoner.createCompositeCheck("LocalConformance[RoleName]", instance, type,
 				"$ forall rN_t in "+ type.getName() +".roleName: (exists rN_i in "+ instance.getName() +
 				".roleName: rN_i = rN_t land "+ instance.getName() +".isNav(rN_t) = "+ type.getName() +".isNav(rN_t)))$");
-		result.getCheck().add(roleCheck);
+		result.getChildren().add(roleCheck);
 		for (Role r: type.getRole()) {
 			RoleNameLocalConformanceCheck roleNameCheck = ReasoningResultFactory.eINSTANCE.createRoleNameLocalConformanceCheck(instance, type, roleCheck);
 			roleNameCheck.setName(r.roleName());
@@ -164,7 +164,7 @@ public class LocalConformsCommand extends AbstractHandler {
 		result.setExpression(instance.getName() + ".localConformsClabject("+type.getName() + ")");
 		result.setExpression(instance.getName() + ".localConformsClabject(" + type.getName() + ")");
 		LevelComparison levelC = ReasoningResultFactory.eINSTANCE.createLevelComparison();
-		result.getCheck().add(levelC);
+		result.getChildren().add(levelC);
 		levelC.setTargetLevel(type.getLevel());
 		levelC.setInstanceLevel(instance.getLevel());
 		levelC.setExpression(instance.getName() + ".level - 1 = " + type.getName() + ".level");
@@ -177,7 +177,7 @@ public class LocalConformsCommand extends AbstractHandler {
 		featureC.setTarget(type);
 		featureC.setName("AllTypeFeatures");
 		featureC.setExpression("forall pi_t in " + type.getName() + ".getAllFeatures(): pi.durability > 0: exists pi_i in " + instance.getName()+".getAllFeatures() : pi_i.conforms(pi_t)");
-		result.getCheck().add(featureC);
+		result.getChildren().add(featureC);
 		for (Feature current: type.getAllFeatures()) {
 			if (current.getDurability() > 0) {
 				featureC.setNoFeatures(featureC.getNoFeatures() + 1);
@@ -188,11 +188,11 @@ public class LocalConformsCommand extends AbstractHandler {
 				featSearchC.setTypeFeature(current);
 				featSearchC.setName("SearchTypeFeature " + current.getName());
 				featSearchC.setExpression("exists pi_i in " + instance.getName()+".getAllFeatures() : pi_i.conforms("+type.getName() + "." + current.getName()+")");
-				featureC.getCheck().add(featSearchC);
+				featureC.getChildren().add(featSearchC);
 				for (Feature possible : instance.getAllFeatures()) {
 					featSearchC.setNoFeatures(featSearchC.getNoFeatures() + 1);
 					CompositeCheck featCheck = (new FeatureConformsCommand()).compute(current, possible);
-					featSearchC.getCheck().add(featCheck);
+					featSearchC.getChildren().add(featCheck);
 					if (featCheck.isResult()) {
 						found = true;
 						break;

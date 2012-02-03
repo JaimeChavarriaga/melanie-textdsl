@@ -43,7 +43,7 @@ public class HasAdditionalPropertiesCommand extends AbstractHandler {
 		ReasoningResultModel resultModel = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();
 		resultModel.setName("Additional Properties " + ReasoningServiceUtil.getDateString());
 		CompositeCheck check = compute(type, instance);
-		resultModel.getCheck().add(check);
+		resultModel.getChildren().add(check);
 		
 		Boolean silent = event.getParameters().get("silent") == null?
 				false: Boolean.parseBoolean(event.getParameters().get("silent").toString());
@@ -73,7 +73,7 @@ public class HasAdditionalPropertiesCommand extends AbstractHandler {
 			boolean unique = true;
 			for (Feature t: type.getAllFeatures()) {
 				CompositeCheck actualFeatCheck = (new FeatureConformsCommand()).compute(t, i);
-				featCheck.getCheck().add(actualFeatCheck);
+				featCheck.getChildren().add(actualFeatCheck);
 				if (actualFeatCheck.isResult()) {
 					unique = false;
 					break;
@@ -101,7 +101,7 @@ public class HasAdditionalPropertiesCommand extends AbstractHandler {
 					roleNameSufficient = true;
 				} else if(rT.hasDefaultRoleName() && rI.hasDefaultRoleName()){
 					Check destinationCheck = (new PropertyConformsCommand()).compute(rT.getDestination(), rI.getDestination());
-					roleCheck.getCheck().add(destinationCheck);
+					roleCheck.getChildren().add(destinationCheck);
 					//TODO: include in result model
 					if (destinationCheck.isResult()) {
 						roleNameSufficient = true;

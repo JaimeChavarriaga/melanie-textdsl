@@ -36,7 +36,7 @@ public class HyponymCommand extends AbstractHandler {
 		ReasoningResultModel resultModel = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();
 		resultModel.setName("Hyponym " + ReasoningServiceUtil.getDateString());
 		CompositeCheck check = compute(type, instance);
-		resultModel.getCheck().add(check);
+		resultModel.getChildren().add(check);
 
 		Boolean silent = event.getParameters().get("silent") == null?
 				false: Boolean.parseBoolean(event.getParameters().get("silent").toString());
@@ -55,12 +55,12 @@ public class HyponymCommand extends AbstractHandler {
 		check.setName("IsHyponym");
 		boolean result = true;
 		CompositeCheck propertyConforms = (new PropertyConformsCommand()).compute(type, instance);
-		check.getCheck().add(propertyConforms);
+		check.getChildren().add(propertyConforms);
 		if (!propertyConforms.isResult()) {
 			result = false;
 		}
 		CompositeCheck additionalFeatures = (new HasAdditionalPropertiesCommand()).compute(type, instance);
-		check.getCheck().add(additionalFeatures);
+		check.getChildren().add(additionalFeatures);
 		if (!additionalFeatures.isResult()) {
 			result = false;
 		}

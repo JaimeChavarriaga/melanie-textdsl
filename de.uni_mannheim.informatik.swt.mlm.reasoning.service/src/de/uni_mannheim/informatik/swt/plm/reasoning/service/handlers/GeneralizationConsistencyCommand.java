@@ -46,7 +46,7 @@ public class GeneralizationConsistencyCommand extends AbstractHandler {
 		resultModel.setName("Generalization Consistency" + ReasoningServiceUtil.getDateString());
 		Element element = (Element)event.getObjectParameterForExecution("generalization");
 		CompositeCheck check = compute(element);
-		resultModel.getCheck().add(check);
+		resultModel.getChildren().add(check);
 		
 		Boolean silent = event.getParameters().get("silent") == null?
 				false: Boolean.parseBoolean(event.getParameters().get("silent").toString());
@@ -92,7 +92,7 @@ public class GeneralizationConsistencyCommand extends AbstractHandler {
 			Clabject s = supertype.get(0);
 			for (Clabject c:classified.getAllClabjects()) {
 				CompositeCheck domainC = (new IsonymCommand()).compute(s, c);
-				domainSearch.getCheck().add(domainC);
+				domainSearch.getChildren().add(domainC);
 				if (domainC.isResult()) {
 					superInstances.add(c);
 					domainSearch.getSupertypeIsonyms().add(c);
@@ -108,7 +108,7 @@ public class GeneralizationConsistencyCommand extends AbstractHandler {
 					boolean found = false;
 					for (Clabject su:subtype) {
 						CompositeCheck actualC = (new IsonymCommand()).compute(su,i);
-						completeCheck.getCheck().add(actualC);
+						completeCheck.getChildren().add(actualC);
 						if (actualC.isResult()) {
 							domainSearch.getInterestingInstances().add(i);
 							found = true;
@@ -130,7 +130,7 @@ public class GeneralizationConsistencyCommand extends AbstractHandler {
 					boolean one = false;
 					for (Clabject su:subtype) {
 						CompositeCheck actualC = (new IsonymCommand()).compute(su,i);
-						disjointCheck.getCheck().add(actualC);
+						disjointCheck.getChildren().add(actualC);
 						if (actualC.isResult()) {
 							if (!one) {
 								one = true;
@@ -153,7 +153,7 @@ public class GeneralizationConsistencyCommand extends AbstractHandler {
 				boolean all = true;
 				for (Clabject s: supertype) {
 					CompositeCheck domainC = (new IsonymCommand()).compute(s,i);
-					domainSearch.getCheck().add(domainC);
+					domainSearch.getChildren().add(domainC);
 					if (!domainC.isResult()) {
 						all = false;
 						break;
@@ -173,7 +173,7 @@ public class GeneralizationConsistencyCommand extends AbstractHandler {
 				Clabject sub = subtype.get(0);
 				for (Clabject i: superInstances) {
 					CompositeCheck actualC = (new IsonymCommand()).compute(sub, i);
-					violationCheck.getCheck().add(actualC);
+					violationCheck.getChildren().add(actualC);
 					if (!actualC.isResult()) {
 						violationCheck.setResult(false);
 						check.setResult(false);

@@ -40,13 +40,13 @@ public class EqualityCommand extends AbstractHandler {
 		if (!fsuper.getName().equals(fsub.getName())) {
 			CompositeCheck nameCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
 			nameCheck.setName("Name");
-			result.getCheck().add(nameCheck);
+			result.getChildren().add(nameCheck);
 			return result;
 		}
 		if (fsuper.getDurability() != fsub.getDurability()) {
 			CompositeCheck tempCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
 			tempCheck.setName("Durability");
-			result.getCheck().add(tempCheck);
+			result.getChildren().add(tempCheck);
 			return result;
 		}
 		if (fsuper instanceof Attribute) {
@@ -54,32 +54,32 @@ public class EqualityCommand extends AbstractHandler {
 				if (((Attribute) fsuper).getMutability() != ((Attribute) fsub).getMutability()) {
 					CompositeCheck tempCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
 					tempCheck.setName("Durability");
-					result.getCheck().add(tempCheck);
+					result.getChildren().add(tempCheck);
 					return result;
 				}
 				if (!((Attribute) fsuper).getDatatype().equals(((Attribute) fsub).getDatatype())) {
 					CompositeCheck tempCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
 					tempCheck.setName("Durability");
-					result.getCheck().add(tempCheck);
+					result.getChildren().add(tempCheck);
 					return result;
 				}
 				if (((Attribute) fsuper).getMutability() == 0 && !((Attribute) fsuper).getValue().equals(((Attribute) fsub).getValue())) {
 					CompositeCheck tempCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
 					tempCheck.setName("Value");
-					result.getCheck().add(tempCheck);
+					result.getChildren().add(tempCheck);
 					return result;
 				}
 			} else {
 				CompositeCheck tempCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
 				tempCheck.setName("Linguistic type");
-				result.getCheck().add(tempCheck);
+				result.getChildren().add(tempCheck);
 				return result;
 			}
 		} else {
 			if (fsub instanceof Attribute) {
 				CompositeCheck tempCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
 				tempCheck.setName("Linguistic type");
-				result.getCheck().add(tempCheck);
+				result.getChildren().add(tempCheck);
 				return result;
 			}
 		}

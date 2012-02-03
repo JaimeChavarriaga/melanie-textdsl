@@ -41,7 +41,7 @@ public class ClassificationConsistencyCommand extends AbstractHandler {
 		resultModel.setName("Classification Consistency " + ReasoningServiceUtil.getDateString());
 		Element element = (Element)event.getObjectParameterForExecution("classification");
 		CompositeCheck check = compute(element);
-		resultModel.getCheck().add(check);
+		resultModel.getChildren().add(check);
 		
 		Boolean silent = event.getParameters().get("silent") == null?
 				false: Boolean.parseBoolean(event.getParameters().get("silent").toString());
@@ -67,7 +67,7 @@ public class ClassificationConsistencyCommand extends AbstractHandler {
 		Clabject instance = inst.getInstance();
 		Clabject type = inst.getType();
 		CompositeCheck instanceCheck = (new InstanceCommand()).compute(type, instance);
-		check.getCheck().add(instanceCheck);
+		check.getChildren().add(instanceCheck);
 		if (!instanceCheck.isResult()) {
 			check.setResult(false);
 			return check;
@@ -78,7 +78,7 @@ public class ClassificationConsistencyCommand extends AbstractHandler {
 		if (inst.getKind().equals(ClassificationKind.ISONYM) || inst.getKind().equals(ClassificationKind.INSTANTIATION)) {
 			kindCheck.setName("Kind Isonym");
 			CompositeCheck isonymCheck = (new IsonymCommand()).compute(type, instance);
-			kindCheck.getCheck().add(isonymCheck);
+			kindCheck.getChildren().add(isonymCheck);
 			if (!isonymCheck.isResult()) {
 				kindCheck.setResult(false);
 				check.setResult(false);
@@ -87,7 +87,7 @@ public class ClassificationConsistencyCommand extends AbstractHandler {
 		} else if (inst.getKind().equals(ClassificationKind.HYPONYM)) {
 			kindCheck.setName("Kind Hyponym");
 			CompositeCheck hyponymCheck = (new HyponymCommand()).compute(type, instance);
-			kindCheck.getCheck().add(hyponymCheck);
+			kindCheck.getChildren().add(hyponymCheck);
 			if (!hyponymCheck.isResult()) {
 				kindCheck.setResult(false);
 				check.setResult(false);

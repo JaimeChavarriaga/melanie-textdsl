@@ -60,7 +60,7 @@ public class SubsumptionCommand extends AbstractHandler {
 		} else {
 			check = compute(model);
 		}
-		resultModel.getCheck().add(check);		
+		resultModel.getChildren().add(check);		
 		
 		Boolean silent = event.getParameters().get("silent") == null?
 				false: Boolean.parseBoolean(event.getParameters().get("silent").toString());
@@ -76,7 +76,7 @@ public class SubsumptionCommand extends AbstractHandler {
 		result.setName("Model Subsumption");
 		for (Clabject one: clabjects) {
 			for (Clabject other : clabjects) {
-				result.getCheck().add(compute(one, other));
+				result.getChildren().add(compute(one, other));
 			}
 		}
 		result.setResult(true);
@@ -123,28 +123,28 @@ public class SubsumptionCommand extends AbstractHandler {
 		CompositeCheck result = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
 		result.setName("Subsumption[Connection]");
 		CompositeCheck clabject = subsumeClabject(supertype, subtype);
-		result.getCheck().add(clabject);
+		result.getChildren().add(clabject);
 		if (!clabject.isResult()) {
 			return result;
 		}
 		CompositeCheck order = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
 		order.setName("Order");
-		result.getCheck().add(order);
+		result.getChildren().add(order);
 		order.setResult(supertype.getAllRoles().size() == subtype.getAllRoles().size());
 		if (!order.isResult()) {
 			return result;
 		}
 		CompositeCheck roles = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
 		order.setName("Roles");
-		result.getCheck().add(roles);
+		result.getChildren().add(roles);
 		for (Role rsuper: supertype.getAllRoles()) {
 			CompositeCheck role = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
 			order.setName(rsuper.represent());
-			result.getCheck().add(role);
+			result.getChildren().add(role);
 			boolean found = false;
 			for (Role rsub: subtype.getAllRoles()) {
 				CompositeCheck aRole = roleSubtypeConforms(rsuper, rsub);
-				role.getCheck().add(aRole);
+				role.getChildren().add(aRole);
 				if (aRole.isResult()) {
 					found = true;
 					break;
@@ -171,13 +171,13 @@ public class SubsumptionCommand extends AbstractHandler {
 			return result;
 		CompositeCheck featuresCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
 		featuresCheck.setName("Features");
-		result.getCheck().add(featuresCheck);
+		result.getChildren().add(featuresCheck);
 		for (Feature fsuper: supertype.getAllFeatures()) {
 			if (fsuper.getDurability() > 0) {
 				Feature fsub = subtype.getFeatureForName(fsuper.getName());
 				CompositeCheck featureCheck = (new EqualityCommand()).compute(fsuper, fsub);
 				featureCheck.setName(fsuper.getName());
-				featuresCheck.getCheck().add(featureCheck);
+				featuresCheck.getChildren().add(featureCheck);
 				if (!featureCheck.isResult()) {
 					return result;
 				}
@@ -186,16 +186,16 @@ public class SubsumptionCommand extends AbstractHandler {
 		featuresCheck.setResult(true);
 		CompositeCheck navigationsCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
 		navigationsCheck.setName("Navigations");
-		result.getCheck().add(navigationsCheck);
+		result.getChildren().add(navigationsCheck);
 		for (Role rsuper: supertype.getAllNavigations()) {
 			if (rsuper.getConnection().getPotency() > 0) {
 				CompositeCheck navigationCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
 				navigationCheck.setName(rsuper.represent());
-				navigationsCheck.getCheck().add(navigationCheck);
+				navigationsCheck.getChildren().add(navigationCheck);
 				boolean found = false;
 				for (Role rsub: subtype.getAllNavigations()) {
 					CompositeCheck aNavCheck = roleSubtypeConforms(rsuper, rsub);
-					navigationCheck.getCheck().add(aNavCheck);
+					navigationCheck.getChildren().add(aNavCheck);
 					if (aNavCheck.isResult()) {
 						found = true;
 						break;
@@ -218,7 +218,7 @@ public class SubsumptionCommand extends AbstractHandler {
 		result.setName(rsub.represent());
 		CompositeCheck roleName = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
 		roleName.setName("RoleName");
-		result.getCheck().add(roleName);
+		result.getChildren().add(roleName);
 		roleName.setResult(rsuper.roleName().equals(rsub.roleName()));
 		if (!roleName.isResult()){
 			result.setResult(false);
@@ -227,7 +227,7 @@ public class SubsumptionCommand extends AbstractHandler {
 		
 		CompositeCheck lower = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
 		lower.setName("Lower");
-		result.getCheck().add(lower);
+		result.getChildren().add(lower);
 		lower.setResult(rsuper.getLower() <= rsub.getLower());
 		if (!lower.isResult()){
 			result.setResult(false);
@@ -236,7 +236,7 @@ public class SubsumptionCommand extends AbstractHandler {
 		
 		CompositeCheck upper = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
 		upper.setName("Upper");
-		result.getCheck().add(upper);
+		result.getChildren().add(upper);
 		upper.setResult(rsuper.getUpper() >= rsub.getUpper());
 		if (!upper.isResult()){
 			result.setResult(false);
@@ -245,7 +245,7 @@ public class SubsumptionCommand extends AbstractHandler {
 		
 		CompositeCheck navigable = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
 		navigable.setName("Navigale");
-		result.getCheck().add(navigable);
+		result.getChildren().add(navigable);
 		navigable.setResult(rsuper.isNavigable() == rsub.isNavigable());
 		if (!navigable.isResult()){
 			result.setResult(false);
@@ -253,14 +253,14 @@ public class SubsumptionCommand extends AbstractHandler {
 		}
 		
 		CompositeCheck destination = compute(rsuper.getDestination(), rsub.getDestination());
-		result.getCheck().add(destination);
+		result.getChildren().add(destination);
 		if (!destination.isResult()){
 			result.setResult(false);
 			return result;
 		}
 		
 		CompositeCheck connection = compute(rsuper.getConnection(), rsub.getConnection());
-		result.getCheck().add(connection);
+		result.getChildren().add(connection);
 		if (!connection.isResult()){
 			result.setResult(false);
 			return result;

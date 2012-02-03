@@ -44,7 +44,7 @@ public class FeatureConformsCommand extends AbstractHandler {
 		ReasoningResultModel resultModel = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();
 		resultModel.setName("Feature Conformance " + ReasoningServiceUtil.getDateString());
 		CompositeCheck check = compute(type, instance);
-		resultModel.getCheck().add(check);
+		resultModel.getChildren().add(check);
 
 		Boolean silent = event.getParameters().get("silent") == null?
 				false: Boolean.parseBoolean(event.getParameters().get("silent").toString());
@@ -73,7 +73,7 @@ public class FeatureConformsCommand extends AbstractHandler {
 			System.out.println("Mismatching Linguistic types");
 			return result;
 		}
-		result.getCheck().add(child);
+		result.getChildren().add(child);
 		result.setResult(child.isResult());
 		return result;
 	}
@@ -90,7 +90,7 @@ public class FeatureConformsCommand extends AbstractHandler {
 		result.setResult(true);
 		NameComparison nameC = ReasoningResultFactory.eINSTANCE.createNameComparison();
 		nameC.setExpression(instance.getName() + " == " + type.getName());
-		result.getCheck().add(nameC);
+		result.getChildren().add(nameC);
 		if (!type.getName().equals(instance.getName())) {
 			result.setResult(false);
 		} else {
@@ -99,7 +99,7 @@ public class FeatureConformsCommand extends AbstractHandler {
 		//TODO: proper datatype handling
 		DatatypeComparison datatypeC = ReasoningResultFactory.eINSTANCE.createDatatypeComparison();
 		datatypeC.setExpression(instance.getDatatype() + " == " + type.getDatatype());
-		result.getCheck().add(datatypeC);
+		result.getChildren().add(datatypeC);
 		Object typeDatatype, instanceDatatype;
 		typeDatatype = type.getDatatype();
 		instanceDatatype = instance.getDatatype();
@@ -118,7 +118,7 @@ public class FeatureConformsCommand extends AbstractHandler {
 		durabC.setExpression(type.getName()+".durability == * or " + instance.getName() + ".durability + 1 == " + type.getName() + ".durability");
 		durabC.setInstanceDurability(instance.getDurability());
 		durabC.setTypeDurability(type.getDurability());
-		result.getCheck().add(durabC);
+		result.getChildren().add(durabC);
 		if (type.getDurability()> -1 && !(instance.getDurability()+1 == type.getDurability())) {
 			result.setResult(false);
 		} else {
@@ -128,7 +128,7 @@ public class FeatureConformsCommand extends AbstractHandler {
 		mutabC.setExpression(type.getName() + ".mutability == * or " + instance.getName() + ".mutability + 1 == " + type.getName() + ".mutability or " + instance.getName() + ".mutability == " + type.getName()+ ".mutability == 0");
 		mutabC.setInstanceMutability(instance.getMutability());
 		mutabC.setTypeMutability(type.getMutability());
-		result.getCheck().add(mutabC);
+		result.getChildren().add(mutabC);
 		if (type.getMutability()> -1 && !((instance.getMutability()+1 == type.getMutability()) || (type.getMutability() == 0 && instance.getMutability() == 0))) {
 			result.setResult(false);
 		} else {
@@ -137,7 +137,7 @@ public class FeatureConformsCommand extends AbstractHandler {
 		if (type.getMutability() == 0) {
 			ValueComparison valueC = ReasoningResultFactory.eINSTANCE.createValueComparison();
 			valueC.setExpression(type.getName() + ".value == " + instance.getName() + ".value");
-			result.getCheck().add(valueC);
+			result.getChildren().add(valueC);
 			Object typeValue, instanceValue;
 			typeValue = type.getValue();
 			instanceValue = instance.getValue();
@@ -167,7 +167,7 @@ public class FeatureConformsCommand extends AbstractHandler {
 		result.setResult(true);
 		NameComparison nameC = ReasoningResultFactory.eINSTANCE.createNameComparison();
 		nameC.setExpression(instance.getName() + " == " + type.getName());
-		result.getCheck().add(nameC);
+		result.getChildren().add(nameC);
 		if (!type.getName().equals(instance.getName())) {
 			result.setResult(false);
 		} else {
@@ -175,7 +175,7 @@ public class FeatureConformsCommand extends AbstractHandler {
 		}
 		DurabilityComparison durabC = ReasoningResultFactory.eINSTANCE.createDurabilityComparison();
 		durabC.setExpression(type.getName()+".durability == * or " + instance.getName() + ".durability + 1 == " + type.getName() + ".durability");
-		result.getCheck().add(durabC);
+		result.getChildren().add(durabC);
 		if (type.getDurability()> -1 && !(instance.getDurability()+1 == type.getDurability())) {
 			result.setResult(false);
 		} else {
