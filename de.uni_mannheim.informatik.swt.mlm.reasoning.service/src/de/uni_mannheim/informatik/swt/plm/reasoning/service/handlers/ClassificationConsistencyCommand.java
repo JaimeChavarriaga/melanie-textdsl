@@ -20,7 +20,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Classification;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.ClassificationKind;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
-import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.CompositeCheck;
+import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Check;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultFactory;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.ReasoningService;
@@ -28,7 +28,7 @@ import de.uni_mannheim.informatik.swt.plm.reasoning.service.util.ReasoningServic
 
 public class ClassificationConsistencyCommand extends AbstractHandler {
 
-	public static final String ID = "de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.classificationconsistencycommand";
+	public static final String ID = "de.uni_mannheim.informatik.Oswt.plm.reasoning.service.commands.classificationconsistencycommand";
 	
 	IReasoningService reasoner = (new ReasoningService()).Instance();
 	
@@ -40,7 +40,7 @@ public class ClassificationConsistencyCommand extends AbstractHandler {
 		ReasoningResultModel resultModel = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();
 		resultModel.setName("Classification Consistency " + ReasoningServiceUtil.getDateString());
 		Element element = (Element)event.getObjectParameterForExecution("classification");
-		CompositeCheck check = compute(element);
+		Check check = compute(element);
 		resultModel.getChildren().add(check);
 		
 		Boolean silent = event.getParameters().get("silent") == null?
@@ -51,7 +51,7 @@ public class ClassificationConsistencyCommand extends AbstractHandler {
 		return check.isResult();
 	}
 	
-	protected CompositeCheck compute(Element el) {
+	protected Check compute(Element el) {
 		
 		if (! (el instanceof Classification))
 			throw new IllegalArgumentException();
@@ -59,25 +59,25 @@ public class ClassificationConsistencyCommand extends AbstractHandler {
 		return classificationIsConsistent((Classification) el);
 	}
 
-	private CompositeCheck classificationIsConsistent(Classification inst) {
-		CompositeCheck check = ReasoningResultFactory.eINSTANCE.createCompositeCheck(inst, inst, null);
+	private Check classificationIsConsistent(Classification inst) {
+		Check check = ReasoningResultFactory.eINSTANCE.createCheck(inst, inst, null);
 		check.setName("Classification Consistency");
 		check.setExpression("TODO");//TODO Expression
 		check.setResult(true);
 		Clabject instance = inst.getInstance();
 		Clabject type = inst.getType();
-		CompositeCheck instanceCheck = (new InstanceCommand()).compute(type, instance);
+		Check instanceCheck = (new InstanceCommand()).compute(type, instance);
 		check.getChildren().add(instanceCheck);
 		if (!instanceCheck.isResult()) {
 			check.setResult(false);
 			return check;
 		}
-		CompositeCheck kindCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck(inst, inst, check);
+		Check kindCheck = ReasoningResultFactory.eINSTANCE.createCheck(inst, inst, check);
 		kindCheck.setName("Kind Instance");
 		kindCheck.setResult(true);
 		if (inst.getKind().equals(ClassificationKind.ISONYM) || inst.getKind().equals(ClassificationKind.INSTANTIATION)) {
 			kindCheck.setName("Kind Isonym");
-			CompositeCheck isonymCheck = (new IsonymCommand()).compute(type, instance);
+			Check isonymCheck = (new IsonymCommand()).compute(type, instance);
 			kindCheck.getChildren().add(isonymCheck);
 			if (!isonymCheck.isResult()) {
 				kindCheck.setResult(false);
@@ -86,7 +86,7 @@ public class ClassificationConsistencyCommand extends AbstractHandler {
 			}
 		} else if (inst.getKind().equals(ClassificationKind.HYPONYM)) {
 			kindCheck.setName("Kind Hyponym");
-			CompositeCheck hyponymCheck = (new HyponymCommand()).compute(type, instance);
+			Check hyponymCheck = (new HyponymCommand()).compute(type, instance);
 			kindCheck.getChildren().add(hyponymCheck);
 			if (!hyponymCheck.isResult()) {
 				kindCheck.setResult(false);

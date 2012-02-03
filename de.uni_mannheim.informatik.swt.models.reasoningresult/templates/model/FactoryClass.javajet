@@ -775,7 +775,7 @@ BEGIN CUSTOM CREATE METHODS
 				}
 		}
 		if (!genClass.getName().equals("ReasoningResultModel"))
-			params +=  (params.equals("") ? "" : ", ") + "CompositeCheck parent";
+			params +=  (params.equals("") ? "" : ", ") + "ReasoningArtefact parent";
 		%>
 		<%if (isInterface){%>
 			<%=genClass.getTypeParameters()%><%=genClass.getImportedInterfaceName()%><%=genClass.getInterfaceTypeArguments()%> create<%=genClass.getName()%>(<%=params%>);

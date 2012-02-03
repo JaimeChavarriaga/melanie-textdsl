@@ -21,7 +21,7 @@ import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IReasoningService
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology;
-import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.CompositeCheck;
+import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Check;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultFactory;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.ReasoningService;
@@ -41,7 +41,7 @@ public class OntologyConsistencyCommand extends AbstractHandler {
 		ReasoningResultModel resultModel = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();
 		resultModel.setName("Ontology Consistency " + ReasoningServiceUtil.getDateString());
 		Element element = (Element)event.getObjectParameterForExecution("ontology");
-		CompositeCheck check = compute(element);
+		Check check = compute(element);
 		resultModel.getChildren().add(check);
 
 		Boolean silent = event.getParameters().get("silent") == null?
@@ -52,30 +52,22 @@ public class OntologyConsistencyCommand extends AbstractHandler {
 		return check.isResult();
 	}
 	
-	protected CompositeCheck compute(Element el) {
+	protected Check compute(Element el) {
 		if (!(el instanceof Ontology))
 			throw new IllegalArgumentException();
 		
 		return ontologyIsConsistent((Ontology) el);
 	}
 
-	private CompositeCheck ontologyIsConsistent(Ontology el) {
-		CompositeCheck check = ReasoningResultFactory.eINSTANCE.createCompositeCheck(el, el, null);
+	private Check ontologyIsConsistent(Ontology el) {
+		Check check = ReasoningResultFactory.eINSTANCE.createCheck(el, el, null);
 		check.setResult(true);
 		List<Model> models = el.getContent(); 
-		/*Collections.sort(models, new Comparator<Model>() {
-			public int compare(Model m1, Model m2) {
-				if (m1.getLevel() < m2.getLevel()) 
-					return 1;
-				else if (m1.getLevel() < m2.getLevel())
-					return -1;
-				return 0;
-			}
-		});*/
+		
 		int rootLevel = models.get(0).getLevel();
 		for (Model m:el.getContent()) {
 			if (m.getLevel() != rootLevel) {
-				CompositeCheck modelCheck = (new ModelConsistentClassificationCommand()).compute(m);
+				Check modelCheck = (new ModelConsistentClassificationCommand()).compute(m);
 				check.getChildren().add(modelCheck);
 				if (!modelCheck.isResult()) {
 					check.setResult(false);

@@ -15,7 +15,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Check;
-import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.CompositeCheck;
 
 
 /**
@@ -42,8 +41,8 @@ public class BaseItemProvider extends ItemProviderAdapter {
 	
 	@Override
 	public String getText(Object object) {
-		if (object instanceof CompositeCheck)
-			return ((CompositeCheck) object).getName();
+		if (object instanceof Check)
+			return ((Check) object).getName();
 		
 		return getString("_UI_" + ((EObject)object).eClass().getName() + "_type");
 	}

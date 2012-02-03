@@ -24,8 +24,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Generalization;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
-import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.CompositeCheck;
-import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.DomainSearch;
+import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Check;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultFactory;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.ReasoningService;
@@ -45,7 +44,7 @@ public class GeneralizationConsistencyCommand extends AbstractHandler {
 		ReasoningResultModel resultModel = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();
 		resultModel.setName("Generalization Consistency" + ReasoningServiceUtil.getDateString());
 		Element element = (Element)event.getObjectParameterForExecution("generalization");
-		CompositeCheck check = compute(element);
+		Check check = compute(element);
 		resultModel.getChildren().add(check);
 		
 		Boolean silent = event.getParameters().get("silent") == null?
@@ -56,7 +55,7 @@ public class GeneralizationConsistencyCommand extends AbstractHandler {
 		return check.isResult();
 	}
 	
-	protected CompositeCheck compute(Element el) {
+	protected Check compute(Element el) {
 		
 		if (!(el instanceof Generalization))
 			throw new IllegalArgumentException();
@@ -64,8 +63,8 @@ public class GeneralizationConsistencyCommand extends AbstractHandler {
 		return generalizationIsConsistent((Generalization) el);
 	}
 
-	private CompositeCheck generalizationIsConsistent(Generalization gener) {
-		CompositeCheck check = ReasoningResultFactory.eINSTANCE.createCompositeCheck(gener, gener, null);
+	private Check generalizationIsConsistent(Generalization gener) {
+		Check check = ReasoningResultFactory.eINSTANCE.createCheck(gener, gener, null);
 		check.setName("Consistency[Generalization]");
 		check.setExpression(gener.getName());
 		check.setResult(true);
@@ -86,31 +85,33 @@ public class GeneralizationConsistencyCommand extends AbstractHandler {
 			if ( (subtype.size()<= 1) || (supertype.size() != 1)) {
 				throw new RuntimeException("Generalization " + gener + " not well formed. So no can do consistency Check."); 
 			}
-			DomainSearch domainSearch = ReasoningResultFactory.eINSTANCE.createDomainSearch(gener, gener, check);
+			Check domainSearch = ReasoningResultFactory.eINSTANCE.createCheck(gener, gener, check);
 			domainSearch.setName("domainSearch");
 			domainSearch.setResult(true);
 			Clabject s = supertype.get(0);
 			for (Clabject c:classified.getAllClabjects()) {
-				CompositeCheck domainC = (new IsonymCommand()).compute(s, c);
+				Check domainC = (new IsonymCommand()).compute(s, c);
 				domainSearch.getChildren().add(domainC);
 				if (domainC.isResult()) {
 					superInstances.add(c);
-					domainSearch.getSupertypeIsonyms().add(c);
+					//FIXME
+					//domainSearch.getSupertypeIsonyms().add(c);
 				}
 			}
 			//Now for the actual claims
 			if (gener.isComplete()) {
 				//There can be no superinstance that is not an instance of any of the subtypes
-				CompositeCheck completeCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck(gener, gener, check);
+				Check completeCheck = ReasoningResultFactory.eINSTANCE.createCheck(gener, gener, check);
 				completeCheck.setName("CompleteViolation");
 				completeCheck.setResult(true);
 				for (Clabject i:superInstances) {
 					boolean found = false;
 					for (Clabject su:subtype) {
-						CompositeCheck actualC = (new IsonymCommand()).compute(su,i);
+						Check actualC = (new IsonymCommand()).compute(su,i);
 						completeCheck.getChildren().add(actualC);
 						if (actualC.isResult()) {
-							domainSearch.getInterestingInstances().add(i);
+							//FIXME
+							//domainSearch.getInterestingInstances().add(i);
 							found = true;
 							break;
 						}
@@ -123,19 +124,20 @@ public class GeneralizationConsistencyCommand extends AbstractHandler {
 				}
 			}
 			if (gener.isDisjoint()) {
-				CompositeCheck disjointCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck(gener, gener, check);
+				Check disjointCheck = ReasoningResultFactory.eINSTANCE.createCheck(gener, gener, check);
 				disjointCheck.setName("DisjointViolation");
 				disjointCheck.setResult(true);
 				for (Clabject i: superInstances) {
 					boolean one = false;
 					for (Clabject su:subtype) {
-						CompositeCheck actualC = (new IsonymCommand()).compute(su,i);
+						Check actualC = (new IsonymCommand()).compute(su,i);
 						disjointCheck.getChildren().add(actualC);
 						if (actualC.isResult()) {
 							if (!one) {
 								one = true;
 							} else {
-								domainSearch.getInterestingInstances().add(i);
+								//FIXME
+								//domainSearch.getInterestingInstances().add(i);
 								disjointCheck.setResult(false);
 								check.setResult(false);
 								return check;
@@ -147,12 +149,12 @@ public class GeneralizationConsistencyCommand extends AbstractHandler {
 		}
 		if (gener.isIntersection()) {
 			complex = true;
-			CompositeCheck domainSearch = ReasoningResultFactory.eINSTANCE.createCompositeCheck(gener, gener, check);
+			Check domainSearch = ReasoningResultFactory.eINSTANCE.createCheck(gener, gener, check);
 			domainSearch.setName("InstanceDomainSearch");
 			for (Clabject i: domain) {
 				boolean all = true;
 				for (Clabject s: supertype) {
-					CompositeCheck domainC = (new IsonymCommand()).compute(s,i);
+					Check domainC = (new IsonymCommand()).compute(s,i);
 					domainSearch.getChildren().add(domainC);
 					if (!domainC.isResult()) {
 						all = false;
@@ -167,12 +169,12 @@ public class GeneralizationConsistencyCommand extends AbstractHandler {
 			if (subtype.size() != 1) {
 				throw new RuntimeException("ConsistencyCommand.generalizationIsConsistent multipleGeneralization must have one subtype");
 			} else {
-				CompositeCheck violationCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck(gener, gener, check);
+				Check violationCheck = ReasoningResultFactory.eINSTANCE.createCheck(gener, gener, check);
 				violationCheck.setName("IntersectionViolation");
 				violationCheck.setResult(true);
 				Clabject sub = subtype.get(0);
 				for (Clabject i: superInstances) {
-					CompositeCheck actualC = (new IsonymCommand()).compute(sub, i);
+					Check actualC = (new IsonymCommand()).compute(sub, i);
 					violationCheck.getChildren().add(actualC);
 					if (!actualC.isResult()) {
 						violationCheck.setResult(false);
@@ -183,7 +185,7 @@ public class GeneralizationConsistencyCommand extends AbstractHandler {
 			}
 		}
 		if (!complex) {
-			CompositeCheck informational = ReasoningResultFactory.eINSTANCE.createCompositeCheck(gener, gener, check);
+			Check informational = ReasoningResultFactory.eINSTANCE.createCheck(gener, gener, check);
 			informational.setName("No complex claims.");
 			informational.setResult(true);
 		}

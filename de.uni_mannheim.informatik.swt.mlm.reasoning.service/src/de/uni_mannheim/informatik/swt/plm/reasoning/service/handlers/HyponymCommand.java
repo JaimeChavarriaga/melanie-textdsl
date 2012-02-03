@@ -17,7 +17,7 @@ import org.eclipse.core.commands.ExecutionException;
 
 import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IReasoningService;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
-import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.CompositeCheck;
+import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Check;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultFactory;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.ReasoningService;
@@ -35,7 +35,7 @@ public class HyponymCommand extends AbstractHandler {
 		Clabject instance = (Clabject)event.getObjectParameterForExecution("instance");
 		ReasoningResultModel resultModel = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();
 		resultModel.setName("Hyponym " + ReasoningServiceUtil.getDateString());
-		CompositeCheck check = compute(type, instance);
+		Check check = compute(type, instance);
 		resultModel.getChildren().add(check);
 
 		Boolean silent = event.getParameters().get("silent") == null?
@@ -46,20 +46,20 @@ public class HyponymCommand extends AbstractHandler {
 		return check.isResult();
 	}
 	
-	protected CompositeCheck compute(Clabject type, Clabject instance) {
+	protected Check compute(Clabject type, Clabject instance) {
 		return isHyponym(type, instance);
 	}
 	
-	private CompositeCheck isHyponym(Clabject type, Clabject instance) {
-		CompositeCheck check = ReasoningResultFactory.eINSTANCE.createCompositeCheck(instance, type, null);
+	private Check isHyponym(Clabject type, Clabject instance) {
+		Check check = ReasoningResultFactory.eINSTANCE.createCheck(instance, type, null);
 		check.setName("IsHyponym");
 		boolean result = true;
-		CompositeCheck propertyConforms = (new PropertyConformsCommand()).compute(type, instance);
+		Check propertyConforms = (new PropertyConformsCommand()).compute(type, instance);
 		check.getChildren().add(propertyConforms);
 		if (!propertyConforms.isResult()) {
 			result = false;
 		}
-		CompositeCheck additionalFeatures = (new HasAdditionalPropertiesCommand()).compute(type, instance);
+		Check additionalFeatures = (new HasAdditionalPropertiesCommand()).compute(type, instance);
 		check.getChildren().add(additionalFeatures);
 		if (!additionalFeatures.isResult()) {
 			result = false;
@@ -67,5 +67,4 @@ public class HyponymCommand extends AbstractHandler {
 		check.setResult(result);
 		return check;
 	}
-
 }

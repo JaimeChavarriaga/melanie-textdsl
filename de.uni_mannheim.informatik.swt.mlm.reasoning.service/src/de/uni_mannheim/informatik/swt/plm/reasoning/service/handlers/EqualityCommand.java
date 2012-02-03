@@ -16,7 +16,7 @@ import org.eclipse.core.commands.ExecutionException;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
-import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.CompositeCheck;
+import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Check;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultFactory;
 
 /**
@@ -34,17 +34,17 @@ public class EqualityCommand extends AbstractHandler {
 		return null;
 	}
 
-	public CompositeCheck compute(Feature fsuper, Feature fsub) {
-		CompositeCheck result = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
+	public Check compute(Feature fsuper, Feature fsub) {
+		Check result = ReasoningResultFactory.eINSTANCE.createCheck();
 		result.setName("Feature Equality");
 		if (!fsuper.getName().equals(fsub.getName())) {
-			CompositeCheck nameCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
+			Check nameCheck = ReasoningResultFactory.eINSTANCE.createCheck();
 			nameCheck.setName("Name");
 			result.getChildren().add(nameCheck);
 			return result;
 		}
 		if (fsuper.getDurability() != fsub.getDurability()) {
-			CompositeCheck tempCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
+			Check tempCheck = ReasoningResultFactory.eINSTANCE.createCheck();
 			tempCheck.setName("Durability");
 			result.getChildren().add(tempCheck);
 			return result;
@@ -52,32 +52,32 @@ public class EqualityCommand extends AbstractHandler {
 		if (fsuper instanceof Attribute) {
 			if (fsub instanceof Attribute) {
 				if (((Attribute) fsuper).getMutability() != ((Attribute) fsub).getMutability()) {
-					CompositeCheck tempCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
+					Check tempCheck = ReasoningResultFactory.eINSTANCE.createCheck();
 					tempCheck.setName("Durability");
 					result.getChildren().add(tempCheck);
 					return result;
 				}
 				if (!((Attribute) fsuper).getDatatype().equals(((Attribute) fsub).getDatatype())) {
-					CompositeCheck tempCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
+					Check tempCheck = ReasoningResultFactory.eINSTANCE.createCheck();
 					tempCheck.setName("Durability");
 					result.getChildren().add(tempCheck);
 					return result;
 				}
 				if (((Attribute) fsuper).getMutability() == 0 && !((Attribute) fsuper).getValue().equals(((Attribute) fsub).getValue())) {
-					CompositeCheck tempCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
+					Check tempCheck = ReasoningResultFactory.eINSTANCE.createCheck();
 					tempCheck.setName("Value");
 					result.getChildren().add(tempCheck);
 					return result;
 				}
 			} else {
-				CompositeCheck tempCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
+				Check tempCheck = ReasoningResultFactory.eINSTANCE.createCheck();
 				tempCheck.setName("Linguistic type");
 				result.getChildren().add(tempCheck);
 				return result;
 			}
 		} else {
 			if (fsub instanceof Attribute) {
-				CompositeCheck tempCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
+				Check tempCheck = ReasoningResultFactory.eINSTANCE.createCheck();
 				tempCheck.setName("Linguistic type");
 				result.getChildren().add(tempCheck);
 				return result;
@@ -86,5 +86,4 @@ public class EqualityCommand extends AbstractHandler {
 		result.setResult(true);
 		return result;
 	}
-
 }

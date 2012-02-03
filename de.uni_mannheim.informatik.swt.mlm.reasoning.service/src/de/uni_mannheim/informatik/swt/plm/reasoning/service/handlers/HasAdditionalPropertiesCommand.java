@@ -20,8 +20,6 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Role;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Check;
-import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.CompositeCheck;
-import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.HasAdditionalPropertiesCheck;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultFactory;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.ReasoningService;
@@ -42,7 +40,7 @@ public class HasAdditionalPropertiesCommand extends AbstractHandler {
 		complexNavigationSearch = true;
 		ReasoningResultModel resultModel = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();
 		resultModel.setName("Additional Properties " + ReasoningServiceUtil.getDateString());
-		CompositeCheck check = compute(type, instance);
+		Check check = compute(type, instance);
 		resultModel.getChildren().add(check);
 		
 		Boolean silent = event.getParameters().get("silent") == null?
@@ -53,26 +51,26 @@ public class HasAdditionalPropertiesCommand extends AbstractHandler {
 		return check.isResult();
 	}
 	
-	protected CompositeCheck compute(Clabject type, Clabject instance) {
+	protected Check compute(Clabject type, Clabject instance) {
 		return hasAdditionalFeatures(type, instance);
 	}
 	
-	private CompositeCheck hasAdditionalFeatures(Clabject type, Clabject instance) {
-		HasAdditionalPropertiesCheck check = ReasoningResultFactory.eINSTANCE.createHasAdditionalPropertiesCheck();
+	private Check hasAdditionalFeatures(Clabject type, Clabject instance) {
+		Check check = ReasoningResultFactory.eINSTANCE.createCheck();
 		check.setResult(false);
 		check.setName("hasAdditionalProperties");
 		check.setExpression("jo..");
 		//First search the features
-		CompositeCheck featuresCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck(instance, type, check);
+		Check featuresCheck = ReasoningResultFactory.eINSTANCE.createCheck(instance, type, check);
 		featuresCheck.setName("Features");
 		featuresCheck.setExpression("exists pi_i in "+instance.getName()+".getAllFeatures(): nexists pi_t in "+ type.getName() +".getAllFeatures(): pi_i.conformsTo(pi_T)");
 		for (Feature i: instance.getAllFeatures()) {
-			CompositeCheck featCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck(instance, type, featuresCheck);
+			Check featCheck = ReasoningResultFactory.eINSTANCE.createCheck(instance, type, featuresCheck);
 			featCheck.setName(i.getName());
 			featCheck.setExpression("nexists pi_t in "+type.getName() + ".getAllFeatures(): "+i.getName() + ".conformsTo(pi_T)");
 			boolean unique = true;
 			for (Feature t: type.getAllFeatures()) {
-				CompositeCheck actualFeatCheck = (new FeatureConformsCommand()).compute(t, i);
+				Check actualFeatCheck = (new FeatureConformsCommand()).compute(t, i);
 				featCheck.getChildren().add(actualFeatCheck);
 				if (actualFeatCheck.isResult()) {
 					unique = false;
@@ -87,11 +85,11 @@ public class HasAdditionalPropertiesCommand extends AbstractHandler {
 			}
 		}
 		//Then search for the Connections
-		CompositeCheck navigationsCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck(instance, type, check);
+		Check navigationsCheck = ReasoningResultFactory.eINSTANCE.createCheck(instance, type, check);
 		navigationsCheck.setName("Navigations");
 		navigationsCheck.setExpression("exists rN in "+instance.getName()+".getAllAssociateRoleNames(): exists ... einiges");
 		for (Role rI: instance.getAllNavigations()) {
-			CompositeCheck roleCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck(instance, type, navigationsCheck);
+			Check roleCheck = ReasoningResultFactory.eINSTANCE.createCheck(instance, type, navigationsCheck);
 			roleCheck.setName(rI.represent());
 			boolean found = false;
 			for (Role rT: type.getAllNavigations()) {
@@ -123,5 +121,4 @@ public class HasAdditionalPropertiesCommand extends AbstractHandler {
 		}
 		return check;
 	}
-
 }

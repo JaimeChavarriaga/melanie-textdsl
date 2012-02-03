@@ -8,110 +8,21 @@ This can be disabled with -vmargs -Dorg.eclipse.emf.examples.generator.validator
 Package ReasoningResult <http://swt.informatik.uni-mannheim.de/ReasoningResult>
 
   Class ReasoningResultModel
-    Reference check : Check<<0..*>>
+    Reference children : ReasoningArtefact<<0..*>>
     Attribute name : EString
 
-  Class Check
+  Class ReasoningArtefact
+    Reference children : ReasoningArtefact<<0..*>>
+
+  Class Check -> ReasoningArtefact
     Attribute result : EBoolean<<1..1>>
     Attribute expression : EString
     Attribute rootCause : EBoolean<<1..1>>
     Attribute passedIconResult : EBoolean
-
-  Class CompositeCheck -> Check
-    Reference check : Check<<0..*>>
     Reference source : Element<<1..1>>
     Reference target : Element
     Attribute name : EString<<1..1>>
 
-  Class NameComparison -> Check
-    Reference source : Feature<<1..1>>
-    Reference target : Feature<<1..1>>
-
-  Class DurabilityComparison -> Check
-    Reference source : Feature<<1..1>>
-    Reference target : Feature<<1..1>>
-    Attribute typeDurability : EInt<<1..1>>
-    Attribute instanceDurability : EInt<<1..1>>
-
-  Class MutabilityComparison -> Check
-    Reference source : Attribute<<1..1>>
-    Reference target : Attribute<<1..1>>
-    Attribute typeMutability : EInt<<1..1>>
-    Attribute instanceMutability : EInt<<1..1>>
-
-  Class DatatypeComparison -> Check
-    Reference source : Attribute<<1..1>>
-    Reference target : Attribute<<1..1>>
-
-  Class AllConnectionsCheck -> CompositeCheck
-    Attribute noTypeConnection : EInt<<1..1>>
-
-  Class TypeConnectionSearch -> CompositeCheck
-    Reference typeConnection : Connection<<1..1>>
-    Attribute noSearchedConnections : EInt<<1..1>>
-
-  Class ExpressedInstanceExcludedCheck -> CompositeCheck
-    Reference expressedTypes : Clabject<<0..*>>
-    Reference affectedTypes : Clabject<<0..*>>
-    Reference disjointSiblings : Clabject<<0..*>>
-    Reference affectedDisjointIntersection : Clabject<<0..*>>
-
-  Class MultiplicityCheck -> CompositeCheck
-    Attribute noOfDomainConnection : EInt<<1..1>>
-
-  Class MultiplicityRoleNameCheck -> CompositeCheck
-    Attribute lower : EInt<<1..1>>
-    Attribute upper : EInt<<1..1>>
-    Attribute counts : EInt<<0..*>>
-    Attribute roleName : EString<<1..1>>
-
-  Class RoleNamePropertyConformanceCheck -> CompositeCheck
-    Attribute roleName : EString<<1..1>>
-    Reference typeParticipant : Clabject<<1..1>>
-    Reference instanceParticipant : Clabject<<1..1>>
-
-  Class RoleNameLocalConformanceCheck -> CompositeCheck
-    Attribute roleName : EString<<1..1>>
-
-  Class ConnectionsLocalConformanceCheck -> CompositeCheck
-    Attribute noTypeConnections : EInt<<1..1>>
-
-  Class LocalConformanceCheck -> CompositeCheck
-
-  Class TypeFeatureCheck -> CompositeCheck
-    Attribute NoFeatures : EInt<<1..1>>
-
-  Class FeatureSearchCheck -> CompositeCheck
-    Attribute NoFeatures : EInt<<1..1>>
-    Reference typeFeature : Feature<<1..1>>
-
-  Class FeatureConformanceCheck -> CompositeCheck
-
-  Class LevelComparison -> Check
-    Attribute targetLevel : EInt<<1..1>>
-    Attribute instanceLevel : EInt<<1..1>>
-    Reference source : Clabject<<1..1>>
-    Reference target : Clabject
-
-  Class ValueComparison -> Check
-    Reference source : Attribute<<1..1>>
-    Reference target : Attribute<<1..1>>
-
-  Class HasAdditionalPropertiesCheck -> CompositeCheck
-    Reference commonProperties : Element
-    Reference additionalProperties : Element
-
-  Class PotencyComparison -> Check
-    Attribute targetPotency : EInt<<1..1>>
-    Attribute instancePotency : EInt<<1..1>>
-    Reference source : Clabject<<1..1>>
-    Reference target : Clabject
-
-  Class DomainSearch -> CompositeCheck
-    Reference supertypeIsonyms : Clabject<<0..*>>
-    Reference subtypeIsonyms : Clabject<<0..*>>
-    Reference interestingInstances : Clabject<<0..*>>
-
-  Class NavigableCheck -> Check
-    Reference target : Role<<1..1>>
-    Reference source : Role<<1..1>>
+  Class Information -> ReasoningArtefact
+    Reference subject : Element
+    Attribute message : EString

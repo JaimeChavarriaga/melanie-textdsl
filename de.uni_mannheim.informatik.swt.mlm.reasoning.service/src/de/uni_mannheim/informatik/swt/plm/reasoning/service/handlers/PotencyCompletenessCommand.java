@@ -21,7 +21,7 @@ import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IReasoningService
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
-import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.CompositeCheck;
+import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Check;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Information;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultFactory;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultModel;
@@ -42,7 +42,7 @@ public class PotencyCompletenessCommand extends AbstractHandler {
 		ReasoningResultModel resultModel = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();
 		resultModel.setName("Potency Completeness " + ReasoningServiceUtil.getDateString());
 		Element element = (Element)event.getObjectParameterForExecution("clabject");
-		CompositeCheck check = compute(element);
+		Check check = compute(element);
 		resultModel.getChildren().add(check);
 
 		Boolean silent = event.getParameters().get("silent") == null?
@@ -53,14 +53,14 @@ public class PotencyCompletenessCommand extends AbstractHandler {
 		return check.isResult();
 	}
 	
-	protected CompositeCheck compute(Element el) {
+	protected Check compute(Element el) {
 		if (!(el instanceof Clabject))
 			throw new IllegalArgumentException();
 		return clabjectIsPotencyComplete((Clabject) el);
 	}
 
-	private CompositeCheck clabjectIsPotencyComplete(Clabject c) {
-		CompositeCheck check = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
+	private Check clabjectIsPotencyComplete(Clabject c) {
+		Check check = ReasoningResultFactory.eINSTANCE.createCheck();
 		check.setName("Potency Completeness");
 		check.setExpression(c.getName() + ".isPotencyComplete()");
 		check.setResult(true);
@@ -90,13 +90,13 @@ public class PotencyCompletenessCommand extends AbstractHandler {
 				possibleIsonymsInformation.getChildren().add(temper);
 			}
 			if (c.getPotency() == 0) {// There must not be any isonym
-				CompositeCheck noIsonymsCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
+				Check noIsonymsCheck = ReasoningResultFactory.eINSTANCE.createCheck();
 				noIsonymsCheck.setName("No Isonyms");
 				check.getChildren().add(noIsonymsCheck);
 				noIsonymsCheck.setResult(true); // Innocent until proven guilty
 				Information actualIsonymsInfo = ReasoningResultFactory.eINSTANCE.createInformation(classifiedModel, "Actual Isonyms",noIsonymsCheck);
 				for (Clabject possible: clabjects) {
-					CompositeCheck cCheck = new IsonymCommand().compute(c, possible);
+					Check cCheck = new IsonymCommand().compute(c, possible);
 					noIsonymsCheck.getChildren().add(cCheck);
 					if (cCheck.isResult()) { // found one, there should be none
 						noIsonymsCheck.setResult(false);
@@ -108,10 +108,10 @@ public class PotencyCompletenessCommand extends AbstractHandler {
 					}
 				}
 			} else { // There has to be an isonym and all isonyms have to be potency complete
-				CompositeCheck isonymExists = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
+				Check isonymExists = ReasoningResultFactory.eINSTANCE.createCheck();
 				isonymExists.setName("Isonym Exists");
 				check.getChildren().add(isonymExists);
-				CompositeCheck allIsonymsPotencyComplete = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
+				Check allIsonymsPotencyComplete = ReasoningResultFactory.eINSTANCE.createCheck();
 				allIsonymsPotencyComplete.setName("All Isonyms Potency Complete");
 				check.getChildren().add(allIsonymsPotencyComplete);
 			}

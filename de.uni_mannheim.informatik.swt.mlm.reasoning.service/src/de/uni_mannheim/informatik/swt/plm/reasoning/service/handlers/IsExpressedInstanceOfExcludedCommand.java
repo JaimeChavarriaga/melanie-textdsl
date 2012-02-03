@@ -22,8 +22,7 @@ import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IReasoningService
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Classification;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Generalization;
-import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.CompositeCheck;
-import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ExpressedInstanceExcludedCheck;
+import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Check;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultFactory;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.ReasoningService;
@@ -46,7 +45,7 @@ public class IsExpressedInstanceOfExcludedCommand extends AbstractHandler {
 		Clabject instance = (Clabject)event.getObjectParameterForExecution("instance");
 		ReasoningResultModel resultModel = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();
 		resultModel.setName("Expressed Instance of Excluded " + ReasoningServiceUtil.getDateString());
-		CompositeCheck check = compute(type, instance);
+		Check check = compute(type, instance);
 
 		Boolean silent = event.getParameters().get("silent") == null?
 				false: Boolean.parseBoolean(event.getParameters().get("silent").toString());
@@ -56,13 +55,13 @@ public class IsExpressedInstanceOfExcludedCommand extends AbstractHandler {
 		return check.isResult();
 	}
 	
-	protected CompositeCheck compute(Clabject type, Clabject instance) {
+	protected Check compute(Clabject type, Clabject instance) {
 		return isExpressedInstanceOfExcluded(type, instance);
 	}
 	
-	private CompositeCheck isExpressedInstanceOfExcluded(Clabject type,
+	private Check isExpressedInstanceOfExcluded(Clabject type,
 			final Clabject instance) {
-		ExpressedInstanceExcludedCheck result = ReasoningResultFactory.eINSTANCE.createExpressedInstanceExcludedCheck(instance, type, null);
+		Check result = ReasoningResultFactory.eINSTANCE.createCheck(instance, type, null);
 		Set<Classification> classifications = new HashSet<Classification>(instance.getModel().getAllClassifications());
 		classifications = (Set<Classification>) ReasoningServiceUtil.filter(classifications, new Predicate<Classification>() {
 			public boolean apply(Classification inst) {
@@ -80,7 +79,8 @@ public class IsExpressedInstanceOfExcludedCommand extends AbstractHandler {
 			expressedTypes.add(current);
 			expressedTypes.addAll(current.getModelSupertypes());
 		}
-		result.getExpressedTypes().addAll(expressedTypes);
+		//FIXME
+		//result.getExpressedTypes().addAll(expressedTypes);
 		
 		Set<Clabject> disjointTwins = new HashSet<Clabject>();
 		Set<Generalization> generalizationsA = new HashSet<Generalization>(type.getModel().getAllGeneralizations());
@@ -106,13 +106,15 @@ public class IsExpressedInstanceOfExcludedCommand extends AbstractHandler {
 		}
 		disjointTwins = new HashSet<Clabject>(temp);
 		disjointTwins.removeAll(expressedTypes);
-		result.getDisjointSiblings().addAll(disjointTwins);
+		//FIXME
+//		result.getDisjointSiblings().addAll(disjointTwins);
 		
 		Set<Clabject> conflicts = new HashSet<Clabject>();
 		conflicts.add(type);
 		conflicts.addAll(type.getModelSupertypes());
-		result.getAffectedTypes().addAll(conflicts);
-		result.getAffectedDisjointIntersection().addAll(ReasoningServiceUtil.intersect(disjointTwins, conflicts));
+		//FIXME
+//		result.getAffectedTypes().addAll(conflicts);
+//		result.getAffectedDisjointIntersection().addAll(ReasoningServiceUtil.intersect(disjointTwins, conflicts));
 		result.setResult(true);
 		if (disjointTwins.size() > 0 && conflicts.size() > 0) {
 			//There have to be both disjoint Twins and possibly conflicting expressed types to justify the check.
@@ -122,6 +124,4 @@ public class IsExpressedInstanceOfExcludedCommand extends AbstractHandler {
 		}
 		return result;
 	}
-
-	
 }

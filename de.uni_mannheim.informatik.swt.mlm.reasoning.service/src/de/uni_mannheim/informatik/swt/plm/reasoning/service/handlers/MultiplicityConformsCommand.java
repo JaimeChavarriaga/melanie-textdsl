@@ -26,9 +26,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Role;
-import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.CompositeCheck;
-import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.MultiplicityCheck;
-import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.MultiplicityRoleNameCheck;
+import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Check;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultFactory;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.ReasoningService;
@@ -48,7 +46,7 @@ public class MultiplicityConformsCommand extends AbstractHandler {
 		Connection connection = (Connection)event.getObjectParameterForExecution("connection");
 		ReasoningResultModel resultModel = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();
 		resultModel.setName("Multiplicity " + ReasoningServiceUtil.getDateString());
-		CompositeCheck check = compute(connection);
+		Check check = compute(connection);
 		resultModel.getChildren().add(check);
 
 		Boolean silent = event.getParameters().get("silent") == null?
@@ -59,34 +57,38 @@ public class MultiplicityConformsCommand extends AbstractHandler {
 		return check.isResult();
 	}
 	
-	protected CompositeCheck compute(Connection type) {
+	protected Check compute(Connection type) {
 		return multiplicityConforms(type);
 	}
 	
-	private MultiplicityCheck multiplicityConforms(Connection con) {
-		MultiplicityCheck result = ReasoningResultFactory.eINSTANCE.createMultiplicityCheck();
+	private Check multiplicityConforms(Connection con) {
+		Check result = ReasoningResultFactory.eINSTANCE.createCheck();
 		Model classifiedModel = con.getModel().getOntology().getContent().get(con.getModel().getLevel() + 1);
 		Set<Connection> domain = new HashSet<Connection>();
-		CompositeCheck domainSearch = reasoner.createCompositeCheck("DomainSearch", con, classifiedModel, "delta_i in Sigma_{delta.level + 1}.connection: delta_.neighbourhoodConforms(delta)");
+		//FIXME
+		Check domainSearch = ReasoningResultFactory.eINSTANCE.createCheck();//("DomainSearch", con, classifiedModel, "delta_i in Sigma_{delta.level + 1}.connection: delta_.neighbourhoodConforms(delta)");
 		result.getChildren().add(domainSearch);
 		for (Connection possible:classifiedModel.getAllConnections()) {
-			CompositeCheck possibleCon = (new NeighbourhoodConformsCommand()).compute(con, possible);
+			Check possibleCon = (new NeighbourhoodConformsCommand()).compute(con, possible);
 			domainSearch.getChildren().add(possibleCon);
 			if (possibleCon.isResult()) {
 				domain.add(possible);
 			}
 		}
 		domainSearch.setResult(true);
-		result.setNoOfDomainConnection(domain.size());
+		//FIXME
+		//result.setNoOfDomainConnection(domain.size());
 		for (Role r:con.getAllRoles()) {
-			MultiplicityRoleNameCheck roleCheck = ReasoningResultFactory.eINSTANCE.createMultiplicityRoleNameCheck();
-			roleCheck.setRoleName(r.roleName());
+			Check roleCheck = ReasoningResultFactory.eINSTANCE.createCheck();
+			//FIXME
+			//roleCheck.setRoleName(r.roleName());
 			result.getChildren().add(roleCheck);
 			Map<Clabject,Integer> count = new HashMap<Clabject, Integer>();
 			int lower = r.getLower();
 			int upper = r.getUpper();
-			roleCheck.setLower(lower);
-			roleCheck.setUpper(upper);
+			//FIXME
+//			roleCheck.setLower(lower);
+//			roleCheck.setUpper(upper);
 			for (Connection domCon: domain) {
 				for (Role role: domCon.getRole()) {
 					if (!role.getDestination().equals(r.getDestination())) {
@@ -100,7 +102,8 @@ public class MultiplicityConformsCommand extends AbstractHandler {
 			}
 			for (Entry<Clabject,Integer> entry:count.entrySet()) {
 				Integer value = entry.getValue();
-				roleCheck.getCounts().add(value);
+				//FIXME
+				//roleCheck.getCounts().add(value);
 				if (value < lower || (upper != -1 && value > upper)) {
 					return result;
 				}

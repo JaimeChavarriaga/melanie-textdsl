@@ -43,7 +43,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Generalization;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Role;
-import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.CompositeCheck;
+import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Check;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultFactory;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.ClassificationConsistencyCommand;
@@ -385,19 +385,6 @@ public class ReasoningService implements IReasoningService {
 		
 	}
 	
-	//TODO: Replace this method by factory
-	/**
-	 * @deprecated Needs to be replaced with factory method
-	 */
-	public CompositeCheck createCompositeCheck(String name, Element source, Element target, String expression) {
-		CompositeCheck check = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
-		check.setName(name);
-		check.setSource(source);
-		check.setTarget(target);
-		check.setExpression(expression);
-		return check;
-	}
-	
 	
 	@Override
 	public void addPropertyChangeListener(IPropertyChangeListener listener) {
@@ -413,7 +400,7 @@ public class ReasoningService implements IReasoningService {
 	/**
 	 * This is used to record all reasoning results
 	 */
-	private List<ReasoningResultModel> reasoningResults = new LinkedList<ReasoningResultModel>(){
+	private List<EObject> reasoningResults = new LinkedList<EObject>(){
 		/**
 		 * Does additionally notify all listeners.
 		 */
@@ -422,11 +409,11 @@ public class ReasoningService implements IReasoningService {
 			
 			//Notify all listeners on addLast
 			for (IPropertyChangeListener listener : listeners)
-				listener.propertyChange(new PropertyChangeEvent(this, "reasoningResults", new LinkedList<ReasoningResultModel>(this).remove(e), this));
+				listener.propertyChange(new PropertyChangeEvent(this, "reasoningResults", new LinkedList<EObject>(this).remove(e), this));
 		};
 		
 		@Override
-		public boolean add(ReasoningResultModel e) {
+		public boolean add(EObject e) {
 			/**
 			 * Does additionally notify all listeners.
 			 */
@@ -434,21 +421,21 @@ public class ReasoningService implements IReasoningService {
 			
 			//Notify all listeners on addLast
 			for (IPropertyChangeListener listener : listeners)
-				listener.propertyChange(new PropertyChangeEvent(this, "reasoningResults", new LinkedList<ReasoningResultModel>(this).remove(e), this));
+				listener.propertyChange(new PropertyChangeEvent(this, "reasoningResults", new LinkedList<EObject>(this).remove(e), this));
 			
 			return result;
 		}
 	};
 	
 	@Override
-	public List<ReasoningResultModel> getReasoningHistory() {
+	public List<EObject> getReasoningHistory() {
 		return reasoningResults;
 	}
 
 
 	@Override
-	public ReasoningResultModel getLastResult() {
-		return ((LinkedList<ReasoningResultModel>)reasoningResults).getLast();
+	public EObject getLastResult() {
+		return ((LinkedList<EObject>)reasoningResults).getLast();
 	}
 	
 	@Override

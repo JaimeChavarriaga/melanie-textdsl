@@ -22,15 +22,8 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Entity;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Role;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Check;
-import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.CompositeCheck;
-import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.FeatureSearchCheck;
-import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.LevelComparison;
-import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.LocalConformanceCheck;
-import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.NavigableCheck;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultFactory;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultModel;
-import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.RoleNameLocalConformanceCheck;
-import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.TypeFeatureCheck;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.ReasoningService;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.util.ReasoningServiceUtil;
 
@@ -53,7 +46,7 @@ public class LocalConformsCommand extends AbstractHandler {
 		Clabject instance = (Clabject)event.getObjectParameterForExecution("instance");
 		forceClabject = ((String)event.getParameters().get("forceClabject")).equals("false?") ? false:true;
 		
-		CompositeCheck check = compute(type, instance);
+		Check check = compute(type, instance);
 		resultModel.getChildren().add(check);
 
 		Boolean silent = event.getParameters().get("silent") == null?
@@ -64,44 +57,13 @@ public class LocalConformsCommand extends AbstractHandler {
 		return check.isResult();
 	}
 	
-	protected CompositeCheck compute(Clabject type, Clabject instance) {
+	protected Check compute(Clabject type, Clabject instance) {
 		return localConforms(type, instance);
 	}
-	
-//	protected CompositeCheck compute(Role r, Role rI) {
-//		return localConforms(r, rI);
-//	}
-	
-//	private CompositeCheck localConforms(Role r, Role rI) {
-//		LocalConformanceCheck check = ReasoningResultFactory.eINSTANCE.createLocalConformanceCheck();
-////		TODO: Handle roles as check sources/instances
-////		check.setSource(rI);
-////		check.setTarget(r);
-//		check.setName("Role Local Conformance");
-//		check.setExpression(rI.represent() + ".localConforms(" + r.represent() + ")");
-//		NavigableCheck navCheck = ReasoningResultFactory.eINSTANCE.createNavigableCheck(r, rI, check);
-//		if (!r.isNavigable() == rI.isNavigable()) {
-//			return check;
-//		} else {
-//			navCheck.setResult(true);
-//		}
-//		Check localCheck = localConforms(r.getDestination(), rI.getDestination());
-//		if (localCheck.isResult()) {
-//			check.setResult(true);
-//		}
-//		check.getCheck().add(localCheck);
-//		return check;
-//	}
 
-	private CompositeCheck localConforms(Clabject type, Clabject instance) {
-//		LocalConformanceCheck check = ReasoningResultFactory.eINSTANCE.createLocalConformanceCheck();
-//		check.setSource(instance);
-//		check.setTarget(type);
-//		check.setName("LocalConformance[Delegation]");
-//		check.setExpression(instance.getName() + ".localConforms("+type.getName() + ")");
-		CompositeCheck child = null;
+	private Check localConforms(Clabject type, Clabject instance) {
+		Check child = null;
 		if (forceClabject) {
-//			check.setExpression("forced Clabject local conformance");
 			child =  localConformsClabject(type, instance);
 		} else if (type instanceof Connection && instance instanceof Connection) {
 			child =  localConformsConnection((Connection) type, (Connection) instance);
@@ -109,37 +71,34 @@ public class LocalConformsCommand extends AbstractHandler {
 			child =  localConformsClabject(type, instance);
 		} else if ((type instanceof Entity && instance instanceof Connection) || 
 				(instance instanceof Entity && type instanceof Connection)){
-//			child = ReasoningResultFactory.eINSTANCE.createCompositeCheck(instance, type, check);
-			child = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
+			child = ReasoningResultFactory.eINSTANCE.createCheck();
 			child.setTarget(type);
 			child.setSource(instance);
-//			check.setResult(false);
 			child.setName("Linguistic type");
-//			return check;
 		} else {
 			System.out.println("mismatching types. NPE??");
 		}
-//		check.getCheck().add(child);
-//		check.setResult(child.isResult());
-//		return check;
 		return child;
 	}
 	
-	private CompositeCheck localConformsConnection(Connection type, Connection instance) {
-		CompositeCheck result = reasoner.createCompositeCheck("LocalConformance[Connection]", instance, type, instance.getName() + ".localConforms("+type.getName()+")");
-		CompositeCheck clabCheck = localConformsClabject(type, instance);
+	private Check localConformsConnection(Connection type, Connection instance) {
+		//FIXME
+		Check result = ReasoningResultFactory.eINSTANCE.createCheck();//("LocalConformance[Connection]", instance, type, instance.getName() + ".localConforms("+type.getName()+")");
+		Check clabCheck = localConformsClabject(type, instance);
 		result.getChildren().add(clabCheck);
 		if (!clabCheck.isResult()) {
 			return result;
 		} 
-		CompositeCheck roleCheck = reasoner.createCompositeCheck("LocalConformance[RoleName]", instance, type,
-				"$ forall rN_t in "+ type.getName() +".roleName: (exists rN_i in "+ instance.getName() +
-				".roleName: rN_i = rN_t land "+ instance.getName() +".isNav(rN_t) = "+ type.getName() +".isNav(rN_t)))$");
+		//FIXME
+		Check roleCheck = ReasoningResultFactory.eINSTANCE.createCheck();//reasoner.createCheck("LocalConformance[RoleName]", instance, type,
+//				"$ forall rN_t in "+ type.getName() +".roleName: (exists rN_i in "+ instance.getName() +
+//				".roleName: rN_i = rN_t land "+ instance.getName() +".isNav(rN_t) = "+ type.getName() +".isNav(rN_t)))$");
 		result.getChildren().add(roleCheck);
 		for (Role r: type.getRole()) {
-			RoleNameLocalConformanceCheck roleNameCheck = ReasoningResultFactory.eINSTANCE.createRoleNameLocalConformanceCheck(instance, type, roleCheck);
+			Check roleNameCheck = ReasoningResultFactory.eINSTANCE.createCheck(instance, type, roleCheck);
 			roleNameCheck.setName(r.roleName());
-			roleNameCheck.setRoleName(r.roleName());
+			//FIXME
+			//roleNameCheck.setRoleName(r.roleName());
 			boolean found = false;
 			for (Role rI: instance.getRole()) {
 				if (rI.conforms(r)) {
@@ -156,23 +115,24 @@ public class LocalConformsCommand extends AbstractHandler {
 		return result;
 	}
 	
-	private CompositeCheck localConformsClabject(Clabject type, Clabject instance) {
-		LocalConformanceCheck result = ReasoningResultFactory.eINSTANCE.createLocalConformanceCheck();
+	private Check localConformsClabject(Clabject type, Clabject instance) {
+		Check result = ReasoningResultFactory.eINSTANCE.createCheck();
 		result.setSource(instance);
 		result.setTarget(type);
 		result.setName("LocalConformance[Clabject]");
 		result.setExpression(instance.getName() + ".localConformsClabject("+type.getName() + ")");
 		result.setExpression(instance.getName() + ".localConformsClabject(" + type.getName() + ")");
-		LevelComparison levelC = ReasoningResultFactory.eINSTANCE.createLevelComparison();
+		Check levelC = ReasoningResultFactory.eINSTANCE.createCheck();
 		result.getChildren().add(levelC);
-		levelC.setTargetLevel(type.getLevel());
-		levelC.setInstanceLevel(instance.getLevel());
+//		FIXME
+//		levelC.setTargetLevel(type.getLevel());
+//		levelC.setInstanceLevel(instance.getLevel());
 		levelC.setExpression(instance.getName() + ".level - 1 = " + type.getName() + ".level");
 		if (type.getLevel() + 1 != instance.getLevel()) {
 			return result;
 		}
 		levelC.setResult(true);
-		TypeFeatureCheck featureC = ReasoningResultFactory.eINSTANCE.createTypeFeatureCheck();
+		Check featureC = ReasoningResultFactory.eINSTANCE.createCheck();
 		featureC.setSource(instance);
 		featureC.setTarget(type);
 		featureC.setName("AllTypeFeatures");
@@ -180,18 +140,21 @@ public class LocalConformsCommand extends AbstractHandler {
 		result.getChildren().add(featureC);
 		for (Feature current: type.getAllFeatures()) {
 			if (current.getDurability() > 0) {
-				featureC.setNoFeatures(featureC.getNoFeatures() + 1);
+				//FIXME
+				//featureC.setNoFeatures(featureC.getNoFeatures() + 1);
 				boolean found = false;
-				FeatureSearchCheck featSearchC = ReasoningResultFactory.eINSTANCE.createFeatureSearchCheck();
+				Check featSearchC = ReasoningResultFactory.eINSTANCE.createCheck();
 				featSearchC.setSource(instance);
 				featSearchC.setTarget(type);
-				featSearchC.setTypeFeature(current);
+				//FIXME
+				//featSearchC.setTypeFeature(current);
 				featSearchC.setName("SearchTypeFeature " + current.getName());
 				featSearchC.setExpression("exists pi_i in " + instance.getName()+".getAllFeatures() : pi_i.conforms("+type.getName() + "." + current.getName()+")");
 				featureC.getChildren().add(featSearchC);
 				for (Feature possible : instance.getAllFeatures()) {
-					featSearchC.setNoFeatures(featSearchC.getNoFeatures() + 1);
-					CompositeCheck featCheck = (new FeatureConformsCommand()).compute(current, possible);
+					//FIXME
+					//featSearchC.setNoFeatures(featSearchC.getNoFeatures() + 1);
+					Check featCheck = (new FeatureConformsCommand()).compute(current, possible);
 					featSearchC.getChildren().add(featCheck);
 					if (featCheck.isResult()) {
 						found = true;
@@ -208,8 +171,4 @@ public class LocalConformsCommand extends AbstractHandler {
 		result.setResult(true);
 		return result;
 	}
-
-
-
-	
 }

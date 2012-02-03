@@ -27,7 +27,6 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Role;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Check;
-import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.CompositeCheck;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultFactory;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.ReasoningService;
@@ -50,7 +49,7 @@ public class SubsumptionCommand extends AbstractHandler {
 		marks = null;
 		ReasoningResultModel resultModel = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();
 		resultModel.setName("Subsumtion " + ReasoningServiceUtil.getDateString());
-		CompositeCheck check = null;
+		Check check = null;
 		
 		Model model = (Model) event.getObjectParameterForExecution("model");
 		if (model == null) {
@@ -70,9 +69,9 @@ public class SubsumptionCommand extends AbstractHandler {
 		return check.isResult();
 	}
 	
-	private CompositeCheck compute(Model model) {
+	private Check compute(Model model) {
 		List<Clabject> clabjects = model.getAllClabjects();
-		CompositeCheck result = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
+		Check result = ReasoningResultFactory.eINSTANCE.createCheck();
 		result.setName("Model Subsumption");
 		for (Clabject one: clabjects) {
 			for (Clabject other : clabjects) {
@@ -89,61 +88,60 @@ public class SubsumptionCommand extends AbstractHandler {
 		return marks;
 	}
 	
-	protected CompositeCheck compute(Clabject supertype, Clabject subtype) {
+	protected Check compute(Clabject supertype, Clabject subtype) {
 		Set<Pair<Clabject, Clabject>> marks = getMarks();
 		Pair<Clabject, Clabject> pair = new Pair<Clabject, Clabject>(supertype, subtype);
 		if (marks.contains(pair)) {
-			CompositeCheck cachedResult = ReasoningResultFactory.eINSTANCE.createCompositeCheck(subtype, supertype, null);
+			Check cachedResult = ReasoningResultFactory.eINSTANCE.createCheck(subtype, supertype, null);
 			cachedResult.setName("Subsumption[Cached]");
 			cachedResult.setExpression(subtype.represent() + ".subsume(" + supertype.represent() + ")");
 			cachedResult.setResult(true);
 			return cachedResult;
 		}
 		marks.add(pair);
-		CompositeCheck result = subsume(supertype, subtype);
+		Check result = subsume(supertype, subtype);
 		return result; 
 	}
 	
-	private CompositeCheck subsume(Clabject supertype, Clabject subtype) {
-		CompositeCheck child = null;
+	private Check subsume(Clabject supertype, Clabject subtype) {
+		Check child = null;
 		if (supertype instanceof Connection && subtype instanceof Connection) {
 			child = subsumeConnection((Connection) supertype, (Connection) subtype);
 		} else if (supertype instanceof Entity && subtype instanceof Entity) {
 			child = subsumeClabject(supertype, subtype);
 		} else {
-//			System.out.println("missmatching types " + type + "|" + instance);
-			child = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
+			child = ReasoningResultFactory.eINSTANCE.createCheck();
 			child.setName("MissMatching Types");
 		}
 		return child;
 	}
 
-	private CompositeCheck subsumeConnection(Connection supertype,
+	private Check subsumeConnection(Connection supertype,
 			Connection subtype) {
-		CompositeCheck result = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
+		Check result = ReasoningResultFactory.eINSTANCE.createCheck();
 		result.setName("Subsumption[Connection]");
-		CompositeCheck clabject = subsumeClabject(supertype, subtype);
+		Check clabject = subsumeClabject(supertype, subtype);
 		result.getChildren().add(clabject);
 		if (!clabject.isResult()) {
 			return result;
 		}
-		CompositeCheck order = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
+		Check order = ReasoningResultFactory.eINSTANCE.createCheck();
 		order.setName("Order");
 		result.getChildren().add(order);
 		order.setResult(supertype.getAllRoles().size() == subtype.getAllRoles().size());
 		if (!order.isResult()) {
 			return result;
 		}
-		CompositeCheck roles = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
+		Check roles = ReasoningResultFactory.eINSTANCE.createCheck();
 		order.setName("Roles");
 		result.getChildren().add(roles);
 		for (Role rsuper: supertype.getAllRoles()) {
-			CompositeCheck role = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
+			Check role = ReasoningResultFactory.eINSTANCE.createCheck();
 			order.setName(rsuper.represent());
 			result.getChildren().add(role);
 			boolean found = false;
 			for (Role rsub: subtype.getAllRoles()) {
-				CompositeCheck aRole = roleSubtypeConforms(rsuper, rsub);
+				Check aRole = roleSubtypeConforms(rsuper, rsub);
 				role.getChildren().add(aRole);
 				if (aRole.isResult()) {
 					found = true;
@@ -161,21 +159,21 @@ public class SubsumptionCommand extends AbstractHandler {
 		return result;
 	}
 
-	private CompositeCheck subsumeClabject(Clabject supertype, Clabject subtype) {
-		CompositeCheck result = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
+	private Check subsumeClabject(Clabject supertype, Clabject subtype) {
+		Check result = ReasoningResultFactory.eINSTANCE.createCheck();
 		result.setName("isSubtype");
-		Check levelCheck = ReasoningResultFactory.eINSTANCE.createLevelComparison(supertype, subtype, result);
+		Check levelCheck = ReasoningResultFactory.eINSTANCE.createCheck(supertype, subtype, result);
 		levelCheck.setExpression("same Level");
 		if (supertype.getLevel() == subtype.getLevel()) levelCheck.setResult(true);
 		if (!levelCheck.isResult())
 			return result;
-		CompositeCheck featuresCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
+		Check featuresCheck = ReasoningResultFactory.eINSTANCE.createCheck();
 		featuresCheck.setName("Features");
 		result.getChildren().add(featuresCheck);
 		for (Feature fsuper: supertype.getAllFeatures()) {
 			if (fsuper.getDurability() > 0) {
 				Feature fsub = subtype.getFeatureForName(fsuper.getName());
-				CompositeCheck featureCheck = (new EqualityCommand()).compute(fsuper, fsub);
+				Check featureCheck = (new EqualityCommand()).compute(fsuper, fsub);
 				featureCheck.setName(fsuper.getName());
 				featuresCheck.getChildren().add(featureCheck);
 				if (!featureCheck.isResult()) {
@@ -184,17 +182,17 @@ public class SubsumptionCommand extends AbstractHandler {
 			}
 		}
 		featuresCheck.setResult(true);
-		CompositeCheck navigationsCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
+		Check navigationsCheck = ReasoningResultFactory.eINSTANCE.createCheck();
 		navigationsCheck.setName("Navigations");
 		result.getChildren().add(navigationsCheck);
 		for (Role rsuper: supertype.getAllNavigations()) {
 			if (rsuper.getConnection().getPotency() > 0) {
-				CompositeCheck navigationCheck = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
+				Check navigationCheck = ReasoningResultFactory.eINSTANCE.createCheck();
 				navigationCheck.setName(rsuper.represent());
 				navigationsCheck.getChildren().add(navigationCheck);
 				boolean found = false;
 				for (Role rsub: subtype.getAllNavigations()) {
-					CompositeCheck aNavCheck = roleSubtypeConforms(rsuper, rsub);
+					Check aNavCheck = roleSubtypeConforms(rsuper, rsub);
 					navigationCheck.getChildren().add(aNavCheck);
 					if (aNavCheck.isResult()) {
 						found = true;
@@ -213,10 +211,10 @@ public class SubsumptionCommand extends AbstractHandler {
 		return result;
 	}
 
-	private CompositeCheck roleSubtypeConforms(Role rsuper, Role rsub) {
-		CompositeCheck result = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
+	private Check roleSubtypeConforms(Role rsuper, Role rsub) {
+		Check result = ReasoningResultFactory.eINSTANCE.createCheck();
 		result.setName(rsub.represent());
-		CompositeCheck roleName = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
+		Check roleName = ReasoningResultFactory.eINSTANCE.createCheck();
 		roleName.setName("RoleName");
 		result.getChildren().add(roleName);
 		roleName.setResult(rsuper.roleName().equals(rsub.roleName()));
@@ -225,7 +223,7 @@ public class SubsumptionCommand extends AbstractHandler {
 			return result;
 		}
 		
-		CompositeCheck lower = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
+		Check lower = ReasoningResultFactory.eINSTANCE.createCheck();
 		lower.setName("Lower");
 		result.getChildren().add(lower);
 		lower.setResult(rsuper.getLower() <= rsub.getLower());
@@ -234,7 +232,7 @@ public class SubsumptionCommand extends AbstractHandler {
 			return result;
 		}
 		
-		CompositeCheck upper = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
+		Check upper = ReasoningResultFactory.eINSTANCE.createCheck();
 		upper.setName("Upper");
 		result.getChildren().add(upper);
 		upper.setResult(rsuper.getUpper() >= rsub.getUpper());
@@ -243,7 +241,7 @@ public class SubsumptionCommand extends AbstractHandler {
 			return result;
 		}
 		
-		CompositeCheck navigable = ReasoningResultFactory.eINSTANCE.createCompositeCheck();
+		Check navigable = ReasoningResultFactory.eINSTANCE.createCheck();
 		navigable.setName("Navigale");
 		result.getChildren().add(navigable);
 		navigable.setResult(rsuper.isNavigable() == rsub.isNavigable());
@@ -252,14 +250,14 @@ public class SubsumptionCommand extends AbstractHandler {
 			return result;
 		}
 		
-		CompositeCheck destination = compute(rsuper.getDestination(), rsub.getDestination());
+		Check destination = compute(rsuper.getDestination(), rsub.getDestination());
 		result.getChildren().add(destination);
 		if (!destination.isResult()){
 			result.setResult(false);
 			return result;
 		}
 		
-		CompositeCheck connection = compute(rsuper.getConnection(), rsub.getConnection());
+		Check connection = compute(rsuper.getConnection(), rsub.getConnection());
 		result.getChildren().add(connection);
 		if (!connection.isResult()){
 			result.setResult(false);
@@ -269,6 +267,4 @@ public class SubsumptionCommand extends AbstractHandler {
 		result.setResult(true);
 		return result;
 	}
-	
-	
 }
