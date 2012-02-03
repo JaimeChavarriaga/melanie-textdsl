@@ -19,8 +19,6 @@ import org.eclipse.jface.util.IPropertyChangeListener;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
-import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.CompositeCheck;
-import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultModel;
 
 /**
  * Use getInstance to get an instance of the reasoning service.
@@ -29,8 +27,6 @@ import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Rea
  *
  */
 public interface IReasoningService {
-	
-	public CompositeCheck createCompositeCheck(String name, Element source, Element target, String expression);
 	
 	/**
 	 * Adds a property change listener which listens to changes on reasoning
@@ -52,7 +48,7 @@ public interface IReasoningService {
 	 * 
 	 * @return a List with all executed reasonings
 	 */
-	public List<ReasoningResultModel> getReasoningHistory();
+	public List<EObject> getReasoningHistory();
 	
 	/**
 	 * 
@@ -66,7 +62,7 @@ public interface IReasoningService {
 	 * 
 	 * @return the last executed reasoning
 	 */
-	public ReasoningResultModel getLastResult();
+	public EObject getLastResult();
 	
 	/**
 	 * Returns a global instance of the reasoning service.
