@@ -818,7 +818,7 @@ BEGIN CUSTOM CREATE METHODS
 		<%if (!genClass.getName().equals("ReasoningResultModel")){%>
 			//Set the parent
 			if (parent != null)
-				parent.getCheck().add(<%=genClass.getSafeUncapName()%>);
+				parent.getChildren().add(<%=genClass.getSafeUncapName()%>);
 	    <%}%>	
 			return <%=genClass.getSafeUncapName()%>;
 		}

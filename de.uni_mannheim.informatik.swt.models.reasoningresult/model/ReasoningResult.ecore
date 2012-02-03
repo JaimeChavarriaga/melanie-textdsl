@@ -4,11 +4,11 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="ReasoningResult"
     nsURI="http://swt.informatik.uni-mannheim.de/ReasoningResult" nsPrefix="ReasoningResult">
   <eClassifiers xsi:type="ecore:EClass" name="ReasoningResultModel">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="check" upperBound="-1"
-        eType="#//Check" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//ReasoningArtefact" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Check" abstract="true">
+  <eClassifiers xsi:type="ecore:EClass" name="Check" abstract="true" eSuperTypes="#//ReasoningArtefact">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="result" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="expression" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -22,8 +22,6 @@
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CompositeCheck" eSuperTypes="#//Check">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="check" upperBound="-1"
-        eType="#//Check" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
         eType="ecore:EClass ../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="ecore:EClass ../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element"/>
@@ -167,5 +165,13 @@
         eType="ecore:EClass ../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Role"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
         eType="ecore:EClass ../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Role"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Information" eSuperTypes="#//ReasoningArtefact">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subject" eType="ecore:EClass ../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="message" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReasoningArtefact" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//ReasoningArtefact" containment="true"/>
   </eClassifiers>
 </ecore:EPackage>
