@@ -10,7 +10,10 @@
  *******************************************************************************/
 package de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -22,10 +25,20 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.dialogs.IInputValidator;
 import org.eclipse.jface.dialogs.InputDialog;
+import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.jface.window.Window;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.handlers.HandlerUtil;
 
+import de.uni_mannheim.informatik.swt.mlm.refactoring.service.dialogs.FeatureRenameDialog;
 import de.uni_mannheim.informatik.swt.mlm.workbench.ExtensionPointService;
 import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IReasoningService;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
@@ -55,33 +68,13 @@ public class RenameFeatureCommand extends AbstractHandler {
 		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
 		
 		Feature featureToChange = (Feature)event.getObjectParameterForExecution("feature");
-				
-		InputDialog newNameDialog = new InputDialog(window.getShell(),
-				"New Feature Name", "New Feature Name", featureToChange.getName(), 
-					new IInputValidator() {
-					
-						@Override
-						public String isValid(String newText) {
-							if (newText.contains(":") 
-									|| newText.contains(";") 
-									|| newText.contains(".")
-									|| newText.contains("\"")
-									|| newText.contains("'"))
-								return "Name is not allowed to contain {:;.\"'}"; 
-							
-							if (newText.length() == 0)
-								return "Cannot be empty";
-							
-							//Everything OK
-							return null;
-						}
-				}
-		);
+		
+		FeatureRenameDialog dialog = new FeatureRenameDialog(window.getShell(), featureToChange.getName());
 		
 		String newName = null;
 		
-		if (newNameDialog.open() == Window.OK)
-			newName = newNameDialog.getValue();
+		if (dialog.open() == Window.OK)
+			newName = dialog.getNewName();
 		else
 			return false;
 		
@@ -89,18 +82,38 @@ public class RenameFeatureCommand extends AbstractHandler {
 			return false;
 		
 		
-		return runRefactoring(featureToChange, newName);
+		return runRefactoring(featureToChange, newName, dialog.getRenameOntologicalTypes(), dialog.getRenameSubtypes(), dialog.getRenameSupertypes());
 	}
 	
-	private boolean runRefactoring(Feature featureToChange, String newName){
+	private boolean runRefactoring(Feature featureToChange, String newName, boolean renameOntologicalTypes, boolean renameSubtypes, boolean renameSuperTypes){
 		Clabject containingClabject = (Clabject)featureToChange.eContainer();
 		
-		List<Clabject> instances = containingClabject.getModelInstances();
+		//Kepp out duplicates for performance reasons
+		Set<Clabject> effectedClabjects = new HashSet<Clabject>();
+		effectedClabjects.add(containingClabject);
+		
+		//If we have rename subtypes all subtypes and all instances including those
+		//from the instances to get renamed
+		if (renameSubtypes){
+			effectedClabjects.addAll(containingClabject.getModelInstances());
+			effectedClabjects.addAll(containingClabject.getModelSubtypes());
+		}
+		else {
+			effectedClabjects.addAll(containingClabject.getEigenModelInstances());
+		}
+		
+		
+//		if (renameSubtypes)
+//			effectedClabjects.addAll(containingClabject.getModelSubtypes());
+//		if (renameSuperTypes)
+//			effectedClabjects.addAll(containingClabject.getModelSupertypes());
+//		if (renameOntologicalTypes)
+//			effectedClabjects.addAll(containingClabject.getModelTypes());
 		
 		CompoundCommand refactoringCommand = new CompoundCommand("Refactoring");
 		TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(featureToChange);
 		
-		for (Clabject instance: instances)
+		for (Clabject instance: effectedClabjects)
 			for (Feature feature : instance.getAllFeatures())
 				try {
 					if (ExtensionPointService.Instance().getActiveReasoningService().run(IReasoningService.FEATURE_CONFORMS, new Object[] {featureToChange, feature}, true)){
