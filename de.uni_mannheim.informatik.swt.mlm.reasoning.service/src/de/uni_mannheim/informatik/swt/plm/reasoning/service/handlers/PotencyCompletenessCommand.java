@@ -11,6 +11,7 @@
  *******************************************************************************/
 package de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.commands.AbstractHandler;
@@ -111,9 +112,36 @@ public class PotencyCompletenessCommand extends AbstractHandler {
 				Check isonymExists = ReasoningResultFactory.eINSTANCE.createCheck();
 				isonymExists.setName("Isonym Exists");
 				check.getChildren().add(isonymExists);
+				List<Clabject> isonyms = new ArrayList<Clabject>();
+				for (Clabject possible: clabjects) {
+					Check possibleCheck = new IsonymCommand().compute(c, possible);
+					isonymExists.getChildren().add(possibleCheck);
+					if (possibleCheck.isResult()) {
+						isonymExists.setResult(true);
+						isonyms.add(possible);
+					}
+				}
+				if (!isonymExists.isResult()) {
+					check.setResult(false);
+					ReasoningResultFactory.eINSTANCE.createInformation(c, "No isonym found", isonymExists);
+					return check;
+				}
 				Check allIsonymsPotencyComplete = ReasoningResultFactory.eINSTANCE.createCheck();
 				allIsonymsPotencyComplete.setName("All Isonyms Potency Complete");
+				allIsonymsPotencyComplete.setResult(true);
 				check.getChildren().add(allIsonymsPotencyComplete);
+				// We can assume that there is at least one isonym or we would have returned by now
+				Information isonymsInfo = ReasoningResultFactory.eINSTANCE.createInformation(c, "Isonyms", allIsonymsPotencyComplete);
+				for (Clabject isonym: isonyms) {
+					ReasoningResultFactory.eINSTANCE.createInformation(isonym, isonym.represent(), isonymsInfo);
+					//Recursive Call
+					Check isPotencyCompleteCheck = clabjectIsPotencyComplete(isonym);
+					allIsonymsPotencyComplete.getChildren().add(isPotencyCompleteCheck);
+					if (!isPotencyCompleteCheck.isResult()) {
+						allIsonymsPotencyComplete.setResult(false);
+						check.setResult(false);
+					}
+				}
 			}
 		}
 		return check;

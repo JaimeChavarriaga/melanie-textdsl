@@ -95,13 +95,14 @@ public class PropertyConformsCommand extends AbstractHandler {
 	private Check propertyConformsClabject(Clabject type, Clabject instance) {
 		//FIXME
 		Check result = ReasoningResultFactory.eINSTANCE.createCheck();//("PropertyConformance[Clabject]", instance, type, instance.represent()+".propertyConformsClabject("+type.represent()+")");
+		result.setName("Property Conformance[Clabject]");
 		Check neighbour = (new NeighbourhoodConformsCommand()).compute(type, instance);
 		result.getChildren().add(neighbour);
 		if (!neighbour.isResult()) {
 			return result;
 		}
 		Check allCCheck = ReasoningResultFactory.eINSTANCE.createCheck(instance, type, result);
-		allCCheck.setExpression("HÜLP"); //TODO: expression for check with roles
+//		allCCheck.setExpression("HÜLP"); //TODO: expression for check with roles
 		allCCheck.setName("Relationships");
 		allCCheck.setResult(true);
 		for (Role rT: type.getAllNavigationsAsDestination()) {
@@ -144,6 +145,7 @@ public class PropertyConformsCommand extends AbstractHandler {
 			Connection instance) {
 		//FIXME
 		Check result = ReasoningResultFactory.eINSTANCE.createCheck();//("PropertyConformance[Connection]", instance, type, instance.represent()+".propertyConformsConnection("+type.represent()+")");
+		result.setName("Property Conformance[Connection]");
 		Check clabCheck = propertyConformsClabject(type, instance);
 		result.getChildren().add(clabCheck);
 		if (!clabCheck.isResult()) {

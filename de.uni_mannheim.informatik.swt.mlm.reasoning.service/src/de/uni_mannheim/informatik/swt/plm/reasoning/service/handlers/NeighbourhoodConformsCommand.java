@@ -78,6 +78,7 @@ public class NeighbourhoodConformsCommand extends AbstractHandler {
 			Clabject instance) {
 		//FIXME
 		Check result = ReasoningResultFactory.eINSTANCE.createCheck();//("NeighbourhoodConformance[Clabject]", instance, type, instance.getName()+".neighbourhoodConformsClabject("+type.getName() + ")");
+		result.setName("Neighbourhood[Clabject]");
 		Check localC = (new LocalConformsCommand()).compute(type, instance);
 		result.getChildren().add(localC);
 		if (!localC.isResult()) {
@@ -106,6 +107,7 @@ public class NeighbourhoodConformsCommand extends AbstractHandler {
 			Connection instance) {
 		//FIXME
 		Check result = ReasoningResultFactory.eINSTANCE.createCheck();//("NeighbourhoodConformance[Connection]", instance, type, instance.getName()+".neighbourhoodConformsConnection("+type.getName() + ")");
+		result.setName("Neighbourhood[Connection]");
 		Check clabCheck = neighbourhoodConformsClabject(type, instance);
 		result.getChildren().add(clabCheck);
 		if (!clabCheck.isResult()) {
