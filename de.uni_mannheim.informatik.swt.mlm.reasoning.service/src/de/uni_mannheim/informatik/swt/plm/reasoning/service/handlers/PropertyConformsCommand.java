@@ -102,13 +102,13 @@ public class PropertyConformsCommand extends AbstractHandler {
 			return result;
 		}
 		Check allCCheck = ReasoningResultFactory.eINSTANCE.createCheck(instance, type, result);
-//		allCCheck.setExpression("HÜLP"); //TODO: expression for check with roles
+		//TODO: expression for check with roles
 		allCCheck.setName("Relationships");
 		allCCheck.setResult(true);
 		for (Role rT: type.getAllNavigationsAsDestination()) {
 			Check roleCheck = ReasoningResultFactory.eINSTANCE.createCheck();
 			roleCheck.setName(rT.represent());
-			roleCheck.setExpression("TODO");//TODO: expression
+			//TODO: expression
 			roleCheck.setResult(true);
 			if (rT.getLower() > 0) {
 				boolean found = false;
@@ -116,7 +116,7 @@ public class PropertyConformsCommand extends AbstractHandler {
 					if (rI.conforms(rT)) {
 						Check actualCheck = ReasoningResultFactory.eINSTANCE.createCheck();
 						actualCheck.setName(rI.represent());
-						actualCheck.setExpression("TODO");//TODO: expression
+						//TODO: expression
 						Check connectionCheck = compute(rT.getConnection(), rI.getConnection());
 						if (connectionCheck.isResult()) {
 							found = true;
@@ -131,7 +131,6 @@ public class PropertyConformsCommand extends AbstractHandler {
 				}
 			}
 		}
-
 		Check isExprCheck = (new IsExpressedInstanceOfExcludedCommand()).compute(type, instance); 
 		result.getChildren().add(isExprCheck);
 		if (!isExprCheck.isResult()) {

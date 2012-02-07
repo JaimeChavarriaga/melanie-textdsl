@@ -62,6 +62,7 @@ public class IsExpressedInstanceOfExcludedCommand extends AbstractHandler {
 	private Check isExpressedInstanceOfExcluded(Clabject type,
 			final Clabject instance) {
 		Check result = ReasoningResultFactory.eINSTANCE.createCheck(instance, type, null);
+		result.setName("ExpressedClassification");
 		Set<Classification> classifications = new HashSet<Classification>(instance.getModel().getAllClassifications());
 		classifications = (Set<Classification>) ReasoningServiceUtil.filter(classifications, new Predicate<Classification>() {
 			public boolean apply(Classification inst) {

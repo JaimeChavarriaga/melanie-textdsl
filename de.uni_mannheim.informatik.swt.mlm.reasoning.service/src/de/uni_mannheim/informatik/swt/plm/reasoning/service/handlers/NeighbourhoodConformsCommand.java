@@ -59,18 +59,15 @@ public class NeighbourhoodConformsCommand extends AbstractHandler {
 	
 	private Check neighbourhoodConforms(Clabject type,
 			Clabject instance) {
-//		CompositeCheck result = reasoner.createCompositeCheck("NeighbourhoodConformance[Delegation]", instance, type, instance.getName()+".neighbourhoodConforms("+type.getName() + ")");
 		Check child = null;
 		if (type instanceof Connection && instance instanceof Connection) {
 			child = neighbourhoodConformsConnection((Connection) type, (Connection) instance);
 		} else if (type instanceof Entity && instance instanceof Entity) {
 			child = neighbourhoodConformsClabject(type, instance);
 		} else {
-			System.out.println("mismatching types");
+			child = ReasoningResultFactory.eINSTANCE.createCheck();
+			child.setName("MissMatching Types");
 		}
-//		result.getCheck().add(child);
-//		result.setResult(child.isResult());
-//		return result;
 		return child;
 	}
 

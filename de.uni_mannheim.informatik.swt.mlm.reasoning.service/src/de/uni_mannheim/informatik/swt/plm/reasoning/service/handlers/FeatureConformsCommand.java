@@ -53,23 +53,17 @@ public class FeatureConformsCommand extends AbstractHandler {
 	}
 	
 	private Check featureConforms(Feature type, Feature instance) {
-		Check result = ReasoningResultFactory.eINSTANCE.createCheck();
-		result.setSource(instance);
-		result.setTarget(type);
-		result.setName("FeatureConformance[Delegation]");
-		result.setExpression(instance.getName()+".conforms(" + type.getName() + ")");
 		Check child = null;
 		if (type instanceof Method && instance instanceof Method) {
 			child =  methodConforms((Method) type, (Method) instance);
 		} else if (type instanceof Attribute && instance instanceof Attribute) {
 			child = attributeConforms((Attribute) type, (Attribute) instance);
 		} else {
-			System.out.println("Mismatching Linguistic types");
-			return result;
+			child = ReasoningResultFactory.eINSTANCE.createCheck();
+			child.setName("MissMatching Types");
+			ReasoningResultFactory.eINSTANCE.createInformation(type, "types " + type.eClass().getName() + " <> " + instance.eClass().getName(), child);
 		}
-		result.getChildren().add(child);
-		result.setResult(child.isResult());
-		return result;
+		return child;
 	}
 	
 	private Check attributeConforms(Attribute type, Attribute instance) {
@@ -84,6 +78,7 @@ public class FeatureConformsCommand extends AbstractHandler {
 		result.setResult(true);
 		Check nameC = ReasoningResultFactory.eINSTANCE.createCheck();
 		nameC.setExpression(instance.getName() + " == " + type.getName());
+		nameC.setName("Name");
 		result.getChildren().add(nameC);
 		if (!type.getName().equals(instance.getName())) {
 			result.setResult(false);
@@ -94,6 +89,7 @@ public class FeatureConformsCommand extends AbstractHandler {
 		Check datatypeC = ReasoningResultFactory.eINSTANCE.createCheck();
 		datatypeC.setExpression(instance.getDatatype() + " == " + type.getDatatype());
 		result.getChildren().add(datatypeC);
+		datatypeC.setName("Datatype");
 		Object typeDatatype, instanceDatatype;
 		typeDatatype = type.getDatatype();
 		instanceDatatype = instance.getDatatype();
@@ -114,6 +110,7 @@ public class FeatureConformsCommand extends AbstractHandler {
 //		durabC.setInstanceDurability(instance.getDurability());
 //		durabC.setTypeDurability(type.getDurability());
 		result.getChildren().add(durabC);
+		durabC.setName("Durability");
 		if (type.getDurability()> -1 && !(instance.getDurability()+1 == type.getDurability())) {
 			result.setResult(false);
 		} else {
@@ -125,6 +122,7 @@ public class FeatureConformsCommand extends AbstractHandler {
 //		mutabC.setInstanceMutability(instance.getMutability());
 //		mutabC.setTypeMutability(type.getMutability());
 		result.getChildren().add(mutabC);
+		mutabC.setName("Mutability");
 		if (type.getMutability()> -1 && !((instance.getMutability()+1 == type.getMutability()) || (type.getMutability() == 0 && instance.getMutability() == 0))) {
 			result.setResult(false);
 		} else {
@@ -133,7 +131,8 @@ public class FeatureConformsCommand extends AbstractHandler {
 		if (type.getMutability() == 0) {
 			Check valueC = ReasoningResultFactory.eINSTANCE.createCheck();
 			valueC.setExpression(type.getName() + ".value == " + instance.getName() + ".value");
-			result.getChildren().add(valueC);
+			mutabC.getChildren().add(valueC);
+			valueC.setName("Value");
 			Object typeValue, instanceValue;
 			typeValue = type.getValue();
 			instanceValue = instance.getValue();
@@ -159,12 +158,13 @@ public class FeatureConformsCommand extends AbstractHandler {
 		if (type.getName() == null) {
 			throw new RuntimeException("Malformed type method " + type);
 		} 
-		//FIXME
-		Check result = ReasoningResultFactory.eINSTANCE.createCheck();//"Conformance[Method]", instance, type);
+		Check result = ReasoningResultFactory.eINSTANCE.createCheck();
 		result.setResult(true);
+		result.setName("MethodConformance");
 		Check nameC = ReasoningResultFactory.eINSTANCE.createCheck();
 		nameC.setExpression(instance.getName() + " == " + type.getName());
 		result.getChildren().add(nameC);
+		nameC.setName("Name");
 		if (!type.getName().equals(instance.getName())) {
 			result.setResult(false);
 		} else {
@@ -173,6 +173,7 @@ public class FeatureConformsCommand extends AbstractHandler {
 		Check durabC = ReasoningResultFactory.eINSTANCE.createCheck();
 		durabC.setExpression(type.getName()+".durability == * or " + instance.getName() + ".durability + 1 == " + type.getName() + ".durability");
 		result.getChildren().add(durabC);
+		durabC.setName("Durability");
 		if (type.getDurability()> -1 && !(instance.getDurability()+1 == type.getDurability())) {
 			result.setResult(false);
 		} else {

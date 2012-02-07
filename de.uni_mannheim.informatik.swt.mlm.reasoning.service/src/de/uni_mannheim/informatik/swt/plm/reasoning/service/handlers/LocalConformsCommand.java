@@ -124,6 +124,7 @@ public class LocalConformsCommand extends AbstractHandler {
 		result.setExpression(instance.getName() + ".localConformsClabject(" + type.getName() + ")");
 		Check levelC = ReasoningResultFactory.eINSTANCE.createCheck();
 		result.getChildren().add(levelC);
+		levelC.setName("Level");
 //		FIXME
 //		levelC.setTargetLevel(type.getLevel());
 //		levelC.setInstanceLevel(instance.getLevel());
@@ -135,7 +136,7 @@ public class LocalConformsCommand extends AbstractHandler {
 		Check featureC = ReasoningResultFactory.eINSTANCE.createCheck();
 		featureC.setSource(instance);
 		featureC.setTarget(type);
-		featureC.setName("AllTypeFeatures");
+		featureC.setName("Features");
 		featureC.setExpression("forall pi_t in " + type.getName() + ".getAllFeatures(): pi.durability > 0: exists pi_i in " + instance.getName()+".getAllFeatures() : pi_i.conforms(pi_t)");
 		result.getChildren().add(featureC);
 		for (Feature current: type.getAllFeatures()) {
@@ -148,7 +149,7 @@ public class LocalConformsCommand extends AbstractHandler {
 				featSearchC.setTarget(type);
 				//FIXME
 				//featSearchC.setTypeFeature(current);
-				featSearchC.setName("SearchTypeFeature " + current.getName());
+				featSearchC.setName(current.represent());
 				featSearchC.setExpression("exists pi_i in " + instance.getName()+".getAllFeatures() : pi_i.conforms("+type.getName() + "." + current.getName()+")");
 				featureC.getChildren().add(featSearchC);
 				for (Feature possible : instance.getAllFeatures()) {

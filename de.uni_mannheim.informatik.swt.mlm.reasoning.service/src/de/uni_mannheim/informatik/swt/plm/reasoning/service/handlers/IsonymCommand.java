@@ -62,7 +62,7 @@ public class IsonymCommand extends AbstractHandler {
 		}
 		Check additionalFeatures = (new HasAdditionalPropertiesCommand()).compute(type, instance);
 		additionalFeatures.setPassedIconResult(false);
-		additionalFeatures.setName("does NOT have additional properties");
+		additionalFeatures.setName("_no_ additional properties");
 		check.getChildren().add(additionalFeatures);
 		if (additionalFeatures.isResult()) {
 			result = false;
@@ -72,6 +72,7 @@ public class IsonymCommand extends AbstractHandler {
 		//potencyCheck.setInstancePotency(instance.getPotency());
 		//potencyCheck.setTargetPotency(type.getPotency());
 		potencyCheck.setResult(true);
+		potencyCheck.setName("Potency Conformance");
 		if (type.getPotency() != -1) {
 			if (instance.getPotency() == -1) {
 				result = false;

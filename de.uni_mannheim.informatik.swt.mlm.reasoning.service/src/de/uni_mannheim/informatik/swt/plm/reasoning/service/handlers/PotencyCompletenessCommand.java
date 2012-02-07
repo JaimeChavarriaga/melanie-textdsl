@@ -65,7 +65,7 @@ public class PotencyCompletenessCommand extends AbstractHandler {
 		check.setName("Potency Completeness");
 		check.setExpression(c.getName() + ".isPotencyComplete()");
 		check.setResult(true);
-		ReasoningResultFactory.eINSTANCE.createInformation(c, "potency " + c.getPotencyString(), check);
+		ReasoningResultFactory.eINSTANCE.createInformation(c, "potency " + c.getPotencyAsString(), check);
 		if (c.getPotency() < 0) {//* potency
 			return check;
 		} else { 
