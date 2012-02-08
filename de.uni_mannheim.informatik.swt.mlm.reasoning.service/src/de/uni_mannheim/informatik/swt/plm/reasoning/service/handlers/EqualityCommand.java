@@ -36,6 +36,10 @@ public class EqualityCommand extends AbstractHandler {
 
 	public Check compute(Feature fsuper, Feature fsub) {
 		Check result = ReasoningResultFactory.eINSTANCE.createCheck();
+		if (fsuper == null || fsub == null) {
+			System.out.println("Call to equality command with bogous input: " + fsuper + " " + fsub);
+			return result;
+		}
 		result.setName("Feature Equality");
 		if (!fsuper.getName().equals(fsub.getName())) {
 			Check nameCheck = ReasoningResultFactory.eINSTANCE.createCheck();
@@ -51,21 +55,24 @@ public class EqualityCommand extends AbstractHandler {
 		}
 		if (fsuper instanceof Attribute) {
 			if (fsub instanceof Attribute) {
-				if (((Attribute) fsuper).getMutability() != ((Attribute) fsub).getMutability()) {
+				Attribute asuper = (Attribute) fsuper;
+				Attribute asub = (Attribute) fsub;
+				if (asuper.getMutability() != asub.getMutability()) {
 					Check tempCheck = ReasoningResultFactory.eINSTANCE.createCheck();
-					tempCheck.setName("Durability");
+					tempCheck.setName("Mutability");
 					result.getChildren().add(tempCheck);
 					return result;
 				}
-				if (!((Attribute) fsuper).getDatatype().equals(((Attribute) fsub).getDatatype())) {
+				if (asuper.getDatatype() == null || asub.getDatatype() == null) {
+					if (asuper.getDatatype() == null && asub.getDatatype() == null) {
+						ReasoningResultFactory.eINSTANCE.createInformation(fsuper, "Both of the datatypes are not set", result);
+					} else {
+						ReasoningResultFactory.eINSTANCE.createInformation(fsuper, "Either one of the datatypes is not set, but not both", result);
+						return result;
+					}
+				} else if (!asuper.getDatatype().equals(asub.getDatatype())) {
 					Check tempCheck = ReasoningResultFactory.eINSTANCE.createCheck();
 					tempCheck.setName("Durability");
-					result.getChildren().add(tempCheck);
-					return result;
-				}
-				if (((Attribute) fsuper).getMutability() == 0 && !((Attribute) fsuper).getValue().equals(((Attribute) fsub).getValue())) {
-					Check tempCheck = ReasoningResultFactory.eINSTANCE.createCheck();
-					tempCheck.setName("Value");
 					result.getChildren().add(tempCheck);
 					return result;
 				}

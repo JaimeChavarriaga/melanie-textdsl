@@ -22,6 +22,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Check;
+import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Information;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultFactory;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.ReasoningService;
@@ -43,7 +44,6 @@ public class OntologyConsistencyCommand extends AbstractHandler {
 		Element element = (Element)event.getObjectParameterForExecution("ontology");
 		Check check = compute(element);
 		resultModel.getChildren().add(check);
-
 		Boolean silent = event.getParameters().get("silent") == null?
 				false: Boolean.parseBoolean(event.getParameters().get("silent").toString());
 		if (!silent)
@@ -55,17 +55,19 @@ public class OntologyConsistencyCommand extends AbstractHandler {
 	protected Check compute(Element el) {
 		if (!(el instanceof Ontology))
 			throw new IllegalArgumentException();
-		
 		return ontologyIsConsistent((Ontology) el);
 	}
 
-	private Check ontologyIsConsistent(Ontology el) {
-		Check check = ReasoningResultFactory.eINSTANCE.createCheck(el, el, null);
+	private Check ontologyIsConsistent(Ontology ontology) {
+		Check check = ReasoningResultFactory.eINSTANCE.createCheck();
+		check.setName("Ontology Consistency");
 		check.setResult(true);
-		List<Model> models = el.getContent(); 
-		
+		List<Model> models = ontology.getContent(); 
+		Information modelInformation = ReasoningResultFactory.eINSTANCE.createInformation(ontology,"Models",check);
+		for (Model model: models)
+			ReasoningResultFactory.eINSTANCE.createInformation(ontology,model.getName(),modelInformation);
 		int rootLevel = models.get(0).getLevel();
-		for (Model m:el.getContent()) {
+		for (Model m:ontology.getContent()) {
 			if (m.getLevel() != rootLevel) {
 				Check modelCheck = (new ModelConsistentClassificationCommand()).compute(m);
 				check.getChildren().add(modelCheck);

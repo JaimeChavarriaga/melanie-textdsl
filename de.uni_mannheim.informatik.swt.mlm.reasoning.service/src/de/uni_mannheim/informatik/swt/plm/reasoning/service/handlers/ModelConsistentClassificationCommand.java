@@ -20,6 +20,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Classification;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Generalization;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Check;
+import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Information;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultFactory;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.ReasoningService;
@@ -58,7 +59,7 @@ public class ModelConsistentClassificationCommand extends AbstractHandler {
 		Model classifyingModel = model.getClassifyingModel();
 		Check check = ReasoningResultFactory.eINSTANCE.createCheck(model, classifyingModel, null);
 		check.setResult(true);
-		check.setName("ConsistentClassification");
+		check.setName("Consistent Classification");
 		if (classifyingModel == null) {
 			//There is no classifying model, so model is the rootmodel or there has been an error. 
 			//Either way the result is false
@@ -69,19 +70,16 @@ public class ModelConsistentClassificationCommand extends AbstractHandler {
 		Check classificationCheck = ReasoningResultFactory.eINSTANCE.createCheck(model, classifyingModel, check);
 		classificationCheck.setName("Classificiations");
 		classificationCheck.setResult(true);
+		Information computedInformation = ReasoningResultFactory.eINSTANCE.createInformation(model, "Computed Classifications", classificationCheck);
 		for (Classification inst: model.getAllClassifications()) {
-			Check aClassificationCheck = ReasoningResultFactory.eINSTANCE.createCheck(model, classifyingModel, classificationCheck);
-			aClassificationCheck.setResult(true);
-			aClassificationCheck.setName(inst.represent());
-			aClassificationCheck.setExpression(inst.represent()+ ".isConsistent()");
 			if (!inst.isExpressed()) {
-				aClassificationCheck.setExpression(inst.getName() + " is not expressed.");
+				ReasoningResultFactory.eINSTANCE.createInformation(inst, inst.represent(), computedInformation);
 				continue;
 			}
 			Check actualCheck = (new ClassificationConsistencyCommand()).compute(inst);
-			aClassificationCheck.getChildren().add(actualCheck);
-			aClassificationCheck.setResult(actualCheck.isResult());
-			if (!aClassificationCheck.isResult()) {
+			classificationCheck.getChildren().add(actualCheck);
+			classificationCheck.setResult(actualCheck.isResult());
+			if (!classificationCheck.isResult()) {
 				classificationCheck.setResult(false);
 				check.setResult(false);
 				return check;

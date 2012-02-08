@@ -193,6 +193,10 @@ public class SubsumptionCommand extends AbstractHandler {
 		for (Feature fsuper: supertype.getAllFeatures()) {
 			if (fsuper.getDurability() > 0) {
 				Feature fsub = subtype.getFeatureForName(fsuper.getName());
+				if (fsub == null) {
+					ReasoningResultFactory.eINSTANCE.createInformation(fsuper, subtype.represent() + " does not have a feature " + fsuper.getName(),featuresCheck);
+					return result;
+				}
 				Check featureCheck = (new EqualityCommand()).compute(fsuper, fsub);
 				featureCheck.setName(fsuper.getName());
 				featuresCheck.getChildren().add(featureCheck);
