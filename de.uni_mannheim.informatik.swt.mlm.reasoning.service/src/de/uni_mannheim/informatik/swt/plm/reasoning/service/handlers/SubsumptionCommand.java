@@ -11,6 +11,7 @@
  *******************************************************************************/
 package de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -27,6 +28,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Role;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Check;
+import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Information;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultFactory;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.ReasoningService;
@@ -72,11 +74,29 @@ public class SubsumptionCommand extends AbstractHandler {
 	private Check compute(Model model) {
 		List<Clabject> clabjects = model.getAllClabjects();
 		Check result = ReasoningResultFactory.eINSTANCE.createCheck();
-		result.setName("Model Subsumption");
+		result.setName("Subsumption");
+		Information processedInfo = ReasoningResultFactory.eINSTANCE.createInformation(model, "Processed Clabjects: " + clabjects.size(), result);
+		for (Clabject c: clabjects)
+			ReasoningResultFactory.eINSTANCE.createInformation(model, c.represent(), processedInfo);
+		Information performedChecks = ReasoningResultFactory.eINSTANCE.createInformation(model, "", result);
+		Information foundPairs = ReasoningResultFactory.eINSTANCE.createInformation(model, "Found pairs", result);
+		Check currentPair;
+		List<Pair<Clabject,Clabject>> pairs = new ArrayList<Pair<Clabject,Clabject>>();
+		int count = 0;
 		for (Clabject one: clabjects) {
 			for (Clabject other : clabjects) {
-				result.getChildren().add(compute(one, other));
+				 currentPair = compute(one, other);
+				 count++;
+				 performedChecks.getChildren().add(currentPair);
+				 if (currentPair.isResult()) {
+					 Pair<Clabject,Clabject> pair = new Pair<Clabject,Clabject>(one, other);
+					 pairs.add(pair);
+				 }
 			}
+		}
+		performedChecks.setMessage("Performed Checks: " + count);
+		for (Pair<Clabject,Clabject> pair: pairs) {
+			ReasoningResultFactory.eINSTANCE.createInformation(model, pair.getFirst().represent() + "<-" + pair.getSecond().represent(), foundPairs);
 		}
 		result.setResult(true);
 		return result;
