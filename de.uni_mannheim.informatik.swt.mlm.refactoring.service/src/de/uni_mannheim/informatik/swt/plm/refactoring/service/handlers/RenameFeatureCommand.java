@@ -72,31 +72,49 @@ public class RenameFeatureCommand extends FeatureBaseCommand {
 		Clabject containingClabject = (Clabject)featureToChange.eContainer();
 		
 		//Kepp out duplicates for performance reasons
-		Set<Clabject> effectedClabjects = new HashSet<Clabject>();
-		effectedClabjects.add(containingClabject);
+		Set<Clabject> currentLevelEffectedClabjects = new HashSet<Clabject>();
+		currentLevelEffectedClabjects.add(containingClabject);
+		Set<Clabject> typeLevelEffectedClabjects = new HashSet<Clabject>();
+		Set<Clabject> instanceLevelEffectedClabjects = new HashSet<Clabject>();
 		
-		//If we have rename subtypes all subtypes and all instances including those
-		//from the instances to get renamed
+		
+		//***************************************************************
+		//Collect current level
+		//***************************************************************
 		if (renameSubtypes){
-			effectedClabjects.addAll(containingClabject.getModelInstances());
-			effectedClabjects.addAll(containingClabject.getModelSubtypes());
+			currentLevelEffectedClabjects.addAll(containingClabject.getModelSubtypes());
 		}
-		else {
-			effectedClabjects.addAll(containingClabject.getEigenModelInstances());
+		if (renameSuperTypes){
+			currentLevelEffectedClabjects.addAll(containingClabject.getModelSupertypes());
 		}
 		
+		//***************************************************************
+		//Collect all type levels
+		//***************************************************************
+		if (renameOntologicalTypes){
+			for(Clabject c:currentLevelEffectedClabjects)
+				typeLevelEffectedClabjects.addAll(c.getEigenModelClassificationTreeAsInstance());
+		}
+		//***************************************************************
+		//Collect instance level
+		//***************************************************************
+		if (true){
+			for(Clabject c:currentLevelEffectedClabjects)
+				typeLevelEffectedClabjects.addAll(c.getEigenModelClassificationTreeAsType());
+		}
 		
-//		if (renameSubtypes)
-//			effectedClabjects.addAll(containingClabject.getModelSubtypes());
-//		if (renameSuperTypes)
-//			effectedClabjects.addAll(containingClabject.getModelSupertypes());
-//		if (renameOntologicalTypes)
-//			effectedClabjects.addAll(containingClabject.getModelTypes());
+		Set<Clabject> allEffectedClabjects = new HashSet<Clabject>();
+		allEffectedClabjects.addAll(instanceLevelEffectedClabjects);
+		allEffectedClabjects.addAll(typeLevelEffectedClabjects);
+		allEffectedClabjects.addAll(currentLevelEffectedClabjects);
 		
-		CompoundCommand refactoringCommand = new CompoundCommand("Refactoring");
+		//***************************************************************
+		//Execute rename operation
+		//***************************************************************
+		CompoundCommand refactoringCommand = new CompoundCommand("Refactoring - Rename");
 		TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(featureToChange);
 		
-		for (Clabject instance: effectedClabjects)
+		for (Clabject instance: allEffectedClabjects)
 			for (Feature feature : instance.getAllFeatures())
 				if (featuresMatch(featureToChange, feature))
 					refactoringCommand.append(SetCommand.create(domain, feature, PLMPackage.eINSTANCE.getElement_Name(), newName));
@@ -104,7 +122,7 @@ public class RenameFeatureCommand extends FeatureBaseCommand {
 		
 		refactoringCommand.append(SetCommand.create(domain, featureToChange, PLMPackage.eINSTANCE.getElement_Name(), newName));
 		domain.getCommandStack().execute(refactoringCommand);
-		featuresMatch(null, null);
+		
 		return false;
 	}
 }
