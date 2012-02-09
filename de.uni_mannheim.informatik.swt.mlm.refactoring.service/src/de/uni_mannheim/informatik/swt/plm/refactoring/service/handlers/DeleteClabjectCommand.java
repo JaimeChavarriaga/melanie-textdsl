@@ -12,7 +12,6 @@ package de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers;
 
 import java.util.List;
 
-import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.CoreException;
@@ -31,8 +30,6 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.dialogs.ListDialog;
 import org.eclipse.ui.handlers.HandlerUtil;
 
-import de.uni_mannheim.informatik.swt.mlm.workbench.ExtensionPointService;
-import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IReasoningService;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Classification;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
@@ -44,7 +41,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage;
  * @see org.eclipse.core.commands.IHandler
  * @see org.eclipse.core.commands.AbstractHandler
  */
-public class DeleteClabjectCommand extends AbstractHandler {
+public class DeleteClabjectCommand extends FeatureBaseCommand {
 
 	public final static String ID = "de.uni_mannheim.informatik.swt.plm.refactoring.service.commands.deleteclabjectcommand";
 	
@@ -154,13 +151,8 @@ public class DeleteClabjectCommand extends AbstractHandler {
 		for (Clabject i : instances)
 			for(Feature instanceFeature : i.getFeature())
 				for (Feature typeFeature : clabjectToBeDeleted.getFeature())
-					try {
-						if (ExtensionPointService.Instance().getActiveReasoningService().run(IReasoningService.FEATURE_CONFORMS, new Object[] {typeFeature, instanceFeature}, true))
+						if (featuresMatch(instanceFeature, typeFeature))
 							refactoringCommand.append(RemoveCommand.create(domain, instanceFeature));
-					} catch (CoreException e) {
-						e.printStackTrace();
-						return false;
-					}
 		
 		//The classifications must be moved to the supertype
 		List<Classification> classificationsToBeChanged =  clabjectToBeDeleted.getModelClassificationsAsType();

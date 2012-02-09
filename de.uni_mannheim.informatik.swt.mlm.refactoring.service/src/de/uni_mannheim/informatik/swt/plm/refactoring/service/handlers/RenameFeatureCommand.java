@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 University of Mannheim: Chair for Software Engineering
+ * Copyright (c) 2011, 2012 University of Mannheim: Chair for Software Engineering
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,37 +10,20 @@
  *******************************************************************************/
 package de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
-import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
-import org.eclipse.jface.dialogs.IInputValidator;
-import org.eclipse.jface.dialogs.InputDialog;
-import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.jface.window.Window;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 import de.uni_mannheim.informatik.swt.mlm.refactoring.service.dialogs.FeatureRenameDialog;
-import de.uni_mannheim.informatik.swt.mlm.workbench.ExtensionPointService;
-import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IReasoningService;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage;
@@ -50,7 +33,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage;
  * @see org.eclipse.core.commands.IHandler
  * @see org.eclipse.core.commands.AbstractHandler
  */
-public class RenameFeatureCommand extends AbstractHandler {
+public class RenameFeatureCommand extends FeatureBaseCommand {
 	
 	public final static String ID = "de.uni_mannheim.informatik.swt.plm.refactoring.service.commands.renamefeaturecommand";
 	
@@ -115,18 +98,13 @@ public class RenameFeatureCommand extends AbstractHandler {
 		
 		for (Clabject instance: effectedClabjects)
 			for (Feature feature : instance.getAllFeatures())
-				try {
-					if (ExtensionPointService.Instance().getActiveReasoningService().run(IReasoningService.FEATURE_CONFORMS, new Object[] {featureToChange, feature}, true)){
-						refactoringCommand.append(SetCommand.create(domain, feature, PLMPackage.eINSTANCE.getElement_Name(), newName));
-					}
-						
-				} catch (CoreException e) {
-					e.printStackTrace();
-				}
+				if (featuresMatch(featureToChange, feature))
+					refactoringCommand.append(SetCommand.create(domain, feature, PLMPackage.eINSTANCE.getElement_Name(), newName));
+					
 		
 		refactoringCommand.append(SetCommand.create(domain, featureToChange, PLMPackage.eINSTANCE.getElement_Name(), newName));
 		domain.getCommandStack().execute(refactoringCommand);
-		
+		featuresMatch(null, null);
 		return false;
 	}
 }

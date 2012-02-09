@@ -12,7 +12,6 @@ package de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers;
 
 import java.util.List;
 
-import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.CoreException;
@@ -21,8 +20,6 @@ import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 
-import de.uni_mannheim.informatik.swt.mlm.workbench.ExtensionPointService;
-import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IReasoningService;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 
@@ -31,7 +28,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
  * @see org.eclipse.core.commands.IHandler
  * @see org.eclipse.core.commands.AbstractHandler
  */
-public class DeleteFeatureCommand extends AbstractHandler {
+public class DeleteFeatureCommand extends FeatureBaseCommand {
 	
 	public final static String ID = "de.uni_mannheim.informatik.swt.plm.refactoring.service.commands.deletefeaturecommand";
 	
@@ -57,14 +54,8 @@ public class DeleteFeatureCommand extends AbstractHandler {
 		
 		for (Clabject instance: instances)
 			for (Feature feature : instance.getFeature())
-				try {
-					if (ExtensionPointService.Instance().getActiveReasoningService().run(IReasoningService.FEATURE_CONFORMS, new Object[] {featureToChange, feature}, true)){
-						refactoringCommand.append(RemoveCommand.create(domain, feature));
-					}
-						
-				} catch (CoreException e) {
-					e.printStackTrace();
-				}
+				if (featuresMatch(featureToChange, feature))
+					refactoringCommand.append(RemoveCommand.create(domain, feature));
 		
 		refactoringCommand.append(RemoveCommand.create(domain, featureToChange));
 		domain.getCommandStack().execute(refactoringCommand);
