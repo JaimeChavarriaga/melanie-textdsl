@@ -41,7 +41,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage;
  * @see org.eclipse.core.commands.IHandler
  * @see org.eclipse.core.commands.AbstractHandler
  */
-public class DeleteClabjectCommand extends FeatureBaseCommand {
+public class DeleteClabjectCommand extends ChangeFeatureTraitBaseCommand {
 
 	public final static String ID = "de.uni_mannheim.informatik.swt.plm.refactoring.service.commands.deleteclabjectcommand";
 	

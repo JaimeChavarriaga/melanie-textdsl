@@ -22,14 +22,14 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage;
  * @see org.eclipse.core.commands.IHandler
  * @see org.eclipse.core.commands.AbstractHandler
  */
-public class RenameFeatureCommand extends ChangeFeatureTraitBaseCommand {
+public class ChangeFeatureDurabilityCommand extends ChangeFeatureTraitBaseCommand {
 	
 	public final static String ID = "de.uni_mannheim.informatik.swt.plm.refactoring.service.commands.renamefeaturecommand";
 	
 	/**
 	 * The constructor.
 	 */
-	public RenameFeatureCommand() {
+	public ChangeFeatureDurabilityCommand() {
 	}
 
 	/**
@@ -43,7 +43,7 @@ public class RenameFeatureCommand extends ChangeFeatureTraitBaseCommand {
 		ChangeValueDialog dialog = showChangeValueDialog(featureToChange.getName(), event);
 		
 		if (dialog != null)
-			return runRefactoring(featureToChange, PLMPackage.eINSTANCE.getElement_Name(), dialog.getNewValue(), dialog.getChangeOntologicalTypes(), dialog.getChangeSubtypes(), dialog.getChangeSupertypes());
+			return runRefactoring(featureToChange, PLMPackage.eINSTANCE.getFeature_Durability(), dialog.getNewValue(), dialog.getChangeOntologicalTypes(), dialog.getChangeSubtypes(), dialog.getChangeSupertypes());
 		else
 			return false;
 	}

@@ -25,7 +25,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
  * @see org.eclipse.core.commands.IHandler
  * @see org.eclipse.core.commands.AbstractHandler
  */
-public class AddFeatureToClabjectCommand extends FeatureBaseCommand {
+public class AddFeatureToClabjectCommand extends ChangeFeatureTraitBaseCommand {
 
 	public final static String ID = "de.uni_mannheim.informatik.swt.plm.refactoring.service.commands.addfearuretoclabjectcommand";
 	

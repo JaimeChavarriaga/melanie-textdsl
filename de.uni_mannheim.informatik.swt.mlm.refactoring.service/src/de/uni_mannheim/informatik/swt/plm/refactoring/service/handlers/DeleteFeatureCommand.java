@@ -28,7 +28,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
  * @see org.eclipse.core.commands.IHandler
  * @see org.eclipse.core.commands.AbstractHandler
  */
-public class DeleteFeatureCommand extends FeatureBaseCommand {
+public class DeleteFeatureCommand extends ChangeFeatureTraitBaseCommand {
 	
 	public final static String ID = "de.uni_mannheim.informatik.swt.plm.refactoring.service.commands.deletefeaturecommand";
 	

@@ -21,41 +21,41 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
-public class FeatureRenameDialog extends TitleAreaDialog {
+public class ChangeValueDialog extends TitleAreaDialog {
 
-	public FeatureRenameDialog(Shell parentShell, String oldName) {
+	public ChangeValueDialog(Shell parentShell, String oldName) {
 		super(parentShell);
-		newName = oldName;
+		newValue = oldName;
 	}
 	
-	Button renameOntologicalTypesButton;
-	Button renameSupertypesButton;
-	Button renameSubtypesButton;
+	Button changeOntologicalTypesButton;
+	Button changeSupertypesButton;
+	Button changeSubtypesButton;
 	Text newNameText;
 	
-	private boolean renameSubtypes = true;
-	private boolean renameSupertypes = false;
-	private boolean renameOntologicalTypes = true;
-	private String newName = "";
+	private boolean changeSubtypes = true;
+	private boolean changeSupertypes = false;
+	private boolean changeOntologicalTypes = true;
+	private String newValue = "";
 	
-	public void setNewName(String value){
-		newName = value;
+	public void setValue(String value){
+		newValue = value;
 	}
 	
-	public String getNewName(){
-		return newName;
+	public String getNewValue(){
+		return newValue;
 	}
 	
-	public boolean getRenameSubtypes(){
-		return renameSubtypes;
+	public boolean getChangeSubtypes(){
+		return changeSubtypes;
 	}
 	
-	public boolean getRenameSupertypes(){
-		return renameSupertypes;
+	public boolean getChangeSupertypes(){
+		return changeSupertypes;
 	}
 	
-	public boolean getRenameOntologicalTypes(){
-		return renameOntologicalTypes;
+	public boolean getChangeOntologicalTypes(){
+		return changeOntologicalTypes;
 	}
 	
 	@Override
@@ -83,25 +83,25 @@ public class FeatureRenameDialog extends TitleAreaDialog {
         GridData newNameTextGridData = new GridData(GridData.FILL_HORIZONTAL);
         newNameTextGridData.grabExcessHorizontalSpace = true;
         newNameText.setLayoutData(newNameTextGridData);
-        newNameText.setText(newName);
+        newNameText.setText(newValue);
         
         GridData optionGridData = new GridData();
         optionGridData.horizontalSpan = 2;
         
-        renameSubtypesButton = new Button(dialogArea, SWT.CHECK);
-        renameSubtypesButton.setText("Rename Subtypes");
-        renameSubtypesButton.setLayoutData(optionGridData);
-        renameSubtypesButton.setSelection(renameSubtypes);
+        changeSubtypesButton = new Button(dialogArea, SWT.CHECK);
+        changeSubtypesButton.setText("Rename Subtypes");
+        changeSubtypesButton.setLayoutData(optionGridData);
+        changeSubtypesButton.setSelection(changeSubtypes);
         
-        renameSupertypesButton = new Button(dialogArea, SWT.CHECK);
-        renameSupertypesButton.setText("Rename Supertypes");
-        renameSupertypesButton.setLayoutData(optionGridData);
-        renameSupertypesButton.setSelection(renameSupertypes);
+        changeSupertypesButton = new Button(dialogArea, SWT.CHECK);
+        changeSupertypesButton.setText("Rename Supertypes");
+        changeSupertypesButton.setLayoutData(optionGridData);
+        changeSupertypesButton.setSelection(changeSupertypes);
         
-        renameOntologicalTypesButton = new Button(dialogArea, SWT.CHECK);
-        renameOntologicalTypesButton.setText("Rename Ontological Types");
-        renameOntologicalTypesButton.setLayoutData(optionGridData);
-        renameOntologicalTypesButton.setSelection(renameOntologicalTypes);
+        changeOntologicalTypesButton = new Button(dialogArea, SWT.CHECK);
+        changeOntologicalTypesButton.setText("Rename Ontological Types");
+        changeOntologicalTypesButton.setLayoutData(optionGridData);
+        changeOntologicalTypesButton.setSelection(changeOntologicalTypes);
         
         return composite;
         
@@ -114,10 +114,10 @@ public class FeatureRenameDialog extends TitleAreaDialog {
 
 	@Override
 	protected void okPressed() {
-		renameOntologicalTypes = renameOntologicalTypesButton.getSelection();
-		renameSubtypes = renameSubtypesButton.getSelection();
-		renameSupertypes = renameSupertypesButton.getSelection();
-		newName = newNameText.getText();
+		changeOntologicalTypes = changeOntologicalTypesButton.getSelection();
+		changeSubtypes = changeSubtypesButton.getSelection();
+		changeSupertypes = changeSupertypesButton.getSelection();
+		newValue = newNameText.getText();
 		super.okPressed();
 	}
 }
