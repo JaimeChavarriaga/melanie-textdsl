@@ -461,9 +461,6 @@ public class ReasoningService implements IReasoningService {
 		boolean result = false;
 		if (this != instance) { 
 			throw new RuntimeException("You need to use .Instance() to get the singleton instance of this service");
-		}
-		if (commandID == ReasoningService.CAN_CONNECTION_EXIST) {
-			return canConnectionExist((Connection)parameters[0], (Connection)parameters[1]);
 		} else if (commandID == ReasoningService.FEATURE_CONFORMS) {
 			Map params = new HashMap();
 			params.put("type", parameters[0]);
@@ -646,45 +643,5 @@ public class ReasoningService implements IReasoningService {
 		}
 		
 		return result;
-	}
-
-	@Override
-	public boolean canConnectionExist(Connection source, Clabject target) {
-		return false;
-	}
-
-	@Override
-	public boolean localConstructionConformsConnection(Connection type,
-			Connection instance) {
-		return run(LOCAL_CONFORMS, new Object[]{type, instance, true}, true);
-	}
-
-
-	@Override
-	public boolean neighbourhoodConstructionConformsConnection(Connection type,
-			Connection instance) {
-		if (!localConstructionConformsConnection(type, instance)) {
-			return false;
-		}
-		for (Role r:instance.getAllRoles()) {
-			Clabject destI = instance.getParticipantForRoleName(r.roleName()); 
-			Clabject destT = type.getParticipantForRoleName(r.roleName());
-			if (!run(LOCAL_CONFORMS, new Object[]{destT, destI}, true)) {
-				System.out.println("Wrong roleName " + r.roleName());
-				return false;
-			}
-		}
-		return true; 
-	}
-
-	@Override
-	public Element getElementByXMIID(String id, Element modelElement) {
-		TreeIterator<EObject> iter = EcoreUtil.getRootContainer(modelElement).eAllContents();
-		while (iter.hasNext()) {
-			EObject current = iter.next();
-			if (EMFCoreUtil.getProxyID(current).equals(id)) 
-				return (Element) current;
-		}
-		return null;
 	}
 }

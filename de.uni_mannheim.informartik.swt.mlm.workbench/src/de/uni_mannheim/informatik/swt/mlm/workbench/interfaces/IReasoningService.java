@@ -1,24 +1,22 @@
 /*******************************************************************************
- * Copyright (c) 2011 University of Mannheim: Chair for Software Engineering
+ * Copyright (c) 2011, 2012 University of Mannheim: Chair for Software Engineering
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    Ralph Gerbig, Bastian Kennel - initial API and implementation and initial documentation
+ *    Ralph Gerbig - initial API and implementation and initial documentation
+ *    Bastian Kennel - minor changes of constants to fit reasoning engine needs
  *******************************************************************************/ 
 package de.uni_mannheim.informatik.swt.mlm.workbench.interfaces;
+
 
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.ContributionItem;
 import org.eclipse.jface.util.IPropertyChangeListener;
-
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 
 /**
  * Use getInstance to get an instance of the reasoning service.
@@ -94,48 +92,10 @@ public interface IReasoningService {
 	public boolean run(String commandID, Object[] parameters, boolean silent);	
 		
 	/**
-	 * Checks whether a connection can exist between source and target
-	 * 
-	 * @param source Connection source
-	 *
-	 * @param target Connection target
-	 * 
-	 * @return true => Connection can exist; false => else
-	 */
-	public static final String CAN_CONNECTION_EXIST = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.canconnectionexist";
-	/**
-	 * 
-	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
-	 */
-	public boolean canConnectionExist(Connection source, Clabject target);
-	
-	/**
-	 * Returns all types from which instances can be created in e. e can
-	 * be a clabject, model etc.
-	 * 
-	 * @param e Container to get possible types that can be instantiated for
-	 * 
-	 * @return A list with possible types for creating instances
-	 */
-	public static final String GET_ALL_POSSIBLE_TYPES_FOR_MODEL= "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.getallpossibletypesformodel";
-
-	/**
 	 * param[0] = Feature - type <br />
 	 * param[1] = Feature - instance
 	 */
 	public static final String FEATURE_CONFORMS = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.featureconforms";
-	
-	/**
-	 * param[0] = Connection - type <br />
-	 * param[1] = Connection - instance
-	 */
-	public static final String LOCAL_CONSTRUCTION_CONFORMS_CONNECTION = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.localconstructionconformsconnection";
-	/**
-	 * 
-	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
-	 */
-	public boolean localConstructionConformsConnection(Connection type, Connection instance);
-	
 	
 	/**
 	 * param[0] = Clabject - type <br />
@@ -152,44 +112,11 @@ public interface IReasoningService {
 	public static final String NEIGHBOURHOOD_CONFORMS = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.neighbourhoodconforms";
 	
 	/**
-	 * param[0] = Connection - type <br />
-	 * param[1] = Connection - instance
-	 */
-	public static final String NEIGHBOURHOOD_CONSTRUCTION_CONFORMS_CONNECTION = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.neighbourhoodconstructionconformsconnection";
-	/**
-	 * 
-	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
-	 */
-	public boolean neighbourhoodConstructionConformsConnection( Connection type, Connection instance );
-	
-	/**
-	 * param[0] = String - id <br />
-	 * param[1] = Element - modelElement
-	 */
-	public static final String GET_ELEMENT_BY_XMI_ID = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.getelementbyxmiid";
-	/**
-	 * 
-	 * @deprecated Use Id instead will be moved into eclipse extension point as command 
-	 */
-	public Element getElementByXMIID(String id, Element modelElement);
-	
-	/**
 	 * param[0] = Connection - connection <br />
 	 */
 	public static final String MULTIPLICITY_CONFORMS = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.multiplicityconforms";
 	
-	/**
-	 * param[0] = Connection - connection <br />
-	 * param[1] = Clabject - clabject
-	 */
-	public static final String GET_POSSIBLE_ROLE_NAMES_FOR_CONNECTION_PARTICIPANT = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.getpossiblerolenamesforconnectionparticipant";
-	
-	/**
-	 * param[0] = Connection - connection <br />
-	 * param[1] = Clabject - clabject
-	 */
-	public static final String GET_POSSIBLE_NAVIGABILITY_FOR_CONNECTION_PARTICIPANT = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.getpossiblenavigabilityforconnectionparticipant";
-	
+		
 	/**
 	 * param[0] = Connection - connection
 	 */
@@ -237,11 +164,6 @@ public interface IReasoningService {
 	public static final String IS_CONSISTENTLY_CLASSIFIED = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.isconsistentlyclassified";
 	
 	/**
-	 * param[0] = Element - the element to be checked for consistency. Valid are Ontology, Generalization and Classification 
-	 */
-	//public static final String CONSISTENCY = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.consistency";
-	
-	/**
 	 * param[0] = Ontology - the element to be checked for consistency. 
 	 */
 	public static final String ONTOLOGY_CONSISTENCY = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.ontologyconsistency";
@@ -255,19 +177,4 @@ public interface IReasoningService {
 	 * param[0] = Classification - the element to be checked for consistency. 
 	 */
 	public static final String CLASSIFICATION_CONSISTENCY = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.classificationconsistency";
-	
-	/**
-	 * param[0] = Clabject - the clabject to be checked for potency completeness 
-	 */
-	public static final String IS_POTENCY_COMPLETE = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.ispotencycomplete";
-	
-	/**
-	 * param[0] = Ontology 
-	 */
-	public static final String IS_COMPLETE = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.iscomplete";
-	
-	/**
-	 * param[0] = Ontology 
-	 */
-	public static final String IS_VALID = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.isvalid";
 }
