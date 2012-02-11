@@ -47,6 +47,17 @@
                optional="true"
                typeId="de.uni_mannheim.informatik.swt.plm.workbench.eobjectcommandparametertype">
          </commandParameter>
+         <commandParameter
+               id="value"
+               name="value"
+               optional="true">
+         </commandParameter>
+         <commandParameter
+               id="attributeToChange"
+               name="attributeToChange"
+               optional="true"
+               typeId="de.uni_mannheim.informatik.swt.plm.workbench.eobjectcommandparametertype">
+         </commandParameter>
       </command>
       <command
             defaultHandler="de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.RenameFeatureCommand"

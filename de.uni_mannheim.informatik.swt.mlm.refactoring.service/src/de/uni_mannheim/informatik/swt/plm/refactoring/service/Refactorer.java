@@ -15,12 +15,15 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.core.commands.Command;
+import org.eclipse.core.commands.ParameterizedCommand;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.jface.action.ContributionItem;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.commands.ICommandService;
+import org.eclipse.ui.handlers.IHandlerService;
 import org.eclipse.ui.menus.CommandContributionItem;
 import org.eclipse.ui.menus.CommandContributionItemParameter;
 
@@ -35,19 +38,6 @@ import de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.RenameFea
 
 
 public class Refactorer implements IRefactoringService {
-	
-	@Override
-	public boolean changeValue(EObject modelElement,
-			EStructuralFeature feature, Object value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean delete(EObject modelElement) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 	@Override
 	public List<ContributionItem> getAvailableRefactoringCommands(EObject[] modelElements){
@@ -144,4 +134,27 @@ public class Refactorer implements IRefactoringService {
 		return null;
 	}
 
+	@Override
+	public boolean run(String commandID, Object[] parameters) {
+		IHandlerService handlerService = (IHandlerService)PlatformUI.getWorkbench().getActiveWorkbenchWindow().getService(IHandlerService.class);
+		ICommandService commandService = (ICommandService)PlatformUI.getWorkbench().getActiveWorkbenchWindow().getService(ICommandService.class);
+		
+		boolean result = false;
+		if (commandID == IRefactoringService.CHANGE_VALUE) {
+			Map params = new HashMap();
+			params.put("feature", parameters[0]);
+			params.put("value", parameters[1]);
+			params.put("attributeToChange", parameters[2]);
+			
+			Command command = commandService.getCommand(RenameFeatureCommand.ID);
+			ParameterizedCommand parameterizedCommand = ParameterizedCommand.generateCommand(command, params);
+			try {
+				result = (Boolean)handlerService.executeCommand(parameterizedCommand, null);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return false;
+	}
 }

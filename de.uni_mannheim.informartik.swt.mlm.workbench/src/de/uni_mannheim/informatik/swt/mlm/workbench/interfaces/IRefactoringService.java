@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 University of Mannheim: Chair for Software Engineering
+ * Copyright (c) 2011, 2012 University of Mannheim: Chair for Software Engineering
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,10 +11,8 @@
 package de.uni_mannheim.informatik.swt.mlm.workbench.interfaces;
 
 import java.util.List;
-import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.jface.action.ContributionItem;
 
 /**
@@ -23,17 +21,21 @@ import org.eclipse.jface.action.ContributionItem;
  */
 public interface IRefactoringService {
 	
-	/**
-	 * Refactors the feature of the modelElement with the value
-	 * 
-	 * @param modelElement Model element to change value in
-	 * @param feature Feature to change
-	 * @param value Value to set
-	 * @return true -> refactoring worked; false -> else
-	 */
-	public boolean changeValue(EObject modelElement, EStructuralFeature feature, Object value);
-	
-	public boolean delete(EObject modelElement);
-	
 	public List<ContributionItem> getAvailableRefactoringCommands(EObject[] modelElements);
+	
+	/**
+	 * param[0] - Element - RefactoringOrigin<br />
+	 * param[1] - String - value
+	 * param[2] - EStructuralFeature - attributeToChange
+	 */
+	public static final String CHANGE_VALUE = "de.uni_mannheim.informatik.swt.plm.workbench.refactoring.changevalue";
+	
+	/**
+	 *  
+	 * @param commandID Id defined by {@link IReasoningService}
+	 * @param parameters Parameters defined by the ids
+	 * 
+	 * @return true -> operation successful; false -> operation failed
+	 */
+	public boolean run(String commandID, Object[] parameters);
 }

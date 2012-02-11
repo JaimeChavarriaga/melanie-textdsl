@@ -40,7 +40,12 @@ public class RenameFeatureCommand extends ChangeFeatureTraitBaseCommand {
 		
 		Feature featureToChange = (Feature)event.getObjectParameterForExecution("feature");
 		
-		ChangeValueDialog dialog = showChangeValueDialog(featureToChange.getName(), event);
+		ChangeValueDialog dialog = null;
+		
+		if (event.getObjectParameterForExecution("value") != null)
+			dialog = showChangeValueDialog(event.getObjectParameterForExecution("value").toString(), event);
+		else
+			dialog = showChangeValueDialog(featureToChange.getName(), event);
 		
 		if (dialog != null)
 			return runRefactoring(featureToChange, PLMPackage.eINSTANCE.getElement_Name(), dialog.getNewValue(), dialog.getChangeOntologicalTypes(), dialog.getChangeSubtypes(), dialog.getChangeSupertypes());
