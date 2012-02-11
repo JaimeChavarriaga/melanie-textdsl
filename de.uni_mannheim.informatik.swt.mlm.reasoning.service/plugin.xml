@@ -5,7 +5,7 @@
          id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands"
          point="org.eclipse.ui.commands">
       <command
-            defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.LocalConformsCommand"
+            defaultHandler="de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.LocalConformsCommand"
             id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.localconformscommand"
             name="Local conforms">
          <commandParameter
@@ -32,7 +32,7 @@
          </commandParameter>
       </command>
       <command
-            defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.FeatureConformsCommand"
+            defaultHandler="de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.FeatureConformsCommand"
             id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.featureconformscommand"
             name="Feature conforms">
          <commandParameter
@@ -49,7 +49,7 @@
          </commandParameter>
       </command>
       <command
-            defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.MultiplicityConformsCommand"
+            defaultHandler="de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.MultiplicityConformsCommand"
             id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.multiplicityconformscommand"
             name="Multiplicity conforms">
          <commandParameter
@@ -60,7 +60,7 @@
          </commandParameter>
       </command>
       <command
-            defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.IsExpressedInstanceOfExcludedCommand"
+            defaultHandler="de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.IsExpressedInstanceOfExcludedCommand"
             id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.isexpressedinstanceofexcludedconformscommand"
             name="Is expressed instance of excluded">
          <commandParameter
@@ -77,7 +77,7 @@
          </commandParameter>
       </command>
       <command
-            defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.ClassificationConsistencyCommand"
+            defaultHandler="de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.ClassificationConsistencyCommand"
             id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.classificationconsistencycommand"
             name="Classification Consistency">
          <commandParameter
@@ -88,7 +88,7 @@
          </commandParameter>
       </command>
       <command
-            defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.GeneralizationConsistencyCommand"
+            defaultHandler="de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.GeneralizationConsistencyCommand"
             id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.generalizationconsistencycommand"
             name="Generalization Consistency">
          <commandParameter
@@ -99,7 +99,7 @@
          </commandParameter>
       </command>
       <command
-            defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.OntologyConsistencyCommand"
+            defaultHandler="de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.OntologyConsistencyCommand"
             id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.ontologyconsistencycommand"
             name="Ontology Consistency">
          <commandParameter
@@ -110,7 +110,7 @@
          </commandParameter>
       </command>
       <command
-            defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.ModelConsistentClassificationCommand"
+            defaultHandler="de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.ModelConsistentClassificationCommand"
             id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.modelconsistentclassificationcommand"
             name="Consistent Classification">
          <commandParameter
@@ -121,7 +121,7 @@
          </commandParameter>
       </command>
       <command
-            defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.HyponymCommand"
+            defaultHandler="de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.HyponymCommand"
             id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.hyponymcommand"
             name="Hyponym">
          <commandParameter
@@ -138,7 +138,7 @@
          </commandParameter>
       </command>
       <command
-            defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.InstanceCommand"
+            defaultHandler="de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.InstanceCommand"
             id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.instancecommand"
             name="Instance">
          <commandParameter
@@ -155,7 +155,7 @@
          </commandParameter>
       </command>
       <command
-            defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.IsonymCommand"
+            defaultHandler="de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.IsonymCommand"
             id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.isonymcommand"
             name="Isonym">
          <commandParameter
@@ -172,7 +172,7 @@
          </commandParameter>
       </command>
       <command
-            defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.NeighbourhoodConformsCommand"
+            defaultHandler="de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.NeighbourhoodConformsCommand"
             id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.neighbourhoodconformscommand"
             name="Neighbourhood conforms">
          <commandParameter
@@ -189,7 +189,7 @@
          </commandParameter>
       </command>
       <command
-            defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.PropertyConformsCommand"
+            defaultHandler="de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.PropertyConformsCommand"
             id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.propertyconformscommand"
             name="Property conforms">
          <commandParameter
@@ -206,7 +206,7 @@
          </commandParameter>
       </command>
       <command
-            defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.SubsumptionCommand"
+            defaultHandler="de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.SubsumptionCommand"
             id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.isSubtype"
             name="isSubtype">
          <commandParameter
@@ -228,7 +228,7 @@
          </commandParameter>
       </command>
       <command
-            defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.SubsumptionCommand"
+            defaultHandler="de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.SubsumptionCommand"
             id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.subsumptioncommand"
             name="Subsumption">
          <commandParameter
@@ -244,7 +244,7 @@
          </commandParameter>
       </command>
       <command
-            defaultHandler="de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.PotencyCompletenessCommand"
+            defaultHandler="de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.PotencyCompletenessCommand"
             id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.potencycompletenesscommand"
             name="Potency Completeness">
          <commandParameter
@@ -263,7 +263,7 @@
    <extension
          point="de.uni_mannheim.informatik.swt.reasoning.service">
       <service
-            class="de.uni_mannheim.informatik.swt.plm.reasoning.service.ReasoningService"
+            class="de.uni_mannheim.informatik.swt.mlm.reasoning.service.ReasoningService"
             id="de.uni_mannheim.informatik.swt.mlm.reasoning.service">
       </service>
    </extension>

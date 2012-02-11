@@ -1,4 +1,4 @@
-package de.uni_mannheim.informatik.swt.plm.reasoning.service.util;
+package de.uni_mannheim.informatik.swt.mlm.reasoning.service.util;
 
 //TODO: Add copyright statement
 public interface Predicate<T> {

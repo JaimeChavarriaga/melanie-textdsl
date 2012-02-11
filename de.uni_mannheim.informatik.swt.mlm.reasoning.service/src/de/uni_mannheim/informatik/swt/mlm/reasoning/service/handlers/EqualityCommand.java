@@ -8,7 +8,7 @@
  * Contributors:
  *    Bastian Kennel - initial API and implementation and initial documentation
  *******************************************************************************/ 
-package de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers;
+package de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;

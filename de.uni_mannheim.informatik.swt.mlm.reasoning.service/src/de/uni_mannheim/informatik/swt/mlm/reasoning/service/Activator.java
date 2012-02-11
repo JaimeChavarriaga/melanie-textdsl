@@ -1,4 +1,4 @@
-package de.uni_mannheim.informatik.swt.plm.reasoning.service;
+package de.uni_mannheim.informatik.swt.mlm.reasoning.service;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;

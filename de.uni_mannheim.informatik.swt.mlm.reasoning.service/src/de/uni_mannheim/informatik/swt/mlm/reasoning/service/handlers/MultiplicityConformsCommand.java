@@ -9,7 +9,7 @@
  *    Bastian Kennel - initial API and implementation and initial documentation
  *    Ralph Gerbig - non reasoning related programming
  *******************************************************************************/
-package de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers;
+package de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -21,6 +21,8 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 
+import de.uni_mannheim.informatik.swt.mlm.reasoning.service.ReasoningService;
+import de.uni_mannheim.informatik.swt.mlm.reasoning.service.util.ReasoningServiceUtil;
 import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IReasoningService;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
@@ -29,8 +31,6 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Role;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Check;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultFactory;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultModel;
-import de.uni_mannheim.informatik.swt.plm.reasoning.service.ReasoningService;
-import de.uni_mannheim.informatik.swt.plm.reasoning.service.util.ReasoningServiceUtil;
 
 public class MultiplicityConformsCommand extends AbstractHandler {
 

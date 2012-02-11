@@ -9,7 +9,7 @@
  *    Ralph Gerbig - initial API and implementation and initial documentation
  *    Bastian Kennel - extension of methods with calls to added reasoning methods
  *******************************************************************************/
-package de.uni_mannheim.informatik.swt.plm.reasoning.service;
+package de.uni_mannheim.informatik.swt.mlm.reasoning.service;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -30,6 +30,22 @@ import org.eclipse.ui.handlers.IHandlerService;
 import org.eclipse.ui.menus.CommandContributionItem;
 import org.eclipse.ui.menus.CommandContributionItemParameter;
 
+import de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.ClassificationConsistencyCommand;
+import de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.FeatureConformsCommand;
+import de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.GeneralizationConsistencyCommand;
+import de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.HasAdditionalPropertiesCommand;
+import de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.HyponymCommand;
+import de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.InstanceCommand;
+import de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.IsExpressedInstanceOfExcludedCommand;
+import de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.IsonymCommand;
+import de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.LocalConformsCommand;
+import de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.ModelConsistentClassificationCommand;
+import de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.MultiplicityConformsCommand;
+import de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.NeighbourhoodConformsCommand;
+import de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.OntologyConsistencyCommand;
+import de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.PotencyCompletenessCommand;
+import de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.PropertyConformsCommand;
+import de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.SubsumptionCommand;
 import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IReasoningService;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Classification;
@@ -39,22 +55,6 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Generalization;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultModel;
-import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.ClassificationConsistencyCommand;
-import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.FeatureConformsCommand;
-import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.GeneralizationConsistencyCommand;
-import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.HasAdditionalPropertiesCommand;
-import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.HyponymCommand;
-import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.InstanceCommand;
-import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.IsExpressedInstanceOfExcludedCommand;
-import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.IsonymCommand;
-import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.LocalConformsCommand;
-import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.ModelConsistentClassificationCommand;
-import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.MultiplicityConformsCommand;
-import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.NeighbourhoodConformsCommand;
-import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.OntologyConsistencyCommand;
-import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.PotencyCompletenessCommand;
-import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.PropertyConformsCommand;
-import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.SubsumptionCommand;
 
 public class ReasoningService implements IReasoningService {
 	
