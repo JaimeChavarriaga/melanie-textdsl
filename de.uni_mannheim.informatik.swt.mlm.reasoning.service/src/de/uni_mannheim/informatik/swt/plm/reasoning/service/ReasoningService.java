@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    Bastian Kennel, Ralph Gerbig
- *    				 - initial API and implementation and initial documentation
+ *    Ralph Gerbig - initial API and implementation and initial documentation
+ *    Bastian Kennel - extension of methods with calls to added reasoning methods
  *******************************************************************************/
 package de.uni_mannheim.informatik.swt.plm.reasoning.service;
 
@@ -20,10 +20,7 @@ import org.eclipse.core.commands.Command;
 import org.eclipse.core.commands.ParameterizedCommand;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
 import org.eclipse.jface.action.ContributionItem;
 import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.util.PropertyChangeEvent;
@@ -37,14 +34,10 @@ import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IReasoningService
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Classification;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Generalization;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Role;
-import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Check;
-import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultFactory;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.ClassificationConsistencyCommand;
 import de.uni_mannheim.informatik.swt.plm.reasoning.service.handlers.FeatureConformsCommand;
