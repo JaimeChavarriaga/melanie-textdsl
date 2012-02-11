@@ -28,6 +28,7 @@ import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IRefactoringServi
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.AddFeatureToClabjectCommand;
+import de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.ChangeFeatureDurabilityCommand;
 import de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.DeleteClabjectCommand;
 import de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.DeleteFeatureCommand;
 import de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.RenameFeatureCommand;
@@ -77,6 +78,19 @@ public class Refactorer implements IRefactoringService {
 			param = 
 					new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), RenameFeatureCommand.ID + ".menuEntry", RenameFeatureCommand.ID, CommandContributionItem.STYLE_PUSH);
 			param.label = getCommandName(RenameFeatureCommand.ID);
+			
+			commandParamametersMap = new HashMap<String, Object>();
+			commandParamametersMap.put("feature",  modelElements[0]);
+			param.parameters = commandParamametersMap;
+			
+			items.add(new CommandContributionItem(param));
+			
+			//***************************************************
+			// Change feature durability command
+			//***************************************************
+			param = 
+					new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), ChangeFeatureDurabilityCommand.ID + ".menuEntry", ChangeFeatureDurabilityCommand.ID, CommandContributionItem.STYLE_PUSH);
+			param.label = getCommandName(ChangeFeatureDurabilityCommand.ID);
 			
 			commandParamametersMap = new HashMap<String, Object>();
 			commandParamametersMap.put("feature",  modelElements[0]);

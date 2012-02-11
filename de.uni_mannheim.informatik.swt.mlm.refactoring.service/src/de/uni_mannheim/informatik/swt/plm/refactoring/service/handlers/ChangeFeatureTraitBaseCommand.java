@@ -28,6 +28,7 @@ import org.eclipse.ui.handlers.HandlerUtil;
 import de.uni_mannheim.informatik.swt.mlm.refactoring.service.dialogs.ChangeValueDialog;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage;
 
 public abstract class ChangeFeatureTraitBaseCommand extends AbstractHandler {
 	
@@ -36,14 +37,14 @@ public abstract class ChangeFeatureTraitBaseCommand extends AbstractHandler {
 		
 		ChangeValueDialog dialog = new ChangeValueDialog(window.getShell(), oldValue);
 		
-		String newName = null;
+		String newValue = null;
 		
 		if (dialog.open() == Window.OK)
-			newName = dialog.getNewValue();
+			newValue = dialog.getNewValue();
 		else
 			return null;
 		
-		if (newName == null || newName.equals(oldValue))
+		if (newValue == null || newValue.equals(oldValue))
 			return null;
 		
 		
@@ -109,18 +110,29 @@ public abstract class ChangeFeatureTraitBaseCommand extends AbstractHandler {
 		for (Clabject instance: allEffectedClabjects)
 			for (Feature feature : instance.getAllFeatures())
 				if (featuresMatch(refactoringOrigin, feature))
-					refactoringCommand.append(SetCommand.create(domain, feature, attributeToChange, computeNewValue(refactoringOrigin, feature, newValue)));
+					refactoringCommand.append(SetCommand.create(domain, feature, attributeToChange, computeNewValue(refactoringOrigin, feature, newValue, attributeToChange)));
 					
 		
 		//For the refactoring origin we do not have to compute a new value as this is set by the user
-		refactoringCommand.append(SetCommand.create(domain, refactoringOrigin, attributeToChange, newValue));
+		refactoringCommand.append(SetCommand.create(domain, refactoringOrigin, attributeToChange, computeNewValue(refactoringOrigin, refactoringOrigin, newValue, attributeToChange)));
 		domain.getCommandStack().execute(refactoringCommand);
 		
 		return true;
 	}
 	
-	protected Object computeNewValue(Feature refactoringOrigin, Feature machtingFeatuer, String newValue){
+	protected Object computeNewValue(Feature refactoringOrigin, Feature machtingFeature, String newValue, EAttribute attributeToChange){
+		if (isPotencyValue(attributeToChange)){
+			int refactoringOriginLevel = refactoringOrigin.getClabject().getLevel();
+			int matchingFeatureLevel = machtingFeature.getClabject().getLevel();
+			int levelDistance = refactoringOriginLevel - matchingFeatureLevel;
+			return Integer.parseInt(newValue) + levelDistance;
+		}
+		
 		return newValue;
+	}
+	
+	protected boolean isPotencyValue(EAttribute attributeToChange){
+		return attributeToChange == PLMPackage.eINSTANCE.getClabject_Potency() || attributeToChange == PLMPackage.eINSTANCE.getFeature_Durability() || attributeToChange == PLMPackage.eINSTANCE.getAttribute_Mutability();
 	}
 	
 	/**

@@ -24,7 +24,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage;
  */
 public class ChangeFeatureDurabilityCommand extends ChangeFeatureTraitBaseCommand {
 	
-	public final static String ID = "de.uni_mannheim.informatik.swt.plm.refactoring.service.commands.renamefeaturecommand";
+	public final static String ID = "de.uni_mannheim.informatik.swt.plm.refactoring.service.commands.changefeaturedurabilitycommand";
 	
 	/**
 	 * The constructor.
@@ -40,7 +40,7 @@ public class ChangeFeatureDurabilityCommand extends ChangeFeatureTraitBaseComman
 		
 		Feature featureToChange = (Feature)event.getObjectParameterForExecution("feature");
 		
-		ChangeValueDialog dialog = showChangeValueDialog(featureToChange.getName(), event);
+		ChangeValueDialog dialog = showChangeValueDialog(String.valueOf(featureToChange.getDurability()), event);
 		
 		if (dialog != null)
 			return runRefactoring(featureToChange, PLMPackage.eINSTANCE.getFeature_Durability(), dialog.getNewValue(), dialog.getChangeOntologicalTypes(), dialog.getChangeSubtypes(), dialog.getChangeSupertypes());

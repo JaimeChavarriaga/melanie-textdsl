@@ -59,6 +59,17 @@
                typeId="de.uni_mannheim.informatik.swt.plm.workbench.eobjectcommandparametertype">
          </commandParameter>
       </command>
+      <command
+            defaultHandler="de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.ChangeFeatureDurabilityCommand"
+            id="de.uni_mannheim.informatik.swt.plm.refactoring.service.commands.changefeaturedurabilitycommand"
+            name="Change Feature Durability">
+         <commandParameter
+               id="feature"
+               name="feature"
+               optional="true"
+               typeId="de.uni_mannheim.informatik.swt.plm.workbench.eobjectcommandparametertype">
+         </commandParameter>
+      </command>
    </extension>
    <extension
          point="de.uni_mannheim.informatik.swt.refactoring.service">
