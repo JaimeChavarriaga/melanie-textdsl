@@ -32,8 +32,6 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.AddFeatureToClabjectCommand;
 import de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.ChangeFeatureDurabilityCommand;
-import de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.DeleteClabjectCommand;
-import de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.DeleteFeatureCommand;
 import de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.RenameFeatureCommand;
 
 
@@ -66,20 +64,20 @@ public class Refactorer implements IRefactoringService {
 			//***************************************************
 			// Delete feature command
 			//***************************************************
-			CommandContributionItemParameter param = 
-					new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), DeleteFeatureCommand.ID + ".menuEntry", DeleteFeatureCommand.ID, CommandContributionItem.STYLE_PUSH);
-			param.label = getCommandName(DeleteFeatureCommand.ID);
-			
-			commandParamametersMap = new HashMap<String, Object>();
-			commandParamametersMap.put("feature",  modelElements[0]);
-			param.parameters = commandParamametersMap;
-			
-			items.add(new CommandContributionItem(param));
+//			CommandContributionItemParameter param = 
+//					new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), DeleteFeatureCommand.ID + ".menuEntry", DeleteFeatureCommand.ID, CommandContributionItem.STYLE_PUSH);
+//			param.label = getCommandName(DeleteFeatureCommand.ID);
+//			
+//			commandParamametersMap = new HashMap<String, Object>();
+//			commandParamametersMap.put("feature",  modelElements[0]);
+//			param.parameters = commandParamametersMap;
+//			
+//			items.add(new CommandContributionItem(param));
 			
 			//***************************************************
 			// Rename feature command
 			//***************************************************
-			param = 
+			CommandContributionItemParameter param = 
 					new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), RenameFeatureCommand.ID + ".menuEntry", RenameFeatureCommand.ID, CommandContributionItem.STYLE_PUSH);
 			param.label = getCommandName(RenameFeatureCommand.ID);
 			
@@ -109,28 +107,28 @@ public class Refactorer implements IRefactoringService {
 			//***************************************************
 			// Delete clabject command
 			//***************************************************
-			CommandContributionItemParameter param = 
-					new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), DeleteClabjectCommand.ID + ".menuEntry", DeleteClabjectCommand.ID, CommandContributionItem.STYLE_PUSH);
-			param.label = getCommandName(DeleteClabjectCommand.ID);
-			
-			commandParamametersMap = new HashMap<String, Object>();
-			commandParamametersMap.put("clabject",  modelElements[0]);
-			param.parameters = commandParamametersMap;
-			
-			items.add(new CommandContributionItem(param));
+//			CommandContributionItemParameter param = 
+//					new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), DeleteClabjectCommand.ID + ".menuEntry", DeleteClabjectCommand.ID, CommandContributionItem.STYLE_PUSH);
+//			param.label = getCommandName(DeleteClabjectCommand.ID);
+//			
+//			commandParamametersMap = new HashMap<String, Object>();
+//			commandParamametersMap.put("clabject",  modelElements[0]);
+//			param.parameters = commandParamametersMap;
+//			
+//			items.add(new CommandContributionItem(param));
 			
 			//***************************************************
 			// Add feature to clabject command
 			//***************************************************
-			param = 
-					new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), AddFeatureToClabjectCommand.ID + ".menuEntry", AddFeatureToClabjectCommand.ID, CommandContributionItem.STYLE_PUSH);
-			param.label = getCommandName(AddFeatureToClabjectCommand.ID);
-			
-			commandParamametersMap = new HashMap<String, Object>();
-			commandParamametersMap.put("clabject",  modelElements[0]);
-			param.parameters = commandParamametersMap;
-			
-			items.add(new CommandContributionItem(param));
+//			param = 
+//					new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), AddFeatureToClabjectCommand.ID + ".menuEntry", AddFeatureToClabjectCommand.ID, CommandContributionItem.STYLE_PUSH);
+//			param.label = getCommandName(AddFeatureToClabjectCommand.ID);
+//			
+//			commandParamametersMap = new HashMap<String, Object>();
+//			commandParamametersMap.put("clabject",  modelElements[0]);
+//			param.parameters = commandParamametersMap;
+//			
+//			items.add(new CommandContributionItem(param));
 		}
 		
 		return items;
@@ -157,8 +155,9 @@ public class Refactorer implements IRefactoringService {
 		if (commandID == IRefactoringService.CHANGE_VALUE) {
 			Map params = new HashMap();
 			params.put("feature", parameters[0]);
-			params.put("value", parameters[1]);
-			params.put("attributeToChange", parameters[2]);
+			params.put("oldValue", parameters[1]);
+			params.put("newValue", parameters[2]);
+			params.put("attributeToChange", parameters[3]);
 			
 			Command command = commandService.getCommand(RenameFeatureCommand.ID);
 			ParameterizedCommand parameterizedCommand = ParameterizedCommand.generateCommand(command, params);

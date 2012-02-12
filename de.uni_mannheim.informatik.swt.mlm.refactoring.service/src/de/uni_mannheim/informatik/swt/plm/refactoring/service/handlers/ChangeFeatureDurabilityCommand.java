@@ -37,13 +37,25 @@ public class ChangeFeatureDurabilityCommand extends ChangeFeatureTraitBaseComman
 	 * from the application context.
 	 */
 	public Object execute(ExecutionEvent event) throws ExecutionException {
+		//TODO: Change once rename feature is working as reference implementation
+		
 		
 		Feature featureToChange = (Feature)event.getObjectParameterForExecution("feature");
+		String oldValue = event.getParameter("oldValue") != null ? event.getParameter("oldValue") : String.valueOf(featureToChange.getDurability());
 		
-		ChangeValueDialog dialog = showChangeValueDialog(String.valueOf(featureToChange.getDurability()), event);
+		ChangeValueDialog dialog = null;
+		
+		if (event.getParameter("newValue") != null)
+			dialog = showChangeValueDialog(event.getParameter("newValue").toString(), oldValue, event);
+		else
+			dialog = showChangeValueDialog(featureToChange.getName(), oldValue, event);
 		
 		if (dialog != null)
-			return runRefactoring(featureToChange, PLMPackage.eINSTANCE.getFeature_Durability(), dialog.getNewValue(), dialog.getChangeOntologicalTypes(), dialog.getChangeSubtypes(), dialog.getChangeSupertypes());
+			if (oldValue ==  null)
+				return runRefactoring(featureToChange, PLMPackage.eINSTANCE.getFeature_Durability(), String.valueOf(featureToChange.getDurability()), dialog.getNewValue(), dialog.getChangeOntologicalTypes(), dialog.getChangeSubtypes(), dialog.getChangeSupertypes());
+			else
+				return runRefactoring(featureToChange, PLMPackage.eINSTANCE.getFeature_Durability(), oldValue, dialog.getNewValue(), dialog.getChangeOntologicalTypes(), dialog.getChangeSubtypes(), dialog.getChangeSupertypes());
+				
 		else
 			return false;
 	}

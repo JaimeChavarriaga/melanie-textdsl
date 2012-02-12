@@ -18,6 +18,7 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
@@ -32,10 +33,10 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage;
 
 public abstract class ChangeFeatureTraitBaseCommand extends AbstractHandler {
 	
-	protected ChangeValueDialog showChangeValueDialog(String oldValue, ExecutionEvent event) throws ExecutionException{
+	protected ChangeValueDialog showChangeValueDialog(String valueToDisplayValue, String oldValue, ExecutionEvent event) throws ExecutionException{
 		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
 		
-		ChangeValueDialog dialog = new ChangeValueDialog(window.getShell(), oldValue);
+		ChangeValueDialog dialog = new ChangeValueDialog(window.getShell(), valueToDisplayValue);
 		
 		String newValue = null;
 		
@@ -55,13 +56,15 @@ public abstract class ChangeFeatureTraitBaseCommand extends AbstractHandler {
 	 * 
 	 * @param refactoringOrigin The element on which the original refactoring operation has been performed
 	 * @param attributeToChange The EAttribut in the meta-model to change
+	 * @param newValue can bee needed because if refactoring request comes from UI it can be already changed in 
+	 * 					the feature
 	 * @param newValue the new value to set
 	 * @param changeOntologicalTypes change ontological types? 
 	 * @param changeSubtypes change subtypes?
 	 * @param changeSuperTypes change supertypes?
 	 * @return
 	 */
-	protected boolean runRefactoring(Feature refactoringOrigin, EAttribute attributeToChange, String newValue, boolean changeOntologicalTypes, boolean changeSubtypes, boolean changeSuperTypes){
+	protected boolean runRefactoring(Feature refactoringOrigin, EAttribute attributeToChange, String oldValue, String newValue, boolean changeOntologicalTypes, boolean changeSubtypes, boolean changeSuperTypes){
 		Clabject refactorOriginContainingClabject = (Clabject)refactoringOrigin.eContainer();
 		
 		//Kepp out duplicates for performance reasons
@@ -109,7 +112,7 @@ public abstract class ChangeFeatureTraitBaseCommand extends AbstractHandler {
 		
 		for (Clabject instance: allEffectedClabjects)
 			for (Feature feature : instance.getAllFeatures())
-				if (featuresMatch(refactoringOrigin, feature))
+				if (featuresMatch(refactoringOrigin, feature, attributeToChange, oldValue))
 					refactoringCommand.append(SetCommand.create(domain, feature, attributeToChange, computeNewValue(refactoringOrigin, feature, newValue, attributeToChange)));
 					
 		
@@ -154,36 +157,41 @@ public abstract class ChangeFeatureTraitBaseCommand extends AbstractHandler {
 	 *  </li>
 	 * </ul>
 	 * 
-	 * @param f1
+	 * @param refactoringOrigin
 	 * @param f2
-	 * 
-	 * @return is f2 relevant for changes to f1
+	 * @param newValue can bee needed because if refactoring request comes from UI it can be already changed in 
+	 * 					the feature
+	 * @param attributeToChange
+	 * @return is f2 relevant for changes to refactoringOrigin
 	 */
-	protected boolean featuresMatch(Feature f1, Feature f2){
-		if (!f1.getName().equals(f2.getName()))
+	protected boolean featuresMatch(Feature refactoringOrigin, Feature f2, EStructuralFeature attributeToChange, String oldValue){
+		String originName = attributeToChange.getName().equals("name") ? oldValue : refactoringOrigin.getName();
+		int originDurability = attributeToChange.getName().equals("durability") ? Integer.parseInt(oldValue) : refactoringOrigin.getDurability();
+		
+		if (!originName.equals(f2.getName()))
 			return false;
 		
-		if ((f1.getDurability() == -1) && (f1.getDurability() == f2.getDurability()))
+		if ((originDurability == -1) && (originDurability == f2.getDurability()))
 			return true;
 		
-		int f1Level = f1.getClabject().getLevel();
+		int f1Level = refactoringOrigin.getClabject().getLevel();
 		int f2Level = f2.getClabject().getLevel();
 		
 		if (f1Level < f2Level){
-			if (f1.getDurability() == -1)
+			if (originDurability == -1)
 				return true;
 			else if (f2.getDurability() == -1)
-				return f1.getDurability() == -1;
+				return originDurability == -1;
 			else
-				return f2.getDurability() == f1.getDurability() - (f2Level - f1Level); 
+				return f2.getDurability() == originDurability - (f2Level - f1Level); 
 		}
 		else{
-			if (f1.getDurability() == -1)
+			if (originDurability == -1)
 				return f2.getDurability() == -1;
 			else if (f2.getDurability() ==  -1)
 				return true;
 			else
-				return f1.getDurability() == f2.getDurability() - (f1Level - f2Level);
+				return originDurability == f2.getDurability() - (f1Level - f2Level);
 		}
 	}
 }

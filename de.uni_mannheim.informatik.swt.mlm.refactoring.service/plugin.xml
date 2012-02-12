@@ -48,8 +48,13 @@
                typeId="de.uni_mannheim.informatik.swt.plm.workbench.eobjectcommandparametertype">
          </commandParameter>
          <commandParameter
-               id="value"
-               name="value"
+               id="oldValue"
+               name="oldValue"
+               optional="true">
+         </commandParameter>
+         <commandParameter
+               id="newValue"
+               name="newValue"
                optional="true">
          </commandParameter>
          <commandParameter
