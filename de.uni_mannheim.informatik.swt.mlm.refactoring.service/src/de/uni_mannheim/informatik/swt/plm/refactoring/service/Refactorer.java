@@ -38,7 +38,21 @@ import de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.RenameFea
 
 
 public class Refactorer implements IRefactoringService {
-
+	
+	public static String ID = "de.uni_mannheim.informatik.swt.mlm.refactoring.service";
+	
+	private boolean refactoringOperationIsRunning = false;
+	
+	@Override
+	public boolean getRefactoringOperationIsRunning(){
+		return refactoringOperationIsRunning;
+	}
+	
+	@Override
+	public void setRefactoringOperationIsRunning(boolean isRunning){
+		refactoringOperationIsRunning = isRunning;
+	}
+	
 	@Override
 	public List<ContributionItem> getAvailableRefactoringCommands(EObject[] modelElements){
 		

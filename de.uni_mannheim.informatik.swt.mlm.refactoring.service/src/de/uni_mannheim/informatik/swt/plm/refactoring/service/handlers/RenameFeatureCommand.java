@@ -14,8 +14,11 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 
 import de.uni_mannheim.informatik.swt.mlm.refactoring.service.dialogs.ChangeValueDialog;
+import de.uni_mannheim.informatik.swt.mlm.workbench.ExtensionPointService;
+import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IRefactoringService;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage;
+import de.uni_mannheim.informatik.swt.plm.refactoring.service.Refactorer;
 
 /**
  * Our sample handler extends AbstractHandler, an IHandler base class.
@@ -38,18 +41,40 @@ public class RenameFeatureCommand extends ChangeFeatureTraitBaseCommand {
 	 */
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		
-		Feature featureToChange = (Feature)event.getObjectParameterForExecution("feature");
+		IRefactoringService service = null;
+		boolean result = false;
 		
-		ChangeValueDialog dialog = null;
+		try {
+			
+			service = ExtensionPointService.Instance().getRefactoringService(Refactorer.ID);
+
+			//Do we already have running a refactoring operation?
+			if (service.getRefactoringOperationIsRunning())
+				//Here a return is needed to not end the refactoring operation later in code
+				return false;
+			
+			//Tell the service that we have such an operation already running
+			service.setRefactoringOperationIsRunning(true);
 		
-		if (event.getObjectParameterForExecution("value") != null)
-			dialog = showChangeValueDialog(event.getObjectParameterForExecution("value").toString(), event);
-		else
-			dialog = showChangeValueDialog(featureToChange.getName(), event);
+			Feature featureToChange = (Feature)event.getObjectParameterForExecution("feature");
+			
+			ChangeValueDialog dialog = null;
+			
+			if (event.getParameter("value") != null)
+				dialog = showChangeValueDialog(event.getParameter("value").toString(), event);
+			else
+				dialog = showChangeValueDialog(featureToChange.getName(), event);
+			
+			if (dialog != null)
+				result = runRefactoring(featureToChange, PLMPackage.eINSTANCE.getElement_Name(), dialog.getNewValue(), dialog.getChangeOntologicalTypes(), dialog.getChangeSubtypes(), dialog.getChangeSupertypes());
+			else
+				result = false;
+		}
+		catch (Exception e) {
+			e.printStackTrace();	
+		}
 		
-		if (dialog != null)
-			return runRefactoring(featureToChange, PLMPackage.eINSTANCE.getElement_Name(), dialog.getNewValue(), dialog.getChangeOntologicalTypes(), dialog.getChangeSubtypes(), dialog.getChangeSupertypes());
-		else
-			return false;
+		service.setRefactoringOperationIsRunning(false);
+		return result;
 	}
 }

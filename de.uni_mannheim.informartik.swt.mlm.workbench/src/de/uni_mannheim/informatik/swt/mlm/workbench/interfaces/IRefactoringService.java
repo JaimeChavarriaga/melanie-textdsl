@@ -21,11 +21,24 @@ import org.eclipse.jface.action.ContributionItem;
  */
 public interface IRefactoringService {
 	
-	public List<ContributionItem> getAvailableRefactoringCommands(EObject[] modelElements);
+	/**
+	 * <b>Call this method only on instances that are returned by ExtensionPointService</b>
+	 * 
+	 */
+	public boolean getRefactoringOperationIsRunning();
 	
 	/**
+	 * <b>Call this method only on instances that are returned by ExtensionPointService</b>
+	 * 
+	 * @param isRunning
+	 */
+	public void setRefactoringOperationIsRunning(boolean isRunning);
+	
+	public List<ContributionItem> getAvailableRefactoringCommands(EObject[] modelElements);
+		
+	/**
 	 * param[0] - Element - RefactoringOrigin<br />
-	 * param[1] - String - value
+	 * param[1] - String - value <br />
 	 * param[2] - EStructuralFeature - attributeToChange
 	 */
 	public static final String CHANGE_VALUE = "de.uni_mannheim.informatik.swt.plm.workbench.refactoring.changevalue";
