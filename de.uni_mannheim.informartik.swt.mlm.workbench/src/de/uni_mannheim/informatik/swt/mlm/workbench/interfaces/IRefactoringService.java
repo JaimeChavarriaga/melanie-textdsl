@@ -10,6 +10,7 @@
  *******************************************************************************/
 package de.uni_mannheim.informatik.swt.mlm.workbench.interfaces;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
@@ -20,19 +21,20 @@ import org.eclipse.jface.action.ContributionItem;
  *
  */
 public interface IRefactoringService {
+
+	/**
+	 * Starts listening to a model
+	 * 
+	 * @param modelRoot
+	 */
+	public void startListening(EObject modelRoot);
 	
 	/**
-	 * <b>Call this method only on instances that are returned by ExtensionPointService</b>
+	 * Stops listening to a model
 	 * 
+	 * @param modelRoot
 	 */
-	public boolean getRefactoringOperationIsRunning();
-	
-	/**
-	 * <b>Call this method only on instances that are returned by ExtensionPointService</b>
-	 * 
-	 * @param isRunning
-	 */
-	public void setRefactoringOperationIsRunning(boolean isRunning);
+	public void stopListening(EObject modelRoot);
 	
 	public List<ContributionItem> getAvailableRefactoringCommands(EObject[] modelElements);
 		
@@ -52,4 +54,6 @@ public interface IRefactoringService {
 	 * @return true -> operation successful; false -> operation failed
 	 */
 	public boolean run(String commandID, Object[] parameters);
+
+	void addRefactoredObjects(Collection<? extends EObject> objects);
 }
