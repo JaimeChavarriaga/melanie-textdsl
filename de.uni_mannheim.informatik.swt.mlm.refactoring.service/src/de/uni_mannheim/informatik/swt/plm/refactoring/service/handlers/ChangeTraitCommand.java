@@ -100,10 +100,8 @@ public class ChangeTraitCommand{// extends AbstractHandler {
 		//***************************************************************
 		//Collect instance level
 		//***************************************************************
-		if (true){
-			for(Clabject c:currentLevelEffectedClabjects)
-				typeLevelEffectedClabjects.addAll(c.getEigenModelClassificationTreeAsType());
-		}
+		for(Clabject c:currentLevelEffectedClabjects)
+			typeLevelEffectedClabjects.addAll(c.getEigenModelClassificationTreeAsType());
 		
 		Set<Clabject> allEffectedClabjects = new HashSet<Clabject>();
 		allEffectedClabjects.addAll(instanceLevelEffectedClabjects);
@@ -119,7 +117,7 @@ public class ChangeTraitCommand{// extends AbstractHandler {
 		TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(refactoringOrigin);
 		
 		for (Clabject instance: allEffectedClabjects)
-			for (Feature feature : instance.getAllFeatures())
+			for (Feature feature : instance.getFeature())
 				if (featuresMatch(refactoringOrigin, feature, attributeToChange, oldValue)){
 					if (attributeToChange.getEType().getName().equals("EInt"))
 						refactoringCommand.append(SetCommand.create(domain, feature, attributeToChange, (Integer) computeNewValue(refactoringOrigin, feature, newValue, attributeToChange)));
@@ -127,12 +125,6 @@ public class ChangeTraitCommand{// extends AbstractHandler {
 						refactoringCommand.append(SetCommand.create(domain, feature, attributeToChange, computeNewValue(refactoringOrigin, feature, newValue, attributeToChange)));
 					refactoredElements.add(feature);
 				}
-					
-		
-		//For the refactoring origin we do not have to compute a new value as this is set by the user
-//		if (attributeToChange.getEType().getName().equals("EInt"))
-//			refactoringCommand.append(SetCommand.create(domain, refactoringOrigin, attributeToChange, computeNewValue(refactoringOrigin, refactoringOrigin, newValue, attributeToChange)));
-//		refactoredElements.add(refactoringOrigin);
 		
 		try {
 			ExtensionPointService.Instance().getActiveRefactoringService().addRefactoredObjects(refactoredElements);
