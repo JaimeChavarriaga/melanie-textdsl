@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-   <extension
+   <!-- <extension
          id="de.uni_mannheim.informatik.swt.plm.refactoring.service.commands"
          point="org.eclipse.ui.commands">
       <command
@@ -86,7 +86,7 @@
                typeId="de.uni_mannheim.informatik.swt.plm.workbench.eobjectcommandparametertype">
          </commandParameter>
       </command>
-   </extension>
+   </extension> -->
    <extension
          point="de.uni_mannheim.informatik.swt.refactoring.service">
       <service

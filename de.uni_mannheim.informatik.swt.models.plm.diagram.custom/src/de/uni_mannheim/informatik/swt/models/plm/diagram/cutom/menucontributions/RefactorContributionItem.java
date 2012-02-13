@@ -59,6 +59,6 @@ public class RefactorContributionItem extends CompoundContributionItem {
 			if (parts[i] instanceof IGraphicalEditPart)
 				modelElements[i] = ((IGraphicalEditPart)parts[i]).resolveSemanticElement();
 		
-		return refactorer.getAvailableRefactoringCommands(modelElements).toArray(new IContributionItem[] {});
+		return null;//refactorer.getAvailableRefactoringCommands(modelElements).toArray(new IContributionItem[] {});
 	}
 }

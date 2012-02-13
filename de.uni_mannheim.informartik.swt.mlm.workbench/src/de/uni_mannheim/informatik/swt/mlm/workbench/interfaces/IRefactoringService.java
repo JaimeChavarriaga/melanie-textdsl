@@ -36,15 +36,15 @@ public interface IRefactoringService {
 	 */
 	public void stopListening(EObject modelRoot);
 	
-	public List<ContributionItem> getAvailableRefactoringCommands(EObject[] modelElements);
+//	public List<ContributionItem> getAvailableRefactoringCommands(EObject[] modelElements);
 		
-	/**
-	 * param[0] - Element - RefactoringOrigin<br />
-	 * param[1] - String - oldValue <br />
-	 * param[2] - String - newValue <br />
-	 * param[3] - EStructuralFeature - attributeToChange
-	 */
-	public static final String CHANGE_VALUE = "de.uni_mannheim.informatik.swt.plm.workbench.refactoring.changevalue";
+//	/**
+//	 * param[0] - Element - RefactoringOrigin<br />
+//	 * param[1] - String - oldValue <br />
+//	 * param[2] - String - newValue <br />
+//	 * param[3] - EStructuralFeature - attributeToChange
+//	 */
+//	public static final String CHANGE_VALUE = "de.uni_mannheim.informatik.swt.plm.workbench.refactoring.changevalue";
 	
 	/**
 	 *  
@@ -53,7 +53,7 @@ public interface IRefactoringService {
 	 * 
 	 * @return true -> operation successful; false -> operation failed
 	 */
-	public boolean run(String commandID, Object[] parameters);
+//	public boolean run(String commandID, Object[] parameters);
 
 	void addRefactoredObjects(Collection<? extends EObject> objects);
 }
