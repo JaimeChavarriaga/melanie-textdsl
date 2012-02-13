@@ -38,15 +38,16 @@ public interface IRefactoringService {
 		
 	/**
 	 * param[0] - Element - RefactoringOrigin<br />
-	 * param[1] - String - value <br />
-	 * param[2] - EStructuralFeature - attributeToChange
+	 * param[1] - String - oldValue <br />
+	 * param[2] - String - newValue <br />
+	 * param[3] - EStructuralFeature - attributeToChange
 	 */
 	public static final String CHANGE_VALUE = "de.uni_mannheim.informatik.swt.plm.workbench.refactoring.changevalue";
 	
 	/**
 	 *  
 	 * @param commandID Id defined by {@link IReasoningService}
-	 * @param parameters Parameters defined by the ids
+	 * @param parameters Parameters defined by the id's javadoc
 	 * 
 	 * @return true -> operation successful; false -> operation failed
 	 */
