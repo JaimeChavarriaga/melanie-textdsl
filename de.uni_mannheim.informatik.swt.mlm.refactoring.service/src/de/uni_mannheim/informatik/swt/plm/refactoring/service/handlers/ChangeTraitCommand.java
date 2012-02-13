@@ -13,11 +13,9 @@ package de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.command.CompoundCommand;
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.command.SetCommand;
@@ -32,13 +30,18 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage;
 
-public abstract class ChangeFeatureTraitBaseCommand extends AbstractHandler {
+public class ChangeTraitCommand{// extends AbstractHandler {
+	
+	public void run(Feature refactoringOrigin, EStructuralFeature attributeToChange, String oldValue, String newValue){
+		try {
+			ChangeValueDialog dialog = showChangeValueDialog(newValue, oldValue);
+			runRefactoring(refactoringOrigin, attributeToChange, oldValue, newValue, dialog.getChangeOntologicalTypes(), dialog.getChangeSubtypes(), dialog.getChangeSupertypes());
+		} catch (ExecutionException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	protected ChangeValueDialog showChangeValueDialog(String valueToDisplayValue, String oldValue) throws ExecutionException{
-		//IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
-		
-		//ChangeValueDialog dialog = new ChangeValueDialog(window.getShell(), valueToDisplayValue);
-		
 		ChangeValueDialog dialog = new ChangeValueDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), valueToDisplayValue);
 		
 		String newValue = null;
@@ -67,7 +70,7 @@ public abstract class ChangeFeatureTraitBaseCommand extends AbstractHandler {
 	 * @param changeSuperTypes change supertypes?
 	 * @return
 	 */
-	protected boolean runRefactoring(Feature refactoringOrigin, EAttribute attributeToChange, String oldValue, String newValue, boolean changeOntologicalTypes, boolean changeSubtypes, boolean changeSuperTypes){
+	protected boolean runRefactoring(Feature refactoringOrigin, EStructuralFeature attributeToChange, String oldValue, String newValue, boolean changeOntologicalTypes, boolean changeSubtypes, boolean changeSuperTypes){
 		Clabject refactorOriginContainingClabject = (Clabject)refactoringOrigin.eContainer();
 		
 		//Kepp out duplicates for performance reasons
@@ -110,7 +113,7 @@ public abstract class ChangeFeatureTraitBaseCommand extends AbstractHandler {
 		Set<EObject> refactoredElements = new HashSet<EObject>();
 		
 		//***************************************************************
-		//Execute rename operation
+		//Execute change operation
 		//***************************************************************
 		CompoundCommand refactoringCommand = new CompoundCommand("Refactoring - " + attributeToChange.getName());
 		TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(refactoringOrigin);
@@ -118,14 +121,18 @@ public abstract class ChangeFeatureTraitBaseCommand extends AbstractHandler {
 		for (Clabject instance: allEffectedClabjects)
 			for (Feature feature : instance.getAllFeatures())
 				if (featuresMatch(refactoringOrigin, feature, attributeToChange, oldValue)){
-					refactoringCommand.append(SetCommand.create(domain, feature, attributeToChange, computeNewValue(refactoringOrigin, feature, newValue, attributeToChange)));
+					if (attributeToChange.getEType().getName().equals("EInt"))
+						refactoringCommand.append(SetCommand.create(domain, feature, attributeToChange, (Integer) computeNewValue(refactoringOrigin, feature, newValue, attributeToChange)));
+					else
+						refactoringCommand.append(SetCommand.create(domain, feature, attributeToChange, computeNewValue(refactoringOrigin, feature, newValue, attributeToChange)));
 					refactoredElements.add(feature);
 				}
 					
 		
 		//For the refactoring origin we do not have to compute a new value as this is set by the user
-		refactoringCommand.append(SetCommand.create(domain, refactoringOrigin, attributeToChange, computeNewValue(refactoringOrigin, refactoringOrigin, newValue, attributeToChange)));
-		refactoredElements.add(refactoringOrigin);
+//		if (attributeToChange.getEType().getName().equals("EInt"))
+//			refactoringCommand.append(SetCommand.create(domain, refactoringOrigin, attributeToChange, computeNewValue(refactoringOrigin, refactoringOrigin, newValue, attributeToChange)));
+//		refactoredElements.add(refactoringOrigin);
 		
 		try {
 			ExtensionPointService.Instance().getActiveRefactoringService().addRefactoredObjects(refactoredElements);
@@ -137,7 +144,7 @@ public abstract class ChangeFeatureTraitBaseCommand extends AbstractHandler {
 		return true;
 	}
 	
-	protected Object computeNewValue(Feature refactoringOrigin, Feature machtingFeature, String newValue, EAttribute attributeToChange){
+	protected Object computeNewValue(Feature refactoringOrigin, Feature machtingFeature, String newValue, EStructuralFeature attributeToChange){
 		if (isPotencyValue(attributeToChange)){
 			int refactoringOriginLevel = refactoringOrigin.getClabject().getLevel();
 			int matchingFeatureLevel = machtingFeature.getClabject().getLevel();
@@ -148,7 +155,7 @@ public abstract class ChangeFeatureTraitBaseCommand extends AbstractHandler {
 		return newValue;
 	}
 	
-	protected boolean isPotencyValue(EAttribute attributeToChange){
+	protected boolean isPotencyValue(EStructuralFeature attributeToChange){
 		return attributeToChange == PLMPackage.eINSTANCE.getClabject_Potency() || attributeToChange == PLMPackage.eINSTANCE.getFeature_Durability() || attributeToChange == PLMPackage.eINSTANCE.getAttribute_Mutability();
 	}
 	
