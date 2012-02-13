@@ -32,31 +32,37 @@ public class ChangeFeatureDurabilityCommand extends ChangeFeatureTraitBaseComman
 	public ChangeFeatureDurabilityCommand() {
 	}
 
-	/**
-	 * the command has been executed, so extract extract the needed information
-	 * from the application context.
-	 */
+	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		//TODO: Change once rename feature is working as reference implementation
-		
-		
-		Feature featureToChange = (Feature)event.getObjectParameterForExecution("feature");
-		String oldValue = event.getParameter("oldValue") != null ? event.getParameter("oldValue") : String.valueOf(featureToChange.getDurability());
-		
-		ChangeValueDialog dialog = null;
-		
-		if (event.getParameter("newValue") != null)
-			dialog = showChangeValueDialog(event.getParameter("newValue").toString(), oldValue, event);
-		else
-			dialog = showChangeValueDialog(featureToChange.getName(), oldValue, event);
-		
-		if (dialog != null)
-			if (oldValue ==  null)
-				return runRefactoring(featureToChange, PLMPackage.eINSTANCE.getFeature_Durability(), String.valueOf(featureToChange.getDurability()), dialog.getNewValue(), dialog.getChangeOntologicalTypes(), dialog.getChangeSubtypes(), dialog.getChangeSupertypes());
-			else
-				return runRefactoring(featureToChange, PLMPackage.eINSTANCE.getFeature_Durability(), oldValue, dialog.getNewValue(), dialog.getChangeOntologicalTypes(), dialog.getChangeSubtypes(), dialog.getChangeSupertypes());
-				
-		else
-			return false;
+		// TODO Auto-generated method stub
+		return null;
 	}
+
+//	/**
+//	 * the command has been executed, so extract extract the needed information
+//	 * from the application context.
+//	 */
+//	public Object execute(ExecutionEvent event) throws ExecutionException {
+//		//TODO: Change once rename feature is working as reference implementation
+//		
+//		
+//		Feature featureToChange = (Feature)event.getObjectParameterForExecution("feature");
+//		String oldValue = event.getParameter("oldValue") != null ? event.getParameter("oldValue") : String.valueOf(featureToChange.getDurability());
+//		
+//		ChangeValueDialog dialog = null;
+//		
+//		if (event.getParameter("newValue") != null)
+//			dialog = showChangeValueDialog(event.getParameter("newValue").toString(), oldValue, event);
+//		else
+//			dialog = showChangeValueDialog(featureToChange.getName(), oldValue, event);
+//		
+//		if (dialog != null)
+//			if (oldValue ==  null)
+//				return runRefactoring(featureToChange, PLMPackage.eINSTANCE.getFeature_Durability(), String.valueOf(featureToChange.getDurability()), dialog.getNewValue(), dialog.getChangeOntologicalTypes(), dialog.getChangeSubtypes(), dialog.getChangeSupertypes());
+//			else
+//				return runRefactoring(featureToChange, PLMPackage.eINSTANCE.getFeature_Durability(), oldValue, dialog.getNewValue(), dialog.getChangeOntologicalTypes(), dialog.getChangeSubtypes(), dialog.getChangeSupertypes());
+//				
+//		else
+//			return false;
+//	}
 }

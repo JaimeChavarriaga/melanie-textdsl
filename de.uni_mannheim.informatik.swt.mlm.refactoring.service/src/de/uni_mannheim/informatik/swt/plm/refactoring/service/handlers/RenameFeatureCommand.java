@@ -12,6 +12,8 @@ package de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers;
 
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EStructuralFeature;
 
 import de.uni_mannheim.informatik.swt.mlm.refactoring.service.dialogs.ChangeValueDialog;
 import de.uni_mannheim.informatik.swt.mlm.workbench.ExtensionPointService;
@@ -35,11 +37,55 @@ public class RenameFeatureCommand extends ChangeFeatureTraitBaseCommand {
 	public RenameFeatureCommand() {
 	}
 
+//	/**
+//	 * the command has been executed, so extract extract the needed information
+//	 * from the application context.
+//	 */
+//	public Object execute(ExecutionEvent event) throws ExecutionException {
+//		
+//		IRefactoringService service = null;
+//		boolean result = false;
+//		
+//		try {
+//			
+//			service = ExtensionPointService.Instance().getRefactoringService(Refactorer.ID);
+//
+//			//Do we already have running a refactoring operation?
+////			if (service.getRefactoringOperationIsRunning())
+////				//Here a return is needed to not end the refactoring operation later in code
+////				return false;
+//			
+//			//Tell the service that we have such an operation already running
+////			service.setRefactoringOperationIsRunning(true);
+//		
+//			Feature featureToChange = (Feature)event.getObjectParameterForExecution("feature");
+//			String oldValue = event.getParameter("oldValue") != null ? event.getParameter("oldValue") : featureToChange.getName();
+//			
+//			ChangeValueDialog dialog = null;
+//			
+//			if (event.getParameter("newValue") != null)
+//				dialog = showChangeValueDialog(event.getParameter("newValue").toString(), oldValue, event);
+//			else
+//				dialog = showChangeValueDialog(featureToChange.getName(), oldValue, event);
+//			
+//			if (dialog != null)
+//					result = runRefactoring(featureToChange, PLMPackage.eINSTANCE.getElement_Name(), oldValue, dialog.getNewValue(), dialog.getChangeOntologicalTypes(), dialog.getChangeSubtypes(), dialog.getChangeSupertypes());
+//			else
+//				result = false;
+//		}
+//		catch (Exception e) {
+//			e.printStackTrace();	
+//		}
+//		
+////		service.setRefactoringOperationIsRunning(false);
+//		return result;
+//	}
+	
 	/**
 	 * the command has been executed, so extract extract the needed information
 	 * from the application context.
 	 */
-	public Object execute(ExecutionEvent event) throws ExecutionException {
+	public Object execute(Feature featureToChange, String oldValue, String newValue) throws ExecutionException {
 		
 		IRefactoringService service = null;
 		boolean result = false;
@@ -49,22 +95,18 @@ public class RenameFeatureCommand extends ChangeFeatureTraitBaseCommand {
 			service = ExtensionPointService.Instance().getRefactoringService(Refactorer.ID);
 
 			//Do we already have running a refactoring operation?
-			if (service.getRefactoringOperationIsRunning())
-				//Here a return is needed to not end the refactoring operation later in code
-				return false;
+//			if (service.getRefactoringOperationIsRunning())
+//				//Here a return is needed to not end the refactoring operation later in code
+//				return false;
 			
 			//Tell the service that we have such an operation already running
-			service.setRefactoringOperationIsRunning(true);
+//			service.setRefactoringOperationIsRunning(true);
 		
-			Feature featureToChange = (Feature)event.getObjectParameterForExecution("feature");
-			String oldValue = event.getParameter("oldValue") != null ? event.getParameter("oldValue") : featureToChange.getName();
 			
-			ChangeValueDialog dialog = null;
 			
-			if (event.getParameter("newValue") != null)
-				dialog = showChangeValueDialog(event.getParameter("newValue").toString(), oldValue, event);
-			else
-				dialog = showChangeValueDialog(featureToChange.getName(), oldValue, event);
+			
+			ChangeValueDialog dialog = dialog = showChangeValueDialog(newValue, oldValue);
+			
 			
 			if (dialog != null)
 					result = runRefactoring(featureToChange, PLMPackage.eINSTANCE.getElement_Name(), oldValue, dialog.getNewValue(), dialog.getChangeOntologicalTypes(), dialog.getChangeSubtypes(), dialog.getChangeSupertypes());
@@ -75,7 +117,13 @@ public class RenameFeatureCommand extends ChangeFeatureTraitBaseCommand {
 			e.printStackTrace();	
 		}
 		
-		service.setRefactoringOperationIsRunning(false);
+//		service.setRefactoringOperationIsRunning(false);
 		return result;
+	}
+
+	@Override
+	public Object execute(ExecutionEvent event) throws ExecutionException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

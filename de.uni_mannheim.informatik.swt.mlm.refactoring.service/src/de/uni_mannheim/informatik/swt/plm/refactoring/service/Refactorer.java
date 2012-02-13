@@ -10,16 +10,23 @@
  *******************************************************************************/
 package de.uni_mannheim.informatik.swt.plm.refactoring.service;
 
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.core.commands.Command;
+import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.ParameterizedCommand;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.jface.action.ContributionItem;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.commands.ICommandService;
@@ -29,6 +36,7 @@ import org.eclipse.ui.menus.CommandContributionItemParameter;
 
 import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IRefactoringService;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.AddFeatureToClabjectCommand;
 import de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.ChangeFeatureDurabilityCommand;
@@ -40,16 +48,6 @@ public class Refactorer implements IRefactoringService {
 	public static String ID = "de.uni_mannheim.informatik.swt.mlm.refactoring.service";
 	
 	private boolean refactoringOperationIsRunning = false;
-	
-	@Override
-	public boolean getRefactoringOperationIsRunning(){
-		return refactoringOperationIsRunning;
-	}
-	
-	@Override
-	public void setRefactoringOperationIsRunning(boolean isRunning){
-		refactoringOperationIsRunning = isRunning;
-	}
 	
 	@Override
 	public List<ContributionItem> getAvailableRefactoringCommands(EObject[] modelElements){
@@ -169,5 +167,47 @@ public class Refactorer implements IRefactoringService {
 		}
 		
 		return false;
+	}
+
+	private Set<EObject> refactoredObjects = new HashSet<EObject>();
+	
+	public boolean checkIfRefactoredAndRemove(EObject obj){
+		return refactoredObjects.remove(obj);
+	}
+	
+	@Override
+	public void addRefactoredObjects(Collection<? extends EObject> objects){
+		refactoredObjects.addAll(objects);
+	}
+	
+	@Override
+	public void startListening(EObject modelRoot) {
+		modelRoot.eAdapters().add(new EContentAdapter(){
+			@Override
+			public void notifyChanged(Notification notification) {
+				//Handles adding removing this adapter to new elements
+				//in the containment hierarchy
+				super.notifyChanged(notification);
+				
+				if (notification.getNotifier() instanceof Element 
+						&& !checkIfRefactoredAndRemove((EObject)notification.getNotifier())
+					)
+				{
+					if (notification.getFeature() instanceof EStructuralFeature){
+						RenameFeatureCommand c = new RenameFeatureCommand();
+						try {
+							c.execute((Feature)notification.getNotifier(), notification.getOldStringValue(), notification.getNewStringValue());
+						} catch (ExecutionException e) {
+							e.printStackTrace();
+						}
+					}
+				}
+			}
+		});
+	}
+
+	@Override
+	public void stopListening(EObject modelRoot) {
+		// TODO Auto-generated method stub
 	}
 }

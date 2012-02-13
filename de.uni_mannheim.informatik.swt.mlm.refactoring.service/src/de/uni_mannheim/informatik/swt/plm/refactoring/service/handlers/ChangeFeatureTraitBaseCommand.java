@@ -14,29 +14,32 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.core.commands.AbstractHandler;
-import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.window.Window;
-import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.handlers.HandlerUtil;
+import org.eclipse.ui.PlatformUI;
 
 import de.uni_mannheim.informatik.swt.mlm.refactoring.service.dialogs.ChangeValueDialog;
+import de.uni_mannheim.informatik.swt.mlm.workbench.ExtensionPointService;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage;
 
 public abstract class ChangeFeatureTraitBaseCommand extends AbstractHandler {
 	
-	protected ChangeValueDialog showChangeValueDialog(String valueToDisplayValue, String oldValue, ExecutionEvent event) throws ExecutionException{
-		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
+	protected ChangeValueDialog showChangeValueDialog(String valueToDisplayValue, String oldValue) throws ExecutionException{
+		//IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
 		
-		ChangeValueDialog dialog = new ChangeValueDialog(window.getShell(), valueToDisplayValue);
+		//ChangeValueDialog dialog = new ChangeValueDialog(window.getShell(), valueToDisplayValue);
+		
+		ChangeValueDialog dialog = new ChangeValueDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), valueToDisplayValue);
 		
 		String newValue = null;
 		
@@ -104,6 +107,8 @@ public abstract class ChangeFeatureTraitBaseCommand extends AbstractHandler {
 		allEffectedClabjects.addAll(typeLevelEffectedClabjects);
 		allEffectedClabjects.addAll(currentLevelEffectedClabjects);
 		
+		Set<EObject> refactoredElements = new HashSet<EObject>();
+		
 		//***************************************************************
 		//Execute rename operation
 		//***************************************************************
@@ -112,12 +117,21 @@ public abstract class ChangeFeatureTraitBaseCommand extends AbstractHandler {
 		
 		for (Clabject instance: allEffectedClabjects)
 			for (Feature feature : instance.getAllFeatures())
-				if (featuresMatch(refactoringOrigin, feature, attributeToChange, oldValue))
+				if (featuresMatch(refactoringOrigin, feature, attributeToChange, oldValue)){
 					refactoringCommand.append(SetCommand.create(domain, feature, attributeToChange, computeNewValue(refactoringOrigin, feature, newValue, attributeToChange)));
+					refactoredElements.add(feature);
+				}
 					
 		
 		//For the refactoring origin we do not have to compute a new value as this is set by the user
 		refactoringCommand.append(SetCommand.create(domain, refactoringOrigin, attributeToChange, computeNewValue(refactoringOrigin, refactoringOrigin, newValue, attributeToChange)));
+		refactoredElements.add(refactoringOrigin);
+		
+		try {
+			ExtensionPointService.Instance().getActiveRefactoringService().addRefactoredObjects(refactoredElements);
+		} catch (CoreException e) {
+			e.printStackTrace();
+		}
 		domain.getCommandStack().execute(refactoringCommand);
 		
 		return true;
