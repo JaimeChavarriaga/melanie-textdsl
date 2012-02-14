@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 
 import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IRefactoringService;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.ChangeTraitCommand;
@@ -50,12 +51,18 @@ public class Refactorer implements IRefactoringService {
 				//in the containment hierarchy
 				super.notifyChanged(notification);
 				
-				if (notification.getNotifier() instanceof Element 
+				if (notification.getNotifier() instanceof Attribute 
 						&& !checkIfRefactoredAndRemove((EObject)notification.getNotifier())
 						&& notification.getNewValue() != null
 					)
 				{
-					if (notification.getFeature() instanceof EStructuralFeature){
+					if (notification.getFeature() instanceof EStructuralFeature
+							&& (
+									((EStructuralFeature)notification.getFeature()).getName().equals("name")
+									|| ((EStructuralFeature)notification.getFeature()).getName().equals("durability")
+									|| ((EStructuralFeature)notification.getFeature()).getName().equals("mutability")
+								)
+						){
 						new ChangeTraitCommand().run((Feature)notification.getNotifier(), (EStructuralFeature)notification.getFeature(), notification.getOldStringValue(), notification.getNewStringValue());
 					}
 				}
