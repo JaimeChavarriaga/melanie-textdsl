@@ -21,12 +21,11 @@ import org.eclipse.emf.ecore.util.EContentAdapter;
 
 import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IRefactoringService;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.ChangeTraitCommand;
 
 
-public class Refactorer implements IRefactoringService {
+public class Refactorer extends EContentAdapter implements IRefactoringService {
 	
 	public static String ID = "de.uni_mannheim.informatik.swt.mlm.refactoring.service";
 
@@ -44,34 +43,34 @@ public class Refactorer implements IRefactoringService {
 	
 	@Override
 	public void startListening(EObject modelRoot) {
-		modelRoot.eAdapters().add(new EContentAdapter(){
-			@Override
-			public void notifyChanged(Notification notification) {
-				//Handles adding removing this adapter to new elements
-				//in the containment hierarchy
-				super.notifyChanged(notification);
-				
-				if (notification.getNotifier() instanceof Attribute 
-						&& !checkIfRefactoredAndRemove((EObject)notification.getNotifier())
-						&& notification.getNewValue() != null
-					)
-				{
-					if (notification.getFeature() instanceof EStructuralFeature
-							&& (
-									((EStructuralFeature)notification.getFeature()).getName().equals("name")
-									|| ((EStructuralFeature)notification.getFeature()).getName().equals("durability")
-									|| ((EStructuralFeature)notification.getFeature()).getName().equals("mutability")
-								)
-						){
-						new ChangeTraitCommand().run((Feature)notification.getNotifier(), (EStructuralFeature)notification.getFeature(), notification.getOldStringValue(), notification.getNewStringValue());
-					}
-				}
-			}
-		});
+		modelRoot.eAdapters().add(this);
 	}
 
 	@Override
 	public void stopListening(EObject modelRoot) {
-		// TODO Auto-generated method stub
+		modelRoot.eAdapters().remove(this);
+	}
+	
+	@Override
+	public void notifyChanged(Notification notification) {
+		//Handles adding removing this adapter to new elements
+		//in the containment hierarchy
+		super.notifyChanged(notification);
+		
+		if (notification.getNotifier() instanceof Attribute 
+				&& !checkIfRefactoredAndRemove((EObject)notification.getNotifier())
+				&& notification.getNewValue() != null
+			)
+		{
+			if (notification.getFeature() instanceof EStructuralFeature
+					&& (
+							((EStructuralFeature)notification.getFeature()).getName().equals("name")
+							|| ((EStructuralFeature)notification.getFeature()).getName().equals("durability")
+							|| ((EStructuralFeature)notification.getFeature()).getName().equals("mutability")
+						)
+				){
+				new ChangeTraitCommand().run((Feature)notification.getNotifier(), (EStructuralFeature)notification.getFeature(), notification.getOldStringValue(), notification.getNewStringValue());
+			}
+		}
 	}
 }

@@ -181,7 +181,7 @@ public class ChangeTraitCommand{// extends AbstractHandler {
 		String originName = attributeToChange.getName().equals("name") ? oldValue : refactoringOrigin.getName();
 		int originDurability = attributeToChange.getName().equals("durability") ? Integer.parseInt(oldValue) : refactoringOrigin.getDurability();
 		
-		if (!originName.equals(f2.getName()))
+		if (originName == null || originName.length() == 0 || !originName.equals(f2.getName()))
 			return false;
 		
 		if ((originDurability == -1) && (originDurability == f2.getDurability()))
