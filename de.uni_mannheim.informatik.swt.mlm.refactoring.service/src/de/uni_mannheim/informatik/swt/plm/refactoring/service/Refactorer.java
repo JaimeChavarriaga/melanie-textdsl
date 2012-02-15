@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 University of Mannheim: Chair for Software Engineering
+ * Copyright (c) 2011, 2012 University of Mannheim: Chair for Software Engineering
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.util.EContentAdapter;
 
 import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IRefactoringService;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.ChangeTraitCommand;
 
@@ -69,7 +70,10 @@ public class Refactorer extends EContentAdapter implements IRefactoringService {
 							|| ((EStructuralFeature)notification.getFeature()).getName().equals("mutability")
 						)
 				){
-				new ChangeTraitCommand().run((Feature)notification.getNotifier(), (EStructuralFeature)notification.getFeature(), notification.getOldStringValue(), notification.getNewStringValue());
+				ImpactAnalyzer analyzer = new ImpactAnalyzer();
+				Collection<? extends Element> effectedModelElements = analyzer.calculateImpact((Feature)notification.getNotifier(), notification.getOldStringValue(), (EStructuralFeature)notification.getFeature(), ImpactAnalyzer.OPERATION_CHANGE);
+				if (effectedModelElements.size() > 1)
+					new ChangeTraitCommand().run((Feature)notification.getNotifier(), (EStructuralFeature)notification.getFeature(), notification.getOldStringValue(), notification.getNewStringValue());
 			}
 		}
 	}
