@@ -69,7 +69,8 @@ public class ChangeTraitCommand{// extends AbstractHandler {
 	 * @return
 	 */
 	protected boolean runRefactoring(Feature refactoringOrigin, EStructuralFeature attributeToChange, String oldValue, String newValue, boolean changeOntologicalTypes, boolean changeSubtypes, boolean changeSuperTypes){
-		Set<Feature> refactoredElements = (Set<Feature>)new ImpactAnalyzer().calculateImpact(refactoringOrigin, oldValue, attributeToChange, ImpactAnalyzer.OPERATION_CHANGE);
+		
+		Set<Feature> refactoredElements = (Set<Feature>)new ImpactAnalyzer().calculateImpact(refactoringOrigin, oldValue, attributeToChange, ImpactAnalyzer.OPERATION_CHANGE, changeOntologicalTypes, changeSubtypes, changeSuperTypes);
 		
 		//***************************************************************
 		//Execute change operation

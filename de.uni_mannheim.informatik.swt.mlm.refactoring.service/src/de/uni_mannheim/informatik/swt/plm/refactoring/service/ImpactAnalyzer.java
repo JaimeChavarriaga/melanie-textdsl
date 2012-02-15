@@ -36,9 +36,15 @@ public class ImpactAnalyzer{
 	 */
 	public Collection<? extends Element> calculateImpact(EObject refactoringOrigin, String oldValue, EStructuralFeature attributeToChange, String refatoringOperation){
 		
+		return calculateImpact(refactoringOrigin, oldValue, attributeToChange, refatoringOperation, true, true, true);
+	}
+	
+	public Collection<? extends Element> calculateImpact(EObject refactoringOrigin, String oldValue, EStructuralFeature attributeToChange, String refatoringOperation,
+			boolean changeOntologicalTypes, boolean changeSubtypes, boolean changeSuperTypes) {
+		
 		if (refactoringOrigin instanceof Feature && refatoringOperation.equals(OPERATION_CHANGE)){
 			//Calculates the maximum possible impact of a change
-			return calculateImpactOfFeatureChange((Feature)refactoringOrigin, oldValue, attributeToChange, true, true, true);
+			return calculateImpactOfFeatureChange((Feature)refactoringOrigin, oldValue, attributeToChange, changeOntologicalTypes, changeSubtypes, changeSuperTypes);
 		}
 		
 		return null;
@@ -88,7 +94,16 @@ public class ImpactAnalyzer{
 		for (Clabject instance: allEffectedClabjects)
 			for (Feature feature : instance.getFeature())
 				if (featuresMatch(refactoringOrigin, feature, attributeToChange, oldValue))
-					result.add(feature);
+					if (!attributeToChange.getName().equals("value"))
+						result.add(feature);
+					else
+						//If the value is change only the ones that do have the same value
+						//are taken. This shall provide annoying behavior when overriding
+						//default values at instance levels
+						if (
+							(feature.eGet(attributeToChange) == null && oldValue == null)
+								|| feature.eGet(attributeToChange).equals(oldValue))
+							result.add(feature);
 		
 		return result;
 	}
