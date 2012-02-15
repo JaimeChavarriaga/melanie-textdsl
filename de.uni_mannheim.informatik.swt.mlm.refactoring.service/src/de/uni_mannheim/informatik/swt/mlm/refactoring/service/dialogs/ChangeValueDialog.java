@@ -62,7 +62,7 @@ public class ChangeValueDialog extends TitleAreaDialog {
 	protected Control createDialogArea(
 			Composite parent) {
 		
-		setTitle("Rename Feature");
+		setTitle("Change Trait");
 	 
 	    parent.setLayout(new GridLayout(1, false));
 	    
@@ -77,7 +77,7 @@ public class ChangeValueDialog extends TitleAreaDialog {
 	    ((GridData)composite.getLayoutData()).grabExcessHorizontalSpace = true;
 	    
         Label label = new Label(dialogArea, SWT.NONE);
-        label.setText("New Name");
+        label.setText("New Value");
         
         newNameText = new Text(dialogArea, SWT.SINGLE | SWT.BORDER);
         GridData newNameTextGridData = new GridData(GridData.FILL_HORIZONTAL);
@@ -89,17 +89,17 @@ public class ChangeValueDialog extends TitleAreaDialog {
         optionGridData.horizontalSpan = 2;
         
         changeSubtypesButton = new Button(dialogArea, SWT.CHECK);
-        changeSubtypesButton.setText("Rename Subtypes");
+        changeSubtypesButton.setText("Change Subtypes");
         changeSubtypesButton.setLayoutData(optionGridData);
         changeSubtypesButton.setSelection(changeSubtypes);
         
         changeSupertypesButton = new Button(dialogArea, SWT.CHECK);
-        changeSupertypesButton.setText("Rename Supertypes");
+        changeSupertypesButton.setText("Change Supertypes");
         changeSupertypesButton.setLayoutData(optionGridData);
         changeSupertypesButton.setSelection(changeSupertypes);
         
         changeOntologicalTypesButton = new Button(dialogArea, SWT.CHECK);
-        changeOntologicalTypesButton.setText("Rename Ontological Types");
+        changeOntologicalTypesButton.setText("Change Ontological Types");
         changeOntologicalTypesButton.setLayoutData(optionGridData);
         changeOntologicalTypesButton.setSelection(changeOntologicalTypes);
         
