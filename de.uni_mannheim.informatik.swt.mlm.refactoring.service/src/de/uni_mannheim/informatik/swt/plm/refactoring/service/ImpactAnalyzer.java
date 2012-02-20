@@ -14,14 +14,13 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.DomainElement;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 
-public class ImpactAnalyzer{
+public class ImpactAnalyzer<T extends DomainElement>{
 
 	public static final String OPERATION_CHANGE = "change";
 	public static final String OPERATION_DELETE = "delete";
@@ -34,45 +33,47 @@ public class ImpactAnalyzer{
 	 * 
 	 * @return
 	 */
-	public Collection<? extends Element> calculateImpact(EObject refactoringOrigin, String oldValue, EStructuralFeature attributeToChange, String refatoringOperation){
+	public Collection<T> calculateImpact(T refactoringOrigin, String oldValue, EStructuralFeature attributeToChange, String refatoringOperation){
 		
 		return calculateImpact(refactoringOrigin, oldValue, attributeToChange, refatoringOperation, true, true, true);
 	}
 	
-	public Collection<? extends Element> calculateImpact(EObject refactoringOrigin, String oldValue, EStructuralFeature attributeToChange, String refatoringOperation,
+	public Collection<T> calculateImpact(T refactoringOrigin, String oldValue, EStructuralFeature attributeToChange, String refatoringOperation,
 			boolean changeOntologicalTypes, boolean changeSubtypes, boolean changeSuperTypes) {
 		
-		if (refactoringOrigin instanceof Feature && refatoringOperation.equals(OPERATION_CHANGE)){
+		if (refatoringOperation.equals(OPERATION_CHANGE)){
 			//Calculates the maximum possible impact of a change
-			return calculateImpactOfFeatureChange((Feature)refactoringOrigin, oldValue, attributeToChange, changeOntologicalTypes, changeSubtypes, changeSuperTypes);
+			return calculateImpactOfChange(refactoringOrigin, oldValue, attributeToChange, changeOntologicalTypes, changeSubtypes, changeSuperTypes);
 		}
-		
+	 
 		return null;
 	}
+	
 	
 	/**
 	 * Returns all effected Fearures.
 	 * 
 	 * @return
 	 */
-	private Collection<Feature> calculateImpactOfFeatureChange (Feature refactoringOrigin, String oldValue, EStructuralFeature attributeToChange, boolean changeOntologicalTypes, boolean changeSubtypes, boolean changeSupertypes){
-		Clabject refactorOriginContainingClabject = (Clabject)refactoringOrigin.eContainer();
+	private Collection<T> calculateImpactOfChange (T refactoringOrigin, String oldValue, EStructuralFeature attributeToChange, boolean changeOntologicalTypes, boolean changeSubtypes, boolean changeSupertypes){
+		Clabject refactorOriginClabject = refactoringOrigin instanceof Clabject ? (Clabject)refactoringOrigin : (Clabject)refactoringOrigin.eContainer();
+		
 		
 		//Kepp out duplicates for performance reasons
 		Set<Clabject> currentLevelEffectedClabjects = new HashSet<Clabject>();
-		currentLevelEffectedClabjects.add(refactorOriginContainingClabject);
+		currentLevelEffectedClabjects.add(refactorOriginClabject);
 		Set<Clabject> typeLevelEffectedClabjects = new HashSet<Clabject>();
 		Set<Clabject> instanceLevelEffectedClabjects = new HashSet<Clabject>();
-		Set<Feature> result = new HashSet<Feature>();
+		Set<T> result = new HashSet<T>();
 		
 		
 		//***************************************************************
 		//Collect current level
 		//***************************************************************
 		if (changeSubtypes)
-			currentLevelEffectedClabjects.addAll(refactorOriginContainingClabject.getModelSubtypes());
+			currentLevelEffectedClabjects.addAll(refactorOriginClabject.getModelSubtypes());
 		if(changeSupertypes)
-			currentLevelEffectedClabjects.addAll(refactorOriginContainingClabject.getModelSupertypes());
+			currentLevelEffectedClabjects.addAll(refactorOriginClabject.getModelSupertypes());
 		
 		//***************************************************************
 		//Collect all type levels
@@ -91,19 +92,27 @@ public class ImpactAnalyzer{
 		allEffectedClabjects.addAll(typeLevelEffectedClabjects);
 		allEffectedClabjects.addAll(currentLevelEffectedClabjects);
 		
-		for (Clabject instance: allEffectedClabjects)
-			for (Feature feature : instance.getFeature())
-				if (featuresMatch(refactoringOrigin, feature, attributeToChange, oldValue))
-					if (!attributeToChange.getName().equals("value"))
-						result.add(feature);
-					else
-						//If the value is change only the ones that do have the same value
-						//are taken. This shall provide annoying behavior when overriding
-						//default values at instance levels
-						if (
-							(feature.eGet(attributeToChange) == null && oldValue == null)
-								|| feature.eGet(attributeToChange).equals(oldValue))
-							result.add(feature);
+		//If features are looked for matching features in the related clabjects
+		//need to be found
+		if (refactoringOrigin instanceof Feature){
+			for (Clabject instance: allEffectedClabjects)
+				for (Feature feature : instance.getFeature())
+					if (match((Feature)refactoringOrigin, feature, attributeToChange, oldValue))
+						if (!attributeToChange.getName().equals("value"))
+							result.add((T)feature);
+						else
+							//If the value is change only the ones that do have the same value
+							//are taken. This shall provide annoying behavior when overriding
+							//default values at instance levels
+							if (
+								(feature.eGet(attributeToChange) == null && oldValue == null)
+									|| feature.eGet(attributeToChange).equals(oldValue))
+								result.add((T)feature);
+		}
+		//We have a clabject
+		else{
+			result.addAll((Set<T>)allEffectedClabjects);
+		}
 		
 		return result;
 	}
@@ -134,7 +143,7 @@ public class ImpactAnalyzer{
 	 * @param attributeToChange
 	 * @return is f2 relevant for changes to refactoringOrigin
 	 */
-	protected boolean featuresMatch(Feature refactoringOrigin, Feature f2, EStructuralFeature attributeToChange, String oldValue){
+	protected boolean match(Feature refactoringOrigin, Feature f2, EStructuralFeature attributeToChange, String oldValue){
 		String originName = attributeToChange.getName().equals("name") ? oldValue : refactoringOrigin.getName();
 		int originDurability = attributeToChange.getName().equals("durability") ? Integer.parseInt(oldValue) : refactoringOrigin.getDurability();
 		

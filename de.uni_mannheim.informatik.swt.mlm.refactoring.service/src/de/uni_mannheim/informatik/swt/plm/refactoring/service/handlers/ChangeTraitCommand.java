@@ -24,13 +24,15 @@ import org.eclipse.ui.PlatformUI;
 
 import de.uni_mannheim.informatik.swt.mlm.refactoring.service.dialogs.ChangeValueDialog;
 import de.uni_mannheim.informatik.swt.mlm.workbench.ExtensionPointService;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.DomainElement;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage;
 import de.uni_mannheim.informatik.swt.plm.refactoring.service.ImpactAnalyzer;
 
-public class ChangeTraitCommand{// extends AbstractHandler {
+public class ChangeTraitCommand<T extends DomainElement>{// extends AbstractHandler {
 	
-	public void run(Feature refactoringOrigin, EStructuralFeature attributeToChange, String oldValue, String newValue){
+	public void run(T refactoringOrigin, EStructuralFeature attributeToChange, String oldValue, String newValue){
 		try {
 			ChangeValueDialog dialog = showChangeValueDialog(newValue, oldValue);
 			runRefactoring(refactoringOrigin, attributeToChange, oldValue, newValue, dialog.getChangeOntologicalTypes(), dialog.getChangeSubtypes(), dialog.getChangeSupertypes());
@@ -68,9 +70,9 @@ public class ChangeTraitCommand{// extends AbstractHandler {
 	 * @param changeSuperTypes change supertypes?
 	 * @return
 	 */
-	protected boolean runRefactoring(Feature refactoringOrigin, EStructuralFeature attributeToChange, String oldValue, String newValue, boolean changeOntologicalTypes, boolean changeSubtypes, boolean changeSuperTypes){
+	protected boolean runRefactoring(T refactoringOrigin, EStructuralFeature attributeToChange, String oldValue, String newValue, boolean changeOntologicalTypes, boolean changeSubtypes, boolean changeSuperTypes){
 		
-		Set<Feature> refactoredElements = (Set<Feature>)new ImpactAnalyzer().calculateImpact(refactoringOrigin, oldValue, attributeToChange, ImpactAnalyzer.OPERATION_CHANGE, changeOntologicalTypes, changeSubtypes, changeSuperTypes);
+		Set<T> refactoredElements = (Set<T>)new ImpactAnalyzer().calculateImpact(refactoringOrigin, oldValue, attributeToChange, ImpactAnalyzer.OPERATION_CHANGE, changeOntologicalTypes, changeSubtypes, changeSuperTypes);
 		
 		//***************************************************************
 		//Execute change operation
@@ -78,11 +80,11 @@ public class ChangeTraitCommand{// extends AbstractHandler {
 		CompoundCommand refactoringCommand = new CompoundCommand("Refactoring - " + attributeToChange.getName());
 		TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(refactoringOrigin);
 		
-		for (Feature feature : refactoredElements)
+		for (T element : refactoredElements)
 			if (attributeToChange.getEType().getName().equals("EInt"))
-				refactoringCommand.append(SetCommand.create(domain, feature, attributeToChange, (Integer) computeNewValue(refactoringOrigin, feature, newValue, attributeToChange)));
+				refactoringCommand.append(SetCommand.create(domain, element, attributeToChange, (Integer) computeNewValue(refactoringOrigin, element, newValue, attributeToChange)));
 			else
-				refactoringCommand.append(SetCommand.create(domain, feature, attributeToChange, computeNewValue(refactoringOrigin, feature, newValue, attributeToChange)));
+				refactoringCommand.append(SetCommand.create(domain, element, attributeToChange, computeNewValue(refactoringOrigin, element, newValue, attributeToChange)));
 		
 		try {
 			ExtensionPointService.Instance().getActiveRefactoringService().addRefactoredObjects(refactoredElements);
@@ -94,14 +96,25 @@ public class ChangeTraitCommand{// extends AbstractHandler {
 		return true;
 	}
 	
-	protected Object computeNewValue(Feature refactoringOrigin, Feature machtingFeature, String newValue, EStructuralFeature attributeToChange){
-		if (isPotencyValue(attributeToChange)){
-			int refactoringOriginLevel = refactoringOrigin.getClabject().getLevel();
-			int matchingFeatureLevel = machtingFeature.getClabject().getLevel();
-			int levelDistance = refactoringOriginLevel - matchingFeatureLevel;
-			return Integer.parseInt(newValue) + levelDistance;
+	protected Object computeNewValue(T refactoringOrigin, T machtingElement, String newValue, EStructuralFeature attributeToChange){
+		if (refactoringOrigin instanceof Feature)
+		{
+			if (isPotencyValue(attributeToChange)){
+				int refactoringOriginLevel = ((Feature)refactoringOrigin).getClabject().getLevel();
+				int matchingFeatureLevel = ((Feature)machtingElement).getClabject().getLevel();
+				int levelDistance = refactoringOriginLevel - matchingFeatureLevel;
+				return Integer.parseInt(newValue) + levelDistance;
+			}
 		}
-		
+		else if(refactoringOrigin instanceof Clabject)
+		{
+			if (isPotencyValue(attributeToChange)){
+				int refactoringOriginLevel = ((Clabject)refactoringOrigin).getLevel();
+				int matchingFeatureLevel = ((Clabject)machtingElement).getLevel();
+				int levelDistance = refactoringOriginLevel - matchingFeatureLevel;
+				return Integer.parseInt(newValue) + levelDistance;
+			}
+		}
 		return newValue;
 	}
 	
