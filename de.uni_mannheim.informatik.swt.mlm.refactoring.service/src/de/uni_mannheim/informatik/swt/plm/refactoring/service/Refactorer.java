@@ -20,11 +20,11 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 
 import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IRefactoringService;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.DomainElement;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
+import de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.AddModelElementCommand;
 import de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.ChangeTraitCommand;
 
 
@@ -60,11 +60,16 @@ public class Refactorer extends EContentAdapter implements IRefactoringService {
 		//in the containment hierarchy
 		super.notifyChanged(notification);
 		
+		//*********************************************
+		// Model trait change
+		//*********************************************
 		if (notification.getNotifier() instanceof DomainElement 
 				&& !checkIfRefactoredAndRemove((EObject)notification.getNotifier())
 				&& notification.getNewValue() != null
 			)
 		{
+			//*********************************************
+			// Refactor Feature
 			//*********************************************
 			if (notification.getFeature() instanceof EStructuralFeature
 					&& (
@@ -76,16 +81,29 @@ public class Refactorer extends EContentAdapter implements IRefactoringService {
 						)
 				){
 				ImpactAnalyzer<Feature> analyzer = new ImpactAnalyzer<Feature>();
-				Collection<? extends Element> effectedModelElements = analyzer.calculateImpact((Feature)notification.getNotifier(), notification.getOldStringValue(), (EStructuralFeature)notification.getFeature(), ImpactAnalyzer.OPERATION_CHANGE);
+				Collection<? extends Element> effectedModelElements = analyzer.calculateMaximalImpact((Feature)notification.getNotifier(), notification.getOldStringValue(), (EStructuralFeature)notification.getFeature(), ImpactAnalyzer.OPERATION_CHANGE);
 				if (effectedModelElements.size() > 1)
 					new ChangeTraitCommand<Feature>().run((Feature)notification.getNotifier(), (EStructuralFeature)notification.getFeature(), notification.getOldStringValue(), notification.getNewStringValue());
 			}
+			//*********************************************
+			// Refactor Clabject Trait change
+			//*********************************************
 			else if (notification.getFeature() instanceof EStructuralFeature
 					&& ((EStructuralFeature)notification.getFeature()).getName().equals("potency")){
 				ImpactAnalyzer<Clabject> analyzer = new ImpactAnalyzer<Clabject>();
-				Collection<? extends Element> effectedModelElements = analyzer.calculateImpact((Clabject)notification.getNotifier(), notification.getOldStringValue(), (EStructuralFeature)notification.getFeature(), ImpactAnalyzer.OPERATION_CHANGE);
+				Collection<? extends Element> effectedModelElements = analyzer.calculateMaximalImpact((Clabject)notification.getNotifier(), notification.getOldStringValue(), (EStructuralFeature)notification.getFeature(), ImpactAnalyzer.OPERATION_CHANGE);
 				if (effectedModelElements.size() > 1)
 					new ChangeTraitCommand<Clabject>().run((Clabject)notification.getNotifier(), (EStructuralFeature)notification.getFeature(), notification.getOldStringValue(), notification.getNewStringValue());
+			}
+			//*********************************************
+			// Refactor Clabject feature change
+			//*********************************************
+			else if (notification.getFeature() instanceof EStructuralFeature
+					&& ((EStructuralFeature)notification.getFeature()).getName().equals("feature")){
+				ImpactAnalyzer<Clabject> analyzer = new ImpactAnalyzer<Clabject>();
+				Collection<? extends Element> effectedModelElements = analyzer.calculateMaximalImpact((Clabject)notification.getNotifier(), notification.getOldStringValue(), (EStructuralFeature)notification.getFeature(), ImpactAnalyzer.OPERATION_CHANGE);
+				if (effectedModelElements.size() > 1)
+					new AddModelElementCommand<Clabject>().run((Clabject)notification.getNotifier(), (EStructuralFeature)notification.getFeature(), (DomainElement)notification.getNewValue());
 			}
 		}
 	}

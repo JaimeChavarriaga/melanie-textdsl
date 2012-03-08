@@ -33,29 +33,21 @@ public class ImpactAnalyzer<T extends DomainElement>{
 	 * 
 	 * @return
 	 */
-	public Collection<T> calculateImpact(T refactoringOrigin, String oldValue, EStructuralFeature attributeToChange, String refatoringOperation){
+	public Collection<T> calculateMaximalImpact(T refactoringOrigin, String oldValue, EStructuralFeature attributeToChange, String refatoringOperation){
 		
-		return calculateImpact(refactoringOrigin, oldValue, attributeToChange, refatoringOperation, true, true, true);
+		return calculateImpactOfChange(refactoringOrigin, oldValue, attributeToChange, true, true, true);
 	}
 	
-	public Collection<T> calculateImpact(T refactoringOrigin, String oldValue, EStructuralFeature attributeToChange, String refatoringOperation,
-			boolean changeOntologicalTypes, boolean changeSubtypes, boolean changeSuperTypes) {
-		
-		if (refatoringOperation.equals(OPERATION_CHANGE)){
-			//Calculates the maximum possible impact of a change
-			return calculateImpactOfChange(refactoringOrigin, oldValue, attributeToChange, changeOntologicalTypes, changeSubtypes, changeSuperTypes);
-		}
-	 
-		return null;
+	public Collection<T> calculateImpactOfChange (Clabject refactoringOrigin, EStructuralFeature attributeToChange, boolean changeOntologicalTypes, boolean changeSubtypes, boolean changeSupertypes){
+		return calculateImpactOfChange((T)refactoringOrigin, null, attributeToChange, changeOntologicalTypes, changeSubtypes, changeSupertypes);
 	}
-	
 	
 	/**
 	 * Returns all effected Fearures.
 	 * 
 	 * @return
 	 */
-	private Collection<T> calculateImpactOfChange (T refactoringOrigin, String oldValue, EStructuralFeature attributeToChange, boolean changeOntologicalTypes, boolean changeSubtypes, boolean changeSupertypes){
+	public Collection<T> calculateImpactOfChange (T refactoringOrigin, String oldValue, EStructuralFeature attributeToChange, boolean changeOntologicalTypes, boolean changeSubtypes, boolean changeSupertypes){
 		Clabject refactorOriginClabject = refactoringOrigin instanceof Clabject ? (Clabject)refactoringOrigin : (Clabject)refactoringOrigin.eContainer();
 		
 		

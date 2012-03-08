@@ -17,15 +17,13 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
-public class ChangeValueDialog extends TitleAreaDialog {
+public class AddModelElementDialog extends TitleAreaDialog {
 
-	public ChangeValueDialog(Shell parentShell, String oldName) {
+	public AddModelElementDialog(Shell parentShell) {
 		super(parentShell);
-		newValue = oldName;
 	}
 	
 	Button changeOntologicalTypesButton;
@@ -36,17 +34,8 @@ public class ChangeValueDialog extends TitleAreaDialog {
 	private boolean changeSubtypes = true;
 	private boolean changeSupertypes = false;
 	private boolean changeOntologicalTypes = true;
-	private String newValue = "";
 	
-	public void setValue(String value){
-		newValue = value;
-	}
-	
-	public String getNewValue(){
-		return newValue;
-	}
-	
-	public boolean getChangeSubtypes(){
+		public boolean getChangeSubtypes(){
 		return changeSubtypes;
 	}
 	
@@ -76,15 +65,6 @@ public class ChangeValueDialog extends TitleAreaDialog {
 	    
 	    ((GridData)composite.getLayoutData()).grabExcessHorizontalSpace = true;
 	    
-        Label label = new Label(dialogArea, SWT.NONE);
-        label.setText("New Value");
-        
-        newNameText = new Text(dialogArea, SWT.SINGLE | SWT.BORDER);
-        GridData newNameTextGridData = new GridData(GridData.FILL_HORIZONTAL);
-        newNameTextGridData.grabExcessHorizontalSpace = true;
-        newNameText.setLayoutData(newNameTextGridData);
-        newNameText.setText(newValue);
-        
         GridData optionGridData = new GridData();
         optionGridData.horizontalSpan = 2;
         
@@ -102,7 +82,7 @@ public class ChangeValueDialog extends TitleAreaDialog {
         changeOntologicalTypesButton.setText("Change Ontological Types");
         changeOntologicalTypesButton.setLayoutData(optionGridData);
         changeOntologicalTypesButton.setSelection(changeOntologicalTypes);
-        
+
         return composite;
         
 //      LocalResourceManager resources
@@ -113,11 +93,16 @@ public class ChangeValueDialog extends TitleAreaDialog {
 	}
 
 	@Override
+	protected void configureShell(Shell newShell) {
+		super.configureShell(newShell);
+		newShell.setText("Add Model Element");
+	}
+	
+	@Override
 	protected void okPressed() {
 		changeOntologicalTypes = changeOntologicalTypesButton.getSelection();
 		changeSubtypes = changeSubtypesButton.getSelection();
 		changeSupertypes = changeSupertypesButton.getSelection();
-		newValue = newNameText.getText();
 		super.okPressed();
 	}
 }

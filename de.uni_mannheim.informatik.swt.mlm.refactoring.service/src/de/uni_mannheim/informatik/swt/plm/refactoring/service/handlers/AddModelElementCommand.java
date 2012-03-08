@@ -16,46 +16,43 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.window.Window;
 import org.eclipse.ui.PlatformUI;
 
+import de.uni_mannheim.informatik.swt.mlm.refactoring.service.dialogs.AddModelElementDialog;
 import de.uni_mannheim.informatik.swt.mlm.refactoring.service.dialogs.ChangeTraitDialog;
 import de.uni_mannheim.informatik.swt.mlm.workbench.ExtensionPointService;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.DomainElement;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMFactory;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage;
 import de.uni_mannheim.informatik.swt.plm.refactoring.service.ImpactAnalyzer;
 
-public class ChangeTraitCommand<T extends DomainElement>{// extends AbstractHandler {
+public class AddModelElementCommand<T extends DomainElement>{// extends AbstractHandler {
 	
-	public void run(T refactoringOrigin, EStructuralFeature attributeToChange, String oldValue, String newValue){
+	public void run(T refactoringOrigin, EStructuralFeature attributeToChange, DomainElement newValue){
 		try {
-			ChangeTraitDialog dialog = showChangeValueDialog(newValue, oldValue);
-			runRefactoring(refactoringOrigin, attributeToChange, oldValue, newValue, dialog.getChangeOntologicalTypes(), dialog.getChangeSubtypes(), dialog.getChangeSupertypes());
+			AddModelElementDialog dialog = showAddModelElementDialog(newValue);
+			runRefactoring(refactoringOrigin, attributeToChange, newValue, dialog.getChangeOntologicalTypes(), dialog.getChangeSubtypes(), dialog.getChangeSupertypes());
 		} catch (ExecutionException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	protected ChangeTraitDialog showChangeValueDialog(String valueToDisplayValue, String oldValue) throws ExecutionException{
-		ChangeTraitDialog dialog = new ChangeTraitDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), valueToDisplayValue);
+	protected AddModelElementDialog showAddModelElementDialog(DomainElement newValue) throws ExecutionException{
+		AddModelElementDialog dialog = new AddModelElementDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
 		
-		String newValue = null;
 		
 		if (dialog.open() == Window.OK)
-			newValue = dialog.getNewValue();
+			return dialog;
 		else
 			return null;
-		
-		if (newValue == null || newValue.equals(oldValue))
-			return null;
-		
-		
-		return dialog;
 	}
 	
 	/**
@@ -70,9 +67,9 @@ public class ChangeTraitCommand<T extends DomainElement>{// extends AbstractHand
 	 * @param changeSuperTypes change supertypes?
 	 * @return
 	 */
-	protected boolean runRefactoring(T refactoringOrigin, EStructuralFeature attributeToChange, String oldValue, String newValue, boolean changeOntologicalTypes, boolean changeSubtypes, boolean changeSuperTypes){
+	protected boolean runRefactoring(T refactoringOrigin, EStructuralFeature attributeToChange, DomainElement newValue, boolean changeOntologicalTypes, boolean changeSubtypes, boolean changeSuperTypes){
 		
-		Set<T> refactoredElements = (Set<T>)new ImpactAnalyzer().calculateImpactOfChange((DomainElement)refactoringOrigin, oldValue, attributeToChange, changeOntologicalTypes, changeSubtypes, changeSuperTypes);
+		Set<T> refactoredElements = (Set<T>)new ImpactAnalyzer().calculateImpactOfChange((Clabject)refactoringOrigin, attributeToChange, changeOntologicalTypes, changeSubtypes, changeSuperTypes);
 		
 		//***************************************************************
 		//Execute change operation
@@ -81,10 +78,7 @@ public class ChangeTraitCommand<T extends DomainElement>{// extends AbstractHand
 		TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(refactoringOrigin);
 		
 		for (T element : refactoredElements)
-			if (attributeToChange.getEType().getName().equals("EInt"))
-				refactoringCommand.append(SetCommand.create(domain, element, attributeToChange, (Integer) computeNewValue(refactoringOrigin, element, newValue, attributeToChange)));
-			else
-				refactoringCommand.append(SetCommand.create(domain, element, attributeToChange, computeNewValue(refactoringOrigin, element, newValue, attributeToChange)));
+			refactoringCommand.append(AddCommand.create(domain, element, attributeToChange, PLMFactory.eINSTANCE.createAttribute((Attribute)newValue)));
 		
 		try {
 			ExtensionPointService.Instance().getActiveRefactoringService().addRefactoredObjects(refactoredElements);
@@ -94,31 +88,5 @@ public class ChangeTraitCommand<T extends DomainElement>{// extends AbstractHand
 		domain.getCommandStack().execute(refactoringCommand);
 		
 		return true;
-	}
-	
-	protected Object computeNewValue(T refactoringOrigin, T machtingElement, String newValue, EStructuralFeature attributeToChange){
-		if (refactoringOrigin instanceof Feature)
-		{
-			if (isPotencyValue(attributeToChange)){
-				int refactoringOriginLevel = ((Feature)refactoringOrigin).getClabject().getLevel();
-				int matchingFeatureLevel = ((Feature)machtingElement).getClabject().getLevel();
-				int levelDistance = refactoringOriginLevel - matchingFeatureLevel;
-				return Integer.parseInt(newValue) + levelDistance;
-			}
-		}
-		else if(refactoringOrigin instanceof Clabject)
-		{
-			if (isPotencyValue(attributeToChange)){
-				int refactoringOriginLevel = ((Clabject)refactoringOrigin).getLevel();
-				int matchingFeatureLevel = ((Clabject)machtingElement).getLevel();
-				int levelDistance = refactoringOriginLevel - matchingFeatureLevel;
-				return Integer.parseInt(newValue) + levelDistance;
-			}
-		}
-		return newValue;
-	}
-	
-	protected boolean isPotencyValue(EStructuralFeature attributeToChange){
-		return attributeToChange == PLMPackage.eINSTANCE.getClabject_Potency() || attributeToChange == PLMPackage.eINSTANCE.getFeature_Durability() || attributeToChange == PLMPackage.eINSTANCE.getAttribute_Mutability();
 	}
 }
