@@ -68,8 +68,9 @@ public class Refactorer extends EContentAdapter implements IRefactoringService {
 			//*********************************************
 			if (notification.getFeature() instanceof EStructuralFeature
 					&& (
-							((EStructuralFeature)notification.getFeature()).getName().equals("name")
-							|| ((EStructuralFeature)notification.getFeature()).getName().equals("durability")
+							((EStructuralFeature)notification.getFeature()).getName().equals("name") 
+							&&
+							   ((EStructuralFeature)notification.getFeature()).getName().equals("durability")
 							|| ((EStructuralFeature)notification.getFeature()).getName().equals("mutability")
 							|| ((EStructuralFeature)notification.getFeature()).getName().equals("value")
 						)
