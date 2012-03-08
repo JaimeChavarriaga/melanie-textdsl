@@ -17,8 +17,11 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
+
+import de.uni_mannheim.informatik.swt.models.plm.PLM.DomainElement;
 
 public class AddModelElementDialog extends TitleAreaDialog {
 
@@ -34,6 +37,15 @@ public class AddModelElementDialog extends TitleAreaDialog {
 	private boolean changeSubtypes = true;
 	private boolean changeSupertypes = false;
 	private boolean changeOntologicalTypes = true;
+	private String newValue = "";
+	
+	public void setValue(String value){
+		newValue = value;
+	}
+	
+	public String getNewValue(){
+		return newValue;
+	}
 	
 		public boolean getChangeSubtypes(){
 		return changeSubtypes;
@@ -64,6 +76,16 @@ public class AddModelElementDialog extends TitleAreaDialog {
 	    dialogArea.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 	    
 	    ((GridData)composite.getLayoutData()).grabExcessHorizontalSpace = true;
+	    
+	    Label label = new Label(dialogArea, SWT.NONE);
+        label.setText("Name");
+        
+        newNameText = new Text(dialogArea, SWT.SINGLE | SWT.BORDER);
+        GridData newNameTextGridData = new GridData(GridData.FILL_HORIZONTAL);
+        newNameTextGridData.grabExcessHorizontalSpace = true;
+        newNameText.setLayoutData(newNameTextGridData);
+        newNameText.setText(newValue);
+        
 	    
         GridData optionGridData = new GridData();
         optionGridData.horizontalSpan = 2;
@@ -103,6 +125,8 @@ public class AddModelElementDialog extends TitleAreaDialog {
 		changeOntologicalTypes = changeOntologicalTypesButton.getSelection();
 		changeSubtypes = changeSubtypesButton.getSelection();
 		changeSupertypes = changeSupertypesButton.getSelection();
+		newValue = newNameText.getText();
+		
 		super.okPressed();
 	}
 }

@@ -17,21 +17,17 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.command.AddCommand;
-import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.window.Window;
 import org.eclipse.ui.PlatformUI;
 
 import de.uni_mannheim.informatik.swt.mlm.refactoring.service.dialogs.AddModelElementDialog;
-import de.uni_mannheim.informatik.swt.mlm.refactoring.service.dialogs.ChangeTraitDialog;
 import de.uni_mannheim.informatik.swt.mlm.workbench.ExtensionPointService;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.DomainElement;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMFactory;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage;
 import de.uni_mannheim.informatik.swt.plm.refactoring.service.ImpactAnalyzer;
 
 public class AddModelElementCommand<T extends DomainElement>{// extends AbstractHandler {
@@ -49,8 +45,10 @@ public class AddModelElementCommand<T extends DomainElement>{// extends Abstract
 		AddModelElementDialog dialog = new AddModelElementDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
 		
 		
-		if (dialog.open() == Window.OK)
+		if (dialog.open() == Window.OK){
+			newValue.setName(dialog.getNewValue());
 			return dialog;
+		}
 		else
 			return null;
 	}
