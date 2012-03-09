@@ -81,8 +81,8 @@ public class Refactorer extends EContentAdapter implements IRefactoringService {
 						)
 				){
 				ImpactAnalyzer<Feature> analyzer = new ImpactAnalyzer<Feature>();
-				Collection<? extends Element> effectedModelElements = analyzer.calculateMaximalImpact((Feature)notification.getNotifier(), notification.getOldStringValue(), (EStructuralFeature)notification.getFeature(), ImpactAnalyzer.OPERATION_CHANGE);
-				if (effectedModelElements.size() > 1)
+				Collection<? extends Element> effectedModelElements = analyzer.calculateMaximalImpact((Feature)notification.getNotifier(), notification.getOldStringValue(), (EStructuralFeature)notification.getFeature());
+				if (effectedModelElements.size() > 0)
 					new ChangeTraitCommand<Feature>().run((Feature)notification.getNotifier(), (EStructuralFeature)notification.getFeature(), notification.getOldStringValue(), notification.getNewStringValue());
 			}
 			//*********************************************
@@ -91,8 +91,8 @@ public class Refactorer extends EContentAdapter implements IRefactoringService {
 			else if (notification.getFeature() instanceof EStructuralFeature
 					&& ((EStructuralFeature)notification.getFeature()).getName().equals("potency")){
 				ImpactAnalyzer<Clabject> analyzer = new ImpactAnalyzer<Clabject>();
-				Collection<? extends Element> effectedModelElements = analyzer.calculateMaximalImpact((Clabject)notification.getNotifier(), notification.getOldStringValue(), (EStructuralFeature)notification.getFeature(), ImpactAnalyzer.OPERATION_CHANGE);
-				if (effectedModelElements.size() > 1)
+				Collection<? extends Element> effectedModelElements = analyzer.calculateMaximalImpact((Clabject)notification.getNotifier(), notification.getOldStringValue(), (EStructuralFeature)notification.getFeature());
+				if (effectedModelElements.size() > 0)
 					new ChangeTraitCommand<Clabject>().run((Clabject)notification.getNotifier(), (EStructuralFeature)notification.getFeature(), notification.getOldStringValue(), notification.getNewStringValue());
 			}
 			//*********************************************
@@ -101,8 +101,8 @@ public class Refactorer extends EContentAdapter implements IRefactoringService {
 			else if (notification.getFeature() instanceof EStructuralFeature
 					&& ((EStructuralFeature)notification.getFeature()).getName().equals("feature")){
 				ImpactAnalyzer<Clabject> analyzer = new ImpactAnalyzer<Clabject>();
-				Collection<? extends Element> effectedModelElements = analyzer.calculateMaximalImpact((Clabject)notification.getNotifier(), notification.getOldStringValue(), (EStructuralFeature)notification.getFeature(), ImpactAnalyzer.OPERATION_CHANGE);
-				if (effectedModelElements.size() > 1)
+				Collection<? extends Element> effectedModelElements = analyzer.calculateMaximalImpact((Clabject)notification.getNotifier(), notification.getOldStringValue(), (EStructuralFeature)notification.getFeature());
+				if (effectedModelElements.size() > 0)
 					new AddModelElementCommand<Clabject>().run((Clabject)notification.getNotifier(), (EStructuralFeature)notification.getFeature(), (DomainElement)notification.getNewValue());
 			}
 		}

@@ -33,7 +33,7 @@ public class ImpactAnalyzer<T extends DomainElement>{
 	 * 
 	 * @return
 	 */
-	public Collection<T> calculateMaximalImpact(T refactoringOrigin, String oldValue, EStructuralFeature attributeToChange, String refatoringOperation){
+	public Collection<T> calculateMaximalImpact(T refactoringOrigin, String oldValue, EStructuralFeature attributeToChange){
 		
 		return calculateImpactOfChange(refactoringOrigin, oldValue, attributeToChange, true, true, true);
 	}
