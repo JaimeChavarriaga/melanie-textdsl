@@ -66,9 +66,8 @@ public class AddModelElementCommand<T extends DomainElement>{// extends Abstract
 	 * @return
 	 */
 	protected boolean runRefactoring(T refactoringOrigin, EStructuralFeature attributeToChange, DomainElement newValue, boolean changeOntologicalTypes, boolean changeSubtypes, boolean changeSuperTypes){
-		
 		Set<T> refactoredElements = (Set<T>)new ImpactAnalyzer().calculateImpactOfChange((Clabject)refactoringOrigin, attributeToChange, changeOntologicalTypes, changeSubtypes, changeSuperTypes);
-		
+				
 		//***************************************************************
 		//Execute change operation
 		//***************************************************************
@@ -76,7 +75,8 @@ public class AddModelElementCommand<T extends DomainElement>{// extends Abstract
 		TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(refactoringOrigin);
 		
 		for (T element : refactoredElements)
-			refactoringCommand.append(AddCommand.create(domain, element, attributeToChange, PLMFactory.eINSTANCE.createAttribute((Attribute)newValue)));
+			if (element != refactoringOrigin)
+				refactoringCommand.append(AddCommand.create(domain, element, attributeToChange, PLMFactory.eINSTANCE.createAttribute((Attribute)newValue)));
 		
 		try {
 			ExtensionPointService.Instance().getActiveRefactoringService().addRefactoredObjects(refactoredElements);

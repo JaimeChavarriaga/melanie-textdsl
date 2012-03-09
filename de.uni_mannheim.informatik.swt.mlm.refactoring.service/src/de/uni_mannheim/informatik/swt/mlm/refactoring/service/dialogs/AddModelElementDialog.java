@@ -63,7 +63,7 @@ public class AddModelElementDialog extends TitleAreaDialog {
 	protected Control createDialogArea(
 			Composite parent) {
 		
-		setTitle("Change Trait");
+		setTitle("Add Model Element");
 	 
 	    parent.setLayout(new GridLayout(1, false));
 	    
