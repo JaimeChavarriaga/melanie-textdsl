@@ -21,11 +21,9 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
-import de.uni_mannheim.informatik.swt.models.plm.PLM.DomainElement;
+public class AddAttributeDialog extends TitleAreaDialog {
 
-public class AddModelElementDialog extends TitleAreaDialog {
-
-	public AddModelElementDialog(Shell parentShell) {
+	public AddAttributeDialog(Shell parentShell) {
 		super(parentShell);
 	}
 	
@@ -33,21 +31,38 @@ public class AddModelElementDialog extends TitleAreaDialog {
 	Button changeSupertypesButton;
 	Button changeSubtypesButton;
 	Text newNameText;
+	Text newMutabilityText;
+	Text newDurabilityText;
 	
 	private boolean changeSubtypes = true;
 	private boolean changeSupertypes = false;
 	private boolean changeOntologicalTypes = true;
-	private String newValue = "";
 	
-	public void setValue(String value){
-		newValue = value;
+	private String newName;
+	private String newDurability;
+	private String newMutability;
+	
+	public String getNewName(){
+		return newName;
 	}
 	
-	public String getNewValue(){
-		return newValue;
+	public int getNewDurability(){
+		try{
+			return Integer.parseInt(newDurability);
+		} catch (Exception ex){}
+		
+		return -1;
 	}
 	
-		public boolean getChangeSubtypes(){
+	public int getNewMutability(){
+		try{
+			return Integer.parseInt(newMutability);
+		} catch (Exception ex){}
+		
+		return -1;
+	}
+	
+	public boolean getChangeSubtypes(){
 		return changeSubtypes;
 	}
 	
@@ -77,15 +92,28 @@ public class AddModelElementDialog extends TitleAreaDialog {
 	    
 	    ((GridData)composite.getLayoutData()).grabExcessHorizontalSpace = true;
 	    
+	    GridData newTextGridData = new GridData(GridData.FILL_HORIZONTAL);
+        newTextGridData.grabExcessHorizontalSpace = true;
+	    
 	    Label label = new Label(dialogArea, SWT.NONE);
         label.setText("Name");
         
         newNameText = new Text(dialogArea, SWT.SINGLE | SWT.BORDER);
-        GridData newNameTextGridData = new GridData(GridData.FILL_HORIZONTAL);
-        newNameTextGridData.grabExcessHorizontalSpace = true;
-        newNameText.setLayoutData(newNameTextGridData);
-        newNameText.setText(newValue);
+        newNameText.setLayoutData(newTextGridData);
         
+        Label durability = new Label(dialogArea, SWT.NONE);
+        durability.setText("Durability");
+        
+        newDurabilityText = new Text(dialogArea, SWT.SINGLE | SWT.BORDER);
+        newDurabilityText.setLayoutData(newTextGridData);
+        newDurabilityText.setText("-1");
+        
+        Label mutability = new Label(dialogArea, SWT.NONE);
+        mutability.setText("Mutability");
+        
+        newMutabilityText = new Text(dialogArea, SWT.SINGLE | SWT.BORDER);
+        newMutabilityText.setLayoutData(newTextGridData);
+        newMutabilityText.setText("-1");
 	    
         GridData optionGridData = new GridData();
         optionGridData.horizontalSpan = 2;
@@ -125,8 +153,18 @@ public class AddModelElementDialog extends TitleAreaDialog {
 		changeOntologicalTypes = changeOntologicalTypesButton.getSelection();
 		changeSubtypes = changeSubtypesButton.getSelection();
 		changeSupertypes = changeSupertypesButton.getSelection();
-		newValue = newNameText.getText();
 		
-		super.okPressed();
+		newName = newNameText.getText();
+		newDurability = newDurabilityText.getText();
+		newMutability = newMutabilityText.getText();
+		
+		if (valuesOK())
+			super.okPressed();
+		else
+			setErrorMessage("Mutability and Durability need to be numeric values. Enter -1 for * value");
+	}
+
+	private boolean valuesOK() {
+		return newDurabilityText.getText().matches("\\-?\\d*") && newMutabilityText.getText().matches("\\-?\\d*");
 	}
 }

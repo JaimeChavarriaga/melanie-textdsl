@@ -36,7 +36,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage;
 import de.uni_mannheim.informatik.swt.plm.refactoring.service.ImpactAnalyzer;
 
-public class ChangeTraitCommand<T extends DomainElement>{// extends AbstractHandler {
+public class ChangeTraitCommand<T extends DomainElement>{
 	
 	public void run(T refactoringOrigin, EStructuralFeature attributeToChange, String oldValue, String newValue){
 		try {

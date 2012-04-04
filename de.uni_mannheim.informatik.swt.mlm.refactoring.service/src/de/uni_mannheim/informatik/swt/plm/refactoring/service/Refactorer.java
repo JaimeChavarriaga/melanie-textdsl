@@ -18,11 +18,12 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 
 import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IRefactoringService;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.DomainElement;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
-import de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.AddModelElementCommand;
+import de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.AddAttributeCommand;
 import de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.ChangeTraitCommand;
 
 
@@ -85,12 +86,13 @@ public class Refactorer extends EContentAdapter implements IRefactoringService {
 			// Refactor Clabject feature change
 			//*********************************************
 			else if (notification.getFeature() instanceof EStructuralFeature
-					&& ((EStructuralFeature)notification.getFeature()).getName().equals("feature")){
+					&& ((EStructuralFeature)notification.getFeature()).getName().equals("feature")
+					&& notification.getNewValue() instanceof Attribute){
 				ImpactAnalyzer<Clabject> analyzer = new ImpactAnalyzer<Clabject>();
 				Collection<? extends Element> effectedModelElements = analyzer.calculateMaximalImpact((Clabject)notification.getNotifier(), notification.getOldStringValue(), (EStructuralFeature)notification.getFeature());
 
 				if (effectedModelElements.size() > 0)
-					new AddModelElementCommand<Clabject>().run((Clabject)notification.getNotifier(), (EStructuralFeature)notification.getFeature(), (DomainElement)notification.getNewValue());
+					new AddAttributeCommand<Clabject>().run((Clabject)notification.getNotifier(), (EStructuralFeature)notification.getFeature(), (Attribute)notification.getNewValue());
 			}
 		}
 	}

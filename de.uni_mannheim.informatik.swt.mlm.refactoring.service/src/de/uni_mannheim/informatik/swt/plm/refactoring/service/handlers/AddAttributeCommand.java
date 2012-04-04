@@ -27,7 +27,7 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.window.Window;
 import org.eclipse.ui.PlatformUI;
 
-import de.uni_mannheim.informatik.swt.mlm.refactoring.service.dialogs.AddModelElementDialog;
+import de.uni_mannheim.informatik.swt.mlm.refactoring.service.dialogs.AddAttributeDialog;
 import de.uni_mannheim.informatik.swt.mlm.workbench.ExtensionPointService;
 import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IRefactoringService;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
@@ -37,23 +37,25 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMFactory;
 import de.uni_mannheim.informatik.swt.plm.refactoring.service.ImpactAnalyzer;
 import de.uni_mannheim.informatik.swt.plm.refactoring.service.Refactorer;
 
-public class AddModelElementCommand<T extends DomainElement>{// extends AbstractHandler {
+public class AddAttributeCommand<T extends DomainElement>{
 	
-	public void run(T refactoringOrigin, EStructuralFeature attributeToChange, DomainElement newValue){
+	public void run(T refactoringOrigin, EStructuralFeature attributeToChange, Attribute newValue){
 		try {
-			AddModelElementDialog dialog = showAddModelElementDialog(newValue);
+			AddAttributeDialog dialog = showAddModelElementDialog(newValue);
 			runRefactoring(refactoringOrigin, attributeToChange, newValue, dialog.getChangeOntologicalTypes(), dialog.getChangeSubtypes(), dialog.getChangeSupertypes());
 		} catch (ExecutionException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	protected AddModelElementDialog showAddModelElementDialog(DomainElement newValue) throws ExecutionException{
-		AddModelElementDialog dialog = new AddModelElementDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
+	protected AddAttributeDialog showAddModelElementDialog(Attribute newValue) throws ExecutionException{
+		AddAttributeDialog dialog = new AddAttributeDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
 		
 		
 		if (dialog.open() == Window.OK){
-			newValue.setName(dialog.getNewValue());
+			newValue.setName(dialog.getNewName());
+			newValue.setDurability(dialog.getNewDurability());
+			newValue.setMutability(dialog.getNewMutability());
 			return dialog;
 		}
 		else
