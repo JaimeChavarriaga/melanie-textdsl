@@ -8,7 +8,7 @@
  * Contributors:
  *    Ralph Gerbig - initial API and implementation and initial documentation
  *******************************************************************************/
-package de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers;
+package de.uni_mannheim.informatik.swt.plm.refactoring.service.commands;
 
 import java.util.EventObject;
 import java.util.Set;

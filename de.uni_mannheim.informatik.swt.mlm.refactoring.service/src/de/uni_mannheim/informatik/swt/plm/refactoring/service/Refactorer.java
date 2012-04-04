@@ -23,8 +23,8 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.DomainElement;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
-import de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.AddAttributeCommand;
-import de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.ChangeTraitCommand;
+import de.uni_mannheim.informatik.swt.plm.refactoring.service.commands.AddAttributeCommand;
+import de.uni_mannheim.informatik.swt.plm.refactoring.service.commands.ChangeTraitCommand;
 
 
 public class Refactorer extends EContentAdapter implements IRefactoringService {
