@@ -10,12 +10,17 @@
  *******************************************************************************/
 package de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers;
 
+import java.util.EventObject;
 import java.util.Set;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.emf.common.command.CommandStack;
+import org.eclipse.emf.common.command.CommandStackListener;
 import org.eclipse.emf.common.command.CompoundCommand;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
@@ -24,6 +29,7 @@ import org.eclipse.ui.PlatformUI;
 
 import de.uni_mannheim.informatik.swt.mlm.refactoring.service.dialogs.ChangeTraitDialog;
 import de.uni_mannheim.informatik.swt.mlm.workbench.ExtensionPointService;
+import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IRefactoringService;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.DomainElement;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
@@ -77,7 +83,7 @@ public class ChangeTraitCommand<T extends DomainElement>{// extends AbstractHand
 		//***************************************************************
 		//Execute change operation
 		//***************************************************************
-		CompoundCommand refactoringCommand = new CompoundCommand("Refactoring - " + attributeToChange.getName());
+		final CompoundCommand refactoringCommand = new CompoundCommand("Refactoring - " + attributeToChange.getName());
 		TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(refactoringOrigin);
 		
 		for (T element : refactoredElements)
@@ -86,11 +92,37 @@ public class ChangeTraitCommand<T extends DomainElement>{// extends AbstractHand
 			else
 				refactoringCommand.append(SetCommand.create(domain, element, attributeToChange, computeNewValue(refactoringOrigin, element, newValue, attributeToChange)));
 		
+//		//Get the currently active refactoring service
+		IRefactoringService service = null;
+		
 		try {
-			ExtensionPointService.Instance().getActiveRefactoringService().addRefactoredObjects(refactoredElements);
+			service = ExtensionPointService.Instance().getActiveRefactoringService();
 		} catch (CoreException e) {
 			e.printStackTrace();
 		}
+		
+		//These two variables are needed to continue listening to changes after executing the command
+		final EObject origin = refactoringOrigin;
+		final IRefactoringService rService = service;
+		
+		//stop listening as executing the command raises many following refactoring actions
+		if (service != null)
+			service.stopListening(EcoreUtil.getRootContainer(refactoringOrigin, true));
+		
+		domain.getCommandStack().addCommandStackListener(new CommandStackListener() {
+			
+			@Override
+			public void commandStackChanged(EventObject event) {
+				
+				if (event.getSource() instanceof CommandStack 
+						&& ((CommandStack)event.getSource()).getMostRecentCommand().equals(refactoringCommand))
+					
+					//Go on listening after changes were made
+					if (rService != null)
+						rService.startListening(EcoreUtil.getRootContainer(origin, true));
+			}
+		});
+		
 		domain.getCommandStack().execute(refactoringCommand);
 		
 		return true;

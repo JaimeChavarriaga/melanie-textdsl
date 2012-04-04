@@ -10,20 +10,25 @@
  *******************************************************************************/
 package de.uni_mannheim.informatik.swt.plm.refactoring.service;
 
+import java.awt.List;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
+
+import javax.naming.NoInitialContextException;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EContentAdapter;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IRefactoringService;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.DomainElement;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
 import de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.AddModelElementCommand;
 import de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.ChangeTraitCommand;
 
@@ -33,11 +38,10 @@ public class Refactorer extends EContentAdapter implements IRefactoringService {
 	public static String ID = "de.uni_mannheim.informatik.swt.mlm.refactoring.service";
 
 	private Set<EObject> refactoredObjects = new HashSet<EObject>();
-	
-	
-	private boolean checkIfRefactoredAndRemove(EObject object) {
-		return refactoredObjects.remove(object);
-	}
+		
+//	private boolean checkIfRefactoredAndRemove(EObject object) {
+//		return refactoredObjects.remove(object);
+//	}
 	
 	@Override
 	public void addRefactoredObjects(Collection<? extends EObject> objects){
@@ -59,12 +63,12 @@ public class Refactorer extends EContentAdapter implements IRefactoringService {
 		//Handles adding removing this adapter to new elements
 		//in the containment hierarchy
 		super.notifyChanged(notification);
-		
+			
 		//*********************************************
 		// Model trait change
 		//*********************************************
 		if (notification.getNotifier() instanceof DomainElement 
-				&& !checkIfRefactoredAndRemove((EObject)notification.getNotifier())
+				//&& !checkIfRefactoredAndRemove((EObject)notification.getNotifier())
 				&& notification.getNewValue() != null
 			)
 		{
@@ -102,6 +106,7 @@ public class Refactorer extends EContentAdapter implements IRefactoringService {
 					&& ((EStructuralFeature)notification.getFeature()).getName().equals("feature")){
 				ImpactAnalyzer<Clabject> analyzer = new ImpactAnalyzer<Clabject>();
 				Collection<? extends Element> effectedModelElements = analyzer.calculateMaximalImpact((Clabject)notification.getNotifier(), notification.getOldStringValue(), (EStructuralFeature)notification.getFeature());
+
 				if (effectedModelElements.size() > 0)
 					new AddModelElementCommand<Clabject>().run((Clabject)notification.getNotifier(), (EStructuralFeature)notification.getFeature(), (DomainElement)notification.getNewValue());
 			}
