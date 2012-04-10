@@ -41,8 +41,7 @@ public class Refactorer extends EContentAdapter implements IRefactoringService {
 		modelRoot.eAdapters().remove(this);
 	}
 	
-	//This is a workaroung because when something gets edited from the properties sheet
-	//we get notified twice.
+	//Used to pause refactoring while executing a refactoring operation 
 	private boolean inRefactoring = false;
 	
 	@Override
@@ -52,12 +51,11 @@ public class Refactorer extends EContentAdapter implements IRefactoringService {
 		super.notifyChanged(notification);
 		
 		
-		//FIXME: dirty hack because of propertysheet problem
+		//Used to pause refactoring while executing a refactoring operation 
 		if (inRefactoring)
 			return;
 		
 		inRefactoring = true;
-		
 		
 		try{
 			//*********************************************
