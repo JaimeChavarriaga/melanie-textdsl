@@ -33,6 +33,10 @@ public class AddAttributeCommand<T extends DomainElement>{
 	public void run(T refactoringOrigin, EStructuralFeature attributeToChange, Attribute newValue){
 		try {
 			AddAttributeDialog dialog = showAddModelElementDialog(newValue);
+			
+			if (dialog == null)
+				return;
+			
 			runRefactoring(refactoringOrigin, attributeToChange, newValue, dialog.getChangeOntologicalTypes(), dialog.getChangeSubtypes(), dialog.getChangeSupertypes(), dialog.getNewName(), dialog.getNewDurability(), dialog.getNewMutability());
 		} catch (ExecutionException e) {
 			e.printStackTrace();

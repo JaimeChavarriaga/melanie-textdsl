@@ -38,8 +38,13 @@ public class ChangeTraitCommand<T extends DomainElement>{
 	public void run(T refactoringOrigin, EStructuralFeature attributeToChange, String oldValue, String newValue){
 		try {
 			
-			TransactionUtil.getEditingDomain(refactoringOrigin).getCommandStack().flush();
 			ChangeTraitDialog dialog = showChangeValueDialog(newValue, oldValue, refactoringOrigin);
+			
+			if (dialog == null)
+				return;
+			
+			TransactionUtil.getEditingDomain(refactoringOrigin).getCommandStack().flush();
+			
 			runRefactoring(refactoringOrigin, attributeToChange, oldValue, newValue, dialog.getChangeOntologicalTypes(), dialog.getChangeSubtypes(), dialog.getChangeSupertypes());
 		} catch (ExecutionException e) {
 			e.printStackTrace();
