@@ -40,28 +40,22 @@ public class ChangeTraitCommand<T extends DomainElement>{
 	
 	public void run(T refactoringOrigin, EStructuralFeature attributeToChange, String oldValue, String newValue){
 		try {
-			ChangeTraitDialog dialog = showChangeValueDialog(newValue, oldValue);
+			
+			TransactionUtil.getEditingDomain(refactoringOrigin).getCommandStack().flush();
+			ChangeTraitDialog dialog = showChangeValueDialog(newValue, oldValue, refactoringOrigin);
 			runRefactoring(refactoringOrigin, attributeToChange, oldValue, newValue, dialog.getChangeOntologicalTypes(), dialog.getChangeSubtypes(), dialog.getChangeSupertypes());
 		} catch (ExecutionException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	protected ChangeTraitDialog showChangeValueDialog(String valueToDisplayValue, String oldValue) throws ExecutionException{
+	protected ChangeTraitDialog showChangeValueDialog(String valueToDisplayValue, String oldValue, T refactoringOrigin) throws ExecutionException{
 		ChangeTraitDialog dialog = new ChangeTraitDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), valueToDisplayValue);
 		
-		String newValue = null;
-		
 		if (dialog.open() == Window.OK)
-			newValue = dialog.getNewValue();
+			return dialog;
 		else
 			return null;
-		
-		if (newValue == null || newValue.equals(oldValue))
-			return null;
-		
-		
-		return dialog;
 	}
 	
 	/**
@@ -77,14 +71,13 @@ public class ChangeTraitCommand<T extends DomainElement>{
 	 * @return
 	 */
 	protected boolean runRefactoring(T refactoringOrigin, EStructuralFeature attributeToChange, String oldValue, String newValue, boolean changeOntologicalTypes, boolean changeSubtypes, boolean changeSuperTypes){
-		
 		Set<T> refactoredElements = (Set<T>)new ImpactAnalyzer().calculateImpactOfChange((DomainElement)refactoringOrigin, oldValue, attributeToChange, changeOntologicalTypes, changeSubtypes, changeSuperTypes);
 		
 		//***************************************************************
 		//Execute change operation
 		//***************************************************************
-		final CompoundCommand refactoringCommand = new CompoundCommand("Refactoring - " + attributeToChange.getName());
-		TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(refactoringOrigin);
+		final CompoundCommand refactoringCommand = new CompoundCommand("Refactoring - " + attributeToChange.getName() + " - " + refactoringOrigin.getName());
+		final TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(refactoringOrigin);
 		
 		for (T element : refactoredElements)
 			if (attributeToChange.getEType().getName().equals("EInt"))
@@ -92,7 +85,9 @@ public class ChangeTraitCommand<T extends DomainElement>{
 			else
 				refactoringCommand.append(SetCommand.create(domain, element, attributeToChange, computeNewValue(refactoringOrigin, element, newValue, attributeToChange)));
 		
-//		//Get the currently active refactoring service
+		
+		
+		//Get the currently active refactoring service
 		IRefactoringService service = null;
 		
 		try {
@@ -114,12 +109,16 @@ public class ChangeTraitCommand<T extends DomainElement>{
 			@Override
 			public void commandStackChanged(EventObject event) {
 				
-				if (event.getSource() instanceof CommandStack 
+				if (event.getSource() instanceof CommandStack
+						&& ((CommandStack)event.getSource()).getMostRecentCommand() != null
 						&& ((CommandStack)event.getSource()).getMostRecentCommand().equals(refactoringCommand))
 					
 					//Go on listening after changes were made
 					if (rService != null)
+					{
+						domain.getCommandStack().flush();
 						rService.startListening(EcoreUtil.getRootContainer(origin, true));
+					}
 			}
 		});
 		

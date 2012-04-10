@@ -41,59 +41,78 @@ public class Refactorer extends EContentAdapter implements IRefactoringService {
 		modelRoot.eAdapters().remove(this);
 	}
 	
+	//This is a workaroung because when something gets edited from the properties sheet
+	//we get notified twice.
+	private boolean inRefactoring = false;
+	
 	@Override
 	public void notifyChanged(Notification notification) {
 		//Handles adding removing this adapter to new elements
 		//in the containment hierarchy
 		super.notifyChanged(notification);
-			
-		//*********************************************
-		// Model trait change
-		//*********************************************
-		if (notification.getNotifier() instanceof DomainElement 
-				//&& !checkIfRefactoredAndRemove((EObject)notification.getNotifier())
-				&& notification.getNewValue() != null
-			)
-		{
+		
+		
+		//FIXME: dirty hack because of propertysheet problem
+		if (inRefactoring)
+			return;
+		
+		inRefactoring = true;
+		
+		
+		try{
 			//*********************************************
-			// Refactor Feature
+			// Model trait change
 			//*********************************************
-			if (notification.getFeature() instanceof EStructuralFeature
-					&& notification.getNotifier() instanceof Feature
-					&& (
-							((EStructuralFeature)notification.getFeature()).getName().equals("name") 
-							|| ((EStructuralFeature)notification.getFeature()).getName().equals("durability")
-							|| ((EStructuralFeature)notification.getFeature()).getName().equals("mutability")
-							|| ((EStructuralFeature)notification.getFeature()).getName().equals("value")
-						)
-				){
-				ImpactAnalyzer<Feature> analyzer = new ImpactAnalyzer<Feature>();
-				Collection<? extends Element> effectedModelElements = analyzer.calculateMaximalImpact((Feature)notification.getNotifier(), notification.getOldStringValue(), (EStructuralFeature)notification.getFeature());
-				if (effectedModelElements.size() > 0)
-					new ChangeTraitCommand<Feature>().run((Feature)notification.getNotifier(), (EStructuralFeature)notification.getFeature(), notification.getOldStringValue(), notification.getNewStringValue());
-			}
-			//*********************************************
-			// Refactor Clabject Trait change
-			//*********************************************
-			else if (notification.getFeature() instanceof EStructuralFeature
-					&& ((EStructuralFeature)notification.getFeature()).getName().equals("potency")){
-				ImpactAnalyzer<Clabject> analyzer = new ImpactAnalyzer<Clabject>();
-				Collection<? extends Element> effectedModelElements = analyzer.calculateMaximalImpact((Clabject)notification.getNotifier(), notification.getOldStringValue(), (EStructuralFeature)notification.getFeature());
-				if (effectedModelElements.size() > 0)
-					new ChangeTraitCommand<Clabject>().run((Clabject)notification.getNotifier(), (EStructuralFeature)notification.getFeature(), notification.getOldStringValue(), notification.getNewStringValue());
-			}
-			//*********************************************
-			// Refactor Clabject feature change
-			//*********************************************
-			else if (notification.getFeature() instanceof EStructuralFeature
-					&& ((EStructuralFeature)notification.getFeature()).getName().equals("feature")
-					&& notification.getNewValue() instanceof Attribute){
-				ImpactAnalyzer<Clabject> analyzer = new ImpactAnalyzer<Clabject>();
-				Collection<? extends Element> effectedModelElements = analyzer.calculateMaximalImpact((Clabject)notification.getNotifier(), notification.getOldStringValue(), (EStructuralFeature)notification.getFeature());
-
-				if (effectedModelElements.size() > 0)
-					new AddAttributeCommand<Clabject>().run((Clabject)notification.getNotifier(), (EStructuralFeature)notification.getFeature(), (Attribute)notification.getNewValue());
+			if (notification.getNotifier() instanceof DomainElement 
+					//&& !checkIfRefactoredAndRemove((EObject)notification.getNotifier())
+					&& notification.getNewValue() != null
+				)
+			{
+				//*********************************************
+				// Refactor Feature
+				//*********************************************
+				if (notification.getFeature() instanceof EStructuralFeature
+						&& notification.getNotifier() instanceof Feature
+						&& (
+								((EStructuralFeature)notification.getFeature()).getName().equals("name") 
+								|| ((EStructuralFeature)notification.getFeature()).getName().equals("durability")
+								|| ((EStructuralFeature)notification.getFeature()).getName().equals("mutability")
+								|| ((EStructuralFeature)notification.getFeature()).getName().equals("value")
+							)
+					){
+					ImpactAnalyzer<Feature> analyzer = new ImpactAnalyzer<Feature>();
+					Collection<? extends Element> effectedModelElements = analyzer.calculateMaximalImpact((Feature)notification.getNotifier(), notification.getOldStringValue(), (EStructuralFeature)notification.getFeature());
+					if (effectedModelElements.size() > 1)
+						new ChangeTraitCommand<Feature>().run((Feature)notification.getNotifier(), (EStructuralFeature)notification.getFeature(), notification.getOldStringValue(), notification.getNewStringValue());
+				}
+				//*********************************************
+				// Refactor Clabject Trait change
+				//*********************************************
+				else if (notification.getFeature() instanceof EStructuralFeature
+						&& ((EStructuralFeature)notification.getFeature()).getName().equals("potency")){
+					ImpactAnalyzer<Clabject> analyzer = new ImpactAnalyzer<Clabject>();
+					Collection<? extends Element> effectedModelElements = analyzer.calculateMaximalImpact((Clabject)notification.getNotifier(), notification.getOldStringValue(), (EStructuralFeature)notification.getFeature());
+					if (effectedModelElements.size() > 1)
+						new ChangeTraitCommand<Clabject>().run((Clabject)notification.getNotifier(), (EStructuralFeature)notification.getFeature(), notification.getOldStringValue(), notification.getNewStringValue());
+				}
+				//*********************************************
+				// Refactor Clabject feature change
+				//*********************************************
+				else if (notification.getFeature() instanceof EStructuralFeature
+						&& ((EStructuralFeature)notification.getFeature()).getName().equals("feature")
+						&& notification.getNewValue() instanceof Attribute){
+					ImpactAnalyzer<Clabject> analyzer = new ImpactAnalyzer<Clabject>();
+					Collection<? extends Element> effectedModelElements = analyzer.calculateMaximalImpact((Clabject)notification.getNotifier(), notification.getOldStringValue(), (EStructuralFeature)notification.getFeature());
+	
+					if (effectedModelElements.size() > 1)
+						new AddAttributeCommand<Clabject>().run((Clabject)notification.getNotifier(), (EStructuralFeature)notification.getFeature(), (Attribute)notification.getNewValue());
+				}
 			}
 		}
+		finally{
+			inRefactoring = false;
+		}
+		
+		inRefactoring = false;
 	}
 }
