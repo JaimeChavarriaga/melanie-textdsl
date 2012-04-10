@@ -28,6 +28,11 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage;
 import de.uni_mannheim.informatik.swt.plm.refactoring.service.ImpactAnalyzer;
 
+/**
+ * 
+ *
+ * @param <T> Works for Clabject and Feature
+ */
 public class ChangeTraitCommand<T extends DomainElement>{
 	
 	public void run(T refactoringOrigin, EStructuralFeature attributeToChange, String oldValue, String newValue){
