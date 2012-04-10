@@ -20,8 +20,7 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.window.Window;
 import org.eclipse.ui.PlatformUI;
 
-import de.uni_mannheim.informatik.swt.mlm.refactoring.service.dialogs.AddAttributeDialog;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
+import de.uni_mannheim.informatik.swt.mlm.refactoring.service.dialogs.RemoveAttributeDialog;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.DomainElement;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
@@ -32,16 +31,19 @@ public class RemoveAttributeCommand<T extends DomainElement>{
 	
 	public void run(T refactoringOrigin, Feature featureToDelete){
 		try {
-			AddAttributeDialog dialog = showAddModelElementDialog(null);
+			RemoveAttributeDialog dialog = showRemoveModelElementDialog();
+			
+			if (dialog == null)
+				return;
+			
 			runRefactoring(refactoringOrigin, featureToDelete, dialog.getChangeOntologicalTypes(), dialog.getChangeSubtypes(), dialog.getChangeSupertypes());
 		} catch (ExecutionException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	protected AddAttributeDialog showAddModelElementDialog(Attribute newValue) throws ExecutionException{
-		AddAttributeDialog dialog = new AddAttributeDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
-		
+	protected RemoveAttributeDialog showRemoveModelElementDialog() throws ExecutionException{
+		RemoveAttributeDialog dialog = new RemoveAttributeDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
 		
 		if (dialog.open() == Window.OK)
 			return dialog;
