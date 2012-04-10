@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.uni_mannheim.informatik.swt.models.reasoningresult/src"
+    modelPluginID="de.uni_mannheim.informatik.swt.models.reasoningresult" templateDirectory="de.uni_mannheim.informatik.swt.models.reasoningresult/templates"
+    dynamicTemplates="true" modelName="ReasoningResult" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="6.0" copyrightFields="false" providerRootExtendsClass="de.uni_mannheim.informatik.swt.models.plm.reasoningresult.ReasoningResult.custom.BaseItemProvider"
+    operationReflection="true">
+  <foreignModel>ReasoningResult.ecore</foreignModel>
+  <genPackages prefix="ReasoningResult" basePackage="de.uni_mannheim.informatik.swt.models.reasoningresult"
+      disposableProviderFactory="true">
+    <ecorePackage href="ReasoningResult.ecore#/"/>
+    <genClasses>
+      <ecoreClass href="ReasoningResult.ecore#//ReasoningResultModel"/>
+      <genFeatures property="Readonly" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="ReasoningResult.ecore#//ReasoningResultModel/children"/>
+      </genFeatures>
+      <genFeatures property="Readonly" createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="ReasoningResult.ecore#//ReasoningResultModel/name"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses image="false">
+      <ecoreClass href="ReasoningResult.ecore#//ReasoningArtefact"/>
+      <genFeatures property="Readonly" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="ReasoningResult.ecore#//ReasoningArtefact/children"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses image="false">
+      <ecoreClass href="ReasoningResult.ecore#//Check"/>
+      <genFeatures property="Readonly" createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="ReasoningResult.ecore#//Check/result"/>
+      </genFeatures>
+      <genFeatures property="Readonly" createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="ReasoningResult.ecore#//Check/expression"/>
+      </genFeatures>
+      <genFeatures property="Readonly" createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="ReasoningResult.ecore#//Check/rootCause"/>
+      </genFeatures>
+      <genFeatures property="Readonly" createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="ReasoningResult.ecore#//Check/passedIconResult"/>
+      </genFeatures>
+      <genFeatures property="Readonly" notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="ReasoningResult.ecore#//Check/source"/>
+      </genFeatures>
+      <genFeatures property="Readonly" notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="ReasoningResult.ecore#//Check/target"/>
+      </genFeatures>
+      <genFeatures property="Readonly" createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="ReasoningResult.ecore#//Check/name"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses image="false">
+      <ecoreClass href="ReasoningResult.ecore#//Information"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="ReasoningResult.ecore#//Information/subject"/>
+      </genFeatures>
+      <genFeatures property="Readonly" createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="ReasoningResult.ecore#//Information/message"/>
+      </genFeatures>
+    </genClasses>
+  </genPackages>
+  <usedGenPackages href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM"/>
+</genmodel:GenModel>
