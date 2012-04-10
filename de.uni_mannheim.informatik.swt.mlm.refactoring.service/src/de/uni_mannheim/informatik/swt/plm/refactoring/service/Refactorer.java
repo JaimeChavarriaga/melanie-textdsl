@@ -25,6 +25,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.plm.refactoring.service.commands.AddAttributeCommand;
 import de.uni_mannheim.informatik.swt.plm.refactoring.service.commands.ChangeTraitCommand;
+import de.uni_mannheim.informatik.swt.plm.refactoring.service.commands.RemoveAttributeCommand;
 
 
 public class Refactorer extends EContentAdapter implements IRefactoringService {
@@ -61,8 +62,9 @@ public class Refactorer extends EContentAdapter implements IRefactoringService {
 			//*********************************************
 			// Model trait change
 			//*********************************************
+			
+			//NO DELETE
 			if (notification.getNotifier() instanceof DomainElement 
-					//&& !checkIfRefactoredAndRemove((EObject)notification.getNotifier())
 					&& notification.getNewValue() != null
 				)
 			{
@@ -96,6 +98,8 @@ public class Refactorer extends EContentAdapter implements IRefactoringService {
 				//*********************************************
 				// Refactor Clabject feature change
 				//*********************************************
+				
+				//Clabject is added
 				else if (notification.getFeature() instanceof EStructuralFeature
 						&& ((EStructuralFeature)notification.getFeature()).getName().equals("feature")
 						&& notification.getNewValue() instanceof Attribute){
@@ -104,6 +108,22 @@ public class Refactorer extends EContentAdapter implements IRefactoringService {
 	
 					if (effectedModelElements.size() > 1)
 						new AddAttributeCommand<Clabject>().run((Clabject)notification.getNotifier(), (EStructuralFeature)notification.getFeature(), (Attribute)notification.getNewValue());
+				}
+			}
+			
+			//DELETE value of a trait
+			else if (notification.getNotifier() instanceof DomainElement 
+					 && notification.getNewValue() == null){
+				
+				//Clabject is deleted
+				if (notification.getFeature() instanceof EStructuralFeature
+						&& ((EStructuralFeature)notification.getFeature()).getName().equals("feature")
+						&& notification.getNewValue() == null){
+					ImpactAnalyzer<Clabject> analyzer = new ImpactAnalyzer<Clabject>();
+					Collection<? extends Element> effectedModelElements = analyzer.calculateMaximalImpact((Clabject)notification.getNotifier(), notification.getOldStringValue(), (EStructuralFeature)notification.getFeature());
+	
+					if (effectedModelElements.size() > 1)
+						new RemoveAttributeCommand<Clabject>().run((Clabject)notification.getNotifier(), (Feature)notification.getOldValue());
 				}
 			}
 		}
