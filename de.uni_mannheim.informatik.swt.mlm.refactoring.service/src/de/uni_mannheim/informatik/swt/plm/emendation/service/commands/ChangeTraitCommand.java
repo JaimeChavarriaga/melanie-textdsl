@@ -8,7 +8,7 @@
  * Contributors:
  *    Ralph Gerbig - initial API and implementation and initial documentation
  *******************************************************************************/
-package de.uni_mannheim.informatik.swt.plm.refactoring.service.commands;
+package de.uni_mannheim.informatik.swt.plm.emendation.service.commands;
 
 import java.util.Set;
 
@@ -21,12 +21,12 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.window.Window;
 import org.eclipse.ui.PlatformUI;
 
-import de.uni_mannheim.informatik.swt.mlm.refactoring.service.dialogs.ChangeTraitDialog;
+import de.uni_mannheim.informatik.swt.mlm.emendation.service.dialogs.ChangeTraitDialog;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.DomainElement;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage;
-import de.uni_mannheim.informatik.swt.plm.refactoring.service.ImpactAnalyzer;
+import de.uni_mannheim.informatik.swt.plm.emendation.service.ImpactAnalyzer;
 
 /**
  * 
@@ -38,13 +38,13 @@ public class ChangeTraitCommand<T extends DomainElement>{
 	public void run(T refactoringOrigin, EStructuralFeature attributeToChange, String oldValue, String newValue){
 		try {
 			
+			TransactionUtil.getEditingDomain(refactoringOrigin).getCommandStack().flush();
+			
 			ChangeTraitDialog dialog = showChangeValueDialog(newValue, oldValue, refactoringOrigin);
 			
 			if (dialog == null)
 				return;
-			
-			TransactionUtil.getEditingDomain(refactoringOrigin).getCommandStack().flush();
-			
+						
 			runRefactoring(refactoringOrigin, attributeToChange, oldValue, newValue, dialog.getChangeOntologicalTypes(), dialog.getChangeSubtypes(), dialog.getChangeSupertypes());
 		} catch (ExecutionException e) {
 			e.printStackTrace();

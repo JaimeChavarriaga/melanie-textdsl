@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * Interface for refactoring extension point.
  *
  */
-public interface IRefactoringService {
+public interface IEmendationService {
 
 	/**
 	 * Starts listening to a model

@@ -21,7 +21,7 @@ import org.eclipse.jface.preference.IPreferenceStore;
 import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IDSLService;
 import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IProximityIndicationService;
 import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IReasoningService;
-import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IRefactoringService;
+import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IEmendationService;
 import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IGraphicalVisualizationService;
 import de.uni_mannheim.informatik.swt.mlm.workbench.preferences.PreferenceConstants;
 
@@ -34,7 +34,7 @@ public class ExtensionPointService {
 	
 	private static String VISUALIZATION_SERVICE_ID = "de.uni_mannheim.informatik.swt.visualization.service";
 	private static String REASONING_SERVICE_ID = "de.uni_mannheim.informatik.swt.reasoning.service";
-	private static String REFACTORING_SERVICE_ID = "de.uni_mannheim.informatik.swt.refactoring.service";
+	private static String EMENDATION_SERVICE_ID = "de.uni_mannheim.informatik.swt.emendation.service";
 	private static String PROXIMITY_INDICATION_SERVICE_ID = "de.uni_mannheim.informatik.swt.proximityindication.service";
 	private static String DSL_SERVICE_ID = "de.uni_mannheim.informatik.swt.dsl.service";
 	
@@ -71,14 +71,14 @@ public class ExtensionPointService {
 	/**
 	 * Cache for Refactoring IConfigurationElements
 	 */
-	private static Map<String, IConfigurationElement> id2RefactoringServiceConfigurationElement;
-	public Map<String, IConfigurationElement> getId2RefactoringServiceConfigurationElement() {
-		return id2RefactoringServiceConfigurationElement;
+	private static Map<String, IConfigurationElement> id2EmendationServiceConfigurationElement;
+	public Map<String, IConfigurationElement> getId2EmendationServiceConfigurationElement() {
+		return id2EmendationServiceConfigurationElement;
 	}
 	/**
 	 * Cache for Refactoring Instances
 	 */
-	private static Map<String, IRefactoringService> id2RefactoringServiceInstance;
+	private static Map<String, IEmendationService> id2EmendationServiceInstance;
 	
 	
 	
@@ -135,8 +135,8 @@ public class ExtensionPointService {
 		id2ReasoningServiceConfigurationElement = new HashMap<String, IConfigurationElement>();
 		id2ReasoningServiceInstance = new HashMap<String, IReasoningService>();
 		
-		id2RefactoringServiceConfigurationElement = new HashMap<String, IConfigurationElement>();
-		id2RefactoringServiceInstance = new HashMap<String, IRefactoringService>();
+		id2EmendationServiceConfigurationElement = new HashMap<String, IConfigurationElement>();
+		id2EmendationServiceInstance = new HashMap<String, IEmendationService>();
 		
 		id2ProximityIndicationServiceConfigurationElement = new HashMap<String, IConfigurationElement>();
 		id2ProximityIndicationServiceInstance = new HashMap<String, IProximityIndicationService>();
@@ -157,10 +157,10 @@ public class ExtensionPointService {
 			id2ReasoningServiceConfigurationElement.put(cElement.getAttribute("id"), cElement);
 		
 		//Initialize the refactoring service
-		configurationElements = Platform.getExtensionRegistry().getConfigurationElementsFor(REFACTORING_SERVICE_ID);
+		configurationElements = Platform.getExtensionRegistry().getConfigurationElementsFor(EMENDATION_SERVICE_ID);
 		
 		for (IConfigurationElement cElement : configurationElements)
-			id2RefactoringServiceConfigurationElement.put(cElement.getAttribute("id"), cElement);
+			id2EmendationServiceConfigurationElement.put(cElement.getAttribute("id"), cElement);
 		
 		//Initialize the proximity indication service
 		configurationElements = Platform.getExtensionRegistry().getConfigurationElementsFor(PROXIMITY_INDICATION_SERVICE_ID);
@@ -259,13 +259,13 @@ public class ExtensionPointService {
 	 * 
 	 * @throws CoreException
 	 */
-	public IRefactoringService getRefactoringService(String id) throws CoreException{
-		IRefactoringService refactorer = id2RefactoringServiceInstance.get(id);
+	public IEmendationService getEmendationService(String id) throws CoreException{
+		IEmendationService refactorer = id2EmendationServiceInstance.get(id);
 		
 		if (refactorer == null)
 		{
-			refactorer = (IRefactoringService)id2RefactoringServiceConfigurationElement.get(id).createExecutableExtension("class");
-			id2RefactoringServiceInstance.put(id, refactorer);
+			refactorer = (IEmendationService)id2EmendationServiceConfigurationElement.get(id).createExecutableExtension("class");
+			id2EmendationServiceInstance.put(id, refactorer);
 		}
 		
 		return refactorer;
@@ -281,10 +281,10 @@ public class ExtensionPointService {
 	 * 
 	 * @throws CoreException
 	 */
-	public IRefactoringService getActiveRefactoringService() throws CoreException{
+	public IEmendationService getActiveEmendationService() throws CoreException{
 		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
 		
-		return getRefactoringService(store.getString(PreferenceConstants.P_ACTIVE_REFACTORING_ENGINE));
+		return getEmendationService(store.getString(PreferenceConstants.P_ACTIVE_EMENDATION_ENGINE));
 	}
 	
 	/**

@@ -3,7 +3,7 @@
 <schema targetNamespace="de.uni_mannheim.informatik.swt.plm.workbench" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="de.uni_mannheim.informatik.swt.plm.workbench" id="de.uni_mannheim.informatik.swt.refactoring.service.exsd" name="Refactoring Service"/>
+         <meta.schema plugin="de.uni_mannheim.informatik.swt.plm.workbench" id="de.uni_mannheim.informatik.swt.emendation.service.exsd" name="Emendation Service"/>
       </appinfo>
       <documentation>
          [Enter description of this extension point.]
@@ -62,7 +62,7 @@
                   
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IRefactoringService"/>
+                  <meta.attribute kind="java" basedOn=":de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IEmendationService"/>
                </appinfo>
             </annotation>
          </attribute>

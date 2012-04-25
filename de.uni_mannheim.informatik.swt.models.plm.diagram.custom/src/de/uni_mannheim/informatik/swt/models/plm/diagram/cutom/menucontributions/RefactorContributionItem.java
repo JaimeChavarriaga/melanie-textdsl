@@ -16,7 +16,7 @@ import org.eclipse.ui.menus.CommandContributionItem;
 import org.eclipse.ui.menus.CommandContributionItemParameter;
 
 import de.uni_mannheim.informatik.swt.mlm.workbench.ExtensionPointService;
-import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IRefactoringService;
+import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IEmendationService;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor;
 
 public class RefactorContributionItem extends CompoundContributionItem {
@@ -24,10 +24,10 @@ public class RefactorContributionItem extends CompoundContributionItem {
 	@Override
 	protected IContributionItem[] getContributionItems() {
 		
-		IRefactoringService refactorer = null;
+		IEmendationService refactorer = null;
 		
 		try {
-			refactorer = ExtensionPointService.Instance().getActiveRefactoringService();
+			refactorer = ExtensionPointService.Instance().getActiveEmendationService();
 		} catch (CoreException e) {
 			e.printStackTrace();
 		}

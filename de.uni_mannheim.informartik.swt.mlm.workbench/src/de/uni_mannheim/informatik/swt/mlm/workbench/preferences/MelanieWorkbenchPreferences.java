@@ -57,14 +57,14 @@ public class MelanieWorkbenchPreferences
 
 		
 		//Refactoring Service
-		String[] refactoringEngineKeySet = ExtensionPointService.Instance().getId2RefactoringServiceConfigurationElement().keySet().toArray(new String[]{});
+		String[] refactoringEngineKeySet = ExtensionPointService.Instance().getId2EmendationServiceConfigurationElement().keySet().toArray(new String[]{});
 		String[][] reafctoringEngineIds = new String[reasoningEngineKeySet.length][2];
 		
 		for (int i = 0; i < reasoningEngineKeySet.length; i++)
 			reafctoringEngineIds[i][0] = reafctoringEngineIds[i][1] = refactoringEngineKeySet[i];
 		
 		addField(new ComboFieldEditor(
-				PreferenceConstants.P_ACTIVE_REFACTORING_ENGINE,
+				PreferenceConstants.P_ACTIVE_EMENDATION_ENGINE,
 					"Active Refactoring Engine",
 					reafctoringEngineIds,
 					getFieldEditorParent()

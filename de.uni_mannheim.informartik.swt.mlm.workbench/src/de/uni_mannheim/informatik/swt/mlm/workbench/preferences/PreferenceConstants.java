@@ -7,7 +7,7 @@ public class PreferenceConstants {
 
 	public static final String P_ACTIVE_REASONING_ENGINE = "reasoningEngine";
 
-	public static final String P_ACTIVE_REFACTORING_ENGINE = "refactoringEngine";
+	public static final String P_ACTIVE_EMENDATION_ENGINE = "emendationEngine";
 
 	public static final String P_ACTIVE_VISUALIZATION_ENGINE = "visualizationService";
 	

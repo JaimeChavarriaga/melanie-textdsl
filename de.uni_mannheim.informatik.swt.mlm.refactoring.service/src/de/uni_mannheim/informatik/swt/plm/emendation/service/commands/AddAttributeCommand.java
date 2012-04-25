@@ -8,7 +8,7 @@
  * Contributors:
  *    Ralph Gerbig - initial API and implementation and initial documentation
  *******************************************************************************/
-package de.uni_mannheim.informatik.swt.plm.refactoring.service.commands;
+package de.uni_mannheim.informatik.swt.plm.emendation.service.commands;
 
 import java.util.Set;
 
@@ -21,12 +21,13 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.window.Window;
 import org.eclipse.ui.PlatformUI;
 
-import de.uni_mannheim.informatik.swt.mlm.refactoring.service.dialogs.AddAttributeDialog;
+import de.uni_mannheim.informatik.swt.mlm.emendation.service.dialogs.AddAttributeDialog;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.DomainElement;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.LMLVisualizer;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMFactory;
-import de.uni_mannheim.informatik.swt.plm.refactoring.service.ImpactAnalyzer;
+import de.uni_mannheim.informatik.swt.plm.emendation.service.ImpactAnalyzer;
 
 public class AddAttributeCommand<T extends DomainElement>{
 	
@@ -82,12 +83,38 @@ public class AddAttributeCommand<T extends DomainElement>{
 				newAttribute.setName(name);
 				newAttribute.setDurability(durability);
 				newAttribute.setMutability(mutability);
+				
+				//This is if someone forgot to add a visualizer to a type
+				if (newValue.getVisualizer().size() > 0){
+					//Quick hack to get a visualizer from type in
+					LMLVisualizer newAttributeVisualizer = PLMFactory.eINSTANCE.createLMLVisualizer();
+					LMLVisualizer newValueVisualizer = newValue.getVisualizer().get(0);
+					
+					newAttributeVisualizer.setTemplate(newValueVisualizer.getTemplate());
+					newAttributeVisualizer.setDurability(
+							//This check is to simple needs to be enhanced once the visualizer
+							//durability is fully supported
+							newValueVisualizer.getDurability() == 0 
+								|| newValueVisualizer.getDurability() == -1 ?
+										newValueVisualizer.getDurability() 
+										: newValueVisualizer.getDurability() - 1
+						);
+					
+					newAttributeVisualizer.getAttributes().addAll(newValueVisualizer.getAttributes());
+				
+				
+					newAttribute.getVisualizer().clear();
+					newAttribute.getVisualizer().add(newAttributeVisualizer);
+				}
+				
 				refactoringCommand.append(AddCommand.create(domain, element, traitToChange, newAttribute));
 			}
 		
 		newValue.setName(name);
 		newValue.setDurability(durability);
 		newValue.setMutability(mutability);
+		
+		
 		
 		domain.getCommandStack().execute(refactoringCommand);
 		

@@ -2,11 +2,11 @@
 <?eclipse version="3.4"?>
 <plugin>
    <!-- <extension
-         id="de.uni_mannheim.informatik.swt.plm.refactoring.service.commands"
+         id="de.uni_mannheim.informatik.swt.plm.emendation.service.commands"
          point="org.eclipse.ui.commands">
       <command
-            defaultHandler="de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.DeleteClabjectCommand"
-            id="de.uni_mannheim.informatik.swt.plm.refactoring.service.commands.deleteclabjectcommand"
+            defaultHandler="de.uni_mannheim.informatik.swt.plm.emendation.service.handlers.DeleteClabjectCommand"
+            id="de.uni_mannheim.informatik.swt.plm.emendation.service.commands.deleteclabjectcommand"
             name="Delete Clabject">
          <commandParameter
                id="clabject"
@@ -16,8 +16,8 @@
          </commandParameter>
       </command>
       <command
-            defaultHandler="de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.AddFeatureToClabjectCommand"
-            id="de.uni_mannheim.informatik.swt.plm.refactoring.service.commands.addfearuretoclabjectcommand"
+            defaultHandler="de.uni_mannheim.informatik.swt.plm.emendation.service.handlers.AddFeatureToClabjectCommand"
+            id="de.uni_mannheim.informatik.swt.plm.emendation.service.commands.addfearuretoclabjectcommand"
             name="Add Feature">
          <commandParameter
                id="clabject"
@@ -27,8 +27,8 @@
          </commandParameter>
       </command>
       <command
-            defaultHandler="de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.DeleteFeatureCommand"
-            id="de.uni_mannheim.informatik.swt.plm.refactoring.service.commands.deletefeaturecommand"
+            defaultHandler="de.uni_mannheim.informatik.swt.plm.emendation.service.handlers.DeleteFeatureCommand"
+            id="de.uni_mannheim.informatik.swt.plm.emendation.service.commands.deletefeaturecommand"
             name="Delete Feature">
          <commandParameter
                id="feature"
@@ -38,8 +38,8 @@
          </commandParameter>
       </command>
       <command
-            defaultHandler="de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.RenameFeatureCommand"
-            id="de.uni_mannheim.informatik.swt.plm.refactoring.service.commands.renamefeaturecommand"
+            defaultHandler="de.uni_mannheim.informatik.swt.plm.emendation.service.handlers.RenameFeatureCommand"
+            id="de.uni_mannheim.informatik.swt.plm.emendation.service.commands.renamefeaturecommand"
             name="Rename Feature">
          <commandParameter
                id="feature"
@@ -65,8 +65,8 @@
          </commandParameter>
       </command>
       <command
-            defaultHandler="de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.RenameFeatureCommand"
-            id="de.uni_mannheim.informatik.swt.plm.refactoring.service.commands.changefeaturepotencycommand"
+            defaultHandler="de.uni_mannheim.informatik.swt.plm.emendation.service.handlers.RenameFeatureCommand"
+            id="de.uni_mannheim.informatik.swt.plm.emendation.service.commands.changefeaturepotencycommand"
             name="Change Potency">
          <commandParameter
                id="feature"
@@ -76,8 +76,8 @@
          </commandParameter>
       </command>
       <command
-            defaultHandler="de.uni_mannheim.informatik.swt.plm.refactoring.service.handlers.ChangeFeatureDurabilityCommand"
-            id="de.uni_mannheim.informatik.swt.plm.refactoring.service.commands.changefeaturedurabilitycommand"
+            defaultHandler="de.uni_mannheim.informatik.swt.plm.emendation.service.handlers.ChangeFeatureDurabilityCommand"
+            id="de.uni_mannheim.informatik.swt.plm.emendation.service.commands.changefeaturedurabilitycommand"
             name="Change Feature Durability">
          <commandParameter
                id="feature"
@@ -88,10 +88,10 @@
       </command>
    </extension> -->
    <extension
-         point="de.uni_mannheim.informatik.swt.refactoring.service">
+         point="de.uni_mannheim.informatik.swt.emendation.service">
       <service
-            class="de.uni_mannheim.informatik.swt.plm.refactoring.service.Refactorer"
-            id="de.uni_mannheim.informatik.swt.mlm.refactoring.service">
+            class="de.uni_mannheim.informatik.swt.plm.emendation.service.EmendationService"
+            id="de.uni_mannheim.informatik.swt.mlm.emendation.service">
       </service>
    </extension>
 

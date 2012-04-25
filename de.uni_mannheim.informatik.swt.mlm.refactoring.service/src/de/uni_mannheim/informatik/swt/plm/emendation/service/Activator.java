@@ -1,4 +1,4 @@
-package de.uni_mannheim.informatik.swt.plm.refactoring.service;
+package de.uni_mannheim.informatik.swt.plm.emendation.service;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;

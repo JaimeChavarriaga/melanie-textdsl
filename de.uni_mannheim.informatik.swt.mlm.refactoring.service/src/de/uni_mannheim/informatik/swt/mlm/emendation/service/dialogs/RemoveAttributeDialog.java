@@ -8,7 +8,7 @@
  * Contributors:
  *    Ralph Gerbig - initial API and implementation and initial documentation
  *******************************************************************************/
-package de.uni_mannheim.informatik.swt.mlm.refactoring.service.dialogs;
+package de.uni_mannheim.informatik.swt.mlm.emendation.service.dialogs;
 
 import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.swt.SWT;
@@ -21,30 +21,20 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
-public class ChangeTraitDialog extends TitleAreaDialog {
+public class RemoveAttributeDialog extends TitleAreaDialog {
 
-	public ChangeTraitDialog(Shell parentShell, String oldName) {
+	public RemoveAttributeDialog(Shell parentShell) {
 		super(parentShell);
-		newValue = oldName;
 	}
 	
 	Button changeOntologicalTypesButton;
 	Button changeSupertypesButton;
 	Button changeSubtypesButton;
-	Text newNameText;
 	
 	private boolean changeSubtypes = true;
 	private boolean changeSupertypes = false;
 	private boolean changeOntologicalTypes = true;
-	private String newValue = "";
 	
-	public void setValue(String value){
-		newValue = value;
-	}
-	
-	public String getNewValue(){
-		return newValue;
-	}
 	
 	public boolean getChangeSubtypes(){
 		return changeSubtypes;
@@ -62,7 +52,7 @@ public class ChangeTraitDialog extends TitleAreaDialog {
 	protected Control createDialogArea(
 			Composite parent) {
 		
-		setTitle("Change Trait");
+		setTitle("Remove Model Element");
 	 
 	    parent.setLayout(new GridLayout(1, false));
 	    
@@ -76,15 +66,10 @@ public class ChangeTraitDialog extends TitleAreaDialog {
 	    
 	    ((GridData)composite.getLayoutData()).grabExcessHorizontalSpace = true;
 	    
-        Label label = new Label(dialogArea, SWT.NONE);
-        label.setText("New Value");
-        
-        newNameText = new Text(dialogArea, SWT.SINGLE | SWT.BORDER);
-        GridData newNameTextGridData = new GridData(GridData.FILL_HORIZONTAL);
-        newNameTextGridData.grabExcessHorizontalSpace = true;
-        newNameText.setLayoutData(newNameTextGridData);
-        newNameText.setText(newValue);
-        
+	    GridData newTextGridData = new GridData(GridData.FILL_HORIZONTAL);
+        newTextGridData.grabExcessHorizontalSpace = true;
+	    
+	            
         GridData optionGridData = new GridData();
         optionGridData.horizontalSpan = 2;
         
@@ -115,7 +100,7 @@ public class ChangeTraitDialog extends TitleAreaDialog {
 	@Override
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
-		newShell.setText("Change Trait");
+		newShell.setText("Add Model Element");
 	}
 	
 	@Override
@@ -123,7 +108,7 @@ public class ChangeTraitDialog extends TitleAreaDialog {
 		changeOntologicalTypes = changeOntologicalTypesButton.getSelection();
 		changeSubtypes = changeSubtypesButton.getSelection();
 		changeSupertypes = changeSupertypesButton.getSelection();
-		newValue = newNameText.getText();
+	
 		super.okPressed();
 	}
 }

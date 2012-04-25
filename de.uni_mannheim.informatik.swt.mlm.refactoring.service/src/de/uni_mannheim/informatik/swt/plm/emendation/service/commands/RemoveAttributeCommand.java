@@ -8,7 +8,7 @@
  * Contributors:
  *    Ralph Gerbig - initial API and implementation and initial documentation
  *******************************************************************************/
-package de.uni_mannheim.informatik.swt.plm.refactoring.service.commands;
+package de.uni_mannheim.informatik.swt.plm.emendation.service.commands;
 
 import java.util.Set;
 
@@ -20,12 +20,12 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.window.Window;
 import org.eclipse.ui.PlatformUI;
 
-import de.uni_mannheim.informatik.swt.mlm.refactoring.service.dialogs.RemoveAttributeDialog;
+import de.uni_mannheim.informatik.swt.mlm.emendation.service.dialogs.RemoveAttributeDialog;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.DomainElement;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage;
-import de.uni_mannheim.informatik.swt.plm.refactoring.service.ImpactAnalyzer;
+import de.uni_mannheim.informatik.swt.plm.emendation.service.ImpactAnalyzer;
 
 public class RemoveAttributeCommand<T extends DomainElement>{
 	

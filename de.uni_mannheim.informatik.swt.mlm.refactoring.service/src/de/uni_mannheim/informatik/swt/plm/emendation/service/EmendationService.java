@@ -8,7 +8,7 @@
  * Contributors:
  *    Ralph Gerbig - initial API and implementation and initial documentation
  *******************************************************************************/
-package de.uni_mannheim.informatik.swt.plm.refactoring.service;
+package de.uni_mannheim.informatik.swt.plm.emendation.service;
 
 import java.util.Collection;
 
@@ -17,18 +17,18 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 
-import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IRefactoringService;
+import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IEmendationService;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.DomainElement;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
-import de.uni_mannheim.informatik.swt.plm.refactoring.service.commands.AddAttributeCommand;
-import de.uni_mannheim.informatik.swt.plm.refactoring.service.commands.ChangeTraitCommand;
-import de.uni_mannheim.informatik.swt.plm.refactoring.service.commands.RemoveAttributeCommand;
+import de.uni_mannheim.informatik.swt.plm.emendation.service.commands.AddAttributeCommand;
+import de.uni_mannheim.informatik.swt.plm.emendation.service.commands.ChangeTraitCommand;
+import de.uni_mannheim.informatik.swt.plm.emendation.service.commands.RemoveAttributeCommand;
 
 
-public class Refactorer extends EContentAdapter implements IRefactoringService {
+public class EmendationService extends EContentAdapter implements IEmendationService {
 	
 	public static String ID = "de.uni_mannheim.informatik.swt.mlm.refactoring.service";
 	
@@ -77,7 +77,7 @@ public class Refactorer extends EContentAdapter implements IRefactoringService {
 								((EStructuralFeature)notification.getFeature()).getName().equals("name") 
 								|| ((EStructuralFeature)notification.getFeature()).getName().equals("durability")
 								|| ((EStructuralFeature)notification.getFeature()).getName().equals("mutability")
-								|| ((EStructuralFeature)notification.getFeature()).getName().equals("value")
+								//|| ((EStructuralFeature)notification.getFeature()).getName().equals("value")
 							)
 					){
 					ImpactAnalyzer<Feature> analyzer = new ImpactAnalyzer<Feature>();
