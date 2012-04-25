@@ -220,7 +220,7 @@ public class ASMPLMModel extends ASMEMFModel {
 			}
 			
 			classifiedModel.getContent().add(instance);
-			PLMFactory.eINSTANCE.dressInstanceFromType((Clabject)eObjectType, instance);
+			PLMFactory.eINSTANCE.configureClabject((Clabject)eObjectType, instance, null);
 			ret = getASMModelElement(instance);
 		}
 		

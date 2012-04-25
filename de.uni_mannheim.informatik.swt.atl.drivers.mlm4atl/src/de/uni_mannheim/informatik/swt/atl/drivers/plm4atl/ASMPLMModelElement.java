@@ -254,7 +254,7 @@ public class ASMPLMModelElement extends ASMEMFModelElement {
 						//At first we need a connection
 						Connection instanceConnection = PLMFactory.eINSTANCE.createConnection();
 						((Clabject)object).getModel().getContent().add(instanceConnection);
-						PLMFactory.eINSTANCE.dressInstanceFromType((Connection)feature[0], instanceConnection);
+						PLMFactory.eINSTANCE.configureClabject((Connection)feature[0], instanceConnection, null);
 						for (Role typeRole : ((Connection)feature[0]).getRole()){
 							Role instanceRole = PLMFactory.eINSTANCE.createRole();
 							instanceRole.setConnection(instanceConnection);
