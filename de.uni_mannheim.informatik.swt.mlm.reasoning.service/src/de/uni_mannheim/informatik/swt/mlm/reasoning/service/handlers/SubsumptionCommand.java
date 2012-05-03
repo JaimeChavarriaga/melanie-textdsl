@@ -71,33 +71,56 @@ public class SubsumptionCommand extends AbstractHandler {
 		return check.isResult();
 	}
 	
+	/**
+	 * 
+	 * @param model
+	 * @return
+	 */
 	private Check compute(Model model) {
+		// All the Clabjects of a model are to be checked
 		List<Clabject> clabjects = model.getAllClabjects();
 		Check result = ReasoningResultFactory.eINSTANCE.createCheck();
 		result.setName("Subsumption");
+		// Info for the reasoning view
 		Information processedInfo = ReasoningResultFactory.eINSTANCE.createInformation(model, "Processed Clabjects: " + clabjects.size(), result);
 		for (Clabject c: clabjects)
 			ReasoningResultFactory.eINSTANCE.createInformation(model, c.represent(), processedInfo);
+		// Toplevel nodes for the details
 		Information performedChecks = ReasoningResultFactory.eINSTANCE.createInformation(model, "", result);
 		Information foundPairs = ReasoningResultFactory.eINSTANCE.createInformation(model, "Found pairs", result);
 		Check currentPair;
+		// The found Pairs
 		List<Pair<Clabject,Clabject>> pairs = new ArrayList<Pair<Clabject,Clabject>>();
 		int count = 0;
 		for (Clabject one: clabjects) {
 			for (Clabject other : clabjects) {
-				 currentPair = compute(one, other);
-				 count++;
-				 performedChecks.getChildren().add(currentPair);
-				 if (currentPair.isResult()) {
-					 Pair<Clabject,Clabject> pair = new Pair<Clabject,Clabject>(one, other);
-					 pairs.add(pair);
-				 }
+				// If the clabjects are equal, the case is trivial, so don't bother
+				if (!one.equals(other)) {
+					if (one.getModelSubtypes().contains(other)) {
+						currentPair = ReasoningResultFactory.eINSTANCE.createCheck();
+						currentPair.setResult(true);
+						currentPair.setName("modeled Generalization");
+					} else {
+						// The actual subsumption check
+						 currentPair = compute(one, other);
+					}
+					 count++;
+					 performedChecks.getChildren().add(currentPair);
+					 // handle a success
+					 if (currentPair.isResult()) {
+						 Pair<Clabject,Clabject> pair = new Pair<Clabject,Clabject>(one, other);
+						 pairs.add(pair);
+					 }
+				}
 			}
 		}
 		performedChecks.setMessage("Performed Checks: " + count);
 		for (Pair<Clabject,Clabject> pair: pairs) {
 			ReasoningResultFactory.eINSTANCE.createInformation(model, pair.getFirst().represent() + "<-" + pair.getSecond().represent(), foundPairs);
 		}
+		// Inside the newly found pairs, detect the equality sets
+		
+		// necessary administration
 		result.setResult(true);
 		return result;
 	}
