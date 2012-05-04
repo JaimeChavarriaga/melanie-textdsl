@@ -19,16 +19,28 @@ import java.util.Set;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.command.CompoundCommand;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.edit.command.DeleteCommand;
+import org.eclipse.emf.edit.command.SetCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 
 import de.uni_mannheim.informatik.swt.mlm.reasoning.service.ReasoningService;
 import de.uni_mannheim.informatik.swt.mlm.reasoning.service.util.Pair;
 import de.uni_mannheim.informatik.swt.mlm.reasoning.service.util.ReasoningServiceUtil;
+import de.uni_mannheim.informatik.swt.mlm.workbench.ExtensionPointService;
 import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IReasoningService;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Entity;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMFactory;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Role;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Check;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Information;
@@ -323,5 +335,27 @@ public class SubsumptionCommand extends AbstractHandler {
 		
 		result.setResult(true);
 		return result;
+	}
+	
+	private void fromRalhForBastian(Model m){
+		TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(m);
+		
+		Command setCommand = SetCommand.create(domain, m, PLMPackage.eINSTANCE.getElement_Name(), "Hallo Bastian");
+		Command setCommandInArray = SetCommand.create(domain, m, PLMPackage.eINSTANCE.getElement_Name(), "Hallo Bastian", 4);
+		//Also available to delete a collection of model elements
+		Command deleteCommand = DeleteCommand.create(domain, PLMFactory.eINSTANCE.createEntity());
+		//Also available to add a collection of model elements
+		Command addCommand = AddCommand.create(domain, m, PLMPackage.eINSTANCE.getModel_Content(), PLMFactory.eINSTANCE.createEntity());
+		
+		CompoundCommand c = new CompoundCommand("A collection of commands");
+		
+		try {		
+			ExtensionPointService.Instance().getActiveEmendationService().stopListening(EcoreUtil.getRootContainer(m));
+			domain.getCommandStack().execute(c);
+			ExtensionPointService.Instance().getActiveEmendationService().startListening(EcoreUtil.getRootContainer(m));
+		} catch (CoreException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
