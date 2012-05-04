@@ -8,9 +8,11 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
+import de.uni_mannheim.informatik.swt.mlm.reasoning.service.util.tarjan.AdjacencyList;
+import de.uni_mannheim.informatik.swt.mlm.reasoning.service.util.tarjan.Node;
+import de.uni_mannheim.informatik.swt.mlm.reasoning.service.util.tarjan.Tarjan;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 
 //TODO: Add copyright statement
@@ -54,27 +56,32 @@ public class ReasoningServiceUtil {
 	
 	public static Set<Set<Clabject>> computeSimilaritySets(List<Pair<Clabject,Clabject>> clabjects) {
 		Set<Set<Clabject>> result = new HashSet<Set<Clabject>>();
-		Map<Clabject,Node> trees = new HashMap<Clabject,Node>();
-		// establish all the initial trees from all the subtypes there are
+		// Compute a graph from the clabjects and invoke tarjan's algorithm from it
+		// A Graph is an AdjacencyList
+		AdjacencyList graph = new AdjacencyList();
+		// build the nodes from the clabjects
+		Map<Clabject,Node> nodes = new HashMap<Clabject,Node>();
 		for (Pair<Clabject,Clabject> pair:clabjects) {
 			Clabject supertype = pair.getFirst();
 			Clabject subtype = pair.getSecond();
-			Node tree;
-			if (trees.containsKey(subtype)) {
-				tree = trees.get(subtype);
-			} else {
-				tree = new Node(subtype);
-				trees.put(subtype, tree);
-			}
-			tree.addChild(supertype);
+			if (!nodes.containsKey(supertype))
+				nodes.put(supertype, new Node(supertype));
+			if (!nodes.containsKey(subtype))
+				nodes.put(subtype, new Node(subtype));
 		}
-		// now expand the trees until either there are no more new children or a circle is found
-		for (Entry<Clabject,Node> entry:trees.entrySet()) {
-			for (Node child:entry.getValue().children) {
-				for (Node newChild: trees.get(child.clabject).children) {
-					child.expandNodeCopy(newChild);
-				}
-			}
+		// and now the adjacencyList
+		for (Pair<Clabject,Clabject> pair:clabjects) {
+			graph.addEdge(nodes.get(pair.getSecond()), nodes.get(pair.getFirst()), 1);
+		}
+		// Now that the graph is ready, pass it to tarjan
+		Tarjan tarjan = new Tarjan();
+		ArrayList<ArrayList<Node>> allScc = tarjan.executeTarjan(graph);
+		// transform the result back to our format
+		for (ArrayList<Node> scc: allScc) {
+			Set<Clabject> current = new HashSet<Clabject>();
+			for (Node node:scc)
+				current.add(node.getClabject());
+			result.add(current);
 		}
 		return result;
 	}
@@ -82,41 +89,5 @@ public class ReasoningServiceUtil {
 	
 }
 
-class Node {
-	
-	Clabject clabject;
-	Node parent;
-	List<Node> children;
-	
-	public Node(Clabject clabject) {
-		this.clabject = clabject;
-		children = new ArrayList<Node>();
-	}
-
-	public void addChild(Clabject supertype) {
-		Node child = new Node(supertype);
-		children.add(child);
-		child.parent = this;
-	}
-	
-	public boolean containsNode(Node node) {
-		if (children.contains(node)) {
-			return true;
-		}
-		for (Node child:children) {
-			if (child.containsNode(node)) {
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	public void expandNodeCopy(Node node) {
-		for (Node child:node.children) {
-			addChild(child.clabject);
-		}
-	}
-	
-}
 
 

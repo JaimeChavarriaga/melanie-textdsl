@@ -118,8 +118,18 @@ public class SubsumptionCommand extends AbstractHandler {
 		for (Pair<Clabject,Clabject> pair: pairs) {
 			ReasoningResultFactory.eINSTANCE.createInformation(model, pair.getFirst().represent() + "<-" + pair.getSecond().represent(), foundPairs);
 		}
-		// Inside the newly found pairs, detect the equality sets
-		
+		// Inside the newly found pairs, detect the similartiy sets
+		Set<Set<Clabject>> similaritySets = ReasoningServiceUtil.computeSimilaritySets(pairs);
+		if (similaritySets.size()>0) {
+			Information similarityInformation = ReasoningResultFactory.eINSTANCE.createInformation(model, "Similarity Sets", result);
+			int index = 0;
+			for (Set<Clabject> similaritySet:similaritySets) {
+				Information currentSet = ReasoningResultFactory.eINSTANCE.createInformation(model, "" + index++, similarityInformation);
+				for (Clabject c: similaritySet) {
+					ReasoningResultFactory.eINSTANCE.createInformation(model, c.getName(), currentSet);
+				}
+			}
+		}
 		// necessary administration
 		result.setResult(true);
 		return result;
