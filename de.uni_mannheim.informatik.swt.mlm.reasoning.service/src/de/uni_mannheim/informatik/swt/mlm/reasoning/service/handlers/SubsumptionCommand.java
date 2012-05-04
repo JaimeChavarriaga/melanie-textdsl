@@ -348,6 +348,10 @@ public class SubsumptionCommand extends AbstractHandler {
 		Command addCommand = AddCommand.create(domain, m, PLMPackage.eINSTANCE.getModel_Content(), PLMFactory.eINSTANCE.createEntity());
 		
 		CompoundCommand c = new CompoundCommand("A collection of commands");
+		c.append(setCommand);
+		c.append(setCommandInArray);
+		c.append(deleteCommand);
+		c.append(addCommand);
 		
 		try {		
 			ExtensionPointService.Instance().getActiveEmendationService().stopListening(EcoreUtil.getRootContainer(m));
