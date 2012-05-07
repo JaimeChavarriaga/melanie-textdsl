@@ -33,6 +33,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 
 import de.uni_mannheim.informatik.swt.mlm.reasoning.service.ReasoningService;
+import de.uni_mannheim.informatik.swt.mlm.reasoning.service.model.PLMTransactionService;
 import de.uni_mannheim.informatik.swt.mlm.reasoning.service.util.Pair;
 import de.uni_mannheim.informatik.swt.mlm.reasoning.service.util.ReasoningServiceUtil;
 import de.uni_mannheim.informatik.swt.mlm.workbench.ExtensionPointService;
@@ -149,8 +150,7 @@ public class SubsumptionCommand extends AbstractHandler {
 		}
 		// now create the equalities for each of the sets
 		for (Set<Clabject> similaritySet: similaritySets) {
-			TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(model);
-			CompoundCommand cCommand = new CompoundCommand("Similarity Set Equality Commands");
+			PLMTransactionService pts = new PLMTransactionService(model, "Similarity Set Equality Creation Transaction");
 			Set<Clabject> processed = new HashSet<Clabject>();
 			for (Clabject c:similaritySet) {
 				for (Clabject other :similaritySet) {
@@ -158,20 +158,12 @@ public class SubsumptionCommand extends AbstractHandler {
 						Equality equality = PLMFactory.eINSTANCE.createEquality();
 						equality.setBase(c);
 						equality.setEqual(other);
-						Command addCommand = AddCommand.create(domain, model, PLMPackage.eINSTANCE.getModel_Content(), equality);
-						cCommand.append(addCommand);
+						pts.newModelElement(equality);
 					}
 				}
 				processed.add(c);
 			}
-			try {		
-				ExtensionPointService.Instance().getActiveEmendationService().stopListening(EcoreUtil.getRootContainer(model));
-				domain.getCommandStack().execute(cCommand);
-				ExtensionPointService.Instance().getActiveEmendationService().startListening(EcoreUtil.getRootContainer(model));
-			} catch (CoreException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			pts.execute();
 		}
 		// for those pairs which are not equal, a generalization can be created
 		// the policy is to create generalizations that are not redundant and have the most possible subtypes
@@ -191,25 +183,16 @@ public class SubsumptionCommand extends AbstractHandler {
 		}
 		// And now the creation of the generalizations
 		if (generalizationData.size() > 0) {
-			TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(model);
-			CompoundCommand cCommand = new CompoundCommand("Generalizations Command");
+			PLMTransactionService pts = new PLMTransactionService(model, "Generalization Creation Transaction");
 			for (Entry<Clabject,Set<Clabject>> entry:generalizationData.entrySet()) {
 				Clabject supertype = entry.getKey();
 				Set<Clabject> subtypes = entry.getValue();
 				Generalization gener = PLMFactory.eINSTANCE.createGeneralization();
 				gener.getSupertype().add(supertype);
 				gener.getSubtype().addAll(subtypes);
-				Command command = AddCommand.create(domain, model, PLMPackage.eINSTANCE.getModel_Content(), gener);
-				cCommand.append(command);
+				pts.newModelElement(gener);
 			}
-			try {		
-				ExtensionPointService.Instance().getActiveEmendationService().stopListening(EcoreUtil.getRootContainer(model));
-				domain.getCommandStack().execute(cCommand);
-				ExtensionPointService.Instance().getActiveEmendationService().startListening(EcoreUtil.getRootContainer(model));
-			} catch (CoreException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			pts.execute();
 		}
 		// TODO delete redundant properties, detect generalization boolean traits
 		// necessary administration
