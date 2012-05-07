@@ -12,8 +12,11 @@
 package de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import org.eclipse.core.commands.AbstractHandler;
@@ -39,6 +42,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Entity;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Equality;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Generalization;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMFactory;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage;
@@ -169,6 +173,45 @@ public class SubsumptionCommand extends AbstractHandler {
 				e.printStackTrace();
 			}
 		}
+		// for those pairs which are not equal, a generalization can be created
+		// the policy is to create generalizations that are not redundant and have the most possible subtypes
+		Map<Clabject,Set<Clabject>> generalizationData = new HashMap<Clabject,Set<Clabject>>();
+		for (Pair<Clabject,Clabject> pair: pairs) {
+			if (!ReasoningServiceUtil.similaritySetsContainPair(similaritySets, pair)) {
+				Clabject supertype = pair.getFirst();
+				Clabject subtype = pair.getSecond();
+				if (!subtype.getModelSupertypes().contains(supertype)) {
+					if (!generalizationData.containsKey(supertype)) {
+						generalizationData.put(supertype, new HashSet<Clabject>());
+					}
+					generalizationData.get(supertype).add(subtype);
+				}
+				
+			}
+		}
+		// And now the creation of the generalizations
+		if (generalizationData.size() > 0) {
+			TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(model);
+			CompoundCommand cCommand = new CompoundCommand("Generalizations Command");
+			for (Entry<Clabject,Set<Clabject>> entry:generalizationData.entrySet()) {
+				Clabject supertype = entry.getKey();
+				Set<Clabject> subtypes = entry.getValue();
+				Generalization gener = PLMFactory.eINSTANCE.createGeneralization();
+				gener.getSupertype().add(supertype);
+				gener.getSubtype().addAll(subtypes);
+				Command command = AddCommand.create(domain, model, PLMPackage.eINSTANCE.getModel_Content(), gener);
+				cCommand.append(command);
+			}
+			try {		
+				ExtensionPointService.Instance().getActiveEmendationService().stopListening(EcoreUtil.getRootContainer(model));
+				domain.getCommandStack().execute(cCommand);
+				ExtensionPointService.Instance().getActiveEmendationService().startListening(EcoreUtil.getRootContainer(model));
+			} catch (CoreException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		// TODO delete redundant properties, detect generalization boolean traits
 		// necessary administration
 		result.setResult(true);
 		return result;

@@ -23,7 +23,9 @@ public class AdjacencyList {
    }
 
    public List<Edge> getAdjacent(Node source){
-       return adjacencies.get(source);
+	   if (adjacencies.containsKey(source))
+		   return adjacencies.get(source);
+	   return new ArrayList<Edge>();
    }
 
    public void reverseEdge(Edge e){

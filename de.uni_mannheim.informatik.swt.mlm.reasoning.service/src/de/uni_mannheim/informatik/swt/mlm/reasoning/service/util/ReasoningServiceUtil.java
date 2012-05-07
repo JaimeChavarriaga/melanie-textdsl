@@ -99,6 +99,14 @@ public class ReasoningServiceUtil {
 		return false;
 	}
 	
+	public static boolean similaritySetsContainPair(Set<Set<Clabject>> similaritySets, Pair<Clabject,Clabject> subjects) {
+		for (Set<Clabject> set:similaritySets) {
+			if (set.contains(subjects.getFirst()) && set.contains(subjects.getSecond()))
+				return true;
+		}
+		return false;
+	}
+	
 }
 
 
