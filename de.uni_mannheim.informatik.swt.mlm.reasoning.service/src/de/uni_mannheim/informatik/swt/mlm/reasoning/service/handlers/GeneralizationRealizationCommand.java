@@ -16,10 +16,14 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 
 import de.uni_mannheim.informatik.swt.mlm.reasoning.service.ReasoningService;
+import de.uni_mannheim.informatik.swt.mlm.reasoning.service.model.PLMTransactionService;
 import de.uni_mannheim.informatik.swt.mlm.reasoning.service.util.ReasoningServiceUtil;
 import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IReasoningService;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Generalization;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Check;
+import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Information;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultFactory;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultModel;
 
@@ -45,8 +49,29 @@ public class GeneralizationRealizationCommand extends AbstractHandler {
 	}
 
 	private Check compute(Generalization gener) {
-		// TODO Auto-generated method stub
-		return null;
+		Check result = ReasoningResultFactory.eINSTANCE.createCheck();
+		result.setName("Generalization Realization");
+		result.setResult(true);
+		PLMTransactionService pts = new PLMTransactionService(gener.getModel(), "Generalization Realization Transaction");
+		// Detect the duplicate Features
+		Information featureChecks = ReasoningResultFactory.eINSTANCE.createInformation();
+		featureChecks.setMessage("Feature Equality Checks");
+		for (Clabject supertype : gener.getSupertype()) {
+			for (Feature superF : supertype.getFeature()) {
+				for (Clabject subtype : gener.getSubtype()) {
+					Feature subF = subtype.getFeatureForName(superF.getName());
+					if (subF != null) {
+						Check currentCheck = new EqualityCommand().compute(superF, subF);
+						featureChecks.getChildren().add(currentCheck);
+						if (currentCheck.isResult()) {
+							// delete subF
+						}
+					}
+					
+				}
+			}
+		}
+		return result;
 	}
 	
 	

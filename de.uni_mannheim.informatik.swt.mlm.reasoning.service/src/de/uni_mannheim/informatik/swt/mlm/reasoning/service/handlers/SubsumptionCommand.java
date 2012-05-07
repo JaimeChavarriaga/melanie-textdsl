@@ -390,29 +390,4 @@ public class SubsumptionCommand extends AbstractHandler {
 		return result;
 	}
 	
-	private void fromRalhForBastian(Model m){
-		TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(m);
-		
-		Command setCommand = SetCommand.create(domain, m, PLMPackage.eINSTANCE.getElement_Name(), "Hallo Bastian");
-		Command setCommandInArray = SetCommand.create(domain, m, PLMPackage.eINSTANCE.getElement_Name(), "Hallo Bastian", 4);
-		//Also available to delete a collection of model elements
-		Command deleteCommand = DeleteCommand.create(domain, PLMFactory.eINSTANCE.createEntity());
-		//Also available to add a collection of model elements
-		Command addCommand = AddCommand.create(domain, m, PLMPackage.eINSTANCE.getModel_Content(), PLMFactory.eINSTANCE.createEntity());
-		
-		CompoundCommand c = new CompoundCommand("A collection of commands");
-		c.append(setCommand);
-		c.append(setCommandInArray);
-		c.append(deleteCommand);
-		c.append(addCommand);
-		
-		try {		
-			ExtensionPointService.Instance().getActiveEmendationService().stopListening(EcoreUtil.getRootContainer(m));
-			domain.getCommandStack().execute(c);
-			ExtensionPointService.Instance().getActiveEmendationService().startListening(EcoreUtil.getRootContainer(m));
-		} catch (CoreException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 }
