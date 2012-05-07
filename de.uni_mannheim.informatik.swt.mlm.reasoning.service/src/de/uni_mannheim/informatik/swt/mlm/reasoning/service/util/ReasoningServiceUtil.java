@@ -14,6 +14,9 @@ import de.uni_mannheim.informatik.swt.mlm.reasoning.service.util.tarjan.Adjacenc
 import de.uni_mannheim.informatik.swt.mlm.reasoning.service.util.tarjan.Node;
 import de.uni_mannheim.informatik.swt.mlm.reasoning.service.util.tarjan.Tarjan;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Equality;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.SetRelationship;
 
 //TODO: Add copyright statement
 public class ReasoningServiceUtil {
@@ -43,15 +46,6 @@ public class ReasoningServiceUtil {
 		 Calendar cal = Calendar.getInstance();
 		 SimpleDateFormat sdf = new SimpleDateFormat("H:mm:ss");
 		 return sdf.format(cal.getTime());
-	}
-	
-	private static boolean isAlreadyCovered(Clabject subject, Set<Set<Clabject>> universe) {
-		for (Set<Clabject> current: universe) {
-			if (current.contains(subject)) {
-				return true;
-			}
-		}
-		return false;
 	}
 	
 	public static Set<Set<Clabject>> computeSimilaritySets(List<Pair<Clabject,Clabject>> clabjects) {
@@ -86,6 +80,24 @@ public class ReasoningServiceUtil {
 		return result;
 	}
 	
+	public static boolean containsEquality(Model model, Clabject one, Clabject other) {
+		for (SetRelationship setR: model.getAllSetRelationships()) {
+			if (setR instanceof Equality) {
+				Equality equality = (Equality) setR;
+				if (equality.getBase().equals(one)) {
+					if (equality.getEqual().equals(other)) {
+						return true;
+					}
+				}
+				if (equality.getEqual().equals(one)) {
+					if (equality.getBase().equals(other)) {
+						return true;
+					}
+				}
+			}
+		}
+		return false;
+	}
 	
 }
 

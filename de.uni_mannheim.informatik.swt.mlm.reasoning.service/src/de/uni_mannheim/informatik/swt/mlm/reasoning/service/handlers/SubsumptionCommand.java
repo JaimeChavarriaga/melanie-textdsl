@@ -37,6 +37,7 @@ import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IReasoningService
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Entity;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Equality;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMFactory;
@@ -140,6 +141,32 @@ public class SubsumptionCommand extends AbstractHandler {
 				for (Clabject c: similaritySet) {
 					ReasoningResultFactory.eINSTANCE.createInformation(model, c.getName(), currentSet);
 				}
+			}
+		}
+		// now create the equalities for each of the sets
+		for (Set<Clabject> similaritySet: similaritySets) {
+			TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(model);
+			CompoundCommand cCommand = new CompoundCommand("Similarity Set Equality Commands");
+			Set<Clabject> processed = new HashSet<Clabject>();
+			for (Clabject c:similaritySet) {
+				for (Clabject other :similaritySet) {
+					if (!c.equals(other) && !processed.contains(other) && !ReasoningServiceUtil.containsEquality(model, c, other)) {
+						Equality equality = PLMFactory.eINSTANCE.createEquality();
+						equality.setBase(c);
+						equality.setEqual(other);
+						Command addCommand = AddCommand.create(domain, model, PLMPackage.eINSTANCE.getModel_Content(), equality);
+						cCommand.append(addCommand);
+					}
+				}
+				processed.add(c);
+			}
+			try {		
+				ExtensionPointService.Instance().getActiveEmendationService().stopListening(EcoreUtil.getRootContainer(model));
+				domain.getCommandStack().execute(cCommand);
+				ExtensionPointService.Instance().getActiveEmendationService().startListening(EcoreUtil.getRootContainer(model));
+			} catch (CoreException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
 		// necessary administration
