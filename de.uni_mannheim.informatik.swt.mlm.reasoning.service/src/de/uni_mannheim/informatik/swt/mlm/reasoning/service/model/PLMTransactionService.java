@@ -5,6 +5,7 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.edit.command.DeleteCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 
@@ -30,14 +31,21 @@ public class PLMTransactionService {
 		cCommand.append(command);
 	}
 	
+	public void deleteModelElement(Element element) {
+		Command command = DeleteCommand.create(domain, element);
+		cCommand.append(command);
+	}
+	
 	public void execute() {
-		try {		
-			ExtensionPointService.Instance().getActiveEmendationService().stopListening(EcoreUtil.getRootContainer(model));
-			domain.getCommandStack().execute(cCommand);
-			ExtensionPointService.Instance().getActiveEmendationService().startListening(EcoreUtil.getRootContainer(model));
-		} catch (CoreException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if (!cCommand.isEmpty()) {
+			try {		
+				ExtensionPointService.Instance().getActiveEmendationService().stopListening(EcoreUtil.getRootContainer(model));
+				domain.getCommandStack().execute(cCommand);
+				ExtensionPointService.Instance().getActiveEmendationService().startListening(EcoreUtil.getRootContainer(model));
+			} catch (CoreException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 

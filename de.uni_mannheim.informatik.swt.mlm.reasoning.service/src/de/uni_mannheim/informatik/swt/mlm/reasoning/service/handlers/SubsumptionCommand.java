@@ -182,19 +182,28 @@ public class SubsumptionCommand extends AbstractHandler {
 			}
 		}
 		// And now the creation of the generalizations
+		Set<Generalization> generalizations = new HashSet<Generalization>();
 		if (generalizationData.size() > 0) {
 			PLMTransactionService pts = new PLMTransactionService(model, "Generalization Creation Transaction");
 			for (Entry<Clabject,Set<Clabject>> entry:generalizationData.entrySet()) {
 				Clabject supertype = entry.getKey();
 				Set<Clabject> subtypes = entry.getValue();
 				Generalization gener = PLMFactory.eINSTANCE.createGeneralization();
+				generalizations.add(gener);
 				gener.getSupertype().add(supertype);
 				gener.getSubtype().addAll(subtypes);
 				pts.newModelElement(gener);
 			}
 			pts.execute();
 		}
-		// TODO delete redundant properties, detect generalization boolean traits
+		// Because of generalization chains, it is better to realize the generalizations once they are all present
+		if (generalizations.size() > 0) {
+			Information generRealizationInfo = ReasoningResultFactory.eINSTANCE.createInformation(model, "Generalization Realizations", result);
+			for (Generalization gener: generalizations) {
+				generRealizationInfo.getChildren().add(new GeneralizationRealizationCommand().compute(gener));
+			}
+		}
+		// TODO  detect generalization boolean traits
 		// necessary administration
 		result.setResult(true);
 		return result;
