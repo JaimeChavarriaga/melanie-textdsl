@@ -20,8 +20,10 @@ import de.uni_mannheim.informatik.swt.mlm.reasoning.service.model.PLMTransaction
 import de.uni_mannheim.informatik.swt.mlm.reasoning.service.util.ReasoningServiceUtil;
 import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IReasoningService;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Generalization;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Role;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Check;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Information;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultFactory;
@@ -78,6 +80,42 @@ public class GeneralizationRealizationCommand extends AbstractHandler {
 						}
 					}
 					
+				}
+			}
+		}
+		// Detect redundant Roles in Connections
+		// Hack check to see which kind of clabjects the generalization connects
+		if (gener.getSupertype().get(0) instanceof Connection) {
+			Information roleChecks = ReasoningResultFactory.eINSTANCE.createInformation(gener, "Role Equality Checks", result);
+			for (Clabject supert : gener.getSupertype()) {
+				Connection supertype = (Connection) supert;
+				Information supertypeInfo = ReasoningResultFactory.eINSTANCE.createInformation(supertype, "Supertype " + supertype.getName(), roleChecks);
+				for (Role superR: supertype.getAllRoles()) {
+					Information superRInfo = ReasoningResultFactory.eINSTANCE.createInformation(supertype, "Role " + superR.getName(), supertypeInfo);
+					for (Clabject subt : gener.getSubtype()) {
+						Connection subtype = (Connection) subt;
+						Information subtypeInfo = ReasoningResultFactory.eINSTANCE.createInformation(supertype, "Subtype " + subtype.getName(), superRInfo);
+						// The subtype role has to be modeled
+						Role subR = null;
+						for (Role r:subtype.getRole()) {
+							if (r.conforms(superR)) {
+								subR = r;
+							}
+						}
+						if (subR != null) {
+							ReasoningResultFactory.eINSTANCE.createInformation(supertype, "Conforming Role Found", subtypeInfo);
+							Clabject superDestination = superR.getDestination();
+							Clabject subDestination = subR.getDestination();
+							if (subDestination.getModelSupertypes().contains(superDestination)) {
+								// Delete subR
+								pts.deleteModelElement(subR);
+							} else {
+								// Almost hit: The roles match, but the destinations are not _modeled_ matches
+								// If the Subsumption is performed correctly, modeled should be equivalent to computed at this time
+								ReasoningResultFactory.eINSTANCE.createInformation(supertype, "Destinations not in generalization", subtypeInfo);
+							}
+						}
+					}
 				}
 			}
 		}

@@ -3,6 +3,7 @@ package de.uni_mannheim.informatik.swt.mlm.reasoning.service.model;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.DeleteCommand;
@@ -31,7 +32,7 @@ public class PLMTransactionService {
 		cCommand.append(command);
 	}
 	
-	public void deleteModelElement(Element element) {
+	public void deleteModelElement(EObject element) {
 		Command command = DeleteCommand.create(domain, element);
 		cCommand.append(command);
 	}
