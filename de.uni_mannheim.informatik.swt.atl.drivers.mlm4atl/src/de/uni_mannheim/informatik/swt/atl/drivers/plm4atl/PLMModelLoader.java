@@ -43,4 +43,9 @@ public class PLMModelLoader extends EMFModelLoader {
 		//else
 		return new ASMPLMModel(name, extent, (ASMEMFModel)metamodel, isTarget, this);
 	}
+	
+	@Override
+	public ASMModel getMOF() {
+		return ASMPLMModel.getMOF();
+	}
 }

@@ -12,14 +12,20 @@
 package de.uni_mannheim.informatik.swt.atl.drivers.plm4atl;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.impl.EPackageRegistryImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -27,19 +33,21 @@ import org.eclipse.m2m.atl.common.ATLLogger;
 import org.eclipse.m2m.atl.drivers.emf4atl.ASMEMFModel;
 import org.eclipse.m2m.atl.drivers.emf4atl.ASMEMFModelElement;
 import org.eclipse.m2m.atl.engine.vm.ModelLoader;
-import org.eclipse.m2m.atl.engine.vm.StackFrame;
+import org.eclipse.m2m.atl.engine.vm.nativelib.ASMModel;
 import org.eclipse.m2m.atl.engine.vm.nativelib.ASMModelElement;
-import org.eclipse.ui.internal.ReopenEditorMenu;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.DomainElement;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Entity;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMFactory;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMFactoryImpl;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMPackageImpl;
 
 public class ASMPLMModel extends ASMEMFModel {
 
+	protected static ASMPLMModel plmmm;
+	
 	private Map classifiers;
 	
 	public void setExtent(Resource r){
@@ -83,48 +91,60 @@ public class ASMPLMModel extends ASMEMFModel {
 	 * 
 	 * @return The classifier map to build.
 	 * @see #register(Map, String, EObject)
-	 * @author <a href="mailto:dennis.wagelaar@vub.ac.be">Dennis Wagelaar</a>
 	 */
 	private Map initClassifiersInAllExtents() {
 		//********************************************************************
 		//We need to register the ontological types as meta model elements
 		//********************************************************************
-		ASMPLMModel in = null;
+		ASMPLMModel model = null;
 		
 		Map m = PLMModelLoader.eInstance.getLoadedModels();
-
+		
 		for (Object o : m.values())
 		{
-			if (o instanceof ASMPLMModel &&
-				((ASMPLMModel)o).getMetamodel() == this)
+			if (o instanceof ASMPLMModel 
+				&& (((ASMPLMModel)o).getMetamodel() == this))
 			{
-					in = (ASMPLMModel)o;
-					break;
+				model = (ASMPLMModel)o;
 			}
 		}
-		//********************************************************************
-		//END
-		//********************************************************************
 		
 		Map allClassifiers = new HashMap();
 		
-		//*******************************************************************************
-		//Additionally to the linguistic type we need to register the ontological ones
-		//*******************************************************************************
-		initClassifiers(in.getExtent().getContents().iterator(), allClassifiers, null);
-		//This part is needed as 
-		if (in.getExtent().getContents().size() == 0)
-		{
-			URI resourceURI = in.getExtent().getURI();
-			ResourceSet resSet = new ResourceSetImpl();
-			in.setExtent(resSet.getResource(URI.createURI("platform:/resource/sum2uml/sum_target.lml"),true));
-			initClassifiers(in.getExtent().getContents().iterator(), allClassifiers, null);
+		// load PLM
+		initClassifiers(PLMPackage.eINSTANCE.eResource().getContents().iterator(), allClassifiers, null);
+		initClassifiers(this.getExtent().getContents().iterator(), allClassifiers, null);
+		
+		// if empty then 'this' is not PLM => trafo to PLM!!
+		if (this.modelElements.isEmpty() && model != null) {
+			
+			// copy meta-model into model
+			model.setExtent(this.getExtent());
+		} 
+		
+		/*
+		if (metamodel != null){
+			//*******************************************************************************
+			//Additionally to the linguistic type we need to register the ontological ones
+			//*******************************************************************************
+			initClassifiers(metamodel.getExtent().getContents().iterator(), allClassifiers, null);
+			//This part is needed as 
+			if (metamodel.getExtent().getContents().size() == 0
+					//This we need because if we have a LML model as target model the meta-model is wrongly
+					//MOF and not the PLM. Somehow one meta-level is jumped in this case
+					|| metamodel.getMetamodel().getName().equals("MOF"))
+				{
+				
+				model.setExtent(metamodel.getExtent());
+				
+			}
 		}
+		*/
 		//*******************************************************************************
 		//END
 		//*******************************************************************************
 		
-		initClassifiers(getExtent().getContents().iterator(), allClassifiers, null);
+		// load referencedExtents (mof,...)
 		Iterator refExtents = referencedExtents.iterator();
 		while (refExtents.hasNext()) {
 			initClassifiers(((Resource)refExtents.next()).getContents().iterator(), allClassifiers, null);
@@ -225,5 +245,12 @@ public class ASMPLMModel extends ASMEMFModel {
 		}
 		
 		return ret;
+	}
+	
+	public static ASMModel getPLM() {
+		if (plmmm == null) {
+			plmmm = new ASMPLMModel("PLM", PLMPackage.eINSTANCE.eResource(), null, false, null);
+		}
+		return plmmm;
 	}
 }

@@ -111,6 +111,10 @@ public class ASMPLMModelElement extends ASMEMFModelElement {
 		
 			type = ((ArrayList<Clabject>) ocl.evaluate(object, q)).toArray(new Clabject[] {});
 			
+			if (type.length==0) {
+				return null;
+			}
+//			System.out.println("TYPE: " + type[0] + " !! " + this);
 			String qn = ((Model)type[0].eContainer()).getName() + "::" + type[0].getName();
 			
 			return (getMetaobject().getModel()).findModelElement(qn);
@@ -126,11 +130,18 @@ public class ASMPLMModelElement extends ASMEMFModelElement {
 	//types but also ontological ones
 	@Override
 	public boolean isHelper(StackFrame frame, String name) {
-		boolean isHelper = ((ASMExecEnv)frame.getExecEnv()).isHelper(getType(), name);
+		boolean isHelper = false;
+		if (getType() != null) {
+			isHelper = ((ASMExecEnv)frame.getExecEnv()).isHelper(getType(), name);
+		}
 		
 		//linguistic helper not found -> look for ontological one
 		if (!isHelper)
 		{
+			ASMModelElement ontologicalType = getOntologicalType();
+			if (ontologicalType == null) {
+				return false;
+			}
 			isHelper = ((ASMExecEnv)frame.getExecEnv()).isHelper(getOntologicalType(), name);	
 		}
 		return isHelper;
