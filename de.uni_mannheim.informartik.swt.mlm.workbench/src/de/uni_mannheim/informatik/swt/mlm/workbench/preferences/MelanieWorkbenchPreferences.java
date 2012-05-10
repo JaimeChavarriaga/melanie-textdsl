@@ -56,7 +56,7 @@ public class MelanieWorkbenchPreferences
 		);
 
 		
-		//Refactoring Service
+		//Emendation Service
 		String[] refactoringEngineKeySet = ExtensionPointService.Instance().getId2EmendationServiceConfigurationElement().keySet().toArray(new String[]{});
 		String[][] reafctoringEngineIds = new String[reasoningEngineKeySet.length][2];
 		
@@ -65,7 +65,7 @@ public class MelanieWorkbenchPreferences
 		
 		addField(new ComboFieldEditor(
 				PreferenceConstants.P_ACTIVE_EMENDATION_ENGINE,
-					"Active Refactoring Engine",
+					"Active Emendation Engine",
 					reafctoringEngineIds,
 					getFieldEditorParent()
 					)
