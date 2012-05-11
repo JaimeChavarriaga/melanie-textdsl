@@ -54,7 +54,6 @@ public class PLMTransactionService {
 				domain.getCommandStack().execute(cCommand);
 				ExtensionPointService.Instance().getActiveEmendationService().startListening(EcoreUtil.getRootContainer(model));
 			} catch (CoreException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
