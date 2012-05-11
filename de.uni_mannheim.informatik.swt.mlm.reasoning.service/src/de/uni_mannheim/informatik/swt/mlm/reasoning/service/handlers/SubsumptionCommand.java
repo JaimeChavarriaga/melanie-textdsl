@@ -22,21 +22,11 @@ import java.util.Set;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.emf.common.command.Command;
-import org.eclipse.emf.common.command.CompoundCommand;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.edit.command.AddCommand;
-import org.eclipse.emf.edit.command.DeleteCommand;
-import org.eclipse.emf.edit.command.SetCommand;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.emf.transaction.util.TransactionUtil;
 
 import de.uni_mannheim.informatik.swt.mlm.reasoning.service.ReasoningService;
 import de.uni_mannheim.informatik.swt.mlm.reasoning.service.model.PLMTransactionService;
 import de.uni_mannheim.informatik.swt.mlm.reasoning.service.util.Pair;
 import de.uni_mannheim.informatik.swt.mlm.reasoning.service.util.ReasoningServiceUtil;
-import de.uni_mannheim.informatik.swt.mlm.workbench.ExtensionPointService;
 import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IReasoningService;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
@@ -46,7 +36,6 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Generalization;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMFactory;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Role;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Check;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Information;
@@ -59,7 +48,7 @@ public class SubsumptionCommand extends AbstractHandler {
 	public static final String ID_ISSUBTYPE = "de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.isSubtype";
 	
 	IReasoningService reasoner = (new ReasoningService()).Instance();
-	Set<Pair<Clabject,Clabject>> marks = null;
+	Map<Pair<Clabject,Clabject>,Boolean> marks = null;
 	
 	/* (non-Javadoc)
 	 * @see org.eclipse.core.commands.IHandler#execute(org.eclipse.core.commands.ExecutionEvent)
@@ -89,6 +78,12 @@ public class SubsumptionCommand extends AbstractHandler {
 		return check.isResult();
 	}
 	
+	private Map<Pair<Clabject, Clabject>,Boolean> getMarks() {
+		if (marks == null)
+			marks = new HashMap<Pair<Clabject, Clabject>,Boolean>();
+		return marks;
+	}
+		
 	/**
 	 * 
 	 * @param model
@@ -209,24 +204,21 @@ public class SubsumptionCommand extends AbstractHandler {
 		return result;
 	}
 
-	private Set<Pair<Clabject, Clabject>> getMarks() {
-		if (marks == null)
-			marks = new HashSet<Pair<Clabject, Clabject>>();
-		return marks;
-	}
-	
 	protected Check compute(Clabject supertype, Clabject subtype) {
-		Set<Pair<Clabject, Clabject>> marks = getMarks();
+		getMarks();
 		Pair<Clabject, Clabject> pair = new Pair<Clabject, Clabject>(supertype, subtype);
-		if (marks.contains(pair)) {
+		if (marks.containsKey(pair)) {
 			Check cachedResult = ReasoningResultFactory.eINSTANCE.createCheck(subtype, supertype, null);
 			cachedResult.setName("Subsumption[Cached]");
 			cachedResult.setExpression(subtype.represent() + ".subsume(" + supertype.represent() + ")");
-			cachedResult.setResult(true);
+			cachedResult.setResult(marks.get(pair));
 			return cachedResult;
 		}
-		marks.add(pair);
+		marks.put(pair, true);
 		Check result = subsume(supertype, subtype);
+		if (!result.isResult()) {
+			marks.put(pair, false);
+		}
 		return result; 
 	}
 	
@@ -289,6 +281,7 @@ public class SubsumptionCommand extends AbstractHandler {
 	private Check subsumeClabject(Clabject supertype, Clabject subtype) {
 		Check result = ReasoningResultFactory.eINSTANCE.createCheck();
 		result.setName("isSubtype");
+		result.setExpression(subtype.getName() + ".subsumes(" + supertype.getName() +")");
 		Check levelCheck = ReasoningResultFactory.eINSTANCE.createCheck(supertype, subtype, result);
 		levelCheck.setExpression("same Level");
 		if (supertype.getLevel() == subtype.getLevel()) levelCheck.setResult(true);
