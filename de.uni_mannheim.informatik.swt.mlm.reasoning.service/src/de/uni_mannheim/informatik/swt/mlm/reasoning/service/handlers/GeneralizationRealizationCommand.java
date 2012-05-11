@@ -11,9 +11,17 @@
  *******************************************************************************/
 package de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers;
 
+import java.util.Iterator;
+
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gmf.runtime.diagram.core.services.ViewService;
+import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
+import org.eclipse.gmf.runtime.notation.Diagram;
+import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.ui.PlatformUI;
 
 import de.uni_mannheim.informatik.swt.mlm.reasoning.service.ReasoningService;
 import de.uni_mannheim.informatik.swt.mlm.reasoning.service.model.PLMTransactionService;
@@ -24,6 +32,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Generalization;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Role;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Check;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Information;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultFactory;
