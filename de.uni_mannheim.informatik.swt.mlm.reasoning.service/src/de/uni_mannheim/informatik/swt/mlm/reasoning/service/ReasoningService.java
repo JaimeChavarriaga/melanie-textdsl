@@ -30,6 +30,7 @@ import org.eclipse.ui.handlers.IHandlerService;
 import org.eclipse.ui.menus.CommandContributionItem;
 import org.eclipse.ui.menus.CommandContributionItemParameter;
 
+import de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.ClassificationCommand;
 import de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.ClassificationConsistencyCommand;
 import de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.FeatureConformsCommand;
 import de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.GeneralizationConsistencyCommand;
@@ -353,6 +354,20 @@ public class ReasoningService implements IReasoningService {
 			param.parameters = commandParamametersMap;
 			
 			items.add(new CommandContributionItem(param));
+			
+			//***************************************************
+			// Classification
+			//***************************************************
+			param =	new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), ClassificationCommand.ID + ".menuEntry", ClassificationCommand.ID, CommandContributionItem.STYLE_PUSH);
+			param.label = getCommandName(ClassificationCommand.ID);
+			
+			commandParamametersMap = new HashMap<String, Object>();
+			
+			commandParamametersMap.put("model",  modelElements[0]);
+			
+			param.parameters = commandParamametersMap;
+			
+			items.add(new CommandContributionItem(param));
 		}
 		
 		//We have an ontology selected
@@ -665,6 +680,17 @@ public class ReasoningService implements IReasoningService {
 			params.put("generalization", parameters[0]);
 			params.put("silent", Boolean.toString(silent));
 			Command command = commandService.getCommand(GeneralizationRealizationCommand.ID);
+			ParameterizedCommand paramCmd = ParameterizedCommand.generateCommand(command, params);
+			try {
+				result = (Boolean)handlerService.executeCommand(paramCmd, null);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if (commandID == ReasoningService.CLASSIFICATION) {
+			Map params = new HashMap();
+			params.put("model", parameters[0]);
+			params.put("silent", Boolean.toString(silent));
+			Command command = commandService.getCommand(ClassificationCommand.ID);
 			ParameterizedCommand paramCmd = ParameterizedCommand.generateCommand(command, params);
 			try {
 				result = (Boolean)handlerService.executeCommand(paramCmd, null);

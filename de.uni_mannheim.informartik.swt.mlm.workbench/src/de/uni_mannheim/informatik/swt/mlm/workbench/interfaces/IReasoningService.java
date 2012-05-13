@@ -182,4 +182,6 @@ public interface IReasoningService {
 	 * param[0] = Classification - the element to be checked for consistency. 
 	 */
 	public static final String CLASSIFICATION_CONSISTENCY = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.classificationconsistency";
+	
+	public static final String CLASSIFICATION = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.classification";
 }
