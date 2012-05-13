@@ -174,6 +174,11 @@ public interface IReasoningService {
 	public static final String GENERALIZATION_CONSISTENCY = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.generalizationconsistency";
 	
 	/**
+	 * param[0] = Generalization - the element to be realized. 
+	 */
+	public static final String GENERALIZATION_REALIZATION = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.generalizationrealization";
+	
+	/**
 	 * param[0] = Classification - the element to be checked for consistency. 
 	 */
 	public static final String CLASSIFICATION_CONSISTENCY = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.classificationconsistency";
