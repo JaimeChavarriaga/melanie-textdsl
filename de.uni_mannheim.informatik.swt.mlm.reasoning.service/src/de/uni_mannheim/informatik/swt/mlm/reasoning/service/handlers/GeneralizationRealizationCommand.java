@@ -11,17 +11,9 @@
  *******************************************************************************/
 package de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers;
 
-import java.util.Iterator;
-
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.gmf.runtime.diagram.core.services.ViewService;
-import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
-import org.eclipse.gmf.runtime.notation.Diagram;
-import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.ui.PlatformUI;
 
 import de.uni_mannheim.informatik.swt.mlm.reasoning.service.ReasoningService;
 import de.uni_mannheim.informatik.swt.mlm.reasoning.service.model.PLMTransactionService;
@@ -32,7 +24,6 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Generalization;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Role;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Check;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Information;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultFactory;
@@ -40,13 +31,13 @@ import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Rea
 
 public class GeneralizationRealizationCommand extends AbstractHandler {
 	
-	public static final String ID_GENER_REALIZATION = "de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.generalizationrealizationcommand";
+	public static final String ID = "de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.generalizationrealizationcommand";
 	IReasoningService reasoner = (new ReasoningService()).Instance();
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		ReasoningResultModel resultModel = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();
-		resultModel.setName("Subsumtion " + ReasoningServiceUtil.getDateString());
+		resultModel.setName("Generalization Realization " + ReasoningServiceUtil.getDateString());
 		Check check = null;
 		Generalization gener = (Generalization) event.getObjectParameterForExecution("generalization");  
 		check = compute(gener);
@@ -109,6 +100,7 @@ public class GeneralizationRealizationCommand extends AbstractHandler {
 						for (Role r:subtype.getRole()) {
 							if (r.conforms(superR)) {
 								subR = r;
+								break;
 							}
 						}
 						if (subR != null) {

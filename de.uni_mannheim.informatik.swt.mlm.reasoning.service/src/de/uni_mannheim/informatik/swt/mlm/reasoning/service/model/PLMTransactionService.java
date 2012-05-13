@@ -50,21 +50,17 @@ public class PLMTransactionService {
 	public void deleteModelElement(EObject semanticElement) {
 		Command deleteSemanticElementCommand = DeleteCommand.create(domain, semanticElement);
 		cCommand.append(deleteSemanticElementCommand);
-		
 		View viewForSemanticElement = null;
-		
 		PLMDiagramEditor editor= (PLMDiagramEditor) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
 		Diagram d = editor.getDiagram();
 		Iterator<EObject> iter = d.eAllContents();
 		while(iter.hasNext()){
 			EObject obj = (EObject)iter.next(); 
-			if (obj instanceof View
-					&& ((View)obj).getElement() == semanticElement){
+			if (obj instanceof View && ((View)obj).getElement() == semanticElement){
 				viewForSemanticElement = (View)obj;
 				break;
 			}
 		}
-		
 		Command deleteViewCommand = DeleteCommand.create(domain, viewForSemanticElement);
 		cCommand.append(deleteViewCommand);		
 	}

@@ -259,6 +259,17 @@
                typeId="de.uni_mannheim.informatik.swt.plm.workbench.eobjectcommandparametertype">
          </commandParameter>
       </command>
+      <command
+            defaultHandler="de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.GeneralizationRealizationCommand"
+            id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.generalizationrealizationcommand"
+            name="Generalization Realization">
+         <commandParameter
+               id="generalization"
+               name="generalization"
+               optional="true"
+               typeId="de.uni_mannheim.informatik.swt.plm.workbench.eobjectcommandparametertype">
+         </commandParameter>
+      </command>
    </extension>
    <extension
          point="de.uni_mannheim.informatik.swt.reasoning.service">

@@ -33,6 +33,7 @@ import org.eclipse.ui.menus.CommandContributionItemParameter;
 import de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.ClassificationConsistencyCommand;
 import de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.FeatureConformsCommand;
 import de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.GeneralizationConsistencyCommand;
+import de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.GeneralizationRealizationCommand;
 import de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.HasAdditionalPropertiesCommand;
 import de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.HyponymCommand;
 import de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.InstanceCommand;
@@ -57,6 +58,13 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Ontology;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultModel;
 
 public class ReasoningService implements IReasoningService {
+	
+	private static IReasoningService instance = null;
+	private List<IPropertyChangeListener> listeners = new LinkedList<IPropertyChangeListener>(); 
+	
+	public ReasoningService() {
+		
+	}
 	
 	@Override
 	public List<ContributionItem> getAvailableReasoningCommands(EObject[] modelElements) {
@@ -294,6 +302,23 @@ public class ReasoningService implements IReasoningService {
 			param.parameters = commandParamametersMap;
 			
 			items.add(new CommandContributionItem(param));
+			
+			//***************************************************
+			// Generalization Realization Command
+			//***************************************************
+			param = 
+					new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), GeneralizationRealizationCommand.ID + ".menuEntry", GeneralizationRealizationCommand.ID, CommandContributionItem.STYLE_PUSH);
+			param.label = getCommandName(GeneralizationRealizationCommand.ID);
+			
+			commandParamametersMap = new HashMap<String, Object>();
+			
+			commandParamametersMap.put("generalization",  modelElements[0]);
+			
+			param.parameters = commandParamametersMap;
+			
+			items.add(new CommandContributionItem(param));
+			
+			
 		}
 
 		//We have a model selected
@@ -371,13 +396,6 @@ public class ReasoningService implements IReasoningService {
 			
 		return null;
 	}
-	
-	private static IReasoningService instance = null;
-	private List<IPropertyChangeListener> listeners = new LinkedList<IPropertyChangeListener>(); 
-	public ReasoningService() {
-		
-	}
-	
 	
 	@Override
 	public void addPropertyChangeListener(IPropertyChangeListener listener) {
@@ -631,7 +649,29 @@ public class ReasoningService implements IReasoningService {
 			} catch (Exception e) {
 				e.printStackTrace();
 			} 
-		}else {
+		}else if (commandID == ReasoningService.GENERALIZATION_CONSISTENCY) {
+			Map params = new HashMap();
+			params.put("generalization", parameters[0]);
+			params.put("silent", Boolean.toString(silent));
+			Command command = commandService.getCommand(GeneralizationConsistencyCommand.ID);
+			ParameterizedCommand paramCmd = ParameterizedCommand.generateCommand(command, params);
+			try {
+				result = (Boolean)handlerService.executeCommand(paramCmd, null);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if (commandID == ReasoningService.GENERALIZATION_REALIZATION) {
+			Map params = new HashMap();
+			params.put("generalization", parameters[0]);
+			params.put("silent", Boolean.toString(silent));
+			Command command = commandService.getCommand(GeneralizationRealizationCommand.ID);
+			ParameterizedCommand paramCmd = ParameterizedCommand.generateCommand(command, params);
+			try {
+				result = (Boolean)handlerService.executeCommand(paramCmd, null);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else {
 			System.out.println("Unrecognized (read:implemented) command " + commandID);
 		}
 		
