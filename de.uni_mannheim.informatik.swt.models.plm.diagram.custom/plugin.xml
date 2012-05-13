@@ -253,21 +253,7 @@
                            ifEmpty="false"
                            operator="or">
                         <instanceof
-                              value="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.MultipleGeneralizationEditPart">
-                        </instanceof>
-                     </iterate>
-                     <iterate
-                           ifEmpty="false"
-                           operator="or">
-                        <instanceof
-                              value="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.MultipleSpecializationEditPart">
-                        </instanceof>
-                     </iterate>
-                     <iterate
-                           ifEmpty="false"
-                           operator="or">
-                        <instanceof
-                              value="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.BinaryGeneralizationEditPart">
+                              value="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.GeneralizationEditPart">
                         </instanceof>
                      </iterate>
                      <iterate
