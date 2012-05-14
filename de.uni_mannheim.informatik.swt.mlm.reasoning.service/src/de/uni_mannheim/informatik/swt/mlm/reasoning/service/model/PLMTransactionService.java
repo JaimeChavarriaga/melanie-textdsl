@@ -65,6 +65,10 @@ public class PLMTransactionService {
 		cCommand.append(deleteViewCommand);		
 	}
 	
+	public void changeModelElementValue(EObject semanticElement) {
+		
+	}
+	
 	public void execute() {
 		if (!cCommand.isEmpty()) {
 			try {		

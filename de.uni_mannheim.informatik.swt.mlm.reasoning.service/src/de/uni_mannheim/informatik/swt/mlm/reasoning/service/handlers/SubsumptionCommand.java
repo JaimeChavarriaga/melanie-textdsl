@@ -199,6 +199,17 @@ public class SubsumptionCommand extends AbstractHandler {
 			}
 		}
 		// TODO  detect generalization boolean traits
+		// For the detection of the boolean traits, there has to be a classified domain
+		Model classifiedModel = model.getClassifiedModel();
+		if (classifiedModel == null) {
+			ReasoningResultFactory.eINSTANCE.createInformation(model,"No classified Model", result);
+		} else {
+			Information booleanTraitInfo = ReasoningResultFactory.eINSTANCE.createInformation(model,"Boolean Trait Reasoning", result);
+			for (Generalization gener: generalizations) {
+				Check generCheck = new GeneralizationBooleanTraitCommand().compute(gener);
+				booleanTraitInfo.getChildren().add(generCheck);
+			}
+		}
 		// necessary administration
 		result.setResult(true);
 		return result;
