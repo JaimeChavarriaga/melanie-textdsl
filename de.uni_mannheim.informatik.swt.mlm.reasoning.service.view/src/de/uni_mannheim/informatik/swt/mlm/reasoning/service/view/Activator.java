@@ -1,4 +1,4 @@
-package de.uni_mannheim.informatik.swt.plm.reasoning.service.view;
+package de.uni_mannheim.informatik.swt.mlm.reasoning.service.view;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;

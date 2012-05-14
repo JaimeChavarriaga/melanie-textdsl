@@ -1,4 +1,4 @@
-package de.uni_mannheim.informatik.swt.plm.reasoning.service.view.views;
+package de.uni_mannheim.informatik.swt.mlm.reasoning.service.view.views;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -13,18 +13,12 @@ import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.action.Action;
-import org.eclipse.jface.action.IMenuListener;
-import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
-import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ComboViewer;
-import org.eclipse.jface.viewers.DoubleClickEvent;
-import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
@@ -39,10 +33,10 @@ import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Menu;
+import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.ISharedImages;
-import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IGotoMarker;
 import org.eclipse.ui.part.DrillDownAdapter;
@@ -57,7 +51,6 @@ import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.pro
 
 public class ReasoningView extends ViewPart implements IPropertyChangeListener, ISelectionProvider {
 
-	private static final String REASONING_ENGINE_ID = "de.uni_mannheim.informatik.swt.plm.reasoning.service";
 	private ComposedAdapterFactory factory;
 	PropertySheetPage propertySheetPage;
 	TransactionalEditingDomain domain = TransactionalEditingDomain.Factory.INSTANCE.createEditingDomain();
@@ -85,14 +78,13 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 	/**
 	 * The ID of the view as specified by the extension.
 	 */
-	public static final String ID = "de.uni_mannheim.informatik.swt.plm.reasoning.service.view.reasoningview";
+	public static final String ID = "de.uni_mannheim.informatik.swt.mlm.reasoning.service.view";
 
 	private TreeViewer treeViewer;
 	ComboViewer comboViewer;
 	private DrillDownAdapter drillDownAdapter;
-	private Action action1;
-	private Action action2;
-	private Action doubleClickAction;
+	private Action collapseAllAction;
+//	private Action doubleClickAction;
 
 	
 	/**
@@ -114,11 +106,52 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 		CTabFolder tabFolder = new CTabFolder(parent, SWT.BOTTOM);
 		tabFolder.setSimple(false);
 		
+		//****************************************
+		//Tab Page - Reasoning Result
+		//****************************************
 		CTabItem reasoningResultPage = new CTabItem(tabFolder, SWT.NONE);
 		reasoningResultPage.setText("Reasoning Results");
 		Composite reasoningResultComposite = new Composite(tabFolder, SWT.NONE);
 		reasoningResultComposite.setLayout(new GridLayout(1, false));
 		reasoningResultPage.setControl(reasoningResultComposite);
+		
+		GridData reasoningSelectionGroupGridData = new GridData();
+		reasoningSelectionGroupGridData.grabExcessHorizontalSpace = true;
+		reasoningSelectionGroupGridData.horizontalAlignment = SWT.FILL;
+		
+		Group reasoningSelectionGroup = new Group(reasoningResultComposite, SWT.SHADOW_ETCHED_IN);
+		reasoningSelectionGroup.setText("Reasoning Selection");
+		reasoningSelectionGroup.setLayoutData(reasoningSelectionGroupGridData);
+		reasoningSelectionGroup.setLayout(new GridLayout(1, false));
+		
+		GridData typeTextGridData = new GridData();
+		typeTextGridData.grabExcessHorizontalSpace = true;
+		typeTextGridData.horizontalAlignment = SWT.FILL;
+		
+		Text typeText = new Text(reasoningSelectionGroup, SWT.SINGLE | SWT.BORDER);
+		typeText.setMessage("Type");
+		typeText.setLayoutData(typeTextGridData);
+		
+		ComboViewer reasoningActionComboViewer = new ComboViewer(reasoningSelectionGroup, SWT.READ_ONLY);
+		reasoningActionComboViewer.setContentProvider(ArrayContentProvider.getInstance());
+		reasoningActionComboViewer.setInput(new String[]{"conformsTo"});
+		reasoningActionComboViewer.getCombo().setLayoutData(typeTextGridData);
+		reasoningActionComboViewer.getCombo().select(0);
+		
+		Text instanceText = new Text(reasoningSelectionGroup, SWT.SINGLE | SWT.BORDER);
+		instanceText.setMessage("Instance");
+		instanceText.setLayoutData(typeTextGridData);
+		
+		GridData reasoningResultGroupGridData = new GridData();
+		reasoningResultGroupGridData.grabExcessHorizontalSpace = true;
+		reasoningResultGroupGridData.horizontalAlignment = SWT.FILL;
+		reasoningResultGroupGridData.grabExcessVerticalSpace = true;
+		reasoningResultGroupGridData.verticalAlignment = SWT.FILL;
+		
+		Group reasoningResultGroup = new Group(reasoningResultComposite, SWT.SHADOW_ETCHED_IN);
+		reasoningResultGroup.setText("Reasoning Result");
+		reasoningResultGroup.setLayoutData(reasoningResultGroupGridData);
+		reasoningResultGroup.setLayout(new GridLayout(1, false));
 		
 		factory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 
@@ -136,7 +169,7 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 		factory.addAdapterFactory(new ReasoningResultItemProviderAdapterFactory());
 		factory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 				
-		comboViewer = new ComboViewer(reasoningResultComposite, SWT.READ_ONLY);
+		comboViewer = new ComboViewer(reasoningResultGroup, SWT.READ_ONLY);
 		comboViewer.setContentProvider(ArrayContentProvider.getInstance());
 		comboViewer.setLabelProvider(new AdapterFactoryLabelProvider(factory));
 		comboViewer.getCombo().setLayoutData(comboViewGridData);
@@ -153,7 +186,7 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 			}
 		});
 		
-		treeViewer = new TreeViewer(reasoningResultComposite, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
+		treeViewer = new TreeViewer(reasoningResultGroup, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
 		treeViewer.getTree().setLayoutData(treeViewGridData);
 		
 		drillDownAdapter = new DrillDownAdapter(treeViewer);
@@ -184,6 +217,9 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 		getSite().setSelectionProvider(this);
 		//This is needed to have the first tab visible
 		
+		//****************************************
+		// Tab Page - Introspection
+		//****************************************
 		CTabItem introspectPage = new CTabItem(tabFolder, SWT.NONE);
 		introspectPage.setText("Introspection");
 		Composite introspectResultComposite = new Composite(tabFolder, SWT.NONE);
@@ -211,18 +247,18 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 	};
 
 	
-	private void hookContextMenu() {
-		MenuManager menuMgr = new MenuManager("#PopupMenu");
-		menuMgr.setRemoveAllWhenShown(true);
-		menuMgr.addMenuListener(new IMenuListener() {
-			public void menuAboutToShow(IMenuManager manager) {
-				ReasoningView.this.fillContextMenu(manager);
-			}
-		});
-		Menu menu = menuMgr.createContextMenu(treeViewer.getControl());
-		treeViewer.getControl().setMenu(menu);
-		getSite().registerContextMenu(menuMgr, treeViewer);
-	}
+//	private void hookContextMenu() {
+//		MenuManager menuMgr = new MenuManager("#PopupMenu");
+//		menuMgr.setRemoveAllWhenShown(true);
+//		menuMgr.addMenuListener(new IMenuListener() {
+//			public void menuAboutToShow(IMenuManager manager) {
+//				ReasoningView.this.fillContextMenu(manager);
+//			}
+//		});
+//		Menu menu = menuMgr.createContextMenu(treeViewer.getControl());
+//		treeViewer.getControl().setMenu(menu);
+//		getSite().registerContextMenu(menuMgr, treeViewer);
+//	}
 
 	private void contributeToActionBars() {
 		IActionBars bars = getViewSite().getActionBars();
@@ -230,51 +266,38 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 		fillLocalToolBar(bars.getToolBarManager());
 	}
 
-	private void fillLocalPullDown(IMenuManager manager) {
-		manager.add(action1);
-		manager.add(new Separator());
-		manager.add(action2);
-	}
+//	private void fillLocalPullDown(IMenuManager manager) {
+//		manager.add(collapseAllAction);
+//		manager.add(new Separator());
+//	}
 
-	private void fillContextMenu(IMenuManager manager) {
-		manager.add(action1);
-		manager.add(action2);
-		manager.add(new Separator());
-		drillDownAdapter.addNavigationActions(manager);
-		// Other plug-ins can contribute there actions here
-		manager.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
-	}
+//	private void fillContextMenu(IMenuManager manager) {
+//		manager.add(collapseAllAction);
+//		manager.add(new Separator());
+//		drillDownAdapter.addNavigationActions(manager);
+//		// Other plug-ins can contribute there actions here
+//		manager.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
+//	}
 	
 	private void fillLocalToolBar(IToolBarManager manager) {
-		manager.add(action1);
+		manager.add(collapseAllAction);
 		//manager.add(action2);
-		//manager.add(new Separator());
+		manager.add(new Separator());
 		drillDownAdapter.addNavigationActions(manager);
 	}
 
 	private void makeActions() {
 		
-		action1 = new Action() {
+		collapseAllAction = new Action() {
 			public void run() {
 				treeViewer.collapseAll();
 			}
 		};
-		action1.setText("Collapse All");
-		action1.setToolTipText("Collapse All");
-		action1.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().
+		collapseAllAction.setText("Collapse All");
+		collapseAllAction.setToolTipText("Collapse All");
+		collapseAllAction.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().
 			getImageDescriptor(ISharedImages.IMG_ELCL_COLLAPSEALL));
-		
-//		action2 = new Action() {
-//			public void run() {
-//				treeViewer.expandAll();
-//			}
-//		};
-		
-		
-//		action2.setText("Action 2");
-//		action2.setToolTipText("Action 2 tooltip");
-//		action2.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().
-//				getImageDescriptor(ISharedImages.IMG_ELCL_COLLAPSEALL));
+	
 //		doubleClickAction = new Action() {
 //			public void run() {
 //				ISelection selection = treeViewer.getSelection();
@@ -284,19 +307,19 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 //		};
 	}
 
-	private void hookDoubleClickAction() {
-		treeViewer.addDoubleClickListener(new IDoubleClickListener() {
-			public void doubleClick(DoubleClickEvent event) {
-				doubleClickAction.run();
-			}
-		});
-	}
-	private void showMessage(String message) {
-		MessageDialog.openInformation(
-			treeViewer.getControl().getShell(),
-			"Reasoning View",
-			message);
-	}
+//	private void hookDoubleClickAction() {
+//		treeViewer.addDoubleClickListener(new IDoubleClickListener() {
+//			public void doubleClick(DoubleClickEvent event) {
+//				doubleClickAction.run();
+//			}
+//		});
+//	}
+//	private void showMessage(String message) {
+//		MessageDialog.openInformation(
+//			treeViewer.getControl().getShell(),
+//			"Reasoning View",
+//			message);
+//	}
 
 	/**
 	 * Passing the focus request to the viewer's control.
