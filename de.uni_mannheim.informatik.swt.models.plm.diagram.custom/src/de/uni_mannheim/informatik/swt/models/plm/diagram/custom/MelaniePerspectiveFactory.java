@@ -15,7 +15,7 @@ import org.eclipse.ui.IFolderLayout;
 import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IPerspectiveFactory;
 
-import de.uni_mannheim.informatik.swt.plm.reasoning.service.view.views.ReasoningView;
+import de.uni_mannheim.informatik.swt.mlm.reasoning.service.view.views.ReasoningView;
 import de.uni_mannheim.informatik.swt.plm.visualization.editor.views.VisualizationEditorView;
 
 /**
