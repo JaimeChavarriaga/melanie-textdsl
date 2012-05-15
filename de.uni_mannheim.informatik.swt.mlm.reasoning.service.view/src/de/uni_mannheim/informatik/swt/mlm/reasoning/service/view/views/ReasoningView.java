@@ -11,10 +11,17 @@
 
 package de.uni_mannheim.informatik.swt.mlm.reasoning.service.view.views;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
+import org.eclipse.core.commands.Command;
+import org.eclipse.core.commands.ParameterizedCommand;
+import org.eclipse.core.commands.common.NotDefinedException;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
@@ -24,6 +31,7 @@ import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.action.Action;
+import org.eclipse.jface.action.ContributionItem;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.util.IPropertyChangeListener;
@@ -40,9 +48,12 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.custom.CTabItem;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
@@ -50,6 +61,7 @@ import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IGotoMarker;
+import org.eclipse.ui.menus.CommandContributionItem;
 import org.eclipse.ui.part.DrillDownAdapter;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
@@ -57,6 +69,7 @@ import org.eclipse.ui.views.properties.PropertySheetPage;
 
 import de.uni_mannheim.informatik.swt.mlm.workbench.ExtensionPointService;
 import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IReasoningService;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.provider.ReasoningResultItemProviderAdapterFactory;
@@ -71,6 +84,7 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 	private Text reasoningSourceText = null;
 	private Element reasoningTarget = null;
 	private Text reasoningTargetText = null;
+	ComboViewer reasoningActionComboViewer = null;
 	
 	/**
 	 * Called whenever the reasoning history changes
@@ -116,8 +130,6 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 	 */
 	public void createPartControl(Composite parent) {
 		
-		//parent.setLayout(new GridLayout(1, false));
-		
 		parent.setLayout(new FillLayout());
 		
 		CTabFolder tabFolder = new CTabFolder(parent, SWT.BOTTOM);
@@ -149,7 +161,8 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 		reasoningSourceText.setMessage("Type");
 		reasoningSourceText.setLayoutData(reasoningSelectionGridData);
 		
-		ComboViewer reasoningActionComboViewer = new ComboViewer(reasoningSelectionGroup, SWT.READ_ONLY);
+		
+		reasoningActionComboViewer = new ComboViewer(reasoningSelectionGroup, SWT.READ_ONLY);
 		reasoningActionComboViewer.setContentProvider(ArrayContentProvider.getInstance());
 		reasoningActionComboViewer.setInput(new String[]{"conformsTo"});
 		reasoningActionComboViewer.getCombo().setLayoutData(reasoningSelectionGridData);
@@ -158,6 +171,27 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 		reasoningTargetText = new Text(reasoningSelectionGroup, SWT.SINGLE | SWT.BORDER);
 		reasoningTargetText.setMessage("Instance");
 		reasoningTargetText.setLayoutData(reasoningSelectionGridData);
+		
+		Button runButton = new Button(reasoningSelectionGroup, SWT.NONE);
+		runButton.setText("Run !");
+		runButton.setLayoutData(reasoningSelectionGroupGridData);
+		runButton.addSelectionListener(new SelectionListener() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				try {
+					IReasoningService service = ExtensionPointService.Instance().getActiveReasoningService();
+					service.run(name2commandId.get(reasoningActionComboViewer.getCombo().getText()), new EObject[]{reasoningTarget, reasoningSource});
+				} catch (CoreException ex) {
+					ex.printStackTrace();
+				}
+			}
+			
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				//DO NOTHING
+			}
+		});
 		
 		GridData reasoningResultGroupGridData = new GridData();
 		reasoningResultGroupGridData.grabExcessHorizontalSpace = true;
@@ -222,13 +256,7 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 			e.printStackTrace();
 		}
 		
-		
-//		viewer.setInput(model);
-//		viewer.refresh();
-		
 		makeActions();
-//		hookContextMenu();
-//		hookDoubleClickAction();
 		contributeToActionBars();
 		
 		getSite().setSelectionProvider(this);
@@ -263,42 +291,13 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 		}
 	};
 
-	
-//	private void hookContextMenu() {
-//		MenuManager menuMgr = new MenuManager("#PopupMenu");
-//		menuMgr.setRemoveAllWhenShown(true);
-//		menuMgr.addMenuListener(new IMenuListener() {
-//			public void menuAboutToShow(IMenuManager manager) {
-//				ReasoningView.this.fillContextMenu(manager);
-//			}
-//		});
-//		Menu menu = menuMgr.createContextMenu(treeViewer.getControl());
-//		treeViewer.getControl().setMenu(menu);
-//		getSite().registerContextMenu(menuMgr, treeViewer);
-//	}
-
 	private void contributeToActionBars() {
 		IActionBars bars = getViewSite().getActionBars();
-		//fillLocalPullDown(bars.getMenuManager());
 		fillLocalToolBar(bars.getToolBarManager());
 	}
-
-//	private void fillLocalPullDown(IMenuManager manager) {
-//		manager.add(collapseAllAction);
-//		manager.add(new Separator());
-//	}
-
-//	private void fillContextMenu(IMenuManager manager) {
-//		manager.add(collapseAllAction);
-//		manager.add(new Separator());
-//		drillDownAdapter.addNavigationActions(manager);
-//		// Other plug-ins can contribute there actions here
-//		manager.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
-//	}
 	
 	private void fillLocalToolBar(IToolBarManager manager) {
 		manager.add(collapseAllAction);
-		//manager.add(action2);
 		manager.add(new Separator());
 		drillDownAdapter.addNavigationActions(manager);
 	}
@@ -314,29 +313,7 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 		collapseAllAction.setToolTipText("Collapse All");
 		collapseAllAction.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().
 			getImageDescriptor(ISharedImages.IMG_ELCL_COLLAPSEALL));
-	
-//		doubleClickAction = new Action() {
-//			public void run() {
-//				ISelection selection = treeViewer.getSelection();
-//				Object obj = ((IStructuredSelection)selection).getFirstElement();
-//				showMessage("Double-click detected on "+obj.toString());
-//			}
-//		};
 	}
-
-//	private void hookDoubleClickAction() {
-//		treeViewer.addDoubleClickListener(new IDoubleClickListener() {
-//			public void doubleClick(DoubleClickEvent event) {
-//				doubleClickAction.run();
-//			}
-//		});
-//	}
-//	private void showMessage(String message) {
-//		MessageDialog.openInformation(
-//			treeViewer.getControl().getShell(),
-//			"Reasoning View",
-//			message);
-//	}
 
 	/**
 	 * Passing the focus request to the viewer's control.
@@ -382,7 +359,6 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 					@Override
 					public void setActionBars(IActionBars actionBars) {
 						super.setActionBars(actionBars);
-						//getActionBarContributor().shareGlobalActions(this, actionBars);
 					}
 				};
 			propertySheetPage.setPropertySourceProvider(new AdapterFactoryContentProvider(factory));
@@ -420,20 +396,10 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 		viewSelection = selection;
 	}
 	
-	@Override
-	public void dispose() {
-		//Throws exception if workbench is closing -> We do not care about this
-		try{
-			getSite().setSelectionProvider(null);
-			propertySheetPage = null;
-		}catch(Exception ex){}
-		
-		super.dispose();
-	}
-	
 	public void setReasoningSource(Element source){
 		reasoningSource = source;
 		reasoningSourceText.setText(source.getName());
+		reasoningActionComboViewer.setInput(getPossibleReasoningOperations());
 	}
 	
 	public Element getReasoningSource(){
@@ -443,9 +409,31 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 	public void setReasoningTarget(Element target){
 		reasoningTarget = target;
 		reasoningTargetText.setText(target.getName());
+		reasoningActionComboViewer.setInput(getPossibleReasoningOperations());
 	}
 	
 	public Element getReasoningTarget(){
 		return reasoningTarget;
+	}
+	
+	Map<String, String> name2commandId = new HashMap<String, String>();
+	
+	private String[] getPossibleReasoningOperations(){
+		try {
+			IReasoningService service = ExtensionPointService.Instance().getActiveReasoningService();
+			List<ContributionItem> items = service.getAvailableReasoningCommands(new EObject[]{reasoningTarget, reasoningSource});
+			ArrayList<String> operations = new ArrayList<String>(items.size());
+			for (ContributionItem ci : items){
+				name2commandId.put(((CommandContributionItem)ci).getCommand().getName(), ((CommandContributionItem)ci).getCommand().getId());
+				operations.add(((CommandContributionItem)ci).getCommand().getName());
+			}
+			
+			return operations.toArray(new String[]{});
+			
+		} catch (CoreException | NotDefinedException e) {
+			e.printStackTrace();
+		}
+		
+		return new String[]{};
 	}
 }
