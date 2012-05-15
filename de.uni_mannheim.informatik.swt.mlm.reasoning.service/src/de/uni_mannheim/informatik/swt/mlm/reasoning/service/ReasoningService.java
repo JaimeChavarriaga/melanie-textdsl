@@ -487,7 +487,8 @@ public class ReasoningService implements IReasoningService {
 		boolean result = false;
 		if (this != instance) { 
 			throw new RuntimeException("You need to use .Instance() to get the singleton instance of this service");
-		} else if (commandID == ReasoningService.FEATURE_CONFORMS) {
+		} 
+		else if (commandID == ReasoningService.FEATURE_CONFORMS || commandID.equals(FeatureConformsCommand.ID)) {
 			Map params = new HashMap();
 			params.put("type", parameters[0]);
 			params.put("instance", parameters[1]);
@@ -499,7 +500,8 @@ public class ReasoningService implements IReasoningService {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if (commandID.equals(ReasoningService.LOCAL_CONFORMS)){
+		} 
+		else if (commandID.equals(ReasoningService.LOCAL_CONFORMS) || commandID.equals(LocalConformsCommand.ID)){
 			Map params = new HashMap();
 			params.put("type", parameters[0]);
 			params.put("instance", parameters[1]);
@@ -513,7 +515,8 @@ public class ReasoningService implements IReasoningService {
 				e.printStackTrace();
 			}
 			
-		} else if (commandID == ReasoningService.MULTIPLICITY_CONFORMS) {
+		} 
+		else if (commandID == ReasoningService.MULTIPLICITY_CONFORMS || commandID.equals(MultiplicityConformsCommand.ID)) {
 			Map params = new HashMap();
 			params.put("connection", parameters[0]);
 			params.put("silent", Boolean.toString(silent));
@@ -524,7 +527,8 @@ public class ReasoningService implements IReasoningService {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if (commandID == ReasoningService.NEIGHBOURHOOD_CONFORMS) {
+		}
+		else if (commandID == ReasoningService.NEIGHBOURHOOD_CONFORMS || commandID.equals(NeighbourhoodConformsCommand.ID)) {
 			Map params = new HashMap();
 			params.put("type", parameters[0]);
 			params.put("instance", parameters[1]);
@@ -537,7 +541,8 @@ public class ReasoningService implements IReasoningService {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if (commandID == ReasoningService.PROPERTY_CONFORMS) {
+		} 
+		else if (commandID == ReasoningService.PROPERTY_CONFORMS || commandID.equals(PropertyConformsCommand.ID)) {
 			Map params = new HashMap();
 			params.put("type", parameters[0]);
 			params.put("instance", parameters[1]);
@@ -550,7 +555,8 @@ public class ReasoningService implements IReasoningService {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if (commandID == ReasoningService.IS_EXPRESSED_INSTANCE_OF_EXCLUDED) {
+		} 
+		else if (commandID == ReasoningService.IS_EXPRESSED_INSTANCE_OF_EXCLUDED || commandID.equals(IsExpressedInstanceOfExcludedCommand.ID)) {
 			Map params = new HashMap();
 			params.put("type", parameters[0]);
 			params.put("instance", parameters[1]);
@@ -563,7 +569,8 @@ public class ReasoningService implements IReasoningService {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if (commandID == ReasoningService.HAS_ADDITIONAL_PROPERTIES) {
+		} 
+		else if (commandID == ReasoningService.HAS_ADDITIONAL_PROPERTIES || commandID.equals(HasAdditionalPropertiesCommand.ID)) {
 			Map params = new HashMap();
 			params.put("type", parameters[0]);
 			params.put("instance", parameters[1]);
@@ -576,7 +583,8 @@ public class ReasoningService implements IReasoningService {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if (commandID == ReasoningService.IS_HYPONYM) {
+		} 
+		else if (commandID == ReasoningService.IS_HYPONYM || commandID.equals(HyponymCommand.ID)) {
 			Map params = new HashMap();
 			params.put("type", parameters[0]);
 			params.put("instance", parameters[1]);
@@ -589,7 +597,8 @@ public class ReasoningService implements IReasoningService {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if (commandID == ReasoningService.IS_ISONYM) {
+		} 
+		else if (commandID == ReasoningService.IS_ISONYM || commandID.equals(IsonymCommand.ID)) {
 			Map params = new HashMap();
 			params.put("type", parameters[0]);
 			params.put("instance", parameters[1]);
@@ -602,7 +611,8 @@ public class ReasoningService implements IReasoningService {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if (commandID == ReasoningService.IS_INSTANCE) {
+		} 
+		else if (commandID == ReasoningService.IS_INSTANCE || commandID.equals(InstanceCommand.ID)) {
 			Map params = new HashMap();
 			params.put("type", parameters[0]);
 			params.put("instance", parameters[1]);
@@ -616,7 +626,8 @@ public class ReasoningService implements IReasoningService {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if (commandID == ReasoningService.CLASSIFICATION_CONSISTENCY) {
+		} 
+		else if (commandID == ReasoningService.CLASSIFICATION_CONSISTENCY || commandID.equals(ClassificationConsistencyCommand.ID)) {
 			Map params = new HashMap();
 			params.put("element", parameters[0]);
 			params.put("silent", Boolean.toString(silent));
@@ -628,7 +639,8 @@ public class ReasoningService implements IReasoningService {
 			} catch (Exception e) {
 				e.printStackTrace();
 			} 
-		} else if (commandID == ReasoningService.GENERALIZATION_CONSISTENCY) {
+		} 
+		else if (commandID == ReasoningService.GENERALIZATION_CONSISTENCY || commandID.equals(GeneralizationConsistencyCommand.ID)) {
 			Map params = new HashMap();
 			params.put("element", parameters[0]);
 			params.put("silent", Boolean.toString(silent));
@@ -640,7 +652,8 @@ public class ReasoningService implements IReasoningService {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}  
-		} else if (commandID == ReasoningService.ONTOLOGY_CONSISTENCY) {
+		} 
+		else if (commandID == ReasoningService.ONTOLOGY_CONSISTENCY || commandID.equals(OntologyConsistencyCommand.ID)) {
 			Map params = new HashMap();
 			params.put("element", parameters[0]);
 			params.put("silent", Boolean.toString(silent));
@@ -652,7 +665,8 @@ public class ReasoningService implements IReasoningService {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if (commandID == ReasoningService.IS_CONSISTENTLY_CLASSIFIED) {
+		} 
+		else if (commandID == ReasoningService.IS_CONSISTENTLY_CLASSIFIED || commandID.equals(ModelConsistentClassificationCommand.ID)) {
 			Map params = new HashMap();
 			params.put("model", parameters[0]);
 			params.put("silent", Boolean.toString(silent));
@@ -664,7 +678,8 @@ public class ReasoningService implements IReasoningService {
 			} catch (Exception e) {
 				e.printStackTrace();
 			} 
-		}else if (commandID == ReasoningService.GENERALIZATION_CONSISTENCY) {
+		}
+		else if (commandID == ReasoningService.GENERALIZATION_CONSISTENCY || commandID.equals(GeneralizationConsistencyCommand.ID)) {
 			Map params = new HashMap();
 			params.put("generalization", parameters[0]);
 			params.put("silent", Boolean.toString(silent));
@@ -675,7 +690,8 @@ public class ReasoningService implements IReasoningService {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if (commandID == ReasoningService.GENERALIZATION_REALIZATION) {
+		} 
+		else if (commandID == ReasoningService.GENERALIZATION_REALIZATION || commandID.equals(GeneralizationRealizationCommand.ID)) {
 			Map params = new HashMap();
 			params.put("generalization", parameters[0]);
 			params.put("silent", Boolean.toString(silent));
@@ -686,7 +702,8 @@ public class ReasoningService implements IReasoningService {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if (commandID == ReasoningService.CLASSIFICATION) {
+		}
+		else if (commandID == ReasoningService.CLASSIFICATION || commandID.equals(ClassificationCommand.ID)) {
 			Map params = new HashMap();
 			params.put("model", parameters[0]);
 			params.put("silent", Boolean.toString(silent));
@@ -697,7 +714,8 @@ public class ReasoningService implements IReasoningService {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else {
+		} 
+		else {
 			System.out.println("Unrecognized (read:implemented) command " + commandID);
 		}
 		
