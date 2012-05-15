@@ -10,7 +10,9 @@
  *******************************************************************************/ 
 package de.uni_mannheim.informatik.swt.mlm.workbench;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.runtime.CoreException;
@@ -19,10 +21,11 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.preference.IPreferenceStore;
 
 import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IDSLService;
-import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IProximityIndicationService;
-import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IReasoningService;
 import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IEmendationService;
 import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IGraphicalVisualizationService;
+import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IPopupToolBarProvider;
+import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IProximityIndicationService;
+import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IReasoningService;
 import de.uni_mannheim.informatik.swt.mlm.workbench.preferences.PreferenceConstants;
 
 /**
@@ -37,6 +40,7 @@ public class ExtensionPointService {
 	private static String EMENDATION_SERVICE_ID = "de.uni_mannheim.informatik.swt.emendation.service";
 	private static String PROXIMITY_INDICATION_SERVICE_ID = "de.uni_mannheim.informatik.swt.proximityindication.service";
 	private static String DSL_SERVICE_ID = "de.uni_mannheim.informatik.swt.dsl.service";
+	private static String POPUPBARBUTTON_PROVIDER_ID = "de.uni_mannheim.informatik.swt.popupbarbuttons.provider";
 	
 	private static ExtensionPointService instance = null;
 	
@@ -108,6 +112,20 @@ public class ExtensionPointService {
 	 */
 	private static Map<String, IDSLService> id2DSLServiceInstance;
 	
+	
+	/**
+	 * Cache for IPopupToolBarProvider IConfigurationElements
+	 */
+	private static Map<String, IConfigurationElement> id2IPopupToolBarProviderConfigurationElement;
+	public Map<String, IConfigurationElement> getPopUpBarButtonProviderConfigurationElement() {
+		return id2IPopupToolBarProviderConfigurationElement;
+	}
+	/**
+	 * Cache for IPopupToolBarProvider Instances
+	 */
+	private static Map<String, IPopupToolBarProvider> id2IPopupToolBarProviderInstance;
+	
+	
 	private ExtensionPointService(){
 		
 	}
@@ -144,6 +162,9 @@ public class ExtensionPointService {
 		id2DSLServiceConfigurationElement = new HashMap<String, IConfigurationElement>();
 		id2DSLServiceInstance = new HashMap<String, IDSLService>();
 		
+		id2IPopupToolBarProviderConfigurationElement = new HashMap<String, IConfigurationElement>();
+		id2IPopupToolBarProviderInstance = new HashMap<String, IPopupToolBarProvider>();
+		
 		//Initialize the visualization service
 		IConfigurationElement[] configurationElements = Platform.getExtensionRegistry().getConfigurationElementsFor(VISUALIZATION_SERVICE_ID);
 		
@@ -168,11 +189,17 @@ public class ExtensionPointService {
 		for (IConfigurationElement cElement : configurationElements)
 			id2ProximityIndicationServiceConfigurationElement.put(cElement.getAttribute("id"), cElement);
 		
-		//Initialize the proximity indication service
+		//Initialize the DSL service
 		configurationElements = Platform.getExtensionRegistry().getConfigurationElementsFor(DSL_SERVICE_ID);
 		
 		for (IConfigurationElement cElement : configurationElements)
 			id2DSLServiceConfigurationElement.put(cElement.getAttribute("id"), cElement);
+		
+		//Initialize the proximity indication service
+		configurationElements = Platform.getExtensionRegistry().getConfigurationElementsFor(POPUPBARBUTTON_PROVIDER_ID);
+		
+		for (IConfigurationElement cElement : configurationElements)
+			id2IPopupToolBarProviderConfigurationElement.put(cElement.getAttribute("id"), cElement);
 	}
 	
 	/**
@@ -326,7 +353,7 @@ public class ExtensionPointService {
 	}
 	
 	/**
-	 * Returns an instance of the Proximity Indicarion Service. For performance improvements two caches are used.
+	 * Returns an instance of the Proximity Indication Service. For performance improvements two caches are used.
 	 * One to cache the IConfigurationElements and one to cache the visualization service instance.
 	 * 
 	 * @param id ID of the registered extension point
@@ -361,5 +388,47 @@ public class ExtensionPointService {
 		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
 		
 		return getDSLService(store.getString(PreferenceConstants.P_ACTIVE_DSL_ENGINE));
+	}
+	
+	/**
+	 * Returns an instance of the PopupBarButtonProvider. For performance improvements two caches are used.
+	 * One to cache the IConfigurationElements and one to cache the visualization service instance.
+	 * 
+	 * @param id ID of the registered extension point
+	 * 
+	 * @return A cached instance of the reasoning service
+	 * 
+	 * @throws CoreException
+	 */
+	public IPopupToolBarProvider getPopUpBarButtonProvider(String id) throws CoreException{
+		IPopupToolBarProvider popupBarToolProvider = id2IPopupToolBarProviderInstance.get(id);
+		
+		if (popupBarToolProvider == null)
+		{
+			popupBarToolProvider = (IPopupToolBarProvider)id2IPopupToolBarProviderConfigurationElement.get(id).createExecutableExtension("class");
+			id2IPopupToolBarProviderInstance.put(id, popupBarToolProvider);
+		}
+		
+		return popupBarToolProvider;
+	}
+	
+	/**
+	 * Returns instances of all PopupBarButtonProvider. For performance improvements two caches are used.
+	 * One to cache the IConfigurationElements and one to cache the visualization service instance.
+	 * 
+	 * @param id ID of the registered extension point
+	 * 
+	 * @return A cached instance of the reasoning service
+	 * 
+	 * @throws CoreException
+	 */
+	public List<IPopupToolBarProvider> getAllPopUpBarButtonProvider() throws CoreException{
+		List<IPopupToolBarProvider> popupBarToolProviders = new ArrayList<IPopupToolBarProvider>(id2IPopupToolBarProviderInstance.keySet().size()); 
+		
+		for (String id : id2IPopupToolBarProviderInstance.keySet()){
+			popupBarToolProviders.add(getPopUpBarButtonProvider(id));
+		}
+		
+		return popupBarToolProviders;
 	}
 }
