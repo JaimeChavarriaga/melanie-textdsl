@@ -1,3 +1,14 @@
+/*******************************************************************************
+ * Copyright (c) 2011, 2012 University of Mannheim: Chair for Software Engineering
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Ralph Gerbig - initial API and implementation and initial documentation
+ *******************************************************************************/
+
 package de.uni_mannheim.informatik.swt.mlm.reasoning.service.view.views;
 
 import java.util.LinkedList;
@@ -46,14 +57,20 @@ import org.eclipse.ui.views.properties.PropertySheetPage;
 
 import de.uni_mannheim.informatik.swt.mlm.workbench.ExtensionPointService;
 import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IReasoningService;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.provider.ReasoningResultItemProviderAdapterFactory;
 
 public class ReasoningView extends ViewPart implements IPropertyChangeListener, ISelectionProvider {
 
 	private ComposedAdapterFactory factory;
-	PropertySheetPage propertySheetPage;
-	TransactionalEditingDomain domain = TransactionalEditingDomain.Factory.INSTANCE.createEditingDomain();
+	private PropertySheetPage propertySheetPage;
+	private TransactionalEditingDomain domain = TransactionalEditingDomain.Factory.INSTANCE.createEditingDomain();
+	
+	private Element reasoningSource = null;
+	private Text reasoningSourceText = null;
+	private Element reasoningTarget = null;
+	private Text reasoningTargetText = null;
 	
 	/**
 	 * Called whenever the reasoning history changes
@@ -124,23 +141,23 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 		reasoningSelectionGroup.setLayoutData(reasoningSelectionGroupGridData);
 		reasoningSelectionGroup.setLayout(new GridLayout(1, false));
 		
-		GridData typeTextGridData = new GridData();
-		typeTextGridData.grabExcessHorizontalSpace = true;
-		typeTextGridData.horizontalAlignment = SWT.FILL;
+		GridData reasoningSelectionGridData = new GridData();
+		reasoningSelectionGridData.grabExcessHorizontalSpace = true;
+		reasoningSelectionGridData.horizontalAlignment = SWT.FILL;
 		
-		Text typeText = new Text(reasoningSelectionGroup, SWT.SINGLE | SWT.BORDER);
-		typeText.setMessage("Type");
-		typeText.setLayoutData(typeTextGridData);
+		reasoningSourceText = new Text(reasoningSelectionGroup, SWT.SINGLE | SWT.BORDER);
+		reasoningSourceText.setMessage("Type");
+		reasoningSourceText.setLayoutData(reasoningSelectionGridData);
 		
 		ComboViewer reasoningActionComboViewer = new ComboViewer(reasoningSelectionGroup, SWT.READ_ONLY);
 		reasoningActionComboViewer.setContentProvider(ArrayContentProvider.getInstance());
 		reasoningActionComboViewer.setInput(new String[]{"conformsTo"});
-		reasoningActionComboViewer.getCombo().setLayoutData(typeTextGridData);
+		reasoningActionComboViewer.getCombo().setLayoutData(reasoningSelectionGridData);
 		reasoningActionComboViewer.getCombo().select(0);
 		
-		Text instanceText = new Text(reasoningSelectionGroup, SWT.SINGLE | SWT.BORDER);
-		instanceText.setMessage("Instance");
-		instanceText.setLayoutData(typeTextGridData);
+		reasoningTargetText = new Text(reasoningSelectionGroup, SWT.SINGLE | SWT.BORDER);
+		reasoningTargetText.setMessage("Instance");
+		reasoningTargetText.setLayoutData(reasoningSelectionGridData);
 		
 		GridData reasoningResultGroupGridData = new GridData();
 		reasoningResultGroupGridData.grabExcessHorizontalSpace = true;
@@ -412,5 +429,23 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 		}catch(Exception ex){}
 		
 		super.dispose();
+	}
+	
+	public void setReasoningSource(Element source){
+		reasoningSource = source;
+		reasoningSourceText.setText(source.getName());
+	}
+	
+	public Element getReasoningSource(){
+		return reasoningSource;
+	}
+	
+	public void setReasoningTarget(Element target){
+		reasoningTarget = target;
+		reasoningTargetText.setText(target.getName());
+	}
+	
+	public Element getReasoningTarget(){
+		return reasoningTarget;
 	}
 }
