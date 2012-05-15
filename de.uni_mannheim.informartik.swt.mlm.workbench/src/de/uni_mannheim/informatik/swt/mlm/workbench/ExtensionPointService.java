@@ -425,7 +425,7 @@ public class ExtensionPointService {
 	public List<IPopupToolBarProvider> getAllPopUpBarButtonProvider() throws CoreException{
 		List<IPopupToolBarProvider> popupBarToolProviders = new ArrayList<IPopupToolBarProvider>(id2IPopupToolBarProviderInstance.keySet().size()); 
 		
-		for (String id : id2IPopupToolBarProviderInstance.keySet()){
+		for (String id : id2IPopupToolBarProviderConfigurationElement.keySet()){
 			popupBarToolProviders.add(getPopUpBarButtonProvider(id));
 		}
 		

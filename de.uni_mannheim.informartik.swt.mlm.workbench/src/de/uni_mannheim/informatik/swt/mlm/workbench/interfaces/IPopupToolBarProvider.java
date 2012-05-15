@@ -12,17 +12,28 @@ package de.uni_mannheim.informatik.swt.mlm.workbench.interfaces;
 
 import java.util.List;
 
-import org.eclipse.emf.ecore.EObject;
-
 public interface IPopupToolBarProvider {
 
 	/**
 	 * 
-	 * Lists all PopUpBarToolButtons that are available for an eobject
+	 * Lists all PopUpBarToolButtons that are available for an diagram editor element (IGraphicalEditPart)
 	 * 
 	 * @param object
 	 * @return the available PopUpBarToolButtons (org.eclipse.gmf.runtime.diagram.ui.tools.AbstractPopupBarTool) 
 	 */
-	public List<Object> getPopUpToolbarButtonsForEObject(EObject object);
+	public List<IPopupToolBarToolWrapper> getPopUpToolbarButtonsForDiagramElement(Object host);
 	
+	
+	public interface IPopupToolBarToolWrapper{
+		
+		public void setImage(Object Image);
+		public Object getImage();
+		
+		public void setTool(Object tool);
+		public Object getTool();
+		
+		public void setText(String text);
+		public String getText();
+		
+	}
 }
