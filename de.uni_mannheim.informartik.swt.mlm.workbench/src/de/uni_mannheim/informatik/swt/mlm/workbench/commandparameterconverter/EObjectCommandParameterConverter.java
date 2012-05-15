@@ -16,7 +16,7 @@ import java.util.Map;
 import org.eclipse.core.commands.AbstractParameterValueConverter;
 import org.eclipse.core.commands.ParameterValueConversionException;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
+import org.eclipse.emf.ecore.xmi.XMLResource;
 
 
 public class EObjectCommandParameterConverter extends
@@ -40,8 +40,13 @@ public class EObjectCommandParameterConverter extends
 	public String convertToString(Object parameterValue)
 			throws ParameterValueConversionException {
 		
-		emfId2Resource.put(EMFCoreUtil.getProxyID((EObject)parameterValue), (EObject)parameterValue);
-		return EMFCoreUtil.getProxyID((EObject)parameterValue);
+		//Changed to remove dependency to GMF
+		String id = ((XMLResource)((EObject)parameterValue).eResource()).getID((EObject)parameterValue);
+		emfId2Resource.put(id, (EObject)parameterValue);
+		return id;
+		
+//		emfId2Resource.put(EMFCoreUtil.getProxyID((EObject)parameterValue), (EObject)parameterValue);
+//		return EMFCoreUtil.getProxyID((EObject)parameterValue);
 	}
 
 }

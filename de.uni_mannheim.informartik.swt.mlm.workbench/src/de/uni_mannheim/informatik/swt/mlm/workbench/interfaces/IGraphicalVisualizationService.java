@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 University of Mannheim: Chair for Software Engineering
+ * Copyright (c) 2011, 2012 University of Mannheim: Chair for Software Engineering
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,9 +9,6 @@
  *    Ralph Gerbig - initial API and implementation and initial documentation
  *******************************************************************************/ 
 package de.uni_mannheim.informatik.swt.mlm.workbench.interfaces;
-
-import org.eclipse.draw2d.IFigure;
-import org.eclipse.swt.graphics.Color;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
@@ -32,17 +29,17 @@ public interface IGraphicalVisualizationService {
 	 * @param v visualizer to translate into a figure
 	 * @param c the clabject meta-model element which is visualized
 	 * 
-	 * @return renderable figure
+	 * @return renderable figure (org.eclipse.draw2d.IFigure)
 	 */
-	public IFigure run(DSLVisualizer v, Clabject c);
+	public Object run(DSLVisualizer v, Clabject c);
 	
 	/**
 	 * Translates a color constant into a SWT Color
 	 * 
 	 * @param constant constant to translate
-	 * @return SWT Color
+	 * @return SWT Color (org.eclipse.swt.graphics.Color)
 	 */
-	public Color colorConstant2Color(ColorConstant constant);
+	public Object colorConstant2Color(ColorConstant constant);
 	
 	/**
 	 * <p>Looks up the DSLVisualizer for an Element by the following rules:</p>
