@@ -17,8 +17,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.core.commands.Command;
-import org.eclipse.core.commands.ParameterizedCommand;
 import org.eclipse.core.commands.common.NotDefinedException;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.ecore.EObject;
@@ -69,7 +67,6 @@ import org.eclipse.ui.views.properties.PropertySheetPage;
 
 import de.uni_mannheim.informatik.swt.mlm.workbench.ExtensionPointService;
 import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IReasoningService;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.provider.ReasoningResultItemProviderAdapterFactory;
@@ -84,6 +81,8 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 	private Text reasoningSourceText = null;
 	private Element reasoningTarget = null;
 	private Text reasoningTargetText = null;
+	private Button runButton = null;
+	
 	ComboViewer reasoningActionComboViewer = null;
 	
 	/**
@@ -115,7 +114,6 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 	ComboViewer comboViewer;
 	private DrillDownAdapter drillDownAdapter;
 	private Action collapseAllAction;
-//	private Action doubleClickAction;
 
 	
 	/**
@@ -158,21 +156,24 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 		reasoningSelectionGridData.horizontalAlignment = SWT.FILL;
 		
 		reasoningSourceText = new Text(reasoningSelectionGroup, SWT.SINGLE | SWT.BORDER);
-		reasoningSourceText.setMessage("Type");
 		reasoningSourceText.setLayoutData(reasoningSelectionGridData);
+		reasoningSourceText.setEditable(false);
+		reasoningSourceText.setText("<<Source>>");
 		
 		
 		reasoningActionComboViewer = new ComboViewer(reasoningSelectionGroup, SWT.READ_ONLY);
 		reasoningActionComboViewer.setContentProvider(ArrayContentProvider.getInstance());
-		reasoningActionComboViewer.setInput(new String[]{"conformsTo"});
 		reasoningActionComboViewer.getCombo().setLayoutData(reasoningSelectionGridData);
 		reasoningActionComboViewer.getCombo().select(0);
+		reasoningActionComboViewer.getCombo().setEnabled(false);
 		
 		reasoningTargetText = new Text(reasoningSelectionGroup, SWT.SINGLE | SWT.BORDER);
-		reasoningTargetText.setMessage("Instance");
 		reasoningTargetText.setLayoutData(reasoningSelectionGridData);
+		reasoningTargetText.setEditable(false);
+		reasoningTargetText.setText("<<Target>>");
 		
-		Button runButton = new Button(reasoningSelectionGroup, SWT.NONE);
+		runButton = new Button(reasoningSelectionGroup, SWT.NONE);
+		runButton.setEnabled(false);
 		runButton.setText("Run !");
 		runButton.setLayoutData(reasoningSelectionGroupGridData);
 		runButton.addSelectionListener(new SelectionListener() {
@@ -399,7 +400,7 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 	public void setReasoningSource(Element source){
 		reasoningSource = source;
 		reasoningSourceText.setText(source.getName());
-		reasoningActionComboViewer.setInput(getPossibleReasoningOperations());
+		updateUI();
 	}
 	
 	public Element getReasoningSource(){
@@ -409,11 +410,22 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 	public void setReasoningTarget(Element target){
 		reasoningTarget = target;
 		reasoningTargetText.setText(target.getName());
-		reasoningActionComboViewer.setInput(getPossibleReasoningOperations());
+		updateUI();
 	}
 	
 	public Element getReasoningTarget(){
 		return reasoningTarget;
+	}
+	
+	private void updateUI(){
+		String[] possibleOperations = getPossibleReasoningOperations();
+		reasoningActionComboViewer.setInput(getPossibleReasoningOperations());
+		
+		if (reasoningSource != null && reasoningTarget != null && possibleOperations.length > 0){
+			reasoningActionComboViewer.getCombo().setEnabled(true);
+			reasoningActionComboViewer.getCombo().select(0);
+			runButton.setEnabled(true);
+		}
 	}
 	
 	Map<String, String> name2commandId = new HashMap<String, String>();
