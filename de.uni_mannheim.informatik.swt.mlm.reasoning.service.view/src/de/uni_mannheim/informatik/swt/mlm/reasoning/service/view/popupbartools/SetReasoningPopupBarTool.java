@@ -8,14 +8,16 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.requests.ChangePropertyValueRequest;
 import org.eclipse.gmf.runtime.diagram.ui.tools.AbstractPopupBarTool;
 
-import de.uni_mannheim.informatik.swt.mlm.reasoning.service.view.popupbartools.commands.SetReasoningSourceCommand;
-import de.uni_mannheim.informatik.swt.mlm.reasoning.service.view.popupbartools.commands.SetSubsumptionCommand;
+import de.uni_mannheim.informatik.swt.mlm.reasoning.service.view.popupbartools.commands.SetReasoningCommand;
 
-public class SetSubsumptionPopupBarTool extends AbstractPopupBarTool{
+/**
+ * 
+ * This tool is used for Reasoning Operations which do not have a target
+ *
+ */
+public class SetReasoningPopupBarTool extends AbstractPopupBarTool{
 
-	
-	
-	public SetSubsumptionPopupBarTool(EditPart epHost, CreateRequest theRequest) {
+	public SetReasoningPopupBarTool(EditPart epHost, CreateRequest theRequest) {
 		super(epHost, theRequest);
 	}
 
@@ -27,7 +29,7 @@ public class SetSubsumptionPopupBarTool extends AbstractPopupBarTool{
 
 	@Override
 	protected Command getCommand() {
-		return new SetSubsumptionCommand((IGraphicalEditPart)getHost());
+		return new SetReasoningCommand((IGraphicalEditPart)getHost());
 	}
 	
 }

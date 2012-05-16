@@ -18,7 +18,7 @@ import org.eclipse.ui.PlatformUI;
 import de.uni_mannheim.informatik.swt.mlm.reasoning.service.view.views.ReasoningView;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 
-public class SetSubsumptionCommand extends Command{
+public class SetReasoningCommand extends Command{
 	
 	private IGraphicalEditPart host = null;
 	
@@ -26,7 +26,7 @@ public class SetSubsumptionCommand extends Command{
 	 * 
 	 * @param host Element to introspect
 	 */
-	public SetSubsumptionCommand(IGraphicalEditPart host){
+	public SetReasoningCommand(IGraphicalEditPart host){
 		this.host = host;
 	}
 	

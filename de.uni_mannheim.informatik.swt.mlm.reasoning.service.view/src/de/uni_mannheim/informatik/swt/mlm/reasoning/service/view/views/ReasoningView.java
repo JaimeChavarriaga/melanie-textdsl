@@ -182,7 +182,10 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 			public void widgetSelected(SelectionEvent e) {
 				try {
 					IReasoningService service = ExtensionPointService.Instance().getActiveReasoningService();
-					service.run(name2commandId.get(reasoningActionComboViewer.getCombo().getText()), new EObject[]{reasoningTarget, reasoningSource});
+					if (reasoningTarget != null)
+						service.run(name2commandId.get(reasoningActionComboViewer.getCombo().getText()), new EObject[]{reasoningTarget, reasoningSource});
+					else
+						service.run(name2commandId.get(reasoningActionComboViewer.getCombo().getText()), new EObject[]{reasoningSource});
 				} catch (CoreException ex) {
 					ex.printStackTrace();
 				}
@@ -421,7 +424,8 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 		String[] possibleOperations = getPossibleReasoningOperations();
 		reasoningActionComboViewer.setInput(getPossibleReasoningOperations());
 		
-		if (reasoningSource != null && reasoningTarget != null && possibleOperations.length > 0){
+		//Target is not checked here because we have resoning operations only working on source
+		if (reasoningSource != null && possibleOperations.length > 0){
 			reasoningActionComboViewer.getCombo().setEnabled(true);
 			reasoningActionComboViewer.getCombo().select(0);
 			runButton.setEnabled(true);
@@ -433,7 +437,14 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 	private String[] getPossibleReasoningOperations(){
 		try {
 			IReasoningService service = ExtensionPointService.Instance().getActiveReasoningService();
-			List<ContributionItem> items = service.getAvailableReasoningCommands(new EObject[]{reasoningTarget, reasoningSource});
+			
+			List<ContributionItem> items = null;
+			
+			if (reasoningTarget != null)
+				items = service.getAvailableReasoningCommands(new EObject[]{reasoningTarget, reasoningSource});
+			else
+				items = service.getAvailableReasoningCommands(new EObject[]{reasoningSource});
+			
 			ArrayList<String> operations = new ArrayList<String>(items.size());
 			for (ContributionItem ci : items){
 				name2commandId.put(((CommandContributionItem)ci).getCommand().getName(), ((CommandContributionItem)ci).getCommand().getId());

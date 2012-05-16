@@ -63,14 +63,14 @@ public class PopupToolBarProvider implements IPopupToolBarProvider {
 		}
 		else if(editPart.resolveSemanticElement() instanceof Model){
 			//*********************************
-			// * Add reasoning source option
+			// * Add reasoning option
 			// ********************************
-			tool = new SetSubsumptionPopupBarTool(editPart, null);
+			tool = new SetReasoningPopupBarTool(editPart, null);
 	
-			imageDescriptor = Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "/icons/subsumption16.gif");
+			imageDescriptor = Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "/icons/reasoning16.gif");
 			image = imageDescriptor.createImage();
 			
-			result.add(new PopupToolBarToolWrapper(image, tool, "Set as Subsumption Source"));
+			result.add(new PopupToolBarToolWrapper(image, tool, "Set as reasoning object"));
 		}
 		
 		return result;
