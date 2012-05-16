@@ -12,6 +12,7 @@ package de.uni_mannheim.informatik.swt.mlm.reasoning.service.view.popupbartools.
 
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 
 import de.uni_mannheim.informatik.swt.mlm.reasoning.service.view.views.ReasoningView;
@@ -33,7 +34,13 @@ public class SetReasoningTargetCommand extends Command{
 	public void execute() {
 		super.execute();
 		
-		ReasoningView view = (ReasoningView)PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView(ReasoningView.ID);
-		view.setReasoningTarget((Element)host.resolveSemanticElement());
+		ReasoningView view;
+		try {
+			view = (ReasoningView)PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView(ReasoningView.ID);
+			view.setReasoningTarget((Element)host.resolveSemanticElement());
+			PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor().setFocus();
+		} catch (PartInitException e) {
+			e.printStackTrace();
+		}
 	}
 }
