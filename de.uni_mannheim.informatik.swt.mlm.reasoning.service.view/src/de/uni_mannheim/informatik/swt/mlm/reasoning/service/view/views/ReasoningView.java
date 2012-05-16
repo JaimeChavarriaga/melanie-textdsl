@@ -8,7 +8,6 @@
  * Contributors:
  *    Ralph Gerbig - initial API and implementation and initial documentation
  *******************************************************************************/
-
 package de.uni_mannheim.informatik.swt.mlm.reasoning.service.view.views;
 
 import java.util.ArrayList;
