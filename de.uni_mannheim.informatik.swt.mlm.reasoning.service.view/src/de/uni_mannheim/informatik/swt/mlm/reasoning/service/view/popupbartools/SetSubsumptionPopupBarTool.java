@@ -9,24 +9,25 @@ import org.eclipse.gmf.runtime.diagram.ui.requests.ChangePropertyValueRequest;
 import org.eclipse.gmf.runtime.diagram.ui.tools.AbstractPopupBarTool;
 
 import de.uni_mannheim.informatik.swt.mlm.reasoning.service.view.popupbartools.commands.SetReasoningSourceCommand;
+import de.uni_mannheim.informatik.swt.mlm.reasoning.service.view.popupbartools.commands.SetSubsumptionCommand;
 
-public class SetReasoningSourcePopupBarTool extends AbstractPopupBarTool{
+public class SetSubsumptionPopupBarTool extends AbstractPopupBarTool{
 
 	
 	
-	public SetReasoningSourcePopupBarTool(EditPart epHost, CreateRequest theRequest) {
+	public SetSubsumptionPopupBarTool(EditPart epHost, CreateRequest theRequest) {
 		super(epHost, theRequest);
 	}
 
 	@Override
 	protected Request createTargetRequest() {
-		ChangePropertyValueRequest req = new ChangePropertyValueRequest("Set as Subsumption Source", "Set as Subsumption Source");
+		ChangePropertyValueRequest req = new ChangePropertyValueRequest("Set as Reasoning Source", "Set as Reasoning Source");
 		return req;
 	}
 
 	@Override
 	protected Command getCommand() {
-		return new SetReasoningSourceCommand((IGraphicalEditPart)getHost());
+		return new SetSubsumptionCommand((IGraphicalEditPart)getHost());
 	}
 	
 }

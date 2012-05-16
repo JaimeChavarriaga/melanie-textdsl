@@ -21,6 +21,7 @@ import org.eclipse.swt.graphics.Image;
 import de.uni_mannheim.informatik.swt.mlm.reasoning.service.view.Activator;
 import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IPopupToolBarProvider;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
 
 public class PopupToolBarProvider implements IPopupToolBarProvider {
 
@@ -59,6 +60,17 @@ public class PopupToolBarProvider implements IPopupToolBarProvider {
 			image = imageDescriptor.createImage();
 			
 			result.add(new PopupToolBarToolWrapper(image, tool, "Set as Reasoning Target"));			
+		}
+		else if(editPart.resolveSemanticElement() instanceof Model){
+			//*********************************
+			// * Add reasoning source option
+			// ********************************
+			tool = new SetSubsumptionPopupBarTool(editPart, null);
+	
+			imageDescriptor = Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "/icons/subsumption16.gif");
+			image = imageDescriptor.createImage();
+			
+			result.add(new PopupToolBarToolWrapper(image, tool, "Set as Subsumption Source"));
 		}
 		
 		return result;
