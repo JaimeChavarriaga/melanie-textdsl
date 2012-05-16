@@ -184,4 +184,9 @@ public interface IReasoningService {
 	public static final String CLASSIFICATION_CONSISTENCY = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.classificationconsistency";
 	
 	public static final String CLASSIFICATION = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.classification";
+	
+	/**
+	 * param[0] = Model - the model on which the subsumptions are done. 
+	 */
+	public static final String MODEL_SUBSUMPTION = "de.uni_mannheim.informatik.swt.plm.workbench.reasoning.modelsubsumption";
 }
