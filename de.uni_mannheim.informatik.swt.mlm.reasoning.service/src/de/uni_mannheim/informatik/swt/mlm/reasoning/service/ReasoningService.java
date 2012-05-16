@@ -646,7 +646,6 @@ public class ReasoningService implements IReasoningService {
 		else if (commandID == ReasoningService.IS_CONSISTENTLY_CLASSIFIED || commandID.equals(ModelConsistentClassificationCommand.ID)) {
 			Map params = new HashMap();
 			params.put("model", parameters[0]);
-			params.put("silent", Boolean.toString(silent));
 			
 			Command command = commandService.getCommand(ModelConsistentClassificationCommand.ID);
 			ParameterizedCommand paramCmd = ParameterizedCommand.generateCommand(command, params);
@@ -691,7 +690,19 @@ public class ReasoningService implements IReasoningService {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} 
+		}
+		else if (commandID == ReasoningService.MODEL_SUBSUMPTION || commandID.equals(SubsumptionCommand.ID_SUBSUMPTION)) {
+			Map params = new HashMap();
+			params.put("model", parameters[0]);
+			params.put("silent", Boolean.toString(silent));
+			Command command = commandService.getCommand(ClassificationCommand.ID);
+			ParameterizedCommand paramCmd = ParameterizedCommand.generateCommand(command, params);
+			try {
+				result = (Boolean)handlerService.executeCommand(paramCmd, null);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		else {
 			System.out.println("Unrecognized (read:implemented) command " + commandID);
 		}
