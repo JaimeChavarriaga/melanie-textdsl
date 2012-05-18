@@ -38,6 +38,7 @@ public class SetReasoningCommand extends Command{
 		try {
 			view = (ReasoningView)PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView(ReasoningView.ID);
 			view.setReasoningSource((Element)host.resolveSemanticElement());
+			view.setReasoningTarget(null);
 			PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor().setFocus();
 		} catch (PartInitException e) {
 			e.printStackTrace();

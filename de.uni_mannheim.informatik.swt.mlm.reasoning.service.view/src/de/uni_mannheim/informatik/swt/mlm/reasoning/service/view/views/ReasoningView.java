@@ -411,7 +411,9 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 	
 	public void setReasoningTarget(Element target){
 		reasoningTarget = target;
-		reasoningTargetText.setText(target.getName());
+		
+		reasoningTargetText.setText(target != null ? target.getName() : "<<Target>>");
+		
 		updateUI();
 	}
 	
