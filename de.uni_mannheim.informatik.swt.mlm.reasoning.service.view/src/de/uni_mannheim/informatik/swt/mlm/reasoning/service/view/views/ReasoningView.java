@@ -452,9 +452,12 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 			
 			return operations.toArray(new String[]{});
 			
-		} catch (CoreException | NotDefinedException e) {
+		} catch (CoreException e) {
+			e.printStackTrace();
+		}catch (NotDefinedException e) {
 			e.printStackTrace();
 		}
+
 		
 		return new String[]{};
 	}
