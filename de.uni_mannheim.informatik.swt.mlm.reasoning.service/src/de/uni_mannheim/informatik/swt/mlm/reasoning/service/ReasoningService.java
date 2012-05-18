@@ -704,7 +704,7 @@ public class ReasoningService implements IReasoningService {
 			}
 		}
 		else {
-			System.out.println("Unrecognized (read:implemented) command " + commandID);
+			System.out.println("Unrecognized command " + commandID);
 		}
 		
 		return result;

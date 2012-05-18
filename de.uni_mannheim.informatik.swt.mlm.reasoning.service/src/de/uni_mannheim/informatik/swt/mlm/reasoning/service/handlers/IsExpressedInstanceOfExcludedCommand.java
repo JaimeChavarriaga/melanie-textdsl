@@ -85,7 +85,7 @@ public class IsExpressedInstanceOfExcludedCommand extends AbstractHandler {
 		
 		Set<Clabject> disjointTwins = new HashSet<Clabject>();
 		Set<Generalization> generalizationsA = new HashSet<Generalization>(type.getModel().getAllGeneralizations());
-		System.out.println(generalizationsA);
+		//System.out.println(generalizationsA);
 		generalizationsA = (Set<Generalization>) ReasoningServiceUtil.filter(generalizationsA, new Predicate<Generalization>() {
 			public boolean apply(Generalization gener) {
 				if (gener.getDisjoint() == null)

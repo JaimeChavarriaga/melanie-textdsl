@@ -76,7 +76,7 @@ public class LocalConformsCommand extends AbstractHandler {
 			child.setSource(instance);
 			child.setName("Linguistic type");
 		} else {
-			System.out.println("mismatching types. NPE??");
+			//System.out.println("mismatching types. NPE??");
 		}
 		return child;
 	}

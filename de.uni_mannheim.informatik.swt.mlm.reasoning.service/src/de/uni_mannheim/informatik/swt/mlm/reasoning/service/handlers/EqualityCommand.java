@@ -30,14 +30,13 @@ public class EqualityCommand extends AbstractHandler {
 	 */
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		System.out.println("JAJA");
 		return null;
 	}
 
 	public Check compute(Feature fsuper, Feature fsub) {
 		Check result = ReasoningResultFactory.eINSTANCE.createCheck();
 		if (fsuper == null || fsub == null) {
-			System.out.println("Call to equality command with bogous input: " + fsuper + " " + fsub);
+			//System.out.println("Call to equality command with bogous input: " + fsuper + " " + fsub);
 			return result;
 		}
 		result.setName("Feature Equality");
