@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.DeleteCommand;
+import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.notation.Diagram;
@@ -65,8 +66,10 @@ public class PLMTransactionService {
 		cCommand.append(deleteViewCommand);		
 	}
 	
-	public void changeModelElementValue(EObject semanticElement) {
-		
+	public void changeModelElementValue(EObject semanticElement, Object trait, Object value) {
+		Command cmd = SetCommand.create(domain, semanticElement, trait, value);
+//		PLMPackage.eINSTANCE.getClabject_Instantiable()
+		cCommand.append(cmd);
 	}
 	
 	public void execute() {
