@@ -32,7 +32,9 @@ import org.eclipse.ui.menus.CommandContributionItemParameter;
 
 import de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.ClassificationCommand;
 import de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.ClassificationConsistencyCommand;
+import de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.ClassificationKindCommand;
 import de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.FeatureConformsCommand;
+import de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.GeneralizationBooleanTraitCommand;
 import de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.GeneralizationConsistencyCommand;
 import de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.GeneralizationRealizationCommand;
 import de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.HasAdditionalPropertiesCommand;
@@ -283,6 +285,20 @@ public class ReasoningService implements IReasoningService {
 			param.parameters = commandParamametersMap;
 			
 			items.add(new CommandContributionItem(param));
+			
+			//***************************************************
+			// Classification Kind Command
+			//***************************************************
+			param =	new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), ClassificationKindCommand.ID + ".menuEntry", ClassificationKindCommand.ID, CommandContributionItem.STYLE_PUSH);
+			param.label = getCommandName(ClassificationKindCommand.ID);
+			
+			commandParamametersMap = new HashMap<String, Object>();
+			
+			commandParamametersMap.put("classification",  modelElements[0]);
+			
+			param.parameters = commandParamametersMap;
+			
+			items.add(new CommandContributionItem(param));
 		}
 		
 		//We have a generalization selected
@@ -318,7 +334,20 @@ public class ReasoningService implements IReasoningService {
 			param.parameters = commandParamametersMap;
 			
 			items.add(new CommandContributionItem(param));
+			//***************************************************
+			// Generalization Boolean Trait Command
+			//***************************************************
+			param = 
+					new CommandContributionItemParameter(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), GeneralizationBooleanTraitCommand.ID + ".menuEntry", GeneralizationBooleanTraitCommand.ID, CommandContributionItem.STYLE_PUSH);
+			param.label = getCommandName(GeneralizationBooleanTraitCommand.ID);
 			
+			commandParamametersMap = new HashMap<String, Object>();
+			
+			commandParamametersMap.put("generalization",  modelElements[0]);
+			
+			param.parameters = commandParamametersMap;
+			
+			items.add(new CommandContributionItem(param));
 			
 		}
 
@@ -703,7 +732,29 @@ public class ReasoningService implements IReasoningService {
 				e.printStackTrace();
 			}
 		}
-		else {
+		else if (commandID == ReasoningService.GENERALIZATION_BOOLEAN_TRAIT || commandID.equals(GeneralizationBooleanTraitCommand.ID)) {
+			Map params = new HashMap();
+			params.put("generalization", parameters[0]);
+			Command command = commandService.getCommand(GeneralizationBooleanTraitCommand.ID);
+			ParameterizedCommand paramCmd = ParameterizedCommand.generateCommand(command, params);
+			try {
+				result = (Boolean)handlerService.executeCommand(paramCmd, null);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		else if (commandID.equals(ClassificationKindCommand.ID)) {
+			Map params = new HashMap();
+			params.put("classification", parameters[0]);
+			Command command = commandService.getCommand(ClassificationKindCommand.ID);
+			ParameterizedCommand paramCmd = ParameterizedCommand.generateCommand(command, params);
+			try {
+				result = (Boolean)handlerService.executeCommand(paramCmd, null);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		else{
 			System.out.println("Unrecognized command " + commandID);
 		}
 		

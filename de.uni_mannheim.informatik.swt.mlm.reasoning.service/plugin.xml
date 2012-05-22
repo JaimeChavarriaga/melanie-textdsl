@@ -286,6 +286,28 @@
                typeId="de.uni_mannheim.informatik.swt.plm.workbench.eobjectcommandparametertype">
          </commandParameter>
       </command>
+      <command
+            defaultHandler="de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.GeneralizationBooleanTraitCommand"
+            id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.generalizationbooleantraitcommand"
+            name="Generalization Boolean Trait Detection">
+         <commandParameter
+               id="generalization"
+               name="generalization"
+               optional="true"
+               typeId="de.uni_mannheim.informatik.swt.plm.workbench.eobjectcommandparametertype">
+         </commandParameter>
+      </command>
+      <command
+            defaultHandler="de.uni_mannheim.informatik.swt.mlm.reasoning.service.handlers.ClassificationKindCommand"
+            id="de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.classificationkindcommand"
+            name="Classification Kind">
+         <commandParameter
+               id="classification"
+               name="classification"
+               optional="true"
+               typeId="de.uni_mannheim.informatik.swt.plm.workbench.eobjectcommandparametertype">
+         </commandParameter>
+      </command>
    </extension>
    <extension
          point="de.uni_mannheim.informatik.swt.reasoning.service">

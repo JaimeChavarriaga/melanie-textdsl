@@ -197,7 +197,6 @@ public class SubsumptionCommand extends AbstractHandler {
 				generRealizationInfo.getChildren().add(new GeneralizationRealizationCommand().compute(gener));
 			}
 		}
-		// TODO  detect generalization boolean traits
 		// For the detection of the boolean traits, there has to be a classified domain
 		Model classifiedModel = model.getClassifiedModel();
 		if (classifiedModel == null) {
