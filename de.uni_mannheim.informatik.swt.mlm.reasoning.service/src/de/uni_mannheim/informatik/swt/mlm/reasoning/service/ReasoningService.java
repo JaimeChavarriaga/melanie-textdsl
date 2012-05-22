@@ -695,7 +695,7 @@ public class ReasoningService implements IReasoningService {
 			Map params = new HashMap();
 			params.put("model", parameters[0]);
 			params.put("silent", Boolean.toString(silent));
-			Command command = commandService.getCommand(ClassificationCommand.ID);
+			Command command = commandService.getCommand(SubsumptionCommand.ID_SUBSUMPTION);
 			ParameterizedCommand paramCmd = ParameterizedCommand.generateCommand(command, params);
 			try {
 				result = (Boolean)handlerService.executeCommand(paramCmd, null);
