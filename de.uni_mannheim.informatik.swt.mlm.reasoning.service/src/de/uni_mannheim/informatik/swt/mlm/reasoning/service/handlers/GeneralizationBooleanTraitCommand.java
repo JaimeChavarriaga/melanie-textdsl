@@ -16,10 +16,8 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.core.commands.AbstractHandler;
-import org.eclipse.core.commands.Command;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.emf.edit.command.SetCommand;
 
 import de.uni_mannheim.informatik.swt.mlm.reasoning.service.ReasoningService;
 import de.uni_mannheim.informatik.swt.mlm.reasoning.service.model.PLMTransactionService;
@@ -36,7 +34,7 @@ import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Rea
 
 public class GeneralizationBooleanTraitCommand extends AbstractHandler {
 	
-	public static final String ID = "de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.generalizationrealizationcommand";
+	public static final String ID = "de.uni_mannheim.informatik.swt.plm.reasoning.service.commands.generalizationbooleantraitcommand";
 	IReasoningService reasoner = (new ReasoningService()).Instance();
 
 	@Override
@@ -113,7 +111,7 @@ public class GeneralizationBooleanTraitCommand extends AbstractHandler {
 					ReasoningResultFactory.eINSTANCE.createInformation(gener, allSuper.represent(), negationInformation);
 				}
 			}
-			pts.changeModelElementValue(gener, PLMPackage.eINSTANCE.getGeneralization__IsIntersection(), intersection);
+			pts.changeModelElementValue(gener, PLMPackage.eINSTANCE.getGeneralization_Intersection(), intersection);
 		} else if (gener.getSubtype().size()>1) {
 			// Multiple Specialization, check for disjoint and complete
 			Information disjointInformation = ReasoningResultFactory.eINSTANCE.createInformation(gener, "Disjoint", result);
@@ -134,6 +132,9 @@ public class GeneralizationBooleanTraitCommand extends AbstractHandler {
 			//disjoint: None of these can be an instance of more than one subtype
 			boolean disjoint = true;
 			Information negatingDisjointInformation = ReasoningResultFactory.eINSTANCE.createInformation(gener, "Negating Supertype Instances", disjointInformation);
+			//complete: None of these can not be an instance of any subtype
+			boolean complete = true;
+			Information negatingCompleteInformation = ReasoningResultFactory.eINSTANCE.createInformation(gener, "Negating Supertype Instances", completeInformation);
 			for (Clabject superInstance: supertypeInstances) {
 				int count = 0;
 				for (Clabject subtype: gener.getSubtype()) {
@@ -147,11 +148,19 @@ public class GeneralizationBooleanTraitCommand extends AbstractHandler {
 					ReasoningResultFactory.eINSTANCE.createInformation(gener, superInstance.represent(), negatingDisjointInformation);
 					disjoint = false;
 				}
+				if (count == 0) {
+					ReasoningResultFactory.eINSTANCE.createInformation(gener, superInstance.represent(), negatingCompleteInformation);
+					complete = false;
+				}
 			}
 			pts.changeModelElementValue(gener, PLMPackage.eINSTANCE.getGeneralization_Disjoint(), disjoint);
+			pts.changeModelElementValue(gener, PLMPackage.eINSTANCE.getGeneralization_Complete(), complete);
 		} else {
 			// Binary, nothing to do here but to reset the traits
-			
+			ReasoningResultFactory.eINSTANCE.createInformation(gener, "Binary generalization: Boolean traits reset", result);
+			pts.changeModelElementValue(gener, PLMPackage.eINSTANCE.getGeneralization_Disjoint(), null);
+			pts.changeModelElementValue(gener, PLMPackage.eINSTANCE.getGeneralization_Complete(), null);
+			pts.changeModelElementValue(gener, PLMPackage.eINSTANCE.getGeneralization_Intersection(), null);
 		}
 		pts.execute();
 		return result;
