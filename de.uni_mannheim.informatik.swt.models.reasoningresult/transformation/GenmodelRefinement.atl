@@ -62,7 +62,7 @@ rule GenFeature2GenFeatur{
 		s : genmodel!GenFeature
 	to
 		t : genmodel!GenFeature(
-			property <- if (s.ecoreFeature.name = 'check' and s.ecoreFeature.eContainingClass.name = 'CompositeCheck') then
+			property <- if (s.ecoreFeature.name = 'children' and s.ecoreFeature.eContainingClass.name = 'ReasoningArtefact') then
 							#None
 						else
 							#Readonly

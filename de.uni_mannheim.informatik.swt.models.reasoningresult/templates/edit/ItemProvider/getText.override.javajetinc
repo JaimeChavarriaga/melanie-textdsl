@@ -40,10 +40,13 @@
     	
     	
     		<%
+    			//***************************************
+    			//Modification for label
+    			//***************************************
     		boolean found = false;
     		for (int i = 0; i < genClass.getEcoreClass().getEAllSuperTypes().size(); i++){
-    			if (genClass.getEcoreClass().getEAllSuperTypes().get(i).getName().equals("CompositeCheck")
-    					|| genClass.getEcoreClass().getName().equals("CompositeCheck")){
+    			if (genClass.getEcoreClass().getEAllSuperTypes().get(i).getName().equals("ReasoningArtefact")
+    					|| genClass.getEcoreClass().getName().equals("ReasoningArtefact")){
     				found = true;
     				break;
     			}%>
