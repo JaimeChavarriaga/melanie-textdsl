@@ -66,6 +66,7 @@ import org.eclipse.ui.views.properties.PropertySheetPage;
 
 import de.uni_mannheim.informatik.swt.mlm.workbench.ExtensionPointService;
 import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IReasoningService;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.provider.ReasoningResultItemProviderAdapterFactory;
@@ -401,7 +402,16 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 	
 	public void setReasoningSource(Element source){
 		reasoningSource = source;
-		reasoningSourceText.setText(source.getName());
+		
+		String text = source.getName();
+		
+		if (text == null && source instanceof Connection)
+			text = ((Connection)source).getHumanReadableName();
+		else if (text == null)
+			text = "";
+		
+		reasoningSourceText.setText(text);
+		
 		updateUI();
 	}
 	
@@ -412,7 +422,14 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 	public void setReasoningTarget(Element target){
 		reasoningTarget = target;
 		
-		reasoningTargetText.setText(target != null ? target.getName() : "<<Target>>");
+		String text = target != null ? target.getName() : "<<Target>>";
+		
+		if (text == null && target instanceof Connection)
+			text = ((Connection)target).getHumanReadableName();
+		else if (text == null)
+			text = "";
+		
+		reasoningTargetText.setText(text);
 		
 		updateUI();
 	}
