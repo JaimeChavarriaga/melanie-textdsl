@@ -100,32 +100,62 @@ public class SubsumptionCommand extends AbstractHandler {
 		// Toplevel nodes for the details
 		Information performedChecks = ReasoningResultFactory.eINSTANCE.createInformation(model, "", result);
 		Information foundPairs = ReasoningResultFactory.eINSTANCE.createInformation(model, "Found pairs", result);
+		Information rejectedPairs = ReasoningResultFactory.eINSTANCE.createInformation(model, "rejected Pairs", result);
 		Check currentPair;
 		// The found Pairs
 		List<Pair<Clabject,Clabject>> pairs = new ArrayList<Pair<Clabject,Clabject>>();
+		List<Pair<Clabject,Clabject>> potentials = new ArrayList<Pair<Clabject,Clabject>>();
 		int count = 0;
 		for (Clabject one: clabjects) {
 			for (Clabject other : clabjects) {
-				// If the clabjects are equal, the case is trivial, so don't bother
+				// If the clabjects are the same, the case is trivial, so don't bother
 				if (!one.equals(other)) {
-					if (one.getModelSubtypes().contains(other)) {
-						currentPair = ReasoningResultFactory.eINSTANCE.createCheck();
-						currentPair.setResult(true);
-						currentPair.setName("modeled Generalization");
-					} else {
-						// The actual subsumption check
-						 currentPair = compute(one, other);
+					Clabject potSubtype = other;
+					Clabject potSupertype = one;
+					if (potSubtype.getModelSupertypes().contains(potSupertype)) {
+						continue;
 					}
-					 count++;
-					 performedChecks.getChildren().add(currentPair);
-					 // handle a success
-					 if (currentPair.isResult()) {
-						 Pair<Clabject,Clabject> pair = new Pair<Clabject,Clabject>(one, other);
-						 pairs.add(pair);
-					 }
+					if (potSubtype.getModelDisjointSiblings().contains(potSupertype)) {
+						continue;
+					}
+					if (!potSubtype.eClass().equals(potSupertype.eClass())) {
+						continue;
+					}
+					potentials.add(new Pair<Clabject,Clabject>(potSupertype,potSubtype));
+//					// Now check that the pair is suitable, that is they are not already modeled subtypes
+//					// and they are not disjoint siblings
+//					boolean potential = true;
+//					// We also assume that already modeled chains are no circles
+//					if (one.getModelSubtypes().contains(other) || other.getModelSubtypes().contains(one)) {
+//						potential = false;
+//						ReasoningResultFactory.eINSTANCE.createInformation(model, "AlreadyModeled:" + other.represent() + "<->" + one.represent(), rejectedPairs);
+//					}
+//					if (one.getModelDisjointSiblings().contains(other) || other.getModelDisjointSiblings().contains(one)) {
+//						potential = false;
+//						ReasoningResultFactory.eINSTANCE.createInformation(model, "DisjointSiblings:" + other.represent() + "<->" + one.represent(), rejectedPairs);
+//					}
+//					if (potential) {
+//						currentPair = ReasoningResultFactory.eINSTANCE.createCheck();
+//						currentPair.setResult(true);
+//						currentPair.setName("modeled Generalization");
+//					} else {
+//						// The actual subsumption check
+//						 currentPair = compute(one, other);
+//					}
+//					 count++;
+//					 performedChecks.getChildren().add(currentPair);
+//					 // handle a success
+//					 if (currentPair.isResult()) {
+//						 Pair<Clabject,Clabject> pair = new Pair<Clabject,Clabject>(one, other);
+//						 pairs.add(pair);
+//					 }
 				}
 			}
 		}
+		for (Pair<Clabject,Clabject> potential: potentials) {
+			System.out.println(potential.getFirst().represent() + "<-" + potential.getSecond().represent());
+		}
+		
 		performedChecks.setMessage("Performed Checks: " + count);
 		for (Pair<Clabject,Clabject> pair: pairs) {
 			ReasoningResultFactory.eINSTANCE.createInformation(model, pair.getFirst().represent() + "<-" + pair.getSecond().represent(), foundPairs);
