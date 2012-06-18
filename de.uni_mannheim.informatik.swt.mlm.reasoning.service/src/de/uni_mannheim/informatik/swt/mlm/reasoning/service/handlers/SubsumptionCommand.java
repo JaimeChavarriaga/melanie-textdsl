@@ -99,7 +99,8 @@ public class SubsumptionCommand extends AbstractHandler {
 			ReasoningResultFactory.eINSTANCE.createInformation(model, c.represent(), processedInfo);
 		// Toplevel nodes for the details
 		Information performedChecks = ReasoningResultFactory.eINSTANCE.createInformation(model, "", result);
-		Information foundPairs = ReasoningResultFactory.eINSTANCE.createInformation(model, "Found pairs", result);
+		Information potentialPairs = ReasoningResultFactory.eINSTANCE.createInformation(model, "potential Pairs", result);
+		Information foundPairs = ReasoningResultFactory.eINSTANCE.createInformation(model, "accepted pairs", result);
 		Information rejectedPairs = ReasoningResultFactory.eINSTANCE.createInformation(model, "rejected Pairs", result);
 		Check currentPair;
 		// The found Pairs
@@ -122,40 +123,24 @@ public class SubsumptionCommand extends AbstractHandler {
 						continue;
 					}
 					potentials.add(new Pair<Clabject,Clabject>(potSupertype,potSubtype));
-//					// Now check that the pair is suitable, that is they are not already modeled subtypes
-//					// and they are not disjoint siblings
-//					boolean potential = true;
-//					// We also assume that already modeled chains are no circles
-//					if (one.getModelSubtypes().contains(other) || other.getModelSubtypes().contains(one)) {
-//						potential = false;
-//						ReasoningResultFactory.eINSTANCE.createInformation(model, "AlreadyModeled:" + other.represent() + "<->" + one.represent(), rejectedPairs);
-//					}
-//					if (one.getModelDisjointSiblings().contains(other) || other.getModelDisjointSiblings().contains(one)) {
-//						potential = false;
-//						ReasoningResultFactory.eINSTANCE.createInformation(model, "DisjointSiblings:" + other.represent() + "<->" + one.represent(), rejectedPairs);
-//					}
-//					if (potential) {
-//						currentPair = ReasoningResultFactory.eINSTANCE.createCheck();
-//						currentPair.setResult(true);
-//						currentPair.setName("modeled Generalization");
-//					} else {
-//						// The actual subsumption check
-//						 currentPair = compute(one, other);
-//					}
-//					 count++;
-//					 performedChecks.getChildren().add(currentPair);
-//					 // handle a success
-//					 if (currentPair.isResult()) {
-//						 Pair<Clabject,Clabject> pair = new Pair<Clabject,Clabject>(one, other);
-//						 pairs.add(pair);
-//					 }
+					ReasoningResultFactory.eINSTANCE.createInformation(model, potSupertype.represent() + "<-" + potSubtype.represent(), potentialPairs);
 				}
 			}
 		}
 		for (Pair<Clabject,Clabject> potential: potentials) {
-			System.out.println(potential.getFirst().represent() + "<-" + potential.getSecond().represent());
+			Clabject potSubtype = potential.getSecond();
+			Clabject potSupertype = potential.getFirst();
+			// The actual subsumption check
+			 currentPair = compute(potSupertype, potSubtype);
+			 count++;
+			 performedChecks.getChildren().add(currentPair);
+			// handle a success
+			 if (currentPair.isResult()) {
+				 pairs.add(potential);
+			 } else {
+				 ReasoningResultFactory.eINSTANCE.createInformation(model, potSupertype.represent() + "<-" + potSubtype.represent(), rejectedPairs);
+			 }
 		}
-		
 		performedChecks.setMessage("Performed Checks: " + count);
 		for (Pair<Clabject,Clabject> pair: pairs) {
 			ReasoningResultFactory.eINSTANCE.createInformation(model, pair.getFirst().represent() + "<-" + pair.getSecond().represent(), foundPairs);
