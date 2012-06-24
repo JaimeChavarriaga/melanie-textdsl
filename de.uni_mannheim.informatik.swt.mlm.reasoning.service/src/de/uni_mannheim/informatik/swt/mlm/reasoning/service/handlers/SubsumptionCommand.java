@@ -58,8 +58,12 @@ public class SubsumptionCommand extends AbstractHandler {
 		ReasoningResultModel resultModel = ReasoningResultFactory.eINSTANCE.createReasoningResultModel();
 		resultModel.setName("Subsumtion " + ReasoningServiceUtil.getDateString());
 		Check check = null;
-		
-		Model model = (Model) event.getObjectParameterForExecution("model");
+		Model model = null;
+		try {
+			model = (Model) event.getObjectParameterForExecution("model");
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 		if (model == null) {
 			Clabject supertype = (Clabject)event.getObjectParameterForExecution("supertype");
 			Clabject subtype = (Clabject)event.getObjectParameterForExecution("subtype");
@@ -107,6 +111,7 @@ public class SubsumptionCommand extends AbstractHandler {
 		List<Pair<Clabject,Clabject>> pairs = new ArrayList<Pair<Clabject,Clabject>>();
 		List<Pair<Clabject,Clabject>> potentials = new ArrayList<Pair<Clabject,Clabject>>();
 		int count = 0;
+		
 		for (Clabject one: clabjects) {
 			for (Clabject other : clabjects) {
 				// If the clabjects are the same, the case is trivial, so don't bother
@@ -133,19 +138,18 @@ public class SubsumptionCommand extends AbstractHandler {
 			// The actual subsumption check
 			 currentPair = compute(potSupertype, potSubtype);
 			 count++;
-			 performedChecks.getChildren().add(currentPair);
 			// handle a success
 			 if (currentPair.isResult()) {
 				 pairs.add(potential);
+				 Information temp = ReasoningResultFactory.eINSTANCE.createInformation(model, potSupertype.represent() + "<-" + potSubtype.represent(), foundPairs);
+				 temp.getChildren().add(currentPair);
 			 } else {
-				 ReasoningResultFactory.eINSTANCE.createInformation(model, potSupertype.represent() + "<-" + potSubtype.represent(), rejectedPairs);
+				 Information temp = ReasoningResultFactory.eINSTANCE.createInformation(model, potSupertype.represent() + "<-" + potSubtype.represent(), rejectedPairs);
+				 temp.getChildren().add(currentPair);
 			 }
 		}
 		performedChecks.setMessage("Performed Checks: " + count);
-		for (Pair<Clabject,Clabject> pair: pairs) {
-			ReasoningResultFactory.eINSTANCE.createInformation(model, pair.getFirst().represent() + "<-" + pair.getSecond().represent(), foundPairs);
-		}
-		// Inside the newly found pairs, detect the similartiy sets
+	// Inside the newly found pairs, detect the similartiy sets
 		Set<Set<Clabject>> similaritySets = ReasoningServiceUtil.computeSimilaritySets(pairs);
 		if (similaritySets.size()>0) {
 			Information similarityInformation = ReasoningResultFactory.eINSTANCE.createInformation(model, "Similarity Sets", result);
@@ -265,6 +269,7 @@ public class SubsumptionCommand extends AbstractHandler {
 		result.setName("Subsumption[Connection]");
 		Check clabject = subsumeClabject(supertype, subtype);
 		result.getChildren().add(clabject);
+		clabject.setName("Subsumtion[Clabject]");
 		if (!clabject.isResult()) {
 			return result;
 		}
@@ -276,20 +281,25 @@ public class SubsumptionCommand extends AbstractHandler {
 			return result;
 		}
 		Check roles = ReasoningResultFactory.eINSTANCE.createCheck();
-		order.setName("Roles");
+		roles.setName("Roles");
 		result.getChildren().add(roles);
 		for (Role rsuper: supertype.getAllRoles()) {
 			Check role = ReasoningResultFactory.eINSTANCE.createCheck();
-			order.setName(rsuper.represent());
-			result.getChildren().add(role);
+			role.setName(rsuper.represent());
+			roles.getChildren().add(role);
 			boolean found = false;
 			for (Role rsub: subtype.getAllRoles()) {
-				Check aRole = roleSubtypeConforms(rsuper, rsub);
-				role.getChildren().add(aRole);
-				if (aRole.isResult()) {
-					found = true;
-					break;
+				if (rsub.conforms(rsuper)) {
+					ReasoningResultFactory.eINSTANCE.createInformation(supertype, "Conforming Role:"+rsub.represent(), role);
+					// Now for the destination
+					Check destination = compute(rsuper.getDestination(), rsub.getDestination());
+					role.getChildren().add(destination);
+					if (destination.isResult()) {
+						found = true;
+						break;
+					}
 				}
+				ReasoningResultFactory.eINSTANCE.createInformation(supertype, "NOT Conforming Role:"+rsub.represent(), role);
 			}
 			if (found) {
 				role.setResult(true);
@@ -306,11 +316,31 @@ public class SubsumptionCommand extends AbstractHandler {
 		Check result = ReasoningResultFactory.eINSTANCE.createCheck();
 		result.setName("isSubtype");
 		result.setExpression(subtype.getName() + ".subsumes(" + supertype.getName() +")");
+		// Check that they are on the same level
 		Check levelCheck = ReasoningResultFactory.eINSTANCE.createCheck(supertype, subtype, result);
 		levelCheck.setExpression("same Level");
+		levelCheck.setName("same Level");
 		if (supertype.getLevel() == subtype.getLevel()) levelCheck.setResult(true);
 		if (!levelCheck.isResult())
 			return result;
+		// If there is already information preventing that generalization, use it
+		// Bogous call on an already modeled one
+		if (supertype.getModelSubtypes().contains(subtype)) {
+			ReasoningResultFactory.eINSTANCE.createInformation(supertype, "Already Modelled", result);
+			result.setResult(true);
+			return result;
+		}
+		// Bogous call creating a circle
+		if (subtype.getModelSubtypes().contains(supertype)) {
+			ReasoningResultFactory.eINSTANCE.createInformation(supertype, "Opposite Already Modeled", result);
+			return result;
+		}
+		// If they are disjoint, they cannot be sub and supertype
+		if (supertype.getModelDisjointSiblings().contains(subtype)) {
+			ReasoningResultFactory.eINSTANCE.createInformation(supertype, "Disjoint Siblings", result);
+			return result;
+		}
+		// Check the features
 		Check featuresCheck = ReasoningResultFactory.eINSTANCE.createCheck();
 		featuresCheck.setName("Features");
 		result.getChildren().add(featuresCheck);
@@ -330,6 +360,7 @@ public class SubsumptionCommand extends AbstractHandler {
 			}
 		}
 		featuresCheck.setResult(true);
+		//Check the navigations
 		Check navigationsCheck = ReasoningResultFactory.eINSTANCE.createCheck();
 		navigationsCheck.setName("Navigations");
 		result.getChildren().add(navigationsCheck);
@@ -340,12 +371,16 @@ public class SubsumptionCommand extends AbstractHandler {
 				navigationsCheck.getChildren().add(navigationCheck);
 				boolean found = false;
 				for (Role rsub: subtype.getAllNavigations()) {
-					Check aNavCheck = roleSubtypeConforms(rsuper, rsub);
-					navigationCheck.getChildren().add(aNavCheck);
-					if (aNavCheck.isResult()) {
-						found = true;
-						break;
+					if (rsub.conforms(rsuper)) {
+						// Now for the destination
+						Check destination = compute(rsuper.getDestination(), rsub.getDestination());
+						navigationCheck.getChildren().add(destination);
+						if (destination.isResult()) {
+							found = true;
+							break;
+						}
 					}
+					ReasoningResultFactory.eINSTANCE.createInformation(supertype, "NOT Conforming Role:"+rsub.represent(), navigationCheck);
 				}
 				if (found) {
 					navigationCheck.setResult(true);
@@ -359,61 +394,6 @@ public class SubsumptionCommand extends AbstractHandler {
 		return result;
 	}
 
-	private Check roleSubtypeConforms(Role rsuper, Role rsub) {
-		Check result = ReasoningResultFactory.eINSTANCE.createCheck();
-		result.setName(rsub.represent());
-		Check roleName = ReasoningResultFactory.eINSTANCE.createCheck();
-		roleName.setName("RoleName");
-		result.getChildren().add(roleName);
-		roleName.setResult(rsuper.roleName().equals(rsub.roleName()));
-		if (!roleName.isResult()){
-			result.setResult(false);
-			return result;
-		}
-		
-		Check lower = ReasoningResultFactory.eINSTANCE.createCheck();
-		lower.setName("Lower");
-		result.getChildren().add(lower);
-		lower.setResult(rsuper.getLower() <= rsub.getLower());
-		if (!lower.isResult()){
-			result.setResult(false);
-			return result;
-		}
-		
-		Check upper = ReasoningResultFactory.eINSTANCE.createCheck();
-		upper.setName("Upper");
-		result.getChildren().add(upper);
-		upper.setResult(rsuper.getUpper() >= rsub.getUpper());
-		if (!upper.isResult()){
-			result.setResult(false);
-			return result;
-		}
-		
-		Check navigable = ReasoningResultFactory.eINSTANCE.createCheck();
-		navigable.setName("Navigale");
-		result.getChildren().add(navigable);
-		navigable.setResult(rsuper.isNavigable() == rsub.isNavigable());
-		if (!navigable.isResult()){
-			result.setResult(false);
-			return result;
-		}
-		
-		Check destination = compute(rsuper.getDestination(), rsub.getDestination());
-		result.getChildren().add(destination);
-		if (!destination.isResult()){
-			result.setResult(false);
-			return result;
-		}
-		
-		Check connection = compute(rsuper.getConnection(), rsub.getConnection());
-		result.getChildren().add(connection);
-		if (!connection.isResult()){
-			result.setResult(false);
-			return result;
-		}
-		
-		result.setResult(true);
-		return result;
-	}
+	
 	
 }
