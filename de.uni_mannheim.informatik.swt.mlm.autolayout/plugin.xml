@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="de.uni_mannheim.informatik.swt.autolayout.service">
+      <service
+            class="de.uni_mannheim.informatik.swt.mlm.autolayout.AutoLayoutService"
+            id="de.uni_mannheim.informatik.swt.mlm.autolayout.service">
+      </service>
+   </extension>
+   <extension
+         point="de.uni_mannheim.informatik.swt.popupbarbuttons.provider">
+      <provider
+            class="de.uni_mannheim.informatik.swt.mlm.autolayout.popupbartools.PopupToolBarProvider"
+            id="de.uni_mannheim.informatik.swt.mlm.autolayout.provider">
+      </provider>
+   </extension>
+
+</plugin>
