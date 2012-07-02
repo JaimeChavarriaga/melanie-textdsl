@@ -8,25 +8,18 @@
  * Contributors:
  *    Ralph Gerbig - initial API and implementation and initial documentation
  *******************************************************************************/
-package de.uni_mannheim.informatik.swt.mlm.autolayout.popupbartools.commands;
+package de.uni_mannheim.informatik.swt.mlm.service.autolayout;
 
-import org.eclipse.gef.commands.Command;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.draw2d.geometry.Rectangle;
 
-public class AutoLayoutCommand extends Command{
-	
-	private IGraphicalEditPart host = null;
-	
-	/**
-	 * 
-	 * @param host Element to introspect
-	 */
-	public AutoLayoutCommand(IGraphicalEditPart host){
-		this.host = host;
-	}
-	
+import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IAutoLayoutService;
+
+public class AutoLayoutService implements IAutoLayoutService {
+
 	@Override
-	public void execute() {
-		super.execute();
+	public Rectangle doLayout(Rectangle[] clabjectClientRectangles) {
+		// TODO Auto-generated method stub
+		return null;
 	}
+
 }

@@ -4,15 +4,15 @@
    <extension
          point="de.uni_mannheim.informatik.swt.autolayout.service">
       <service
-            class="de.uni_mannheim.informatik.swt.mlm.autolayout.AutoLayoutService"
-            id="de.uni_mannheim.informatik.swt.mlm.autolayout.service">
+            class="de.uni_mannheim.informatik.swt.mlm.service.autolayout.AutoLayoutService"
+            id="de.uni_mannheim.informatik.swt.mlm.autolayout.autolayoutservice">
       </service>
    </extension>
    <extension
          point="de.uni_mannheim.informatik.swt.popupbarbuttons.provider">
       <provider
-            class="de.uni_mannheim.informatik.swt.mlm.autolayout.popupbartools.PopupToolBarProvider"
-            id="de.uni_mannheim.informatik.swt.mlm.autolayout.provider">
+            class="de.uni_mannheim.informatik.swt.mlm.autolayout.service.popupbartools.PopupToolBarProvider"
+            id="de.uni_mannheim.informatik.swt.mlm.autolayout.popuptoolbarprovider">
       </provider>
    </extension>
 

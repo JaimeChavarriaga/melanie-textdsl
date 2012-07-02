@@ -8,7 +8,7 @@
  * Contributors:
  *    Ralph Gerbig - initial API and implementation and initial documentation
  *******************************************************************************/
-package de.uni_mannheim.informatik.swt.mlm.autolayout.popupbartools;
+package de.uni_mannheim.informatik.swt.mlm.autolayout.service.popupbartools;
 
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.Request;
@@ -18,7 +18,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.requests.ChangePropertyValueRequest;
 import org.eclipse.gmf.runtime.diagram.ui.tools.AbstractPopupBarTool;
 
-import de.uni_mannheim.informatik.swt.mlm.autolayout.popupbartools.commands.AutoLayoutCommand;
+import de.uni_mannheim.informatik.swt.mlm.autolayout.service.popupbartools.commands.AutoLayoutCommand;
 
 /**
  * 

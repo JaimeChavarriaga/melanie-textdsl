@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: de.uni_mannheim.informatik.swt.mlm.autolayout
-Bundle-SymbolicName: de.uni_mannheim.informatik.swt.mlm.autolayout;singleton:=true
+Bundle-Name: de.uni_mannheim.informatik.swt.mlm.autolayout.service
+Bundle-SymbolicName: de.uni_mannheim.informatik.swt.mlm.autolayout.service;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: de.uni_mannheim.informatik.swt.mlm.autolayout.Activator
+Bundle-Activator: de.uni_mannheim.informatik.swt.mlm.service.autolayout.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  de.uni_mannheim.informatik.swt.mlm.workbench,
