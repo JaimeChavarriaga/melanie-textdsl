@@ -6,7 +6,7 @@
          <meta.schema plugin="de.uni_mannheim.informatik.swt.mlm.workbench" id="de.uni_mannheim.informatik.swt.popupbarbuttons.provider" name="Pop Up Bar Button Provider"/>
       </appinfo>
       <documentation>
-         [Enter description of this extension point.]
+         This extension point offers to make contributions to the pop up bar that is displayed when hovering over an model element.
       </documentation>
    </annotation>
 
@@ -64,6 +64,13 @@
                <appinfo>
                   <meta.attribute kind="java" basedOn=":de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IPopupToolBarProvider"/>
                </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="groupId" type="string">
+            <annotation>
+               <documentation>
+                  providers having the same groupID get their buttons group together instead of separated by separators.
+               </documentation>
             </annotation>
          </attribute>
       </complexType>
