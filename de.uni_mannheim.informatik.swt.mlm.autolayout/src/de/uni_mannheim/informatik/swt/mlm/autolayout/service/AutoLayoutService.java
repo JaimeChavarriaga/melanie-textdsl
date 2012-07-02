@@ -8,7 +8,7 @@
  * Contributors:
  *    Ralph Gerbig - initial API and implementation and initial documentation
  *******************************************************************************/
-package de.uni_mannheim.informatik.swt.mlm.service.autolayout;
+package de.uni_mannheim.informatik.swt.mlm.autolayout.service;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 

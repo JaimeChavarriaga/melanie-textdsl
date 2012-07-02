@@ -1,4 +1,4 @@
-package de.uni_mannheim.informatik.swt.mlm.service.autolayout;
+package de.uni_mannheim.informatik.swt.mlm.autolayout.service;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;

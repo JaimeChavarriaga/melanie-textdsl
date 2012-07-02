@@ -18,7 +18,7 @@ import org.eclipse.gmf.runtime.diagram.ui.tools.AbstractPopupBarTool;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 
-import de.uni_mannheim.informatik.swt.mlm.service.autolayout.Activator;
+import de.uni_mannheim.informatik.swt.mlm.autolayout.service.Activator;
 import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IPopupToolBarProvider;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.LogicalElement;
