@@ -14,6 +14,8 @@ import java.util.List;
 
 public interface IPopupToolBarProvider {
 
+	public static final String ExtensionPointID = "de.uni_mannheim.informatik.swt.autolayout.service";
+	
 	/**
 	 * 
 	 * Lists all PopUpBarToolButtons that are available for an diagram editor element (IGraphicalEditPart)
@@ -21,19 +23,49 @@ public interface IPopupToolBarProvider {
 	 * @param object
 	 * @return the available PopUpBarToolButtons (org.eclipse.gmf.runtime.diagram.ui.tools.AbstractPopupBarTool) 
 	 */
-	public List<IPopupToolBarToolWrapper> getPopUpToolbarButtonsForDiagramElement(Object host);
+	public List<PopupToolBarToolWrapper> getPopUpToolbarButtonsForDiagramElement(Object host);
 	
 	
-	public interface IPopupToolBarToolWrapper{
+	public class PopupToolBarToolWrapper{
 		
-		public void setImage(Object Image);
-		public Object getImage();
+		private Object image = null;
+		private Object tool = null;
+		private String text;
+		private String groupId;
 		
-		public void setTool(Object tool);
-		public Object getTool();
+		public PopupToolBarToolWrapper(Object image, Object tool, String text, String groupId){
+			this.image = image;
+			this.tool = tool;
+			this.text = text;
+			this.groupId = groupId;
+		}
 		
-		public void setText(String text);
-		public String getText();
+		public void setImage(Object image) {
+			this.image = image;
+		}
+
+		public Object getImage() {
+			return image;
+		}
 		
+		public void setTool(Object tool) {
+			this.tool = tool;
+		}
+		
+		public Object getTool() {
+			return tool;
+		}
+		
+		public void setText(String text) {
+			this.text = text;
+		}
+		
+		public String getText() {
+			return text;
+		}
+		
+		public String getGroupId(){
+			return groupId;
+		}
 	}
 }
