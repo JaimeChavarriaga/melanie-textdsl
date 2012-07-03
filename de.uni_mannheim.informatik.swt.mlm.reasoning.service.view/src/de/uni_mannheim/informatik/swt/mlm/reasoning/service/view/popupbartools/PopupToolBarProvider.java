@@ -25,17 +25,19 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
 
 public class PopupToolBarProvider implements IPopupToolBarProvider {
 
+	private final String GROUP_ID = "reasoning";
+	
 	/**
 	 * 
 	 */
-	public PopupToolBarProvider() {
+	public PopupToolBarProvider(){
 	}
-
+	
 	@Override
-	public List<IPopupToolBarToolWrapper> getPopUpToolbarButtonsForDiagramElement(Object host) {
+	public List<PopupToolBarToolWrapper> getPopUpToolbarButtonsForDiagramElement(Object host) {
 		IGraphicalEditPart editPart = (IGraphicalEditPart)host;
 		
-		List<IPopupToolBarToolWrapper> result = new ArrayList<IPopupToolBarToolWrapper>();
+		List<PopupToolBarToolWrapper> result = new ArrayList<PopupToolBarToolWrapper>();
 		AbstractPopupBarTool tool = null;
 		ImageDescriptor imageDescriptor = null;
 		Image image = null;
@@ -49,7 +51,7 @@ public class PopupToolBarProvider implements IPopupToolBarProvider {
 			imageDescriptor = Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "/icons/reasoningSource16.gif");
 			image = imageDescriptor.createImage();
 			
-			result.add(new PopupToolBarToolWrapper(image, tool, "Set as Reasoning Source"));
+			result.add(new PopupToolBarToolWrapper(image, tool, "Set as Reasoning Source", GROUP_ID));
 			
 			//*********************************
 			// * Add reasoning target option
@@ -59,7 +61,7 @@ public class PopupToolBarProvider implements IPopupToolBarProvider {
 			imageDescriptor = Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "/icons/reasoningTarget16.gif");
 			image = imageDescriptor.createImage();
 			
-			result.add(new PopupToolBarToolWrapper(image, tool, "Set as Reasoning Target"));			
+			result.add(new PopupToolBarToolWrapper(image, tool, "Set as Reasoning Target", GROUP_ID));			
 		}
 		else if(editPart.resolveSemanticElement() instanceof Model){
 			//*********************************
@@ -70,54 +72,9 @@ public class PopupToolBarProvider implements IPopupToolBarProvider {
 			imageDescriptor = Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "/icons/reasoning16.gif");
 			image = imageDescriptor.createImage();
 			
-			result.add(new PopupToolBarToolWrapper(image, tool, "Set as reasoning object"));
+			result.add(new PopupToolBarToolWrapper(image, tool, "Set as reasoning object", GROUP_ID));
 		}
 		
 		return result;
 	}
-	
-	private class PopupToolBarToolWrapper implements IPopupToolBarToolWrapper{
-
-		private Object image = null;
-		private Object tool = null;
-		private String text;
-		
-		public PopupToolBarToolWrapper(Object image, Object tool, String text){
-			this.image = image;
-			this.tool = tool;
-			this.text = text;
-		}
-		
-		@Override
-		public void setImage(Object image) {
-			this.image = image;
-		}
-
-		@Override
-		public Object getImage() {
-			return image;
-		}
-
-		@Override
-		public void setTool(Object tool) {
-			this.tool = tool;
-		}
-
-		@Override
-		public Object getTool() {
-			return tool;
-		}
-
-		@Override
-		public void setText(String text) {
-			this.text = text;
-		}
-
-		@Override
-		public String getText() {
-			return text;
-		}
-		
-	}
-
 }
