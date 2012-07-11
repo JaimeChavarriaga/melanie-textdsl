@@ -82,7 +82,7 @@ public abstract class AbstractImplicitMiddleElementLinkCreateCommand extends
 
 		try {
 			IElementTypeAwareAdapter semanticMiddle = createSemanticMiddle(
-					monitor, info);
+					monitor, new EObjectAdapter(getSourceView().getElement().eContainer()));
 			middle = (EObject)semanticMiddle.getAdapter(EObject.class);
 			
 			View container = (View) getSourceView().eContainer();
