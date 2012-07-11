@@ -277,9 +277,8 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 					for (Iterator<EObject> i = ((EObject)element).eAllContents(); i.hasNext();)
 						if (((Check)i.next()).isRootCause() == true)
 							return true;
-					
 				
-				return true;
+				return false;
 			}
 		});
 		
