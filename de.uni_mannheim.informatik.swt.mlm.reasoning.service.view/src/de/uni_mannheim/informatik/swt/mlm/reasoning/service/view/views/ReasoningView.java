@@ -12,6 +12,7 @@ package de.uni_mannheim.informatik.swt.mlm.reasoning.service.view.views;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +20,7 @@ import java.util.Map;
 import org.eclipse.core.commands.common.NotDefinedException;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
@@ -42,6 +44,8 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.custom.CTabItem;
@@ -75,6 +79,7 @@ import de.uni_mannheim.informatik.swt.mlm.workbench.ExtensionPointService;
 import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IReasoningService;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
+import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.Check;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.ReasoningResultModel;
 import de.uni_mannheim.informatik.swt.models.reasoningresult.ReasoningResult.provider.ReasoningResultItemProviderAdapterFactory;
 
@@ -255,6 +260,28 @@ public class ReasoningView extends ViewPart implements IPropertyChangeListener, 
 		//viewer.setSorter(new NameSorter());
 		
 		treeViewer.addSelectionChangedListener(menuBuilder);
+		
+		treeViewer.addFilter(new ViewerFilter() {
+			@Override
+			public boolean select(Viewer viewer, Object parentElement, Object element) {
+				
+				//No root element found..
+				if (EcoreUtil.getRootContainer((EObject)element).eContents().size() == 0)
+					return true;
+				
+				Check rootCheck = (Check)EcoreUtil.getRootContainer((EObject)element).eContents().get(0);
+				
+				if (rootCheck.isResult() == true && rootCheck == element)
+					return true;
+				else if(rootCheck.isResult() == false)
+					for (Iterator<EObject> i = ((EObject)element).eAllContents(); i.hasNext();)
+						if (((Check)i.next()).isRootCause() == true)
+							return true;
+					
+				
+				return true;
+			}
+		});
 		
 		final ExpandItem item1 = new ExpandItem (bar, SWT.NONE, 1);
 		item1.setText("Reasoning Results");
