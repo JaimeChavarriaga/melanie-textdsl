@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/de.uni_mannheim.informatik.swt.models.plm.textualrepresentation/src"
+    modelPluginID="de.uni_mannheim.informatik.swt.models.plm.textualrepresentation"
+    templateDirectory="de.uni_mannheim.informatik.swt.models.plm.textualrepresentation"
+    dynamicTemplates="true" modelName="PLM" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="6.0" copyrightFields="false" operationReflection="true">
+  <foreignModel>PLM.textualrepresentation.ecore</foreignModel>
+  <genPackages prefix="Textualrepresentation" basePackage="de.uni_mannheim.informatik.swt.models.plm"
+      disposableProviderFactory="true">
+    <ecorePackage href="PLM.textualrepresentation.ecore#/"/>
+    <genClasses>
+      <ecoreClass href="PLM.textualrepresentation.ecore#//root"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
