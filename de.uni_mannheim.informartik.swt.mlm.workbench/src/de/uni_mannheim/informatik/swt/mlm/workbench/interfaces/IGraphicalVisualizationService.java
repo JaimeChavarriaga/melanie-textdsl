@@ -12,8 +12,8 @@ package de.uni_mannheim.informatik.swt.mlm.workbench.interfaces;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
-import de.uni_mannheim.informatik.swt.models.plm.visualization.ColorConstant;
-import de.uni_mannheim.informatik.swt.models.plm.visualization.DSLVisualizer;
+import de.uni_mannheim.informatik.swt.models.plm.graphicalrepresentation.graphicalrepresentation.ColorConstant;
+import de.uni_mannheim.informatik.swt.models.plm.graphicalrepresentation.graphicalrepresentation.GraphicalDSLVisualizer;
 
 /**
  * Interface for a visual model to figure transformator.
@@ -26,12 +26,12 @@ public interface IGraphicalVisualizationService {
 	/**
 	 * Runs the transformation
 	 * 
-	 * @param v visualizer to translate into a figure
+	 * @param v graphical dsl visualizer to translate into a figure
 	 * @param c the clabject meta-model element which is visualized
 	 * 
 	 * @return renderable figure (org.eclipse.draw2d.IFigure)
 	 */
-	public Object run(DSLVisualizer v, Clabject c);
+	public Object run(GraphicalDSLVisualizer v, Clabject c);
 	
 	/**
 	 * Translates a color constant into a SWT Color
@@ -53,7 +53,7 @@ public interface IGraphicalVisualizationService {
 	 * </ol>
 	 * 
 	 * @param e The element to search the DSLVisualizer for.
-	 * @return A DSLVisualizer or  null if none is found.
+	 * @return A graphical dsl visualizer or  null if none is found.
 	 */
-	public DSLVisualizer findDSLVisualizerForElement(Element e);
+	public GraphicalDSLVisualizer findDSLVisualizerForElement(Element e);
 }
