@@ -27,6 +27,13 @@ import org.eclipse.jface.util.IPropertyChangeListener;
 public interface IReasoningService {
 	
 	/**
+	 * Returns the id of the reasoning services view
+	 * 
+	 * @return the id of the reasoning services view
+	 */
+	public String getReasoningServiceViewID();
+	
+	/**
 	 * Adds a property change listener which listens to changes on reasoning
 	 * history. Mainly used to register views which are updating themselves 
 	 * automatically on changes.
