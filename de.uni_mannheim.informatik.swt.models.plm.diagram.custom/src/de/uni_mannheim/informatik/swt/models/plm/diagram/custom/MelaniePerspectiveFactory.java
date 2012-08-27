@@ -11,11 +11,12 @@
 
 package de.uni_mannheim.informatik.swt.models.plm.diagram.custom;
 
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.ui.IFolderLayout;
 import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IPerspectiveFactory;
 
-import de.uni_mannheim.informatik.swt.mlm.reasoning.service.view.views.ReasoningView;
+import de.uni_mannheim.informatik.swt.mlm.workbench.ExtensionPointService;
 import de.uni_mannheim.informatik.swt.plm.visualization.editor.views.VisualizationEditorView;
 
 /**
@@ -42,7 +43,11 @@ public class MelaniePerspectiveFactory implements IPerspectiveFactory {
         IFolderLayout left =
         	layout.createFolder("left", IPageLayout.LEFT, 0.20f, editorArea);
         left.addView(IPageLayout.ID_PROJECT_EXPLORER);
-        left.addView(ReasoningView.ID);
+        try {
+			left.addView(ExtensionPointService.Instance().getActiveReasoningService().getReasoningServiceViewID());
+		} catch (CoreException e) {
+			e.printStackTrace();
+		}
         
         IFolderLayout bottomLeft =
         	layout.createFolder("leftBottom", IPageLayout.BOTTOM, 0.70f, "left");
