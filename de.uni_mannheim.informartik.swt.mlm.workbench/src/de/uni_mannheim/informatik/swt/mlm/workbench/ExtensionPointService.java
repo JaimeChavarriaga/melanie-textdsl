@@ -252,7 +252,7 @@ public class ExtensionPointService {
 	public IReasoningService getReasoningService(String id) throws CoreException{
 		IReasoningService reasoner = id2ReasoningServiceInstance.get(id);
 		
-		if (reasoner == null)
+		if (reasoner == null && id2ReasoningServiceConfigurationElement.get(id) != null)
 		{
 			reasoner = (IReasoningService)id2ReasoningServiceConfigurationElement.get(id).createExecutableExtension("class");
 			id2ReasoningServiceInstance.put(id, reasoner);
@@ -273,7 +273,8 @@ public class ExtensionPointService {
 	public IReasoningService getActiveReasoningService() throws CoreException{
 		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
 		
-		return getReasoningService(store.getString(PreferenceConstants.P_ACTIVE_REASONING_ENGINE)).Instance();
+		IReasoningService reasoner = getReasoningService(store.getString(PreferenceConstants.P_ACTIVE_REASONING_ENGINE)); 
+		return reasoner != null ? reasoner.Instance() : null;
 	}
 	
 	/**
