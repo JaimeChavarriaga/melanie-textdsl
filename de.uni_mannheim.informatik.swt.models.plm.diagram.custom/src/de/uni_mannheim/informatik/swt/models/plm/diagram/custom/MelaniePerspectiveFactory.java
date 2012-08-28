@@ -17,6 +17,7 @@ import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IPerspectiveFactory;
 
 import de.uni_mannheim.informatik.swt.mlm.workbench.ExtensionPointService;
+import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IReasoningService;
 import de.uni_mannheim.informatik.swt.plm.visualization.editor.views.VisualizationEditorView;
 
 /**
@@ -44,7 +45,9 @@ public class MelaniePerspectiveFactory implements IPerspectiveFactory {
         	layout.createFolder("left", IPageLayout.LEFT, 0.20f, editorArea);
         left.addView(IPageLayout.ID_PROJECT_EXPLORER);
         try {
-			left.addView(ExtensionPointService.Instance().getActiveReasoningService().getReasoningServiceViewID());
+        	IReasoningService reasoner = ExtensionPointService.Instance().getActiveReasoningService();
+        	if (reasoner != null)
+        		left.addView(reasoner.getReasoningServiceViewID());
 		} catch (CoreException e) {
 			e.printStackTrace();
 		}
