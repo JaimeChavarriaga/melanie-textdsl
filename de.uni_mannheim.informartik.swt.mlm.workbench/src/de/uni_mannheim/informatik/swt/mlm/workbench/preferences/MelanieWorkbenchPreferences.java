@@ -44,8 +44,12 @@ public class MelanieWorkbenchPreferences
 		String[] reasoningEngineKeySet = ExtensionPointService.Instance().getId2ReasoningServiceConfigurationElement().keySet().toArray(new String[]{});
 		String[][] reasoningEngineIds = new String[reasoningEngineKeySet.length][2];
 		
+		
 		for (int i = 0; i < reasoningEngineKeySet.length; i++)
 			reasoningEngineIds[i][0] = reasoningEngineIds[i][1] = reasoningEngineKeySet[i];
+		
+		if (reasoningEngineIds.length == 0)
+			reasoningEngineIds = new String[][]{{"", ""}};
 		
 		addField(new ComboFieldEditor(
 				PreferenceConstants.P_ACTIVE_REASONING_ENGINE,
@@ -58,9 +62,9 @@ public class MelanieWorkbenchPreferences
 		
 		//Emendation Service
 		String[] refactoringEngineKeySet = ExtensionPointService.Instance().getId2EmendationServiceConfigurationElement().keySet().toArray(new String[]{});
-		String[][] reafctoringEngineIds = new String[reasoningEngineKeySet.length][2];
+		String[][] reafctoringEngineIds = new String[refactoringEngineKeySet.length][2];
 		
-		for (int i = 0; i < reasoningEngineKeySet.length; i++)
+		for (int i = 0; i < refactoringEngineKeySet.length; i++)
 			reafctoringEngineIds[i][0] = reafctoringEngineIds[i][1] = refactoringEngineKeySet[i];
 		
 		addField(new ComboFieldEditor(
@@ -75,7 +79,7 @@ public class MelanieWorkbenchPreferences
 		String[] dslEngineKeySet = ExtensionPointService.Instance().getId2DSLServiceConfigurationElement().keySet().toArray(new String[]{});
 		String[][] dslEngineIds = new String[dslEngineKeySet.length][2];
 		
-		for (int i = 0; i < reasoningEngineKeySet.length; i++)
+		for (int i = 0; i < dslEngineKeySet.length; i++)
 			dslEngineIds[i][0] = dslEngineIds[i][1] = dslEngineKeySet[i];
 		
 		addField(new ComboFieldEditor(
@@ -88,9 +92,9 @@ public class MelanieWorkbenchPreferences
 		
 		//Visualization Service
 		String[] visualizationEngineKeySet = ExtensionPointService.Instance().getId2VisualizationServiceConfigurationElement().keySet().toArray(new String[]{});
-		String[][] visualizationEngineIds = new String[reasoningEngineKeySet.length][2];
+		String[][] visualizationEngineIds = new String[visualizationEngineKeySet.length][2];
 		
-		for (int i = 0; i < reasoningEngineKeySet.length; i++)
+		for (int i = 0; i < visualizationEngineKeySet.length; i++)
 			visualizationEngineIds[i][0] = visualizationEngineIds[i][1] = visualizationEngineKeySet[i];
 		
 		addField(new ComboFieldEditor(
@@ -105,7 +109,7 @@ public class MelanieWorkbenchPreferences
 		String[] proximityIndicationEngineKeySet = ExtensionPointService.Instance().getId2ProximityIndicationServiceConfigurationElement().keySet().toArray(new String[]{});
 		String[][] proximityIndicationEngineIds = new String[proximityIndicationEngineKeySet.length][2];
 		
-		for (int i = 0; i < reasoningEngineKeySet.length; i++)
+		for (int i = 0; i < proximityIndicationEngineKeySet.length; i++)
 			proximityIndicationEngineIds[i][0] = proximityIndicationEngineIds[i][1] = proximityIndicationEngineKeySet[i];
 		
 		addField(new ComboFieldEditor(
