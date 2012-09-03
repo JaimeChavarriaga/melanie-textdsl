@@ -1,7 +1,14 @@
 package de.uni_mannheim.informatik.swt.mlm.workbench.preferences;
 
 import org.eclipse.jface.preference.ComboFieldEditor;
+import org.eclipse.jface.preference.FieldEditor;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 
@@ -29,7 +36,7 @@ public class MelanieWorkbenchPreferences
 	public MelanieWorkbenchPreferences() {
 		super(GRID);
 		setPreferenceStore(Activator.getDefault().getPreferenceStore());
-		setDescription("Configuration for MelAniE's extension points");
+		setDescription("Configuration of the Melanie workbench.");
 	}
 	
 	/**
@@ -39,6 +46,16 @@ public class MelanieWorkbenchPreferences
 	 * restore itself.
 	 */
 	public void createFieldEditors() {
+		
+		Composite parent = getFieldEditorParent();
+		parent.setLayout(new GridLayout(2, false));
+		
+		
+		Group extensionPointGroup = new Group(parent, SWT.SHADOW_IN);
+		extensionPointGroup.setText("Available Extensions");
+		GridData extensionPointGroupGridData = new GridData(SWT.FILL, SWT.TOP, true, true);
+		//extensionPointGroupGridData.horizontalSpan = 2;
+		extensionPointGroup.setLayoutData(extensionPointGroupGridData);
 		
 		//Reasoning Service
 		String[] reasoningEngineKeySet = ExtensionPointService.Instance().getId2ReasoningServiceConfigurationElement().keySet().toArray(new String[]{});
@@ -55,7 +72,7 @@ public class MelanieWorkbenchPreferences
 				PreferenceConstants.P_ACTIVE_REASONING_ENGINE,
 					"Active Reasoning Engine",
 					reasoningEngineIds,
-					getFieldEditorParent()
+					extensionPointGroup
 					)
 		);
 
@@ -71,7 +88,7 @@ public class MelanieWorkbenchPreferences
 				PreferenceConstants.P_ACTIVE_EMENDATION_ENGINE,
 					"Active Emendation Engine",
 					reafctoringEngineIds,
-					getFieldEditorParent()
+					extensionPointGroup
 					)
 		);
 		
@@ -86,7 +103,7 @@ public class MelanieWorkbenchPreferences
 				PreferenceConstants.P_ACTIVE_DSL_ENGINE,
 					"Active DSL Engine",
 					dslEngineIds,
-					getFieldEditorParent()
+					extensionPointGroup
 					)
 		);
 		
@@ -101,7 +118,7 @@ public class MelanieWorkbenchPreferences
 				PreferenceConstants.P_ACTIVE_VISUALIZATION_ENGINE,
 					"Active Visualization Engine",
 					visualizationEngineIds,
-					getFieldEditorParent()
+					extensionPointGroup
 					)
 		);
 		
@@ -116,9 +133,16 @@ public class MelanieWorkbenchPreferences
 				PreferenceConstants.P_ACTIVE_PROXIMITY_INDICATION_ENGINE,
 					"Active Proximity Indication Engine",
 					proximityIndicationEngineIds,
-					getFieldEditorParent()
+					extensionPointGroup
 					)
 		);
+		
+		Label warningLabel = new Label(extensionPointGroup, SWT.NONE);
+		warningLabel.setText(" After changing active extensions, it can be required to reset the Melanie perspective.");
+		warningLabel.setForeground(getFieldEditorParent().getDisplay().getSystemColor(SWT.COLOR_RED));
+		GridData warningLabelGridData = new GridData(SWT.LEFT, SWT.CENTER, true, true);
+		warningLabelGridData.horizontalSpan = 2;
+		warningLabel.setLayoutData(warningLabelGridData);
 	}
 
 	/* (non-Javadoc)
