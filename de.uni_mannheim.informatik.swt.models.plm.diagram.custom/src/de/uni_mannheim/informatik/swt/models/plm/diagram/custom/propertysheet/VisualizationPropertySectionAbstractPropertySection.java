@@ -237,11 +237,11 @@ public class VisualizationPropertySectionAbstractPropertySection extends
 					return cb;
 				}
 				else if ("default".equals(value) || "tvs".equals(value)
-						|| "noshow".equals(value) || "max".equals(value))
+						|| "noshow".equals(value) || "max".equals(value) || "show".equals(value))
 				{
 					ComboBoxViewerCellEditor cb = new ComboBoxViewerCellEditor(viewer.getTable());
 					cb.setContentProvider(ArrayContentProvider.getInstance());
-					cb.setInput(new String[]{"default", "tvs", "noshow", "max"});
+					cb.setInput(new String[]{"default", "tvs", "noshow", "max", "show"});
 					return cb;
 				}
 				return new TextCellEditor(viewer.getTable());
