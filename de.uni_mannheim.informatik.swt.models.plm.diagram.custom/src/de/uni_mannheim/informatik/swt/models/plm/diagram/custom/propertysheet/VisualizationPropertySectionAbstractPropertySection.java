@@ -231,7 +231,7 @@ public class VisualizationPropertySectionAbstractPropertySection extends
 					return cb;
 				}
 				else if ("default".equals(value) || "tvs".equals(value)
-						|| "noshow".equals(value) || "max".equals(value) || "show".equals(value))
+						|| "noshow".equals(value) || "max".equals(value))
 				{
 					ComboBoxViewerCellEditor cb = new ComboBoxViewerCellEditor(viewer.getTable());
 					cb.setContentProvider(ArrayContentProvider.getInstance());
