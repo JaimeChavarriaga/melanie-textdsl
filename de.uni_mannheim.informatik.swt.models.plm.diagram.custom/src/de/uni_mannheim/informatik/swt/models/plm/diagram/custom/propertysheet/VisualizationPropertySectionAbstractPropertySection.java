@@ -189,22 +189,16 @@ public class VisualizationPropertySectionAbstractPropertySection extends
 				String key = keyValuePair.substring(0, keyValuePair.indexOf("=")).trim();
 				
 				CommandParameter parameters = null;
-				//The durability is a special case
-				if ("durability".equals(key)){
-					parameters = new CommandParameter(visualizer, PLMPackageImpl.eINSTANCE.getLMLVisualizer_Durability(), Integer.parseInt((String) value));
-				}
-				else
-				{
-					int oldIndex  = -1;
-					for (String s : visualizer.getAttributes())
-						if (s.equals(element))
-						{
-							oldIndex = visualizer.getAttributes().indexOf(s);
-							break;
-						}
-					
-					parameters = new CommandParameter(visualizer, PLMPackageImpl.eINSTANCE.getLMLVisualizer_Attributes(), key + "= " + value, oldIndex);
-				}
+				
+				int oldIndex  = -1;
+				for (String s : visualizer.getAttributes())
+					if (s.equals(element))
+					{
+						oldIndex = visualizer.getAttributes().indexOf(s);
+						break;
+					}
+				
+				parameters = new CommandParameter(visualizer, PLMPackageImpl.eINSTANCE.getLMLVisualizer_Attributes(), key + "= " + value, oldIndex);
 				
 				Command cmd = selectedElement.getEditingDomain().createCommand(SetCommand.class, parameters);
 				selectedElement.getEditingDomain().getCommandStack().execute(cmd);
