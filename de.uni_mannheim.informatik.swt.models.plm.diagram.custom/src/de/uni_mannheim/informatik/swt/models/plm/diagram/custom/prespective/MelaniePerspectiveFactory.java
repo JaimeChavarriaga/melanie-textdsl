@@ -9,7 +9,7 @@
  *    Ralph Gerbig - initial API and implementation and initial documentation
  *******************************************************************************/
 
-package de.uni_mannheim.informatik.swt.models.plm.diagram.custom;
+package de.uni_mannheim.informatik.swt.models.plm.diagram.custom.prespective;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.ui.IFolderLayout;
