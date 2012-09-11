@@ -2,6 +2,8 @@
  */
 package de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation;
 
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -46,5 +48,40 @@ public interface TextualVisualizationDescriptor extends EObject {
 	 * @generated
 	 */
 	void setExpression(String value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Returns the textual visualization of the containing model element
+	 * <!-- end-model-doc -->
+	 * @model kind="operation" required="true"
+	 * @generated
+	 */
+	String getValue();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Returns the textual visualization of the containing model element
+	 * <!-- end-model-doc -->
+	 * @model kind="operation" required="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL body='self.getContainingTextualVisualizer().getContainingPLMElement().oclAsType(PLM::Element)'"
+	 * @generated
+	 */
+	Element getContainingPLMElement();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Returns the textual visualization of the containing model element
+	 * <!-- end-model-doc -->
+	 * @model kind="operation" required="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL body='self.oclAsType(ecore::EObject).eContainer().oclAsType(TextualDSLVisualizer)'"
+	 * @generated
+	 */
+	TextualDSLVisualizer getContainingTextualVisualizer();
 
 } // TextualVisualizationDescriptor

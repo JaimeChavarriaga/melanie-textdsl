@@ -10,19 +10,74 @@
   <eClassifiers xsi:type="ecore:EClass" name="TextualDSLVisualizer" eSuperTypes="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//AbstractVisualizer">
     <eOperations name="createTextualVisualization" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL">
-        <details key="body"/>
+        <details key="body" value="self.content->iterate(c:TextualVisualizationDescriptor; resultValue:String = '' | resultValue.concat(c.getValue()))"/>
       </eAnnotations>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Returns the textual visualization of the containing model element"/>
       </eAnnotations>
     </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="textualVisualization" upperBound="-1"
-        eType="#//TextualVisualizationDescriptor"/>
+    <eOperations name="getContainingPLMElement" lowerBound="1" eType="ecore:EClass ../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Returns the textual visualization of the containing model element"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL">
+        <details key="body" value="self.getContainingLMLVisualizer().getContainingElement()"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getContainingLMLVisualizer" lowerBound="1" eType="ecore:EClass ../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//LMLVisualizer">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Returns the textual visualization of the containing model element"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL">
+        <details key="body" value="self.oclAsType(ecore::EObject).eContainer().oclAsType(PLM::LMLVisualizer)"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="content" upperBound="-1"
+        eType="#//TextualVisualizationDescriptor" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TextualVisualizationDescriptor" abstract="true">
+    <eOperations name="getValue" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Returns the textual visualization of the containing model element"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getContainingPLMElement" lowerBound="1" eType="ecore:EClass ../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Returns the textual visualization of the containing model element"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL">
+        <details key="body" value="self.getContainingTextualVisualizer().getContainingPLMElement().oclAsType(PLM::Element)"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getContainingTextualVisualizer" lowerBound="1" eType="#//TextualDSLVisualizer">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Returns the textual visualization of the containing model element"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL">
+        <details key="body" value="self.oclAsType(ecore::EObject).eContainer().oclAsType(TextualDSLVisualizer)"/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="expression" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Literal" eSuperTypes="#//TextualVisualizationDescriptor"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Value" eSuperTypes="#//TextualVisualizationDescriptor"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Literal" eSuperTypes="#//TextualVisualizationDescriptor">
+    <eOperations name="getValue" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL">
+        <details key="body" value="self.expression"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Returns the textual visualization of the containing model element"/>
+      </eAnnotations>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Value" eSuperTypes="#//TextualVisualizationDescriptor">
+    <eOperations name="getValue" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL">
+        <details key="body" value="self.getContainingPLMElement().oclAsType(PLM::Clabject).feature->select(f | f.oclIsKindOf(PLM::Attribute))->select(a | a.name = 'name').oclAsType(PLM::Attribute).value->asOrderedSet()->first()"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Returns the textual visualization of the containing model element"/>
+      </eAnnotations>
+    </eOperations>
+  </eClassifiers>
 </ecore:EPackage>

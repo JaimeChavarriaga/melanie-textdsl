@@ -132,7 +132,7 @@ public class TextualrepresentationPackageImpl extends EPackageImpl implements Te
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTextualDSLVisualizer_TextualVisualization() {
+	public EReference getTextualDSLVisualizer_Content() {
 		return (EReference)textualDSLVisualizerEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -143,6 +143,24 @@ public class TextualrepresentationPackageImpl extends EPackageImpl implements Te
 	 */
 	public EOperation getTextualDSLVisualizer__CreateTextualVisualization() {
 		return textualDSLVisualizerEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getTextualDSLVisualizer__GetContainingPLMElement() {
+		return textualDSLVisualizerEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getTextualDSLVisualizer__GetContainingLMLVisualizer() {
+		return textualDSLVisualizerEClass.getEOperations().get(2);
 	}
 
 	/**
@@ -168,6 +186,33 @@ public class TextualrepresentationPackageImpl extends EPackageImpl implements Te
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getTextualVisualizationDescriptor__GetValue() {
+		return textualVisualizationDescriptorEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getTextualVisualizationDescriptor__GetContainingPLMElement() {
+		return textualVisualizationDescriptorEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getTextualVisualizationDescriptor__GetContainingTextualVisualizer() {
+		return textualVisualizationDescriptorEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getLiteral() {
 		return literalEClass;
 	}
@@ -177,8 +222,26 @@ public class TextualrepresentationPackageImpl extends EPackageImpl implements Te
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getLiteral__GetValue() {
+		return literalEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getValue() {
 		return valueEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getValue__GetValue() {
+		return valueEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -210,15 +273,22 @@ public class TextualrepresentationPackageImpl extends EPackageImpl implements Te
 
 		// Create classes and their features
 		textualDSLVisualizerEClass = createEClass(TEXTUAL_DSL_VISUALIZER);
-		createEReference(textualDSLVisualizerEClass, TEXTUAL_DSL_VISUALIZER__TEXTUAL_VISUALIZATION);
+		createEReference(textualDSLVisualizerEClass, TEXTUAL_DSL_VISUALIZER__CONTENT);
 		createEOperation(textualDSLVisualizerEClass, TEXTUAL_DSL_VISUALIZER___CREATE_TEXTUAL_VISUALIZATION);
+		createEOperation(textualDSLVisualizerEClass, TEXTUAL_DSL_VISUALIZER___GET_CONTAINING_PLM_ELEMENT);
+		createEOperation(textualDSLVisualizerEClass, TEXTUAL_DSL_VISUALIZER___GET_CONTAINING_LML_VISUALIZER);
 
 		textualVisualizationDescriptorEClass = createEClass(TEXTUAL_VISUALIZATION_DESCRIPTOR);
 		createEAttribute(textualVisualizationDescriptorEClass, TEXTUAL_VISUALIZATION_DESCRIPTOR__EXPRESSION);
+		createEOperation(textualVisualizationDescriptorEClass, TEXTUAL_VISUALIZATION_DESCRIPTOR___GET_VALUE);
+		createEOperation(textualVisualizationDescriptorEClass, TEXTUAL_VISUALIZATION_DESCRIPTOR___GET_CONTAINING_PLM_ELEMENT);
+		createEOperation(textualVisualizationDescriptorEClass, TEXTUAL_VISUALIZATION_DESCRIPTOR___GET_CONTAINING_TEXTUAL_VISUALIZER);
 
 		literalEClass = createEClass(LITERAL);
+		createEOperation(literalEClass, LITERAL___GET_VALUE);
 
 		valueEClass = createEClass(VALUE);
+		createEOperation(valueEClass, VALUE___GET_VALUE);
 	}
 
 	/**
@@ -258,16 +328,30 @@ public class TextualrepresentationPackageImpl extends EPackageImpl implements Te
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(textualDSLVisualizerEClass, TextualDSLVisualizer.class, "TextualDSLVisualizer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTextualDSLVisualizer_TextualVisualization(), this.getTextualVisualizationDescriptor(), null, "textualVisualization", null, 0, -1, TextualDSLVisualizer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTextualDSLVisualizer_Content(), this.getTextualVisualizationDescriptor(), null, "content", null, 0, -1, TextualDSLVisualizer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getTextualDSLVisualizer__CreateTextualVisualization(), ecorePackage.getEString(), "createTextualVisualization", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getTextualDSLVisualizer__GetContainingPLMElement(), thePLMPackage.getElement(), "getContainingPLMElement", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getTextualDSLVisualizer__GetContainingLMLVisualizer(), thePLMPackage.getLMLVisualizer(), "getContainingLMLVisualizer", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(textualVisualizationDescriptorEClass, TextualVisualizationDescriptor.class, "TextualVisualizationDescriptor", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTextualVisualizationDescriptor_Expression(), ecorePackage.getEString(), "expression", null, 1, 1, TextualVisualizationDescriptor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEOperation(getTextualVisualizationDescriptor__GetValue(), ecorePackage.getEString(), "getValue", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getTextualVisualizationDescriptor__GetContainingPLMElement(), thePLMPackage.getElement(), "getContainingPLMElement", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getTextualVisualizationDescriptor__GetContainingTextualVisualizer(), this.getTextualDSLVisualizer(), "getContainingTextualVisualizer", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(literalEClass, Literal.class, "Literal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		initEOperation(getLiteral__GetValue(), ecorePackage.getEString(), "getValue", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(valueEClass, Value.class, "Value", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEOperation(getValue__GetValue(), ecorePackage.getEString(), "getValue", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -294,7 +378,7 @@ public class TextualrepresentationPackageImpl extends EPackageImpl implements Te
 			 "invocationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL",
 			 "settingDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL",
 			 "validationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL"
-		   });		
+		   });															
 	}
 
 	/**
@@ -309,7 +393,43 @@ public class TextualrepresentationPackageImpl extends EPackageImpl implements Te
 		  (getTextualDSLVisualizer__CreateTextualVisualization(), 
 		   source, 
 		   new String[] {
-			 "body", null
+			 "body", "self.content->iterate(c:TextualVisualizationDescriptor; resultValue:String = \'\' | resultValue.concat(c.getValue()))"
+		   });				
+		addAnnotation
+		  (getTextualDSLVisualizer__GetContainingPLMElement(), 
+		   source, 
+		   new String[] {
+			 "body", "self.getContainingLMLVisualizer().getContainingElement()"
+		   });			
+		addAnnotation
+		  (getTextualDSLVisualizer__GetContainingLMLVisualizer(), 
+		   source, 
+		   new String[] {
+			 "body", "self.oclAsType(ecore::EObject).eContainer().oclAsType(PLM::LMLVisualizer)"
+		   });				
+		addAnnotation
+		  (getTextualVisualizationDescriptor__GetContainingPLMElement(), 
+		   source, 
+		   new String[] {
+			 "body", "self.getContainingTextualVisualizer().getContainingPLMElement().oclAsType(PLM::Element)"
+		   });			
+		addAnnotation
+		  (getTextualVisualizationDescriptor__GetContainingTextualVisualizer(), 
+		   source, 
+		   new String[] {
+			 "body", "self.oclAsType(ecore::EObject).eContainer().oclAsType(TextualDSLVisualizer)"
+		   });		
+		addAnnotation
+		  (getLiteral__GetValue(), 
+		   source, 
+		   new String[] {
+			 "body", "self.expression"
+		   });			
+		addAnnotation
+		  (getValue__GetValue(), 
+		   source, 
+		   new String[] {
+			 "body", "self.getContainingPLMElement().oclAsType(PLM::Clabject).feature->select(f | f.oclIsKindOf(PLM::Attribute))->select(a | a.name = \'name\').oclAsType(PLM::Attribute).value->asOrderedSet()->first()"
 		   });	
 	}
 

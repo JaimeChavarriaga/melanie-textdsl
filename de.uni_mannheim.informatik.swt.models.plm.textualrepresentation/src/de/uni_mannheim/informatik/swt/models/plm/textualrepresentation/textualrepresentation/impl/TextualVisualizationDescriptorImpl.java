@@ -2,13 +2,20 @@
  */
 package de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.impl;
 
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
+import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.TextualDSLVisualizer;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.TextualVisualizationDescriptor;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.TextualrepresentationPackage;
 
+import java.lang.reflect.InvocationTargetException;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
@@ -91,6 +98,65 @@ public abstract class TextualVisualizationDescriptorImpl extends EObjectImpl imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getValue() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * The cached invocation delegate for the '{@link #getContainingPLMElement() <em>Get Containing PLM Element</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getContainingPLMElement()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final EOperation.Internal.InvocationDelegate GET_CONTAINING_PLM_ELEMENT__EINVOCATION_DELEGATE = ((EOperation.Internal)TextualrepresentationPackage.Literals.TEXTUAL_VISUALIZATION_DESCRIPTOR___GET_CONTAINING_PLM_ELEMENT).getInvocationDelegate();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Element getContainingPLMElement() {
+		try {
+			return (Element)GET_CONTAINING_PLM_ELEMENT__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
+		}
+		catch (InvocationTargetException ite) {
+			throw new WrappedException(ite);
+		}
+	}
+
+	/**
+	 * The cached invocation delegate for the '{@link #getContainingTextualVisualizer() <em>Get Containing Textual Visualizer</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getContainingTextualVisualizer()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final EOperation.Internal.InvocationDelegate GET_CONTAINING_TEXTUAL_VISUALIZER__EINVOCATION_DELEGATE = ((EOperation.Internal)TextualrepresentationPackage.Literals.TEXTUAL_VISUALIZATION_DESCRIPTOR___GET_CONTAINING_TEXTUAL_VISUALIZER).getInvocationDelegate();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TextualDSLVisualizer getContainingTextualVisualizer() {
+		try {
+			return (TextualDSLVisualizer)GET_CONTAINING_TEXTUAL_VISUALIZER__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
+		}
+		catch (InvocationTargetException ite) {
+			throw new WrappedException(ite);
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -142,6 +208,24 @@ public abstract class TextualVisualizationDescriptorImpl extends EObjectImpl imp
 				return EXPRESSION_EDEFAULT == null ? expression != null : !EXPRESSION_EDEFAULT.equals(expression);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case TextualrepresentationPackage.TEXTUAL_VISUALIZATION_DESCRIPTOR___GET_VALUE:
+				return getValue();
+			case TextualrepresentationPackage.TEXTUAL_VISUALIZATION_DESCRIPTOR___GET_CONTAINING_PLM_ELEMENT:
+				return getContainingPLMElement();
+			case TextualrepresentationPackage.TEXTUAL_VISUALIZATION_DESCRIPTOR___GET_CONTAINING_TEXTUAL_VISUALIZER:
+				return getContainingTextualVisualizer();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**
