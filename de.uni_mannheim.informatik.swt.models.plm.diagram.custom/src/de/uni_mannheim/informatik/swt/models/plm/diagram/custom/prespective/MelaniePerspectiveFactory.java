@@ -53,7 +53,7 @@ public class MelaniePerspectiveFactory implements IPerspectiveFactory {
 		}
         
         IFolderLayout bottomLeft =
-        	layout.createFolder("leftBottom", IPageLayout.BOTTOM, 0.70f, "left");
+        	layout.createFolder("leftBottom", IPageLayout.BOTTOM, 0.7f, "left");
         bottomLeft.addView(IPageLayout.ID_OUTLINE);
         
         IFolderLayout bottom = 
@@ -61,7 +61,7 @@ public class MelaniePerspectiveFactory implements IPerspectiveFactory {
         bottom.addView(IPageLayout.ID_PROP_SHEET);
         
         IFolderLayout bottomRight = 
-        	layout.createFolder("bottomRight", IPageLayout.BOTTOM, 0.7f, "right");
+        	layout.createFolder("bottomRight", IPageLayout.RIGHT, 0.5f, "bottom");
         bottomRight.addView(VisualizationEditorView.ID);
 	}
 
