@@ -52,6 +52,7 @@ import org.eclipse.gmf.runtime.diagram.ui.requests.CreateUnspecifiedTypeConnecti
 import org.eclipse.gmf.runtime.diagram.ui.requests.EditCommandRequestWrapper;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
+import org.eclipse.gmf.runtime.emf.type.core.MetamodelType;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateRelationshipRequest;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
@@ -542,9 +543,11 @@ public class ITMGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
 		return result;
 	}
 	
-	//This needs to be overridden to provide the right text for the content
+	/**
+	 * This needs to be overridden to provide the right text for the content
+	 */
 	@Override
-	protected ICommand getPromptAndCreateConnectionCommand(List content,
+	protected ICommand getPromptAndCreateConnectionCommand(final List content,
 			CreateConnectionRequest request) {
 		
 		return new PromptAndCreateConnectionCommand(content, request){
@@ -563,6 +566,9 @@ public class ITMGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
 					public String getText(Object object) {
 						if (object instanceof Request && ((Request) object).getExtendedData().get(DISPLAY_NAME) != null)
 							return ((Request) object).getExtendedData().get(DISPLAY_NAME).toString();
+						else if (object instanceof MetamodelType && ((MetamodelType)object).getDisplayName().equals("Role")
+																 && content.size() > 1)
+							return "Create new Connection";
 						return super.getText(object);
 					}
 				};
