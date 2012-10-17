@@ -6,7 +6,7 @@
          <meta.schema plugin="de.uni_mannheim.informatik.swt.plm.workbench" id="de.uni_mannheim.informatik.swt.reasoning.service" name="Reasoning Service"/>
       </appinfo>
       <documentation>
-         [Enter description of this extension point.]
+         This extension point is used to provide custom reasoning capabilities to Melanie. A reasoning view which can be reused can be found in de.uni_mannheim.informatik.swt.mlm.reasoning.service.view available at http://eclipselabs.org/p/melanie-reasoning/.
       </documentation>
    </annotation>
 
@@ -62,7 +62,7 @@
                   
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":de.uni_mannheim.informatik.swt.plm.workbench.interfaces.IReasoningService"/>
+                  <meta.attribute kind="java" basedOn=":de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IReasoningService"/>
                </appinfo>
             </annotation>
          </attribute>
@@ -101,7 +101,7 @@
          <meta.section type="implementation"/>
       </appinfo>
       <documentation>
-         [Enter information about supplied implementation of this extension point.]
+         An example implementation is available under http://eclipselabs.org/p/melanie-reasoning/.
       </documentation>
    </annotation>
 

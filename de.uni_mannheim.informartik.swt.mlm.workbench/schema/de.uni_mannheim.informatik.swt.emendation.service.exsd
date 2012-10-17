@@ -6,7 +6,7 @@
          <meta.schema plugin="de.uni_mannheim.informatik.swt.plm.workbench" id="de.uni_mannheim.informatik.swt.emendation.service.exsd" name="Emendation Service"/>
       </appinfo>
       <documentation>
-         [Enter description of this extension point.]
+         This extension point can be implemented to provide more extensive emendation support. Emendation support means supporting the user when making changes to ontologies. The service is automatically called after each change to a model.
       </documentation>
    </annotation>
 
@@ -101,7 +101,7 @@
          <meta.section type="implementation"/>
       </appinfo>
       <documentation>
-         [Enter information about supplied implementation of this extension point.]
+         An example implementation is supplied in de.uni_mannheim.informatik.swt.mlm.emendation.service.
       </documentation>
    </annotation>
 

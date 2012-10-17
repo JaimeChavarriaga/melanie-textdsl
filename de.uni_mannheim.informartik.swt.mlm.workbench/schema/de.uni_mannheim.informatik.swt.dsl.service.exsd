@@ -6,7 +6,7 @@
          <meta.schema plugin="de.uni_mannheim.informatik.swt.plm.workbench" id="de.uni_mannheim.informatik.swt.visualization.service" name="Visualization Service"/>
       </appinfo>
       <documentation>
-         [Enter description of this extension point.]
+         Service that provides information needed to built DSLs. This information includes things like which connections can be instantiated between two model elements. The service can be used for both graphical and textual dsl implementation.
       </documentation>
    </annotation>
 

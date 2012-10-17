@@ -6,7 +6,7 @@
          <meta.schema plugin="de.uni_mannheim.informatik.swt.plm.workbench" id="de.uni_mannheim.informatik.swt.proximityindication.service" name="Proximity Indication"/>
       </appinfo>
       <documentation>
-         [Enter description of this extension point.]
+         The proximity indication service is responsible for displaying containmentm, inheritance and classification information in the name compartment of a clabject.
       </documentation>
    </annotation>
 
@@ -101,7 +101,7 @@
          <meta.section type="implementation"/>
       </appinfo>
       <documentation>
-         [Enter information about supplied implementation of this extension point.]
+         An example implementation is available in de.uni_mannheim.informatik.swt.mlm.proximityindication.service.
       </documentation>
    </annotation>
 
