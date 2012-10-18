@@ -18,8 +18,8 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 
-import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionEditPart;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.EntityEditPart;
+import de.uni_mannheim.informatik.swt.models.plm.diagram.edit.parts.ConnectionEditPart;
+import de.uni_mannheim.informatik.swt.models.plm.diagram.edit.parts.EntityEditPart;
 
 
 /**

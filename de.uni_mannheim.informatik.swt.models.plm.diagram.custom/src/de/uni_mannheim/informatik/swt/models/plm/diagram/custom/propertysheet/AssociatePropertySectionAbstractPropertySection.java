@@ -45,7 +45,7 @@
 //
 //import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 //import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
-//import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionEditPart;
+//import de.uni_mannheim.informatik.swt.models.plm.diagram.edit.parts.ConnectionEditPart;
 //import de.uni_mannheim.informatik.swt.models.plm.PLM.impl.PLMPackageImpl;
 //
 //public class AssociatePropertySectionAbstractPropertySection extends

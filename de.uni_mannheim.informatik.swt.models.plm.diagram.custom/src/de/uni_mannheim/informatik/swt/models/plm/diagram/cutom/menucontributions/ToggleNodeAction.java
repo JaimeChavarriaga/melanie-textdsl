@@ -24,8 +24,8 @@ import org.eclipse.ui.IWorkbenchPart;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionEditPart;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.GeneralizationEditPart;
+import de.uni_mannheim.informatik.swt.models.plm.diagram.edit.parts.ConnectionEditPart;
+import de.uni_mannheim.informatik.swt.models.plm.diagram.edit.parts.GeneralizationEditPart;
 
 
 /**

@@ -17,7 +17,7 @@ import org.eclipse.ui.menus.CommandContributionItemParameter;
 
 import de.uni_mannheim.informatik.swt.mlm.workbench.ExtensionPointService;
 import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IEmendationService;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.part.PLMDiagramEditor;
+import de.uni_mannheim.informatik.swt.models.plm.diagram.part.PLMDiagramEditor;
 
 public class RefactorContributionItem extends CompoundContributionItem {
 	

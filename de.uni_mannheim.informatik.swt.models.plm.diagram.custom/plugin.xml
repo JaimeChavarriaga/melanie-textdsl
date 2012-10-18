@@ -5,8 +5,8 @@
          point="org.eclipse.ui.popupMenus">
       <objectContribution
             adaptable="false"
-            id="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.toggleconnectioneditpart"
-            objectClass="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionEditPart">
+            id="de.uni_mannheim.informatik.swt.models.plm.diagram.edit.parts.toggleconnectioneditpart"
+            objectClass="de.uni_mannheim.informatik.swt.models.plm.diagram.edit.parts.ConnectionEditPart">
          <action
                class="de.uni_mannheim.informatik.swt.models.plm.diagram.cutom.menucontributions.ToggleNodeAction"
                id="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.toggledomainconnectionationaction"
@@ -15,8 +15,8 @@
       </objectContribution>
       <objectContribution
             adaptable="false"
-            id="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.togglebinarygeneralizationeditpart"
-            objectClass="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.GeneralizationEditPart">
+            id="de.uni_mannheim.informatik.swt.models.plm.diagram.edit.parts.togglebinarygeneralizationeditpart"
+            objectClass="de.uni_mannheim.informatik.swt.models.plm.diagram.edit.parts.GeneralizationEditPart">
          <action
                class="de.uni_mannheim.informatik.swt.models.plm.diagram.cutom.menucontributions.ToggleNodeAction"
                id="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.toggledomainconnectionationaction"
@@ -25,8 +25,8 @@
       </objectContribution>
        <objectContribution
              adaptable="false"
-             id="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.dsl"
-             objectClass="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.EntityEditPart">
+             id="de.uni_mannheim.informatik.swt.models.plm.diagram.edit.parts.dsl"
+             objectClass="de.uni_mannheim.informatik.swt.models.plm.diagram.edit.parts.EntityEditPart">
           <action
                 class="de.uni_mannheim.informatik.swt.models.plm.diagram.cutom.menucontributions.DSLAction"
                 id="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.addvisualizationaction"
@@ -35,8 +35,8 @@
        </objectContribution>
        <objectContribution
              adaptable="false"
-             id="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.dsl"
-             objectClass="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionEditPart">
+             id="de.uni_mannheim.informatik.swt.models.plm.diagram.edit.parts.dsl"
+             objectClass="de.uni_mannheim.informatik.swt.models.plm.diagram.edit.parts.ConnectionEditPart">
           <action
                 class="de.uni_mannheim.informatik.swt.models.plm.diagram.cutom.menucontributions.DSLAction"
                 id="de.uni_mannheim.informatik.swt.models.plm.diagram.custom.addvisualizationaction"
@@ -99,7 +99,7 @@
                   type="org.eclipse.gef.EditPart">
             </input>
             <input
-                  type="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMAbstractNavigatorItem">
+                  type="de.uni_mannheim.informatik.swt.models.plm.diagram.navigator.PLMAbstractNavigatorItem">
             </input>
          </propertySection>
          <!--<propertySection
@@ -107,10 +107,10 @@
                id="property.section.associate"
                tab="property.tab.associate">
             <input
-                  type="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionEditPart">
+                  type="de.uni_mannheim.informatik.swt.models.plm.diagram.edit.parts.ConnectionEditPart">
             </input>
             <input
-                  type="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMAbstractNavigatorItem">
+                  type="de.uni_mannheim.informatik.swt.models.plm.diagram.navigator.PLMAbstractNavigatorItem">
             </input>
          </propertySection>-->
          <propertySection
@@ -121,7 +121,7 @@
                   type="org.eclipse.gef.EditPart">
             </input>
             <input
-                  type="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.navigator.PLMAbstractNavigatorItem">
+                  type="de.uni_mannheim.informatik.swt.models.plm.diagram.navigator.PLMAbstractNavigatorItem">
             </input>
          </propertySection>
       </propertySections>
@@ -149,42 +149,42 @@
                            ifEmpty="false"
                            operator="or">
                         <instanceof
-                              value="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.EntityEditPart">
+                              value="de.uni_mannheim.informatik.swt.models.plm.diagram.edit.parts.EntityEditPart">
                         </instanceof>
                      </iterate>
                      <iterate
                            ifEmpty="false"
                            operator="or">
                         <instanceof
-                              value="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionEditPart">
+                              value="de.uni_mannheim.informatik.swt.models.plm.diagram.edit.parts.ConnectionEditPart">
                         </instanceof>
                      </iterate>
                      <iterate
                            ifEmpty="false"
                            operator="or">
                         <instanceof
-                              value="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.AttributeEditPart">
+                              value="de.uni_mannheim.informatik.swt.models.plm.diagram.edit.parts.AttributeEditPart">
                         </instanceof>
                      </iterate>
                      <iterate
                            ifEmpty="false"
                            operator="or">
                         <instanceof
-                              value="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.Attribute2EditPart">
+                              value="de.uni_mannheim.informatik.swt.models.plm.diagram.edit.parts.Attribute2EditPart">
                         </instanceof>
                      </iterate>
                      <iterate
                            ifEmpty="false"
                            operator="or">
                         <instanceof
-                              value="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.MethodEditPart">
+                              value="de.uni_mannheim.informatik.swt.models.plm.diagram.edit.parts.MethodEditPart">
                         </instanceof>
                      </iterate>
                      <iterate
                            ifEmpty="false"
                            operator="or">
                         <instanceof
-                              value="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.Method2EditPart">
+                              value="de.uni_mannheim.informatik.swt.models.plm.diagram.edit.parts.Method2EditPart">
                         </instanceof>
                      </iterate>
                   </or>
@@ -204,70 +204,70 @@
                            ifEmpty="false"
                            operator="or">
                         <instanceof
-                              value="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.EntityEditPart">
+                              value="de.uni_mannheim.informatik.swt.models.plm.diagram.edit.parts.EntityEditPart">
                         </instanceof>
                      </iterate>
                      <iterate
                            ifEmpty="false"
                            operator="or">
                         <instanceof
-                              value="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ConnectionEditPart">
+                              value="de.uni_mannheim.informatik.swt.models.plm.diagram.edit.parts.ConnectionEditPart">
                         </instanceof>
                      </iterate>
                      <iterate
                            ifEmpty="false"
                            operator="or">
                         <instanceof
-                              value="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.AttributeEditPart">
+                              value="de.uni_mannheim.informatik.swt.models.plm.diagram.edit.parts.AttributeEditPart">
                         </instanceof>
                      </iterate>
                      <iterate
                            ifEmpty="false"
                            operator="or">
                         <instanceof
-                              value="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.Attribute2EditPart">
+                              value="de.uni_mannheim.informatik.swt.models.plm.diagram.edit.parts.Attribute2EditPart">
                         </instanceof>
                      </iterate>
                      <iterate
                            ifEmpty="false"
                            operator="or">
                         <instanceof
-                              value="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.MethodEditPart">
+                              value="de.uni_mannheim.informatik.swt.models.plm.diagram.edit.parts.MethodEditPart">
                         </instanceof>
                      </iterate>
                      <iterate
                            ifEmpty="false"
                            operator="or">
                         <instanceof
-                              value="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.Method2EditPart">
+                              value="de.uni_mannheim.informatik.swt.models.plm.diagram.edit.parts.Method2EditPart">
                         </instanceof>
                      </iterate>
                      <iterate
                            ifEmpty="false"
                            operator="or">
                         <instanceof
-                              value="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ClassificationEditPart">
+                              value="de.uni_mannheim.informatik.swt.models.plm.diagram.edit.parts.ClassificationEditPart">
                         </instanceof>
                      </iterate>
                      <iterate
                            ifEmpty="false"
                            operator="or">
                         <instanceof
-                              value="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.GeneralizationEditPart">
+                              value="de.uni_mannheim.informatik.swt.models.plm.diagram.edit.parts.GeneralizationEditPart">
                         </instanceof>
                      </iterate>
                      <iterate
                            ifEmpty="false"
                            operator="or">
                         <instanceof
-                              value="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.OntologyEditPart">
+                              value="de.uni_mannheim.informatik.swt.models.plm.diagram.edit.parts.OntologyEditPart">
                         </instanceof>
                      </iterate>
                      <iterate
                            ifEmpty="false"
                            operator="or">
                         <instanceof
-                              value="de.uni_mannheim.informatik.swt.models.plm.PLM.diagram.edit.parts.ModelEditPart">
+                              value="de.uni_mannheim.informatik.swt.models.plm.diagram.edit.parts.ModelEditPart">
                         </instanceof>
                      </iterate>
                   </or>
