@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            name="Textual Multi-level Model Editor"
+            extensions="mlmt"
+            icon="icons/sample.gif"
+            contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
+            class="de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors.MultiLevelModelTextEditor"
+            id="de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors.XMLEditor">
+      </editor>
+   </extension>
+
+</plugin>
