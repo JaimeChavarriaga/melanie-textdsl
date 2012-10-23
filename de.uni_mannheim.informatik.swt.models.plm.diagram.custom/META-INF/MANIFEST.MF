@@ -5,13 +5,9 @@ Bundle-SymbolicName: de.uni_mannheim.informatik.swt.models.plm.diagram.custom;si
 Bundle-Version: 1.0.0.qualifier
 Require-Bundle: org.eclipse.gmf.runtime.diagram.ui.properties,
  de.uni_mannheim.informatik.swt.models.plm.diagram,
- org.eclipse.ui.ide;bundle-version="3.6.1",
- org.eclipse.gmf.runtime.diagram.ui.resources.editor;bundle-version="1.4.1",
  de.uni_mannheim.informatik.swt.mlm.visualization.editor;bundle-version="1.0.0",
- org.eclipse.core.databinding,
- org.eclipse.core.databinding.observable,
- org.eclipse.jface.databinding,
- de.uni_mannheim.informatik.swt.mlm.workbench;bundle-version="1.0.0"
+ org.eclipse.ui.ide;bundle-version="3.8.1",
+ org.eclipse.gmf.runtime.diagram.ui.resources.editor;bundle-version="1.4.1"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: de.uni_mannheim.informatik.swt.models.plm.diagram.custom,
  de.uni_mannheim.informatik.swt.models.plm.diagram.custom.propertysheet,
