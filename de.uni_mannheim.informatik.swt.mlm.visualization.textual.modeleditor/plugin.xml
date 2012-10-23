@@ -5,13 +5,20 @@
    <extension
          point="org.eclipse.ui.editors">
       <editor
-            name="Textual Multi-level Model Editor"
-            extensions="mlmt"
-            icon="icons/sample.gif"
-            contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
             class="de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors.MultiLevelModelTextEditor"
-            id="de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors.XMLEditor">
+            contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
+            extensions="mlmt"
+            icon="icons/text16.gif"
+            id="de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors.XMLEditor"
+            name="Textual Multi-level Model Editor">
       </editor>
+   </extension>
+   <extension
+         point="de.uni_mannheim.informatik.swt.popupbarbuttons.provider">
+      <provider
+            class="de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.popupbartools.TextualModelEditorPopupToolBarProvider"
+            id="de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditotor">
+      </provider>
    </extension>
 
 </plugin>
