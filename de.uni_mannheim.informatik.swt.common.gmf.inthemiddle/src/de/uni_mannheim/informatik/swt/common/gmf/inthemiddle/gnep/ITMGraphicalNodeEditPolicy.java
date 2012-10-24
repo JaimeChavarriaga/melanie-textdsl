@@ -548,7 +548,7 @@ public class ITMGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
 	 */
 	@Override
 	protected ICommand getPromptAndCreateConnectionCommand(final List content,
-			CreateConnectionRequest request) {
+			final CreateConnectionRequest request) {
 		
 		return new PromptAndCreateConnectionCommand(content, request){
 			
@@ -567,7 +567,10 @@ public class ITMGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
 						if (object instanceof Request && ((Request) object).getExtendedData().get(DISPLAY_NAME) != null)
 							return ((Request) object).getExtendedData().get(DISPLAY_NAME).toString();
 						else if (object instanceof MetamodelType && ((MetamodelType)object).getDisplayName().equals("Role")
-																 && content.size() > 1)
+																 && content.size() > 1
+																 && ((IGraphicalEditPart)request.getSourceEditPart()).resolveSemanticElement() instanceof Entity
+																 && ((IGraphicalEditPart)request.getTargetEditPart()).resolveSemanticElement() instanceof Entity
+																 )
 							return "Create new Connection";
 						return super.getText(object);
 					}
