@@ -9,7 +9,9 @@ import org.eclipse.swt.graphics.Image;
 
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.Activator;
 import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.IPopupToolBarProvider;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Entity;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
+import de.uni_mannheim.informatik.swt.models.plm.diagram.providers.PLMElementTypes;
 
 public class TextualModelEditorPopupToolBarProvider implements IPopupToolBarProvider {
 
@@ -30,6 +32,11 @@ public class TextualModelEditorPopupToolBarProvider implements IPopupToolBarProv
 			imageDescriptor = Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "/icons/text16.gif");
 			image = imageDescriptor.createImage();
 			result.add(new PopupToolBarToolWrapper(image, new OpenTextualModelEditorPopupBarTool((IGraphicalEditPart)host, null), "Open in Textual Model Editor", "textualDSL"));
+		} 
+		else if (((IGraphicalEditPart)host).resolveSemanticElement() instanceof Entity){
+			imageDescriptor = Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "/icons/text16.gif");
+			image = imageDescriptor.createImage();
+			result.add(new PopupToolBarToolWrapper(image, new InstantiatatePopupBarTool2((IGraphicalEditPart)host, null), "Instantiatiate", "inst"));
 		}
 			
 		
