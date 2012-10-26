@@ -24,6 +24,13 @@ import de.uni_mannheim.informatik.swt.models.plm.graphicalrepresentation.graphic
 public interface IGraphicalVisualizationService {
 	
 	/**
+	 * Returns the ID of the visualization editor
+	 * 
+	 * @return the ID of the visualization editor
+	 */
+	public String getGraphicalVisualizationEditorViewID();
+	
+	/**
 	 * Runs the transformation
 	 * 
 	 * @param v graphical dsl visualizer to translate into a figure
