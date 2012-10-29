@@ -30,5 +30,13 @@
             id="de.uni_mannheim.informatik.swt.plm.workbench.eobjectcommandparametertype">
       </commandParameterType>
    </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="de.uni_mannheim.informatik.swt.mlm.workbench.prespective.MelaniePerspectiveFactory"
+            id="de.uni_mannheim.informatik.swt.mlm.workbench.melanieperspective"
+            name="Melanie">
+      </perspective>
+   </extension>
 
 </plugin>
