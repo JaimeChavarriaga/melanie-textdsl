@@ -20,7 +20,10 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.IPersistableElement;
 import org.eclipse.ui.IStorageEditorInput;
 
+import de.uni_mannheim.informatik.swt.models.plm.PLM.AbstractVisualizer;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.LMLVisualizer;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
+import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.TextualDSLVisualizer;
 
 /**
  * http://wiki.eclipse.org/FAQ_How_do_I_open_an_editor_on_something_that_is_not_a_file%3F
@@ -85,7 +88,15 @@ public class MultiLevelModelEditorInput implements IStorageEditorInput {
 
 		@Override
 		public InputStream getContents() throws CoreException {
-			return new ByteArrayInputStream("Replace me".getBytes());
+			TextualDSLVisualizer visualizer = null;
+			for (LMLVisualizer lmlVisualizer : modelToEdit.getVisualizer())
+				for (AbstractVisualizer dslVisualizer : lmlVisualizer.getDslVisualizer())
+					if (dslVisualizer instanceof TextualDSLVisualizer){
+						visualizer = (TextualDSLVisualizer)dslVisualizer;
+						break;
+					}
+				
+			return new ByteArrayInputStream(String.format((visualizer != null ? visualizer.createTextualVisualization() : "No Textual Representation found")).getBytes());
 		}
 
 		@Override
