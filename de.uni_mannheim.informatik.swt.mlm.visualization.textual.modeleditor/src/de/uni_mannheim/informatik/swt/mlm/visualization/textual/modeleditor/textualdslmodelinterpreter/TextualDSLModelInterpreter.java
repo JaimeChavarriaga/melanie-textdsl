@@ -110,7 +110,6 @@ public class TextualDSLModelInterpreter {
 		}			
 		else
 			return "";
-			
 		
 		return result;
 	}
