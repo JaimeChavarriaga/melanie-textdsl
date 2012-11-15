@@ -10,7 +10,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="TextualDSLVisualizer" eSuperTypes="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//AbstractVisualizer">
     <eOperations name="createTextualVisualization" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL">
-        <details key="body" value="self.content->iterate(c:TextualVisualizationDescriptor; resultValue:String = '' | resultValue.concat(c.getValue()))"/>
+        <details key="body" value="if (self.root.oclIsUndefined()) then&#xD;&#xA;&#x9;self.content->iterate(c:TextualVisualizationDescriptor; resultValue:String = '' | resultValue.concat(c.getValue()))&#xD;&#xA;else&#xD;&#xA;&#x9;let textualDSLVisualizer:TextualDSLVisualizer =&#xD;&#xA;&#x9;&#x9;self.root.visualizer.dslVisualizer->select(v | v.oclIsTypeOf(TextualDSLVisualizer))->first().oclAsType(TextualDSLVisualizer)&#xD;&#xA;&#x9;in&#xD;&#xA;&#x9;if (textualDSLVisualizer.oclIsUndefined()) then&#xD;&#xA;&#x9;&#x9;''&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;textualDSLVisualizer.createTextualVisualization()&#xD;&#xA;&#x9;endif&#xD;&#xA;endif"/>
       </eAnnotations>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Returns the textual visualization of the containing model element"/>
@@ -34,6 +34,11 @@
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="content" upperBound="-1"
         eType="#//TextualVisualizationDescriptor" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="root" eType="ecore:EClass ../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Clabject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="This specifies the root element from which to start visualization if no own &#xD;&#xA;textual syntax is declared. This is used if one want to e.g. render the content &#xD;&#xA;of a model. Leave blank if textual representation is specified."/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TextualVisualizationDescriptor" abstract="true">
     <eOperations name="getValue" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
