@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 University of Mannheim: Chair for Software Engineering
+ * Copyright (c) 2012 University of Mannheim: Chair for Software Engineering
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,12 +10,15 @@
  *******************************************************************************/
 package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.popupbartools;
 
-import java.util.LinkedList;
-
-import org.eclipse.emf.edit.command.SetCommand;
-import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
+
+import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.Activator;
+import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors.MultiLevelModelEditorInput;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
 
 
 public class OpenTextualModelEditorOnModelElementCommand extends Command{
@@ -34,6 +37,11 @@ public class OpenTextualModelEditorOnModelElementCommand extends Command{
 	public void execute() {
 		super.execute();
 		
-		
+		IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+		try {
+			page.openEditor(new MultiLevelModelEditorInput((Model)((IGraphicalEditPart)host).resolveSemanticElement()), Activator.PLUGIN_ID, true);
+		} catch (PartInitException e) {
+			e.printStackTrace();
+		}
 	}
 }
