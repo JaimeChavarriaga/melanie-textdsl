@@ -3,9 +3,11 @@ package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.edi
 import org.eclipse.jface.text.*;
 import org.eclipse.jface.text.rules.*;
 
+import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors.sourceviewerconfiguration.MultilevelColorProvider;
+
 public class XMLTagScanner extends RuleBasedScanner {
 
-	public XMLTagScanner(ColorManager manager) {
+	public XMLTagScanner(MultilevelColorProvider manager) {
 		IToken string =
 			new Token(
 				new TextAttribute(manager.getColor(IMultiLevelModelColorConstants.STRING)));

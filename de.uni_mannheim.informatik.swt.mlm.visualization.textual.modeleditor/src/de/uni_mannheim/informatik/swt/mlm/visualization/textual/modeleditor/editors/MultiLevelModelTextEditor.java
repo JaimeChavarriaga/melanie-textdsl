@@ -12,18 +12,21 @@ package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.edi
 
 import org.eclipse.ui.editors.text.TextEditor;
 
+import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors.sourceviewerconfiguration.MultiLevelModelViewerConfiguration;
+import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors.sourceviewerconfiguration.MultilevelColorProvider;
+
 public class MultiLevelModelTextEditor extends TextEditor {
 
-	private ColorManager colorManager;
+	private MultilevelColorProvider multilevelColorProvider;
 
 	public MultiLevelModelTextEditor() {
 		super();
-		colorManager = new ColorManager();
-		setSourceViewerConfiguration(new MultiLevelModelViewerConfiguration(colorManager));
+		multilevelColorProvider = new MultilevelColorProvider();
+		setSourceViewerConfiguration(new MultiLevelModelViewerConfiguration(multilevelColorProvider));
 		setDocumentProvider(new MultiLevelModelDocumentProvider());
 	}
 	public void dispose() {
-		colorManager.dispose();
+		multilevelColorProvider.dispose();
 		super.dispose();
 	}
 

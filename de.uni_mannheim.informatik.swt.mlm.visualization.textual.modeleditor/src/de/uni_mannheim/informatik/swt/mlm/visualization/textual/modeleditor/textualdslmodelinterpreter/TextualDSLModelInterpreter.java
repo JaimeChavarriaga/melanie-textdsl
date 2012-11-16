@@ -13,6 +13,8 @@ package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.tex
 import java.util.ArrayList;
 import java.util.List;
 
+import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors.sourceviewerconfiguration.MultiLevelModelPartitionScanner;
+import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors.sourceviewerconfiguration.PatternDescriptor;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.AbstractDSLVisualizer;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
@@ -52,8 +54,11 @@ public class TextualDSLModelInterpreter {
 			return "";
 		
 		if (textualVisualizer.getRoot() != null){
+			MultiLevelModelPartitionScanner.clearPartitions();
 			return getTextualRepresentation(textualVisualizer.getRoot());
 		}
+		
+		registerPartition(textualVisualizer, root);
 		
 		for(TextualVisualizationDescriptor desc : textualVisualizer.getContent())
 			if (desc instanceof Literal)
@@ -62,6 +67,40 @@ public class TextualDSLModelInterpreter {
 				result += getValue((Value)desc, root);
 		
 		return result;
+	}
+	
+	static private void registerPartition(TextualDSLVisualizer v, Element root){
+		
+		if (v.getContent().size() == 0)
+			return;
+		
+		String startPattern = "";
+		String endPattern = "";
+		
+		for (TextualVisualizationDescriptor d : v.getContent())
+			if (d instanceof Literal)
+				startPattern += d.getExpression();
+			else{
+				startPattern = startPattern.replace("%n", "");
+				if ("".equals(startPattern))
+					continue;
+				else
+					break;
+			}
+		
+		for (int i = v.getContent().size() - 1; i > 0; i--)
+			if (v.getContent().get(i) instanceof Literal)
+				endPattern = v.getContent().get(i).getExpression() + endPattern;
+			else{
+				endPattern = endPattern.replace("%n", "");
+				if ("".equals(endPattern))
+					continue;
+				else
+					break;
+			}
+		
+		PatternDescriptor pd = new PatternDescriptor(startPattern, endPattern, false);
+		MultiLevelModelPartitionScanner.addPartition(root, pd);
 	}
 	
 	static private String getLiteral(Literal l){
