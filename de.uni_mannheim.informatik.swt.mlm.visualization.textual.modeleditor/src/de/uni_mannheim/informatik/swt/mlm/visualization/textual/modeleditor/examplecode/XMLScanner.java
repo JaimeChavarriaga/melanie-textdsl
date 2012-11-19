@@ -1,3 +1,4 @@
+package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.examplecode;
 //package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors;
 //
 //import org.eclipse.jface.text.rules.*;

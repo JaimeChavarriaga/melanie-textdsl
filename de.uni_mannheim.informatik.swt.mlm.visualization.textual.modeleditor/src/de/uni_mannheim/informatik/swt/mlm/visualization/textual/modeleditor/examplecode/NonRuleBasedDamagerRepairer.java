@@ -1,4 +1,4 @@
-package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors;
+package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.examplecode;
 
 import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.DocumentEvent;

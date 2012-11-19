@@ -9,8 +9,7 @@ import org.eclipse.jface.text.rules.Token;
 import org.eclipse.jface.text.source.ISourceViewer;
 import org.eclipse.jface.text.source.SourceViewerConfiguration;
 
-import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors.IMultiLevelModelColorConstants;
-import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors.XMLDoubleClickStrategy;
+import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.examplecode.XMLDoubleClickStrategy;
 
 public class MultiLevelModelViewerConfiguration extends SourceViewerConfiguration {
 	private XMLDoubleClickStrategy doubleClickStrategy;

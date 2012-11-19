@@ -1,4 +1,4 @@
-package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors;
+package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors.sourceviewerconfiguration;
 
 import org.eclipse.swt.graphics.RGB;
 

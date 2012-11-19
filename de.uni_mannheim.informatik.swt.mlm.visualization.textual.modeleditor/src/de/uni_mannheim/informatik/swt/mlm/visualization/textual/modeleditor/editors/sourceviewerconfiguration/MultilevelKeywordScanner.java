@@ -21,7 +21,6 @@ import org.eclipse.jface.text.rules.RuleBasedScanner;
 import org.eclipse.jface.text.rules.Token;
 import org.eclipse.jface.text.rules.WordRule;
 
-import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors.IMultiLevelModelColorConstants;
 
 public class MultilevelKeywordScanner extends RuleBasedScanner {
 	
