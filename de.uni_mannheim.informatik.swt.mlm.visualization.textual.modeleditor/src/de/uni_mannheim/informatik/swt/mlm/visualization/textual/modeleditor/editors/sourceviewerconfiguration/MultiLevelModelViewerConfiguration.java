@@ -12,23 +12,16 @@ import org.eclipse.jface.text.source.SourceViewerConfiguration;
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.examplecode.XMLDoubleClickStrategy;
 
 public class MultiLevelModelViewerConfiguration extends SourceViewerConfiguration {
-	private XMLDoubleClickStrategy doubleClickStrategy;
+	
 	private MultilevelKeywordScanner multilevelKeywordScanner;
-	//private XMLScanner scanner;
 	private MultilevelColorProvider multilevelColorProvider;
 
 	public MultiLevelModelViewerConfiguration(MultilevelColorProvider multilevelColorProvider) {
 		this.multilevelColorProvider = multilevelColorProvider;
 	}
+	
 	public String[] getConfiguredContentTypes(ISourceViewer sourceViewer) {
 		return MultiLevelModelPartitionScanner.getPartitionNames();
-	}
-	public ITextDoubleClickStrategy getDoubleClickStrategy(
-		ISourceViewer sourceViewer,
-		String contentType) {
-		if (doubleClickStrategy == null)
-			doubleClickStrategy = new XMLDoubleClickStrategy();
-		return doubleClickStrategy;
 	}
 	
 	protected MultilevelKeywordScanner getMultiLevelModelKeywordScanner() {
@@ -56,5 +49,13 @@ public class MultiLevelModelViewerConfiguration extends SourceViewerConfiguratio
 
 		return reconciler;
 	}
-
 }
+
+//private XMLDoubleClickStrategy doubleClickStrategy;
+//public ITextDoubleClickStrategy getDoubleClickStrategy(
+//		ISourceViewer sourceViewer,
+//		String contentType) {
+//		if (doubleClickStrategy == null)
+//			doubleClickStrategy = new XMLDoubleClickStrategy();
+//		return doubleClickStrategy;
+//}
