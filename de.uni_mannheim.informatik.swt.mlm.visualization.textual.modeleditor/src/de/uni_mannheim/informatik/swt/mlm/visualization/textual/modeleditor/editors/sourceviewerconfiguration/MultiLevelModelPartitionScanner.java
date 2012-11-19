@@ -26,10 +26,14 @@ import org.eclipse.jface.text.rules.Token;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 
 public class MultiLevelModelPartitionScanner extends RuleBasedPartitionScanner {
-	public final static Map<Element, PatternDescriptor> PARTITIONS = new HashMap<>();
+	public final Map<Element, PatternDescriptor> PARTITIONS = new HashMap<>();
 
+	public static MultiLevelModelPartitionScanner LatestInstance;
+	
 	public MultiLevelModelPartitionScanner() {
 
+		LatestInstance = this;
+		
 		List<IPredicateRule> rules = new ArrayList<>();
 		
 		for (Element e : PARTITIONS.keySet()){
@@ -44,9 +48,9 @@ public class MultiLevelModelPartitionScanner extends RuleBasedPartitionScanner {
 		setPredicateRules(rules.toArray(new IPredicateRule[]{}));		
 	}
 	
-	static public String[] getPartitionNames(){
-		String[] contentTypes = new String[MultiLevelModelPartitionScanner.PARTITIONS.keySet().size() + 1];
-		Element[] elements = MultiLevelModelPartitionScanner.PARTITIONS.keySet().toArray(new Element[]{});
+	public String[] getPartitionNames(){
+		String[] contentTypes = new String[PARTITIONS.keySet().size() + 1];
+		Element[] elements = PARTITIONS.keySet().toArray(new Element[]{});
 		
 		contentTypes[0] = IDocument.DEFAULT_CONTENT_TYPE;
 		
@@ -56,15 +60,15 @@ public class MultiLevelModelPartitionScanner extends RuleBasedPartitionScanner {
 		return contentTypes;
 	}
 	
-	static public void clearPartitions(){
+	public void clearPartitions(){
 		PARTITIONS.clear();
 	}
 	
-	static public void addPartition(Element e, PatternDescriptor d){
+	public void addPartition(Element e, PatternDescriptor d){
 		PARTITIONS.put(e, d);
 	}
 	
-	static public void addAllPartitions(Map<Element, PatternDescriptor> partitions){
+	public void addAllPartitions(Map<Element, PatternDescriptor> partitions){
 		for (Element e : partitions.keySet())
 			addPartition(e, partitions.get(e));
 	}

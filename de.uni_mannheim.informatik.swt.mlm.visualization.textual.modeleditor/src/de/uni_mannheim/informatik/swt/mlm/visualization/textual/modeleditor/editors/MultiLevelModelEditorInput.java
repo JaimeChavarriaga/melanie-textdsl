@@ -20,6 +20,7 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.IPersistableElement;
 import org.eclipse.ui.IStorageEditorInput;
 
+import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors.sourceviewerconfiguration.MultiLevelModelPartitionScanner;
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.textualdslmodelinterpreter.TextualDSLModelInterpreter;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
 
@@ -31,9 +32,16 @@ public class MultiLevelModelEditorInput implements IStorageEditorInput {
 	private IStorage storage;
 	private Model modelToEdit;
 	
+	private MultiLevelModelPartitionScanner partitionScanner;
+	
+	public MultiLevelModelPartitionScanner getMultiLevelModelPartitionScanner(){
+		return partitionScanner;
+	}
+	
 	public MultiLevelModelEditorInput(Model modelToEdit){
 		this.modelToEdit = modelToEdit;
 		storage = new MultiLevelModelStorage(modelToEdit);
+		partitionScanner = new MultiLevelModelPartitionScanner();
 	}
 	
 	@Override
@@ -86,14 +94,8 @@ public class MultiLevelModelEditorInput implements IStorageEditorInput {
 
 		@Override
 		public InputStream getContents() throws CoreException {
-//			TextualDSLVisualizer visualizer = null;
-//			for (LMLVisualizer lmlVisualizer : modelToEdit.getVisualizer())
-//				for (AbstractVisualizer dslVisualizer : lmlVisualizer.getDslVisualizer())
-//					if (dslVisualizer instanceof TextualDSLVisualizer){
-//						visualizer = (TextualDSLVisualizer)dslVisualizer;
-//						break;
-//					}
-			String input = TextualDSLModelInterpreter.getTextualRepresentation(modelToEdit);
+			TextualDSLModelInterpreter interpreter = new TextualDSLModelInterpreter(partitionScanner);
+			String input = interpreter.getTextualRepresentation(modelToEdit);
 			input = String.format(input);
 			return new ByteArrayInputStream((input!= "" ? input : "No textual representation found!").getBytes());
 		}
@@ -112,6 +114,5 @@ public class MultiLevelModelEditorInput implements IStorageEditorInput {
 		public boolean isReadOnly() {
 			return false;
 		}
-		
 	}
 }

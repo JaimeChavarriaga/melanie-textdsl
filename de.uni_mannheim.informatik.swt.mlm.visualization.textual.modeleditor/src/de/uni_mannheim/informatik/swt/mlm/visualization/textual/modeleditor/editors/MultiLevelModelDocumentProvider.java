@@ -12,11 +12,13 @@ public class MultiLevelModelDocumentProvider extends FileDocumentProvider {
 
 	protected IDocument createDocument(Object element) throws CoreException {
 		IDocument document = super.createDocument(element);
+		MultiLevelModelEditorInput input = (MultiLevelModelEditorInput)element;
+		
 		if (document != null) {
 			IDocumentPartitioner partitioner =
 				new FastPartitioner(
 					new MultiLevelModelPartitionScanner(),
-					MultiLevelModelPartitionScanner.getPartitionNames());
+					input.getMultiLevelModelPartitionScanner().getPartitionNames());
 			partitioner.connect(document);
 			document.setDocumentPartitioner(partitioner);
 		}

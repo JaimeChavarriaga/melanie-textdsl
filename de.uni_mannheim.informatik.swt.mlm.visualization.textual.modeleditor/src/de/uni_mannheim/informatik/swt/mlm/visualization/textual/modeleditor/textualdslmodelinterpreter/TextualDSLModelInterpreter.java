@@ -33,7 +33,13 @@ import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualre
  */
 public class TextualDSLModelInterpreter {
 
-	static public String getTextualRepresentation(Element root){
+	MultiLevelModelPartitionScanner partitionScanner;
+	
+	public TextualDSLModelInterpreter(MultiLevelModelPartitionScanner scanner){
+		partitionScanner = scanner;
+	}
+	
+	public String getTextualRepresentation(Element root){
 		String result = "";
 		
 		TextualDSLVisualizer textualVisualizer = null;
@@ -54,7 +60,6 @@ public class TextualDSLModelInterpreter {
 			return "";
 		
 		if (textualVisualizer.getRoot() != null){
-			MultiLevelModelPartitionScanner.clearPartitions();
 			return getTextualRepresentation(textualVisualizer.getRoot());
 		}
 		
@@ -69,7 +74,7 @@ public class TextualDSLModelInterpreter {
 		return result;
 	}
 	
-	static private void registerPartition(TextualDSLVisualizer v, Element root){
+	private void registerPartition(TextualDSLVisualizer v, Element root){
 		
 		if (v.getContent().size() == 0)
 			return;
@@ -100,14 +105,14 @@ public class TextualDSLModelInterpreter {
 			}
 		
 		PatternDescriptor pd = new PatternDescriptor(startPattern, endPattern, false);
-		MultiLevelModelPartitionScanner.addPartition(root, pd);
+		partitionScanner.addPartition(root, pd);
 	}
 	
-	static private String getLiteral(Literal l){
+	private String getLiteral(Literal l){
 		return l.getExpression();
 	}
 	
-	static private String getValue(Value v, Element modelElement){
+	private String getValue(Value v, Element modelElement){
 		String result = "";
 		String expression = v.getExpression();
 		
