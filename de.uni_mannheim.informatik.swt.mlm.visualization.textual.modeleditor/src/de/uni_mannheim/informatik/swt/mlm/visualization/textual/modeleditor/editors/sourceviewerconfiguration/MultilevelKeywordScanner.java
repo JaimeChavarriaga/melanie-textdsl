@@ -21,12 +21,14 @@ import org.eclipse.jface.text.rules.RuleBasedScanner;
 import org.eclipse.jface.text.rules.Token;
 import org.eclipse.jface.text.rules.WordRule;
 
-public class MultilevelCodeScanner extends RuleBasedScanner {
+import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors.IMultiLevelModelColorConstants;
+
+public class MultilevelKeywordScanner extends RuleBasedScanner {
 	
 	private static String[] keywords = {"package", "class", "private", "public"};
 	
-	public MultilevelCodeScanner(MultilevelColorProvider colorProvider){
-		IToken keyword = new Token(new TextAttribute(colorProvider.XML_COMMENT));
+	public MultilevelKeywordScanner(MultilevelColorProvider colorProvider){
+		IToken keyword = new Token(new TextAttribute(colorProvider.getColor(IMultiLevelModelColorConstants.KEYWORD)));
 		
 		List<IRule> rules = new ArrayList<>();
 		
@@ -48,6 +50,5 @@ public class MultilevelCodeScanner extends RuleBasedScanner {
 			wr.addWord(str, keyword);
 		
 		setRules(rules.toArray(new IRule[]{}));
-	}
-	
+	}	
 }

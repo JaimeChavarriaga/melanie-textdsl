@@ -21,9 +21,6 @@ import org.eclipse.swt.widgets.Display;
 public class MultilevelColorProvider {
 
 	protected Map fColorTable = new HashMap(10);
-	
-	public final Color XML_COMMENT = getColor(new RGB(128, 128, 0));
-	
 
 	public void dispose() {
 		Iterator e = fColorTable.values().iterator();
