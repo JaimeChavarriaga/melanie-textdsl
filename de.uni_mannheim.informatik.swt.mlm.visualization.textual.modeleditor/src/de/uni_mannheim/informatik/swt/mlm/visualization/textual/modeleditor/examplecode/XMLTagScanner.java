@@ -11,7 +11,7 @@ package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.exa
 //	public XMLTagScanner(MultilevelColorProvider manager) {
 //		IToken string =
 //			new Token(
-//				new TextAttribute(manager.getColor(IMultiLevelModelColorConstants.STRING)));
+//				new TextAttribute(manager.getColor(MultiLevelModelColorConstants.STRING)));
 //
 //		IRule[] rules = new IRule[3];
 //

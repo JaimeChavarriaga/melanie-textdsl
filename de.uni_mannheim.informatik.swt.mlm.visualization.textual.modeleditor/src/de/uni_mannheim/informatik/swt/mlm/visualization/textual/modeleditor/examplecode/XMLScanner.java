@@ -12,7 +12,7 @@ package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.exa
 //		IToken procInstr =
 //			new Token(
 //				new TextAttribute(
-//					manager.getColor(IMultiLevelModelColorConstants.PROC_INSTR)));
+//					manager.getColor(MultiLevelModelColorConstants.PROC_INSTR)));
 //
 //		IRule[] rules = new IRule[2];
 //		//Add rule for processing instructions
