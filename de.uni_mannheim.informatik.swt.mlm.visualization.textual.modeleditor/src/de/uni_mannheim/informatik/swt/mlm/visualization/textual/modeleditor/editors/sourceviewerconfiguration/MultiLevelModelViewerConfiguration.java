@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2012 University of Mannheim: Chair for Software Engineering
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Ralph Gerbig - initial API and implementation and initial documentation
+ *******************************************************************************/
 package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors.sourceviewerconfiguration;
 
 import org.eclipse.jface.text.TextAttribute;
@@ -25,11 +35,13 @@ public class MultiLevelModelViewerConfiguration extends SourceViewerConfiguratio
 	
 	protected MultilevelKeywordScanner getMultiLevelModelKeywordScanner() {
 		if (multilevelKeywordScanner == null) {
-			multilevelKeywordScanner = new MultilevelKeywordScanner(multilevelColorProvider);
+			multilevelKeywordScanner = MultilevelKeywordScanner.LATEST_INSTANCE;
+			multilevelKeywordScanner.setColorProvider(multilevelColorProvider);
+			multilevelKeywordScanner.init();
 			multilevelKeywordScanner.setDefaultReturnToken(
 				new Token(
 					new TextAttribute(
-						multilevelColorProvider.getColor(IMultiLevelModelColorConstants.DEFAULT))));
+						multilevelColorProvider.getColor(multilevelColorProvider.getMultiLevelModelColorConstants().getColor(multilevelColorProvider.getMultiLevelModelColorConstants().DEFAULT_KEY)))));
 		}
 		return multilevelKeywordScanner;
 	}
@@ -39,7 +51,6 @@ public class MultiLevelModelViewerConfiguration extends SourceViewerConfiguratio
 		sourceViewer.getDocument();
 		//TODO:This could not be working anymore if multiple editors are opened at the same time
 		for(String contentType : MultiLevelModelPartitionScanner.LatestInstance.getPartitionNames()){
-		
 			DefaultDamagerRepairer dr = new DefaultDamagerRepairer(getMultiLevelModelKeywordScanner());
 			reconciler.setDamager(dr, contentType);
 			reconciler.setRepairer(dr, contentType);

@@ -6,8 +6,6 @@ import org.eclipse.jface.text.IDocumentPartitioner;
 import org.eclipse.jface.text.rules.FastPartitioner;
 import org.eclipse.ui.editors.text.FileDocumentProvider;
 
-import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors.sourceviewerconfiguration.MultiLevelModelPartitionScanner;
-
 public class MultiLevelModelDocumentProvider extends FileDocumentProvider {
 
 	protected IDocument createDocument(Object element) throws CoreException {
@@ -17,7 +15,7 @@ public class MultiLevelModelDocumentProvider extends FileDocumentProvider {
 		if (document != null) {
 			IDocumentPartitioner partitioner =
 				new FastPartitioner(
-					new MultiLevelModelPartitionScanner(),
+					input.getMultiLevelModelPartitionScanner(),
 					input.getMultiLevelModelPartitionScanner().getPartitionNames());
 			partitioner.connect(document);
 			document.setDocumentPartitioner(partitioner);

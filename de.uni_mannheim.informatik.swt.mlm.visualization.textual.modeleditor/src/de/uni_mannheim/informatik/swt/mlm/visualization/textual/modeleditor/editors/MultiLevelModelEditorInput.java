@@ -20,7 +20,9 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.IPersistableElement;
 import org.eclipse.ui.IStorageEditorInput;
 
+import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors.sourceviewerconfiguration.MultiLevelModelColorConstants;
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors.sourceviewerconfiguration.MultiLevelModelPartitionScanner;
+import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors.sourceviewerconfiguration.MultilevelKeywordScanner;
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.textualdslmodelinterpreter.TextualDSLModelInterpreter;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
 
@@ -33,15 +35,24 @@ public class MultiLevelModelEditorInput implements IStorageEditorInput {
 	private Model modelToEdit;
 	
 	private MultiLevelModelPartitionScanner partitionScanner;
+	private MultilevelKeywordScanner keyWordScanner;
+	private MultiLevelModelColorConstants colorConstants;
+	
 	
 	public MultiLevelModelPartitionScanner getMultiLevelModelPartitionScanner(){
 		return partitionScanner;
+	}
+	
+	public MultilevelKeywordScanner getMultiLevelKeywordScanner(){
+		return keyWordScanner;
 	}
 	
 	public MultiLevelModelEditorInput(Model modelToEdit){
 		this.modelToEdit = modelToEdit;
 		storage = new MultiLevelModelStorage(modelToEdit);
 		partitionScanner = new MultiLevelModelPartitionScanner();
+		keyWordScanner = new MultilevelKeywordScanner();
+		colorConstants = new MultiLevelModelColorConstants();
 	}
 	
 	@Override
@@ -94,7 +105,7 @@ public class MultiLevelModelEditorInput implements IStorageEditorInput {
 
 		@Override
 		public InputStream getContents() throws CoreException {
-			TextualDSLModelInterpreter interpreter = new TextualDSLModelInterpreter(partitionScanner);
+			TextualDSLModelInterpreter interpreter = new TextualDSLModelInterpreter(partitionScanner, keyWordScanner, colorConstants);
 			String input = interpreter.getTextualRepresentation(modelToEdit);
 			input = String.format(input);
 			return new ByteArrayInputStream((input!= "" ? input : "No textual representation found!").getBytes());

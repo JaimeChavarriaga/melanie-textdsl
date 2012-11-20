@@ -13,7 +13,11 @@ package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.tex
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.swt.graphics.RGB;
+
+import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors.sourceviewerconfiguration.MultiLevelModelColorConstants;
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors.sourceviewerconfiguration.MultiLevelModelPartitionScanner;
+import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors.sourceviewerconfiguration.MultilevelKeywordScanner;
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors.sourceviewerconfiguration.PatternDescriptor;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.AbstractDSLVisualizer;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
@@ -22,6 +26,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Role;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.Literal;
+import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.RGBColor;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.TextualDSLVisualizer;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.TextualVisualizationDescriptor;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.Value;
@@ -34,9 +39,14 @@ import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualre
 public class TextualDSLModelInterpreter {
 
 	MultiLevelModelPartitionScanner partitionScanner;
+	MultilevelKeywordScanner keywordScanner;
+	MultiLevelModelColorConstants colorConstants;
 	
-	public TextualDSLModelInterpreter(MultiLevelModelPartitionScanner scanner){
-		partitionScanner = scanner;
+	public TextualDSLModelInterpreter(MultiLevelModelPartitionScanner partitionScanner, 
+			MultilevelKeywordScanner keywordScanner, MultiLevelModelColorConstants colorConstants){
+		this.partitionScanner = partitionScanner;
+		this.keywordScanner = keywordScanner;
+		this.colorConstants = colorConstants;
 	}
 	
 	public String getTextualRepresentation(Element root){
@@ -74,6 +84,34 @@ public class TextualDSLModelInterpreter {
 		return result;
 	}
 	
+	/**
+	 * Registers keywords. Keywords need to be registered to the keyword scanner
+	 * and to the color provider.
+	 * 
+	 * @param l Literal to register as keyword
+	 */
+	private void registerKeyword(Literal l){
+		if (l.getColor() == null &&
+				! (l.getColor() instanceof RGBColor))
+			return;
+		
+		keywordScanner.addKeyWord(l.getExpression().trim());
+		
+		RGBColor color = (RGBColor)l.getColor();
+		RGB rgb = new RGB(color.getR(), color.getG(),color.getB());
+		colorConstants.putColor(l.getExpression().trim(), rgb);
+	}
+	
+	/**
+	 * Adds a partition to the partition scanner. Patterns are built out of the literals
+	 * specified in the visualizer. The algorithm for the start pattern collects all 
+	 * literals until the first value is reached. If the first statement is a value it
+	 * starts at the first following literal. The end pattern is built in the same way
+	 * by searching the visualizer content in reverse order.
+	 * 
+	 * @param v Textual visualizer which contains information to build the patterns from.
+	 * @param root The model element for which the visualizer is defined.
+	 */
 	private void registerPartition(TextualDSLVisualizer v, Element root){
 		
 		if (v.getContent().size() == 0)
@@ -109,6 +147,8 @@ public class TextualDSLModelInterpreter {
 	}
 	
 	private String getLiteral(Literal l){
+		if (l.getColor() != null)
+			registerKeyword(l);
 		return l.getExpression();
 	}
 	
