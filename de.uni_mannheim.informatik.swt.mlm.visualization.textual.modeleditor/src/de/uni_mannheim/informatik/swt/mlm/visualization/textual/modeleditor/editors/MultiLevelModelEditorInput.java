@@ -11,11 +11,17 @@
 package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.util.Collections;
 
 import org.eclipse.core.resources.IStorage;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.IPersistableElement;
 import org.eclipse.ui.IStorageEditorInput;
@@ -25,6 +31,8 @@ import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.edit
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors.sourceviewerconfiguration.MultilevelKeywordScanner;
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.textualdslmodelinterpreter.TextualDSLModelInterpreter;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
+import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.M2TWeavingFactory;
+import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingModel;
 
 /**
  * http://wiki.eclipse.org/FAQ_How_do_I_open_an_editor_on_something_that_is_not_a_file%3F
@@ -37,7 +45,12 @@ public class MultiLevelModelEditorInput implements IStorageEditorInput {
 	private MultiLevelModelPartitionScanner partitionScanner;
 	private MultilevelKeywordScanner keyWordScanner;
 	private MultiLevelModelColorConstants colorConstants;
+	private WeavingModel weavingModel;
 	
+	
+	public WeavingModel getWeavingModel(){
+		return weavingModel;
+	}
 	
 	public MultiLevelModelPartitionScanner getMultiLevelModelPartitionScanner(){
 		return partitionScanner;
@@ -53,6 +66,7 @@ public class MultiLevelModelEditorInput implements IStorageEditorInput {
 		partitionScanner = new MultiLevelModelPartitionScanner();
 		keyWordScanner = new MultilevelKeywordScanner();
 		colorConstants = new MultiLevelModelColorConstants();
+		weavingModel = M2TWeavingFactory.eINSTANCE.createWeavingModel();
 	}
 	
 	@Override
@@ -105,9 +119,19 @@ public class MultiLevelModelEditorInput implements IStorageEditorInput {
 
 		@Override
 		public InputStream getContents() throws CoreException {
-			TextualDSLModelInterpreter interpreter = new TextualDSLModelInterpreter(partitionScanner, keyWordScanner, colorConstants);
+			TextualDSLModelInterpreter interpreter = new TextualDSLModelInterpreter(partitionScanner, keyWordScanner, colorConstants, weavingModel);
 			String input = interpreter.getTextualRepresentation(modelToEdit);
 			input = String.format(input);
+			
+			ResourceSet resourceSet = new ResourceSetImpl();
+			Resource resource = resourceSet.createResource(URI.createPlatformResourceURI("/TargetWSProject/xxx_tempWeavingModel.m2tweaving", true));
+			resource.getContents().add(weavingModel);
+			try {
+				resource.save(Collections.EMPTY_MAP);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
 			return new ByteArrayInputStream((input!= "" ? input : "No textual representation found!").getBytes());
 		}
 

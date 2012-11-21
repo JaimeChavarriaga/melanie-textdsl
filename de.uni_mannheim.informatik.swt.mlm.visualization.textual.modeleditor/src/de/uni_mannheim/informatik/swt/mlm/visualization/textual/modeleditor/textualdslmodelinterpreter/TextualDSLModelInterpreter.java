@@ -30,6 +30,10 @@ import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualre
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.TextualDSLVisualizer;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.TextualVisualizationDescriptor;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.Value;
+import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.M2TWeavingFactory;
+import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.TextElement;
+import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingLink;
+import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingModel;
 
 
 /**
@@ -41,15 +45,23 @@ public class TextualDSLModelInterpreter {
 	MultiLevelModelPartitionScanner partitionScanner;
 	MultilevelKeywordScanner keywordScanner;
 	MultiLevelModelColorConstants colorConstants;
+	WeavingModel weavingModel;
 	
 	public TextualDSLModelInterpreter(MultiLevelModelPartitionScanner partitionScanner, 
-			MultilevelKeywordScanner keywordScanner, MultiLevelModelColorConstants colorConstants){
+			MultilevelKeywordScanner keywordScanner, MultiLevelModelColorConstants colorConstants,
+			WeavingModel weavinModel){
 		this.partitionScanner = partitionScanner;
 		this.keywordScanner = keywordScanner;
 		this.colorConstants = colorConstants;
+		this.weavingModel = weavinModel;
 	}
 	
 	public String getTextualRepresentation(Element root){
+		
+		//First we add it to the model without text so that
+		//its children can be added to the weaving model
+		createWeavingLink(root, null, null);
+		
 		String result = "";
 		
 		TextualDSLVisualizer textualVisualizer = null;
@@ -80,6 +92,9 @@ public class TextualDSLModelInterpreter {
 				result += getLiteral((Literal)desc);
 			else
 				result += getValue((Value)desc, root);
+		
+		//Second add the generated text
+		createWeavingLink(root, result, null);
 		
 		return result;
 	}
@@ -146,6 +161,38 @@ public class TextualDSLModelInterpreter {
 		partitionScanner.addPartition(root, pd);
 	}
 	
+	private void createWeavingLink(Element element, String text, Element parent){
+		List<WeavingLink> links = weavingModel.findLinkForPLMElement(element);
+		WeavingLink link;
+		
+		if (links.size() == 0){
+			if (parent == null){
+				link = M2TWeavingFactory.eINSTANCE.createWeavingLink();
+				link.setModelElement(element);
+				weavingModel.getLinks().add(link);
+			}else{
+				List<WeavingLink> parentLinks = weavingModel.findLinkForPLMElement(parent);
+				
+				if (parentLinks.size() != 1)
+					throw new UnsupportedOperationException("Not Supported!");
+				
+				link = M2TWeavingFactory.eINSTANCE.createWeavingLink();
+				link.setModelElement(element);
+				parentLinks.get(0).getChildren().add(link);
+			}
+		} else if (links.size() == 1){
+			link = links.get(0);
+		} else{
+			throw new UnsupportedOperationException("Not Supported!");
+		}
+		
+		if (text != null){
+			TextElement textElement = M2TWeavingFactory.eINSTANCE.createTextElement();
+			textElement.setText(text);
+			link.getTextElement().add(textElement);
+		}
+	}
+	
 	private String getLiteral(Literal l){
 		if (l.getColor() != null)
 			registerKeyword(l);
@@ -167,6 +214,7 @@ public class TextualDSLModelInterpreter {
 		for (Feature f : clabject.getAllFeatures()){
 			if (expression.equals(f.getName())
 					&& f instanceof Attribute){
+				createWeavingLink(((Attribute)f), ((Attribute)f).getValue(), modelElement);
 				return ((Attribute)f).getValue();
 			}
 		}
