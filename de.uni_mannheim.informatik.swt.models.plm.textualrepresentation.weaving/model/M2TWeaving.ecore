@@ -17,6 +17,15 @@
       </eAnnotations>
       <eParameters name="element" lowerBound="1" eType="ecore:EClass ../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element"/>
     </eOperations>
+    <eOperations name="findTextElementForOffset" upperBound="-1" eType="#//TextElement">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Finds the weving linkt that starts closest before the given offset"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL">
+        <details key="body" value="let allTextElements:Set(TextElement) =&#xD;&#xA;&#x9;TextElement.allInstances()&#xD;&#xA;in&#xD;&#xA;let closestDistance:Integer = &#xD;&#xA;&#x9;allTextElements->collect(e1 | offset - e1.offset)->select(n | n > 0)->min()&#xD;&#xA;in&#xD;&#xA;allTextElements->select(e | (offset - e.offset > 0) and ( (offset - e.offset) = closestDistance) )->asOrderedSet()"/>
+      </eAnnotations>
+      <eParameters name="offset" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="links" upperBound="-1"
         eType="#//WeavingLink" containment="true"/>
   </eClassifiers>
