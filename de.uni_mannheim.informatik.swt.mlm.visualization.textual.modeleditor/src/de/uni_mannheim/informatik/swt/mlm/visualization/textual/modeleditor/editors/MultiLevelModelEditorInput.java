@@ -22,6 +22,8 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.IPersistableElement;
 import org.eclipse.ui.IStorageEditorInput;
@@ -41,12 +43,21 @@ public class MultiLevelModelEditorInput implements IStorageEditorInput {
 
 	private IStorage storage;
 	private Model modelToEdit;
+	private String modelText;
 	
 	private MultiLevelModelPartitionScanner partitionScanner;
 	private MultilevelKeywordScanner keyWordScanner;
 	private MultiLevelModelColorConstants colorConstants;
 	private WeavingModel weavingModel;
 	
+	
+	public TransactionalEditingDomain getEditingDomain(){
+		return TransactionUtil.getEditingDomain(modelToEdit);
+	}
+	
+	public String getModelText(){
+		return modelText;
+	}
 	
 	public WeavingModel getWeavingModel(){
 		return weavingModel;
@@ -132,6 +143,8 @@ public class MultiLevelModelEditorInput implements IStorageEditorInput {
 				e.printStackTrace();
 			}
 			
+			
+			modelText = input;
 			return new ByteArrayInputStream((input!= "" ? input : "No textual representation found!").getBytes());
 		}
 

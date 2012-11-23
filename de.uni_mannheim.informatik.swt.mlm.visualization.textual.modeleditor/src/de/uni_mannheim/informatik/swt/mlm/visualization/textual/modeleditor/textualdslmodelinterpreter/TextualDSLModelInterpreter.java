@@ -188,7 +188,7 @@ public class TextualDSLModelInterpreter {
 		
 		if (text != null){
 			TextElement textElement = M2TWeavingFactory.eINSTANCE.createTextElement();
-			textElement.setText(text);
+			textElement.setText(String.format(text));
 			link.getTextElement().add(textElement);
 		}
 	}
