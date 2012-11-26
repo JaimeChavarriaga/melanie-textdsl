@@ -25,6 +25,10 @@ import org.eclipse.jface.text.rules.Token;
 import org.eclipse.jface.text.rules.WordRule;
 import org.eclipse.swt.graphics.Color;
 
+/**
+ * This class is responsible for syntax highlighting of in the multi-level model
+ * defined keywords.
+ */
 public class MultilevelKeywordScanner extends RuleBasedScanner {
 	
 	private static MultilevelColorProvider colorProvider;

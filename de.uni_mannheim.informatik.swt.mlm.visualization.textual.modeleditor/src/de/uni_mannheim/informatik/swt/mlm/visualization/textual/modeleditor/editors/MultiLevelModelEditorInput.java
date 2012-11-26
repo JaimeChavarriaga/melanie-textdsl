@@ -50,6 +50,7 @@ public class MultiLevelModelEditorInput implements IStorageEditorInput {
 	private MultiLevelModelColorConstants colorConstants;
 	private WeavingModel weavingModel;
 	
+	public static MultiLevelModelEditorInput LatestInstance;
 	
 	public TransactionalEditingDomain getEditingDomain(){
 		return TransactionUtil.getEditingDomain(modelToEdit);
@@ -78,6 +79,7 @@ public class MultiLevelModelEditorInput implements IStorageEditorInput {
 		keyWordScanner = new MultilevelKeywordScanner();
 		colorConstants = new MultiLevelModelColorConstants();
 		weavingModel = M2TWeavingFactory.eINSTANCE.createWeavingModel();
+		LatestInstance = this;
 	}
 	
 	@Override

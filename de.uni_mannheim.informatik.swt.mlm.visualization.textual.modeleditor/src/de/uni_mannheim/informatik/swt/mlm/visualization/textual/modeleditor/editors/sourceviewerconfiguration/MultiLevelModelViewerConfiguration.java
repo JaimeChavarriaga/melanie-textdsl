@@ -13,10 +13,14 @@ package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.edi
 import org.eclipse.jface.text.TextAttribute;
 import org.eclipse.jface.text.presentation.IPresentationReconciler;
 import org.eclipse.jface.text.presentation.PresentationReconciler;
+import org.eclipse.jface.text.reconciler.IReconciler;
+import org.eclipse.jface.text.reconciler.MonoReconciler;
 import org.eclipse.jface.text.rules.DefaultDamagerRepairer;
 import org.eclipse.jface.text.rules.Token;
 import org.eclipse.jface.text.source.ISourceViewer;
 import org.eclipse.jface.text.source.SourceViewerConfiguration;
+
+import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors.MultiLevelModelEditorInput;
 
 public class MultiLevelModelViewerConfiguration extends SourceViewerConfiguration {
 	
@@ -46,6 +50,10 @@ public class MultiLevelModelViewerConfiguration extends SourceViewerConfiguratio
 		return multilevelKeywordScanner;
 	}
 
+	/**
+	 * Responsible for syntax highlighting
+	 */
+	@Override
 	public IPresentationReconciler getPresentationReconciler(ISourceViewer sourceViewer) {
 		PresentationReconciler reconciler = new PresentationReconciler();
 		sourceViewer.getDocument();
@@ -56,6 +64,22 @@ public class MultiLevelModelViewerConfiguration extends SourceViewerConfiguratio
 			reconciler.setRepairer(dr, contentType);
 		}
 
+		return reconciler;
+	}
+	
+	/**
+	 * Responsible for syncing text and model
+	 * For more information on reconcilers see http://blog.darevay.com/2007/11/the-eclipse-reconciler/
+	 * http://wiki.eclipse.org/FAQ_How_do_I_use_a_model_reconciler%3F
+	 */
+	@Override
+	public IReconciler getReconciler(ISourceViewer sourceViewer) {
+				
+		SyncModelAndTextReconcilingStrategy reconcilingStrategy = new SyncModelAndTextReconcilingStrategy(MultiLevelModelEditorInput.LatestInstance.getWeavingModel(), MultiLevelModelEditorInput.LatestInstance);
+		
+		MonoReconciler reconciler = new MonoReconciler(reconcilingStrategy, true);
+		reconciler.install(sourceViewer);
+		reconciler.setIsIncrementalReconciler(true);
 		return reconciler;
 	}
 }
