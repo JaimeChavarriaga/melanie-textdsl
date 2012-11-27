@@ -132,6 +132,10 @@ public class SyncModelAndTextReconcilingStrategy implements
 		int relativeOffset = dirtyRegion.getOffset() - textElement.getOffset();
 		int lengthToRemove = dirtyRegion.getLength();
 		String firstPart = textElement.getText().substring(0, relativeOffset);
+		
+		if (relativeOffset + lengthToRemove > textElement.getText().length())
+			return;
+			
 		String secondPart = textElement.getText().substring(relativeOffset + lengthToRemove);
 		final String newString = firstPart + secondPart;
 		textElement.setText(newString);
