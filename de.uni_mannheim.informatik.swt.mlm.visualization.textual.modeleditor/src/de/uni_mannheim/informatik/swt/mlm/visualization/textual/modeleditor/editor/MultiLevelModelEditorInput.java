@@ -8,7 +8,7 @@
  * Contributors:
  *    Ralph Gerbig - initial API and implementation and initial documentation
  *******************************************************************************/ 
-package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors;
+package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -28,9 +28,9 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.IPersistableElement;
 import org.eclipse.ui.IStorageEditorInput;
 
-import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors.sourceviewerconfiguration.MultiLevelModelColorConstants;
-import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors.sourceviewerconfiguration.MultiLevelModelPartitionScanner;
-import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors.sourceviewerconfiguration.MultilevelKeywordScanner;
+import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.sourceviewerconfiguration.MultiLevelModelColorConstants;
+import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.sourceviewerconfiguration.MultiLevelModelPartitionScanner;
+import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.sourceviewerconfiguration.MultilevelKeywordScanner;
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.textualdslmodelinterpreter.TextualDSLModelInterpreter;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.M2TWeavingFactory;

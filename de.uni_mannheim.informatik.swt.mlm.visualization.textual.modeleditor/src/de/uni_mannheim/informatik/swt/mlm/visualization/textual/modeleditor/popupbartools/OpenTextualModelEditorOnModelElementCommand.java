@@ -17,7 +17,7 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.Activator;
-import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors.MultiLevelModelEditorInput;
+import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.MultiLevelModelEditorInput;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
 
 

@@ -5,7 +5,7 @@
    <extension
          point="org.eclipse.ui.editors">
       <editor
-            class="de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors.MultiLevelModelTextEditor"
+            class="de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.MultiLevelModelTextEditor"
             contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
             extensions="mlmt"
             icon="icons/text16.gif"

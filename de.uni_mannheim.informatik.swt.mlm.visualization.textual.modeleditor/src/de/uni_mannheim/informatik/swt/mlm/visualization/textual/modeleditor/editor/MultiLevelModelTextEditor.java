@@ -8,7 +8,7 @@
  * Contributors:
  *    Ralph Gerbig - initial API and implementation and initial documentation
  *******************************************************************************/ 
-package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors;
+package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -30,8 +30,8 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.editors.text.TextEditor;
 
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.Activator;
-import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors.sourceviewerconfiguration.MultiLevelModelViewerConfiguration;
-import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors.sourceviewerconfiguration.MultilevelColorProvider;
+import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.sourceviewerconfiguration.MultiLevelModelViewerConfiguration;
+import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.sourceviewerconfiguration.MultilevelColorProvider;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.TextElement;

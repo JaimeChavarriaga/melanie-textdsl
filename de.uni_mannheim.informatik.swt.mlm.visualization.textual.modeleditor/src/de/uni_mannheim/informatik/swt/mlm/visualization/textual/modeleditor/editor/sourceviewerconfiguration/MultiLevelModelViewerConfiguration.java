@@ -8,7 +8,7 @@
  * Contributors:
  *    Ralph Gerbig - initial API and implementation and initial documentation
  *******************************************************************************/
-package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors.sourceviewerconfiguration;
+package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.sourceviewerconfiguration;
 
 import org.eclipse.jface.text.TextAttribute;
 import org.eclipse.jface.text.contentassist.ContentAssistant;
@@ -22,7 +22,8 @@ import org.eclipse.jface.text.rules.Token;
 import org.eclipse.jface.text.source.ISourceViewer;
 import org.eclipse.jface.text.source.SourceViewerConfiguration;
 
-import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors.MultiLevelModelEditorInput;
+import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.MultiLevelModelEditorInput;
+import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.contentassist.MultiLevelTemplateCompletionProcessor;
 
 public class MultiLevelModelViewerConfiguration extends SourceViewerConfiguration {
 	
@@ -91,7 +92,7 @@ public class MultiLevelModelViewerConfiguration extends SourceViewerConfiguratio
 		
 		ContentAssistant contentAssistant = new ContentAssistant();
 		for (String contentType : MultiLevelModelPartitionScanner.LatestInstance.getPartitionNames())
-			contentAssistant.setContentAssistProcessor(new MultiLevelContentAssistProcessor(), contentType);
+			contentAssistant.setContentAssistProcessor(new MultiLevelTemplateCompletionProcessor(), contentType);
 		
 		contentAssistant.enableAutoActivation(true);
 		contentAssistant.setProposalPopupOrientation(IContentAssistant.PROPOSAL_OVERLAY);

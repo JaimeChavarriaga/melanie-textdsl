@@ -1,4 +1,4 @@
-package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors;
+package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.text.IDocument;

@@ -1,10 +1,10 @@
 package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.examplecode;
-//package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors;
+//package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor;
 //
 //import org.eclipse.jface.text.*;
 //import org.eclipse.jface.text.rules.*;
 //
-//import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors.sourceviewerconfiguration.MultilevelColorProvider;
+//import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.sourceviewerconfiguration.MultilevelColorProvider;
 //
 //public class XMLTagScanner extends RuleBasedScanner {
 //
