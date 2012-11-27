@@ -11,6 +11,8 @@
 package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editors.sourceviewerconfiguration;
 
 import org.eclipse.jface.text.TextAttribute;
+import org.eclipse.jface.text.contentassist.ContentAssistant;
+import org.eclipse.jface.text.contentassist.IContentAssistant;
 import org.eclipse.jface.text.presentation.IPresentationReconciler;
 import org.eclipse.jface.text.presentation.PresentationReconciler;
 import org.eclipse.jface.text.reconciler.IReconciler;
@@ -80,7 +82,21 @@ public class MultiLevelModelViewerConfiguration extends SourceViewerConfiguratio
 		MonoReconciler reconciler = new MonoReconciler(reconcilingStrategy, true);
 		reconciler.install(sourceViewer);
 		reconciler.setIsIncrementalReconciler(true);
+		reconciler.setDelay(200);
 		return reconciler;
+	}
+	
+	@Override
+	public IContentAssistant getContentAssistant(ISourceViewer sourceViewer) {
+		
+		ContentAssistant contentAssistant = new ContentAssistant();
+		for (String contentType : MultiLevelModelPartitionScanner.LatestInstance.getPartitionNames())
+			contentAssistant.setContentAssistProcessor(new MultiLevelContentAssistProcessor(), contentType);
+		
+		contentAssistant.enableAutoActivation(true);
+		contentAssistant.setProposalPopupOrientation(IContentAssistant.PROPOSAL_OVERLAY);
+		
+		return contentAssistant;
 	}
 }
 
