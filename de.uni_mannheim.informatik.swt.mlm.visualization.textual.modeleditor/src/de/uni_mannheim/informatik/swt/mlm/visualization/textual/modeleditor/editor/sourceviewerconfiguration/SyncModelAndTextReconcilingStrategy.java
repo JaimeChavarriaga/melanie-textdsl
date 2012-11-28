@@ -22,6 +22,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.TextElement;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingLink;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingModel;
+import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingModelContent;
 
 public class SyncModelAndTextReconcilingStrategy implements
 		IReconcilingStrategy, IReconcilingStrategyExtension {
@@ -163,20 +164,25 @@ public class SyncModelAndTextReconcilingStrategy implements
 	/**
 	 * 
 	 * @param link
-	 * @param index
+	 * @param offset
 	 * @param document
 	 */
-	public static void completeWeavingModel(WeavingLink link, int index, String document){
-		int start = index;
+	public static int completeWeavingModel(WeavingLink link, int offset, String document){
+		int currentOffset = offset;
 		
-		for (TextElement element : link.getTextElement()){
-			start = document.indexOf(element.getText(), start);
-			int length = element.getText().length();
-			element.setLenght(length);
-			element.setOffset(start);
+		for (WeavingModelContent element : link.getChildren()){
+			if (element instanceof TextElement){
+				currentOffset = document.indexOf(((TextElement)element).getText(), currentOffset);
+				int length = ((TextElement)element).getText().length();
+				((TextElement)element).setLenght(length);
+				((TextElement)element).setOffset(currentOffset);
+				currentOffset = currentOffset + length;
+			}
+			else{
+				currentOffset = completeWeavingModel((WeavingLink)element, currentOffset, document);
+			}
 		}
 		
-		for (WeavingLink childLink : link.getChildren())
-			completeWeavingModel(childLink, start, document);
+		return currentOffset;
 	}
 }
