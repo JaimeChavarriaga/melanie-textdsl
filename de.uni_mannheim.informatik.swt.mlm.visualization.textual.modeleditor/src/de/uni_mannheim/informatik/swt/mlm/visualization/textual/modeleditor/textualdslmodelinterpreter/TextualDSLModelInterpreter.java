@@ -88,13 +88,13 @@ public class TextualDSLModelInterpreter {
 		registerPartition(textualVisualizer, root);
 		
 		for(TextualVisualizationDescriptor desc : textualVisualizer.getContent())
-			if (desc instanceof Literal)
-				result += getLiteral((Literal)desc);
+			if (desc instanceof Literal){
+				String literal = getLiteral((Literal)desc);
+				createWeavingLink(root, literal, null);
+				result += literal;
+			}
 			else
 				result += getValue((Value)desc, root);
-		
-		//Second add the generated text
-		createWeavingLink(root, result, null);
 		
 		return result;
 	}
@@ -161,6 +161,13 @@ public class TextualDSLModelInterpreter {
 		partitionScanner.addPartition(root, pd);
 	}
 	
+	/**
+	 * Creates a weaving link for a given text
+	 * 
+	 * @param element
+	 * @param text
+	 * @param parent
+	 */
 	private void createWeavingLink(Element element, String text, Element parent){
 		List<WeavingLink> links = weavingModel.findLinkForPLMElement(element);
 		WeavingLink link;
@@ -193,12 +200,26 @@ public class TextualDSLModelInterpreter {
 		}
 	}
 	
+	/**
+	 * Registers the literal as keyword and returns its value
+	 * 
+	 * @param l
+	 * @return
+	 */
 	private String getLiteral(Literal l){
 		if (l.getColor() != null)
 			registerKeyword(l);
 		return l.getExpression();
 	}
 	
+	/**
+	 * Gets the value stated in a Textual Visualizer Expression. This is either
+	 * an attribute or the textual representation of the connected clabjects. 
+	 * 
+	 * @param v
+	 * @param modelElement
+	 * @return
+	 */
 	private String getValue(Value v, Element modelElement){
 		String result = "";
 		String expression = v.getExpression();
@@ -214,6 +235,7 @@ public class TextualDSLModelInterpreter {
 		for (Feature f : clabject.getAllFeatures()){
 			if (expression.equals(f.getName())
 					&& f instanceof Attribute){
+				//Register in weaving model
 				createWeavingLink(((Attribute)f), ((Attribute)f).getValue(), modelElement);
 				return ((Attribute)f).getValue();
 			}
