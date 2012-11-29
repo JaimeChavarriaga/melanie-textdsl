@@ -92,7 +92,7 @@ public class MultiLevelModelViewerConfiguration extends SourceViewerConfiguratio
 		
 		ContentAssistant contentAssistant = new ContentAssistant();
 		for (String contentType : MultiLevelModelPartitionScanner.LatestInstance.getPartitionNames())
-			contentAssistant.setContentAssistProcessor(new MultiLevelTemplateCompletionProcessor(), contentType);
+			contentAssistant.setContentAssistProcessor(new MultiLevelTemplateCompletionProcessor(MultiLevelModelEditorInput.LatestInstance.getWeavingModel()), contentType);
 		
 		contentAssistant.enableAutoActivation(true);
 		contentAssistant.setProposalPopupOrientation(IContentAssistant.PROPOSAL_OVERLAY);

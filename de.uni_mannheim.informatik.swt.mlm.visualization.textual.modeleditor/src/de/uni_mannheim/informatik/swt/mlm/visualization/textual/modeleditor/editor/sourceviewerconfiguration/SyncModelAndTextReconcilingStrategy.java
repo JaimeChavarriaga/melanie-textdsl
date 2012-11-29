@@ -45,7 +45,7 @@ public class SyncModelAndTextReconcilingStrategy implements
 	@Override
 	public void initialReconcile() {
 		for (WeavingLink link : weavingModel.getLinks()){
-			completeWeavingModel(link, 0,  editorInput.getModelText());
+			recalculateWeavingModelOffsets(link, 0,  editorInput.getModelText());
 		}
 		
 		try {
@@ -82,7 +82,7 @@ public class SyncModelAndTextReconcilingStrategy implements
 	public void syncTextWithModel(DirtyRegion dirtyRegion){
 		int offset = dirtyRegion.getOffset();
 		
-		List<TextElement> possibleWeavingLinks = weavingModel.findTextElementForOffset(offset);
+		List<TextElement> possibleWeavingLinks = weavingModel.findTextElementForOffset(offset - 1);
 		if (possibleWeavingLinks.size() != 1)
 			throw new UnsupportedOperationException("Operation not supported!");
 		
@@ -125,6 +125,8 @@ public class SyncModelAndTextReconcilingStrategy implements
 				}
 			});
 		}
+		
+		recalculateWeavingModelOffsets(link, dirtyRegion.getOffset() - 1, document.get());
 	}
 	
 	/**
@@ -167,7 +169,7 @@ public class SyncModelAndTextReconcilingStrategy implements
 	 * @param offset
 	 * @param document
 	 */
-	public static int completeWeavingModel(WeavingLink link, int offset, String document){
+	public static int recalculateWeavingModelOffsets(WeavingLink link, int offset, String document){
 		int currentOffset = offset;
 		
 		for (WeavingModelContent element : link.getChildren()){
@@ -179,7 +181,7 @@ public class SyncModelAndTextReconcilingStrategy implements
 				currentOffset = currentOffset + length;
 			}
 			else{
-				currentOffset = completeWeavingModel((WeavingLink)element, currentOffset, document);
+				currentOffset = recalculateWeavingModelOffsets((WeavingLink)element, currentOffset, document);
 			}
 		}
 		

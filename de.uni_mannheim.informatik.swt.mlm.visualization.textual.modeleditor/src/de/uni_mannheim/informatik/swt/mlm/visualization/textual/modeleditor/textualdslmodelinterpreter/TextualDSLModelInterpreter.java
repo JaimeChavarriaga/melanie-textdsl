@@ -56,21 +56,30 @@ public class TextualDSLModelInterpreter {
 		this.weavingModel = weavinModel;
 	}
 	
-	public String getTextualRepresentation(Element root){
+	/**
+	 * Textually visualizes the model element. For the root parent will be null. Besides visualizing,
+	 * the partition for the model editor and the weavin model get created.
+	 * 
+	 * @param modelElelmentToVisualize
+	 * @param parent parent of the model element to be visualized. Null for root in containment
+	 * 		  hierarchy.
+	 * @return
+	 */
+	public String getTextualRepresentation(Element modelElelmentToVisualize, Element parent){
 		
 		//First we add it to the model without text so that
 		//its children can be added to the weaving model
-		createWeavingLink(root, null, null);
+		createWeavingLink(modelElelmentToVisualize, null, parent);
 		
 		String result = "";
 		
 		TextualDSLVisualizer textualVisualizer = null;
 		List<AbstractDSLVisualizer> abstractDSLVisualizers = new ArrayList<>();
 		
-		if (root instanceof Clabject)
-			abstractDSLVisualizers = new ArrayList<AbstractDSLVisualizer>( ((Clabject)root).getPossibleDomainSpecificVisualizers() );
+		if (modelElelmentToVisualize instanceof Clabject)
+			abstractDSLVisualizers = new ArrayList<AbstractDSLVisualizer>( ((Clabject)modelElelmentToVisualize).getPossibleDomainSpecificVisualizers() );
 		else
-			abstractDSLVisualizers.addAll((root.getVisualizer().size() > 0 ? root.getVisualizer().get(0).getDslVisualizer() : new ArrayList<AbstractDSLVisualizer>()));
+			abstractDSLVisualizers.addAll((modelElelmentToVisualize.getVisualizer().size() > 0 ? modelElelmentToVisualize.getVisualizer().get(0).getDslVisualizer() : new ArrayList<AbstractDSLVisualizer>()));
 		
 		for (AbstractDSLVisualizer abstractVisualizer : abstractDSLVisualizers)
 			if (abstractVisualizer instanceof TextualDSLVisualizer){
@@ -82,19 +91,19 @@ public class TextualDSLModelInterpreter {
 			return "";
 		
 		if (textualVisualizer.getRoot() != null){
-			return getTextualRepresentation(textualVisualizer.getRoot());
+			return getTextualRepresentation(textualVisualizer.getRoot(), modelElelmentToVisualize);
 		}
 		
-		registerPartition(textualVisualizer, root);
+		registerPartition(textualVisualizer, modelElelmentToVisualize);
 		
 		for(TextualVisualizationDescriptor desc : textualVisualizer.getContent())
 			if (desc instanceof Literal){
 				String literal = getLiteral((Literal)desc);
-				createWeavingLink(root, literal, null);
+				createWeavingLink(modelElelmentToVisualize, literal, parent);
 				result += literal;
 			}
 			else
-				result += getValue((Value)desc, root);
+				result += getValue((Value)desc, modelElelmentToVisualize);
 		
 		return result;
 	}
@@ -196,7 +205,7 @@ public class TextualDSLModelInterpreter {
 		if (text != null){
 			TextElement textElement = M2TWeavingFactory.eINSTANCE.createTextElement();
 			textElement.setText(String.format(text));
-			link.getTextElement().add(textElement);
+			link.getChildren().add(textElement);
 		}
 	}
 	
@@ -246,7 +255,7 @@ public class TextualDSLModelInterpreter {
 		//Is visualizer container on the same level? -> navigate directly
 		if (visualizerContainer.getModel() == clabject.getModel())
 			for (Clabject navigationEnd : clabject.getDomainForRoleName(expression))
-				result += getTextualRepresentation(navigationEnd);
+				result += getTextualRepresentation(navigationEnd, modelElement);
 		else if (visualizerContainer.getModel().getClassifiedModel() == clabject.getModel()){
 			List<Clabject> instanceDomain = new ArrayList<>();
 			
@@ -258,7 +267,7 @@ public class TextualDSLModelInterpreter {
 			for (Clabject instance : instanceDomain)
 				for (Clabject instanceType : instance.getModelTypes())
 					if (typetDomainForExpression.contains(instanceType)){
-						result += getTextualRepresentation(instance);
+						result += getTextualRepresentation(instance, modelElement);
 						break;
 					}
 		}			

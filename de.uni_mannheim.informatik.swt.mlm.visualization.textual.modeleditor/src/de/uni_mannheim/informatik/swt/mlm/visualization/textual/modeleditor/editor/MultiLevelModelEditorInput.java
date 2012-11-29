@@ -133,7 +133,7 @@ public class MultiLevelModelEditorInput implements IStorageEditorInput {
 		@Override
 		public InputStream getContents() throws CoreException {
 			TextualDSLModelInterpreter interpreter = new TextualDSLModelInterpreter(partitionScanner, keyWordScanner, colorConstants, weavingModel);
-			String input = interpreter.getTextualRepresentation(modelToEdit);
+			String input = interpreter.getTextualRepresentation(modelToEdit, null);
 			input = String.format(input);
 			
 			ResourceSet resourceSet = new ResourceSetImpl();
