@@ -12,9 +12,12 @@ package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.edi
 
 import org.eclipse.jface.text.ITextViewerExtension;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.LineBackgroundEvent;
+import org.eclipse.swt.custom.LineBackgroundListener;
 import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.custom.VerifyKeyListener;
 import org.eclipse.swt.events.VerifyEvent;
+import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.editors.text.TextEditor;
 
@@ -54,9 +57,9 @@ public class MultiLevelModelTextEditor extends TextEditor {
 				//use event.stateMask to detect STRG+X etc.
 				if (!
 							//Character was pressed
-							(event.keyCode >= 97 && event.keyCode <= 122)
+						(	(event.keyCode >= 97 && event.keyCode <= 122)
 							//Number was pressed
-						|| 	(event.keyCode >= 48 && event.keyCode <= 57)
+						|| 	(event.keyCode >= 48 && event.keyCode <= 57))
 					)
 					return;
 				
@@ -71,6 +74,19 @@ public class MultiLevelModelTextEditor extends TextEditor {
 			}
 		});
 		
+//		getSourceViewer().getTextWidget().addLineBackgroundListener(new LineBackgroundListener() {
+//			
+//			@Override
+//			public void lineGetBackground(LineBackgroundEvent event) {
+//				WeavingModel weavingModel = MultiLevelModelEditorInput.LatestInstance.getWeavingModel();
+//				TextElement textElement = weavingModel.findTextElementForOffset(((StyledText)event.getSource()).getCaretOffset()).get(0);
+//				
+//				//Not an Attribute is edited -> Drop changes!
+//				if ( !( ((WeavingLink)textElement.eContainer()).getModelElement() instanceof Attribute ) ){
+//					event.lineBackground = multilevelColorProvider.getColor(new RGB(150, 150, 150));
+//				}
+//			}
+//		});
 //		getSite().getWorkbenchWindow().getSelectionService().addSelectionListener(new ISelectionListener() {
 //			
 //			@Override
