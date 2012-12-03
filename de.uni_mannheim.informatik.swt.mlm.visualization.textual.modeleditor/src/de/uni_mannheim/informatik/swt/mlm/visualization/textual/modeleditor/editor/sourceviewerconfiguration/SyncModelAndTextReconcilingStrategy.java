@@ -126,7 +126,7 @@ public class SyncModelAndTextReconcilingStrategy implements
 			});
 		}
 		
-		recalculateWeavingModelOffsets(link, dirtyRegion.getOffset() - 1, document.get());
+		//recalculateWeavingModelOffsets(link, dirtyRegion.getOffset() - 1, document.get());
 	}
 	
 	/**
