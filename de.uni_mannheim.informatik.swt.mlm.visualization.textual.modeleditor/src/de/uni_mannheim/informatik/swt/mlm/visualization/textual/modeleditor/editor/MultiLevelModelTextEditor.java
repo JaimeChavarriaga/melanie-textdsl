@@ -11,6 +11,7 @@
 package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor;
 
 import org.eclipse.jface.text.ITextViewerExtension;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.custom.VerifyKeyListener;
 import org.eclipse.swt.events.VerifyEvent;
@@ -49,6 +50,16 @@ public class MultiLevelModelTextEditor extends TextEditor {
 			
 			@Override
 			public void verifyKey(VerifyEvent event) {
+				
+				//use event.stateMask to detect STRG+X etc.
+				if (!
+							//Character was pressed
+							(event.keyCode >= 97 && event.keyCode <= 122)
+							//Number was pressed
+						|| 	(event.keyCode >= 48 && event.keyCode <= 57)
+					)
+					return;
+				
 				WeavingModel weavingModel = MultiLevelModelEditorInput.LatestInstance.getWeavingModel();
 				TextElement textElement = weavingModel.findTextElementForOffset(((StyledText)event.getSource()).getCaretOffset()).get(0);
 				
