@@ -58,8 +58,13 @@ public class MultiLevelModelTextEditor extends TextEditor {
 				if (!
 							//Character was pressed
 						(	(event.keyCode >= 97 && event.keyCode <= 122)
-							//Number was pressed
-						|| 	(event.keyCode >= 48 && event.keyCode <= 57))
+							//Number was pressed or math signs such as "-"
+						|| 	(event.keyCode >= 45 && event.keyCode <= 57)
+							// "/"	"+"
+						||	(event.keyCode >= 16777258 && event.keyCode <= 16777296)
+							//Enter key, Back space
+						||	(event.keyCode >= 8 && event.keyCode <= 13)
+						)
 					)
 					return;
 				
