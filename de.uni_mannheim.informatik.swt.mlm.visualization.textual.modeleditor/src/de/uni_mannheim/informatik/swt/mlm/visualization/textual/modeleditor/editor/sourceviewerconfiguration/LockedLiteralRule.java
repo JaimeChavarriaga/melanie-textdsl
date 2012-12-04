@@ -27,6 +27,11 @@ import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingLink;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingModel;
 
+/**
+ * This scanner uses the weaving model to determine whether to
+ * show a grey background to indicate that a literal is not editable
+ *
+ */
 public class LockedLiteralRule implements IRule {
 
 	MultilevelColorProvider colorProvider;
@@ -48,8 +53,6 @@ public class LockedLiteralRule implements IRule {
 		if (offset == lastOffset)
 			buffer = scanner.read();
 		
-		lastOffset = ((MultilevelLiteralScanner)scanner).getOffset();
-		
 		System.out.println(offset);
 		
 		if (buffer == ICharacterScanner.EOF){
@@ -63,7 +66,6 @@ public class LockedLiteralRule implements IRule {
 		
 		List<TextElement> textElements = weavingModel.findTextElementForOffset(offset);
 		if (textElements.size() == 0){
-			//buffer = scanner.read();
 			return Token.UNDEFINED;
 		}
 		
@@ -71,11 +73,9 @@ public class LockedLiteralRule implements IRule {
 		WeavingLink currentWeavingLink = (WeavingLink)currentTextElement.eContainer();
 		
 		if (currentWeavingLink.getModelElement() instanceof Attribute){
-			//buffer = scanner.read();
 			return Token.UNDEFINED;
 		}
 		else{
-			//buffer = scanner.read();
 			return lockedToken;
 		}
 	}
