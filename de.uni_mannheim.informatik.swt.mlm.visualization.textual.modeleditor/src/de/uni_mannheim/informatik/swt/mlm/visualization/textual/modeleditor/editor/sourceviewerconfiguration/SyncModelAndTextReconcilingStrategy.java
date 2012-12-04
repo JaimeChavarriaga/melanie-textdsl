@@ -1,12 +1,16 @@
 package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.sourceviewerconfiguration;
 
-import java.io.IOException;
-import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.command.CompoundCommand;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.SetCommand;
+import org.eclipse.emf.transaction.NotificationFilter;
+import org.eclipse.emf.transaction.ResourceSetChangeEvent;
+import org.eclipse.emf.transaction.ResourceSetListener;
+import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.text.IDocument;
@@ -16,9 +20,9 @@ import org.eclipse.jface.text.reconciler.IReconcilingStrategy;
 import org.eclipse.jface.text.reconciler.IReconcilingStrategyExtension;
 import org.eclipse.swt.widgets.Display;
 
-import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.MultiLevelModelEditorInput;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage;
+import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.M2TWeavingPackage;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.TextElement;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingLink;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingModel;
@@ -28,31 +32,21 @@ public class SyncModelAndTextReconcilingStrategy implements
 		IReconcilingStrategy, IReconcilingStrategyExtension {
 
 	private WeavingModel weavingModel;
-	private MultiLevelModelEditorInput editorInput;
 	
 	private IDocument document;
 	
-	public SyncModelAndTextReconcilingStrategy(WeavingModel weavingModel, MultiLevelModelEditorInput input){
+	public SyncModelAndTextReconcilingStrategy(WeavingModel weavingModel){
 		this.weavingModel = weavingModel;
-		this.editorInput = input;
+	}
+	
+	@Override
+	public void initialReconcile() {
+		// Do nothing
 	}
 	
 	@Override
 	public void setProgressMonitor(IProgressMonitor monitor) {
 		// Do nothing
-	}
-
-	@Override
-	public void initialReconcile() {
-		for (WeavingLink link : weavingModel.getLinks()){
-			//recalculateWeavingModelOffsets(link, 0,  editorInput.getModelText());
-		}
-		
-		try {
-			weavingModel.eResource().save(Collections.EMPTY_MAP);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 
 	@Override
@@ -76,6 +70,7 @@ public class SyncModelAndTextReconcilingStrategy implements
 	}
 
 	/**
+	 * Delegates to the methods for instering/removing text
 	 * 
 	 * @param dirtyRegion
 	 */
@@ -98,6 +93,7 @@ public class SyncModelAndTextReconcilingStrategy implements
 	//@Inject UISynchronize synchronize;
 	
 	/**
+	 * Syncs multi-level model and weaving model on text insert
 	 * 
 	 * @param dirtyRegion
 	 * @param textElement
@@ -115,27 +111,18 @@ public class SyncModelAndTextReconcilingStrategy implements
 		textElement.setText(newString);
 		
 		if (link.getModelElement() instanceof Attribute){
-			Display.getDefault().syncExec(new Runnable() {
-				
-				@Override
-				public void run() {
-					TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(link.getModelElement()); 
-					Command cmd = SetCommand.create(domain, link.getModelElement(), PLMPackage.eINSTANCE.getAttribute_Value(), newString);
-					domain.getCommandStack().execute(cmd);
-				}
-			});
+			changeModel(newString, link, textElement);
 		}
-		
-		//recalculateWeavingModelOffsets(link, dirtyRegion.getOffset() - 1, document.get());
 	}
 	
 	/**
+	 * Syncs multi-level and weaving model on text remove
 	 * 
 	 * @param dirtyRegion
 	 * @param textElement
 	 * @param link
 	 */
-	public void syncTextRemoved(DirtyRegion dirtyRegion, final TextElement textElement, final WeavingLink link){
+	public void syncTextRemoved(DirtyRegion dirtyRegion, TextElement textElement, WeavingLink link){
 		int relativeOffset = dirtyRegion.getOffset() - textElement.getOffset();
 		
 		if (relativeOffset > textElement.getText().length())
@@ -152,14 +139,56 @@ public class SyncModelAndTextReconcilingStrategy implements
 		textElement.setText(newString);
 		
 		if (link.getModelElement() instanceof Attribute){
-			Display.getDefault().syncExec(new Runnable() {
-				@Override
-				public void run() {
-					TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(link.getModelElement()); 
-					Command cmd = SetCommand.create(domain, link.getModelElement(), PLMPackage.eINSTANCE.getAttribute_Value(), newString);
-					domain.getCommandStack().execute(cmd);
-				}
-			});		
+			changeModel(newString, link, textElement);
 		}
+	}
+	
+	/**
+	 * Changes the text in the multi-level and weaving model and updates 
+	 * offset, length etc. in the weaving model.
+	 * 
+	 * @param newString
+	 * @param link
+	 * @param textElement
+	 */
+	private void changeModel(final String newString, final WeavingLink link, final TextElement textElement){
+		Display.getDefault().syncExec(new Runnable() {
+			@Override
+			public void run() {
+				TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(link.getModelElement());
+				//Update the multi-level model
+				Command updateMultiLevelModelCommand = SetCommand.create(domain, link.getModelElement(), PLMPackage.eINSTANCE.getAttribute_Value(), newString);
+				domain.getCommandStack().execute(updateMultiLevelModelCommand);
+				
+				textElement.setText(newString);
+				recalculateOffset(((WeavingModel)EcoreUtil.getRootContainer(link)).getLinks().get(0), 0, document.get());
+			}
+		});
+	}
+	
+	/**
+	 * Recalculates offset and lenght of TextElements
+	 *
+	 * @param link
+	 * @param offset
+	 * @param document
+	 * @return
+	 */
+	private int recalculateOffset(WeavingLink link, int offset, String document){
+		int currentOffset = offset;
+		
+		for (WeavingModelContent element : link.getChildren()){
+			if (element instanceof TextElement){
+				int length = ((TextElement)element).getText().length();
+				((TextElement)element).setLenght(length);
+				((TextElement)element).setOffset(currentOffset);
+				currentOffset = currentOffset + length;
+			}
+			else{
+				currentOffset = recalculateOffset((WeavingLink)element, currentOffset, document);
+			}
+		}
+		
+		return currentOffset;
 	}
 }

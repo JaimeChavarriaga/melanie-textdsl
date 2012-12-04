@@ -79,7 +79,7 @@ public class MultiLevelModelViewerConfiguration extends SourceViewerConfiguratio
 	@Override
 	public IReconciler getReconciler(ISourceViewer sourceViewer) {
 				
-		SyncModelAndTextReconcilingStrategy reconcilingStrategy = new SyncModelAndTextReconcilingStrategy(MultiLevelModelEditorInput.LatestInstance.getWeavingModel(), MultiLevelModelEditorInput.LatestInstance);
+		SyncModelAndTextReconcilingStrategy reconcilingStrategy = new SyncModelAndTextReconcilingStrategy(MultiLevelModelEditorInput.LatestInstance.getWeavingModel());
 		
 		MonoReconciler reconciler = new MonoReconciler(reconcilingStrategy, true);
 		reconciler.install(sourceViewer);
