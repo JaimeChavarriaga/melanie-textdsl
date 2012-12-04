@@ -14,6 +14,7 @@ public class PatternDescriptor{
 	private String startPattern = null;
 	private String endPattern = null;
 	private boolean isSingleLine = false;
+	private boolean isLiteral = false;
 	
 	public PatternDescriptor(String startPattern, String endPattern, boolean isSingleLine){
 		this.startPattern = startPattern;
@@ -31,5 +32,9 @@ public class PatternDescriptor{
 	
 	public String getEndPattern(){
 		return endPattern;
+	}
+	
+	public boolean isLiteral(){
+		return isLiteral;
 	}
 }

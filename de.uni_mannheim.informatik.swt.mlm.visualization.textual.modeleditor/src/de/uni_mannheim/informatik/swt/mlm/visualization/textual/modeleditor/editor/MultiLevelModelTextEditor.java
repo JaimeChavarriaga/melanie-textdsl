@@ -74,7 +74,6 @@ public class MultiLevelModelTextEditor extends TextEditor {
 				//Not an Attribute is edited -> Drop changes!
 				if ( !( ((WeavingLink)textElement.eContainer()).getModelElement() instanceof Attribute ) ){
 					event.doit = false;
-					System.out.println("aaaaahhhhh");
 				}
 			}
 		});

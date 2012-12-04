@@ -17,7 +17,7 @@ import org.eclipse.swt.graphics.RGB;
 
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.sourceviewerconfiguration.MultiLevelModelColorConstants;
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.sourceviewerconfiguration.MultiLevelModelPartitionScanner;
-import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.sourceviewerconfiguration.MultilevelKeywordScanner;
+import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.sourceviewerconfiguration.MultilevelLiteralScanner;
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.sourceviewerconfiguration.PatternDescriptor;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.AbstractDSLVisualizer;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
@@ -34,6 +34,7 @@ import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.TextElement;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingLink;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingModel;
+import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingModelContent;
 
 
 /**
@@ -43,12 +44,12 @@ import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M
 public class TextualDSLModelInterpreter {
 
 	MultiLevelModelPartitionScanner partitionScanner;
-	MultilevelKeywordScanner keywordScanner;
+	MultilevelLiteralScanner keywordScanner;
 	MultiLevelModelColorConstants colorConstants;
 	WeavingModel weavingModel;
 	
 	public TextualDSLModelInterpreter(MultiLevelModelPartitionScanner partitionScanner, 
-			MultilevelKeywordScanner keywordScanner, MultiLevelModelColorConstants colorConstants,
+			MultilevelLiteralScanner keywordScanner, MultiLevelModelColorConstants colorConstants,
 			WeavingModel weavinModel){
 		this.partitionScanner = partitionScanner;
 		this.keywordScanner = keywordScanner;
@@ -58,14 +59,26 @@ public class TextualDSLModelInterpreter {
 	
 	/**
 	 * Textually visualizes the model element. For the root parent will be null. Besides visualizing,
-	 * the partition for the model editor and the weavin model get created.
+	 * the partition for the model editor and the weaving model get created.
+	 * 
+	 * @param modelElelmentToVisualize
+	 * @param parent parent of the model element to be visualized. Null for root in containment
+	 * 		  hierarchy.
+	 * */
+	public String getTextFromModel(Element modelElelmentToVisualize, Element parent){
+		String representation = String.format(getTextualRepresentation(modelElelmentToVisualize, parent));
+		calculateWeavingModelOffsets(weavingModel.getLinks().get(0), 0, representation);
+		return representation;
+	}
+	
+	/**
 	 * 
 	 * @param modelElelmentToVisualize
 	 * @param parent parent of the model element to be visualized. Null for root in containment
 	 * 		  hierarchy.
 	 * @return
 	 */
-	public String getTextualRepresentation(Element modelElelmentToVisualize, Element parent){
+	private String getTextualRepresentation(Element modelElelmentToVisualize, Element parent){
 		
 		//First we add it to the model without text so that
 		//its children can be added to the weaving model
@@ -275,5 +288,30 @@ public class TextualDSLModelInterpreter {
 			return "";
 		
 		return result;
+	}
+	
+	/**
+	 * 
+	 * @param link
+	 * @param offset
+	 * @param document
+	 */
+	private static int calculateWeavingModelOffsets(WeavingLink link, int offset, String document){
+		int currentOffset = offset;
+		
+		for (WeavingModelContent element : link.getChildren()){
+			if (element instanceof TextElement){
+				currentOffset = document.indexOf(((TextElement)element).getText(), currentOffset);
+				int length = ((TextElement)element).getText().length();
+				((TextElement)element).setLenght(length);
+				((TextElement)element).setOffset(currentOffset);
+				currentOffset = currentOffset + length;
+			}
+			else{
+				currentOffset = calculateWeavingModelOffsets((WeavingLink)element, currentOffset, document);
+			}
+		}
+		
+		return currentOffset;
 	}
 }

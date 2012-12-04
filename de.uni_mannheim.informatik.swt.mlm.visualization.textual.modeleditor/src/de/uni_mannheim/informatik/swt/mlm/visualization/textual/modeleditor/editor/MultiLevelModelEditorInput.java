@@ -30,7 +30,7 @@ import org.eclipse.ui.IStorageEditorInput;
 
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.sourceviewerconfiguration.MultiLevelModelColorConstants;
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.sourceviewerconfiguration.MultiLevelModelPartitionScanner;
-import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.sourceviewerconfiguration.MultilevelKeywordScanner;
+import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.sourceviewerconfiguration.MultilevelLiteralScanner;
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.textualdslmodelinterpreter.TextualDSLModelInterpreter;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.M2TWeavingFactory;
@@ -46,7 +46,7 @@ public class MultiLevelModelEditorInput implements IStorageEditorInput {
 	private String modelText;
 	
 	private MultiLevelModelPartitionScanner partitionScanner;
-	private MultilevelKeywordScanner keyWordScanner;
+	private MultilevelLiteralScanner keyWordScanner;
 	private MultiLevelModelColorConstants colorConstants;
 	private WeavingModel weavingModel;
 	
@@ -68,7 +68,7 @@ public class MultiLevelModelEditorInput implements IStorageEditorInput {
 		return partitionScanner;
 	}
 	
-	public MultilevelKeywordScanner getMultiLevelKeywordScanner(){
+	public MultilevelLiteralScanner getMultiLevelKeywordScanner(){
 		return keyWordScanner;
 	}
 	
@@ -76,7 +76,7 @@ public class MultiLevelModelEditorInput implements IStorageEditorInput {
 		this.modelToEdit = modelToEdit;
 		storage = new MultiLevelModelStorage(modelToEdit);
 		partitionScanner = new MultiLevelModelPartitionScanner();
-		keyWordScanner = new MultilevelKeywordScanner();
+		keyWordScanner = new MultilevelLiteralScanner();
 		colorConstants = new MultiLevelModelColorConstants();
 		weavingModel = M2TWeavingFactory.eINSTANCE.createWeavingModel();
 		LatestInstance = this;
@@ -133,7 +133,7 @@ public class MultiLevelModelEditorInput implements IStorageEditorInput {
 		@Override
 		public InputStream getContents() throws CoreException {
 			TextualDSLModelInterpreter interpreter = new TextualDSLModelInterpreter(partitionScanner, keyWordScanner, colorConstants, weavingModel);
-			String input = interpreter.getTextualRepresentation(modelToEdit, null);
+			String input = interpreter.getTextFromModel(modelToEdit, null);
 			input = String.format(input);
 			
 			ResourceSet resourceSet = new ResourceSetImpl();

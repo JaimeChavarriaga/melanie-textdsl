@@ -27,7 +27,7 @@ import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.edit
 
 public class MultiLevelModelViewerConfiguration extends SourceViewerConfiguration {
 	
-	private MultilevelKeywordScanner multilevelKeywordScanner;
+	private MultilevelLiteralScanner multilevelLiteralScanner;
 	private MultilevelColorProvider multilevelColorProvider;
 
 	public MultiLevelModelViewerConfiguration(MultilevelColorProvider multilevelColorProvider) {
@@ -40,17 +40,17 @@ public class MultiLevelModelViewerConfiguration extends SourceViewerConfiguratio
 //		return MultiLevelModelPartitionScanner.getPartitionNames();
 	}
 	
-	protected MultilevelKeywordScanner getMultiLevelModelKeywordScanner() {
-		if (multilevelKeywordScanner == null) {
-			multilevelKeywordScanner = MultilevelKeywordScanner.LATEST_INSTANCE;
-			multilevelKeywordScanner.setColorProvider(multilevelColorProvider);
-			multilevelKeywordScanner.init();
-			multilevelKeywordScanner.setDefaultReturnToken(
+	protected MultilevelLiteralScanner getMultiLevelModelKeywordScanner() {
+		if (multilevelLiteralScanner == null) {
+			multilevelLiteralScanner = MultilevelLiteralScanner.LATEST_INSTANCE;
+			multilevelLiteralScanner.setColorProvider(multilevelColorProvider);
+			multilevelLiteralScanner.init();
+			multilevelLiteralScanner.setDefaultReturnToken(
 				new Token(
 					new TextAttribute(
 						multilevelColorProvider.getColor(multilevelColorProvider.getMultiLevelModelColorConstants().getColor(multilevelColorProvider.getMultiLevelModelColorConstants().DEFAULT_KEY)))));
 		}
-		return multilevelKeywordScanner;
+		return multilevelLiteralScanner;
 	}
 
 	/**
