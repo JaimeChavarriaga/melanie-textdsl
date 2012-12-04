@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2012 University of Mannheim: Chair for Software Engineering
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Ralph Gerbig - initial API and implementation and initial documentation
+ *******************************************************************************/
 package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.sourceviewerconfiguration;
 
 import java.util.List;
@@ -28,11 +38,17 @@ public class LockedLiteralRule implements IRule {
 	}
 	
 	private int buffer;
+	private int lastOffset = -1;
 	
 	@Override
 	public IToken evaluate(ICharacterScanner scanner) {		
 		int offset = ((MultilevelLiteralScanner)scanner).getOffset();
-		buffer = scanner.read();
+		
+		//This is to prevent the scanner to jump sometimes by one
+		if (offset == lastOffset)
+			buffer = scanner.read();
+		
+		lastOffset = ((MultilevelLiteralScanner)scanner).getOffset();
 		
 		System.out.println(offset);
 		
@@ -41,22 +57,25 @@ public class LockedLiteralRule implements IRule {
 			buffer = 0;
 			return Token.UNDEFINED;
 		}
-			
 		
 		Color backgroundColor = colorProvider.getColor(new RGB(230,230,230));
-		IToken lockedToken = new Token(new TextAttribute(null, backgroundColor, SWT.NORMAL));
+		Token lockedToken = new Token(new TextAttribute(null, backgroundColor, SWT.NORMAL));
 		
 		List<TextElement> textElements = weavingModel.findTextElementForOffset(offset);
-		if (textElements.size() == 0)
+		if (textElements.size() == 0){
+			//buffer = scanner.read();
 			return Token.UNDEFINED;
+		}
 		
 		TextElement currentTextElement = textElements.get(0);
 		WeavingLink currentWeavingLink = (WeavingLink)currentTextElement.eContainer();
 		
 		if (currentWeavingLink.getModelElement() instanceof Attribute){
+			//buffer = scanner.read();
 			return Token.UNDEFINED;
 		}
 		else{
+			//buffer = scanner.read();
 			return lockedToken;
 		}
 	}

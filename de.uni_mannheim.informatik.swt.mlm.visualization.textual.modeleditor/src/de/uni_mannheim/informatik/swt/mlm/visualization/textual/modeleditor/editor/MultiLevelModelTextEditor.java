@@ -11,14 +11,14 @@
 package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor;
 
 import org.eclipse.jface.text.ITextViewerExtension;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.custom.LineBackgroundEvent;
-import org.eclipse.swt.custom.LineBackgroundListener;
+import org.eclipse.jface.text.TextSelection;
+import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.custom.VerifyKeyListener;
 import org.eclipse.swt.events.VerifyEvent;
-import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.ui.ISelectionListener;
+import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.editors.text.TextEditor;
 
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.sourceviewerconfiguration.MultiLevelModelViewerConfiguration;
@@ -91,13 +91,13 @@ public class MultiLevelModelTextEditor extends TextEditor {
 //				}
 //			}
 //		});
-//		getSite().getWorkbenchWindow().getSelectionService().addSelectionListener(new ISelectionListener() {
-//			
-//			@Override
-//			public void selectionChanged(IWorkbenchPart part, ISelection selection) {
-//				if (selection instanceof TextSelection)
-//					System.out.println(((TextSelection)selection).getOffset());
-//			}
-//		});
+		getSite().getWorkbenchWindow().getSelectionService().addSelectionListener(new ISelectionListener() {
+			
+			@Override
+			public void selectionChanged(IWorkbenchPart part, ISelection selection) {
+				if (selection instanceof TextSelection)
+					System.out.println(((TextSelection)selection).getOffset());
+			}
+		});
 	}
 }
