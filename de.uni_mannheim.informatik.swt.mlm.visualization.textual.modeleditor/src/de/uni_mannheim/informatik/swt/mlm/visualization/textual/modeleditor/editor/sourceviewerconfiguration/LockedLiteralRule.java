@@ -53,7 +53,7 @@ public class LockedLiteralRule implements IRule {
 		if (offset == lastOffset)
 			buffer = scanner.read();
 		
-		System.out.println(offset);
+		lastOffset = ((MultilevelLiteralScanner)scanner).getOffset();
 		
 		if (buffer == ICharacterScanner.EOF){
 			scanner.unread();
