@@ -11,14 +11,10 @@
 package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor;
 
 import org.eclipse.jface.text.ITextViewerExtension;
-import org.eclipse.jface.text.TextSelection;
-import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.custom.VerifyKeyListener;
 import org.eclipse.swt.events.VerifyEvent;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.ui.ISelectionListener;
-import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.editors.text.TextEditor;
 
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.sourceviewerconfiguration.MultiLevelModelViewerConfiguration;
@@ -57,11 +53,12 @@ public class MultiLevelModelTextEditor extends TextEditor {
 				//use event.stateMask to detect STRG+X etc.
 				if (!
 							//Character was pressed
-						(	(event.keyCode >= 97 && event.keyCode <= 122)
+ 						(	(event.keyCode >= 91 && event.keyCode <= 122)
 							//Number was pressed or math signs such as "-"
-						|| 	(event.keyCode >= 45 && event.keyCode <= 57)
+						|| 	(event.keyCode >= 32 && event.keyCode <= 61)
 							// "/"	"+"
 						||	(event.keyCode >= 16777258 && event.keyCode <= 16777296)
+						||  (event.keyCode >= 131072 && event.keyCode <= 131072)
 							//Enter key, Back space
 						||	(event.keyCode >= 8 && event.keyCode <= 13)
 						)
