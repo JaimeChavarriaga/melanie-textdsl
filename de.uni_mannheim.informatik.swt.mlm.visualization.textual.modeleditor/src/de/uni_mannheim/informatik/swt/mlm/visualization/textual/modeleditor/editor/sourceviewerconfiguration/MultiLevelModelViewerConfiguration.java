@@ -78,12 +78,17 @@ public class MultiLevelModelViewerConfiguration extends SourceViewerConfiguratio
 	@Override
 	public IReconciler getReconciler(ISourceViewer sourceViewer) {
 				
-		SyncModelAndTextReconcilingStrategy reconcilingStrategy = new SyncModelAndTextReconcilingStrategy(MultiLevelModelEditorInput.LatestInstance.getWeavingModel());
+		SyncModelAndTextReconcilingStrategy reconcilingStrategy = new SyncModelAndTextReconcilingStrategy(MultiLevelModelEditorInput.LatestInstance.getWeavingModel(), sourceViewer);
 		
 		MonoReconciler reconciler = new MonoReconciler(reconcilingStrategy, true);
 		reconciler.install(sourceViewer);
 		reconciler.setIsIncrementalReconciler(true);
-		reconciler.setDelay(200);
+		
+		// Very low delay is needed to keep the text in sync with weaving model
+		// otherwise the user loses some characters while typing as he/she always
+		// runs into a locked region.
+		reconciler.setDelay(0);
+		
 		return reconciler;
 	}
 	

@@ -34,7 +34,7 @@ public class MultiLevelModelTextEditor extends TextEditor {
 	
 	public MultiLevelModelTextEditor() {
 		super();
-		
+
 		multilevelColorProvider = new MultilevelColorProvider();
 		setSourceViewerConfiguration(new MultiLevelModelViewerConfiguration(multilevelColorProvider));
 		setDocumentProvider(new MultiLevelModelDocumentProvider());

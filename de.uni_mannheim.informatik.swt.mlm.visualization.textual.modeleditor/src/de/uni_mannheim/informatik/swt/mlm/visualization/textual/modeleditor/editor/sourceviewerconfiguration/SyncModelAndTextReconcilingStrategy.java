@@ -4,13 +4,8 @@ import java.util.List;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.command.Command;
-import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.SetCommand;
-import org.eclipse.emf.transaction.NotificationFilter;
-import org.eclipse.emf.transaction.ResourceSetChangeEvent;
-import org.eclipse.emf.transaction.ResourceSetListener;
-import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.text.IDocument;
@@ -18,11 +13,11 @@ import org.eclipse.jface.text.IRegion;
 import org.eclipse.jface.text.reconciler.DirtyRegion;
 import org.eclipse.jface.text.reconciler.IReconcilingStrategy;
 import org.eclipse.jface.text.reconciler.IReconcilingStrategyExtension;
+import org.eclipse.jface.text.source.ISourceViewer;
 import org.eclipse.swt.widgets.Display;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage;
-import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.M2TWeavingPackage;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.TextElement;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingLink;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingModel;
@@ -32,11 +27,14 @@ public class SyncModelAndTextReconcilingStrategy implements
 		IReconcilingStrategy, IReconcilingStrategyExtension {
 
 	private WeavingModel weavingModel;
+	private ISourceViewer sourceViewer;
 	
 	private IDocument document;
 	
-	public SyncModelAndTextReconcilingStrategy(WeavingModel weavingModel){
+	
+	public SyncModelAndTextReconcilingStrategy(WeavingModel weavingModel, ISourceViewer sourceViewer){
 		this.weavingModel = weavingModel;
+		this.sourceViewer = sourceViewer;
 	}
 	
 	@Override
@@ -162,6 +160,12 @@ public class SyncModelAndTextReconcilingStrategy implements
 				
 				textElement.setText(newString);
 				recalculateOffset(((WeavingModel)EcoreUtil.getRootContainer(link)).getLinks().get(0), 0, document.get());
+				
+				// Because this reconciler works asynchronous to the UI thread the
+				// damage repairer etc. are already run before the weaving model is
+				// updated. Thus, it must be run mannualy after updating the weaving
+				// model.
+				sourceViewer.invalidateTextPresentation();
 			}
 		});
 	}
