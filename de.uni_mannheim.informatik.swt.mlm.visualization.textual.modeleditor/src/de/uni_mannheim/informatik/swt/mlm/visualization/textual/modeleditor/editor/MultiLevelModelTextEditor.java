@@ -91,13 +91,13 @@ public class MultiLevelModelTextEditor extends TextEditor {
 //				}
 //			}
 //		});
-		getSite().getWorkbenchWindow().getSelectionService().addSelectionListener(new ISelectionListener() {
-			
-			@Override
-			public void selectionChanged(IWorkbenchPart part, ISelection selection) {
-				if (selection instanceof TextSelection)
-					System.out.println(((TextSelection)selection).getOffset());
-			}
-		});
+//		getSite().getWorkbenchWindow().getSelectionService().addSelectionListener(new ISelectionListener() {
+//			
+//			@Override
+//			public void selectionChanged(IWorkbenchPart part, ISelection selection) {
+//				if (selection instanceof TextSelection)
+//					System.out.println(((TextSelection)selection).getOffset());
+//			}
+//		});
 	}
 }
