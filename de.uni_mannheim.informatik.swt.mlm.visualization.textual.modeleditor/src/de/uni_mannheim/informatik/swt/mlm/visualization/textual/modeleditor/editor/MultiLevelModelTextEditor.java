@@ -10,16 +10,33 @@
  *******************************************************************************/ 
 package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor;
 
+import java.util.List;
+
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
 import org.eclipse.jface.text.ITextViewerExtension;
+import org.eclipse.jface.text.TextSelection;
+import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.custom.VerifyKeyListener;
 import org.eclipse.swt.events.VerifyEvent;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IEditorReference;
+import org.eclipse.ui.ISelectionListener;
+import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.editors.text.TextEditor;
 
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.sourceviewerconfiguration.MultiLevelModelViewerConfiguration;
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.sourceviewerconfiguration.MultilevelColorProvider;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
+import de.uni_mannheim.informatik.swt.models.plm.diagram.edit.parts.Connection2EditPart;
+import de.uni_mannheim.informatik.swt.models.plm.diagram.edit.parts.ConnectionEditPart;
+import de.uni_mannheim.informatik.swt.models.plm.diagram.edit.parts.Entity2EditPart;
+import de.uni_mannheim.informatik.swt.models.plm.diagram.edit.parts.EntityEditPart;
+import de.uni_mannheim.informatik.swt.models.plm.diagram.part.PLMDiagramEditor;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.TextElement;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingLink;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingModel;
@@ -27,6 +44,7 @@ import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M
 public class MultiLevelModelTextEditor extends TextEditor {
 
 	private MultilevelColorProvider multilevelColorProvider;
+	private WeavingModel weavingModel;
 	
 	public MultiLevelModelTextEditor() {
 		super();
@@ -44,6 +62,8 @@ public class MultiLevelModelTextEditor extends TextEditor {
 	@Override
 	public void createPartControl(Composite parent) {
 		super.createPartControl(parent);
+		
+		weavingModel = MultiLevelModelEditorInput.LatestInstance.getWeavingModel();
 		
 		((ITextViewerExtension)getSourceViewer()).appendVerifyKeyListener(new VerifyKeyListener() {
 			
@@ -75,6 +95,64 @@ public class MultiLevelModelTextEditor extends TextEditor {
 			}
 		});
 		
+		getSite().getWorkbenchWindow().getSelectionService().addSelectionListener(new ISelectionListener() {
+			
+			@Override
+			public void selectionChanged(IWorkbenchPart part, ISelection selection) {
+				if (!(selection instanceof TextSelection))
+					return;
+				
+				TextSelection textSelection = (TextSelection)selection;
+				int offSet = textSelection.getOffset();
+				
+				List<TextElement> textElements = weavingModel.findTextElementForOffset(offSet);
+				
+				if (textElements.size() == 0)
+					return;
+				
+				TextElement textElement = textElements.get(0);
+				WeavingLink weavingLink = (WeavingLink)textElement.eContainer();
+				Clabject clabjectToSelect;
+				
+				if (weavingLink.getModelElement() instanceof Attribute)
+					clabjectToSelect = (Clabject)((WeavingLink)weavingLink.eContainer()).getModelElement();
+				else if (weavingLink.getModelElement() instanceof Clabject)
+					clabjectToSelect = (Clabject)weavingLink.getModelElement();
+				else
+					return;
+				
+				String fileName = clabjectToSelect.eResource().getURI().lastSegment();
+				IEditorReference editorReference = null;
+				for (IEditorReference reference : PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getEditorReferences())
+					if (reference.getPartName().equals(fileName))
+						editorReference = reference;
+				
+				if (editorReference == null)
+					return;
+				
+				IEditorPart editorPart = editorReference.getEditor(true);
+				
+				if (! (editorPart instanceof PLMDiagramEditor) )
+					return;
+				
+				PLMDiagramEditor plmDiagramEditor = (PLMDiagramEditor)editorPart;
+				
+				List editParts = plmDiagramEditor.getDiagramGraphicalViewer().findEditPartsForElement(EMFCoreUtil.getProxyID(clabjectToSelect), EntityEditPart.class);
+				if (editParts.size() == 0)
+					editParts = plmDiagramEditor.getDiagramGraphicalViewer().findEditPartsForElement(EMFCoreUtil.getProxyID(clabjectToSelect), Entity2EditPart.class);
+				else if (editParts.size() == 0)
+					editParts = plmDiagramEditor.getDiagramGraphicalViewer().findEditPartsForElement(EMFCoreUtil.getProxyID(clabjectToSelect), ConnectionEditPart.class);
+				else if (editParts.size() == 0)
+					editParts = plmDiagramEditor.getDiagramGraphicalViewer().findEditPartsForElement(EMFCoreUtil.getProxyID(clabjectToSelect), Connection2EditPart.class);
+				else if (editParts.size() == 0)
+					return;
+				
+				IGraphicalEditPart editPart = (IGraphicalEditPart)editParts.get(0);
+				plmDiagramEditor.getDiagramGraphicalViewer().select(editPart);
+				plmDiagramEditor.getDiagramGraphicalViewer().reveal(editPart);
+			}
+		});
+		
 //		getSourceViewer().getTextWidget().addLineBackgroundListener(new LineBackgroundListener() {
 //			
 //			@Override
@@ -86,14 +164,6 @@ public class MultiLevelModelTextEditor extends TextEditor {
 //				if ( !( ((WeavingLink)textElement.eContainer()).getModelElement() instanceof Attribute ) ){
 //					event.lineBackground = multilevelColorProvider.getColor(new RGB(150, 150, 150));
 //				}
-//			}
-//		});
-//		getSite().getWorkbenchWindow().getSelectionService().addSelectionListener(new ISelectionListener() {
-//			
-//			@Override
-//			public void selectionChanged(IWorkbenchPart part, ISelection selection) {
-//				if (selection instanceof TextSelection)
-//					System.out.println(((TextSelection)selection).getOffset());
 //			}
 //		});
 	}
