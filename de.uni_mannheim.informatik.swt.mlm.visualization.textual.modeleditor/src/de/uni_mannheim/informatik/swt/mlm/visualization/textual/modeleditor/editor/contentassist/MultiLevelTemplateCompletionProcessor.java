@@ -10,9 +10,14 @@
  *******************************************************************************/
 package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.contentassist;
 
+import java.awt.Robot;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.eclipse.core.internal.registry.OffsetTable;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.text.IRegion;
 import org.eclipse.jface.text.ITextViewer;
 import org.eclipse.jface.text.Region;
@@ -24,11 +29,19 @@ import org.eclipse.jface.text.templates.TemplateContextType;
 import org.eclipse.jface.text.templates.TemplateProposal;
 import org.eclipse.swt.graphics.Image;
 
+import de.uni_mannheim.informatik.swt.models.plm.PLM.AbstractDSLVisualizer;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Role;
+import de.uni_mannheim.informatik.swt.models.plm.graphicalrepresentation.graphicalrepresentation.VisualizationDescriptor;
+import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.Literal;
+import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.TextualDSLVisualizer;
+import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.TextualVisualizationDescriptor;
+import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.Value;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.TextElement;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingLink;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingModel;
+import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingModelContent;
 
 public class MultiLevelTemplateCompletionProcessor extends
 		TemplateCompletionProcessor {
@@ -62,16 +75,18 @@ public class MultiLevelTemplateCompletionProcessor extends
 		
 		getDSLTemplates(viewer, offset);
 		
-		Template t = new Template("Create something!", "Creates Something", MultiLevelTemplateContextType.CONTEXT_TYPE, "Hello \u00AB${name}\u00BB and \u00AB${name2}\u00BB from \u00AB${name3}\u00BB!", true);
-		DocumentTemplateContext context = new DocumentTemplateContext(new MultiLevelTemplateContextType(), viewer.getDocument(), offset, 0);
-		TemplateProposal proposal = new TemplateProposal(t, context, new Region(offset, 0), null, 100);	
-		proposals[0] = proposal;
-		
+		Map<Clabject, String> templates = getDSLTemplates(viewer, offset);
+		for (Clabject c : templates.keySet()){
+			Template t = new Template(c.getName(), c.getName(), MultiLevelTemplateContextType.CONTEXT_TYPE, templates.get(c), true);
+			DocumentTemplateContext context = new DocumentTemplateContext(new MultiLevelTemplateContextType(), viewer.getDocument(), offset, 0);
+			TemplateProposal proposal = new TemplateProposal(t, context, new Region(offset, 0), null, 100);	
+			proposals[0] = proposal;
+		}
 		return proposals;
 	}
 	
-	public List<String> getDSLTemplates(ITextViewer viewer, int offset){
-		List<String> result = new ArrayList<>();
+	public Map<Clabject, String> getDSLTemplates(ITextViewer viewer, int offset){
+		Map<Clabject, String> result = new HashMap<Clabject, String>();
 		
 		//Search the modele element to wich the text belongs to
 		List<TextElement> textElements = weavingModel.findTextElementForOffset(offset);
@@ -79,12 +94,121 @@ public class MultiLevelTemplateCompletionProcessor extends
 			return result;
 		
 		TextElement textElement = weavingModel.findTextElementForOffset(offset).get(0);
-		Element textContainingModelElement = ((WeavingLink)textElement.eContainer()).getModelElement();
+		WeavingLink textElementContainer = ((WeavingLink)textElement.eContainer());
+		Element visualizedModelElement = textElementContainer.getModelElement();
 		
 		//We are only interested in Clabjects for offering templates which allow create new clabjects
-		if (! (textContainingModelElement instanceof Clabject))
+		if (! (visualizedModelElement instanceof Clabject))
 			return result;
 		
+		Clabject visualizedClabject = (Clabject)visualizedModelElement;
+		
+		int relativeOffset = calculateRelativeOffset(textElementContainer, textElement);
+		
+		TextualDSLVisualizer clabjectVisualizer = null;
+		
+		for (AbstractDSLVisualizer visualizer : visualizedClabject.getPossibleDomainSpecificVisualizers())
+			if (visualizer instanceof TextualDSLVisualizer){
+				clabjectVisualizer = (TextualDSLVisualizer)visualizer;
+				break;
+			}
+		
+		if (clabjectVisualizer == null)
+			return result;
+		
+		List<Clabject> instantiableClabjects = getTypesForInstantiation(clabjectVisualizer, relativeOffset);
+		
+		return getTemplates(instantiableClabjects);
+	}
+	
+	/**
+	 * The relative offset BEFORE the TextElement on which the content assist was
+	 * invoked.
+	 * 
+	 * @param start
+	 * @param elementToSearch
+	 * @return
+	 */
+	private int calculateRelativeOffset(WeavingLink start, TextElement elementToSearch){
+		int relativeOffset = 0;
+		
+		for (EObject current : start.eContents())
+			if (current instanceof WeavingLink)
+				continue;
+			else if (current == elementToSearch)
+				return relativeOffset;
+			else if (current instanceof TextElement)
+				relativeOffset += ((TextElement)current).getLenght();
+			else
+				continue;
+		
+		return relativeOffset;
+	}
+	
+	/**
+	 * This method finds all instantiable clabjects.
+	 * 
+	 * @param visualizer
+	 * @param relativeOffset
+	 * @return
+	 */
+	private List<Clabject> getTypesForInstantiation(TextualDSLVisualizer visualizer, int relativeOffset){
+		List<Clabject> result = new ArrayList<>();
+		int currentOffset = 0;
+		Literal visualizingLiteral = null;
+		
+		//First find literal for offset in the visualizer
+		for (TextualVisualizationDescriptor descriptor : visualizer.getContent()){
+			if (descriptor instanceof Literal)
+				currentOffset += ((Literal)descriptor).getExpression().length();
+			
+			if (currentOffset >= relativeOffset){
+				visualizingLiteral = (Literal)descriptor;
+				break;
+			}
+		}
+		
+		if (visualizingLiteral == null){
+			return result;
+		}
+		
+		//Find next reference immediately AFTER the literal
+		 TextualVisualizationDescriptor descriptor = null;
+		 descriptor = visualizer.getContent().get(visualizer.getContent().indexOf(visualizingLiteral) + 1);
+		 if (!(descriptor instanceof Value))
+			 return result;
+		
+		//Return all connected clabjects for instantiation
+		Value value = (Value)descriptor;
+		String expression = value.getExpression();
+		Clabject clabject = (Clabject)visualizer.getContainingPLMElement();
+		List<Role> navigations = clabject.getAllNavigationsForRoleName(expression);
+		if (navigations.size() == 0)
+			return result;
+		
+		for (Role r : navigations)
+			result.add(r.getDestination());
+		 
 		return result;
+	}
+	
+	private Map<Clabject, String> getTemplates(List<Clabject> clabjects){
+		Map<Clabject, String> templates = new HashMap<Clabject, String>();
+		
+		for (Clabject clabject : clabjects)
+			for (AbstractDSLVisualizer visualizer : clabject.getPossibleDomainSpecificVisualizers())
+				if (visualizer instanceof TextualDSLVisualizer){
+					String template = "";
+
+					for (TextualVisualizationDescriptor descriptor : ((TextualDSLVisualizer) visualizer).getContent())
+						if (descriptor instanceof Literal)
+							template += descriptor.getExpression();
+						else if (descriptor instanceof Value)
+							template += "${" + descriptor.getExpression() + "}";
+					
+					templates.put(clabject, String.format(template));
+				}
+		
+		return templates;
 	}
 }
