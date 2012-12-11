@@ -10,13 +10,11 @@
  *******************************************************************************/
 package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.contentassist;
 
-import java.awt.Robot;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.core.internal.registry.OffsetTable;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.text.IRegion;
 import org.eclipse.jface.text.ITextViewer;
@@ -33,7 +31,6 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.AbstractDSLVisualizer;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Role;
-import de.uni_mannheim.informatik.swt.models.plm.graphicalrepresentation.graphicalrepresentation.VisualizationDescriptor;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.Literal;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.TextualDSLVisualizer;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.TextualVisualizationDescriptor;
@@ -41,7 +38,6 @@ import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualre
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.TextElement;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingLink;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingModel;
-import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingModelContent;
 
 public class MultiLevelTemplateCompletionProcessor extends
 		TemplateCompletionProcessor {
@@ -79,7 +75,7 @@ public class MultiLevelTemplateCompletionProcessor extends
 		for (Clabject c : templates.keySet()){
 			Template t = new Template(c.getName(), c.getName(), MultiLevelTemplateContextType.CONTEXT_TYPE, templates.get(c), true);
 			DocumentTemplateContext context = new DocumentTemplateContext(new MultiLevelTemplateContextType(), viewer.getDocument(), offset, 0);
-			TemplateProposal proposal = new TemplateProposal(t, context, new Region(offset, 0), null, 100);	
+			TemplateProposal proposal = new MultiLevelModelTemplateProposal(t, context, new Region(offset, 0), null, 100, c, weavingModel);	
 			proposals[0] = proposal;
 		}
 		return proposals;

@@ -2,6 +2,7 @@ package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.edi
 
 import java.util.List;
 
+import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -76,8 +77,8 @@ public class SyncModelAndTextReconcilingStrategy implements
 		int offset = dirtyRegion.getOffset();
 		
 		List<TextElement> possibleWeavingLinks = weavingModel.findTextElementForOffset(offset - 1);
-		if (possibleWeavingLinks.size() != 1)
-			throw new UnsupportedOperationException("Operation not supported!");
+		Assert.isTrue(possibleWeavingLinks.size() == 1);
+
 		
 		TextElement textElement = possibleWeavingLinks.get(0);
 		WeavingLink link = (WeavingLink)textElement.eContainer();
