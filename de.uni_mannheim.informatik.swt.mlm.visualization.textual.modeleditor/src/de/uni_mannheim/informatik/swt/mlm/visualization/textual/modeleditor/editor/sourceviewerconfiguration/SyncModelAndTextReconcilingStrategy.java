@@ -30,7 +30,7 @@ public class SyncModelAndTextReconcilingStrategy implements
 	private WeavingModel weavingModel;
 	private ISourceViewer sourceViewer;
 	
-	private IDocument document;
+	private static IDocument document;
 	
 	
 	public SyncModelAndTextReconcilingStrategy(WeavingModel weavingModel, ISourceViewer sourceViewer){
@@ -160,7 +160,7 @@ public class SyncModelAndTextReconcilingStrategy implements
 				domain.getCommandStack().execute(updateMultiLevelModelCommand);
 				
 				textElement.setText(newString);
-				recalculateOffset(((WeavingModel)EcoreUtil.getRootContainer(link)).getLinks().get(0), 0, document.get());
+				recalculateOffset(((WeavingModel)EcoreUtil.getRootContainer(link)).getLinks().get(0), 0);
 				
 				// Because this reconciler works asynchronous to the UI thread the
 				// damage repairer etc. are already run before the weaving model is
@@ -179,7 +179,7 @@ public class SyncModelAndTextReconcilingStrategy implements
 	 * @param document
 	 * @return
 	 */
-	private int recalculateOffset(WeavingLink link, int offset, String document){
+	public static int recalculateOffset(WeavingLink link, int offset){
 		int currentOffset = offset;
 		
 		for (WeavingModelContent element : link.getChildren()){
@@ -190,7 +190,7 @@ public class SyncModelAndTextReconcilingStrategy implements
 				currentOffset = currentOffset + length;
 			}
 			else{
-				currentOffset = recalculateOffset((WeavingLink)element, currentOffset, document);
+				currentOffset = recalculateOffset((WeavingLink)element, currentOffset);
 			}
 		}
 		

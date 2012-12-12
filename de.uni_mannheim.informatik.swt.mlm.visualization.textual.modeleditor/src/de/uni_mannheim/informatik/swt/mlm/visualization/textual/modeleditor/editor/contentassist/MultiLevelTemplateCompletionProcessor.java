@@ -81,6 +81,12 @@ public class MultiLevelTemplateCompletionProcessor extends
 		return proposals;
 	}
 	
+	/**
+	 * 
+	 * @param viewer
+	 * @param offset
+	 * @return
+	 */
 	public Map<Clabject, String> getDSLTemplates(ITextViewer viewer, int offset){
 		Map<Clabject, String> result = new HashMap<Clabject, String>();
 		
@@ -188,6 +194,13 @@ public class MultiLevelTemplateCompletionProcessor extends
 		return result;
 	}
 	
+	/**
+	 * Creates templates for a list of clabjects
+	 * 
+	 * @param clabjects clabjects to create templates for
+	 * 
+	 * @return a list of templates
+	 */
 	private Map<Clabject, String> getTemplates(List<Clabject> clabjects){
 		Map<Clabject, String> templates = new HashMap<Clabject, String>();
 		
