@@ -30,7 +30,7 @@ import org.eclipse.swt.graphics.Image;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.AbstractDSLVisualizer;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Role;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Participation;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.Literal;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.TextualDSLVisualizer;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.TextualVisualizationDescriptor;
@@ -184,11 +184,11 @@ public class MultiLevelTemplateCompletionProcessor extends
 		Value value = (Value)descriptor;
 		String expression = value.getExpression();
 		Clabject clabject = (Clabject)visualizer.getContainingPLMElement();
-		List<Role> navigations = clabject.getAllNavigationsForRoleName(expression);
+		List<Participation> navigations = clabject.getAllNavigationsForParticipationName(expression);
 		if (navigations.size() == 0)
 			return result;
 		
-		for (Role r : navigations)
+		for (Participation r : navigations)
 			result.add(r.getDestination());
 		 
 		return result;
