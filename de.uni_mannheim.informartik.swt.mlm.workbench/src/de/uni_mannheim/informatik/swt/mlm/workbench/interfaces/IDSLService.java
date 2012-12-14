@@ -14,7 +14,7 @@ import java.util.List;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Entity;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Role;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Participation;
 
 public interface IDSLService {
 	
@@ -24,7 +24,7 @@ public interface IDSLService {
 	 * @param sourceInstance The source of the connection
 	 * @param targetInstance The target of the connection
 	 * 
-	 * @return A list of all instantiable roles
+	 * @return A list of all instantiable participations
 	 */
 	public List<Connection> getInstantiableConnectionsBetween(Entity sourceInstance, Entity targetInstance);
 	/**
@@ -56,23 +56,23 @@ public interface IDSLService {
 	public List<Connection> getInstantiableConnectionsBetween(Entity sourceInstance, Connection targetInstance);
 	
 	/**
-	 * Searches for all instantiable roles between sourceInstance and targetInstance
+	 * Searches for all instantiable participations between sourceInstance and targetInstance
 	 * 
-	 * @param sourceInstance The source of the role
-	 * @param targetInstance The target of the role
+	 * @param sourceInstance The source of the participation
+	 * @param targetInstance The target of the participation
 	 * 
-	 * @return A list of all instantiable roles
+	 * @return A list of all instantiable participations
 	 */
-	public List<Role> getInstantiableRolesBetween(Connection sourceInstance, Connection tragetInstance);
+	public List<Participation> getInstantiableParticipationsBetween(Connection sourceInstance, Connection tragetInstance);
 	
 	/**
-	 * Searches for all instantiable roles between sourceInstance and targetInstance
+	 * Searches for all instantiable participations between sourceInstance and targetInstance
 	 * 
-	 * @param sourceInstance The source of the role
-	 * @param targetInstance The target of the role
+	 * @param sourceInstance The source of the participation
+	 * @param targetInstance The target of the participation
 	 * 
-	 * @return A list of all instantiable roles
+	 * @return A list of all instantiable participations
 	 */
-	public List<Role> getInstantiableRolesBetween(Connection sourceInstance, Entity targetInstance);
+	public List<Participation> getInstantiableParticipationsBetween(Connection sourceInstance, Entity targetInstance);
 
 }

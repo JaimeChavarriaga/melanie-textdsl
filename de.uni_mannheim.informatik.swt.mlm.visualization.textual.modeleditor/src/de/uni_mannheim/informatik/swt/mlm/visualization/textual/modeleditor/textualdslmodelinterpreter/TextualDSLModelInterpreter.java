@@ -24,7 +24,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Role;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Participation;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.Literal;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.RGBColor;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.TextualDSLVisualizer;
@@ -267,15 +267,15 @@ public class TextualDSLModelInterpreter {
 		
 		//Is visualizer container on the same level? -> navigate directly
 		if (visualizerContainer.getModel() == clabject.getModel())
-			for (Clabject navigationEnd : clabject.getDomainForRoleName(expression))
+			for (Clabject navigationEnd : clabject.getDomainForParticipationName(expression))
 				result += getTextualRepresentation(navigationEnd, modelElement);
 		else if (visualizerContainer.getModel().getClassifiedModel() == clabject.getModel()){
 			List<Clabject> instanceDomain = new ArrayList<>();
 			
-			for (Role r :clabject.getAllNavigations())
+			for (Participation r :clabject.getAllNavigations())
 				instanceDomain.add(r.getDestination());
 			
-			List<Clabject> typetDomainForExpression = visualizerContainer.getDomainForRoleName(expression);
+			List<Clabject> typetDomainForExpression = visualizerContainer.getDomainForParticipationName(expression);
 			
 			for (Clabject instance : instanceDomain)
 				for (Clabject instanceType : instance.getModelTypes())
