@@ -77,7 +77,9 @@ public class SyncModelAndTextReconcilingStrategy implements
 		int offset = dirtyRegion.getOffset();
 		
 		List<TextElement> possibleWeavingLinks = weavingModel.findTextElementForOffset(offset - 1);
-		Assert.isTrue(possibleWeavingLinks.size() == 1);
+		
+		if (possibleWeavingLinks.size() != 1)
+				return;
 
 		
 		TextElement textElement = possibleWeavingLinks.get(0);
