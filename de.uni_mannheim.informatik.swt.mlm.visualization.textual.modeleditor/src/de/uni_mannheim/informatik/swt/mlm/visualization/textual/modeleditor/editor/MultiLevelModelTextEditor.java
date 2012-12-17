@@ -121,6 +121,9 @@ public class MultiLevelModelTextEditor extends TextEditor {
 				else
 					return;
 				
+				if (clabjectToSelect.eResource() == null)
+					return;
+				
 				String fileName = clabjectToSelect.eResource().getURI().lastSegment();
 				IEditorReference editorReference = null;
 				for (IEditorReference reference : PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getEditorReferences())
