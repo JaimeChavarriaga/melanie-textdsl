@@ -29,6 +29,7 @@ import org.eclipse.swt.graphics.Image;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.AbstractDSLVisualizer;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Participation;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.Literal;
@@ -69,13 +70,11 @@ public class MultiLevelTemplateCompletionProcessor extends
 			int offset) {
 		ICompletionProposal[] proposals = new ICompletionProposal[1];
 		
-		getDSLTemplates(viewer, offset);
-		
-		Map<Clabject, String> templates = getDSLTemplates(viewer, offset);
-		for (Clabject c : templates.keySet()){
-			Template t = new Template(c.getName(), c.getName(), MultiLevelTemplateContextType.CONTEXT_TYPE, templates.get(c), true);
+		List<DSLTemplate> templates = getDSLTemplates(viewer, offset);
+		for (DSLTemplate template : templates){
+			Template t = new Template(template.getTypeClabject().getName(), template.getTypeClabject().getName(), MultiLevelTemplateContextType.CONTEXT_TYPE, template.getTemplateString(), true);
 			DocumentTemplateContext context = new DocumentTemplateContext(new MultiLevelTemplateContextType(), viewer.getDocument(), offset, 0);
-			TemplateProposal proposal = new MultiLevelModelTemplateProposal(t, context, new Region(offset, 0), null, 100, c, weavingModel);	
+			TemplateProposal proposal = new MultiLevelModelTemplateProposal(t, context, new Region(offset, 0), null, 100, template.getTypeClabject(), template.getTypeConnection(), template.getContainerClabject(), weavingModel);	
 			proposals[0] = proposal;
 		}
 		return proposals;
@@ -85,17 +84,17 @@ public class MultiLevelTemplateCompletionProcessor extends
 	 * 
 	 * @param viewer
 	 * @param offset
-	 * @return
+	 * @return The map is of format Type, Template
 	 */
-	public Map<Clabject, String> getDSLTemplates(ITextViewer viewer, int offset){
-		Map<Clabject, String> result = new HashMap<Clabject, String>();
+	private List<DSLTemplate> getDSLTemplates(ITextViewer viewer, int offset){
+		List<DSLTemplate> result = new ArrayList<>();
 		
-		//Search the modele element to wich the text belongs to
+		//Search the model element to which the text belongs to
 		List<TextElement> textElements = weavingModel.findTextElementForOffset(offset);
 		if (textElements.size() == 0)
 			return result;
 		
-		TextElement textElement = weavingModel.findTextElementForOffset(offset).get(0);
+		TextElement textElement = textElements.get(0);
 		WeavingLink textElementContainer = ((WeavingLink)textElement.eContainer());
 		Element visualizedModelElement = textElementContainer.getModelElement();
 		
@@ -118,9 +117,12 @@ public class MultiLevelTemplateCompletionProcessor extends
 		if (clabjectVisualizer == null)
 			return result;
 		
-		List<Clabject> instantiableClabjects = getTypesForInstantiation(clabjectVisualizer, relativeOffset);
+		Map<Connection, Clabject> instantiableClabjects = getTypesForInstantiation(clabjectVisualizer, relativeOffset);
 		
-		return getTemplates(instantiableClabjects);
+		for (Connection c : instantiableClabjects.keySet())
+			result.add(new DSLTemplate(instantiableClabjects.get(c), visualizedClabject, c));
+		
+		return result;
 	}
 	
 	/**
@@ -154,8 +156,8 @@ public class MultiLevelTemplateCompletionProcessor extends
 	 * @param relativeOffset
 	 * @return
 	 */
-	private List<Clabject> getTypesForInstantiation(TextualDSLVisualizer visualizer, int relativeOffset){
-		List<Clabject> result = new ArrayList<>();
+	private Map<Connection, Clabject> getTypesForInstantiation(TextualDSLVisualizer visualizer, int relativeOffset){
+		Map<Connection, Clabject> result = new HashMap<>();
 		int currentOffset = 0;
 		Literal visualizingLiteral = null;
 		
@@ -189,23 +191,42 @@ public class MultiLevelTemplateCompletionProcessor extends
 			return result;
 		
 		for (Participation r : navigations)
-			result.add(r.getDestination());
+			result.put(r.getConnection(), r.getDestination());
 		 
 		return result;
 	}
 	
 	/**
-	 * Creates templates for a list of clabjects
-	 * 
-	 * @param clabjects clabjects to create templates for
-	 * 
-	 * @return a list of templates
+	 * private class for storing a dsl template and information about it
 	 */
-	private Map<Clabject, String> getTemplates(List<Clabject> clabjects){
-		Map<Clabject, String> templates = new HashMap<Clabject, String>();
+	private class DSLTemplate{
+		private Clabject typeClabject;
+		public Clabject getTypeClabject(){
+			return typeClabject;
+		}
 		
-		for (Clabject clabject : clabjects)
-			for (AbstractDSLVisualizer visualizer : clabject.getPossibleDomainSpecificVisualizers())
+		private Clabject containerClabject;
+		public Clabject getContainerClabject(){
+			return containerClabject;
+		}
+		
+		private Connection typeConnection;
+		public Connection getTypeConnection(){
+			return typeConnection;
+		}
+		
+		public DSLTemplate(Clabject typeClabject, Clabject containerClabject, Connection typeConnection){
+			this.typeClabject = typeClabject;
+			this.containerClabject = containerClabject;
+			this.typeConnection = typeConnection;
+		}
+		
+		private String template = null;
+		public String getTemplateString(){
+			if (template != null)
+					return template;
+			
+			for (AbstractDSLVisualizer visualizer : typeClabject.getPossibleDomainSpecificVisualizers())
 				if (visualizer instanceof TextualDSLVisualizer){
 					String template = "";
 
@@ -215,9 +236,10 @@ public class MultiLevelTemplateCompletionProcessor extends
 						else if (descriptor instanceof Value)
 							template += "${" + descriptor.getExpression() + "}";
 					
-					templates.put(clabject, String.format(template));
+					return String.format(template);
 				}
-		
-		return templates;
+			
+			return null;
+		}
 	}
 }
