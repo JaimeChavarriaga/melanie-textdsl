@@ -28,7 +28,7 @@ import org.eclipse.jface.text.templates.TemplateContext;
 import org.eclipse.jface.text.templates.TemplateProposal;
 import org.eclipse.swt.graphics.Image;
 
-import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.sourceviewerconfiguration.SyncModelAndTextReconcilingStrategy;
+import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.MultiLevelModelTextEditor;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.AbstractDSLVisualizer;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
@@ -78,7 +78,11 @@ public class MultiLevelModelTemplateProposal extends TemplateProposal {
 	public void apply(ITextViewer viewer, char trigger, int stateMask,
 			int offset) {
 
+		MultiLevelModelTextEditor.setProcessTextChanged(false);
+		
 		super.apply(viewer, trigger, stateMask, offset);
+		
+		MultiLevelModelTextEditor.setProcessTextChanged(false);
 		
 		List<TextElement> textElements = weavingModel.findTextElementForOffset(offset);
 		
@@ -137,8 +141,9 @@ public class MultiLevelModelTemplateProposal extends TemplateProposal {
 		int indexToAdd = textElementContainingWeavingLink.getChildren().indexOf(textElement);
 		textElementContainingWeavingLink.getChildren().add(indexToAdd, newClabjectWeavingLink);
 		
-		SyncModelAndTextReconcilingStrategy.recalculateOffset(((WeavingModel)EcoreUtil.getRootContainer(newClabjectWeavingLink)).getLinks().get(0), 0);
 		viewer.invalidateTextPresentation();
+		MultiLevelModelTextEditor.recalculateOffset(((WeavingModel)EcoreUtil.getRootContainer(newClabjectWeavingLink)).getLinks().get(0), 0);
+		
 		
 		//This is done for debug reasons to serialize the model on harddisk for viewing it.
 		try {
