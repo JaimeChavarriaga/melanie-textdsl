@@ -31,6 +31,22 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WeavingModelContent" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="WeavingLink" eSuperTypes="#//WeavingModelContent">
+    <eOperations name="calculateOffset" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Calculates the offset for this model element by taking the contained weaving links and text elements into account."/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL">
+        <details key="body" value="let firstChild:WeavingModelContent = &#xD;&#xA;&#x9;self.children->first()&#xD;&#xA;in&#xD;&#xA;&#x9;if (firstChild.oclIsUndefined()) then&#xD;&#xA;&#x9;&#x9;-1&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;if (firstChild.oclIsTypeOf(TextElement)) then&#xD;&#xA;&#x9;&#x9;&#x9;firstChild.oclAsType(TextElement).offset&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;firstChild.oclAsType(WeavingLink).calculateOffset()&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif "/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="calculateLength" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Calculates the length for this model element by taking the contained weaving links and text elements into account."/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL">
+        <details key="body" value="let lastChild:WeavingModelContent = &#xD;&#xA;&#x9;self.children->last()&#xD;&#xA;in&#xD;&#xA;&#x9;if (lastChild.oclIsUndefined()) then&#xD;&#xA;&#x9;&#x9;-1&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;if (lastChild.oclIsTypeOf(TextElement)) then&#xD;&#xA;&#x9;&#x9;&#x9;lastChild.oclAsType(TextElement).offset + lastChild.oclAsType(TextElement).length&#xD;&#xA;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;lastChild.oclAsType(WeavingLink).calculateLength()&#xD;&#xA;&#x9;&#x9;endif&#xD;&#xA;&#x9;endif "/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="modelElement" eType="ecore:EClass ../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore#//Element"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
         eType="#//WeavingModelContent" containment="true"/>
@@ -38,7 +54,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="TextElement" eSuperTypes="#//WeavingModelContent">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="offset" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lenght" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="length" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
