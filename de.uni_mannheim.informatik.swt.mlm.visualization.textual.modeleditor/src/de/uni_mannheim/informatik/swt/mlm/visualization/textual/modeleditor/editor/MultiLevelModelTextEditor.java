@@ -11,25 +11,31 @@
 package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
+import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.ITextListener;
 import org.eclipse.jface.text.ITextViewerExtension;
 import org.eclipse.jface.text.TextEvent;
 import org.eclipse.jface.text.TextSelection;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.custom.VerifyKeyListener;
 import org.eclipse.swt.events.VerifyEvent;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.ISelectionListener;
@@ -41,6 +47,7 @@ import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.edit
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.sourceviewerconfiguration.MultilevelColorProvider;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.Classification;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage;
 import de.uni_mannheim.informatik.swt.models.plm.diagram.edit.parts.Connection2EditPart;
 import de.uni_mannheim.informatik.swt.models.plm.diagram.edit.parts.ConnectionEditPart;
@@ -84,7 +91,7 @@ public class MultiLevelModelTextEditor extends TextEditor {
 				//use event.stateMask to detect STRG+X etc.
 				if (!
 							//Character was pressed
- 						(	(event.keyCode >= 91 && event.keyCode <= 122)
+ 						(	(event.keyCode >= 91 && event.keyCode <= 127)
 							//Number was pressed or math signs such as "-"
 						|| 	(event.keyCode >= 32 && event.keyCode <= 61)
 							// "/"	"+"
@@ -98,6 +105,13 @@ public class MultiLevelModelTextEditor extends TextEditor {
 				
 				WeavingModel weavingModel = MultiLevelModelEditorInput.LatestInstance.getWeavingModel();
 				TextElement textElement = weavingModel.findTextElementForOffset(((StyledText)event.getSource()).getCaretOffset()).get(0);
+				
+				if ((event.keyCode == 127 || event.keyCode == 8) 
+						&& ((WeavingLink)textElement.eContainer()).getModelElement() instanceof Clabject){
+					event.doit = false;
+					removeClabjectFromTextAndModel((WeavingLink)textElement.eContainer());
+					return;
+				}
 				
 				//Not an Attribute is edited -> Drop changes!
 				if ( !( ((WeavingLink)textElement.eContainer()).getModelElement() instanceof Attribute ) ){
@@ -195,6 +209,53 @@ public class MultiLevelModelTextEditor extends TextEditor {
 //				}
 //			}
 //		});
+	}
+
+	
+	private void removeClabjectFromTextAndModel(WeavingLink linkToClabject){
+		MessageBox deleteClabjectBox = new MessageBox(PlatformUI.getWorkbench().getDisplay().getActiveShell(), SWT.ICON_QUESTION | SWT.YES | SWT.NO);
+		deleteClabjectBox.setMessage("Do you want to delete " + linkToClabject.getModelElement().getName() + "?");
+		deleteClabjectBox.setText("Delete Clabject");
+		
+		if (deleteClabjectBox.open() == SWT.NO)
+			return;
+		
+		CompoundCommand cCmd = new CompoundCommand();
+		
+		Clabject clabjectToDelete = (Clabject)linkToClabject.getModelElement();
+		TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(clabjectToDelete);
+		cCmd.append(RemoveCommand.create(domain, clabjectToDelete));
+		
+		List<Classification> classificationsToDelete = new ArrayList<>(clabjectToDelete.getClassificationsAsInstance());
+		classificationsToDelete.addAll(clabjectToDelete.getClassificationsAsType());
+		if (classificationsToDelete.size() > 0)
+			cCmd.append(RemoveCommand.create(domain, classificationsToDelete));
+		
+		for (Clabject c : clabjectToDelete.getEigenConnections()){
+			List<Classification> connectionClassificationsToDelete = new ArrayList<>(c.getClassificationsAsInstance());
+			connectionClassificationsToDelete.addAll(c.getClassificationsAsType());
+			if (connectionClassificationsToDelete.size() > 0)
+				cCmd.append(RemoveCommand.create(domain, connectionClassificationsToDelete));
+			
+			cCmd.append(RemoveCommand.create(domain, c.getClassificationsAsInstance()));
+			cCmd.append(RemoveCommand.create(domain, c.getClassificationsAsType()));
+		}
+		
+		cCmd.append(RemoveCommand.create(domain, clabjectToDelete.getEigenConnections()));
+		
+		domain.getCommandStack().execute(cCmd);
+		
+		EcoreUtil.delete(linkToClabject);
+
+		//Remove the whole text from the model
+		
+		try {
+			processTextChanged = false;
+			getSourceViewer().getDocument().replace(linkToClabject.calculateOffset(), linkToClabject.calculateLength(), "");
+		} catch (BadLocationException e) {
+			processTextChanged = true;
+			e.printStackTrace();
+		}
 	}
 	
 	/**
@@ -320,7 +381,7 @@ public class MultiLevelModelTextEditor extends TextEditor {
 		for (WeavingModelContent element : link.getChildren()){
 			if (element instanceof TextElement){
 				int length = ((TextElement)element).getText().length();
-				((TextElement)element).setLenght(length);
+				((TextElement)element).setLength(length);
 				((TextElement)element).setOffset(currentOffset);
 				currentOffset = currentOffset + length;
 			}

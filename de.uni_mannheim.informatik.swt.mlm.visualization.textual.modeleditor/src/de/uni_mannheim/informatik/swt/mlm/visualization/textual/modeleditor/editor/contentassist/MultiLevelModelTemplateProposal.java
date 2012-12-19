@@ -173,9 +173,9 @@ public class MultiLevelModelTemplateProposal extends TemplateProposal {
 				if (descriptor instanceof Literal){
 					TextElement textElement = M2TWeavingFactory.eINSTANCE.createTextElement();
 					textElement.setText(descriptor.getExpression());
-					textElement.setLenght(textElement.getText().length());
+					textElement.setLength(textElement.getText().length());
 					textElement.setOffset(offset);
-					offset = offset + textElement.getLenght();
+					offset = offset + textElement.getLength();
 					link.getChildren().add(textElement);
 				}
 				else if (descriptor instanceof Value
@@ -189,8 +189,8 @@ public class MultiLevelModelTemplateProposal extends TemplateProposal {
 					TextElement attributeTextElement = M2TWeavingFactory.eINSTANCE.createTextElement();
 					attributeTextElement.setText(descriptor.getExpression());
 					attributeTextElement.setOffset(offset);
-					attributeTextElement.setLenght(attributeTextElement.getText().length());
-					offset += attributeTextElement.getLenght();
+					attributeTextElement.setLength(attributeTextElement.getText().length());
+					offset += attributeTextElement.getLength();
 					attributeLink.getChildren().add(attributeTextElement);
 				}
 				

@@ -303,7 +303,7 @@ public class TextualDSLModelInterpreter {
 			if (element instanceof TextElement){
 				currentOffset = document.indexOf(((TextElement)element).getText(), currentOffset);
 				int length = ((TextElement)element).getText().length();
-				((TextElement)element).setLenght(length);
+				((TextElement)element).setLength(length);
 				((TextElement)element).setOffset(currentOffset);
 				currentOffset = currentOffset + length;
 			}

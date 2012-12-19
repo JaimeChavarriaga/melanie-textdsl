@@ -142,7 +142,7 @@ public class MultiLevelTemplateCompletionProcessor extends
 			else if (current == elementToSearch)
 				return relativeOffset;
 			else if (current instanceof TextElement)
-				relativeOffset += ((TextElement)current).getLenght();
+				relativeOffset += ((TextElement)current).getLength();
 			else
 				continue;
 		
