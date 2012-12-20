@@ -130,7 +130,11 @@ public class MultiLevelModelTextEditor extends TextEditor {
 				if (weavingModel == null)
 					return;
 				
-				syncTextWithModel(event);
+				//This condition is needed because the text change listener is called
+				//for changes which are not done through user input with offset 0 and
+				//length = document length
+				if (event.getDocumentEvent() != null)
+					syncTextWithModel(event);
 			}
 		});
 		
