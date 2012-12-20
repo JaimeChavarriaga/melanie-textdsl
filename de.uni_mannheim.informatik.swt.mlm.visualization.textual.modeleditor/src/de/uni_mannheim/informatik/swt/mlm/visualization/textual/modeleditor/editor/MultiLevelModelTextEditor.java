@@ -54,6 +54,7 @@ import de.uni_mannheim.informatik.swt.models.plm.diagram.edit.parts.ConnectionEd
 import de.uni_mannheim.informatik.swt.models.plm.diagram.edit.parts.Entity2EditPart;
 import de.uni_mannheim.informatik.swt.models.plm.diagram.edit.parts.EntityEditPart;
 import de.uni_mannheim.informatik.swt.models.plm.diagram.part.PLMDiagramEditor;
+import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.SearchStrategy;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.TextElement;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingLink;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingModel;
@@ -104,7 +105,7 @@ public class MultiLevelModelTextEditor extends TextEditor {
 					return;
 				
 				WeavingModel weavingModel = MultiLevelModelEditorInput.LatestInstance.getWeavingModel();
-				TextElement textElement = weavingModel.findTextElementForOffset(((StyledText)event.getSource()).getCaretOffset()).get(0);
+				TextElement textElement = weavingModel.findTextElementForOffset(((StyledText)event.getSource()).getCaretOffset(), SearchStrategy.ATTRIBUTE_PREFFERED).get(0);
 				
 				if ((event.keyCode == 127 || event.keyCode == 8) 
 						&& ((WeavingLink)textElement.eContainer()).getModelElement() instanceof Clabject){
@@ -248,7 +249,6 @@ public class MultiLevelModelTextEditor extends TextEditor {
 		EcoreUtil.delete(linkToClabject);
 
 		//Remove the whole text from the model
-		
 		try {
 			processTextChanged = false;
 			getSourceViewer().getDocument().replace(linkToClabject.calculateOffset(), linkToClabject.calculateLength(), "");
@@ -272,7 +272,7 @@ public class MultiLevelModelTextEditor extends TextEditor {
 		
 		int offset = event.getOffset();
 		
-		List<TextElement> possibleWeavingLinks = weavingModel.findTextElementForOffset(offset - 1);
+		List<TextElement> possibleWeavingLinks = weavingModel.findTextElementForOffset(offset, SearchStrategy.ATTRIBUTE_PREFFERED);
 		
 		if (possibleWeavingLinks.size() != 1)
 				return;
