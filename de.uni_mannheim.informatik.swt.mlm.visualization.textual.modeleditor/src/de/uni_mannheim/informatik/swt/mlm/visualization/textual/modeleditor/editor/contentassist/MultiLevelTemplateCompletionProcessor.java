@@ -233,7 +233,8 @@ public class MultiLevelTemplateCompletionProcessor extends
 					for (TextualVisualizationDescriptor descriptor : ((TextualDSLVisualizer) visualizer).getContent())
 						if (descriptor instanceof Literal)
 							template += descriptor.getExpression();
-						else if (descriptor instanceof Value)
+						else if (descriptor instanceof Value
+									&& ((Value)descriptor).isAttribute())
 							template += "${" + descriptor.getExpression() + "}";
 					
 					return String.format(template);

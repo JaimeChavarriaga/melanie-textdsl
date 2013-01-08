@@ -71,7 +71,7 @@ public class MultiLevelModelTemplateProposal extends TemplateProposal {
 	}
 
 	/**
-	 * This method instantiaties the created clabject, the connection it is connected through with its
+	 * This method instantiates the created clabject, the connection it is connected through with its
 	 * container and the inserts the text template into the graphical LML editor.
 	 */
 	@Override
