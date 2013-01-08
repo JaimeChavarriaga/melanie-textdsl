@@ -56,7 +56,16 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="color" eType="#//AbstractColor"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Value" eSuperTypes="#//TextualVisualizationDescriptor"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Value" eSuperTypes="#//TextualVisualizationDescriptor">
+    <eOperations name="isAttribute" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Checks whether the value statement is related to an attribute or reference."/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL">
+        <details key="body" value="self.getContainingTextualVisualizer().getContainingPLMElement().oclAsType(PLM::Clabject).getAttributeByName(self.expression)->size() > 0"/>
+      </eAnnotations>
+    </eOperations>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractColor" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="StandardColor" eSuperTypes="#//AbstractColor">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="color" eType="#//ColorEnum"/>
