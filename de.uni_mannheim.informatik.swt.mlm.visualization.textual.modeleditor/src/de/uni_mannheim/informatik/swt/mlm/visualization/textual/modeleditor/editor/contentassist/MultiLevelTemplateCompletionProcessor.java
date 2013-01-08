@@ -36,6 +36,7 @@ import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualre
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.TextualDSLVisualizer;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.TextualVisualizationDescriptor;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.Value;
+import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.SearchStrategy;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.TextElement;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingLink;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingModel;
@@ -68,9 +69,9 @@ public class MultiLevelTemplateCompletionProcessor extends
 	@Override
 	public ICompletionProposal[] computeCompletionProposals(ITextViewer viewer,
 			int offset) {
-		ICompletionProposal[] proposals = new ICompletionProposal[1];
 		
 		List<DSLTemplate> templates = getDSLTemplates(viewer, offset);
+		ICompletionProposal[] proposals = new ICompletionProposal[templates.size()];
 		for (DSLTemplate template : templates){
 			Template t = new Template(template.getTypeClabject().getName(), template.getTypeClabject().getName(), MultiLevelTemplateContextType.CONTEXT_TYPE, template.getTemplateString(), true);
 			DocumentTemplateContext context = new DocumentTemplateContext(new MultiLevelTemplateContextType(), viewer.getDocument(), offset, 0);
@@ -90,7 +91,7 @@ public class MultiLevelTemplateCompletionProcessor extends
 		List<DSLTemplate> result = new ArrayList<>();
 		
 		//Search the model element to which the text belongs to
-		List<TextElement> textElements = weavingModel.findTextElementForOffset(offset);
+		List<TextElement> textElements = weavingModel.findTextElementForOffset(offset, SearchStrategy.ATTRIBUTE_PREFFERED);
 		if (textElements.size() == 0)
 			return result;
 		
