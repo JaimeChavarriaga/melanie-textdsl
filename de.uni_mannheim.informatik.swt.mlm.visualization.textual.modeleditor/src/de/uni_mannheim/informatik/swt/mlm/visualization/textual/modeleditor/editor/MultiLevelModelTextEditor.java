@@ -62,6 +62,8 @@ import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M
 
 public class MultiLevelModelTextEditor extends TextEditor {
 
+	public final static String ID = "de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor";
+	
 	private MultilevelColorProvider multilevelColorProvider;
 	private WeavingModel weavingModel;
 	

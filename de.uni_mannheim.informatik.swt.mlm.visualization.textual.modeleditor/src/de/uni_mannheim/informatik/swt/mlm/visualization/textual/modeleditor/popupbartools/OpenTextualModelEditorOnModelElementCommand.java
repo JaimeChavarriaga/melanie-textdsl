@@ -10,15 +10,25 @@
  *******************************************************************************/
 package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.popupbartools;
 
+import org.eclipse.e4.ui.model.application.ui.basic.MBasicFactory;
+import org.eclipse.e4.ui.model.application.ui.basic.MPart;
+import org.eclipse.e4.ui.model.application.ui.basic.MPartSashContainer;
+import org.eclipse.e4.ui.model.application.ui.basic.MPartStack;
+import org.eclipse.e4.ui.workbench.modeling.EPartService;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor;
 
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.Activator;
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.MultiLevelModelEditorInput;
+import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.MultiLevelModelTextEditor;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
+import de.uni_mannheim.informatik.swt.models.plm.diagram.part.PLMDiagramEditor;
 
 
 public class OpenTextualModelEditorOnModelElementCommand extends Command{
@@ -33,13 +43,53 @@ public class OpenTextualModelEditorOnModelElementCommand extends Command{
 		this.host = host;
 	}
 	
+	@SuppressWarnings("restriction")
 	@Override
 	public void execute() {
 		super.execute();
 		
 		IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
 		try {
-			page.openEditor(new MultiLevelModelEditorInput((Model)((IGraphicalEditPart)host).resolveSemanticElement()), Activator.PLUGIN_ID, true);
+			
+			IEditorPart newEditor = page.openEditor(new MultiLevelModelEditorInput((Model)((IGraphicalEditPart)host).resolveSemanticElement()), Activator.PLUGIN_ID, true);
+			
+			MPart lmlEditorContainingPart = null;
+			MPart textEditorContainingPart = null;
+			
+			EPartService service = (EPartService)PlatformUI.getWorkbench().getService(EPartService.class);
+			for (MPart part : service.getParts())
+				//The LML Editor is found
+				if (part.getElementId().equals(CompatibilityEditor.MODEL_ELEMENT_ID)
+						&& ((CompatibilityEditor)part.getObject()).getEditor().getClass().equals(PLMDiagramEditor.class))
+					lmlEditorContainingPart = part;
+				else if (part.getElementId().equals(CompatibilityEditor.MODEL_ELEMENT_ID)
+						&& ((CompatibilityEditor)part.getObject()).getEditor().getClass().equals(MultiLevelModelTextEditor.class))
+					textEditorContainingPart = part;
+				else if (lmlEditorContainingPart != null && textEditorContainingPart != null)
+					break;
+			
+			if (lmlEditorContainingPart == null
+					&& textEditorContainingPart == null)
+				return;
+			
+			MPartStack editorContainingStack = (MPartStack)((EObject)lmlEditorContainingPart).eContainer();
+			editorContainingStack.getChildren().remove(textEditorContainingPart);
+			
+			MPartSashContainer container = (MPartSashContainer)((EObject)editorContainingStack).eContainer();
+			MPartStack rightPartStack = MBasicFactory.INSTANCE.createPartStack();
+			rightPartStack.getChildren().add(textEditorContainingPart);
+			container.getChildren().add(rightPartStack);
+			
+			//editorContainingStack.getChildren().add(splitContainer);
+			
+			//MPartSashContainer container = (MPartSashContainer)((EObject)editorContainingStack).eContainer();
+			
+//			container.setHorizontal(true);
+//			container.getChildren().add(rightPartStack);
+//
+//			editorContainingStack.getChildren().remove(textEditorContainingPart);
+			
+			
 		} catch (PartInitException e) {
 			e.printStackTrace();
 		}
