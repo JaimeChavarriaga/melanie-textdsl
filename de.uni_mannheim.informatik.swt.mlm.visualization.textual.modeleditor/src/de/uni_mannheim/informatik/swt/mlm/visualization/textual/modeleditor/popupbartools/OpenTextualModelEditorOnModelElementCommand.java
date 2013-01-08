@@ -10,6 +10,8 @@
  *******************************************************************************/
 package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.popupbartools;
 
+import java.util.ArrayList;
+
 import org.eclipse.e4.ui.model.application.ui.basic.MBasicFactory;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.model.application.ui.basic.MPartSashContainer;
@@ -76,19 +78,15 @@ public class OpenTextualModelEditorOnModelElementCommand extends Command{
 			editorContainingStack.getChildren().remove(textEditorContainingPart);
 			
 			MPartSashContainer container = (MPartSashContainer)((EObject)editorContainingStack).eContainer();
+			container.setHorizontal(false);
+			//container.setContainerData("5000");
 			MPartStack rightPartStack = MBasicFactory.INSTANCE.createPartStack();
+			rightPartStack.getTags().add("newtablook");
+			rightPartStack.getTags().add("org.eclipse.e4.primaryDataStack");
+			rightPartStack.getTags().add("EditorStack");
+			rightPartStack.getTags().add("active");
 			rightPartStack.getChildren().add(textEditorContainingPart);
 			container.getChildren().add(rightPartStack);
-			
-			//editorContainingStack.getChildren().add(splitContainer);
-			
-			//MPartSashContainer container = (MPartSashContainer)((EObject)editorContainingStack).eContainer();
-			
-//			container.setHorizontal(true);
-//			container.getChildren().add(rightPartStack);
-//
-//			editorContainingStack.getChildren().remove(textEditorContainingPart);
-			
 			
 		} catch (PartInitException e) {
 			e.printStackTrace();
