@@ -23,6 +23,7 @@ import org.eclipse.swt.graphics.RGB;
 
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.MultiLevelModelEditorInput;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
+import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.SearchStrategy;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.TextElement;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingLink;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingModel;
@@ -69,7 +70,8 @@ public class LockedLiteralRule implements IRule {
 			return Token.UNDEFINED;
 		}
 		
-		TextElement currentTextElement = textElements.get(0);
+		//In cases where the cursor is between two tokens the second token is wanted
+		TextElement currentTextElement = textElements.size() > 1 ? textElements.get(1) : textElements.get(0);
 		WeavingLink currentWeavingLink = (WeavingLink)currentTextElement.eContainer();
 		
 		if (currentWeavingLink.getModelElement() instanceof Attribute){
