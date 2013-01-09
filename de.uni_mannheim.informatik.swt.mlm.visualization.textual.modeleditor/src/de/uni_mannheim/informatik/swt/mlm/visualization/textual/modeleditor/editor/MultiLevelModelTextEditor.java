@@ -107,7 +107,8 @@ public class MultiLevelModelTextEditor extends TextEditor {
 					return;
 				
 				WeavingModel weavingModel = MultiLevelModelEditorInput.LatestInstance.getWeavingModel();
-				TextElement textElement = weavingModel.findTextElementForOffset(((StyledText)event.getSource()).getCaretOffset(), SearchStrategy.ATTRIBUTE_PREFFERED).get(0);
+				List<TextElement> textElements = weavingModel.findTextElementForOffset(((StyledText)event.getSource()).getCaretOffset(), SearchStrategy.ATTRIBUTE_PREFFERED);
+				TextElement textElement = textElements.get(0);
 				
 				if ((event.keyCode == 127 || event.keyCode == 8) 
 						&& ((WeavingLink)textElement.eContainer()).getModelElement() instanceof Clabject){
