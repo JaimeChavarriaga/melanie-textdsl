@@ -22,7 +22,7 @@
         <details key="documentation" value="Finds the weving linkt that starts closest before the given offset"/>
       </eAnnotations>
       <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL">
-        <details key="body" value="let allTextElements:Set(TextElement) =&#xD;&#xA;&#x9;TextElement.allInstances()&#xD;&#xA;in&#xD;&#xA;let closestDistance:Integer = &#xD;&#xA;&#x9;allTextElements->collect(e1 | offset - e1.offset)->select(n | n >= 0)->min()&#xD;&#xA;in&#xD;&#xA;allTextElements->select(e | &#xD;&#xA;&#x9;&#x9;(offset - e.offset >= 0) &#xD;&#xA;&#x9;&#x9;&#x9;and &#xD;&#xA;&#x9;&#x9;&#x9;(&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;(offset - e.offset) = closestDistance&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;or&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;( offset - (e.offset + e.length) ) = closestDistance&#xD;&#xA;&#x9;&#x9;&#x9;)&#xD;&#xA;&#x9;&#x9;)->asOrderedSet()->sortedBy(t | t.offset)"/>
+        <details key="body" value="let allTextElements:Set(TextElement) =&#xD;&#xA;&#x9;TextElement.allInstances()&#xD;&#xA;in&#xD;&#xA;let closestDistance:Integer = &#xD;&#xA;&#x9;allTextElements->collect(e | offset - e.offset)->select(n | n >= 0)->min()&#xD;&#xA;in&#xD;&#xA;allTextElements->select(e | &#xD;&#xA;&#x9;&#x9;(&#x9;((offset - e.offset) = closestDistance)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;or&#xD;&#xA;&#x9;&#x9;&#x9;(&#xD;&#xA;&#x9;&#x9;&#x9;&#x9; (closestDistance = 0)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9; and &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;( offset - (e.offset + e.length) ) = closestDistance)&#xD;&#xA;&#x9;&#x9;&#x9;)&#xD;&#xA;&#x9;&#x9;)->asOrderedSet()->sortedBy(t | t.offset)"/>
       </eAnnotations>
       <eParameters name="offset" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eOperations>
