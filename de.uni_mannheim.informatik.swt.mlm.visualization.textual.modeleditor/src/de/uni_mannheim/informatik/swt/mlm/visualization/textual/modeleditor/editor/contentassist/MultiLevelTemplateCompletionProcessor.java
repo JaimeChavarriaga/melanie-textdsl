@@ -12,8 +12,10 @@ package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.edi
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.text.IRegion;
@@ -70,13 +72,14 @@ public class MultiLevelTemplateCompletionProcessor extends
 	public ICompletionProposal[] computeCompletionProposals(ITextViewer viewer,
 			int offset) {
 		
-		List<DSLTemplate> templates = getDSLTemplates(viewer, offset);
+		Set<DSLTemplate> templates = getDSLTemplates(viewer, offset);
 		ICompletionProposal[] proposals = new ICompletionProposal[templates.size()];
+		int i = 0;
 		for (DSLTemplate template : templates){
 			Template t = new Template(template.getTypeClabject().getName(), template.getTypeClabject().getName(), MultiLevelTemplateContextType.CONTEXT_TYPE, template.getTemplateString(), true);
 			DocumentTemplateContext context = new DocumentTemplateContext(new MultiLevelTemplateContextType(), viewer.getDocument(), offset, 0);
 			TemplateProposal proposal = new MultiLevelModelTemplateProposal(t, context, new Region(offset, 0), null, 100, template.getTypeClabject(), template.getTypeConnection(), template.getContainerClabject(), weavingModel);	
-			proposals[0] = proposal;
+			proposals[i++] = proposal;
 		}
 		return proposals;
 	}
@@ -87,43 +90,59 @@ public class MultiLevelTemplateCompletionProcessor extends
 	 * @param offset
 	 * @return The map is of format Type, Template
 	 */
-	private List<DSLTemplate> getDSLTemplates(ITextViewer viewer, int offset){
-		List<DSLTemplate> result = new ArrayList<>();
+	private Set<DSLTemplate> getDSLTemplates(ITextViewer viewer, int offset){
+		Set<DSLTemplate> result = new HashSet<>();
 		
 		//Search the model element to which the text belongs to
-		List<TextElement> textElements = weavingModel.findTextElementForOffset(offset, SearchStrategy.ATTRIBUTE_PREFFERED);
+		//Entities are preffered because we want to get the connections between entities
+		Set<TextElement> textElements = new HashSet<>(weavingModel.findTextElementForOffset(offset, SearchStrategy.ENTITY_PREFFERED));
 		if (textElements.size() == 0)
 			return result;
 		
-		TextElement textElement = textElements.get(0);
-		WeavingLink textElementContainer = ((WeavingLink)textElement.eContainer());
-		Element visualizedModelElement = textElementContainer.getModelElement();
+		Map<Connection, Clabject> instantiableClabjects = new HashMap<>();
 		
-		//We are only interested in Clabjects for offering templates which allow create new clabjects
-		if (! (visualizedModelElement instanceof Clabject))
-			return result;
-		
-		Clabject visualizedClabject = (Clabject)visualizedModelElement;
-		
-		int relativeOffset = calculateRelativeOffset(textElementContainer, textElement);
-		
-		TextualDSLVisualizer clabjectVisualizer = null;
-		
-		for (AbstractDSLVisualizer visualizer : visualizedClabject.getPossibleDomainSpecificVisualizers())
-			if (visualizer instanceof TextualDSLVisualizer){
-				clabjectVisualizer = (TextualDSLVisualizer)visualizer;
-				break;
+		for (TextElement textElement : textElements){
+			//TextElement textElement = textElements.get(0);
+			WeavingLink textElementContainer = ((WeavingLink)textElement.eContainer());
+			Element visualizedModelElement = textElementContainer.getModelElement();
+			
+			//We are only interested in Clabjects for offering templates which allow create new clabjects
+			if (! (visualizedModelElement instanceof Clabject))
+				return result;
+			
+			Clabject visualizedClabject = (Clabject)visualizedModelElement;
+			
+			int relativeOffset = calculateRelativeOffset(textElementContainer, textElement);
+			
+			TextualDSLVisualizer clabjectVisualizer = null;
+			
+			for (AbstractDSLVisualizer visualizer : visualizedClabject.getPossibleDomainSpecificVisualizers())
+				if (visualizer instanceof TextualDSLVisualizer){
+					clabjectVisualizer = (TextualDSLVisualizer)visualizer;
+					break;
+				}
+			
+			if (clabjectVisualizer == null)
+				return result;
+			
+			instantiableClabjects.putAll(getTypesForInstantiation(clabjectVisualizer, relativeOffset));
+			
+			for (Connection c : instantiableClabjects.keySet()){
+				DSLTemplate template = new DSLTemplate(instantiableClabjects.get(c), visualizedClabject, c);
+				if (! (templateAlreadyinCollection(result, template)))
+					result.add(template);
 			}
-		
-		if (clabjectVisualizer == null)
-			return result;
-		
-		Map<Connection, Clabject> instantiableClabjects = getTypesForInstantiation(clabjectVisualizer, relativeOffset);
-		
-		for (Connection c : instantiableClabjects.keySet())
-			result.add(new DSLTemplate(instantiableClabjects.get(c), visualizedClabject, c));
+		}
 		
 		return result;
+	}
+	
+	private boolean templateAlreadyinCollection(Set<DSLTemplate> set, DSLTemplate template){
+		for (DSLTemplate setTemplate : set)
+			if (setTemplate.equals(template))
+				return true;
+		
+		return false;
 	}
 	
 	/**
@@ -167,7 +186,7 @@ public class MultiLevelTemplateCompletionProcessor extends
 			if (descriptor instanceof Literal)
 				currentOffset += ((Literal)descriptor).getExpression().length();
 			
-			if (currentOffset >= relativeOffset){
+			if (currentOffset > relativeOffset){
 				visualizingLiteral = (Literal)descriptor;
 				break;
 			}
@@ -179,7 +198,12 @@ public class MultiLevelTemplateCompletionProcessor extends
 		
 		//Find next reference immediately AFTER the literal
 		 TextualVisualizationDescriptor descriptor = null;
+		 
+		 if (visualizer.getContent().size() -1 < visualizer.getContent().indexOf(visualizingLiteral) + 1)
+			 return result;
+		
 		 descriptor = visualizer.getContent().get(visualizer.getContent().indexOf(visualizingLiteral) + 1);
+		 
 		 if (!(descriptor instanceof Value))
 			 return result;
 		
@@ -242,6 +266,20 @@ public class MultiLevelTemplateCompletionProcessor extends
 				}
 			
 			return null;
+		}
+		
+		@Override
+		public boolean equals(Object obj) {
+			
+			if (!(obj instanceof DSLTemplate))
+				return false;
+			
+			DSLTemplate t2 = (DSLTemplate)obj;
+			
+			//Type Clabject is ignored
+			return 	t2.getTypeClabject() == typeClabject 
+					&& t2.getTypeConnection() == typeConnection 
+					&& t2.getTemplateString().equals(getTemplateString());  
 		}
 	}
 }
