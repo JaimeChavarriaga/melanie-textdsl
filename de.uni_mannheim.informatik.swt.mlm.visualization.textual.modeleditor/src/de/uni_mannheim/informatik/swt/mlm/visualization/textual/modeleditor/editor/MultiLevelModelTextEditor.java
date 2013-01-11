@@ -244,12 +244,11 @@ public class MultiLevelModelTextEditor extends TextEditor {
 			connectionClassificationsToDelete.addAll(c.getClassificationsAsType());
 			if (connectionClassificationsToDelete.size() > 0)
 				cCmd.append(RemoveCommand.create(domain, connectionClassificationsToDelete));
-			
-			cCmd.append(RemoveCommand.create(domain, c.getClassificationsAsInstance()));
-			cCmd.append(RemoveCommand.create(domain, c.getClassificationsAsType()));
 		}
 		
-		cCmd.append(RemoveCommand.create(domain, clabjectToDelete.getEigenConnections()));
+		
+		if (clabjectToDelete.getEigenConnections().size() > 0)
+			cCmd.append(RemoveCommand.create(domain, clabjectToDelete.getEigenConnections()));
 		
 		domain.getCommandStack().execute(cCmd);
 		
