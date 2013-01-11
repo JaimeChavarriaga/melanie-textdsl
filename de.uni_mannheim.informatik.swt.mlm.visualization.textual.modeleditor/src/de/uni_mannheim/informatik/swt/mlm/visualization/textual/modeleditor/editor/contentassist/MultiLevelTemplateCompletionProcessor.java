@@ -260,7 +260,9 @@ public class MultiLevelTemplateCompletionProcessor extends
 							template += descriptor.getExpression();
 						else if (descriptor instanceof Value
 									&& ((Value)descriptor).isAttribute())
-							template += "${" + descriptor.getExpression() + "}";
+							//Removed template field mechanism because this editing mode causes truouble
+							//with synchronisation
+							template += /*"${" +*/ descriptor.getExpression() /*+ "}"*/;
 					
 					return String.format(template);
 				}
