@@ -51,7 +51,7 @@ rule RefineGenModel{
 		o : genmodel!GenModel(
 			operationReflection <- true,
 			dynamicTemplates <- true,
-			templateDirectory <- 'de.uni_mannheim.informatik.swt.models.plm.textualrepresentation',
+			templateDirectory <- 'de.uni_mannheim.informatik.swt.models.plm.textualrepresentation/templates',
 			complianceLevel <- #JDK60
 		)
 }
