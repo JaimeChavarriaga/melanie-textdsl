@@ -1,6 +1,10 @@
 package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor;
 
+import java.io.IOException;
+import java.util.Collections;
+
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.IDocumentPartitioner;
 import org.eclipse.jface.text.rules.FastPartitioner;
@@ -21,5 +25,19 @@ public class MultiLevelModelDocumentProvider extends FileDocumentProvider {
 			document.setDocumentPartitioner(partitioner);
 		}
 		return document;
+	}
+	
+	@Override
+	protected void doSaveDocument(IProgressMonitor monitor, Object element,
+			IDocument document, boolean overwrite) throws CoreException {
+		super.doSaveDocument(monitor, element, document, overwrite);
+		
+		MultiLevelModelEditorInput input = (MultiLevelModelEditorInput)element;
+		
+		try {
+			input.getModelToEdit().eResource().save(Collections.EMPTY_MAP);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

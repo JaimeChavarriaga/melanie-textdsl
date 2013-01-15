@@ -52,6 +52,10 @@ public class MultiLevelModelEditorInput implements IStorageEditorInput {
 	
 	public static MultiLevelModelEditorInput LatestInstance;
 	
+	public Model getModelToEdit(){
+		return modelToEdit;
+	}
+	
 	public TransactionalEditingDomain getEditingDomain(){
 		return TransactionUtil.getEditingDomain(modelToEdit);
 	}
