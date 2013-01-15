@@ -21,7 +21,7 @@ import org.eclipse.jface.text.rules.FastPartitioner;
 import org.eclipse.ui.editors.text.FileDocumentProvider;
 
 public class MultiLevelModelDocumentProvider extends FileDocumentProvider {
-
+	
 	protected IDocument createDocument(Object element) throws CoreException {
 		IDocument document = super.createDocument(element);
 		MultiLevelModelEditorInput input = (MultiLevelModelEditorInput)element;

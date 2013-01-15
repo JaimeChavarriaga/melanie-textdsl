@@ -70,9 +70,13 @@ public class MultiLevelModelTextEditor extends TextEditor {
 	public MultiLevelModelTextEditor() {
 		super();
 
+		weavingModel = MultiLevelModelEditorInput.LatestInstance.getWeavingModel();
+		
 		multilevelColorProvider = new MultilevelColorProvider();
 		setSourceViewerConfiguration(new MultiLevelModelViewerConfiguration(multilevelColorProvider));
 		setDocumentProvider(new MultiLevelModelDocumentProvider());
+		
+		
 	}
 	
 	public void dispose() {
@@ -83,9 +87,9 @@ public class MultiLevelModelTextEditor extends TextEditor {
 	@Override
 	public void createPartControl(Composite parent) {
 		super.createPartControl(parent);
-		
-		weavingModel = MultiLevelModelEditorInput.LatestInstance.getWeavingModel();
-		
+
+		TransactionUtil.getEditingDomain(MultiLevelModelEditorInput.LatestInstance.getModelToEdit()).addResourceSetListener(new ModelToTextSynchronizer(weavingModel, this, getDocumentProvider().getDocument(getEditorInput())));
+
 		((ITextViewerExtension)getSourceViewer()).appendVerifyKeyListener(new VerifyKeyListener() {
 			
 			@Override
@@ -370,6 +374,10 @@ public class MultiLevelModelTextEditor extends TextEditor {
 		// damage repairer etc. are already run before the weaving model is
 		// updated. Thus, it must be run mannualy after updating the weaving
 		// model.
+		getSourceViewer().invalidateTextPresentation();
+	}
+	
+	public void invalidateTextPresentation(){
 		getSourceViewer().invalidateTextPresentation();
 	}
 	
