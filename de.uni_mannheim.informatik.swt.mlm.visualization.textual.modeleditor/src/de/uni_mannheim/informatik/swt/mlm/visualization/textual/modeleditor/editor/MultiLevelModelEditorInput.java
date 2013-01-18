@@ -136,6 +136,10 @@ public class MultiLevelModelEditorInput implements IStorageEditorInput {
 
 		@Override
 		public InputStream getContents() throws CoreException {
+			//This method can get called multiple times by the DocumentLineDiffer, thus
+			//the weaving model needs to be cleared because TextElements etc. get
+			//duplicated on each diff.
+			weavingModel.getLinks().clear();
 			TextualDSLModelInterpreter interpreter = new TextualDSLModelInterpreter(partitionScanner, keyWordScanner, colorConstants, weavingModel);
 			String input = interpreter.getTextFromModel(modelToEdit, null);
 			input = String.format(input);
