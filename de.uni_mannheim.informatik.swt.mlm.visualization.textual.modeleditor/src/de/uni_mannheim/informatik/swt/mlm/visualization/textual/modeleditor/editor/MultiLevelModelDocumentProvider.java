@@ -18,13 +18,20 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.IDocumentPartitioner;
 import org.eclipse.jface.text.rules.FastPartitioner;
+import org.eclipse.jface.text.source.AnnotationModel;
+import org.eclipse.jface.text.source.IAnnotationModel;
 import org.eclipse.ui.editors.text.FileDocumentProvider;
 
 public class MultiLevelModelDocumentProvider extends FileDocumentProvider {
 	
+	private AnnotationModel annotationModel = new AnnotationModel();
+	
+	
+	@Override
 	protected IDocument createDocument(Object element) throws CoreException {
 		IDocument document = super.createDocument(element);
 		MultiLevelModelEditorInput input = (MultiLevelModelEditorInput)element;
+		annotationModel.connect(document);
 		
 		if (document != null) {
 			IDocumentPartitioner partitioner =
@@ -49,5 +56,10 @@ public class MultiLevelModelDocumentProvider extends FileDocumentProvider {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@Override
+	public IAnnotationModel getAnnotationModel(Object element) {
+		return annotationModel;
 	}
 }

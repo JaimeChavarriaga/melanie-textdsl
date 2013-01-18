@@ -15,8 +15,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.IResourceChangeEvent;
+import org.eclipse.core.resources.IResourceChangeListener;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.emf.edit.command.SetCommand;
@@ -29,6 +36,7 @@ import org.eclipse.jface.text.ITextListener;
 import org.eclipse.jface.text.ITextViewerExtension;
 import org.eclipse.jface.text.TextEvent;
 import org.eclipse.jface.text.TextSelection;
+import org.eclipse.jface.text.source.AnnotationModel;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StyledText;
@@ -42,6 +50,7 @@ import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.editors.text.TextEditor;
+import org.eclipse.ui.texteditor.IDocumentProvider;
 
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.sourceviewerconfiguration.MultiLevelModelViewerConfiguration;
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.sourceviewerconfiguration.MultilevelColorProvider;
@@ -66,30 +75,41 @@ public class MultiLevelModelTextEditor extends TextEditor {
 	
 	private MultilevelColorProvider multilevelColorProvider;
 	private WeavingModel weavingModel;
+	private MarkerAnnotationSynchronizer markerAnnotationSynchronizer;
+	private IResource resource;
 	
 	public MultiLevelModelTextEditor() {
 		super();
 
 		weavingModel = MultiLevelModelEditorInput.LatestInstance.getWeavingModel();
 		
+		//Find the platform resource for the currently edited file
+		resource = ResourcesPlugin.getWorkspace().getRoot().findMember(MultiLevelModelEditorInput.LatestInstance.getModelToEdit().eResource().getURI().toPlatformString(true));
+
 		multilevelColorProvider = new MultilevelColorProvider();
 		setSourceViewerConfiguration(new MultiLevelModelViewerConfiguration(multilevelColorProvider));
+		
 		setDocumentProvider(new MultiLevelModelDocumentProvider());
-		
-		
 	}
 	
+	@Override
 	public void dispose() {
 		multilevelColorProvider.dispose();
+		resource.getWorkspace().removeResourceChangeListener(markerAnnotationSynchronizer);
 		super.dispose();
 	}
 	
 	@Override
 	public void createPartControl(Composite parent) {
 		super.createPartControl(parent);
-
+		
+		markerAnnotationSynchronizer = new MarkerAnnotationSynchronizer(resource, weavingModel, getSourceViewer());
+		resource.getWorkspace().addResourceChangeListener(markerAnnotationSynchronizer, IResourceChangeEvent.POST_CHANGE);
+		
+		//Synchronization from model to text
 		TransactionUtil.getEditingDomain(MultiLevelModelEditorInput.LatestInstance.getModelToEdit()).addResourceSetListener(new ModelToTextSynchronizer(weavingModel, this, getDocumentProvider().getDocument(getEditorInput())));
-
+		
+		//Synchronization from text to model
 		((ITextViewerExtension)getSourceViewer()).appendVerifyKeyListener(new VerifyKeyListener() {
 			
 			@Override
