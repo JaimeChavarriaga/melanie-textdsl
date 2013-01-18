@@ -76,6 +76,10 @@ public class ModelToTextSynchronizer implements ResourceSetListener {
 			int length = valueTextElement.getLength();
 			
 			try {
+				//Check if change is already in weaving model -> No action required
+				if (valueTextElement.getText().equals(n.getNewStringValue()))
+					return;
+				
 				document.replace(offset, length, n.getNewStringValue());
 				valueTextElement.setOffset(offset);
 				valueTextElement.setLength(length);
