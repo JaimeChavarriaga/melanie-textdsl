@@ -50,6 +50,7 @@ import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.editors.text.TextEditor;
+import org.eclipse.ui.editors.text.TextFileDocumentProvider;
 import org.eclipse.ui.texteditor.IDocumentProvider;
 
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.sourceviewerconfiguration.MultiLevelModelViewerConfiguration;
@@ -103,7 +104,7 @@ public class MultiLevelModelTextEditor extends TextEditor {
 	public void createPartControl(Composite parent) {
 		super.createPartControl(parent);
 		
-		markerAnnotationSynchronizer = new MarkerAnnotationSynchronizer(resource, weavingModel, getSourceViewer());
+		markerAnnotationSynchronizer = new MarkerAnnotationSynchronizer(resource, weavingModel, getDocumentProvider(), getEditorInput());
 		resource.getWorkspace().addResourceChangeListener(markerAnnotationSynchronizer, IResourceChangeEvent.POST_CHANGE);
 		
 		//Synchronization from model to text

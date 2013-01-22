@@ -25,6 +25,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Feature;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Participation;
+import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.Choice;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.Literal;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.RGBColor;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.TextualDSLVisualizer;
@@ -110,13 +111,7 @@ public class TextualDSLModelInterpreter {
 		registerPartition(textualVisualizer, modelElelmentToVisualize);
 		
 		for(TextualVisualizationDescriptor desc : textualVisualizer.getContent())
-			if (desc instanceof Literal){
-				String literal = getLiteral((Literal)desc);
-				createWeavingLink(modelElelmentToVisualize, literal, parent);
-				result += literal;
-			}
-			else
-				result += getValue((Value)desc, modelElelmentToVisualize);
+			result += getValueFromDescriptor(desc, modelElelmentToVisualize, parent);
 		
 		return result;
 	}
@@ -232,6 +227,33 @@ public class TextualDSLModelInterpreter {
 		if (l.getColor() != null)
 			registerKeyword(l);
 		return l.getExpression();
+	}
+	
+	
+	/**
+	 * Gets the values from the textual representation model. Supports valuse, choices and literals.
+	 * 
+	 * @param descriptor
+	 * @param modelElelmentToVisualize
+	 * @param parent
+	 * @return
+	 */
+	private String getValueFromDescriptor(TextualVisualizationDescriptor descriptor, Element modelElelmentToVisualize, Element parent){
+		
+		String result = "";
+		
+		if (descriptor instanceof Literal){
+			String literal = getLiteral((Literal)descriptor);
+			createWeavingLink(modelElelmentToVisualize, literal, parent);
+			result += literal;
+		}
+		else if (descriptor instanceof Value)
+			result += getValue((Value)descriptor, modelElelmentToVisualize);
+		else if (descriptor instanceof Choice)
+			for (TextualVisualizationDescriptor choice : ((Choice) descriptor).getChoices())
+				getValueFromDescriptor(choice, modelElelmentToVisualize, parent);
+			
+		return result;
 	}
 	
 	/**

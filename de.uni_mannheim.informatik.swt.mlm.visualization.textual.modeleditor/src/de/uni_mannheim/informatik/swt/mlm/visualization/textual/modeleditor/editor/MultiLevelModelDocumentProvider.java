@@ -22,16 +22,18 @@ import org.eclipse.jface.text.source.AnnotationModel;
 import org.eclipse.jface.text.source.IAnnotationModel;
 import org.eclipse.ui.editors.text.FileDocumentProvider;
 
+
+
 public class MultiLevelModelDocumentProvider extends FileDocumentProvider {
 	
 	private AnnotationModel annotationModel = new AnnotationModel();
-	
+
 	
 	@Override
 	protected IDocument createDocument(Object element) throws CoreException {
 		IDocument document = super.createDocument(element);
 		MultiLevelModelEditorInput input = (MultiLevelModelEditorInput)element;
-		annotationModel.connect(document);
+		//annotationModel.connect(document);
 		
 		if (document != null) {
 			IDocumentPartitioner partitioner =

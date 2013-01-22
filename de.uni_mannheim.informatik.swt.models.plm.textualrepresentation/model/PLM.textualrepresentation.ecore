@@ -46,7 +46,7 @@
         <details key="documentation" value="Returns the textual visualization of the containing model element"/>
       </eAnnotations>
       <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL">
-        <details key="body" value="self.oclAsType(ecore::EObject).eContainer().oclAsType(TextualDSLVisualizer)"/>
+        <details key="body" value="let container:OclAny = self.oclAsType(ecore::EObject).eContainer()&#xD;&#xA;in&#xD;&#xA;if (container.oclIsTypeOf(TextualDSLVisualizer)) then&#xD;&#xA;&#x9;container.oclAsType(TextualDSLVisualizer)&#xD;&#xA;-- This is the case if a descriptor is stored in a choice&#xD;&#xA;else&#xD;&#xA;&#x9;container.oclAsType(TextualVisualizationDescriptor).getContainingTextualVisualizer()&#xD;&#xA;endif"/>
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="expression" lowerBound="1"
@@ -65,6 +65,10 @@
         <details key="body" value="self.getContainingTextualVisualizer().getContainingPLMElement().oclAsType(PLM::Clabject).getAttributeByName(self.expression)->size() > 0"/>
       </eAnnotations>
     </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Choice" eSuperTypes="#//TextualVisualizationDescriptor">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="choices" upperBound="-1"
+        eType="#//TextualVisualizationDescriptor" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractColor" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="StandardColor" eSuperTypes="#//AbstractColor">

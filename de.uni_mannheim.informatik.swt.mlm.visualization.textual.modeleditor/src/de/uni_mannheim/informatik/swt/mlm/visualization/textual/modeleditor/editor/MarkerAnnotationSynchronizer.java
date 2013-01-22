@@ -28,8 +28,9 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.text.Position;
 import org.eclipse.jface.text.source.Annotation;
 import org.eclipse.jface.text.source.IAnnotationModel;
-import org.eclipse.jface.text.source.ISourceViewer;
-import org.eclipse.ui.texteditor.SimpleMarkerAnnotation;
+import org.eclipse.ui.IEditorInput;
+import org.eclipse.ui.texteditor.IDocumentProvider;
+import org.eclipse.ui.texteditor.MarkerAnnotation;
 
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.TextElement;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingLink;
@@ -45,19 +46,21 @@ public class MarkerAnnotationSynchronizer implements IResourceChangeListener {
 
 	private IResource resource;
 	private WeavingModel weavingModel;
-	private ISourceViewer sourceViewer;
+	private IDocumentProvider documentProvider;
+	private IEditorInput editorInput;
 	
-	public MarkerAnnotationSynchronizer(IResource resource, WeavingModel weavingModel, ISourceViewer sourceViewer){
+	public MarkerAnnotationSynchronizer(IResource resource, WeavingModel weavingModel, IDocumentProvider documentProvider, IEditorInput editorInput){
 		this.resource = resource;
 		this.weavingModel = weavingModel;
-		this.sourceViewer = sourceViewer;
+		this.documentProvider = documentProvider;
+		this.editorInput = editorInput;
 	}
 	
 	@Override
 	public void resourceChanged(IResourceChangeEvent event) {
 		try {
 			
-			IAnnotationModel annotationModel = sourceViewer.getAnnotationModel();
+			IAnnotationModel annotationModel = documentProvider.getAnnotationModel(editorInput);
 			Iterator<Annotation> annotationIterator = annotationModel.getAnnotationIterator();
 			
 			if (annotationIterator.hasNext())
@@ -95,12 +98,13 @@ public class MarkerAnnotationSynchronizer implements IResourceChangeListener {
 	}
 	
 	private void createAnnotation(WeavingLink link, IMarker marker){
-		IAnnotationModel annotationModel = sourceViewer.getAnnotationModel();
-		Annotation annotation = new SimpleMarkerAnnotation(marker);
-//		annotation.setText(message);
+		IAnnotationModel annotationModel = documentProvider.getAnnotationModel(editorInput);
+		MarkerAnnotation annotation = new MarkerAnnotation(marker);
 //		annotation.setType("org.eclipse.ui.workbench.texteditor.error");
 //		annotation.setType("de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.type1");
 		TextElement te = (TextElement)link.getChildren().get(0);
+		annotationModel.connect(documentProvider.getDocument(editorInput));
 		annotationModel.addAnnotation(annotation, new Position(te.getOffset(), te.getLength()));
+		annotationModel.disconnect(documentProvider.getDocument(editorInput));
 	}
 }
