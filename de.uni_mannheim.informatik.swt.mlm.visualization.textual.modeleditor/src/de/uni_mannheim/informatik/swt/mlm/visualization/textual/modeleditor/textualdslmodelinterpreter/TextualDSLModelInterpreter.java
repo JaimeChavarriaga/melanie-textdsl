@@ -251,7 +251,7 @@ public class TextualDSLModelInterpreter {
 			result += getValue((Value)descriptor, modelElelmentToVisualize);
 		else if (descriptor instanceof Choice)
 			for (TextualVisualizationDescriptor choice : ((Choice) descriptor).getChoices())
-				getValueFromDescriptor(choice, modelElelmentToVisualize, parent);
+				result += getValueFromDescriptor(choice, modelElelmentToVisualize, parent);
 			
 		return result;
 	}
