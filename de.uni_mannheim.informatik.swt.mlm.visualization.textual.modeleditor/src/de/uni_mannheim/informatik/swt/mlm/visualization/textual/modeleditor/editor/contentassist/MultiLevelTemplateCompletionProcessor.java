@@ -201,27 +201,37 @@ public class MultiLevelTemplateCompletionProcessor extends
 		}
 		
 		//Find next reference immediately AFTER the literal
-		 TextualVisualizationDescriptor descriptor = null;
+		TextualVisualizationDescriptor descriptor = null;
 		 
-		 if (visualizer.getContent().size() -1 < visualizer.getContent().indexOf(visualizingLiteral) + 1)
-			 return result;
-		
-		 descriptor = visualizer.getContent().get(visualizer.getContent().indexOf(visualizingLiteral) + 1);
-		 
-		 if (!(descriptor instanceof Value))
-			 return result;
-		
-		//Return all connected clabjects for instantiation
-		Value value = (Value)descriptor;
-		String expression = value.getExpression();
-		Clabject clabject = (Clabject)visualizer.getContainingPLMElement();
-		List<Participation> navigations = clabject.getAllNavigationsForParticipationName(expression);
-		if (navigations.size() == 0)
+		if (visualizer.getContent().size() -1 < visualizer.getContent().indexOf(visualizingLiteral) + 1)
 			return result;
 		
-		for (Participation r : navigations)
-			result.put(r.getConnection(), r.getDestination());
+		descriptor = visualizer.getContent().get(visualizer.getContent().indexOf(visualizingLiteral) + 1);
 		 
+		//In case we have a literal we cannot offer anything as template
+		if (descriptor instanceof Literal)
+			return result;
+		
+		List<Value> values = new ArrayList<>();
+		
+		if (descriptor instanceof Value)
+			values.add((Value)descriptor);
+		else if (descriptor instanceof Choice)
+			for (TextualVisualizationDescriptor d : ((Choice) descriptor).getChoices())
+				if (d instanceof Value)
+					values.add((Value)d);
+		
+		for (Value value : values){
+			//Return all connected clabjects for instantiation
+			String expression = value.getExpression();
+			Clabject clabject = (Clabject)visualizer.getContainingPLMElement();
+			List<Participation> navigations = clabject.getAllNavigationsForParticipationName(expression);
+			if (navigations.size() == 0)
+				return result;
+			
+			for (Participation r : navigations)
+				result.put(r.getConnection(), r.getDestination());
+		}
 		return result;
 	}
 	
