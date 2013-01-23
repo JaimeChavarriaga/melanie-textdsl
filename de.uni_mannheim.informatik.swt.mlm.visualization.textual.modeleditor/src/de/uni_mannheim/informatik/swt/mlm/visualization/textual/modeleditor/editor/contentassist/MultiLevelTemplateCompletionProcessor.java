@@ -34,11 +34,11 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Participation;
-import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.Choice;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.Literal;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.TextualDSLVisualizer;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.TextualVisualizationDescriptor;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.Value;
+import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.ValueChoice;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.SearchStrategy;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.TextElement;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingLink;
@@ -216,8 +216,8 @@ public class MultiLevelTemplateCompletionProcessor extends
 		
 		if (descriptor instanceof Value)
 			values.add((Value)descriptor);
-		else if (descriptor instanceof Choice)
-			for (TextualVisualizationDescriptor d : ((Choice) descriptor).getChoices())
+		else if (descriptor instanceof ValueChoice)
+			for (TextualVisualizationDescriptor d : ((ValueChoice) descriptor).getChoices())
 				if (d instanceof Value)
 					values.add((Value)d);
 		

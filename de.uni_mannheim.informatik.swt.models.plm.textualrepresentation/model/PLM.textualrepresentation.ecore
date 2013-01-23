@@ -66,9 +66,9 @@
       </eAnnotations>
     </eOperations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Choice" eSuperTypes="#//TextualVisualizationDescriptor">
+  <eClassifiers xsi:type="ecore:EClass" name="ValueChoice" eSuperTypes="#//TextualVisualizationDescriptor">
     <eStructuralFeatures xsi:type="ecore:EReference" name="choices" upperBound="-1"
-        eType="#//TextualVisualizationDescriptor" containment="true"/>
+        eType="#//Value" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractColor" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="StandardColor" eSuperTypes="#//AbstractColor">
