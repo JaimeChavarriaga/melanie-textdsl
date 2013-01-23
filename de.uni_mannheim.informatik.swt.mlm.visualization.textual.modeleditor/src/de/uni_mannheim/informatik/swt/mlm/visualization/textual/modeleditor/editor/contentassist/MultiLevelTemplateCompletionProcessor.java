@@ -34,6 +34,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Element;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Participation;
+import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.Choice;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.Literal;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.TextualDSLVisualizer;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.TextualVisualizationDescriptor;
@@ -114,6 +115,9 @@ public class MultiLevelTemplateCompletionProcessor extends
 			
 			int relativeOffset = calculateRelativeOffset(textElementContainer, textElement);
 			
+			//now calculate the actual position within the visualizer
+			relativeOffset += offset - textElement.getOffset();
+			
 			TextualDSLVisualizer clabjectVisualizer = null;
 			
 			for (AbstractDSLVisualizer visualizer : visualizedClabject.getPossibleDomainSpecificVisualizers())
@@ -186,7 +190,7 @@ public class MultiLevelTemplateCompletionProcessor extends
 			if (descriptor instanceof Literal)
 				currentOffset += ((Literal)descriptor).getExpression().length();
 			
-			if (currentOffset > relativeOffset){
+			if (currentOffset >= relativeOffset){
 				visualizingLiteral = (Literal)descriptor;
 				break;
 			}
