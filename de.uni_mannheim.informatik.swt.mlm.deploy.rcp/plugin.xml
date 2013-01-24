@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.eclipse.ui.ide.workbench"
+            name="%prodName">
+         <property
+               name="windowImages"
+               value="img/melanie16.gif,img/melanie32.gif,img/melanie48.gif,img/melanie16.png,img/melanie32.png">
+         </property>
+         <property
+               name="aboutText"
+               value="%productBlurb">
+         </property>
+         <property
+               name="aboutImage"
+               value="eclipse_lg.gif">
+         </property>
+         <property
+               name="appName"
+               value="%prodName">
+         </property>
+         <property
+               name="preferenceCustomization"
+               value="plugin_customization.ini">
+         </property>
+         <property
+               name="startupForegroundColor"
+               value="000000">
+         </property>
+         <property
+               name="startupMessageRect"
+               value="7,245,490,20">
+         </property>
+         <property
+               name="startupProgressRect"
+               value="5,225,490,15">
+         </property>
+      </product>
+   </extension>
+
+</plugin>
