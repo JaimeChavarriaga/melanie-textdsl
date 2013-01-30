@@ -53,21 +53,24 @@ public class MultiLevelModelTemplateProposal extends TemplateProposal {
 	private Clabject type;
 	private Clabject typeConnection;
 	private Clabject container;
-	private WeavingModel weavingModel;
+	private WeavingLink containerWeavingLink;
+	private TextElement editedTextElement;
 	
 	public MultiLevelModelTemplateProposal(Template template,
-			TemplateContext context, IRegion region, Image image, int relevance, Clabject type, Connection typeConnection, Clabject container,  WeavingModel weavingModel) {
+			TemplateContext context, IRegion region, Image image, int relevance, Clabject type, Connection typeConnection, Clabject container,  WeavingLink containerWeavingLink, TextElement editedTextElement) {
 		super(template, context, region, image, relevance);
 		
 		Assert.isNotNull(type);
 		Assert.isNotNull(container);
 		Assert.isNotNull(typeConnection);
-		Assert.isNotNull(weavingModel);
+		Assert.isNotNull(containerWeavingLink);
+		Assert.isNotNull(editedTextElement);
 		
 		this.type = type;
 		this.typeConnection = typeConnection;
 		this.container = container;
-		this.weavingModel = weavingModel;
+		this.containerWeavingLink = containerWeavingLink;
+		this.editedTextElement = editedTextElement;
 	}
 
 	/**
@@ -84,16 +87,6 @@ public class MultiLevelModelTemplateProposal extends TemplateProposal {
 		
 		MultiLevelModelTextEditor.setProcessTextChanged(false);
 		
-		List<TextElement> textElements = weavingModel.findTextElementForOffset(offset);
-		
-		Assert.isTrue(textElements.size() > 0);
-		
-		TextElement textElement = textElements.get(0);
-		WeavingLink textElementContainingWeavingLink = (WeavingLink)textElement.eContainer();
-		
-		if (textElementContainingWeavingLink.getModelElement() instanceof Attribute)
-			textElementContainingWeavingLink = (WeavingLink)textElementContainingWeavingLink.eContainer();
-		
 		TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(type);
 		CompoundCommand cCmd = new CompoundCommand();
 		
@@ -101,6 +94,7 @@ public class MultiLevelModelTemplateProposal extends TemplateProposal {
 		Entity instanceClabject = PLMFactory.eINSTANCE.createEntity();
 		PLMFactory.eINSTANCE.configureClabject(type, instanceClabject);
 		
+		instanceClabject.setName("Created");
 		for (Attribute attribute : instanceClabject.getEigenAttributes())
 			attribute.setValue(attribute.getName());
 		Command addInstanceClabjectCommand = AddCommand.create(domain, container.getModel(), PLMPackage.eINSTANCE.getModel_Content(), instanceClabject);
@@ -138,8 +132,12 @@ public class MultiLevelModelTemplateProposal extends TemplateProposal {
 		
 		//Create new WeavingLink
 		WeavingLink newClabjectWeavingLink = createWeavingLink(instanceClabject, offset);
-		int indexToAdd = textElementContainingWeavingLink.getChildren().indexOf(textElement);
-		textElementContainingWeavingLink.getChildren().add(indexToAdd, newClabjectWeavingLink);
+		
+		//Insert before or behind model elemet?
+		int indexToAdd = containerWeavingLink.getChildren().indexOf(editedTextElement);
+		if (editedTextElement.getOffset() + editedTextElement.getLength() == offset)
+			indexToAdd += 1;
+		containerWeavingLink.getChildren().add(indexToAdd, newClabjectWeavingLink);
 		
 		viewer.invalidateTextPresentation();
 		MultiLevelModelTextEditor.recalculateOffset(((WeavingModel)EcoreUtil.getRootContainer(newClabjectWeavingLink)).getLinks().get(0), 0);
@@ -172,7 +170,7 @@ public class MultiLevelModelTemplateProposal extends TemplateProposal {
 			for (TextualVisualizationDescriptor descriptor : ((TextualDSLVisualizer) visualizer).getContent())
 				if (descriptor instanceof Literal){
 					TextElement textElement = M2TWeavingFactory.eINSTANCE.createTextElement();
-					textElement.setText(descriptor.getExpression());
+					textElement.setText(String.format(descriptor.getExpression()));
 					textElement.setLength(textElement.getText().length());
 					textElement.setOffset(offset);
 					offset = offset + textElement.getLength();

@@ -18,6 +18,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gmf.runtime.emf.type.core.commands.EditElementCommand;
 import org.eclipse.jface.text.IRegion;
 import org.eclipse.jface.text.ITextViewer;
 import org.eclipse.jface.text.Region;
@@ -79,7 +80,7 @@ public class MultiLevelTemplateCompletionProcessor extends
 		for (DSLTemplate template : templates){
 			Template t = new Template(template.getTypeClabject().getName(), template.getTypeClabject().getName(), MultiLevelTemplateContextType.CONTEXT_TYPE, template.getTemplateString(), true);
 			DocumentTemplateContext context = new DocumentTemplateContext(new MultiLevelTemplateContextType(), viewer.getDocument(), offset, 0);
-			TemplateProposal proposal = new MultiLevelModelTemplateProposal(t, context, new Region(offset, 0), null, 100, template.getTypeClabject(), template.getTypeConnection(), template.getContainerClabject(), weavingModel);	
+			TemplateProposal proposal = new MultiLevelModelTemplateProposal(t, context, new Region(offset, 0), null, 100, template.getTypeClabject(), template.getTypeConnection(), template.getContainerClabject(), template.getContainerWeavingLink(), template.getEditedTextElement());	
 			proposals[i++] = proposal;
 		}
 		return proposals;
@@ -132,7 +133,7 @@ public class MultiLevelTemplateCompletionProcessor extends
 			instantiableClabjects.putAll(getTypesForInstantiation(clabjectVisualizer, relativeOffset));
 			
 			for (Connection c : instantiableClabjects.keySet()){
-				DSLTemplate template = new DSLTemplate(instantiableClabjects.get(c), visualizedClabject, c);
+				DSLTemplate template = new DSLTemplate(instantiableClabjects.get(c), c, visualizedClabject, textElement, textElementContainer);
 				if (! (templateAlreadyinCollection(result, template)))
 					result.add(template);
 			}
@@ -254,16 +255,18 @@ public class MultiLevelTemplateCompletionProcessor extends
 			return typeConnection;
 		}
 		
-		public DSLTemplate(Clabject typeClabject, Clabject containerClabject, Connection typeConnection){
+		public DSLTemplate(Clabject typeClabject, Connection typeConnection, Clabject containerClabject, TextElement editedTextElement, WeavingLink containerWeavingLink){
 			this.typeClabject = typeClabject;
 			this.containerClabject = containerClabject;
 			this.typeConnection = typeConnection;
+			this.containerWeavingLink = containerWeavingLink;
+			this.editedTextElement = editedTextElement;
 		}
 		
 		private String template = null;
 		public String getTemplateString(){
 			if (template != null)
-					return template;
+					return String.format(template);
 			
 			for (AbstractDSLVisualizer visualizer : typeClabject.getPossibleDomainSpecificVisualizers())
 				if (visualizer instanceof TextualDSLVisualizer){
@@ -276,13 +279,25 @@ public class MultiLevelTemplateCompletionProcessor extends
 									&& ((Value)descriptor).isAttribute())
 							//Removed template field mechanism because this editing mode causes truouble
 							//with synchronisation
-							template += /*"${" +*/ descriptor.getExpression() /*+ "}"*/;
+							template += String.format(/*"${" +*/ descriptor.getExpression() /*+ "}"*/);
 					
+					template = String.format(template);
 					return String.format(template);
 				}
 			
 			return null;
 		}
+		
+		private TextElement editedTextElement;
+		public TextElement getEditedTextElement(){
+			return editedTextElement;
+		}
+		
+		private WeavingLink containerWeavingLink;
+		public WeavingLink getContainerWeavingLink(){
+			return containerWeavingLink;
+		}
+		
 		
 		@Override
 		public boolean equals(Object obj) {
