@@ -16,8 +16,6 @@ import org.eclipse.jface.text.contentassist.ContentAssistant;
 import org.eclipse.jface.text.contentassist.IContentAssistant;
 import org.eclipse.jface.text.presentation.IPresentationReconciler;
 import org.eclipse.jface.text.presentation.PresentationReconciler;
-import org.eclipse.jface.text.reconciler.IReconciler;
-import org.eclipse.jface.text.reconciler.MonoReconciler;
 import org.eclipse.jface.text.rules.DefaultDamagerRepairer;
 import org.eclipse.jface.text.rules.Token;
 import org.eclipse.jface.text.source.ISourceViewer;
@@ -67,29 +65,7 @@ public class MultiLevelModelViewerConfiguration extends SourceViewerConfiguratio
 		//}
 
 		return reconciler;
-	}
-	
-	/**
-	 * Responsible for syncing text and model
-	 * For more information on reconcilers see http://blog.darevay.com/2007/11/the-eclipse-reconciler/
-	 * http://wiki.eclipse.org/FAQ_How_do_I_use_a_model_reconciler%3F
-	 */
-	@Override
-	public IReconciler getReconciler(ISourceViewer sourceViewer) {
-				
-		SyncModelAndTextReconcilingStrategy reconcilingStrategy = new SyncModelAndTextReconcilingStrategy(MultiLevelModelEditorInput.LatestInstance.getWeavingModel(), sourceViewer);
-		
-		MonoReconciler reconciler = new MonoReconciler(reconcilingStrategy, true);
-		reconciler.install(sourceViewer);
-		reconciler.setIsIncrementalReconciler(true);
-		
-		// Very low delay is needed to keep the text in sync with weaving model
-		// otherwise the user loses some characters while typing as he/she always
-		// runs into a locked region.
-		reconciler.setDelay(0);
-		
-		return reconciler;
-	}
+	}	
 	
 	@Override
 	public IContentAssistant getContentAssistant(ISourceViewer sourceViewer) {
@@ -102,4 +78,26 @@ public class MultiLevelModelViewerConfiguration extends SourceViewerConfiguratio
 		
 		return contentAssistant;
 	}
+	
+//	/**
+//	 * Responsible for syncing text and model
+//	 * For more information on reconcilers see http://blog.darevay.com/2007/11/the-eclipse-reconciler/
+//	 * http://wiki.eclipse.org/FAQ_How_do_I_use_a_model_reconciler%3F
+//	 */
+//	@Override
+//	public IReconciler getReconciler(ISourceViewer sourceViewer) {
+//				
+//		SyncModelAndTextReconcilingStrategy reconcilingStrategy = new SyncModelAndTextReconcilingStrategy(MultiLevelModelEditorInput.LatestInstance.getWeavingModel(), sourceViewer);
+//		
+//		MonoReconciler reconciler = new MonoReconciler(reconcilingStrategy, true);
+//		reconciler.install(sourceViewer);
+//		reconciler.setIsIncrementalReconciler(true);
+//		
+//		// Very low delay is needed to keep the text in sync with weaving model
+//		// otherwise the user loses some characters while typing as he/she always
+//		// runs into a locked region.
+//		reconciler.setDelay(0);
+//		
+//		return reconciler;
+//	}
 }
