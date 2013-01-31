@@ -55,9 +55,12 @@ public class MultiLevelModelTemplateProposal extends TemplateProposal {
 	private Clabject container;
 	private WeavingLink containerWeavingLink;
 	private TextElement editedTextElement;
+	private MultiLevelModelTextEditor textEditor;
 	
 	public MultiLevelModelTemplateProposal(Template template,
-			TemplateContext context, IRegion region, Image image, int relevance, Clabject type, Connection typeConnection, Clabject container,  WeavingLink containerWeavingLink, TextElement editedTextElement) {
+			TemplateContext context, IRegion region, Image image, int relevance, Clabject type, 
+			Connection typeConnection, Clabject container,  WeavingLink containerWeavingLink, 
+			TextElement editedTextElement, MultiLevelModelTextEditor textEditor) {
 		super(template, context, region, image, relevance);
 		
 		Assert.isNotNull(type);
@@ -65,12 +68,14 @@ public class MultiLevelModelTemplateProposal extends TemplateProposal {
 		Assert.isNotNull(typeConnection);
 		Assert.isNotNull(containerWeavingLink);
 		Assert.isNotNull(editedTextElement);
+		Assert.isNotNull(textEditor);
 		
 		this.type = type;
 		this.typeConnection = typeConnection;
 		this.container = container;
 		this.containerWeavingLink = containerWeavingLink;
 		this.editedTextElement = editedTextElement;
+		this.textEditor = textEditor;
 	}
 
 	/**
@@ -81,11 +86,11 @@ public class MultiLevelModelTemplateProposal extends TemplateProposal {
 	public void apply(ITextViewer viewer, char trigger, int stateMask,
 			int offset) {
 
-		MultiLevelModelTextEditor.setProcessTextChanged(false);
+		textEditor.setProcessTextChanged(false);
 		
 		super.apply(viewer, trigger, stateMask, offset);
 		
-		MultiLevelModelTextEditor.setProcessTextChanged(false);
+		textEditor.setProcessTextChanged(false);
 		
 		TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(type);
 		CompoundCommand cCmd = new CompoundCommand();

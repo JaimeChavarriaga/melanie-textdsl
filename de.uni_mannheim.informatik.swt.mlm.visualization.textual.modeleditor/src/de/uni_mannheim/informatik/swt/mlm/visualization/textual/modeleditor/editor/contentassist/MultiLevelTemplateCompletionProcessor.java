@@ -30,6 +30,7 @@ import org.eclipse.jface.text.templates.TemplateContextType;
 import org.eclipse.jface.text.templates.TemplateProposal;
 import org.eclipse.swt.graphics.Image;
 
+import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.MultiLevelModelTextEditor;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.AbstractDSLVisualizer;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Connection;
@@ -49,9 +50,11 @@ public class MultiLevelTemplateCompletionProcessor extends
 		TemplateCompletionProcessor {
 	
 	private WeavingModel weavingModel;
+	private MultiLevelModelTextEditor textEditor;
 	
-	public MultiLevelTemplateCompletionProcessor(WeavingModel weavingModel){
+	public MultiLevelTemplateCompletionProcessor(WeavingModel weavingModel, MultiLevelModelTextEditor textEditor){
 		this.weavingModel = weavingModel;
+		this.textEditor = textEditor;
 	}
 	
 	@Override
@@ -80,7 +83,7 @@ public class MultiLevelTemplateCompletionProcessor extends
 		for (DSLTemplate template : templates){
 			Template t = new Template(template.getTypeClabject().getName(), template.getTypeClabject().getName(), MultiLevelTemplateContextType.CONTEXT_TYPE, template.getTemplateString(), true);
 			DocumentTemplateContext context = new DocumentTemplateContext(new MultiLevelTemplateContextType(), viewer.getDocument(), offset, 0);
-			TemplateProposal proposal = new MultiLevelModelTemplateProposal(t, context, new Region(offset, 0), null, 100, template.getTypeClabject(), template.getTypeConnection(), template.getContainerClabject(), template.getContainerWeavingLink(), template.getEditedTextElement());	
+			TemplateProposal proposal = new MultiLevelModelTemplateProposal(t, context, new Region(offset, 0), null, 100, template.getTypeClabject(), template.getTypeConnection(), template.getContainerClabject(), template.getContainerWeavingLink(), template.getEditedTextElement(), textEditor);	
 			proposals[i++] = proposal;
 		}
 		return proposals;

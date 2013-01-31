@@ -40,7 +40,7 @@ public class MultiLevelModelTextEditor extends TextEditor {
 		resource = ResourcesPlugin.getWorkspace().getRoot().findMember(MultiLevelModelEditorInput.LatestInstance.getModelToEdit().eResource().getURI().toPlatformString(true));
 
 		multilevelColorProvider = new MultilevelColorProvider();
-		setSourceViewerConfiguration(new MultiLevelModelViewerConfiguration(multilevelColorProvider));
+		setSourceViewerConfiguration(new MultiLevelModelViewerConfiguration(multilevelColorProvider, this));
 		
 		setDocumentProvider(new MultiLevelModelDocumentProvider());
 	}
@@ -63,7 +63,7 @@ public class MultiLevelModelTextEditor extends TextEditor {
 		TransactionUtil.getEditingDomain(MultiLevelModelEditorInput.LatestInstance.getModelToEdit()).addResourceSetListener(new ModelToTextSynchronizer(weavingModel, this, getDocumentProvider().getDocument(getEditorInput())));
 		
 		//Synchronization from text to model
-		((ITextViewerExtension)getSourceViewer()).appendVerifyKeyListener(new TextInputVerifyer(getSourceViewer()));
+		((ITextViewerExtension)getSourceViewer()).appendVerifyKeyListener(new TextInputVerifyer(getSourceViewer(), this));
 
 		// Cannot use IReconcilingStrategy and IReconcilingStrategy extension because dirty regions
 		// of model elements which are inserted through text editor.
@@ -82,11 +82,11 @@ public class MultiLevelModelTextEditor extends TextEditor {
 	 * This is set true by MultiLevelModelTemplateProposal to prevent updating.
 	 * Only valid for one change e.g. applying an template.
 	 */
-	public static void setProcessTextChanged(boolean process){
+	public void setProcessTextChanged(boolean process){
 		processTextChanged = process;
 	}
 	
-	public static boolean getProcessTextChanger(){
+	public boolean getProcessTextChanger(){
 		return processTextChanged;
 	}
 }

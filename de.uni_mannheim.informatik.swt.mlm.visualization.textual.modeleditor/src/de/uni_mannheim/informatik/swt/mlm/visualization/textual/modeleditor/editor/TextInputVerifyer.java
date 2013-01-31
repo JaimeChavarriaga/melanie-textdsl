@@ -41,9 +41,11 @@ import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M
 public class TextInputVerifyer implements VerifyKeyListener{
 	
 	private ISourceViewer sourceViewer;
+	private MultiLevelModelTextEditor textEditor;
 	
-	public TextInputVerifyer(ISourceViewer sourceViewer){
+	public TextInputVerifyer(ISourceViewer sourceViewer, MultiLevelModelTextEditor textEditor){
 		this.sourceViewer = sourceViewer;
+		this.textEditor = textEditor;
 	}
 	
 	@Override
@@ -117,10 +119,10 @@ public class TextInputVerifyer implements VerifyKeyListener{
 
 		//Remove the whole text from the model
 		try {
-			MultiLevelModelTextEditor.setProcessTextChanged(false);
+			textEditor.setProcessTextChanged(false);
 			sourceViewer.getDocument().replace(linkToClabject.calculateOffset(), linkToClabject.calculateLength(), "");
 		} catch (BadLocationException e) {
-			MultiLevelModelTextEditor.setProcessTextChanged(false);
+			textEditor.setProcessTextChanged(false);
 			e.printStackTrace();
 		}
 	}

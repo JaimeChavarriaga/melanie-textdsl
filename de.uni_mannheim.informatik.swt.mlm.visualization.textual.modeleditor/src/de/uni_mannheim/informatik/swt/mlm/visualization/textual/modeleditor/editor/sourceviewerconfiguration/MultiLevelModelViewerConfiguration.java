@@ -22,15 +22,18 @@ import org.eclipse.jface.text.source.ISourceViewer;
 import org.eclipse.jface.text.source.SourceViewerConfiguration;
 
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.MultiLevelModelEditorInput;
+import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.MultiLevelModelTextEditor;
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.contentassist.MultiLevelTemplateCompletionProcessor;
 
 public class MultiLevelModelViewerConfiguration extends SourceViewerConfiguration {
 	
 	private MultilevelLiteralScanner multilevelLiteralScanner;
 	private MultilevelColorProvider multilevelColorProvider;
+	private MultiLevelModelTextEditor textEditor;
 
-	public MultiLevelModelViewerConfiguration(MultilevelColorProvider multilevelColorProvider) {
+	public MultiLevelModelViewerConfiguration(MultilevelColorProvider multilevelColorProvider, MultiLevelModelTextEditor textEditor) {
 		this.multilevelColorProvider = multilevelColorProvider;
+		this.textEditor = textEditor;
 	}
 	
 	public String[] getConfiguredContentTypes(ISourceViewer sourceViewer) {
@@ -71,7 +74,7 @@ public class MultiLevelModelViewerConfiguration extends SourceViewerConfiguratio
 	public IContentAssistant getContentAssistant(ISourceViewer sourceViewer) {
 		
 		ContentAssistant contentAssistant = new ContentAssistant();
-		contentAssistant.setContentAssistProcessor(new MultiLevelTemplateCompletionProcessor(MultiLevelModelEditorInput.LatestInstance.getWeavingModel()), IDocument.DEFAULT_CONTENT_TYPE);
+		contentAssistant.setContentAssistProcessor(new MultiLevelTemplateCompletionProcessor(MultiLevelModelEditorInput.LatestInstance.getWeavingModel(), textEditor), IDocument.DEFAULT_CONTENT_TYPE);
 		
 		contentAssistant.enableAutoActivation(true);
 		contentAssistant.setProposalPopupOrientation(IContentAssistant.PROPOSAL_OVERLAY);
