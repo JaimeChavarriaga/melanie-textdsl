@@ -12,7 +12,6 @@ package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.edi
 
 import java.io.IOException;
 import java.util.Collections;
-import java.util.List;
 
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.common.command.Command;
@@ -29,6 +28,7 @@ import org.eclipse.jface.text.templates.TemplateProposal;
 import org.eclipse.swt.graphics.Image;
 
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.MultiLevelModelTextEditor;
+import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.TextEditorUtil;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.AbstractDSLVisualizer;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
@@ -140,7 +140,7 @@ public class MultiLevelModelTemplateProposal extends TemplateProposal {
 		containerWeavingLink.getChildren().add(indexToAdd, newClabjectWeavingLink);
 		
 		viewer.invalidateTextPresentation();
-		MultiLevelModelTextEditor.recalculateOffset(((WeavingModel)EcoreUtil.getRootContainer(newClabjectWeavingLink)).getLinks().get(0), 0);
+		TextEditorUtil.recalculateOffset(((WeavingModel)EcoreUtil.getRootContainer(newClabjectWeavingLink)).getLinks().get(0), 0);
 		
 		
 		//This is done for debug reasons to serialize the model on harddisk for viewing it.

@@ -84,7 +84,7 @@ public class ModelToTextSynchronizer implements ResourceSetListener {
 				valueTextElement.setOffset(offset);
 				valueTextElement.setLength(length);
 				valueTextElement.setText(n.getNewStringValue());
-				MultiLevelModelTextEditor.recalculateOffset(((WeavingModel)EcoreUtil.getRootContainer(attributeLink)).getLinks().get(0), 0);
+				TextEditorUtil.recalculateOffset(((WeavingModel)EcoreUtil.getRootContainer(attributeLink)).getLinks().get(0), 0);
 				textEditor.invalidateTextPresentation();
 			} catch (BadLocationException e) {
 				e.printStackTrace();
