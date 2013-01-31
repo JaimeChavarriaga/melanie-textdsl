@@ -15,6 +15,7 @@ import java.util.List;
 
 import org.eclipse.swt.graphics.RGB;
 
+import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.TextEditorUtil;
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.sourceviewerconfiguration.MultiLevelModelColorConstants;
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.sourceviewerconfiguration.MultiLevelModelPartitionScanner;
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.sourceviewerconfiguration.MultilevelLiteralScanner;
@@ -59,16 +60,14 @@ public class TextualDSLModelInterpreter {
 	}
 	
 	/**
-	 * Textually visualizes the model element. For the root parent will be null. Besides visualizing,
+	 * Textually visualizes the model element. Besides visualizing,
 	 * the partition for the model editor and the weaving model get created.
 	 * 
 	 * @param modelElelmentToVisualize
-	 * @param parent parent of the model element to be visualized. Null for root in containment
-	 * 		  hierarchy.
 	 * */
-	public String getTextFromModel(Element modelElelmentToVisualize, Element parent){
-		String representation = String.format(getTextualRepresentation(modelElelmentToVisualize, parent));
-		calculateWeavingModelOffsets(weavingModel.getLinks().get(0), 0, representation);
+	public String getTextFromModel(Element modelElelmentToVisualize){
+		String representation = String.format(getTextualRepresentation(modelElelmentToVisualize, null));
+		TextEditorUtil.calculateWeavingModelOffsets(weavingModel.getLinks().get(0), 0);
 		return representation;
 	}
 	
@@ -310,30 +309,5 @@ public class TextualDSLModelInterpreter {
 			return "";
 		
 		return result;
-	}
-	
-	/**
-	 * 
-	 * @param link
-	 * @param offset
-	 * @param document
-	 */
-	private static int calculateWeavingModelOffsets(WeavingLink link, int offset, String document){
-		int currentOffset = offset;
-		
-		for (WeavingModelContent element : link.getChildren()){
-			if (element instanceof TextElement){
-				currentOffset = document.indexOf(((TextElement)element).getText(), currentOffset);
-				int length = ((TextElement)element).getText().length();
-				((TextElement)element).setLength(length);
-				((TextElement)element).setOffset(currentOffset);
-				currentOffset = currentOffset + length;
-			}
-			else{
-				currentOffset = calculateWeavingModelOffsets((WeavingLink)element, currentOffset, document);
-			}
-		}
-		
-		return currentOffset;
 	}
 }

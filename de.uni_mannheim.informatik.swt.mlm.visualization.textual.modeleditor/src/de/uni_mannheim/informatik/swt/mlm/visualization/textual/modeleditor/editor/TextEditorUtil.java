@@ -21,14 +21,15 @@ import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M
  */
 public class TextEditorUtil {
 	/**
-	 * Recalculates offset and length of TextElements
+	 * Recalculates offset and length of TextElements for a weaving model
+	 * or a part of a weaving model.
 	 *
-	 * @param link
-	 * @param offset
-	 * @param document
-	 * @return
+	 * @param link starting link
+	 * @param offset starting offset
+	 * 
+	 * @return current offset
 	 */
-	public static int recalculateOffset(WeavingLink link, int offset){
+	public static int calculateWeavingModelOffsets(WeavingLink link, int offset){
 		int currentOffset = offset;
 		
 		for (WeavingModelContent element : link.getChildren()){
@@ -39,7 +40,7 @@ public class TextEditorUtil {
 				currentOffset = currentOffset + length;
 			}
 			else{
-				currentOffset = recalculateOffset((WeavingLink)element, currentOffset);
+				currentOffset = calculateWeavingModelOffsets((WeavingLink)element, currentOffset);
 			}
 		}		
 		

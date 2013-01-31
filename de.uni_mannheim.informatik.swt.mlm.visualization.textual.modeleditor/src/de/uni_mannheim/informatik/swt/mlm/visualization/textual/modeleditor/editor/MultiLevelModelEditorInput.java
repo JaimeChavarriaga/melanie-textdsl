@@ -141,7 +141,7 @@ public class MultiLevelModelEditorInput implements IStorageEditorInput {
 			//duplicated on each diff.
 			weavingModel.getLinks().clear();
 			TextualDSLModelInterpreter interpreter = new TextualDSLModelInterpreter(partitionScanner, keyWordScanner, colorConstants, weavingModel);
-			String input = interpreter.getTextFromModel(modelToEdit, null);
+			String input = interpreter.getTextFromModel(modelToEdit);
 			input = String.format(input);
 			
 			ResourceSet resourceSet = new ResourceSetImpl();

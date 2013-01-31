@@ -145,7 +145,7 @@ public class MultiLevelModelTemplateProposal extends TemplateProposal {
 		containerWeavingLink.getChildren().add(indexToAdd, newClabjectWeavingLink);
 		
 		viewer.invalidateTextPresentation();
-		TextEditorUtil.recalculateOffset(((WeavingModel)EcoreUtil.getRootContainer(newClabjectWeavingLink)).getLinks().get(0), 0);
+		TextEditorUtil.calculateWeavingModelOffsets(((WeavingModel)EcoreUtil.getRootContainer(newClabjectWeavingLink)).getLinks().get(0), 0);
 		
 		
 		//This is done for debug reasons to serialize the model on harddisk for viewing it.

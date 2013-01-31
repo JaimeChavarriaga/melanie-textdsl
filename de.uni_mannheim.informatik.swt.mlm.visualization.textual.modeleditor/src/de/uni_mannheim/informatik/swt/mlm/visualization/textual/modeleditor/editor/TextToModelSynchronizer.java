@@ -152,7 +152,7 @@ public class TextToModelSynchronizer implements ITextListener {
 		domain.getCommandStack().execute(updateMultiLevelModelCommand);
 		
 		textElement.setText(newString);
-		TextEditorUtil.recalculateOffset(((WeavingModel)EcoreUtil.getRootContainer(link)).getLinks().get(0), 0);
+		TextEditorUtil.calculateWeavingModelOffsets(((WeavingModel)EcoreUtil.getRootContainer(link)).getLinks().get(0), 0);
 		try {
 			weavingModel.eResource().save(Collections.EMPTY_MAP);
 		} catch (IOException e) {
