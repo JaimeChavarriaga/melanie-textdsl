@@ -70,21 +70,6 @@ public class MultiLevelModelTextEditor extends TextEditor {
 		getSourceViewer().addTextListener(new TextToModelSynchronizer(getSourceViewer(), weavingModel));
 		
 		getSite().getWorkbenchWindow().getSelectionService().addSelectionListener(new TextSelectionToModelSynchronizer(weavingModel));
-		
-		
-//		getSourceViewer().getTextWidget().addLineBackgroundListener(new LineBackgroundListener() {
-//			
-//			@Override
-//			public void lineGetBackground(LineBackgroundEvent event) {
-//				WeavingModel weavingModel = MultiLevelModelEditorInput.LatestInstance.getWeavingModel();
-//				TextElement textElement = weavingModel.findTextElementForOffset(((StyledText)event.getSource()).getCaretOffset()).get(0);
-//				
-//				//Not an Attribute is edited -> Drop changes!
-//				if ( !( ((WeavingLink)textElement.eContainer()).getModelElement() instanceof Attribute ) ){
-//					event.lineBackground = multilevelColorProvider.getColor(new RGB(150, 150, 150));
-//				}
-//			}
-//		});
 	}
 	
 	public void invalidateTextPresentation(){
