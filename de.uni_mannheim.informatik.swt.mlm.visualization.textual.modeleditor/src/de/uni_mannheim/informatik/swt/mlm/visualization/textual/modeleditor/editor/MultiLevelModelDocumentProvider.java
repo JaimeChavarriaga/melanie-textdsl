@@ -22,8 +22,6 @@ import org.eclipse.jface.text.source.AnnotationModel;
 import org.eclipse.jface.text.source.IAnnotationModel;
 import org.eclipse.ui.editors.text.FileDocumentProvider;
 
-
-
 public class MultiLevelModelDocumentProvider extends FileDocumentProvider {
 	
 	private AnnotationModel annotationModel = new AnnotationModel();
@@ -39,7 +37,7 @@ public class MultiLevelModelDocumentProvider extends FileDocumentProvider {
 			IDocumentPartitioner partitioner =
 				new FastPartitioner(
 					input.getMultiLevelModelPartitionScanner(),
-					input.getMultiLevelModelPartitionScanner().getPartitionNames());
+					new String[]{IDocument.DEFAULT_CONTENT_TYPE});
 			partitioner.connect(document);
 			document.setDocumentPartitioner(partitioner);
 		}

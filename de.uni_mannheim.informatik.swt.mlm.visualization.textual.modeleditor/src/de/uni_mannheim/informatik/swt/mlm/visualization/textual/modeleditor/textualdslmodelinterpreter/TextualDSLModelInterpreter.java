@@ -44,7 +44,7 @@ import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M
  */
 public class TextualDSLModelInterpreter {
 
-	MultiLevelModelPartitionScanner partitionScanner;
+	//MultiLevelModelPartitionScanner partitionScanner;
 	MultilevelLiteralScanner keywordScanner;
 	MultiLevelModelColorConstants colorConstants;
 	WeavingModel weavingModel;
@@ -52,7 +52,7 @@ public class TextualDSLModelInterpreter {
 	public TextualDSLModelInterpreter(MultiLevelModelPartitionScanner partitionScanner, 
 			MultilevelLiteralScanner keywordScanner, MultiLevelModelColorConstants colorConstants,
 			WeavingModel weavinModel){
-		this.partitionScanner = partitionScanner;
+		//this.partitionScanner = partitionScanner;
 		this.keywordScanner = keywordScanner;
 		this.colorConstants = colorConstants;
 		this.weavingModel = weavinModel;
@@ -174,8 +174,8 @@ public class TextualDSLModelInterpreter {
 					break;
 			}
 		
-		PatternDescriptor pd = new PatternDescriptor(startPattern, endPattern, false);
-		partitionScanner.addPartition(root, pd);
+//		PatternDescriptor pd = new PatternDescriptor(startPattern, endPattern, false);
+//		partitionScanner.addPartition(root, pd);
 	}
 	
 	/**

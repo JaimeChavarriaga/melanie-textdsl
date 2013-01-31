@@ -10,6 +10,7 @@
  *******************************************************************************/
 package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.sourceviewerconfiguration;
 
+import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.TextAttribute;
 import org.eclipse.jface.text.contentassist.ContentAssistant;
 import org.eclipse.jface.text.contentassist.IContentAssistant;
@@ -35,9 +36,7 @@ public class MultiLevelModelViewerConfiguration extends SourceViewerConfiguratio
 	}
 	
 	public String[] getConfiguredContentTypes(ISourceViewer sourceViewer) {
-		//TODO:This could not be working anymore if multiple editors are opened at the same time	
-		return MultiLevelModelPartitionScanner.LatestInstance.getPartitionNames();
-//		return MultiLevelModelPartitionScanner.getPartitionNames();
+		return new String[]{IDocument.DEFAULT_CONTENT_TYPE};
 	}
 	
 	protected MultilevelLiteralScanner getMultiLevelModelKeywordScanner() {
@@ -61,11 +60,11 @@ public class MultiLevelModelViewerConfiguration extends SourceViewerConfiguratio
 		PresentationReconciler reconciler = new PresentationReconciler();
 		sourceViewer.getDocument();
 		//TODO:This could not be working anymore if multiple editors are opened at the same time
-		for(String contentType : MultiLevelModelPartitionScanner.LatestInstance.getPartitionNames()){
-			DefaultDamagerRepairer dr = new DefaultDamagerRepairer(getMultiLevelModelKeywordScanner());
-			reconciler.setDamager(dr, contentType);
-			reconciler.setRepairer(dr, contentType);
-		}
+		//for(String contentType : MultiLevelModelPartitionScanner.LatestInstance.getPartitionNames()){
+		DefaultDamagerRepairer dr = new DefaultDamagerRepairer(getMultiLevelModelKeywordScanner());
+		reconciler.setDamager(dr, IDocument.DEFAULT_CONTENT_TYPE);
+		reconciler.setRepairer(dr, IDocument.DEFAULT_CONTENT_TYPE);
+		//}
 
 		return reconciler;
 	}
@@ -96,8 +95,7 @@ public class MultiLevelModelViewerConfiguration extends SourceViewerConfiguratio
 	public IContentAssistant getContentAssistant(ISourceViewer sourceViewer) {
 		
 		ContentAssistant contentAssistant = new ContentAssistant();
-		for (String contentType : MultiLevelModelPartitionScanner.LatestInstance.getPartitionNames())
-			contentAssistant.setContentAssistProcessor(new MultiLevelTemplateCompletionProcessor(MultiLevelModelEditorInput.LatestInstance.getWeavingModel()), contentType);
+		contentAssistant.setContentAssistProcessor(new MultiLevelTemplateCompletionProcessor(MultiLevelModelEditorInput.LatestInstance.getWeavingModel()), IDocument.DEFAULT_CONTENT_TYPE);
 		
 		contentAssistant.enableAutoActivation(true);
 		contentAssistant.setProposalPopupOrientation(IContentAssistant.PROPOSAL_OVERLAY);
@@ -105,12 +103,3 @@ public class MultiLevelModelViewerConfiguration extends SourceViewerConfiguratio
 		return contentAssistant;
 	}
 }
-
-//private XMLDoubleClickStrategy doubleClickStrategy;
-//public ITextDoubleClickStrategy getDoubleClickStrategy(
-//		ISourceViewer sourceViewer,
-//		String contentType) {
-//		if (doubleClickStrategy == null)
-//			doubleClickStrategy = new XMLDoubleClickStrategy();
-//		return doubleClickStrategy;
-//}
