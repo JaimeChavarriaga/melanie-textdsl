@@ -28,8 +28,7 @@ import org.eclipse.jface.text.templates.TemplateProposal;
 import org.eclipse.swt.graphics.Image;
 
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.MultiLevelModelTextEditor;
-import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.TextEditorUtil;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.AbstractDSLVisualizer;
+import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.util.TextEditorUtil;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Classification;
@@ -39,23 +38,18 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Entity;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMFactory;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Participation;
-import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.Literal;
-import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.TextualDSLVisualizer;
-import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.TextualVisualizationDescriptor;
-import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.Value;
-import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.M2TWeavingFactory;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.TextElement;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingLink;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingModel;
 
 public class MultiLevelModelTemplateProposal extends TemplateProposal {
 
-	private Clabject type;
-	private Clabject typeConnection;
-	private Clabject container;
-	private WeavingLink containerWeavingLink;
-	private TextElement editedTextElement;
-	private MultiLevelModelTextEditor textEditor;
+	final private Clabject type;
+	final private Clabject typeConnection;
+	final private Clabject container;
+	final private WeavingLink containerWeavingLink;
+	final private TextElement editedTextElement;
+	final private MultiLevelModelTextEditor textEditor;
 	
 	public MultiLevelModelTemplateProposal(Template template,
 			TemplateContext context, IRegion region, Image image, int relevance, Clabject type, 
@@ -136,7 +130,7 @@ public class MultiLevelModelTemplateProposal extends TemplateProposal {
 		domain.getCommandStack().execute(cCmd);
 		
 		//Create new WeavingLink
-		WeavingLink newClabjectWeavingLink = createWeavingLink(instanceClabject, offset);
+		WeavingLink newClabjectWeavingLink = TextEditorUtil.createWeavingLink(instanceClabject, offset);
 		
 		//Insert before or behind model elemet?
 		int indexToAdd = containerWeavingLink.getChildren().indexOf(editedTextElement);
@@ -154,52 +148,5 @@ public class MultiLevelModelTemplateProposal extends TemplateProposal {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-	
-	/**
-	 * Creates templates for a list of clabjects
-	 * 
-	 * @param clabjects clabjects to create templates for
-	 * 
-	 * @return a list of templates
-	 */
-	private WeavingLink createWeavingLink(Clabject clabject, int offset){
-		
-		WeavingLink link = M2TWeavingFactory.eINSTANCE.createWeavingLink();
-		link.setModelElement(clabject);
-		
-		for (AbstractDSLVisualizer visualizer : clabject.getPossibleDomainSpecificVisualizers()){
-			if (! (visualizer instanceof TextualDSLVisualizer))
-				continue;
-			
-			for (TextualVisualizationDescriptor descriptor : ((TextualDSLVisualizer) visualizer).getContent())
-				if (descriptor instanceof Literal){
-					TextElement textElement = M2TWeavingFactory.eINSTANCE.createTextElement();
-					textElement.setText(String.format(descriptor.getExpression()));
-					textElement.setLength(textElement.getText().length());
-					textElement.setOffset(offset);
-					offset = offset + textElement.getLength();
-					link.getChildren().add(textElement);
-				}
-				else if (descriptor instanceof Value
-						 && clabject.getAttributeByName(descriptor.getExpression()) != null){
-					
-					WeavingLink attributeLink = M2TWeavingFactory.eINSTANCE.createWeavingLink();
-					Attribute attribute = clabject.getAttributeByName(descriptor.getExpression());
-					attributeLink.setModelElement(attribute);
-					link.getChildren().add(attributeLink);
-					
-					TextElement attributeTextElement = M2TWeavingFactory.eINSTANCE.createTextElement();
-					attributeTextElement.setText(descriptor.getExpression());
-					attributeTextElement.setOffset(offset);
-					attributeTextElement.setLength(attributeTextElement.getText().length());
-					offset += attributeTextElement.getLength();
-					attributeLink.getChildren().add(attributeTextElement);
-				}
-				
-				break;
-			}
-		
-		return link;
 	}
 }

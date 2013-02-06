@@ -23,6 +23,7 @@ import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.BadLocationException;
 
+import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.util.TextEditorUtil;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.TextElement;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingLink;
@@ -36,9 +37,9 @@ import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M
  */
 public class ModelToTextSynchronizer implements ResourceSetListener {
 
-	private WeavingModel weavingModel;
-	private MultiLevelModelTextEditor textEditor;
-	private IDocument document;
+	final private WeavingModel weavingModel;
+	final private MultiLevelModelTextEditor textEditor;
+	final private IDocument document;
 	
 	public ModelToTextSynchronizer(WeavingModel weavingModel, MultiLevelModelTextEditor textEditor, IDocument document) {
 		this.weavingModel = weavingModel;

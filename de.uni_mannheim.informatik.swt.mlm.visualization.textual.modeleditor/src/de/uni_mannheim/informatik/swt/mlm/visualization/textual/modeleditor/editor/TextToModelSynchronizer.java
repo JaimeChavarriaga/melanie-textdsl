@@ -23,6 +23,7 @@ import org.eclipse.jface.text.ITextListener;
 import org.eclipse.jface.text.TextEvent;
 import org.eclipse.jface.text.source.ISourceViewer;
 
+import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.util.TextEditorUtil;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.SearchStrategy;
@@ -36,8 +37,9 @@ import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M
  */
 public class TextToModelSynchronizer implements ITextListener {
 
-	private ISourceViewer sourceViewer;
-	private WeavingModel weavingModel;
+	final private ISourceViewer sourceViewer;
+	final private WeavingModel weavingModel;
+	
 	private boolean processTextChanged;
 	
 	public TextToModelSynchronizer(ISourceViewer sourceViewer, WeavingModel weavingModel){

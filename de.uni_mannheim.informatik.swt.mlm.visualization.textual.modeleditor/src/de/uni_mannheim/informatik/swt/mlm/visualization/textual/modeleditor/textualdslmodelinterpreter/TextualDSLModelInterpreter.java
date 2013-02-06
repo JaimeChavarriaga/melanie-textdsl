@@ -15,11 +15,10 @@ import java.util.List;
 
 import org.eclipse.swt.graphics.RGB;
 
-import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.TextEditorUtil;
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.sourceviewerconfiguration.MultiLevelModelColorConstants;
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.sourceviewerconfiguration.MultiLevelModelPartitionScanner;
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.sourceviewerconfiguration.MultilevelLiteralScanner;
-import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.sourceviewerconfiguration.PatternDescriptor;
+import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.util.TextEditorUtil;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.AbstractDSLVisualizer;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Clabject;
@@ -32,12 +31,7 @@ import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualre
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.TextualVisualizationDescriptor;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.Value;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.ValueChoice;
-import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.M2TWeavingFactory;
-import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.TextElement;
-import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingLink;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingModel;
-import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingModelContent;
-
 
 /**
  * Responsible for creating text, weaving model etc.
@@ -46,9 +40,9 @@ import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M
 public class TextualDSLModelInterpreter {
 
 	//MultiLevelModelPartitionScanner partitionScanner;
-	MultilevelLiteralScanner keywordScanner;
-	MultiLevelModelColorConstants colorConstants;
-	WeavingModel weavingModel;
+	final MultilevelLiteralScanner keywordScanner;
+	final MultiLevelModelColorConstants colorConstants;
+	final WeavingModel weavingModel;
 	
 	public TextualDSLModelInterpreter(MultiLevelModelPartitionScanner partitionScanner, 
 			MultilevelLiteralScanner keywordScanner, MultiLevelModelColorConstants colorConstants,
@@ -82,7 +76,7 @@ public class TextualDSLModelInterpreter {
 		
 		//First we add it to the model without text so that
 		//its children can be added to the weaving model
-		createWeavingLink(modelElelmentToVisualize, null, parent);
+		TextEditorUtil.createWeavingLink(weavingModel, modelElelmentToVisualize, null, parent);
 		
 		String result = "";
 		
@@ -178,45 +172,6 @@ public class TextualDSLModelInterpreter {
 	}
 	
 	/**
-	 * Creates a weaving link for a given text
-	 * 
-	 * @param element
-	 * @param text
-	 * @param parent
-	 */
-	private void createWeavingLink(Element element, String text, Element parent){
-		List<WeavingLink> links = weavingModel.findLinkForPLMElement(element);
-		WeavingLink link;
-		
-		if (links.size() == 0){
-			if (parent == null){
-				link = M2TWeavingFactory.eINSTANCE.createWeavingLink();
-				link.setModelElement(element);
-				weavingModel.getLinks().add(link);
-			}else{
-				List<WeavingLink> parentLinks = weavingModel.findLinkForPLMElement(parent);
-				
-				if (parentLinks.size() != 1)
-					throw new UnsupportedOperationException("Not Supported!");
-				
-				link = M2TWeavingFactory.eINSTANCE.createWeavingLink();
-				link.setModelElement(element);
-				parentLinks.get(0).getChildren().add(link);
-			}
-		} else if (links.size() == 1){
-			link = links.get(0);
-		} else{
-			throw new UnsupportedOperationException("Not Supported!");
-		}
-		
-		if (text != null){
-			TextElement textElement = M2TWeavingFactory.eINSTANCE.createTextElement();
-			textElement.setText(String.format(text));
-			link.getChildren().add(textElement);
-		}
-	}
-	
-	/**
 	 * Registers the literal as keyword and returns its value
 	 * 
 	 * @param l
@@ -243,7 +198,7 @@ public class TextualDSLModelInterpreter {
 		
 		if (descriptor instanceof Literal){
 			String literal = getLiteral((Literal)descriptor);
-			createWeavingLink(modelElelmentToVisualize, literal, parent);
+			TextEditorUtil.createWeavingLink(weavingModel, modelElelmentToVisualize, literal, parent);
 			result += literal;
 		}
 		else if (descriptor instanceof Value)
@@ -279,7 +234,7 @@ public class TextualDSLModelInterpreter {
 			if (expression.equals(f.getName())
 					&& f instanceof Attribute){
 				//Register in weaving model
-				createWeavingLink(((Attribute)f), ((Attribute)f).getValue(), modelElement);
+				TextEditorUtil.createWeavingLink(weavingModel, ((Attribute)f), ((Attribute)f).getValue(), modelElement);
 				return ((Attribute)f).getValue();
 			}
 		}
