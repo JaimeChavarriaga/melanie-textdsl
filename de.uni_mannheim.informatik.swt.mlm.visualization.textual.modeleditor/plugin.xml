@@ -20,5 +20,12 @@
             id="de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditotor">
       </provider>
    </extension>
+   <extension
+         point="org.eclipse.ui.editors.annotationTypes">
+      <type
+            name="de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.literaltype"
+            super="org.eclipse.jdt.ui.occurrences">
+      </type>
+   org.eclipse.jdt.ui.occurrences</extension>
 
 </plugin>

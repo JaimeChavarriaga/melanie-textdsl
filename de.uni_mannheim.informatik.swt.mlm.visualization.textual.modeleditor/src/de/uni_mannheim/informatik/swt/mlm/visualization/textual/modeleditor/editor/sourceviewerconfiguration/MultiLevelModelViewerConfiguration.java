@@ -40,18 +40,23 @@ public class MultiLevelModelViewerConfiguration extends SourceViewerConfiguratio
 		return new String[]{IDocument.DEFAULT_CONTENT_TYPE};
 	}
 	
-	protected MultilevelLiteralScanner getMultiLevelModelKeywordScanner() {
-		if (multilevelLiteralScanner == null) {
-			multilevelLiteralScanner = MultilevelLiteralScanner.LATEST_INSTANCE;
-			multilevelLiteralScanner.setColorProvider(multilevelColorProvider);
-			multilevelLiteralScanner.init();
-			multilevelLiteralScanner.setDefaultReturnToken(
-				new Token(
-					new TextAttribute(
-						multilevelColorProvider.getColor(multilevelColorProvider.getMultiLevelModelColorConstants().getColor(multilevelColorProvider.getMultiLevelModelColorConstants().DEFAULT_KEY)))));
-		}
-		return multilevelLiteralScanner;
-	}
+//	/**
+//	 * Responsible for marking keywords with the right colors 
+//	 * 
+//	 * @return
+//	 */
+//	protected MultilevelLiteralScanner getMultiLevelModelKeywordScanner() {
+//		if (multilevelLiteralScanner == null) {
+//			multilevelLiteralScanner = MultilevelLiteralScanner.LATEST_INSTANCE;
+//			multilevelLiteralScanner.setColorProvider(multilevelColorProvider);
+//			multilevelLiteralScanner.init();
+//			multilevelLiteralScanner.setDefaultReturnToken(
+//				new Token(
+//					new TextAttribute(
+//						multilevelColorProvider.getColor(multilevelColorProvider.getMultiLevelModelColorConstants().getColor(multilevelColorProvider.getMultiLevelModelColorConstants().DEFAULT_KEY)))));
+//		}
+//		return multilevelLiteralScanner;
+//	}
 
 	/**
 	 * Responsible for syntax highlighting
@@ -60,11 +65,13 @@ public class MultiLevelModelViewerConfiguration extends SourceViewerConfiguratio
 	public IPresentationReconciler getPresentationReconciler(ISourceViewer sourceViewer) {
 		PresentationReconciler reconciler = new PresentationReconciler();
 		sourceViewer.getDocument();
-		//TODO:This could not be working anymore if multiple editors are opened at the same time
+		//************************************
+		// Keyword scanner
+		//************************************
 		//for(String contentType : MultiLevelModelPartitionScanner.LatestInstance.getPartitionNames()){
-		DefaultDamagerRepairer dr = new DefaultDamagerRepairer(getMultiLevelModelKeywordScanner());
-		reconciler.setDamager(dr, IDocument.DEFAULT_CONTENT_TYPE);
-		reconciler.setRepairer(dr, IDocument.DEFAULT_CONTENT_TYPE);
+//		DefaultDamagerRepairer dr = new DefaultDamagerRepairer(getMultiLevelModelKeywordScanner());
+//		reconciler.setDamager(dr, IDocument.DEFAULT_CONTENT_TYPE);
+//		reconciler.setRepairer(dr, IDocument.DEFAULT_CONTENT_TYPE);
 		//}
 
 		return reconciler;

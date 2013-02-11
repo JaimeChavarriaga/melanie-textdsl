@@ -41,14 +41,14 @@ import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M
  */
 public class MultiLevelModelEditorInput implements IStorageEditorInput {
 
-	private IStorage storage;
-	private Model modelToEdit;
+	final private IStorage storage;
+	final private Model modelToEdit;
 	private String modelText;
 	
-	private MultiLevelModelPartitionScanner partitionScanner;
+	final private MultiLevelModelPartitionScanner partitionScanner;
+	final private MultiLevelModelColorConstants colorConstants;
+	final private WeavingModel weavingModel;
 	private MultilevelLiteralScanner keyWordScanner;
-	private MultiLevelModelColorConstants colorConstants;
-	private WeavingModel weavingModel;
 	
 	public static MultiLevelModelEditorInput LatestInstance;
 	
@@ -72,15 +72,15 @@ public class MultiLevelModelEditorInput implements IStorageEditorInput {
 		return partitionScanner;
 	}
 	
-	public MultilevelLiteralScanner getMultiLevelKeywordScanner(){
-		return keyWordScanner;
-	}
+//	public MultilevelLiteralScanner getMultiLevelKeywordScanner(){
+//		return keyWordScanner;
+//	}
 	
 	public MultiLevelModelEditorInput(Model modelToEdit){
 		this.modelToEdit = modelToEdit;
 		storage = new MultiLevelModelStorage(modelToEdit);
 		partitionScanner = new MultiLevelModelPartitionScanner();
-		keyWordScanner = new MultilevelLiteralScanner();
+		//keyWordScanner = new MultilevelLiteralScanner();
 		colorConstants = new MultiLevelModelColorConstants();
 		weavingModel = M2TWeavingFactory.eINSTANCE.createWeavingModel();
 		LatestInstance = this;

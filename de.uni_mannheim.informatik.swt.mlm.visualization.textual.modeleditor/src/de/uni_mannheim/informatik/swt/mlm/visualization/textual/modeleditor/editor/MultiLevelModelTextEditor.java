@@ -15,6 +15,7 @@ import org.eclipse.core.resources.IResourceChangeEvent;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.text.ITextViewerExtension;
+import org.eclipse.swt.custom.CaretListener;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.editors.text.TextEditor;
 
@@ -69,7 +70,9 @@ public class MultiLevelModelTextEditor extends TextEditor {
 		// of model elements which are inserted through text editor.
 		getSourceViewer().addTextListener(new TextToModelSynchronizer(getSourceViewer(), weavingModel));
 		
-		getSite().getWorkbenchWindow().getSelectionService().addSelectionListener(new TextSelectionToModelSynchronizer(weavingModel));
+		getSourceViewer().getTextWidget().addCaretListener(new TextSelectionToModelSynchronizer(weavingModel));
+		//getSourceViewer().getSelectionProvider().addSelectionChangedListener(new LiteralSelectionListener(weavingModel, getSourceViewer().getAnnotationModel()));
+		getSourceViewer().getTextWidget().addCaretListener(new LiteralSelectionListener(weavingModel, getSourceViewer().getAnnotationModel()));
 	}
 	
 	public void invalidateTextPresentation(){

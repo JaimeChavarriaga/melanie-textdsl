@@ -40,7 +40,7 @@ import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M
 public class TextualDSLModelInterpreter {
 
 	//MultiLevelModelPartitionScanner partitionScanner;
-	final MultilevelLiteralScanner keywordScanner;
+	//final MultilevelLiteralScanner keywordScanner;
 	final MultiLevelModelColorConstants colorConstants;
 	final WeavingModel weavingModel;
 	
@@ -48,7 +48,7 @@ public class TextualDSLModelInterpreter {
 			MultilevelLiteralScanner keywordScanner, MultiLevelModelColorConstants colorConstants,
 			WeavingModel weavinModel){
 		//this.partitionScanner = partitionScanner;
-		this.keywordScanner = keywordScanner;
+		//this.keywordScanner = keywordScanner;
 		this.colorConstants = colorConstants;
 		this.weavingModel = weavinModel;
 	}
@@ -120,7 +120,7 @@ public class TextualDSLModelInterpreter {
 				! (l.getColor() instanceof RGBColor))
 			return;
 		
-		keywordScanner.addKeyWord(l.getExpression().trim());
+		//keywordScanner.addKeyWord(l.getExpression().trim());
 		
 		RGBColor color = (RGBColor)l.getColor();
 		RGB rgb = new RGB(color.getR(), color.getG(),color.getB());

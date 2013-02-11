@@ -20,11 +20,13 @@ public class MultiLevelModelColorConstants {
 	public static MultiLevelModelColorConstants LATEST_INSTANCE;
 	
 	public static final String DEFAULT_KEY = "DEFAULT_KEY";
+	public static final String LOCKED = "LOCKED";
 	
 	private Map<String, RGB> colors = new HashMap<>();
 	
 	public MultiLevelModelColorConstants(){
 		colors.put("DEFAULT_KEY", new RGB(0,0,0));
+		colors.put(LOCKED, new RGB(128, 128, 128));
 		LATEST_INSTANCE = this;
 	}
 	

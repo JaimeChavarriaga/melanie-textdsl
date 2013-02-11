@@ -35,13 +35,13 @@ public class MultilevelLiteralScanner extends RuleBasedScanner {
 	
 	private static MultilevelColorProvider colorProvider;
 	
-	public static MultilevelLiteralScanner LATEST_INSTANCE;
+//	public static MultilevelLiteralScanner LATEST_INSTANCE;
 
 	private Set<String> literals = new HashSet<String>();
 
 	
 	public MultilevelLiteralScanner(){
-		LATEST_INSTANCE = this;
+//		LATEST_INSTANCE = this;
 	}
 	
 	public void addKeyWord(String keyword){

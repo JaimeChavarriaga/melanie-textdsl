@@ -14,12 +14,10 @@ import java.util.List;
 
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
-import org.eclipse.jface.text.TextSelection;
-import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.swt.custom.CaretEvent;
+import org.eclipse.swt.custom.CaretListener;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
-import org.eclipse.ui.ISelectionListener;
-import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
@@ -33,21 +31,18 @@ import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingLink;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingModel;
 
-public class TextSelectionToModelSynchronizer implements ISelectionListener {
+public class TextSelectionToModelSynchronizer implements CaretListener {
 	
-	private WeavingModel weavingModel;
+	final private WeavingModel weavingModel;
 	
 	public TextSelectionToModelSynchronizer(WeavingModel weavingModel){
 		this.weavingModel = weavingModel;
 	}
-	
+
 	@Override
-	public void selectionChanged(IWorkbenchPart part, ISelection selection) {
-		if (!(selection instanceof TextSelection))
-			return;
-		
-		TextSelection textSelection = (TextSelection)selection;
-		int offSet = textSelection.getOffset();
+	public void caretMoved(CaretEvent event) {
+
+		int offSet = event.caretOffset;
 		
 		List<TextElement> textElements = weavingModel.findTextElementForOffset(offSet);
 		
