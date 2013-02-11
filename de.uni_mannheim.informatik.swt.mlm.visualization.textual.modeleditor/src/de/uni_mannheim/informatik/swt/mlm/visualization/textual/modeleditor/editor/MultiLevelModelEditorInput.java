@@ -43,6 +43,10 @@ public class MultiLevelModelEditorInput implements IStorageEditorInput {
 
 	final private IStorage storage;
 	final private Model modelToEdit;
+	
+	/**
+	 * Stores the text that is generated out of the model.
+	 */
 	private String modelText;
 	
 	final private MultiLevelModelPartitionScanner partitionScanner;

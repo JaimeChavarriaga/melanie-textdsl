@@ -23,7 +23,6 @@ import org.eclipse.swt.graphics.RGB;
 
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.MultiLevelModelEditorInput;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
-import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.SearchStrategy;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.TextElement;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingLink;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingModel;
@@ -35,8 +34,8 @@ import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M
  */
 public class LockedLiteralRule implements IRule {
 
-	MultilevelColorProvider colorProvider;
-	WeavingModel weavingModel;
+	final MultilevelColorProvider colorProvider;
+	final WeavingModel weavingModel;
 	
 	public LockedLiteralRule(MultilevelColorProvider colorProvider){
 		this.colorProvider = colorProvider;

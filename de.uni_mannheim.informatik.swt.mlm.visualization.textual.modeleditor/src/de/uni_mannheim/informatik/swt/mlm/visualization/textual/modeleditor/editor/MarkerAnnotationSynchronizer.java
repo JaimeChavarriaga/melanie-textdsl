@@ -44,10 +44,10 @@ import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M
  */
 public class MarkerAnnotationSynchronizer implements IResourceChangeListener {
 
-	private IResource resource;
-	private WeavingModel weavingModel;
-	private IDocumentProvider documentProvider;
-	private IEditorInput editorInput;
+	final private IResource resource;
+	final private WeavingModel weavingModel;
+	final private IDocumentProvider documentProvider;
+	final private IEditorInput editorInput;
 	
 	public MarkerAnnotationSynchronizer(IResource resource, WeavingModel weavingModel, IDocumentProvider documentProvider, IEditorInput editorInput){
 		this.resource = resource;

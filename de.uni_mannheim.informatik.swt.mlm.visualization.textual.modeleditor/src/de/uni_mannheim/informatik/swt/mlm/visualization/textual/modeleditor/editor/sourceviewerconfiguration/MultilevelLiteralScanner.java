@@ -16,15 +16,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.eclipse.jface.text.TextAttribute;
 import org.eclipse.jface.text.rules.IRule;
-import org.eclipse.jface.text.rules.IToken;
-import org.eclipse.jface.text.rules.IWordDetector;
 import org.eclipse.jface.text.rules.RuleBasedScanner;
-import org.eclipse.jface.text.rules.Token;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.graphics.RGB;
 
 /**
  * This class is responsible for syntax highlighting and background marking 

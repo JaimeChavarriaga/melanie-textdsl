@@ -28,15 +28,15 @@ import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M
 public class SyncModelAndTextReconcilingStrategy implements
 		IReconcilingStrategy, IReconcilingStrategyExtension {
 
-	private WeavingModel weavingModel;
-	private ISourceViewer sourceViewer;
-	
-	private static IDocument document;
+//	private WeavingModel weavingModel;
+//	private ISourceViewer sourceViewer;
+//	
+//	private static IDocument document;
 	
 	
 	public SyncModelAndTextReconcilingStrategy(WeavingModel weavingModel, ISourceViewer sourceViewer){
-		this.weavingModel = weavingModel;
-		this.sourceViewer = sourceViewer;
+//		this.weavingModel = weavingModel;
+//		this.sourceViewer = sourceViewer;
 	}
 	
 	@Override
@@ -51,7 +51,7 @@ public class SyncModelAndTextReconcilingStrategy implements
 
 	@Override
 	public void setDocument(IDocument document) {
-		this.document = document;
+//		this.document = document;
 	}
 
 	@Override

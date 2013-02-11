@@ -10,8 +10,6 @@
  *******************************************************************************/
 package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.popupbartools;
 
-import java.util.ArrayList;
-
 import org.eclipse.e4.ui.model.application.ui.basic.MBasicFactory;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.model.application.ui.basic.MPartSashContainer;
@@ -35,7 +33,7 @@ import de.uni_mannheim.informatik.swt.models.plm.diagram.part.PLMDiagramEditor;
 
 public class OpenTextualModelEditorOnModelElementCommand extends Command{
 	
-	private IGraphicalEditPart host = null;
+	final private IGraphicalEditPart host;
 	
 	/**
 	 * 

@@ -20,7 +20,7 @@ import org.eclipse.swt.widgets.Display;
 
 public class MultilevelColorProvider {
 
-	private MultiLevelModelColorConstants colorConstants = MultiLevelModelColorConstants.LATEST_INSTANCE == null? new MultiLevelModelColorConstants() : MultiLevelModelColorConstants.LATEST_INSTANCE;
+	final private MultiLevelModelColorConstants colorConstants = MultiLevelModelColorConstants.LATEST_INSTANCE == null? new MultiLevelModelColorConstants() : MultiLevelModelColorConstants.LATEST_INSTANCE;
 	
 	public MultiLevelModelColorConstants getMultiLevelModelColorConstants(){
 		return colorConstants;

@@ -18,7 +18,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.gmf.runtime.emf.type.core.commands.EditElementCommand;
 import org.eclipse.jface.text.IRegion;
 import org.eclipse.jface.text.ITextViewer;
 import org.eclipse.jface.text.Region;
@@ -49,8 +48,8 @@ import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M
 public class MultiLevelTemplateCompletionProcessor extends
 		TemplateCompletionProcessor {
 	
-	private WeavingModel weavingModel;
-	private MultiLevelModelTextEditor textEditor;
+	final private WeavingModel weavingModel;
+	final private MultiLevelModelTextEditor textEditor;
 	
 	public MultiLevelTemplateCompletionProcessor(WeavingModel weavingModel, MultiLevelModelTextEditor textEditor){
 		this.weavingModel = weavingModel;

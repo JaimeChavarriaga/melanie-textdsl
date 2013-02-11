@@ -20,8 +20,6 @@ import org.eclipse.gmf.runtime.diagram.ui.tools.AbstractPopupBarTool;
 
 public class OpenTextualModelEditorPopupBarTool extends AbstractPopupBarTool{
 
-	
-	
 	public OpenTextualModelEditorPopupBarTool(EditPart epHost, CreateRequest theRequest) {
 		super(epHost, theRequest);
 	}

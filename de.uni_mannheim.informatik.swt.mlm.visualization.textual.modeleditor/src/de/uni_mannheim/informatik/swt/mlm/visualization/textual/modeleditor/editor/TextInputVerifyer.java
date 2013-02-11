@@ -40,8 +40,8 @@ import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M
  */
 public class TextInputVerifyer implements VerifyKeyListener{
 	
-	private ISourceViewer sourceViewer;
-	private MultiLevelModelTextEditor textEditor;
+	final private ISourceViewer sourceViewer;
+	final private MultiLevelModelTextEditor textEditor;
 	
 	public TextInputVerifyer(ISourceViewer sourceViewer, MultiLevelModelTextEditor textEditor){
 		this.sourceViewer = sourceViewer;

@@ -23,7 +23,7 @@ import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M
 
 public class KeywordLiteralWordRule extends WordRule {
 
-	private WeavingModel weavingModel;
+	final private WeavingModel weavingModel;
 	
 	public KeywordLiteralWordRule(IWordDetector detector) {
 		super(detector);

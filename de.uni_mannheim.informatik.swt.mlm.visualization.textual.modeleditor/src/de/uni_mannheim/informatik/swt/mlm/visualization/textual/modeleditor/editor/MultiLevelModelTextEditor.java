@@ -15,7 +15,6 @@ import org.eclipse.core.resources.IResourceChangeEvent;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.text.ITextViewerExtension;
-import org.eclipse.swt.custom.CaretListener;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.editors.text.TextEditor;
 
@@ -27,10 +26,11 @@ public class MultiLevelModelTextEditor extends TextEditor {
 
 	public final static String ID = "de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor";
 	
-	private MultilevelColorProvider multilevelColorProvider;
-	private WeavingModel weavingModel;
+	final private MultilevelColorProvider multilevelColorProvider;
+	final private WeavingModel weavingModel;
+	final private IResource resource;
+	
 	private MarkerAnnotationSynchronizer markerAnnotationSynchronizer;
-	private IResource resource;
 	
 	public MultiLevelModelTextEditor() {
 		super();

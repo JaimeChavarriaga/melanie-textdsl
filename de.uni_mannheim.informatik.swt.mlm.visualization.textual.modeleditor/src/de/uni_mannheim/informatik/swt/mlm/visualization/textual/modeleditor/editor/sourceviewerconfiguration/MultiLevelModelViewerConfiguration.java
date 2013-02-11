@@ -11,13 +11,10 @@
 package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.sourceviewerconfiguration;
 
 import org.eclipse.jface.text.IDocument;
-import org.eclipse.jface.text.TextAttribute;
 import org.eclipse.jface.text.contentassist.ContentAssistant;
 import org.eclipse.jface.text.contentassist.IContentAssistant;
 import org.eclipse.jface.text.presentation.IPresentationReconciler;
 import org.eclipse.jface.text.presentation.PresentationReconciler;
-import org.eclipse.jface.text.rules.DefaultDamagerRepairer;
-import org.eclipse.jface.text.rules.Token;
 import org.eclipse.jface.text.source.ISourceViewer;
 import org.eclipse.jface.text.source.SourceViewerConfiguration;
 
@@ -27,12 +24,12 @@ import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.edit
 
 public class MultiLevelModelViewerConfiguration extends SourceViewerConfiguration {
 	
-	private MultilevelLiteralScanner multilevelLiteralScanner;
-	private MultilevelColorProvider multilevelColorProvider;
-	private MultiLevelModelTextEditor textEditor;
+//	private MultilevelLiteralScanner multilevelLiteralScanner;
+//	private MultilevelColorProvider multilevelColorProvider;
+	final private MultiLevelModelTextEditor textEditor;
 
 	public MultiLevelModelViewerConfiguration(MultilevelColorProvider multilevelColorProvider, MultiLevelModelTextEditor textEditor) {
-		this.multilevelColorProvider = multilevelColorProvider;
+//		this.multilevelColorProvider = multilevelColorProvider;
 		this.textEditor = textEditor;
 	}
 	
