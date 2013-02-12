@@ -16,8 +16,10 @@ import org.eclipse.jface.text.rules.IWordDetector;
 import org.eclipse.jface.text.rules.Token;
 import org.eclipse.jface.text.rules.WordRule;
 
+import com.sun.xml.internal.stream.Entity;
+
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.MultiLevelModelEditorInput;
-import de.uni_mannheim.informatik.swt.models.plm.PLM.Attribute;
+import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.TextElement;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingLink;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingModel;
 
@@ -32,9 +34,11 @@ public class KeywordLiteralWordRule extends WordRule {
 
 	@Override
 	public IToken evaluate(ICharacterScanner scanner) {
-		if ( ((WeavingLink)weavingModel.findTextElementForOffset(scanner.getColumn()).get(0).eContainer()).getModelElement() instanceof Attribute )
-			return Token.UNDEFINED;
-		else
-			return super.evaluate(scanner);
+		for(TextElement textElement : weavingModel.findTextElementForOffset(scanner.getColumn()))
+			if ( ((WeavingLink)textElement.eContainer()).getModelElement() instanceof Entity )
+				return Token.UNDEFINED;
+			
+		//Attributes shall not get highlighted
+		return super.evaluate(scanner);
 	}
 }

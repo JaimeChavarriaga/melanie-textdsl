@@ -52,7 +52,7 @@ public class MultiLevelModelEditorInput implements IStorageEditorInput {
 	final private MultiLevelModelPartitionScanner partitionScanner;
 	final private MultiLevelModelColorConstants colorConstants;
 	final private WeavingModel weavingModel;
-	private MultilevelLiteralScanner keyWordScanner;
+	final private MultilevelLiteralScanner keyWordScanner;
 	
 	public static MultiLevelModelEditorInput LatestInstance;
 	
@@ -76,15 +76,15 @@ public class MultiLevelModelEditorInput implements IStorageEditorInput {
 		return partitionScanner;
 	}
 	
-//	public MultilevelLiteralScanner getMultiLevelKeywordScanner(){
-//		return keyWordScanner;
-//	}
+	public MultilevelLiteralScanner getMultiLevelKeywordScanner(){
+		return keyWordScanner;
+	}
 	
 	public MultiLevelModelEditorInput(Model modelToEdit){
 		this.modelToEdit = modelToEdit;
 		storage = new MultiLevelModelStorage(modelToEdit);
 		partitionScanner = new MultiLevelModelPartitionScanner();
-		//keyWordScanner = new MultilevelLiteralScanner();
+		keyWordScanner = new MultilevelLiteralScanner();
 		colorConstants = new MultiLevelModelColorConstants();
 		weavingModel = M2TWeavingFactory.eINSTANCE.createWeavingModel();
 		LatestInstance = this;

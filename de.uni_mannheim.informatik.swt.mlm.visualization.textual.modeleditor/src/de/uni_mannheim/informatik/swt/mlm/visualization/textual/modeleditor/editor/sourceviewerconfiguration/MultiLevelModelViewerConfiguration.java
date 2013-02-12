@@ -11,10 +11,13 @@
 package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.sourceviewerconfiguration;
 
 import org.eclipse.jface.text.IDocument;
+import org.eclipse.jface.text.TextAttribute;
 import org.eclipse.jface.text.contentassist.ContentAssistant;
 import org.eclipse.jface.text.contentassist.IContentAssistant;
 import org.eclipse.jface.text.presentation.IPresentationReconciler;
 import org.eclipse.jface.text.presentation.PresentationReconciler;
+import org.eclipse.jface.text.rules.DefaultDamagerRepairer;
+import org.eclipse.jface.text.rules.Token;
 import org.eclipse.jface.text.source.ISourceViewer;
 import org.eclipse.jface.text.source.SourceViewerConfiguration;
 
@@ -24,12 +27,12 @@ import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.edit
 
 public class MultiLevelModelViewerConfiguration extends SourceViewerConfiguration {
 	
-//	private MultilevelLiteralScanner multilevelLiteralScanner;
-//	private MultilevelColorProvider multilevelColorProvider;
+	private MultilevelLiteralScanner multilevelLiteralScanner;
+	private MultilevelColorProvider multilevelColorProvider;
 	final private MultiLevelModelTextEditor textEditor;
 
 	public MultiLevelModelViewerConfiguration(MultilevelColorProvider multilevelColorProvider, MultiLevelModelTextEditor textEditor) {
-//		this.multilevelColorProvider = multilevelColorProvider;
+		this.multilevelColorProvider = multilevelColorProvider;
 		this.textEditor = textEditor;
 	}
 	
@@ -37,23 +40,23 @@ public class MultiLevelModelViewerConfiguration extends SourceViewerConfiguratio
 		return new String[]{IDocument.DEFAULT_CONTENT_TYPE};
 	}
 	
-//	/**
-//	 * Responsible for marking keywords with the right colors 
-//	 * 
-//	 * @return
-//	 */
-//	protected MultilevelLiteralScanner getMultiLevelModelKeywordScanner() {
-//		if (multilevelLiteralScanner == null) {
-//			multilevelLiteralScanner = MultilevelLiteralScanner.LATEST_INSTANCE;
-//			multilevelLiteralScanner.setColorProvider(multilevelColorProvider);
-//			multilevelLiteralScanner.init();
-//			multilevelLiteralScanner.setDefaultReturnToken(
-//				new Token(
-//					new TextAttribute(
-//						multilevelColorProvider.getColor(multilevelColorProvider.getMultiLevelModelColorConstants().getColor(multilevelColorProvider.getMultiLevelModelColorConstants().DEFAULT_KEY)))));
-//		}
-//		return multilevelLiteralScanner;
-//	}
+	/**
+	 * Responsible for marking keywords with the right colors 
+	 * 
+	 * @return
+	 */
+	protected MultilevelLiteralScanner getMultiLevelModelKeywordScanner() {
+		if (multilevelLiteralScanner == null) {
+			multilevelLiteralScanner = MultilevelLiteralScanner.LATEST_INSTANCE;
+			multilevelLiteralScanner.setColorProvider(multilevelColorProvider);
+			multilevelLiteralScanner.init();
+			multilevelLiteralScanner.setDefaultReturnToken(
+				new Token(
+					new TextAttribute(
+						multilevelColorProvider.getColor(multilevelColorProvider.getMultiLevelModelColorConstants().getColor(multilevelColorProvider.getMultiLevelModelColorConstants().DEFAULT_KEY)))));
+		}
+		return multilevelLiteralScanner;
+	}
 
 	/**
 	 * Responsible for syntax highlighting
@@ -65,11 +68,11 @@ public class MultiLevelModelViewerConfiguration extends SourceViewerConfiguratio
 		//************************************
 		// Keyword scanner
 		//************************************
-		//for(String contentType : MultiLevelModelPartitionScanner.LatestInstance.getPartitionNames()){
-//		DefaultDamagerRepairer dr = new DefaultDamagerRepairer(getMultiLevelModelKeywordScanner());
-//		reconciler.setDamager(dr, IDocument.DEFAULT_CONTENT_TYPE);
-//		reconciler.setRepairer(dr, IDocument.DEFAULT_CONTENT_TYPE);
-		//}
+//		for(String contentType : MultiLevelModelPartitionScanner.LatestInstance.getPartitionNames()){
+		DefaultDamagerRepairer dr = new DefaultDamagerRepairer(getMultiLevelModelKeywordScanner());
+		reconciler.setDamager(dr, IDocument.DEFAULT_CONTENT_TYPE);
+		reconciler.setRepairer(dr, IDocument.DEFAULT_CONTENT_TYPE);
+//		}
 
 		return reconciler;
 	}	

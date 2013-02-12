@@ -16,8 +16,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.eclipse.jface.text.TextAttribute;
 import org.eclipse.jface.text.rules.IRule;
+import org.eclipse.jface.text.rules.IToken;
+import org.eclipse.jface.text.rules.IWordDetector;
 import org.eclipse.jface.text.rules.RuleBasedScanner;
+import org.eclipse.jface.text.rules.Token;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Color;
 
 /**
  * This class is responsible for syntax highlighting and background marking 
@@ -27,14 +33,13 @@ import org.eclipse.jface.text.rules.RuleBasedScanner;
 public class MultilevelLiteralScanner extends RuleBasedScanner {
 	
 	private static MultilevelColorProvider colorProvider;
-	
-//	public static MultilevelLiteralScanner LATEST_INSTANCE;
+	public static MultilevelLiteralScanner LATEST_INSTANCE;
 
 	private Set<String> literals = new HashSet<String>();
 
 	
 	public MultilevelLiteralScanner(){
-//		LATEST_INSTANCE = this;
+		LATEST_INSTANCE = this;
 	}
 	
 	public void addKeyWord(String keyword){
@@ -55,33 +60,32 @@ public class MultilevelLiteralScanner extends RuleBasedScanner {
 		// Here we only iterate over literals which have been registered with a foreground
 		// color. KeywordLiteralWordRule will return a token with a background for all tokens known
 		// to the weaving model.
-//		for (String keywordLiteral : literals){
-//			Color color = colorProvider.getColor(colorProvider.getMultiLevelModelColorConstants().getColor(keywordLiteral));
-//			
-//			Color backgroundColor = colorProvider.getColor(new RGB(230,230,230));
-//			IToken keywordLiteralToken = new Token(new TextAttribute(color, backgroundColor, SWT.NORMAL));
-//			
-//			KeywordLiteralWordRule wr = new KeywordLiteralWordRule(new IWordDetector() {
-//				
-//				@Override
-//				public boolean isWordStart(char c) {
-//					return c != ' ';
-//				}
-//				
-//				@Override
-//				public boolean isWordPart(char c) {
-//					return c != ' ';
-//				}
-//				
-//				
-//			});
-//			
-//			rules.add(wr);
-//			wr.addWord(keywordLiteral, keywordLiteralToken);
-//		}
+		for (String keywordLiteral : literals){
+			Color color = colorProvider.getColor(colorProvider.getMultiLevelModelColorConstants().getColor(keywordLiteral));
+			
+			IToken keywordLiteralToken = new Token(new TextAttribute(color, null, SWT.NORMAL));
+			
+			KeywordLiteralWordRule wr = new KeywordLiteralWordRule(new IWordDetector() {
+				
+				@Override
+				public boolean isWordStart(char c) {
+					return c != ' ';
+				}
+				
+				@Override
+				public boolean isWordPart(char c) {
+					return c != ' ';
+				}
+				
+				
+			});
+			
+			rules.add(wr);
+			wr.addWord(keywordLiteral, keywordLiteralToken);
+		}
 		
 		//Add a rule that marks everything that is not changeable with a grey background
-		rules.add(new LockedLiteralRule(colorProvider));
+		//rules.add(new LockedLiteralRule(colorProvider));
 		
 		setRules(rules.toArray(new IRule[]{}));
 	}
