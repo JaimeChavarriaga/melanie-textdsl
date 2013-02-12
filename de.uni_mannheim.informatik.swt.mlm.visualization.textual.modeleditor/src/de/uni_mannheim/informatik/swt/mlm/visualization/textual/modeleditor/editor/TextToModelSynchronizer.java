@@ -40,7 +40,7 @@ public class TextToModelSynchronizer implements ITextListener {
 	final private ISourceViewer sourceViewer;
 	final private WeavingModel weavingModel;
 	
-	private boolean processTextChanged;
+	private boolean processTextChanged = true;
 	
 	public TextToModelSynchronizer(ISourceViewer sourceViewer, WeavingModel weavingModel){
 		this.sourceViewer = sourceViewer;
