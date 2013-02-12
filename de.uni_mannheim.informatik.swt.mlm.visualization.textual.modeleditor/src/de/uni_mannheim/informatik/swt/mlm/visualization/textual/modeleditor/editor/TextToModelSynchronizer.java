@@ -81,9 +81,15 @@ public class TextToModelSynchronizer implements ITextListener {
 		
 		TextElement textElement = possibleWeavingLinks.get(0);
 		WeavingLink link = (WeavingLink)textElement.eContainer();
-
-		if (event.getReplacedText() == null)
+		
+		if (event.getReplacedText() != null && event.getText().length() != 0){
+			syncTextRemoved(event.getReplacedText(), offset, textElement, link);
 			syncTextInserted(event.getText(), offset, textElement, link);
+		}
+		//Insert by typing without selection
+		else if (event.getReplacedText() == null)
+			syncTextInserted(event.getText(), offset, textElement, link);
+		//Remove
 		else if (event.getReplacedText() != null && event.getText().length() == 0)
 			syncTextRemoved(event.getReplacedText(), offset, textElement, link);
 	}
