@@ -10,6 +10,7 @@
  *******************************************************************************/
 package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.sourceviewerconfiguration;
 
+import org.eclipse.jface.text.IAutoEditStrategy;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.TextAttribute;
 import org.eclipse.jface.text.contentassist.ContentAssistant;
@@ -87,6 +88,13 @@ public class MultiLevelModelViewerConfiguration extends SourceViewerConfiguratio
 		contentAssistant.setProposalPopupOrientation(IContentAssistant.PROPOSAL_OVERLAY);
 		
 		return contentAssistant;
+	}
+	
+	@Override
+	public IAutoEditStrategy[] getAutoEditStrategies(
+			ISourceViewer sourceViewer, String contentType) {
+		//No Autoindent wanted
+		return null;
 	}
 	
 //	/**
