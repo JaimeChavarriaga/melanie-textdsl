@@ -71,14 +71,18 @@ public class TextInputVerifyer implements VerifyKeyListener{
 		TextElement textElement = textElements.get(0);
 		
 		if ((event.keyCode == 127 || event.keyCode == 8) 
-				&& ((WeavingLink)textElement.eContainer()).getModelElement() instanceof Clabject){
+				&& ((WeavingLink)textElement.eContainer()).getModelElement() instanceof Clabject
+				&& textElement.getLengthTrimmed() != 0){
 			event.doit = false;
 			removeClabjectFromTextAndModel((WeavingLink)textElement.eContainer());
 			return;
 		}
 		
 		//Not an Attribute is edited -> Drop changes!
-		if ( !( ((WeavingLink)textElement.eContainer()).getModelElement() instanceof Attribute ) ){
+		if ( !( ((WeavingLink)textElement.eContainer()).getModelElement() instanceof Attribute ) 
+				//Also spaces that are not connected to an Attribute can be changed
+				&& !(textElement.getText().trim().length() == 0)
+			){
 			event.doit = false;
 		}
 	}

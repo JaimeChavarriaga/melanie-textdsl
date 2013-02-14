@@ -92,6 +92,8 @@ public class TextToModelSynchronizer implements ITextListener {
 		//Remove
 		else if (event.getReplacedText() != null && event.getText().length() == 0)
 			syncTextRemoved(event.getReplacedText(), offset, textElement, link);
+		
+		sourceViewer.invalidateTextPresentation();
 	}
 	
 	/**
@@ -112,9 +114,13 @@ public class TextToModelSynchronizer implements ITextListener {
 		final String newString = firstPart + newText + secondPart;
 		textElement.setText(newString);
 		
-		if (link.getModelElement() instanceof Attribute){
+		if (link.getModelElement() instanceof Attribute)
 			changeModel(newString, link, textElement);
-		}
+		//If a TextElement that does belong to a Attribute is edited
+		//only the offset needs to be recalculated. Nothing needs
+		//to be written into the multi-level model
+		else
+			TextEditorUtil.calculateWeavingModelOffsets(((WeavingModel)EcoreUtil.getRootContainer(textElement)).getLinks().get(0), 0);
 	}
 	
 	/**
@@ -140,9 +146,13 @@ public class TextToModelSynchronizer implements ITextListener {
 		final String newString = firstPart + secondPart;
 		textElement.setText(newString);
 		
-		if (link.getModelElement() instanceof Attribute){
+		if (link.getModelElement() instanceof Attribute)
 			changeModel(newString, link, textElement);
-		}
+		//If a TextElement that does belong to a Attribute is edited
+		//only the offset needs to be recalculated. Nothing needs
+		//to be written into the multi-level model
+		else
+			TextEditorUtil.calculateWeavingModelOffsets(((WeavingModel)EcoreUtil.getRootContainer(textElement)).getLinks().get(0), 0);
 	}
 	
 	/**

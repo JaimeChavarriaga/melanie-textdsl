@@ -119,7 +119,7 @@ public class MultiLevelTemplateCompletionProcessor extends
 			int relativeOffset = calculateRelativeOffset(textElementContainer, textElement);
 			
 			//now calculate the actual position within the visualizer
-			relativeOffset += offset - textElement.getOffset();
+			//relativeOffset += offset - textElement.getOffset();
 			
 			TextualDSLVisualizer clabjectVisualizer = null;
 			
@@ -169,7 +169,7 @@ public class MultiLevelTemplateCompletionProcessor extends
 			else if (current == elementToSearch)
 				return relativeOffset;
 			else if (current instanceof TextElement)
-				relativeOffset += ((TextElement)current).getLength();
+				relativeOffset += ((TextElement)current).getLengthTrimmed();
 			else
 				continue;
 		
@@ -191,9 +191,10 @@ public class MultiLevelTemplateCompletionProcessor extends
 		//First find literal for offset in the visualizer
 		for (TextualVisualizationDescriptor descriptor : visualizer.getContent()){
 			if (descriptor instanceof Literal)
-				currentOffset += ((Literal)descriptor).getExpression().length();
+				//Interested in length without spaces and line breaks
+				currentOffset += String.format(((Literal)descriptor).getExpression()).trim().length();
 			
-			if (currentOffset >= relativeOffset){
+			if (currentOffset > relativeOffset){
 				visualizingLiteral = (Literal)descriptor;
 				break;
 			}
