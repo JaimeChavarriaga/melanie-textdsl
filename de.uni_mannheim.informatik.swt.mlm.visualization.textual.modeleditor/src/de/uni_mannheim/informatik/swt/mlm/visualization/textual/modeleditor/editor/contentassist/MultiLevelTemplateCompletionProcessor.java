@@ -99,16 +99,42 @@ public class MultiLevelTemplateCompletionProcessor extends
 		
 		//Search the model element to which the text belongs to
 		//Entities are preffered because we want to get the connections between entities
-		Set<TextElement> textElements = new HashSet<>(weavingModel.findTextElementForOffset(offset, SearchStrategy.ENTITY_PREFFERED));
+		List<TextElement> textElements = weavingModel.findTextElementForOffset(offset, SearchStrategy.ENTITY_PREFFERED);
 		if (textElements.size() == 0)
 			return result;
+		
+		//If we have two text element we need to find the outer one for (1)
+		WeavingLink outterWeavingLink = null;
+		
+		if (textElements.size() == 2){
+			WeavingLink weavingLink1 = (WeavingLink)textElements.get(0).eContainer();
+			WeavingLink weavingLink2 = (WeavingLink)textElements.get(1).eContainer();
+			outterWeavingLink = weavingLink1.getChildren().contains(weavingLink2)? weavingLink1:weavingLink2;
+		}
 		
 		Map<Connection, Clabject> instantiableClabjects = new HashMap<>();
 		
 		for (TextElement textElement : textElements){
-			//TextElement textElement = textElements.get(0);
+			
 			WeavingLink textElementContainer = ((WeavingLink)textElement.eContainer());
 			Element visualizedModelElement = textElementContainer.getModelElement();
+			
+			//(1) Check if textElement is the last textElement of the weaving link -> no following reference possible in visualizer
+			if (outterWeavingLink != null
+					&& textElementContainer != outterWeavingLink
+					&& textElementContainer.getChildren().indexOf(textElement) == textElementContainer.getChildren().size() - 1){
+				
+				//Get the weaving link which contains the weaving link of the text element
+				WeavingLink textElementContainerContainer = (WeavingLink)textElementContainer.eContainer();
+				
+				for (int i = textElementContainerContainer.getChildren().indexOf(textElementContainer); i > 0; i--)
+					if (textElementContainerContainer.getChildren().get(i) instanceof TextElement){
+						textElement = (TextElement)textElementContainerContainer.getChildren().get(i);
+						visualizedModelElement = textElementContainerContainer.getModelElement();
+						textElementContainer = textElementContainerContainer;
+						break;
+					}
+			}
 			
 			//We are only interested in Clabjects for offering templates which allow create new clabjects
 			if (! (visualizedModelElement instanceof Clabject))
