@@ -132,9 +132,9 @@ public class MultiLevelModelTemplateProposal extends TemplateProposal {
 		//Create new WeavingLink
 		WeavingLink newClabjectWeavingLink = TextEditorUtil.createWeavingLink(instanceClabject, offset);
 		
-		//Insert before or behind model elemet?
+		//Insert before or behind model element?
 		int indexToAdd = containerWeavingLink.getChildren().indexOf(editedTextElement);
-		if (editedTextElement.getOffset() + editedTextElement.getLength() == offset)
+		if (editedTextElement.getOffset() + editedTextElement.getLength() <= offset)
 			indexToAdd += 1;
 		containerWeavingLink.getChildren().add(indexToAdd, newClabjectWeavingLink);
 		
