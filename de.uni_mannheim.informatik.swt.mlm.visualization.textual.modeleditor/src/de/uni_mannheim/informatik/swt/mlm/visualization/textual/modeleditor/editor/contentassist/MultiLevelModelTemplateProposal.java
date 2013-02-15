@@ -12,6 +12,7 @@ package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.edi
 
 import java.io.IOException;
 import java.util.Collections;
+import java.util.List;
 
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.common.command.Command;
@@ -20,6 +21,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
 import org.eclipse.jface.text.IRegion;
 import org.eclipse.jface.text.ITextViewer;
 import org.eclipse.jface.text.templates.Template;
@@ -38,6 +40,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.Entity;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMFactory;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Participation;
+import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.SearchStrategy;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.TextElement;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingLink;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving.M2TWeaving.WeavingModel;
@@ -133,14 +136,33 @@ public class MultiLevelModelTemplateProposal extends TemplateProposal {
 		WeavingLink newClabjectWeavingLink = TextEditorUtil.createWeavingLink(instanceClabject, offset);
 		
 		//Insert before or behind model element?
-		int indexToAdd = containerWeavingLink.getChildren().indexOf(editedTextElement);
-		if (editedTextElement.getOffset() + editedTextElement.getLength() <= offset)
-			indexToAdd += 1;
-		containerWeavingLink.getChildren().add(indexToAdd, newClabjectWeavingLink);
+		WeavingModel weavingModel = (WeavingModel)EcoreUtil.getRootContainer(containerWeavingLink);
+		List<TextElement> editedTextElements = weavingModel.findTextElementForOffset(offset, SearchStrategy.ENTITY_PREFFERED);
 		
+		TextElement editedTextElement = null;
+		
+		//Look for the text element that is contained in the container weaving link
+		for (TextElement e :editedTextElements)
+			if (e.eContainer() == containerWeavingLink)
+				editedTextElement = e;
+		
+		int indexToAdd = -1;
+		
+		//Insert between two child weaving links -> two text elements of the child weaving links
+		//are found. Look where this weaving link is in the container weaving link and place new
+		//model element behind the first one.
+		if (editedTextElement == null)
+			indexToAdd = containerWeavingLink.getChildren().indexOf(((WeavingLink)editedTextElements.get(0).eContainer())) + 1;
+		else{
+			indexToAdd = containerWeavingLink.getChildren().indexOf(editedTextElement);
+		
+			if (editedTextElement.getOffset() + editedTextElement.getLength() <= offset)
+				indexToAdd += 1;
+		}
+		
+		containerWeavingLink.getChildren().add(indexToAdd, newClabjectWeavingLink);
 		viewer.invalidateTextPresentation();
 		TextEditorUtil.calculateWeavingModelOffsets(((WeavingModel)EcoreUtil.getRootContainer(newClabjectWeavingLink)).getLinks().get(0), 0);
-		
 		
 		//This is done for debug reasons to serialize the model on harddisk for viewing it.
 		try {
