@@ -66,7 +66,7 @@ public class TextToModelSynchronizer implements ITextListener {
 	 */
 	public void syncTextWithModel(TextEvent event){
 		
-		if (! textEditor.getProcessTextChanger()){
+		if (! textEditor.getProcessTextChanged()){
 			textEditor.setProcessTextChanged(true);
 			return;
 		}

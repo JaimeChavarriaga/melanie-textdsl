@@ -89,7 +89,7 @@ public class MultiLevelModelTextEditor extends TextEditor {
 		processTextChanged = process;
 	}
 	
-	public boolean getProcessTextChanger(){
+	public boolean getProcessTextChanged(){
 		return processTextChanged;
 	}
 }
