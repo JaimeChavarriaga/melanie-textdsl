@@ -119,10 +119,20 @@ public class MultiLevelTemplateCompletionProcessor extends
 			WeavingLink textElementContainer = ((WeavingLink)textElement.eContainer());
 			Element visualizedModelElement = textElementContainer.getModelElement();
 			
-			//(1) Check if textElement is the last textElement of the weaving link -> no following reference possible in visualizer
-			if (outterWeavingLink != null
+			
+			if (
+				//(1) Check if textElement is the last textElement of the weaving link -> no following reference possible in visualizer
+				(outterWeavingLink != null
 					&& textElementContainer != outterWeavingLink
-					&& textElementContainer.getChildren().indexOf(textElement) == textElementContainer.getChildren().size() - 1){
+					&& textElementContainer.getChildren().indexOf(textElement) == textElementContainer.getChildren().size() - 1)
+				||
+				//If there is only one element and this element is the last element of the weaving link
+				//it could be interesting to take a look of the container and see if this one allows to
+				//add something after the weaving link
+				(textElements.size() == 1 &&
+				textElementContainer.getChildren().indexOf(textElement) == textElementContainer.getChildren().size() - 1)
+			)
+			{
 				
 				//Get the weaving link which contains the weaving link of the text element
 				WeavingLink textElementContainerContainer = (WeavingLink)textElementContainer.eContainer();

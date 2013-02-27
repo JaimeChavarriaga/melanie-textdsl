@@ -68,7 +68,7 @@ public class MultiLevelModelTextEditor extends TextEditor {
 
 		// Cannot use IReconcilingStrategy and IReconcilingStrategy extension because dirty regions
 		// of model elements which are inserted through text editor.
-		getSourceViewer().addTextListener(new TextToModelSynchronizer(getSourceViewer(), weavingModel));
+		getSourceViewer().addTextListener(new TextToModelSynchronizer(getSourceViewer(), weavingModel, this));
 		
 		getSourceViewer().getTextWidget().addCaretListener(new TextSelectionToModelSynchronizer(weavingModel));
 		//getSourceViewer().getSelectionProvider().addSelectionChangedListener(new LiteralSelectionListener(weavingModel, getSourceViewer().getAnnotationModel()));

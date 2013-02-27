@@ -39,12 +39,12 @@ public class TextToModelSynchronizer implements ITextListener {
 
 	final private ISourceViewer sourceViewer;
 	final private WeavingModel weavingModel;
+	final private MultiLevelModelTextEditor textEditor;
 	
-	private boolean processTextChanged = true;
-	
-	public TextToModelSynchronizer(ISourceViewer sourceViewer, WeavingModel weavingModel){
+	public TextToModelSynchronizer(ISourceViewer sourceViewer, WeavingModel weavingModel, MultiLevelModelTextEditor textEditor){
 		this.sourceViewer = sourceViewer;
 		this.weavingModel = weavingModel;
+		this.textEditor = textEditor;
 	}
 	
 	@Override
@@ -66,8 +66,8 @@ public class TextToModelSynchronizer implements ITextListener {
 	 */
 	public void syncTextWithModel(TextEvent event){
 		
-		if (! processTextChanged){
-			processTextChanged = true;
+		if (! textEditor.getProcessTextChanger()){
+			textEditor.setProcessTextChanged(true);
 			return;
 		}
 		
