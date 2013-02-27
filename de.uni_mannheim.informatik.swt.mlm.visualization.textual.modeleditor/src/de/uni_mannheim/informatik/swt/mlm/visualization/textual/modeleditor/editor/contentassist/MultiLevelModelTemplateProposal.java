@@ -87,8 +87,6 @@ public class MultiLevelModelTemplateProposal extends TemplateProposal {
 		
 		super.apply(viewer, trigger, stateMask, offset);
 		
-		textEditor.setProcessTextChanged(false);
-		
 		TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(type);
 		CompoundCommand cCmd = new CompoundCommand();
 		
