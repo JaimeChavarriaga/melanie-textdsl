@@ -1,0 +1,18 @@
+(* ein einfaches Beispiel in EBNF - Wikipedia *)
+Programm = 'PROGRAM', Bezeichner ,
+            'BEGIN' ,
+            { Zuweisung, ";" } ,
+            'END', "." ;
+ Bezeichner = Buchstabe, { ( Buchstabe | Ziffer ) } ;
+ Zahl = [ "-" ], Ziffer, { Ziffer } ;
+ String = '"', { AlleZeichen - '"' }, '"' ;
+ Zuweisung = Bezeichner, ":=", ( Zahl | 
+                               Bezeichner |
+                               String ) ;
+ Buchstabe = "A" | "B" | "C" | "D" | "E" | "F" | "G"
+           | "H" | "I" | "J" | "K" | "L" | "M" | "N"
+           | "O" | "P" | "Q" | "R" | "S" | "T" | "U"
+           | "V" | "W" | "X" | "Y" | "Z" ;
+ Ziffer = "0" | "1" | "2" | "3" | "4" | "5" | "6" 
+        | "7" | "8" | "9" ;
+ AlleZeichen = ? alle sichtbaren Zeichen ? ;

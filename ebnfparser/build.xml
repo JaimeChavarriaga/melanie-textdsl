@@ -1,0 +1,51 @@
+<project name="EBNF Parser" default="dist" basedir=".">
+	<description>
+		EBNF Parser Build File
+	</description>
+
+	<property name="antlrsrc" location="gensrc"/>
+	<property name="build" location="build" />
+
+	<!-- TODO MAKE GENERAL -->
+
+	<target name="compileGrammar">
+		<exec executable="java">
+			<arg value="-jar" />
+			<arg value="/usr/local/lib/antlr-4.0-complete.jar" />	
+			<arg value="-o"/>
+			<arg value="${antlrsrc}"/>
+			<arg value="EBNF.g4" />
+		</exec>
+	</target>
+
+	<target name="compileParser">
+		<mkdir dir="${build}"/>
+		<javac srcdir="${antlrsrc}" destdir="${build}"/>
+	</target>
+
+	<target name="dist" depends="compileGrammar, compileParser">
+	</target>
+
+	<target name="test" depends="compileGrammar, compileParser">
+		<exec executable="java" dir="${build}" input="test.ebnf"> 
+			<arg value="org.antlr.v4.runtime.misc.TestRig"/>
+			<arg value="EBNF"/>
+			<arg value="syntax" />
+			<arg value="-gui" />
+		</exec>
+	</target>
+
+	<target name="test2" depends="compileGrammar, compileParser">
+		<exec executable="java" dir="${build}" input="test2.ebnf"> 
+			<arg value="org.antlr.v4.runtime.misc.TestRig"/>
+			<arg value="EBNF"/>
+			<arg value="syntax" />
+			<arg value="-gui" />
+		</exec>
+	</target>
+
+	<target name="clean">
+		<delete dir="${build}"/>
+		<delete dir="${antlrsrc}"/>
+	</target>
+</project>
