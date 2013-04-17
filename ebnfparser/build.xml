@@ -4,6 +4,7 @@
 	</description>
 
 	<property name="antlrsrc" location="gensrc"/>
+	<property name="parsersrc" location="${antlrsrc}/de/uni_mannheim/informatik/swt/ebnf/parser"/>
 	<property name="build" location="build" />
 
 	<!-- TODO MAKE GENERAL -->
@@ -11,9 +12,11 @@
 	<target name="compileGrammar">
 		<exec executable="java">
 			<arg value="-jar" />
-			<arg value="/usr/local/lib/antlr-4.0-complete.jar" />	
+			<arg value="/usr/local/lib/antlr-4.0-complete.jar" />
+			<arg value="-package"/>
+			<arg value="de.uni_mannheim.informatik.swt.ebnf.parser"/>
 			<arg value="-o"/>
-			<arg value="${antlrsrc}"/>
+			<arg value="${parsersrc}"/>
 			<arg value="EBNF.g4" />
 		</exec>
 	</target>
