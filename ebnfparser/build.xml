@@ -20,7 +20,7 @@
 
 	<target name="compileParser">
 		<mkdir dir="${build}"/>
-		<javac srcdir="${antlrsrc}" destdir="${build}"/>
+		<javac srcdir="${antlrsrc}" destdir="${build}" includeantruntime="true"/>
 	</target>
 
 	<target name="dist" depends="compileGrammar, compileParser">
