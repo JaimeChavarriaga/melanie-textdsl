@@ -40,7 +40,7 @@
 	</target>
 
 	<target name="dist" depends="compileApplication">
-		<!-- NEEDS TO BE SPECIFIED -->
+		<!-- TODO: NEEDS TO BE SPECIFIED -->
 	</target>
 
 	<target name="test" depends="compileGrammar, compileParser">
