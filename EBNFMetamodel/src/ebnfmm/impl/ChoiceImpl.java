@@ -1,0 +1,39 @@
+/**
+ */
+package ebnfmm.impl;
+
+import ebnfmm.Choice;
+import ebnfmm.EbnfmmPackage;
+
+import org.eclipse.emf.ecore.EClass;
+
+/**
+ * <!-- begin-user-doc -->
+ * An implementation of the model object '<em><b>Choice</b></em>'.
+ * <!-- end-user-doc -->
+ * <p>
+ * </p>
+ *
+ * @generated
+ */
+public class ChoiceImpl extends ControlImpl implements Choice {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ChoiceImpl() {
+		super();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EClass eStaticClass() {
+		return EbnfmmPackage.Literals.CHOICE;
+	}
+
+} //ChoiceImpl
