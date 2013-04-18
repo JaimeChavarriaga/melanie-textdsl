@@ -3,9 +3,15 @@
 		EBNF Parser Build File
 	</description>
 
-	<property name="antlrsrc" location="gensrc"/>
-	<property name="parsersrc" location="${antlrsrc}/de/uni_mannheim/informatik/swt/ebnf/parser"/>
+	<property name="antlrsrc" location="gensrc" />
+	<property name="parsersrc" location="${antlrsrc}/de/uni_mannheim/informatik/swt/ebnf/parser" />
 	<property name="build" location="build" />
+	<property name="appbuild" location="bin" />
+
+
+	<path id="class.path">
+		<fileset dir="lib" includes="**/*.jar" />
+	</path>
 
 	<!-- TODO MAKE GENERAL -->
 
@@ -13,42 +19,56 @@
 		<exec executable="java">
 			<arg value="-jar" />
 			<arg value="/usr/local/lib/antlr-4.0-complete.jar" />
-			<arg value="-package"/>
-			<arg value="de.uni_mannheim.informatik.swt.ebnf.parser"/>
-			<arg value="-o"/>
-			<arg value="${parsersrc}"/>
+			<arg value="-package" />
+			<arg value="de.uni_mannheim.informatik.swt.ebnf.parser" />
+			<arg value="-o" />
+			<arg value="${parsersrc}" />
 			<arg value="EBNF.g4" />
 		</exec>
 	</target>
 
 	<target name="compileParser">
-		<mkdir dir="${build}"/>
-		<javac srcdir="${antlrsrc}" destdir="${build}" includeantruntime="true"/>
+		<mkdir dir="${build}" />
+		<javac srcdir="${antlrsrc}" destdir="${build}" includeantruntime="true">
+			<classpath refid="class.path" />
+		</javac>
+	</target>
+	
+	<target name="compileApplication" depends="compileGrammar, compileParser">
+		<mkdir dir="${appbuild}"/>
+		<javac srcdir="src" destdir="${appbuild}" includeantruntime="false" classpathref="class.path"/>
 	</target>
 
-	<target name="dist" depends="compileGrammar, compileParser">
+	<target name="dist" depends="compileApplication">
+		<!-- NEEDS TO BE SPECIFIED -->
 	</target>
 
 	<target name="test" depends="compileGrammar, compileParser">
-		<exec executable="java" dir="${build}" input="test.ebnf"> 
-			<arg value="org.antlr.v4.runtime.misc.TestRig"/>
-			<arg value="EBNF"/>
+		<java classname="org.antlr.v4.runtime.misc.TestRig" input="test.ebnf" fork="true">
+			<classpath>
+				<path refid="class.path" />
+				<path location="${build}" />
+			</classpath>
+			<arg value="de.uni_mannheim.informatik.swt.ebnf.parser.EBNF" />
 			<arg value="syntax" />
 			<arg value="-gui" />
-		</exec>
+		</java>
 	</target>
 
 	<target name="test2" depends="compileGrammar, compileParser">
-		<exec executable="java" dir="${build}" input="test2.ebnf"> 
-			<arg value="org.antlr.v4.runtime.misc.TestRig"/>
-			<arg value="EBNF"/>
+		<java classname="org.antlr.v4.runtime.misc.TestRig" input="test2.ebnf" fork="true">
+			<classpath>
+				<path refid="class.path" />
+				<path location="${build}" />
+			</classpath>
+			<arg value="de.uni_mannheim.informatik.swt.ebnf.parser.EBNF" />
 			<arg value="syntax" />
 			<arg value="-gui" />
-		</exec>
+		</java>
 	</target>
 
 	<target name="clean">
-		<delete dir="${build}"/>
-		<delete dir="${antlrsrc}"/>
+		<delete dir="${build}" />
+		<delete dir="${antlrsrc}" />
 	</target>
 </project>
