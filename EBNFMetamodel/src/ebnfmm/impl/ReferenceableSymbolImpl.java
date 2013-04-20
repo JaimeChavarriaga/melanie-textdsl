@@ -3,26 +3,28 @@
 package ebnfmm.impl;
 
 import ebnfmm.EbnfmmPackage;
-import ebnfmm.NonTerminal;
+import ebnfmm.ReferenceableSymbol;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.impl.EObjectImpl;
+
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Non Terminal</b></em>'.
+ * An implementation of the model object '<em><b>Referenceable Symbol</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class NonTerminalImpl extends ReferenceableSymbolImpl implements NonTerminal {
+public abstract class ReferenceableSymbolImpl extends EObjectImpl implements ReferenceableSymbol {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected NonTerminalImpl() {
+	protected ReferenceableSymbolImpl() {
 		super();
 	}
 
@@ -33,7 +35,7 @@ public class NonTerminalImpl extends ReferenceableSymbolImpl implements NonTermi
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EbnfmmPackage.Literals.NON_TERMINAL;
+		return EbnfmmPackage.Literals.REFERENCEABLE_SYMBOL;
 	}
 
-} //NonTerminalImpl
+} //ReferenceableSymbolImpl

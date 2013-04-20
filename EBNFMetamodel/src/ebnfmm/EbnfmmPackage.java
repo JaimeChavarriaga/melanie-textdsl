@@ -2,6 +2,7 @@
  */
 package ebnfmm;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -111,22 +112,22 @@ public interface EbnfmmPackage extends EPackage {
 	int RULE__EREFERENCE0 = 0;
 
 	/**
-	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
+	 * The feature id for the '<em><b>Meta Identifier</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RULE__LHS = 1;
+	int RULE__META_IDENTIFIER = 1;
 
 	/**
-	 * The feature id for the '<em><b>Rhs</b></em>' reference list.
+	 * The feature id for the '<em><b>Definition List</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RULE__RHS = 2;
+	int RULE__DEFINITION_LIST = 2;
 
 	/**
 	 * The number of structural features of the '<em>Rule</em>' class.
@@ -136,6 +137,25 @@ public interface EbnfmmPackage extends EPackage {
 	 * @ordered
 	 */
 	int RULE_FEATURE_COUNT = 3;
+
+	/**
+	 * The meta object id for the '{@link ebnfmm.impl.ReferenceableSymbolImpl <em>Referenceable Symbol</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ebnfmm.impl.ReferenceableSymbolImpl
+	 * @see ebnfmm.impl.EbnfmmPackageImpl#getReferenceableSymbol()
+	 * @generated
+	 */
+	int REFERENCEABLE_SYMBOL = 9;
+
+	/**
+	 * The number of structural features of the '<em>Referenceable Symbol</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCEABLE_SYMBOL_FEATURE_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link ebnfmm.impl.SymbolImpl <em>Symbol</em>}' class.
@@ -148,13 +168,14 @@ public interface EbnfmmPackage extends EPackage {
 	int SYMBOL = 3;
 
 	/**
-	 * The number of structural features of the '<em>Symbol</em>' class.
+	 * The meta object id for the '{@link ebnfmm.impl.NonReferenceableSymbolImpl <em>Non Referenceable Symbol</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see ebnfmm.impl.NonReferenceableSymbolImpl
+	 * @see ebnfmm.impl.EbnfmmPackageImpl#getNonReferenceableSymbol()
 	 * @generated
-	 * @ordered
 	 */
-	int SYMBOL_FEATURE_COUNT = 0;
+	int NON_REFERENCEABLE_SYMBOL = 10;
 
 	/**
 	 * The meta object id for the '{@link ebnfmm.impl.NonTerminalImpl <em>Non Terminal</em>}' class.
@@ -173,7 +194,25 @@ public interface EbnfmmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NON_TERMINAL_FEATURE_COUNT = SYMBOL_FEATURE_COUNT + 0;
+	int NON_TERMINAL_FEATURE_COUNT = REFERENCEABLE_SYMBOL_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Symbol</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYMBOL_FEATURE_COUNT = 0;
+
+	/**
+	 * The number of structural features of the '<em>Non Referenceable Symbol</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NON_REFERENCEABLE_SYMBOL_FEATURE_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link ebnfmm.impl.TerminalImpl <em>Terminal</em>}' class.
@@ -186,13 +225,22 @@ public interface EbnfmmPackage extends EPackage {
 	int TERMINAL = 4;
 
 	/**
+	 * The feature id for the '<em><b>Terminal String</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERMINAL__TERMINAL_STRING = NON_REFERENCEABLE_SYMBOL_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Terminal</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TERMINAL_FEATURE_COUNT = SYMBOL_FEATURE_COUNT + 0;
+	int TERMINAL_FEATURE_COUNT = NON_REFERENCEABLE_SYMBOL_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link ebnfmm.impl.ControlImpl <em>Control</em>}' class.
@@ -205,13 +253,31 @@ public interface EbnfmmPackage extends EPackage {
 	int CONTROL = 5;
 
 	/**
+	 * The feature id for the '<em><b>Definition List</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL__DEFINITION_LIST = NON_REFERENCEABLE_SYMBOL_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Items</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL__ITEMS = NON_REFERENCEABLE_SYMBOL_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Control</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTROL_FEATURE_COUNT = SYMBOL_FEATURE_COUNT + 0;
+	int CONTROL_FEATURE_COUNT = NON_REFERENCEABLE_SYMBOL_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link ebnfmm.impl.ChoiceImpl <em>Choice</em>}' class.
@@ -222,6 +288,24 @@ public interface EbnfmmPackage extends EPackage {
 	 * @generated
 	 */
 	int CHOICE = 6;
+
+	/**
+	 * The feature id for the '<em><b>Definition List</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE__DEFINITION_LIST = CONTROL__DEFINITION_LIST;
+
+	/**
+	 * The feature id for the '<em><b>Items</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE__ITEMS = CONTROL__ITEMS;
 
 	/**
 	 * The number of structural features of the '<em>Choice</em>' class.
@@ -243,6 +327,24 @@ public interface EbnfmmPackage extends EPackage {
 	int OPTION = 7;
 
 	/**
+	 * The feature id for the '<em><b>Definition List</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPTION__DEFINITION_LIST = CONTROL__DEFINITION_LIST;
+
+	/**
+	 * The feature id for the '<em><b>Items</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPTION__ITEMS = CONTROL__ITEMS;
+
+	/**
 	 * The number of structural features of the '<em>Option</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -262,6 +364,24 @@ public interface EbnfmmPackage extends EPackage {
 	int REPETITION = 8;
 
 	/**
+	 * The feature id for the '<em><b>Definition List</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPETITION__DEFINITION_LIST = CONTROL__DEFINITION_LIST;
+
+	/**
+	 * The feature id for the '<em><b>Items</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPETITION__ITEMS = CONTROL__ITEMS;
+
+	/**
 	 * The number of structural features of the '<em>Repetition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -269,6 +389,44 @@ public interface EbnfmmPackage extends EPackage {
 	 * @ordered
 	 */
 	int REPETITION_FEATURE_COUNT = CONTROL_FEATURE_COUNT + 0;
+
+
+	/**
+	 * The meta object id for the '{@link ebnfmm.impl.DummyImpl <em>Dummy</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ebnfmm.impl.DummyImpl
+	 * @see ebnfmm.impl.EbnfmmPackageImpl#getDummy()
+	 * @generated
+	 */
+	int DUMMY = 11;
+
+	/**
+	 * The feature id for the '<em><b>Ref</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DUMMY__REF = 0;
+
+	/**
+	 * The feature id for the '<em><b>Containment</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DUMMY__CONTAINMENT = 1;
+
+	/**
+	 * The number of structural features of the '<em>Dummy</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DUMMY_FEATURE_COUNT = 2;
 
 
 	/**
@@ -325,26 +483,26 @@ public interface EbnfmmPackage extends EPackage {
 	EReference getRule_EReference0();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link ebnfmm.Rule#getLhs <em>Lhs</em>}'.
+	 * Returns the meta object for the containment reference '{@link ebnfmm.Rule#getMetaIdentifier <em>Meta Identifier</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Lhs</em>'.
-	 * @see ebnfmm.Rule#getLhs()
+	 * @return the meta object for the containment reference '<em>Meta Identifier</em>'.
+	 * @see ebnfmm.Rule#getMetaIdentifier()
 	 * @see #getRule()
 	 * @generated
 	 */
-	EReference getRule_Lhs();
+	EReference getRule_MetaIdentifier();
 
 	/**
-	 * Returns the meta object for the reference list '{@link ebnfmm.Rule#getRhs <em>Rhs</em>}'.
+	 * Returns the meta object for the reference list '{@link ebnfmm.Rule#getDefinitionList <em>Definition List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Rhs</em>'.
-	 * @see ebnfmm.Rule#getRhs()
+	 * @return the meta object for the reference list '<em>Definition List</em>'.
+	 * @see ebnfmm.Rule#getDefinitionList()
 	 * @see #getRule()
 	 * @generated
 	 */
-	EReference getRule_Rhs();
+	EReference getRule_DefinitionList();
 
 	/**
 	 * Returns the meta object for class '{@link ebnfmm.NonTerminal <em>Non Terminal</em>}'.
@@ -377,6 +535,17 @@ public interface EbnfmmPackage extends EPackage {
 	EClass getTerminal();
 
 	/**
+	 * Returns the meta object for the attribute '{@link ebnfmm.Terminal#getTerminalString <em>Terminal String</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Terminal String</em>'.
+	 * @see ebnfmm.Terminal#getTerminalString()
+	 * @see #getTerminal()
+	 * @generated
+	 */
+	EAttribute getTerminal_TerminalString();
+
+	/**
 	 * Returns the meta object for class '{@link ebnfmm.Control <em>Control</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -385,6 +554,28 @@ public interface EbnfmmPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getControl();
+
+	/**
+	 * Returns the meta object for the reference list '{@link ebnfmm.Control#getDefinitionList <em>Definition List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Definition List</em>'.
+	 * @see ebnfmm.Control#getDefinitionList()
+	 * @see #getControl()
+	 * @generated
+	 */
+	EReference getControl_DefinitionList();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link ebnfmm.Control#getItems <em>Items</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Items</em>'.
+	 * @see ebnfmm.Control#getItems()
+	 * @see #getControl()
+	 * @generated
+	 */
+	EReference getControl_Items();
 
 	/**
 	 * Returns the meta object for class '{@link ebnfmm.Choice <em>Choice</em>}'.
@@ -415,6 +606,58 @@ public interface EbnfmmPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getRepetition();
+
+	/**
+	 * Returns the meta object for class '{@link ebnfmm.ReferenceableSymbol <em>Referenceable Symbol</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Referenceable Symbol</em>'.
+	 * @see ebnfmm.ReferenceableSymbol
+	 * @generated
+	 */
+	EClass getReferenceableSymbol();
+
+	/**
+	 * Returns the meta object for class '{@link ebnfmm.NonReferenceableSymbol <em>Non Referenceable Symbol</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Non Referenceable Symbol</em>'.
+	 * @see ebnfmm.NonReferenceableSymbol
+	 * @generated
+	 */
+	EClass getNonReferenceableSymbol();
+
+	/**
+	 * Returns the meta object for class '{@link ebnfmm.Dummy <em>Dummy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Dummy</em>'.
+	 * @see ebnfmm.Dummy
+	 * @generated
+	 */
+	EClass getDummy();
+
+	/**
+	 * Returns the meta object for the reference '{@link ebnfmm.Dummy#getRef <em>Ref</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Ref</em>'.
+	 * @see ebnfmm.Dummy#getRef()
+	 * @see #getDummy()
+	 * @generated
+	 */
+	EReference getDummy_Ref();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link ebnfmm.Dummy#getContainment <em>Containment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Containment</em>'.
+	 * @see ebnfmm.Dummy#getContainment()
+	 * @see #getDummy()
+	 * @generated
+	 */
+	EReference getDummy_Containment();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -483,20 +726,20 @@ public interface EbnfmmPackage extends EPackage {
 		EReference RULE__EREFERENCE0 = eINSTANCE.getRule_EReference0();
 
 		/**
-		 * The meta object literal for the '<em><b>Lhs</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Meta Identifier</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference RULE__LHS = eINSTANCE.getRule_Lhs();
+		EReference RULE__META_IDENTIFIER = eINSTANCE.getRule_MetaIdentifier();
 
 		/**
-		 * The meta object literal for the '<em><b>Rhs</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Definition List</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference RULE__RHS = eINSTANCE.getRule_Rhs();
+		EReference RULE__DEFINITION_LIST = eINSTANCE.getRule_DefinitionList();
 
 		/**
 		 * The meta object literal for the '{@link ebnfmm.impl.NonTerminalImpl <em>Non Terminal</em>}' class.
@@ -529,6 +772,14 @@ public interface EbnfmmPackage extends EPackage {
 		EClass TERMINAL = eINSTANCE.getTerminal();
 
 		/**
+		 * The meta object literal for the '<em><b>Terminal String</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TERMINAL__TERMINAL_STRING = eINSTANCE.getTerminal_TerminalString();
+
+		/**
 		 * The meta object literal for the '{@link ebnfmm.impl.ControlImpl <em>Control</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -537,6 +788,22 @@ public interface EbnfmmPackage extends EPackage {
 		 * @generated
 		 */
 		EClass CONTROL = eINSTANCE.getControl();
+
+		/**
+		 * The meta object literal for the '<em><b>Definition List</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONTROL__DEFINITION_LIST = eINSTANCE.getControl_DefinitionList();
+
+		/**
+		 * The meta object literal for the '<em><b>Items</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONTROL__ITEMS = eINSTANCE.getControl_Items();
 
 		/**
 		 * The meta object literal for the '{@link ebnfmm.impl.ChoiceImpl <em>Choice</em>}' class.
@@ -567,6 +834,52 @@ public interface EbnfmmPackage extends EPackage {
 		 * @generated
 		 */
 		EClass REPETITION = eINSTANCE.getRepetition();
+
+		/**
+		 * The meta object literal for the '{@link ebnfmm.impl.ReferenceableSymbolImpl <em>Referenceable Symbol</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ebnfmm.impl.ReferenceableSymbolImpl
+		 * @see ebnfmm.impl.EbnfmmPackageImpl#getReferenceableSymbol()
+		 * @generated
+		 */
+		EClass REFERENCEABLE_SYMBOL = eINSTANCE.getReferenceableSymbol();
+
+		/**
+		 * The meta object literal for the '{@link ebnfmm.impl.NonReferenceableSymbolImpl <em>Non Referenceable Symbol</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ebnfmm.impl.NonReferenceableSymbolImpl
+		 * @see ebnfmm.impl.EbnfmmPackageImpl#getNonReferenceableSymbol()
+		 * @generated
+		 */
+		EClass NON_REFERENCEABLE_SYMBOL = eINSTANCE.getNonReferenceableSymbol();
+
+		/**
+		 * The meta object literal for the '{@link ebnfmm.impl.DummyImpl <em>Dummy</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ebnfmm.impl.DummyImpl
+		 * @see ebnfmm.impl.EbnfmmPackageImpl#getDummy()
+		 * @generated
+		 */
+		EClass DUMMY = eINSTANCE.getDummy();
+
+		/**
+		 * The meta object literal for the '<em><b>Ref</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DUMMY__REF = eINSTANCE.getDummy_Ref();
+
+		/**
+		 * The meta object literal for the '<em><b>Containment</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DUMMY__CONTAINMENT = eINSTANCE.getDummy_Containment();
 
 	}
 

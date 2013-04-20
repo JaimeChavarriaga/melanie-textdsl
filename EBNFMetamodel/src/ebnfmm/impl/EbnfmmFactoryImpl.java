@@ -59,12 +59,12 @@ public class EbnfmmFactoryImpl extends EFactoryImpl implements EbnfmmFactory {
 			case EbnfmmPackage.EBNF_DESCRIPTION: return createEBNFDescription();
 			case EbnfmmPackage.RULE: return createRule();
 			case EbnfmmPackage.NON_TERMINAL: return createNonTerminal();
-			case EbnfmmPackage.SYMBOL: return createSymbol();
 			case EbnfmmPackage.TERMINAL: return createTerminal();
 			case EbnfmmPackage.CONTROL: return createControl();
 			case EbnfmmPackage.CHOICE: return createChoice();
 			case EbnfmmPackage.OPTION: return createOption();
 			case EbnfmmPackage.REPETITION: return createRepetition();
+			case EbnfmmPackage.DUMMY: return createDummy();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -98,16 +98,6 @@ public class EbnfmmFactoryImpl extends EFactoryImpl implements EbnfmmFactory {
 	public NonTerminal createNonTerminal() {
 		NonTerminalImpl nonTerminal = new NonTerminalImpl();
 		return nonTerminal;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Symbol createSymbol() {
-		SymbolImpl symbol = new SymbolImpl();
-		return symbol;
 	}
 
 	/**
@@ -158,6 +148,16 @@ public class EbnfmmFactoryImpl extends EFactoryImpl implements EbnfmmFactory {
 	public Repetition createRepetition() {
 		RepetitionImpl repetition = new RepetitionImpl();
 		return repetition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Dummy createDummy() {
+		DummyImpl dummy = new DummyImpl();
+		return dummy;
 	}
 
 	/**

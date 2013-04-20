@@ -15,8 +15,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link ebnfmm.Rule#getEReference0 <em>EReference0</em>}</li>
- *   <li>{@link ebnfmm.Rule#getLhs <em>Lhs</em>}</li>
- *   <li>{@link ebnfmm.Rule#getRhs <em>Rhs</em>}</li>
+ *   <li>{@link ebnfmm.Rule#getMetaIdentifier <em>Meta Identifier</em>}</li>
+ *   <li>{@link ebnfmm.Rule#getDefinitionList <em>Definition List</em>}</li>
  * </ul>
  * </p>
  *
@@ -52,45 +52,45 @@ public interface Rule extends EObject {
 	void setEReference0(NonTerminal value);
 
 	/**
-	 * Returns the value of the '<em><b>Lhs</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Meta Identifier</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Lhs</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Meta Identifier</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Lhs</em>' containment reference.
-	 * @see #setLhs(NonTerminal)
-	 * @see ebnfmm.EbnfmmPackage#getRule_Lhs()
+	 * @return the value of the '<em>Meta Identifier</em>' containment reference.
+	 * @see #setMetaIdentifier(NonTerminal)
+	 * @see ebnfmm.EbnfmmPackage#getRule_MetaIdentifier()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	NonTerminal getLhs();
+	NonTerminal getMetaIdentifier();
 
 	/**
-	 * Sets the value of the '{@link ebnfmm.Rule#getLhs <em>Lhs</em>}' containment reference.
+	 * Sets the value of the '{@link ebnfmm.Rule#getMetaIdentifier <em>Meta Identifier</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Lhs</em>' containment reference.
-	 * @see #getLhs()
+	 * @param value the new value of the '<em>Meta Identifier</em>' containment reference.
+	 * @see #getMetaIdentifier()
 	 * @generated
 	 */
-	void setLhs(NonTerminal value);
+	void setMetaIdentifier(NonTerminal value);
 
 	/**
-	 * Returns the value of the '<em><b>Rhs</b></em>' reference list.
+	 * Returns the value of the '<em><b>Definition List</b></em>' reference list.
 	 * The list contents are of type {@link ebnfmm.Symbol}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Rhs</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Definition List</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Rhs</em>' reference list.
-	 * @see ebnfmm.EbnfmmPackage#getRule_Rhs()
+	 * @return the value of the '<em>Definition List</em>' reference list.
+	 * @see ebnfmm.EbnfmmPackage#getRule_DefinitionList()
 	 * @model required="true"
 	 * @generated
 	 */
-	EList<Symbol> getRhs();
+	EList<Symbol> getDefinitionList();
 
 } // Rule

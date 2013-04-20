@@ -11,7 +11,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  *
  * @see ebnfmm.EbnfmmPackage#getSymbol()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface Symbol extends EObject {

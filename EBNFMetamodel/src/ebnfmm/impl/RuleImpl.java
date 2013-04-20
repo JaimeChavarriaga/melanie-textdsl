@@ -30,8 +30,8 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link ebnfmm.impl.RuleImpl#getEReference0 <em>EReference0</em>}</li>
- *   <li>{@link ebnfmm.impl.RuleImpl#getLhs <em>Lhs</em>}</li>
- *   <li>{@link ebnfmm.impl.RuleImpl#getRhs <em>Rhs</em>}</li>
+ *   <li>{@link ebnfmm.impl.RuleImpl#getMetaIdentifier <em>Meta Identifier</em>}</li>
+ *   <li>{@link ebnfmm.impl.RuleImpl#getDefinitionList <em>Definition List</em>}</li>
  * </ul>
  * </p>
  *
@@ -49,24 +49,24 @@ public class RuleImpl extends EObjectImpl implements Rule {
 	protected NonTerminal eReference0;
 
 	/**
-	 * The cached value of the '{@link #getLhs() <em>Lhs</em>}' containment reference.
+	 * The cached value of the '{@link #getMetaIdentifier() <em>Meta Identifier</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getLhs()
+	 * @see #getMetaIdentifier()
 	 * @generated
 	 * @ordered
 	 */
-	protected NonTerminal lhs;
+	protected NonTerminal metaIdentifier;
 
 	/**
-	 * The cached value of the '{@link #getRhs() <em>Rhs</em>}' reference list.
+	 * The cached value of the '{@link #getDefinitionList() <em>Definition List</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRhs()
+	 * @see #getDefinitionList()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Symbol> rhs;
+	protected EList<Symbol> definitionList;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -130,8 +130,8 @@ public class RuleImpl extends EObjectImpl implements Rule {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NonTerminal getLhs() {
-		return lhs;
+	public NonTerminal getMetaIdentifier() {
+		return metaIdentifier;
 	}
 
 	/**
@@ -139,11 +139,11 @@ public class RuleImpl extends EObjectImpl implements Rule {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetLhs(NonTerminal newLhs, NotificationChain msgs) {
-		NonTerminal oldLhs = lhs;
-		lhs = newLhs;
+	public NotificationChain basicSetMetaIdentifier(NonTerminal newMetaIdentifier, NotificationChain msgs) {
+		NonTerminal oldMetaIdentifier = metaIdentifier;
+		metaIdentifier = newMetaIdentifier;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EbnfmmPackage.RULE__LHS, oldLhs, newLhs);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EbnfmmPackage.RULE__META_IDENTIFIER, oldMetaIdentifier, newMetaIdentifier);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -154,18 +154,18 @@ public class RuleImpl extends EObjectImpl implements Rule {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setLhs(NonTerminal newLhs) {
-		if (newLhs != lhs) {
+	public void setMetaIdentifier(NonTerminal newMetaIdentifier) {
+		if (newMetaIdentifier != metaIdentifier) {
 			NotificationChain msgs = null;
-			if (lhs != null)
-				msgs = ((InternalEObject)lhs).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EbnfmmPackage.RULE__LHS, null, msgs);
-			if (newLhs != null)
-				msgs = ((InternalEObject)newLhs).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EbnfmmPackage.RULE__LHS, null, msgs);
-			msgs = basicSetLhs(newLhs, msgs);
+			if (metaIdentifier != null)
+				msgs = ((InternalEObject)metaIdentifier).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EbnfmmPackage.RULE__META_IDENTIFIER, null, msgs);
+			if (newMetaIdentifier != null)
+				msgs = ((InternalEObject)newMetaIdentifier).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EbnfmmPackage.RULE__META_IDENTIFIER, null, msgs);
+			msgs = basicSetMetaIdentifier(newMetaIdentifier, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EbnfmmPackage.RULE__LHS, newLhs, newLhs));
+			eNotify(new ENotificationImpl(this, Notification.SET, EbnfmmPackage.RULE__META_IDENTIFIER, newMetaIdentifier, newMetaIdentifier));
 	}
 
 	/**
@@ -173,11 +173,11 @@ public class RuleImpl extends EObjectImpl implements Rule {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Symbol> getRhs() {
-		if (rhs == null) {
-			rhs = new EObjectResolvingEList<Symbol>(Symbol.class, this, EbnfmmPackage.RULE__RHS);
+	public EList<Symbol> getDefinitionList() {
+		if (definitionList == null) {
+			definitionList = new EObjectResolvingEList<Symbol>(Symbol.class, this, EbnfmmPackage.RULE__DEFINITION_LIST);
 		}
-		return rhs;
+		return definitionList;
 	}
 
 	/**
@@ -188,8 +188,8 @@ public class RuleImpl extends EObjectImpl implements Rule {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EbnfmmPackage.RULE__LHS:
-				return basicSetLhs(null, msgs);
+			case EbnfmmPackage.RULE__META_IDENTIFIER:
+				return basicSetMetaIdentifier(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -205,10 +205,10 @@ public class RuleImpl extends EObjectImpl implements Rule {
 			case EbnfmmPackage.RULE__EREFERENCE0:
 				if (resolve) return getEReference0();
 				return basicGetEReference0();
-			case EbnfmmPackage.RULE__LHS:
-				return getLhs();
-			case EbnfmmPackage.RULE__RHS:
-				return getRhs();
+			case EbnfmmPackage.RULE__META_IDENTIFIER:
+				return getMetaIdentifier();
+			case EbnfmmPackage.RULE__DEFINITION_LIST:
+				return getDefinitionList();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -225,12 +225,12 @@ public class RuleImpl extends EObjectImpl implements Rule {
 			case EbnfmmPackage.RULE__EREFERENCE0:
 				setEReference0((NonTerminal)newValue);
 				return;
-			case EbnfmmPackage.RULE__LHS:
-				setLhs((NonTerminal)newValue);
+			case EbnfmmPackage.RULE__META_IDENTIFIER:
+				setMetaIdentifier((NonTerminal)newValue);
 				return;
-			case EbnfmmPackage.RULE__RHS:
-				getRhs().clear();
-				getRhs().addAll((Collection<? extends Symbol>)newValue);
+			case EbnfmmPackage.RULE__DEFINITION_LIST:
+				getDefinitionList().clear();
+				getDefinitionList().addAll((Collection<? extends Symbol>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -247,11 +247,11 @@ public class RuleImpl extends EObjectImpl implements Rule {
 			case EbnfmmPackage.RULE__EREFERENCE0:
 				setEReference0((NonTerminal)null);
 				return;
-			case EbnfmmPackage.RULE__LHS:
-				setLhs((NonTerminal)null);
+			case EbnfmmPackage.RULE__META_IDENTIFIER:
+				setMetaIdentifier((NonTerminal)null);
 				return;
-			case EbnfmmPackage.RULE__RHS:
-				getRhs().clear();
+			case EbnfmmPackage.RULE__DEFINITION_LIST:
+				getDefinitionList().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -267,10 +267,10 @@ public class RuleImpl extends EObjectImpl implements Rule {
 		switch (featureID) {
 			case EbnfmmPackage.RULE__EREFERENCE0:
 				return eReference0 != null;
-			case EbnfmmPackage.RULE__LHS:
-				return lhs != null;
-			case EbnfmmPackage.RULE__RHS:
-				return rhs != null && !rhs.isEmpty();
+			case EbnfmmPackage.RULE__META_IDENTIFIER:
+				return metaIdentifier != null;
+			case EbnfmmPackage.RULE__DEFINITION_LIST:
+				return definitionList != null && !definitionList.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

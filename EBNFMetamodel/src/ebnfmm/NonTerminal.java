@@ -13,5 +13,5 @@ package ebnfmm;
  * @model
  * @generated
  */
-public interface NonTerminal extends Symbol {
+public interface NonTerminal extends ReferenceableSymbol {
 } // NonTerminal

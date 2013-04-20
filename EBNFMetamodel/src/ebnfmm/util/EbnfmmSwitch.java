@@ -81,7 +81,7 @@ public class EbnfmmSwitch<T> extends Switch<T> {
 			case EbnfmmPackage.NON_TERMINAL: {
 				NonTerminal nonTerminal = (NonTerminal)theEObject;
 				T result = caseNonTerminal(nonTerminal);
-				if (result == null) result = caseSymbol(nonTerminal);
+				if (result == null) result = caseReferenceableSymbol(nonTerminal);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -94,14 +94,14 @@ public class EbnfmmSwitch<T> extends Switch<T> {
 			case EbnfmmPackage.TERMINAL: {
 				Terminal terminal = (Terminal)theEObject;
 				T result = caseTerminal(terminal);
-				if (result == null) result = caseSymbol(terminal);
+				if (result == null) result = caseNonReferenceableSymbol(terminal);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case EbnfmmPackage.CONTROL: {
 				Control control = (Control)theEObject;
 				T result = caseControl(control);
-				if (result == null) result = caseSymbol(control);
+				if (result == null) result = caseNonReferenceableSymbol(control);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -109,7 +109,7 @@ public class EbnfmmSwitch<T> extends Switch<T> {
 				Choice choice = (Choice)theEObject;
 				T result = caseChoice(choice);
 				if (result == null) result = caseControl(choice);
-				if (result == null) result = caseSymbol(choice);
+				if (result == null) result = caseNonReferenceableSymbol(choice);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -117,7 +117,7 @@ public class EbnfmmSwitch<T> extends Switch<T> {
 				Option option = (Option)theEObject;
 				T result = caseOption(option);
 				if (result == null) result = caseControl(option);
-				if (result == null) result = caseSymbol(option);
+				if (result == null) result = caseNonReferenceableSymbol(option);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -125,7 +125,25 @@ public class EbnfmmSwitch<T> extends Switch<T> {
 				Repetition repetition = (Repetition)theEObject;
 				T result = caseRepetition(repetition);
 				if (result == null) result = caseControl(repetition);
-				if (result == null) result = caseSymbol(repetition);
+				if (result == null) result = caseNonReferenceableSymbol(repetition);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EbnfmmPackage.REFERENCEABLE_SYMBOL: {
+				ReferenceableSymbol referenceableSymbol = (ReferenceableSymbol)theEObject;
+				T result = caseReferenceableSymbol(referenceableSymbol);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EbnfmmPackage.NON_REFERENCEABLE_SYMBOL: {
+				NonReferenceableSymbol nonReferenceableSymbol = (NonReferenceableSymbol)theEObject;
+				T result = caseNonReferenceableSymbol(nonReferenceableSymbol);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EbnfmmPackage.DUMMY: {
+				Dummy dummy = (Dummy)theEObject;
+				T result = caseDummy(dummy);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -265,6 +283,51 @@ public class EbnfmmSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseRepetition(Repetition object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Referenceable Symbol</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Referenceable Symbol</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseReferenceableSymbol(ReferenceableSymbol object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Non Referenceable Symbol</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Non Referenceable Symbol</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseNonReferenceableSymbol(NonReferenceableSymbol object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Dummy</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Dummy</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDummy(Dummy object) {
 		return null;
 	}
 

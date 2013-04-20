@@ -9,16 +9,39 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Rule">
     <eStructuralFeatures xsi:type="ecore:EReference" name="EReference0" eType="#//NonTerminal"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="lhs" lowerBound="1" eType="#//NonTerminal"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="rhs" lowerBound="1" upperBound="-1"
-        eType="#//Symbol"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="metaIdentifier" lowerBound="1"
+        eType="#//NonTerminal" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="definitionList" lowerBound="1"
+        upperBound="-1" eType="#//Symbol"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="NonTerminal" eSuperTypes="#//Symbol"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Symbol"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Terminal" eSuperTypes="#//Symbol"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Control" eSuperTypes="#//Symbol"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NonTerminal" eSuperTypes="#//ReferenceableSymbol"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Symbol" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Terminal" eSuperTypes="#//NonReferenceableSymbol">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="terminalString" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Control" eSuperTypes="#//NonReferenceableSymbol">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="definitionList" upperBound="-1"
+        eType="#//NonReferenceableSymbol"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="items" upperBound="-1"
+        eType="#//Dummy" containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Choice" eSuperTypes="#//Control"/>
   <eClassifiers xsi:type="ecore:EClass" name="Option" eSuperTypes="#//Control"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Repetition" eSuperTypes="#//Control"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Repetition" eSuperTypes="#//Control">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="multiplicity" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReferenceableSymbol" abstract="true"
+      eSuperTypes="#//Symbol"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NonReferenceableSymbol" abstract="true"
+      eSuperTypes="#//Symbol"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Dummy">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="validDummy"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//ReferenceableSymbol"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="containment" eType="#//NonReferenceableSymbol"
+        containment="true"/>
+  </eClassifiers>
 </ecore:EPackage>

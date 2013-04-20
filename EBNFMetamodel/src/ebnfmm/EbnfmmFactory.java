@@ -49,15 +49,6 @@ public interface EbnfmmFactory extends EFactory {
 	NonTerminal createNonTerminal();
 
 	/**
-	 * Returns a new object of class '<em>Symbol</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Symbol</em>'.
-	 * @generated
-	 */
-	Symbol createSymbol();
-
-	/**
 	 * Returns a new object of class '<em>Terminal</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -101,6 +92,15 @@ public interface EbnfmmFactory extends EFactory {
 	 * @generated
 	 */
 	Repetition createRepetition();
+
+	/**
+	 * Returns a new object of class '<em>Dummy</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Dummy</em>'.
+	 * @generated
+	 */
+	Dummy createDummy();
 
 	/**
 	 * Returns the package supported by this factory.

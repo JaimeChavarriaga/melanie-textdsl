@@ -104,6 +104,18 @@ public class EbnfmmAdapterFactory extends AdapterFactoryImpl {
 				return createRepetitionAdapter();
 			}
 			@Override
+			public Adapter caseReferenceableSymbol(ReferenceableSymbol object) {
+				return createReferenceableSymbolAdapter();
+			}
+			@Override
+			public Adapter caseNonReferenceableSymbol(NonReferenceableSymbol object) {
+				return createNonReferenceableSymbolAdapter();
+			}
+			@Override
+			public Adapter caseDummy(Dummy object) {
+				return createDummyAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -246,6 +258,48 @@ public class EbnfmmAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createRepetitionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link ebnfmm.ReferenceableSymbol <em>Referenceable Symbol</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see ebnfmm.ReferenceableSymbol
+	 * @generated
+	 */
+	public Adapter createReferenceableSymbolAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link ebnfmm.NonReferenceableSymbol <em>Non Referenceable Symbol</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see ebnfmm.NonReferenceableSymbol
+	 * @generated
+	 */
+	public Adapter createNonReferenceableSymbolAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link ebnfmm.Dummy <em>Dummy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see ebnfmm.Dummy
+	 * @generated
+	 */
+	public Adapter createDummyAdapter() {
 		return null;
 	}
 

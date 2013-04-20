@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *
  * @generated
  */
-public class SymbolImpl extends EObjectImpl implements Symbol {
+public abstract class SymbolImpl extends EObjectImpl implements Symbol {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

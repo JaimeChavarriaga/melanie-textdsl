@@ -42,6 +42,8 @@
 	<target name="dist" depends="compileApplication">
 		<!-- TODO: NEEDS TO BE SPECIFIED -->
 	</target>
+	
+	
 
 	<target name="test" depends="compileGrammar, compileParser">
 		<java classname="org.antlr.v4.runtime.misc.TestRig" input="test.ebnf" fork="true">
