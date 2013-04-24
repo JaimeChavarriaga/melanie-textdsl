@@ -110,6 +110,8 @@ public class EbnfmmValidator extends EObjectValidator {
 				return validateNonReferenceableSymbol((NonReferenceableSymbol)value, diagnostics, context);
 			case EbnfmmPackage.DUMMY:
 				return validateDummy((Dummy)value, diagnostics, context);
+			case EbnfmmPackage.GROUP:
+				return validateGroup((Group)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -257,6 +259,15 @@ public class EbnfmmValidator extends EObjectValidator {
 			return false;
 		}
 		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateGroup(Group group, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(group, diagnostics, context);
 	}
 
 	/**

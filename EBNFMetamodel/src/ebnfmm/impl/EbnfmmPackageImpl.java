@@ -8,6 +8,7 @@ import ebnfmm.Dummy;
 import ebnfmm.EBNFDescription;
 import ebnfmm.EbnfmmFactory;
 import ebnfmm.EbnfmmPackage;
+import ebnfmm.Group;
 import ebnfmm.NonReferenceableSymbol;
 import ebnfmm.NonTerminal;
 import ebnfmm.Option;
@@ -118,6 +119,13 @@ public class EbnfmmPackageImpl extends EPackageImpl implements EbnfmmPackage {
 	private EClass dummyEClass = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass groupEClass = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -201,17 +209,8 @@ public class EbnfmmPackageImpl extends EPackageImpl implements EbnfmmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getEBNFDescription_EReference0() {
-		return (EReference)ebnfDescriptionEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getEBNFDescription_Rules() {
-		return (EReference)ebnfDescriptionEClass.getEStructuralFeatures().get(1);
+		return (EReference)ebnfDescriptionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -228,7 +227,7 @@ public class EbnfmmPackageImpl extends EPackageImpl implements EbnfmmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getRule_EReference0() {
+	public EReference getRule_MetaIdentifier() {
 		return (EReference)ruleEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -237,17 +236,8 @@ public class EbnfmmPackageImpl extends EPackageImpl implements EbnfmmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getRule_MetaIdentifier() {
-		return (EReference)ruleEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getRule_DefinitionList() {
-		return (EReference)ruleEClass.getEStructuralFeatures().get(2);
+		return (EReference)ruleEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -257,6 +247,15 @@ public class EbnfmmPackageImpl extends EPackageImpl implements EbnfmmPackage {
 	 */
 	public EClass getNonTerminal() {
 		return nonTerminalEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getNonTerminal_Id() {
+		return (EAttribute)nonTerminalEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -300,17 +299,8 @@ public class EbnfmmPackageImpl extends EPackageImpl implements EbnfmmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getControl_DefinitionList() {
-		return (EReference)controlEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getControl_Items() {
-		return (EReference)controlEClass.getEStructuralFeatures().get(1);
+		return (EReference)controlEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -338,6 +328,15 @@ public class EbnfmmPackageImpl extends EPackageImpl implements EbnfmmPackage {
 	 */
 	public EClass getRepetition() {
 		return repetitionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getRepetition_Multiplicity() {
+		return (EAttribute)repetitionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -390,6 +389,15 @@ public class EbnfmmPackageImpl extends EPackageImpl implements EbnfmmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getGroup() {
+		return groupEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EbnfmmFactory getEbnfmmFactory() {
 		return (EbnfmmFactory)getEFactoryInstance();
 	}
@@ -414,15 +422,14 @@ public class EbnfmmPackageImpl extends EPackageImpl implements EbnfmmPackage {
 
 		// Create classes and their features
 		ebnfDescriptionEClass = createEClass(EBNF_DESCRIPTION);
-		createEReference(ebnfDescriptionEClass, EBNF_DESCRIPTION__EREFERENCE0);
 		createEReference(ebnfDescriptionEClass, EBNF_DESCRIPTION__RULES);
 
 		ruleEClass = createEClass(RULE);
-		createEReference(ruleEClass, RULE__EREFERENCE0);
 		createEReference(ruleEClass, RULE__META_IDENTIFIER);
 		createEReference(ruleEClass, RULE__DEFINITION_LIST);
 
 		nonTerminalEClass = createEClass(NON_TERMINAL);
+		createEAttribute(nonTerminalEClass, NON_TERMINAL__ID);
 
 		symbolEClass = createEClass(SYMBOL);
 
@@ -430,7 +437,6 @@ public class EbnfmmPackageImpl extends EPackageImpl implements EbnfmmPackage {
 		createEAttribute(terminalEClass, TERMINAL__TERMINAL_STRING);
 
 		controlEClass = createEClass(CONTROL);
-		createEReference(controlEClass, CONTROL__DEFINITION_LIST);
 		createEReference(controlEClass, CONTROL__ITEMS);
 
 		choiceEClass = createEClass(CHOICE);
@@ -438,6 +444,7 @@ public class EbnfmmPackageImpl extends EPackageImpl implements EbnfmmPackage {
 		optionEClass = createEClass(OPTION);
 
 		repetitionEClass = createEClass(REPETITION);
+		createEAttribute(repetitionEClass, REPETITION__MULTIPLICITY);
 
 		referenceableSymbolEClass = createEClass(REFERENCEABLE_SYMBOL);
 
@@ -446,6 +453,8 @@ public class EbnfmmPackageImpl extends EPackageImpl implements EbnfmmPackage {
 		dummyEClass = createEClass(DUMMY);
 		createEReference(dummyEClass, DUMMY__REF);
 		createEReference(dummyEClass, DUMMY__CONTAINMENT);
+
+		groupEClass = createEClass(GROUP);
 	}
 
 	/**
@@ -482,33 +491,35 @@ public class EbnfmmPackageImpl extends EPackageImpl implements EbnfmmPackage {
 		choiceEClass.getESuperTypes().add(this.getControl());
 		optionEClass.getESuperTypes().add(this.getControl());
 		repetitionEClass.getESuperTypes().add(this.getControl());
+		referenceableSymbolEClass.getESuperTypes().add(this.getSymbol());
+		nonReferenceableSymbolEClass.getESuperTypes().add(this.getSymbol());
+		groupEClass.getESuperTypes().add(this.getControl());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(ebnfDescriptionEClass, EBNFDescription.class, "EBNFDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getEBNFDescription_EReference0(), this.getEBNFDescription(), null, "EReference0", null, 0, 1, EBNFDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEBNFDescription_Rules(), this.getRule(), null, "rules", null, 0, -1, EBNFDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(ruleEClass, Rule.class, "Rule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getRule_EReference0(), this.getNonTerminal(), null, "EReference0", null, 0, 1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRule_MetaIdentifier(), this.getNonTerminal(), null, "metaIdentifier", null, 1, 1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRule_DefinitionList(), this.getSymbol(), null, "definitionList", null, 1, -1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(nonTerminalEClass, NonTerminal.class, "NonTerminal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getNonTerminal_Id(), ecorePackage.getEString(), "id", null, 1, 1, NonTerminal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(symbolEClass, Symbol.class, "Symbol", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(terminalEClass, Terminal.class, "Terminal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTerminal_TerminalString(), ecorePackage.getEString(), "terminalString", null, 0, 1, Terminal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTerminal_TerminalString(), ecorePackage.getEString(), "terminalString", null, 1, 1, Terminal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(controlEClass, Control.class, "Control", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getControl_DefinitionList(), this.getNonReferenceableSymbol(), null, "definitionList", null, 0, -1, Control.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getControl_Items(), this.getDummy(), null, "items", null, 0, -1, Control.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(controlEClass, Control.class, "Control", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getControl_Items(), this.getDummy(), null, "items", null, 1, -1, Control.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(choiceEClass, Choice.class, "Choice", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(optionEClass, Option.class, "Option", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(repetitionEClass, Repetition.class, "Repetition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getRepetition_Multiplicity(), ecorePackage.getEInt(), "multiplicity", null, 1, 1, Repetition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(referenceableSymbolEClass, ReferenceableSymbol.class, "ReferenceableSymbol", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -517,6 +528,8 @@ public class EbnfmmPackageImpl extends EPackageImpl implements EbnfmmPackage {
 		initEClass(dummyEClass, Dummy.class, "Dummy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDummy_Ref(), this.getReferenceableSymbol(), null, "ref", null, 0, 1, Dummy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDummy_Containment(), this.getNonReferenceableSymbol(), null, "containment", null, 0, 1, Dummy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(groupEClass, Group.class, "Group", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

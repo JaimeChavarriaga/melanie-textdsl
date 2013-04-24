@@ -14,5 +14,5 @@ import org.eclipse.emf.ecore.EObject;
  * @model abstract="true"
  * @generated
  */
-public interface NonReferenceableSymbol extends EObject {
+public interface NonReferenceableSymbol extends Symbol {
 } // NonReferenceableSymbol

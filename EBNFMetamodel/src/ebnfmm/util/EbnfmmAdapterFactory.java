@@ -116,6 +116,10 @@ public class EbnfmmAdapterFactory extends AdapterFactoryImpl {
 				return createDummyAdapter();
 			}
 			@Override
+			public Adapter caseGroup(Group object) {
+				return createGroupAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -300,6 +304,20 @@ public class EbnfmmAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createDummyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link ebnfmm.Group <em>Group</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see ebnfmm.Group
+	 * @generated
+	 */
+	public Adapter createGroupAdapter() {
 		return null;
 	}
 

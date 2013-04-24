@@ -29,7 +29,6 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link ebnfmm.impl.RuleImpl#getEReference0 <em>EReference0</em>}</li>
  *   <li>{@link ebnfmm.impl.RuleImpl#getMetaIdentifier <em>Meta Identifier</em>}</li>
  *   <li>{@link ebnfmm.impl.RuleImpl#getDefinitionList <em>Definition List</em>}</li>
  * </ul>
@@ -38,16 +37,6 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * @generated
  */
 public class RuleImpl extends EObjectImpl implements Rule {
-	/**
-	 * The cached value of the '{@link #getEReference0() <em>EReference0</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEReference0()
-	 * @generated
-	 * @ordered
-	 */
-	protected NonTerminal eReference0;
-
 	/**
 	 * The cached value of the '{@link #getMetaIdentifier() <em>Meta Identifier</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -85,44 +74,6 @@ public class RuleImpl extends EObjectImpl implements Rule {
 	@Override
 	protected EClass eStaticClass() {
 		return EbnfmmPackage.Literals.RULE;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NonTerminal getEReference0() {
-		if (eReference0 != null && eReference0.eIsProxy()) {
-			InternalEObject oldEReference0 = (InternalEObject)eReference0;
-			eReference0 = (NonTerminal)eResolveProxy(oldEReference0);
-			if (eReference0 != oldEReference0) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EbnfmmPackage.RULE__EREFERENCE0, oldEReference0, eReference0));
-			}
-		}
-		return eReference0;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NonTerminal basicGetEReference0() {
-		return eReference0;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setEReference0(NonTerminal newEReference0) {
-		NonTerminal oldEReference0 = eReference0;
-		eReference0 = newEReference0;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EbnfmmPackage.RULE__EREFERENCE0, oldEReference0, eReference0));
 	}
 
 	/**
@@ -202,9 +153,6 @@ public class RuleImpl extends EObjectImpl implements Rule {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EbnfmmPackage.RULE__EREFERENCE0:
-				if (resolve) return getEReference0();
-				return basicGetEReference0();
 			case EbnfmmPackage.RULE__META_IDENTIFIER:
 				return getMetaIdentifier();
 			case EbnfmmPackage.RULE__DEFINITION_LIST:
@@ -222,9 +170,6 @@ public class RuleImpl extends EObjectImpl implements Rule {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EbnfmmPackage.RULE__EREFERENCE0:
-				setEReference0((NonTerminal)newValue);
-				return;
 			case EbnfmmPackage.RULE__META_IDENTIFIER:
 				setMetaIdentifier((NonTerminal)newValue);
 				return;
@@ -244,9 +189,6 @@ public class RuleImpl extends EObjectImpl implements Rule {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EbnfmmPackage.RULE__EREFERENCE0:
-				setEReference0((NonTerminal)null);
-				return;
 			case EbnfmmPackage.RULE__META_IDENTIFIER:
 				setMetaIdentifier((NonTerminal)null);
 				return;
@@ -265,8 +207,6 @@ public class RuleImpl extends EObjectImpl implements Rule {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EbnfmmPackage.RULE__EREFERENCE0:
-				return eReference0 != null;
 			case EbnfmmPackage.RULE__META_IDENTIFIER:
 				return metaIdentifier != null;
 			case EbnfmmPackage.RULE__DEFINITION_LIST:

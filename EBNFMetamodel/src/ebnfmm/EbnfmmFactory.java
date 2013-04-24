@@ -58,15 +58,6 @@ public interface EbnfmmFactory extends EFactory {
 	Terminal createTerminal();
 
 	/**
-	 * Returns a new object of class '<em>Control</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Control</em>'.
-	 * @generated
-	 */
-	Control createControl();
-
-	/**
 	 * Returns a new object of class '<em>Choice</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -101,6 +92,15 @@ public interface EbnfmmFactory extends EFactory {
 	 * @generated
 	 */
 	Dummy createDummy();
+
+	/**
+	 * Returns a new object of class '<em>Group</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Group</em>'.
+	 * @generated
+	 */
+	Group createGroup();
 
 	/**
 	 * Returns the package supported by this factory.

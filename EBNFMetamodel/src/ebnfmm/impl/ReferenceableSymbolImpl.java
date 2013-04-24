@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *
  * @generated
  */
-public abstract class ReferenceableSymbolImpl extends EObjectImpl implements ReferenceableSymbol {
+public abstract class ReferenceableSymbolImpl extends SymbolImpl implements ReferenceableSymbol {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

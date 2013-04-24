@@ -23,23 +23,13 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link ebnfmm.impl.ControlImpl#getDefinitionList <em>Definition List</em>}</li>
  *   <li>{@link ebnfmm.impl.ControlImpl#getItems <em>Items</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ControlImpl extends NonReferenceableSymbolImpl implements Control {
-	/**
-	 * The cached value of the '{@link #getDefinitionList() <em>Definition List</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDefinitionList()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<NonReferenceableSymbol> definitionList;
+public abstract class ControlImpl extends NonReferenceableSymbolImpl implements Control {
 	/**
 	 * The cached value of the '{@link #getItems() <em>Items</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -67,18 +57,6 @@ public class ControlImpl extends NonReferenceableSymbolImpl implements Control {
 	@Override
 	protected EClass eStaticClass() {
 		return EbnfmmPackage.Literals.CONTROL;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<NonReferenceableSymbol> getDefinitionList() {
-		if (definitionList == null) {
-			definitionList = new EObjectResolvingEList<NonReferenceableSymbol>(NonReferenceableSymbol.class, this, EbnfmmPackage.CONTROL__DEFINITION_LIST);
-		}
-		return definitionList;
 	}
 
 	/**
@@ -115,8 +93,6 @@ public class ControlImpl extends NonReferenceableSymbolImpl implements Control {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EbnfmmPackage.CONTROL__DEFINITION_LIST:
-				return getDefinitionList();
 			case EbnfmmPackage.CONTROL__ITEMS:
 				return getItems();
 		}
@@ -132,10 +108,6 @@ public class ControlImpl extends NonReferenceableSymbolImpl implements Control {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EbnfmmPackage.CONTROL__DEFINITION_LIST:
-				getDefinitionList().clear();
-				getDefinitionList().addAll((Collection<? extends NonReferenceableSymbol>)newValue);
-				return;
 			case EbnfmmPackage.CONTROL__ITEMS:
 				getItems().clear();
 				getItems().addAll((Collection<? extends Dummy>)newValue);
@@ -152,9 +124,6 @@ public class ControlImpl extends NonReferenceableSymbolImpl implements Control {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EbnfmmPackage.CONTROL__DEFINITION_LIST:
-				getDefinitionList().clear();
-				return;
 			case EbnfmmPackage.CONTROL__ITEMS:
 				getItems().clear();
 				return;
@@ -170,8 +139,6 @@ public class ControlImpl extends NonReferenceableSymbolImpl implements Control {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EbnfmmPackage.CONTROL__DEFINITION_LIST:
-				return definitionList != null && !definitionList.isEmpty();
 			case EbnfmmPackage.CONTROL__ITEMS:
 				return items != null && !items.isEmpty();
 		}

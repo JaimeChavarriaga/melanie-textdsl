@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *
  * @generated
  */
-public abstract class NonReferenceableSymbolImpl extends EObjectImpl implements NonReferenceableSymbol {
+public abstract class NonReferenceableSymbolImpl extends SymbolImpl implements NonReferenceableSymbol {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

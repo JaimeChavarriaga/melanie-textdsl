@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated ebnfmm -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="ebnfmm.presentation.EbnfmmModelWizardID"
+            name="%_UI_EbnfmmModelWizard_label"
+            class="ebnfmm.presentation.EbnfmmModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/EbnfmmModelFile.gif">
+         <description>%_UI_EbnfmmModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated ebnfmm -->
+      <editor
+            id="ebnfmm.presentation.EbnfmmEditorID"
+            name="%_UI_EbnfmmEditor_label"
+            icon="icons/full/obj16/EbnfmmModelFile.gif"
+            extensions="ebnfmm"
+            class="ebnfmm.presentation.EbnfmmEditor"
+            contributorClass="ebnfmm.presentation.EbnfmmActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

@@ -27,7 +27,7 @@ public class EbnfmmFactoryImpl extends EFactoryImpl implements EbnfmmFactory {
 	 */
 	public static EbnfmmFactory init() {
 		try {
-			EbnfmmFactory theEbnfmmFactory = (EbnfmmFactory)EPackage.Registry.INSTANCE.getEFactory("http://swt.informatik.uni-mannheim.de/ebnfmm"); 
+			EbnfmmFactory theEbnfmmFactory = (EbnfmmFactory)EPackage.Registry.INSTANCE.getEFactory(EbnfmmPackage.eNS_URI);
 			if (theEbnfmmFactory != null) {
 				return theEbnfmmFactory;
 			}
@@ -60,11 +60,11 @@ public class EbnfmmFactoryImpl extends EFactoryImpl implements EbnfmmFactory {
 			case EbnfmmPackage.RULE: return createRule();
 			case EbnfmmPackage.NON_TERMINAL: return createNonTerminal();
 			case EbnfmmPackage.TERMINAL: return createTerminal();
-			case EbnfmmPackage.CONTROL: return createControl();
 			case EbnfmmPackage.CHOICE: return createChoice();
 			case EbnfmmPackage.OPTION: return createOption();
 			case EbnfmmPackage.REPETITION: return createRepetition();
 			case EbnfmmPackage.DUMMY: return createDummy();
+			case EbnfmmPackage.GROUP: return createGroup();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -115,16 +115,6 @@ public class EbnfmmFactoryImpl extends EFactoryImpl implements EbnfmmFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Control createControl() {
-		ControlImpl control = new ControlImpl();
-		return control;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Choice createChoice() {
 		ChoiceImpl choice = new ChoiceImpl();
 		return choice;
@@ -158,6 +148,16 @@ public class EbnfmmFactoryImpl extends EFactoryImpl implements EbnfmmFactory {
 	public Dummy createDummy() {
 		DummyImpl dummy = new DummyImpl();
 		return dummy;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Group createGroup() {
+		GroupImpl group = new GroupImpl();
+		return group;
 	}
 
 	/**

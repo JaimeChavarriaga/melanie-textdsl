@@ -32,7 +32,7 @@ public interface Terminal extends NonReferenceableSymbol {
 	 * @return the value of the '<em>Terminal String</em>' attribute.
 	 * @see #setTerminalString(String)
 	 * @see ebnfmm.EbnfmmPackage#getTerminal_TerminalString()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	String getTerminalString();

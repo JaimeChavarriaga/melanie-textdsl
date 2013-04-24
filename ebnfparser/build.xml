@@ -21,6 +21,8 @@
 			<arg value="/usr/local/lib/antlr-4.0-complete.jar" />
 			<arg value="-package" />
 			<arg value="de.uni_mannheim.informatik.swt.ebnf.parser" />
+			<arg value="-no-listener"/>
+			<arg value="-visitor"/>
 			<arg value="-o" />
 			<arg value="${parsersrc}" />
 			<arg value="EBNF.g4" />
@@ -38,6 +40,13 @@
 		<mkdir dir="${appbuild}"/>
 		<javac srcdir="src" destdir="${appbuild}" includeantruntime="false" classpathref="class.path"/>
 	</target>
+	
+	<target name="generateSyntaxRTF">
+		<exec executable="/usr/local/bin/highlight" output="ebnf.rtf">
+			<arg value="EBNF.g4"/>
+			<arg value="--out-format=rtf"/>
+		</exec>
+	</target>
 
 	<target name="dist" depends="compileApplication">
 		<!-- TODO: NEEDS TO BE SPECIFIED -->
@@ -53,7 +62,7 @@
 			</classpath>
 			<arg value="de.uni_mannheim.informatik.swt.ebnf.parser.EBNF" />
 			<arg value="syntax" />
-			<arg value="-gui" />
+			<arg value="-tree" />
 		</java>
 	</target>
 

@@ -14,7 +14,6 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link ebnfmm.Rule#getEReference0 <em>EReference0</em>}</li>
  *   <li>{@link ebnfmm.Rule#getMetaIdentifier <em>Meta Identifier</em>}</li>
  *   <li>{@link ebnfmm.Rule#getDefinitionList <em>Definition List</em>}</li>
  * </ul>
@@ -25,32 +24,6 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface Rule extends EObject {
-	/**
-	 * Returns the value of the '<em><b>EReference0</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>EReference0</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>EReference0</em>' reference.
-	 * @see #setEReference0(NonTerminal)
-	 * @see ebnfmm.EbnfmmPackage#getRule_EReference0()
-	 * @model
-	 * @generated
-	 */
-	NonTerminal getEReference0();
-
-	/**
-	 * Sets the value of the '{@link ebnfmm.Rule#getEReference0 <em>EReference0</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>EReference0</em>' reference.
-	 * @see #getEReference0()
-	 * @generated
-	 */
-	void setEReference0(NonTerminal value);
-
 	/**
 	 * Returns the value of the '<em><b>Meta Identifier</b></em>' containment reference.
 	 * <!-- begin-user-doc -->

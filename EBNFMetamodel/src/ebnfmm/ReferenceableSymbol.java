@@ -14,5 +14,5 @@ import org.eclipse.emf.ecore.EObject;
  * @model abstract="true"
  * @generated
  */
-public interface ReferenceableSymbol extends EObject {
+public interface ReferenceableSymbol extends Symbol {
 } // ReferenceableSymbol
