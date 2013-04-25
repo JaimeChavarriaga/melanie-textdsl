@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2013 University of Mannheim: Chair for Software Engineering
+ * Copyright (c) 2013 University of Mannheim: Chair for Software Engineering
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,16 +7,16 @@
  *
  * Contributors:
  *    Ralph Gerbig - initial API and implementation and initial documentation
- *******************************************************************************/
-package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.popupbartools;
+ *******************************************************************************/ 
+package de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor;
 
 import org.eclipse.e4.ui.model.application.ui.basic.MBasicFactory;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.model.application.ui.basic.MPartSashContainer;
 import org.eclipse.e4.ui.model.application.ui.basic.MPartStack;
 import org.eclipse.e4.ui.workbench.modeling.EPartService;
+import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.gef.commands.Command;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
@@ -24,34 +24,52 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor;
 
-import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.Activator;
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.MultiLevelModelEditorInput;
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.editor.MultiLevelModelTextEditor;
+import de.uni_mannheim.informatik.swt.mlm.workbench.interfaces.ITextualVisualizationService;
+import de.uni_mannheim.informatik.swt.models.plm.PLM.AbstractDSLVisualizer;
 import de.uni_mannheim.informatik.swt.models.plm.PLM.Model;
 import de.uni_mannheim.informatik.swt.models.plm.diagram.part.PLMDiagramEditor;
+import de.uni_mannheim.informatik.swt.models.plm.graphicalrepresentation.graphicalrepresentation.provider.GraphicalrepresentationItemProviderAdapterFactory;
+import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.AbstractColor;
+import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.TextualDSLVisualizer;
+import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.TextualVisualizationDescriptor;
+import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.TextualrepresentationFactory;
+import de.uni_mannheim.informatik.swt.plm.visualization.editor.views.VisualizationEditorView;
 
+public class TextualVisualizationService implements
+		ITextualVisualizationService {
 
-public class OpenTextualModelEditorOnModelElementCommand extends Command{
-	
-	final private IGraphicalEditPart host;
-	
-	/**
-	 * 
-	 * @param host Element which shall be toggled
-	 */
-	public OpenTextualModelEditorOnModelElementCommand(IGraphicalEditPart host){
-		this.host = host;
+	@Override
+	public String getVisualizationEditorViewID() {
+		return VisualizationEditorView.ID;
 	}
-	
+
+	@Override
+	public boolean isVisibleInVisualizerEditorView(EObject element) {
+		return (element instanceof TextualDSLVisualizer) 
+				|| (element instanceof TextualVisualizationDescriptor)
+				|| (element instanceof AbstractColor);
+	}
+
+	@Override
+	public AdapterFactory getItemProviderAdapterFactory() {
+		return new GraphicalrepresentationItemProviderAdapterFactory();
+	}
+
+	@Override
+	public AbstractDSLVisualizer createNewSpecificDSLVisualizer() {
+		return TextualrepresentationFactory.eINSTANCE.createTextualDSLVisualizer();
+	}
+
 	@SuppressWarnings("restriction")
 	@Override
-	public void execute() {
-		super.execute();
-		
+	public void run(Object host) {
 		IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
 		try {
 			
-			IEditorPart newEditor = page.openEditor(new MultiLevelModelEditorInput((Model)((IGraphicalEditPart)host).resolveSemanticElement()), Activator.PLUGIN_ID, true);
+			//IEditorPart newEditor = 
+			page.openEditor(new MultiLevelModelEditorInput((Model)((IGraphicalEditPart)host).resolveSemanticElement()), Activator.PLUGIN_ID, true);
 			
 			MPart lmlEditorContainingPart = null;
 			MPart textEditorContainingPart = null;
@@ -89,5 +107,7 @@ public class OpenTextualModelEditorOnModelElementCommand extends Command{
 		} catch (PartInitException e) {
 			e.printStackTrace();
 		}
+
 	}
+
 }

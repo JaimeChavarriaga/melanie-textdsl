@@ -12,6 +12,8 @@ Require-Bundle: org.eclipse.ui.editors,
  de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.weaving;bundle-version="1.0.0",
  org.eclipse.e4.ui.workbench;bundle-version="0.10.3",
  org.eclipse.e4.ui.model.workbench;bundle-version="1.0.0",
- org.eclipse.gmf.runtime.diagram.ui.resources.editor;bundle-version="1.7.0"
+ org.eclipse.gmf.runtime.diagram.ui.resources.editor;bundle-version="1.7.0",
+ de.uni_mannheim.informatik.swt.mlm.visualization.editor;bundle-version="1.0.0",
+ de.uni_mannheim.informatik.swt.models.plm.graphicalrepresentation.edit;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7

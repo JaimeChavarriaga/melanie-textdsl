@@ -14,18 +14,18 @@
       </editor>
    </extension>
    <extension
-         point="de.uni_mannheim.informatik.swt.popupbarbuttons.provider">
-      <provider
-            class="de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.popupbartools.TextualModelEditorPopupToolBarProvider"
-            id="de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditotor">
-      </provider>
-   </extension>
-   <extension
          point="org.eclipse.ui.editors.annotationTypes">
       <type
             name="de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.literaltype"
             super="org.eclipse.jdt.ui.occurrences">
       </type>
    org.eclipse.jdt.ui.occurrences</extension>
+   <extension
+         point="de.uni_mannheim.informatik.swt.textualvisualization.service">
+      <service
+            class="de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.TextualVisualizationService"
+            id="de.uni_mannheim.informatik.swt.mlm.visualization.textual.modeleditor.service">
+      </service>
+   </extension>
 
 </plugin>
