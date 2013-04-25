@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/de.uni_mannheim.informatik.swt.models.plm.textualrepresentation/src"
+    modelPluginID="de.uni_mannheim.informatik.swt.models.plm.textualrepresentation"
+    templateDirectory="de.uni_mannheim.informatik.swt.models.plm.textualrepresentation/templates"
+    dynamicTemplates="true" modelName="PLM" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>PLM.textualrepresentation.ecore</foreignModel>
+  <genPackages prefix="Textualrepresentation" basePackage="de.uni_mannheim.informatik.swt.models.plm.textualrepresentation"
+      disposableProviderFactory="true">
+    <ecorePackage href="PLM.textualrepresentation.ecore#/"/>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="PLM.textualrepresentation.ecore#//ColorEnum"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="PLM.textualrepresentation.ecore#//ColorEnum/Black"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="PLM.textualrepresentation.ecore#//ColorEnum/Red"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="PLM.textualrepresentation.ecore#//ColorEnum/Blue"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="PLM.textualrepresentation.ecore#//ColorEnum/Green"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genClasses>
+      <ecoreClass href="PLM.textualrepresentation.ecore#//TextualDSLVisualizer"/>
+      <genFeatures property="None" children="true" createChild="true" propertyDescription="">
+        <ecoreFeature xsi:type="ecore:EReference" href="PLM.textualrepresentation.ecore#//TextualDSLVisualizer/content"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertyDescription="" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="PLM.textualrepresentation.ecore#//TextualDSLVisualizer/root"/>
+      </genFeatures>
+      <genOperations>
+        <ecoreOperation href="PLM.textualrepresentation.ecore#//TextualDSLVisualizer/getContainingPLMElement"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="PLM.textualrepresentation.ecore#//TextualDSLVisualizer/getContainingLMLVisualizer"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false">
+      <ecoreClass href="PLM.textualrepresentation.ecore#//TextualVisualizationDescriptor"/>
+      <genFeatures createChild="false" propertyDescription="">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="PLM.textualrepresentation.ecore#//TextualVisualizationDescriptor/expression"/>
+      </genFeatures>
+      <genOperations>
+        <ecoreOperation href="PLM.textualrepresentation.ecore#//TextualVisualizationDescriptor/getContainingPLMElement"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="PLM.textualrepresentation.ecore#//TextualVisualizationDescriptor/getContainingTextualVisualizer"/>
+      </genOperations>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="PLM.textualrepresentation.ecore#//Literal"/>
+      <genFeatures property="None" children="true" createChild="true" propertyDescription="">
+        <ecoreFeature xsi:type="ecore:EReference" href="PLM.textualrepresentation.ecore#//Literal/color"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="PLM.textualrepresentation.ecore#//Value"/>
+      <genOperations>
+        <ecoreOperation href="PLM.textualrepresentation.ecore#//Value/isAttribute"/>
+      </genOperations>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="PLM.textualrepresentation.ecore#//ValueChoice"/>
+      <genFeatures property="None" children="true" createChild="true" propertyDescription="">
+        <ecoreFeature xsi:type="ecore:EReference" href="PLM.textualrepresentation.ecore#//ValueChoice/choices"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses image="false">
+      <ecoreClass href="PLM.textualrepresentation.ecore#//AbstractColor"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="PLM.textualrepresentation.ecore#//StandardColor"/>
+      <genFeatures createChild="false" propertyDescription="">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="PLM.textualrepresentation.ecore#//StandardColor/color"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="PLM.textualrepresentation.ecore#//RGBColor"/>
+      <genFeatures createChild="false" propertyDescription="">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="PLM.textualrepresentation.ecore#//RGBColor/R"/>
+      </genFeatures>
+      <genFeatures createChild="false" propertyDescription="">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="PLM.textualrepresentation.ecore#//RGBColor/G"/>
+      </genFeatures>
+      <genFeatures createChild="false" propertyDescription="">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="PLM.textualrepresentation.ecore#//RGBColor/B"/>
+      </genFeatures>
+    </genClasses>
+  </genPackages>
+  <usedGenPackages href="../../de.uni_mannheim.informatik.swt.models.plm/model/PLM.genmodel#//PLM"/>
+</genmodel:GenModel>
