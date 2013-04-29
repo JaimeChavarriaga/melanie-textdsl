@@ -21,8 +21,8 @@
 			<arg value="/usr/local/lib/antlr-4.0-complete.jar" />
 			<arg value="-package" />
 			<arg value="de.uni_mannheim.informatik.swt.ebnf.parser" />
-			<arg value="-no-listener"/>
-			<arg value="-visitor"/>
+			<arg value="-listener"/>
+			<!--<arg value="-visitor"/>-->
 			<arg value="-o" />
 			<arg value="${parsersrc}" />
 			<arg value="EBNF.g4" />

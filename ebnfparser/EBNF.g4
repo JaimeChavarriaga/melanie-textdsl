@@ -59,7 +59,7 @@ START_REPEAT_SYMBOL: '{' | '(:';
 TERMINATOR_SYMBOL: ';' | '.';
 
 
-META_IDENTIFIER: LETTER META_IDENTIFIER_CHARACTERS*; // some version allow whitespaces in the meta-identfier, although it is not standard
+META_IDENTIFIER: LETTER META_IDENTIFIER_CHARACTERS* LETTER; // some version allow whitespaces in the meta-identfier, although it is not standard
 INTEGER: DECIMAL_DIGIT+;
 TERMINAL_STRING: (FIRST_QUOTE_SYMBOL TERMINAL_CHARACTERS+ FIRST_QUOTE_SYMBOL)
 	| (SECOND_QUOTE_SYMBOL TERMINAL_CHARACTERS+ SECOND_QUOTE_SYMBOL) ;

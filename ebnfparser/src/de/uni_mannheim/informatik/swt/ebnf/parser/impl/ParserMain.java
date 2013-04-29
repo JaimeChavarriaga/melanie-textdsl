@@ -1,9 +1,11 @@
 package de.uni_mannheim.informatik.swt.ebnf.parser.impl;
 
 import java.io.FileInputStream;
+
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -32,15 +34,17 @@ public class ParserMain {
 		CommonTokenStream tokenStream = new CommonTokenStream(lexer);
 		EBNFParser parser = new EBNFParser(tokenStream);
 		ParseTree tree = parser.syntax();
-		EBNFEvalVisitor visitor = new EBNFEvalVisitor();
-		EBNFDescription description = visitor.visit(tree);
+		ParseTreeWalker walker = new ParseTreeWalker();
+		EBNFListenerEMF listener = new EBNFListenerEMF();
+		walker.walk(listener, tree);
+		
 		
 		ResourceSet resourceSet = new ResourceSetImpl();
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("*", new XMLResourceFactoryImpl());
 		
 		Resource resource = resourceSet.createResource(URI.createURI("./ebnf.ebnfmm"));
 		
-		resource.getContents().add(description);
+		resource.getContents().add(listener.getEbnfDescription());
 		resource.save(null);
 	}
 

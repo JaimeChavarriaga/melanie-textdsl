@@ -1,0 +1,6 @@
+--- @nsURI EBNF=http://swt.informatik.uni-mannheim.de/ebnfmm
+-- @path EBNF=/EBNFMetamodel/model/ebnfmm.ecore
+
+module ebnf2lml;
+create OUT: EBNF from IN: EBNF;
+
