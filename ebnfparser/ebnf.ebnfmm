@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="ASCII"?>
 <ebnfmm:EBNFDescription xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ebnfmm="http://swt.informatik.uni-mannheim.de/ebnfmm">
   <rules>
-    <metaIdentifier id="Programm"/>
+    <metaIdentifier id="program"/>
     <definitionList xsi:type="ebnfmm:Terminal" terminalString="PROGRAM"/>
+    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.7/@metaIdentifier"/>
     <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.1/@metaIdentifier"/>
+    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.7/@metaIdentifier"/>
     <definitionList xsi:type="ebnfmm:Terminal" terminalString="BEGIN"/>
+    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.7/@metaIdentifier"/>
     <definitionList xsi:type="ebnfmm:Repetition">
       <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.4/@metaIdentifier"/>
       <definitionList xsi:type="ebnfmm:Terminal" terminalString=";"/>
+      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.7/@metaIdentifier"/>
     </definitionList>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="END"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="."/>
+    <definitionList xsi:type="ebnfmm:Terminal" terminalString="END."/>
   </rules>
   <rules>
-    <metaIdentifier id="Bezeichner"/>
+    <metaIdentifier id="identifier"/>
     <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.5/@metaIdentifier"/>
     <definitionList xsi:type="ebnfmm:Repetition">
-      <definitionList xsi:type="ebnfmm:Group">
-        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.5/@metaIdentifier"/>
-        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.6/@metaIdentifier"/>
-      </definitionList>
+      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.5/@metaIdentifier"/>
+      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.6/@metaIdentifier"/>
     </definitionList>
   </rules>
   <rules>
-    <metaIdentifier id="Zahl"/>
+    <metaIdentifier id="number"/>
     <definitionList xsi:type="ebnfmm:Option">
       <definitionList xsi:type="ebnfmm:Terminal" terminalString="-"/>
     </definitionList>
@@ -33,18 +34,18 @@
     </definitionList>
   </rules>
   <rules>
-    <metaIdentifier id="String"/>
+    <metaIdentifier id="string"/>
     <definitionList xsi:type="ebnfmm:Terminal" terminalString="&quot;"/>
     <definitionList xsi:type="ebnfmm:Repetition">
       <definitionList xsi:type="ebnfmm:Except">
-        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.7/@metaIdentifier"/>
+        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.8/@metaIdentifier"/>
         <except xsi:type="ebnfmm:Terminal" terminalString="&quot;"/>
       </definitionList>
     </definitionList>
     <definitionList xsi:type="ebnfmm:Terminal" terminalString="&quot;"/>
   </rules>
   <rules>
-    <metaIdentifier id="Zuweisung"/>
+    <metaIdentifier id="assignment"/>
     <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.1/@metaIdentifier"/>
     <definitionList xsi:type="ebnfmm:Terminal" terminalString=":="/>
     <definitionList xsi:type="ebnfmm:Group">
@@ -54,7 +55,7 @@
     </definitionList>
   </rules>
   <rules>
-    <metaIdentifier id="Buchstabe"/>
+    <metaIdentifier id="alphabetic character"/>
     <definitionList xsi:type="ebnfmm:Terminal" terminalString="A"/>
     <definitionList xsi:type="ebnfmm:Terminal" terminalString="B"/>
     <definitionList xsi:type="ebnfmm:Terminal" terminalString="C"/>
@@ -83,7 +84,7 @@
     <definitionList xsi:type="ebnfmm:Terminal" terminalString="Z"/>
   </rules>
   <rules>
-    <metaIdentifier id="Ziffer"/>
+    <metaIdentifier id="digit"/>
     <definitionList xsi:type="ebnfmm:Terminal" terminalString="0"/>
     <definitionList xsi:type="ebnfmm:Terminal" terminalString="1"/>
     <definitionList xsi:type="ebnfmm:Terminal" terminalString="2"/>
@@ -96,21 +97,11 @@
     <definitionList xsi:type="ebnfmm:Terminal" terminalString="9"/>
   </rules>
   <rules>
-    <metaIdentifier id="AlleZeichen"/>
-    <definitionList xsi:type="ebnfmm:SpecialSequence" text="? alle sichtbaren Zeichen ?"/>
+    <metaIdentifier id="white space"/>
+    <definitionList xsi:type="ebnfmm:SpecialSequence" text="? white space characters ?"/>
   </rules>
   <rules>
-    <metaIdentifier id="Test"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="#"/>
-    <definitionList xsi:type="ebnfmm:Repetition">
-      <definitionList xsi:type="ebnfmm:Except">
-        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.7/@metaIdentifier"/>
-        <except xsi:type="ebnfmm:Group">
-          <definitionList xsi:type="ebnfmm:Terminal" terminalString="asd"/>
-          <definitionList xsi:type="ebnfmm:Terminal" terminalString="asadas"/>
-        </except>
-      </definitionList>
-    </definitionList>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="#"/>
+    <metaIdentifier id="all characters"/>
+    <definitionList xsi:type="ebnfmm:SpecialSequence" text="? all visible characters ?"/>
   </rules>
 </ebnfmm:EBNFDescription>

@@ -14,7 +14,6 @@ import org.eclipse.emf.ecore.xmi.impl.XMLResourceFactoryImpl;
 
 import de.uni_mannheim.informatik.swt.ebnf.parser.EBNFLexer;
 import de.uni_mannheim.informatik.swt.ebnf.parser.EBNFParser;
-import ebnfmm.EBNFDescription;
 
 public class ParserMain {
 
@@ -26,8 +25,7 @@ public class ParserMain {
 		System.out.println("# EBNF TO EMF PARSER #");
 		System.out.println("######################");
 		
-		
-		ANTLRInputStream input = new ANTLRInputStream(new FileInputStream("test.ebnf"));
+		ANTLRInputStream input = new ANTLRInputStream(new FileInputStream("test2.ebnf"));
 		EBNFLexer lexer = new EBNFLexer(input);
 
 		

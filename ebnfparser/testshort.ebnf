@@ -1,5 +1,0 @@
-(* ein einfaches Beispiel in EBNF - Wikipedia *)
-Programm = 'PROGRAM', Bezeichner ,
-            'BEGIN' ,
-            { Zuweisung, ";" } ,
-            'END', "." ;
