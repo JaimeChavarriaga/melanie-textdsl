@@ -77,6 +77,30 @@
 			<arg value="-gui" />
 		</java>
 	</target>
+	
+	<target name="testminijava" depends="compileGrammar, compileParser">
+			<java classname="org.antlr.v4.runtime.misc.TestRig" input="minijava.ebnf" fork="true">
+				<classpath>
+					<path refid="class.path" />
+					<path location="${build}" />
+				</classpath>
+				<arg value="de.uni_mannheim.informatik.swt.ebnf.parser.EBNF" />
+				<arg value="syntax" />
+				<arg value="-tokens" />
+			</java>
+	</target>
+	
+	<target name="testjava" depends="compileGrammar, compileParser">
+				<java classname="org.antlr.v4.runtime.misc.TestRig" input="java5.ebnf" fork="true">
+					<classpath>
+						<path refid="class.path" />
+						<path location="${build}" />
+					</classpath>
+					<arg value="de.uni_mannheim.informatik.swt.ebnf.parser.EBNF" />
+					<arg value="syntax" />
+					<!--<arg value="-tokens" />-->
+				</java>
+	</target>
 
 	<target name="clean">
 		<delete dir="${build}" />

@@ -111,11 +111,10 @@ public class RuleItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_Rule_type");
+		return ((Rule)object).getMetaIdentifier().getId();
 	}
 
 	/**

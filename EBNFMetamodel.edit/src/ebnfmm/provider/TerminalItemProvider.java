@@ -4,6 +4,7 @@ package ebnfmm.provider;
 
 
 import ebnfmm.EbnfmmPackage;
+import ebnfmm.NonTerminalReference;
 import ebnfmm.Terminal;
 
 import java.util.Collection;
@@ -11,7 +12,6 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -99,12 +99,14 @@ public class TerminalItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
 		Terminal terminal = (Terminal)object;
-		return getString("_UI_Terminal_type") + " " + terminal.getFactor();
+		String s = "'" + terminal.getTerminalString() + "'";
+		if(terminal.getFactor() > 0)
+			s += " " + terminal.getFactor() + " times";
+		return s;
 	}
 
 	/**

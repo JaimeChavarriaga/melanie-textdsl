@@ -27,6 +27,8 @@
 \cbpat1{{\cf2{}}{\cf13{\b fragment\b0 }} {\cf2{}}{\cf14{OTHER_CHARACTER:}} {\cf2{}}{\cf3{' '}}{\cf2{}} {\cf11{|}} {\cf2{}}{\cf3{':'}}{\cf2{}} {\cf11{|}} {\cf2{}}{\cf3{'+'}}{\cf2{}} {\cf11{|}} {\cf2{}}{\cf3{'_'}}{\cf2{}} {\cf11{|}} {\cf2{}}{\cf3{'%'}}{\cf2{}} {\cf11{|}} {\cf2{}}{\cf3{'@'}}{\cf2{}} {\cf11{|}} }\par\pard
 \cbpat1{{\cf2{}}	{\cf3{'&'}}{\cf2{}} {\cf11{|}} {\cf2{}}{\cf3{'#'}}{\cf2{}} {\cf11{|}} {\cf2{}}{\cf3{'$'}}{\cf2{}} {\cf11{|}} {\cf2{}}{\cf3{'<'}}{\cf2{}} {\cf11{|}} {\cf2{}}{\cf3{'>'}}{\cf2{}} {\cf11{|}} {\cf2{}}{\cf3{'}}{\cf7{\\\\}}{\cf3{'}}{\cf2{}} {\cf11{|}} {\cf2{}}{\cf3{'^'}}{\cf2{}} {\cf11{|}} {\cf2{}}{\cf3{'`'}}{\cf2{}} {\cf11{|}}}\par\pard
 \cbpat1{{\cf2{}}	{\cf3{'~'}}{\cf2{}}{\cf11{;}}}\par\pard
+\cbpat1{{\cf2{}}	}\par\pard
+\cbpat1{{\cf13{\b fragment\b0 }} {\cf2{}}{\cf14{RESERVED_CHARACTERS:}} {\cf2{}}{\cf3{';'}}{\cf2{}} {\cf11{|}} {\cf2{}}{\cf3{'.'}}{\cf2{}} {\cf11{|}} {\cf2{}}{\cf3{'-'}}{\cf2{}} {\cf11{|}} {\cf2{}}{\cf3{'='}}{\cf2{}} {\cf11{|}} {\cf2{}}{\cf3{','}}{\cf2{}} {\cf11{|}} {\cf2{}}{\cf3{'('}}{\cf2{}} {\cf11{|}} {\cf2{}}{\cf3{')'}}{\cf2{}} {\cf11{|}} {\cf2{}}{\cf3{'['}}{\cf2{}} {\cf11{|}} {\cf2{}}{\cf3{']'}}{\cf2{}} {\cf11{|}} {\cf2{}}{\cf3{'\{'}}{\cf2{}} {\cf11{|}} {\cf2{}}{\cf3{'\}'}}{\cf2{}} {\cf11{|}} {\cf2{}}{\cf3{'?'}}{\cf2{}} {\cf11{|}} {\cf2{}}{\cf3{'!'}}{\cf2{}} {\cf11{|}} {\cf2{}}{\cf3{'*'}}{\cf2{}} {\cf11{|}} {\cf2{}}{\cf3{'/'}}{\cf2{}} {\cf11{|}} {\cf2{}}{\cf3{'|'}}{\cf2{}}{\cf11{;}}}\par\pard
 \cbpat1{{\cf2{}}}\par\pard
 \cbpat1{{\cf5{\i // see {7}.{6}\i0 }}}\par\pard
 \cbpat1{{\cf2{}}{\cf13{\b fragment\b0 }} {\cf2{}}{\cf14{SPACE_CHARACTER:}} {\cf2{}}{\cf3{' '}}{\cf2{}}{\cf11{;}}}\par\pard
@@ -38,7 +40,7 @@
 \cbpat1{{\cf13{\b fragment\b0 }} {\cf2{}}{\cf14{FIRST_QUOTE_SYMBOL:}} {\cf2{}}{\cf3{'}}{\cf7{\\'}}{\cf3{'}}{\cf2{}}{\cf11{;}}}\par\pard
 \cbpat1{{\cf2{}}{\cf13{\b fragment\b0 }} {\cf2{}}{\cf14{SECOND_QUOTE_SYMBOL:}} {\cf2{}}{\cf3{'"'}}{\cf2{}}{\cf11{;}}}\par\pard
 \cbpat1{{\cf2{}}}\par\pard
-\cbpat1{{\cf13{\b fragment\b0 }} {\cf2{}}{\cf14{TERMINAL_CHARACTERS:}} {\cf2{}}{\cf11{(}}{\cf2{LETTER}} {\cf11{|}} {\cf2{DECIMAL_DIGIT}} {\cf11{|}} {\cf2{OTHER_CHARACTER}} {\cf11{|}} {\cf2{SECOND_QUOTE_SYMBOL}} {\cf11{|}} {\cf2{}}{\cf3{';'}}{\cf2{}} {\cf11{|}} {\cf2{}}{\cf3{'.'}}{\cf2{}} {\cf11{|}} {\cf2{}}{\cf3{'-'}}{\cf2{}} {\cf11{|}} {\cf2{}}{\cf3{'='}}{\cf2{}}{\cf11{);}}}\par\pard
+\cbpat1{{\cf13{\b fragment\b0 }} {\cf2{}}{\cf14{TERMINAL_CHARACTERS:}} {\cf2{}}{\cf11{(}}{\cf2{LETTER}} {\cf11{|}} {\cf2{DECIMAL_DIGIT}} {\cf11{|}} {\cf2{OTHER_CHARACTER}} {\cf11{|}} {\cf2{SECOND_QUOTE_SYMBOL}} {\cf11{|}} {\cf2{RESERVED_CHARACTERS}}{\cf11{);}}}\par\pard
 \cbpat1{{\cf2{}}{\cf13{\b fragment\b0 }} {\cf2{}}{\cf14{META_IDENTIFIER_CHARACTERS:}} {\cf2{LETTER}} {\cf11{|}} {\cf2{DECIMAL_DIGIT}} {\cf11{|}} {\cf2{}}{\cf3{' '}}{\cf2{}}{\cf11{;}}}\par\pard
 \cbpat1{{\cf2{}}}\par\pard
 \cbpat1{}\par\pard
@@ -61,7 +63,7 @@
 \cbpat1{{\cf2{}}{\cf14{TERMINATOR_SYMBOL:}} {\cf2{}}{\cf3{';'}}{\cf2{}} {\cf11{|}} {\cf2{}}{\cf3{'.'}}{\cf2{}}{\cf11{;}}}\par\pard
 \cbpat1{{\cf2{}}}\par\pard
 \cbpat1{}\par\pard
-\cbpat1{{\cf14{META_IDENTIFIER:}} {\cf2{LETTER META_IDENTIFIER_CHARACTERS}}{\cf11{;}} {\cf2{}}{\cf5{\i // some version allow whitespaces in the metaidentfier, although it is not standard\i0 }}}\par\pard
+\cbpat1{{\cf14{META_IDENTIFIER:}} {\cf2{LETTER META_IDENTIFIER_CHARACTERS}}{\cf11{}} {\cf2{LETTER}}{\cf11{;}} {\cf2{}}{\cf5{\i // some version allow whitespaces in the metaidentfier, although it is not standard\i0 }}}\par\pard
 \cbpat1{{\cf2{}}{\cf14{INTEGER:}} {\cf2{DECIMAL_DIGIT}}{\cf11{;}}}\par\pard
 \cbpat1{{\cf2{}}{\cf14{TERMINAL_STRING:}} {\cf2{}}{\cf11{(}}{\cf2{FIRST_QUOTE_SYMBOL TERMINAL_CHARACTERS}}{\cf11{}} {\cf2{FIRST_QUOTE_SYMBOL}}{\cf11{)}}}\par\pard
 \cbpat1{{\cf2{}}	{\cf11{| (}}{\cf2{SECOND_QUOTE_SYMBOL TERMINAL_CHARACTERS}}{\cf11{}} {\cf2{SECOND_QUOTE_SYMBOL}}{\cf11{) ;}}}\par\pard

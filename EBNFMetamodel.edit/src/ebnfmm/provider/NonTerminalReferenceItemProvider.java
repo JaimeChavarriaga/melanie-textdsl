@@ -86,12 +86,14 @@ public class NonTerminalReferenceItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
 		NonTerminalReference nonTerminalReference = (NonTerminalReference)object;
-		return getString("_UI_NonTerminalReference_type") + " " + nonTerminalReference.getFactor();
+		String s = "ref -> " + nonTerminalReference.getNonTerminal().getId();
+		if(nonTerminalReference.getFactor() > 0)
+			s += " " + nonTerminalReference.getFactor() + " times";
+		return s;
 	}
 
 	/**

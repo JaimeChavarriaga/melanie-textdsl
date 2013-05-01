@@ -72,12 +72,14 @@ public class OptionItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
 		Option option = (Option)object;
-		return getString("_UI_Option_type") + " " + option.getFactor();
+		if(option.getFactor() > 0)
+			return getString("_UI_Option_type") + " " + option.getFactor();
+		else
+			return getString("_UI_Option_type");
 	}
 
 	/**
