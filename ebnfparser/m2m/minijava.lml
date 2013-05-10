@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:PLM="http://swt.informatik.uni-mannheim.de/PLM">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:PLM="http://swt.informatik.uni-mannheim.de/PLM">
+  <PLM:Domain>
+    <ontologies xsi:type="PLM:Ontology" name="Test">
+      <content name="O0"/>
+    </ontologies>
+  </PLM:Domain>
   <PLM:Entity name="Goal"/>
   <PLM:Entity name="MainClass"/>
   <PLM:Entity name="ClassDeclaration"/>

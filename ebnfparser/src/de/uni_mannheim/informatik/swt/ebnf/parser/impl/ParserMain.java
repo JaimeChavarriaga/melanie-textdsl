@@ -25,8 +25,8 @@ public class ParserMain {
 		System.out.println("# EBNF TO EMF PARSER #");
 		System.out.println("######################");
 		
-//		ANTLRInputStream input = new ANTLRInputStream(new FileInputStream("java5.ebnf"));
-		ANTLRInputStream input = new ANTLRInputStream(new FileInputStream("minijava.ebnf"));
+		ANTLRInputStream input = new ANTLRInputStream(new FileInputStream("java5.ebnf"));
+//		ANTLRInputStream input = new ANTLRInputStream(new FileInputStream("test.ebnf"));
 		EBNFLexer lexer = new EBNFLexer(input);
 
 		CommonTokenStream tokenStream = new CommonTokenStream(lexer);
@@ -35,7 +35,7 @@ public class ParserMain {
 		ParseTreeWalker walker = new ParseTreeWalker();
 		EBNFListenerEMF listener = new EBNFListenerEMF();
 		walker.walk(listener, tree);
-		
+
 		
 		ResourceSet resourceSet = new ResourceSetImpl();
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("*", new XMLResourceFactoryImpl());

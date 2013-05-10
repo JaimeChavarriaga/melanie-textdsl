@@ -1,25 +1,55 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/EBNFMetamodel/src" modelPluginID="EBNFMetamodel"
-    modelName="Ebnfmm" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0"
-    copyrightFields="false">
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/EBNFMetamodel/src" modelPluginID="EBNFMetamodel"
+    templateDirectory="de.uni_mannheim.informatik.swt.models.plm/templates" dynamicTemplates="true"
+    modelName="Ebnfmm" importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0"
+    copyrightFields="false" operationReflection="true">
   <foreignModel>ebnfmm.ecore</foreignModel>
-  <genPackages prefix="Ebnfmm" disposableProviderFactory="true" ecorePackage="ebnfmm.ecore#/">
-    <genClasses ecoreClass="ebnfmm.ecore#//EBNFDescription">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ebnfmm.ecore#//EBNFDescription/EReference0"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ebnfmm.ecore#//EBNFDescription/rules"/>
+  <genPackages prefix="Ebnfmm" basePackage="de.uni_mannheim.informatik.swt.models.plm"
+      disposableProviderFactory="true">
+    <ecorePackage href="ebnfmm.ecore#/"/>
+    <genClasses>
+      <ecoreClass href="ebnfmm.ecore#//EBNFDescription"/>
+      <genFeatures notify="false" createChild="false" propertyDescription="" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="ebnfmm.ecore#//EBNFDescription/EReference0"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true" propertyDescription="">
+        <ecoreFeature xsi:type="ecore:EReference" href="ebnfmm.ecore#//EBNFDescription/rules"/>
+      </genFeatures>
     </genClasses>
-    <genClasses ecoreClass="ebnfmm.ecore#//Rule">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ebnfmm.ecore#//Rule/EReference0"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ebnfmm.ecore#//Rule/lhs"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ebnfmm.ecore#//Rule/rhs"/>
+    <genClasses>
+      <ecoreClass href="ebnfmm.ecore#//Rule"/>
+      <genFeatures notify="false" createChild="false" propertyDescription="" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="ebnfmm.ecore#//Rule/EReference0"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true" propertyDescription="">
+        <ecoreFeature xsi:type="ecore:EReference" href="ebnfmm.ecore#//Rule/lhs"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertyDescription="" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="ebnfmm.ecore#//Rule/rhs"/>
+      </genFeatures>
     </genClasses>
-    <genClasses ecoreClass="ebnfmm.ecore#//NonTerminal"/>
-    <genClasses ecoreClass="ebnfmm.ecore#//Symbol"/>
-    <genClasses ecoreClass="ebnfmm.ecore#//Terminal"/>
-    <genClasses ecoreClass="ebnfmm.ecore#//Control"/>
-    <genClasses ecoreClass="ebnfmm.ecore#//Choice"/>
-    <genClasses ecoreClass="ebnfmm.ecore#//Option"/>
-    <genClasses ecoreClass="ebnfmm.ecore#//Repetition"/>
+    <genClasses>
+      <ecoreClass href="ebnfmm.ecore#//NonTerminal"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="ebnfmm.ecore#//Symbol"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="ebnfmm.ecore#//Terminal"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="ebnfmm.ecore#//Control"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="ebnfmm.ecore#//Choice"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="ebnfmm.ecore#//Option"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="ebnfmm.ecore#//Repetition"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>
