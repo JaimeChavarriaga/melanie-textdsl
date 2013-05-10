@@ -25,7 +25,8 @@ public class ParserMain {
 		System.out.println("# EBNF TO EMF PARSER #");
 		System.out.println("######################");
 		
-		ANTLRInputStream input = new ANTLRInputStream(new FileInputStream("java5.ebnf"));
+//		ANTLRInputStream input = new ANTLRInputStream(new FileInputStream("java5.ebnf"));
+		ANTLRInputStream input = new ANTLRInputStream(new FileInputStream("minijava.ebnf"));
 		EBNFLexer lexer = new EBNFLexer(input);
 
 		CommonTokenStream tokenStream = new CommonTokenStream(lexer);
