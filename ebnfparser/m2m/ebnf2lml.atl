@@ -5,13 +5,6 @@
 module ebnf2lml;
 create OUT: PLM from IN: EBNF;
 
----The ontology
-helper def : ontology : plm!Ontology = OclUndefined;
----The meta-model model
-helper def : o_1 : plm!Model = OclUndefined;
----The model model
-helper def : o_2 : plm!Model = OclUndefined;
-
 rule Rule2Clabject {
 	from
 		r: EBNF!Rule
