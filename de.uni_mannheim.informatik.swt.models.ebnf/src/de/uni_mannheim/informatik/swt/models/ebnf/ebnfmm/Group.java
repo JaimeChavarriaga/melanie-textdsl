@@ -8,3 +8,18 @@
  * Contributors:
  *    Nikolai Hellwig - initial API and implementation and initial documentation
  *******************************************************************************/
+package de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm;
+
+
+/**
+ * <!-- begin-user-doc -->
+ * A representation of the model object '<em><b>Group</b></em>'.
+ * <!-- end-user-doc -->
+ *
+ *
+ * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.EbnfmmPackage#getGroup()
+ * @model
+ * @generated
+ */
+public interface Group extends Control {
+} // Group

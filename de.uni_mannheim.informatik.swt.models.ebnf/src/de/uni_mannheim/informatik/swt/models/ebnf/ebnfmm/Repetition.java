@@ -8,3 +8,18 @@
  * Contributors:
  *    Nikolai Hellwig - initial API and implementation and initial documentation
  *******************************************************************************/
+package de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm;
+
+
+/**
+ * <!-- begin-user-doc -->
+ * A representation of the model object '<em><b>Repetition</b></em>'.
+ * <!-- end-user-doc -->
+ *
+ *
+ * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.EbnfmmPackage#getRepetition()
+ * @model
+ * @generated
+ */
+public interface Repetition extends Control {
+} // Repetition

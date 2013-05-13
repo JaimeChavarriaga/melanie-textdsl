@@ -7,9 +7,9 @@ Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: ebnfmm,
- ebnfmm.impl,
- ebnfmm.util
+Export-Package: de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm,
+ de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl,
+ de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport
 Bundle-ActivationPolicy: lazy

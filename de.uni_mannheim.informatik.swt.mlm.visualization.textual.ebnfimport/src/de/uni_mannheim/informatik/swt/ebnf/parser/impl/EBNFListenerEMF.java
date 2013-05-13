@@ -1,32 +1,40 @@
+/*******************************************************************************
+ * Copyright (c) 2013 University of Mannheim: Chair for Software Engineering.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Nikolai Hellwig - initial API and implementation
+ ******************************************************************************/
 package de.uni_mannheim.informatik.swt.ebnf.parser.impl;
 
 import java.util.HashMap;
 import java.util.Stack;
 
-import de.uni_mannheim.informatik.swt.ebnf.parser.EBNFBaseListener;
-import de.uni_mannheim.informatik.swt.ebnf.parser.EBNFParser.Syntactic_factorContext;
-import de.uni_mannheim.informatik.swt.ebnf.parser.EBNFParser.Syntactic_primaryContext;
-import de.uni_mannheim.informatik.swt.ebnf.parser.EBNFParser.Syntactic_termContext;
-import de.uni_mannheim.informatik.swt.ebnf.parser.EBNFParser.SyntaxContext;
-import de.uni_mannheim.informatik.swt.ebnf.parser.EBNFParser.Syntax_ruleContext;
-import ebnfmm.Control;
-import ebnfmm.EBNFDescription;
-import ebnfmm.EbnfmmFactory;
-import ebnfmm.EbnfmmPackage;
-import ebnfmm.Except;
-import ebnfmm.Group;
-import ebnfmm.NonTerminal;
-import ebnfmm.NonTerminalReference;
-import ebnfmm.Option;
-import ebnfmm.Repetition;
-import ebnfmm.Rule;
-import ebnfmm.SpecialSequence;
-import ebnfmm.Symbol;
-import ebnfmm.Terminal;
+import de.uni_mannheim.informatik.swt.mlm.visualization.textual.ebnfimport.EBNFBaseListener;
+import de.uni_mannheim.informatik.swt.mlm.visualization.textual.ebnfimport.EBNFParser.Syntactic_factorContext;
+import de.uni_mannheim.informatik.swt.mlm.visualization.textual.ebnfimport.EBNFParser.Syntactic_primaryContext;
+import de.uni_mannheim.informatik.swt.mlm.visualization.textual.ebnfimport.EBNFParser.Syntactic_termContext;
+import de.uni_mannheim.informatik.swt.mlm.visualization.textual.ebnfimport.EBNFParser.SyntaxContext;
+import de.uni_mannheim.informatik.swt.mlm.visualization.textual.ebnfimport.EBNFParser.Syntax_ruleContext;
+import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Control;
+import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.EBNFDescription;
+import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.EbnfmmFactory;
+import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Except;
+import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Group;
+import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.NonTerminal;
+import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.NonTerminalReference;
+import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Option;
+import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Repetition;
+import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Rule;
+import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.SpecialSequence;
+import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Symbol;
+import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Terminal;
 
 public class EBNFListenerEMF extends EBNFBaseListener {
 	private EbnfmmFactory ebnfFactory = EbnfmmFactory.eINSTANCE;
-	private EbnfmmPackage ebnfPackage = EbnfmmPackage.eINSTANCE;
 	private EBNFDescription ebnfDescription;
 
 	private Rule currentRule;
