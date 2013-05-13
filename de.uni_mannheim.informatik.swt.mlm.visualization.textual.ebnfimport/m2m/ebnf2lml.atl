@@ -1,0 +1,16 @@
+-- @atlcompiler atlMLMcompiler
+-- @path PLM=/de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore
+-- @path EBNF=/de.uni_mannheim.informatik.swt.models.ebnf/model/ebnfmm.ecore
+
+
+module ebnf2lml;
+create OUT: PLM from IN: EBNF;
+
+rule Rule2Clabject {
+	from
+		r: EBNF!Rule
+	to
+		c: PLM!Entity (
+			_l_.name <- r.metaIdentifier.id
+		)
+}

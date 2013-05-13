@@ -1,0 +1,234 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1187\cocoasubrtf370
+{\fonttbl\f0\fmodern\fcharset0 CourierNewPS-ItalicMT;\f1\fmodern\fcharset0 CourierNewPSMT;\f2\fmodern\fcharset0 CourierNewPS-BoldMT;
+}
+{\colortbl;\red255\green255\blue255;\red131\green129\blue131;\red0\green87\blue174;\red176\green126\blue0;
+\red191\green3\blue3;\red255\green0\blue255;}
+\paperw11900\paperh16840\margl1134\margr1134\margb1134\margt1134\vieww28600\viewh15560\viewkind0
+\deftab720
+\pard\pardeftab720
+
+\f0\i\fs30 \cf2 /*
+\f1\i0 \cf0 \
+
+\f0\i \cf2  This Grammar is based on the ISOIEC Standard 14977 (Extended BNF)
+\f1\i0 \cf0 \
+
+\f0\i \cf2  The comments provides the number of the corresponding clause in the
+\f1\i0 \cf0 \
+
+\f0\i \cf2  standard. This File uses the standard representation of characters not the alternative in Table 2.
+\f1\i0 \cf0 \
+\
+
+\f0\i \cf2  Author: Nikolai Hellwig (nhellwigicloud.com)
+\f1\i0 \cf0 \
+\
+
+\f0\i \cf2  Part of Masterthesis
+\f1\i0 \cf0 \
+
+\f0\i \cf2  */
+\f1\i0 \cf0 \
+\pard\pardeftab720
+
+\f2\b \cf0 grammar
+\f1\b0  EBNF;\
+\
+\pard\pardeftab720
+
+\f0\i \cf2 /*
+\f1\i0 \cf0 \
+
+\f0\i \cf2 	FRAGMENTS for LEXER
+\f1\i0 \cf0 \
+
+\f0\i \cf2  */
+\f1\i0 \cf0 \
+
+\f0\i \cf2 // see 7.2
+\f1\i0 \cf0 \
+\pard\pardeftab720
+
+\f2\b \cf0 fragment
+\f1\b0  \cf3 LETTER:\cf0  [azAZ];\
+\
+\pard\pardeftab720
+
+\f0\i \cf2 // see 7.2
+\f1\i0 \cf0 \
+\pard\pardeftab720
+
+\f2\b \cf0 fragment
+\f1\b0  \cf3 DECIMAL_DIGIT:\cf0  [\cf4 09\cf0 ];\
+\
+
+\f2\b fragment
+\f1\b0  \cf3 START_COMMENT_SYMBOL:\cf0  \cf5 '(*'\cf0 ;\
+
+\f2\b fragment
+\f1\b0  \cf3 END_COMMENT_SYMBOL:\cf0  \cf5 '*)'\cf0 ;\
+\
+\pard\pardeftab720
+
+\f0\i \cf2 // see 7.5
+\f1\i0 \cf0 \
+\pard\pardeftab720
+
+\f2\b \cf0 fragment
+\f1\b0  \cf3 OTHER_CHARACTER:\cf0  \cf5 ' '\cf0  | \cf5 ':'\cf0  | \cf5 '+'\cf0  | \cf5 '_'\cf0  | \cf5 '%'\cf0  | \cf5 '@'\cf0  | \
+	\cf5 '&'\cf0  | \cf5 '#'\cf0  | \cf5 '$'\cf0  | \cf5 '<'\cf0  | \cf5 '>'\cf0  | \cf5 '\cf6 \\\\\cf5 '\cf0  | \cf5 '^'\cf0  | \cf5 '`'\cf0  |\
+	\cf5 '~'\cf0 ;\
+	\
+
+\f2\b fragment
+\f1\b0  \cf3 RESERVED_CHARACTERS:\cf0  \cf5 ';'\cf0  | \cf5 '.'\cf0  | \cf5 '-'\cf0  | \cf5 '='\cf0  | \cf5 ','\cf0  | \cf5 '('\cf0  | \cf5 ')'\cf0  | \cf5 '['\cf0  | \cf5 ']'\cf0  | \cf5 '\{'\cf0  | \cf5 '\}'\cf0  | \cf5 '?'\cf0  | \cf5 '!'\cf0  | \cf5 '*'\cf0  | \cf5 '/'\cf0  | \cf5 '|'\cf0 ;\
+\
+\pard\pardeftab720
+
+\f0\i \cf2 // see 7.6
+\f1\i0 \cf0 \
+\pard\pardeftab720
+
+\f2\b \cf0 fragment
+\f1\b0  \cf3 SPACE_CHARACTER:\cf0  \cf5 ' '\cf0 ;\
+
+\f2\b fragment
+\f1\b0  \cf3 HORIZONTAL_TABULATION_CHARACTER:\cf0  \cf5 '\cf6 \\t\cf5 '\cf0 ;\
+
+\f2\b fragment
+\f1\b0  \cf3 NEW_LINE:\cf0  [\cf6 \\r\\n\cf0 ];\
+
+\f2\b fragment
+\f1\b0  \cf3 VERTICAL_TABULATION_CHARACTER:\cf0  \cf5 '\cf6 \\u0013\cf5 '\cf0 ;\
+
+\f2\b fragment
+\f1\b0  \cf3 FORM_FEED:\cf0  \cf5 '\cf6 \\f\cf5 '\cf0 ;\
+\
+
+\f2\b fragment
+\f1\b0  \cf3 FIRST_QUOTE_SYMBOL:\cf0  \cf5 '\cf6 \\'\cf5 '\cf0 ;\
+
+\f2\b fragment
+\f1\b0  \cf3 SECOND_QUOTE_SYMBOL:\cf0  \cf5 '"'\cf0 ;\
+\
+
+\f2\b fragment
+\f1\b0  \cf3 TERMINAL_CHARACTERS:\cf0  (LETTER | DECIMAL_DIGIT | OTHER_CHARACTER | RESERVED_CHARACTERS);\
+
+\f2\b fragment
+\f1\b0  \cf3 META_IDENTIFIER_CHARACTERS:\cf0  LETTER | DECIMAL_DIGIT | \cf5 ' '\cf0  | \cf5 '_'\cf0  ; 
+\f0\i \cf2 // 'MODIFIED _ for more compatibility (not iso standard)'
+\f1\i0 \cf0 \
+\
+\
+\pard\pardeftab720
+
+\f0\i \cf2 /*
+\f1\i0 \cf0 \
+
+\f0\i \cf2 	LEXER RULES
+\f1\i0 \cf0 \
+
+\f0\i \cf2  */
+\f1\i0 \cf0 \
+
+\f0\i \cf2 // see 7.3, 7.4 tables 1, 2 terminalcharacters
+\f1\i0 \cf0 \
+\pard\pardeftab720
+\cf3 CONCATENATE_SYMBOL:\cf0  \cf5 ','\cf0 ;\
+\cf3 DEFINING_SYMBOL:\cf0  \cf5 '='\cf0 ;\
+\cf3 DEFINITION_SEPERATOR_SYMBOL:\cf0  \cf5 '|'\cf0  | \cf5 '/'\cf0  | \cf5 '!'\cf0 ;\
+\cf3 END_GROUP_SYMBOL:\cf0  \cf5 ')'\cf0 ;\
+\cf3 END_OPTION_SYMBOL:\cf0  \cf5 ']'\cf0  | \cf5 '/)'\cf0 ;\
+\cf3 END_REPEAT_SYMBOL:\cf0  \cf5 '\}'\cf0  | \cf5 ':)'\cf0 ;\
+\cf3 EXCEPT_SYMBOL:\cf0  \cf5 '-'\cf0 ;\
+\cf3 REPETITION_SYMBOL:\cf0  \cf5 '*'\cf0 ;\
+\cf3 SPECIAL_SEQUENCE_SYMBOL:\cf0  \cf5 '?'\cf0 ;\
+\cf3 START_GROUP_SYMBOL:\cf0  \cf5 '('\cf0 ;\
+\cf3 START_OPTION_SYMBOL:\cf0  \cf5 '['\cf0  | \cf5 '(/'\cf0 ;\
+\cf3 START_REPEAT_SYMBOL:\cf0  \cf5 '\{'\cf0  | \cf5 '(:'\cf0 ;\
+\cf3 TERMINATOR_SYMBOL:\cf0  \cf5 ';'\cf0  | \cf5 '.'\cf0 ;\
+\
+\
+\cf3 META_IDENTIFIER:\cf0  LETTER META_IDENTIFIER_CHARACTERS LETTER; 
+\f0\i \cf2 // some version allow whitespaces in the metaidentfier, although it is not standard
+\f1\i0 \cf0 \
+\cf3 INTEGER:\cf0  DECIMAL_DIGIT;\
+\cf3 TERMINAL_STRING:\cf0  (FIRST_QUOTE_SYMBOL (TERMINAL_CHARACTERS | SECOND_QUOTE_SYMBOL)+ FIRST_QUOTE_SYMBOL)\
+	| (SECOND_QUOTE_SYMBOL (TERMINAL_CHARACTERS | FIRST_QUOTE_SYMBOL)+ SECOND_QUOTE_SYMBOL) ;\
+\
+\cf3 COMMENT:\cf0  START_COMMENT_SYMBOL .*? END_COMMENT_SYMBOL;\
+\cf3 SPECIAL_SEQUENCE:\cf0  SPECIAL_SEQUENCE_SYMBOL .*? SPECIAL_SEQUENCE_SYMBOL;\
+\
+\
+\pard\pardeftab720
+
+\f0\i \cf2 // SKIP THESE
+\f1\i0 \cf0 \
+\pard\pardeftab720
+\cf3 GAP_SEPERATOR:\cf0  (SPACE_CHARACTER | HORIZONTAL_TABULATION_CHARACTER | NEW_LINE \
+	| VERTICAL_TABULATION_CHARACTER | FORM_FEED)+ -> skip;\
+\
+\pard\pardeftab720
+
+\f0\i \cf2 /* 
+\f1\i0 \cf0 \
+
+\f0\i \cf2 	Abstract Syntax of EBNF
+\f1\i0 \cf0 \
+
+\f0\i \cf2 	PARSER RULES
+\f1\i0 \cf0 \
+
+\f0\i \cf2 */
+\f1\i0 \cf0 \
+
+\f0\i \cf2 // see 4.2
+\f1\i0 \cf0 \
+\pard\pardeftab720
+\cf3 syntax:\cf0  (COMMENT | syntax_rule)+;\
+\pard\pardeftab720
+
+\f0\i \cf2 // see 4.3
+\f1\i0 \cf0 \
+\pard\pardeftab720
+\cf3 syntax_rule:\cf0  META_IDENTIFIER DEFINING_SYMBOL definitions_list TERMINATOR_SYMBOL;\
+\pard\pardeftab720
+
+\f0\i \cf2 // see 4.4
+\f1\i0 \cf0 \
+\pard\pardeftab720
+\cf3 definitions_list:\cf0  single_definition (DEFINITION_SEPERATOR_SYMBOL single_definition)*;\
+\pard\pardeftab720
+
+\f0\i \cf2 // see 4.5
+\f1\i0 \cf0 \
+\pard\pardeftab720
+\cf3 single_definition:\cf0  syntactic_term (CONCATENATE_SYMBOL syntactic_term)*;\
+\pard\pardeftab720
+
+\f0\i \cf2 // see 4.6
+\f1\i0 \cf0 \
+\pard\pardeftab720
+\cf3 syntactic_term:\cf0  syntactic_factor (EXCEPT_SYMBOL syntactic_factor)?;\
+\pard\pardeftab720
+
+\f0\i \cf2 // see 4.8
+\f1\i0 \cf0 \
+\pard\pardeftab720
+\cf3 syntactic_factor:\cf0  (INTEGER REPETITION_SYMBOL)? syntactic_primary;\
+\pard\pardeftab720
+
+\f0\i \cf2 // see 4.10
+\f1\i0 \cf0 \
+\pard\pardeftab720
+\cf3 syntactic_primary:\cf0  optional_sequence | repeated_sequence | grouped_sequence\
+	| META_IDENTIFIER | TERMINAL_STRING | SPECIAL_SEQUENCE | empty_sequence;\
+\
+\cf3 optional_sequence:\cf0  START_OPTION_SYMBOL definitions_list END_OPTION_SYMBOL;\
+\cf3 repeated_sequence:\cf0  START_REPEAT_SYMBOL definitions_list END_REPEAT_SYMBOL;\
+\cf3 grouped_sequence:\cf0  START_GROUP_SYMBOL definitions_list END_GROUP_SYMBOL;\
+\
+\cf3 empty_sequence:\cf0  \cf5 ''\cf0 ;\
+\
+}
