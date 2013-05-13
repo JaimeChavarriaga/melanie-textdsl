@@ -1,12 +1,17 @@
-/*
- This Grammar is based on the ISO/IEC Standard 14977 (Extended BNF)
- The comments provides the number of the corresponding clause in the
- standard. This File uses the standard representation of characters not the alternative in Table 2.
-
- Author: Nikolai Hellwig (nhellwig@icloud.com)
-
- Part of Masterthesis
- */
+/*******************************************************************************
+ * Copyright (c) 2013 University of Mannheim: Chair for Software Engineering.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Nikolai Hellwig - initial API and implementation
+ *
+ * This Grammar is based on the ISO/IEC Standard 14977 (Extended BNF)
+ * The comments provides the number of the corresponding clause in the
+ * standard. This File uses the standard representation of characters not the alternative in Table 2.
+ ******************************************************************************/
 grammar EBNF;
 
 /*

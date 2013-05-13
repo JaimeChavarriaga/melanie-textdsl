@@ -5,8 +5,7 @@ Bundle-SymbolicName: de.uni_mannheim.informatik.swt.mlm.visualization.textual.eb
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: ebnfparser.jar,
  lib/antlr-4.0-complete.jar
-Export-Package: de.uni_mannheim.informatik.swt.ebnf.parser,
- de.uni_mannheim.informatik.swt.ebnf.parser.impl,
+Export-Package: de.uni_mannheim.informatik.swt.ebnf.parser.impl,
  org.abego.treelayout,
  org.abego.treelayout.internal.util,
  org.abego.treelayout.internal.util.java.lang.string,
