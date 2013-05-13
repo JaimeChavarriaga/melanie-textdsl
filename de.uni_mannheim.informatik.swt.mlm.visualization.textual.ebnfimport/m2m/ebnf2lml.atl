@@ -11,6 +11,6 @@ rule Rule2Clabject {
 		r: EBNF!Rule
 	to
 		c: PLM!Entity (
-			name <- r.metaIdentifier.id
+			_l_.name <- r.metaIdentifier.id
 		)
 }
