@@ -10,6 +10,8 @@
  *******************************************************************************/
 package de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -21,6 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.NonTerminal#getId <em>Id</em>}</li>
+ *   <li>{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.NonTerminal#getDefinitionList <em>Definition List</em>}</li>
  * </ul>
  * </p>
  *
@@ -54,5 +57,21 @@ public interface NonTerminal extends EObject {
 	 * @generated
 	 */
 	void setId(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Definition List</b></em>' containment reference list.
+	 * The list contents are of type {@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Symbol}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Definition List</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Definition List</em>' containment reference list.
+	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.EbnfmmPackage#getNonTerminal_DefinitionList()
+	 * @model containment="true" required="true"
+	 * @generated
+	 */
+	EList<Symbol> getDefinitionList();
 
 } // NonTerminal

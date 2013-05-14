@@ -4,16 +4,12 @@
     nsPrefix="ebnfmm">
   <eClassifiers xsi:type="ecore:EClass" name="EBNFDescription">
     <eStructuralFeatures xsi:type="ecore:EReference" name="rules" ordered="false"
-        upperBound="-1" eType="#//Rule" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Rule">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="metaIdentifier" lowerBound="1"
-        eType="#//NonTerminal" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="definitionList" lowerBound="1"
-        upperBound="-1" eType="#//Symbol" containment="true"/>
+        upperBound="-1" eType="#//NonTerminal" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NonTerminal">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="definitionList" lowerBound="1"
+        upperBound="-1" eType="#//Symbol" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Symbol" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="factor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -40,4 +36,5 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="except" lowerBound="1"
         eType="#//Symbol" containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Choose" eSuperTypes="#//Control"/>
 </ecore:EPackage>

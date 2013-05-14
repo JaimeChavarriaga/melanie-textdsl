@@ -33,7 +33,7 @@ import org.eclipse.emf.ecore.EObject;
 public interface EBNFDescription extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Rules</b></em>' containment reference list.
-	 * The list contents are of type {@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Rule}.
+	 * The list contents are of type {@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.NonTerminal}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Rules</em>' containment reference list isn't clear,
@@ -45,6 +45,6 @@ public interface EBNFDescription extends EObject {
 	 * @model containment="true" ordered="false"
 	 * @generated
 	 */
-	EList<Rule> getRules();
+	EList<NonTerminal> getRules();
 
 } // EBNFDescription

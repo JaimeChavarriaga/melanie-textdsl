@@ -65,7 +65,6 @@ public class EbnfmmFactoryImpl extends EFactoryImpl implements EbnfmmFactory {
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case EbnfmmPackage.EBNF_DESCRIPTION: return createEBNFDescription();
-			case EbnfmmPackage.RULE: return createRule();
 			case EbnfmmPackage.NON_TERMINAL: return createNonTerminal();
 			case EbnfmmPackage.TERMINAL: return createTerminal();
 			case EbnfmmPackage.OPTION: return createOption();
@@ -74,6 +73,7 @@ public class EbnfmmFactoryImpl extends EFactoryImpl implements EbnfmmFactory {
 			case EbnfmmPackage.GROUP: return createGroup();
 			case EbnfmmPackage.SPECIAL_SEQUENCE: return createSpecialSequence();
 			case EbnfmmPackage.EXCEPT: return createExcept();
+			case EbnfmmPackage.CHOOSE: return createChoose();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -87,16 +87,6 @@ public class EbnfmmFactoryImpl extends EFactoryImpl implements EbnfmmFactory {
 	public EBNFDescription createEBNFDescription() {
 		EBNFDescriptionImpl ebnfDescription = new EBNFDescriptionImpl();
 		return ebnfDescription;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Rule createRule() {
-		RuleImpl rule = new RuleImpl();
-		return rule;
 	}
 
 	/**
@@ -177,6 +167,16 @@ public class EbnfmmFactoryImpl extends EFactoryImpl implements EbnfmmFactory {
 	public Except createExcept() {
 		ExceptImpl except = new ExceptImpl();
 		return except;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Choose createChoose() {
+		ChooseImpl choose = new ChooseImpl();
+		return choose;
 	}
 
 	/**

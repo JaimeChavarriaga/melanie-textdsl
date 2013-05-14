@@ -1,18 +1,52 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<PLM:Domain xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:PLM="http://swt.informatik.uni-mannheim.de/PLM">
-  <ontologies xsi:type="PLM:Ontology" name="Test">
-    <content name="O0">
-      <content xsi:type="PLM:Entity" name="Goal"/>
-      <content xsi:type="PLM:Entity" name="MainClass"/>
-      <content xsi:type="PLM:Entity" name="ClassDeclaration"/>
-      <content xsi:type="PLM:Entity" name="VarDeclaration"/>
-      <content xsi:type="PLM:Entity" name="MethodDeclaration"/>
-      <content xsi:type="PLM:Entity" name="Type"/>
-      <content xsi:type="PLM:Entity" name="Statement"/>
-      <content xsi:type="PLM:Entity" name="Expression"/>
-      <content xsi:type="PLM:Entity" name="Identifier"/>
-      <content xsi:type="PLM:Entity" name="IntegerLiteral"/>
-      <content xsi:type="PLM:Entity" name="EOF"/>
+<PLM:Domain xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:PLM="http://swt.informatik.uni-mannheim.de/PLM" xmlns:textualrepresentation="http://swt.informatik.uni-mannheim.de/MLM/textualrepresentation">
+  <ontologies xsi:type="PLM:Ontology">
+    <content>
+      <content xsi:type="PLM:Entity" name="Programm">
+        <visualizer>
+          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.0"/>
+        </visualizer>
+      </content>
+      <content xsi:type="PLM:Entity" name="Bezeichner">
+        <visualizer>
+          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.1"/>
+        </visualizer>
+      </content>
+      <content xsi:type="PLM:Entity" name="Zahl">
+        <visualizer>
+          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.2"/>
+        </visualizer>
+      </content>
+      <content xsi:type="PLM:Entity" name="String">
+        <visualizer>
+          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.3"/>
+        </visualizer>
+      </content>
+      <content xsi:type="PLM:Entity" name="Zuweisung">
+        <visualizer>
+          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.4"/>
+        </visualizer>
+      </content>
+      <content xsi:type="PLM:Entity" name="Buchstabe">
+        <visualizer>
+          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.5"/>
+        </visualizer>
+      </content>
+      <content xsi:type="PLM:Entity" name="Ziffer">
+        <visualizer>
+          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.6"/>
+        </visualizer>
+      </content>
+      <content xsi:type="PLM:Entity" name="AlleZeichen">
+        <visualizer>
+          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.7"/>
+        </visualizer>
+      </content>
+      <content xsi:type="PLM:Entity" name="Test">
+        <visualizer>
+          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.8"/>
+        </visualizer>
+      </content>
     </content>
   </ontologies>
 </PLM:Domain>

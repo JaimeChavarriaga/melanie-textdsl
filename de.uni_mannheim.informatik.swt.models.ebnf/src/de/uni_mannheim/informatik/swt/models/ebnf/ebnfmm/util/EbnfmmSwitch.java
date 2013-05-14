@@ -80,12 +80,6 @@ public class EbnfmmSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case EbnfmmPackage.RULE: {
-				Rule rule = (Rule)theEObject;
-				T result = caseRule(rule);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case EbnfmmPackage.NON_TERMINAL: {
 				NonTerminal nonTerminal = (NonTerminal)theEObject;
 				T result = caseNonTerminal(nonTerminal);
@@ -158,6 +152,14 @@ public class EbnfmmSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case EbnfmmPackage.CHOOSE: {
+				Choose choose = (Choose)theEObject;
+				T result = caseChoose(choose);
+				if (result == null) result = caseControl(choose);
+				if (result == null) result = caseSymbol(choose);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -174,21 +176,6 @@ public class EbnfmmSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseEBNFDescription(EBNFDescription object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Rule</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Rule</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseRule(Rule object) {
 		return null;
 	}
 
@@ -339,6 +326,21 @@ public class EbnfmmSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseExcept(Except object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Choose</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Choose</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseChoose(Choose object) {
 		return null;
 	}
 

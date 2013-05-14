@@ -1,854 +1,117 @@
 <?xml version="1.0" encoding="ASCII"?>
 <ebnfmm:EBNFDescription xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ebnfmm="http://swt.informatik.uni-mannheim.de/ebnfmm">
-  <rules>
-    <metaIdentifier id="compilation_unit"/>
-    <definitionList xsi:type="ebnfmm:Option">
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.1/@metaIdentifier"/>
-    </definitionList>
+  <rules id="Programm">
+    <definitionList xsi:type="ebnfmm:Terminal" terminalString="PROGRAM"/>
+    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.1"/>
+    <definitionList xsi:type="ebnfmm:Terminal" terminalString="BEGIN"/>
     <definitionList xsi:type="ebnfmm:Repetition">
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.2/@metaIdentifier"/>
-    </definitionList>
-    <definitionList xsi:type="ebnfmm:Repetition">
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.3/@metaIdentifier"/>
-    </definitionList>
-  </rules>
-  <rules>
-    <metaIdentifier id="package_statement"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="package"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.37/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString=";"/>
-  </rules>
-  <rules>
-    <metaIdentifier id="import_statement"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="import"/>
-    <definitionList xsi:type="ebnfmm:Group">
-      <definitionList xsi:type="ebnfmm:Group">
-        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.37/@metaIdentifier"/>
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString="."/>
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString="*"/>
-      </definitionList>
-      <definitionList xsi:type="ebnfmm:Group">
-        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.38/@metaIdentifier"/>
-        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.39/@metaIdentifier"/>
-      </definitionList>
-    </definitionList>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString=";"/>
-  </rules>
-  <rules>
-    <metaIdentifier id="type_declaration"/>
-    <definitionList xsi:type="ebnfmm:Option">
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.4/@metaIdentifier"/>
-    </definitionList>
-    <definitionList xsi:type="ebnfmm:Group">
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.5/@metaIdentifier"/>
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.6/@metaIdentifier"/>
-    </definitionList>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString=";"/>
-  </rules>
-  <rules>
-    <metaIdentifier id="doc_comment"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="/**"/>
-    <definitionList xsi:type="ebnfmm:SpecialSequence" text="? ... text ... ?"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="*/"/>
-  </rules>
-  <rules>
-    <metaIdentifier id="class_declaration"/>
-    <definitionList xsi:type="ebnfmm:Repetition">
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.36/@metaIdentifier"/>
-    </definitionList>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="class"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.53/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:Option">
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString="extends"/>
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.38/@metaIdentifier"/>
-    </definitionList>
-    <definitionList xsi:type="ebnfmm:Option">
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString="implements"/>
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.39/@metaIdentifier"/>
-      <definitionList xsi:type="ebnfmm:Repetition">
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString=","/>
-        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.39/@metaIdentifier"/>
-      </definitionList>
-    </definitionList>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="{"/>
-    <definitionList xsi:type="ebnfmm:Repetition">
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.7/@metaIdentifier"/>
-    </definitionList>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="}"/>
-  </rules>
-  <rules>
-    <metaIdentifier id="interface_declaration"/>
-    <definitionList xsi:type="ebnfmm:Repetition">
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.36/@metaIdentifier"/>
-    </definitionList>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="interface"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.53/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:Option">
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString="extends"/>
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.39/@metaIdentifier"/>
-      <definitionList xsi:type="ebnfmm:Repetition">
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString=","/>
-        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.39/@metaIdentifier"/>
-      </definitionList>
-    </definitionList>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="{"/>
-    <definitionList xsi:type="ebnfmm:Repetition">
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.7/@metaIdentifier"/>
-    </definitionList>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="}"/>
-  </rules>
-  <rules>
-    <metaIdentifier id="field_declaration"/>
-    <definitionList xsi:type="ebnfmm:Group">
-      <definitionList xsi:type="ebnfmm:Option">
-        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.4/@metaIdentifier"/>
-      </definitionList>
-      <definitionList xsi:type="ebnfmm:Group">
-        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.8/@metaIdentifier"/>
-        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.9/@metaIdentifier"/>
-        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.11/@metaIdentifier"/>
-      </definitionList>
-    </definitionList>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.14/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString=";"/>
-  </rules>
-  <rules>
-    <metaIdentifier id="method_declaration"/>
-    <definitionList xsi:type="ebnfmm:Repetition">
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.36/@metaIdentifier"/>
-    </definitionList>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.34/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.53/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="("/>
-    <definitionList xsi:type="ebnfmm:Option">
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.15/@metaIdentifier"/>
-    </definitionList>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString=")"/>
-    <definitionList xsi:type="ebnfmm:Repetition">
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString="["/>
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString="]"/>
-    </definitionList>
-    <definitionList xsi:type="ebnfmm:Group">
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.10/@metaIdentifier"/>
+      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.4"/>
       <definitionList xsi:type="ebnfmm:Terminal" terminalString=";"/>
     </definitionList>
+    <definitionList xsi:type="ebnfmm:Terminal" terminalString="END"/>
+    <definitionList xsi:type="ebnfmm:Terminal" terminalString="."/>
   </rules>
-  <rules>
-    <metaIdentifier id="constructor_declaration"/>
+  <rules id="Bezeichner">
+    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.5"/>
     <definitionList xsi:type="ebnfmm:Repetition">
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.36/@metaIdentifier"/>
+      <definitionList xsi:type="ebnfmm:Group">
+        <definitionList xsi:type="ebnfmm:Choose">
+          <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.5"/>
+          <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.6"/>
+        </definitionList>
+      </definitionList>
     </definitionList>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.53/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="("/>
+  </rules>
+  <rules id="Zahl">
     <definitionList xsi:type="ebnfmm:Option">
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.15/@metaIdentifier"/>
-    </definitionList>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString=")"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.10/@metaIdentifier"/>
-  </rules>
-  <rules>
-    <metaIdentifier id="statement_block"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="{"/>
-    <definitionList xsi:type="ebnfmm:Repetition">
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.17/@metaIdentifier"/>
-    </definitionList>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="}"/>
-  </rules>
-  <rules>
-    <metaIdentifier id="variable_declaration"/>
-    <definitionList xsi:type="ebnfmm:Repetition">
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.36/@metaIdentifier"/>
-    </definitionList>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.34/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.12/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:Repetition">
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString=","/>
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.12/@metaIdentifier"/>
-    </definitionList>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString=";"/>
-  </rules>
-  <rules>
-    <metaIdentifier id="variable_declarator"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.53/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:Repetition">
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString="["/>
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString="]"/>
-    </definitionList>
-    <definitionList xsi:type="ebnfmm:Option">
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString="="/>
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.13/@metaIdentifier"/>
-    </definitionList>
-  </rules>
-  <rules>
-    <metaIdentifier id="variable_initializer"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.24/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:Group">
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString="{"/>
-      <definitionList xsi:type="ebnfmm:Option">
-        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.13/@metaIdentifier"/>
-        <definitionList xsi:type="ebnfmm:Repetition">
-          <definitionList xsi:type="ebnfmm:Terminal" terminalString=","/>
-          <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.13/@metaIdentifier"/>
-        </definitionList>
-      </definitionList>
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString="}"/>
-    </definitionList>
-  </rules>
-  <rules>
-    <metaIdentifier id="static_initializer"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="static"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.10/@metaIdentifier"/>
-  </rules>
-  <rules>
-    <metaIdentifier id="parameter_list"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.16/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:Repetition">
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString=","/>
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.16/@metaIdentifier"/>
-    </definitionList>
-  </rules>
-  <rules>
-    <metaIdentifier id="parameter"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.34/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.53/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:Repetition">
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString="["/>
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString="]"/>
-    </definitionList>
-  </rules>
-  <rules>
-    <metaIdentifier id="statement"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.11/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:Group">
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.24/@metaIdentifier"/>
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString=";"/>
-    </definitionList>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.10/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.18/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.19/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.20/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.21/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.22/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.23/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:Group">
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString="synchronized"/>
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString="("/>
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.24/@metaIdentifier"/>
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString=")"/>
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.17/@metaIdentifier"/>
-    </definitionList>
-    <definitionList xsi:type="ebnfmm:Group">
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString="return"/>
-      <definitionList xsi:type="ebnfmm:Option">
-        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.24/@metaIdentifier"/>
-      </definitionList>
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString=";"/>
-    </definitionList>
-    <definitionList xsi:type="ebnfmm:Group">
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString="throw"/>
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.24/@metaIdentifier"/>
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString=";"/>
-    </definitionList>
-    <definitionList xsi:type="ebnfmm:Group">
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.53/@metaIdentifier"/>
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString=":"/>
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.17/@metaIdentifier"/>
-    </definitionList>
-    <definitionList xsi:type="ebnfmm:Group">
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString="break"/>
-      <definitionList xsi:type="ebnfmm:Option">
-        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.53/@metaIdentifier"/>
-      </definitionList>
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString=";"/>
-    </definitionList>
-    <definitionList xsi:type="ebnfmm:Group">
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString="continue"/>
-      <definitionList xsi:type="ebnfmm:Option">
-        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.53/@metaIdentifier"/>
-      </definitionList>
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString=";"/>
-    </definitionList>
-    <definitionList xsi:type="ebnfmm:Group">
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString=";"/>
-    </definitionList>
-  </rules>
-  <rules>
-    <metaIdentifier id="if_statement"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="if"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="("/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.24/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString=")"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.17/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:Option">
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString="else"/>
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.17/@metaIdentifier"/>
-    </definitionList>
-  </rules>
-  <rules>
-    <metaIdentifier id="do_statement"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="do"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.17/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="while"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="("/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.24/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString=")"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString=";"/>
-  </rules>
-  <rules>
-    <metaIdentifier id="while_statement"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="while"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="("/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.24/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString=")"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.17/@metaIdentifier"/>
-  </rules>
-  <rules>
-    <metaIdentifier id="for_statement"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="for"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="("/>
-    <definitionList xsi:type="ebnfmm:Group">
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.11/@metaIdentifier"/>
-      <definitionList xsi:type="ebnfmm:Group">
-        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.24/@metaIdentifier"/>
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString=";"/>
-      </definitionList>
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString=";"/>
-    </definitionList>
-    <definitionList xsi:type="ebnfmm:Option">
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.24/@metaIdentifier"/>
-    </definitionList>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString=";"/>
-    <definitionList xsi:type="ebnfmm:Option">
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.24/@metaIdentifier"/>
-    </definitionList>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString=";"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString=")"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.17/@metaIdentifier"/>
-  </rules>
-  <rules>
-    <metaIdentifier id="try_statement"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="try"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.17/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:Repetition">
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString="catch"/>
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString="("/>
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.16/@metaIdentifier"/>
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString=")"/>
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.17/@metaIdentifier"/>
-    </definitionList>
-    <definitionList xsi:type="ebnfmm:Option">
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString="finally"/>
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.17/@metaIdentifier"/>
-    </definitionList>
-  </rules>
-  <rules>
-    <metaIdentifier id="switch_statement"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="switch"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="("/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.24/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString=")"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="{"/>
-    <definitionList xsi:type="ebnfmm:Repetition">
-      <definitionList xsi:type="ebnfmm:Group">
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString="case"/>
-        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.24/@metaIdentifier"/>
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString=":"/>
-      </definitionList>
-      <definitionList xsi:type="ebnfmm:Group">
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString="default"/>
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString=":"/>
-      </definitionList>
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.17/@metaIdentifier"/>
-    </definitionList>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="}"/>
-  </rules>
-  <rules>
-    <metaIdentifier id="expression"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.25/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.26/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.27/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.28/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.29/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.30/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.31/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.32/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="null"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="super"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="this"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.53/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:Group">
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString="("/>
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.24/@metaIdentifier"/>
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString=")"/>
-    </definitionList>
-    <definitionList xsi:type="ebnfmm:Group">
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.24/@metaIdentifier"/>
-      <definitionList xsi:type="ebnfmm:Group">
-        <definitionList xsi:type="ebnfmm:Group">
-          <definitionList xsi:type="ebnfmm:Terminal" terminalString="("/>
-          <definitionList xsi:type="ebnfmm:Option">
-            <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.33/@metaIdentifier"/>
-          </definitionList>
-          <definitionList xsi:type="ebnfmm:Terminal" terminalString=")"/>
-        </definitionList>
-        <definitionList xsi:type="ebnfmm:Group">
-          <definitionList xsi:type="ebnfmm:Terminal" terminalString="["/>
-          <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.24/@metaIdentifier"/>
-          <definitionList xsi:type="ebnfmm:Terminal" terminalString="]"/>
-        </definitionList>
-        <definitionList xsi:type="ebnfmm:Group">
-          <definitionList xsi:type="ebnfmm:Terminal" terminalString="."/>
-          <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.24/@metaIdentifier"/>
-        </definitionList>
-        <definitionList xsi:type="ebnfmm:Group">
-          <definitionList xsi:type="ebnfmm:Terminal" terminalString=","/>
-          <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.24/@metaIdentifier"/>
-        </definitionList>
-        <definitionList xsi:type="ebnfmm:Group">
-          <definitionList xsi:type="ebnfmm:Terminal" terminalString="instanceof"/>
-          <definitionList xsi:type="ebnfmm:Group">
-            <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.38/@metaIdentifier"/>
-            <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.39/@metaIdentifier"/>
-          </definitionList>
-        </definitionList>
-      </definitionList>
-    </definitionList>
-  </rules>
-  <rules>
-    <metaIdentifier id="numeric_expression"/>
-    <definitionList xsi:type="ebnfmm:Group">
-      <definitionList xsi:type="ebnfmm:Group">
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString="-"/>
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString="++"/>
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString="--"/>
-      </definitionList>
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.24/@metaIdentifier"/>
-    </definitionList>
-    <definitionList xsi:type="ebnfmm:Group">
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.24/@metaIdentifier"/>
-      <definitionList xsi:type="ebnfmm:Group">
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString="++"/>
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString="--"/>
-      </definitionList>
-    </definitionList>
-    <definitionList xsi:type="ebnfmm:Group">
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.24/@metaIdentifier"/>
-      <definitionList xsi:type="ebnfmm:Group">
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString="+"/>
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString="+="/>
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString="-"/>
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString="-="/>
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString="*"/>
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString="*="/>
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString="/"/>
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString="/="/>
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString="%"/>
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString="%="/>
-      </definitionList>
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.24/@metaIdentifier"/>
-    </definitionList>
-  </rules>
-  <rules>
-    <metaIdentifier id="testing_expression"/>
-    <definitionList xsi:type="ebnfmm:Group">
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.24/@metaIdentifier"/>
-      <definitionList xsi:type="ebnfmm:Group">
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString=">"/>
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString="&lt;"/>
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString=">="/>
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString="&lt;="/>
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString="=="/>
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString="!="/>
-      </definitionList>
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.24/@metaIdentifier"/>
-    </definitionList>
-  </rules>
-  <rules>
-    <metaIdentifier id="logical_expression"/>
-    <definitionList xsi:type="ebnfmm:Group">
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString="!"/>
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.24/@metaIdentifier"/>
-    </definitionList>
-    <definitionList xsi:type="ebnfmm:Group">
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.24/@metaIdentifier"/>
-      <definitionList xsi:type="ebnfmm:Group">
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString="&amp;"/>
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString="&amp;="/>
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString="|"/>
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString="|="/>
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString="^"/>
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString="^="/>
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString="&amp;&amp;"/>
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString="||="/>
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString="%"/>
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString="%="/>
-      </definitionList>
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.24/@metaIdentifier"/>
-    </definitionList>
-    <definitionList xsi:type="ebnfmm:Group">
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.24/@metaIdentifier"/>
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString="?"/>
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.24/@metaIdentifier"/>
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString=":"/>
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.24/@metaIdentifier"/>
-    </definitionList>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="true"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="false"/>
-  </rules>
-  <rules>
-    <metaIdentifier id="string_expression"/>
-    <definitionList xsi:type="ebnfmm:Group">
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.24/@metaIdentifier"/>
-      <definitionList xsi:type="ebnfmm:Group">
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString="+"/>
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString="+="/>
-      </definitionList>
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.24/@metaIdentifier"/>
-    </definitionList>
-  </rules>
-  <rules>
-    <metaIdentifier id="bit_expression"/>
-    <definitionList xsi:type="ebnfmm:Group">
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString="~"/>
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.24/@metaIdentifier"/>
-    </definitionList>
-    <definitionList xsi:type="ebnfmm:Group">
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.24/@metaIdentifier"/>
-      <definitionList xsi:type="ebnfmm:Group">
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString=">>="/>
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString="&lt;&lt;"/>
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString=">>"/>
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString=">>>"/>
-      </definitionList>
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.24/@metaIdentifier"/>
-    </definitionList>
-  </rules>
-  <rules>
-    <metaIdentifier id="casting_expression"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="("/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.34/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString=")"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.24/@metaIdentifier"/>
-  </rules>
-  <rules>
-    <metaIdentifier id="creating_expression"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="new"/>
-    <definitionList xsi:type="ebnfmm:Group">
-      <definitionList xsi:type="ebnfmm:Group">
-        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.38/@metaIdentifier"/>
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString="("/>
-        <definitionList xsi:type="ebnfmm:Option">
-          <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.33/@metaIdentifier"/>
-        </definitionList>
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString=")"/>
-      </definitionList>
-      <definitionList xsi:type="ebnfmm:Group">
-        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.35/@metaIdentifier"/>
-        <definitionList xsi:type="ebnfmm:Option">
-          <definitionList xsi:type="ebnfmm:Terminal" terminalString="["/>
-          <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.24/@metaIdentifier"/>
-          <definitionList xsi:type="ebnfmm:Terminal" terminalString="]"/>
-        </definitionList>
-        <definitionList xsi:type="ebnfmm:Repetition">
-          <definitionList xsi:type="ebnfmm:Terminal" terminalString="["/>
-          <definitionList xsi:type="ebnfmm:Terminal" terminalString="]"/>
-        </definitionList>
-      </definitionList>
-      <definitionList xsi:type="ebnfmm:Group">
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString="("/>
-        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.24/@metaIdentifier"/>
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString=")"/>
-      </definitionList>
-    </definitionList>
-  </rules>
-  <rules>
-    <metaIdentifier id="literal_expression"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.40/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.41/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.49/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.48/@metaIdentifier"/>
-  </rules>
-  <rules>
-    <metaIdentifier id="arglist"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.24/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:Repetition">
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString=","/>
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.24/@metaIdentifier"/>
-    </definitionList>
-  </rules>
-  <rules>
-    <metaIdentifier id="type"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.35/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:Repetition">
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString="["/>
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString="]"/>
-    </definitionList>
-  </rules>
-  <rules>
-    <metaIdentifier id="type_specifier"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="boolean"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="byte"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="char"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="short"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="int"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="float"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="long"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="double"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.38/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.39/@metaIdentifier"/>
-  </rules>
-  <rules>
-    <metaIdentifier id="modifier"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="public"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="private"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="protected"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="static"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="final"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="native"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="synchronized"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="abstract"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="threadsafe"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="transient"/>
-  </rules>
-  <rules>
-    <metaIdentifier id="package_name"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.53/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:Group">
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.37/@metaIdentifier"/>
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString="."/>
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.53/@metaIdentifier"/>
-    </definitionList>
-  </rules>
-  <rules>
-    <metaIdentifier id="class_name"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.53/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:Group">
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.37/@metaIdentifier"/>
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString="."/>
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.53/@metaIdentifier"/>
-    </definitionList>
-  </rules>
-  <rules>
-    <metaIdentifier id="interface_name"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.53/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:Group">
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.37/@metaIdentifier"/>
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString="."/>
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.53/@metaIdentifier"/>
-    </definitionList>
-  </rules>
-  <rules>
-    <metaIdentifier id="integer_literal"/>
-    <definitionList xsi:type="ebnfmm:Group">
-      <definitionList xsi:type="ebnfmm:Group">
-        <definitionList xsi:type="ebnfmm:Except">
-          <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.43/@metaIdentifier"/>
-          <except xsi:type="ebnfmm:Terminal" terminalString="0"/>
-        </definitionList>
-        <definitionList xsi:type="ebnfmm:Repetition">
-          <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.43/@metaIdentifier"/>
-        </definitionList>
-      </definitionList>
-      <definitionList xsi:type="ebnfmm:Repetition">
-        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.44/@metaIdentifier"/>
-      </definitionList>
-      <definitionList xsi:type="ebnfmm:Group">
-        <definitionList xsi:type="ebnfmm:Terminal" terminalString="0x"/>
-        <definitionList xsi:type="ebnfmm:Group">
-          <definitionList xsi:type="ebnfmm:Except">
-            <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.45/@metaIdentifier"/>
-            <except xsi:type="ebnfmm:Terminal" terminalString="0"/>
-          </definitionList>
-        </definitionList>
-        <definitionList xsi:type="ebnfmm:Repetition">
-          <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.45/@metaIdentifier"/>
-        </definitionList>
-      </definitionList>
-    </definitionList>
-    <definitionList xsi:type="ebnfmm:Option">
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString="l"/>
-    </definitionList>
-  </rules>
-  <rules>
-    <metaIdentifier id="float_literal"/>
-    <definitionList xsi:type="ebnfmm:Group">
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.42/@metaIdentifier"/>
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString="."/>
-      <definitionList xsi:type="ebnfmm:Option">
-        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.42/@metaIdentifier"/>
-      </definitionList>
-      <definitionList xsi:type="ebnfmm:Option">
-        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.46/@metaIdentifier"/>
-      </definitionList>
-      <definitionList xsi:type="ebnfmm:Option">
-        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.47/@metaIdentifier"/>
-      </definitionList>
-    </definitionList>
-    <definitionList xsi:type="ebnfmm:Group">
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString="."/>
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.42/@metaIdentifier"/>
-      <definitionList xsi:type="ebnfmm:Option">
-        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.46/@metaIdentifier"/>
-      </definitionList>
-      <definitionList xsi:type="ebnfmm:Option">
-        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.47/@metaIdentifier"/>
-      </definitionList>
-    </definitionList>
-    <definitionList xsi:type="ebnfmm:Group">
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.42/@metaIdentifier"/>
-      <definitionList xsi:type="ebnfmm:Option">
-        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.46/@metaIdentifier"/>
-      </definitionList>
-      <definitionList xsi:type="ebnfmm:Option">
-        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.47/@metaIdentifier"/>
-      </definitionList>
-    </definitionList>
-  </rules>
-  <rules>
-    <metaIdentifier id="decimal_digits"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.43/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:Repetition">
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.43/@metaIdentifier"/>
-    </definitionList>
-  </rules>
-  <rules>
-    <metaIdentifier id="digits"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="0"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="1"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="2"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="3"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="4"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="5"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="6"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="7"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="8"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="9"/>
-  </rules>
-  <rules>
-    <metaIdentifier id="digitsSeven"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="0"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="1"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="2"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="3"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="4"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="5"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="6"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="7"/>
-  </rules>
-  <rules>
-    <metaIdentifier id="digitsSixteen"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.43/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="a"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="b"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="c"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="d"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="e"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="f"/>
-  </rules>
-  <rules>
-    <metaIdentifier id="exponent_part"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="e"/>
-    <definitionList xsi:type="ebnfmm:Option">
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString="+"/>
       <definitionList xsi:type="ebnfmm:Terminal" terminalString="-"/>
     </definitionList>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.42/@metaIdentifier"/>
-  </rules>
-  <rules>
-    <metaIdentifier id="float_type_suffix"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="f"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="d"/>
-  </rules>
-  <rules>
-    <metaIdentifier id="character"/>
-    <definitionList xsi:type="ebnfmm:SpecialSequence" text="? Zeichen des Unicode-Zeichensatzes ?"/>
-  </rules>
-  <rules>
-    <metaIdentifier id="string"/>
-    <definitionList xsi:type="ebnfmm:Group">
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString="&quot;"/>
-      <definitionList xsi:type="ebnfmm:Repetition">
-        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.48/@metaIdentifier"/>
-      </definitionList>
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString="&quot;"/>
-    </definitionList>
-    <definitionList xsi:type="ebnfmm:Group">
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString="'"/>
-      <definitionList xsi:type="ebnfmm:Repetition">
-        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.48/@metaIdentifier"/>
-      </definitionList>
-      <definitionList xsi:type="ebnfmm:Terminal" terminalString="'"/>
-    </definitionList>
-  </rules>
-  <rules>
-    <metaIdentifier id="lowerCaseLetter"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="a"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="b"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="c"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="d"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="e"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="f"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="g"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="h"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="i"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="j"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="k"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="l"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="m"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="n"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="o"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="p"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="q"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="r"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="s"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="t"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="u"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="v"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="w"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="x"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="y"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="z"/>
-  </rules>
-  <rules>
-    <metaIdentifier id="upperCaseLetter"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="A"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="B"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="C"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="D"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="E"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="F"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="G"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="H"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="I"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="J"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="K"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="L"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="M"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="N"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="O"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="P"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="Q"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="R"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="S"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="T"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="U"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="V"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="W"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="X"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="Y"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="Z"/>
-  </rules>
-  <rules>
-    <metaIdentifier id="letter"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.50/@metaIdentifier"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.51/@metaIdentifier"/>
-  </rules>
-  <rules>
-    <metaIdentifier id="identifier"/>
-    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.52/@metaIdentifier"/>
+    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.6"/>
     <definitionList xsi:type="ebnfmm:Repetition">
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.52/@metaIdentifier"/>
-      <definitionList xsi:type="ebnfmm:SpecialSequence" text="? Unicodezeichen &#xfffd;&#xfffd;uber 00C0&quot; ?"/>
+      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.6"/>
     </definitionList>
+  </rules>
+  <rules id="String">
+    <definitionList xsi:type="ebnfmm:Terminal" terminalString="&quot;"/>
+    <definitionList xsi:type="ebnfmm:Repetition">
+      <definitionList xsi:type="ebnfmm:Except">
+        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.7"/>
+        <except xsi:type="ebnfmm:Terminal" terminalString="&quot;"/>
+      </definitionList>
+    </definitionList>
+    <definitionList xsi:type="ebnfmm:Terminal" terminalString="&quot;"/>
+  </rules>
+  <rules id="Zuweisung">
+    <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.1"/>
+    <definitionList xsi:type="ebnfmm:Terminal" terminalString=":="/>
+    <definitionList xsi:type="ebnfmm:Group">
+      <definitionList xsi:type="ebnfmm:Choose">
+        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.2"/>
+        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.1"/>
+        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.3"/>
+      </definitionList>
+    </definitionList>
+  </rules>
+  <rules id="Buchstabe">
+    <definitionList xsi:type="ebnfmm:Choose">
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="A"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="B"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="C"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="D"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="E"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="F"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="G"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="H"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="I"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="J"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="K"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="L"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="M"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="N"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="O"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="P"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="Q"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="R"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="S"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="T"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="U"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="V"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="W"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="X"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="Y"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="Z"/>
+    </definitionList>
+  </rules>
+  <rules id="Ziffer">
+    <definitionList xsi:type="ebnfmm:Choose">
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="0"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="1"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="2"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="3"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="4"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="5"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="6"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="7"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="8"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="9"/>
+    </definitionList>
+  </rules>
+  <rules id="AlleZeichen">
+    <definitionList xsi:type="ebnfmm:SpecialSequence" text="? alle sichtbaren Zeichen ?"/>
+  </rules>
+  <rules id="Test">
+    <definitionList xsi:type="ebnfmm:Terminal" terminalString="#"/>
+    <definitionList xsi:type="ebnfmm:Repetition">
+      <definitionList xsi:type="ebnfmm:Except">
+        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.7"/>
+        <except xsi:type="ebnfmm:Group" factor="4">
+          <definitionList xsi:type="ebnfmm:Choose">
+            <definitionList xsi:type="ebnfmm:Terminal" terminalString="asd"/>
+            <definitionList xsi:type="ebnfmm:Terminal" terminalString="asadas"/>
+          </definitionList>
+        </except>
+      </definitionList>
+    </definitionList>
+    <definitionList xsi:type="ebnfmm:Terminal" terminalString="#"/>
   </rules>
 </ebnfmm:EBNFDescription>

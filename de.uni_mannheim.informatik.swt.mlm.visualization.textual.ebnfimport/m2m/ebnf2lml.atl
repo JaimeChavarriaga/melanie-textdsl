@@ -8,20 +8,28 @@
 -- * Contributors:
 -- *     Nikolai Hellwig - initial API and implementation
 -- ******************************************************************************/
-
+--
 -- @atlcompiler atlMLMcompiler
--- @path PLM=/de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore
+-- @path PLM=/de.uni_mannheim.informatik.swt.models.plm.textualrepresentation/model/PLM.textualrepresentation.ecore
+-- @ ---- path PLM2=/de.uni_mannheim.informatik.swt.models.plm/model/PLM.ecore
 -- @path EBNF=/de.uni_mannheim.informatik.swt.models.ebnf/model/ebnfmm.ecore
 
 
 module ebnf2lml;
 create OUT: PLM from IN: EBNF;
 
-rule Rule2Clabject {
+rule NonTerminal2Entity {
 	from
-		r: EBNF!Rule
+		r: EBNF!NonTerminal
 	to
-		c: PLM!Entity (
-			_l_.name <- r.metaIdentifier.id
+		e: PLM!Entity (
+			_l_.name <- r.id,
+			_l_.visualizer <- Sequence{ l }
+		),
+		l: PLM!LMLVisualizer (
+			dslVisualizer <- Sequence { v }
+		),
+		v: PLM!TextualDSLVisualizer (
+			root <- e 
 		)
 }

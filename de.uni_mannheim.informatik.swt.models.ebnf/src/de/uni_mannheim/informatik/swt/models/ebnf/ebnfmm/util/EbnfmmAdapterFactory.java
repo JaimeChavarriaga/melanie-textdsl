@@ -80,10 +80,6 @@ public class EbnfmmAdapterFactory extends AdapterFactoryImpl {
 				return createEBNFDescriptionAdapter();
 			}
 			@Override
-			public Adapter caseRule(Rule object) {
-				return createRuleAdapter();
-			}
-			@Override
 			public Adapter caseNonTerminal(NonTerminal object) {
 				return createNonTerminalAdapter();
 			}
@@ -124,6 +120,10 @@ public class EbnfmmAdapterFactory extends AdapterFactoryImpl {
 				return createExceptAdapter();
 			}
 			@Override
+			public Adapter caseChoose(Choose object) {
+				return createChooseAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -154,20 +154,6 @@ public class EbnfmmAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createEBNFDescriptionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Rule <em>Rule</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Rule
-	 * @generated
-	 */
-	public Adapter createRuleAdapter() {
 		return null;
 	}
 
@@ -308,6 +294,20 @@ public class EbnfmmAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createExceptAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Choose <em>Choose</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Choose
+	 * @generated
+	 */
+	public Adapter createChooseAdapter() {
 		return null;
 	}
 

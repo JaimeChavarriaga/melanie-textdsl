@@ -102,52 +102,6 @@ public interface EbnfmmPackage extends EPackage {
 	int EBNF_DESCRIPTION_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.RuleImpl <em>Rule</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.RuleImpl
-	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.EbnfmmPackageImpl#getRule()
-	 * @generated
-	 */
-	int RULE = 1;
-
-	/**
-	 * The feature id for the '<em><b>Meta Identifier</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RULE__META_IDENTIFIER = 0;
-
-	/**
-	 * The feature id for the '<em><b>Definition List</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RULE__DEFINITION_LIST = 1;
-
-	/**
-	 * The number of structural features of the '<em>Rule</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RULE_FEATURE_COUNT = 2;
-
-	/**
-	 * The number of operations of the '<em>Rule</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RULE_OPERATION_COUNT = 0;
-
-	/**
 	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.NonTerminalImpl <em>Non Terminal</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -155,7 +109,7 @@ public interface EbnfmmPackage extends EPackage {
 	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.EbnfmmPackageImpl#getNonTerminal()
 	 * @generated
 	 */
-	int NON_TERMINAL = 2;
+	int NON_TERMINAL = 1;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -167,13 +121,22 @@ public interface EbnfmmPackage extends EPackage {
 	int NON_TERMINAL__ID = 0;
 
 	/**
+	 * The feature id for the '<em><b>Definition List</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NON_TERMINAL__DEFINITION_LIST = 1;
+
+	/**
 	 * The number of structural features of the '<em>Non Terminal</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NON_TERMINAL_FEATURE_COUNT = 1;
+	int NON_TERMINAL_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Non Terminal</em>' class.
@@ -192,7 +155,7 @@ public interface EbnfmmPackage extends EPackage {
 	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.EbnfmmPackageImpl#getSymbol()
 	 * @generated
 	 */
-	int SYMBOL = 3;
+	int SYMBOL = 2;
 
 	/**
 	 * The feature id for the '<em><b>Factor</b></em>' attribute.
@@ -229,7 +192,7 @@ public interface EbnfmmPackage extends EPackage {
 	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.EbnfmmPackageImpl#getTerminal()
 	 * @generated
 	 */
-	int TERMINAL = 4;
+	int TERMINAL = 3;
 
 	/**
 	 * The feature id for the '<em><b>Factor</b></em>' attribute.
@@ -275,7 +238,7 @@ public interface EbnfmmPackage extends EPackage {
 	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.EbnfmmPackageImpl#getControl()
 	 * @generated
 	 */
-	int CONTROL = 5;
+	int CONTROL = 4;
 
 	/**
 	 * The feature id for the '<em><b>Factor</b></em>' attribute.
@@ -321,7 +284,7 @@ public interface EbnfmmPackage extends EPackage {
 	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.EbnfmmPackageImpl#getOption()
 	 * @generated
 	 */
-	int OPTION = 6;
+	int OPTION = 5;
 
 	/**
 	 * The feature id for the '<em><b>Factor</b></em>' attribute.
@@ -367,7 +330,7 @@ public interface EbnfmmPackage extends EPackage {
 	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.EbnfmmPackageImpl#getRepetition()
 	 * @generated
 	 */
-	int REPETITION = 7;
+	int REPETITION = 6;
 
 	/**
 	 * The feature id for the '<em><b>Factor</b></em>' attribute.
@@ -413,7 +376,7 @@ public interface EbnfmmPackage extends EPackage {
 	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.EbnfmmPackageImpl#getNonTerminalReference()
 	 * @generated
 	 */
-	int NON_TERMINAL_REFERENCE = 8;
+	int NON_TERMINAL_REFERENCE = 7;
 
 	/**
 	 * The feature id for the '<em><b>Factor</b></em>' attribute.
@@ -459,7 +422,7 @@ public interface EbnfmmPackage extends EPackage {
 	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.EbnfmmPackageImpl#getGroup()
 	 * @generated
 	 */
-	int GROUP = 9;
+	int GROUP = 8;
 
 	/**
 	 * The feature id for the '<em><b>Factor</b></em>' attribute.
@@ -505,7 +468,7 @@ public interface EbnfmmPackage extends EPackage {
 	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.EbnfmmPackageImpl#getSpecialSequence()
 	 * @generated
 	 */
-	int SPECIAL_SEQUENCE = 10;
+	int SPECIAL_SEQUENCE = 9;
 
 	/**
 	 * The feature id for the '<em><b>Factor</b></em>' attribute.
@@ -551,7 +514,7 @@ public interface EbnfmmPackage extends EPackage {
 	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.EbnfmmPackageImpl#getExcept()
 	 * @generated
 	 */
-	int EXCEPT = 11;
+	int EXCEPT = 10;
 
 	/**
 	 * The feature id for the '<em><b>Factor</b></em>' attribute.
@@ -600,6 +563,53 @@ public interface EbnfmmPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.ChooseImpl <em>Choose</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.ChooseImpl
+	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.EbnfmmPackageImpl#getChoose()
+	 * @generated
+	 */
+	int CHOOSE = 11;
+
+	/**
+	 * The feature id for the '<em><b>Factor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOOSE__FACTOR = CONTROL__FACTOR;
+
+	/**
+	 * The feature id for the '<em><b>Definition List</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOOSE__DEFINITION_LIST = CONTROL__DEFINITION_LIST;
+
+	/**
+	 * The number of structural features of the '<em>Choose</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOOSE_FEATURE_COUNT = CONTROL_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Choose</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOOSE_OPERATION_COUNT = CONTROL_OPERATION_COUNT + 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.EBNFDescription <em>EBNF Description</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -621,38 +631,6 @@ public interface EbnfmmPackage extends EPackage {
 	EReference getEBNFDescription_Rules();
 
 	/**
-	 * Returns the meta object for class '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Rule <em>Rule</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Rule</em>'.
-	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Rule
-	 * @generated
-	 */
-	EClass getRule();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Rule#getMetaIdentifier <em>Meta Identifier</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Meta Identifier</em>'.
-	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Rule#getMetaIdentifier()
-	 * @see #getRule()
-	 * @generated
-	 */
-	EReference getRule_MetaIdentifier();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Rule#getDefinitionList <em>Definition List</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Definition List</em>'.
-	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Rule#getDefinitionList()
-	 * @see #getRule()
-	 * @generated
-	 */
-	EReference getRule_DefinitionList();
-
-	/**
 	 * Returns the meta object for class '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.NonTerminal <em>Non Terminal</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -672,6 +650,17 @@ public interface EbnfmmPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getNonTerminal_Id();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.NonTerminal#getDefinitionList <em>Definition List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Definition List</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.NonTerminal#getDefinitionList()
+	 * @see #getNonTerminal()
+	 * @generated
+	 */
+	EReference getNonTerminal_DefinitionList();
 
 	/**
 	 * Returns the meta object for class '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Symbol <em>Symbol</em>}'.
@@ -830,6 +819,16 @@ public interface EbnfmmPackage extends EPackage {
 	EReference getExcept_Except();
 
 	/**
+	 * Returns the meta object for class '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Choose <em>Choose</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Choose</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Choose
+	 * @generated
+	 */
+	EClass getChoose();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -871,32 +870,6 @@ public interface EbnfmmPackage extends EPackage {
 		EReference EBNF_DESCRIPTION__RULES = eINSTANCE.getEBNFDescription_Rules();
 
 		/**
-		 * The meta object literal for the '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.RuleImpl <em>Rule</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.RuleImpl
-		 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.EbnfmmPackageImpl#getRule()
-		 * @generated
-		 */
-		EClass RULE = eINSTANCE.getRule();
-
-		/**
-		 * The meta object literal for the '<em><b>Meta Identifier</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference RULE__META_IDENTIFIER = eINSTANCE.getRule_MetaIdentifier();
-
-		/**
-		 * The meta object literal for the '<em><b>Definition List</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference RULE__DEFINITION_LIST = eINSTANCE.getRule_DefinitionList();
-
-		/**
 		 * The meta object literal for the '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.NonTerminalImpl <em>Non Terminal</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -913,6 +886,14 @@ public interface EbnfmmPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute NON_TERMINAL__ID = eINSTANCE.getNonTerminal_Id();
+
+		/**
+		 * The meta object literal for the '<em><b>Definition List</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NON_TERMINAL__DEFINITION_LIST = eINSTANCE.getNonTerminal_DefinitionList();
 
 		/**
 		 * The meta object literal for the '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.SymbolImpl <em>Symbol</em>}' class.
@@ -1051,6 +1032,16 @@ public interface EbnfmmPackage extends EPackage {
 		 * @generated
 		 */
 		EReference EXCEPT__EXCEPT = eINSTANCE.getExcept_Except();
+
+		/**
+		 * The meta object literal for the '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.ChooseImpl <em>Choose</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.ChooseImpl
+		 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.EbnfmmPackageImpl#getChoose()
+		 * @generated
+		 */
+		EClass CHOOSE = eINSTANCE.getChoose();
 
 	}
 

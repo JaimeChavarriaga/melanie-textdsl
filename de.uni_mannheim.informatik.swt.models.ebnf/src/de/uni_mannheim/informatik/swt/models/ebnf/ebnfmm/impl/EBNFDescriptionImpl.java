@@ -12,7 +12,7 @@ package de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl;
 
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.EBNFDescription;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.EbnfmmPackage;
-import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Rule;
+import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.NonTerminal;
 
 import java.util.Collection;
 
@@ -50,7 +50,7 @@ public class EBNFDescriptionImpl extends EObjectImpl implements EBNFDescription 
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Rule> rules;
+	protected EList<NonTerminal> rules;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -76,9 +76,9 @@ public class EBNFDescriptionImpl extends EObjectImpl implements EBNFDescription 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Rule> getRules() {
+	public EList<NonTerminal> getRules() {
 		if (rules == null) {
-			rules = new EObjectContainmentEList<Rule>(Rule.class, this, EbnfmmPackage.EBNF_DESCRIPTION__RULES);
+			rules = new EObjectContainmentEList<NonTerminal>(NonTerminal.class, this, EbnfmmPackage.EBNF_DESCRIPTION__RULES);
 		}
 		return rules;
 	}
@@ -122,7 +122,7 @@ public class EBNFDescriptionImpl extends EObjectImpl implements EBNFDescription 
 		switch (featureID) {
 			case EbnfmmPackage.EBNF_DESCRIPTION__RULES:
 				getRules().clear();
-				getRules().addAll((Collection<? extends Rule>)newValue);
+				getRules().addAll((Collection<? extends NonTerminal>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

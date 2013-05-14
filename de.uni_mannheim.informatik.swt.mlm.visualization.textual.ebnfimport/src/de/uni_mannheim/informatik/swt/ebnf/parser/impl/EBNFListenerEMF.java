@@ -14,11 +14,14 @@ import java.util.HashMap;
 import java.util.Stack;
 
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.ebnfimport.EBNFBaseListener;
+import de.uni_mannheim.informatik.swt.mlm.visualization.textual.ebnfimport.EBNFParser.Definitions_listContext;
+import de.uni_mannheim.informatik.swt.mlm.visualization.textual.ebnfimport.EBNFParser.Single_definitionContext;
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.ebnfimport.EBNFParser.Syntactic_factorContext;
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.ebnfimport.EBNFParser.Syntactic_primaryContext;
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.ebnfimport.EBNFParser.Syntactic_termContext;
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.ebnfimport.EBNFParser.SyntaxContext;
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.ebnfimport.EBNFParser.Syntax_ruleContext;
+import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Choose;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Control;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.EBNFDescription;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.EbnfmmFactory;
@@ -28,7 +31,6 @@ import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.NonTerminal;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.NonTerminalReference;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Option;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Repetition;
-import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Rule;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.SpecialSequence;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Symbol;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Terminal;
@@ -37,17 +39,17 @@ public class EBNFListenerEMF extends EBNFBaseListener {
 	private EbnfmmFactory ebnfFactory = EbnfmmFactory.eINSTANCE;
 	private EBNFDescription ebnfDescription;
 
-	private Rule currentRule;
+	private NonTerminal currentRule;
 	private Stack<Control> controlStack;
 
-	private HashMap<String, Rule> rules;
+	private HashMap<String, NonTerminal> rules;
 
 	// TODO: Implement EXCEPT SYMBOL
 
 	public EBNFListenerEMF() {
 		this.ebnfDescription = ebnfFactory.createEBNFDescription();
 		this.controlStack = new Stack<Control>();
-		this.rules = new HashMap<String, Rule>();
+		this.rules = new HashMap<String, NonTerminal>();
 	}
 
 	@Override
@@ -55,23 +57,36 @@ public class EBNFListenerEMF extends EBNFBaseListener {
 		// add all rules
 		for (Syntax_ruleContext syntaxContext : ctx.syntax_rule()) {
 			// create the rule & empty control stack
-			currentRule = ebnfFactory.createRule();
+			currentRule = ebnfFactory.createNonTerminal();
 			controlStack.removeAllElements();
 
 			// create the meta-identifier
-			NonTerminal nonTerminal = ebnfFactory.createNonTerminal();
-			nonTerminal.setId(syntaxContext.META_IDENTIFIER().getText());
-
-			// associate meta-identifier with rule
-			currentRule.setMetaIdentifier(nonTerminal);
+			currentRule.setId(syntaxContext.META_IDENTIFIER().getText());
 
 			// add rule to description
 			getEbnfDescription().getRules().add(currentRule);
 
 			// add Rule to index
-			rules.put(nonTerminal.getId(), currentRule);
+			rules.put(currentRule.getId(), currentRule);
 		}
 		super.enterSyntax(ctx);
+	}
+	
+	@Override
+	public void enterDefinitions_list(Definitions_listContext ctx) {
+		if(ctx.single_definition().size() > 1){ // do not create a choose instance, if there is only one class to choose from
+			// create a new choose instance
+			Choose choose = ebnfFactory.createChoose();
+			addToRuleOrControl(choose);
+			controlStack.push(choose);
+		}
+	}
+	
+	@Override
+	public void exitDefinitions_list(Definitions_listContext ctx) {
+		if(ctx.single_definition().size() > 1){
+			controlStack.pop();
+		}
 	}
 
 	@Override
@@ -105,7 +120,7 @@ public class EBNFListenerEMF extends EBNFBaseListener {
 			// find nonTerminal in HashMap and add it to the reference
 			// dummy-objects
 			NonTerminal nonTerminal = rules
-					.get(ctx.META_IDENTIFIER().getText()).getMetaIdentifier();
+					.get(ctx.META_IDENTIFIER().getText());
 			NonTerminalReference reference = ebnfFactory
 					.createNonTerminalReference();
 			reference.setNonTerminal(nonTerminal);
