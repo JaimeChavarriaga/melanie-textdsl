@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -76,9 +77,24 @@ public abstract class ControlImpl extends SymbolImpl implements Control {
 	 */
 	public EList<Symbol> getDefinitionList() {
 		if (definitionList == null) {
-			definitionList = new EObjectContainmentEList<Symbol>(Symbol.class, this, EbnfmmPackage.CONTROL__DEFINITION_LIST);
+			definitionList = new EObjectContainmentWithInverseEList<Symbol>(Symbol.class, this, EbnfmmPackage.CONTROL__DEFINITION_LIST, EbnfmmPackage.SYMBOL__CONTAINING_CONTROL);
 		}
 		return definitionList;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case EbnfmmPackage.CONTROL__DEFINITION_LIST:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getDefinitionList()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**

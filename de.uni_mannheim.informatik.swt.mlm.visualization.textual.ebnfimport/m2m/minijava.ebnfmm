@@ -15,8 +15,10 @@
     <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.5"/>
     <definitionList xsi:type="ebnfmm:Repetition">
       <definitionList xsi:type="ebnfmm:Group">
-        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.5"/>
-        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.6"/>
+        <definitionList xsi:type="ebnfmm:Choose">
+          <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.5"/>
+          <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.6"/>
+        </definitionList>
       </definitionList>
     </definitionList>
   </rules>
@@ -43,50 +45,56 @@
     <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.1"/>
     <definitionList xsi:type="ebnfmm:Terminal" terminalString=":="/>
     <definitionList xsi:type="ebnfmm:Group">
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.2"/>
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.1"/>
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.3"/>
+      <definitionList xsi:type="ebnfmm:Choose">
+        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.2"/>
+        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.1"/>
+        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.3"/>
+      </definitionList>
     </definitionList>
   </rules>
   <rules id="Buchstabe">
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="A"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="B"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="C"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="D"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="E"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="F"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="G"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="H"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="I"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="J"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="K"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="L"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="M"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="N"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="O"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="P"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="Q"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="R"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="S"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="T"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="U"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="V"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="W"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="X"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="Y"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="Z"/>
+    <definitionList xsi:type="ebnfmm:Choose">
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="A"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="B"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="C"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="D"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="E"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="F"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="G"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="H"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="I"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="J"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="K"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="L"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="M"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="N"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="O"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="P"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="Q"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="R"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="S"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="T"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="U"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="V"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="W"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="X"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="Y"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="Z"/>
+    </definitionList>
   </rules>
   <rules id="Ziffer">
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="0"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="1"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="2"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="3"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="4"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="5"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="6"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="7"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="8"/>
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="9"/>
+    <definitionList xsi:type="ebnfmm:Choose">
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="0"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="1"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="2"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="3"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="4"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="5"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="6"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="7"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="8"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="9"/>
+    </definitionList>
   </rules>
   <rules id="AlleZeichen">
     <definitionList xsi:type="ebnfmm:SpecialSequence" text="? alle sichtbaren Zeichen ?"/>
@@ -96,9 +104,11 @@
     <definitionList xsi:type="ebnfmm:Repetition">
       <definitionList xsi:type="ebnfmm:Except">
         <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.7"/>
-        <except xsi:type="ebnfmm:Group">
-          <definitionList xsi:type="ebnfmm:Terminal" terminalString="asd"/>
-          <definitionList xsi:type="ebnfmm:Terminal" terminalString="asadas"/>
+        <except xsi:type="ebnfmm:Group" factor="4">
+          <definitionList xsi:type="ebnfmm:Choose">
+            <definitionList xsi:type="ebnfmm:Terminal" terminalString="asd"/>
+            <definitionList xsi:type="ebnfmm:Terminal" terminalString="asadas"/>
+          </definitionList>
         </except>
       </definitionList>
     </definitionList>

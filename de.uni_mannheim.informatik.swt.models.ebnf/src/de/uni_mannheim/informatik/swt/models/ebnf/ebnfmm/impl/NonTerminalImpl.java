@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -122,9 +123,24 @@ public class NonTerminalImpl extends EObjectImpl implements NonTerminal {
 	 */
 	public EList<Symbol> getDefinitionList() {
 		if (definitionList == null) {
-			definitionList = new EObjectContainmentEList<Symbol>(Symbol.class, this, EbnfmmPackage.NON_TERMINAL__DEFINITION_LIST);
+			definitionList = new EObjectContainmentWithInverseEList<Symbol>(Symbol.class, this, EbnfmmPackage.NON_TERMINAL__DEFINITION_LIST, EbnfmmPackage.SYMBOL__CONTAINING_NON_TERMINAL);
 		}
 		return definitionList;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case EbnfmmPackage.NON_TERMINAL__DEFINITION_LIST:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getDefinitionList()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**

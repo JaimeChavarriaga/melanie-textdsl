@@ -32,6 +32,7 @@ public interface Control extends Symbol {
 	/**
 	 * Returns the value of the '<em><b>Definition List</b></em>' containment reference list.
 	 * The list contents are of type {@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Symbol}.
+	 * It is bidirectional and its opposite is '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Symbol#getContainingControl <em>Containing Control</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Definition List</em>' containment reference list isn't clear,
@@ -40,7 +41,8 @@ public interface Control extends Symbol {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Definition List</em>' containment reference list.
 	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.EbnfmmPackage#getControl_DefinitionList()
-	 * @model containment="true"
+	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Symbol#getContainingControl
+	 * @model opposite="containingControl" containment="true"
 	 * @generated
 	 */
 	EList<Symbol> getDefinitionList();

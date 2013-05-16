@@ -1,52 +1,281 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<PLM:Domain xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:PLM="http://swt.informatik.uni-mannheim.de/PLM" xmlns:textualrepresentation="http://swt.informatik.uni-mannheim.de/MLM/textualrepresentation">
-  <ontologies xsi:type="PLM:Ontology">
-    <content>
-      <content xsi:type="PLM:Entity" name="Programm">
-        <visualizer>
-          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.0"/>
-        </visualizer>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:PLM="http://swt.informatik.uni-mannheim.de/PLM" xmlns:textualrepresentation="http://swt.informatik.uni-mannheim.de/MLM/textualrepresentation">
+  <PLM:Domain>
+    <ontologies xsi:type="PLM:Ontology">
+      <content>
+        <content xsi:type="PLM:Entity" name="Programm">
+          <visualizer>
+            <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="/0/@ontologies.0/@content.0/@content.0">
+              <content xsi:type="textualrepresentation:Literal" expression="PROGRAM"/>
+              <content xsi:type="textualrepresentation:Value" expression="Bezeichner"/>
+              <content xsi:type="textualrepresentation:Literal" expression="BEGIN"/>
+              <content xsi:type="textualrepresentation:Value" expression="Repetition0"/>
+              <content xsi:type="textualrepresentation:Literal" expression="END"/>
+              <content xsi:type="textualrepresentation:Literal" expression="."/>
+            </dslVisualizer>
+          </visualizer>
+        </content>
+        <content xsi:type="PLM:Entity" name="Bezeichner">
+          <visualizer>
+            <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="/0/@ontologies.0/@content.0/@content.1">
+              <content xsi:type="textualrepresentation:Value" expression="Buchstabe"/>
+              <content xsi:type="textualrepresentation:Value" expression="Repetition1"/>
+            </dslVisualizer>
+          </visualizer>
+        </content>
+        <content xsi:type="PLM:Entity" name="Zahl">
+          <visualizer>
+            <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="/0/@ontologies.0/@content.0/@content.2">
+              <content xsi:type="textualrepresentation:Value" expression="Option0"/>
+              <content xsi:type="textualrepresentation:Value" expression="Ziffer"/>
+              <content xsi:type="textualrepresentation:Value" expression="Repetition2"/>
+            </dslVisualizer>
+          </visualizer>
+        </content>
+        <content xsi:type="PLM:Entity" name="String">
+          <visualizer>
+            <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="/0/@ontologies.0/@content.0/@content.3">
+              <content xsi:type="textualrepresentation:Literal" expression="&quot;"/>
+              <content xsi:type="textualrepresentation:Value" expression="Repetition3"/>
+              <content xsi:type="textualrepresentation:Literal" expression="&quot;"/>
+            </dslVisualizer>
+          </visualizer>
+        </content>
+        <content xsi:type="PLM:Entity" name="Zuweisung">
+          <visualizer>
+            <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="/0/@ontologies.0/@content.0/@content.4">
+              <content xsi:type="textualrepresentation:Value" expression="Bezeichner"/>
+              <content xsi:type="textualrepresentation:Literal" expression=":="/>
+              <content xsi:type="textualrepresentation:Value" expression="Group1"/>
+            </dslVisualizer>
+          </visualizer>
+        </content>
+        <content xsi:type="PLM:Entity" name="Buchstabe">
+          <visualizer>
+            <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="/0/@ontologies.0/@content.0/@content.5">
+              <content xsi:type="textualrepresentation:ValueChoice"/>
+            </dslVisualizer>
+          </visualizer>
+        </content>
+        <content xsi:type="PLM:Entity" name="Ziffer">
+          <visualizer>
+            <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="/0/@ontologies.0/@content.0/@content.6">
+              <content xsi:type="textualrepresentation:ValueChoice"/>
+            </dslVisualizer>
+          </visualizer>
+        </content>
+        <content xsi:type="PLM:Entity" name="AlleZeichen">
+          <visualizer>
+            <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="/0/@ontologies.0/@content.0/@content.7"/>
+          </visualizer>
+        </content>
+        <content xsi:type="PLM:Entity" name="Test">
+          <visualizer>
+            <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="/0/@ontologies.0/@content.0/@content.8">
+              <content xsi:type="textualrepresentation:Literal" expression="#"/>
+              <content xsi:type="textualrepresentation:Value" expression="Repetition4"/>
+              <content xsi:type="textualrepresentation:Literal" expression="#"/>
+            </dslVisualizer>
+          </visualizer>
+        </content>
+        <content xsi:type="PLM:Connection">
+          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.1"/>
+          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.0"/>
+        </content>
+        <content xsi:type="PLM:Connection">
+          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.4"/>
+          <participation lower="1" upper="1"/>
+        </content>
+        <content xsi:type="PLM:Connection">
+          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.5"/>
+          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.1"/>
+        </content>
+        <content xsi:type="PLM:Connection">
+          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.5"/>
+          <participation lower="1" upper="1"/>
+        </content>
+        <content xsi:type="PLM:Connection">
+          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.6"/>
+          <participation lower="1" upper="1"/>
+        </content>
+        <content xsi:type="PLM:Connection">
+          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.6"/>
+          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.2"/>
+        </content>
+        <content xsi:type="PLM:Connection">
+          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.6"/>
+          <participation lower="1" upper="1"/>
+        </content>
+        <content xsi:type="PLM:Connection">
+          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.7"/>
+          <participation lower="1" upper="1"/>
+        </content>
+        <content xsi:type="PLM:Connection">
+          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.1"/>
+          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.4"/>
+        </content>
+        <content xsi:type="PLM:Connection">
+          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.2"/>
+          <participation lower="1" upper="1"/>
+        </content>
+        <content xsi:type="PLM:Connection">
+          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.1"/>
+          <participation lower="1" upper="1"/>
+        </content>
+        <content xsi:type="PLM:Connection">
+          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.3"/>
+          <participation lower="1" upper="1"/>
+        </content>
+        <content xsi:type="PLM:Connection">
+          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.7"/>
+          <participation lower="1" upper="1"/>
+        </content>
+        <content xsi:type="PLM:Entity" name="Group0">
+          <visualizer>
+            <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="/0/@ontologies.0/@content.0/@content.22">
+              <content xsi:type="textualrepresentation:ValueChoice">
+                <choices expression="Buchstabe"/>
+                <choices expression="Ziffer"/>
+              </content>
+            </dslVisualizer>
+          </visualizer>
+        </content>
+        <content xsi:type="PLM:Connection">
+          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.22"/>
+          <participation lower="1" upper="1"/>
+        </content>
+        <content xsi:type="PLM:Entity" name="Group1">
+          <visualizer>
+            <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="/0/@ontologies.0/@content.0/@content.24">
+              <content xsi:type="textualrepresentation:ValueChoice">
+                <choices expression="Zahl"/>
+                <choices expression="Bezeichner"/>
+                <choices expression="String"/>
+              </content>
+            </dslVisualizer>
+          </visualizer>
+        </content>
+        <content xsi:type="PLM:Connection">
+          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.24"/>
+          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.4"/>
+        </content>
+        <content xsi:type="PLM:Entity" name="Group2">
+          <visualizer>
+            <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="/0/@ontologies.0/@content.0/@content.26">
+              <content xsi:type="textualrepresentation:ValueChoice"/>
+            </dslVisualizer>
+          </visualizer>
+        </content>
+        <content xsi:type="PLM:Connection">
+          <participation lower="4" upper="4" destination="/0/@ontologies.0/@content.0/@content.26"/>
+          <participation lower="1" upper="1"/>
+        </content>
+        <content xsi:type="PLM:Entity" name="Repetition0">
+          <visualizer>
+            <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="/0/@ontologies.0/@content.0/@content.28">
+              <content xsi:type="textualrepresentation:Value" expression="Zuweisung"/>
+              <content xsi:type="textualrepresentation:Literal" expression=";"/>
+            </dslVisualizer>
+          </visualizer>
+        </content>
+        <content xsi:type="PLM:Connection">
+          <participation destination="/0/@ontologies.0/@content.0/@content.28"/>
+          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.0"/>
+        </content>
+        <content xsi:type="PLM:Entity" name="Repetition1">
+          <visualizer>
+            <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="/0/@ontologies.0/@content.0/@content.30">
+              <content xsi:type="textualrepresentation:Value" expression="Group0"/>
+            </dslVisualizer>
+          </visualizer>
+        </content>
+        <content xsi:type="PLM:Connection">
+          <participation destination="/0/@ontologies.0/@content.0/@content.30"/>
+          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.1"/>
+        </content>
+        <content xsi:type="PLM:Entity" name="Repetition2">
+          <visualizer>
+            <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="/0/@ontologies.0/@content.0/@content.32">
+              <content xsi:type="textualrepresentation:Value" expression="Ziffer"/>
+            </dslVisualizer>
+          </visualizer>
+        </content>
+        <content xsi:type="PLM:Connection">
+          <participation destination="/0/@ontologies.0/@content.0/@content.32"/>
+          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.2"/>
+        </content>
+        <content xsi:type="PLM:Entity" name="Repetition3">
+          <visualizer>
+            <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="/0/@ontologies.0/@content.0/@content.34"/>
+          </visualizer>
+        </content>
+        <content xsi:type="PLM:Connection">
+          <participation destination="/0/@ontologies.0/@content.0/@content.34"/>
+          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.3"/>
+        </content>
+        <content xsi:type="PLM:Entity" name="Repetition4">
+          <visualizer>
+            <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="/0/@ontologies.0/@content.0/@content.36"/>
+          </visualizer>
+        </content>
+        <content xsi:type="PLM:Connection">
+          <participation destination="/0/@ontologies.0/@content.0/@content.36"/>
+          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.8"/>
+        </content>
+        <content xsi:type="PLM:Entity" name="Option0">
+          <visualizer>
+            <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="/0/@ontologies.0/@content.0/@content.38">
+              <content xsi:type="textualrepresentation:Literal" expression="-"/>
+            </dslVisualizer>
+          </visualizer>
+        </content>
+        <content xsi:type="PLM:Connection">
+          <participation upper="1" destination="/0/@ontologies.0/@content.0/@content.38"/>
+          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.2"/>
+        </content>
       </content>
-      <content xsi:type="PLM:Entity" name="Bezeichner">
-        <visualizer>
-          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.1"/>
-        </visualizer>
-      </content>
-      <content xsi:type="PLM:Entity" name="Zahl">
-        <visualizer>
-          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.2"/>
-        </visualizer>
-      </content>
-      <content xsi:type="PLM:Entity" name="String">
-        <visualizer>
-          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.3"/>
-        </visualizer>
-      </content>
-      <content xsi:type="PLM:Entity" name="Zuweisung">
-        <visualizer>
-          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.4"/>
-        </visualizer>
-      </content>
-      <content xsi:type="PLM:Entity" name="Buchstabe">
-        <visualizer>
-          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.5"/>
-        </visualizer>
-      </content>
-      <content xsi:type="PLM:Entity" name="Ziffer">
-        <visualizer>
-          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.6"/>
-        </visualizer>
-      </content>
-      <content xsi:type="PLM:Entity" name="AlleZeichen">
-        <visualizer>
-          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.7"/>
-        </visualizer>
-      </content>
-      <content xsi:type="PLM:Entity" name="Test">
-        <visualizer>
-          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.8"/>
-        </visualizer>
-      </content>
-    </content>
-  </ontologies>
-</PLM:Domain>
+    </ontologies>
+  </PLM:Domain>
+  <textualrepresentation:Literal expression="&quot;"/>
+  <textualrepresentation:Literal expression="A"/>
+  <textualrepresentation:Literal expression="B"/>
+  <textualrepresentation:Literal expression="C"/>
+  <textualrepresentation:Literal expression="D"/>
+  <textualrepresentation:Literal expression="E"/>
+  <textualrepresentation:Literal expression="F"/>
+  <textualrepresentation:Literal expression="G"/>
+  <textualrepresentation:Literal expression="H"/>
+  <textualrepresentation:Literal expression="I"/>
+  <textualrepresentation:Literal expression="J"/>
+  <textualrepresentation:Literal expression="K"/>
+  <textualrepresentation:Literal expression="L"/>
+  <textualrepresentation:Literal expression="M"/>
+  <textualrepresentation:Literal expression="N"/>
+  <textualrepresentation:Literal expression="O"/>
+  <textualrepresentation:Literal expression="P"/>
+  <textualrepresentation:Literal expression="Q"/>
+  <textualrepresentation:Literal expression="R"/>
+  <textualrepresentation:Literal expression="S"/>
+  <textualrepresentation:Literal expression="T"/>
+  <textualrepresentation:Literal expression="U"/>
+  <textualrepresentation:Literal expression="V"/>
+  <textualrepresentation:Literal expression="W"/>
+  <textualrepresentation:Literal expression="X"/>
+  <textualrepresentation:Literal expression="Y"/>
+  <textualrepresentation:Literal expression="Z"/>
+  <textualrepresentation:Literal expression="0"/>
+  <textualrepresentation:Literal expression="1"/>
+  <textualrepresentation:Literal expression="2"/>
+  <textualrepresentation:Literal expression="3"/>
+  <textualrepresentation:Literal expression="4"/>
+  <textualrepresentation:Literal expression="5"/>
+  <textualrepresentation:Literal expression="6"/>
+  <textualrepresentation:Literal expression="7"/>
+  <textualrepresentation:Literal expression="8"/>
+  <textualrepresentation:Literal expression="9"/>
+  <textualrepresentation:Literal expression="asd"/>
+  <textualrepresentation:Literal expression="asadas"/>
+  <textualrepresentation:Value expression="AlleZeichen"/>
+  <textualrepresentation:Value expression="AlleZeichen"/>
+  <textualrepresentation:Value expression="Group2"/>
+</xmi:XMI>

@@ -167,13 +167,31 @@ public interface EbnfmmPackage extends EPackage {
 	int SYMBOL__FACTOR = 0;
 
 	/**
+	 * The feature id for the '<em><b>Containing Non Terminal</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYMBOL__CONTAINING_NON_TERMINAL = 1;
+
+	/**
+	 * The feature id for the '<em><b>Containing Control</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYMBOL__CONTAINING_CONTROL = 2;
+
+	/**
 	 * The number of structural features of the '<em>Symbol</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SYMBOL_FEATURE_COUNT = 1;
+	int SYMBOL_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Symbol</em>' class.
@@ -202,6 +220,24 @@ public interface EbnfmmPackage extends EPackage {
 	 * @ordered
 	 */
 	int TERMINAL__FACTOR = SYMBOL__FACTOR;
+
+	/**
+	 * The feature id for the '<em><b>Containing Non Terminal</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERMINAL__CONTAINING_NON_TERMINAL = SYMBOL__CONTAINING_NON_TERMINAL;
+
+	/**
+	 * The feature id for the '<em><b>Containing Control</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERMINAL__CONTAINING_CONTROL = SYMBOL__CONTAINING_CONTROL;
 
 	/**
 	 * The feature id for the '<em><b>Terminal String</b></em>' attribute.
@@ -250,6 +286,24 @@ public interface EbnfmmPackage extends EPackage {
 	int CONTROL__FACTOR = SYMBOL__FACTOR;
 
 	/**
+	 * The feature id for the '<em><b>Containing Non Terminal</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL__CONTAINING_NON_TERMINAL = SYMBOL__CONTAINING_NON_TERMINAL;
+
+	/**
+	 * The feature id for the '<em><b>Containing Control</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL__CONTAINING_CONTROL = SYMBOL__CONTAINING_CONTROL;
+
+	/**
 	 * The feature id for the '<em><b>Definition List</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -294,6 +348,24 @@ public interface EbnfmmPackage extends EPackage {
 	 * @ordered
 	 */
 	int OPTION__FACTOR = CONTROL__FACTOR;
+
+	/**
+	 * The feature id for the '<em><b>Containing Non Terminal</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPTION__CONTAINING_NON_TERMINAL = CONTROL__CONTAINING_NON_TERMINAL;
+
+	/**
+	 * The feature id for the '<em><b>Containing Control</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPTION__CONTAINING_CONTROL = CONTROL__CONTAINING_CONTROL;
 
 	/**
 	 * The feature id for the '<em><b>Definition List</b></em>' containment reference list.
@@ -342,6 +414,24 @@ public interface EbnfmmPackage extends EPackage {
 	int REPETITION__FACTOR = CONTROL__FACTOR;
 
 	/**
+	 * The feature id for the '<em><b>Containing Non Terminal</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPETITION__CONTAINING_NON_TERMINAL = CONTROL__CONTAINING_NON_TERMINAL;
+
+	/**
+	 * The feature id for the '<em><b>Containing Control</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPETITION__CONTAINING_CONTROL = CONTROL__CONTAINING_CONTROL;
+
+	/**
 	 * The feature id for the '<em><b>Definition List</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -386,6 +476,24 @@ public interface EbnfmmPackage extends EPackage {
 	 * @ordered
 	 */
 	int NON_TERMINAL_REFERENCE__FACTOR = SYMBOL__FACTOR;
+
+	/**
+	 * The feature id for the '<em><b>Containing Non Terminal</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NON_TERMINAL_REFERENCE__CONTAINING_NON_TERMINAL = SYMBOL__CONTAINING_NON_TERMINAL;
+
+	/**
+	 * The feature id for the '<em><b>Containing Control</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NON_TERMINAL_REFERENCE__CONTAINING_CONTROL = SYMBOL__CONTAINING_CONTROL;
 
 	/**
 	 * The feature id for the '<em><b>Non Terminal</b></em>' reference.
@@ -434,6 +542,24 @@ public interface EbnfmmPackage extends EPackage {
 	int GROUP__FACTOR = CONTROL__FACTOR;
 
 	/**
+	 * The feature id for the '<em><b>Containing Non Terminal</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GROUP__CONTAINING_NON_TERMINAL = CONTROL__CONTAINING_NON_TERMINAL;
+
+	/**
+	 * The feature id for the '<em><b>Containing Control</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GROUP__CONTAINING_CONTROL = CONTROL__CONTAINING_CONTROL;
+
+	/**
 	 * The feature id for the '<em><b>Definition List</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -480,6 +606,24 @@ public interface EbnfmmPackage extends EPackage {
 	int SPECIAL_SEQUENCE__FACTOR = SYMBOL__FACTOR;
 
 	/**
+	 * The feature id for the '<em><b>Containing Non Terminal</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIAL_SEQUENCE__CONTAINING_NON_TERMINAL = SYMBOL__CONTAINING_NON_TERMINAL;
+
+	/**
+	 * The feature id for the '<em><b>Containing Control</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIAL_SEQUENCE__CONTAINING_CONTROL = SYMBOL__CONTAINING_CONTROL;
+
+	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -524,6 +668,24 @@ public interface EbnfmmPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXCEPT__FACTOR = CONTROL__FACTOR;
+
+	/**
+	 * The feature id for the '<em><b>Containing Non Terminal</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXCEPT__CONTAINING_NON_TERMINAL = CONTROL__CONTAINING_NON_TERMINAL;
+
+	/**
+	 * The feature id for the '<em><b>Containing Control</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXCEPT__CONTAINING_CONTROL = CONTROL__CONTAINING_CONTROL;
 
 	/**
 	 * The feature id for the '<em><b>Definition List</b></em>' containment reference list.
@@ -580,6 +742,24 @@ public interface EbnfmmPackage extends EPackage {
 	 * @ordered
 	 */
 	int CHOOSE__FACTOR = CONTROL__FACTOR;
+
+	/**
+	 * The feature id for the '<em><b>Containing Non Terminal</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOOSE__CONTAINING_NON_TERMINAL = CONTROL__CONTAINING_NON_TERMINAL;
+
+	/**
+	 * The feature id for the '<em><b>Containing Control</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOOSE__CONTAINING_CONTROL = CONTROL__CONTAINING_CONTROL;
 
 	/**
 	 * The feature id for the '<em><b>Definition List</b></em>' containment reference list.
@@ -682,6 +862,28 @@ public interface EbnfmmPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getSymbol_Factor();
+
+	/**
+	 * Returns the meta object for the container reference '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Symbol#getContainingNonTerminal <em>Containing Non Terminal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Containing Non Terminal</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Symbol#getContainingNonTerminal()
+	 * @see #getSymbol()
+	 * @generated
+	 */
+	EReference getSymbol_ContainingNonTerminal();
+
+	/**
+	 * Returns the meta object for the container reference '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Symbol#getContainingControl <em>Containing Control</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Containing Control</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Symbol#getContainingControl()
+	 * @see #getSymbol()
+	 * @generated
+	 */
+	EReference getSymbol_ContainingControl();
 
 	/**
 	 * Returns the meta object for class '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Terminal <em>Terminal</em>}'.
@@ -912,6 +1114,22 @@ public interface EbnfmmPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SYMBOL__FACTOR = eINSTANCE.getSymbol_Factor();
+
+		/**
+		 * The meta object literal for the '<em><b>Containing Non Terminal</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SYMBOL__CONTAINING_NON_TERMINAL = eINSTANCE.getSymbol_ContainingNonTerminal();
+
+		/**
+		 * The meta object literal for the '<em><b>Containing Control</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SYMBOL__CONTAINING_CONTROL = eINSTANCE.getSymbol_ContainingControl();
 
 		/**
 		 * The meta object literal for the '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.TerminalImpl <em>Terminal</em>}' class.

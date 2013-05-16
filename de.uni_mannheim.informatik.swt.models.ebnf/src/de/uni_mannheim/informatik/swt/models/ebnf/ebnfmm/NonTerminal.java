@@ -61,6 +61,7 @@ public interface NonTerminal extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Definition List</b></em>' containment reference list.
 	 * The list contents are of type {@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Symbol}.
+	 * It is bidirectional and its opposite is '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Symbol#getContainingNonTerminal <em>Containing Non Terminal</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Definition List</em>' containment reference list isn't clear,
@@ -69,7 +70,8 @@ public interface NonTerminal extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Definition List</em>' containment reference list.
 	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.EbnfmmPackage#getNonTerminal_DefinitionList()
-	 * @model containment="true" required="true"
+	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Symbol#getContainingNonTerminal
+	 * @model opposite="containingNonTerminal" containment="true" required="true"
 	 * @generated
 	 */
 	EList<Symbol> getDefinitionList();

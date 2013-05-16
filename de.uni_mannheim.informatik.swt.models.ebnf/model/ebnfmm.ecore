@@ -9,10 +9,14 @@
   <eClassifiers xsi:type="ecore:EClass" name="NonTerminal">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="definitionList" lowerBound="1"
-        upperBound="-1" eType="#//Symbol" containment="true"/>
+        upperBound="-1" eType="#//Symbol" containment="true" eOpposite="#//Symbol/containingNonTerminal"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Symbol" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="factor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="containingNonTerminal"
+        eType="#//NonTerminal" eOpposite="#//NonTerminal/definitionList"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="containingControl" eType="#//Control"
+        eOpposite="#//Control/definitionList"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Terminal" eSuperTypes="#//Symbol">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="terminalString" lowerBound="1"
@@ -20,7 +24,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Control" abstract="true" eSuperTypes="#//Symbol">
     <eStructuralFeatures xsi:type="ecore:EReference" name="definitionList" upperBound="-1"
-        eType="#//Symbol" containment="true"/>
+        eType="#//Symbol" containment="true" eOpposite="#//Symbol/containingControl"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Option" eSuperTypes="#//Control"/>
   <eClassifiers xsi:type="ecore:EClass" name="Repetition" eSuperTypes="#//Control"/>

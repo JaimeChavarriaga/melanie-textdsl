@@ -15,8 +15,60 @@
 -- @path EBNF=/de.uni_mannheim.informatik.swt.models.ebnf/model/ebnfmm.ecore
 
 
+-- TODO: FIX FOR MORE THAN ONE OCCURENCE OF NONTERMINALREFERENCE IN BODY
+-- 			USE COUNTER AFTER EACH VALUE EXPRESSION!!!
+
 module ebnf2lml;
 create OUT: PLM from IN: EBNF;
+
+-- counter helpers
+helper def: counterGroup: Integer =
+	0;
+
+helper def: counterRep: Integer =
+	0;
+
+helper def: counterOption: Integer =
+	0;
+
+-- filtered list for Controls
+helper context EBNF!Control def: filteredDefList: Sequence(EBNF!Symbol) =
+	self.definitionList -> select(x | x.oclIsTypeOf(EBNF!Terminal) or x.
+			oclIsTypeOf(EBNF!NonTerminalReference) or x.oclIsTypeOf(EBNF!Group) or x.
+			oclIsTypeOf(EBNF!Choose) or x.oclIsTypeOf(EBNF!Choose) or x.oclIsTypeOf(EBNF!Option));
+
+-- filtered list for NonTerminals
+helper context EBNF!NonTerminal def: filteredDefList: Sequence(EBNF!Symbol) =
+	self.definitionList -> select(x | x.oclIsTypeOf(EBNF!Terminal) or x.
+			oclIsTypeOf(EBNF!NonTerminalReference) or x.oclIsTypeOf(EBNF!Group) or x.
+			oclIsTypeOf(EBNF!Repetition) or x.oclIsTypeOf(EBNF!Choose) or x.oclIsTypeOf(EBNF!Option));
+
+-- get container
+-- TODO: FIX FOR CONTROLS AS CONTAINERS
+helper context EBNF!Symbol def: container: OclAny =
+	if self.containingNonTerminal.oclIsUndefined() then
+		if self.containingControl.oclIsTypeOf(EBNF!Repetition)
+			or self.containingControl.oclIsTypeOf(EBNF!Group)
+			or self.containingControl.oclIsTypeOf(EBNF!Option)
+		then
+			-- find the containing PLM!Entity
+			-- analyze syntax of ATL
+			-- self.containingControl
+			OclUndefined
+		else
+			OclUndefined
+		endif
+	else
+		self.containingNonTerminal
+	endif;
+
+
+helper context EBNF!Symbol def: calculatedFactor: Integer =
+	if self.factor = 0 then
+		1
+	else
+		self.factor
+	endif;
 
 rule NonTerminal2Entity {
 	from
@@ -27,9 +79,176 @@ rule NonTerminal2Entity {
 			_l_.visualizer <- Sequence{ l }
 		),
 		l: PLM!LMLVisualizer (
+			dslVisualizer <- Sequence{v}
+		),
+		v: PLM!TextualDSLVisualizer (
+			root <- e,
+			content <- r.filteredDefList
+		)
+}
+
+rule Terminal2Literal {
+	from
+		r: EBNF!Terminal
+	to
+		e: PLM!Literal (
+			expression <- r.terminalString
+		)
+}
+
+rule NonTerminalReference2Value {
+	from
+		r: EBNF!NonTerminalReference
+	to
+		e: PLM!Value (
+			expression <- r.nonTerminal.id
+		),
+		-- REFERENCE
+		p1: PLM!Participation (
+			-- _l_.destination <- if r.nonTerminal.containingNonTerminal.oclIsUndefined()
+					-- then r.nonTerminal.containingControl else
+					-- r.nonTerminal.containingNonTerminal endif
+			lower <- r.calculatedFactor,
+			upper <- r.calculatedFactor,
+			destination <- r.nonTerminal
+		),
+		-- CONTAINER (Control or NonTerminal)
+		p2: PLM!Participation (
+			-- TODO: implement for containingControl
+			lower <- 1,
+			upper <- 1,
+			destination <- r.container
+		),
+		c: PLM!Connection(
+			_l_.participation <- Sequence{p1, p2}
+		)
+}
+
+rule Group2Entity {
+	from
+		r: EBNF!Group
+	to
+		val: PLM!Value(
+			expression <- 'Group'.concat(thisModule.counterGroup->toString())	
+		),
+		e: PLM!Entity (
+			_l_.name <- 'Group'.concat(thisModule.counterGroup->toString()),
+			_l_.visualizer <- Sequence{ l }
+		),
+		l: PLM!LMLVisualizer (
 			dslVisualizer <- Sequence { v }
 		),
 		v: PLM!TextualDSLVisualizer (
-			root <- e 
+			root <- e,
+			content <- r.filteredDefList
+		),
+		-- REFERENCE
+		p1: PLM!Participation(
+			-- _l_.destination <- if r.nonTerminal.containingNonTerminal.oclIsUndefined()
+					-- then r.nonTerminal.containingControl else
+					-- r.nonTerminal.containingNonTerminal endif
+			lower <- r.calculatedFactor,
+			upper <- r.calculatedFactor,
+			destination <- e
+		),
+		-- CONTAINER (Control or NonTerminal)
+		p2: PLM!Participation(
+			-- TODO: implement for containingControl
+			lower <- 1,
+			upper <- 1,
+			destination <- r.container
+		),
+		c: PLM!Connection(
+			_l_.participation <- Sequence{p1, p2}
+		)
+	do {
+		thisModule.counterGroup <- thisModule.counterGroup + 1;
+	}
+}
+
+rule Repetition2Entity{
+	from
+		r: EBNF!Repetition
+	to
+		val: PLM!Value(
+			expression <- 'Repetition'.concat(thisModule.counterRep->toString())	
+		),
+		e: PLM!Entity (
+			_l_.name <- 'Repetition'.concat(thisModule.counterRep->toString()),
+			_l_.visualizer <- Sequence{ l }
+		),
+		l: PLM!LMLVisualizer (
+			dslVisualizer <- Sequence { v }
+		),
+		v: PLM!TextualDSLVisualizer (
+			root <- e,
+			content <- r.filteredDefList
+		),
+		-- REFERENCE
+		p1: PLM!Participation(
+			lower <- 0,
+			upper <- -1,
+			destination <- e
+		),
+		-- CONTAINER (Control or NonTerminal)
+		p2: PLM!Participation(
+			lower <- 1,
+			upper <- 1,
+			destination <- r.container
+		),
+		c: PLM!Connection(
+			_l_.participation <- Sequence{p1, p2}
+		)
+	do {
+		thisModule.counterRep <- thisModule.counterRep + 1;
+	}
+}
+
+rule Option2Entity{
+	from
+		r: EBNF!Option
+	to
+		val: PLM!Value(
+			expression <- 'Option'.concat(thisModule.counterOption->toString())	
+		),
+		e: PLM!Entity (
+			_l_.name <- 'Option'.concat(thisModule.counterOption->toString()),
+			_l_.visualizer <- Sequence{ l }
+		),
+		l: PLM!LMLVisualizer (
+			dslVisualizer <- Sequence { v }
+		),
+		v: PLM!TextualDSLVisualizer (
+			root <- e,
+			content <- r.filteredDefList
+		),
+		-- REFERENCE
+		p1: PLM!Participation(
+			lower <- 0,
+			upper <- 1,
+			destination <- e
+		),
+		-- CONTAINER (Control or NonTerminal)
+		p2: PLM!Participation(
+			lower <- 1,
+			upper <- 1,
+			destination <- r.container
+		),
+		c: PLM!Connection(
+			_l_.participation <- Sequence{p1, p2}
+		)
+	do {
+		thisModule.counterOption <- thisModule.counterOption + 1;
+	}
+}
+
+
+rule Choose2Inheritance {
+	from
+		r: EBNF!Choose
+	to
+		val: PLM!ValueChoice (
+			choices <- r.filteredDefList -> select(e | not e.
+					oclIsTypeOf(EBNF!Terminal))
 		)
 }
