@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ebnfmm:EBNFDescription xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ebnfmm="http://swt.informatik.uni-mannheim.de/ebnfmm">
+  <rules id="A">
+    <definitionList xsi:type="ebnfmm:Choose">
+      <definitionList xsi:type="ebnfmm:NonTerminalReference" factor="3" nonTerminal="//@rules.1"/>
+      <definitionList xsi:type="ebnfmm:NonTerminalReference" factor="4" nonTerminal="//@rules.2"/>
+      <definitionList xsi:type="ebnfmm:Terminal" factor="4" terminalString="A"/>
+    </definitionList>
+  </rules>
+  <rules id="B">
+    <definitionList xsi:type="ebnfmm:Group">
+      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.2"/>
+      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.3"/>
+      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.2"/>
+    </definitionList>
+  </rules>
+  <rules id="C">
+    <definitionList xsi:type="ebnfmm:Terminal" terminalString="c"/>
+  </rules>
+  <rules id="D">
+    <definitionList xsi:type="ebnfmm:Terminal" terminalString="d"/>
+  </rules>
+  <rules id="E">
+    <definitionList xsi:type="ebnfmm:Group">
+      <definitionList xsi:type="ebnfmm:Group" factor="5">
+        <definitionList xsi:type="ebnfmm:Group">
+          <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.0"/>
+          <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.1"/>
+        </definitionList>
+      </definitionList>
+      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.2"/>
+    </definitionList>
+  </rules>
+</ebnfmm:EBNFDescription>

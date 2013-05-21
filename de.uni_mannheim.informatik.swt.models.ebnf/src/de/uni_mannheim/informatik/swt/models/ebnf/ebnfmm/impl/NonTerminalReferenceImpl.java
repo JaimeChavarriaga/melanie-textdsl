@@ -34,7 +34,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class NonTerminalReferenceImpl extends SymbolImpl implements NonTerminalReference {
+public class NonTerminalReferenceImpl extends FactorableSymbolImpl implements NonTerminalReference {
 	/**
 	 * The cached value of the '{@link #getNonTerminal() <em>Non Terminal</em>}' reference.
 	 * <!-- begin-user-doc -->

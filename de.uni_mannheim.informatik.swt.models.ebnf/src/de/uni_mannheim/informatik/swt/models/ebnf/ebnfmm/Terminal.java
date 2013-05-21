@@ -27,7 +27,8 @@ package de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm;
  * @model
  * @generated
  */
-public interface Terminal extends Symbol {
+public interface Terminal extends FactorableSymbol {
+
 	/**
 	 * Returns the value of the '<em><b>Terminal String</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -39,7 +40,7 @@ public interface Terminal extends Symbol {
 	 * @return the value of the '<em>Terminal String</em>' attribute.
 	 * @see #setTerminalString(String)
 	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.EbnfmmPackage#getTerminal_TerminalString()
-	 * @model required="true"
+	 * @model
 	 * @generated
 	 */
 	String getTerminalString();
@@ -53,5 +54,4 @@ public interface Terminal extends Symbol {
 	 * @generated
 	 */
 	void setTerminalString(String value);
-
 } // Terminal

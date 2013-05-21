@@ -95,6 +95,7 @@ public class EbnfmmSwitch<T> extends Switch<T> {
 			case EbnfmmPackage.TERMINAL: {
 				Terminal terminal = (Terminal)theEObject;
 				T result = caseTerminal(terminal);
+				if (result == null) result = caseFactorableSymbol(terminal);
 				if (result == null) result = caseSymbol(terminal);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -102,6 +103,7 @@ public class EbnfmmSwitch<T> extends Switch<T> {
 			case EbnfmmPackage.CONTROL: {
 				Control control = (Control)theEObject;
 				T result = caseControl(control);
+				if (result == null) result = caseFactorableSymbol(control);
 				if (result == null) result = caseSymbol(control);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -110,6 +112,7 @@ public class EbnfmmSwitch<T> extends Switch<T> {
 				Option option = (Option)theEObject;
 				T result = caseOption(option);
 				if (result == null) result = caseControl(option);
+				if (result == null) result = caseFactorableSymbol(option);
 				if (result == null) result = caseSymbol(option);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -118,6 +121,7 @@ public class EbnfmmSwitch<T> extends Switch<T> {
 				Repetition repetition = (Repetition)theEObject;
 				T result = caseRepetition(repetition);
 				if (result == null) result = caseControl(repetition);
+				if (result == null) result = caseFactorableSymbol(repetition);
 				if (result == null) result = caseSymbol(repetition);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -125,6 +129,7 @@ public class EbnfmmSwitch<T> extends Switch<T> {
 			case EbnfmmPackage.NON_TERMINAL_REFERENCE: {
 				NonTerminalReference nonTerminalReference = (NonTerminalReference)theEObject;
 				T result = caseNonTerminalReference(nonTerminalReference);
+				if (result == null) result = caseFactorableSymbol(nonTerminalReference);
 				if (result == null) result = caseSymbol(nonTerminalReference);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -133,6 +138,7 @@ public class EbnfmmSwitch<T> extends Switch<T> {
 				Group group = (Group)theEObject;
 				T result = caseGroup(group);
 				if (result == null) result = caseControl(group);
+				if (result == null) result = caseFactorableSymbol(group);
 				if (result == null) result = caseSymbol(group);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -140,6 +146,7 @@ public class EbnfmmSwitch<T> extends Switch<T> {
 			case EbnfmmPackage.SPECIAL_SEQUENCE: {
 				SpecialSequence specialSequence = (SpecialSequence)theEObject;
 				T result = caseSpecialSequence(specialSequence);
+				if (result == null) result = caseFactorableSymbol(specialSequence);
 				if (result == null) result = caseSymbol(specialSequence);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -148,6 +155,7 @@ public class EbnfmmSwitch<T> extends Switch<T> {
 				Except except = (Except)theEObject;
 				T result = caseExcept(except);
 				if (result == null) result = caseControl(except);
+				if (result == null) result = caseFactorableSymbol(except);
 				if (result == null) result = caseSymbol(except);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -155,8 +163,14 @@ public class EbnfmmSwitch<T> extends Switch<T> {
 			case EbnfmmPackage.CHOOSE: {
 				Choose choose = (Choose)theEObject;
 				T result = caseChoose(choose);
-				if (result == null) result = caseControl(choose);
 				if (result == null) result = caseSymbol(choose);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EbnfmmPackage.FACTORABLE_SYMBOL: {
+				FactorableSymbol factorableSymbol = (FactorableSymbol)theEObject;
+				T result = caseFactorableSymbol(factorableSymbol);
+				if (result == null) result = caseSymbol(factorableSymbol);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -341,6 +355,21 @@ public class EbnfmmSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseChoose(Choose object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Factorable Symbol</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Factorable Symbol</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFactorableSymbol(FactorableSymbol object) {
 		return null;
 	}
 

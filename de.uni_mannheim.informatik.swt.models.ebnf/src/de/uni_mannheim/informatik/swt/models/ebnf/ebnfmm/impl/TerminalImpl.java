@@ -14,9 +14,7 @@ import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.EbnfmmPackage;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Terminal;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
@@ -32,7 +30,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class TerminalImpl extends SymbolImpl implements Terminal {
+public class TerminalImpl extends FactorableSymbolImpl implements Terminal {
 	/**
 	 * The default value of the '{@link #getTerminalString() <em>Terminal String</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -42,7 +40,6 @@ public class TerminalImpl extends SymbolImpl implements Terminal {
 	 * @ordered
 	 */
 	protected static final String TERMINAL_STRING_EDEFAULT = null;
-
 	/**
 	 * The cached value of the '{@link #getTerminalString() <em>Terminal String</em>}' attribute.
 	 * <!-- begin-user-doc -->

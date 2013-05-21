@@ -12,6 +12,7 @@ package de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -29,6 +30,7 @@ import org.eclipse.emf.ecore.EReference;
  * <!-- end-user-doc -->
  * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.EbnfmmFactory
  * @model kind="package"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore invocationDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL'"
  * @generated
  */
 public interface EbnfmmPackage extends EPackage {
@@ -158,22 +160,13 @@ public interface EbnfmmPackage extends EPackage {
 	int SYMBOL = 2;
 
 	/**
-	 * The feature id for the '<em><b>Factor</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SYMBOL__FACTOR = 0;
-
-	/**
 	 * The feature id for the '<em><b>Containing Non Terminal</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SYMBOL__CONTAINING_NON_TERMINAL = 1;
+	int SYMBOL__CONTAINING_NON_TERMINAL = 0;
 
 	/**
 	 * The feature id for the '<em><b>Containing Control</b></em>' container reference.
@@ -182,7 +175,16 @@ public interface EbnfmmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SYMBOL__CONTAINING_CONTROL = 2;
+	int SYMBOL__CONTAINING_CONTROL = 1;
+
+	/**
+	 * The feature id for the '<em><b>Containing Choose</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYMBOL__CONTAINING_CHOOSE = 2;
 
 	/**
 	 * The number of structural features of the '<em>Symbol</em>' class.
@@ -194,13 +196,95 @@ public interface EbnfmmPackage extends EPackage {
 	int SYMBOL_FEATURE_COUNT = 3;
 
 	/**
+	 * The operation id for the '<em>Is Contained By Choose</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYMBOL___IS_CONTAINED_BY_CHOOSE = 0;
+
+	/**
 	 * The number of operations of the '<em>Symbol</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SYMBOL_OPERATION_COUNT = 0;
+	int SYMBOL_OPERATION_COUNT = 1;
+
+	/**
+	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.FactorableSymbolImpl <em>Factorable Symbol</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.FactorableSymbolImpl
+	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.EbnfmmPackageImpl#getFactorableSymbol()
+	 * @generated
+	 */
+	int FACTORABLE_SYMBOL = 12;
+
+	/**
+	 * The feature id for the '<em><b>Containing Non Terminal</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FACTORABLE_SYMBOL__CONTAINING_NON_TERMINAL = SYMBOL__CONTAINING_NON_TERMINAL;
+
+	/**
+	 * The feature id for the '<em><b>Containing Control</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FACTORABLE_SYMBOL__CONTAINING_CONTROL = SYMBOL__CONTAINING_CONTROL;
+
+	/**
+	 * The feature id for the '<em><b>Containing Choose</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FACTORABLE_SYMBOL__CONTAINING_CHOOSE = SYMBOL__CONTAINING_CHOOSE;
+
+	/**
+	 * The feature id for the '<em><b>Factor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FACTORABLE_SYMBOL__FACTOR = SYMBOL_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Factorable Symbol</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FACTORABLE_SYMBOL_FEATURE_COUNT = SYMBOL_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Is Contained By Choose</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FACTORABLE_SYMBOL___IS_CONTAINED_BY_CHOOSE = SYMBOL___IS_CONTAINED_BY_CHOOSE;
+
+	/**
+	 * The number of operations of the '<em>Factorable Symbol</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FACTORABLE_SYMBOL_OPERATION_COUNT = SYMBOL_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.TerminalImpl <em>Terminal</em>}' class.
@@ -213,22 +297,13 @@ public interface EbnfmmPackage extends EPackage {
 	int TERMINAL = 3;
 
 	/**
-	 * The feature id for the '<em><b>Factor</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TERMINAL__FACTOR = SYMBOL__FACTOR;
-
-	/**
 	 * The feature id for the '<em><b>Containing Non Terminal</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TERMINAL__CONTAINING_NON_TERMINAL = SYMBOL__CONTAINING_NON_TERMINAL;
+	int TERMINAL__CONTAINING_NON_TERMINAL = FACTORABLE_SYMBOL__CONTAINING_NON_TERMINAL;
 
 	/**
 	 * The feature id for the '<em><b>Containing Control</b></em>' container reference.
@@ -237,7 +312,25 @@ public interface EbnfmmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TERMINAL__CONTAINING_CONTROL = SYMBOL__CONTAINING_CONTROL;
+	int TERMINAL__CONTAINING_CONTROL = FACTORABLE_SYMBOL__CONTAINING_CONTROL;
+
+	/**
+	 * The feature id for the '<em><b>Containing Choose</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERMINAL__CONTAINING_CHOOSE = FACTORABLE_SYMBOL__CONTAINING_CHOOSE;
+
+	/**
+	 * The feature id for the '<em><b>Factor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERMINAL__FACTOR = FACTORABLE_SYMBOL__FACTOR;
 
 	/**
 	 * The feature id for the '<em><b>Terminal String</b></em>' attribute.
@@ -246,7 +339,7 @@ public interface EbnfmmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TERMINAL__TERMINAL_STRING = SYMBOL_FEATURE_COUNT + 0;
+	int TERMINAL__TERMINAL_STRING = FACTORABLE_SYMBOL_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Terminal</em>' class.
@@ -255,7 +348,16 @@ public interface EbnfmmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TERMINAL_FEATURE_COUNT = SYMBOL_FEATURE_COUNT + 1;
+	int TERMINAL_FEATURE_COUNT = FACTORABLE_SYMBOL_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Is Contained By Choose</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERMINAL___IS_CONTAINED_BY_CHOOSE = FACTORABLE_SYMBOL___IS_CONTAINED_BY_CHOOSE;
 
 	/**
 	 * The number of operations of the '<em>Terminal</em>' class.
@@ -264,7 +366,7 @@ public interface EbnfmmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TERMINAL_OPERATION_COUNT = SYMBOL_OPERATION_COUNT + 0;
+	int TERMINAL_OPERATION_COUNT = FACTORABLE_SYMBOL_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.ControlImpl <em>Control</em>}' class.
@@ -277,22 +379,13 @@ public interface EbnfmmPackage extends EPackage {
 	int CONTROL = 4;
 
 	/**
-	 * The feature id for the '<em><b>Factor</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTROL__FACTOR = SYMBOL__FACTOR;
-
-	/**
 	 * The feature id for the '<em><b>Containing Non Terminal</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTROL__CONTAINING_NON_TERMINAL = SYMBOL__CONTAINING_NON_TERMINAL;
+	int CONTROL__CONTAINING_NON_TERMINAL = FACTORABLE_SYMBOL__CONTAINING_NON_TERMINAL;
 
 	/**
 	 * The feature id for the '<em><b>Containing Control</b></em>' container reference.
@@ -301,7 +394,25 @@ public interface EbnfmmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTROL__CONTAINING_CONTROL = SYMBOL__CONTAINING_CONTROL;
+	int CONTROL__CONTAINING_CONTROL = FACTORABLE_SYMBOL__CONTAINING_CONTROL;
+
+	/**
+	 * The feature id for the '<em><b>Containing Choose</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL__CONTAINING_CHOOSE = FACTORABLE_SYMBOL__CONTAINING_CHOOSE;
+
+	/**
+	 * The feature id for the '<em><b>Factor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL__FACTOR = FACTORABLE_SYMBOL__FACTOR;
 
 	/**
 	 * The feature id for the '<em><b>Definition List</b></em>' containment reference list.
@@ -310,7 +421,7 @@ public interface EbnfmmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTROL__DEFINITION_LIST = SYMBOL_FEATURE_COUNT + 0;
+	int CONTROL__DEFINITION_LIST = FACTORABLE_SYMBOL_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Control</em>' class.
@@ -319,7 +430,16 @@ public interface EbnfmmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTROL_FEATURE_COUNT = SYMBOL_FEATURE_COUNT + 1;
+	int CONTROL_FEATURE_COUNT = FACTORABLE_SYMBOL_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Is Contained By Choose</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL___IS_CONTAINED_BY_CHOOSE = FACTORABLE_SYMBOL___IS_CONTAINED_BY_CHOOSE;
 
 	/**
 	 * The number of operations of the '<em>Control</em>' class.
@@ -328,7 +448,7 @@ public interface EbnfmmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTROL_OPERATION_COUNT = SYMBOL_OPERATION_COUNT + 0;
+	int CONTROL_OPERATION_COUNT = FACTORABLE_SYMBOL_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.OptionImpl <em>Option</em>}' class.
@@ -339,15 +459,6 @@ public interface EbnfmmPackage extends EPackage {
 	 * @generated
 	 */
 	int OPTION = 5;
-
-	/**
-	 * The feature id for the '<em><b>Factor</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPTION__FACTOR = CONTROL__FACTOR;
 
 	/**
 	 * The feature id for the '<em><b>Containing Non Terminal</b></em>' container reference.
@@ -368,6 +479,24 @@ public interface EbnfmmPackage extends EPackage {
 	int OPTION__CONTAINING_CONTROL = CONTROL__CONTAINING_CONTROL;
 
 	/**
+	 * The feature id for the '<em><b>Containing Choose</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPTION__CONTAINING_CHOOSE = CONTROL__CONTAINING_CHOOSE;
+
+	/**
+	 * The feature id for the '<em><b>Factor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPTION__FACTOR = CONTROL__FACTOR;
+
+	/**
 	 * The feature id for the '<em><b>Definition List</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -384,6 +513,15 @@ public interface EbnfmmPackage extends EPackage {
 	 * @ordered
 	 */
 	int OPTION_FEATURE_COUNT = CONTROL_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Is Contained By Choose</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPTION___IS_CONTAINED_BY_CHOOSE = CONTROL___IS_CONTAINED_BY_CHOOSE;
 
 	/**
 	 * The number of operations of the '<em>Option</em>' class.
@@ -405,15 +543,6 @@ public interface EbnfmmPackage extends EPackage {
 	int REPETITION = 6;
 
 	/**
-	 * The feature id for the '<em><b>Factor</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REPETITION__FACTOR = CONTROL__FACTOR;
-
-	/**
 	 * The feature id for the '<em><b>Containing Non Terminal</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -432,6 +561,24 @@ public interface EbnfmmPackage extends EPackage {
 	int REPETITION__CONTAINING_CONTROL = CONTROL__CONTAINING_CONTROL;
 
 	/**
+	 * The feature id for the '<em><b>Containing Choose</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPETITION__CONTAINING_CHOOSE = CONTROL__CONTAINING_CHOOSE;
+
+	/**
+	 * The feature id for the '<em><b>Factor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPETITION__FACTOR = CONTROL__FACTOR;
+
+	/**
 	 * The feature id for the '<em><b>Definition List</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -448,6 +595,15 @@ public interface EbnfmmPackage extends EPackage {
 	 * @ordered
 	 */
 	int REPETITION_FEATURE_COUNT = CONTROL_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Is Contained By Choose</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPETITION___IS_CONTAINED_BY_CHOOSE = CONTROL___IS_CONTAINED_BY_CHOOSE;
 
 	/**
 	 * The number of operations of the '<em>Repetition</em>' class.
@@ -469,22 +625,13 @@ public interface EbnfmmPackage extends EPackage {
 	int NON_TERMINAL_REFERENCE = 7;
 
 	/**
-	 * The feature id for the '<em><b>Factor</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NON_TERMINAL_REFERENCE__FACTOR = SYMBOL__FACTOR;
-
-	/**
 	 * The feature id for the '<em><b>Containing Non Terminal</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NON_TERMINAL_REFERENCE__CONTAINING_NON_TERMINAL = SYMBOL__CONTAINING_NON_TERMINAL;
+	int NON_TERMINAL_REFERENCE__CONTAINING_NON_TERMINAL = FACTORABLE_SYMBOL__CONTAINING_NON_TERMINAL;
 
 	/**
 	 * The feature id for the '<em><b>Containing Control</b></em>' container reference.
@@ -493,7 +640,25 @@ public interface EbnfmmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NON_TERMINAL_REFERENCE__CONTAINING_CONTROL = SYMBOL__CONTAINING_CONTROL;
+	int NON_TERMINAL_REFERENCE__CONTAINING_CONTROL = FACTORABLE_SYMBOL__CONTAINING_CONTROL;
+
+	/**
+	 * The feature id for the '<em><b>Containing Choose</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NON_TERMINAL_REFERENCE__CONTAINING_CHOOSE = FACTORABLE_SYMBOL__CONTAINING_CHOOSE;
+
+	/**
+	 * The feature id for the '<em><b>Factor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NON_TERMINAL_REFERENCE__FACTOR = FACTORABLE_SYMBOL__FACTOR;
 
 	/**
 	 * The feature id for the '<em><b>Non Terminal</b></em>' reference.
@@ -502,7 +667,7 @@ public interface EbnfmmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NON_TERMINAL_REFERENCE__NON_TERMINAL = SYMBOL_FEATURE_COUNT + 0;
+	int NON_TERMINAL_REFERENCE__NON_TERMINAL = FACTORABLE_SYMBOL_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Non Terminal Reference</em>' class.
@@ -511,7 +676,16 @@ public interface EbnfmmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NON_TERMINAL_REFERENCE_FEATURE_COUNT = SYMBOL_FEATURE_COUNT + 1;
+	int NON_TERMINAL_REFERENCE_FEATURE_COUNT = FACTORABLE_SYMBOL_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Is Contained By Choose</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NON_TERMINAL_REFERENCE___IS_CONTAINED_BY_CHOOSE = FACTORABLE_SYMBOL___IS_CONTAINED_BY_CHOOSE;
 
 	/**
 	 * The number of operations of the '<em>Non Terminal Reference</em>' class.
@@ -520,7 +694,7 @@ public interface EbnfmmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NON_TERMINAL_REFERENCE_OPERATION_COUNT = SYMBOL_OPERATION_COUNT + 0;
+	int NON_TERMINAL_REFERENCE_OPERATION_COUNT = FACTORABLE_SYMBOL_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.GroupImpl <em>Group</em>}' class.
@@ -531,15 +705,6 @@ public interface EbnfmmPackage extends EPackage {
 	 * @generated
 	 */
 	int GROUP = 8;
-
-	/**
-	 * The feature id for the '<em><b>Factor</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GROUP__FACTOR = CONTROL__FACTOR;
 
 	/**
 	 * The feature id for the '<em><b>Containing Non Terminal</b></em>' container reference.
@@ -560,6 +725,24 @@ public interface EbnfmmPackage extends EPackage {
 	int GROUP__CONTAINING_CONTROL = CONTROL__CONTAINING_CONTROL;
 
 	/**
+	 * The feature id for the '<em><b>Containing Choose</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GROUP__CONTAINING_CHOOSE = CONTROL__CONTAINING_CHOOSE;
+
+	/**
+	 * The feature id for the '<em><b>Factor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GROUP__FACTOR = CONTROL__FACTOR;
+
+	/**
 	 * The feature id for the '<em><b>Definition List</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -576,6 +759,15 @@ public interface EbnfmmPackage extends EPackage {
 	 * @ordered
 	 */
 	int GROUP_FEATURE_COUNT = CONTROL_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Is Contained By Choose</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GROUP___IS_CONTAINED_BY_CHOOSE = CONTROL___IS_CONTAINED_BY_CHOOSE;
 
 	/**
 	 * The number of operations of the '<em>Group</em>' class.
@@ -597,22 +789,13 @@ public interface EbnfmmPackage extends EPackage {
 	int SPECIAL_SEQUENCE = 9;
 
 	/**
-	 * The feature id for the '<em><b>Factor</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SPECIAL_SEQUENCE__FACTOR = SYMBOL__FACTOR;
-
-	/**
 	 * The feature id for the '<em><b>Containing Non Terminal</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIAL_SEQUENCE__CONTAINING_NON_TERMINAL = SYMBOL__CONTAINING_NON_TERMINAL;
+	int SPECIAL_SEQUENCE__CONTAINING_NON_TERMINAL = FACTORABLE_SYMBOL__CONTAINING_NON_TERMINAL;
 
 	/**
 	 * The feature id for the '<em><b>Containing Control</b></em>' container reference.
@@ -621,7 +804,25 @@ public interface EbnfmmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIAL_SEQUENCE__CONTAINING_CONTROL = SYMBOL__CONTAINING_CONTROL;
+	int SPECIAL_SEQUENCE__CONTAINING_CONTROL = FACTORABLE_SYMBOL__CONTAINING_CONTROL;
+
+	/**
+	 * The feature id for the '<em><b>Containing Choose</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIAL_SEQUENCE__CONTAINING_CHOOSE = FACTORABLE_SYMBOL__CONTAINING_CHOOSE;
+
+	/**
+	 * The feature id for the '<em><b>Factor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIAL_SEQUENCE__FACTOR = FACTORABLE_SYMBOL__FACTOR;
 
 	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute.
@@ -630,7 +831,7 @@ public interface EbnfmmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIAL_SEQUENCE__TEXT = SYMBOL_FEATURE_COUNT + 0;
+	int SPECIAL_SEQUENCE__TEXT = FACTORABLE_SYMBOL_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Special Sequence</em>' class.
@@ -639,7 +840,16 @@ public interface EbnfmmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIAL_SEQUENCE_FEATURE_COUNT = SYMBOL_FEATURE_COUNT + 1;
+	int SPECIAL_SEQUENCE_FEATURE_COUNT = FACTORABLE_SYMBOL_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Is Contained By Choose</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIAL_SEQUENCE___IS_CONTAINED_BY_CHOOSE = FACTORABLE_SYMBOL___IS_CONTAINED_BY_CHOOSE;
 
 	/**
 	 * The number of operations of the '<em>Special Sequence</em>' class.
@@ -648,7 +858,7 @@ public interface EbnfmmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIAL_SEQUENCE_OPERATION_COUNT = SYMBOL_OPERATION_COUNT + 0;
+	int SPECIAL_SEQUENCE_OPERATION_COUNT = FACTORABLE_SYMBOL_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.ExceptImpl <em>Except</em>}' class.
@@ -659,15 +869,6 @@ public interface EbnfmmPackage extends EPackage {
 	 * @generated
 	 */
 	int EXCEPT = 10;
-
-	/**
-	 * The feature id for the '<em><b>Factor</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXCEPT__FACTOR = CONTROL__FACTOR;
 
 	/**
 	 * The feature id for the '<em><b>Containing Non Terminal</b></em>' container reference.
@@ -686,6 +887,24 @@ public interface EbnfmmPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXCEPT__CONTAINING_CONTROL = CONTROL__CONTAINING_CONTROL;
+
+	/**
+	 * The feature id for the '<em><b>Containing Choose</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXCEPT__CONTAINING_CHOOSE = CONTROL__CONTAINING_CHOOSE;
+
+	/**
+	 * The feature id for the '<em><b>Factor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXCEPT__FACTOR = CONTROL__FACTOR;
 
 	/**
 	 * The feature id for the '<em><b>Definition List</b></em>' containment reference list.
@@ -715,6 +934,15 @@ public interface EbnfmmPackage extends EPackage {
 	int EXCEPT_FEATURE_COUNT = CONTROL_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Is Contained By Choose</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXCEPT___IS_CONTAINED_BY_CHOOSE = CONTROL___IS_CONTAINED_BY_CHOOSE;
+
+	/**
 	 * The number of operations of the '<em>Except</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -722,7 +950,6 @@ public interface EbnfmmPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXCEPT_OPERATION_COUNT = CONTROL_OPERATION_COUNT + 0;
-
 
 	/**
 	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.ChooseImpl <em>Choose</em>}' class.
@@ -735,22 +962,13 @@ public interface EbnfmmPackage extends EPackage {
 	int CHOOSE = 11;
 
 	/**
-	 * The feature id for the '<em><b>Factor</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHOOSE__FACTOR = CONTROL__FACTOR;
-
-	/**
 	 * The feature id for the '<em><b>Containing Non Terminal</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CHOOSE__CONTAINING_NON_TERMINAL = CONTROL__CONTAINING_NON_TERMINAL;
+	int CHOOSE__CONTAINING_NON_TERMINAL = SYMBOL__CONTAINING_NON_TERMINAL;
 
 	/**
 	 * The feature id for the '<em><b>Containing Control</b></em>' container reference.
@@ -759,7 +977,16 @@ public interface EbnfmmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CHOOSE__CONTAINING_CONTROL = CONTROL__CONTAINING_CONTROL;
+	int CHOOSE__CONTAINING_CONTROL = SYMBOL__CONTAINING_CONTROL;
+
+	/**
+	 * The feature id for the '<em><b>Containing Choose</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOOSE__CONTAINING_CHOOSE = SYMBOL__CONTAINING_CHOOSE;
 
 	/**
 	 * The feature id for the '<em><b>Definition List</b></em>' containment reference list.
@@ -768,7 +995,7 @@ public interface EbnfmmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CHOOSE__DEFINITION_LIST = CONTROL__DEFINITION_LIST;
+	int CHOOSE__DEFINITION_LIST = SYMBOL_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Choose</em>' class.
@@ -777,7 +1004,16 @@ public interface EbnfmmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CHOOSE_FEATURE_COUNT = CONTROL_FEATURE_COUNT + 0;
+	int CHOOSE_FEATURE_COUNT = SYMBOL_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Is Contained By Choose</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOOSE___IS_CONTAINED_BY_CHOOSE = SYMBOL___IS_CONTAINED_BY_CHOOSE;
 
 	/**
 	 * The number of operations of the '<em>Choose</em>' class.
@@ -786,7 +1022,7 @@ public interface EbnfmmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CHOOSE_OPERATION_COUNT = CONTROL_OPERATION_COUNT + 0;
+	int CHOOSE_OPERATION_COUNT = SYMBOL_OPERATION_COUNT + 0;
 
 
 	/**
@@ -853,17 +1089,6 @@ public interface EbnfmmPackage extends EPackage {
 	EClass getSymbol();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Symbol#getFactor <em>Factor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Factor</em>'.
-	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Symbol#getFactor()
-	 * @see #getSymbol()
-	 * @generated
-	 */
-	EAttribute getSymbol_Factor();
-
-	/**
 	 * Returns the meta object for the container reference '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Symbol#getContainingNonTerminal <em>Containing Non Terminal</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -884,6 +1109,27 @@ public interface EbnfmmPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getSymbol_ContainingControl();
+
+	/**
+	 * Returns the meta object for the container reference '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Symbol#getContainingChoose <em>Containing Choose</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Containing Choose</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Symbol#getContainingChoose()
+	 * @see #getSymbol()
+	 * @generated
+	 */
+	EReference getSymbol_ContainingChoose();
+
+	/**
+	 * Returns the meta object for the '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Symbol#isContainedByChoose() <em>Is Contained By Choose</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Is Contained By Choose</em>' operation.
+	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Symbol#isContainedByChoose()
+	 * @generated
+	 */
+	EOperation getSymbol__IsContainedByChoose();
 
 	/**
 	 * Returns the meta object for class '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Terminal <em>Terminal</em>}'.
@@ -1031,6 +1277,38 @@ public interface EbnfmmPackage extends EPackage {
 	EClass getChoose();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Choose#getDefinitionList <em>Definition List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Definition List</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Choose#getDefinitionList()
+	 * @see #getChoose()
+	 * @generated
+	 */
+	EReference getChoose_DefinitionList();
+
+	/**
+	 * Returns the meta object for class '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.FactorableSymbol <em>Factorable Symbol</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Factorable Symbol</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.FactorableSymbol
+	 * @generated
+	 */
+	EClass getFactorableSymbol();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.FactorableSymbol#getFactor <em>Factor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Factor</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.FactorableSymbol#getFactor()
+	 * @see #getFactorableSymbol()
+	 * @generated
+	 */
+	EAttribute getFactorableSymbol_Factor();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1108,14 +1386,6 @@ public interface EbnfmmPackage extends EPackage {
 		EClass SYMBOL = eINSTANCE.getSymbol();
 
 		/**
-		 * The meta object literal for the '<em><b>Factor</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SYMBOL__FACTOR = eINSTANCE.getSymbol_Factor();
-
-		/**
 		 * The meta object literal for the '<em><b>Containing Non Terminal</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1130,6 +1400,22 @@ public interface EbnfmmPackage extends EPackage {
 		 * @generated
 		 */
 		EReference SYMBOL__CONTAINING_CONTROL = eINSTANCE.getSymbol_ContainingControl();
+
+		/**
+		 * The meta object literal for the '<em><b>Containing Choose</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SYMBOL__CONTAINING_CHOOSE = eINSTANCE.getSymbol_ContainingChoose();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Contained By Choose</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SYMBOL___IS_CONTAINED_BY_CHOOSE = eINSTANCE.getSymbol__IsContainedByChoose();
 
 		/**
 		 * The meta object literal for the '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.TerminalImpl <em>Terminal</em>}' class.
@@ -1260,6 +1546,32 @@ public interface EbnfmmPackage extends EPackage {
 		 * @generated
 		 */
 		EClass CHOOSE = eINSTANCE.getChoose();
+
+		/**
+		 * The meta object literal for the '<em><b>Definition List</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CHOOSE__DEFINITION_LIST = eINSTANCE.getChoose_DefinitionList();
+
+		/**
+		 * The meta object literal for the '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.FactorableSymbolImpl <em>Factorable Symbol</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.FactorableSymbolImpl
+		 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.EbnfmmPackageImpl#getFactorableSymbol()
+		 * @generated
+		 */
+		EClass FACTORABLE_SYMBOL = eINSTANCE.getFactorableSymbol();
+
+		/**
+		 * The meta object literal for the '<em><b>Factor</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FACTORABLE_SYMBOL__FACTOR = eINSTANCE.getFactorableSymbol_Factor();
 
 	}
 

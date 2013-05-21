@@ -22,233 +22,475 @@ module ebnf2lml;
 create OUT: PLM from IN: EBNF;
 
 -- counter helpers
-helper def: counterGroup: Integer =
+helper def: EBNF_GroupCounter: Integer =
 	0;
 
-helper def: counterRep: Integer =
+helper def: EBNF_OptionCounter: Integer =
 	0;
 
-helper def: counterOption: Integer =
+helper def: EBNF_NonTerminalReferenceCounter: Integer =
+	0;
+
+helper def: EBNF_ChooseCounter: Integer =
+	0;
+
+helper def: EBNF_TerminalCounter: Integer =
+	0;
+
+helper def: EBNF_RepetitionCounter: Integer =
+	0;
+
+helper def: EBNF_SpecialSequenceCounter: Integer =
+	0;
+
+helper def: EBNF_ExceptCounter: Integer =
 	0;
 
 -- filtered list for Controls
 helper context EBNF!Control def: filteredDefList: Sequence(EBNF!Symbol) =
-	self.definitionList -> select(x | x.oclIsTypeOf(EBNF!Terminal) or x.
-			oclIsTypeOf(EBNF!NonTerminalReference) or x.oclIsTypeOf(EBNF!Group) or x.
-			oclIsTypeOf(EBNF!Choose) or x.oclIsTypeOf(EBNF!Choose) or x.oclIsTypeOf(EBNF!Option));
+	self.definitionList;
 
 -- filtered list for NonTerminals
 helper context EBNF!NonTerminal def: filteredDefList: Sequence(EBNF!Symbol) =
-	self.definitionList -> select(x | x.oclIsTypeOf(EBNF!Terminal) or x.
-			oclIsTypeOf(EBNF!NonTerminalReference) or x.oclIsTypeOf(EBNF!Group) or x.
-			oclIsTypeOf(EBNF!Repetition) or x.oclIsTypeOf(EBNF!Choose) or x.oclIsTypeOf(EBNF!Option));
+	self.definitionList;
 
 -- get container
 -- TODO: FIX FOR CONTROLS AS CONTAINERS
 helper context EBNF!Symbol def: container: OclAny =
 	if self.containingNonTerminal.oclIsUndefined() then
-		if self.containingControl.oclIsTypeOf(EBNF!Repetition)
-			or self.containingControl.oclIsTypeOf(EBNF!Group)
-			or self.containingControl.oclIsTypeOf(EBNF!Option)
-		then
-			-- find the containing PLM!Entity
-			-- analyze syntax of ATL
-			-- self.containingControl
-			OclUndefined
-		else
-			OclUndefined
-		endif
+		self.containingControl
 	else
 		self.containingNonTerminal
 	endif;
 
-
-helper context EBNF!Symbol def: calculatedFactor: Integer =
+helper context EBNF!Symbol def: calculatedLowerFactor: Integer =
 	if self.factor = 0 then
 		1
 	else
 		self.factor
 	endif;
 
+helper context EBNF!Symbol def: calculatedUpperFactor: Integer =
+	if self.factor = 0 then
+		1
+	else
+		self.factor
+	endif;
+
+helper context EBNF!Symbol def: uniqueName: String =
+	let cleanName: String =
+		self.oclType().toString().replaceAll('!', '_')
+	in
+		cleanName.concat(thisModule.refGetValue(cleanName.concat('Counter')) ->
+				toString());
+
+helper context EBNF!Symbol def: increaseCounter: OclAny =
+	let cleanName: String =
+		self.oclType().toString().replaceAll('!', '_')
+	in
+		thisModule.refSetValue(cleanName.concat('Counter'), thisModule.
+				refGetValue(cleanName.concat('Counter')) + 1);
+
+-- RULE TOP ELEMENTS
 rule NonTerminal2Entity {
 	from
-		r: EBNF!NonTerminal
+		nonTerminal: EBNF!NonTerminal
 	to
-		e: PLM!Entity (
-			_l_.name <- r.id,
-			_l_.visualizer <- Sequence{ l }
+		entity: PLM!Entity (
+			_l_.name <- nonTerminal.id,
+			_l_.visualizer <- Sequence{ lmlVisualizer }
 		),
-		l: PLM!LMLVisualizer (
-			dslVisualizer <- Sequence{v}
+		lmlVisualizer: PLM!LMLVisualizer (
+			dslVisualizer <- Sequence{visualizer}
 		),
-		v: PLM!TextualDSLVisualizer (
-			root <- e,
-			content <- r.filteredDefList
+		visualizer: PLM!TextualDSLVisualizer (
+			root <- entity,
+			content <- nonTerminal.filteredDefList -> collect(e | thisModule.
+					resolveTemp(e, 'visual'))
 		)
 }
 
-rule Terminal2Literal {
+-- SYMBOLS
+abstract rule Symbol2Entity {
 	from
-		r: EBNF!Terminal
-	to
-		e: PLM!Literal (
-			expression <- r.terminalString
+		symbol: EBNF!FactorableSymbol (
+			symbol.containingChoose.oclIsUndefined()
 		)
-}
-
-rule NonTerminalReference2Value {
-	from
-		r: EBNF!NonTerminalReference
 	to
-		e: PLM!Value (
-			expression <- r.nonTerminal.id
+		entity: PLM!Entity (
+			_l_.name <- symbol.uniqueName,
+			_l_.visualizer <- Sequence{ lmlVisualizer }
 		),
-		-- REFERENCE
-		p1: PLM!Participation (
-			-- _l_.destination <- if r.nonTerminal.containingNonTerminal.oclIsUndefined()
-					-- then r.nonTerminal.containingControl else
-					-- r.nonTerminal.containingNonTerminal endif
-			lower <- r.calculatedFactor,
-			upper <- r.calculatedFactor,
-			destination <- r.nonTerminal
+		lmlVisualizer: PLM!LMLVisualizer (
+			dslVisualizer <- Sequence{visualizer}
 		),
-		-- CONTAINER (Control or NonTerminal)
-		p2: PLM!Participation (
-			-- TODO: implement for containingControl
+		visualizer: PLM!TextualDSLVisualizer (
+			root <- symbol
+		),
+		visual: PLM!Value (
+			expression <- symbol.uniqueName
+		),
+		connection: PLM!Connection(
+			_l_.participation <- Sequence{participation1, participation2}
+		),
+		participation1: PLM!Participation (
+			lower <- symbol.calculatedLowerFactor,
+			upper <- symbol.calculatedUpperFactor,
+			destination <- symbol
+		),
+		participation2: PLM!Participation (
 			lower <- 1,
 			upper <- 1,
-			destination <- r.container
-		),
-		c: PLM!Connection(
-			_l_.participation <- Sequence{p1, p2}
+			destination <- symbol.container
 		)
 }
 
-rule Group2Entity {
+abstract rule Symbol2EntityInChoose {
 	from
-		r: EBNF!Group
+		symbol: EBNF!FactorableSymbol (
+			not symbol.containingChoose.oclIsUndefined()
+		)
 	to
-		val: PLM!Value(
-			expression <- 'Group'.concat(thisModule.counterGroup->toString())	
+		entity: PLM!Entity (
+			_l_.name <- symbol.uniqueName,
+			_l_.visualizer <- Sequence{ lmlVisualizer }
 		),
-		e: PLM!Entity (
-			_l_.name <- 'Group'.concat(thisModule.counterGroup->toString()),
-			_l_.visualizer <- Sequence{ l }
+		lmlVisualizer: PLM!LMLVisualizer (
+			dslVisualizer <- Sequence{visualizer}
 		),
-		l: PLM!LMLVisualizer (
-			dslVisualizer <- Sequence { v }
+		visualizer: PLM!TextualDSLVisualizer (
+			root <- symbol
+		)
+}
+
+-- TERMINAL
+rule Terminal2Entity extends Symbol2EntityInChoose{
+	from
+		symbol: EBNF!Terminal
+	to
+		terminalReference: PLM!Entity(
+			_l_.name <- 'TR_'.concat(symbol.uniqueName),
+			_l_.visualizer <- Sequence{ tr_lmlVisualizer }
 		),
-		v: PLM!TextualDSLVisualizer (
-			root <- e,
-			content <- r.filteredDefList
+		visualDescriptor: PLM!Literal (
+			expression <- symbol.terminalString
 		),
-		-- REFERENCE
-		p1: PLM!Participation(
-			-- _l_.destination <- if r.nonTerminal.containingNonTerminal.oclIsUndefined()
-					-- then r.nonTerminal.containingControl else
-					-- r.nonTerminal.containingNonTerminal endif
-			lower <- r.calculatedFactor,
-			upper <- r.calculatedFactor,
-			destination <- e
+		visualizer: PLM!TextualDSLVisualizer (
+			content <- Sequence{visualDescriptor}
 		),
-		-- CONTAINER (Control or NonTerminal)
-		p2: PLM!Participation(
-			-- TODO: implement for containingControl
+		connection: PLM!Connection(
+			_l_.participation <- Sequence{participation1, participation2}
+		),
+		participation1: PLM!Participation (
+			lower <- symbol.calculatedLowerFactor,
+			upper <- symbol.calculatedUpperFactor,
+			destination <- entity
+		),
+		participation2: PLM!Participation (
 			lower <- 1,
 			upper <- 1,
-			destination <- r.container
+			destination <- terminalReference
 		),
-		c: PLM!Connection(
-			_l_.participation <- Sequence{p1, p2}
+		tr_Value: PLM!Value (
+			expression <- symbol.uniqueName
+		),
+		tr_lmlVisualizer: PLM!LMLVisualizer (
+			dslVisualizer <- Sequence{tr_visualizer}
+		),
+		tr_visualizer: PLM!TextualDSLVisualizer (
+			root <- terminalReference,
+			content <- Sequence{tr_Value}
 		)
 	do {
-		thisModule.counterGroup <- thisModule.counterGroup + 1;
+		symbol.increaseCounter; 
 	}
 }
 
-rule Repetition2Entity{
+rule Terminal2Visualizer extends Symbol2Entity {
 	from
-		r: EBNF!Repetition
+		symbol: EBNF!Terminal
 	to
-		val: PLM!Value(
-			expression <- 'Repetition'.concat(thisModule.counterRep->toString())	
+		entity: PLM!Entity (
 		),
-		e: PLM!Entity (
-			_l_.name <- 'Repetition'.concat(thisModule.counterRep->toString()),
-			_l_.visualizer <- Sequence{ l }
+		visualDescriptor: PLM!Literal (
+			expression <- symbol.terminalString
 		),
-		l: PLM!LMLVisualizer (
-			dslVisualizer <- Sequence { v }
-		),
-		v: PLM!TextualDSLVisualizer (
-			root <- e,
-			content <- r.filteredDefList
-		),
-		-- REFERENCE
-		p1: PLM!Participation(
-			lower <- 0,
-			upper <- -1,
-			destination <- e
-		),
-		-- CONTAINER (Control or NonTerminal)
-		p2: PLM!Participation(
-			lower <- 1,
-			upper <- 1,
-			destination <- r.container
-		),
-		c: PLM!Connection(
-			_l_.participation <- Sequence{p1, p2}
+		visualizer: PLM!TextualDSLVisualizer (
+			content <- Sequence{visualDescriptor}
 		)
 	do {
-		thisModule.counterRep <- thisModule.counterRep + 1;
+		symbol.increaseCounter; 
 	}
 }
 
-rule Option2Entity{
+rule NonTerminalReference2Entity extends Symbol2Entity {
 	from
-		r: EBNF!Option
+		symbol: EBNF!NonTerminalReference
 	to
-		val: PLM!Value(
-			expression <- 'Option'.concat(thisModule.counterOption->toString())	
+		entity: PLM!Entity (
 		),
-		e: PLM!Entity (
-			_l_.name <- 'Option'.concat(thisModule.counterOption->toString()),
-			_l_.visualizer <- Sequence{ l }
+		visualDescriptor: PLM!Value (
+			expression <- symbol.nonTerminal.id
 		),
-		l: PLM!LMLVisualizer (
-			dslVisualizer <- Sequence { v }
-		),
-		v: PLM!TextualDSLVisualizer (
-			root <- e,
-			content <- r.filteredDefList
-		),
-		-- REFERENCE
-		p1: PLM!Participation(
-			lower <- 0,
-			upper <- 1,
-			destination <- e
-		),
-		-- CONTAINER (Control or NonTerminal)
-		p2: PLM!Participation(
-			lower <- 1,
-			upper <- 1,
-			destination <- r.container
-		),
-		c: PLM!Connection(
-			_l_.participation <- Sequence{p1, p2}
+		visualizer: PLM!TextualDSLVisualizer (
+			content <- Sequence{visualDescriptor}
 		)
 	do {
-		thisModule.counterOption <- thisModule.counterOption + 1;
+		symbol.increaseCounter; 
 	}
 }
 
+rule NonTerminalReference2EntityInChoose extends Symbol2EntityInChoose {
+	from
+		symbol: EBNF!NonTerminalReference
+	to
+		entity: PLM!Entity (
+		),
+		visualDescriptor: PLM!Value (
+			expression <- symbol.nonTerminal.id
+		),
+		visualizer: PLM!TextualDSLVisualizer (
+			content <- Sequence{visualDescriptor}
+		),
+		connection: PLM!Connection(
+			_l_.participation <- Sequence{participation1, participation2}
+		),
+		participation1: PLM!Participation (
+			lower <- symbol.calculatedLowerFactor,
+			upper <- symbol.calculatedUpperFactor,
+			destination <- symbol.nonTerminal
+		),
+		participation2: PLM!Participation (
+			lower <- 1,
+			upper <- 1,
+			destination <- symbol
+		)
+	do {
+		symbol.increaseCounter; 
+	}
+}
 
+-- SPECIAL SEQUENCE
+rule SpecialSequence2Entity extends Symbol2Entity {
+	from
+		symbol: EBNF!SpecialSequence
+	to
+		entity: PLM!Entity (
+		),
+		visualDescriptor: PLM!Literal (
+			expression <- symbol.text
+		),
+		visualizer: PLM!TextualDSLVisualizer (
+			content <- Sequence{visualDescriptor}
+		)
+	do {
+		symbol.increaseCounter; 
+	}
+}
+
+rule SpecialSequence2EntityInChoose extends Symbol2EntityInChoose{
+	from
+		symbol: EBNF!SpecialSequence
+	to
+		entity: PLM!Entity (
+		),
+		visualDescriptor: PLM!Literal (
+			expression <- symbol.text
+		),
+		visualizer: PLM!TextualDSLVisualizer (
+			content <- Sequence{visualDescriptor}
+		)
+	do {
+		symbol.increaseCounter; 
+	}
+}
+
+-- CHOOSE
 rule Choose2Inheritance {
 	from
-		r: EBNF!Choose
+		choose: EBNF!Choose
 	to
-		val: PLM!ValueChoice (
-			choices <- r.filteredDefList -> select(e | not e.
-					oclIsTypeOf(EBNF!Terminal))
+		entity: PLM!Entity (
+			_l_.name <- choose.uniqueName
+		),
+		visual: PLM!Value (
+			expression <- choose.uniqueName
+		),
+		generalization: PLM!Generalization (
+			supertype <- Sequence{entity},
+			subtype <- choose.definitionList
+		),
+		connection: PLM!Connection(
+			_l_.participation <- Sequence{participation1, participation2}
+		),
+		participation1: PLM!Participation (
+			lower <- 1,
+			upper <- 1,
+			destination <- choose
+		),
+		participation2: PLM!Participation (
+			lower <- 1,
+			upper <- 1,
+			destination <- choose.container
 		)
+	do {
+		choose.increaseCounter; 
+	}
+}
+
+-- CONTROLS
+rule Group2Entity extends Symbol2Entity {
+	from
+		symbol: EBNF!Group
+	to
+		entity: PLM!Entity (
+		),
+		visualizer: PLM!TextualDSLVisualizer (
+			root <- symbol,
+			content <- symbol.filteredDefList -> collect(e | thisModule.resolveTemp(e,
+					'visual'))
+		)
+	do {
+		symbol.increaseCounter; 
+	}
+}
+
+rule Group2EntityInChoose extends Symbol2EntityInChoose {
+	from
+		symbol: EBNF!Group
+	to
+		entity: PLM!Entity (
+		),
+		visualizer: PLM!TextualDSLVisualizer (
+			root <- symbol,
+			content <- symbol.filteredDefList -> collect(e | thisModule.resolveTemp(e,
+					'visual'))
+		)
+	do {
+		symbol.increaseCounter; 
+	}
+}
+
+rule Option2Entity extends Symbol2Entity {
+	from
+		symbol: EBNF!Option
+	to
+		entity: PLM!Entity (
+		),
+		visualizer: PLM!TextualDSLVisualizer (
+			root <- symbol,
+			content <- symbol.filteredDefList -> collect(e | thisModule.resolveTemp(e,
+					'visual'))
+		),
+		participation1: PLM!Participation (
+			lower <- 0
+		)
+	do {
+		symbol.increaseCounter; 
+	}
+}
+
+rule Option2EntityInChoose extends Symbol2EntityInChoose {
+	from
+		symbol: EBNF!Option
+	to
+		entity: PLM!Entity (
+		),
+		visualizer: PLM!TextualDSLVisualizer (
+			root <- symbol,
+			content <- symbol.filteredDefList -> collect(e | thisModule.resolveTemp(e,
+					'visual'))
+		),
+		participation1: PLM!Participation (
+			lower <- 0
+		)
+	do {
+		symbol.increaseCounter; 
+	}
+}
+
+rule Repitition2Entity extends Symbol2Entity {
+	from
+		symbol: EBNF!Repetition
+	to
+		entity: PLM!Entity (
+		),
+		visualizer: PLM!TextualDSLVisualizer (
+			root <- symbol,
+			content <- symbol.filteredDefList -> collect(e | thisModule.resolveTemp(e,
+					'visual'))
+		),
+		participation1: PLM!Participation (
+			lower <- 0,
+			upper <- -1
+		)
+	do {
+		symbol.increaseCounter; 
+	}
+}
+
+rule Repitition2EntityInChoose extends Symbol2EntityInChoose {
+	from
+		symbol: EBNF!Repetition
+	to
+		entity: PLM!Entity (
+		),
+		visualizer: PLM!TextualDSLVisualizer (
+			root <- symbol,
+			content <- symbol.filteredDefList -> collect(e | thisModule.resolveTemp(e,
+					'visual'))
+		),
+		participation1: PLM!Participation (
+			lower <- 0,
+			upper <- -1
+		)
+	do {
+		symbol.increaseCounter; 
+	}
+}
+
+-- EXCEPT
+-- TODO: FIX IT, in the FINAL VERSION THERE MUST BE SOME KIND OF EXCEPT HANDLING
+rule Except2Entity extends Symbol2Entity {
+	from
+		symbol: EBNF!Except
+	to
+		entity: PLM!Entity(),
+		visualizer: PLM!TextualDSLVisualizer (
+			root <- symbol,
+			content <- symbol.filteredDefList -> collect(e | thisModule.resolveTemp(e,
+					'visual')).append(thisModule.resolveTemp(symbol.except,
+					'visual'))
+		)
+--		minuend: PLM!Entity(
+--			_l_.name <- 'Min_'.concat(symbol.definitionList->first().uniqueName),
+--			_l_.visualizer <- Sequence{ m_lmlVisualizer }
+--		),
+--		m_lmlVisualizer: PLM!LMLVisualizer (
+--			dslVisualizer <- Sequence{m_visualizer}
+--		),
+--		m_visualizer: PLM!TextualDSLVisualizer (
+--			root <- minuend,
+--			content <- Sequence {m_visual}
+--		),
+--		m_visual: PLM!Value (
+--			expression <- symbol.definitionList->first().uniqueName
+--		),
+--		subtrahend: PLM!Entity(
+--			_l_.name <- 'Sub_'.concat(symbol.except.uniqueName),
+--			_l_.visualizer <- Sequence{ s_lmlVisualizer }
+--		),
+--		s_lmlVisualizer: PLM!LMLVisualizer (
+--			dslVisualizer <- Sequence{s_visualizer}
+--		),
+--		s_visualizer: PLM!TextualDSLVisualizer (
+--			root <- minuend,
+--			content <- Sequence {s_visual}
+--		),
+--		s_visual: PLM!Value (
+--			expression <- symbol.except.uniqueName
+--		)
+	do {
+		symbol.increaseCounter;
+	}
 }

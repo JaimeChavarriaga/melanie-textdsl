@@ -23,7 +23,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -40,7 +39,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public abstract class ControlImpl extends SymbolImpl implements Control {
+public abstract class ControlImpl extends FactorableSymbolImpl implements Control {
 	/**
 	 * The cached value of the '{@link #getDefinitionList() <em>Definition List</em>}' containment reference list.
 	 * <!-- begin-user-doc -->

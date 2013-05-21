@@ -10,16 +10,41 @@
  *******************************************************************************/
 package de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Choose</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <p>
+ * The following features are supported:
+ * <ul>
+ *   <li>{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Choose#getDefinitionList <em>Definition List</em>}</li>
+ * </ul>
+ * </p>
  *
  * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.EbnfmmPackage#getChoose()
  * @model
  * @generated
  */
-public interface Choose extends Control {
+public interface Choose extends Symbol {
+	/**
+	 * Returns the value of the '<em><b>Definition List</b></em>' containment reference list.
+	 * The list contents are of type {@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Symbol}.
+	 * It is bidirectional and its opposite is '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Symbol#getContainingChoose <em>Containing Choose</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Definition List</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Definition List</em>' containment reference list.
+	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.EbnfmmPackage#getChoose_DefinitionList()
+	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Symbol#getContainingChoose
+	 * @model opposite="containingChoose" containment="true"
+	 * @generated
+	 */
+	EList<Symbol> getDefinitionList();
+
 } // Choose

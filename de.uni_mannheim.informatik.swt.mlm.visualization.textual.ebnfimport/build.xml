@@ -18,6 +18,7 @@
 
 	<property name="antlrsrc" location="gensrc" />
 	<property name="parsersrc" location="${antlrsrc}/de/uni_mannheim/informatik/swt/mlm/visualization/textual/ebnfimport" />
+	<property name="ebnffolder" location="testEBNFs"/>
 	<property name="build" location="build" />
 	<property name="appbuild" location="bin" />
 
@@ -68,7 +69,7 @@
 	
 
 	<target name="test" depends="compileGrammar, compileParser">
-		<java classname="org.antlr.v4.runtime.misc.TestRig" input="test.ebnf" fork="true">
+		<java classname="org.antlr.v4.runtime.misc.TestRig" input="${ebnffolder}/test.ebnf" fork="true">
 			<classpath>
 				<path refid="class.path" />
 				<path location="${build}" />
@@ -80,7 +81,7 @@
 	</target>
 
 	<target name="test2" depends="compileGrammar, compileParser">
-		<java classname="org.antlr.v4.runtime.misc.TestRig" input="test2.ebnf" fork="true">
+		<java classname="org.antlr.v4.runtime.misc.TestRig" input="${ebnffolder}/test2.ebnf" fork="true">
 			<classpath>
 				<path refid="class.path" />
 				<path location="${build}" />
@@ -92,7 +93,7 @@
 	</target>
 	
 	<target name="testminijava" depends="compileGrammar, compileParser">
-			<java classname="org.antlr.v4.runtime.misc.TestRig" input="minijava.ebnf" fork="true">
+			<java classname="org.antlr.v4.runtime.misc.TestRig" input="${ebnffolder}/minijava.ebnf" fork="true">
 				<classpath>
 					<path refid="class.path" />
 					<path location="${build}" />
@@ -104,7 +105,7 @@
 	</target>
 	
 	<target name="testjava" depends="compileGrammar, compileParser">
-				<java classname="org.antlr.v4.runtime.misc.TestRig" input="java5.ebnf" fork="true">
+				<java classname="org.antlr.v4.runtime.misc.TestRig" input="${ebnffolder}/java5.ebnf" fork="true">
 					<classpath>
 						<path refid="class.path" />
 						<path location="${build}" />

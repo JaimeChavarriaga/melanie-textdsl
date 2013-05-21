@@ -26,6 +26,7 @@ import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Control;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.EBNFDescription;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.EbnfmmFactory;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Except;
+import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.FactorableSymbol;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Group;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.NonTerminal;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.NonTerminalReference;
@@ -40,7 +41,7 @@ public class EBNFListenerEMF extends EBNFBaseListener {
 	private EBNFDescription ebnfDescription;
 
 	private NonTerminal currentRule;
-	private Stack<Control> controlStack;
+	private Stack<Symbol> symbolStack;
 
 	private HashMap<String, NonTerminal> rules;
 
@@ -48,7 +49,7 @@ public class EBNFListenerEMF extends EBNFBaseListener {
 
 	public EBNFListenerEMF() {
 		this.ebnfDescription = ebnfFactory.createEBNFDescription();
-		this.controlStack = new Stack<Control>();
+		this.symbolStack = new Stack<Symbol>();
 		this.rules = new HashMap<String, NonTerminal>();
 	}
 
@@ -58,7 +59,7 @@ public class EBNFListenerEMF extends EBNFBaseListener {
 		for (Syntax_ruleContext syntaxContext : ctx.syntax_rule()) {
 			// create the rule & empty control stack
 			currentRule = ebnfFactory.createNonTerminal();
-			controlStack.removeAllElements();
+			symbolStack.removeAllElements();
 
 			// create the meta-identifier
 			currentRule.setId(syntaxContext.META_IDENTIFIER().getText());
@@ -78,14 +79,14 @@ public class EBNFListenerEMF extends EBNFBaseListener {
 			// create a new choose instance
 			Choose choose = ebnfFactory.createChoose();
 			addToRuleOrControl(choose);
-			controlStack.push(choose);
+			symbolStack.push(choose);
 		}
 	}
 	
 	@Override
 	public void exitDefinitions_list(Definitions_listContext ctx) {
 		if(ctx.single_definition().size() > 1){
-			controlStack.pop();
+			symbolStack.pop();
 		}
 	}
 
@@ -93,6 +94,22 @@ public class EBNFListenerEMF extends EBNFBaseListener {
 	public void enterSyntax_rule(Syntax_ruleContext ctx) {
 		System.out.println("Rule: " + ctx.META_IDENTIFIER());
 		currentRule = rules.get(ctx.META_IDENTIFIER().getText());
+	}
+	
+	@Override
+	public void enterSingle_definition(Single_definitionContext ctx) {
+		if(ctx.syntactic_term().size() > 1){
+			Group group = ebnfFactory.createGroup();
+			addToRuleOrControl(group);
+			symbolStack.push(group);
+		}
+	}
+	
+	@Override
+	public void exitSingle_definition(Single_definitionContext ctx) {
+		if(ctx.syntactic_term().size() > 1){
+			symbolStack.pop();
+		}
 	}
 
 	@Override
@@ -102,14 +119,14 @@ public class EBNFListenerEMF extends EBNFBaseListener {
 
 			addToRuleOrControl(ex);
 
-			controlStack.push(ex);
+			symbolStack.push(ex);
 		}
 	}
 
 	@Override
 	public void exitSyntactic_term(Syntactic_termContext ctx) {
 		if (ctx.EXCEPT_SYMBOL() != null) {
-			controlStack.pop();
+			symbolStack.pop();
 		}
 	}
 
@@ -160,7 +177,7 @@ public class EBNFListenerEMF extends EBNFBaseListener {
 			addToRuleOrControl(option);
 
 			// push control to stack
-			controlStack.push(option);
+			symbolStack.push(option);
 		} else if (ctx.repeated_sequence() != null) {
 			Repetition rep = ebnfFactory.createRepetition();
 
@@ -171,7 +188,7 @@ public class EBNFListenerEMF extends EBNFBaseListener {
 			addToRuleOrControl(rep);
 
 			// push control to stack
-			controlStack.push(rep);
+			symbolStack.push(rep);
 		} else if (ctx.grouped_sequence() != null) {
 			Group group = ebnfFactory.createGroup();
 
@@ -182,7 +199,7 @@ public class EBNFListenerEMF extends EBNFBaseListener {
 			addToRuleOrControl(group);
 
 			// push control to stack
-			controlStack.push(group);
+			symbolStack.push(group);
 		} else if (ctx.empty_sequence() != null) {
 			// Do Nothing
 			return;
@@ -194,7 +211,7 @@ public class EBNFListenerEMF extends EBNFBaseListener {
 	public void exitSyntactic_primary(Syntactic_primaryContext ctx) {
 		if (ctx.optional_sequence() != null || ctx.repeated_sequence() != null
 				|| ctx.grouped_sequence() != null) {
-			controlStack.pop();
+			symbolStack.pop();
 		}
 	}
 
@@ -210,7 +227,7 @@ public class EBNFListenerEMF extends EBNFBaseListener {
 	 * @param symbol
 	 *            to use
 	 */
-	private void setFactorIfPresent(Syntactic_primaryContext ctx, Symbol symbol) {
+	private void setFactorIfPresent(Syntactic_primaryContext ctx, FactorableSymbol symbol) {
 		// find current context for factor
 		Syntactic_factorContext factorCtx = (Syntactic_factorContext) ctx.parent;
 
@@ -226,15 +243,21 @@ public class EBNFListenerEMF extends EBNFBaseListener {
 	 *            to add
 	 */
 	private void addToRuleOrControl(Symbol symbol) {
-		if (!controlStack.empty()) { // control is active
-			Control currentControl = controlStack.peek();
+		if (!symbolStack.empty()) { // control is active
+			Symbol currentSymbol = symbolStack.peek();
 
-			if (currentControl instanceof Except
-					&& !currentControl.getDefinitionList().isEmpty()) {
-				Except except = (Except) currentControl;
-				except.setExcept(symbol);
-			} else {
-				currentControl.getDefinitionList().add(symbol);
+			if(currentSymbol instanceof Choose){
+				Choose choose = (Choose) currentSymbol;
+				choose.getDefinitionList().add(symbol);
+			} else if (currentSymbol instanceof Control) {
+				Control currentControl = (Control) currentSymbol;
+				if (currentControl instanceof Except
+						&& !currentControl.getDefinitionList().isEmpty()) {
+					Except except = (Except) currentControl;
+					except.setExcept(symbol);
+				} else {
+					currentControl.getDefinitionList().add(symbol);
+				}
 			}
 		} else { // no controls, add directly to the rule
 			currentRule.getDefinitionList().add(symbol);

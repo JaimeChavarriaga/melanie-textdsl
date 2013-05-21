@@ -28,7 +28,7 @@ import org.eclipse.emf.common.util.EList;
  * @model abstract="true"
  * @generated
  */
-public interface Control extends Symbol {
+public interface Control extends FactorableSymbol {
 	/**
 	 * Returns the value of the '<em><b>Definition List</b></em>' containment reference list.
 	 * The list contents are of type {@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Symbol}.

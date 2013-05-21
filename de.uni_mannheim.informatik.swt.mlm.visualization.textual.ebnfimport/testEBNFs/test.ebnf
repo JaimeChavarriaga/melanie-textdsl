@@ -16,4 +16,4 @@ Programm = 'PROGRAM', Bezeichner ,
  Ziffer = "0" | "1" | "2" | "3" | "4" | "5" | "6" 
         | "7" | "8" | "9" ;
  AlleZeichen = ? alle sichtbaren Zeichen ? ;
- Test = '#', { AlleZeichen - 4*('asd' | 'asadas')}, '#';
+ (* Test = '#', { AlleZeichen - 4*('asd' | 'asadas')}, '#'; *)

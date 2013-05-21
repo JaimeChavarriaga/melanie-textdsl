@@ -35,8 +35,12 @@ public class ParserMain {
 		System.out.println("# EBNF TO EMF PARSER #");
 		System.out.println("######################");
 		
-//		ANTLRInputStream input = new ANTLRInputStream(new FileInputStream("java5.ebnf"));
-		ANTLRInputStream input = new ANTLRInputStream(new FileInputStream("test.ebnf"));
+//		ANTLRInputStream input = new ANTLRInputStream(new FileInputStream("testEBNFs/java5.ebnf"));
+		ANTLRInputStream input = new ANTLRInputStream(new FileInputStream("testEBNFs/test2.ebnf"));
+//		ANTLRInputStream input = new ANTLRInputStream(new FileInputStream("testEBNFs/factorTest.ebnf"));
+//		ANTLRInputStream input = new ANTLRInputStream(new FileInputStream("testEBNFs/test.ebnf"));
+//		ANTLRInputStream input = new ANTLRInputStream(new FileInputStream("testEBNFs/exceptTest.ebnf"));
+		
 		EBNFLexer lexer = new EBNFLexer(input);
 
 		CommonTokenStream tokenStream = new CommonTokenStream(lexer);
@@ -50,7 +54,7 @@ public class ParserMain {
 		ResourceSet resourceSet = new ResourceSetImpl();
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("*", new XMLResourceFactoryImpl());
 		
-		Resource resource = resourceSet.createResource(URI.createURI("./ebnf.ebnfmm"));
+		Resource resource = resourceSet.createResource(URI.createURI("./m2m/ebnf.ebnfmm"));
 		
 		resource.getContents().add(listener.getEbnfDescription());
 		resource.save(null);

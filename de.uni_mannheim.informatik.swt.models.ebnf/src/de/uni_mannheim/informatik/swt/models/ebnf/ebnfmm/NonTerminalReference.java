@@ -27,7 +27,7 @@ package de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm;
  * @model
  * @generated
  */
-public interface NonTerminalReference extends Symbol {
+public interface NonTerminalReference extends FactorableSymbol {
 	/**
 	 * Returns the value of the '<em><b>Non Terminal</b></em>' reference.
 	 * <!-- begin-user-doc -->

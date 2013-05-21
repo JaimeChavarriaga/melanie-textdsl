@@ -13,45 +13,45 @@ package de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Special Sequence</b></em>'.
+ * A representation of the model object '<em><b>Factorable Symbol</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.SpecialSequence#getText <em>Text</em>}</li>
+ *   <li>{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.FactorableSymbol#getFactor <em>Factor</em>}</li>
  * </ul>
  * </p>
  *
- * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.EbnfmmPackage#getSpecialSequence()
- * @model
+ * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.EbnfmmPackage#getFactorableSymbol()
+ * @model abstract="true"
  * @generated
  */
-public interface SpecialSequence extends FactorableSymbol {
-
+public interface FactorableSymbol extends Symbol {
 	/**
-	 * Returns the value of the '<em><b>Text</b></em>' attribute.
+	 * Returns the value of the '<em><b>Factor</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Text</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Factor</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Text</em>' attribute.
-	 * @see #setText(String)
-	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.EbnfmmPackage#getSpecialSequence_Text()
+	 * @return the value of the '<em>Factor</em>' attribute.
+	 * @see #setFactor(int)
+	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.EbnfmmPackage#getFactorableSymbol_Factor()
 	 * @model
 	 * @generated
 	 */
-	String getText();
+	int getFactor();
 
 	/**
-	 * Sets the value of the '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.SpecialSequence#getText <em>Text</em>}' attribute.
+	 * Sets the value of the '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.FactorableSymbol#getFactor <em>Factor</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Text</em>' attribute.
-	 * @see #getText()
+	 * @param value the new value of the '<em>Factor</em>' attribute.
+	 * @see #getFactor()
 	 * @generated
 	 */
-	void setText(String value);
-} // SpecialSequence
+	void setFactor(int value);
+
+} // FactorableSymbol
