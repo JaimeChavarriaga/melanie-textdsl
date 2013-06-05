@@ -1,11 +1,11 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: ebnfparser
-Bundle-SymbolicName: de.uni_mannheim.informatik.swt.mlm.visualization.textual.ebnfimport
+Bundle-SymbolicName: de.uni_mannheim.informatik.swt.mlm.visualization.textual.ebnfimport;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: ebnfparser.jar,
  lib/antlr-4.0-complete.jar
-Export-Package: de.uni_mannheim.informatik.swt.ebnf.parser.impl,
+Export-Package: de.uni_mannheim.informatik.swt.mlm.visualization.textual.ebnfimport.parser,
  org.abego.treelayout,
  org.abego.treelayout.internal.util,
  org.abego.treelayout.internal.util.java.lang.string,
@@ -45,5 +45,19 @@ Export-Package: de.uni_mannheim.informatik.swt.ebnf.parser.impl,
 Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.9.0",
  org.eclipse.emf.ecore.xmi;bundle-version="2.9.0",
  de.uni_mannheim.informatik.swt.atl.drivers.mlm4atl;bundle-version="1.0.0",
- de.uni_mannheim.informatik.swt.models.plm.textualrepresentation;bundle-version="1.0.0"
-Import-Package: de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm
+ de.uni_mannheim.informatik.swt.models.plm.textualrepresentation;bundle-version="1.0.0",
+ org.eclipse.core.runtime,
+ org.eclipse.jface,
+ org.eclipse.ui.ide,
+ org.eclipse.core.resources,
+ org.eclipse.m2m.atl;bundle-version="3.4.0",
+ org.eclipse.m2m.atl.core;bundle-version="3.4.0",
+ org.eclipse.m2m.atl.core.emf;bundle-version="3.4.0",
+ org.eclipse.m2m.atl.common;bundle-version="3.4.0",
+ org.eclipse.m2m.atl.engine;bundle-version="3.4.0",
+ org.eclipse.m2m.atl.core.ui.vm;bundle-version="3.4.0",
+ org.eclipse.m2m.atl.engine.emfvm.launch,
+ de.uni_mannheim.informatik.swt.models.ebnf;bundle-version="1.0.0"
+Import-Package: de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm,
+ org.eclipse.m2m.atl.drivers.emf4atl,
+ org.eclipse.m2m.atl.engine.vm

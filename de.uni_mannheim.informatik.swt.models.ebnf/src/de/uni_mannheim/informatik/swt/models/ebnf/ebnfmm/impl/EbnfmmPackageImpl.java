@@ -279,15 +279,6 @@ public class EbnfmmPackageImpl extends EPackageImpl implements EbnfmmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getSymbol__IsContainedByChoose() {
-		return symbolEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getTerminal() {
 		return terminalEClass;
 	}
@@ -441,6 +432,15 @@ public class EbnfmmPackageImpl extends EPackageImpl implements EbnfmmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getFactorableSymbol__IsContainedByChoose_1() {
+		return factorableSymbolEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EbnfmmFactory getEbnfmmFactory() {
 		return (EbnfmmFactory)getEFactoryInstance();
 	}
@@ -475,7 +475,6 @@ public class EbnfmmPackageImpl extends EPackageImpl implements EbnfmmPackage {
 		createEReference(symbolEClass, SYMBOL__CONTAINING_NON_TERMINAL);
 		createEReference(symbolEClass, SYMBOL__CONTAINING_CONTROL);
 		createEReference(symbolEClass, SYMBOL__CONTAINING_CHOOSE);
-		createEOperation(symbolEClass, SYMBOL___IS_CONTAINED_BY_CHOOSE);
 
 		terminalEClass = createEClass(TERMINAL);
 		createEAttribute(terminalEClass, TERMINAL__TERMINAL_STRING);
@@ -503,6 +502,7 @@ public class EbnfmmPackageImpl extends EPackageImpl implements EbnfmmPackage {
 
 		factorableSymbolEClass = createEClass(FACTORABLE_SYMBOL);
 		createEAttribute(factorableSymbolEClass, FACTORABLE_SYMBOL__FACTOR);
+		createEOperation(factorableSymbolEClass, FACTORABLE_SYMBOL___IS_CONTAINED_BY_CHOOSE);
 	}
 
 	/**
@@ -557,8 +557,6 @@ public class EbnfmmPackageImpl extends EPackageImpl implements EbnfmmPackage {
 		initEReference(getSymbol_ContainingControl(), this.getControl(), this.getControl_DefinitionList(), "containingControl", null, 0, 1, Symbol.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSymbol_ContainingChoose(), this.getChoose(), this.getChoose_DefinitionList(), "containingChoose", null, 0, 1, Symbol.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getSymbol__IsContainedByChoose(), ecorePackage.getEBoolean(), "isContainedByChoose", 0, 1, IS_UNIQUE, IS_ORDERED);
-
 		initEClass(terminalEClass, Terminal.class, "Terminal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTerminal_TerminalString(), ecorePackage.getEString(), "terminalString", null, 0, 1, Terminal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -585,6 +583,8 @@ public class EbnfmmPackageImpl extends EPackageImpl implements EbnfmmPackage {
 
 		initEClass(factorableSymbolEClass, FactorableSymbol.class, "FactorableSymbol", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFactorableSymbol_Factor(), ecorePackage.getEInt(), "factor", null, 0, 1, FactorableSymbol.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getFactorableSymbol__IsContainedByChoose_1(), ecorePackage.getEBoolean(), "isContainedByChoose", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -621,7 +621,7 @@ public class EbnfmmPackageImpl extends EPackageImpl implements EbnfmmPackage {
 	protected void createOCLAnnotations() {
 		String source = "http://www.eclipse.org/emf/2002/Ecore/OCL";			
 		addAnnotation
-		  (getSymbol__IsContainedByChoose(), 
+		  (getFactorableSymbol__IsContainedByChoose_1(), 
 		   source, 
 		   new String[] {
 			 "body", "self.containingChoose != null"

@@ -196,22 +196,13 @@ public interface EbnfmmPackage extends EPackage {
 	int SYMBOL_FEATURE_COUNT = 3;
 
 	/**
-	 * The operation id for the '<em>Is Contained By Choose</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SYMBOL___IS_CONTAINED_BY_CHOOSE = 0;
-
-	/**
 	 * The number of operations of the '<em>Symbol</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SYMBOL_OPERATION_COUNT = 1;
+	int SYMBOL_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.FactorableSymbolImpl <em>Factorable Symbol</em>}' class.
@@ -275,7 +266,7 @@ public interface EbnfmmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FACTORABLE_SYMBOL___IS_CONTAINED_BY_CHOOSE = SYMBOL___IS_CONTAINED_BY_CHOOSE;
+	int FACTORABLE_SYMBOL___IS_CONTAINED_BY_CHOOSE = SYMBOL_OPERATION_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Factorable Symbol</em>' class.
@@ -284,7 +275,7 @@ public interface EbnfmmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FACTORABLE_SYMBOL_OPERATION_COUNT = SYMBOL_OPERATION_COUNT + 0;
+	int FACTORABLE_SYMBOL_OPERATION_COUNT = SYMBOL_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.TerminalImpl <em>Terminal</em>}' class.
@@ -1007,15 +998,6 @@ public interface EbnfmmPackage extends EPackage {
 	int CHOOSE_FEATURE_COUNT = SYMBOL_FEATURE_COUNT + 1;
 
 	/**
-	 * The operation id for the '<em>Is Contained By Choose</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHOOSE___IS_CONTAINED_BY_CHOOSE = SYMBOL___IS_CONTAINED_BY_CHOOSE;
-
-	/**
 	 * The number of operations of the '<em>Choose</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1120,16 +1102,6 @@ public interface EbnfmmPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getSymbol_ContainingChoose();
-
-	/**
-	 * Returns the meta object for the '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Symbol#isContainedByChoose() <em>Is Contained By Choose</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Is Contained By Choose</em>' operation.
-	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Symbol#isContainedByChoose()
-	 * @generated
-	 */
-	EOperation getSymbol__IsContainedByChoose();
 
 	/**
 	 * Returns the meta object for class '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Terminal <em>Terminal</em>}'.
@@ -1309,6 +1281,16 @@ public interface EbnfmmPackage extends EPackage {
 	EAttribute getFactorableSymbol_Factor();
 
 	/**
+	 * Returns the meta object for the '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.FactorableSymbol#isContainedByChoose() <em>Is Contained By Choose</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Is Contained By Choose</em>' operation.
+	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.FactorableSymbol#isContainedByChoose()
+	 * @generated
+	 */
+	EOperation getFactorableSymbol__IsContainedByChoose_1();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1408,14 +1390,6 @@ public interface EbnfmmPackage extends EPackage {
 		 * @generated
 		 */
 		EReference SYMBOL__CONTAINING_CHOOSE = eINSTANCE.getSymbol_ContainingChoose();
-
-		/**
-		 * The meta object literal for the '<em><b>Is Contained By Choose</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation SYMBOL___IS_CONTAINED_BY_CHOOSE = eINSTANCE.getSymbol__IsContainedByChoose();
 
 		/**
 		 * The meta object literal for the '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.TerminalImpl <em>Terminal</em>}' class.
@@ -1572,6 +1546,14 @@ public interface EbnfmmPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute FACTORABLE_SYMBOL__FACTOR = eINSTANCE.getFactorableSymbol_Factor();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Contained By Choose</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation FACTORABLE_SYMBOL___IS_CONTAINED_BY_CHOOSE = eINSTANCE.getFactorableSymbol__IsContainedByChoose_1();
 
 	}
 

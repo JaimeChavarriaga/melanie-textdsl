@@ -8,7 +8,7 @@
  * Contributors:
  *     Nikolai Hellwig - initial API and implementation
  ******************************************************************************/
-package de.uni_mannheim.informatik.swt.ebnf.parser.impl;
+package de.uni_mannheim.informatik.swt.mlm.visualization.textual.ebnfimport.parser;
 
 /**
  * Helper Library for trimming EBNF Quoted Terminal-Strings

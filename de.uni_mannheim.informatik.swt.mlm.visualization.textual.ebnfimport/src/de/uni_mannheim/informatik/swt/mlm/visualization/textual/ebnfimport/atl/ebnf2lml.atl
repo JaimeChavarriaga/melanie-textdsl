@@ -77,16 +77,19 @@ helper context EBNF!Symbol def: calculatedUpperFactor: Integer =
 		self.factor
 	endif;
 
+helper context String def: removePackage: String =
+	self.substring(self.indexOf('!')+2, self.size());
+
 helper context EBNF!Symbol def: uniqueName: String =
 	let cleanName: String =
-		self.oclType().toString().replaceAll('!', '_')
+		'EBNF_'.concat(self.oclType().toString().removePackage)
 	in
 		cleanName.concat(thisModule.refGetValue(cleanName.concat('Counter')) ->
 				toString());
 
 helper context EBNF!Symbol def: increaseCounter: OclAny =
 	let cleanName: String =
-		self.oclType().toString().replaceAll('!', '_')
+		'EBNF_'.concat(self.oclType().toString().removePackage)
 	in
 		thisModule.refSetValue(cleanName.concat('Counter'), thisModule.
 				refGetValue(cleanName.concat('Counter')) + 1);
@@ -111,11 +114,10 @@ rule NonTerminal2Entity {
 }
 
 -- SYMBOLS
-abstract rule Symbol2Entity {
+
+abstract rule GeneralSymbol2Entity{
 	from
-		symbol: EBNF!FactorableSymbol (
-			symbol.containingChoose.oclIsUndefined()
-		)
+		symbol: EBNF!FactorableSymbol
 	to
 		entity: PLM!Entity (
 			_l_.name <- symbol.uniqueName,
@@ -126,7 +128,15 @@ abstract rule Symbol2Entity {
 		),
 		visualizer: PLM!TextualDSLVisualizer (
 			root <- symbol
-		),
+		)	
+}
+
+abstract rule Symbol2Entity extends GeneralSymbol2Entity{
+	from
+		symbol: EBNF!FactorableSymbol (
+			symbol.containingChoose.oclIsUndefined()
+		)
+	to
 		visual: PLM!Value (
 			expression <- symbol.uniqueName
 		),
@@ -145,26 +155,17 @@ abstract rule Symbol2Entity {
 		)
 }
 
-abstract rule Symbol2EntityInChoose {
+abstract rule Symbol2EntityInChoose extends GeneralSymbol2Entity {
 	from
 		symbol: EBNF!FactorableSymbol (
 			not symbol.containingChoose.oclIsUndefined()
 		)
 	to
-		entity: PLM!Entity (
-			_l_.name <- symbol.uniqueName,
-			_l_.visualizer <- Sequence{ lmlVisualizer }
-		),
-		lmlVisualizer: PLM!LMLVisualizer (
-			dslVisualizer <- Sequence{visualizer}
-		),
-		visualizer: PLM!TextualDSLVisualizer (
-			root <- symbol
-		)
+		entity: PLM!Entity ()
 }
 
 -- TERMINAL
-rule Terminal2Entity extends Symbol2EntityInChoose{
+rule Terminal2EntityInChoose extends Symbol2EntityInChoose{
 	from
 		symbol: EBNF!Terminal
 	to
@@ -206,7 +207,7 @@ rule Terminal2Entity extends Symbol2EntityInChoose{
 	}
 }
 
-rule Terminal2Visualizer extends Symbol2Entity {
+rule Terminal2Entity extends Symbol2Entity {
 	from
 		symbol: EBNF!Terminal
 	to
@@ -339,12 +340,24 @@ rule Choose2Inheritance {
 }
 
 -- CONTROLS
-rule Group2Entity extends Symbol2Entity {
+
+-- GENERAL CONTROL
+
+abstract rule Control2Entity extends Symbol2Entity{
 	from
-		symbol: EBNF!Group
+		symbol: EBNF!Control
 	to
-		entity: PLM!Entity (
-		),
+		visualizer: PLM!TextualDSLVisualizer (
+			root <- symbol,
+			content <- symbol.filteredDefList -> collect(e | thisModule.resolveTemp(e,
+					'visual'))
+		)
+}
+
+abstract rule Control2EntityInChoose extends Symbol2Entity{
+	from
+		symbol: EBNF!Control
+	to
 		visualizer: PLM!TextualDSLVisualizer (
 			root <- symbol,
 			content <- symbol.filteredDefList -> collect(e | thisModule.resolveTemp(e,
@@ -355,32 +368,33 @@ rule Group2Entity extends Symbol2Entity {
 	}
 }
 
-rule Group2EntityInChoose extends Symbol2EntityInChoose {
+rule Group2Entity extends Control2Entity {
 	from
 		symbol: EBNF!Group
 	to
 		entity: PLM!Entity (
-		),
-		visualizer: PLM!TextualDSLVisualizer (
-			root <- symbol,
-			content <- symbol.filteredDefList -> collect(e | thisModule.resolveTemp(e,
-					'visual'))
 		)
 	do {
 		symbol.increaseCounter; 
 	}
 }
 
-rule Option2Entity extends Symbol2Entity {
+rule Group2EntityInChoose extends Control2EntityInChoose {
+	from
+		symbol: EBNF!Group
+	to
+		entity: PLM!Entity (
+		)
+	do {
+		symbol.increaseCounter; 
+	}
+}
+
+rule Option2Entity extends Control2Entity {
 	from
 		symbol: EBNF!Option
 	to
 		entity: PLM!Entity (
-		),
-		visualizer: PLM!TextualDSLVisualizer (
-			root <- symbol,
-			content <- symbol.filteredDefList -> collect(e | thisModule.resolveTemp(e,
-					'visual'))
 		),
 		participation1: PLM!Participation (
 			lower <- 0
@@ -390,16 +404,11 @@ rule Option2Entity extends Symbol2Entity {
 	}
 }
 
-rule Option2EntityInChoose extends Symbol2EntityInChoose {
+rule Option2EntityInChoose extends Control2EntityInChoose {
 	from
 		symbol: EBNF!Option
 	to
 		entity: PLM!Entity (
-		),
-		visualizer: PLM!TextualDSLVisualizer (
-			root <- symbol,
-			content <- symbol.filteredDefList -> collect(e | thisModule.resolveTemp(e,
-					'visual'))
 		),
 		participation1: PLM!Participation (
 			lower <- 0
@@ -409,16 +418,11 @@ rule Option2EntityInChoose extends Symbol2EntityInChoose {
 	}
 }
 
-rule Repitition2Entity extends Symbol2Entity {
+rule Repitition2Entity extends Control2Entity {
 	from
 		symbol: EBNF!Repetition
 	to
 		entity: PLM!Entity (
-		),
-		visualizer: PLM!TextualDSLVisualizer (
-			root <- symbol,
-			content <- symbol.filteredDefList -> collect(e | thisModule.resolveTemp(e,
-					'visual'))
 		),
 		participation1: PLM!Participation (
 			lower <- 0,
@@ -429,16 +433,11 @@ rule Repitition2Entity extends Symbol2Entity {
 	}
 }
 
-rule Repitition2EntityInChoose extends Symbol2EntityInChoose {
+rule Repitition2EntityInChoose extends Control2EntityInChoose {
 	from
 		symbol: EBNF!Repetition
 	to
 		entity: PLM!Entity (
-		),
-		visualizer: PLM!TextualDSLVisualizer (
-			root <- symbol,
-			content <- symbol.filteredDefList -> collect(e | thisModule.resolveTemp(e,
-					'visual'))
 		),
 		participation1: PLM!Participation (
 			lower <- 0,

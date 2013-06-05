@@ -115,13 +115,4 @@ public interface Symbol extends EObject {
 	 */
 	void setContainingChoose(Choose value);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model kind="operation"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL body='self.containingChoose != null'"
-	 * @generated
-	 */
-	boolean isContainedByChoose();
-
 } // Symbol

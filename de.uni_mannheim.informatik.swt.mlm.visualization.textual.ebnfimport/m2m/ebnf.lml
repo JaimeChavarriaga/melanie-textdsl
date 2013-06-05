@@ -1,226 +1,350 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:PLM="http://swt.informatik.uni-mannheim.de/PLM" xmlns:textualrepresentation="http://swt.informatik.uni-mannheim.de/MLM/textualrepresentation">
-  <PLM:Domain>
-    <ontologies xsi:type="PLM:Ontology">
-      <content>
-        <content xsi:type="PLM:Entity" name="A">
-          <visualizer>
-            <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="/0/@ontologies.0/@content.0/@content.0">
-              <content xsi:type="textualrepresentation:Value" expression="EBNF_Choose0"/>
-            </dslVisualizer>
-          </visualizer>
-        </content>
-        <content xsi:type="PLM:Entity" name="B">
-          <visualizer>
-            <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="/0/@ontologies.0/@content.0/@content.1">
-              <content xsi:type="textualrepresentation:Value" expression="EBNF_Group0"/>
-            </dslVisualizer>
-          </visualizer>
-        </content>
-        <content xsi:type="PLM:Entity" name="C">
-          <visualizer>
-            <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="/0/@ontologies.0/@content.0/@content.2">
-              <content xsi:type="textualrepresentation:Value" expression="EBNF_Terminal1"/>
-            </dslVisualizer>
-          </visualizer>
-        </content>
-        <content xsi:type="PLM:Entity" name="D">
-          <visualizer>
-            <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="/0/@ontologies.0/@content.0/@content.3">
-              <content xsi:type="textualrepresentation:Value" expression="EBNF_Terminal2"/>
-            </dslVisualizer>
-          </visualizer>
-        </content>
-        <content xsi:type="PLM:Entity" name="E">
-          <visualizer>
-            <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="/0/@ontologies.0/@content.0/@content.4">
-              <content xsi:type="textualrepresentation:Value" expression="EBNF_Group1"/>
-            </dslVisualizer>
-          </visualizer>
-        </content>
-        <content xsi:type="PLM:Entity" name="EBNF_Group0">
-          <visualizer>
-            <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="/0/@ontologies.0/@content.0/@content.5">
-              <content xsi:type="textualrepresentation:Value" expression="EBNF_NonTerminalReference0"/>
-              <content xsi:type="textualrepresentation:Value" expression="EBNF_NonTerminalReference1"/>
-              <content xsi:type="textualrepresentation:Value" expression="EBNF_NonTerminalReference2"/>
-            </dslVisualizer>
-          </visualizer>
-        </content>
-        <content xsi:type="PLM:Connection">
-          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.5"/>
-          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.1"/>
-        </content>
-        <content xsi:type="PLM:Entity" name="EBNF_NonTerminalReference0">
-          <visualizer>
-            <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="/0/@ontologies.0/@content.0/@content.7">
-              <content xsi:type="textualrepresentation:Value" expression="C"/>
-            </dslVisualizer>
-          </visualizer>
-        </content>
-        <content xsi:type="PLM:Connection">
-          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.7"/>
-          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.5"/>
-        </content>
-        <content xsi:type="PLM:Entity" name="EBNF_NonTerminalReference1">
-          <visualizer>
-            <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="/0/@ontologies.0/@content.0/@content.9">
-              <content xsi:type="textualrepresentation:Value" expression="D"/>
-            </dslVisualizer>
-          </visualizer>
-        </content>
-        <content xsi:type="PLM:Connection">
-          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.9"/>
-          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.5"/>
-        </content>
-        <content xsi:type="PLM:Entity" name="EBNF_NonTerminalReference2">
-          <visualizer>
-            <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="/0/@ontologies.0/@content.0/@content.11">
-              <content xsi:type="textualrepresentation:Value" expression="C"/>
-            </dslVisualizer>
-          </visualizer>
-        </content>
-        <content xsi:type="PLM:Connection">
-          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.11"/>
-          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.5"/>
-        </content>
-        <content xsi:type="PLM:Entity" name="EBNF_Terminal1">
-          <visualizer>
-            <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="/0/@ontologies.0/@content.0/@content.13">
-              <content xsi:type="textualrepresentation:Literal" expression="c"/>
-            </dslVisualizer>
-          </visualizer>
-        </content>
-        <content xsi:type="PLM:Connection">
-          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.13"/>
-          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.2"/>
-        </content>
-        <content xsi:type="PLM:Entity" name="EBNF_Terminal2">
-          <visualizer>
-            <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="/0/@ontologies.0/@content.0/@content.15">
-              <content xsi:type="textualrepresentation:Literal" expression="d"/>
-            </dslVisualizer>
-          </visualizer>
-        </content>
-        <content xsi:type="PLM:Connection">
-          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.15"/>
-          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.3"/>
-        </content>
-        <content xsi:type="PLM:Entity" name="EBNF_Group1">
-          <visualizer>
-            <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="/0/@ontologies.0/@content.0/@content.17">
-              <content xsi:type="textualrepresentation:Value" expression="EBNF_Group2"/>
-              <content xsi:type="textualrepresentation:Value" expression="EBNF_NonTerminalReference5"/>
-            </dslVisualizer>
-          </visualizer>
-        </content>
-        <content xsi:type="PLM:Connection">
-          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.17"/>
-          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.4"/>
-        </content>
-        <content xsi:type="PLM:Entity" name="EBNF_Group2">
-          <visualizer>
-            <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="/0/@ontologies.0/@content.0/@content.19">
-              <content xsi:type="textualrepresentation:Value" expression="EBNF_Group3"/>
-            </dslVisualizer>
-          </visualizer>
-        </content>
-        <content xsi:type="PLM:Connection">
-          <participation lower="5" upper="5" destination="/0/@ontologies.0/@content.0/@content.19"/>
-          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.17"/>
-        </content>
-        <content xsi:type="PLM:Entity" name="EBNF_Group3">
-          <visualizer>
-            <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="/0/@ontologies.0/@content.0/@content.21">
-              <content xsi:type="textualrepresentation:Value" expression="EBNF_NonTerminalReference3"/>
-              <content xsi:type="textualrepresentation:Value" expression="EBNF_NonTerminalReference4"/>
-            </dslVisualizer>
-          </visualizer>
-        </content>
-        <content xsi:type="PLM:Connection">
-          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.21"/>
-          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.19"/>
-        </content>
-        <content xsi:type="PLM:Entity" name="EBNF_NonTerminalReference3">
-          <visualizer>
-            <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="/0/@ontologies.0/@content.0/@content.23">
-              <content xsi:type="textualrepresentation:Value" expression="A"/>
-            </dslVisualizer>
-          </visualizer>
-        </content>
-        <content xsi:type="PLM:Connection">
-          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.23"/>
-          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.21"/>
-        </content>
-        <content xsi:type="PLM:Entity" name="EBNF_NonTerminalReference4">
-          <visualizer>
-            <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="/0/@ontologies.0/@content.0/@content.25">
-              <content xsi:type="textualrepresentation:Value" expression="B"/>
-            </dslVisualizer>
-          </visualizer>
-        </content>
-        <content xsi:type="PLM:Connection">
-          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.25"/>
-          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.21"/>
-        </content>
-        <content xsi:type="PLM:Entity" name="EBNF_NonTerminalReference5">
-          <visualizer>
-            <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="/0/@ontologies.0/@content.0/@content.27">
-              <content xsi:type="textualrepresentation:Value" expression="C"/>
-            </dslVisualizer>
-          </visualizer>
-        </content>
-        <content xsi:type="PLM:Connection">
-          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.27"/>
-          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.17"/>
-        </content>
-        <content xsi:type="PLM:Entity" name="EBNF_NonTerminalReference6">
-          <visualizer>
-            <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="/0/@ontologies.0/@content.0/@content.29">
-              <content xsi:type="textualrepresentation:Value" expression="B"/>
-            </dslVisualizer>
-          </visualizer>
-        </content>
-        <content xsi:type="PLM:Connection">
-          <participation lower="3" upper="3" destination="/0/@ontologies.0/@content.0/@content.1"/>
-          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.29"/>
-        </content>
-        <content xsi:type="PLM:Entity" name="EBNF_NonTerminalReference7">
-          <visualizer>
-            <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="/0/@ontologies.0/@content.0/@content.31">
-              <content xsi:type="textualrepresentation:Value" expression="C"/>
-            </dslVisualizer>
-          </visualizer>
-        </content>
-        <content xsi:type="PLM:Connection">
-          <participation lower="4" upper="4" destination="/0/@ontologies.0/@content.0/@content.2"/>
-          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.31"/>
-        </content>
-        <content xsi:type="PLM:Entity" name="TR_EBNF_Terminal0">
-          <visualizer>
-            <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="/0/@ontologies.0/@content.0/@content.33">
-              <content xsi:type="textualrepresentation:Value" expression="EBNF_Terminal0"/>
-            </dslVisualizer>
-          </visualizer>
-        </content>
-        <content xsi:type="PLM:Connection">
-          <participation lower="4" upper="4" destination="/0/@ontologies.0/@content.0/@content.35"/>
-          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.33"/>
-        </content>
-        <content xsi:type="PLM:Entity" name="EBNF_Terminal0">
-          <visualizer>
-            <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="/0/@ontologies.0/@content.0/@content.33">
-              <content xsi:type="textualrepresentation:Literal" expression="A"/>
-            </dslVisualizer>
-          </visualizer>
-        </content>
-        <content xsi:type="PLM:Entity" name="EBNF_Choose0"/>
-        <content xsi:type="PLM:Connection">
-          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.36"/>
-          <participation lower="1" upper="1" destination="/0/@ontologies.0/@content.0/@content.0"/>
-        </content>
+<PLM:Domain xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:PLM="http://swt.informatik.uni-mannheim.de/PLM" xmlns:textualrepresentation="http://swt.informatik.uni-mannheim.de/MLM/textualrepresentation">
+  <ontologies xsi:type="PLM:Ontology">
+    <content>
+      <content xsi:type="PLM:Entity" name="aa">
+        <visualizer>
+          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.0">
+            <content xsi:type="textualrepresentation:Value" expression="EBNF_Terminal0"/>
+          </dslVisualizer>
+        </visualizer>
       </content>
-    </ontologies>
-  </PLM:Domain>
-  <PLM:Generalization supertype="/0/@ontologies.0/@content.0/@content.36" subtype="/0/@ontologies.0/@content.0/@content.29 /0/@ontologies.0/@content.0/@content.31 /0/@ontologies.0/@content.0/@content.33"/>
-</xmi:XMI>
+      <content xsi:type="PLM:Entity" name="bb">
+        <visualizer>
+          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.1">
+            <content xsi:type="textualrepresentation:Value" expression="EBNF_Group0"/>
+          </dslVisualizer>
+        </visualizer>
+      </content>
+      <content xsi:type="PLM:Entity" name="cc">
+        <visualizer>
+          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.2">
+            <content xsi:type="textualrepresentation:Value" expression="EBNF_Group1"/>
+          </dslVisualizer>
+        </visualizer>
+      </content>
+      <content xsi:type="PLM:Entity" name="dd">
+        <visualizer>
+          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.3">
+            <content xsi:type="textualrepresentation:Value" expression="EBNF_Group2"/>
+          </dslVisualizer>
+        </visualizer>
+      </content>
+      <content xsi:type="PLM:Entity" name="ee">
+        <visualizer>
+          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.4">
+            <content xsi:type="textualrepresentation:Value" expression="EBNF_Group3"/>
+          </dslVisualizer>
+        </visualizer>
+      </content>
+      <content xsi:type="PLM:Entity" name="ff">
+        <visualizer>
+          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.5">
+            <content xsi:type="textualrepresentation:Value" expression="EBNF_Group4"/>
+          </dslVisualizer>
+        </visualizer>
+      </content>
+      <content xsi:type="PLM:Entity" name="gg">
+        <visualizer>
+          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.6">
+            <content xsi:type="textualrepresentation:Value" expression="EBNF_Group5"/>
+          </dslVisualizer>
+        </visualizer>
+      </content>
+      <content xsi:type="PLM:Entity" name="EBNF_Terminal0">
+        <visualizer>
+          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.7">
+            <content xsi:type="textualrepresentation:Literal" expression="A"/>
+          </dslVisualizer>
+        </visualizer>
+      </content>
+      <content xsi:type="PLM:Connection">
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.7"/>
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.0"/>
+      </content>
+      <content xsi:type="PLM:Entity" name="EBNF_Group0">
+        <visualizer>
+          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.9">
+            <content xsi:type="textualrepresentation:Value" expression="EBNF_NonTerminalReference0"/>
+            <content xsi:type="textualrepresentation:Value" expression="EBNF_Terminal1"/>
+          </dslVisualizer>
+        </visualizer>
+      </content>
+      <content xsi:type="PLM:Connection">
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.9"/>
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.1"/>
+      </content>
+      <content xsi:type="PLM:Entity" name="EBNF_NonTerminalReference0">
+        <visualizer>
+          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.11">
+            <content xsi:type="textualrepresentation:Value" expression="aa"/>
+          </dslVisualizer>
+        </visualizer>
+      </content>
+      <content xsi:type="PLM:Connection">
+        <participation lower="3" upper="3" destination="//@ontologies.0/@content.0/@content.11"/>
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.9"/>
+      </content>
+      <content xsi:type="PLM:Entity" name="EBNF_Terminal1">
+        <visualizer>
+          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.13">
+            <content xsi:type="textualrepresentation:Literal" expression="B"/>
+          </dslVisualizer>
+        </visualizer>
+      </content>
+      <content xsi:type="PLM:Connection">
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.13"/>
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.9"/>
+      </content>
+      <content xsi:type="PLM:Entity" name="EBNF_Group1">
+        <visualizer>
+          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.15">
+            <content xsi:type="textualrepresentation:Value" expression="EBNF_Option0"/>
+            <content xsi:type="textualrepresentation:Value" expression="EBNF_Terminal2"/>
+          </dslVisualizer>
+        </visualizer>
+      </content>
+      <content xsi:type="PLM:Connection">
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.15"/>
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.2"/>
+      </content>
+      <content xsi:type="PLM:Entity" name="EBNF_Option0">
+        <visualizer>
+          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.17">
+            <content xsi:type="textualrepresentation:Value" expression="EBNF_NonTerminalReference1"/>
+          </dslVisualizer>
+        </visualizer>
+      </content>
+      <content xsi:type="PLM:Connection">
+        <participation upper="3" destination="//@ontologies.0/@content.0/@content.17"/>
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.15"/>
+      </content>
+      <content xsi:type="PLM:Entity" name="EBNF_NonTerminalReference1">
+        <visualizer>
+          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.19">
+            <content xsi:type="textualrepresentation:Value" expression="aa"/>
+          </dslVisualizer>
+        </visualizer>
+      </content>
+      <content xsi:type="PLM:Connection">
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.19"/>
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.17"/>
+      </content>
+      <content xsi:type="PLM:Entity" name="EBNF_Terminal2">
+        <visualizer>
+          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.21">
+            <content xsi:type="textualrepresentation:Literal" expression="C"/>
+          </dslVisualizer>
+        </visualizer>
+      </content>
+      <content xsi:type="PLM:Connection">
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.21"/>
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.15"/>
+      </content>
+      <content xsi:type="PLM:Entity" name="EBNF_Group2">
+        <visualizer>
+          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.23">
+            <content xsi:type="textualrepresentation:Value" expression="EBNF_Repetition0"/>
+            <content xsi:type="textualrepresentation:Value" expression="EBNF_Terminal3"/>
+          </dslVisualizer>
+        </visualizer>
+      </content>
+      <content xsi:type="PLM:Connection">
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.23"/>
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.3"/>
+      </content>
+      <content xsi:type="PLM:Entity" name="EBNF_Repetition0">
+        <visualizer>
+          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.25">
+            <content xsi:type="textualrepresentation:Value" expression="EBNF_NonTerminalReference2"/>
+          </dslVisualizer>
+        </visualizer>
+      </content>
+      <content xsi:type="PLM:Connection">
+        <participation destination="//@ontologies.0/@content.0/@content.25"/>
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.23"/>
+      </content>
+      <content xsi:type="PLM:Entity" name="EBNF_NonTerminalReference2">
+        <visualizer>
+          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.27">
+            <content xsi:type="textualrepresentation:Value" expression="aa"/>
+          </dslVisualizer>
+        </visualizer>
+      </content>
+      <content xsi:type="PLM:Connection">
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.27"/>
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.25"/>
+      </content>
+      <content xsi:type="PLM:Entity" name="EBNF_Terminal3">
+        <visualizer>
+          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.29">
+            <content xsi:type="textualrepresentation:Literal" expression="D"/>
+          </dslVisualizer>
+        </visualizer>
+      </content>
+      <content xsi:type="PLM:Connection">
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.29"/>
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.23"/>
+      </content>
+      <content xsi:type="PLM:Entity" name="EBNF_Group3">
+        <visualizer>
+          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.31">
+            <content xsi:type="textualrepresentation:Value" expression="EBNF_NonTerminalReference3"/>
+            <content xsi:type="textualrepresentation:Value" expression="EBNF_Repetition1"/>
+            <content xsi:type="textualrepresentation:Value" expression="EBNF_Terminal4"/>
+          </dslVisualizer>
+        </visualizer>
+      </content>
+      <content xsi:type="PLM:Connection">
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.31"/>
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.4"/>
+      </content>
+      <content xsi:type="PLM:Entity" name="EBNF_NonTerminalReference3">
+        <visualizer>
+          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.33">
+            <content xsi:type="textualrepresentation:Value" expression="aa"/>
+          </dslVisualizer>
+        </visualizer>
+      </content>
+      <content xsi:type="PLM:Connection">
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.33"/>
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.31"/>
+      </content>
+      <content xsi:type="PLM:Entity" name="EBNF_Repetition1">
+        <visualizer>
+          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.35">
+            <content xsi:type="textualrepresentation:Value" expression="EBNF_NonTerminalReference4"/>
+          </dslVisualizer>
+        </visualizer>
+      </content>
+      <content xsi:type="PLM:Connection">
+        <participation destination="//@ontologies.0/@content.0/@content.35"/>
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.31"/>
+      </content>
+      <content xsi:type="PLM:Entity" name="EBNF_NonTerminalReference4">
+        <visualizer>
+          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.37">
+            <content xsi:type="textualrepresentation:Value" expression="aa"/>
+          </dslVisualizer>
+        </visualizer>
+      </content>
+      <content xsi:type="PLM:Connection">
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.37"/>
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.35"/>
+      </content>
+      <content xsi:type="PLM:Entity" name="EBNF_Terminal4">
+        <visualizer>
+          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.39">
+            <content xsi:type="textualrepresentation:Literal" expression="E"/>
+          </dslVisualizer>
+        </visualizer>
+      </content>
+      <content xsi:type="PLM:Connection">
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.39"/>
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.31"/>
+      </content>
+      <content xsi:type="PLM:Entity" name="EBNF_Group4">
+        <visualizer>
+          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.41">
+            <content xsi:type="textualrepresentation:Value" expression="EBNF_NonTerminalReference5"/>
+            <content xsi:type="textualrepresentation:Value" expression="EBNF_Option1"/>
+            <content xsi:type="textualrepresentation:Value" expression="EBNF_Terminal5"/>
+          </dslVisualizer>
+        </visualizer>
+      </content>
+      <content xsi:type="PLM:Connection">
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.41"/>
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.5"/>
+      </content>
+      <content xsi:type="PLM:Entity" name="EBNF_NonTerminalReference5">
+        <visualizer>
+          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.43">
+            <content xsi:type="textualrepresentation:Value" expression="aa"/>
+          </dslVisualizer>
+        </visualizer>
+      </content>
+      <content xsi:type="PLM:Connection">
+        <participation lower="3" upper="3" destination="//@ontologies.0/@content.0/@content.43"/>
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.41"/>
+      </content>
+      <content xsi:type="PLM:Entity" name="EBNF_Option1">
+        <visualizer>
+          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.45">
+            <content xsi:type="textualrepresentation:Value" expression="EBNF_NonTerminalReference6"/>
+          </dslVisualizer>
+        </visualizer>
+      </content>
+      <content xsi:type="PLM:Connection">
+        <participation upper="3" destination="//@ontologies.0/@content.0/@content.45"/>
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.41"/>
+      </content>
+      <content xsi:type="PLM:Entity" name="EBNF_NonTerminalReference6">
+        <visualizer>
+          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.47">
+            <content xsi:type="textualrepresentation:Value" expression="aa"/>
+          </dslVisualizer>
+        </visualizer>
+      </content>
+      <content xsi:type="PLM:Connection">
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.47"/>
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.45"/>
+      </content>
+      <content xsi:type="PLM:Entity" name="EBNF_Terminal5">
+        <visualizer>
+          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.49">
+            <content xsi:type="textualrepresentation:Literal" expression="F"/>
+          </dslVisualizer>
+        </visualizer>
+      </content>
+      <content xsi:type="PLM:Connection">
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.49"/>
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.41"/>
+      </content>
+      <content xsi:type="PLM:Entity" name="EBNF_Group5">
+        <visualizer>
+          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.51">
+            <content xsi:type="textualrepresentation:Value" expression="EBNF_Repetition2"/>
+            <content xsi:type="textualrepresentation:Value" expression="EBNF_Terminal6"/>
+          </dslVisualizer>
+        </visualizer>
+      </content>
+      <content xsi:type="PLM:Connection">
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.51"/>
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.6"/>
+      </content>
+      <content xsi:type="PLM:Entity" name="EBNF_Repetition2">
+        <visualizer>
+          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.53">
+            <content xsi:type="textualrepresentation:Value" expression="EBNF_NonTerminalReference7"/>
+          </dslVisualizer>
+        </visualizer>
+      </content>
+      <content xsi:type="PLM:Connection">
+        <participation destination="//@ontologies.0/@content.0/@content.53"/>
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.51"/>
+      </content>
+      <content xsi:type="PLM:Entity" name="EBNF_NonTerminalReference7">
+        <visualizer>
+          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.55">
+            <content xsi:type="textualrepresentation:Value" expression="aa"/>
+          </dslVisualizer>
+        </visualizer>
+      </content>
+      <content xsi:type="PLM:Connection">
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.55"/>
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.53"/>
+      </content>
+      <content xsi:type="PLM:Entity" name="EBNF_Terminal6">
+        <visualizer>
+          <dslVisualizer xsi:type="textualrepresentation:TextualDSLVisualizer" root="//@ontologies.0/@content.0/@content.57">
+            <content xsi:type="textualrepresentation:Literal" expression="D"/>
+          </dslVisualizer>
+        </visualizer>
+      </content>
+      <content xsi:type="PLM:Connection">
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.57"/>
+        <participation lower="1" upper="1" destination="//@ontologies.0/@content.0/@content.51"/>
+      </content>
+    </content>
+  </ontologies>
+</PLM:Domain>

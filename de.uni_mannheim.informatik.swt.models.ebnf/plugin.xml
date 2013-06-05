@@ -6,12 +6,6 @@
 
 <plugin>
 
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <package
-            uri="http://swt.informatik.uni-mannheim.de/ebnfmm"
-            class="ebnfmm.EbnfmmPackage"
-            genModel="model/ebnfmm.genmodel"/>
-   </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated ebnfmm -->
