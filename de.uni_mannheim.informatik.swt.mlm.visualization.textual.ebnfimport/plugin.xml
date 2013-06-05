@@ -3,12 +3,8 @@
 <plugin>
    <extension
          point="org.eclipse.ui.importWizards">
-      <category
-            id="de.uni_mannheim.informatik.swt.mlm.visualization.textual.ebnfimport.importWizards.sampleCategory"
-            name="EBNF File Import">
-      </category>
       <wizard
-            category="de.uni_mannheim.informatik.swt.mlm.visualization.textual.ebnfimport.importWizards.sampleCategory"
+            category="de.uni_mannheim.informatik.swt.mlm.melaniecategory"
             class="de.uni_mannheim.informatik.swt.mlm.visualization.textual.ebnfimport.wizards.EbnfImportWizard"
             icon="icons/sample.gif"
             id="de.uni_mannheim.informatik.swt.mlm.visualization.textual.ebnfimport.importWizards.ImportWizard"
