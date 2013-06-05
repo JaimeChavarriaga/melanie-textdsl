@@ -32,7 +32,7 @@
 	<target name="compileGrammar">
 		<exec executable="java">
 			<arg value="-jar" />
-			<arg value="/usr/local/lib/antlr-4.0-complete.jar" />
+			<arg value="lib/antlr-4.0-complete.jar" />
 			<arg value="-package" />
 			<arg value="de.uni_mannheim.informatik.swt.mlm.visualization.textual.ebnfimport" />
 			<arg value="-listener"/>
