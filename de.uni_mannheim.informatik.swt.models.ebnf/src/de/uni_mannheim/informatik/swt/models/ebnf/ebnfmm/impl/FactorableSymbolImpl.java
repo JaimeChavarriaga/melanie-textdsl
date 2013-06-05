@@ -13,10 +13,14 @@ package de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.EbnfmmPackage;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.FactorableSymbol;
 
+import java.lang.reflect.InvocationTargetException;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
@@ -94,6 +98,30 @@ public abstract class FactorableSymbolImpl extends SymbolImpl implements Factora
 	}
 
 	/**
+	 * The cached invocation delegate for the '{@link #isContainedByChoose() <em>Is Contained By Choose</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isContainedByChoose()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final EOperation.Internal.InvocationDelegate IS_CONTAINED_BY_CHOOSE_1__EINVOCATION_DELEGATE = ((EOperation.Internal)EbnfmmPackage.Literals.FACTORABLE_SYMBOL___IS_CONTAINED_BY_CHOOSE).getInvocationDelegate();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isContainedByChoose() {
+		try {
+			return (Boolean)IS_CONTAINED_BY_CHOOSE_1__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
+		}
+		catch (InvocationTargetException ite) {
+			throw new WrappedException(ite);
+		}
+	}
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -149,6 +177,20 @@ public abstract class FactorableSymbolImpl extends SymbolImpl implements Factora
 				return factor != FACTOR_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case EbnfmmPackage.FACTORABLE_SYMBOL___IS_CONTAINED_BY_CHOOSE:
+				return isContainedByChoose();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

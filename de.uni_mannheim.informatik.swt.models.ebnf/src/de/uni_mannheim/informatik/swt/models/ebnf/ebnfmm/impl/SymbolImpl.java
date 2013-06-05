@@ -190,30 +190,6 @@ public abstract class SymbolImpl extends EObjectImpl implements Symbol {
 	}
 
 	/**
-	 * The cached invocation delegate for the '{@link #isContainedByChoose() <em>Is Contained By Choose</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isContainedByChoose()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final EOperation.Internal.InvocationDelegate IS_CONTAINED_BY_CHOOSE__EINVOCATION_DELEGATE = ((EOperation.Internal)EbnfmmPackage.Literals.SYMBOL___IS_CONTAINED_BY_CHOOSE).getInvocationDelegate();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isContainedByChoose() {
-		try {
-			return (Boolean)IS_CONTAINED_BY_CHOOSE__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
-		}
-		catch (InvocationTargetException ite) {
-			throw new WrappedException(ite);
-		}
-	}
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -349,20 +325,6 @@ public abstract class SymbolImpl extends EObjectImpl implements Symbol {
 				return getContainingChoose() != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
-		switch (operationID) {
-			case EbnfmmPackage.SYMBOL___IS_CONTAINED_BY_CHOOSE:
-				return isContainedByChoose();
-		}
-		return super.eInvoke(operationID, arguments);
 	}
 
 } //SymbolImpl

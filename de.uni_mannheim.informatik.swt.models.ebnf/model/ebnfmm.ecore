@@ -15,11 +15,6 @@
         upperBound="-1" eType="#//Symbol" containment="true" eOpposite="#//Symbol/containingNonTerminal"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Symbol" abstract="true">
-    <eOperations name="isContainedByChoose" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL">
-        <details key="body" value="self.containingChoose != null"/>
-      </eAnnotations>
-    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="containingNonTerminal"
         eType="#//NonTerminal" eOpposite="#//NonTerminal/definitionList"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="containingControl" eType="#//Control"
@@ -53,6 +48,11 @@
         eType="#//Symbol" containment="true" eOpposite="#//Symbol/containingChoose"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FactorableSymbol" abstract="true" eSuperTypes="#//Symbol">
+    <eOperations name="isContainedByChoose" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL">
+        <details key="body" value="self.containingChoose != null"/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="factor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
 </ecore:EPackage>

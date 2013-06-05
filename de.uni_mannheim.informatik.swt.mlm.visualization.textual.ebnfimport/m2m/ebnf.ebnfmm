@@ -1,34 +1,54 @@
 <?xml version="1.0" encoding="ASCII"?>
 <ebnfmm:EBNFDescription xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ebnfmm="http://swt.informatik.uni-mannheim.de/ebnfmm">
-  <rules id="A">
-    <definitionList xsi:type="ebnfmm:Choose">
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" factor="3" nonTerminal="//@rules.1"/>
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" factor="4" nonTerminal="//@rules.2"/>
-      <definitionList xsi:type="ebnfmm:Terminal" factor="4" terminalString="A"/>
+  <rules id="aa">
+    <definitionList xsi:type="ebnfmm:Terminal" terminalString="A"/>
+  </rules>
+  <rules id="bb">
+    <definitionList xsi:type="ebnfmm:Group">
+      <definitionList xsi:type="ebnfmm:NonTerminalReference" factor="3" nonTerminal="//@rules.0"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="B"/>
     </definitionList>
   </rules>
-  <rules id="B">
+  <rules id="cc">
     <definitionList xsi:type="ebnfmm:Group">
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.2"/>
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.3"/>
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.2"/>
-    </definitionList>
-  </rules>
-  <rules id="C">
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="c"/>
-  </rules>
-  <rules id="D">
-    <definitionList xsi:type="ebnfmm:Terminal" terminalString="d"/>
-  </rules>
-  <rules id="E">
-    <definitionList xsi:type="ebnfmm:Group">
-      <definitionList xsi:type="ebnfmm:Group" factor="5">
-        <definitionList xsi:type="ebnfmm:Group">
-          <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.0"/>
-          <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.1"/>
-        </definitionList>
+      <definitionList xsi:type="ebnfmm:Option" factor="3">
+        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.0"/>
       </definitionList>
-      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.2"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="C"/>
+    </definitionList>
+  </rules>
+  <rules id="dd">
+    <definitionList xsi:type="ebnfmm:Group">
+      <definitionList xsi:type="ebnfmm:Repetition">
+        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.0"/>
+      </definitionList>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="D"/>
+    </definitionList>
+  </rules>
+  <rules id="ee">
+    <definitionList xsi:type="ebnfmm:Group">
+      <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.0"/>
+      <definitionList xsi:type="ebnfmm:Repetition">
+        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.0"/>
+      </definitionList>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="E"/>
+    </definitionList>
+  </rules>
+  <rules id="ff">
+    <definitionList xsi:type="ebnfmm:Group">
+      <definitionList xsi:type="ebnfmm:NonTerminalReference" factor="3" nonTerminal="//@rules.0"/>
+      <definitionList xsi:type="ebnfmm:Option" factor="3">
+        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.0"/>
+      </definitionList>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="F"/>
+    </definitionList>
+  </rules>
+  <rules id="gg">
+    <definitionList xsi:type="ebnfmm:Group">
+      <definitionList xsi:type="ebnfmm:Repetition" factor="3">
+        <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.0"/>
+      </definitionList>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="D"/>
     </definitionList>
   </rules>
 </ebnfmm:EBNFDescription>

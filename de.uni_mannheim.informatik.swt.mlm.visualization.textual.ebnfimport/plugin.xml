@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.importWizards">
+      <category
+            id="de.uni_mannheim.informatik.swt.mlm.visualization.textual.ebnfimport.importWizards.sampleCategory"
+            name="EBNF File Import">
+      </category>
+      <wizard
+            category="de.uni_mannheim.informatik.swt.mlm.visualization.textual.ebnfimport.importWizards.sampleCategory"
+            class="de.uni_mannheim.informatik.swt.mlm.visualization.textual.ebnfimport.wizards.EbnfImportWizard"
+            icon="icons/sample.gif"
+            id="de.uni_mannheim.informatik.swt.mlm.visualization.textual.ebnfimport.importWizards.ImportWizard"
+            name="Import EBNF File">
+         <description>
+            Import an EBNF file from the local file system into the workspace.
+         </description>
+      </wizard>
+   </extension>
+
+</plugin>
