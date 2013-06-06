@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Symbol#getContainingNonTerminal <em>Containing Non Terminal</em>}</li>
  *   <li>{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Symbol#getContainingControl <em>Containing Control</em>}</li>
- *   <li>{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Symbol#getContainingChoose <em>Containing Choose</em>}</li>
+ *   <li>{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Symbol#getContainingChoice <em>Containing Choice</em>}</li>
  * </ul>
  * </p>
  *
@@ -88,31 +88,31 @@ public interface Symbol extends EObject {
 	void setContainingControl(Control value);
 
 	/**
-	 * Returns the value of the '<em><b>Containing Choose</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Choose#getDefinitionList <em>Definition List</em>}'.
+	 * Returns the value of the '<em><b>Containing Choice</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Choice#getDefinitionList <em>Definition List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Containing Choose</em>' container reference isn't clear,
+	 * If the meaning of the '<em>Containing Choice</em>' container reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Containing Choose</em>' container reference.
-	 * @see #setContainingChoose(Choose)
-	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.EbnfmmPackage#getSymbol_ContainingChoose()
-	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Choose#getDefinitionList
+	 * @return the value of the '<em>Containing Choice</em>' container reference.
+	 * @see #setContainingChoice(Choice)
+	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.EbnfmmPackage#getSymbol_ContainingChoice()
+	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Choice#getDefinitionList
 	 * @model opposite="definitionList" transient="false"
 	 * @generated
 	 */
-	Choose getContainingChoose();
+	Choice getContainingChoice();
 
 	/**
-	 * Sets the value of the '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Symbol#getContainingChoose <em>Containing Choose</em>}' container reference.
+	 * Sets the value of the '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Symbol#getContainingChoice <em>Containing Choice</em>}' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Containing Choose</em>' container reference.
-	 * @see #getContainingChoose()
+	 * @param value the new value of the '<em>Containing Choice</em>' container reference.
+	 * @see #getContainingChoice()
 	 * @generated
 	 */
-	void setContainingChoose(Choose value);
+	void setContainingChoice(Choice value);
 
 } // Symbol

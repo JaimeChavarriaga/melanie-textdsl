@@ -10,20 +10,16 @@
  *******************************************************************************/
 package de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl;
 
-import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Choose;
+import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Choice;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Control;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.EbnfmmPackage;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.NonTerminal;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Symbol;
 
-import java.lang.reflect.InvocationTargetException;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -40,7 +36,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <ul>
  *   <li>{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.SymbolImpl#getContainingNonTerminal <em>Containing Non Terminal</em>}</li>
  *   <li>{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.SymbolImpl#getContainingControl <em>Containing Control</em>}</li>
- *   <li>{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.SymbolImpl#getContainingChoose <em>Containing Choose</em>}</li>
+ *   <li>{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.SymbolImpl#getContainingChoice <em>Containing Choice</em>}</li>
  * </ul>
  * </p>
  *
@@ -153,9 +149,9 @@ public abstract class SymbolImpl extends EObjectImpl implements Symbol {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Choose getContainingChoose() {
-		if (eContainerFeatureID() != EbnfmmPackage.SYMBOL__CONTAINING_CHOOSE) return null;
-		return (Choose)eInternalContainer();
+	public Choice getContainingChoice() {
+		if (eContainerFeatureID() != EbnfmmPackage.SYMBOL__CONTAINING_CHOICE) return null;
+		return (Choice)eInternalContainer();
 	}
 
 	/**
@@ -163,8 +159,8 @@ public abstract class SymbolImpl extends EObjectImpl implements Symbol {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetContainingChoose(Choose newContainingChoose, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newContainingChoose, EbnfmmPackage.SYMBOL__CONTAINING_CHOOSE, msgs);
+	public NotificationChain basicSetContainingChoice(Choice newContainingChoice, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newContainingChoice, EbnfmmPackage.SYMBOL__CONTAINING_CHOICE, msgs);
 		return msgs;
 	}
 
@@ -173,20 +169,20 @@ public abstract class SymbolImpl extends EObjectImpl implements Symbol {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setContainingChoose(Choose newContainingChoose) {
-		if (newContainingChoose != eInternalContainer() || (eContainerFeatureID() != EbnfmmPackage.SYMBOL__CONTAINING_CHOOSE && newContainingChoose != null)) {
-			if (EcoreUtil.isAncestor(this, newContainingChoose))
+	public void setContainingChoice(Choice newContainingChoice) {
+		if (newContainingChoice != eInternalContainer() || (eContainerFeatureID() != EbnfmmPackage.SYMBOL__CONTAINING_CHOICE && newContainingChoice != null)) {
+			if (EcoreUtil.isAncestor(this, newContainingChoice))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
-			if (newContainingChoose != null)
-				msgs = ((InternalEObject)newContainingChoose).eInverseAdd(this, EbnfmmPackage.CHOOSE__DEFINITION_LIST, Choose.class, msgs);
-			msgs = basicSetContainingChoose(newContainingChoose, msgs);
+			if (newContainingChoice != null)
+				msgs = ((InternalEObject)newContainingChoice).eInverseAdd(this, EbnfmmPackage.CHOICE__DEFINITION_LIST, Choice.class, msgs);
+			msgs = basicSetContainingChoice(newContainingChoice, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EbnfmmPackage.SYMBOL__CONTAINING_CHOOSE, newContainingChoose, newContainingChoose));
+			eNotify(new ENotificationImpl(this, Notification.SET, EbnfmmPackage.SYMBOL__CONTAINING_CHOICE, newContainingChoice, newContainingChoice));
 	}
 
 	/**
@@ -205,10 +201,10 @@ public abstract class SymbolImpl extends EObjectImpl implements Symbol {
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetContainingControl((Control)otherEnd, msgs);
-			case EbnfmmPackage.SYMBOL__CONTAINING_CHOOSE:
+			case EbnfmmPackage.SYMBOL__CONTAINING_CHOICE:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetContainingChoose((Choose)otherEnd, msgs);
+				return basicSetContainingChoice((Choice)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -225,8 +221,8 @@ public abstract class SymbolImpl extends EObjectImpl implements Symbol {
 				return basicSetContainingNonTerminal(null, msgs);
 			case EbnfmmPackage.SYMBOL__CONTAINING_CONTROL:
 				return basicSetContainingControl(null, msgs);
-			case EbnfmmPackage.SYMBOL__CONTAINING_CHOOSE:
-				return basicSetContainingChoose(null, msgs);
+			case EbnfmmPackage.SYMBOL__CONTAINING_CHOICE:
+				return basicSetContainingChoice(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -243,8 +239,8 @@ public abstract class SymbolImpl extends EObjectImpl implements Symbol {
 				return eInternalContainer().eInverseRemove(this, EbnfmmPackage.NON_TERMINAL__DEFINITION_LIST, NonTerminal.class, msgs);
 			case EbnfmmPackage.SYMBOL__CONTAINING_CONTROL:
 				return eInternalContainer().eInverseRemove(this, EbnfmmPackage.CONTROL__DEFINITION_LIST, Control.class, msgs);
-			case EbnfmmPackage.SYMBOL__CONTAINING_CHOOSE:
-				return eInternalContainer().eInverseRemove(this, EbnfmmPackage.CHOOSE__DEFINITION_LIST, Choose.class, msgs);
+			case EbnfmmPackage.SYMBOL__CONTAINING_CHOICE:
+				return eInternalContainer().eInverseRemove(this, EbnfmmPackage.CHOICE__DEFINITION_LIST, Choice.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -261,8 +257,8 @@ public abstract class SymbolImpl extends EObjectImpl implements Symbol {
 				return getContainingNonTerminal();
 			case EbnfmmPackage.SYMBOL__CONTAINING_CONTROL:
 				return getContainingControl();
-			case EbnfmmPackage.SYMBOL__CONTAINING_CHOOSE:
-				return getContainingChoose();
+			case EbnfmmPackage.SYMBOL__CONTAINING_CHOICE:
+				return getContainingChoice();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -281,8 +277,8 @@ public abstract class SymbolImpl extends EObjectImpl implements Symbol {
 			case EbnfmmPackage.SYMBOL__CONTAINING_CONTROL:
 				setContainingControl((Control)newValue);
 				return;
-			case EbnfmmPackage.SYMBOL__CONTAINING_CHOOSE:
-				setContainingChoose((Choose)newValue);
+			case EbnfmmPackage.SYMBOL__CONTAINING_CHOICE:
+				setContainingChoice((Choice)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -302,8 +298,8 @@ public abstract class SymbolImpl extends EObjectImpl implements Symbol {
 			case EbnfmmPackage.SYMBOL__CONTAINING_CONTROL:
 				setContainingControl((Control)null);
 				return;
-			case EbnfmmPackage.SYMBOL__CONTAINING_CHOOSE:
-				setContainingChoose((Choose)null);
+			case EbnfmmPackage.SYMBOL__CONTAINING_CHOICE:
+				setContainingChoice((Choice)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -321,8 +317,8 @@ public abstract class SymbolImpl extends EObjectImpl implements Symbol {
 				return getContainingNonTerminal() != null;
 			case EbnfmmPackage.SYMBOL__CONTAINING_CONTROL:
 				return getContainingControl() != null;
-			case EbnfmmPackage.SYMBOL__CONTAINING_CHOOSE:
-				return getContainingChoose() != null;
+			case EbnfmmPackage.SYMBOL__CONTAINING_CHOICE:
+				return getContainingChoice() != null;
 		}
 		return super.eIsSet(featureID);
 	}

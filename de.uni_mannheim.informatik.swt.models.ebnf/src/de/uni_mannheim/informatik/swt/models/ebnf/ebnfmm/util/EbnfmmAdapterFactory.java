@@ -96,8 +96,8 @@ public class EbnfmmAdapterFactory extends AdapterFactoryImpl {
 				return createControlAdapter();
 			}
 			@Override
-			public Adapter caseOption(Option object) {
-				return createOptionAdapter();
+			public Adapter caseOptional(Optional object) {
+				return createOptionalAdapter();
 			}
 			@Override
 			public Adapter caseRepetition(Repetition object) {
@@ -120,8 +120,8 @@ public class EbnfmmAdapterFactory extends AdapterFactoryImpl {
 				return createExceptAdapter();
 			}
 			@Override
-			public Adapter caseChoose(Choose object) {
-				return createChooseAdapter();
+			public Adapter caseChoice(Choice object) {
+				return createChoiceAdapter();
 			}
 			@Override
 			public Adapter caseFactorableSymbol(FactorableSymbol object) {
@@ -218,16 +218,16 @@ public class EbnfmmAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Option <em>Option</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Optional <em>Optional</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Option
+	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Optional
 	 * @generated
 	 */
-	public Adapter createOptionAdapter() {
+	public Adapter createOptionalAdapter() {
 		return null;
 	}
 
@@ -302,16 +302,16 @@ public class EbnfmmAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Choose <em>Choose</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Choice <em>Choice</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Choose
+	 * @see de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Choice
 	 * @generated
 	 */
-	public Adapter createChooseAdapter() {
+	public Adapter createChoiceAdapter() {
 		return null;
 	}
 

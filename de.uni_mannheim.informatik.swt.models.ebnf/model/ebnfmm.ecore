@@ -19,8 +19,8 @@
         eType="#//NonTerminal" eOpposite="#//NonTerminal/definitionList"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="containingControl" eType="#//Control"
         eOpposite="#//Control/definitionList"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="containingChoose" eType="#//Choose"
-        eOpposite="#//Choose/definitionList"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="containingChoice" eType="#//Choice"
+        eOpposite="#//Choice/definitionList"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Terminal" eSuperTypes="#//FactorableSymbol">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="terminalString" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -29,7 +29,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="definitionList" upperBound="-1"
         eType="#//Symbol" containment="true" eOpposite="#//Symbol/containingControl"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Option" eSuperTypes="#//Control"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Optional" eSuperTypes="#//Control"/>
   <eClassifiers xsi:type="ecore:EClass" name="Repetition" eSuperTypes="#//Control"/>
   <eClassifiers xsi:type="ecore:EClass" name="NonTerminalReference" eSuperTypes="#//FactorableSymbol">
     <eStructuralFeatures xsi:type="ecore:EReference" name="nonTerminal" lowerBound="1"
@@ -43,9 +43,9 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="except" lowerBound="1"
         eType="#//Symbol" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Choose" eSuperTypes="#//Symbol">
+  <eClassifiers xsi:type="ecore:EClass" name="Choice" eSuperTypes="#//Symbol">
     <eStructuralFeatures xsi:type="ecore:EReference" name="definitionList" upperBound="-1"
-        eType="#//Symbol" containment="true" eOpposite="#//Symbol/containingChoose"/>
+        eType="#//Symbol" containment="true" eOpposite="#//Symbol/containingChoice"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FactorableSymbol" abstract="true" eSuperTypes="#//Symbol">
     <eOperations name="isContainedByChoose" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">

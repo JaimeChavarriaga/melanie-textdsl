@@ -108,12 +108,12 @@ public class EbnfmmSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case EbnfmmPackage.OPTION: {
-				Option option = (Option)theEObject;
-				T result = caseOption(option);
-				if (result == null) result = caseControl(option);
-				if (result == null) result = caseFactorableSymbol(option);
-				if (result == null) result = caseSymbol(option);
+			case EbnfmmPackage.OPTIONAL: {
+				Optional optional = (Optional)theEObject;
+				T result = caseOptional(optional);
+				if (result == null) result = caseControl(optional);
+				if (result == null) result = caseFactorableSymbol(optional);
+				if (result == null) result = caseSymbol(optional);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -160,10 +160,10 @@ public class EbnfmmSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case EbnfmmPackage.CHOOSE: {
-				Choose choose = (Choose)theEObject;
-				T result = caseChoose(choose);
-				if (result == null) result = caseSymbol(choose);
+			case EbnfmmPackage.CHOICE: {
+				Choice choice = (Choice)theEObject;
+				T result = caseChoice(choice);
+				if (result == null) result = caseSymbol(choice);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -254,17 +254,17 @@ public class EbnfmmSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Option</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Optional</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Option</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Optional</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseOption(Option object) {
+	public T caseOptional(Optional object) {
 		return null;
 	}
 
@@ -344,17 +344,17 @@ public class EbnfmmSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Choose</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Choice</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Choose</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Choice</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseChoose(Choose object) {
+	public T caseChoice(Choice object) {
 		return null;
 	}
 

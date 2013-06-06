@@ -10,7 +10,7 @@
  *******************************************************************************/
 package de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl;
 
-import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Choose;
+import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Choice;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.EbnfmmPackage;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Symbol;
 
@@ -23,24 +23,23 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Choose</b></em>'.
+ * An implementation of the model object '<em><b>Choice</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.ChooseImpl#getDefinitionList <em>Definition List</em>}</li>
+ *   <li>{@link de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl.ChoiceImpl#getDefinitionList <em>Definition List</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ChooseImpl extends SymbolImpl implements Choose {
+public class ChoiceImpl extends SymbolImpl implements Choice {
 	/**
 	 * The cached value of the '{@link #getDefinitionList() <em>Definition List</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -56,7 +55,7 @@ public class ChooseImpl extends SymbolImpl implements Choose {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ChooseImpl() {
+	protected ChoiceImpl() {
 		super();
 	}
 
@@ -67,7 +66,7 @@ public class ChooseImpl extends SymbolImpl implements Choose {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EbnfmmPackage.Literals.CHOOSE;
+		return EbnfmmPackage.Literals.CHOICE;
 	}
 
 	/**
@@ -77,7 +76,7 @@ public class ChooseImpl extends SymbolImpl implements Choose {
 	 */
 	public EList<Symbol> getDefinitionList() {
 		if (definitionList == null) {
-			definitionList = new EObjectContainmentWithInverseEList<Symbol>(Symbol.class, this, EbnfmmPackage.CHOOSE__DEFINITION_LIST, EbnfmmPackage.SYMBOL__CONTAINING_CHOOSE);
+			definitionList = new EObjectContainmentWithInverseEList<Symbol>(Symbol.class, this, EbnfmmPackage.CHOICE__DEFINITION_LIST, EbnfmmPackage.SYMBOL__CONTAINING_CHOICE);
 		}
 		return definitionList;
 	}
@@ -91,7 +90,7 @@ public class ChooseImpl extends SymbolImpl implements Choose {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EbnfmmPackage.CHOOSE__DEFINITION_LIST:
+			case EbnfmmPackage.CHOICE__DEFINITION_LIST:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getDefinitionList()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -105,7 +104,7 @@ public class ChooseImpl extends SymbolImpl implements Choose {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EbnfmmPackage.CHOOSE__DEFINITION_LIST:
+			case EbnfmmPackage.CHOICE__DEFINITION_LIST:
 				return ((InternalEList<?>)getDefinitionList()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -119,7 +118,7 @@ public class ChooseImpl extends SymbolImpl implements Choose {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EbnfmmPackage.CHOOSE__DEFINITION_LIST:
+			case EbnfmmPackage.CHOICE__DEFINITION_LIST:
 				return getDefinitionList();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -134,7 +133,7 @@ public class ChooseImpl extends SymbolImpl implements Choose {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EbnfmmPackage.CHOOSE__DEFINITION_LIST:
+			case EbnfmmPackage.CHOICE__DEFINITION_LIST:
 				getDefinitionList().clear();
 				getDefinitionList().addAll((Collection<? extends Symbol>)newValue);
 				return;
@@ -150,7 +149,7 @@ public class ChooseImpl extends SymbolImpl implements Choose {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EbnfmmPackage.CHOOSE__DEFINITION_LIST:
+			case EbnfmmPackage.CHOICE__DEFINITION_LIST:
 				getDefinitionList().clear();
 				return;
 		}
@@ -165,10 +164,10 @@ public class ChooseImpl extends SymbolImpl implements Choose {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EbnfmmPackage.CHOOSE__DEFINITION_LIST:
+			case EbnfmmPackage.CHOICE__DEFINITION_LIST:
 				return definitionList != null && !definitionList.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //ChooseImpl
+} //ChoiceImpl

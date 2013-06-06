@@ -31,7 +31,7 @@ helper def: EBNF_OptionCounter: Integer =
 helper def: EBNF_NonTerminalReferenceCounter: Integer =
 	0;
 
-helper def: EBNF_ChooseCounter: Integer =
+helper def: EBNF_ChoiceCounter: Integer =
 	0;
 
 helper def: EBNF_TerminalCounter: Integer =
@@ -134,7 +134,7 @@ abstract rule GeneralSymbol2Entity{
 abstract rule Symbol2Entity extends GeneralSymbol2Entity{
 	from
 		symbol: EBNF!FactorableSymbol (
-			symbol.containingChoose.oclIsUndefined()
+			symbol.containingChoice.oclIsUndefined()
 		)
 	to
 		visual: PLM!Value (
@@ -155,17 +155,17 @@ abstract rule Symbol2Entity extends GeneralSymbol2Entity{
 		)
 }
 
-abstract rule Symbol2EntityInChoose extends GeneralSymbol2Entity {
+abstract rule Symbol2EntityInChoice extends GeneralSymbol2Entity {
 	from
 		symbol: EBNF!FactorableSymbol (
-			not symbol.containingChoose.oclIsUndefined()
+			not symbol.containingChoice.oclIsUndefined()
 		)
 	to
 		entity: PLM!Entity ()
 }
 
 -- TERMINAL
-rule Terminal2EntityInChoose extends Symbol2EntityInChoose{
+rule Terminal2EntityInChoice extends Symbol2EntityInChoice{
 	from
 		symbol: EBNF!Terminal
 	to
@@ -241,7 +241,7 @@ rule NonTerminalReference2Entity extends Symbol2Entity {
 	}
 }
 
-rule NonTerminalReference2EntityInChoose extends Symbol2EntityInChoose {
+rule NonTerminalReference2EntityInChoice extends Symbol2EntityInChoice {
 	from
 		symbol: EBNF!NonTerminalReference
 	to
@@ -289,7 +289,7 @@ rule SpecialSequence2Entity extends Symbol2Entity {
 	}
 }
 
-rule SpecialSequence2EntityInChoose extends Symbol2EntityInChoose{
+rule SpecialSequence2EntityInChoice extends Symbol2EntityInChoice{
 	from
 		symbol: EBNF!SpecialSequence
 	to
@@ -306,20 +306,20 @@ rule SpecialSequence2EntityInChoose extends Symbol2EntityInChoose{
 	}
 }
 
--- CHOOSE
-rule Choose2Inheritance {
+-- CHOICE
+rule Choice2Inheritance {
 	from
-		choose: EBNF!Choose
+		choice: EBNF!Choice
 	to
 		entity: PLM!Entity (
-			_l_.name <- choose.uniqueName
+			_l_.name <- choice.uniqueName
 		),
 		visual: PLM!Value (
-			expression <- choose.uniqueName
+			expression <- choice.uniqueName
 		),
 		generalization: PLM!Generalization (
 			supertype <- Sequence{entity},
-			subtype <- choose.definitionList
+			subtype <- choice.definitionList
 		),
 		connection: PLM!Connection(
 			_l_.participation <- Sequence{participation1, participation2}
@@ -327,15 +327,15 @@ rule Choose2Inheritance {
 		participation1: PLM!Participation (
 			lower <- 1,
 			upper <- 1,
-			destination <- choose
+			destination <- choice
 		),
 		participation2: PLM!Participation (
 			lower <- 1,
 			upper <- 1,
-			destination <- choose.container
+			destination <- choice.container
 		)
 	do {
-		choose.increaseCounter; 
+		choice.increaseCounter; 
 	}
 }
 
@@ -354,7 +354,7 @@ abstract rule Control2Entity extends Symbol2Entity{
 		)
 }
 
-abstract rule Control2EntityInChoose extends Symbol2Entity{
+abstract rule Control2EntityInChoice extends Symbol2Entity{
 	from
 		symbol: EBNF!Control
 	to
@@ -379,7 +379,7 @@ rule Group2Entity extends Control2Entity {
 	}
 }
 
-rule Group2EntityInChoose extends Control2EntityInChoose {
+rule Group2EntityInChoice extends Control2EntityInChoice {
 	from
 		symbol: EBNF!Group
 	to
@@ -404,7 +404,7 @@ rule Option2Entity extends Control2Entity {
 	}
 }
 
-rule Option2EntityInChoose extends Control2EntityInChoose {
+rule Option2EntityInChoice extends Control2EntityInChoice {
 	from
 		symbol: EBNF!Option
 	to
@@ -433,7 +433,7 @@ rule Repitition2Entity extends Control2Entity {
 	}
 }
 
-rule Repitition2EntityInChoose extends Control2EntityInChoose {
+rule Repitition2EntityInChoice extends Control2EntityInChoice {
 	from
 		symbol: EBNF!Repetition
 	to

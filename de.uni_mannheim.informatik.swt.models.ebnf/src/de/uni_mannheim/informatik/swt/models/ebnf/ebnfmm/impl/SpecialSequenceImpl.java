@@ -14,7 +14,9 @@ import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.EbnfmmPackage;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.SpecialSequence;
 
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
@@ -40,6 +42,7 @@ public class SpecialSequenceImpl extends FactorableSymbolImpl implements Special
 	 * @ordered
 	 */
 	protected static final String TEXT_EDEFAULT = null;
+
 	/**
 	 * The cached value of the '{@link #getText() <em>Text</em>}' attribute.
 	 * <!-- begin-user-doc -->

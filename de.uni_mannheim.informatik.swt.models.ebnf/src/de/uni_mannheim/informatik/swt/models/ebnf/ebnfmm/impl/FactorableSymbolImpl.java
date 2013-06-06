@@ -14,13 +14,15 @@ import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.EbnfmmPackage;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.FactorableSymbol;
 
 import java.lang.reflect.InvocationTargetException;
+
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.WrappedException;
-import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EOperation;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
@@ -105,7 +107,7 @@ public abstract class FactorableSymbolImpl extends SymbolImpl implements Factora
 	 * @generated
 	 * @ordered
 	 */
-	protected static final EOperation.Internal.InvocationDelegate IS_CONTAINED_BY_CHOOSE_1__EINVOCATION_DELEGATE = ((EOperation.Internal)EbnfmmPackage.Literals.FACTORABLE_SYMBOL___IS_CONTAINED_BY_CHOOSE).getInvocationDelegate();
+	protected static final EOperation.Internal.InvocationDelegate IS_CONTAINED_BY_CHOOSE__EINVOCATION_DELEGATE = ((EOperation.Internal)EbnfmmPackage.Literals.FACTORABLE_SYMBOL___IS_CONTAINED_BY_CHOOSE).getInvocationDelegate();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -114,7 +116,7 @@ public abstract class FactorableSymbolImpl extends SymbolImpl implements Factora
 	 */
 	public boolean isContainedByChoose() {
 		try {
-			return (Boolean)IS_CONTAINED_BY_CHOOSE_1__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
+			return (Boolean)IS_CONTAINED_BY_CHOOSE__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
 		}
 		catch (InvocationTargetException ite) {
 			throw new WrappedException(ite);

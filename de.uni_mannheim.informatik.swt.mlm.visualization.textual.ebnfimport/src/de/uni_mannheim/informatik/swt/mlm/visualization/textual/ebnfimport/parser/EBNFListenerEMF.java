@@ -21,6 +21,7 @@ import de.uni_mannheim.informatik.swt.mlm.visualization.textual.ebnfimport.EBNFP
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.ebnfimport.EBNFParser.Syntactic_termContext;
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.ebnfimport.EBNFParser.SyntaxContext;
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.ebnfimport.EBNFParser.Syntax_ruleContext;
+import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Choice;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Choose;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Control;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.EBNFDescription;
@@ -30,7 +31,7 @@ import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.FactorableSymbol;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Group;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.NonTerminal;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.NonTerminalReference;
-import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Option;
+import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Optional;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Repetition;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.SpecialSequence;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Symbol;
@@ -72,20 +73,23 @@ public class EBNFListenerEMF extends EBNFBaseListener {
 		}
 		super.enterSyntax(ctx);
 	}
-	
+
 	@Override
 	public void enterDefinitions_list(Definitions_listContext ctx) {
-		if(ctx.single_definition().size() > 1){ // do not create a choose instance, if there is only one class to choose from
+		if (ctx.single_definition().size() > 1) { // do not create a choose
+													// instance, if there is
+													// only one class to choose
+													// from
 			// create a new choose instance
-			Choose choose = ebnfFactory.createChoose();
+			Choice choose = ebnfFactory.createChoice();
 			addToRuleOrControl(choose);
 			symbolStack.push(choose);
 		}
 	}
-	
+
 	@Override
 	public void exitDefinitions_list(Definitions_listContext ctx) {
-		if(ctx.single_definition().size() > 1){
+		if (ctx.single_definition().size() > 1) {
 			symbolStack.pop();
 		}
 	}
@@ -95,19 +99,19 @@ public class EBNFListenerEMF extends EBNFBaseListener {
 		System.out.println("Rule: " + ctx.META_IDENTIFIER());
 		currentRule = rules.get(ctx.META_IDENTIFIER().getText());
 	}
-	
+
 	@Override
 	public void enterSingle_definition(Single_definitionContext ctx) {
-		if(ctx.syntactic_term().size() > 1){
+		if (ctx.syntactic_term().size() > 1) {
 			Group group = ebnfFactory.createGroup();
 			addToRuleOrControl(group);
 			symbolStack.push(group);
 		}
 	}
-	
+
 	@Override
 	public void exitSingle_definition(Single_definitionContext ctx) {
-		if(ctx.syntactic_term().size() > 1){
+		if (ctx.syntactic_term().size() > 1) {
 			symbolStack.pop();
 		}
 	}
@@ -168,7 +172,7 @@ public class EBNFListenerEMF extends EBNFBaseListener {
 			// add current symbol to rule or control
 			addToRuleOrControl(seq);
 		} else if (ctx.optional_sequence() != null) {
-			Option option = ebnfFactory.createOption();
+			Optional option = ebnfFactory.createOptional();
 
 			// set factor (multiplicity if present)
 			setFactorIfPresent(ctx, option);
@@ -227,7 +231,8 @@ public class EBNFListenerEMF extends EBNFBaseListener {
 	 * @param symbol
 	 *            to use
 	 */
-	private void setFactorIfPresent(Syntactic_primaryContext ctx, FactorableSymbol symbol) {
+	private void setFactorIfPresent(Syntactic_primaryContext ctx,
+			FactorableSymbol symbol) {
 		// find current context for factor
 		Syntactic_factorContext factorCtx = (Syntactic_factorContext) ctx.parent;
 
@@ -246,7 +251,7 @@ public class EBNFListenerEMF extends EBNFBaseListener {
 		if (!symbolStack.empty()) { // control is active
 			Symbol currentSymbol = symbolStack.peek();
 
-			if(currentSymbol instanceof Choose){
+			if (currentSymbol instanceof Choose) {
 				Choose choose = (Choose) currentSymbol;
 				choose.getDefinitionList().add(symbol);
 			} else if (currentSymbol instanceof Control) {

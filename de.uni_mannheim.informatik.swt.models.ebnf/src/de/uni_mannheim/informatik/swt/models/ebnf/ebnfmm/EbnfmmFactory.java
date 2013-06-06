@@ -57,13 +57,13 @@ public interface EbnfmmFactory extends EFactory {
 	Terminal createTerminal();
 
 	/**
-	 * Returns a new object of class '<em>Option</em>'.
+	 * Returns a new object of class '<em>Optional</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Option</em>'.
+	 * @return a new object of class '<em>Optional</em>'.
 	 * @generated
 	 */
-	Option createOption();
+	Optional createOptional();
 
 	/**
 	 * Returns a new object of class '<em>Repetition</em>'.
@@ -111,13 +111,13 @@ public interface EbnfmmFactory extends EFactory {
 	Except createExcept();
 
 	/**
-	 * Returns a new object of class '<em>Choose</em>'.
+	 * Returns a new object of class '<em>Choice</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Choose</em>'.
+	 * @return a new object of class '<em>Choice</em>'.
 	 * @generated
 	 */
-	Choose createChoose();
+	Choice createChoice();
 
 	/**
 	 * Returns the package supported by this factory.

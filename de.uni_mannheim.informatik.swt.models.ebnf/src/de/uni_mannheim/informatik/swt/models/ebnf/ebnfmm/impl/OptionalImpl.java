@@ -11,26 +11,26 @@
 package de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl;
 
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.EbnfmmPackage;
-import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Option;
+import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Optional;
 
 import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Option</b></em>'.
+ * An implementation of the model object '<em><b>Optional</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class OptionImpl extends ControlImpl implements Option {
+public class OptionalImpl extends ControlImpl implements Optional {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected OptionImpl() {
+	protected OptionalImpl() {
 		super();
 	}
 
@@ -41,7 +41,7 @@ public class OptionImpl extends ControlImpl implements Option {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EbnfmmPackage.Literals.OPTION;
+		return EbnfmmPackage.Literals.OPTIONAL;
 	}
 
-} //OptionImpl
+} //OptionalImpl

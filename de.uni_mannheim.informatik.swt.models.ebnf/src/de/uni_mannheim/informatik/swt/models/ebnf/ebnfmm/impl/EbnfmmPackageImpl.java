@@ -10,7 +10,7 @@
  *******************************************************************************/
 package de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.impl;
 
-import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Choose;
+import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Choice;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Control;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.EBNFDescription;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.EbnfmmFactory;
@@ -20,7 +20,7 @@ import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.FactorableSymbol;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Group;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.NonTerminal;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.NonTerminalReference;
-import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Option;
+import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Optional;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Repetition;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.SpecialSequence;
 import de.uni_mannheim.informatik.swt.models.ebnf.ebnfmm.Symbol;
@@ -81,7 +81,7 @@ public class EbnfmmPackageImpl extends EPackageImpl implements EbnfmmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass optionEClass = null;
+	private EClass optionalEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -123,7 +123,7 @@ public class EbnfmmPackageImpl extends EPackageImpl implements EbnfmmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass chooseEClass = null;
+	private EClass choiceEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -270,7 +270,7 @@ public class EbnfmmPackageImpl extends EPackageImpl implements EbnfmmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSymbol_ContainingChoose() {
+	public EReference getSymbol_ContainingChoice() {
 		return (EReference)symbolEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -315,8 +315,8 @@ public class EbnfmmPackageImpl extends EPackageImpl implements EbnfmmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getOption() {
-		return optionEClass;
+	public EClass getOptional() {
+		return optionalEClass;
 	}
 
 	/**
@@ -396,8 +396,8 @@ public class EbnfmmPackageImpl extends EPackageImpl implements EbnfmmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getChoose() {
-		return chooseEClass;
+	public EClass getChoice() {
+		return choiceEClass;
 	}
 
 	/**
@@ -405,8 +405,8 @@ public class EbnfmmPackageImpl extends EPackageImpl implements EbnfmmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getChoose_DefinitionList() {
-		return (EReference)chooseEClass.getEStructuralFeatures().get(0);
+	public EReference getChoice_DefinitionList() {
+		return (EReference)choiceEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -432,7 +432,7 @@ public class EbnfmmPackageImpl extends EPackageImpl implements EbnfmmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getFactorableSymbol__IsContainedByChoose_1() {
+	public EOperation getFactorableSymbol__IsContainedByChoose() {
 		return factorableSymbolEClass.getEOperations().get(0);
 	}
 
@@ -474,7 +474,7 @@ public class EbnfmmPackageImpl extends EPackageImpl implements EbnfmmPackage {
 		symbolEClass = createEClass(SYMBOL);
 		createEReference(symbolEClass, SYMBOL__CONTAINING_NON_TERMINAL);
 		createEReference(symbolEClass, SYMBOL__CONTAINING_CONTROL);
-		createEReference(symbolEClass, SYMBOL__CONTAINING_CHOOSE);
+		createEReference(symbolEClass, SYMBOL__CONTAINING_CHOICE);
 
 		terminalEClass = createEClass(TERMINAL);
 		createEAttribute(terminalEClass, TERMINAL__TERMINAL_STRING);
@@ -482,7 +482,7 @@ public class EbnfmmPackageImpl extends EPackageImpl implements EbnfmmPackage {
 		controlEClass = createEClass(CONTROL);
 		createEReference(controlEClass, CONTROL__DEFINITION_LIST);
 
-		optionEClass = createEClass(OPTION);
+		optionalEClass = createEClass(OPTIONAL);
 
 		repetitionEClass = createEClass(REPETITION);
 
@@ -497,8 +497,8 @@ public class EbnfmmPackageImpl extends EPackageImpl implements EbnfmmPackage {
 		exceptEClass = createEClass(EXCEPT);
 		createEReference(exceptEClass, EXCEPT__EXCEPT);
 
-		chooseEClass = createEClass(CHOOSE);
-		createEReference(chooseEClass, CHOOSE__DEFINITION_LIST);
+		choiceEClass = createEClass(CHOICE);
+		createEReference(choiceEClass, CHOICE__DEFINITION_LIST);
 
 		factorableSymbolEClass = createEClass(FACTORABLE_SYMBOL);
 		createEAttribute(factorableSymbolEClass, FACTORABLE_SYMBOL__FACTOR);
@@ -535,13 +535,13 @@ public class EbnfmmPackageImpl extends EPackageImpl implements EbnfmmPackage {
 		// Add supertypes to classes
 		terminalEClass.getESuperTypes().add(this.getFactorableSymbol());
 		controlEClass.getESuperTypes().add(this.getFactorableSymbol());
-		optionEClass.getESuperTypes().add(this.getControl());
+		optionalEClass.getESuperTypes().add(this.getControl());
 		repetitionEClass.getESuperTypes().add(this.getControl());
 		nonTerminalReferenceEClass.getESuperTypes().add(this.getFactorableSymbol());
 		groupEClass.getESuperTypes().add(this.getControl());
 		specialSequenceEClass.getESuperTypes().add(this.getFactorableSymbol());
 		exceptEClass.getESuperTypes().add(this.getControl());
-		chooseEClass.getESuperTypes().add(this.getSymbol());
+		choiceEClass.getESuperTypes().add(this.getSymbol());
 		factorableSymbolEClass.getESuperTypes().add(this.getSymbol());
 
 		// Initialize classes, features, and operations; add parameters
@@ -555,7 +555,7 @@ public class EbnfmmPackageImpl extends EPackageImpl implements EbnfmmPackage {
 		initEClass(symbolEClass, Symbol.class, "Symbol", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSymbol_ContainingNonTerminal(), this.getNonTerminal(), this.getNonTerminal_DefinitionList(), "containingNonTerminal", null, 0, 1, Symbol.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSymbol_ContainingControl(), this.getControl(), this.getControl_DefinitionList(), "containingControl", null, 0, 1, Symbol.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSymbol_ContainingChoose(), this.getChoose(), this.getChoose_DefinitionList(), "containingChoose", null, 0, 1, Symbol.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSymbol_ContainingChoice(), this.getChoice(), this.getChoice_DefinitionList(), "containingChoice", null, 0, 1, Symbol.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(terminalEClass, Terminal.class, "Terminal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTerminal_TerminalString(), ecorePackage.getEString(), "terminalString", null, 0, 1, Terminal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -563,7 +563,7 @@ public class EbnfmmPackageImpl extends EPackageImpl implements EbnfmmPackage {
 		initEClass(controlEClass, Control.class, "Control", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getControl_DefinitionList(), this.getSymbol(), this.getSymbol_ContainingControl(), "definitionList", null, 0, -1, Control.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(optionEClass, Option.class, "Option", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(optionalEClass, Optional.class, "Optional", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(repetitionEClass, Repetition.class, "Repetition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -578,13 +578,13 @@ public class EbnfmmPackageImpl extends EPackageImpl implements EbnfmmPackage {
 		initEClass(exceptEClass, Except.class, "Except", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getExcept_Except(), this.getSymbol(), null, "except", null, 1, 1, Except.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(chooseEClass, Choose.class, "Choose", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getChoose_DefinitionList(), this.getSymbol(), this.getSymbol_ContainingChoose(), "definitionList", null, 0, -1, Choose.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(choiceEClass, Choice.class, "Choice", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getChoice_DefinitionList(), this.getSymbol(), this.getSymbol_ContainingChoice(), "definitionList", null, 0, -1, Choice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(factorableSymbolEClass, FactorableSymbol.class, "FactorableSymbol", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFactorableSymbol_Factor(), ecorePackage.getEInt(), "factor", null, 0, 1, FactorableSymbol.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getFactorableSymbol__IsContainedByChoose_1(), ecorePackage.getEBoolean(), "isContainedByChoose", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getFactorableSymbol__IsContainedByChoose(), ecorePackage.getEBoolean(), "isContainedByChoose", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -621,7 +621,7 @@ public class EbnfmmPackageImpl extends EPackageImpl implements EbnfmmPackage {
 	protected void createOCLAnnotations() {
 		String source = "http://www.eclipse.org/emf/2002/Ecore/OCL";			
 		addAnnotation
-		  (getFactorableSymbol__IsContainedByChoose_1(), 
+		  (getFactorableSymbol__IsContainedByChoose(), 
 		   source, 
 		   new String[] {
 			 "body", "self.containingChoose != null"
