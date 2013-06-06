@@ -11,7 +11,7 @@
   </rules>
   <rules id="cc">
     <definitionList xsi:type="ebnfmm:Group">
-      <definitionList xsi:type="ebnfmm:Option" factor="3">
+      <definitionList xsi:type="ebnfmm:Optional" factor="3">
         <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.0"/>
       </definitionList>
       <definitionList xsi:type="ebnfmm:Terminal" terminalString="C"/>
@@ -37,7 +37,7 @@
   <rules id="ff">
     <definitionList xsi:type="ebnfmm:Group">
       <definitionList xsi:type="ebnfmm:NonTerminalReference" factor="3" nonTerminal="//@rules.0"/>
-      <definitionList xsi:type="ebnfmm:Option" factor="3">
+      <definitionList xsi:type="ebnfmm:Optional" factor="3">
         <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.0"/>
       </definitionList>
       <definitionList xsi:type="ebnfmm:Terminal" terminalString="F"/>
@@ -47,6 +47,20 @@
     <definitionList xsi:type="ebnfmm:Group">
       <definitionList xsi:type="ebnfmm:Repetition" factor="3">
         <definitionList xsi:type="ebnfmm:NonTerminalReference" nonTerminal="//@rules.0"/>
+      </definitionList>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="D"/>
+    </definitionList>
+  </rules>
+  <rules id="hh">
+    <definitionList xsi:type="ebnfmm:Group">
+      <definitionList xsi:type="ebnfmm:Terminal" factor="3" terminalString="H"/>
+      <definitionList xsi:type="ebnfmm:Terminal" terminalString="D"/>
+    </definitionList>
+  </rules>
+  <rules id="ii">
+    <definitionList xsi:type="ebnfmm:Group">
+      <definitionList xsi:type="ebnfmm:Optional" factor="3">
+        <definitionList xsi:type="ebnfmm:Terminal" terminalString="I"/>
       </definitionList>
       <definitionList xsi:type="ebnfmm:Terminal" terminalString="D"/>
     </definitionList>

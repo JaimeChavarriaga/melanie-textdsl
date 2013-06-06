@@ -36,7 +36,7 @@ public class TextualrepresentationFactoryImpl extends EFactoryImpl implements Te
 	 */
 	public static TextualrepresentationFactory init() {
 		try {
-			TextualrepresentationFactory theTextualrepresentationFactory = (TextualrepresentationFactory)EPackage.Registry.INSTANCE.getEFactory("http://swt.informatik.uni-mannheim.de/MLM/textualrepresentation"); 
+			TextualrepresentationFactory theTextualrepresentationFactory = (TextualrepresentationFactory)EPackage.Registry.INSTANCE.getEFactory(TextualrepresentationPackage.eNS_URI);
 			if (theTextualrepresentationFactory != null) {
 				return theTextualrepresentationFactory;
 			}

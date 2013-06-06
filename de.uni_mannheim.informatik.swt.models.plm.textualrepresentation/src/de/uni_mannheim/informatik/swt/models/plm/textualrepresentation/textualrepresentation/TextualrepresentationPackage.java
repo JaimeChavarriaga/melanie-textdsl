@@ -217,13 +217,31 @@ public interface TextualrepresentationPackage extends EPackage {
 	int LITERAL__COLOR = TEXTUAL_VISUALIZATION_DESCRIPTOR_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Lower</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL__LOWER = TEXTUAL_VISUALIZATION_DESCRIPTOR_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Upper</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL__UPPER = TEXTUAL_VISUALIZATION_DESCRIPTOR_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Literal</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LITERAL_FEATURE_COUNT = TEXTUAL_VISUALIZATION_DESCRIPTOR_FEATURE_COUNT + 1;
+	int LITERAL_FEATURE_COUNT = TEXTUAL_VISUALIZATION_DESCRIPTOR_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>Get Containing PLM Element</em>' operation.
@@ -626,6 +644,28 @@ public interface TextualrepresentationPackage extends EPackage {
 	EReference getLiteral_Color();
 
 	/**
+	 * Returns the meta object for the attribute '{@link de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.Literal#getLower <em>Lower</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Lower</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.Literal#getLower()
+	 * @see #getLiteral()
+	 * @generated
+	 */
+	EAttribute getLiteral_Lower();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.Literal#getUpper <em>Upper</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Upper</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.Literal#getUpper()
+	 * @see #getLiteral()
+	 * @generated
+	 */
+	EAttribute getLiteral_Upper();
+
+	/**
 	 * Returns the meta object for class '{@link de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.Value <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -866,6 +906,22 @@ public interface TextualrepresentationPackage extends EPackage {
 		 * @generated
 		 */
 		EReference LITERAL__COLOR = eINSTANCE.getLiteral_Color();
+
+		/**
+		 * The meta object literal for the '<em><b>Lower</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LITERAL__LOWER = eINSTANCE.getLiteral_Lower();
+
+		/**
+		 * The meta object literal for the '<em><b>Upper</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LITERAL__UPPER = eINSTANCE.getLiteral_Upper();
 
 		/**
 		 * The meta object literal for the '{@link de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.impl.ValueImpl <em>Value</em>}' class.

@@ -283,6 +283,24 @@ public class TextualrepresentationPackageImpl extends EPackageImpl implements Te
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getLiteral_Lower() {
+		return (EAttribute)literalEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLiteral_Upper() {
+		return (EAttribute)literalEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getValue() {
 		return valueEClass;
 	}
@@ -427,6 +445,8 @@ public class TextualrepresentationPackageImpl extends EPackageImpl implements Te
 
 		literalEClass = createEClass(LITERAL);
 		createEReference(literalEClass, LITERAL__COLOR);
+		createEAttribute(literalEClass, LITERAL__LOWER);
+		createEAttribute(literalEClass, LITERAL__UPPER);
 
 		valueEClass = createEClass(VALUE);
 		createEOperation(valueEClass, VALUE___IS_ATTRIBUTE);
@@ -504,6 +524,8 @@ public class TextualrepresentationPackageImpl extends EPackageImpl implements Te
 
 		initEClass(literalEClass, Literal.class, "Literal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getLiteral_Color(), this.getAbstractColor(), null, "color", null, 0, 1, Literal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLiteral_Lower(), ecorePackage.getEInt(), "lower", "0", 0, 1, Literal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLiteral_Upper(), ecorePackage.getEInt(), "upper", "1", 0, 1, Literal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(valueEClass, Value.class, "Value", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

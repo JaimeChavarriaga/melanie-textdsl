@@ -22,7 +22,7 @@ create OUT: PLM from IN: EBNF;
 helper def: EBNF_GroupCounter: Integer =
 	0;
 
-helper def: EBNF_OptionCounter: Integer =
+helper def: EBNF_OptionalCounter: Integer =
 	0;
 
 helper def: EBNF_NonTerminalReferenceCounter: Integer =
@@ -162,6 +162,7 @@ abstract rule Symbol2EntityInChoice extends GeneralSymbol2Entity {
 }
 
 -- TERMINAL
+-- TODO: FIX FOR DIRECT LITERAL
 rule Terminal2EntityInChoice extends Symbol2EntityInChoice{
 	from
 		symbol: EBNF!Terminal
@@ -204,17 +205,14 @@ rule Terminal2EntityInChoice extends Symbol2EntityInChoice{
 	}
 }
 
-rule Terminal2Entity extends Symbol2Entity {
+rule Terminal2Entity {
 	from
 		symbol: EBNF!Terminal
 	to
-		entity: PLM!Entity (
-		),
-		visualDescriptor: PLM!Literal (
-			expression <- symbol.terminalString
-		),
-		visualizer: PLM!TextualDSLVisualizer (
-			content <- Sequence{visualDescriptor}
+		visual: PLM!Literal (
+			expression <- symbol.terminalString,
+			lower <- symbol.calculatedLowerFactor,
+			upper <- symbol.calculatedUpperFactor
 		)
 	do {
 		symbol.increaseCounter; 
@@ -387,9 +385,9 @@ rule Group2EntityInChoice extends Control2EntityInChoice {
 	}
 }
 
-rule Option2Entity extends Control2Entity {
+rule Optional2Entity extends Control2Entity {
 	from
-		symbol: EBNF!Option
+		symbol: EBNF!Optional
 	to
 		entity: PLM!Entity (
 		),
@@ -401,9 +399,9 @@ rule Option2Entity extends Control2Entity {
 	}
 }
 
-rule Option2EntityInChoice extends Control2EntityInChoice {
+rule Optional2EntityInChoice extends Control2EntityInChoice {
 	from
-		symbol: EBNF!Option
+		symbol: EBNF!Optional
 	to
 		entity: PLM!Entity (
 		),

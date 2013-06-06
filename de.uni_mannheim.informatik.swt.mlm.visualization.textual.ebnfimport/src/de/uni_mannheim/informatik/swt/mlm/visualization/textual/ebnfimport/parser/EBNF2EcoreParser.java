@@ -29,7 +29,7 @@ import org.eclipse.m2m.atl.core.ATLCoreException;
 
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.ebnfimport.EBNFLexer;
 import de.uni_mannheim.informatik.swt.mlm.visualization.textual.ebnfimport.EBNFParser;
-import de.uni_mannheim.informatik.swt.mlm.visualization.textual.ebnfimport.atl.Ebnf2lml;
+import de.uni_mannheim.informatik.swt.mlm.visualization.textual.ebnfimport.atl.Ebnf2lmlATL;
 
 /**
  * Class for Parsing an EBNF File to an PLM
@@ -74,7 +74,7 @@ public class EBNF2EcoreParser {
 		resource.save(null);
 
 		// hand file over to the ATL Transformer
-		Ebnf2lml runner = new Ebnf2lml();
+		Ebnf2lmlATL runner = new Ebnf2lmlATL();
 		runner.loadModels(tempFilename);
 		runner.doEbnf2lml(monitor);
 		runner.saveModels(outputFile);

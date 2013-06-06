@@ -55,6 +55,10 @@
   <eClassifiers xsi:type="ecore:EClass" name="Literal" eSuperTypes="#//TextualVisualizationDescriptor">
     <eStructuralFeatures xsi:type="ecore:EReference" name="color" eType="#//AbstractColor"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lower" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="upper" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="1"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Value" eSuperTypes="#//TextualVisualizationDescriptor">
     <eOperations name="isAttribute" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">

@@ -30,6 +30,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.impl.LiteralImpl#getColor <em>Color</em>}</li>
+ *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.impl.LiteralImpl#getLower <em>Lower</em>}</li>
+ *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.impl.LiteralImpl#getUpper <em>Upper</em>}</li>
  * </ul>
  * </p>
  *
@@ -45,6 +47,43 @@ public class LiteralImpl extends TextualVisualizationDescriptorImpl implements L
 	 * @ordered
 	 */
 	protected AbstractColor color;
+
+	/**
+	 * The default value of the '{@link #getLower() <em>Lower</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLower()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int LOWER_EDEFAULT = 0;
+	/**
+	 * The cached value of the '{@link #getLower() <em>Lower</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLower()
+	 * @generated
+	 * @ordered
+	 */
+	protected int lower = LOWER_EDEFAULT;
+	/**
+	 * The default value of the '{@link #getUpper() <em>Upper</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUpper()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int UPPER_EDEFAULT = 1;
+	/**
+	 * The cached value of the '{@link #getUpper() <em>Upper</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUpper()
+	 * @generated
+	 * @ordered
+	 */
+	protected int upper = UPPER_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -113,6 +152,48 @@ public class LiteralImpl extends TextualVisualizationDescriptorImpl implements L
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public int getLower() {
+		return lower;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLower(int newLower) {
+		int oldLower = lower;
+		lower = newLower;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TextualrepresentationPackage.LITERAL__LOWER, oldLower, lower));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getUpper() {
+		return upper;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUpper(int newUpper) {
+		int oldUpper = upper;
+		upper = newUpper;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TextualrepresentationPackage.LITERAL__UPPER, oldUpper, upper));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -132,6 +213,10 @@ public class LiteralImpl extends TextualVisualizationDescriptorImpl implements L
 		switch (featureID) {
 			case TextualrepresentationPackage.LITERAL__COLOR:
 				return getColor();
+			case TextualrepresentationPackage.LITERAL__LOWER:
+				return getLower();
+			case TextualrepresentationPackage.LITERAL__UPPER:
+				return getUpper();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -146,6 +231,12 @@ public class LiteralImpl extends TextualVisualizationDescriptorImpl implements L
 		switch (featureID) {
 			case TextualrepresentationPackage.LITERAL__COLOR:
 				setColor((AbstractColor)newValue);
+				return;
+			case TextualrepresentationPackage.LITERAL__LOWER:
+				setLower((Integer)newValue);
+				return;
+			case TextualrepresentationPackage.LITERAL__UPPER:
+				setUpper((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -162,6 +253,12 @@ public class LiteralImpl extends TextualVisualizationDescriptorImpl implements L
 			case TextualrepresentationPackage.LITERAL__COLOR:
 				setColor((AbstractColor)null);
 				return;
+			case TextualrepresentationPackage.LITERAL__LOWER:
+				setLower(LOWER_EDEFAULT);
+				return;
+			case TextualrepresentationPackage.LITERAL__UPPER:
+				setUpper(UPPER_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -176,8 +273,30 @@ public class LiteralImpl extends TextualVisualizationDescriptorImpl implements L
 		switch (featureID) {
 			case TextualrepresentationPackage.LITERAL__COLOR:
 				return color != null;
+			case TextualrepresentationPackage.LITERAL__LOWER:
+				return lower != LOWER_EDEFAULT;
+			case TextualrepresentationPackage.LITERAL__UPPER:
+				return upper != UPPER_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (lower: ");
+		result.append(lower);
+		result.append(", upper: ");
+		result.append(upper);
+		result.append(')');
+		return result.toString();
 	}
 
 } //LiteralImpl
