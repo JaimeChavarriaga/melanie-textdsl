@@ -62,8 +62,8 @@ public class EBNFListenerEMF extends EBNFBaseListener {
 			currentRule = ebnfFactory.createNonTerminal();
 			symbolStack.removeAllElements();
 
-			// create the meta-identifier
-			currentRule.setId(syntaxContext.META_IDENTIFIER().getText());
+			// create the meta-identifier & replace whitespaces
+			currentRule.setId(syntaxContext.META_IDENTIFIER().getText().replaceAll(" ", "_"));
 
 			// add rule to description
 			getEbnfDescription().getRules().add(currentRule);
@@ -141,7 +141,7 @@ public class EBNFListenerEMF extends EBNFBaseListener {
 			// find nonTerminal in HashMap and add it to the reference
 			// dummy-objects
 			NonTerminal nonTerminal = rules
-					.get(ctx.META_IDENTIFIER().getText());
+					.get(ctx.META_IDENTIFIER().getText().replaceAll(" ", "_"));
 			NonTerminalReference reference = ebnfFactory
 					.createNonTerminalReference();
 			reference.setNonTerminal(nonTerminal);

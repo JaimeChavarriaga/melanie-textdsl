@@ -15,9 +15,6 @@
 -- @path EBNF=/de.uni_mannheim.informatik.swt.models.ebnf/model/ebnfmm.ecore
 
 
--- TODO: FIX FOR MORE THAN ONE OCCURENCE OF NONTERMINALREFERENCE IN BODY
--- 			USE COUNTER AFTER EACH VALUE EXPRESSION!!!
-
 module ebnf2lml;
 create OUT: PLM from IN: EBNF;
 
