@@ -335,14 +335,14 @@ public interface TextualrepresentationPackage extends EPackage {
 	int VALUE_OPERATION_COUNT = TEXTUAL_VISUALIZATION_DESCRIPTOR_OPERATION_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.impl.ValueChoiceImpl <em>Value Choice</em>}' class.
+	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.impl.LiteralChoiceImpl <em>Literal Choice</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.impl.ValueChoiceImpl
-	 * @see de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.impl.TextualrepresentationPackageImpl#getValueChoice()
+	 * @see de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.impl.LiteralChoiceImpl
+	 * @see de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.impl.TextualrepresentationPackageImpl#getLiteralChoice()
 	 * @generated
 	 */
-	int VALUE_CHOICE = 4;
+	int LITERAL_CHOICE = 4;
 
 	/**
 	 * The feature id for the '<em><b>Expression</b></em>' attribute.
@@ -351,7 +351,7 @@ public interface TextualrepresentationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VALUE_CHOICE__EXPRESSION = TEXTUAL_VISUALIZATION_DESCRIPTOR__EXPRESSION;
+	int LITERAL_CHOICE__EXPRESSION = TEXTUAL_VISUALIZATION_DESCRIPTOR__EXPRESSION;
 
 	/**
 	 * The feature id for the '<em><b>Choices</b></em>' containment reference list.
@@ -360,16 +360,16 @@ public interface TextualrepresentationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VALUE_CHOICE__CHOICES = TEXTUAL_VISUALIZATION_DESCRIPTOR_FEATURE_COUNT + 0;
+	int LITERAL_CHOICE__CHOICES = TEXTUAL_VISUALIZATION_DESCRIPTOR_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Value Choice</em>' class.
+	 * The number of structural features of the '<em>Literal Choice</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VALUE_CHOICE_FEATURE_COUNT = TEXTUAL_VISUALIZATION_DESCRIPTOR_FEATURE_COUNT + 1;
+	int LITERAL_CHOICE_FEATURE_COUNT = TEXTUAL_VISUALIZATION_DESCRIPTOR_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Get Containing PLM Element</em>' operation.
@@ -378,7 +378,7 @@ public interface TextualrepresentationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VALUE_CHOICE___GET_CONTAINING_PLM_ELEMENT = TEXTUAL_VISUALIZATION_DESCRIPTOR___GET_CONTAINING_PLM_ELEMENT;
+	int LITERAL_CHOICE___GET_CONTAINING_PLM_ELEMENT = TEXTUAL_VISUALIZATION_DESCRIPTOR___GET_CONTAINING_PLM_ELEMENT;
 
 	/**
 	 * The operation id for the '<em>Get Containing Textual Visualizer</em>' operation.
@@ -387,16 +387,16 @@ public interface TextualrepresentationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VALUE_CHOICE___GET_CONTAINING_TEXTUAL_VISUALIZER = TEXTUAL_VISUALIZATION_DESCRIPTOR___GET_CONTAINING_TEXTUAL_VISUALIZER;
+	int LITERAL_CHOICE___GET_CONTAINING_TEXTUAL_VISUALIZER = TEXTUAL_VISUALIZATION_DESCRIPTOR___GET_CONTAINING_TEXTUAL_VISUALIZER;
 
 	/**
-	 * The number of operations of the '<em>Value Choice</em>' class.
+	 * The number of operations of the '<em>Literal Choice</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VALUE_CHOICE_OPERATION_COUNT = TEXTUAL_VISUALIZATION_DESCRIPTOR_OPERATION_COUNT + 0;
+	int LITERAL_CHOICE_OPERATION_COUNT = TEXTUAL_VISUALIZATION_DESCRIPTOR_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.impl.AbstractColorImpl <em>Abstract Color</em>}' class.
@@ -686,25 +686,25 @@ public interface TextualrepresentationPackage extends EPackage {
 	EOperation getValue__IsAttribute();
 
 	/**
-	 * Returns the meta object for class '{@link de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.ValueChoice <em>Value Choice</em>}'.
+	 * Returns the meta object for class '{@link de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.LiteralChoice <em>Literal Choice</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Value Choice</em>'.
-	 * @see de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.ValueChoice
+	 * @return the meta object for class '<em>Literal Choice</em>'.
+	 * @see de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.LiteralChoice
 	 * @generated
 	 */
-	EClass getValueChoice();
+	EClass getLiteralChoice();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.ValueChoice#getChoices <em>Choices</em>}'.
+	 * Returns the meta object for the containment reference list '{@link de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.LiteralChoice#getChoices <em>Choices</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Choices</em>'.
-	 * @see de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.ValueChoice#getChoices()
-	 * @see #getValueChoice()
+	 * @see de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.LiteralChoice#getChoices()
+	 * @see #getLiteralChoice()
 	 * @generated
 	 */
-	EReference getValueChoice_Choices();
+	EReference getLiteralChoice_Choices();
 
 	/**
 	 * Returns the meta object for class '{@link de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.AbstractColor <em>Abstract Color</em>}'.
@@ -942,14 +942,14 @@ public interface TextualrepresentationPackage extends EPackage {
 		EOperation VALUE___IS_ATTRIBUTE = eINSTANCE.getValue__IsAttribute();
 
 		/**
-		 * The meta object literal for the '{@link de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.impl.ValueChoiceImpl <em>Value Choice</em>}' class.
+		 * The meta object literal for the '{@link de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.impl.LiteralChoiceImpl <em>Literal Choice</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.impl.ValueChoiceImpl
-		 * @see de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.impl.TextualrepresentationPackageImpl#getValueChoice()
+		 * @see de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.impl.LiteralChoiceImpl
+		 * @see de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.impl.TextualrepresentationPackageImpl#getLiteralChoice()
 		 * @generated
 		 */
-		EClass VALUE_CHOICE = eINSTANCE.getValueChoice();
+		EClass LITERAL_CHOICE = eINSTANCE.getLiteralChoice();
 
 		/**
 		 * The meta object literal for the '<em><b>Choices</b></em>' containment reference list feature.
@@ -957,7 +957,7 @@ public interface TextualrepresentationPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference VALUE_CHOICE__CHOICES = eINSTANCE.getValueChoice_Choices();
+		EReference LITERAL_CHOICE__CHOICES = eINSTANCE.getLiteralChoice_Choices();
 
 		/**
 		 * The meta object literal for the '{@link de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.impl.AbstractColorImpl <em>Abstract Color</em>}' class.

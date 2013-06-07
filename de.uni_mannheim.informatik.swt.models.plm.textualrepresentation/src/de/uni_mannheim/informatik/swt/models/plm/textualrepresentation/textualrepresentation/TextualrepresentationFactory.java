@@ -57,13 +57,13 @@ public interface TextualrepresentationFactory extends EFactory {
 	Value createValue();
 
 	/**
-	 * Returns a new object of class '<em>Value Choice</em>'.
+	 * Returns a new object of class '<em>Literal Choice</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Value Choice</em>'.
+	 * @return a new object of class '<em>Literal Choice</em>'.
 	 * @generated
 	 */
-	ValueChoice createValueChoice();
+	LiteralChoice createLiteralChoice();
 
 	/**
 	 * Returns a new object of class '<em>Standard Color</em>'.

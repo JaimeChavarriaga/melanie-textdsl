@@ -57,6 +57,7 @@ public class LiteralImpl extends TextualVisualizationDescriptorImpl implements L
 	 * @ordered
 	 */
 	protected static final int LOWER_EDEFAULT = 0;
+
 	/**
 	 * The cached value of the '{@link #getLower() <em>Lower</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -66,6 +67,7 @@ public class LiteralImpl extends TextualVisualizationDescriptorImpl implements L
 	 * @ordered
 	 */
 	protected int lower = LOWER_EDEFAULT;
+
 	/**
 	 * The default value of the '{@link #getUpper() <em>Upper</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -75,6 +77,7 @@ public class LiteralImpl extends TextualVisualizationDescriptorImpl implements L
 	 * @ordered
 	 */
 	protected static final int UPPER_EDEFAULT = 1;
+
 	/**
 	 * The cached value of the '{@link #getUpper() <em>Upper</em>}' attribute.
 	 * <!-- begin-user-doc -->

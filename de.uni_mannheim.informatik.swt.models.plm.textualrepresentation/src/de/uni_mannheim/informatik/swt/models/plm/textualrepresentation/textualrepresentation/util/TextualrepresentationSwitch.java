@@ -103,10 +103,10 @@ public class TextualrepresentationSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case TextualrepresentationPackage.VALUE_CHOICE: {
-				ValueChoice valueChoice = (ValueChoice)theEObject;
-				T result = caseValueChoice(valueChoice);
-				if (result == null) result = caseTextualVisualizationDescriptor(valueChoice);
+			case TextualrepresentationPackage.LITERAL_CHOICE: {
+				LiteralChoice literalChoice = (LiteralChoice)theEObject;
+				T result = caseLiteralChoice(literalChoice);
+				if (result == null) result = caseTextualVisualizationDescriptor(literalChoice);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -195,17 +195,17 @@ public class TextualrepresentationSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Value Choice</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Literal Choice</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Value Choice</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Literal Choice</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseValueChoice(ValueChoice object) {
+	public T caseLiteralChoice(LiteralChoice object) {
 		return null;
 	}
 

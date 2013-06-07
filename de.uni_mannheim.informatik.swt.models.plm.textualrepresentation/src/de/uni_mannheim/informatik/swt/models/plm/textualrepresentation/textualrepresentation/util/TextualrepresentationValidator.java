@@ -102,8 +102,8 @@ public class TextualrepresentationValidator extends EObjectValidator {
 				return validateLiteral((Literal)value, diagnostics, context);
 			case TextualrepresentationPackage.VALUE:
 				return validateValue((Value)value, diagnostics, context);
-			case TextualrepresentationPackage.VALUE_CHOICE:
-				return validateValueChoice((ValueChoice)value, diagnostics, context);
+			case TextualrepresentationPackage.LITERAL_CHOICE:
+				return validateLiteralChoice((LiteralChoice)value, diagnostics, context);
 			case TextualrepresentationPackage.ABSTRACT_COLOR:
 				return validateAbstractColor((AbstractColor)value, diagnostics, context);
 			case TextualrepresentationPackage.STANDARD_COLOR:
@@ -158,8 +158,8 @@ public class TextualrepresentationValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateValueChoice(ValueChoice valueChoice, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(valueChoice, diagnostics, context);
+	public boolean validateLiteralChoice(LiteralChoice literalChoice, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(literalChoice, diagnostics, context);
 	}
 
 	/**

@@ -15,6 +15,7 @@ import de.uni_mannheim.informatik.swt.models.plm.PLM.PLMPackage;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.AbstractColor;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.ColorEnum;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.Literal;
+import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.LiteralChoice;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.RGBColor;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.StandardColor;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.TextualDSLVisualizer;
@@ -22,7 +23,6 @@ import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualre
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.TextualrepresentationFactory;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.TextualrepresentationPackage;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.Value;
-import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.ValueChoice;
 
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.util.TextualrepresentationValidator;
 
@@ -76,7 +76,7 @@ public class TextualrepresentationPackageImpl extends EPackageImpl implements Te
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass valueChoiceEClass = null;
+	private EClass literalChoiceEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -319,8 +319,8 @@ public class TextualrepresentationPackageImpl extends EPackageImpl implements Te
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getValueChoice() {
-		return valueChoiceEClass;
+	public EClass getLiteralChoice() {
+		return literalChoiceEClass;
 	}
 
 	/**
@@ -328,8 +328,8 @@ public class TextualrepresentationPackageImpl extends EPackageImpl implements Te
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getValueChoice_Choices() {
-		return (EReference)valueChoiceEClass.getEStructuralFeatures().get(0);
+	public EReference getLiteralChoice_Choices() {
+		return (EReference)literalChoiceEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -451,8 +451,8 @@ public class TextualrepresentationPackageImpl extends EPackageImpl implements Te
 		valueEClass = createEClass(VALUE);
 		createEOperation(valueEClass, VALUE___IS_ATTRIBUTE);
 
-		valueChoiceEClass = createEClass(VALUE_CHOICE);
-		createEReference(valueChoiceEClass, VALUE_CHOICE__CHOICES);
+		literalChoiceEClass = createEClass(LITERAL_CHOICE);
+		createEReference(literalChoiceEClass, LITERAL_CHOICE__CHOICES);
 
 		abstractColorEClass = createEClass(ABSTRACT_COLOR);
 
@@ -502,7 +502,7 @@ public class TextualrepresentationPackageImpl extends EPackageImpl implements Te
 		textualDSLVisualizerEClass.getESuperTypes().add(thePLMPackage.getAbstractDSLVisualizer());
 		literalEClass.getESuperTypes().add(this.getTextualVisualizationDescriptor());
 		valueEClass.getESuperTypes().add(this.getTextualVisualizationDescriptor());
-		valueChoiceEClass.getESuperTypes().add(this.getTextualVisualizationDescriptor());
+		literalChoiceEClass.getESuperTypes().add(this.getTextualVisualizationDescriptor());
 		standardColorEClass.getESuperTypes().add(this.getAbstractColor());
 		rgbColorEClass.getESuperTypes().add(this.getAbstractColor());
 
@@ -531,8 +531,8 @@ public class TextualrepresentationPackageImpl extends EPackageImpl implements Te
 
 		initEOperation(getValue__IsAttribute(), ecorePackage.getEBoolean(), "isAttribute", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(valueChoiceEClass, ValueChoice.class, "ValueChoice", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getValueChoice_Choices(), this.getValue(), null, "choices", null, 0, -1, ValueChoice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(literalChoiceEClass, LiteralChoice.class, "LiteralChoice", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getLiteralChoice_Choices(), this.getLiteral(), null, "choices", null, 0, -1, LiteralChoice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(abstractColorEClass, AbstractColor.class, "AbstractColor", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

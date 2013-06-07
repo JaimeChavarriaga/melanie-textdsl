@@ -12,7 +12,9 @@ package de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualr
 
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.AbstractColor;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.TextualrepresentationPackage;
+
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**

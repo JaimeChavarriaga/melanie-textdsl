@@ -94,8 +94,8 @@ public class TextualrepresentationAdapterFactory extends AdapterFactoryImpl {
 				return createValueAdapter();
 			}
 			@Override
-			public Adapter caseValueChoice(ValueChoice object) {
-				return createValueChoiceAdapter();
+			public Adapter caseLiteralChoice(LiteralChoice object) {
+				return createLiteralChoiceAdapter();
 			}
 			@Override
 			public Adapter caseAbstractColor(AbstractColor object) {
@@ -190,16 +190,16 @@ public class TextualrepresentationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.ValueChoice <em>Value Choice</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.LiteralChoice <em>Literal Choice</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.ValueChoice
+	 * @see de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.LiteralChoice
 	 * @generated
 	 */
-	public Adapter createValueChoiceAdapter() {
+	public Adapter createLiteralChoiceAdapter() {
 		return null;
 	}
 

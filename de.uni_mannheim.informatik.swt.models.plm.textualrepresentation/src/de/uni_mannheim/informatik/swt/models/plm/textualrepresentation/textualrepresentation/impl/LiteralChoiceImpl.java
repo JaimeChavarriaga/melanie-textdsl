@@ -10,56 +10,52 @@
  *******************************************************************************/
 package de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.impl;
 
-import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.ColorEnum;
-import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.StandardColor;
+import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.Literal;
+import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.LiteralChoice;
 import de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.TextualrepresentationPackage;
 
-import org.eclipse.emf.common.notify.Notification;
+import java.util.Collection;
+
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Standard Color</b></em>'.
+ * An implementation of the model object '<em><b>Literal Choice</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.impl.StandardColorImpl#getColor <em>Color</em>}</li>
+ *   <li>{@link de.uni_mannheim.informatik.swt.models.plm.textualrepresentation.textualrepresentation.impl.LiteralChoiceImpl#getChoices <em>Choices</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class StandardColorImpl extends AbstractColorImpl implements StandardColor {
+public class LiteralChoiceImpl extends TextualVisualizationDescriptorImpl implements LiteralChoice {
 	/**
-	 * The default value of the '{@link #getColor() <em>Color</em>}' attribute.
+	 * The cached value of the '{@link #getChoices() <em>Choices</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getColor()
+	 * @see #getChoices()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final ColorEnum COLOR_EDEFAULT = ColorEnum.BLACK;
-
-	/**
-	 * The cached value of the '{@link #getColor() <em>Color</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getColor()
-	 * @generated
-	 * @ordered
-	 */
-	protected ColorEnum color = COLOR_EDEFAULT;
+	protected EList<Literal> choices;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected StandardColorImpl() {
+	protected LiteralChoiceImpl() {
 		super();
 	}
 
@@ -70,7 +66,7 @@ public class StandardColorImpl extends AbstractColorImpl implements StandardColo
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return TextualrepresentationPackage.Literals.STANDARD_COLOR;
+		return TextualrepresentationPackage.Literals.LITERAL_CHOICE;
 	}
 
 	/**
@@ -78,8 +74,11 @@ public class StandardColorImpl extends AbstractColorImpl implements StandardColo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ColorEnum getColor() {
-		return color;
+	public EList<Literal> getChoices() {
+		if (choices == null) {
+			choices = new EObjectContainmentEList<Literal>(Literal.class, this, TextualrepresentationPackage.LITERAL_CHOICE__CHOICES);
+		}
+		return choices;
 	}
 
 	/**
@@ -87,11 +86,13 @@ public class StandardColorImpl extends AbstractColorImpl implements StandardColo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setColor(ColorEnum newColor) {
-		ColorEnum oldColor = color;
-		color = newColor == null ? COLOR_EDEFAULT : newColor;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TextualrepresentationPackage.STANDARD_COLOR__COLOR, oldColor, color));
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case TextualrepresentationPackage.LITERAL_CHOICE__CHOICES:
+				return ((InternalEList<?>)getChoices()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -102,8 +103,8 @@ public class StandardColorImpl extends AbstractColorImpl implements StandardColo
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case TextualrepresentationPackage.STANDARD_COLOR__COLOR:
-				return getColor();
+			case TextualrepresentationPackage.LITERAL_CHOICE__CHOICES:
+				return getChoices();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -113,11 +114,13 @@ public class StandardColorImpl extends AbstractColorImpl implements StandardColo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case TextualrepresentationPackage.STANDARD_COLOR__COLOR:
-				setColor((ColorEnum)newValue);
+			case TextualrepresentationPackage.LITERAL_CHOICE__CHOICES:
+				getChoices().clear();
+				getChoices().addAll((Collection<? extends Literal>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -131,8 +134,8 @@ public class StandardColorImpl extends AbstractColorImpl implements StandardColo
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case TextualrepresentationPackage.STANDARD_COLOR__COLOR:
-				setColor(COLOR_EDEFAULT);
+			case TextualrepresentationPackage.LITERAL_CHOICE__CHOICES:
+				getChoices().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -146,26 +149,10 @@ public class StandardColorImpl extends AbstractColorImpl implements StandardColo
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case TextualrepresentationPackage.STANDARD_COLOR__COLOR:
-				return color != COLOR_EDEFAULT;
+			case TextualrepresentationPackage.LITERAL_CHOICE__CHOICES:
+				return choices != null && !choices.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (color: ");
-		result.append(color);
-		result.append(')');
-		return result.toString();
-	}
-
-} //StandardColorImpl
+} //LiteralChoiceImpl

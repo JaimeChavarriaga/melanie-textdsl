@@ -68,7 +68,7 @@ public class TextualrepresentationFactoryImpl extends EFactoryImpl implements Te
 			case TextualrepresentationPackage.TEXTUAL_DSL_VISUALIZER: return createTextualDSLVisualizer();
 			case TextualrepresentationPackage.LITERAL: return createLiteral();
 			case TextualrepresentationPackage.VALUE: return createValue();
-			case TextualrepresentationPackage.VALUE_CHOICE: return createValueChoice();
+			case TextualrepresentationPackage.LITERAL_CHOICE: return createLiteralChoice();
 			case TextualrepresentationPackage.STANDARD_COLOR: return createStandardColor();
 			case TextualrepresentationPackage.RGB_COLOR: return createRGBColor();
 			default:
@@ -141,9 +141,9 @@ public class TextualrepresentationFactoryImpl extends EFactoryImpl implements Te
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ValueChoice createValueChoice() {
-		ValueChoiceImpl valueChoice = new ValueChoiceImpl();
-		return valueChoice;
+	public LiteralChoice createLiteralChoice() {
+		LiteralChoiceImpl literalChoice = new LiteralChoiceImpl();
+		return literalChoice;
 	}
 
 	/**
